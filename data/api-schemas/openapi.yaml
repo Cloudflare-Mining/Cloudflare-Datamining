@@ -2693,8 +2693,8 @@ components:
             example: brotli
           value:
             $ref: '#/components/schemas/brotli_value'
-      description: When the client requesting an asset supports the brotli compression
-        algorithm, Cloudflare will serve a brotli compressed version of the asset.
+      description: When the client requesting an asset supports the Brotli compression
+        algorithm, Cloudflare will serve a Brotli compressed version of the asset.
       title: Brotli Compression
     brotli_value:
       default: "off"
@@ -4172,6 +4172,25 @@ components:
       maxLength: 120
       readOnly: true
       type: string
+    components-schemas-pattern:
+      description: A pattern that matches an entry
+      properties:
+        regex:
+          description: The regex pattern.
+          example: ^4[0-9]{6,}$
+          type: string
+        validation:
+          description: Validation algorithm for the pattern. This algorithm will get
+            run on potential matches, and if it returns false, the entry will not
+            be matched.
+          enum:
+          - luhn
+          example: luhn
+          type: string
+      required:
+      - regex
+      title: Pattern
+      type: object
     components-schemas-paused:
       description: When true, indicates that the rule is currently paused.
       example: false
@@ -5030,6 +5049,25 @@ components:
       - email
       - roles
       type: object
+    create_custom_profile_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            items:
+              $ref: '#/components/schemas/custom_profile'
+            type: array
+    create_custom_profiles:
+      properties:
+        profiles:
+          items:
+            $ref: '#/components/schemas/new_custom_profile'
+          required:
+          - name
+          - entries
+          type: array
+      required:
+      - profiles
     create_destination_address_properties:
       properties:
         email:
@@ -5464,6 +5502,29 @@ components:
       description: The custom URL a user is redirected to when they are denied access
         to the application.
       type: string
+    custom_entry:
+      description: A custom entry that matches a profile
+      properties:
+        created_at:
+          $ref: '#/components/schemas/timestamp'
+        enabled:
+          description: Whether the entry is enabled or not.
+          example: true
+          type: boolean
+        id:
+          $ref: '#/components/schemas/entry_id'
+        name:
+          description: The name of the entry.
+          example: Credit card (Visa)
+          type: string
+        pattern:
+          $ref: '#/components/schemas/components-schemas-pattern'
+        profile_id:
+          description: ID of the parent profile
+        updated_at:
+          $ref: '#/components/schemas/timestamp'
+      title: Custom entry
+      type: object
     custom_hostname_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -5535,6 +5596,42 @@ components:
       - properties:
           result:
             type: object
+    custom_profile:
+      properties:
+        created_at:
+          $ref: '#/components/schemas/timestamp'
+        description:
+          description: The description of the profile.
+          example: A standard CVV card number
+          type: string
+        entries:
+          description: The entries for this profile.
+          items:
+            $ref: '#/components/schemas/custom_entry'
+          type: array
+        id:
+          $ref: '#/components/schemas/profile_id'
+        name:
+          description: The name of the profile.
+          example: Generic CVV Card Number
+          type: string
+        type:
+          description: The type of the profile.
+          enum:
+          - custom
+          example: custom
+          type: string
+        updated_at:
+          $ref: '#/components/schemas/timestamp'
+      title: Custom profile
+      type: object
+    custom_profile_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            allOf:
+            - $ref: '#/components/schemas/custom_profile'
     custom_response:
       anyOf:
       - properties:
@@ -7466,6 +7563,14 @@ components:
       - deny
       example: allow
       type: string
+    either_profile_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            anyOf:
+            - $ref: '#/components/schemas/predefined_profile'
+            - $ref: '#/components/schemas/custom_profile'
     eligibility:
       properties:
         eligible:
@@ -7603,6 +7708,11 @@ components:
     entities_components-schemas-asn:
       description: ASN
       type: integer
+    entry_id:
+      allOf:
+      - $ref: '#/components/schemas/uuid'
+      description: The ID for this entry
+      example: 719d1215-260f-41d0-8c32-eb320ad107f7
     environment:
       description: Worker environment associated with the zone and hostname
       example: production
@@ -8495,6 +8605,10 @@ components:
           $ref: '#/components/schemas/script-monitor_components-schemas-enabled'
         updated_at:
           $ref: '#/components/schemas/schemas-updated_at'
+        use_cloudflare_reporting_endpoint:
+          $ref: '#/components/schemas/use_cloudflare_reporting_endpoint'
+        use_connection_url_path:
+          $ref: '#/components/schemas/use_connection_url_path'
     get_ownership_response:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -9375,12 +9489,13 @@ components:
           value:
             $ref: '#/components/schemas/image_resizing_value'
       description: Image Resizing provides on-demand resizing, conversion and optimisation
-        for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)
+        for images served through Cloudflare's network. Refer to the [Image Resizing
+        documentation](https://developers.cloudflare.com/images/) for more information.
       title: Image Resizing
     image_resizing_value:
       default: "off"
-      description: Whether the feature is enabled, disabled, or enabled in 'open proxy'
-        mode
+      description: Whether the feature is enabled, disabled, or enabled in `open proxy`
+        mode.
       enum:
       - "on"
       - "off"
@@ -12082,6 +12197,41 @@ components:
       - properties:
           result:
             type: object
+    new_custom_entry:
+      description: A custom entry create payload
+      properties:
+        enabled:
+          description: Whether the entry is enabled or not.
+          example: true
+          type: boolean
+        name:
+          description: The name of the entry.
+          example: Credit card (Visa)
+          type: string
+        pattern:
+          $ref: '#/components/schemas/components-schemas-pattern'
+      required:
+      - name
+      - enabled
+      - pattern
+      title: Custom entry
+      type: object
+    new_custom_profile:
+      properties:
+        description:
+          description: The description of the profile.
+          example: A standard CVV card number
+          type: string
+        entries:
+          description: The entries for this profile.
+          items:
+            $ref: '#/components/schemas/new_custom_entry'
+          type: array
+        name:
+          description: The name of the profile.
+          example: Generic CVV Card Number
+          type: string
+      type: object
     new_users_per_minute:
       description: Sets the number of new users that will be let into the route every
         minute. This value is used as baseline for the number of users that are let
@@ -13044,7 +13194,7 @@ components:
           result:
             $ref: '#/components/schemas/passive-dns-by-ip'
     patch:
-      description: Update Enablement of Argo smart routing
+      description: Update enablement of Argo Smart Routing
       properties:
         value:
           $ref: '#/components/schemas/schemas-value'
@@ -13816,6 +13966,51 @@ components:
       description: The order of execution for this policy. Must be unique for each
         policy.
       type: integer
+    predefined_entry:
+      description: A predefined entry that matches a profile
+      properties:
+        enabled:
+          description: Whether the entry is enabled or not.
+          example: true
+          type: boolean
+        id:
+          $ref: '#/components/schemas/entry_id'
+        name:
+          description: The name of the entry.
+          example: Credit card (Visa)
+          type: string
+        profile_id:
+          description: ID of the parent profile
+      title: Predefined entry
+      type: object
+    predefined_profile:
+      properties:
+        entries:
+          description: The entries for this profile.
+          items:
+            $ref: '#/components/schemas/predefined_entry'
+          type: array
+        id:
+          $ref: '#/components/schemas/profile_id'
+        name:
+          description: The name of the profile.
+          example: Generic CVV Card Number
+          type: string
+        type:
+          description: The type of the profile.
+          enum:
+          - predefined
+          example: predefined
+          type: string
+      title: Predefined profile
+      type: object
+    predefined_profile_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            allOf:
+            - $ref: '#/components/schemas/predefined_profile'
     prefetch_preload:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -13976,6 +14171,23 @@ components:
         example: waf
         type: string
       type: array
+    profile_id:
+      allOf:
+      - $ref: '#/components/schemas/uuid'
+      description: The ID for this profile
+      example: 384e129d-25bd-403c-8019-bc19eb7a8a5f
+    profiles:
+      anyOf:
+      - $ref: '#/components/schemas/predefined_profile'
+      - $ref: '#/components/schemas/custom_profile'
+    profiles_components-schemas-response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            items:
+              $ref: '#/components/schemas/profiles'
+            type: array
     project-patch:
       example:
         deployment_configs:
@@ -18143,6 +18355,7 @@ components:
       type: string
     schemas-updated_at:
       description: The timestamp of when Page Shield was last updated.
+      example: "2022-10-12T17:56:52.083582+01:00"
       type: string
     schemas-uploaded:
       description: When the media item was uploaded.
@@ -18173,6 +18386,15 @@ components:
       type: array
     schemas-uuid:
       description: The unique identifier for the Access group.
+    schemas-validate_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            properties:
+              valid:
+                example: true
+                type: boolean
     schemas-validation_method:
       description: Validation method in use for a certificate pack order.
       enum:
@@ -18188,7 +18410,7 @@ components:
       - 90
       type: integer
     schemas-value:
-      description: Enablement of Argo smart routing
+      description: Enables Argo Smart Routing.
       enum:
       - "on"
       - "off"
@@ -18283,6 +18505,7 @@ components:
           example: false
     script-monitor_components-schemas-enabled:
       description: When true, indicates that Page Shield is enabled.
+      example: true
       type: boolean
     script-monitor_components-schemas-id:
       description: The ID of the resource.
@@ -20598,6 +20821,10 @@ components:
           $ref: '#/components/schemas/script-monitor_components-schemas-enabled'
         updated_at:
           $ref: '#/components/schemas/schemas-updated_at'
+        use_cloudflare_reporting_endpoint:
+          $ref: '#/components/schemas/use_cloudflare_reporting_endpoint'
+        use_connection_url_path:
+          $ref: '#/components/schemas/use_connection_url_path'
     update_catch_all_rule_properties:
       properties:
         actions:
@@ -20611,6 +20838,25 @@ components:
       required:
       - actions
       - matchers
+      type: object
+    update_custom_profile:
+      properties:
+        description:
+          description: The description of the profile.
+          example: A standard CVV card number
+          type: string
+        entries:
+          description: The entries for this profile. Array elements with IDs are modifying
+            the existing entry with that ID. Elements without ID will create new entries.
+            Any entry not in the list will be deleted.
+          items:
+            $ref: '#/components/schemas/custom_entry'
+          type: array
+        name:
+          description: The name of the profile.
+          example: Generic CVV Card Number
+          type: string
+      title: Update custom profile
       type: object
     update_input_request:
       properties:
@@ -20626,6 +20872,21 @@ components:
           $ref: '#/components/schemas/output_enabled'
       required:
       - enabled
+    update_predefined_profile:
+      properties:
+        entries:
+          description: The entries for this profile.
+          items:
+            properties:
+              enabled:
+                description: Wheter the entry is enabled or not.
+                example: true
+                type: boolean
+              id:
+                $ref: '#/components/schemas/entry_id'
+          type: array
+      title: Update predefined profile
+      type: object
     update_rule_properties:
       properties:
         actions:
@@ -20760,6 +21021,15 @@ components:
               usage_model:
                 readOnly: true
             type: object
+    use_cloudflare_reporting_endpoint:
+      description: When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report
+      example: true
+      type: boolean
+    use_connection_url_path:
+      description: When true, the paths associated with connections URLs will also
+        be analyzed.
+      example: true
+      type: boolean
     user:
       properties:
         email:
@@ -20870,6 +21140,17 @@ components:
                 example: true
                 type: boolean
             type: object
+    validate_pattern:
+      description: A request to validate a pattern
+      properties:
+        regex:
+          description: The regex pattern.
+          example: ^4[0-9]{6,}$
+          type: string
+      required:
+      - regex
+      title: Pattern
+      type: object
     validate_response:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -24375,6 +24656,345 @@ paths:
         enterprise: true
         free: false
         pro: false
+  /accounts/{account_identifier}/dlp/patterns/validate:
+    post:
+      description: Validates whether this pattern is a valid regular expression. Rejects
+        it if the regular expression is too complex or can match an unbounded-length
+        string. Your regex will be rejected if it uses the Kleene Star -- be sure
+        to bound the maximum number of characters that can be matched.
+      operationId: dlp-pattern-validation-validate-pattern
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/validate_pattern'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/schemas-validate_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Validate pattern response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas-validate_response'
+          description: Validate pattern response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Validate pattern
+      tags:
+      - DLP Pattern Validation
+  /accounts/{account_identifier}/dlp/profiles:
+    get:
+      description: Lists all DLP profiles in an account.
+      operationId: dlp-profiles-list-all-profiles
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/profiles_components-schemas-response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List all profiles response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/profiles_components-schemas-response_collection'
+          description: List all profiles response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List all profiles
+      tags:
+      - DLP Profiles
+  /accounts/{account_identifier}/dlp/profiles/{profile_id}:
+    get:
+      description: Fetches a DLP profile by ID. Supports both predefined and custom
+        profiles
+      operationId: dlp-profiles-get-dlp-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/either_profile_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get DLP Profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/either_profile_response'
+          description: Get DLP Profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get DLP Profile
+      tags:
+      - DLP Profiles
+  /accounts/{account_identifier}/dlp/profiles/custom:
+    post:
+      description: Creates a set of DLP custom profiles.
+      operationId: dlp-profiles-create-custom-profiles
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_custom_profiles'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/create_custom_profile_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create custom profiles response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create_custom_profile_response'
+          description: Create custom profiles response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create custom profiles
+      tags:
+      - DLP Profiles
+  /accounts/{account_identifier}/dlp/profiles/custom/{profile_id}:
+    delete:
+      description: Deletes a DLP custom profile.
+      operationId: dlp-profiles-delete-custom-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete custom profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single'
+          description: Delete custom profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete custom profile
+      tags:
+      - DLP Profiles
+    get:
+      description: Fetches a custom DLP profile.
+      operationId: dlp-profiles-get-custom-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/custom_profile_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get custom profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_profile_response'
+          description: Get custom profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get custom profile
+      tags:
+      - DLP Profiles
+    put:
+      description: Updates a DLP custom profile.
+      operationId: dlp-profiles-update-custom-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_custom_profile'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/custom_profile'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update custom profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_profile'
+          description: Update custom profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update custom profile
+      tags:
+      - DLP Profiles
+  /accounts/{account_identifier}/dlp/profiles/predefined/{profile_id}:
+    get:
+      description: Fetches a predefined DLP profile.
+      operationId: dlp-profiles-get-predefined-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/predefined_profile_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get predefined profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/predefined_profile_response'
+          description: Get predefined profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get predefined profile
+      tags:
+      - DLP Profiles
+    put:
+      description: Updates a DLP predefined profile. Only supports enabling/disabling
+        entries.
+      operationId: dlp-profiles-update-predefined-profile
+      parameters:
+      - in: path
+        name: profile_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/profile_id'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_predefined_profile'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/predefined_profile'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update predefined profile response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/predefined_profile'
+          description: Update predefined profile response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update predefined profile
+      tags:
+      - DLP Profiles
   /accounts/{account_identifier}/dns_firewall:
     get:
       description: List configured DNS Firewall clusters for an account
@@ -57136,8 +57756,8 @@ paths:
         pro: true
   /zones/{zone_id}/page_shield:
     get:
-      description: Fetches the Page Shield status.
-      operationId: page-shield-get-page-shield-status
+      description: Fetches the Page Shield settings.
+      operationId: page-shield-get-page-shield-settings
       parameters:
       - in: path
         name: zone_id
@@ -57156,7 +57776,7 @@ paths:
                       result:
                         $ref: '#/components/schemas/get-zone-settings-response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Page Shield status response failure
+          description: Get Page Shield settings response failure
         "200":
           content:
             application/json:
@@ -57166,11 +57786,11 @@ paths:
                 - properties:
                     result:
                       $ref: '#/components/schemas/get-zone-settings-response'
-          description: Get Page Shield status response
+          description: Get Page Shield settings response
       security:
       - api_email: []
         api_key: []
-      summary: Get Page Shield status
+      summary: Get Page Shield settings
       tags:
       - Page Shield
       x-cfPlanAvailability:
@@ -57179,8 +57799,8 @@ paths:
         free: false
         pro: true
     put:
-      description: Updates the status of Page Shield.
-      operationId: page-shield-update-page-shield-status
+      description: Updates Page Shield settings.
+      operationId: page-shield-update-page-shield-settings
       parameters:
       - in: path
         name: zone_id
@@ -57189,7 +57809,15 @@ paths:
           $ref: '#/components/schemas/common_components-schemas-identifier'
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              properties:
+                enabled:
+                  $ref: '#/components/schemas/script-monitor_components-schemas-enabled'
+                use_cloudflare_reporting_endpoint:
+                  $ref: '#/components/schemas/use_cloudflare_reporting_endpoint'
+                use_connection_url_path:
+                  $ref: '#/components/schemas/use_connection_url_path'
         required: true
       responses:
         4xx:
@@ -57203,7 +57831,7 @@ paths:
                       result:
                         $ref: '#/components/schemas/update-zone-settings-response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Page Shield status response failure
+          description: Update Page Shield settings response failure
         "200":
           content:
             application/json:
@@ -57213,11 +57841,11 @@ paths:
                 - properties:
                     result:
                       $ref: '#/components/schemas/update-zone-settings-response'
-          description: Update Page Shield status response
+          description: Update Page Shield settings response
       security:
       - api_email: []
         api_key: []
-      summary: Update Page Shield status
+      summary: Update Page Shield settings
       tags:
       - Page Shield
       x-cfPlanAvailability:
@@ -58742,7 +59370,7 @@ paths:
         pro: true
   /zones/{zone_identifier}/analytics/latency/colos:
     get:
-      operationId: argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-differnt-po-ps
+      operationId: argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-po-ps
       parameters:
       - in: path
         name: zone_identifier
@@ -58757,17 +59385,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/schemas-response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Argo Analytics for a zone at differnt PoPs response failure
+          description: Argo Analytics for a zone at different PoPs response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas-response_single'
-          description: Argo Analytics for a zone at differnt PoPs response
+          description: Argo Analytics for a zone at different PoPs response
       security:
       - api_email: []
         api_key: []
-      summary: Argo Analytics for a zone at differnt PoPs
+      summary: Argo Analytics for a zone at different PoPs
       tags:
       - Argo Analytics for Geolocation
       x-cfPermissionsRequired:
@@ -58817,6 +59445,7 @@ paths:
         free: true
         pro: true
     patch:
+      description: Updates enablement of Argo Smart Routing.
       operationId: argo-smart-routing-patch-argo-smart-routing-setting
       parameters:
       - in: path
@@ -64304,105 +64933,6 @@ paths:
         enterprise: true
         free: false
         pro: false
-  /zones/{zone_identifier}/origin_max_http_version:
-    get:
-      description: Value of the Origin Max HTTP version setting (Note that the default
-        value for Enterprise is "1")
-      operationId: zone-settings-get-origin-max-http-version-setting
-      parameters:
-      - in: path
-        name: zone_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - allOf:
-                  - $ref: '#/components/schemas/zone_settings_response_single'
-                  - $ref: '#/components/schemas/origin_max_http_version_response_value'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Origin Max HTTP version setting response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/zone_settings_response_single'
-                - $ref: '#/components/schemas/origin_max_http_version_response_value'
-          description: Get Origin Max HTTP version setting response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get Origin Max HTTP version setting
-      tags:
-      - Zone Settings
-      x-cfPermissionsRequired:
-        enum:
-        - '#zone_settings:read'
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-    patch:
-      description: The highest HTTP version Cloudflare will attempt to use with your
-        origin. This setting allows Cloudflare to make HTTP/2 requests to your origin.
-        (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/),
-        for more information.)
-      operationId: zone-settings-change-origin-max-http-version-setting
-      parameters:
-      - in: path
-        name: zone_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                value:
-                  $ref: '#/components/schemas/origin_max_http_version_value'
-              required:
-              - value
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - allOf:
-                  - $ref: '#/components/schemas/zone_settings_response_single'
-                  - $ref: '#/components/schemas/origin_max_http_version_response_value'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Change Origin Max HTTP version setting response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/zone_settings_response_single'
-                - $ref: '#/components/schemas/origin_max_http_version_response_value'
-          description: Change Origin Max HTTP version setting response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Change Origin Max HTTP version setting
-      tags:
-      - Zone Settings
-      x-cfPermissionsRequired:
-        enum:
-        - '#zone_settings:edit'
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
   /zones/{zone_identifier}/origin_tls_client_auth:
     get:
       operationId: zone-level-authenticated-origin-pulls-list-certificates
@@ -66398,8 +66928,8 @@ paths:
         pro: true
   /zones/{zone_identifier}/settings/brotli:
     get:
-      description: When the client requesting an asset supports the brotli compression
-        algorithm, Cloudflare will serve a brotli compressed version of the asset.
+      description: When the client requesting an asset supports the Brotli compression
+        algorithm, Cloudflare will serve a Brotli compressed version of the asset.
       operationId: zone-settings-get-brotli-setting
       parameters:
       - in: path
@@ -66445,8 +66975,8 @@ paths:
         free: true
         pro: true
     patch:
-      description: When the client requesting an asset supports the brotli compression
-        algorithm, Cloudflare will serve a brotli compressed version of the asset.
+      description: When the client requesting an asset supports the Brotli compression
+        algorithm, Cloudflare will serve a Brotli compressed version of the asset.
       operationId: zone-settings-change-brotli-setting
       parameters:
       - in: path
@@ -67796,7 +68326,8 @@ paths:
   /zones/{zone_identifier}/settings/image_resizing:
     get:
       description: Image Resizing provides on-demand resizing, conversion and optimisation
-        for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)
+        for images served through Cloudflare's network. Refer to the [Image Resizing
+        documentation](https://developers.cloudflare.com/images/) for more information.
       operationId: zone-settings-get-image-resizing-setting
       parameters:
       - in: path
@@ -67843,7 +68374,8 @@ paths:
         pro: false
     patch:
       description: Image Resizing provides on-demand resizing, conversion and optimisation
-        for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)
+        for images served through Cloudflare's network. Refer to the [Image Resizing
+        documentation](https://developers.cloudflare.com/images/) for more information.
       operationId: zone-settings-change-image-resizing-setting
       parameters:
       - in: path
@@ -68950,6 +69482,105 @@ paths:
         enterprise: true
         free: false
         pro: false
+  /zones/{zone_identifier}/settings/origin_max_http_version:
+    get:
+      description: Value of the Origin Max HTTP version setting (Note that the default
+        value for Enterprise is "1")
+      operationId: zone-settings-get-origin-max-http-version-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_settings_response_single'
+                  - $ref: '#/components/schemas/origin_max_http_version_response_value'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Origin Max HTTP version setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_settings_response_single'
+                - $ref: '#/components/schemas/origin_max_http_version_response_value'
+          description: Get Origin Max HTTP version setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Origin Max HTTP version setting
+      tags:
+      - Zone Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+    patch:
+      description: The highest HTTP version Cloudflare will attempt to use with your
+        origin. This setting allows Cloudflare to make HTTP/2 requests to your origin.
+        (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/),
+        for more information.)
+      operationId: zone-settings-change-origin-max-http-version-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  $ref: '#/components/schemas/origin_max_http_version_value'
+              required:
+              - value
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_settings_response_single'
+                  - $ref: '#/components/schemas/origin_max_http_version_response_value'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Change Origin Max HTTP version setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_settings_response_single'
+                - $ref: '#/components/schemas/origin_max_http_version_response_value'
+          description: Change Origin Max HTTP version setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Change Origin Max HTTP version setting
+      tags:
+      - Zone Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:edit'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /zones/{zone_identifier}/settings/polish:
     get:
       description: 'Removes metadata and compresses your images for faster page load

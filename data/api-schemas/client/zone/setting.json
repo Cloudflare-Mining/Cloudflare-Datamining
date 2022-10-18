@@ -566,7 +566,7 @@
 		},
 		{
 			"title": "Get Brotli setting",
-			"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+			"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 			"rel": "tag:cloudflare.com,2017:setting-brotli",
 			"href": "zones/{#/definitions/zone_identifier}/settings/brotli",
 			"method": "GET",
@@ -1028,7 +1028,7 @@
 			"title": "Get Origin Max HTTP version setting",
 			"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
-			"href": "zones/{#/definitions/zone_identifier}/origin_max_http_version",
+			"href": "zones/{#/definitions/zone_identifier}/settings/origin_max_http_version",
 			"method": "GET",
 			"cfOwnership": "cache",
 			"cfPlanAvailability": {
@@ -1043,8 +1043,8 @@
 				]
 			},
 			"html_id": "zone-settings-get-origin-max-http-version-setting",
-			"uri": "zones/:zone_identifier/origin_max_http_version",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/origin_max_http_version\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "zones/:zone_identifier/settings/origin_max_http_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/settings/origin_max_http_version\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"origin_max_http_version\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"value\": \"2\"\n  }\n}"
 		},
 		{
@@ -1118,7 +1118,7 @@
 		},
 		{
 			"title": "Get Image Resizing setting",
-			"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+			"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 			"rel": "tag:cloudflare.com,2019:setting-image-resizing",
 			"href": "zones/{#/definitions/zone_identifier}/settings/image_resizing",
 			"method": "GET",
@@ -2379,7 +2379,7 @@
 		},
 		{
 			"title": "Change Brotli setting",
-			"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+			"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 			"rel": "tag:cloudflare.com,2017:setting-brotli",
 			"href": "zones/{#/definitions/zone_identifier}/settings/brotli",
 			"method": "PATCH",
@@ -3282,7 +3282,7 @@
 			"title": "Change Origin Max HTTP version setting",
 			"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
-			"href": "zones/{#/definitions/zone_identifier}/origin_max_http_version",
+			"href": "zones/{#/definitions/zone_identifier}/settings/origin_max_http_version",
 			"method": "PATCH",
 			"cfOwnership": "cache",
 			"cfPlanAvailability": {
@@ -3297,8 +3297,8 @@
 				]
 			},
 			"html_id": "zone-settings-change-origin-max-http-version-setting",
-			"uri": "zones/:zone_identifier/origin_max_http_version",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/origin_max_http_version\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":\"2\"}'",
+			"uri": "zones/:zone_identifier/settings/origin_max_http_version",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/settings/origin_max_http_version\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":\"2\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -3465,7 +3465,7 @@
 		},
 		{
 			"title": "Change Image Resizing setting",
-			"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+			"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 			"rel": "tag:cloudflare.com,2019:setting-image-resizing",
 			"href": "zones/{#/definitions/zone_identifier}/settings/image_resizing",
 			"method": "PATCH",
@@ -3497,7 +3497,7 @@
 							"off",
 							"open"
 						],
-						"description": "Whether the feature is enabled, disabled, or enabled in 'open proxy' mode",
+						"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
 						"default": "off"
 					}
 				},
@@ -3840,7 +3840,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"brotli\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Brotli Compression",
-				"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset."
+				"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset."
 			},
 			{
 				"all_props": {
@@ -6913,7 +6913,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Whether the feature is enabled, disabled, or enabled in 'open proxy' mode",
+						"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
 						"enum": [
 							"on",
 							"off",
@@ -6953,7 +6953,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"image_resizing\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Image Resizing",
-				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)"
+				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information."
 			},
 			{
 				"all_props": {

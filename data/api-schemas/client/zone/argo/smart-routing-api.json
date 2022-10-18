@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/smart-routing-api.json",
 	"title": "Argo Smart Routing",
-	"description": "Query, enable and disable Argo smart routing for a zone.",
+	"description": "Query, enable, and disable Argo Smart Routing for a zone.",
 	"type": "object",
 	"links": [
 		{
@@ -28,6 +28,7 @@
 		},
 		{
 			"title": "Patch Argo Smart Routing setting",
+			"description": "Updates enablement of Argo Smart Routing.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/argo/smart_routing",
 			"method": "PATCH",
@@ -55,7 +56,7 @@
 					"value": {
 						"type": "string",
 						"example": "\"on\"",
-						"description": "Enablement of Argo smart routing",
+						"description": "Enables Argo Smart Routing.",
 						"enum": [
 							"on",
 							"off"
@@ -68,7 +69,7 @@
 				"optional_props": [],
 				"objects": [],
 				"example": "{\n  \"value\": \"on\"\n}",
-				"description": "Update Enablement of Argo smart routing"
+				"description": "Update enablement of Argo Smart Routing"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"smart_routing\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
 		}
@@ -82,7 +83,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"smart_routing\"",
-				"description": "Identify endpoint smart_routing",
+				"description": "Identifies endpoint smart_routing.",
 				"enum": [
 					"smart_routing"
 				],
@@ -91,7 +92,7 @@
 			"value": {
 				"type": "string",
 				"example": "\"on\"",
-				"description": "Enablement of Argo smart routing",
+				"description": "Enables Argo Smart Routing.",
 				"enum": [
 					"on",
 					"off"
@@ -100,12 +101,12 @@
 			"editable": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Editability of smart routing setting"
+				"description": "Determines whether Argo Smart Routing setting can be edited."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2019-02-20T22:37:07.107449Z\"",
-				"description": "Timestamp of last modified",
+				"description": "Timestamp of last modified date.",
 				"format": "date-time",
 				"readOnly": true
 			}
@@ -120,6 +121,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"smart_routing\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n}",
 		"title": "Argo Smart Routing",
-		"description": "Query, enable and disable Argo smart routing for a zone."
+		"description": "Query, enable, and disable Argo Smart Routing for a zone."
 	}
 }

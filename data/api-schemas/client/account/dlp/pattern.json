@@ -1,0 +1,52 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dlp/pattern.json",
+	"title": "DLP Pattern Validation",
+	"description": "Regexp pattern to be validated",
+	"links": [
+		{
+			"title": "Validate pattern",
+			"description": "Validates whether this pattern is a valid regular expression. Rejects it if the regular expression is too complex or can match an unbounded-length string. Your regex will be rejected if it uses the Kleene Star -- be sure to bound the maximum number of characters that can be matched.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/patterns/validate",
+			"method": "POST",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-pattern-validation-validate-pattern",
+			"uri": "accounts/:account_identifier/dlp/patterns/validate",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/patterns/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"regex\":\"^4[0-9]{6,}$\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"regex": {
+						"type": "string",
+						"example": "\"^4[0-9]{6,}$\"",
+						"description": "The regex pattern."
+					}
+				},
+				"required_props": [
+					"regex"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"regex\": \"^4[0-9]{6,}$\"\n}",
+				"title": "Pattern",
+				"description": "A request to validate a pattern"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"valid\": \"true\"\n  }\n}"
+		}
+	],
+	"html_id": "dlp-pattern-validation",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "DLP Pattern Validation",
+		"description": "Regexp pattern to be validated"
+	}
+}

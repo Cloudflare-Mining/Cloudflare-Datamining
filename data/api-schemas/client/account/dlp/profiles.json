@@ -1,0 +1,604 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dlp/profiles.json",
+	"title": "DLP Profiles",
+	"description": "Data Loss Prevention profiles are a set of entries that can be matched in HTTP bodies or files. They are referenced in Zero Trust Gateway rules.",
+	"links": [
+		{
+			"title": "List all profiles",
+			"description": "Lists all DLP profiles in an account.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles",
+			"method": "GET",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-list-all-profiles",
+			"uri": "accounts/:account_identifier/dlp/profiles",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n      \"name\": \"Generic CVV Card Number\",\n      \"type\": \"predefined\",\n      \"entries\": [\n        {\n          \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n          \"name\": \"Credit card (Visa)\",\n          \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"enabled\": true\n        }\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get DLP Profile",
+			"description": "Fetches a DLP profile by ID. Supports both predefined and custom profiles",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/{#/definitions/profile_id}",
+			"method": "GET",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-get-dlp-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/:profile_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n    \"name\": \"Generic CVV Card Number\",\n    \"type\": \"predefined\",\n    \"entries\": [\n      {\n        \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n        \"name\": \"Credit card (Visa)\",\n        \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"enabled\": true\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get predefined profile",
+			"description": "Fetches a predefined DLP profile.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/predefined/{#/definitions/profile_id}",
+			"method": "GET",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-get-predefined-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/predefined/:profile_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/predefined/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n    \"name\": \"Generic CVV Card Number\",\n    \"type\": \"predefined\",\n    \"entries\": [\n      {\n        \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n        \"name\": \"Credit card (Visa)\",\n        \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"enabled\": true\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get custom profile",
+			"description": "Fetches a custom DLP profile.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/custom/{#/definitions/profile_id}",
+			"method": "GET",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-get-custom-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/custom/:profile_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/custom/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n    \"name\": \"Generic CVV Card Number\",\n    \"type\": \"custom\",\n    \"description\": \"A standard CVV card number\",\n    \"entries\": [\n      {\n        \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n        \"name\": \"Credit card (Visa)\",\n        \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"enabled\": true,\n        \"pattern\": {\n          \"regex\": \"^4[0-9]{6,}$\",\n          \"validation\": \"luhn\"\n        },\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n        \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ],\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Create custom profiles",
+			"description": "Creates a set of DLP custom profiles.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/custom",
+			"method": "POST",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-create-custom-profiles",
+			"uri": "accounts/:account_identifier/dlp/profiles/custom",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/custom\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"profiles\":[{\"name\":\"Generic CVV Card Number\",\"description\":\"A standard CVV card number\",\"entries\":[{\"name\":\"Credit card (Visa)\",\"enabled\":true,\"pattern\":{\"regex\":\"^4[0-9]{6,}$\",\"validation\":\"luhn\"}}]}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"profiles": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"Generic CVV Card Number\",\n    \"description\": \"A standard CVV card number\",\n    \"entries\": [\n      {\n        \"name\": \"Credit card (Visa)\",\n        \"enabled\": true,\n        \"pattern\": {\n          \"regex\": \"^4[0-9]{6,}$\",\n          \"validation\": \"luhn\"\n        }\n      }\n    ]\n  }\n]",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"description": "The name of the profile.",
+									"type": "string",
+									"example": "Generic CVV Card Number"
+								},
+								"description": {
+									"description": "The description of the profile.",
+									"type": "string",
+									"example": "A standard CVV card number"
+								},
+								"entries": {
+									"type": "array",
+									"description": "The entries for this profile.",
+									"items": {
+										"type": "object",
+										"title": "Custom entry",
+										"description": "A custom entry create payload",
+										"properties": {
+											"name": {
+												"description": "The name of the entry.",
+												"type": "string",
+												"example": "Credit card (Visa)"
+											},
+											"enabled": {
+												"description": "Whether the entry is enabled or not.",
+												"type": "boolean",
+												"example": true
+											},
+											"pattern": {
+												"type": "object",
+												"title": "Pattern",
+												"description": "A pattern that matches an entry",
+												"properties": {
+													"regex": {
+														"description": "The regex pattern.",
+														"type": "string",
+														"example": "^4[0-9]{6,}$"
+													},
+													"validation": {
+														"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+														"type": "string",
+														"enum": [
+															"luhn"
+														],
+														"example": "luhn"
+													}
+												},
+												"required": [
+													"regex"
+												]
+											}
+										},
+										"required": [
+											"name",
+											"enabled",
+											"pattern"
+										]
+									}
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						]
+					}
+				},
+				"required_props": [
+					"profiles"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"profiles\": [\n    {\n      \"name\": \"Generic CVV Card Number\",\n      \"description\": \"A standard CVV card number\",\n      \"entries\": [\n        {\n          \"name\": \"Credit card (Visa)\",\n          \"enabled\": true,\n          \"pattern\": {\n            \"regex\": \"^4[0-9]{6,}$\",\n            \"validation\": \"luhn\"\n          }\n        }\n      ]\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n      \"name\": \"Generic CVV Card Number\",\n      \"type\": \"custom\",\n      \"description\": \"A standard CVV card number\",\n      \"entries\": [\n        {\n          \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n          \"name\": \"Credit card (Visa)\",\n          \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"enabled\": true,\n          \"pattern\": {\n            \"regex\": \"^4[0-9]{6,}$\",\n            \"validation\": \"luhn\"\n          },\n          \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n          \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n        }\n      ],\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete custom profile",
+			"description": "Deletes a DLP custom profile.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/custom/{#/definitions/profile_id}",
+			"method": "DELETE",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-delete-custom-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/custom/:profile_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/custom/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Update predefined profile",
+			"description": "Updates a DLP predefined profile. Only supports enabling/disabling entries.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/predefined/{#/definitions/profile_id}",
+			"method": "PUT",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-update-predefined-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/predefined/:profile_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/predefined/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"entries\":[{\"id\":\"719d1215-260f-41d0-8c32-eb320ad107f7\",\"enabled\":true}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"entries": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n    \"enabled\": true\n  }\n]",
+						"description": "The entries for this profile.",
+						"items": {
+							"properties": {
+								"id": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"readOnly": true,
+											"type": "string",
+											"maxLength": 36,
+											"description": "API uuid tag",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										}
+									],
+									"description": "The ID for this entry",
+									"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+								},
+								"enabled": {
+									"description": "Wheter the entry is enabled or not.",
+									"type": "boolean",
+									"example": true
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"entries"
+				],
+				"objects": [],
+				"example": "{\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"enabled\": true\n    }\n  ]\n}",
+				"title": "Update predefined profile"
+			},
+			"response": "{\n  \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n  \"name\": \"Generic CVV Card Number\",\n  \"type\": \"predefined\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update custom profile",
+			"description": "Updates a DLP custom profile.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/profiles/custom/{#/definitions/profile_id}",
+			"method": "PUT",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-profiles-update-custom-profile",
+			"uri": "accounts/:account_identifier/dlp/profiles/custom/:profile_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/profiles/custom/384e129d-25bd-403c-8019-bc19eb7a8a5f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Generic CVV Card Number\",\"description\":\"A standard CVV card number\",\"entries\":[{\"id\":\"719d1215-260f-41d0-8c32-eb320ad107f7\",\"name\":\"Credit card (Visa)\",\"profile_id\":\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\"enabled\":true,\"pattern\":{\"regex\":\"^4[0-9]{6,}$\",\"validation\":\"luhn\"},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Generic CVV Card Number\"",
+						"description": "The name of the profile."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"A standard CVV card number\"",
+						"description": "The description of the profile."
+					},
+					"entries": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n    \"name\": \"Credit card (Visa)\",\n    \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true,\n    \"pattern\": {\n      \"regex\": \"^4[0-9]{6,}$\",\n      \"validation\": \"luhn\"\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
+						"description": "The entries for this profile. Array elements with IDs are modifying the existing entry with that ID. Elements without ID will create new entries. Any entry not in the list will be deleted.",
+						"items": {
+							"type": "object",
+							"title": "Custom entry",
+							"description": "A custom entry that matches a profile",
+							"properties": {
+								"id": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"readOnly": true,
+											"type": "string",
+											"maxLength": 36,
+											"description": "API uuid tag",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										}
+									],
+									"description": "The ID for this entry",
+									"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+								},
+								"name": {
+									"description": "The name of the entry.",
+									"type": "string",
+									"example": "Credit card (Visa)"
+								},
+								"profile_id": {
+									"description": "ID of the parent profile",
+									"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"readOnly": true,
+									"type": "string",
+									"maxLength": 36,
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+								},
+								"enabled": {
+									"description": "Whether the entry is enabled or not.",
+									"type": "boolean",
+									"example": true
+								},
+								"pattern": {
+									"type": "object",
+									"title": "Pattern",
+									"description": "A pattern that matches an entry",
+									"properties": {
+										"regex": {
+											"description": "The regex pattern.",
+											"type": "string",
+											"example": "^4[0-9]{6,}$"
+										},
+										"validation": {
+											"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+											"type": "string",
+											"enum": [
+												"luhn"
+											],
+											"example": "luhn"
+										}
+									},
+									"required": [
+										"regex"
+									]
+								},
+								"created_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Creation time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								},
+								"updated_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Last modification time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"description",
+					"entries"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Generic CVV Card Number\",\n  \"description\": \"A standard CVV card number\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true,\n      \"pattern\": {\n        \"regex\": \"^4[0-9]{6,}$\",\n        \"validation\": \"luhn\"\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}",
+				"title": "Update custom profile"
+			},
+			"response": "{\n  \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n  \"name\": \"Generic CVV Card Number\",\n  \"type\": \"custom\",\n  \"description\": \"A standard CVV card number\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true,\n      \"pattern\": {\n        \"regex\": \"^4[0-9]{6,}$\",\n        \"validation\": \"luhn\"\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ],\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}"
+		}
+	],
+	"html_id": "dlp-profiles",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"example": "\"384e129d-25bd-403c-8019-bc19eb7a8a5f\"",
+						"properties": {},
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"readOnly": true,
+								"type": "string",
+								"maxLength": 36,
+								"description": "API uuid tag",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+							}
+						],
+						"description": "The ID for this profile"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Generic CVV Card Number\"",
+						"description": "The name of the profile."
+					},
+					"type": {
+						"type": "string",
+						"example": "\"predefined\"",
+						"description": "The type of the profile.",
+						"enum": [
+							"predefined"
+						]
+					},
+					"entries": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n    \"name\": \"Credit card (Visa)\",\n    \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true\n  }\n]",
+						"description": "The entries for this profile.",
+						"items": {
+							"type": "object",
+							"title": "Predefined entry",
+							"description": "A predefined entry that matches a profile",
+							"properties": {
+								"id": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"readOnly": true,
+											"type": "string",
+											"maxLength": 36,
+											"description": "API uuid tag",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										}
+									],
+									"description": "The ID for this entry",
+									"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+								},
+								"name": {
+									"description": "The name of the entry.",
+									"type": "string",
+									"example": "Credit card (Visa)"
+								},
+								"profile_id": {
+									"description": "ID of the parent profile",
+									"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"readOnly": true,
+									"type": "string",
+									"maxLength": 36,
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+								},
+								"enabled": {
+									"description": "Whether the entry is enabled or not.",
+									"type": "boolean",
+									"example": true
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"type",
+					"entries"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n  \"name\": \"Generic CVV Card Number\",\n  \"type\": \"predefined\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true\n    }\n  ]\n}",
+				"title": "Predefined profile"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"384e129d-25bd-403c-8019-bc19eb7a8a5f\"",
+						"properties": {},
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"readOnly": true,
+								"type": "string",
+								"maxLength": 36,
+								"description": "API uuid tag",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+							}
+						],
+						"description": "The ID for this profile"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Generic CVV Card Number\"",
+						"description": "The name of the profile."
+					},
+					"type": {
+						"type": "string",
+						"example": "\"custom\"",
+						"description": "The type of the profile.",
+						"enum": [
+							"custom"
+						]
+					},
+					"description": {
+						"type": "string",
+						"example": "\"A standard CVV card number\"",
+						"description": "The description of the profile."
+					},
+					"entries": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n    \"name\": \"Credit card (Visa)\",\n    \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true,\n    \"pattern\": {\n      \"regex\": \"^4[0-9]{6,}$\",\n      \"validation\": \"luhn\"\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
+						"description": "The entries for this profile.",
+						"items": {
+							"type": "object",
+							"title": "Custom entry",
+							"description": "A custom entry that matches a profile",
+							"properties": {
+								"id": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"readOnly": true,
+											"type": "string",
+											"maxLength": 36,
+											"description": "API uuid tag",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+										}
+									],
+									"description": "The ID for this entry",
+									"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+								},
+								"name": {
+									"description": "The name of the entry.",
+									"type": "string",
+									"example": "Credit card (Visa)"
+								},
+								"profile_id": {
+									"description": "ID of the parent profile",
+									"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"readOnly": true,
+									"type": "string",
+									"maxLength": 36,
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+								},
+								"enabled": {
+									"description": "Whether the entry is enabled or not.",
+									"type": "boolean",
+									"example": true
+								},
+								"pattern": {
+									"type": "object",
+									"title": "Pattern",
+									"description": "A pattern that matches an entry",
+									"properties": {
+										"regex": {
+											"description": "The regex pattern.",
+											"type": "string",
+											"example": "^4[0-9]{6,}$"
+										},
+										"validation": {
+											"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+											"type": "string",
+											"enum": [
+												"luhn"
+											],
+											"example": "luhn"
+										}
+									},
+									"required": [
+										"regex"
+									]
+								},
+								"created_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Creation time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								},
+								"updated_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Last modification time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								}
+							}
+						}
+					},
+					"created_at": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Creation time",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"updated_at": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Last modification time",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"type",
+					"description",
+					"entries",
+					"created_at",
+					"updated_at"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n  \"name\": \"Generic CVV Card Number\",\n  \"type\": \"custom\",\n  \"description\": \"A standard CVV card number\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true,\n      \"pattern\": {\n        \"regex\": \"^4[0-9]{6,}$\",\n        \"validation\": \"luhn\"\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ],\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+				"title": "Custom profile"
+			}
+		],
+		"example": "{\n  \"id\": \"384e129d-25bd-403c-8019-bc19eb7a8a5f\",\n  \"name\": \"Generic CVV Card Number\",\n  \"type\": \"predefined\",\n  \"entries\": [\n    {\n      \"id\": \"719d1215-260f-41d0-8c32-eb320ad107f7\",\n      \"name\": \"Credit card (Visa)\",\n      \"profile_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true\n    }\n  ]\n}",
+		"which_of": "anyOf",
+		"title": "DLP Profiles",
+		"description": "Data Loss Prevention profiles are a set of entries that can be matched in HTTP bodies or files. They are referenced in Zero Trust Gateway rules."
+	}
+}
