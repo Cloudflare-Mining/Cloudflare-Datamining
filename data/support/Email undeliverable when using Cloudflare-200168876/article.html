@@ -1,0 +1,31 @@
+<p><i>Cloudflare’s default configuration only allows proxying of HTTP traffic and will break mail traffic.</i></p>
+<hr>
+<h2 id="6HltDYHBHnmt0BY8SrSVi5">Troubleshooting tips</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Consult with your mail administrator or mail provider to ensure you have valid DNS record content.
+</div>
+<p>If you are following the <i>best practices for MX records on Cloudflare</i> mentioned below and still have issues sending or receiving mail, follow these troubleshooting steps:</p>
+<h3>Are DNS records missing?</h3>
+<p>Contact your mail administrator to confirm the DNS records for your domain are correct. Refer to our guide on <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">managing DNS records in Cloudflare</a> if you need assistance to add or edit DNS records.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare support is unable to modify DNS records within your account.
+</div>
+<h3>Do you have CNAME Flattening enabled?</h3>
+<p>When set to <a href="https://developers.cloudflare.com/dns/additional-options/cname-flattening">Flatten all CNAMEs</a><b><i> </i></b>in your Cloudflare DNS settings,<b><i> </i></b>queries to all CNAME records will flatten to an A record; no CNAME records will be returned.</p>
+<p>Also, if CNAME records are not returned by the queried nameserver (sometimes nameservers will return TXT records), this may result in nothing being returned when <b><i>Flatten all CNAMEs </i></b>is enabled.<code>
+	</code>
+	Changing to <i><b>Flatten at the root </b></i>should fix any issues with your CNAME records not being returned.</p>
+<h3>Is Cloudflare Spectrum enabled on your account?</h3>
+<p>Cloudflare does not proxy traffic on port 25 (SMTP) unless <a href="https://developers.cloudflare.com/spectrum/reference/configuration-options#smtp">Cloudflare Spectrum</a> is enabled and configured to proxy email traffic across Cloudflare. If you do not have Spectrum enabled, then no email traffic (SMTP) will actually pass through Cloudflare, and we will simply resolve the DNS. This also means that any DNS record used to send email traffic must be grey-clouded to bypass the Cloudflare network. Check <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records">Identifying subdomains compatible with Cloudflare's proxy</a> for more details.</p>
+<h3>Contact your mail provider for assistance.</h3>
+<p>If your email does not work shortly after editing DNS records, contact your mail administrator or mail provider for further assistance in troubleshooting so that data about the issue can be provided to Cloudflare support.</p>
+<hr>
+<h2 id="3hYn7Wn802CkPmha6VLQ3w">Best practices for MX records on Cloudflare</h2>
+<p>Follow these guidelines to ensure successful delivery of your mail traffic:</p>
+<ul>
+	<li>Use separate IP addresses for mail traffic and HTTP/HTTPS traffic. Cloudflare recommends using non-contiguous IPs from different IP ranges.</li>
+	<li>Since mail traffic cannot be proxied through Cloudflare by default, you will expose your origin web server’s IP address. Information on your origin IP address would allow attackers to bypass Cloudflare security features and attack your web server directly.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-info">When you set up mail records in Cloudflare, you may notice a new dc-##### subdomain record in your zone. Refer to <a href="https://support.cloudflare.com/hc/articles/360020296512">Why do I have a dc-######### subdomain?</a> for further details.
+</div>

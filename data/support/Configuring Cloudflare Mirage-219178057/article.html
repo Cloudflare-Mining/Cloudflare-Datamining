@@ -1,0 +1,71 @@
+<p><i>Learn how configure Cloudflare Mirage.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#extensions">Image formats compatible with Mirage</a></li>
+		<li><a href="#activate">Enable Mirage</a></li>
+		<li><a href="#h_7ihHXOIgaqyNeqLnpKjs8s">Test Mirage</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>Mirage image optimization is currently available for Pro, Business, and Enterprise level domains. </p>
+<p>It accelerates image loading by:</p>
+<ul>
+	<li>Automatically resizing images using Javascript (by analyzing visitor connection and device type)</li>
+	<li>Virtualizing images, so visitors on poor connections get a smaller version at a lower resolution until they can access a higher bandwidth connection</li>
+	<li>Streamlining image requests, so visitors can see optimized images immediately</li>
+	<li>Acting as a lazy loader, turning all images into load on demand</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Mirage, like Rocket Loader, is a feature that is applied to a customer's website through client-side javascript. This means we modify the HTML response and insert the javascript code for the browser to execute, which is how the optimization is applied. This also means disabling Mirage is not done by disabling the feature by the path of the image (we don't apply any optimization on the server-side), rather it is done by disabling by the path of the page that loads the image (stopping the script from being inserted in the first page).
+</div>
+<p>Read our <a href="https://blog.cloudflare.com/mirage2-solving-mobile-speed">blog post</a> for more information on Mirage.</p>
+<hr>
+<h2 id="extensions">Image formats compatible with Mirage</h2>
+<p>Mirage will work with the following image formats:</p>
+<ul>
+	<li>*.jpg</li>
+	<li>*.jpeg</li>
+	<li>*.png</li>
+	<li>*.gif</li>
+	<li>*.img</li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="activate">Enable Mirage</h2>
+<p>To enable Mirage image optimization for your domain,</p>
+<ol>
+	<li>Log in to your Cloudflare account.</li>
+	<li>Navigate to the <b>Speed </b>tab. </li>
+	<li>Click the <b>Optimization </b>tab.</li>
+	<li>Scroll down to the <b>Optimized Delivery </b>section.</li>
+	<li>Toggle the Mirage switch to <i>On</i>.</li>
+</ol>
+<p>
+</p>
+<div class="cf-sidebar-2 cf-note">If you send a CSP (content security policy) header that restricts where scripts can be loaded, you'll need to ensure ajax.cloudflare.com is enabled. For example, to allow scripts from your own domain and ajax.cloudflare.com enter the following:
+	<code>script-src 'self' ajax.cloudflare.com;</code>
+</div>
+<p>Once enabled Mirage will be active on the entire website.</p>
+<p>You can use Cloudflare <b>Page Rules</b> to apply Mirage to specific pages or URLs only on your site. To access and configure your page rules, go to the <b>Rules &gt;</b> <b>Page Rules</b> in the Cloudflare dashboard. 
+
+
+
+</p>
+<p></p>
+<hr>
+<h2 id="h_7ihHXOIgaqyNeqLnpKjs8s">Test Mirage</h2>
+<p>Mirage's features for Mobile Browser optimization are triggered based on high latency and poor network connections. You can test Mirage by making a request to your domain using a mobile <a href="http://en.wikipedia.org/wiki/User_agent">user-agent string</a> and one of the following flags with your domain in your mobile browser:</p>
+<p><code>EXAMPLE.COM/?forcepreload</code></p>
+<p>To run the pre-loader only and serve degraded images on the page enter:</p>
+<p><code>EXAMPLE.COM/?forcepreloadonly</code></p>
+<p>Here is an example where Mirage 2 is triggered by a <code>?forcepreloadonly</code> flag. The notable image degradation is a sign that Mirage is working:</p><img src="https://images.ctfassets.net/slt3lc6tev37/55c85oSVi2nMbfxqUFjBD3/29aac16809c63c81db5933bf168c7f0a/hc-import-219178057_forcepreloadonly.png" alt="Blog post regarding the launch of Mirage.
+">
+<p></p>
+<p>
+
+
+</p>

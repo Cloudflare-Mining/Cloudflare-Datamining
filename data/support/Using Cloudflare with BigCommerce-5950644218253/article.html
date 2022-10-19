@@ -1,0 +1,37 @@
+<p><i>Learn how to best set up your personal Cloudflare account as a BigCommerce customer, in addition to BigCommerce’s Cloudflare security and performance benefits.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4KQbg8VsWvw8DDFmDypq0Z">Using Cloudflare with BigCommerce</a></li>
+		<li><a href="#h_6cEVGHbCwUYcTaLajRtAEL">Enabling O2O for your BigCommerce website</a></li>
+		<li><a href="#h_45MBItc2EPZBFMn8UBCCFt">Best practices</a></li>
+		<li><a href="#h_5EaU8kW7PxibjRjeP82WAO">For additional help</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4KQbg8VsWvw8DDFmDypq0Z">Using Cloudflare with BigCommerce</h2>
+<h2>Overview</h2>
+<p>Cloudflare partners with BigCommerce to provide BigCommerce customers’ websites with Cloudflare’s performance and security benefits. Cloudflare’s Enterprise plans are still available for BigCommerce customers that choose to use their own Cloudflare accounts to proxy web traffic. For those customers, enabling Cloudflare with your own account in addition to BigCommerce’s Cloudflare benefits is called Orange-to-Orange (O2O). O2O applies both your and BigCommerce’s security settings.</p>
+<p>Website visitor →  End customer Cloudflare (CF) Proxy → BigCommerce CF Proxy → BigCommerce Origin</p><img src="https://images.ctfassets.net/slt3lc6tev37/4idKRfu9CuC0PohGe3SUSc/67a6b0b7708199a76c71a6b625d2fdea/o2o.png" alt="In an orange to orange topology, Cloudflare Enterprise customers can apply their own account security settings to BigCommerce.">
+<h3><b>Benefits</b></h3>
+<p>O2O benefits include your own version of Cloudflare’s WAF, Bot Management, and Waiting Room. Additionally, O2O routing also enables you to take advantage of Cloudflare zones specifically customized for BigCommerce traffic.</p>
+<hr>
+<h2 id="h_6cEVGHbCwUYcTaLajRtAEL">Enabling O2O for your BigCommerce website</h2>
+<p>Enabling O2O is only available on the Cloudflare Enterprise plan.</p>
+<p>To enable O2O on your account, you need to <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records">configure a CNAME DNS record</a> that points your Hostname to the domain <b>shops.mybigcommerce.com</b>. Set <b>Proxy status</b> to <b>Proxied</b>.</p>
+<hr>
+<h2 id="h_45MBItc2EPZBFMn8UBCCFt">Best practices</h2>
+<p>Certain Cloudflare features, when used with O2O, can interrupt the flow of traffic to your BigCommerce site or display incorrect data to your visitors. Review best practices before using the following features.</p>
+<h3><b>Caching</b></h3>
+<p>Customers should disable caching for all hostnames that are routed through BigCommerce’s Cloudflare zones. Traffic for other hostnames that are not CNAME’d to BigCommerce’s zone can remain cached on the customer’s zone.</p>
+<p>By default, caching of HTML pages is disabled. Customers should not enable caching of HTML because the HTML content is dynamic.  </p>
+<p><b>Page Rules</b></p>
+<p>Incorrectly configured <a href="https://support.cloudflare.com/hc/en-us/articles/218411427">Page Rules</a> that match the subdomain used for BigCommerce may block or interfere with the flow of visitors to your website.</p>
+<h3><b>Workers</b></h3>
+<p>Similar to Page Rules, <a href="https://developers.cloudflare.com/workers/">Workers</a> may interfere with the flow of traffic to your website.  Write Workers with caution. It is advisable to exclude the subdomain used with BigCommerce from the Worker route.</p>
+<h3><b>Argo Smart Routing</b></h3>
+<p><a href="https://support.cloudflare.com/hc/en-us/articles/115000224552">Argo Smart Routing</a> is not compatible for customers that have O2O configured. Traffic for other hostnames that are not CNAME’d to BigCommerce’s zones can receive the benefits of Argo smart routing.</p>
+<h3><b>Load Balancing</b></h3>
+<p><a href="https://developers.cloudflare.com/load-balancing/">Load Balancing</a> is not compatible with O2O for customers.</p>
+<hr>
+<h2 id="h_5EaU8kW7PxibjRjeP82WAO">For additional help</h2>
+<p>If you are a BigCommerce customer setting up your own Cloudflare account, contact your Cloudflare account team or <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a> for help in resolving issues. Cloudflare will turn to BigCommerce if there are technical issues that Cloudflare cannot resolve.</p>

@@ -1,0 +1,47 @@
+<p><i>Check the recommended steps to update Firewall Rules impacted by URL normalization changes.</i></p>
+<hr>
+<h2 id="h_77p5YenHCStodudhHpTraK">Overview</h2>
+<p>On April 8th, 2021,<b> </b>Cloudflare announced <b>URL normalization</b>, a feature that protects zones by normalizing HTTP request URI paths.</p>
+<p>Malicious users can craft specific URIs that could be interpreted differently by firewall systems and origin systems. When you enable <b>Normalize incoming URLs</b>, all rules filtering on the URI path will receive the URL in a canonical form, which provides an extra layer of protection against these malicious users. </p>
+<p>Cloudflare gradually enabled URL normalization for all Cloudflare zones except for those that could be impacted by this change. We determined the impacted zones by analyzing all Firewall Rules, looking for patterns in HTTP fields that would no longer match when using URL normalization techniques. </p>
+<p>These fields are:</p>
+<ul>
+	<li><code>http.request.uri.path</code></li>
+	<li><code>http.request.full_uri</code></li>
+	<li><code>http.request.uri</code></li>
+</ul>
+<p>We have <b>not enabled URL normalization automatically</b> for zones that would be impacted by these changes to prevent any change in behavior of your existing Firewall Rules.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">We strongly recommend that you <strong>update any Firewall Rules</strong> impacted by the URL Normalization changes and that you <strong>enable URL normalization</strong> to ensure a stronger security posture on your zone(s).
+</div>
+<p>
+
+</p>
+<hr>
+<h2 id="h_7Aqxqs0jJsnCp9wnlXZTUu">Required steps</h2>
+<p>We strongly recommend that you enable <b>Normalize incoming URLs</b>, available under Rules in the <b>Settings</b> tab, to strengthen your zone(s) security posture. Not doing so leaves your zone at greater risk of a successful attack. Malicious actors could craft the URL in a way that the rules aren't accounting for (e.g., using percent encoding). For example, a Firewall Rule of <code>http.request.uri.path contains "/login"</code> could be bypassed if the malicious actor has encoded the <code>l</code> character as <code>%6C</code>. In this scenario, and with URL normalization disabled, traffic will not be matched by the rule.</p>
+<p>Before enabling URL normalization, we recommend that you review the affected Firewall Rules on the zone(s) and take one of the following approaches:</p>
+<ul>
+	<li>Edit these Firewall Rules to remove the parts which will no longer trigger once normalized, for example, any rules that look for <code>//</code> or <code>../</code> in URL paths. Administrators previously created these rules to perform a limited sort of URL normalization, and these rules can now be safely disabled and then deleted. 
+	</li>
+	<li>If you wish to identify visitors with non-normalized URI paths with these Firewall Rules, you should update them to use the original, non-normalized fields. These are:<ul>
+			<li><code>raw.http.request.uri.path</code></li>
+			<li><code>raw.http.request.full_uri</code></li>
+			<li><code>raw.http.request.uri</code></li>
+		</ul>
+	</li>
+</ul>
+<p>You should enable URL normalization (in <b>Rules </b>&gt; <b>Settings</b>) once you have updated the affected Firewall Rules.</p>
+<p>A Cloudflare user must have the <a href="https://support.cloudflare.com/hc/articles/205065067#12345682">Firewall role</a> or one of the Administrator roles to access URL normalization settings in the dashboard.</p>
+<p>For more information, check the Cloudflare Developers Portal or create a post on Cloudflare Community.</p>
+<hr>
+<h2 id="h_7MNneqK0yMKtCyFPMP8bDZ">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://developers.cloudflare.com/rules/normalization">URL normalization</a> (Developers Documentation)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Dynamic URL Rewriting at the edge with Cloudflare</a> (Cloudflare Blog)
+	</li>
+</ul>
+<p></p>

@@ -1,0 +1,43 @@
+<p><i>Learn how to troubleshoot stalled domain transfers.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_7CmcIsubtX2gbZHyE6wTxw">Overview</a></li>
+		<li><a href="#h_2GuhCjB3wqlsDncfDESeUw">Registrar lock reapplied</a></li>
+		<li><a href="#h_4yIq8Vu5Wjif6rXjQjqfyf">Transfer rejected</a></li>
+		<li><a href="#h_3H6PBP9TvjSXFyqTAsaJ20">Auth code invalid</a></li>
+		<li><a href="#h_1UDy6Xqp9aazMUDXAPnMJ8">WHOIS Guard / privacy protection</a></li>
+		<li><a href="#h_4klsCqoUDHodtfHVV39qa3">Restarting your transfer</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_7CmcIsubtX2gbZHyE6wTxw">Overview</h2>
+<p>After you start the transfer process to Cloudflare Registrar, your previous registrar has five days to release the domain after a successful transfer request. If your transfer has not been completed within that time frame, something has likely gone wrong.</p>
+<p>Most issues with a stalled transfer can be solved by checking the following details and restarting the transfer from your Cloudflare dashboard.</p>
+<hr>
+<h2 id="h_2GuhCjB3wqlsDncfDESeUw">Registrar lock reapplied</h2>
+<p>You have reapplied the registrar lock at your current registrar since requesting the transfer. You will need to remove it again to restart the transfer process.</p>
+<hr>
+<h2 id="h_4yIq8Vu5Wjif6rXjQjqfyf">Transfer rejected</h2>
+<p>Your transfer has been rejected by your previous registrar. There are several reasons for this to happen:</p>
+<ul>
+	<li>You actively rejected the transfer request in the email you received from your registrar or on your registrar’s interface.</li>
+	<li>Your registrar determined the domain is not eligible for transfer.</li>
+	<li>Some registrars allow customers to enable a setting to reject all transfer requests.</li>
+	<li>In some instances, registrars may reject the transfer if they suspect malicious behavior.</li>
+</ul>
+<p>You will need to restart the transfer and approve the request or contact your current registrar to solve this issue.</p>
+<hr>
+<h2 id="h_3H6PBP9TvjSXFyqTAsaJ20">Auth code invalid</h2>
+<p>Your auth code (also referred to as authentication code and authorization code) has since changed or been deprecated, and Cloudflare cannot complete the transfer. Confirm the code with your current registrar again. To avoid mistakes, copy and paste the auth code provided by your current registrar.</p>
+<hr>
+<h2 id="h_1UDy6Xqp9aazMUDXAPnMJ8">WHOIS Guard / privacy protection</h2>
+<p>Some registrars may prohibit transfer requests if you have WHOIS privacy services enabled. You need to first disable those services at your current registrar before you can proceed with the transfer process.</p>
+<hr>
+<h2 id="h_4klsCqoUDHodtfHVV39qa3">Restarting your transfer</h2>
+<ol>
+	<li>Log in to <a href="https://dash.cloudflare.com/login">Cloudflare dashboard</a>, and select your account and domain.</li>
+	<li>In the <b>Overview</b> app for your domain, scroll down to <b>Domain Registration.</b>
+	</li>
+	<li>Select <b>Cancel and Retry</b>. Once you initiate the retry, reenter your auth code and confirm your WHOIS information.</li>
+</ol>
+<p></p>

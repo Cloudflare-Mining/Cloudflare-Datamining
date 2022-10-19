@@ -1,0 +1,60 @@
+<p><i> Understand how Rocker Loader can improve page load time.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4YPTakupfkzny4R2NA5ElO">Overview</a></li>
+		<li><a href="#h_7p1SVCIE1L0OYjWAxUknvA">Access Rocket Loader</a></li>
+		<li><a href="#h_4PSjqXEFt6UvWKtJIy36pw">Ignore individual JavaScripts</a></li>
+		<li><a href="#h_2nmXufIFboeJHpOkZpk9aL">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4YPTakupfkzny4R2NA5ElO">Overview</h2>
+<p><a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile/">Rocket Loader</a> prioritizes your website's content (text, images, fonts etc) by deferring the loading of all of your JavaScript until after rendering. </p>
+<p>This type of loading (known as asynchronous loading) leads to earlier rendering of your page content. Rocket Loader handles both inline and external scripts, while maintaining order of execution. Cloudflare will detect incompatible browsers and disable Rocket Loader.</p>
+<p>On pages with JavaScript, this results in a much faster loading experience for your users and improves the following performance metrics:</p>
+<ul>
+	<li>Time to First Paint (TTFP)</li>
+	<li>Time to First Contentful Paint (TTFCP)</li>
+	<li>Time to First Meaningful Paint (TTFMP)</li>
+	<li>Document Load</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Some of Cloudflare's optional features, including Rocket Loader and Email Obfuscation, use non standard tags that fail strict HTML validation via tools like <a href="https://validator.w3.org/" title="W3C Markup Validation Service">w3.org</a>. These failures do not correlate to issues for your site visitors.
+</div>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If you observe JavaScript or jQuery issues for your website, determine if disabling Rocket Loader via the Cloudflare Speed app resolves the issue. <a href="https://support.cloudflare.com/hc/articles/200172476#h_7b55d494-b84d-439b-8e60-e291a9fd3d16" title="Contacting Cloudflare Support">Provide adequate details when contacting Cloudflare Support</a>.
+</div>
+<p> </p>
+<p></p>
+<hr>
+<h2 id="h_7p1SVCIE1L0OYjWAxUknvA">Access Rocket Loader</h2>
+<p>To access Rocket Loader in the Cloudflare Dashboard:</p>
+<ol>
+	<li>Log into the <a href="https://dash.cloudflare.com/login">Cloudflare dashboard</a>.</li>
+	<li>Select your account and website.</li>
+	<li>Go to <b>Speed</b> &gt; <b>Optimization.</b>
+	</li>
+	<li>Scroll down until you find <b>Rocket Loader</b>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_4PSjqXEFt6UvWKtJIy36pw">Ignore individual JavaScripts</h2>
+<p>You can have Rocket Loader ignore individual scripts by adding the data-cfasync="false" attribute to the relevant script tag, for example:</p>
+<p>&lt;script <b>data-cfasync="false"</b> src="/javascript.js"&gt;&lt;/script&gt;      </p>
+<p>Rocket Loader will still optimise the loading of all other scripts on the page.</p>
+<p><b>Notes:
+	</b></p>
+<ol>
+	<li>Adding this attribute within JavaScript will not work if you wish to exclude the script from Rocket Loader.</li>
+	<li>If the script you want Rocket Loader to ignore has dependency on other JavaScript(s) on the page, those depedencies must also have the data-cfasync="false" attribute added.</li>
+	<li>The 'data-cfasync' attribute must be added before the 'src' attribute. </li>
+	<li>Rocket Loader will recognise the tag when either single or double quotes are placed around the attribute value. </li>
+</ol>
+<p><b>Alternative:</b></p>
+<p>If Rocket Loader is only impacting a specific page, then consider using a <a href="https://support.cloudflare.com/hc/articles/218411427">Page Rule</a> to exclude that page by URL from optional performance features.</p>
+<hr>
+<h2 id="h_2nmXufIFboeJHpOkZpk9aL">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/216537517-What-is-Content-Security-Policy-CSP-and-how-can-I-use-it-with-Cloudflare-">What is Content Security Policy (CSP), and how can I use it with Cloudflare?</a></li>
+</ul>
+<p></p>

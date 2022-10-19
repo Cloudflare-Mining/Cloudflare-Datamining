@@ -1,0 +1,21 @@
+<p><i>Learn about 1xx Informational status codes.</i></p>
+<hr>
+<h2 id="h_14KjBdoa1koIbtlN71nnnS">Overview</h2>
+<p>1xx codes are often interim responses for sharing connection status information. Not intended for final request or response action. Requirements from the server:</p>
+<ul>
+	<li>Responses all terminated by the first empty line after status line</li>
+</ul>
+<ul>
+	<li>Not used for HTTP 1.0. Origin server should never send 1xx response to HTTP 1.0 client</li>
+</ul>
+<p>Cloudflare will forward all of these responses and never generates this response.</p>
+<p><b></b></p>
+<p><b>100 Continue (</b><a href="https://tools.ietf.org/html/rfc7231"><b>RFC7231</b></a><b>)</b></p>
+<p>Confirmation of the initial request to send a response body. The origin server is willing to accept the request (based on the request headers). This is returned before the client typically sends the response body. This prevents clients from sending unnecessary or unusable data. Required from server: If the client sends <code>Expect: 100-continue</code> header, the server must respond immediately with either <code>100 Continue</code> and continue to read from the input stream or send another response code. Cloudflare uses Keep-Alive connections so this response should not be necessary</p>
+<p><b>101 Switching Protocols (</b><a href="https://tools.ietf.org/html/rfc7231"><b>RFC7231</b></a><b>)</b></p>
+<p>Origin server accepts the client’s request to switch protocols. Client request either contained <code>Upgrade </code>in a header field or there was a change in the application protocol being used on this connection. If using Upgrade header field, the server has agreed to upgrade to a protocol that is higher on the client’s priority list than the current protocol being used. Origin server must also respond with a <code>Upgrade </code>header field to indicate the new protocol(s) to which the connection is being switched It is assumed that this switch will be advantageous to both the client and the server. Most common use case is with websockets. For information about Cloudflare’s Websockets see: <a href="https://blog.cloudflare.com/cloudflare-now-supports-websockets/">Cloudflare Now Supports Websockets</a></p>
+<p><b>102 Processing (</b><a href="https://tools.ietf.org/html/rfc2518"><b>RFC2518</b></a><b>)</b></p>
+<p>Server has received the client’s completed response, but is expecting to take more time to process ( e.g. &gt; 20 seconds). The server must send a final response after the request has been completed. Used for only HTTP 1.1 and higher.</p>
+<p>If Cloudflare does not receive a response in 100 seconds or less after a 102, an <a href="https://support.cloudflare.com/hc/articles/115003011431#522error">Error 522: Connection Timed Out</a> will be generated. 102 responses can be used to prevent <a href="https://support.cloudflare.com/hc/articles/115003011431#524error">Error 524: A timeout error</a>.
+</p>
+<p></p>

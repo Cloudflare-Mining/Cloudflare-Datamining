@@ -1,0 +1,199 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_VsoRwGONryBzov4LfjIp1">Overview</a></li>
+		<li><a href="#h_7olRZn8DdrDsw79Rqfs05n">Regional Services</a></li>
+		<li><a href="#h_45eeLtkCE7OBx2J9PdbfnL">Customer Metadata Boundary</a></li>
+		<li><a href="#h_iPfLBnPNAKJNXVGUjD0yN">Things to be aware when using the Data Localization Suite</a></li>
+		<li><a href="#h_23oWoHATBrevovBR0MJQe3">Key Management</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_VsoRwGONryBzov4LfjIp1">Overview</h2>
+<p>The Data Localization Suite is a set of products that helps customers who want to maintain local control over their traffic while retaining the security benefits of a global network.</p>
+<p>The Data Localization Suite consists of the following products for your Enterprise zones:</p>
+<ul>
+	<li>Regional Services</li>
+	<li>Customer Metadata Boundary</li>
+	<li>Geo Key Manager and Keyless SSL Services</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_7olRZn8DdrDsw79Rqfs05n">Regional Services</h2>
+<h3><b>Products covered by Regional Services</b></h3>
+<p>The products in the table below are included under Regional Services. If you have purchased these products as part of your Enterprise subscription plan, Cloudflare will only terminate TLS connections for these products in the geographic region you have configured for Regional Services. You will be charged a Localization Suite Fee as described in the <a href="https://www.cloudflare.com/supplemental-terms/#DataLocalizationSuite"><u>Supplemental Terms</u></a> for the Data Localization Suite.</p>
+<p></p>
+<table>
+	<tbody>
+		<th colspan="4" rowspan="1">
+			Core
+		</th>
+		<th colspan="4" rowspan="1">
+			Security
+		</th>
+		<th colspan="4" rowspan="1">
+			Performance
+		</th>
+		<th colspan="4" rowspan="1">
+			Edge/Fwd Prxy/IP Mgmt
+		</th>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Advanced Certificates Manager
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Bot Management
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Image Resizing
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Access
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Advanced DDoS
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Payload inspection
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Workers
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Workers Unbound
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Custom SSL
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				SSL for SaaS
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Load Balancing
+			</td>
+		</tr>
+		<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+			CDN
+		</td>
+		<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+			Rate Limiting
+		</td>
+		<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+			Waiting Room
+		</td>
+
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Data transfer (TB)
+			</td>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				SSL for SaaS Advanced
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Enterprise - Primary
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				Enterprise - Secondary
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1" style="background-color:#b6d7a8">
+				WAF
+			</td>
+		</tr>
+	</tbody>
+</table>
+<h3><b>Regions available for Regional Services</b></h3>
+<p>Below are the geographic regions available for Regional Services.</p>
+<p><b>European Union (EU)</b></p>
+<p>All points of presence inside countries listed as official members of the European Union.</p>
+<p><b>United States</b></p>
+<p>All points of presence with physical locations inside the United States.</p>
+<p><b>Canada</b></p>
+<p>All points of presence with physical locations inside Canada.</p>
+<p><b>India</b></p>
+<p>All points of presence with physical locations inside India.</p>
+<p><b>Japan</b></p>
+<p>All points of presence with physical locations inside Japan.</p>
+<p><b>Australia</b></p>
+<p>All points of presence with physical locations inside Australia.</p>
+<hr>
+<h2 id="h_45eeLtkCE7OBx2J9PdbfnL">Customer Metadata Boundary</h2>
+<h3>What is the Customer Metadata Boundary?</h3>
+<p>The Customer Metadata Boundary, as part of the Data Localization Suite, ensures that any customer end user traffic metadata that identifies that customer (that is, contains that customer's Account ID) stays in the EU or in the US, depending on the region the customer selects. That means, for example, that if a customer selects the EU Customer Metadata Boundary, metadata will only be sent to our core data center in the EU and not our core data center in the US.</p>
+<h3>What Cloudflare products are included in the Customer Metadata Boundary?</h3>
+<p>Our application performance and security services products are included. This includes:</p>
+<ul>
+	<li>Caching / content delivery / CDN</li>
+	<li>WAF / L7 Firewall</li>
+	<li>DDoS protection*</li>
+	<li>Bot Management*</li>
+	<li>SSL / SSL for SaaS</li>
+	<li>DNS</li>
+	<li>Load Balancing*</li>
+	<li>Rate Limiting</li>
+	<li>Waiting Room</li>
+	<li>Stream Delivery</li>
+	<li>Spectrum</li>
+	<li>Workers when used as part of a zone</li>
+</ul>
+<p>* Products with an asterisk may be used, but with some caveats, which can be discussed with our Solutions Engineers.</p>
+<h3>What products are not included in the Customer Metadata Boundary?</h3>
+<ul>
+	<li>Cloudflare for Teams: Access, Gateway, Browser Isolation</li>
+	<li>Networking services: Magic Transit, Magic WAN, Magic Firewall, Network Interconnect, Argo Smart Routing</li>
+	<li>Developer platform: Workers.dev, Workers KV, Cloudflare Pages, Stream</li>
+	<li>Consumer products: 1.1.1.1, Warp, Registrar</li>
+</ul>
+<h3>What data is covered by the Customer Metadata Boundary?</h3>
+<p>Nearly all end user metadata is covered by the Customer Metadata Boundary. This includes all of the end user data for which Cloudflare is a <b>processor</b>, as defined in the <a href="https://www.cloudflare.com/privacypolicy/"><u>Cloudflare Privacy Policy</u></a>. Cloudflare is a data processor of Customer Logs, which are defined as end user logs that we make available to our customers via the dashboard or other online interfaces. End users are those who access or use our customers’ domains, networks, websites, application programming interfaces, and applications.</p>
+<p>Specific examples of this data include all of the analytics in our dashboard and APIs on requests, responses, and security products associated and all of the logs received through Logpush.</p>
+<h3>What data is <i>not</i> covered by the Customer Metadata Boundary?</h3>
+<p>Some of the data for which Cloudflare is a <b>controller</b>, as defined in the <a href="https://www.cloudflare.com/privacypolicy/"><u>Cloudflare Privacy Policy</u></a>. Some examples:</p>
+<ul>
+	<li>Customer account data (for example, name and billing information)</li>
+	<li>Customer configuration data (for example, the content of Firewall Rules)</li>
+	<li>Metadata that is “operational” in nature —  data needed for Cloudflare to properly operate our network. This includes metadata such as:<ul>
+			<li>System data generated for debugging (for example, application logs from internal systems, core dumps)</li>
+			<li>Networking flow data (for example, sFlow from our routers), including data on DDoS attacks</li>
+		</ul>
+	</li>
+</ul>
+<h3>Who can use the Customer Metadata Boundary?</h3>
+<p>Currently, this is available for Enterprise customers as part of the Data Localization Suite.</p>
+<p>The Customer Metadata Boundary is for customers who want to limit personal data transfer outside the EU or the US (depending on the customer’s selected region). These customers should already be using <a href="https://blog.cloudflare.com/introducing-regional-services/">Regional Services</a>, which ensures that traffic content is only ever decrypted within the geographic region specified by the customer.</p>
+<h3>How can I enable the Customer Metadata Boundary?</h3>
+<p>To enable Customer Metadata Boundary on your account, contact your CSM/Account team.</p>
+<p>Currently, the Metadata Boundary can only be enabled by Cloudflare for an entire account . If you only want the Metadata Boundary applied to some zones but not other zones in the same account, you will have to move those zones to a new account.</p>
+<hr>
+<h2 id="h_iPfLBnPNAKJNXVGUjD0yN">Things to be aware when using the Data Localization Suite</h2>
+<h3>What Cloudflare products are not available with the Data Localization Suite enabled?</h3>
+<p>The following products may not be used when with the Data Localization Suite:</p>
+<ul>
+	<li>
+		<b>Argo Smart Routing: </b>Not available with Regional Services.
+	</li>
+	<li>
+		<b>Logpull: </b>Logpull is not available when using the Metadata Boundary. Customers can still get their logs via Logpush, and later this year we will enable pushing logs to R2 storage in the EU.
+	</li>
+	<li>
+		<b>API Discovery and Abuse Detection: </b>Is not available when using the Metadata Boundary.
+	</li>
+</ul>
+<h3>What are the analytics products available for Metadata Boundary? </h3>
+<p>HTTP and Firewall analytics are available. At the moment, there are no analytics available for Workers, DNS, Network Analytics, Load Balancing and Rate Limiting.</p>
+<p>
+</p>
+<hr>
+<h2 id="h_23oWoHATBrevovBR0MJQe3">Key Management</h2>
+<p>Cloudflare has long offered <a href="https://www.cloudflare.com/ssl/keyless-ssl/"><u>Keyless SSL</u></a> and <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates#geo-key-manager-private-key-restriction"><u>Geo Key Manager</u></a>, which ensure that private SSL/TLS key material never leaves the EU. Keyless SSL ensures that Cloudflare never has possession of the private key material at all; Geo Key Manager uses Keyless SSL to ensure the keys never leave the specified region. </p>
+<p>
+	To learn more about our Data Localization Suite offerings, please check our <a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary/"><u>blog post</u></a>.</p>

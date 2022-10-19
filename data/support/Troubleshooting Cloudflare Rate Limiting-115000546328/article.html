@@ -1,0 +1,53 @@
+<p><i>Troubleshoot common issues that prevent proper Rate Limiting request matches as well as cause errors via the Cloudflare API.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#wArvTRBCWS0BZzHjPzrZh">Overview</a></li>
+		<li><a href="#h_AtLzgCPtd1DaMNn1E7VrO">Limitations</a></li>
+		<li><a href="#143TZoQHGc7inklJSJKCAE">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="wArvTRBCWS0BZzHjPzrZh">Overview</h2>
+<p>A few common <b>Rate Limiting</b> configuration issues prevent proper request matches:</p>
+<ul>
+	<li>
+		<b>Including HTTP or HTTPS protocol schemes in rule patterns</b> (such as<b> </b><i>https://example.com/*</i>). To restrict rules to match only HTTP or HTTPS traffic, use the schemes array in the request match, e.g. <i>"schemes": [ "HTTPS" ]</i>
+	</li>
+	<li>
+		<b>Forgetting a trailing slash character (/)</b>. Cloudflare <b>Rate Limiting</b> only treats requests for the homepage (such as <i>example.com</i> and <i>example.com/</i>) as equivalent, but not any other path (such as <i>example.com/path/</i> and <i>example.com/path</i>)<i>. </i>To match request paths both with and without the trailing slash, use a wildcard match (such as <i>example.com/path*</i>) 
+	</li>
+	<li>
+		<b>Including a query string or anchor</b> (such as <i>example.com/path?foo=bar</i> or <i>example.com/path#section1</i>). A rule like <i>example.com/path</i> will match requests for <i>example.com/path?foo=bar</i>.
+	</li>
+	<li>
+		<b>Overriding a rate limit with </b><a href="https://support.cloudflare.com/hc/articles/217074967"><b>IP Access Rules</b></a><b>.</b>
+	</li>
+	<li>
+		<b>Including a port number </b>(such as <i>example.com:8443/api/</i>). The rate limit product doesn't consider port numbers within rules and this affects the rules. By removing the port number from the URL, the rate limit rule will trigger as expected.
+	</li>
+</ul>
+<p>Also, there are a few common errors that prevent configuring <b>Rate Limiting</b> via the Cloudflare API:  </p>
+<ul>
+	<li>
+		<i>Decoding is not yet implemented</i> - Indicates that your request is missing the <i>Content-Type: application/json</i> header. Add the header to your API request to fix the issue.
+	</li>
+	<li>
+		<i>Ratelimit.api.not_entitled</i> - Enterprise customers must contact their Cloudflare Account Team before adding rules.
+	</li>
+	<li>Other errors are documented in the <a href="https://api.cloudflare.com/#rate-limits-for-a-zone-errors">API documentation</a>. If you're unsure about a particular error, <a href="https://support.cloudflare.com/hc/articles/200172476">contact Cloudflare Support</a> and provide the failed API request after redacting your API key.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-info">The <strong>origin_traffic</strong> parameter can only be set on Enterprise plans. Setting <strong>origin_traffic</strong> = <em>false</em> for a rule on a Free, Pro, or Enterprise domain is automatically converted into <strong>origin_traffic</strong> = <em>true</em>.
+</div>
+<hr>
+<h2 id="h_AtLzgCPtd1DaMNn1E7VrO">Limitations</h2>
+<p>Rate Limiting is designed to limit surges in traffic that exceed a user-defined rate. The system is not designed to allow a precise number of requests to reach the origin server. There might be cases where a delay is introduced between detecting the request and updating the internal counter. Because of this delay (which can be up to a few seconds), excess requests could still reach the origin before an action is enforced at the edge (such as blocking or challenging).</p>
+<hr>
+<h2 id="143TZoQHGc7inklJSJKCAE">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/articles/115001635128">Configuring Cloudflare Rate Limiting</a><a href="https://support.cloudflare.com/hc/en-us/articles/115000272247"></a>
+	</li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115000272247">Billing for Cloudflare Rate Limiting</a></li>
+</ul>
+<p></p>

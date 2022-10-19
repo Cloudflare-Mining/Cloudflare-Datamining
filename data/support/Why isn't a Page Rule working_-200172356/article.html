@@ -1,0 +1,9 @@
+<p><i>Learn about the key reason why Page Rules do not work.</i></p>
+<hr>
+<h2 id="h_2buIcFZt1YMxt5m3sdA1se">Why isn't a Page Rule working?</h2>
+<p>The number one reason that a Page Rule isn't working, such as URL forwarding, is that the Page Rule you created is on a record that is not proxied by Cloudflare in your <a href="https://support.cloudflare.com/hc/articles/360019093151">DNS settings</a>.</p>
+<p>Example: You have a Page Rule that redirects a subdomain (subdomain.yoursitename.com) back to your root domain (yoursitename.com). If you do not have that record proxied in your DNS settings for the subdomain record (orange cloud), Cloudflare's proxy is not running over the record and a Page Rule will not work because it is going direct to your server.</p>
+<p>Also see: <a href="https://support.cloudflare.com/entries/22576178-Is-there-a-tutorial-for-PageRules-">Page Rules tutorial</a></p>
+<p>
+
+</p>

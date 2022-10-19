@@ -1,0 +1,108 @@
+<p><i>WebSockets are available for all Cloudflare customers, with concurrent connections allocated by plan. </i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#12345679">Overview</a></li>
+		<li><a href="#12345680">What plan do I need for WebSockets support on my site?</a></li>
+		<li><a href="#12345681">How can I use WebSockets with Cloudflare?</a></li>
+		<li><a href="#12345682">Why are these volume limits not specific numbers?</a></li>
+		<li><a href="#12345683">Can I use WebSockets over SSL?</a></li>
+		<li><a href="#12345684">Do Cloudflare Workers support proxying WebSockets?</a></li>
+		<li><a href="#12345685">Does the Cloudflare Web Application Firewall (WAF) work with WebSockets?</a></li>
+		<li><a href="#12345686">What happens if my site exceeds the number of concurrent WebSockets connections that Cloudflare expects?</a></li>
+		<li><a href="#12345687">Technical note</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="12345679">Overview</h2>
+<p>WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.</p>
+<p>Learn more about <a href="https://www.cloudflare.com/websockets/">WebSockets</a> and the most common uses of the protocol.</p>
+<hr>
+<h2 id="12345680">What plan do I need for WebSockets support on my site?</h2>
+<p></p>
+<table style="width: 100%;">
+	<thead>
+		<tr>
+			<th>Cloudflare plan</th>
+			<th>Volume of concurrent connections</th>
+			<th>Example use case</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Free</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Low</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Hobby or demonstration site</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Pro</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Medium</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Project or small business</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Business</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>High</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Important to your operations</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Enterprise</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Custom</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Mission critical and significant volume</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<hr>
+<h2 id="12345681">How can I use WebSockets with Cloudflare?</h2>
+<p>No additional configuration is required to send WebSockets traffic through Cloudflare. Cloudflare will immediately begin proxying your WebSockets through to your origin.</p>
+<hr>
+<h2 id="12345682">Why are these volume limits not specific numbers?</h2>
+<p>Cloudflare powers several high-volume, mission critical WebSockets applications for Enterprise customers.</p>
+<p>Since <a href="https://blog.cloudflare.com/cloudflare-now-supports-websockets/">introducing WebSockets support</a> in 2014, Cloudflare has nearly tripled its network map, going from 28 locations to over 150 (as mid-2018). In all locations, we've added compute resources and multiple Tier 1 bandwidth providers.</p>
+<p>We're confident in our ability to offer WebSockets to all our customers now, but we're also thoughtful about allocating resources – including WebSockets connections – by plan level. So, we're starting with guidelines, and we'll learn from our customers' adoption.</p>
+<p>We enable modern technologies which make the Internet better. The best way to do that is let customers play, grow, and thrive.</p>
+<hr>
+<h2 id="12345683">Can I use WebSockets over SSL?</h2>
+<p>Yes, Cloudflare SSL fully supports WebSockets traffic passing through our network.</p>
+<hr>
+<h2 id="12345684">Do Cloudflare Workers support proxying WebSockets?</h2>
+<p>Yes, Cloudflare Workers support proxying WebSockets. However, it currently does not support:</p>
+<ul>
+	<li>Manipulating or modifying individual messages</li>
+</ul>
+<p>Cloudflare Workers also supports terminating (acting as an endpoint for) WebSockets sessions using <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>.</p>
+<p></p>
+<hr>
+<h2 id="12345685">Does the Cloudflare Web Application Firewall (WAF) work with WebSockets?</h2>
+<p>The initial HTTP 101 request is subject to the WAF, rate limiting, and other firewall features just like any any other WebSockets connection. However, once a connection has been established the WAF does not perform any further inspections.</p>
+<hr>
+<h2 id="12345686">What happens if my site exceeds the number of concurrent WebSockets connections that Cloudflare expects?</h2>
+<p>Immediately, nothing. Cloudflare will allow occasional spikes in usage beyond our guidelines and we will not apply unnecessary limits.</p>
+<p>Repeated spikes or high continued usage will prompt a dialogue: we'll reach out to learn more about your application. We will not impose limit errors for any application without contacting the customer unless we suspect that abuse or an attack is involved.</p>
+<p>Customers whose usage claims a disproportionate percentage of resources for their current plan level may be asked to upgrade to the plan level that matches their needs.</p>
+<hr>
+<h2 id="12345687">Technical note</h2>
+<p>When Cloudflare releases new code to its global network, we may restart servers, which terminates WebSockets connections.</p>

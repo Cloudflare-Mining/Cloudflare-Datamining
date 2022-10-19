@@ -1,0 +1,84 @@
+<p><i>Learn about gzip and brotli compression to help site owners. </i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_1xcVB81ME4MUEdsxyQ4Hpl">What will Cloudflare compress?</a></li>
+		<li><a href="#h_2N7Yyf6gxQrPQ4mvx7G0QZ">Does Cloudflare compress resources?</a></li>
+		<li><a href="#h_4YgFddcYj0bNwXqZkRdNNN">Enable Brotli compression</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_1xcVB81ME4MUEdsxyQ4Hpl">What will Cloudflare compress?</h2>
+<p>In addition to Cloudflare's <a href="https://www.cloudflare.com/features-cdn">CDN</a> <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-What-file-extensions-does-CloudFlare-cache-for-static-content-">caching static content</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/200168196-How-do-I-minify-HTML-CSS-and-JavaScript-to-optimize-my-site-">auto-minification</a> of CSS, JS &amp; HTML to speed up your site, Cloudflare also provides gzip and brotli compression to help site owners. </p>
+<p>Cloudflare will return gzip or brotli encoded responses to compatible clients / browsers for the following content-types:</p>
+<p></p>
+<pre>text/html
+text/richtext
+text/plain
+text/css
+text/x-script
+text/x-component
+text/x-java-source
+text/x-markdown
+application/javascript
+application/x-javascript
+text/javascript
+text/js
+image/x-icon
+image/vnd.microsoft.icon
+application/x-perl
+application/x-httpd-cgi
+text/xml
+application/xml
+application/xml+rss
+application/vnd.api+json 
+application/x-protobuf 
+application/json
+multipart/bag
+multipart/mixed
+application/xhtml+xml
+font/ttf
+font/otf
+font/x-woff
+image/svg+xml
+application/vnd.ms-fontobject
+application/ttf
+application/x-ttf
+application/otf
+application/x-otf
+application/truetype
+application/opentype
+application/x-opentype
+application/font-woff
+application/eot
+application/font
+application/font-sfnt
+application/wasm
+application/javascript-binast 
+application/manifest+json 
+application/ld+json
+application/graphql+json
+application/geo+json</pre>
+<p>If you do not want a particular response from your origin to be encoded, you can disable this by setting <code>cache-control: no-transform</code> at your origin web server.
+
+</p>
+<hr>
+<h2 id="h_2N7Yyf6gxQrPQ4mvx7G0QZ">Does Cloudflare compress resources?</h2>
+<p>Yes, Cloudflare applies <b>gzip</b> and <b>brotli</b> compression to some types of content. We also gzip items based on the browser's UserAgent to help speed up page loading time.</p>
+<p>If you're already using gzip we will honor your gzip settings as long as you're passing the details in a header from your web server for the files.</p>
+<p>Cloudflare only supports the content types <b>gzip</b> towards your origin server and can also only deliver content either <b>gzip compressed</b>, <b>brotli compressed</b>, or <b>not compressed</b>.</p>
+<p>Cloudflare's reverse proxy is also able to convert between compressed formats and uncompressed formats, meaning that it can pull content from a customer's origin server via gzip and serve it to clients uncompressed (or vice versa). This is done independently of caching.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Please note: The Accept-Encoding header is not respected and will be removed.
+</div>
+<hr>
+<h2 id="h_4YgFddcYj0bNwXqZkRdNNN">Enable Brotli compression</h2>
+<p>By default, Brotli is enabled for domain on Free and Pro plans and disabled for domains on Business and Enterprise plans.</p>
+<ol>
+	<li>
+		<a href="https://dash.cloudflare.com/">Log in to the Cloudflare dashboard</a>, and select your account and website.
+	</li>
+	<li>Click the <b>Speed</b> app.</li>
+	<li>Click the <b>Optimization</b> tab.</li>
+	<li>Toggle the Brotli switch to <b>On</b>.</li>
+</ol>
+<p></p>

@@ -1,0 +1,84 @@
+<p><i>IP geolocation allows site owners to capture geographical location information for their visitors on their origin web server.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#12345679">Overview</a></li>
+		<li><a href="#12345680">Add IP geolocation information</a></li>
+		<li><a href="#12345681">Capturing IP geolocation data in server logs</a></li>
+		<li><a href="#12345682">Capturing IP geolocation data in application logic</a></li>
+		<li><a href="#12345683">Troubleshooting</a></li>
+		<li><a href="#12345684">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="12345679">Overview</h2>
+<p>Cloudflare can include the country code of the visitor's IP address (in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 Alpha 2</a> format) with each request between Cloudflare and the upstream origin web server. This allows site administrators to capture their visitor's IP location in server logging and/or application logic. Besides ISO country codes, Cloudflare uses the following special country codes:</p>
+<ul>
+	<li>
+		<code>XX</code> - Used for clients without country code data.
+	</li>
+	<li>
+		<code>T1</code> - Used for clients using the Tor network.
+	</li>
+</ul>
+<p>The country code value is passed along in the <b>CF-IPCountry</b> request header to the origin web server. This header is not visible to visitors in the site's HTTP response.</p>
+<p>Cloudflare includes country code information for both IPv4 and IPv6 addresses. Currently, the IPv4 information is more robust, but we expect the IPv6 data to improve rapidly.</p>
+<hr>
+<h2 id="12345680">Add IP geolocation information</h2>
+<p>The recommended procedure to enable IP geolocation information is to <a href="https://developers.cloudflare.com/rules/transform/managed-transforms/reference/">enable the <b>Add visitor location headers</b> Managed Transform</a>. This Managed Transform adds HTTP request headers with location information for the visitor's IP address, such as city, country, continent, longitude, and latitude.</p>
+<p>Besides using the Managed Transform, you can also enable the <b>IP Geolocation</b> feature in the <a href="https://dash.cloudflare.com/">Cloudflare dashboard</a> (<b>Network</b> app), which will only add a request header for the visitor's country.</p>
+<hr>
+<h2 id="12345681">Capturing IP geolocation data in server logs</h2>
+<p>Visitor traffic geolocation information can be captured in origin server logging. Below are two very common web server implementations and how a site administrator could configure custom logging for the country of their visitors. If you are using a Managed Transform to add geolocation information to requests, you can follow the same strategy for logging other geolocation values, like city or continent.</p>
+<h3>Apache</h3>
+<p></p>
+<pre>LogFormat %{cf-ipcountry}i cloudflare_custom</pre>
+<i>More about </i><a href="https://httpd.apache.org/docs/2.4/logs.html"><i>Apache LogFormat</i></a>
+<h3>NGINX</h3>
+<p></p>
+<pre>log_format cloudflare_custom '"$http_cf_ipcountry"';</pre>
+<i>More about </i><a href="https://docs.nginx.com/nginx/admin-guide/monitoring/logging/"><i>NGINX log_format</i></a>
+<p></p>
+<div class="cf-sidebar-2 cf-info">The above configuration examples will <strong>only</strong> capture the CF-IPCountry information. Alternatively, server administrators often append the log variable cf-ipcountry to their existing log configuration with other Cloudflare headers like cf-ray, cf-connecting-ip, and cf-visitor.
+</div>
+<hr>
+<h2 id="12345682">Capturing IP geolocation data in application logic</h2>
+<p>Web applications can also capture and use IP geolocation information in their logic. This is useful to direct visitors based on their country or provide defaults such as language and currency. Below are common language examples of how to capture this header into a variable for later use.</p>
+<h3>PHP</h3>
+<p></p>
+<pre>$country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];</pre>
+<h3>Python Flask</h3>
+<p></p>
+<pre>country_code = request.headers.get('cf-ipcountry')</pre>
+<i>Note that you'll need to import python flask request module</i>
+<h3>NodeJS</h3>
+<p></p>
+<pre>const country_code = headers['cf-ipcountry'];</pre>
+<i>Note that you'll need to require http/https and instantiate the createServer() method</i>
+<h3>C# (.NET)</h3>
+<p></p>
+<pre>string country_code = HttpContext.Current.Request.Headers.Get("cf-ipcountry");</pre>
+<h3>Perl</h3>
+<p></p>
+<pre>$country_code = $ENV{"HTTP_CF_IPCOUNTRY"};</pre>
+<hr>
+<h2 id="12345683">Troubleshooting</h2>
+<p><b>How to report a wrong IP location?</b></p>
+<p>Cloudflare uses <a href="https://www.maxmind.com/">Maxmind</a> as a geolocation database. Cloudflare updates its GeoIP database weekly.</p>
+<p>You can use the <a href="https://www.maxmind.com/en/geoip2-precision-demo">Maxmind tool</a> and make sure that Maxmind shows the correct <b>Country Code</b>. If the data is incorrect:</p>
+<ul>
+	<li>Please submit correction requests through Maxmind <a href="https://support.maxmind.com/hc/en-us/articles/4408252036123-GeoIP-Corrections">here</a>.</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/200172476-Contacting-Cloudflare-Support">Contact Cloudflare Support</a> if Maxmind is showing the correct country code, but <b>CF-IPCountry</b> request header is incorrect.
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="12345684">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/fundamentals/get-started/http-request-headers">HTTP request headers</a></li>
+	<li><a href="https://developers.cloudflare.com/rules/transform/managed-transforms/">Managed Transforms</a></li>
+	<li><a href="https://httpd.apache.org/docs/2.4/logs.html">Apache Log Files Format</a></li>
+	<li><a href="https://docs.nginx.com/nginx/admin-guide/monitoring/logging/">Configuring NGINX Logging</a></li>
+	<li><a href="https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/">NodeJS Anatomy of an HTTP Transaction</a></li>
+</ul>
+<p></p>

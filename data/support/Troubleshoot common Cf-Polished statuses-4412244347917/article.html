@@ -1,0 +1,25 @@
+<p><i>Below is a list of common Cf-Polished statuses and how to troubleshoot them.</i></p>
+<hr>
+<h2 id="h_2nHkapurV0ybgXpAyG0r9o">Overview</h2>
+<p>If a <code>Cf-Polished</code> header is not returned, try <a href="https://developers.cloudflare.com/cache/how-to/purge-cache">using single-file cache purge</a> to purge the image. The <code>Cf-Polished</code> header may also be missing if the origin is sending non-image <code>Content-Type</code>, or non-cacheable <code>Cache-Control</code>.</p>
+<ul>
+	<li>
+		<code>input_too_large</code>: The input image is too large or complex to process, and needs a lower resolution. Cloudflare recommends using PNG or JPEG images that are less than 1,000 pixels and 10 MB.
+	</li>
+	<li>
+		<code>not_compressed</code> or <code>not_needed</code>: The image was fully optimized at the origin server and no compression was applied.
+	</li>
+	<li>
+		<code>webp_bigger</code>: Polish attempted to convert to WebP, but the image was optimized at the origin server or was created using a low quality setting. Because the WebP version does not exist, the status is set on the JPEG/PNG version of the response.
+	</li>
+	<li>
+		<code>cannot_optimize</code> or <code>internal_error</code>: The input image is corrupted or incomplete at the origin server. Upload a new version of the image to the origin server.
+	</li>
+	<li>
+		<code>format_not_supported</code>: The input image format is not supported (for example, BMP or TIFF) or the origin server is using additional optimization software that is not compatible with Polish. Try converting the input image to a web-compatible format (like PNG or JPEG) and/or disabling additional optimization software at the origin server.
+	</li>
+	<li>
+		<code>vary_header_present</code>: The origin web server has sent a <code>Vary</code> header with a value other than <code>accept-encoding</code>. If the origin web server is attempting to support WebP, disable WebP at the origin web server and let Polish perform the WebP conversion. Polish will still work if <code>accept-encoding</code> is the only header listed within the <code>Vary</code> header.
+	</li>
+</ul>
+<p></p>

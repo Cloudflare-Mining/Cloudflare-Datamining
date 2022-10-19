@@ -1,0 +1,47 @@
+<p><i>Learn how Cloudflare User Agent Blocking blocks malicious user agents from visiting your website.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#343wuxvZC1IdTm7FQzlzQA">Overview</a></li>
+		<li><a href="#359T8DGLafufyhwMJjfA1M">Create a User Agent Blocking rule</a></li>
+		<li><a href="#2yMsQimbA6AWupTOojrovD">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="343wuxvZC1IdTm7FQzlzQA">Overview</h2>
+<p><b>User Agent Blocking</b> (UA) rules block specific browser or web application <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent"><b>User-Agent</b> request headers</a>.  UA rules apply to the entire domain instead of individual subdomains.  UA rules are applied after <a href="https://support.cloudflare.com/hc/articles/115001595131"><b>Zone Lockdown</b> rules</a>, so permitting an IP address via <b>Zone Lockdown </b>skips UA rules.</p>
+<p>The maximum number of allowed UA rules is based on plan type: </p>
+<ul>
+	<li>
+		<b>Free</b>: 10
+	</li>
+	<li>
+		<b>Pro</b>: 50
+	</li>
+	<li>
+		<b>Business</b>: 250
+	</li>
+	<li>
+		<b>Enterprise</b>: 1,000
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="359T8DGLafufyhwMJjfA1M">Create a User Agent Blocking rule</h2>
+<p>1. Log in to your Cloudflare account.</p>
+<p>2. Select the appropriate domain.</p>
+<p>3. Navigate to <b>Security</b> &gt; <b>WAF</b> &gt; <b>Tools</b>.</p>
+<p>4. Under <b>User Agent Blocking</b>, click <b>Create Blocking Rule. </b></p>
+<p>5. Enter the <b>Name/Description.</b></p>
+<p>6. Select an applicable <b>Action </b>of either <i>Block</i>, <i>Legacy CAPTCHA</i>, <i>Managed Challenge</i>, or <i>JS challenge</i>.</p>
+<p>7. Enter the <b>User Agent</b>.  For example, to block the <i>Bad Bot </i>web spider:</p>
+<p><i>BadBot/1.0.2 (+http://bad.bot)</i></p>
+<p><b>Note:</b> Wildcards (*) are not supported.</p>
+<p>8. Click <b>Save and Deploy.</b></p>
+<p></p>
+<hr>
+<h2 id="2yMsQimbA6AWupTOojrovD">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/115002059131">Understanding your site protection options</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/115001595131">Understanding Cloudflare Zone Lockdown</a></li>
+</ul>
+<p></p>

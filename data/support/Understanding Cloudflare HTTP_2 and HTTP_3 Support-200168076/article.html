@@ -1,0 +1,56 @@
+<p><i>Learn about how Cloudflare supports HTTP/2 and HTTP/3 to speed up your website without requiring changes to your existing codebase.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#5WYMkMN6sRKsvlZx7hPJG7">Overview</a></li>
+		<li><a href="#6ncFUWOVRaVtPzYN1euBIC">HTTP/2</a></li>
+		<li><a href="#1d4DKdKMsy9CVFqr9ijrEt">HTTP/3</a></li>
+		<li><a href="#6ESzFNpYvh1FQophVrJ9Pt">Server Push</a></li>
+		<li><a href="#3Z01ALVJcifw5kY8X8G94h">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="5WYMkMN6sRKsvlZx7hPJG7">Overview</h2>
+<p>HTTP/2 and HTTP/3 accelerate page load and are free for all <a href="http://www.cloudflare.com/plans">Cloudflare plans</a>.  HTTP/2 is enabled by default and requires an <a href="https://support.cloudflare.com/hc/articles/203295200#h_036e2e20-96d8-4199-bb1f-0fbb41b5cdd0">SSL certificate at Cloudflare’s edge network</a>. Configure HTTP/2 and HTTP/3 via the Cloudflare <b>Network</b> app. Domains on Free plans cannot disable HTTP/2.</p>
+<p>A browser and web server automatically negotiate the highest protocol available. Thus, HTTP/3 takes precedence over HTTP/2. </p>
+<p>To determine the protocol used for your connection, enter <i>example.com</i>/cdn-cgi/trace from a web browser or client and replace <i>example.com</i> with your domain name. Several lines of data are returned. If <i>http=h2</i> appears in the results, the connection occurred over HTTP/2. Other possible values are <i>http=http2+quic/99</i> for HTTP/3, and <i>http=http/1.x </i>for<i> </i>HTTP/1.x.</p>
+<hr>
+<h2 id="6ncFUWOVRaVtPzYN1euBIC">HTTP/2</h2>
+<p>HTTP/2 improves page load times via:</p>
+<ul>
+	<li>Connection multiplexing - Retrieves multiple resources in a single network request. Responses are sent when resources are available to avoid slowing page rendering.</li>
+	<li>HTTP header compression - Compresses headers and simplifies HTTP requests to avoid resending headers.</li>
+	<li>HTTP/2 Server Push - To improve page load speed, Cloudflare provides additional resources for a client to cache without waiting for additional requests.</li>
+</ul>
+<p>Note:</p>
+<ul>
+	<li>Not all browsers support HTTP/2 and use HTTP 1.x instead.</li>
+	<li>Connection multiplexing is on a per-domain basis.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="1d4DKdKMsy9CVFqr9ijrEt">HTTP/3</h2>
+<p>HTTP/3 enables fast, reliable, and secure connections.  HTTP/3 encrypts Internet transport by default using a protocol from Google called QUIC.   Enable HTTP/3 via the Cloudflare <b>Network</b> app.  </p>
+<p>For more information, review our <a href="https://developers.cloudflare.com/http3/">HTTP/3 developer documentation</a>.</p>
+<p></p>
+<hr>
+<h2 id="6ESzFNpYvh1FQophVrJ9Pt">Server Push</h2>
+<p>The Server Push feature allows origin web servers to send resources to the client or web browser without waiting to parse HTML for references to additional assets like images, stylesheets, JavaScript, etc.  Server Push avoids the usual HTTP request and response cycle for every script or stylesheet on a page. Server Push is available for all Cloudflare plans.</p>
+<p>Server Push extracts URI references within the rel=preload parameter of the <b>Link</b> header from your origin server. These additional URIs are then provided to the client.  Example <b>Link</b> headers include:</p>
+<p><code>Link: &lt;/images/image.png&gt;; rel=preload;</code></p>
+<p><code>Link: &lt;/css/main.css&gt;; rel=preload;</code></p>
+<p>Server Push is limited to 50 assets per page and 100 per connection.</p>
+<hr>
+<h2 id="3Z01ALVJcifw5kY8X8G94h">Related resources</h2>
+<ul>
+	<li><a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">HTTP/3: the past, the present, and the future</a></li>
+	<li><a href="https://blog.cloudflare.com/the-quicening/">The QUICening</a></li>
+	<li><a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">Enjoy a slice of QUIC, and Rust!</a></li>
+</ul>
+<p>Browser support information: </p>
+<ul>
+	<li>
+		<a href="http://caniuse.com/#feat=http2">HTTP/2</a> 
+	</li>
+	<li><a href="https://caniuse.com/#feat=http3">HTTP/3</a></li>
+</ul>
+<p></p>

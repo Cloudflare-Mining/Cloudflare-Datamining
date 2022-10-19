@@ -1,0 +1,237 @@
+<p><i>Learn how to customize Cloudflare's default error and challenge pages to better fit your brand and messaging.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#3f5DDEy578Gg14aivq8Ybq">Overview</a></li>
+		<li><a href="#1YFUxbATF9AXeHCFgnTUsH">Step 1: Create a custom page</a></li>
+		<li><a href="#39Zw7Jjz5J6hcn89cyYcq8">Step 2: Select your custom error tokens</a></li>
+		<li><a href="#5Dl5SQHi5VhmM4DiSSpSuo">Step 3: Style your custom page </a></li>
+		<li><a href="#4OLz0BwjruYzDeRhZyF3oB">Step 4: Publish your custom page</a></li>
+		<li><a href="#5QWV2KVjLnaAQ8L4tjiguw">Troubleshoot common custom pages issues</a></li>
+		<li><a href="#4MNtWsqkHqyUwC2mMFbvRx">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="3f5DDEy578Gg14aivq8Ybq">Overview</h2>
+<p>Cloudflare uses a wide range of <a href="https://support.cloudflare.com/hc/en-us/sections/200820298-Error-Pages"><u>error codes</u></a> to identify issues in handling request traffic. By default, these error pages mention Cloudflare; however, custom error pages help you provide a consistent brand experience for your users. </p>
+<p>If you are on the Pro, Business, or Enterprise plan you can customize and brand these pages for your whole account or for specific domains. You can design custom error pages to appear during a security challenge or when an error occurs.</p>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-note">500, 501, 503, and 505 responses do not trigger custom error pages to avoid breaking specific API endpoints and other web applications.
+</div><b></b>
+<p>Alternatively, Enterprise customers can customize 5XX error pages at their origin via <b>Enable Origin Error Pages </b>in the <b>Custom Pages</b> app in the dashboard..</p>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-note">Enable Origin Error Pages excludes 521 and 522 errors.
+</div><b></b>
+<hr>
+<h2 id="1YFUxbATF9AXeHCFgnTUsH">Step 1: Create a custom page</h2>
+<p>Before adding a custom error page to your Cloudflare account, you will need to design, code, and host that page on your own web server.</p>
+<p>You can use the following custom error template to start building your page:</p>
+<pre>&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+ &lt;body&gt;
+   ::[REPLACE WITH CUSTOM ERROR TOKEN NAME]::
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<div class="cf-sidebar-2 cf-warning">Your custom error page must include a custom error token and cannot exceed 1.43 MB. Also, it must include HTML <em>&lt;head&gt;</em> and <em>&lt;/head&gt;</em> tags.
+</div>
+<p>When published, any additional scripts, images, or stylesheets increase the size of your custom error page source by approximately 50%. Download the <a href="https://github.com/cloudflare/collapsify"><u>collapsify</u></a> tool to test your page size before publishing.</p>
+<h3>Custom Page example</h3>
+<p>Here is sample code for a 5XX custom error page without styling: </p>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+   &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;5XX Level Errors page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt; 5XX Level Errors &lt;/h1&gt;
+  &lt;h2&gt;::CLOUDFLARE_ERROR_500S_BOX::&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<hr>
+<h2 id="39Zw7Jjz5J6hcn89cyYcq8">Step 2: Select your custom error tokens</h2>
+<p>When designing your custom error page, you must include one page-specific custom error token.  Each custom error token provides diagnostic information that appears on the error page. </p>
+<p>To display a custom page for each error, create a separate page per error. For example, to create a custom error page for both <b>IP/Country Block</b> and <b>WAF (Captcha Challenge)</b>, you must design and publish two separate pages. </p>
+<p>The following tables list each custom error token grouped by the applicable custom error page.</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<td>
+				<strong>Token</strong>
+			</td>
+			<td>
+				<strong>Available to</strong>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<p>::CLIENT_IP::</p>
+			</td>
+			<td>
+				<p>All pages</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::RAY_ID::</p>
+			</td>
+			<td>
+				<p>All pages</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Only one page-specific custom error token can be used per page.
+</div>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<td>
+				<strong>Token</strong>
+			</td>
+			<td>
+				<strong>Available to</strong>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<p>::GEO::</p>
+			</td>
+			<td>
+				<p>IP/Country Block</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::CAPTCHA_BOX::</p>
+			</td>
+			<td>
+				<ul>
+					<li>Basic Security (CAPTCHA Challenge)</li>
+					<li>WAF (CAPTCHA Challenge)</li>
+					<li>Country Challenge (CAPTCHA Challenge)</li>
+					<li>Managed Challenge</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::IM_UNDER_ATTACK_BOX::</p>
+			</td>
+			<td>
+				<ul>
+					<li>I'm Under Attack Mode (Interstitial Page)</li>
+					<li>JS Challenge</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::CLOUDFLARE_ERROR_500S_BOX::</p>
+			</td>
+			<td>
+				<p>5XX Errors</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::CLOUDFLARE_ERROR_1000S_BOX::</p>
+			</td>
+			<td>
+				<p>1XXX Errors</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>::ALWAYS_ONLINE_NO_COPY_BOX::</p>
+			</td>
+			<td>
+				<p>Always Online</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="5Dl5SQHi5VhmM4DiSSpSuo">Step 3: Style your custom page </h2>
+<p>Each custom error token has a default look and feel. However, you can use CSS to stylize each custom error tag using each tag's class ID.
+
+	If you are familiar with CSS styling, you can customize the look and feel of the error page using each tag’s class ID.
+
+	Please keep in mind that all the external resources like images, CSS, and scripts will be inlined during the process.
+	As such, all external resources need to be available (i.e. return a 200 OK) otherwise an error will be thrown.</p>
+<p>You can check if your page is fine using the following tool:
+	<a href="https://github.com/cloudflare/collapsify">Collapsify</a>
+</p>
+<p></p>
+<hr>
+<h2 id="4OLz0BwjruYzDeRhZyF3oB">Step 4: Publish your custom page</h2>
+<p>After customizing your custom error page, there are two options for adding the page to Cloudflare:</p>
+<ul>
+	<li>Account level: the custom error page will apply to every domain associated with your account.</li>
+	<li>Domain level: the custom error page will apply to only one domain associated with your account.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If Cloudflare cannot load your site or you have blocked the United States (US) via <a href="https://support.cloudflare.com/hc/articles/217074967" title="Configuring IP Access Rules">IP Access Rules</a> or firewall rules, publishing and previewing the error page will not work.
+</div>
+<h3>Account-level custom error page</h3>
+<p>To publish an account level custom error page:</p>
+<ol>
+	<li>Log into your Cloudflare account.</li>
+	<li>Click the <b>Configurations </b>tab.</li>
+	<li>In the left navigation, click <b>Custom Pages.</b>
+	</li>
+	<li>Identify your desired custom error page type, then click the <b>Custom Pages </b>button. A <b>Custom Page</b> dialog will appear.</li>
+	<li>Enter the URL of the custom error page you customized in your origin server, then click <b>Publish.</b>
+	</li>
+</ol>
+<h3>Domain level custom error page</h3>
+<p>To publish a domain level custom error page:</p>
+<ol>
+	<li>Log into your Cloudflare account.</li>
+	<li>Choose the domain for which you would like to publish a custom error page.</li>
+	<li>Click the <b>Custom Pages </b>app.</li>
+	<li>Identify your desired custom error page type, then click the <b>Custom Pages </b>button. A <b>Custom Page</b> dialog will appear.</li>
+	<li>Enter the URL of the custom error page you customized in your origin server, then click <b>Publish.</b>
+	</li>
+</ol>
+<h3>Update custom error page after publishing</h3>
+<p>After successfully publishing the custom error page in the <b>Custom Pages</b> app, you can remove the page from your origin server. </p>
+<p>If in the future, you need to update your custom error page, you must re-publish the page at your origin and in the Cloudflare dashboard, even if the page URL remains unchanged.</p>
+<hr>
+<h2 id="5QWV2KVjLnaAQ8L4tjiguw">Troubleshoot common custom pages issues</h2>
+<h3>IP/Country Block vs 1000 Class Errors pages</h3>
+<p>If you block countries or IP addresses with <a href="https://support.cloudflare.com/hc/articles/217074967">IP Access Rules</a>, affected visitors will get a <code>1005</code> error and see your <b>IP/Country Block</b> custom page.</p>
+<p>If you block countries or IP addresses with <a href="https://developers.cloudflare.com/firewall/">firewall rules</a>, affected visitors will see your <b>1000 Class Errors page</b>.</p>
+<h3>1xxx errors</h3>
+<p><b>1XXX Errors</b> do not customize the following HTTP errors via the Custom Pages app:</p>
+<ul>
+	<li>1001 - Unable to resolve</li>
+	<li>1003 - Bad Host header</li>
+	<li>1018 - Unable to resolve because of ownership lookup failure</li>
+	<li>1023 - Unable to resolve because of feature lookup failure</li>
+</ul>
+<h3>Custom error page size</h3>
+<p>Your custom error page cannot be blank and cannot exceed 1.43 MB. To avoid exceeding the custom error page limit, download <a href="https://github.com/cloudflare/collapsify"><u>collapsify</u></a> to test your page size before publishing. </p>
+<h3>General troubleshooting advice</h3>
+<ul>
+	<li>If you encounter errors while attempting to preview or publish your custom error page, use an <a href="https://validator.w3.org/"><u>HTML validator</u></a> to ensure that your code resolves properly. </li>
+	<li>Make sure that you are serving the custom error page with an HTTP 200 status code.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="4MNtWsqkHqyUwC2mMFbvRx">Related Resources</h2>
+<ul>
+	<li>
+		<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/">Cloudflare Firewall Rules</a>
+	</li>
+	<li><a href="https://support.cloudflare.com/hc/articles/217074967">Configuring IP Access Rules</a></li>
+	<li><a href="https://support.cloudflare.com/hc/sections/200820298-Error-Pages">Cloudflare Errors</a></li>
+	<li><a href="https://github.com/cloudflare/collapsify">Collapsify</a></li>
+</ul>
+<p></p>

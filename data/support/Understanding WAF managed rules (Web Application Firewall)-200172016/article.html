@@ -1,0 +1,217 @@
+<p><i>WAF managed rules monitor web requests to your domain and filters out undesired traffic based on rulesets that you enable.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#cAy9P8jRAD5eJw0QrL4VJ">Overview</a></li>
+		<li><a href="#B6O9QKf2vhGcHZZoaaJP3">A note about false positives and false negatives</a></li>
+		<li><a href="#4vxxAwzbHx0eQ8XfETjxiN">Cloudflare Managed Ruleset</a></li>
+		<li><a href="#sJbboLurEVhipzWYJQnyz">Package: OWASP ModSecurity Core Rule Set</a></li>
+		<li><a href="#6Tp6cDY8h4RtLwa7EdUoh3">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="cAy9P8jRAD5eJw0QrL4VJ">Overview</h2>
+<p>Managed rules, a feature of Cloudflare WAF (Web Application Firewall), identifies and removes suspicious activity for HTTP GET and POST requests.  </p>
+<p></p>
+<p class="cf-video-container">
+	<iframe style="border:none" src="https://iframe.cloudflarestream.com/1ae6de818670d8459252368c600981af" width="736" height="414" allowfullscreen=""></iframe>
+</p>
+<p>Examples of <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security/">malicious content</a> that managed rules identify include: </p>
+<ul>
+	<li>Common keywords used in comment spam (<i>XX</i>, <i>Rolex</i>, <i>Viagra</i>, etc.), </li>
+	<li>cross-site scripting attacks (XSS), and </li>
+	<li>SQL injections (SQLi).</li>
+</ul>
+<p>Managed rules are available to Pro, Business, and Enterprise plans for any <a href="https://support.cloudflare.com/hc/articles/200169626">subdomains proxied to Cloudflare</a>. Control managed rules settings in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Managed rules</b>. Managed rules includes three packages: </p>
+<ul>
+	<li>
+		<b>Cloudflare Managed Ruleset</b> 
+	</li>
+	<li><b>Package: OWASP ModSecurity Core Rule Set</b></li>
+	<li>
+		<b>Customer Requested Rules</b> 
+	</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<ul>
+		<li>The new WAF, announced in March 2021, provides the <a href="https://developers.cloudflare.com/waf/managed-rulesets/">Cloudflare Free Managed Ruleset</a> to all customers, including customers on a Free plan. Refer to the <a href="https://blog.cloudflare.com/waf-for-everyone/">announcement blog post</a> for details.
+		</li>
+		<li>On May 4, 2022, Cloudflare started phase 1 of the <a href="https://support.cloudflare.com/hc/articles/5995821690637">WAF migration</a> from WAF managed rules to the new WAF Managed Rulesets.
+		</li>
+	</ul>
+</div>
+<p>Review threats blocked via the <a href="https://developers.cloudflare.com/waf/analytics/">Firewall Analytics</a> <b>Activity log</b> available in <b>Security</b> &gt; <b>Overview</b>.</p>
+<h3>Important considerations</h3>
+<ul>
+	<li>Managed rules introduce a limited amount of latency. </li>
+	<li>Changes to WAF managed rules take about 30 seconds to update globally.</li>
+	<li>Cloudflare uses proprietary rules to filter traffic. </li>
+	<li>Established Websockets do not trigger managed rules for subsequent requests.</li>
+	<li>Managed rules parse JSON responses to identify vulnerabilities targeted at APIs. JSON payload parsing is limited to 128 KB.</li>
+	<li>Managed rules mitigate padding techniques. We recommend the following:<ol>
+			<li>Turn on rule <i>100048</i>. This rule now protects against padding type attacks, but it is not deployed by default as it causes many false positives in customer environments. It is, however, important that customers tune their managed rules configuration. Cloudflare is working on a better long term solution.</li>
+			<li>Create a firewall rule using the <a href="https://developers.cloudflare.com/firewall/cf-dashboard/edit-expressions/#expression-editor">Expression Editor</a> depending on the need to check headers and/or body to block larger payload (&gt; 128 KB). Make sure to test your firewall rule in <i>Log</i> mode first as it could be prone to generating false positives.<ul>
+					<li><i>http.request.body.truncated</i></li>
+					<li><i>http.request.headers.truncated</i></li>
+				</ul>
+			</li>
+		</ol>
+	</li>
+	<li>There are a handful of managed rules that Cloudflare does not disable even if <b>Managed rules</b> is turned <i>Off</i> in the Cloudflare dashboard, such as rule IDs <i>WP0025B</i>, <i>100043A</i>, and <i>100030.</i>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="B6O9QKf2vhGcHZZoaaJP3">A note about false positives and false negatives</h2>
+<p>By default, WAF managed rules are fully managed via the Cloudflare dashboard and are compatible with most websites and web applications. However, false positives and false negatives are possible considering the immense Internet:</p>
+<ul>
+	<li>
+		<b>False positives</b>: Legitimate requests detected and filtered as malicious. 
+	</li>
+	<li>
+		<b>False negatives</b>: Malicious requests not filtered. 
+	</li>
+</ul>
+<h3>Troubleshoot WAF managed rules false positives</h3>
+<p>The definition of suspicious content is subjective for each website.  For example, PHP code posted to your website is suspicious unless your website teaches how to code and requires PHP code submissions from visitors.  Therefore, such a website must disable related managed rules that interfere with normal operation. </p>
+<p>To test for false positives, set WAF managed rules to <b>Simulate</b> mode, to record the response to possible attacks without challenging or blocking. Also, use the Firewall Analytics <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log"><b>Activity log</b></a> to determine which managed rules caused false positives.</p>
+<p>If you encounter a false positive due to the <a href="https://support.cloudflare.com/hc/en-us/articles/200172016-Understanding-the-Cloudflare-Web-Application-Firewall-WAF-">legacy WAF</a>, there are several potential resolutions:</p>
+<ul>
+	<li>
+		<b>Add the client’s IP addresses to the </b><a href="https://support.cloudflare.com/hc/articles/217074967"><u><b>IP Access Rules</b></u></a><b> allowlist:
+		</b>If the browser or client visits from the same IP addresses, allowing is recommended. 
+	</li>
+	<li>
+		<b>Disable the corresponding </b><a href="https://support.cloudflare.com/hc/articles/200172016"><u><b>managed rule(s</b></u></a>):<b>
+		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>981176</i> refers to OWASP rules. Decrease OWASP sensitivity to resolve the issue.
+	</li>
+	<li>
+		<b>Bypass WAF managed rules with a firewall rule:
+		</b>Create a Firewall Rule with the <b>bypass</b> action to deactivate WAF managed rules for a specific combination of parameters. For example, <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/"><u>bypass managed rules</u></a> for a specific URL and a specific IP address or user agent.
+	</li>
+	<li>
+		<b>(not recommended) Disable WAF managed rules for traffic to a URL: 
+		</b>Lowers security on the particular URL endpoint.  Configured via <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-"><u>Page Rules</u></a>.
+	</li>
+</ul>
+<p>If you encounter a false positive due to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new WAF</a>, there are several potential resolutions:</p>
+<ol>
+	<li>
+		<b>Add WAF Exception:</b>
+		You can define WAF exceptions in the <a href="https://developers.cloudflare.com/waf/managed-rulesets/waf-exceptions/define-dashboard">Cloudflare dashboard</a> or using the <a href="https://developers.cloudflare.com/waf/managed-rulesets/waf-exceptions/define-api">Rulesets API</a>.
+	</li>
+	<li>
+		<b>Disable the corresponding </b><a href="https://support.cloudflare.com/hc/articles/200172016"><u><b>managed rule(s</b></u></a>):<b>
+		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>949110</i> refers to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new OWASP rules</a>. Decrease OWASP sensitivity to resolve the issue.
+	</li>
+</ol>
+<p><b>Note:</b> If <a href="https://support.cloudflare.com/hc/articles/200172476"><u>contacting Cloudflare Support</u></a> to verify whether a WAF managed rule triggers as expected, <a href="https://support.cloudflare.com/hc/articles/203118044#h_8c9c815c-0933-49c0-ac00-b700700efce7"><u>provide a HAR file</u></a> captured while sending the specific request of concern.</p>
+<p>Additional guidelines are as follows:</p>
+<ul>
+	<li>If one specific rule causes false positives, set rule’s <b>Mode</b> to <i>Disable</i> rather than turning <i>Off </i>the entire rule <b>Group</b>.</li>
+	<li>For false positives with the administrator content on your website, create a <a href="https://support.cloudflare.com/hc/articles/218411427"><b>Page Rule</b></a> to <b>Disable Security </b>for the <i>admin</i> section of your site resources, i.e. <i>yoursite.com/admin</i>. </li>
+</ul>
+<h3>Troubleshoot WAF managed rules false negatives</h3>
+<p>To identify false negatives, review the HTTP logs on your origin web server. To reduce false negatives, use the following checklist:</p>
+<ul>
+	<li>Are WAF managed rules <i>enabled</i> in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Managed rules</b>?</li>
+	<li>Are WAF managed rules being <i>disabled</i> via <a href="https://support.cloudflare.com/hc/articles/218411427#summary-of-page-rules-settings"><u><b>Page Rules</b></u></a>?</li>
+	<li>Not all managed rules are enabled by default, so review individual managed rule default actions.<ul>
+			<li>For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, change the rule <b>Mode </b>to <b>Block</b>
+			</li>
+			<li>Another example, if you are looking to block unmitigated SQL injection attacks, make sure the relevant SQLi rules are enabled and set to <b>Block</b> under the <b>Cloudflare Specials </b>group.</li>
+		</ul>
+	</li>
+	<li>Are DNS records that serve HTTP traffic proxied through Cloudflare?</li>
+	<li>Is a <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/#supported-actions"><u><b>firewall rule</b></u><u> bypassing</u></a> managed rules? </li>
+	<li>Does an allowed country, ASN, IP range, or IP in <a href="https://support.cloudflare.com/hc/articles/217074967"><u><b>IP access rules</b></u></a> or <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/"><u><b>firewall rules</b></u></a> match the attack traffic?</li>
+	<li>Is the malicious traffic directed at your origin IP addresses to bypass Cloudflare protection? Block all traffic except from <a href="https://www.cloudflare.com/ips/"><u>Cloudflare's IP addresses</u></a> at your origin web server.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="4vxxAwzbHx0eQ8XfETjxiN">Cloudflare Managed Ruleset</h2>
+<p>The<b> Cloudflare Managed Ruleset</b> contains security rules written and curated by Cloudflare. Click on a ruleset name under <b>Group</b> to reveal the rule descriptions. </p>
+<p><b>Cloudflare Specials </b>is a<b> Group </b>that<b> </b>provides core firewall security against <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security/">common attacks</a>.   </p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Cloudflare recommends that you always leave <strong>Cloudflare Specials</strong> enabled. Additionally, only enable rule groups that correspond to your technology stack. For example, if you use WordPress, enable the <strong>Cloudflare WordPress</strong> group.
+</div> <p>When viewing a ruleset, Cloudflare shows default actions for each rule listed under <b>Default mode</b>. The <b>Mode</b> available for individual rules within a specific <b>Cloudflare</b> <b>Managed Ruleset</b> are:</p>
+<ul>
+	<li>
+		<i>Default - takes the default action listed under </i><i><b>Default mode </b></i><i>when viewing a specific rule.</i>
+	</li>
+	<li>
+		<i>Disable - </i>turns off the specific rule within the group<b>.</b>
+	</li>
+	<li>
+		<i>Block</i> - the request is discarded. 
+	</li>
+	<li>
+		<i>Legacy CAPTCHA</i> - the visitor receives a CAPTCHA challenge page.
+	</li>
+	<li>
+		<i>Simulate</i> - the request is allowed through but is logged in the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log"><b>Activity log</b></a>.
+	</li>
+</ul>
+<p>Cloudflare’s <a href="https://developers.cloudflare.com/waf/change-log/scheduled-changes/">WAF changelog</a> allows customers to monitor ongoing changes to the <b>Cloudflare Managed Ruleset.</b></p>
+<hr>
+<h2 id="sJbboLurEVhipzWYJQnyz">Package: OWASP ModSecurity Core Rule Set</h2>
+<h3>Understand Cloudflare’s OWASP package</h3>
+<p><b>Package: OWASP ModSecurity Core Rule Set</b> assigns a score to each request based on how many OWASP rules trigger. Some OWASP rules have a higher sensitivity score than others. After OWASP evaluates a request, Cloudflare compares the final score to the <b>Sensitivity</b> configured for the domain.  If the score exceeds the <b>Sensitivity</b>, the request is actioned based on the <b>Action </b>configured within <b>Package: OWASP ModSecurity Core Rule Set</b>:</p>
+<ul>
+	<li>
+		<i>Block</i> - the request is discarded.
+	</li>
+	<li>
+		<i>Challenge</i> - the visitor receives a CAPTCHA challenge page.
+	</li>
+	<li>
+		<i>Simulate</i> - the request is allowed through but is logged in the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log"><b>Activity log</b></a>.
+	</li>
+</ul>
+<p>The sensitivity score required to trigger the WAF for a specific <b>Sensitivity</b> is as follows:</p>
+<ul>
+	<li>
+		<i>Low</i> - 60 and higher
+	</li>
+	<li>
+		<i>Medium</i> - 40 and higher
+	</li>
+	<li>
+		<i>High</i> - 25 and higher
+	</li>
+</ul>
+<p>For Ajax requests, the following scores are applied instead:</p>
+<ul>
+	<li>
+		<i>Low</i> - 120 and higher
+	</li>
+	<li>
+		<i>Medium</i> - 80 and higher
+	</li>
+	<li>
+		<i>High</i> - 65 and higher
+	</li>
+</ul>
+<p>Review the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log">Activity log</a> to see the final score as well as the individual triggered rules.</p>
+<h3>Control Cloudflare’s OWASP package</h3>
+<p><b>Package: OWASP ModSecurity Core Rule Set</b> contains several rules from the <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project">OWASP project</a>. Cloudflare does not write or curate OWASP rules.  Click on a ruleset name under <b>Group</b> to reveal the rule descriptions.  Unlike the <b>Cloudflare Managed Ruleset</b>, specific OWASP rules are either turned <i>On</i> or <i>Off.</i></p>
+<p>To manage OWASP thresholds, set the <b>Sensitivity</b> to <i>Low</i>, <i>Medium</i>, or <i>High</i> under <b>Package: OWASP ModSecurity Core Rule Set</b>. Setting the <b>Sensitivity </b>to <i>Off </i>will disable the entire OWASP package including all its rules. Determining the appropriate <b>Sensitivity</b> depends on your business industry and operations. For instance, a <i>Low</i> setting is appropriate for:</p>
+<ul>
+	<li>Certain business industries more likely to trigger the WAF, and</li>
+	<li>large file uploads. </li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">With a <em>High</em> <strong>Sensitivity</strong>, large file uploads trigger the WAF.
+</div>
+<p>Cloudflare recommends initially setting the <b>Sensitivity </b>to <i>Low</i> and reviewing for false positives before further increasing the <b>Sensitivity</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The Activity log displays <strong>Rule ID</strong> <em>981176</em> (legacy OWASP) or <em>949110</em> (<a href="https://blog.cloudflare.com/new-cloudflare-waf/">new OWASP</a>) when a request is blocked by OWASP. Also, some OWASP rules listed in the Activity log do not appear in the list of rules under <strong>Package: OWASP ModSecurity Core Rule Set</strong> because disabling those rules is not recommended.
+</div>
+<hr>
+<h2 id="6Tp6cDY8h4RtLwa7EdUoh3">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/waf/analytics/">Firewall Analytics</a></li>
+	<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/">Cloudflare Firewall Rules</a></li>
+	<li><a href="https://developers.cloudflare.com/waf/change-log/scheduled-changes/">Cloudflare’s WAF changelog</a></li>
+</ul>
+<p></p>

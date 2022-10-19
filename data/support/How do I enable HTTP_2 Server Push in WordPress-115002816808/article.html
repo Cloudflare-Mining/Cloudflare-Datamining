@@ -1,0 +1,18 @@
+<p><i>Learn how to enable HTTP/2 server push in WordPress.</i></p>
+<hr>
+<h2 id="h_2I2jhStIPVyEwRQcpNXMwk">How do I enable HTTP/2 Server Push in WordPress</h2>
+<p>HTTP/2 Server Push allows a website to push content to a browser, without having to wait for the HTML of one page to render first. In conjunction with the concurrency support built into HTTP/2, Server Push is able to dramatically reduce the amount of requests needed to load your website.</p><img src="https://images.ctfassets.net/slt3lc6tev37/5EFY77f1DURVcQO6YMyWYU/4fab47b85a88519bff1558dbc7044da2/hc-import-http2_server_push_2.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005733367/http2-server-push-2.png
+Article IDs: 115002816808 | How do I enable HTTP/2 Server Push in WordPress
+">
+<p>Cloudflare supports HTTP/2 Server Push and it can be enabled for stylesheets and scripts using Cloudflare’s WordPress plugin. In order to utilise this feature, you must first ensure you have the Cloudflare WordPress plugin <a href="https://support.cloudflare.com/hc/en-us/articles/227634427-Using-Cloudflare-with-WordPress">installed and set-up on your site</a>.</p>
+<p>Once the plugin is installed, you can enable HTTP/2 Server Push simply by adding the following configuration code to your <i>wp-config.php</i> file:</p>
+<p><i>define('CLOUDFLARE_HTTP2_SERVER_PUSH_ACTIVE', true);</i></p>
+<p>You should insert this line above where it says <i>"/* That's all, stop editing! Happy blogging. */</i>", like follows:|
+</p><img src="https://images.ctfassets.net/slt3lc6tev37/7wt9veaxp3Zcx1Y9Wgdg8q/e6e1f096592e6d8171905e2d32d95668/hc-import-screen_shot_2017_02_09_at_16_09_31.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005733547/Screen_Shot_2017-02-09_at_16.09.31.png
+Article IDs: 115002816808 | How do I enable HTTP/2 Server Push in WordPress
+">
+<p>You should then start to see requests coming in which are initiated through Server Push, for example, in the Network tab of Chrome Development Tools you should see some asserts have "Push" as the initiator:
+</p><img src="https://images.ctfassets.net/slt3lc6tev37/5obPdzsoWZa3noCVXnA089/fb35d46b7d252277f3c3ac446433cbb9/hc-import-screen_shot_2016_04_26_at_15_08_59.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005787688/Screen-Shot-2016-04-26-at-15-08-59.png
+Article IDs: 115002816808 | How do I enable HTTP/2 Server Push in WordPress
+">
+<p></p>

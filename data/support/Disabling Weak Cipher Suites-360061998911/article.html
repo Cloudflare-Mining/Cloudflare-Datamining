@@ -1,0 +1,56 @@
+<p><em>Learn how to disable Weak Cipher Suites for your domain</em></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#TOY03nEwCQgYgzOMl">Problem</a></li>
+		<li><a href="#5zbh0ZpX97SuBZ3Dq">Root Cause </a></li>
+		<li><a href="#oZLRM81YJWrWVzZtp">Solution</a></li>
+		<li><a href="#h_6NzVkiAgwv7B0C8EFwlh0O">Additional Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="TOY03nEwCQgYgzOMl">Problem</h2>
+<p>Some Cipher Suites are listed as weak in third-party testing tools.</p>
+<hr>
+<h2 id="5zbh0ZpX97SuBZ3Dq">Root Cause</h2>
+<p>Cipher Suites is a combination of ciphers used to negotiate security settings during the SSL/TLS handshake and not directly related to TLS version.</p>
+<p>The <em>default Cipher Suites</em> provided with Universal SSL certificates are meant for a <em>balance of security and compatibility</em>. Some of which, are deemed <em>weak</em> by third-party testing tools such as SSL Labs's SSL Server Test. You can find the list of Cloudflare-supported Cipher Suites here: <a href="https://developers.cloudflare.com/ssl/ssl-tls/cipher-suites">https://developers.cloudflare.com/ssl/ssl-tls/cipher-suites</a></p>
+<hr>
+<h2 id="oZLRM81YJWrWVzZtp">Solution</h2>
+<p>If the Universal SSL <em>does not meet your business requirements</em>, I would recommend you to use our <em>Advanced Certificate Manager</em>. For example, use the Advanced Certificate Manager to cover more than one level of subdomain, remove Cloudflare branding from the Universal certificate, or adjust the shortest certificate lifespan.</p>
+<p>You could restrict the Cipher Suites used for TLS using our <a href="https://developers.cloudflare.com/ssl/advanced-certificate-manager#advanced-certificate-manager:~:text=Control%20cipher%20suites%20used%20for%20TLS.">Advanced Certificate Manager</a>. After you subscribed to Advance Certificate Manager for your domain, you can <a href="https://api.cloudflare.com/#zone-settings-change-ciphers-setting">restrict Cipher Suites at the Zone-level requests via the API</a>. Currently, restricting cipher suites could only be done via API and not available via Cloudflare Dashboard. Assuming this is just a one-time change, you could trigger the API call using curl. <strong>Step-by-step guide:</strong></p>
+<ol>
+	<li>Get/view Global API Key <em>(or create Token) </em>from: <a href="https://dash.cloudflare.com/profile/api-tokens">https://dash.cloudflare.com/profile/api-tokens</a>
+	</li>
+	<li>Get Zone ID from the bottom right of Overview page for your domain in Cloudflare Dashboard.</li>
+	<li>Decide which Cipher Suites you would like to allow from the list:
+		<ul>
+			<li><a href="https://developers.cloudflare.com/ssl/ssl-tls/cipher-suites">https://developers.cloudflare.com/ssl/ssl-tls/cipher-suites</a></li>
+		</ul>
+	</li>
+</ol>
+<p>Here is an example value (list of cipher suites) which you can use to replace &lt;cipher_suites&gt; in the commands below:</p>
+<pre>["ECDHE-ECDSA-AES128-GCM-SHA256","ECDHE-ECDSA-CHACHA20-POLY1305","ECDHE-RSA-AES128-GCM-SHA256","ECDHE-RSA-CHACHA20-POLY1305","ECDHE-ECDSA-AES256-GCM-SHA384","ECDHE-RSA-AES256-GCM-SHA384"]</pre>
+<p>Run the command to do the API call with the appropriate &lt;zone_id&gt;, &lt;auth_email&gt;, &lt;auth_key&gt;, and &lt;cipher_suites&gt;:</p>
+<pre>$ curl -X PATCH \
+  "https://api.cloudflare.com/client/v4/zones/&lt;zone_id&gt;/settings/ciphers" \
+  -H "X-Auth-Email: &lt;auth_email&gt;" \
+  -H "X-Auth-Key: &lt;auth_key&gt;" \
+  -H "Content-Type: application/json" \
+  --data '{"value": &lt;cipher_suites&gt;}'</pre>
+<p>If you choose to use a token, you will not need &lt;auth_email&gt; nor &lt;auth_key&gt;. You would instead need &lt;api_token&gt; and the command will look like this:</p>
+<pre>$ curl -X PATCH \
+  "https://api.cloudflare.com/client/v4/zones/&lt;zone_id&gt;/settings/ciphers" \
+  -H "Authorization: Bearer &lt;api_token&gt;" \
+  -H "Content-Type: application/json" \
+  --data '{"value": &lt;cipher_suites&gt;}'</pre>
+<p>To revert to the default Cipher Suites, you can send an empty array as the value, like:</p>
+<pre><code>  --data '{"value": []}'</code></pre>
+<p>Learn more about API Tokens and Keys here: <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys">Managing API Tokens and Keys</a></p>
+<p> </p>
+<hr>
+<h2 id="h_6NzVkiAgwv7B0C8EFwlh0O">Additional Resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360044797871-Understanding-Advanced-Certificate-Manager">Understanding Advanced Certificate Manager</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/203041594-Cloudflare-SSL-cipher-browser-and-protocol-support">Cloudflare SSL cipher, browser, and protocol support</a></li>
+</ul>
+<p> </p>

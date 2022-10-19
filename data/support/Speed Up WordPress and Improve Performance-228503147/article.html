@@ -1,0 +1,53 @@
+<p><i>Learn how to speed up WordPress and improve performance.</i></p>
+<hr>
+<h2 id="h_bDAPkMVC9lSiq2WM1JVRT">Speed Up WordPress and Improve Performance</h2>
+<p>Cloudflare's CDN services can help cache your content across our giant global network, but performance isn't just about moving static files closer to your visitor. Cloudflare does more than offer a CDN, Cloudflare's optimisation features allow you to enhance the performance of your WordPress site beyond what a traditional CDN can do.
+
+</p>
+<h3 id="undefined">Caching Anonymous Page Views</h3><img src="https://images.ctfassets.net/slt3lc6tev37/4dgw6GK2nHp65RInjNmYCu/e909a5c4dd0080693c33ea5d5493ff17/hc-import-screen_shot_2017_03_09_at_16_54_36_1_.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/115000826771/Screen_Shot_2017-03-09_at_16.54.36__1_.png
+Article IDs: 228503147 | Speed Up WordPress and Improve Performance
+">
+<p>Cloudflare's "<a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Bypass Cache on Cookie</a>" functionality allows non-logged-in pages to be fully cached by Cloudflare. This means your server can save time and resources by not having to regenerate pages where the HTML is effectively static, whilst not interfering with dynamic behaviour - as soon as a user logs-in to the WordPress dashboard or adds something to their WooCommerce, the Edge cache is bypassed.
+
+</p>
+<div class="cf-sidebar-2 cf-info">This feature is available to Business and Enterprise users. Instructions on configuring this can be found in the article: <a href="https://support.cloudflare.com/hc/articles/236166048">Caching Static HTML with WordPress/WooCommerce</a>.
+</div>
+<p></p>
+<h3 id="undefined">Optimise Images</h3>
+<p>Images can be incredibly costly to page load times; fortunately, Cloudflare can dramatically help improve image load times. You can find these features in the Cloudflare dashboard, in the <b>Speed</b> <b>app</b> &gt; <b>Optimization</b>.</p>
+<p>After enabling <b>Polish,</b> you can dramatically improve image and web page load times by compressing images and stripping metadata. Lossless will strip most metadata, e.g. EXIF data, but doesn't change the image detail. Lossy will strip most metadata and compresses images by approximately 15 percent.</p><img src="https://images.ctfassets.net/slt3lc6tev37/6uz18cnzqI083DMmo6SD8q/24cfe046f9df688e1f18c2f8ed71ce09/hc-import-cms_wordpress_polish.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360038879252/cms_wordpress_polish.png
+Article IDs: 228503147 | Speed Up WordPress and Improve Performance
+">
+<p>If you wish to optimise your site for mobile visitors, enabling <b>Mirage Image Optimization</b> will allow images to be optimised and delivered based on the end-users network connection and device type:</p><img src="https://images.ctfassets.net/slt3lc6tev37/64IyVFxUK1ff6JiLDd2y8G/5ff8f1b909e93ab9e97e99d2f5b69896/hc-import-screen_shot_2016_09_30_at_15_29_04.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/213275107/Screen_Shot_2016-09-30_at_15.29.04.png
+Article IDs: 228503147 | Speed Up WordPress and Improve Performance
+">
+<p></p>
+<p>
+
+</p>
+<p></p>
+<h3 id="undefined">Enable HTTP/2</h3>
+<p><b>HTTP/2</b> allows for a multitude of performance features including multiplexing, header compression. In order to enable HTTP/2 on your WordPress site, ensure that your site is loaded over HTTPS.</p>
+<p>After <b>enabling SSL</b> you must also ensure that users are redirected to the HTTPS version so that it can be loaded over HTTP/2. You can do this using an <i>Always use HTTPS</i> <b>Page Rule</b>:</p><img src="https://images.ctfassets.net/slt3lc6tev37/30dPQW9PisRKydzmzpKl0e/31d2cf1df865b72a92eb24de1612ad9b/hc-import-screen_shot_2016_09_30_at_15_34_14.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/213275527/Screen_Shot_2016-09-30_at_15.34.14.png
+Article IDs: 228503147 | Speed Up WordPress and Improve Performance
+">
+<p>Cloudflare's <b>WordPress plugin</b> allows you to push necessary assets to your users using HTTP/2 Server Push, dramatically reducing the amount of roundtrips required to load CSS and JavaScript. See our <a href="https://support.cloudflare.com/hc/articles/115002816808">How do I enable HTTP/2 Server Push in WordPress guide</a> for a tutorial on setting it up.
+
+
+</p>
+<p></p>
+<h3 id="undefined">Minify Assets</h3>
+<p>Cloudflare is able to effectively minify JS, CSS and HTML without a change to your website. We recommend enabling minification in your Cloudflare dashboard instead of installing plugins on your site to do the same purpose. Alternatively if you're using Grunt or Gulp as part of a build process you can implement minification as part of this.</p>
+<p>Due to HTTP/2 multiplexing requests, we advise against concatenating CSS or JavaScript files together or installing anything on your server which may do this.</p>
+<p>
+
+
+</p>
+<p></p>
+<h3 id="undefined">Advanced Performance Tools</h3>
+<ul>
+	<li>Business and Enterprise customers can utilise Cloudflare's <a href="https://www.cloudflare.com/website-optimization/railgun/">Railgun Origin Network Optimizer</a>.</li>
+	<li>Enterprise users can utilise "Prefetching URLs From HTML Headers" and custom cache keys to enhance caching - contact your named Customer Success Engineer for help getting set-up or <a href="https://www.cloudflare.com/enterprise-free-trial/">reach out to our sales team</a> if you aren't already an Enterprise customer.
+	</li>
+</ul>
+<p></p>

@@ -1,0 +1,177 @@
+<p><i>Two-factor authentication (2FA) improves account security by requiring a second piece of information to validate your identity when logging in. Learn how to configure two-factor authentication (2FA) to secure your Cloudflare account access.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#12345679">Overview</a></li>
+		<li><a href="#12345680"> Enable two-factor authentication for your Cloudflare account</a></li>
+		<li><a href="#6Gqe6f3nZtXSTpwyS2PBZ1">Configure security key authentication for two-factor Cloudflare login</a></li>
+		<li><a href="#12345681">Configure TOTP mobile app authentication for two-factor Cloudflare login</a></li>
+		<li><a href="#57HJU36S8LIpE05Pkx4WW7">Regenerate backup codes</a></li>
+		<li><a href="#12345682">Disable two-factor authentication for your Cloudflare account</a></li>
+		<li><a href="#12345683">Issues with two-factor authentication?</a></li>
+		<li><a href="#12345684">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="12345679">Overview</h2>
+<p>Two-factor authentication (2FA) allows user account owners to add an additional layer of login security to Cloudflare accounts. This additional authentication step requires you to provide both something you know, such as a Cloudflare password, and something you have, such as an authentication code from a mobile device.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare user accounts configured to use single sign-on (SSO) cannot configure 2FA.
+</div>
+<p>Cloudflare offers the option to use either a phishing-resistant security key, like a YubiKey, or a Time-Based One-Time password (TOTP) mobile app for authentication, like Google Authenticator, or both. If you add both of these authentication methods to your account, you are initially prompted to log in with the security key, but can opt-out and use TOTP instead.</p>
+<p>To ensure that you can securely access your account even without your mobile device, or security keys, Cloudflare also provides backup codes for download. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">After downloading your backup codes, we recommend saving them in a secure location.
+</div>
+<p>As the user account owner, you are automatically assigned the <a href="https://support.cloudflare.com/hc/en-us/articles/205065067#12345682"><u>Super Administrator</u></a> role. Once 2FA is enabled, all Cloudflare account members are required to configure 2FA on their mobile devices.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Free, Pro, and Business customers can only have one Super Administrator. Enterprise customers can have more than one Super Administrator and <a href="https://support.cloudflare.com/hc/articles/205065067">assign additional membership roles</a>.
+</div>
+<hr>
+<h2 id="12345680"> Enable two-factor authentication for your Cloudflare account</h2>
+<p>We recommend that all Cloudflare user account holders enable 2FA to keep their accounts secure. </p>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-warning">Super Administrators can turn on <strong>2FA Enforcement</strong> to require all members to enable 2FA. If you are not a Super Administrator, you will be forced to turn on 2FA prior to accepting the invitation to join a Cloudflare account as a member.
+</div><b></b>
+<p>To enable two-factor authentication for your Cloudflare login:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Under the <b>My Profile</b> dropdown, select <b>My Profile</b>.</li>
+	<li>Select the <b>Authentication</b> tab. </li>
+	<li>Select <b>Manage</b> in the Two-Factor Authentication card.</li>
+	<li>Configure either a TOTP mobile app or a security key to enable 2FA on your account.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="6Gqe6f3nZtXSTpwyS2PBZ1">Configure security key authentication for two-factor Cloudflare login</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Security keys only work with browsers that support the WebAuthn protocol.
+</div>
+<p>A security key provides phishing-resistant multifactor authentication to your Cloudflare account using a built-in authenticator (Apple Touch ID, Android fingerprint, or Windows Hello) or an external hardware key (like <a href="https://www.yubico.com/works-with-yubikey/catalog/cloudflare/">YubiKey</a>) that connects to your computer through USB-A, USB-C, NFC, or Bluetooth.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">We strongly recommend configuring multiple security keys. With multiple keys, you can still use 2FA if the primary key is unavailable or if working on a different device.
+</div>
+<p>Select <b>Manage</b> to configure 2FA security key authentication after <a href="https://support.cloudflare.com/hc/en-us/articles/200167906/#6Gqe6f3nZtXSTpwyS2PBZ1">enabling 2FA on your Cloudflare account</a>.</p>
+<h4><b>Configure a built-in authenticator (Apple Touch ID, Android fingerprint, or Windows Hello)</b></h4>
+<ol>
+	<li>In <b>Security Key Authentication</b>, select <b>Add</b>.</li>
+	<li>Enter your Cloudflare password on the <b>Add a Security Key</b> screen, then select <b>Next</b>.</li>
+	<li>A dialog appears. Interact with your built-in authenticator to add it to your Cloudflare account. </li>
+	<li>Enter a name for the built-in authenticator. If this is the initial setup, you will be prompted to generate backup codes. If not, skip to Step 8.</li>
+	<li>Enter your password. </li>
+	<li>Select <b>Next</b> again to review your backup codes.  Backup codes can be used to access your user account without your mobile device.</li>
+	<li>Select <b>Download</b>, <b>Print</b>, or <b>Copy</b> to save your backup codes in a secure location</li>
+	<li>Select <b>Next</b> to finish the configuration. </li>
+</ol>
+<p></p>
+<h4><b>Configure a security key (like YubiKey)</b></h4>
+<p>Before you begin, ensure that your hardware security key is configured and plugged in. On a Windows device, you may need to set up Windows Hello or register your security key to your Microsoft account. Review the Windows documentation for more details.</p>
+<ol>
+	<li>Once your security key is plugged in, from <b>Security Key Authentication</b>, select <b>Add</b>.</li>
+	<li>Enter your Cloudflare password on the <b>Add a Security Key</b> screen, then select <b>Next</b>.</li>
+	<li>A dialog appears. Interact with your security key to add it to your Cloudflare account. 
+		- Ensure that the dialog is for the security key setup. On a Windows device, if the Windows Hello dialog appears, select <b>Cancel</b>.  The security key dialog box will then appear.
+		- Depending on your system, you may be required to register a PIN for the security key.</li>
+	<li>Enter a name for the security key. If this is the initial setup, you will be prompted to generate backup codes. If not, skip to Step 8.</li>
+	<li>Enter your password. </li>
+	<li>Select <b>Next</b> again to review your backup codes.  Backup codes can be used to access your user account without your mobile device.</li>
+	<li>Select <b>Download</b>, <b>Print</b>, or <b>Copy</b> to save your backup codes in a secure location</li>
+	<li>Select <b>Next</b> to finish the configuration. </li>
+</ol>
+<p></p>
+<hr>
+<h2 id="12345681">Configure TOTP mobile app authentication for two-factor Cloudflare login</h2>
+<p>To enable 2FA mobile app authentication:</p>
+<p>1. Under <b>Mobile App Authentication</b>, click <b>Add</b>. </p>
+<p>2. Scan the QR code with your mobile device and enter the code from your authenticator app.</p>
+<p>3. Enter the code from your authenticator app. </p>
+<p>4.  Enter your Cloudflare password, then click <b>Next</b>.</p>
+<ul>
+	<li>If you can't scan the QR code, click <b>Can't scan QR code, Follow alternative steps </b>to configure your authenticator app manually.</li>
+</ul><img src="https://images.ctfassets.net/slt3lc6tev37/5yUuqjHPIUoX7AuUmlLLp2/9177f7157ac2bf3dcc936ff9b1b3add2/2FA_scan_QR_code.png" alt="You can enable 2FA by scanning a QR code with your mobile device.">
+<p>5. Enter your Cloudflare password again.</p>
+<p>6. Click <b>Next</b> again to review your backup codes. You can use backup codes to access your account without your mobile device.  </p>
+<p>7. Click <b>Download</b>, <b>Print</b>, or <b>Copy</b> to save the codes, then click <b>Next</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">You can regenerate your backup codes on the following screen or at any time in the Authentication tab.
+</div>
+<p>8. Click <b>Next </b>on the backup code page to complete the recovery code set up. You will see that Two-Factor Authentication is now <i>Enabled</i>.</p>
+<h3>Reconfigure TOTP mobile app authentication</h3>
+<p>You may need to reconfigure your mobile app authentication if you join a new organization or lose access to your mobile device. When you reconfigure your mobile app authentication, your previous TOTP codes are invalid. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Reconfiguring TOTP mobile app authentication does not turn off 2FA.
+</div>
+<p>To reconfigure, follow the same <a href="https://support.cloudflare.com/hc/en-us/articles/200167906/#12345681">Steps 1-8</a> as detailed above. </p>
+<hr>
+<h2 id="57HJU36S8LIpE05Pkx4WW7">Regenerate backup codes</h2>
+<p>Each backup code is one-time use only, but you can always request a new set of backup codes using the Cloudflare dashboard. This is useful if you have lost access to or used all of your previous backup codes.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Regenerating your backup codes will invalidate your previous codes.
+</div>
+<p>To regenerate backup codes, </p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Click <b>My Profile</b>.</li>
+	<li>Click the <b>Authentication</b> tab.</li>
+	<li>Click <b>Regenerate</b> to generate and save a new set of two-factor backup codes.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="12345682">Disable two-factor authentication for your Cloudflare account</h2>
+<p>To disable 2FA for your Cloudflare account, you must delete all security keys and TOTP authenticators from your account.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If you are not the Super Administrator of an organization with <strong>2FA Enforcement</strong> enabled, you may not have permission to disable 2FA.
+</div>
+<p>To disable 2FA:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard</li>
+	<li>Click <b>My Profile</b>.</li>
+	<li>Click the <b>Authentication</b> tab.</li>
+	<li>To remove your security key: </li>
+</ol>
+<ul>
+	<li>Click <b>Edit </b>in the <b>Security Key Authentication</b> card. A drop-down menu shows more details about your security key.</li>
+	<li>Click <b>Delete</b>. A pop-up will appear.</li>
+	<li>Enter your Cloudflare password, then click <b>Remove</b>.</li>
+</ul>
+<p>5. To remove your TOTP mobile app authentication: </p>
+<ul>
+	<li>Click <b>Delete method</b> in the <b>Mobile App Authentication</b> card. A popup window appears.</li>
+	<li>Enter your Cloudflare password, authenticator app code, or a recovery code,  then click <b>Disable</b>.</li>
+</ul><img src="https://images.ctfassets.net/slt3lc6tev37/1oxBYrTJMllbxOfNqzPtV1/a0c2ccc0ebe4c1a0660ea67f5e9575d0/resampled_5fps_disable_mobile_auth_v2_final.gif" alt="gif showing how you would disable your TOTP mobile app authentication.">
+<p></p>
+<p></p>
+<hr>
+<h2 id="12345683">Issues with two-factor authentication?</h2>
+<p>You might lose access to a mobile device, security key, or authentication code. </p>
+<h4><b>Use a backup code</b></h4>
+<p>Generally, you can solve these issues by using a backup code or retrieving a backup code from your preferred authentication app.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Google's documentation describes how to <a href="https://support.google.com/accounts/answer/1066447?co=GENIE.Platform%3DAndroid&amp;hl=en&amp;oco=0">transfer Google Authenticator codes from one Android device to another</a>.
+</div>
+<p>When setting up 2FA, you should have saved your backup codes in a secure location. To restore lost access using a Cloudflare backup code:</p>
+<p>1. Retrieve the backup code from where you stored it.</p>
+<p>2. Navigate to the Cloudflare login page.</p>
+<p>3. Enter the backup code in the login screen, then click<b> Log in</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Once you use a backup code, it becomes invalid.
+</div>
+<h4><b>Disable 2FA</b></h4>
+<p>If you or another account owner still has access to your Cloudflare account, you could disable <a href="https://dash.cloudflare.com/?to=/:account/members">your 2FA settings</a>. </p>
+<h4><b>Recover your account</b></h4>
+<p>If you do not have access to your 2FA account or backup codes, use a verified device to request a temporary access code.</p>
+<p>1. Log into the <a href="https://dash.cloudflare.com/login">Cloudflare dashboard</a>.</p>
+<p>2. On the <b>Two-Factor Authentication </b>page, click <b>Can't access your 2FA device or backup codes?</b>.</p>
+<p>3. Click <b>Begin recovery</b>.</p>
+<p>4. Using a temporary access code, verify the email address associated with your account.</p>
+<p>5. Using a device that you have logged in from before, verify your device. If you clear your cookies often or are logging in from a different IP address, you have wiped our memory of your device and will need to use a different device to verify.</p>
+<p>6. For security reasons, you have to wait 3 to 5 days after completing verification to receive your temporary access code.</p>
+<h4><b>Still need additional help?</b></h4>
+<p>If you are still having issues with your two-factor authentication, follow the instructions provided in the <b>Verify device</b> stage of <b>Recover your account</b>.</p>
+<hr>
+<h2 id="12345684">Related resources</h2>
+<ul>
+	<li><a href="https://support.google.com/accounts/answer/1066447?hl=en&amp;ref_topic=2954345&amp;co=GENIE.Platform%3DiOS&amp;oco=0">Google Authentication documentation</a></li>
+	<li><a href="https://www.yubico.com/works-with-yubikey/catalog/cloudflare/">YubiKey documentation</a></li>
+	<li><a href="https://developers.cloudflare.com/fundamentals/account-and-billing/account-setup/manage-account-members/">Setting up multi-user accounts on Cloudflare</a></li>
+</ul>
+<p></p>

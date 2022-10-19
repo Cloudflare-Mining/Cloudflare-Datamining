@@ -1,0 +1,56 @@
+<p><i>Learn how to validate a Let's Encrypt SSL certificate for an active Cloudflare site.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4YRLxoKhabVXTfmjbJZi0D">Overview</a></li>
+		<li><a href="#h_zvZ2jYAtLtoxvAc3TSVBE">HTTP Validation</a></li>
+		<li><a href="#h_5fAVGgLfwaAZ4xl9gMgMkV">Renewal</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4YRLxoKhabVXTfmjbJZi0D">Overview</h2>
+<p>This guide describes additional details how to use the Webroot method for verification in the official Let's Encrypt client described in the <a href="https://certbot.eff.org/docs/using.html#webroot">documentation</a>.</p>
+<p>As a note, the default method used for ACME authentication by the Let's Encrypt client utilizes the DVSNI method. This will fail for a domain which has Cloudflare enabled as we terminate SSL (TLS) at our edge and the ACME server will never see the certificate the client presents at the origin. Using alternate ACME validation methods, such as DNS or HTTP will complete successfully when Cloudflare is enabled.</p>
+<hr>
+<h2 id="h_zvZ2jYAtLtoxvAc3TSVBE">HTTP Validation</h2>
+<p>If you’re configuring Let’s Encrypt for the first time for a site already active on Cloudflare, all that is needed to successfully verify and obtain your certificate and private key pair is to use the webroot method for verification.<b> </b></p>
+<ol>
+	<li>Download the Let’s Encrypt client and change to the download directory:<code>git clone https://github.com/letsencrypt/letsencrypt</code>
+		<code>cd letsencrypt/</code>
+	</li>
+	<li>Run the script for automatic installation:
+		<code>./letsencrypt-auto</code>
+	</li>
+	<li>Using the <code>letsencrypt</code> client with the <code>certonly</code> command and the <code>--webroot </code>flag, you’re able to verify and obtain the cert/key pair using HTTP verification. An example command might look like:
+		<code>/root/.local/share/letsencrypt/bin/letsencrypt certonly --webroot --webroot-path /usr/share/nginx/html/ --renew-by-default --email email@host.tld --text --agree-tos -d example.tld -d www.example.tld
+		</code>where
+		<b>--webroot-path
+		</b>is the directory on your server where your site is located (nginx used in the example)
+		<b>--renew-by-default
+		</b>selects renewal by default when domains are a superset of a previously attained cert
+		<b>--email
+		</b>is the email used for registration and recovery contact.
+		<b>--text
+		</b>displays text output
+		<b>--agree-tos
+		</b>agrees to Let’s Encrypt’s Subscriber Agreement
+		<b>-d
+		</b>specifies hostnames to add to the SAN.
+	</li>
+	<li>Successful completion of this verification method will show text similar to the following:
+		<span>type: embedded-entry-inline id: 5UCzsYIB4V0r5bezt04URx</span>
+	</li>
+	<li>As a note, both the cert and key will be saved to <code>/etc/letsencrypt/live/example.tld/</code> . After both have been obtained, you’ll need to manually update your virtual host to use this key/cert pair.</li>
+</ol>
+<p>Be sure to check the page rules for the domain in the Cloudflare dashboard and verify that there aren't any which would result in a request to the validation URL to be redirected or only accessible via HTTPS.</p>
+<hr>
+<h2 id="h_5fAVGgLfwaAZ4xl9gMgMkV">Renewal</h2>
+<p>When it comes time for renewal, using the <code>letsencrypt renew</code> <a href="https://certbot.eff.org/docs/using.html#renewing-certificates">command</a> should allow the cert to be renewed successfully without any Cloudflare configuration changes, provided that:</p>
+<ul>
+	<li>The .conf file the letsencrypt client uses for the renewal has <code>authenticator = webroot </code>specified.</li>
+	<li>The validation URL is accessible over HTTP.</li>
+	<li>There are no redirects applied for that URL. </li>
+</ul>
+<p>Alternately, repeating the steps above will also issue a new certificate. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The official client does not yet support the DNS validation method; however, third party utilities exist that utilize this method.
+</div>

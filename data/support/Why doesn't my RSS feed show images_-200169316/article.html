@@ -1,0 +1,17 @@
+<p><i>If you aren't seeing images in your RSS feed, check Hotlinking Protection in ScrapeShield</i></p>
+<hr>
+<h2 id="h_7255J50GnEe4OhLhHWGpZw">Overview</h2>
+<p>If you cannot see images in your RSS feed, you likely need to disable <b>Hotlink Protection</b>.</p>
+<p>To do this:</p>
+<p>1. Log into your Cloudflare account and select your domain.</p>
+<p>2. Go to <b>Scrape Shield</b>.</p>
+<p>3. For <b>Hotlink Protection</b>, select <b>Off</b>.</p>
+<hr>
+<h2 id="h_2nvPULNu99buUjC0Gx2BZy">Potential workaround</h2>
+<p>As a workaround, you could also do the following process:</p>
+<p>1. Make sure your feed sub-domain is not proxied by Cloudflare DNS. </p>
+<p>For example, if you were using Feedburner, the CNAME entry would be:</p>
+<p><code>CNAME feeds is an alias of feeds.feedburner.com</code></p>
+<p>You would then make sure the cloud is toggled to gray in your Cloudflare DNS settings.</p>
+<p>2. Create a hotlink ok directory on your server.</p>
+<p>3. Use a <a href="https://support.cloudflare.com/hc/articles/200172336">Page Rule</a> to exclude the URL from Cloudflare.</p>

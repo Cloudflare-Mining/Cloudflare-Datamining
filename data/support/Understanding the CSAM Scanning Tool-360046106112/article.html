@@ -1,0 +1,63 @@
+<p><i>Learn how the CSAM Scanning Tool helps prevent the spread of CSAM.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_01EFEZX9VTEBGPP0FPXMVKSP4K">Overview</a></li>
+		<li><a href="#h_01EFEZXEQ5X1S4315WMAYGWMYN">Why would a URL be blocked?</a></li>
+		<li><a href="#h_01EFEZXEQ5X1S4315WMAYGWMYN">Configuring the CSAM scanning tool</a></li>
+		<li><a href="#h_01EFEZXMKN7MR37BQHZ4V2J5SZ">What happens when a match is detected?</a></li>
+		<li><a href="#h_01EFEZXSW5X0G9MP3HBBSTS53Y">What action should I take when a match is detected?</a></li>
+		<li><a href="#h_3nmaKiZDQtoTT1mT0AZpas">What if there's a false positive?</a></li>
+		<li><a href="#h_15vT9ZXRlUUGVVmlYi3566">Additional Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_01EFEZX9VTEBGPP0FPXMVKSP4K">Overview</h2>
+<p>The Child Sexual Abuse Material (CSAM) Scanning Tool allows website owners to proactively identify and take action on CSAM located on their website. By enabling this tool, Cloudflare will compare content served for your website through the Cloudflare cache to known lists of CSAM. These lists are provided to Cloudflare by leading child safety advocacy groups such as the National Center for Missing and Exploited Children (NCMEC).</p>
+<p>Remember, by enabling the Service, you agree to the <a href="https://www.cloudflare.com/supplemental-terms/">Supplemental Terms</a> for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.</p>
+<hr>
+<h2 id="h_01EFEZXEQ5X1S4315WMAYGWMYN">Why would a URL be blocked?</h2>
+<p>Because knowingly distributing or viewing CSAM is illegal, the owner of the website has enabled Cloudflare's CSAM scanning tool to proactively identify and block images identified as CSAM located on their website.</p>
+<hr>
+<h2 id="h_01EFEZXEQ5X1S4315WMAYGWMYN">Configuring the CSAM scanning tool</h2>
+<p>To enable the tool, go to the <a href="https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration">Cache Configuration</a> section of the dashboard. When enabling the tool, you must provide an email address and NCMEC CyberTipline credentials for reporting purposes. </p><img src="https://images.ctfassets.net/slt3lc6tev37/1TGr6c39OzCJBPJ0OwQ9wl/010c2bf8f092667992efeb240469c2c1/image2.png" alt="">
+<p>This email address will be used to both notify you in the event Cloudflare detects a positive match, and to provide NCMEC in case they or law enforcement need more information about the content reported to them.</p>
+<p>In order to get CyberTipline API credentials, you can email the <a href="mailto:espteam@ncmec.org"><u>espteam@ncmec.org</u></a> to get an application started. Go to the <a href="https://www.missingkids.org/theissues/csam"><u>NCMEC website</u></a> for more information. Cloudflare will use the credentials you provide in order to create reports to NCMEC when potential CSAM is identified on your zones. </p>
+<p>Once you’ve verified your reporting email and entered your NCMEC credentials, scanning to identify potential CSAM will begin.</p>
+<hr>
+<h2 id="h_01EFEZXMKN7MR37BQHZ4V2J5SZ">What happens when a match is detected?</h2>
+<p>Three things happen when a potential match is detected with the tool:</p>
+<ol>
+	<li>A report is filed to NCMEC. This report includes the following:<ul>
+			<li>The email address you provided when setting up the tool so that NCMEC can reach out for further information if required</li>
+			<li>The url of the matched content</li>
+			<li>The date and time the content was identified by the tool</li>
+		</ul>
+	</li>
+	<li>An email is sent to you to inform you of the detection and the report. This email will include:<ul>
+			<li>The file path of the content that was matched</li>
+			<li>The ID of the report that was filed with NCMEC</li>
+			<li>The date and time the report was filed </li>
+		</ul>
+	</li>
+</ol>
+<p>3. If possible, a firewall block is placed to prevent further serving of the matched content. If a firewall block fails, we will indicate that the content has not been blocked in the email.</p>
+<hr>
+<h2 id="h_01EFEZXSW5X0G9MP3HBBSTS53Y">What action should I take when a match is detected?</h2>
+<p>You are responsible for understanding and complying with any legal obligations you have as a website owner when made aware of any potential CSAM. Although legal obligations vary based on the provider and the jurisdiction, website owners often have obligations to report apparent CSAM, to remove content, and to preserve records. Some of those possible obligations are as follows:</p>
+<ul>
+	<li>You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.</li>
+</ul>
+<p>You likely have an obligation to securely preserve certain information related to your report for at least 90 days in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.</p>
+<ul>
+	<li>You should remove the content and notify Cloudflare of the removal.</li>
+</ul>
+<p>Once any preservation obligations have been fulfilled, you should remove the content from your website. This is especially important if Cloudflare’s notice to you indicates that our firewall block was unsuccessful. Notify <a href="mailto:csamscanningtool@cloudflare.com"><u>csamscanningtool@cloudflare.com</u></a> once the content has been removed so that we can disable the block.  We will notify NCMEC at the same time that we have removed the block based on your representation.</p>
+<hr>
+<h2 id="h_3nmaKiZDQtoTT1mT0AZpas">What if there's a false positive?</h2>
+<p>To disable a block, either because you have determined that the blocked content is not CSAM or because you have taken down the blocked content, please email <a href="mailto:csamscanningtool@cloudflare.com"><u>csamscanningtool@cloudflare.com</u></a>. A request to remove a block must be accompanied by a representation from you confirming that the blocked content is not CSAM or has been removed.  We will notify NCMEC at the same time that we have removed the block based on your representation.</p>
+<hr>
+<h2 id="h_15vT9ZXRlUUGVVmlYi3566">Additional Resources</h2>
+<p><a href="https://www.cloudflare.com/supplemental-terms/"><u>CSAM Scanning Tool Supplemental Terms</u></a></p>
+<p><a href="https://www.missingkids.org/"><u>National Center for Missing and Exploited Children (NCMEC)</u></a></p>
+<p><a href="https://www.missingkids.org/gethelpnow/cybertipline"><u>NCMEC CyberTipline</u></a></p>
+<p><a href="https://www.inhope.org/"><u>INHOPE</u></a></p>

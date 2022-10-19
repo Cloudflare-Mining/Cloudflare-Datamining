@@ -1,0 +1,158 @@
+<p><i>Get help with common issues related to the Cloudflare DNS app.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_GceQe7yLNteKL7WN8Fo2V">Where can I learn more about DNS?</a></li>
+		<li><a href="#h_5AzfKIrChBLWiegj2LqTBx">Is Cloudflare a free DNS (domain nameserver) provider?</a></li>
+		<li><a href="#h_2hngeJgVJQtBClJB3cVQgq">Does Cloudflare charge for or limit DNS queries?</a></li>
+		<li><a href="#h_6gPUYJL7OXyKn7OEaAwipE">Where do I change my nameservers to point to Cloudflare?</a></li>
+		<li><a href="#h_3ed87XBJc4ed4tmsNDt5eQ">Can I use Cloudflare without changing my nameservers to Cloudflare?</a></li>
+		<li><a href="#RW4QZK9AQYTX3499R4SG">Does Cloudflare limit number of DNS records a domain can have?</a></li>
+		<li><a href="#h_6mb72z48vZY69qLaqRO7we">Which record types does Cloudflare not proxy?</a></li>
+		<li><a href="#h_5o8rP75kFhX9g6jaDNSoTQ">Can I CNAME a domain not on Cloudflare to a domain that is on Cloudflare?</a></li>
+		<li><a href="#h_2C7rPZioPs5FIMJgvWiPST">Does Cloudflare support wildcard DNS entries?</a></li>
+		<li><a href="#h_14OysgtO7JgA3N8KAtdZCn">How long does it take for a DNS change I made to push out?</a></li>
+		<li><a href="#h_1POmiVdco4wE6nwRTmsJsf">Does Cloudflare offer domain masking?</a></li>
+		<li><a href="#h_7DVKxAlJIDkVgdAiBdpFqs">Why can't I make ANY queries to Cloudflare DNS servers?</a></li>
+		<li><a href="#h_3yslZOSrNhsasnFQz7E8T1">Why do I have to remove my DS record when signing up for Cloudflare?</a></li>
+		<li><a href="#h_6yAiPswlhUgChycYuyLwvw">What happens when I remove the DS record?</a></li>
+		<li><a href="#h_1sl0Bnvuv1fPoO6NkqWlI4">Does Cloudflare support EDNS0 (extension mechanisms for DNS)?</a></li>
+		<li><a href="#h_48mRDrZWcDoNy86Vh430dJ">What should I do if I change my server IP address or hosting provider?</a></li>
+		<li><a href="#h_4DQSdKPOf5WeRRGX4UoSrG">Where can I find my Cloudflare name servers?</a></li>
+		<li><a href="#h_2hZzaAXD1FZ85LaoygALPE">Why do I see Cloudflare A or AAAA records / IP addresses for my domain's DNS responses?</a></li>
+		<li><a href="#h_4KiZSEaZkCCJXEDGuD9Htf">Should the cloud icon beside my DNS record be orange or gray?</a></li>
+		<li><a href="#h_2TF12dhvaLH91R6POBV0el">Can subdomains be added directly to Cloudflare?</a></li>
+		<li><a href="#h_7db6AC21wyy5Xuq8vk17lY">403 Authentication error when creating DNS records using Terraform</a></li>
+		<li><a href="#h_1lFKZFkAFRGtDPNZetRq52">Why do I see hundreds of random DNS records after adding my domain?</a></li>
+		<li><a href="#h_5mPkNqCpR3dklDjTvbASCI">What IP should I use for parked domain / redirect-only / originless setup?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_GceQe7yLNteKL7WN8Fo2V">Where can I learn more about DNS?</h2>
+<p>Please visit the <a href="https://www.cloudflare.com/learning/dns/what-is-dns/">Cloudflare Learning Center DNS guides</a>.</p>
+<hr>
+<h2 id="h_5AzfKIrChBLWiegj2LqTBx">Is Cloudflare a free DNS (domain nameserver) provider?</h2>
+<p>Yes. Cloudflare offers <a href="https://www.cloudflare.com/dns">free DNS services</a> to customers in all plans. Note that:</p>
+<ol>
+	<li>You do not need to change your hosting provider to use Cloudflare.</li>
+	<li>You do not need to move away from your registrar. The only change you make with your registrar is to point the authoritative nameservers to the Cloudflare nameservers.</li>
+</ol>
+<p>As of October 2018, you can transfer your domain to <a href="https://www.cloudflare.com/products/registrar/">Cloudflare Registrar</a>. </p>
+<hr>
+<h2 id="h_2hngeJgVJQtBClJB3cVQgq">Does Cloudflare charge for or limit DNS queries?</h2>
+<p>Cloudflare never limits or caps DNS queries, but the pricing depends on your plan level.</p>
+<p>For customers on Free, Pro, or Business plans, Cloudflare does not charge for DNS queries.</p>
+<p>For customers on Enterprise plans, Cloudflare uses the number of monthly DNS queries as a pricing input to generate a custom quote. Any overages will not be charged.</p>
+<hr>
+<h2 id="h_6gPUYJL7OXyKn7OEaAwipE">Where do I change my nameservers to point to Cloudflare?</h2>
+<p>Make the change at your registrar, which may or may not be your hosting provider. If you don't know who your registrar is for the domain, you can find this by doing a <a href="http://www.whois.net/">WHOis search</a>. Follow the instructions in <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup">change nameservers to Cloudflare</a>.</p>
+<hr>
+<h2 id="h_3ed87XBJc4ed4tmsNDt5eQ">Can I use Cloudflare without changing my nameservers to Cloudflare?</h2>
+<p>Yes. If you can't change to our nameservers — which is what allows us to proxy your site traffic — you have two options:</p>
+<ol>
+	<li>Activate Cloudflare through one of our <a href="https://www.cloudflare.com/hosting-partners">certified hosting partners</a>.</li>
+	<li>Ask for a <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">partial (CNAME) setup</a>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="RW4QZK9AQYTX3499R4SG">Does Cloudflare limit number of DNS records a domain can have?</h2>
+<p>Yes. Currently Free, Pro, and Business customers have a limit on the number of DNS records they can create.</p>
+<p>If you are an Enterprise customer you can contact your Account team if you require more DNS records.</p>
+<hr>
+<h2 id="h_6mb72z48vZY69qLaqRO7we">Which record types does Cloudflare not proxy?</h2>
+<p>Cloudflare does not proxy the following record types:</p>
+<ul>
+	<li>LOC</li>
+	<li>MX</li>
+	<li>NS</li>
+	<li>SPF</li>
+	<li>TXT</li>
+	<li>SRV</li>
+	<li>CAA</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_5o8rP75kFhX9g6jaDNSoTQ">Can I CNAME a domain not on Cloudflare to a domain that is on Cloudflare?</h2>
+<p>No. If you would like to do a redirect for a site not on Cloudflare, then set up a traditional 301 or 302 redirect on your origin web server.</p>
+<p>Redirecting non-Cloudflare sites via CNAME records would cause a DNS resolution error. Since Cloudflare is a reverse proxy for the domain that is on Cloudflare, the CNAME redirect for the domain (not on Cloudflare) wouldn't know where to send the traffic to.</p>
+<p></p>
+<hr>
+<h2 id="h_2C7rPZioPs5FIMJgvWiPST">Does Cloudflare support wildcard DNS entries?</h2>
+<p>Cloudflare now supports proxying wildcard '*' record for DNS management in all customer plans. This used to only be offered to Enterprise plans.</p>
+<hr>
+<h2 id="h_14OysgtO7JgA3N8KAtdZCn">How long does it take for a DNS change I made to push out?</h2>
+<p>By default, any changes or additions you make to your Cloudflare zone file will push out in 5 minutes or less. Your local DNS cache may take longer to update; as such, propagation everywhere might take longer than 5 minutes.</p>
+<p>This setting is controlled by the Time-to-Live (TTL) value on a <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">DNS record</a>. Proxied records update within 300 seconds (Auto), but the TTL for unproxied records can be customized.</p>
+<hr>
+<h2 id="h_1POmiVdco4wE6nwRTmsJsf">Does Cloudflare offer domain masking?</h2>
+<p>No. Cloudflare does not offer domain masking or DNS redirect services (your hosting provider might). However, we do offer URL forwarding through <a href="https://developers.cloudflare.com/rules/bulk-redirects/">Bulk Redirects</a>.</p>
+<hr>
+<h2 id="h_7DVKxAlJIDkVgdAiBdpFqs">Why can't I make ANY queries to Cloudflare DNS servers?</h2>
+<p>ANY queries are special and often misunderstood. They are usually used to get all record types available on a DNS name, but what they return is just any type in the cache of recursive resolvers. This can cause confusion when they are used for debugging.</p>
+<p>Because of Cloudflare's many advanced DNS features like CNAME flattening, it can be complex and even impossible to give correct answers to ANY queries. For example, when DNS records dynamically come and go or are stored remotely, it can be taxing or even impossible to get all the results at the same time.</p>
+<p>ANY is rarely used in production, but is often used in DNS reflection attacks, taking advantage of the lengthy answer returned by ANY.</p>
+<p>Instead of using ANY queries to list records, Cloudflare customers can get a better overview of their DNS records by logging in and checking their DNS app settings.</p>
+<p>The decision to block ANY queries was implemented for all Authoritative DNS customers in September 2015, and does not affect Virtual DNS customers.</p>
+<p>Read <a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/">Deprecating the DNS ANY meta-query type</a> in the Cloudflare blog.</p>
+<p></p>
+<hr>
+<h2 id="h_3yslZOSrNhsasnFQz7E8T1">Why do I have to remove my DS record when signing up for Cloudflare?</h2>
+<p>Cloudflare supports DNSSEC. If a DS record is present at your registrar while using Cloudflare, you will run into connectivity errors such as SERVFAIL when using a validating resolver like Google and noErrror from non-validating ones.</p>
+<pre>Here is an example of what an error would look like:
+    ╰─➤ dig dnssec-failed.org @8.8.8.8
+     &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; dnssec-failed.org @8.8.8.8
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 5531
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0 ;; QUESTION SECTION:
+    ;dnssec-failed.org. IN A</pre>
+With DNSSEC support, Cloudflare provides the DS record that must be uploaded to your parent when you <a href="https://support.cloudflare.com/hc/articles/360006660072">enable DNSSEC</a> for your domain.
+<hr>
+<h2 id="h_6yAiPswlhUgChycYuyLwvw">What happens when I remove the DS record?</h2>
+<p>When you remove your DS record, an invalidation process begins which results in the unsigning of your domain’s DNS records. This will allow your authoritative nameservers to be changed. If you are an existing customer, this will not affect your ability to use Cloudflare. New customers will need to complete this step before Cloudflare can be used successfully.</p>
+<hr>
+<h2 id="h_1sl0Bnvuv1fPoO6NkqWlI4">Does Cloudflare support EDNS0 (extension mechanisms for DNS)?</h2>
+<p>Yes, Cloudflare DNS supports EDNS0. EDNS0 is enabled for all Cloudflare customers. It is a building block for modern DNS implementations that adds support for signaling if the DNS Resolver (recursive DNS provider) supports larger message sizes and DNSSEC.</p>
+<p>EDNS0 is the first approved set of mechanisms for <a href="http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS">DNS extensions</a>, originally published as <a href="https://datatracker.ietf.org/doc/html/rfc2671">RFC 2671</a>.</p>
+<hr>
+<h2 id="h_48mRDrZWcDoNy86Vh430dJ">What should I do if I change my server IP address or hosting provider?</h2>
+<p>After switching hosting providers or server IP addresses, update the IP addresses in your Cloudflare <b>DNS</b> app. Your new hosting provider will provide the new IP addresses that your DNS should use.  To modify DNS record content in the <b>DNS</b> app, click on the IP address, and enter the new IP address.</p>
+<hr>
+<h2 id="h_4DQSdKPOf5WeRRGX4UoSrG">Where can I find my Cloudflare name servers?</h2>
+<p>Under the <b>DNS</b> app of your Cloudflare account, review the <b>Cloudflare Nameservers</b>.</p>
+<p>The IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as <a href="https://www.whatsmydns.net/">whatsmydns.net</a>:
+</p>
+<pre>dig kate.ns.cloudflare.com
+kate.ns.cloudflare.com.    68675    IN    A    173.245.58.124.</pre>
+<hr>
+<h2 id="h_2hZzaAXD1FZ85LaoygALPE">Why do I see Cloudflare A or AAAA records / IP addresses for my domain's DNS responses?</h2>
+<p>For DNS records proxied to Cloudflare, Cloudflare's IP addresses are returned in DNS queries instead of your original server IP address. This allows Cloudflare to optimize, cache, and protect all requests for your website.</p>
+<p></p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_4KiZSEaZkCCJXEDGuD9Htf">Should the cloud icon beside my DNS record be orange or gray?</h2>
+<p>By default, only A and CNAME records that handle web traffic (HTTP and HTTPs) can be proxied to Cloudflare. All other DNS records should be toggled to a gray cloud. For further details, see our <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records">support guide</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_2TF12dhvaLH91R6POBV0el">Can subdomains be added directly to Cloudflare?</h2>
+<p>Only Enterprise customers can add subdomains directly to Cloudflare via <a href="https://support.cloudflare.com/hc/articles/360026440252">Subdomain Support</a>.</p>
+<hr>
+<h2 id="h_7db6AC21wyy5Xuq8vk17lY">403 Authentication error when creating DNS records using Terraform</h2>
+<p><b>Problem Description</b></p>
+<p><code>Error: failed to create DNS record: HTTP status 403: Authentication error (10000) </code>is returned when using Terraform with Cloudflare API.</p>
+<p><b>Root Cause</b></p>
+<p>Error seems to be misleading, as the error was found to be in customer code syntax, specifically: zone_id = data.cloudflare_zones.example_com.id</p>
+<p><b>Solution</b></p>
+<p>Make sure the argument <code>zone_id = data.cloudflare_zones.example_com.zones[0].id</code>. A more detailed use case can be found in <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/913">this</a> Github thread.</p>
+<hr>
+<h2 id="h_1lFKZFkAFRGtDPNZetRq52">Why do I see hundreds of random DNS records after adding my domain?</h2>
+<p>This can happen when you had a wildcard * record configured at your previous authoritative DNS. You can remove these records in bulk using the API: https://api.cloudflare.com/#dns-records-for-a-zone-delete-dns-record . Or you can also delete your domain from the Cloudflare Dashboard, then delete the wildcard record from your authoritative DNS, and then re-add the domain again
+
+</p>
+<hr>
+<h2 id="h_5mPkNqCpR3dklDjTvbASCI">What IP should I use for parked domain / redirect-only / originless setup?</h2>
+<p>In the case a placeholder address is needed for “originless” setups, use the IPv6 reserved address <b>100:: </b>or the IPv4 reserved address <b>192.0.2.0 </b>in your Cloudflare DNS to create the entry in Proxied-mode to leverage Cloudflare Page Rules or Cloudflare Workers.</p>
+<p>
+
+</p>

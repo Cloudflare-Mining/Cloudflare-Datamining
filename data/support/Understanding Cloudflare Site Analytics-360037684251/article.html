@@ -1,0 +1,120 @@
+<p><i>The Cloudflare (Site) Analytics app helps you gain insight about each specific site in your Cloudflare account. These metrics comprise request and response data for web traffic, security, performance, DNS, and Workers.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#6d3lugOHfkvonYvKO4WSqG">Overview</a></li>
+		<li><a href="#123pyViKbc1N3GljolmpIu">View your website analytics</a></li>
+		<li><a href="#5r6cSJB0I9QPTk65qrmf5a">Review your website metrics</a></li>
+		<li><a href="#6oUJYa3v3OMd79pLISj8VQ">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="6d3lugOHfkvonYvKO4WSqG">Overview</h2>
+<p>The Cloudflare dashboard (Site) <b>Analytics</b> app is a major component of the overall Cloudflare Analytics product line.  Specifically, this app gives you access to a wide range of metrics, collected at the website or domain level.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-info">Read <a href="https://support.cloudflare.com/hc/articles/360037684111https://" title="Cloudflare Analytics: A quick overview">Cloudflare Analytics: A quick overview</a> for general information about all of Cloudflare’s analytics offerings. You can also understand the characteristics of the data that Cloudflare captures and processes.
+</div>
+<hr>
+<h2 id="123pyViKbc1N3GljolmpIu">View your website analytics</h2>
+<p>To view metrics for your website:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Click the appropriate Cloudflare<b> account</b> for your site, then pick the <b>domain</b>.</li>
+	<li>Next, click the <b>Analytics </b>app icon.</li>
+</ol>
+<p>Once it loads, the Analytics app displays a set of tabs for <b>Traffic</b>, <b>Security</b>, <b>Performance</b>, <b>DNS</b>, <b>Workers</b>, and <b>Logs</b> (Enterprise domains only). To understand the various metrics available, see <i>Review your website metrics</i> below.</p><img src="https://images.ctfassets.net/slt3lc6tev37/5e6eB3dja4M4GAXtTL2G1I/9e78190391d32d6261ed869e0c753680/hc-dash-analytics-dashboard_overview.png" alt="Analytics app UI in the Cloudflare dashboard displaying web traffic data">
+<p>Pro, Business, and Enterprise plans see the latest Web Analytics under the Traffic tab.</p><img src="https://images.ctfassets.net/slt3lc6tev37/4IfFxMg5zYMpunO56LqH3n/139b6db350df73cc0928dba8e6e55242/hc-dash-analytics-web_traffic.png" alt="Screenshot of the UI in the Cloudflare Analytics dashboard for Pro, Business, and Enterprise customers.">
+<p></p>
+<hr>
+<h2 id="5r6cSJB0I9QPTk65qrmf5a">Review your website metrics</h2>
+<p>This section outlines the metrics available under each Analytics app tab. Before proceeding, note that each tab may contain:</p>
+<ul>
+	<li>One or more panels to further categorize the underlying metrics, and</li>
+	<li>a dropdown (on the panel’s top right) to filter metrics for a specific time period.  The time period you can select may vary based on the Cloudflare plan that your domain is associated with.</li>
+</ul>
+<p>Below is a summary of each Analytics app tab.</p>
+<h3>Traffic</h3>
+<h4>Free plan</h4>
+<p>These metrics include legitimate user requests as well as crawlers and threats. The Traffic tab features the following panels: </p>
+<ul>
+	<li>
+		<b>Web Traffic</b> - Displays metrics for <i>Requests</i>, <i>Bandwidth</i>, <i>Unique Visitors</i>, and <a href="https://support.cloudflare.com/hc/articles/206973867-Status-code-metrics-in-Cloudflare-Site-Analytics"><u><i>Status Codes</i></u></a>. Note that if you use Cloudflare Workers, subrequest analytics are available under the <b>Workers</b> tab.
+	</li>
+	<li>
+		<b>Web Traffic Requests by Country</b> - Is an interactive map that breaks down the number of requests by country.  This panel also includes a data table for <b>Top Traffic Countries / Regions</b> that display the countries with the most number of requests (up to five, if the data exists).
+	</li>
+	<li>
+		<b>Share Your Stats - </b>Lets you share actual site statistics on social media (Twitter) for: <i>Bytes saved,</i> <i>SSL requests served</i>, and <i>attacks blocked</i>.
+	</li>
+</ul>
+<h4>Pro, Business, or Enterprise plan</h4>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Privacy-first Web Traffic Analytics are available on the Pro, Business, and Enterprise plans.
+</div>
+<p>Analytics are based on Cloudflare’s edge logs, with no need for third party scripts or trackers. The Traffic tab features the following metrics:</p>
+<ul>
+	<li>
+		<b>Visits</b> - A visit is defined as a page view that originated from a different website, or direct link. Cloudflare checks where the HTTP referer does not match the hostname. One visit can consist of multiple page views. 
+	</li>
+	<li>
+		<b>Page views</b> - A page view is defined as a successful HTTP response with a content-type of HTML. 
+	</li>
+	<li>
+		<b>Requests</b> - An HTTP request. A typical page view requires many requests.
+	</li>
+	<li>
+		<b>Data Transfer</b> - Total HTTP data transferred in requests.
+	</li>
+</ul>
+<p>To see more detailed metrics, <b>Add filter</b>. You can also filter each metric by <b>Referer</b>, <b>Host</b>, <b>Country</b>, <b>Path</b>, <b>Status code</b>, <b>Origin status code</b>, <b>Browser</b>, <b>Operating system</b>, or <b>Device type</b>. </p>
+<p>To change the time period, use the dropdown menu on the right-hand side above the graph. You can also drag to zoom on the graph.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">To opt out of the new Web Traffic Analytics, click <strong>Switch back to the old experience</strong> on the left side of the page.
+</div>
+<h3>Security</h3>
+<p>For this tab, the number and type of charts may vary based on existing data and customer plan. Most of the metrics in this tab come from the Cloudflare Firewall app. The panels available include:</p>
+<ul>
+	<li>
+		<b>Threats</b> - Displays a data summary and an area chart showing threats against the site.
+	</li>
+	<li>
+		<b>Threats by Country</b> - Is an interactive map highlighting the countries where threats originated. It also includes data tables with statistics on <b>Top Threat Countries / Regions </b>and <b>Top Crawlers / Bots.</b>
+	</li>
+	<li>
+		<b>Rate Limiting</b> (add-on service) - Features a line chart highlighting matching and blocked requests, based on rate limits.  To learn more, consult <a href="https://support.cloudflare.com/hc/en-us/articles/115003414428-Rate-Limiting-Analytics"><u>Rate Limiting Analytics</u></a>.
+	</li>
+	<li>
+		<b>Overview</b> - Displays a set of pie charts for: <b>Total Threats Stopped</b>, <b>Traffic Served Over SSL</b>, and <b>Types of Threats Mitigated</b>. If available, the expandable <b>Details</b> link display a table with numerical data.
+	</li>
+</ul>
+<h3>Performance</h3>
+<p>The metrics aggregated under this tab span multiple Cloudflare services.  The panels available include:</p>
+<ul>
+	<li>
+		<b>Origin Performance (Argo) </b>(add-on service) - Displays metrics related to response time between the Cloudflare edge network and origin servers for the last 48 hours.  For additional details, see <a href="https://support.cloudflare.com/hc/articles/115001255631-Argo-Analytics"><u>Argo Analytics</u></a>.
+	</li>
+	<li>
+		<b>Overview</b> - Displays a set of pie charts for: <b>Client HTTP Version Used</b>, <b>Bandwidth Saved</b>, and <b>Content Type Breakdown</b>. If available, the expandable <b>Details</b> link display a table with numerical data.
+	</li>
+</ul>
+<h3>DNS</h3>
+<p>The DNS tab presents several statistics for DNS queries.  Note that metrics are available as long as Cloudflare is the site’s authoritative DNS server, even if the site is not proxied by Cloudflare. Therefore, DNS metrics are not offered for sites with a <a href="https://support.cloudflare.com/hc/articles/360020348832-Understanding-a-CNAME-Setup"><u>CNAME Setup</u></a>.</p>
+<p>The metrics panels available under the DNS tab include:</p>
+<ul>
+	<li>
+		<b>DNS Queries</b> - Displays several area charts and data tables for DNS record metrics including queries by <i>Response Code</i>, <i>Record Type</i> as well as records that return an <i>NXDOMAIN</i> response (dns record doesn’t exist). You can filter by one or several DNS records by entering record names (for example, www.example.com) in the dropdown near the top.
+	</li>
+	<li>
+		<b>DNS Queries by Data Center</b> - Lets you see DNS query distribution across Cloudflare’s data centers. Metrics appear as interactive maps and data tables, and include statistics for <i>Traffic</i>, <i>NXDOMAIN</i>, and <i>NOERROR</i>.
+	</li>
+</ul>
+<h3>Workers</h3>
+<p>This panel features metrics for Cloudflare Workers. To learn more, read <a href="https://support.cloudflare.com/hc/articles/360007553512-Cloudflare-analytics-with-Workers"><u>Cloudflare analytics with Workers</u></a>.</p>
+<h3>Logs</h3>
+<p>The Logs tab is not a metrics feature. Instead, Customers in the Enterprise plan can enable the <a href="https://developers.cloudflare.com/logs/about/"><u>Cloudflare Logs Logpush</u></a> service. You can use Logpush to download and analyze data using any analytics tool of your choice. </p>
+<hr>
+<h2 id="6oUJYa3v3OMd79pLISj8VQ">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/analytics">Cloudflare Analytics: A quick overview</a></li>
+	<li><a href="https://developers.cloudflare.com/analytics/"><u>The Cloudflare Analytics GraphQL API</u></a></li>
+</ul>
+<p></p>

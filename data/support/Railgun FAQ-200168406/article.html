@@ -1,0 +1,205 @@
+<p><i>Common questions about your Railgun configuration.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_15EHr8lEPPeuKriHfZhz7s">What is Railgun?</a></li>
+		<li><a href="#h_6KgLWJQ9P4IdQlx27GZ43v">How do I enable Railgun?</a></li>
+		<li><a href="#h_79IqQx6MPaqRt5Kt1iFkV">Is Railgun running on my site?</a></li>
+		<li><a href="#h_3eHLNNmS6SUc8bdDuhZJAN">How do I enable Railgun stats?</a></li>
+		<li><a href="#h_42fqiTErgmcnqq1DxLf2hz">Why are Railgun requests showing as Stream?</a></li>
+		<li><a href="#h_42B1FogDbF5Dmli4IkWfox">Why are Railgun requests showing as Direct?</a></li>
+		<li><a href="#h_6RA94R33H4UcQklysfVJp">What is the 'Cf-Railgun' Header?</a></li>
+		<li><a href="#h_43l17RS8T8UyefxsHosLJn">Can I use Railgun with an Amazon EC2 setup?</a></li>
+		<li><a href="#h_5v1DF7Vr4IOenSfgZXUqZ5">What does 'Activation Failed: Invalid or missing railgun token or tag' mean when starting Railgun?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_15EHr8lEPPeuKriHfZhz7s">What is Railgun?</h2>
+<p><a href="https://www.cloudflare.com/railgun/">Railgun</a> is a web proxy system built for Cloudflare, that allows dynamic content for a website (such as the HTML) to be cached, while also allowing changes to the site to appear instantly. Railgun is currently available to customers with the Business and Enterprise plan, or via one of Cloudflare’s <a href="https://www.cloudflare.com/hosting-partners/">Optimised Partners</a>.</p>
+<p>Railgun can especially help in the following situations:</p>
+<ul>
+	<li>A lot of the visitors to the website are long way geographically from the website’s hosting.</li>
+	<li>Your web hosts charge a lot by the GB for bandwidth. (i.e. you would like to minimise the amount you spend on that).</li>
+	<li>You have a website with a lot of dynamic content, such as a very active blog or news source.</li>
+</ul>
+<p>
+	Unlike other Cloudflare features, it does require a program to be installed on or near the origin web server. The system requirements of Railgun can be found <a href="https://developers.cloudflare.com/railgun/user-guide/requirements/">here</a>. Full instructions for installing and configuring Railgun can be found <a href="https://developers.cloudflare.com/railgun/user-guide/set-up">here</a>. If you are the customer of an Optimized Partner of Cloudflare, you do not need to install Railgun. Your hosts will have done that for you.</p>
+<hr>
+<h2 id="h_6KgLWJQ9P4IdQlx27GZ43v">How do I enable Railgun?</h2>
+<p>You can enable <a href="https://www.cloudflare.com/railgun">Railgun</a> by following the directions <a href="https://developers.cloudflare.com/railgun/user-guide/administration#enabling-railgun">here</a>.</p>
+<p>Railgun is available to Business customers as well as through our Optimized Partners.</p>
+<p>If you are signed up through a hosting partner and not using a Business plan, check our <a href="https://www.cloudflare.com/hosting-partners">Railgun Optimized Hosting Partners</a> to see if you can use Railgun today.</p>
+<hr>
+<h2 id="h_79IqQx6MPaqRt5Kt1iFkV">Is Railgun running on my site?</h2>
+<p>When a request is handled by <a href="https://www.cloudflare.com/railgun">Railgun</a>, Cloudflare inserts a header with diagnostic information to track the protocol. </p>
+<p>To view the following Railgun headers, use a browser that allows you to examine header information.</p>
+<p><b>Google Chrome:</b> View &gt; Developer &gt; Developer Tools menu. You can also install <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl">Cloudflare's Claire extension</a>.</p>
+<p><b>Safari:</b> Develop &gt; Show Web Inspector menu</p>
+<p><b>Firefox:</b> <a href="http://getfirebug.com/">Install Firebug</a></p>
+<p><b>Microsoft Internet Explorer:</b> You can use a tool like <a href="http://www.fiddler2.com/fiddler2/">Fiddler</a></p>
+<p>When looking for the header information, you should see Cloudflare headers similar to the following response:</p>
+<p><b>cf-railgun</b>:   e95b1c46e0 0.02 0.037872 0030 9878</p>
+<p><b>cf-ray:</b>   478149ad1570291</p>
+<p>The CF-Railgun header has up to five codes separated by a space. In order, these codes and their corresponding values from the example of <b>cf-railgun</b>: e95b1c46e0 0.02 0.037872 0030 9878 listed above are:</p>
+<ul>
+	<li>Railgun Request ID: e95b1c46e0 (internal process number that allows us to track what connection handled a request )</li>
+	<li>Compression Ratio: 0.02 (the size of the response after Railgun's delta compression expressed as a percentage)</li>
+	<li>Origin Processing Time: 0.037872 (that Railgun waits for the origin web server to generate the page)</li>
+	<li>Railgun Flags: 0030 (how a request was processed)</li>
+	<li>Version Number: 9878 (indicates the version of the Railgun Listener software on the origin server's network)</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_3eHLNNmS6SUc8bdDuhZJAN">How do I enable Railgun stats?</h2>
+<p>Enabling Railgun stats will record global statistics for the Railgun listener and setup a listening endpoint for HTTP connections. To enable statistics reporting set <code>stats.log</code> to <code>1</code>.</p>
+<p>To enable reporting by use of an HTTP POST request of JSON data to the specified URL, set <code>stats.url</code> to a valid <code>URL.stats.interval</code> determines how frequently stats will be logged or POSTed in minutes.</p>
+<p>Here is an example output from viewing stats:</p>
+<p><code>{
+		"delta_compression_ratio": 4552,
+		"memstats.Frees": 78483728,
+		"memstats.Mallocs": 80708595,
+		"memstats.alloc": 2235213408,
+		"memstats.heap_alloc": 2235213408,
+		"memstats.heap_idle": 1157988352,
+		"memstats.heap_in_use": 2562883584,
+		"memstats.heap_objects": 2224867,
+		"memstats.heap_released": 1157890048,
+		"memstats.heap_sys": 3720871936,
+		"memstats.lookups": 1313043,
+		"memstats.num_gc": 92,
+		"memstats.pause_ns": 185276,
+		"memstats.stack_in_use": 46768128,
+		"memstats.stack_sys": 47841280,
+		"memstats.sys": 4026019808,
+		"memstats.total_alloc": 12652595080,
+		"recycler_cleans_chunk": 1,
+		"recycler_cleans_hasher": 1,
+		"recycler_give": 0,
+		"recycler_queue_chunk": 9815,
+		"recycler_queue_hasher": 2,
+		"recycler_removed_chunk": 0,
+		"recycler_removed_hasher": 0,
+		"recycler_retained_chunk": 96621416,
+		"recycler_retained_hasher": 173178,
+		"recycler_tuned_chunk": 11957,
+		"recycler_tuned_hasher": 81986,
+		"requests_completed": 17487,
+		"requests_started": 17589,
+		"time": 1416343217,
+		"uncompressed_chunks": 32601,
+		"wan_bytes_sent": 624557633,
+		"wan_starts": 667,
+		"wan_stops": 23
+		}</code></p>
+<p>The <code>memstats</code> fields derived from Golang recorded statistics from the memory allocator. The recycler statistics are from Railgun's memory recycler, which frees up memory for reuse.</p>
+<p>Conveyor is no longer an option in the current version of Railgun.</p>
+<hr>
+<h2 id="h_42fqiTErgmcnqq1DxLf2hz">Why are Railgun requests showing as Stream?</h2>
+<p>The presence of <code>stream</code> in place of a compression ratio indicates that the response from the origin was greater than the value set in the <code>stream.size</code> parameter within the <code>railgun.conf</code> file (default value is 250000 bytes).</p>
+<p>This status results in the request not being compressed and served in a streaming fashion.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/202963724-Reading-and-Interpreting-the-Cf-Railgun-Header">Reading and Interpreting the 'Cf-Railgun' Header</a> article for additional technical information on the Cf-Railgun header.
+</div>
+<h3>Troubleshooting</h3>
+<p>If a continual/repeated <code>stream</code> status is occurring for requests, please check for the following conditions that are common causes:</p>
+<h4>Memcached isn't running, or the Listener is having trouble connecting to it.</h4>
+<p>Please run the following command to confirm memcached is running:</p>
+<p><code>ps aux | grep memcached</code></p>
+<p>If you are connecting Railgun to memcached using a loopback inet connection to localhost, confirm there are not any firewall rules that would prevent connections. If using a unix socket, make sure the permissions and ownerships on the sock file are set correctly.</p>
+<h4>Memcached wasn't given enough memory.</h4>
+<p>By default, memcached is configured to only use 64MB of memory. We generally recommend Railgun be configured to have between 512MB and 2GB of memory allocated.</p>
+<h4>The file the visitor is trying to access is larger than 250KB.</h4>
+<p>By default, rg-listener will stream files larger than 250KB, rather than try to compress them. This is because we decided that it would be faster/less computationally expensive for them to be streamed. This can be increased using the stream.size setting in the Railgun configuration settings. `Please note this can't be increased beyond 1MB`.</p>
+<h4>When the response body is zero bytes, or the request is simply too small to compress.</h4>
+<p>If the request is served with a response body of zero bytes (common for 301/302 redirects for example), then the request will be served without compression. The same case would apply if the response was only several KB in size, as that would be more computationally expensive to compress, then simply serving the data uncompressed to the client.</p>
+<h4>The MIME type of the response was not of a type that Railgun supports.</h4>
+<p>If the response doesn't match one of these content types, it will not be compressed:</p>
+<ul>
+	<li>Anything beginning with <code>"text/"</code>
+	</li>
+	<li>Any <code>"application/" </code>type that ends with the string <code>"+xml"</code>
+	</li>
+	<li><code>"application/json"</code></li>
+	<li><code>"application/ecmascript"</code></li>
+	<li><code>"application/javascript"</code></li>
+	<li><code>"application/x-javascript"</code></li>
+	<li><code>"application/xml"</code></li>
+	<li><code>"application/dart"</code></li>
+</ul>
+<p>The MIME type is determined by the <code>Content-Type</code> header sent by the origin.</p>
+<p>If you require further assistance, please <a href="https://support.cloudflare.com/hc/en-us/articles/200172476">contact Cloudflare support</a> with your <code>railgun.conf</code> and <code>memcached.conf</code> file for review so that Cloudflare Support is able to troubleshoot further.</p>
+<p></p>
+<hr>
+<h2 id="h_42B1FogDbF5Dmli4IkWfox">Why are Railgun requests showing as Direct?</h2>
+<p>If <code>Cf-Railgun</code> header contains the status <code>direct</code> (and a possible field description), this indicates that Railgun Listener did not handle the request but went directly to the origin web server. </p>
+<p>If a <code>direct</code> status is seen repeatedly, there are two common reasons why this would occur:</p>
+<ol>
+	<li>For a site with low traffic, this typically indicates that Railgun was starting a new connection to the remote rg-listener and that connection wasn't ready yet. Running a second request to test will usually succeed and show compression. </li>
+	<li>For a site with a large amount traffic, this usually indicates that the Listener is not working or cannot be contacted.</li>
+</ol>
+<h3>Troubleshooting Repeated <code>direct</code> Status for Requests</h3>
+<p>When requests are seen as going <code>direct </code>continuously, it is recommended to check the Listener configuration for the following:</p>
+<ol>
+	<li>The Railgun service is running on the server hosting the Listener.</li>
+	<li>Port 2408 is open.</li>
+	<li>Cloudflare IPs are allowed to connect to the Listener server. A list of Cloudflare's IP ranges can be found <a href="https://www.cloudflare.com/ips/">here</a>.</li>
+</ol>
+<h3>
+	<code>direct</code> Status Header Descriptions
+</h3>
+<p>Here are the possible field descriptions, when a request has a Railgun status of direct:</p>
+<p><code>all WAN connections are busy</code></p>
+<p>This status occurs when it is not possible to open any more WAN connection between the Sender and Listener due to the maximum number of WAN connections has been reached and all the WAN connections are busy. The maximum number of WAN connections is set by the rg-sender <code>wan.lanes</code> parameter. In production, this is set to 1,000 connections.</p>
+<p><code>starting new WAN connection</code></p>
+<p>There was no free WAN connection between the Sender and Listener so rather than wait for it to come up the request goes direct. When this happens it's often on a lightly used site and is an optimization to prevent us for waiting for a WAN connection. While this is happening Railgun makes a WAN connection to the remote rg-listener.</p>
+<p><code>waiting for pending WAN connection</code></p>
+<p>Very similar to to 'starting new WAN connection', but indicates that the new connection has already happened, but the Railgun Sender is waiting on rg-listener for the WAN connection that has not been established.</p>
+<p><code>internal error or Internal channel failure</code></p>
+<p>This occurs when there is an internal error with the Railgun Sender at Cloudflare's edge. If this error is being observed in the request headers, please <a href="https://support.cloudflare.com/requests/new">please submit a Support ticket</a> for additional assistance. </p>
+<h3>Intended Behavior</h3>
+<p>Here is a typical sequence of requests where the initial connection establishes the WAN, then subsequent requests are optimized while the WAN is open between the Railgun Sender and Listener:</p>
+<p><code>Cf-Railgun: direct (starting new WAN connection)
+		Cf-Railgun: 6a622d1e98 0.02 0.001751 0030 3350
+		Cf-Railgun: c562e934d3 0.02 0.002268 0030 3350
+		Cf-Railgun: 342a904d9c 0.02 0.002070 0030 3350
+		Cf-Railgun: c3f365ab80 0.02 0.004062 0030 3350</code></p>
+<p>The above pattern in the request stream is normal when using Railgun. If this pattern is being reproduced when testing/debugging, then this means that Railgun is optimizing the site's traffic as intended.</p>
+<hr>
+<h2 id="h_6RA94R33H4UcQklysfVJp">What is the 'Cf-Railgun' Header?</h2>
+<p>Refer to the <code>Cf-Railgun</code> header to confirm Railgun is working properly and to troubleshoot Railgun for your site.</p>
+<p>Here is the formatting for the <code>Cf-Railgun</code> header:</p>
+<p><code>connection-id compression-ratio origin-time flags version</code></p>
+<p>Using the example above for testing Railgun, here is what the header looks like when showing compression:</p>
+<p><code>Cf-Railgun: 4fd1682b12 0.06 0.050570 0031 5360</code></p>
+<p>Connection ID</p>
+<p>The first variable is the connection-id (labeled <code>4fd1682b12</code>), which is the unique ID of the connection between Cloudflare's rg-sender and the customer's rg-listener. Multiple requests share the same ID as it identifies the TLS connection over which the Railgun request was sent.</p>
+<h3>Compression Ratio</h3>
+<p>The second variable is the <code>compression-ratio</code>, which indicates that the content for the request was compressed.</p>
+<p>In this example the resource request was compressed to 0.06% of its original size (99.94% compression achieved for the request).</p>
+<p>If there is an error of some sort, the Compression Ratio is likely to be listed as "normal" or "direct." This means that Railgun's compression was bypassed for one reason or another.</p>
+<p>The presence of the word <i><code>stream</code></i> in place of the compression ratio indicates that compression did not happen but that the request proceeded normally.</p>
+<h3>Origin Time</h3>
+<p>The third variable is the <code>origin-time</code>. This measure represents time in seconds of how long Railgun waits for the origin web server to generate the page. In this example, the origin server took 0.050570 seconds from when the Railgun listener sends the request to the origin to when it responds. If this number is large, then this implies that the web server or database may be hitting a bottleneck that is slowing down its time to render the page.</p>
+<h3>Header Flags</h3>
+<p>The fourth variable in the header are <code>flags</code> that are a word length bitfield that indicates aspects of the Railgun request/response handling. This value can be used to troubleshoot why a request's <code>Cf-Railgun</code> status was <code>normal </code>or <code>direct</code>.</p>
+<p>Typically it is recommend to interpret these flags using the <code>rg-diag</code> utility, which is included with the <a href="https://www.cloudflare.com/resources-downloads">Railgun packages</a>.</p>
+<h3>Version</h3>
+<p>The final variable <code>version</code> is the first four characters of the hash value of the version of the rg-listener in use.</p>
+<p>Railgun's diagnostic tool, rg-diag</p>
+<p>When using the <code>rg-diag</code> tool from the command line, be sure to include the <code>-decode</code> switch to interpret the flag in a request. Here is an example using the header above:</p>
+<p><code>rg-diag -decode 0031</code></p>
+<p>Without using the <code>rg-diag</code> tool, you can look at the flag field as a 4-digit sequence as zzXz. Ignore the z's and focus on the number or letter in the X position. If it is 3,7, B or F then it means Railgun Compression is working correctly.</p>
+<hr>
+<h2 id="h_43l17RS8T8UyefxsHosLJn">Can I use Railgun with an Amazon EC2 setup?</h2>
+<p>Yes. Customers that are on a <a href="https://www.cloudflare.com/plans">Business or Enterprise plan</a> can get <a href="https://aws.amazon.com/marketplace/pp/B00S201BNK?qid=1505833099827&amp;sr=0-1&amp;ref_=srh_res_product_title">Railgun from the AWS Marketplace</a>.</p>
+<hr>
+<h2 id="h_5v1DF7Vr4IOenSfgZXUqZ5">What does 'Activation Failed: Invalid or missing railgun token or tag' mean when starting Railgun?</h2>
+<p>When starting the Railgun service for the first time, you may see the following error:</p>
+<p><code>Starting railgun Error starting Railgun as a daemon. Running in foreground...
+		Error activating: Activation Failed: Invalid or missing railgun token or tag. [fail]</code></p>
+<p>There are two possible causes for this error:</p>
+<ul>
+	<li>The <a href="https://developers.cloudflare.com/railgun/user-guide/set-up/configuration-activation/">railgun.conf</a> file does not have the proper public IP (<code>activation.public_ip</code> or <code>activation.railgun_host</code> in recent versions of Railgun) and/or the activation token (<code>activation.token)</code> configured.</li>
+	<li>There's a chance the Railgun created for the domain <a href="https://www.cloudflare.com/a/account/railgun">in your account</a> was not created properly. Delete it, create a new one, and try again.</li>
+</ul>
+<p>
+	If the issue persists after trying both of these steps, please contact support.</p>

@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:support",
 		"mine:account": "node src/account.js",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:blog": "node src/blog.js",
@@ -40,6 +40,7 @@
 		"mine:product:workers": "node src/products/workers.js",
 		"mine:product:zones": "node src/products/zones.js",
 		"mine:registrar": "node src/registrar.js",
+		"mine:support": "node src/support.js",
 		"mine:types": "node src/types.js",
 		"mine:workerd": "node src/workerd.js",
 		"mine:zt-dashboard": "node src/zt-dashboard.js"
@@ -82,7 +83,7 @@
 		"node-fetch": "3.2.10",
 		"object.pick": "1.3.0",
 		"p-limit": "4.0.0",
-		"pacote": "15.0.2",
+		"pacote": "15.0.3",
 		"psl": "1.9.0",
 		"puppeteer": "19.0.0",
 		"simple-git": "3.14.1",

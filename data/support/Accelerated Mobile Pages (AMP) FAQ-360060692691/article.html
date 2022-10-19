@@ -1,0 +1,59 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4RnNbZ7tbEiN48tXr5YLqP">What is AMP and how can I use it?</a></li>
+		<li><a href="#h_5EcDXhFZbvFH6ziZqoibBU">How can I validate an AMP enabled page?</a></li>
+		<li><a href="#h_6AUndVoC3BaLPTQLD7k99a">Can I use WordPress with AMP?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4RnNbZ7tbEiN48tXr5YLqP">What is AMP and how can I use it?</h2>
+<p>Accelerated Mobile Pages (AMP) are static pages that are rendered very quickly tailored towards mobile users. AMP uses a stricter flavor of HTML in order for mobile browsers to load faster. Please note that a standard web page isn't AMP compatible by default; your web page must be written in compliance with the AMP format.  Domains on <a href="https://support.cloudflare.com/hc/articles/360020348832">Cloudflare CNAME setups</a> cannot utilize AMP Real URL. As a workaround, you can add the following CAA records in your authoritative DNS (the example below assumes that Cloudflare has issued a certificate from Digicert CA):</p>
+<p></p>
+<pre>example.com IN CAA issue "digicert.com; cansignhttpexchanges=yes"
+example.com IN CAA issuewild "digicert.com; cansignhttpexchanges=yes"</pre>
+<p>
+	Helpful background on AMP:</p>
+<ul>
+	<li><a href="https://www.ampproject.org/learn/about-amp/">What is AMP?</a></li>
+	<li><a href="https://www.ampproject.org/learn/how-amp-works/">How does AMP work?</a></li>
+	<li><a href="https://www.ampproject.org/docs/get_started/create">How do I create an AMP page?</a></li>
+	<li><a href="https://amp.dev/documentation/guides-and-tutorials/optimize-and-measure/publishing_checklist/">How do I publish an AMP enabled article?</a></li>
+</ul>
+<p>Things to remember:</p>
+<ul>
+	<li><a href="https://www.ampproject.org/docs/guides/validate">Validate your AMP page</a></li>
+	<li><a href="https://www.ampproject.org/docs/guides/discovery">Make sure that your AMP page is discoverable</a></li>
+	<li>AMP will only appear for external links</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_5EcDXhFZbvFH6ziZqoibBU">How can I validate an AMP enabled page?</h2>
+<p>Accelerated Mobile Pages require a particular structure to enable AMP features. If you'd like to know about creating an AMP enabled page, you can find out more at <a href="https://www.ampproject.org/docs/get_started/create">AMP Project's - Create your first AMP page</a>.</p>
+<p>Validate your existing AMP enabled pages in one of three ways:</p>
+<ul>
+	<li>
+		<b>Using AMPProject.org Validation</b> - Enter your URL through an AMP validator to look for warnings and/or errors:<a href="https://validator.ampproject.org/"> Validate your AMP page</a>
+	</li>
+</ul>
+<ul>
+	<li>
+		<b>Using Chrome Developer Tool</b>s - Validate your AMP enabled pages through Chrome Developer Tools:
+	</li>
+</ul>
+<ol>
+	<li>Open your AMP page in your browser</li>
+	<li>Append "#development=1" to the URL, for example, http://localhost:8000/amp.html#development=1.</li>
+	<li>Open the <a href="https://developers.google.com/web/tools/chrome-devtools/debug/console/">Chrome DevTools console</a> and check for validation errors.</li>
+</ol>
+<ul>
+	<li>
+		<b>Using Browser Extensions</b> - AMP validator browser extensions are available for <a href="https://chrome.google.com/webstore/detail/amp-validator/nmoffdblmcmgeicmolmhobpoocbbmknc">Chrome</a> and <a href="https://addons.opera.com/en-gb/extensions/details/amp-validator/">Opera</a>.
+	</li>
+</ul>
+<p>Learn more about all of these tools and how to fix certain validation errors at <a href="https://www.ampproject.org/docs/guides/validate">AMP Project validation options</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_6AUndVoC3BaLPTQLD7k99a">Can I use WordPress with AMP?</h2>
+<p>Yes! Accelerated Mobile Pages are designed to speed up external AMP enabled articles on your Cloudflare enabled site. If you have a WordPress site and would like to make it AMP enabled, the <a href="https://en-gb.wordpress.org/plugins/amp/">WordPress AMP Plugin</a> will do this automatically.</p>
+<p>Once you've installed the plugin, test the functionality by adding <code>?amp=1 </code>to the end of your WordPress URL (For example: https://example.com/2016/01/01/amp-on/?amp=1).</p>

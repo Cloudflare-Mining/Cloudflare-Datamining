@@ -1,0 +1,11 @@
+<p><i></i></p>
+<hr>
+<h2 id="h_6DKMdB86AaWBtbw98OKFbA">Overview</h2>
+<p>Matomo (formerly Piwik) works well behind all proxies, load balancers, which are used to make websites faster, secure and more resilient.
+
+	If you wish to use Matomo on your server hosted behind Cloudflare:</p>
+<p>1. Restore the real IP addresses of visitors to populate through to logs, stats, and more. Either <a href="https://support.cloudflare.com/hc/articles/200170786">restore these IP addresses</a> yourself or ask your hosting provider to do it for you.
+
+	If this is not installed you will only see the default IP addresses that belong to Cloudflare in your Matomo visitor logs.</p>
+<p>2. In your Cloudflare domain, go to <b>Speed &gt; Optimization</b> and make sure that <b>Rocket Loader</b> is set to <b>Off</b>.</p>
+<p>Matomo should then work on your server installed behind Cloudflare proxies. If you have any question, you can get <a href="https://community.cloudflare.com/">free support in Cloudflare forums</a> or in the <a href="https://forum.matomo.org/">Matomo forums</a>.</p>

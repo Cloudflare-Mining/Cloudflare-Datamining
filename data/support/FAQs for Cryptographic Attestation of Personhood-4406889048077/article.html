@@ -1,0 +1,189 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_7MYgl4eV2bFrZ3Q16upJ56">Overview</a></li>
+		<li><a href="#h_2vw9kc9HH8GBrgzUCn7qn4">Privacy questions</a></li>
+		<li><a href="#h_16OGl1pu5javVk3m408rPU">How does Cryptographic Attestation of Personhood work?</a></li>
+		<li><a href="#allowed-devices">What devices are and are not allowed?</a></li>
+		<li><a href="#h_2pgAOjzBegZxRsFmIdxmaM">Can hackers bypass the Cryptographic Attestation of Personhood?</a></li>
+		<li><a href="#h_1lppEHii2IE69ZbKXYgUYy">What happens if I lose my key?</a></li>
+		<li><a href="#h_6i6zcrm3IrAxXqF1kh93aI">What are the common error codes and what do they mean?</a></li>
+		<li><a href="#h_5NA8G8TpwOwQIAUq6JY019">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_7MYgl4eV2bFrZ3Q16upJ56">Overview</h2>
+<p>Cloudflare recently released an <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/"><u>alternative</u></a> to CAPTCHA authentication, the Cryptographic Attestation of Personhood (CAP).</p>
+<p>CAP lets you prove that you are a legitimate website visitor by touching a hardware key, instead of solving a CAPTCHA puzzle.</p>
+<p>This article provides answers to common questions about usability and privacy concerns.</p>
+<p>You can also test out CAP by going to the <a href="https://cloudflarechallenge.com/">demo site</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_2vw9kc9HH8GBrgzUCn7qn4">Privacy questions</h2>
+<p>The answer to most privacy concerns are summarized in this table:</p>
+<p></p>
+<table>
+	<tbody>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>
+					<strong>Property</strong>
+				</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>
+					<strong>Cloudflare could</strong>
+				</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>
+					<strong>Cloudflare does</strong>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Collect biometrics (fingerprints or face pictures)</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>
+					No
+				</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>N/A</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>
+					Collect information about your hardware authenticator
+				</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>
+					Yes, limited to the number of keys in your batch
+				</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>
+					Yes, when available
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Does Cloudflare collect biometrics (my fingerprint or a picture of my face)?</div>
+	<div class="dropdown-content">
+		<p>No, Cloudflare cannot collect biometrics. Our CAP process uses the WebAuthn API, which prevents the collection of <a href="https://www.w3.org/TR/webauthn-2/#sctn-biometric-privacy"><u>biometrics by default</u></a>. When your device asks for a biometric authentication — such as via a fingerprint sensor — it all happens locally. </p>
+		<p>As such, we never see your biometric data: that remains on your device. Once your device confirms a match, it sends only a basic attestation message. In effect, your device sends a message proving “yes, someone correctly entered a fingerprint on this trustworthy device” and never sends the fingerprint itself.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Does Cloudflare collect data about my hardware key?</div>
+	<div class="dropdown-content">
+		<p>Yes, Cloudflare does collect a limited amount of data about your key. We store the manufacturer of your key and batch identifier (<a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation"><u>minimum of 100,000</u></a> keys per batch) for verification purposes. From our perspective, your key looks like all other keys in the batch.</p>
+		<p>Some self-signed keys and keys from certain manufacturers have been found to <a href="https://www.chromium.org/security-keys"><u>not meet this requirement</u></a> and should be avoided if you are minimizing your online privacy risk.</p>
+	</div>
+</div>
+<hr>
+<h2 id="h_16OGl1pu5javVk3m408rPU">How does Cryptographic Attestation of Personhood work?</h2>
+<p>For more details on how we set up Cryptographic Attestation of Personhood, see the <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/"><u>introductory blog post</u></a>.</p>
+<hr>
+<h2 id="allowed-devices">What devices are and are not allowed?</h2>
+<h3>Allowed devices</h3>
+<p>CAP supports a wide variety of hardware authenticators:</p>
+<ul>
+	<li>
+		<b>Roaming (cross-platform) authenticators</b>:<ul>
+			<li>
+				<i>Supported</i>: All security keys found in the <a href="https://fidoalliance.org/metadata/">FIDO Metadata Service 3.0</a>, unless they have been revoked for security reasons.
+			</li>
+			<li>
+				<i>Examples</i>: YubiKeys, HyperFIDO keys, Thetis FIDO U2F keys
+			</li>
+		</ul>
+	</li>
+	<li>
+		<b>Platform authenticators:</b>
+		<ul>
+			<li>
+				<i>Examples</i>: Apple Touch ID and Face ID on iOS mobile devices and MacOS laptops; Android mobile devices with fingerprint readers; Windows Hello
+			</li>
+		</ul>
+	</li>
+</ul>
+<h3>Known limitations</h3>
+<p>Most combinations of of web browsers and WebAuthn-capable authenticators will work, but there are some known compatibility issues with WebAuthn attestation that may prevent CAP from working successfully:</p>
+<ul>
+	<li>
+		<b>Basic CAP</b>:<ul>
+			<li>
+				<i>MacOS desktop</i>: For TouchID, browser must be Safari
+			</li>
+			<li>
+				<i>Android</i>: Browser must be Chrome
+			</li>
+		</ul>
+	</li>
+	<li>
+		<b>CAP with Zero-Knowledge Proof</b>:<ul>
+			<li>
+				<i>Apple platform authenticators </i>(e.g., iPhone with Touch ID/Face ID) are incompatible with the <a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">zero-knowledge proof system</a>. If this fails, you will immediately be redirected to basic CAP route without having to take any further action. Since Apple uses a privacy-preserving <a href="https://www.w3.org/TR/webauthn/#sctn-apple-anonymous-attestation"><u>Apple Anonymous Attestation</u></a> to show that an authenticator is valid while blocking tracking, this method maintains a high standard of privacy.
+			</li>
+		</ul>
+	</li>
+</ul>
+<p>We are updating this list as the ecosystem evolves and as we continue to test different combinations.</p>
+<hr>
+<h2 id="h_2pgAOjzBegZxRsFmIdxmaM">Can hackers bypass the Cryptographic Attestation of Personhood?</h2>
+<p>CAP is one of many techniques to identify and block bots. To date, we have seen some attempts to test CAP’s security system, such as <a href="https://betterappsec.com/building-a-webauthn-click-farm-are-captchas-obsolete-bfab07bb798c"><u>one thoughtfully-executed, well-documented test</u></a>. The blog post discussing the test specifically calls out that this method does not break the Cloudflare threat model.</p>
+<p>This does not mean that CAP is broken, but rather shows that it raises the cost of an attack over the current CAPTCHA model.</p>
+<hr>
+<h2 id="h_1lppEHii2IE69ZbKXYgUYy">What happens if I lose my key?</h2>
+<p>If you do not have the necessary hardware (such as a Yubikey), you can still solve a regular CAPTCHA challenge (e.g., selecting pictures).</p>
+<hr>
+<h2 id="h_6i6zcrm3IrAxXqF1kh93aI">What are the common error codes and what do they mean?</h2>
+<ul>
+	<li>
+		<b>Unsupported_att_fmt</b>: <ul>
+			<li>
+				<i>Cause</i>: Your authenticator is using an unsupported attestation format (combination of browser and key). Also occurs when you use <i>Firefox</i> and select the option to "anonymise your key".
+			</li>
+			<li>
+				<i>Solution: </i>If this error occurs during <a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">zero-knowledge version of CAP</a>, you will automatically be redirected to the basic CAP flow. If basic CAP fails, try a different combination of supported hardware device and browser or opt for a CAPTCHA.
+			</li>
+		</ul>
+	</li>
+	<li>
+		<b>Unsupported_issuer</b>: <ul>
+			<li>
+				<i>Cause</i>: Your key is currently not supported.
+			</li>
+			<li>
+				<i>Solution</i>: Use a <a href="https://support.cloudflare.com/hc/articles/4406889048077#allowed-devices">supported key</a>.
+			</li>
+		</ul>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_5NA8G8TpwOwQIAUq6JY019">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://cloudflarechallenge.com/">https://cloudflarechallenge.com</a> (demo site)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/">Introducing Cryptographic Attestation of Personhood</a> (blog)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/cap-expands-support/">Expanding Crypotgraphic Attestation of Personhood</a> (blog)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">Introducing Zero-Knowledge Proofs</a> (blog)
+	</li>
+</ul>
+<p></p>

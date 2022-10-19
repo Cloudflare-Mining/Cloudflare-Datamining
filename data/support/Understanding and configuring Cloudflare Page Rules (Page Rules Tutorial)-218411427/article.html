@@ -1,0 +1,750 @@
+<p><i>Page Rules trigger certain actions whenever a request matches one of the URL patterns you define. Learn to create and edit page rules and understand the different settings available.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_5a7SkOsNo5d5LE7e9IRiz">Overview</a></li>
+		<li><a href="#h_7rzfw5kI8cqu4VKur6Mnur">Before getting started</a></li>
+		<li><a href="#h_38Gq7mduJiXIjpVLxp3q19">Create a page rule</a></li>
+		<li><a href="#h_2WLkFHGqwlRgnZg3i0fl9I">Edit a page rule</a></li>
+		<li><a href="#h_6N5SySNYCjYUUnCKnC1Ea6">Understand wildcard matching and referencing</a></li>
+		<li><a href="#h_18YTlvNlZET4Poljeih3TJ">Summary of Page Rules Settings</a></li>
+		<li><a href="#h_5lzcszkjqrZ2bZpZOtMQoP">Known Issues</a></li>
+		<li><a href="#h_2VORFoOUImLy7rpTgEWYLM">Additional details</a></li>
+		<li><a href="#h_7hlLS0cORjDJ2NCQqZTp8X">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_5a7SkOsNo5d5LE7e9IRiz">Overview</h2>
+<p>You can define a page rule to trigger one or more actions whenever a certain URL pattern is matched. Page Rules are available in the <b>Rules</b> app, in the <b>Page Rules</b> tab.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Page Rules require a "<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records">proxied</a>" DNS record for your page rule to work. Page Rules won't apply to hostnames that don't exist in DNS or aren't being directed to Cloudflare.
+</div>
+<p>The default number of allowed page rules depends on the domain plan as shown below.
+
+</p>
+<table style="width: 100%;">
+	<thead>
+		<tr>
+			<td class="wysiwyg-text-align-left"><strong>Plan</strong></td>
+			<td><strong>Page rules allowed</strong></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<p>Free</p>
+			</td>
+			<td>
+				<p>3</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Pro</p>
+			</td>
+			<td>
+				<p>20</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Business</p>
+			</td>
+			<td>
+				<p>50</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Enterprise</p>
+			</td>
+			<td>
+				<p>125</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>You can <a href="https://www.cloudflare.com/features-page-rules/">purchase additional rules</a> (up to a maximum of 100) for domains in the Free, Pro, and Business plans.</p>
+<hr>
+<h2 id="h_7rzfw5kI8cqu4VKur6Mnur">Before getting started</h2>
+<p>It is important to understand two basic Page Rules behaviors: </p>
+<ul>
+	<li>Only the highest priority matching page rule takes effect on a request.</li>
+	<li>Page rules are prioritized in descending order in the Cloudflare dashboard, with the highest priority rule at the top.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Cloudflare recommends ordering your rules from most specific to least specific.
+</div>
+<p>A page rule matches a URL pattern based on the following format (comprised of five segments): &lt;scheme&gt;://&lt;hostname&gt;&lt;:port&gt;/&lt;path&gt;?&lt;query_string&gt;
+</p>
+<p>
+	An example URL with these four segments looks like:
+</p>
+<pre>https://www.example.com:443/image.png?parameter1=value1</pre>
+<p>The <i>scheme</i> and <i>port </i>segments are optional. If omitted, <i>scheme</i> matches both<i> http://</i> and <i>https://</i> protocols. If no <i>port</i> is specified, the rule will match all ports.</p>
+<p>Finally, you can disable a page rule at any time. While a rule is disabled, actions won’t trigger, but the rule still appears in the <b>Rules</b> app in the <b>Page Rules</b> tab, is editable, and counts against the number of rules allowed for your domain. The <i>Save as Draft </i>option creates a page rule that is disabled by default.</p>
+<hr>
+<h2 id="h_38Gq7mduJiXIjpVLxp3q19">Create a page rule</h2>
+<p>The steps to create a page rule are:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Select the domain where you want to add the page rule.</li>
+	<li>Click the <b>Rules</b> app.</li>
+	<li>In the <b>Page Rules </b>tab<b>, </b>click <b>Create Page Rule</b>. The<i> Create Page Rule for &lt;your domain&gt;</i> dialog opens.</li>
+	<li>Under <b>If the URL matches</b>, enter the URL or URL pattern that should match the rule. <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-#h_6N5SySNYCjYUUnCKnC1Ea6"><i>Learn more about wildcard matching</i></a>
+	</li>
+	<li>Next, under <b>Then the settings are:</b> click <b>+ Add a Setting</b> and select the desired setting from the dropdown. You can include more than one setting per rule. Learn more about settings in the <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-#h_18YTlvNlZET4Poljeih3TJ">summary below</a>.</li>
+	<li>In the <b>Order</b> dropdown, specify the desired order: <i>First, Last</i> or <i>Custom</i>.</li>
+	<li>To save, click one of the following options:<ul>
+			<li>
+				<b>Save as Draft </b>to save the rule and leave it disabled.
+			</li>
+			<li>
+				<b>Save and Deploy </b>to save the rule and enable it immediately.
+			</li>
+		</ul>
+	</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<strong>Note:</strong> We do not support non-ASCII characters (e.g. punycode/unicode domain) in Page Rules. Instead, you could URL-encode the string using <a href="https://www.punycoder.com/" title="Punycode converter">Punycode converter</a>, for example, and this will work.
+</div>
+<div class="cf-sidebar-2 cf-tip">Consult <a href="https://support.cloudflare.com/hc/en-us/articles/224509547" title="Recommended Page Rules to Consider">Recommended Page Rules to Consider</a> for ideas about the types of page rules you can create.
+</div>
+<hr>
+<h2 id="h_2WLkFHGqwlRgnZg3i0fl9I">Edit a page rule</h2>
+<p>To modify an existing rule:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Select the domain where you want to edit your page rule.</li>
+	<li>Click the <b>Rules</b> app.</li>
+	<li>In the <b>Page Rules </b>tab,<b> </b>locate the rule to edit.</li>
+	<li>Proceed to make the necessary changes, as follows: <ul>
+			<li>To enable or disable a rule, click the <b>On/Off </b>toggle.</li>
+			<li>To modify the URL pattern, settings, and order, click the <b>Edit </b>button (wrench icon). In the dialog, enter the information you’d like to change.</li>
+			<li>To remove a rule, click the <b>Delete </b>button (x icon) and confirm by clicking <b>OK </b>in the <b>Confirm </b>dialog.</li>
+		</ul>
+	</li>
+</ol>
+<p>
+
+</p>
+<hr>
+<h2 id="h_6N5SySNYCjYUUnCKnC1Ea6">Understand wildcard matching and referencing</h2>
+<p>You can use the asterisk (*) in any URL segment to match certain patterns. For example,
+</p>
+<pre>example.com/t*st</pre>
+Would match:
+<pre>example.com/test
+example.com/toast
+example.com/trust</pre>
+<p><i>example.com/foo/*</i> does not match example.com/foo.  However, <i>example.com/foo*</i> does.</p>
+<h3>Helpful tips</h3>
+<ul>
+	<li>To match both <i>http </i>and <i>https</i>, just write <i>example.com</i>. It is not necessary to write <i>*example.com</i>.</li>
+	<li>To match every page on a domain, write <i>example.com/*</i>. Just writing <i>example.com </i>won’t work.</li>
+	<li>To match every page on a domain and it's subdomains, write *<i>example.com/*</i>. Just writing <i>example.com </i>won’t work.</li>
+	<li>A wildcard (*) in a Page Rule URL will match even if no characters are present, and may include any part of the URL, including the query string.</li>
+</ul>
+<h3>Referencing wildcard matches</h3>
+<p>You can reference a matched wildcard later using the <i>$X</i> syntax. <i>X</i> indicates the index of a glob pattern. As such, $1 represents the first wildcard match, $2 the second wildcard match, and so on.</p>
+<p>This is specifically useful with the <i>Forwarding URL</i> setting. For example:</p>
+<p>You could forward:
+</p>
+<pre>http://*.example.com/*</pre>
+to:
+<pre>http://example.com/images/$1/$2.jpg</pre>
+This rule would match:
+<pre>http://cloud.example.com/flare.jpg</pre>
+which ends up being forwarded to:
+<pre>http://example.com/images/cloud/flare.jpg</pre>
+To use a literal <i>$</i> character in the forwarding URL, escape it by adding a backslash (\) in front: <i>\$</i>.
+
+<div class="cf-sidebar-2 cf-warning">Avoid creating a redirect where the domain points to itself as the destination. This can cause an infinite redirect error and your site cannot be served to visitors.
+</div>
+<hr>
+<h2 id="h_18YTlvNlZET4Poljeih3TJ">Summary of Page Rules Settings</h2>
+<p>Settings control the action Cloudflare takes once a request matches the URL pattern defined in a page rule. You can use settings to enable and disable multiple Cloudflare features across several of the dashboard apps. Note that:</p>
+<ul>
+	<li>Some settings require a Pro, Business or Enterprise domain plan.</li>
+	<li>You can specify more than one setting to apply when the rule triggers.</li>
+</ul>
+<p>Below is the full list of settings available, presented in the order that they appear in the <b>Cloudflare Page Rules</b> UI.</p>
+<p></p>
+<div class="table-responsive">
+	<table>
+		<thead>
+			<tr>
+				<td>
+					<p><strong>Setting</strong></p>
+				</td>
+				<td>
+					<p><strong>Description</strong></p>
+				</td>
+				<td>
+					<p><strong>Plans</strong></p>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<p>Always Use HTTPS</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong><a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">Always Use HTTPS</a></strong> feature of the <strong>Edge Certificates</strong> tab in the <strong>Cloudflare SSL/TLS</strong> app. If enabled, any <em>http://</em> URL is converted to<em> https://</em> through a 301 redirect.</p>
+					<p>If this option does not appear, you do not have an active <strong>Edge Certificate</strong>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Auto Minify</p>
+				</td>
+				<td>
+					<p>Indicate which file extensions to minify automatically. <a href="https://support.cloudflare.com/hc/articles/200168196">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Automatic HTTPS Rewrites</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong>Cloudflare Automatic HTTPS Rewrites</strong> feature of the <strong>Edge Certificates</strong> tab in <strong>Cloudflare SSL/TLS</strong> app. <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Browser Cache TTL</p>
+				</td>
+				<td>
+					<p>Control how long resources cached by client browsers remain valid. The Cloudflare UI and API both prohibit setting <strong>Browser Cache TTL</strong> to <em>0</em> for non-Enterprise domains. <a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Browser Integrity Check</p>
+				</td>
+				<td>
+					<p>Inspect the visitor's browser for headers commonly associated with spammers and certain bots. <a href="https://support.cloudflare.com/hc/articles/200170086">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bypass Cache on Cookie</p>
+				</td>
+				<td>
+					<p>Bypass Cache and fetch resources from the origin server if a regular expression matches against a cookie name present in the request.</p>
+					<p>If you add both this setting and the <em>Cache On Cookie</em> setting to the same page rule, <em>Cache On Cookie</em> takes precedence over <em>Bypass Cache on Cookie</em>.</p>
+					<p><em>See Additional details below to learn about limited regular expression support.</em></p>
+				</td>
+				<td>
+					<ul>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cache By Device Type</p>
+				</td>
+				<td>
+					<p>Separate cached content based on the visitor’s device type. <a href="https://developers.cloudflare.com/cache/how-to/create-page-rules#cache-by-device-type-enterprise-only">Learn more.</a></p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cache Deception Armor</p>
+				</td>
+				<td>
+					<p>Protect from web cache deception attacks while still allowing static assets to be cached. This setting verifies that the URL's extension matches the returned <em>Content-Type</em>. <a href="https://developers.cloudflare.com/cache/about/cache-deception-armor">Learn more.</a></p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cache Key</p>
+				</td>
+				<td>
+					<p>Also referred to as <em>Custom Cache Key</em>.</p>
+					<p>Control specifically what variables to include when deciding which resources to cache. This allows customers to determine what to cache based on something other than just the URL. <a href="https://developers.cloudflare.com/cache/about/cache-keys">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cache Level</p>
+				</td>
+				<td>
+					<p>Apply custom caching based on the option selected:<br><br><strong>Bypass </strong><span style="font-weight: 400;">-</span> <span style="font-weight: 400;">Cloudflare</span> <span style="font-weight: 400;">does not cache.</span></p>
+					<p><span style="font-weight: 400;"><strong>No Query String</strong> - Delivers resources from cache when there is no query string.</span></p>
+					<p><strong>Ignore Query String </strong><span style="font-weight: 400;">- Delivers the same resource to everyone independent of the query string.</span></p>
+					<p><span style="font-weight: 400;"><strong>Standard - </strong>Caches all static content that has a query string.</span></p>
+					<p><strong>Cache Everything </strong><span style="font-weight: 400;">-  Treats all content as static and caches all file types beyond the </span><a href="https://developers.cloudflare.com/cache/about/default-cache-behavior#default-cached-file-extensions"><span style="font-weight: 400;">Cloudflare default cached content</span></a><span style="font-weight: 400;">.  Respects cache headers from the origin web server unless </span><strong>Edge Cache TTL</strong><span style="font-weight: 400;"> is also set in the Page Rule. When </span><span style="font-weight: 400;">combined with an <strong>Edge Cache TTL</strong> &gt; <em>0</em>,<em> </em></span><span style="font-weight: 400;"><strong>Cache Everything </strong>removes cookies from the origin web server response. </span><span style="font-weight: 400;"><br></span></p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cache on Cookie</p>
+				</td>
+				<td>
+					<p>Apply the <em>Cache Everything</em> option (<em>Cache Level </em>setting) based on a regular expression match against a cookie name.</p>
+					<p>If you add both this setting and <em>Bypass Cache on Cookie</em> to the same page rule, <em>Cache On Cookie</em> takes precedence over <em>Bypass Cache on Cookie</em>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<td>
+				<p>Cache TTL by Status Code</p>
+			</td>
+			<td>
+				<p>Enterprise customers can set cache time-to-live (TTL) based on the response status from the origin web server. Cache TTL refers to the duration of a resource in the Cloudflare network before being marked as stale or discarded from cache. Status codes are returned by a resource’s origin.
+					 
+					Setting cache TTL based on response status overrides the default cache behavior (standard caching) for static files and overrides cache instructions sent by the origin web server. To cache non-static assets, set a Cache Level of Cache Everything using a Page Rule . Setting no-store Cache-Control or a low TTL (using max-age/s-maxage) increases requests to origin web servers and decreases performance. <a href="https://support.cloudflare.com/hc/en-us/articles/360043842472-Configuring-cache-TTL-by-status-code">Learn more</a>.</p>
+			</td>
+			<td>
+				<ul>
+					<li>Enterprise</li>
+				</ul>
+			</td>
+
+			<tr>
+				<td>
+					<p>Disable Apps</p>
+				</td>
+				<td>
+					<p>Turn off all active <strong>Cloudflare Apps</strong>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Disable Performance</p>
+				</td>
+				<td>
+					<p>Turn off:</p>
+					<ul>
+						<li><a href="https://support.cloudflare.com/hc/articles/200168196">Auto Minify</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/200168056">Rocket Loader</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/200403554">Mirage</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/360000607372">Polish</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Disable Railgun</p>
+				</td>
+				<td>
+					<p>Turn off the <strong>Railgun</strong> feature of the Cloudflare<strong> Speed</strong> app.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Disable Security</p>
+				</td>
+				<td>
+					<p>Turn off:</p>
+					<ul>
+						<li><a href="https://support.cloudflare.com/hc/articles/200170016">Email Obfuscation</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/115001635128">Rate Limiting (previous version)</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/200171036">Scrape Shield</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/200170036">Server Side Excludes</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/115001595131">URL (Zone) Lockdown</a></li>
+						<li><a href="https://support.cloudflare.com/hc/articles/200172016">WAF managed rules (previous version)</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Edge Cache TTL</p>
+				</td>
+				<td>
+					<p>Specify how long to cache a resource in the Cloudflare edge network. <em><span style="font-weight: 400;">Edge Cache TTL </span></em><span style="font-weight: 400;"> isn't visible in response headers.  The minimum </span><em><span style="font-weight: 400;">Edge Cache TTL </span></em><span style="font-weight: 400;"> depends on plan type:</span></p>
+					<p><span style="font-weight: 400;">Free - 2 hours<br>Pro - 1 hour<br>Business - 1 second<br>Enterprise - 1 second</span></p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Email Obfuscation</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong>Cloudflare Email Obfuscation</strong> feature of the <strong>Cloudflare Scrape Shield</strong> app. <a href="https://support.cloudflare.com/hc/articles/200170016">Learn more.</a></p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Forwarding URL</p>
+				</td>
+				<td>
+					<p>Redirects one URL to another using an <em>HTTP 301/302 redirect</em>. <em>See <a href="https://support.cloudflare.com/hc/articles/218411427#h_6N5SySNYCjYUUnCKnC1Ea6">Understand wildcard matching and referencing above</a>.</em></p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Host Header Override</p>
+				</td>
+				<td>
+					<p>Apply a specific host header. <a href="https://support.cloudflare.com/hc/articles/206652947">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>IP Geolocation Header</p>
+				</td>
+				<td>
+					<p>Cloudflare adds a <em>CF-IPCountry</em> HTTP header containing the country code that corresponds to the visitor.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Mirage</p>
+				</td>
+				<td>
+					<p>Turn on or off <strong>Cloudflare Mirage</strong> of the Cloudflare<strong> Speed</strong> app. <a href="https://support.cloudflare.com/hc/articles/200403554">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Pro</li>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Opportunistic Encryption</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong>Cloudflare Opportunistic Encryption</strong> feature of the <strong>Edge Certificates</strong> tab in the Cloudflare<strong> SSL/TLS</strong> app. <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>Origin Cache Control</td>
+				<td>
+					<a href="https://developers.cloudflare.com/cache/about/cache-control">Origin Cache Control</a> is enabled by default for Free, Pro, and Business domains and disabled by default for Enterprise domains.
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Origin Error Page Pass-thru</p>
+				</td>
+				<td>
+					<p>Turn on or off Cloudflare error pages generated from issues sent from the origin server. If enabled, this setting triggers error pages issued by the origin.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Polish</p>
+				</td>
+				<td>
+					<p>Apply options from the <strong>Polish</strong> feature of the Cloudflare<strong> Speed</strong> app. <a href="https://developers.cloudflare.com/images/polish">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Pro</li>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Query String Sort</p>
+				</td>
+				<td>
+					<p>Turn on or off the reordering of query strings. When query strings have the same structure, caching improves. <a href="https://support.cloudflare.com/hc/articles/206776797">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Resolve Override</p>
+				</td>
+				<td>
+					<p>Change the origin address to the value specified in this setting. <a href="https://support.cloudflare.com/hc/articles/206190798">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Respect Strong ETags</p>
+				</td>
+				<td>
+					<p>Turn on or off byte-for-byte equivalency checks between the Cloudflare cache and the origin server. <a href="https://support.cloudflare.com/hc/articles/218505467">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Response Buffering</p>
+				</td>
+				<td>
+					<p>Turn on or off whether Cloudflare should wait for an entire file from the origin server before forwarding it to the site visitor. By default, Cloudflare sends packets to the client as they arrive from the origin server.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Rocket Loader</p>
+				</td>
+				<td>
+					<p>Turn on or off <strong>Cloudflare Rocket Loader </strong>in the Cloudflare<strong> Speed</strong> app<strong>. </strong><a href="https://support.cloudflare.com/hc/articles/200168056">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security Level</p>
+				</td>
+				<td>
+					<p>Control options for the <strong>Security Level</strong> feature from the<strong> Security</strong> app. <a href="https://support.cloudflare.com/hc/articles/200170056">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Server Side Excludes</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong>Server Side Excludes</strong> feature of the Cloudflare<strong> Scrape Shield</strong> app. <a href="https://support.cloudflare.com/hc/articles/200170036">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SSL</p>
+				</td>
+				<td>
+					<p>Control options for the <strong>SSL</strong> feature of the <strong>Edge Certificates</strong> tab in the Cloudflare<strong> SSL/TLS</strong> app. <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>All</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>True Client IP Header</p>
+				</td>
+				<td>
+					<p>Turn on or off the <strong>True-Client-IP Header</strong> feature of the Cloudflare<strong> Network</strong> app. <a href="https://support.cloudflare.com/hc/articles/206776727">Learn more</a>.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Web Application Firewall (previous version)</p>
+				</td>
+				<td>
+					<p>Turn on or off <strong>WAF managed rules</strong> as defined in <strong>Security</strong> &gt; <strong>WAF</strong> &gt; <strong>Managed rules</strong>. <a href="https://support.cloudflare.com/hc/articles/200172016">Learn more</a>.</p>
+					<p>You cannot enable or disable individual WAF managed rules via page rules.</p>
+				</td>
+				<td>
+					<ul>
+						<li>Pro</li>
+						<li>Business</li>
+						<li>Enterprise</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<hr>
+<h2 id="h_5lzcszkjqrZ2bZpZOtMQoP">Known Issues</h2>
+<p><b>Page Rule configuration issue leading to "</b><b><i>Error 500 (Internal server error)</i></b><b>"</b></p>
+<p><b>Root cause</b>: This may be due to a configuration issue on a Page Rule. When creating a Page Rule that uses two wildcards, like a <i>Forwarding URL</i> rule, it is possible to create a rule that mentions the second wildcard with the $2 placeholder. See example below:</p><img src="https://images.ctfassets.net/slt3lc6tev37/6RmJbcB9v0SytodKmm6Sv9/de06e591cc4b152539058387a5566602/page-rule-create.png" alt="Example Page Rule configuration with two wildcards. The forwarding URL contains a $2 placeholder, which will be replaced with the content matched by the second " wildcard.>
+<p>When updating the same rule, you can remove one of the wildcard in the <b>If the URL matches </b>field and save it. See example below:</p><img src="https://images.ctfassets.net/slt3lc6tev37/6YjSl5dIsnQBjXMRDQPzUd/7ade8103b8c48e7c912641b8619f41bb/page-rule-update.png" alt="Incorrect Page Rule configuration with a single wildcard, but still using the $2 placeholder in the forwarding URL. This configuration causes " error server when a url triggers this page rule.>
+<p>If you do so, the $2 placeholder reference a wildcard that does not exist anymore, and as such, an "<i>Error 500 (Internal server error)"</i> is thrown when a URL triggers the page rule.</p>
+<p><b>Resolution</b>: Update the Page Rule and remove the reference <i>$2</i> to the second wildcard. If there is only one wildcard, then only <i>$1</i> can be used.</p>
+<hr>
+<h2 id="h_2VORFoOUImLy7rpTgEWYLM">Additional details</h2>
+<h3>Bypass Cache on Cookie setting</h3>
+<p>This setting is available to business and enterprise customers.</p>
+<p>The <b>Bypass Cache on Cookie</b> setting supports basic regular expressions (regex) as follows:</p>
+<ul>
+	<li>A pipe operator (represented by |) to match multiple cookies using <i>OR </i>boolean logic. For example, bypass=.*<i>|PHPSESSID=.* </i>would bypass the cache if either a cookie called bypass or PHPSESSID were set, regardless of the cookie's value.</li>
+	<li>The wildcard operator (represented by .*), such that a rule value of “t.*st=” would match both a cookie called test and one called teeest.</li>
+</ul>
+<p>Limitations include:</p>
+<ul>
+	<li>150 chars per cookie regex</li>
+	<li>12 wildcards per cookie regex</li>
+	<li>1 wildcard in between each | in the cookie regex</li>
+</ul>
+<p>To learn how to configure <b>Bypass Cache on Cookie</b> with a variety of platforms, review these articles:</p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/236168808">Caching Anonymous Page Views with Magento 1 and Magento 2</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">How do I cache static HTML?</a></li>
+</ul>
+<p><b>Note: </b>If you add both this setting and the enterprise-only <i>Cache On Cookie</i> setting to the same page rule, <i>Cache On Cookie</i> takes precedence over <i>Bypass Cache on Cookie</i>.</p>
+<h3>Zone name occurrences must end with a slash</h3>
+<p>When saving a Page Rule, Cloudflare will ensure that there is a slash after each occurrence of the current zone name in the <b>If the URL matches</b> field. For example, if the current zone name is <code>example.com</code>, then:</p>
+<ul>
+	<li>
+		<code>example.com</code> will be saved as <code>example.com/</code>
+	</li>
+	<li>
+		<code>example.com/path/example.com</code> will be saved as <code>example.com/path/example.com/</code>
+	</li>
+</ul>
+<p>Note that <code>example.com/some-path/cloudflare.com</code> will be saved <i>without</i> a final slash, since the zone name is not <code>cloudflare.com</code>.</p>
+<h3>Network ports supported by Page Rules</h3>
+<p>If you specify a port in the <b>If the URL matches</b> field of a Page Rule, it must be one of the following:</p>
+<ul>
+	<li>One of the HTTP/HTTPS ports <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy">compatible with Cloudflare’s proxy</a>.</li>
+	<li>A custom port of a <a href="https://developers.cloudflare.com/spectrum/">Cloudflare Spectrum</a> HTTPS application.</li>
+</ul>
+<h3>Using Page Rules with Workers</h3>
+<p>If the URL of the current request matches both a Page Rule and a <a href="https://developers.cloudflare.com/workers/platform/routes">Workers custom route</a>, some Pages Rules settings will not be applied. For details on using Page Rules with Workers, refer to <a href="https://developers.cloudflare.com/workers/platform/workers-with-page-rules/">Workers: Page Rules</a> in the developers documentation.</p>
+<hr>
+<h2 id="h_7hlLS0cORjDJ2NCQqZTp8X">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/224509547">Recommended Page Rules to Consider</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200169626-What-subdomains-are-appropriate-for-orange-gray-clouds-">What subdomains are appropriate for orange/grey clouds?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">How do I use Cache Everything with Cloudflare?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172256">How do I cache static HTML?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200169526">Offline error message when updating or accessing the admin section of my content management system</a></li>
+</ul>
+<p></p>

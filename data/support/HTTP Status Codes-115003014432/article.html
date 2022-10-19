@@ -1,0 +1,51 @@
+<p><i>Learn about how Cloudflare interprets the Internet standards track protocol for HTTP response codes.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_euW3iJvoHPkpGhfbyJQRh">Overview</a></li>
+		<li><a href="#h_rx7Qh33zM85NHkEeGBPXj">HTTP status codes terms</a></li>
+		<li><a href="#h_kWtCOC10w9eZn6TRuWlAF">HTTP Status Codes</a></li>
+		<li><a href="#h_7nW4OdLaWTgMZau6EhNB9M">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_euW3iJvoHPkpGhfbyJQRh">Overview</h2>
+<p>The status codes below detail how Cloudflare interprets the Internet standards track protocol for HTTP response codes. Please refer to the current edition of the "Internet Official Protocol Standards" (STD 1) for the standardization state and status of this protocol.</p>
+<p>Any HTTP status code that is cacheable by default will also be considered to be cacheable by Cloudflare unless otherwise indicated by the method definition or explicit cache controls. Cloudflare caches HTTP responses similarly to how any request is cached. Cloudflare considers page rules, edge TTL, and origin headers when deciding whether to cache.</p>
+<hr>
+<h2 id="h_rx7Qh33zM85NHkEeGBPXj">HTTP status codes terms</h2>
+<p>The terms used when describing Cloudflare HTTP status codes are as follows:</p>
+<h3>Server</h3>
+<p>Any party receiving a request and sending a response. Either the origin or intermediate servers.</p>
+<h3>Origin/Host server</h3>
+<p>The final destination server. This server actually hosts the content of the website.</p>
+<h3>Proxy server</h3>
+<p>The server(s) that sit between the origin server and the client. Cloudflare is a proxy server for example.</p>
+<h3>Client</h3>
+<p>The party making the request. Typically an end user accessing the site on a browser, but may also be an API client or anyone requesting resources from the site.</p>
+<h3>Backend</h3>
+<p>The connections not made to or from the client, but between the proxy server(s) and/or the origin server</p>
+<h3>User-Agent</h3>
+<p>The machine used to send the request. Can be a browser or another program making requests (e.g. restful API requests)</p>
+<h3>Payload</h3>
+<p>The response or request data discluding the headers. Also called response/request body.</p>
+<hr>
+<h2 id="h_kWtCOC10w9eZn6TRuWlAF">HTTP Status Codes</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115003013892/">1xx Informational</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115003014192">2xx Success</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115003011091/">3xx Redirect</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115003014512/">4xx Client Error</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115003011431/">5xx Server Error</a></li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="h_7nW4OdLaWTgMZau6EhNB9M">Related Resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/202775670-How-Do-I-Tell-CloudFlare-What-to-Cache-">What Do I Tell Cloudflare What to Cache?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/218411427#summary-of-page-rules-settings">What does edge TTL mean?</a></li>
+</ul>
+<p>
+
+</p>

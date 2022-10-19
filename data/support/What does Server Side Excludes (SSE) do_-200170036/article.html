@@ -1,0 +1,18 @@
+<p><i></i></p>
+<hr>
+<h2 id="h_78UwFOL3HqJqmRiicz0ca6">Overview</h2>
+<p>If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, wrap the content with Cloudflare Server-Side Excludes (SSE) tags. </p>
+<p>To enable SEE:</p>
+<ol>
+	<li>Log into the <a href="https://dash.cloudflare.com/login">Cloudflare dashboard</a> and select your account and domain.</li>
+	<li>Go to <b>Scrape Shield</b>.</li>
+	<li>For <b>Server-side Excludes</b>, change the toggle to be <b>Enabled</b>.</li>
+</ol>
+<p>To exclude content from suspicious visitors, wrap the content in the following SSE tags:
+	&lt;!--sse--&gt;&lt;!--/sse--&gt;</p>
+<p>
+	For example:
+	&lt;!--sse--&gt; Bad visitors won't see my phone number, 555-555-5555 &lt;!--/sse--&gt;</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer.
+</div>

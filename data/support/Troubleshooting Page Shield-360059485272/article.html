@@ -1,0 +1,19 @@
+<p><i>Learn how to solve common issues with Page Shield and Script Monitor</i></p>
+<hr>
+<h2 id="h_5s35IeCgRQfr8O9wLURxi1">Page Shield FAQ</h2>
+<h3>Why do I not see scripts after I activated Page Shield?</h3>
+<p>If you recently activated Page Shield, you may see a delay in reporting. </p>
+<p>Cloudflare creates reports based on a sample of your application traffic. These reports need a certain amount of traffic to be statistically valid.</p>
+<h3>Why do I see scripts that I do not recognize?</h3>
+<p>Scripts often reference other scripts outside your application.</p>
+<p>But, if you see unexpected scripts on your Script Monitor dashboard, check them for signs of malicious activity.</p>
+<h3>Why do I see warnings in my browser's developer tools related to Content Security Policy (CSP)?</h3>
+<p>Page Shield uses a Content Security Policy (CSP) report-only directive to gather a list of all scripts running on your application.</p>
+<p>Some browsers display scripts being reported as warnings in the console pane of their developer tools. For example:</p>
+<p></p>
+<pre>[Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-RFWPLDbv2BY+rCkDzsE+0fr8ylGr2R2faWMhq4lfEQc='), or a nonce ('nonce-...') is required to enable inline execution.</pre>
+<p>You can safely ignore these warnings, since they are related to the reports that Page Shield requires to detect loaded scripts. For more information, refer to <a href="https://developers.cloudflare.com/page-shield/about">Page Shield's developer documentation</a>.</p>
+<h3>Do I have access to Page Shield?</h3>
+<p>To learn more about availability, visit our <a href="https://developers.cloudflare.com/page-shield/">developer documentation</a>.</p>
+<h3>How do I set up Page Shield?</h3>
+<p>For help setting up Page Shield, visit our <a href="https://developers.cloudflare.com/page-shield/get-started">developer documentation</a>.</p>

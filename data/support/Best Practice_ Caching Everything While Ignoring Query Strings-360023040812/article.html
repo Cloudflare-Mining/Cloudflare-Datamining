@@ -1,0 +1,71 @@
+<p><i>Enterprise customers can cache any type of static content, like HTML files, and ignore query strings in the resource URL by using Custom Cache Keys in Cloudflare Page Rules and Cloudflare Workers.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_5T61qXrcx2BbbrCU8gvk1D">Use case</a></li>
+		<li><a href="#h_6kXnZAjy1YoEZfYW6bn6i0">Page Rules limitations</a></li>
+		<li><a href="#h_79Wtr65WoIeyZgbsJp5NAO">Option 1 - Use Cloudflare Cache Keys in Page Rules</a></li>
+		<li><a href="#h_5oIDX7i4jLEKHUD2v5bt4S">Option 2 - Use Cloudflare Cache Keys with a Worker</a></li>
+		<li><a href="#h_7sJzHZXPzUQgW2gVb5HeLU">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_5T61qXrcx2BbbrCU8gvk1D">Use case</h2>
+<p>There might be times when you wish to cache content resources that are not in the <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Which-file-extensions-does-Cloudflare-cache-for-static-content-">list of file extensions that Cloudflare caches by default</a>, such as HTML files. But you would also like to maximize caching a resource even when it’s served via a URL that contains varying query strings. For example, you want to ensure that the resource (form.html) associated with the following URLs is cached in the Cloudflare edge network:</p>
+<p><code>https://www.example.com/support/form.html?param1=abc&amp;param2=def</code></p>
+<p><code>https://www.example.com/support/form.html?param1=ghi&amp;param2=jkl</code></p>
+<p><code>https://www.example.com/support/form.html?param1=stu&amp;param2=vwx</code></p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_6kXnZAjy1YoEZfYW6bn6i0">Page Rules limitations</h2>
+<p>By default, Cloudflare Page Rules does not allow creating a rule that combines the two options mentioned in the use case above.</p>
+<p>Currently, you can pick just one <b>Cache Level</b> setting per page rule. As such, for the options discussed in this use case, you could only pick either <i>Cache Everything</i> or <i>Ignore Query String</i>.</p>
+<p>The <i>Cache Everything</i> setting forces Cloudflare to consider all content that matches the page rule URL pattern as potentially cacheable. Whether we actually store the asset and for how long is determined by the <b>Cache-Control</b> headers returned with responses from the origin server. Learn more about <a href="https://support.cloudflare.com/hc/articles/115003206852">Origin Cache Control</a>.</p>
+<p><i>Ignore Query String</i> modifies the cache key used at the Cloudflare edge to improve cache hit rates by reducing the number of unnecessary variations of an object that could be stored. It does so by storing and serving the same object from the edge regardless of any query string key value pairs appearing in the request path.</p>
+<p>If you’re an Enterprise customer, you can get around these limitations by using Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/115004290387-Using-Custom-Cache-Keys">Custom Cache Keys</a>. You can request your cache keys from your Cloudflare Solutions Engineer.</p>
+<hr>
+<h2 id="h_79Wtr65WoIeyZgbsJp5NAO">Option 1 - Use Cloudflare Cache Keys in Page Rules</h2>
+<p>Once your cache key is activated for your Enterprise domain, you can add it to Page Rules as shown below:
+</p><img src="https://images.ctfassets.net/slt3lc6tev37/5xgqhLtfzoQUtPHOa6oSty/14afe613cbc903e59d46a4da52cdf5c8/hc-import-cf_page_rules_custom_cache_key.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360021142052/cf-page-rules-custom-cache-key.png
+Article IDs: 360023040812 | Best Practice: Caching Everything While Ignoring Query Strings
+">
+<p>
+	In this example, the rule enforces the ignore query string cache key (${uri_iqs) behaviour for all HTML pages and allows the rule creator to set the <b>Cache Level</b>: <i>Cache Everything</i> setting that is also needed.</p>
+<hr>
+<h2 id="h_5oIDX7i4jLEKHUD2v5bt4S">Option 2 - Use Cloudflare Cache Keys with a Worker</h2>
+<p>You can also achieve this type of caching in Enterprise domains by using Cloudflare Workers. To learn how to use Custom Cache Keys with Workers, consult the <a href="https://developers.cloudflare.com/workers/examples/cache-using-fetch">documentation</a></p>
+<p>Here is an example recipe:
+
+</p>
+<pre>addEventListener('fetch', event =&gt; {
+     event.respondWith(fetchAndApply(event.request))
+})
+
+asyncfunction fetchAndApply(request) {
+     let url = new URL(request.url)
+
+     // Only use the path for the cache key, removing query strings
+     // e.g. https://www.example.com/some-form.html
+     let cacheKey = `${url.protocol}//${url.hostname}${url.pathname}`
+
+     // Force response to be cached for 1 month
+     return fetch(url, {
+          cf: {
+            cacheTtl: 2419200,
+            cacheKey: cacheKey
+          }
+     })
+}</pre>
+<p>This recipe tells Cloudflare to intercept every HTTP request matching the route it is applied to, store the scheme (in this example, <i>https</i>), the hostname (<i>www.example.com</i>), the path (<i>/some-form.html</i>) but not the query strings (if any) as the cache key. The <i>Edge Cache TTL</i> is set to 2,419,200 seconds and enforces the same logic as Cache Everything.</p>
+<p>In order to apply the custom cache key to specific paths or file extensions, it may be necessary to add additional logic to the Worker or apply the code to multiple different Worker routes. See the Worker <a href="https://developers.cloudflare.com/workers/">documentation</a> for further details or contact your Solutions Engineer.</p>
+<hr>
+<h2 id="h_7sJzHZXPzUQgW2gVb5HeLU">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/218411427">Understanding and Configuring Cloudflare Page Rules</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/115004290387">Using Custom Cache Keys</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">How do I use Cache Everything with Cloudflare?</a></li>
+</ul>
+<p>
+
+</p>

@@ -1,0 +1,114 @@
+<p><i>Troubleshoot errors that occur when adding a domain to Cloudflare.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_94453043811540417238269">Step 1 - Disable DNSSEC</a></li>
+		<li><a href="#h_25187255171540417266656">Step 2 - Register the domain</a></li>
+		<li><a href="#h_703638145121540417281357">Step 3 - Resolve DNS for root domain</a></li>
+		<li><a href="#h_874829316161540417303369">Step 4 - Check if the domain is restricted at Cloudflare</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_94453043811540417238269">Step 1 - Disable DNSSEC</h2>
+<p>Cloudflare cannot provide authoritative DNS resolution for a domain — a full setup or "orange-clouded" domain — when <b>DNSSEC</b> is enabled at your domain registrar. </p>
+<p>If you do not disable <b>DNSSEC</b> before changing your nameservers, you might experience the following issues:</p>
+<ul>
+	<li>DNS does not resolve after switching to Cloudflare’s nameservers</li>
+	<li>DNS query response status is <i>SERVFAIL</i>
+	</li>
+	<li>The domain remains in a <i>Pending </i>status in the Cloudflare Overview app</li>
+</ul>
+<p>If you experience these issues, see <a href="https://developers.cloudflare.com/dns/additional-options/dnssec">Configuring DNSSEC</a> and <a href="https://support.cloudflare.com/hc/articles/360021111972-Troubleshooting-DNSSEC">Troubleshooting DNSSEC</a>.</p>
+<p></p>
+<p>
+
+</p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_25187255171540417266656">Step 2 - Register the domain</h2>
+<p>If the issue is with your registrar, you may see the following error messages:</p>
+<ul>
+	<li><i>exampledomain.com is not a registered domain (Code: 1049)</i></li>
+	<li><i>We were unable to identify bad.psl-example as a registered domain. Please ensure you are providing the root domain and not any subdomains (e.g., example.com, not subdomain.example.com) (Code: 1099)</i></li>
+	<li><i>Failed to lookup registrar and hosting information of exampledomain.com at this time. Please contact Cloudflare Support or try again later. (Code: 1110)</i></li>
+</ul>
+<p>If you see these error messages, make sure that:</p>
+<ul>
+	<li>You are providing the root domain (<code>example.com</code>) and not a subdomain (<code>www.example.com</code>)</li>
+	<li>You domain is fully registered and its registration data lists its nameservers</li>
+	<li>Your domain uses a verified <a href="https://publicsuffix.org/list/">top-level domain (TLD)</a>
+	</li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="h_703638145121540417281357">Step 3 - Resolve DNS for root domain</h2>
+<p>Before a domain can be added to Cloudflare, the domain must return <i>NS records</i> for valid, working nameservers. <i>NS records</i> can be checked via third-party online tools such as <a href="https://www.whatsmydns.net/">https://www.whatsmydns.net</a> or via a command-line terminal using a dig command:
+</p>
+<pre>dig +short ns cloudflare.com
+
+ns3.cloudflare.com.
+ns4.cloudflare.com.
+ns5.cloudflare.com.
+ns6.cloudflare.com.
+ns7.cloudflare.com.</pre>Additionally, the domain must return a valid <i>SOA record</i> when queried. <i>SOA records</i> can be checked via third-party online tools such as <a href="https://www.whatsmydns.net/">https://www.whatsmydns.net</a> or via a command-line terminal:
+<pre>dig +short soa cloudflare.com
+
+ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300</pre>
+<hr>
+<h2 id="h_874829316161540417303369">Step 4 - Check if the domain is restricted at Cloudflare</h2>
+<p>If Cloudflare has temporary or permanent restrictions on a domain, you will see the following errors:</p>
+<ul>
+	<li>
+		<i><b>Error 1105</b></i>
+		<ul>
+			<li>
+				<b>Message</b><i>: Error with Cloudflare request: [1105] This zone is temporarily restricted and cannot be added to Cloudflare at this time, please contact Cloudflare Support.</i>
+			</li>
+			<li>
+				<b>Cause</b>: We have seen too many attempts to add a domain to Cloudflare
+			</li>
+			<li>
+				<b>Resolution</b>: Wait 3 hours before attempting to re-add the domain to Cloudflare. Support cannot speed up this process.
+			</li>
+		</ul>
+	</li>
+	<li>
+		<i><b>Error 1093 or 1116</b></i>
+		<ul>
+			<li>
+				<b>Message</b>: <i>This zone cannot be added to Cloudflare at this time, please contact Cloudflare Support. (Code: 1093)</i>
+			</li>
+			<li>
+				<b>Cause</b>: You may have entered a subdomain (<code>www.example.com</code>) instead of the root domain (<code>example.com</code>).
+			</li>
+			<li>
+				<b>Resolution</b>: Verify that you are entering a root domain. If you are and still experience issues, contact <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a>.
+			</li>
+		</ul>
+	</li>
+	<li>
+		<i><b>Error 1097</b></i>
+		<ul>
+			<li>
+				<b>Message</b>: <i>This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, contact your Customer Success Manager. Otherwise, email abusereply@cloudflare.com with a detailed explanation of your association with this zone. (Code: 1097)</i>
+			</li>
+			<li>
+				<b>Resolution</b>: Contact abusereply@cloudflare.com with a detailed explanation of your association with this zone.
+			</li>
+		</ul>
+	</li>
+	<li>
+		<i><b>Error: Cannot be found</b></i><b> OR </b><i><b>&lt;your domain&gt; is not a registered domain (code: 1049</b></i><b>)</b>
+		<ul>
+			<li>This can happen if the domain has not been registered yet. Some domains, like <i>.gov</i> domains, have special requirements that require the domain be added first. </li>
+			<li>
+				<b>Resolution: </b>Please contact <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a> if you require assistance adding a <i>.gov </i>and/or other domains that require manual registration
+
+			</li>
+		</ul>
+	</li>
+</ul>
+<p></p>

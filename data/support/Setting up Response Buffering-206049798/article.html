@@ -1,0 +1,14 @@
+<p><i>Use response buffering to speed up the delivery of small packets from your domain (Enterprise only)</i></p>
+<hr>
+<h2 id="h_tbn7PNQ3rAvTJuYRvsOtD">What is response buffering?</h2>
+<p>By default, Cloudflare <b>streams </b>data. This means that each packet is sent as it becomes available. Streaming can improve the delivery of large files.</p>
+<p>If your domain sends many small packets, however, it might be faster to <b>buffer</b> the file. This approach waits to send the full file until all packets are ready, preventing a client browser from having to re-assemble packets.</p>
+<hr>
+<h2 id="h_1DCPU11szVMleG21hhDXKM">Enable Response Buffering (Enterprise only)</h2>
+<p>To set up response buffering for a domain:</p>
+<p>1. Go to <b>Network.</b></p>
+<p>2. For <b>Response Buffering</b>, select <b>On</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Response Buffering is available for all Enterprise customers. To upgrade to Enterprise, contact the <a href="https://www.cloudflare.com/enterprise-service-request">Cloudflare team</a>.
+</div>
+<p></p>

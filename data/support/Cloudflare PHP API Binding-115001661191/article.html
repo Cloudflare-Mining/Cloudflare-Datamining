@@ -1,0 +1,169 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_1pSu6fmiJFf4uNWe1koG5P">Overview</a></li>
+		<li><a href="#h_2vhZokZjx31kGuiO2HPCwg">Supported Features</a></li>
+		<li><a href="#h_1qhkklppgSIKctax7Kv7p5">Installation</a></li>
+		<li><a href="#h_5ZBgUX3tZliVU0KvYDg0YR">Getting Started</a></li>
+		<li><a href="#h_414a1gbyqQAD6gB6xAD82s">Listing Zones</a></li>
+		<li><a href="#h_IFZF71t2p4zxaPQCk6NJZ">Purge Cache on Every Website</a></li>
+		<li><a href="#h_22YOiQALTjtiziH4L5WDZ7">Creating Page Rules</a></li>
+		<li><a href="#h_40Wiq0eVWDy8rnvUv1BteO">DNS</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_1pSu6fmiJFf4uNWe1koG5P">Overview</h2>
+<p>Cloudflare offers a PHP API binding for those using PHP 7.0 or greater; this binding supports the latest version 4 of the Cloudflare API. You can use this SDK for a variety of purposes, including:</p>
+<ul>
+	<li>Manage and automate changes to your DNS records within Cloudflare</li>
+	<li>Programatically add zones to your account</li>
+	<li>Version and change control for Page Rules</li>
+	<li>Automatically blocking IPs and User Agents using Zone Lockdown and UserAgent Rules</li>
+	<li>Fetch Cloudflare's IP ranges for automating your firewall allowlist</li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="h_2vhZokZjx31kGuiO2HPCwg">Supported Features</h2>
+<p>This article explains a few common examples of using Cloudflare's PHP API Binding; we currently support the following endpoints and authentication methods: 
+</p>
+<h3>V4 Endpoints</h3>
+<ul>
+	<li>DNS</li>
+	<li>IPs</li>
+	<li>Page Rules</li>
+	<li>User Agent Rules</li>
+	<li>User Management (partial)</li>
+	<li>Zone Lockdown</li>
+	<li>Zones</li>
+</ul>
+<h3>Authentication</h3>
+<ul>
+	<li>User Service Keys</li>
+	<li>API Keys</li>
+</ul>
+<p>
+
+
+</p>
+<hr>
+<h2 id="h_1qhkklppgSIKctax7Kv7p5">Installation</h2>
+<p>The <a href="https://packagist.org/packages/cloudflare/sdk">Cloudflare PHP API Binding</a> is available on Packagist as <a href="https://packagist.org/packages/cloudflare/sdk">cloudflare/sdk</a> and can be installed using Composer by running <i>composer require cloudflare/sdk:</i></p><img src="https://images.ctfassets.net/slt3lc6tev37/45OhRWjTiZM3be77HPUdm/b33bd6af0ac156f5782cdb2579d5bbbb/cmd-composer_require_cloudflare_sdk.png" alt="Code - composer require cloudflare/sdk">
+<p>
+	Alternatively should you wish to look directly at the source code or make contributions, you can find the original source code on GitHub in the <a href="https://github.com/cloudflare/cloudflare-php">cloudflare/cloudflare-php</a> repository. 
+
+</p>
+<hr>
+<h2 id="h_5ZBgUX3tZliVU0KvYDg0YR">Getting Started</h2>
+<p>Here is a simple example of using the API
+</p>
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+$user = new \Cloudflare\API\Endpoints\User($adapter);
+
+echo 'Your user ID is: ' . $user->getUserID() . PHP_EOL;</pre>
+Running this simple script via terminal yields the following output:
+<img src="https://images.ctfassets.net/slt3lc6tev37/5mXCSCsMDXPDiyG86vmwGm/4e113efcbb189397b20956d5b4ffd0b1/cmd-getting-user-id.png" alt="Getting user ID">
+<p></p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_414a1gbyqQAD6gB6xAD82s">Listing Zones</h2>
+<p>Here is a simple script to list all the zones on an account, using the following code:
+</p>
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+
+$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
+foreach ($zones->listZones()-&gt;result as $zone) {
+    echo $zone-&gt;name.' ('.$zone-&gt;plan-&gt;name.')'.PHP_EOL;
+}</pre>
+Running this via the command line yields the following output:<img src="https://images.ctfassets.net/slt3lc6tev37/4qoQwSiY24ehDQM52e7yoI/eaff3af635cbb9ce52ce20120a8f2d31/cmd-listing-zones.png" alt="Script to list all the zones on an account">
+<p></p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_IFZF71t2p4zxaPQCk6NJZ">Purge Cache on Every Website</h2>
+<p>Here's another example which utilises the cache purge endpoint to clear the entire cache on every website in our account (note that you can purge individual files using the cache using the cachePurge method instead of cachePurgeEverything):
+</p>
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+
+$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
+foreach ($zones->listZones()-&gt;result as $zone) {
+    echo "Cache purge for " . $zone-&gt;name . ": ";
+    echo $zones-&gt;cachePurgeEverything($zone-&gt;id) == true ? "successful" : "failed";
+    echo PHP_EOL;
+
+}</pre>
+Here is the output of running this script via the command line:
+<img src="https://images.ctfassets.net/slt3lc6tev37/1il9dq4RgkGE21iY7LsfnQ/b225f6b45a890cc66d74476d9bc32378/php-cache-purge-everything.png" alt="Purge Cache on Every Website">
+<p></p>
+<p>
+</p>
+<hr>
+<h2 id="h_22YOiQALTjtiziH4L5WDZ7">Creating Page Rules</h2>
+<p>The SDK can also be used for programatically adding Page Rules to a Cloudflare Zone, here's a simple example of adding a Cache Bypass rule:
+</p>
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
+
+$zoneID = $zones->getZoneID("junade.com");
+
+$pageRulesTarget = new \Cloudflare\API\Configurations\PageRulesTargets('https://junade.com/noCache/*');
+
+$pageRulesConfig = new \Cloudflare\API\Configurations\PageRulesActions();
+$pageRulesConfig-&gt;setCacheLevel('bypass');
+
+$pageRules = new \Cloudflare\API\Endpoints\PageRules($adapter);
+$pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);
+</pre>
+We are able to easily get the ID of a given zone using the getZoneID method in the Zones endpoint class, this helper method makes it easier to get the zone ID from the zone name.<p>Note that the SDK uses dependency injection for specifying the target and the configuration of the page rules. That's why we need to pass instances of the PageRulesTargets and the PageRuleActions classes into the createPageRule method.</p>
+<p>
+
+
+
+</p>
+<hr>
+<h2 id="h_40Wiq0eVWDy8rnvUv1BteO">DNS</h2>
+<p>The SDK can also be used for programatically adding records, here's an example of adding an example DNS record:
+</p>
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
+
+$zoneID = $zones->getZoneID("junade.com");
+
+$dns = new \Cloudflare\API\Endpoints\DNS($adapter);
+if ($dns-&gt;addRecord($zoneID, "A", 'example', '8.8.8.8', 0, true) === true) {
+    echo "DNS record created.". PHP_EOL;
+}</pre>
+Further, we can also delete, list and view details of DNS records through this SDK. For example; let's create a simple script to list the type and name of every DNS record on our zone:
+<pre><?php require_once('vendor/autoload.php');
+
+$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'API KEY GOES HERE');
+$adapter = new Cloudflare\API\Adapter\Guzzle($key);
+$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
+
+$zoneID = $zones->getZoneID("icyapril.com");
+
+$dns = new \Cloudflare\API\Endpoints\DNS($adapter);
+foreach ($dns-&gt;listRecords($zoneID)-&gt;result as $record) {
+    echo $record-&gt;type." ".$record-&gt;name.PHP_EOL;
+}</pre>Here's the example when I run this script against one of my zones:
+<img src="https://images.ctfassets.net/slt3lc6tev37/4gvMSvcaaBgIXHSmuFs8WC/f663de4ab97cce6c27b674ef0dc3d71e/php-list-dns-type-name.png" alt="Script to list the type and name of every DNS record on our zone">
+<p></p>

@@ -1,0 +1,385 @@
+<p><i>This article describes how to add DNS records to Cloudflare in order to support various third-party software including Google Cloud, Amazon S3, Microsoft Azure, ClickFunnels, WPEngine, and Zoho.</i></p>
+<hr>
+<h2 id="5FOP405NqzoIVEz6wjlEPL">Adding DNS records for vendors</h2>
+<p>This article requires prior knowledge of DNS record management via the Cloudflare dashboard.  To learn more, refer to Cloudflare's article on <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">managing DNS records</a>.</p>
+<p><b>Google</b></p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Google Apps mail</div>
+	<div class="dropdown-content">
+		<p>Add the following MX records:</p>
+		<p></p>
+		<table>
+			<thead>
+				<tr>
+					<td class="wysiwyg-text-align-center">
+						<strong>Name</strong>
+					</td>
+					<td class="wysiwyg-text-align-center">
+						<strong>TTL</strong>
+					</td>
+					<td class="wysiwyg-text-align-center">
+						<strong>Record Type</strong>
+					</td>
+					<td class="wysiwyg-text-align-center">
+						<strong>Priority </strong>
+					</td>
+					<td class="wysiwyg-text-align-center">
+						<strong>Target</strong>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="wysiwyg-text-align-center">@</td>
+					<td class="wysiwyg-text-align-center">Auto</td>
+					<td class="wysiwyg-text-align-center">MX</td>
+					<td class="wysiwyg-text-align-center">1</td>
+					<td class="wysiwyg-text-align-center">ASPMX.L.GOOGLE.COM</td>
+				</tr>
+				<tr>
+					<td class="wysiwyg-text-align-center">@</td>
+					<td class="wysiwyg-text-align-center">Auto</td>
+					<td class="wysiwyg-text-align-center">MX</td>
+					<td class="wysiwyg-text-align-center">5</td>
+					<td class="wysiwyg-text-align-center">ALT1.ASPMX.L.GOOGLE.COM</td>
+				</tr>
+				<tr>
+					<td class="wysiwyg-text-align-center">@</td>
+					<td class="wysiwyg-text-align-center">Auto</td>
+					<td class="wysiwyg-text-align-center">MX</td>
+					<td class="wysiwyg-text-align-center">5</td>
+					<td class="wysiwyg-text-align-center">ALT2.ASPMX.L.GOOGLE.COM</td>
+				</tr>
+				<tr>
+					<td class="wysiwyg-text-align-center">@</td>
+					<td class="wysiwyg-text-align-center">Auto</td>
+					<td class="wysiwyg-text-align-center">MX</td>
+					<td class="wysiwyg-text-align-center">10</td>
+					<td class="wysiwyg-text-align-center">ALT3.ASPMX.L.GOOGLE.COM</td>
+				</tr>
+				<tr>
+					<td class="wysiwyg-text-align-center">@</td>
+					<td class="wysiwyg-text-align-center">Auto</td>
+					<td class="wysiwyg-text-align-center">MX</td>
+					<td class="wysiwyg-text-align-center">10</td>
+					<td class="wysiwyg-text-align-center">ALT4.ASPMX.L.GOOGLE.COM</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Once added, the DNS records appear similar to the following in Cloudflare's <b>DNS</b> app:</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Review the <a href="https://support.google.com/a/answer/174125?hl%3Den">latest MX records required by Google App</a>.
+		</div>
+		<p><a href="https://toolbox.googleapps.com/apps/checkmx/check">Test the Google Apps email configuration</a>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">To avoid unexpected behavior, don’t use <em>MX records</em> other than Google’s.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Google App Engine</div>
+	<div class="dropdown-content">
+		<p>Add a <i>CNAME record </i>for Google App Engine to Cloudflare DNS.</p>
+		<p>For example, if the domain is <i>www.example.com</i>, the <i>CNAME record</i> is similar to:</p>
+		<p></p>
+		<pre>www  CNAME  ghs.googlehosted.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Confirm the <em>CNAME record</em> value that Google requires for the domain.
+		</div>
+		<p>To configure a redirect for a Google Apps domain, refer to <a href="https://support.google.com/a/answer/53340?hl=en">Google’s guide on URL forwarding</a>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Google enforces HTTPS on its services. If you see errors about redirect loops when browsing to your site through Cloudflare, ensure <strong>SSL</strong> is set to <em>Full</em> in the <strong>SSL/TLS</strong> app of the Cloudflare dashboard.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Google site verification</div>
+	<div class="dropdown-content">
+		<p>Follow Google’s instructions for <a href="https://support.google.com/a/answer/7173990?hl%3Den%26ref_topic%3D4487622">adding a site verification record to Cloudflare</a>.</p>
+	</div>
+</div>
+<p><b>Amazon</b></p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">AWS nameserver updates</div>
+	<div class="dropdown-content">
+		<p>AWS customers must update their domain's nameservers to point to the Cloudflare nameservers listed in the <b>Overview</b> app of the Cloudflare dashboard:</p>
+		<ol>
+			<li>Log into AWS.</li>
+			<li>Click <b>My Account</b> in the top-right of the navigation bar.</li>
+			<li>Select <b>AWS Management Console</b> from the dropdown.</li>
+			<li>Click <b>Services</b> and select <b>Route 53</b>.</li>
+			<li>Update nameservers in two places:</li>
+		</ol>
+		<ul>
+			<li>Click <b>Hosted zones</b> and select the domain to update with Cloudflare's nameservers.</li>
+			<li>Edit the nameservers to point to Cloudflare's nameservers.</li>
+		</ul>
+		<ul>
+			<li>Click <b>Registered domains</b>.</li>
+			<li>Select the domain to update with Cloudflare's nameservers.</li>
+			<li>Click <b>Add or edit name servers</b>.</li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Amazon S3</div>
+	<div class="dropdown-content">
+		<p>Consult Amazon’s documentation on how to <a href="https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html">c</a><a href="https://docs.aws.amazon.com/quickstarts/latest/s3backup/step-1-create-bucket.html">reate an Amazon S3 bucket</a>.</p>
+		<p>Note the full host URL assigned to the bucket.</p>
+		<p>Add a <i>CNAME record</i> for the AWS bucket in Cloudflare DNS. For example, if the full host URL of the bucket is <i>files.example.com</i>, add a <i>CNAME record</i> similar to the following:</p>
+		<p></p>
+		<pre>files  CNAME  files.example.com.s3.amazonaws.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Amazon requires that the CNAME match the bucket name as in the above example.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Amazon Simple Email Service (SES)</div>
+	<div class="dropdown-content">
+		<p>Refer to Amazon’s documentation about <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">SES and verification settings</a>.</p>
+		<p>Find the <i>TXT</i> and <i>CNAME</i> verification records that Amazon provides.</p>
+		<p>Add the records to Cloudflare DNS.  For example, if the Cloudflare domain is <i>example.com</i>, the DNS records are similar to the following:</p>
+		<p></p>
+		<pre>example.com  TXT  "fmxqxT/icOYx4aA/bEUrDPMeax9/s3frblS+niixmqk="
+verificationstring._domainkey.example.com  CNAME  verificationstring.dkim.amazonses.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">The above TXT record content is an example. Use the correct content provided by Amazon SES.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Amazon ELB (Elastic Load Balancing)</div>
+	<div class="dropdown-content">
+		<p>Refer to <a href="http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html">Amazon's ELB help content</a> for guidance on ELB configuration at Amazon.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Cloudflare's <strong>CNAME Flattening</strong> feature enables a CNAME record on the root domain to point to an Elastic Load Balancer.
+		</div>
+		<ol>
+			<li>Add a <i>CNAME record</i> to Cloudflare for the hostname; for example: <i>elb</i>
+			</li>
+			<li>In the Cloudflare <b>DNS</b> app, replace <b>Domain name</b> with the ELB target:
+				<i>
+					&lt;AWS hostname&gt;.&lt;region&gt;.</i>elb.amazonaws.com is the proper <i>CNAME</i> target format
+				(for example: <i>my-cool-cachepp-1344276401.eu-west-1.</i>elb.amazonaws.com).
+			</li>
+			<li>Reach out to AWS support to determine <i>AWS hostname</i> or <i>region</i>.</li>
+		</ol>
+		<p></p>
+	</div>
+</div>
+<p><b>Microsoft</b></p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Microsoft Office 365, Lync, or Exchange Online</div>
+	<div class="dropdown-content">
+		<p>Refer to the documentation on <a href="https://support.office.com/en-us/article/Gather-the-information-you-need-to-create-Office-365-DNS-records-77f90d4a-dc7f-4f09-8972-c1b03ea85a67?ui%3Den-US%26rs%3Den-US%26ad%3DUS">Microsoft Office DNS setup</a> for current details.</p>
+		<p>Additionally, refer to Cloudflare’s documentation on <a href="https://support.cloudflare.com/hc/en-us/articles/360019093151">managing DNS records</a>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add the DNS records that Microsoft utilizes for domain validation (such as <em>autodiscover</em>) with a grey-cloud icon.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Azure</div>
+	<div class="dropdown-content">
+		<p>Follow Microsoft’s instructions on <a href="https://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns-web-site/">configuring Azure DNS settings</a>.</p>
+		<p>Add Azure’s required records to Cloudflare DNS.</p>
+		<p>For example, if the domain is <i>example.com</i>, the record format is similar to:</p>
+		<p></p>
+		<pre>example.com  A  203.0.113.1
+www.example.com  CNAME  example.azurewebsites.net</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Replace <em>203.0.113.1</em> with the actual IP address of the Azure site.
+		</div>
+		<p>For verification records, refer to Azure’s documentation on <a href="https://docs.microsoft.com/en-us/office365/admin/dns/create-dns-records-for-azure-dns-zones?view=o365-worldwide#add-a-txt-record-for-verification">creating domain verification records</a>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add DNS records for Azure verification with a grey-cloud icon.
+		</div>
+	</div>
+</div>
+<p><b>Miscellaneous vendors</b></p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">ClickFunnels</div>
+	<div class="dropdown-content">
+		<p>You can configure Cloudflare to work with ClickFunnels.  The process requires updating your Cloudflare DNS settings.</p>
+		<p>The following articles from ClickFunnels outline how to best configure the two services for your site:</p>
+		<ul>
+			<li><a href="https://help.clickfunnels.com/hc/en-us/articles/360005906774-Adding-A-Cloudflare-Subdomain-">Adding a Cloudflare subdomain</a></li>
+			<li><a href="https://help.clickfunnels.com/hc/en-us/articles/360005906094-Cloudflare-CNAME-Record">Cloudflare CNAME record</a></li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Zoho</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Reference <a href="https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html">Zoho's MX documentation</a> and <a href="https://www.zoho.com/mail/help/adminconsole/spf-configuration.html">SPF documentation</a> before adding DNS records to Cloudflare.
+		</div>
+		<p>See the examples below for adding proper Zoho DNS records to Cloudflare. In all examples, replace <i>example.com</i> with the actual domain name:</p>
+		<ul>
+			<li>Add Zoho <i>MX records</i>:</li>
+		</ul>
+		<p></p>
+		<pre>example.com  MX  mx.zohomail.com (set Priority to 10)
+example.com  MX  mx2.zohomail.com (set Priority to 20)</pre>
+		<ul>
+			<li>(Optional) Add an <i>SPF record</i>:</li>
+		</ul>
+		<p></p>
+		<pre>example.com  TXT  v=spf1 mx include:zoho.com ~all</pre>
+		<ul>
+			<li>(Optional) To access mail through a <a href="https://adminconsole.wiki.zoho.com/domains/CustomURL.html">custom Zoho URL</a>, add a <i>CNAME record</i>:</li>
+		</ul>
+		<p></p>
+		<pre>mail  CNAME  business.zoho.com</pre>
+		<ul>
+			<li>(Optional) To add a <a href="https://www.zoho.com/mail/help/adminconsole/domain-verification.html">Zoho domain validation record</a>:</li>
+		</ul>
+		<p></p>
+		<pre>zb******** CNAME  business.zoho.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">The zb record is unique for each domain. Add the unique zb verification code provided by Zoho.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Unbounce</div>
+	<div class="dropdown-content">
+		<p>Refer to <a href="https://documentation.unbounce.com/hc/en-us/articles/204011950">Unbounce's documentation to determine the CNAME record</a> to add to Cloudflare.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add the <em>CNAME record</em> with a grey-cloud icon if Cloudflare is activated via one of our hosting partners.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">SendGrid</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Confirm what <a href="https://sendgrid.com/docs/">records SendGrid requires</a> to set in Cloudflare's DNS.
+		</div>
+		<p>Typically, the DNS records are similar to the list below. Replace <i>example.com</i> with the actual domain name:</p>
+		<p></p>
+		<pre>email  CNAME  sendgrid.net
+example.com  SPF  v=spf1 a mx include:sendgrid.net ~all
+example.com  TXT  v=spf1 a mx include:sendgrid.net ~all
+mtpapi._domainkey.EXAMPLE.com  CNAME  dkim.sendgrid.net.
+smtpapi._domainkey.e.EXAMPLE.COM  CNAME  dkim.sendgrid.net</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add DNS records with a grey-cloud icon. SendGrid cannot verify a mail configuration when Cloudflare’s proxy is enabled.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">WPEngine</div>
+	<div class="dropdown-content">
+		<p>Consult <a href="http://wpengine.com/support/how-to-configure-your-dns/">WPEngine's documentation</a> on DNS configuration.</p>
+		<p>Determine whether to add an <i>A</i> or <i>CNAME record</i> to Cloudflare DNS:
+			<a href="http://wpengine.com/support/find-ip/">Finding your IP address at WPEngine</a>
+		</p>
+		<p>Consult Cloudflare’s documentation on <a href="https://support.cloudflare.com/hc/en-us/articles/360019093151">Managing DNS records</a> for details on adding the records.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Ning custom domain</div>
+	<div class="dropdown-content">
+		<p>Refer to Ning's documentation on <a href="http://www.ning.com/help/?p%3D2870">Custom Domains and DNS entries</a>.</p>
+		<p>If the Ning custom domain is <i>www.example.com</i>, add a <i>CNAME</i> and an <i>A record</i> as follows:</p>
+		<p></p>
+		<pre>www.example.com  CNAME  example.ning.com.
+example.ning.com  A  208.82.16.68</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add the DNS records to Cloudflare with a grey-cloud icon until Ning verifies the domain.
+		</div>
+		<p>After Ning verifies the domain, change the grey-cloud icon to an orange-cloud for the Ning DNS records so traffic can proxy to Cloudflare.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">SmugMug</div>
+	<div class="dropdown-content">
+		<p>Consult SmugMug documentation for the latest details on DNS record requirements. Typically, add <i>CNAME records</i> for SmugMug similar to the following:</p>
+		<p></p>
+		<pre>photo  CNAME  domains.smugmug.com
+photos  CNAME  domains.smugmug.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Add the DNS records to Cloudflare with a grey-cloud icon until SmugMug verifies the domain.
+		</div>
+		<p>After SmugMug verifies the domain, change the grey-cloud icon to an orange-cloud for the SmugMug DNS records so traffic can proxy to Cloudflare.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Mandrill</div>
+	<div class="dropdown-content">
+		<p>Refer to <a href="http://help.mandrill.com/entries/22030056-How-do-I-add-DNS-records-for-my-sending-domains-">Mandrill's article on DNS records</a> for the latest details on DNS record requirements.</p>
+		<p>Mandrill requires addition of <i>SPF</i> and <i>DKIM records</i>. Obtain the DNS record values from Mandrill.</p>
+		<p>Add the <i>SPF</i> and <i>DKIM records</i> as <i>TXT records</i> in the Cloudflare DNS app.</p>
+		<p>For example, if <i>example.com</i> is the Mandrill domain, add DNS records similar to the following.</p>
+		<p></p>
+		<pre>example.com  TXT  v=spf1 include:spf.mandrillapp.com ?all
+mandrill._domainkey.example.com  TXT  v=DKIM1\; (values from Mandrill)</pre>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Rackspace CloudFiles</div>
+	<div class="dropdown-content">
+		<p>Configure Rackspace CloudFiles via <i>CNAME record</i>. Consult the <a href="https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/">Rackspace documentation</a>.</p>
+		<p>Confirm the correct <i>CNAME</i> target with Rackspace support.</p>
+		<p>An example <i>CNAME record</i> appears as follows:</p>
+		<p></p>
+		<pre>rack  CNAME  e0978.r18.cf2.rackcdn.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">The <em>CNAME record</em> cannot be proxied to Cloudflare since rackcdn.com is not compatible with Cloudflare.
+		</div>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Squarespace</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Squarespace’s console may indicate issues (as pictured below in red text) when using Cloudflare’s proxy services. However, we can confirm that Squarespace is compatible with Cloudflare when using a configuration as described below.
+		</div>
+		<p>After ensuring that your domain nameservers are set to Cloudflare, </p>
+		<ol>
+			<li>Log in to the Cloudflare dashboard.</li>
+			<li>Click the appropriate Cloudflare account for the domain where you will add records.</li>
+			<li>Ensure the proper domain is selected.</li>
+			<li>Click the <b>DNS </b>app.</li>
+			<li>Ensure that all four (4) A records and the www CNAME from Squarespace are mark <i>Proxied </i>(as shown below).</li>
+			<li>Ensure that the 'verify.squarespace.com' CNAME record is marked <i>DNS Only</i> (as shown below).</li>
+		</ol>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/3zTgLzZ6MfqUYkR8VlTXpj/fbe5ae71957ebff3b18dbf618f69730f/dns_ui_update_squarespace_records.png" alt="screenshot of the cloudflarecontent.com DNS records from Squarespace
+">
+		<p>If set up properly, your Squarespace DNS Settings page will now indicate that your 'Settings contain problems.' <b>This is the expected behavior</b>. </p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/iHTyvevutikHUJAOebjaI/a3a6a1ffa57f3e6914e5656dd530c814/hc-import-squarespace_dns_settings.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360039675171/squarespace_dns_settings.png
+Article IDs: 360020991331 | Adding vendor-specific DNS records to Cloudflare
+">
+		<p>Now that your traffic is being sent through Cloudflare, Squarespace and your site's visitors will see Cloudflare IP addresses. This causes Squarespace console to assume your site is misconfigured as Cloudflare IPs are returned instead of Squarespace assigned addresses. As long as you've configured Cloudflare DNS appropriately (above steps 1-6), your Squarespace site should now be working through Cloudflare.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Tumblr custom domain</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Tumblr’s systems are not compatible with Cloudflare’s proxy services and Tumblr customers cannot use Cloudflare's SSL services.
+		</div>
+		<p>If <i>example.com </i>is the custom domain, add DNS records to Cloudflare similar to these below:</p>
+		<p></p>
+		<pre>example.com  A  66.6.44.4
+www.example.com  CNAME  domains.tumblr.com</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Disable Cloudflare’s proxying for any DNS record related to Tumblr. Otherwise, Tumblr’s custom domain verifications will fail.
+		</div>
+	</div>
+</div>
+<hr>
+<h2 id="3vW5OXX8GeXEHe4J6JTqjL">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">Managing Cloudflare DNS records</a></li>
+	<li><a href="https://developers.cloudflare.com/dns/additional-options/cname-flattening">CNAME Flattening</a></li>
+</ul>
+<p></p>

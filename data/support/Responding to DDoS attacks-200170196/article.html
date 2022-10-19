@@ -1,0 +1,160 @@
+<p><i>Protect your website from a Distributed Denial of Service (DDoS) attack. Learn the basic countermeasures to stop an ongoing attack.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_49125146-d910-42ad-a0d8-3d08a4eae681">Overview</a></li>
+		<li><a href="#h_dfff923a-5879-4750-a747-ed7b639b6e19">Step 1: Enable Under Attack Mode</a></li>
+		<li><a href="#h_b97416a5-5196-4f12-acb6-f81bbfcfa95f">Step 2: Enable WAF managed rules</a></li>
+		<li><a href="#h_a2c9a5ce-d652-46db-9e82-bc3f06835348">Step 3: Challenge or block traffic via Security</a></li>
+		<li><a href="#h_6v9PrAUcuaN7j47oyeOPgw">Step 4: Mitigate DDoS Ransom Campaigns</a></li>
+		<li><a href="#h_995ffed3-18a9-4f8c-833c-81236061b1e8">Step 5: Contact Cloudflare Support</a></li>
+		<li><a href="#h_034beb4b-231e-40d8-b938-5c1b446e26a6">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_49125146-d910-42ad-a0d8-3d08a4eae681">Overview</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Before contacting Cloudflare Support, enable <strong>Under Attack Mode</strong> (Step 1 below) to help distinguish attack traffic characteristics in logs accessible by Cloudflare Support.
+</div>
+<p>Cloudflare's network automatically mitigates very large <a href="https://www.cloudflare.com/ddos">DDoS attacks</a>. Caching your content at Cloudflare also protects your website against small DDoS attacks, but uncached assets may require additional manual intervention steps provided in this guide.</p>
+<p>The steps below won’t help if an attacker learned your origin IP address and is directly attacking your origin web server (bypassing Cloudflare). For details, refer to <a href="https://support.cloudflare.com/hc/articles/200172676">Understanding Cloudflare DDoS protection</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_dfff923a-5879-4750-a747-ed7b639b6e19">Step 1: Enable Under Attack Mode</h2>
+<p>To activate <a href="https://support.cloudflare.com/hc/articles/200170076"><b>Under Attack Mode</b></a>:</p>
+<p>1. Log in to your Cloudflare account.</p>
+<p>2. Select the domain currently under attack.</p>
+<p>3. Toggle <b>Under Attack Mode</b> to <i>On</i> within the <b>Quick Actions</b> section of the Cloudflare <b>Overview</b> app.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">
+	<strong>Under Attack Mode</strong> is also configurable for specific URLs via the Cloudflare <strong>Page Rules</strong> app by setting <em>Security Level</em> to <em>I’m Under Attack</em>.
+</div>
+<p>4. (Optional) Adjust <a href="https://support.cloudflare.com/hc/articles/200170136"><b>Challenge Passage</b></a> within <b>Security</b> &gt; <b>Settings</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Legitimate traffic from mobile apps or from clients that do not support JavaScript and cookies cannot access your website while <strong>Under Attack Mode</strong> is enabled. For this reason, <strong>Under Attack Mode</strong> is not recommended for your API traffic. Instead, configure <a href="https://support.cloudflare.com/hc/articles/235240767">Rate Limiting</a> or at least set the <strong>Security Level</strong> to <em>High</em> under <strong>Security</strong> &gt; <strong>Settings</strong>.
+</div>
+<p></p>
+<hr>
+<h2 id="h_b97416a5-5196-4f12-acb6-f81bbfcfa95f">Step 2: Enable WAF managed rules</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The WAF is only available for domains on paid plans. View <a href="https://www.cloudflare.com/plans/">our paid plans</a>.
+</div>
+<p>Enable <a href="https://support.cloudflare.com/hc/en-us/articles/200172016">WAF managed rules</a>.</p>
+<p>If you have access to the new Cloudflare WAF announced in March 2021, <a href="https://developers.cloudflare.com/waf/managed-rulesets/deploy-zone-dashboard/">deploy WAF Managed Rulesets</a> instead.</p>
+<p></p>
+<hr>
+<h2 id="h_a2c9a5ce-d652-46db-9e82-bc3f06835348">Step 3: Challenge or block traffic via Security</h2>
+<p>Under <b>Security</b>, you can block traffic via the following methods:</p>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/articles/217074967"><b>IP Access Rules</b></a><b> </b>- Recommended for blocking multiple IP addresses, /16 or /24 IP ranges, or Autonomous System Numbers (ASNs). <a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/"><b></b></a>
+	</li>
+	<li>
+		<a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/"><b>Firewall rules</b></a><b> </b>- Recommended for blocking a country, any valid IP range, or more complex attack patterns.
+	</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">
+	<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/"><strong>Firewall rules</strong></a> have limits but are more flexible and allow matching upon a wider variety of <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/">fields</a> and <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/">expressions</a> than <strong>IP Access Rules</strong>.
+</div>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/115001595131-How-do-I-Lockdown-URLs-in-Cloudflare-"><b>Zone Lockdown</b></a><b> </b>- Recommended to allow only trusted IP addresses or ranges to a portion of your site.<a href="https://support.cloudflare.com/hc/en-us/articles/115001856951-How-do-I-block-malicious-User-Agents-with-Cloudflare-"><b></b></a>
+	</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/115001856951-How-do-I-block-malicious-User-Agents-with-Cloudflare-"><b>User Agent Blocking</b></a><b> </b>- Recommended for blocking suspicious <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent">User-Agent headers</a> for your entire domain.
+	</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Firewall updates take effect within two minutes.
+</div>
+<p>To decide which country or IPs to block or challenge, check your log files. Contact your hosting provider to help identify:</p>
+<ul>
+	<li>the attack traffic reaching your origin web server,</li>
+	<li>the resources being accessed by the attack, and</li>
+	<li>common characteristics of the attack (IP addresses, User Agents, countries, or ASNs, etc).</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-info">Cloudflare also offers <strong><a href="https://support.cloudflare.com/hc/articles/235240767">Rate Limiting</a></strong> to help control the flow of requests to your server. <a href="https://support.cloudflare.com/hc/en-us/articles/115000272247-Billing-for-Cloudflare-Rate-Limiting"><strong>Rate Limiting</strong> is billed based on usage</a> and is independent of plan type.
+</div>
+<hr>
+<h2 id="h_6v9PrAUcuaN7j47oyeOPgw">Step 4: Mitigate DDoS Ransom Campaigns</h2>
+<p>It is common for ransomers to threaten DDoS attacks, even when a customer is using Cloudflare. Here are some troubleshooting tips if you are targeted by ransomers to ensure your origin server is prepared to handle excess requests.</p>
+<h3>Mitigating DDoS Ransom Campaigns</h3>
+<p>It is very common for ransom attempts to instill a sense of urgency. Any delay decreases the chance of success for the attacker as it gives the target time to consider mitigation options. The most important thing to keep in mind is that if you suspect your site is being targeted for a ransom, <a href="https://support.cloudflare.com/hc/articles/200172476-Contacting-Cloudflare-Support">contact Cloudflare support</a> first. <b>Do not</b> pay the ransom.</p>
+<p>The following table lists mitigation options for DDoS ransom campaigns:</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<th>Action</th>
+			<th>Justification</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Don't Pay</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>It's best not to pay the ransom. If paid, the ransomer knows they have found a valuable target and may periodically return to collect another payment. Ransomers tend to introduce themselves as a security researchers who have found a vulnerability. This will, understandably, increase the response rate of website owners, as it is not immediately clear that they are about to be ransomed. If at all possible, don’tone should not respond to the ransom at all, and instead <a href="https://support.cloudflare.com/hc/articles/200172476-Contacting-Cloudflare-Support">contact Cloudflare support.</a></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Disable <a href="https://support.cloudflare.com/hc/articles/115001992652-Using-Privacy-Pass-with-Cloudflare">Privacy Pass Support</a></p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>In several reports, attackers claim to exploit Privacy Pass. This is not so much a vulnerability in Privacy Pass, but a side effect of how Privacy Pass interacts with other Cloudflare features. Disable Privacy Pass Support if a flood of requests with Privacy Pass tokens attached is expected.</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Enable <a href="https://support.cloudflare.com/hc/articles/200170076">I'm Under Attack Mode (IUAM)</a>!</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>IUAM is designed to help mitigate attacks and generally increase a zone's security, so it's a good idea during several types of attacks.</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Enable <a href="https://support.cloudflare.com/hc/articles/115001635128-Configuring-Cloudflare-Rate-Limiting">Rate Limiting</a></p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Some DDoS attacks are effective at low rates because the attacker targets an endpoint which they have discovered to be uncachable and computationally expensive for the origin server. If an origin server normally receives a dozen or so logins each second and suddenly sees thousands per second, this can result in degraded performance and will likely result in an increased bill for cloud service. Rate Limiting works well against simple single-origin DoS, small botnets, and it may prevent the attacks from persisting for a long period of time . It can also help drop floods to the origin, but its efficacy may be limited for very weak origin servers.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Configure more aggressive caching</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p><a href="https://support.cloudflare.com/hc/articles/200172516">Caching your content at Cloudflare</a> also protects your website against small DDoS attacks, but uncached assets may require additional manual intervention steps provided above.</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p></p>
+<p></p>
+<hr>
+<h2 id="h_995ffed3-18a9-4f8c-833c-81236061b1e8">Step 5: Contact Cloudflare Support</h2>
+<p>If you are unable to stop an attack from overloading your origin web server when utilizing the steps above, <a href="https://support.cloudflare.com/hc/articles/200172476#h_4b8753c8-f422-4c74-9e8e-07026c4da730">contact Cloudflare Support</a> for assistance and provide the following details:</p>
+<ul>
+	<li>Timestamp (UTC) – time range of the attack</li>
+	<li>ZoneName/ZoneID - domain/path which is being targeted</li>
+	<li>Attack frequency</li>
+	<li>Steps to reproduce the issue, with actual results vs expected results</li>
+	<li>Any additional info like site URLs, error messages, screenshots, or relevant logs from your origin web server</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_034beb4b-231e-40d8-b938-5c1b446e26a6">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172676">Understanding Cloudflare DDOS protection</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170166">Best Practices: DDoS preventative measures</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170076">What does “I’m Under Attack Mode” do?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360020739772-Using-Cloudflare-Logs-ELS-to-Investigate-DDoS-Traffic-Enterprise-Only-">Using Cloudflare Logs to investigate DDoS traffic (Enterprise Only)</a></li>
+	<li><a href="https://www.icann.org/news/blog/how-to-report-a-ddos-attack">How to report a DDoS attack to law enforcement</a></li>
+</ul>
+<p></p>
+<p></p>

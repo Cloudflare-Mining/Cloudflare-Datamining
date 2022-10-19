@@ -1,0 +1,217 @@
+<p><i>Learn how Enterprise customers add subdomains to their Cloudflare account via the Subdomain Support feature.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_623fd545-3318-45f3-b7df-02ae80373e17">Overview</a></li>
+		<li><a href="#h_e5603b0b-7e53-4103-bcca-01f85b346aab">Add DNSSEC to subdomains</a></li>
+		<li><a href="#h_d312497e-cd1b-413c-a6f4-5605e78d78d8">Add child subdomains to Cloudflare</a></li>
+		<li><a href="#h_39a346bb-4726-4f69-969e-016fbacbb2c0">Migrate a subdomain to a new Cloudflare account</a></li>
+		<li><a href="#h_ac1253f4-d017-42e1-84a9-4c4eb9423e8e">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_623fd545-3318-45f3-b7df-02ae80373e17">Overview</h2>
+<p>Cloudflare Subdomain Support simplifies management of Cloudflare performance and security for subdomains and provides several additional benefits. Subdomain Support is available for multiple subdomain levels such as <i>www.example.com</i>, <i>dev.www.example.com</i>, etc.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Subdomain Support is only available to Enterprise customers and is enabled by default.
+</div>
+<h3>Terminology</h3>
+<p>This guide uses the following terms:</p>
+<ul>
+	<li>
+		<b>Root domain: </b>A domain purchased from a domain registrar (<i>example.com</i>).
+	</li>
+	<li>
+		<b>Child subdomain: </b>A level of subdomain below the root domain (<i>foo.example.com</i>, <i>dev.foo.example.com</i>, or <i>www.dev.foo.example.com</i>).
+	</li>
+	<li>
+		<b>Parent domain: </b>The domain or subdomain level directly above the child subdomain (<i>example.com</i> is a parent of <i>foo.example.com</i> and <i>foo.example.com</i> is a parent of <i>dev.foo.example.com</i>).
+	</li>
+</ul>
+<h3>Benefits</h3>
+<p> Subdomain Support provides several benefits:</p>
+<ul>
+	<li>Subdomain Support allows designated teams within your organization to control Cloudflare settings for a specific subdomain, while your central IT team maintains control of your root or parent domain.<ul>
+			<li>For example, a central IT team for <i>example.com</i> assigns child subdomains such as <i>api.example.com </i>to other teams while maintaining control of the parent domain’s DNS (<i>example.com</i>).</li>
+		</ul>
+	</li>
+</ul>
+<ul>
+	<li>
+		<i>api.example.com </i>requires different Cloudflare settings than <i>blog.example.com</i>.
+	</li>
+</ul>
+<h3>Requirements</h3>
+<p>Subdomain Support has several noteworthy requirements:</p>
+<ul>
+	<li>When the parent domain is active on Cloudflare, migrating a child subdomain from one Cloudflare account to another first requires moving the child subdomain back into the parent domain.</li>
+	<li>The parent domain’s SSL certificate displays to visitors of the child subdomain if the parent’s certificate explicitly lists the child subdomain and is created after the child’s SSL certificate was created.<ul>
+			<li>Example: <i>foo.example.com </i>is a child of <i>example.com</i>. Both domains are on Cloudflare. If <i>example.com </i>has a certificate with <i>foo.example.com </i>explicitly listed as a hostname, the <i>example.com </i>Dedicated certificate is served to visitors of <i>foo.example.com</i>.</li>
+		</ul>
+	</li>
+</ul>
+<ul>
+	<li>If the parent and child subdomain are both on Cloudflare, match the subdomain setup type (Full or CNAME) to the parent setup type. </li>
+	<li>Cloudflare Edge Side Code (ESC) for a parent domain does not automatically apply to child subdomains and requires changes to the ESC.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">If a child subdomain uses a <a href="https://support.cloudflare.com/hc/articles/206190798">resolve override</a> to a parent domain in a different Cloudflare account, enable <a href="https://support.cloudflare.com/hc/articles/360029779472#error1014">CNAME sharing</a>.
+</div>
+<hr>
+<h2 id="h_e5603b0b-7e53-4103-bcca-01f85b346aab">Add DNSSEC to subdomains</h2>
+<p>Follow the steps below to enable DNSSEC on both a parent domain and child subdomain.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare must be the authoritative DNS for both the parent domain and child subdomain.
+</div><b></b>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-warning">If you just registered the domain or just enabled DNSSEC, wait 12 to 24 hours before proceeding with the steps below to ensure DNS resolvers provide the same DNS query responses.
+</div><b></b>
+<ol>
+	<li>Add the child subdomain to your Cloudflare account and note the Cloudflare nameservers provided. Cloudflare nameservers are listed within the Cloudflare <b>DNS</b> app under <b>Cloudflare Nameservers.</b>
+	</li>
+	<li>Create two NS records, one for each Cloudflare nameserver, within the Cloudflare <b>DNS</b> app for the parent domain.  Ensure the <b>Name</b> of the NS records is the same as the hostname of the child subdomain.  </li>
+	<li>Validate DNS resolution of the child subdomain.</li>
+	<li>
+		<a href="https://developers.cloudflare.com/dns/additional-options/dnssec"><u>Enable DNSSEC</u></a> for the child subdomain and save the information provided within the <b>DS</b> <b>Record</b> output.
+	</li>
+	<li>Add the <b>DS Record</b> from the previous step to the parent domain.  (show steps to add DS record)</li>
+	<li>Add an A record to the child subdomain to validate DNS resolution.</li>
+	<li>Wait 2 to 6 hours. Then,<a href="https://support.cloudflare.com/hc/articles/360021111972#TroubleshootingDNSSEC-DNSSECinPracticewithDig"> <u>test the A record</u></a> added in the previous step using multiple DNS resolvers with DNSSEC validation (1.1.1.1, 8.8.8.8, and 9.9.9.9).  For example, if the A record is for <i>test.child.example.com: </i>
+	</li>
+</ol>
+<p>              <code>dig </code><code><i>test.child.example.com</i></code><code> +dnssec @</code><code><i>1.1.1.1</i></code></p>
+<hr>
+<h2 id="h_d312497e-cd1b-413c-a6f4-5605e78d78d8">Add child subdomains to Cloudflare</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">A child subdomain incurs a couple of minutes downtime when delegated from the parent domain.
+</div>
+<p>Add child subdomains on either a <a href="https://support.cloudflare.com/hc/en-us/articles/360026440252#h_4cd940e3-e84d-4848-9cdb-2f592638ffaf"></a><b>Full (default) </b>or <b>CNAME setup</b>. Ideally, the setup used for the child domain should mimic the setup for the parent domain.</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Which setup should I use?</div>
+	<div class="dropdown-content">
+		<p></p>
+		<table>
+			<tbody>
+				<tr>
+					<td colspan="1" rowspan="1">
+						<p>
+							<strong>Parent domain setup</strong>
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							<strong>Recommended child subdomain setup</strong>
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							<strong>Plan type</strong>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1" rowspan="1">
+						<p>Parent domain on Cloudflare via a Full setup</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							Full setup only
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							Free, Pro, Business or Enterprise plan
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1" rowspan="1">
+						<p>
+							Parent domain on Cloudflare via a
+							CNAME setup
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							CNAME setup only
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							Business or Enterprise plan
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1" rowspan="1">
+						<p>The parent domain is not on Cloudflare</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							Can choose
+							Full or
+							CNAME setup
+						</p>
+					</td>
+					<td colspan="1" rowspan="1">
+						<p>
+							Business or Enterprise plan required for CNAME setup
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="T2NCUQX2BY5YV5" class="dropdown-header">Adding child subdomains via CNAME setups</div>
+	<div class="dropdown-content">
+		<p>Refer to <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">Understanding a CNAME Setup</a> for information about adding child subdomains.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-tip">Ensure Cloudflare configurations for the subdomain are moved from the parent domain to the child subdomain before activating the child subdomain at Cloudflare.
+		</div>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="R32FFNFAZVMQWQ" class="dropdown-header">Adding child subdomains via Full setups</div>
+	<div class="dropdown-content">
+		<p>Add a child subdomain to the Full setup zone. If your parent domain is on a Full setup, add the <i>NS records</i> to the parent domain’s Cloudflare <b>DNS</b> app.</p>
+		<p>Once you have finished, ensure Cloudflare configurations for the subdomain are moved from the parent domain to the child subdomain.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Add DNS records to the child subdomain’s Cloudflare <strong>DNS</strong> app prior to creating the <em>NS records</em> in the parent domain. Once you’ve created the <em>NS records</em> and the child subdomain is active on Cloudflare, remove any DNS records, except for the <em>NS records</em>, that refer from the parent domain to the child subdomain.
+		</div>
+	</div>
+</div>
+<p></p>
+<h3 id="55GG3YTM7WSGEH">Best practices for adding child subdomains</h3>
+<p>The parent domain loses configuration control over the subdomain once the child subdomain is added to Cloudflare. For instance, <i>example.com</i>’s <a href="https://support.cloudflare.com/hc/articles/218411427">Page Rule</a> for <i>shop.example.com</i> will no longer work when the <i>shop.example.com</i> child subdomain is added to Cloudflare. Move <b>Page Rule</b> configuration from the parent domain to the child subdomain before activating the child subdomain with <i>TXT records</i> or setting <i>NS records</i>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If using a Custom SSL certificate with a child subdomain (such as <em><a href="http://www.example.com">www.example.com</a></em>), the Custom SSL certificate must explicitly list <em><a href="http://www.example.com">www.example.com</a></em> and not just <em>*.example.com</em> in order for the Custom SSL certificate to apply to traffic for <em><a href="http://www.example.com">www.example.com</a>.</em>
+</div>
+<p>This concept applies to any Cloudflare feature configured for the child subdomain such as <a href="https://support.cloudflare.com/hc/articles/115001635128">Rate Limiting</a><a href="https://developers.cloudflare.com/dns/">, DNS</a>, and <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/"><b>Firewall Rules</b></a><b>.</b></p>
+<p></p>
+<hr>
+<h2 id="h_39a346bb-4726-4f69-969e-016fbacbb2c0">Migrate a subdomain to a new Cloudflare account</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">A child subdomain incurs a couple of minutes downtime when delegated from the parent domain.
+</div>
+<p>To move a subdomain on a Full setup from one Cloudflare account to another:</p>
+<ol>
+	<li>Add the subdomain to the new Cloudflare account.</li>
+	<li>Create the subdomain's <i>CNAME </i>or <i>A record </i>within the new Cloudflare account.</li>
+	<li>Update the NS records for the subdomain to refer to the new nameservers corresponding to the new Cloudflare account.</li>
+	<li>Delete the subdomain's <i>CNAME</i> or <i>A record </i>within the old Cloudflare account
+
+	</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_ac1253f4-d017-42e1-84a9-4c4eb9423e8e">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/205359838">I cannot add my domain to Cloudflare...</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/221327488">Why was my domain deleted from Cloudflare?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/4405024355981">Reverse zones and PTR records</a></li>
+</ul>
+<p></p>

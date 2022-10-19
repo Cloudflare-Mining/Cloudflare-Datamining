@@ -1,0 +1,58 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4yxrXRWyVH9kPJDw4ggBWR">Overview</a></li>
+		<li><a href="#h_QAA3vgBAdpUKYCa3dhCuu">Purchase custom email domain</a></li>
+		<li><a href="#log-in">Log in to Cloudflare</a></li>
+		<li><a href="#h_5aq9lL2iCR8Yq4qsIVw6kt">Supported payment methods</a></li>
+		<li><a href="#h_5zzdDai0e3An8RCmSljoJn">Email issues</a></li>
+		<li><a href="#h_5K8k5hBqVaMAwWFiJIFzOl">Domain website</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4yxrXRWyVH9kPJDw4ggBWR">Overview</h2>
+<p>You can now purchase <a href="https://support.apple.com/kb/HT212514">iCloud Custom Email Domains</a> through Cloudflare. It’s great if you want to create a custom email domain for you or your family, such as @examplefamily.com.</p>
+<p>You will need an active iCloud+ subscription to add a custom email domain.</p>
+<hr>
+<h2 id="h_QAA3vgBAdpUKYCa3dhCuu">Purchase custom email domain</h2>
+<p>If you want to buy a custom email domain, go to your <a href="https://www.icloud.com/settings/"><u>iCloud</u></a> settings and scroll down to “Custom Email Domain”.</p>
+<hr>
+<h2 id="log-in">Log in to Cloudflare</h2>
+<p>Once you have bought a custom email domain, you can manage your domain and other options through the <a href="https://dash.cloudflare.com/login">Cloudflare Dashboard</a>.</p>
+<h4>Signing in with Apple</h4>
+<p>If you had signed up with Apple, signing into Cloudflare is as easy as clicking the “Sign in with Apple” button.</p>
+<h4>Signing in with Cloudflare</h4>
+<p>If you had signed up with Cloudflare, signing into Cloudflare can be done with your email and password.</p>
+<hr>
+<h2 id="h_5aq9lL2iCR8Yq4qsIVw6kt">Supported payment methods</h2>
+<p>For domain registration, Cloudflare supports the following payment methods:</p>
+<ul>
+	<li>Credit Card</li>
+	<li>PayPal</li>
+	<li>Apple Pay (available if you have a wallet with a valid payment method and are using an iOS device or Safari on macOS)</li>
+</ul>
+<p>For domain renewals, Apple Pay does not currently support recurring payments. You can either add another payment method (Credit Card or PayPal) for automatic renewals or log into <a href="#log-in"><u>your account</u></a> near the renewal date and use Apple Pay.</p>
+<hr>
+<h2 id="h_5zzdDai0e3An8RCmSljoJn">Email issues</h2>
+<h3>Email issues</h3>
+<p>If you are not receiving emails intended for your new email address, review your DNS records in the Cloudflare dashboard:</p>
+<ol>
+	<li>Log into the <a href="#log-in"><u>Cloudflare dashboard</u></a>.</li>
+	<li>Go to <b>DNS</b>.</li>
+	<li>Your domain should have records similar to the following:</li>
+</ol><img src="https://images.ctfassets.net/slt3lc6tev37/50uPx7hzX94yTCEJxhNRJI/c377d0ed85f8697fc41a8e6118fc3599/icloud-custom-domain-dns-example.png" alt="Your iCloud custom email domain should have a specific set of records created by default.">
+<p>If your domain has records similar to those listed above and you are still experiencing problems with your new email address, contact <a href="https://support.apple.com"><u>Apple Support</u></a>.</p>
+<hr>
+<h2 id="h_5K8k5hBqVaMAwWFiJIFzOl">Domain website</h2>
+<p>If you try to visit your new domain, your browser will show an error or empty page.</p>
+<p>That’s because there’s more to setting up a website than purchasing a domain name (which you just did) and setting up email records (which we just did for you). </p>
+<p>If you want your domain to be a fully functioning website, you will need to:</p>
+<ol>
+	<li>
+		<b>Build your website</b>: Either using <a href="https://developers.cloudflare.com/pages/"><u>Cloudflare Pages</u></a>, a website builder, or files hosted on a server.
+	</li>
+	<li>
+		<b>Update your Cloudflare DNS</b>: To direct visitors looking for your domain name to the actual content on your website (<a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-root-domain/"><u>detailed guide</u></a>).
+	</li>
+</ol>
+<p></p>

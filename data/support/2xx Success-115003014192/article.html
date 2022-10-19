@@ -1,0 +1,65 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_3Fk7PGWB3ahix7R27lAHxk">Overview</a></li>
+		<li><a href="#h_7ouk0XtRwb95oNkzjhpZt4">200 - OK</a></li>
+		<li><a href="#h_6N6j0KrxrKp6HPMrajwVSP">201 - Created</a></li>
+		<li><a href="#h_5UOW7gndEcN7aitTr7DjbD">203 - Non-authoritative information</a></li>
+		<li><a href="#h_4BsEmrGzwwigbmgk9p9qsS">204 - No content</a></li>
+		<li><a href="#h_WEfpAbHD9vfqbVUFnNss7">205 - Reset content</a></li>
+		<li><a href="#h_Spu5zIx5aQzQgAs3aRuJZ">206 - Partial content</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_3Fk7PGWB3ahix7R27lAHxk">Overview</h2>
+<p><b>2xx</b> codes indicate success — meaning that a client's action was received, understood, and accepted.</p>
+<hr>
+<h2 id="h_7ouk0XtRwb95oNkzjhpZt4">200 - OK</h2>
+<p>A <b>200</b> response means the request has succeeded.</p>
+<p>The response payload will vary based on the request method:</p>
+<ul>
+	<li>
+		<b>GET</b>: Headers and data corresponding to the requested resource
+	</li>
+	<li>
+		<b>HEAD</b>: Only headers corresponding the requested resource
+	</li>
+	<li>
+		<b>POST</b>: Status of or results obtained from the action
+	</li>
+</ul>
+<p>A 200 response <b>should</b> always have a payload, but is not required. Occasionally, an origin server may generate a 200 with a zero length. To adhere to RFC standards, the server should generate a 204 code (exception CONNECT).</p>
+<p>200 responses are cacheable by default for proxy servers and browsers. If not specified by Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/202775670">cache controls</a>, <a href="https://support.cloudflare.com/hc/en-us/articles/200172516">static resources</a> with this response will cache default for 2 hours at our edge.  </p>
+<hr>
+<h2 id="h_6N6j0KrxrKp6HPMrajwVSP">201 - Created</h2>
+<p>A <b>201 </b>response means that the request was successful and one or more new resources were created. </p>
+<p>Typically, you will find the new resource's location in the server's response (either the <b>Location </b>header or the request's URI).</p>
+<p>See <a href="https://tools.ietf.org/html/rfc7231#section-7.2">RFC 7231</a> for a discussion on validator header fields in a 201 response, such as <b>ETag</b> and <b>Last-Modified.</b></p>
+<p></p>
+<hr>
+<h2 id="h_5UOW7gndEcN7aitTr7DjbD">203 - Non-authoritative information</h2>
+<p>A <b>203</b> response means that the request was successful but the response did not come directly from the origin server. The response was instead delivered by a proxy or intermediate server. </p>
+<p>Servers use this response to tell a client that this resource has been cached at a proxy.</p>
+<p>Cloudflare does not cache 203 responses. For details about Cloudflare handles 203 responses, refer to <a href="https://developers.cloudflare.com/fundamentals/get-started/http-request-headers">HTTP request headers</a>.</p>
+<p></p>
+<p></p>
+<hr>
+<h2 id="h_4BsEmrGzwwigbmgk9p9qsS">204 - No content</h2>
+<p>A <b>204</b> response means that the request was successful but there is no content to return.</p>
+<p>Commonly, servers provide this response when a document editor "saves" an action to the origin server. It lets the client know the save was successful.</p>
+<p>204 responses never contain payloads and Cloudflare does not cache these responses.</p>
+<p></p>
+<hr>
+<h2 id="h_WEfpAbHD9vfqbVUFnNss7">205 - Reset content</h2>
+<p>A <b>205</b> response tells the client to return to its previous state after a request. This response occurs after someone submits a form or other data and lets the client know to refresh the page or allow another submission.</p>
+<p>205 responses should never return a payload.</p>
+<hr>
+<h2 id="h_Spu5zIx5aQzQgAs3aRuJZ">206 - Partial content</h2>
+<p>A <b>206</b> response means that the request was partially successful. Use this response to decrease latency when clients are processing larger files that might require split or interrupted downloads.</p>
+<p>This request should also return either:</p>
+<ul>
+	<li>A partial payload that includes the <b>Content-Range</b> header that indicates the range and the data present in that range</li>
+	<li>A multipart payload that <b>does not</b> include the <b>Content-Range</b> header on the top-level HTTP response, but includes <b>Content-Type</b> and <b>Content-Range</b> headers on each individual part</li>
+</ul>
+<p>For more details, see <a href="https://tools.ietf.org/html/rfc7233#page-10">RFC 7233 Section 4.1</a>.</p>
+<p></p>

@@ -1,0 +1,24 @@
+<p><i>Learn how to restrict URL access to trusted IP ranges for a Cloudflare-protected website using Zone Lockdown.</i></p>
+<hr>
+<h2 id="21RsS1sv6jh3vszhbS66UA">Overview</h2>
+<p><b>Zone Lockdown</b> specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL.  <b>Zone Lockdown</b> allows multiple destinations in a single rule as well as IPv4 and IPv6 addresses. IP addresses not specified in the <b>Zone Lockdown</b> rule are denied access to the specified resources.</p>
+<p>The maximum amount of rules allowed per account is based on plan type:</p>
+<ul>
+	<li>
+		<b>Free</b>: 0
+	</li>
+	<li>
+		<b>Pro</b>: 3
+	</li>
+	<li>
+		<b>Business</b>: 10
+	</li>
+	<li>
+		<b>Enterprise</b>: 200
+	</li>
+</ul>
+<p>Configure <b>Zone Lockdown</b> rules in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Tools</b>. Alternatively, <a href="https://api.cloudflare.com/#zone-lockdown-create-lockdown-rule"><u>configure </u><u><b>Zone Lockdown </b></u><u>via the API</u></a>. The example below demonstrates using <b>Zone Lockdown</b> to restrict access to users connecting from your company’s headquarters and branch offices:</p><img src="https://images.ctfassets.net/slt3lc6tev37/7FTi0rsAhariDncFP7pQK2/be8a75150e2f4b96f140cbf86eb0a1dc/create_a_zone_lockdown_rule.png" alt="Configuring a Zone Lockdown rule that restricts access to users connecting from the company’s headquarters and branch offices">
+<p>The above example would not protect an internal wiki located on a different directory path such as <i>example.com/internal/wiki</i>. </p>
+<p>For multiple overlapping <b>Zone Lockdown</b> rules, set a <b>Priority </b>under <b>Advanced Options</b> of the <b>Zone Lockdown</b> configuration. The lower the number, the higher the priority. Higher priority rules take precedence.  For example, a rule for <i>example.com/admin/api/</i> requires a different priority than a similar rule for <i>example.com/admin/</i> if each rule contains a different set of allowed IP addresses.</p>
+<p>A visitor from an unauthorized IP observes the following error when <b>Zone Lockdown</b> is enabled:</p><img src="https://images.ctfassets.net/slt3lc6tev37/2xOUOxtconb5Z0nEpLDAcF/6957e8230521e86296d4f7064fca44cb/zone-lockdown-rule-error-1106-access-denied.png" alt="Example of Error 1106 (access denied) received by a user accessing the zone from an unauthorized IP address">
+<p></p>

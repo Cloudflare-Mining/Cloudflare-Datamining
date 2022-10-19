@@ -1,0 +1,33 @@
+<p><i>Increase account security and prevent unauthorized access with Cloudflare multi-factor email authentication</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#7pdOEFb45mcAQi3XtyJzdF">Overview</a></li>
+		<li><a href="#3DW4pbHDKkTdfrwmSUhu0x">Troubleshooting MFA</a></li>
+		<li><a href="#3MIBGZjwJZ4xS49lzfo3Nu">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="7pdOEFb45mcAQi3XtyJzdF">Overview</h2>
+<p>Cloudflare uses a Multi-Factor Authentication (MFA) method for increased account security.  MFA prevents customer account takeovers when attackers gain unauthorized access to an account due to an exposed or easily guessed password.</p>
+<p>Cloudflare will challenge any login attempt if the user provides the correct credentials from an unrecognized IP address.</p><img src="https://images.ctfassets.net/slt3lc6tev37/1Nx3fX3DTGChshnz5f5P9E/cc86ff55e3ad4446f2842a1934440012/hc-import-account_access_email.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360035322751/account_access_email.png
+Article IDs: 115003614752 | Multi-Factor Email Authentication
+">
+<p>Cloudflare challenges the login by sending a one time code that expires in 30 minutes to the email we have on file for the account. Once the correct code is provided through the dashboard, that IP will be recorded and further login attempts from that IP address won't be challenged for 90 days.</p><img src="https://images.ctfassets.net/slt3lc6tev37/4yHgCm6Qg34VWBd9HNQe24/61a0e001c076ee5265398e46cd625bfc/hc-import-login_authentication.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360035323072/login_authentication.png
+Article IDs: 115003614752 | Multi-Factor Email Authentication
+">
+<p>By checking “remember this computer,” that device/browser will not receive MFA challenges for up to 14 days. After 14 days, Cloudflare will begin checking the IP address again for logins from that device/browser.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Email MFA can only be disabled by enabling <a href="https://support.cloudflare.com/hc/en-us/articles/200167906">two-factor authentication</a>.
+</div>
+<p></p>
+<hr>
+<h2 id="3DW4pbHDKkTdfrwmSUhu0x">Troubleshooting MFA</h2>
+<p>Cloudflare emails are sometimes flagged as spam by the recipient's email service. If you are expecting an authentication token, you should check the spam folder for any Cloudflare emails and configure a filter to allow Cloudflare emails from <i>no-reply@notify.cloudflare.com</i><i><b>.</b></i></p>
+<p>Other times emails are rejected by the recipient email service. Cloudflare will try again but after a few attempts it will flag your email address and no further emails will be sent.</p>
+<p>If after ensuring your email service is not flagging Cloudflare you still do not receive an email, contact <a href="https://support.cloudflare.com/requests/new">Cloudflare Support.</a></p>
+<hr>
+<h2 id="3MIBGZjwJZ4xS49lzfo3Nu">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200167906">Securing user access with two-factor authentication</a></li>
+</ul>
+<p></p>

@@ -1,0 +1,30 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_2YLWbRh3AraX60IsLKOr3Q">Problem Description</a></li>
+		<li><a href="#h_6igidoiPipHjzVwK4SUqTU">Root Cause</a></li>
+		<li><a href="#h_3gnIr4NNqEzeNSUVthhhWT">Solution</a></li>
+		<li><a href="#h_3vL9lFwGOuzWv806ChIvTV">Additional Information</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_2YLWbRh3AraX60IsLKOr3Q">Problem Description</h2>
+<p>When trying to configure a namerserver as part of the Secondary DNS offering from Cloudflare (<i>nsXXXX.secondary.cloudflare.com</i>), an error is thrown. </p>
+<p>Upon contacting the Registrar, their services confirm that the nameservers from Cloudflare cannot be added at this time. </p>
+<p>Error depends on the system, and might be:</p>
+<p><code>Entity reference not found Authorization error; Unable to create foreign nameserver
+	</code>
+</p>
+<hr>
+<h2 id="h_6igidoiPipHjzVwK4SUqTU">Root Cause</h2>
+<p>This issue may arise when one of our nameservers used for secondary nameservers are removed from the Verisign side. 
+</p>
+<p></p>
+<hr>
+<h2 id="h_3gnIr4NNqEzeNSUVthhhWT">Solution</h2>
+<p>The Cloudflare Engineering team needs to be engaged through Support to make sure the nameserver gets registered again manually with Verisign. </p>
+<p></p>
+<hr>
+<h2 id="h_3vL9lFwGOuzWv806ChIvTV">Additional Information</h2>
+<p><a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-Configuring-Secondary-DNS">https://support.cloudflare.com/hc/en-us/articles/360001356152-Configuring-Secondary-DNS
+	</a></p>

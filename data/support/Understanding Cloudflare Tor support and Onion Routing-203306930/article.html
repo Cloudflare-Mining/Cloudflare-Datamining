@@ -1,0 +1,13 @@
+<p><em>Cloudflare does not automatically block visitors who use the Tor network.  Control Tor access via the Firewall app and enable Onion Routing in the Network app.</em></p>
+<hr>
+<h2 id="5qJ4NVn4BuiTq1vojJgwoy">Overview</h2>
+<p>Due to the behavior of some individuals using the Tor network (spammers, distributors of malware, attackers, etc.), the IP addresses of Tor exit nodes may earn a bad reputation, elevating their Cloudflare threat score.</p>
+<p>Our <a href="https://support.cloudflare.com/hc/articles/200170056">basic protection level</a> issues CAPTCHA-based challenges to visitors whose IP address has a high threat score, depending on the level chosen by the Cloudflare customer. The choices for security range from Essentially Off to I'm Under Attack. The default level is Medium.</p>
+<p>Cloudflare assigns the two-letter code <em>T1</em> for Tor.  There's no geographical country associated with these IPs, but this approach lets Cloudflare customers override the default Cloudflare threat score to define the experience for their Tor visitors.  Cloudflare updates its list of Tor exit node IP addresses every hour.</p>
+<h3>Onion Routing</h3>
+<p>Beyond applying firewall filters to Tor traffic, Cloudflare users can improve the Tor user experience by enabling Onion Routing.  Onion Routing allows Cloudflare to serve your website’s content directly through the Tor network, without requiring exit nodes. This improves Tor browsing as follows: </p>
+<ul>
+	<li>Tor users no longer access your site via exit nodes, which can sometimes be compromised, and may snoop on user traffic.</li>
+	<li>Human Tor users and bots can be distinguished by our Onion services, such that CAPTCHA challenges are only served to malicious bot traffic. </li>
+</ul>
+<p>Toggle <strong>Onion Routing</strong> <em>On</em> or <em>Off</em> via the Cloudflare <strong>Network</strong> app.</p>

@@ -1,0 +1,71 @@
+<p><i>Cloudflare (Account) Analytics helps you gain insight into your Cloudflare account through an aggregated view of metrics from all your sites. This is an open beta product, available to all customers with one thousand sites or fewer on Cloudflare.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#7aQSdQoIQR1gC9FWX5DOSu">Overview</a></li>
+		<li><a href="#3Scu0zJMPKYXI4hobcNauv">View your account analytics</a></li>
+		<li><a href="#2gukyEQggf6A7GLidb4ZIA">Review your account metrics</a></li>
+		<li><a href="#6oUJYa3v3OMd79pLISj8VQ">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="7aQSdQoIQR1gC9FWX5DOSu">Overview</h2>
+<p>The Cloudflare dashboard (Account) <b>Analytics </b>app is a major component of the overall Cloudflare analytics product line.  Specifically, you can access a wide range of aggregated metrics from all the sites under a specific Cloudflare account.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-info">Read <a href="https://support.cloudflare.com/hc/articles/360037684111https://" title="Cloudflare Analytics: A quick overview">Cloudflare Analytics: A quick overview</a> for general information about all of Cloudflare’s analytics offerings. You can also understand the characteristics of the data that Cloudflare captures and processes.
+</div>
+<p>
+</p>
+<hr>
+<h2 id="3Scu0zJMPKYXI4hobcNauv">View your account analytics</h2>
+<p>To view metrics for your site:</p>
+<p>1. Log in to the Cloudflare dashboard.</p>
+<p>2. Select the appropriate Cloudflare account.</p>
+<p>3. Under the <b>Home</b> tab, click <b>Analytics</b> to the right of the list of sites. </p><img src="https://images.ctfassets.net/slt3lc6tev37/1Af8N5J43pixI6itO2jieI/3ade963babf40bf57595f48d21bb50f1/hc-dash-analytics-button-on-home-screen.png" alt="Selecting Analytics on the list of sites">
+<p>Alternatively under <b>Menu</b>, locate the <b>Products</b> section and select <b>Analytics</b>. </p><img src="https://images.ctfassets.net/slt3lc6tev37/7ErlY90D4RD6dsbcO2NiRb/0a6669c89526f8b1fe8f25554325cf7e/hc-dash-account-level-analytics_button.png" alt="Under Menu, selecting Analytics in the Products section">
+<p>Once it loads, the Account Analytics app displays a collection of categorized charts with aggregated metrics for your account.  To understand the various metrics available, see <i>Review your account metrics</i> below.</p>
+<hr>
+<h2 id="2gukyEQggf6A7GLidb4ZIA">Review your account metrics</h2>
+<p>This section outlines the aggregated metrics under each category.  Before reviewing your metrics, let’s define a couple of concepts used in some panels:</p>
+<ul>
+	<li>
+		<i>Rate</i> -  Reflects the ratio between the amount for a specific data category and the total.
+	</li>
+	<li>
+		<i>Bandwidth</i> - Refers to the number of bytes sent from the Cloudflare edge network to the requesting client.
+	</li>
+</ul>
+<p>Also, note that:</p>
+<ul>
+	<li>To filter metrics for a specific time period, use the dropdown in the top right.</li>
+	<li>Most metrics are grouped into panels representing different aspects of the underlying data.</li>
+</ul>
+<h3>Summary of metrics</h3>
+<p>Below is a brief description of the major elements comprising the metrics available.</p>
+<p>HTTP Traffic</p>
+<p>These charts aggregate data for HTTP traffic, and include:</p><img src="https://images.ctfassets.net/slt3lc6tev37/1CISgLSweXODrfmByqPgb2/62497b44d98c6766c49175f55a61d870/hc-dash-account-analytics-map.png" alt="Chart showing last week's data for HTTP traffic">
+<ul>
+	<li>Spark lines for<i> Requests</i>, <i>Bandwidth</i>,<i> Page views</i>, and <i>Visitors</i> (<i>Unique IPs)</i>
+	</li>
+	<li>An interactive map that breaks down the number of requests by country</li>
+	<li>A table combining numerical and spark line data, sorted by total number of requests per country</li>
+</ul>
+<p>Security</p><img src="https://images.ctfassets.net/slt3lc6tev37/3hcMZRHjaF4EBpLLFj6oI0/03bd11134b22c4f7135ae01efc86a271/hc-dash-account-analytics_security_panel.png" alt="Panel displaying lines highlighting encryption metrics: requests, requests rate, bandwidth, and bandwidth rate">
+<p>This panel features spark lines highlighting various encryption metrics, including: <i>requests</i>, <i>requests rate</i>, <i>bandwidth</i>, and <i>bandwidth rate</i>.  These also include a comparative percentage change based on the previous period.</p>
+<p>Cache</p><img src="https://images.ctfassets.net/slt3lc6tev37/1B8mRwpMpAPpWsEKtiTarK/fe938934c476949a51aaa8f2071d86d7/hc-dash-account-analytics_cache_card.png" alt="Panel displaying lines for caching metrics: requests, requests rate, bandwidth, and bandwidth rate">
+<p>This panel features spark lines for various caching metrics, including: <i>requests</i>, <i>requests rate</i>, <i>bandwidth</i>, and <i>bandwidth rate</i>.  These also include a comparative percentage change based on the previous equivalent period.  For example, if you selected <i>Last week </i>as your time period, the previous period refers to the <i>week</i> before.</p>
+<p>Errors</p><img src="https://images.ctfassets.net/slt3lc6tev37/1TnkUZesLTrYAPz7tPCaZR/473b518be53302c3a15d24ce072af980/hc-account-analytics_errors_card.png" alt="Panel displaying lines for 4xx and 5xx error rates">
+<p>This panel displays spark lines for 4xx and 5xx error rates, respectively.  Learn more about <a href="https://support.cloudflare.com/hc/articles/115003014432-HTTP-Status-Codes"><u>HTTP Status Codes</u></a>. </p>
+<p>Network</p><img src="https://images.ctfassets.net/slt3lc6tev37/NxF6XTXVN3K7cOOVZRl8P/0d6dfb5d54de3f0b4c1ca5d461329095/hc-dash-account-analytics_network_card.png" alt="Statistics showing the percentage of requests that use a specific version of HTTP">
+<p>Client HTTP Version Used</p>
+<p>These statistics show the percentage of requests that use a specific version of HTTP.</p>
+<p>Traffic Served Over SSL</p>
+<p>These statistics show the percentage of traffic that is encrypted using a specific version of SSL or TLS.</p>
+<p>Content Type Breakdown</p>
+<p>These statistics show the number of requests based on the resource content type.</p>
+<hr>
+<h2 id="6oUJYa3v3OMd79pLISj8VQ">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/analytics">Cloudflare Analytics: A quick overview</a></li>
+	<li><a href="https://developers.cloudflare.com/analytics/"><u>The Cloudflare Analytics GraphQL API</u></a></li>
+</ul>
+<p></p>

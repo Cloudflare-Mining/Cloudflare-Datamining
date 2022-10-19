@@ -1,0 +1,48 @@
+<p><i>Learn how Cloudflare gRPC support protects your API traffic.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_6Q6zlawxNIvWIARpDGxVXW">Overview</a></li>
+		<li><a href="#h_1Z6TA2y1ycBzavrd5n9yss">Requirements</a></li>
+		<li><a href="#h_o7k9rF9QcJEBavDBTADzb">Limitations</a></li>
+		<li><a href="#h_o7k9rF9QcJEBavDBTADzb">Enable gRPC</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_6Q6zlawxNIvWIARpDGxVXW">Overview</h2>
+<p>The gRPC protocol was developed by Google in 2015 to build efficient APIs with smaller payloads for reduced bandwidth usage, decreased latency, and faster implementations.  Cloudflare offers support for gRPC to protect your APIs on any orange-clouded gRPC endpoints. </p>
+<p>Running gRPC traffic on Cloudflare is compatible with most Cloudflare products, including WAF, Bot Management, and Page Rules. gRPC support is available on all Cloudflare plans for no additional fees.  However, charges may occur for gRPC traffic over add-on products such as Argo Smart Routing, WAF, and Bot Management. gRPC support is broadly tested and considered stable, but bugs are still possible.  Report unexpected behaviors to <a href="https://support.cloudflare.com/hc/articles/200172476"><u>Cloudflare Support</u></a>.</p>
+<hr>
+<h2 id="h_1Z6TA2y1ycBzavrd5n9yss">Requirements</h2>
+<ul>
+	<li>Your gRPC endpoint must listen on port 443. </li>
+	<li>Your gRPC endpoint must support TLS and HTTP/2.</li>
+	<li>HTTP/2 must be advertised over ALPN.</li>
+	<li>Use <i>application/grpc</i> or <i>application/grpc+&lt;message type</i> (for example: <i>application/grpc+proto</i>) for the <b>Content-Type</b> header of gRPC requests. </li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_o7k9rF9QcJEBavDBTADzb">Limitations</h2>
+<p>The following products have limited capabilities with gRPC requests:</p>
+<ul>
+	<li>
+		<b>Argo Tunnel</b> currently does not support gRPC.
+	</li>
+	<li>
+		<b>Cloudflare Access</b> does not support gRPC traffic sent through Cloudflare’s reverse proxy. gRPC traffic will be ignored by Access if gRPC is enabled in Cloudflare. We recommend disabling gRPC for any sensitive origin servers protected by Access or enabling another means of authenticating gRPC traffic to your origin servers.
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_o7k9rF9QcJEBavDBTADzb">Enable gRPC</h2>
+<p>Follow the instructions below to enable gRPC:</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<a href="https://support.cloudflare.com/hc/articles/200169626">Orange-cloud the domain</a> that hosts your gRPC endpoint.
+</div>
+<ol>
+	<li>Log in to your Cloudflare account.</li>
+	<li>Select the appropriate domain.</li>
+	<li>Click the <b>Network</b> app.</li>
+	<li>Toggle the <b>gRPC</b>.</li>
+</ol>
+<p></p>

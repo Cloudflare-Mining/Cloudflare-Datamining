@@ -1,0 +1,514 @@
+<p><i>Learn how Magic Transit and Cloudflare Spectrum customers use account-level Network Analytics to explore Layer 3 and 4 traffic and DDoS attack details.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#7rrlY887ZX7ZDVmx2V4bcm">Overview</a></li>
+		<li><a href="#7x2T95w9RGgg782pVMujPb">View Network Analytics</a></li>
+		<li><a href="#h_3WlP6WsWFl28h92oS2k8O2">Navigate Network Analytics</a></li>
+		<li><a href="#h_4Agjkc3QlLuhrCW43NsN3p">Apply filters to data </a></li>
+		<li><a href="#h_4UZtmYClrU0N7OYwZgHHoh">Select a dimension to plot</a></li>
+		<li><a href="#h_6GOQ2ficyicPxirroGewJP">View the Activity log</a></li>
+		<li><a href="#h_3grb6OPVreABUQaQBekfHn">Export log data and reports</a></li>
+		<li><a href="#h_6tCVFw0V6ufdvQnRIxu19t">Limitations</a></li>
+		<li><a href="#7flIreW1Np8fuxZYTbduF2">Related resources</a></li>
+		<li><a href="#h_2CqXhNxV03M5IUwklSR3n6">Frequently asked questions</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="7rrlY887ZX7ZDVmx2V4bcm">Overview</h2>
+<p>Access to Network Analytics requires the following:</p>
+<ul>
+	<li>A Cloudflare Enterprise plan</li>
+	<li>Cloudflare <a href="https://developers.cloudflare.com/magic-transit/">Magic Transit </a>or <a href="https://developers.cloudflare.com/spectrum/">Spectrum</a>.</li>
+</ul>
+<p>Cloudflare’s <b>Network Analytics</b> view provides near real-time visibility into network- and transport-layer traffic patterns and DDoS attacks. Network Analytics visualizes packet and bit-level data, the same data available via the <a href="https://developers.cloudflare.com/analytics/graphql-api/"><u>GraphQL Analytics API</u></a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<ul>
+		<li>For guidance on the new Network Analytics v2 (NAv2) dashboard, available in beta, refer to <a href="https://developers.cloudflare.com/analytics/network-analytics/">Cloudflare Network Analytics</a> in the developers documentation.
+		</li>
+		<li>There is also new version of the Network Analytics GraphQL API. If you are still using NAv1, you should migrate from NAv1 to NAv2 by following the <a href="https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/">migration guide</a>.
+		</li>
+	</ul>
+</div><img src="https://images.ctfassets.net/slt3lc6tev37/1xyomCwUU7fC8fTJcDeFPy/b196299bfa7ac04550c66af642422e4d/na-main-dashboard.png" alt="Analytics panel showing packets summary per type">
+<p>Network Analytics accelerates reporting and investigation of malicious traffic. You can filter data by these parameters:</p>
+<ul>
+	<li>Mitigation action taken by Cloudflare</li>
+	<li>Source IP, port, ASN</li>
+	<li>Destination IP and port</li>
+	<li>The Cloudflare data center city and country of where the traffic was observed</li>
+	<li>Attack size, type, rate, and duration</li>
+	<li>TCP flag </li>
+	<li>IP version</li>
+	<li>Protocol</li>
+</ul>
+<p>Use Network Analytics to quickly identify key intelligence:</p>
+<ul>
+	<li>Top attack vectors targeting the network </li>
+	<li>Traffic mitigation over time, broken down by action </li>
+	<li>Attack source, by country or data center</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="7x2T95w9RGgg782pVMujPb">View Network Analytics</h2>
+<p>You can access the <b>Network Analytics</b> view from your Cloudflare account’s Home page.</p>
+<p>To access the <b>Network Analytics </b>view, follow these steps:</p>
+<ol>
+	<li>Log in to your Cloudflare account.</li>
+	<li>If you have multiple accounts, select an account that has access to Magic Transit or Spectrum.</li>
+	<li>On the account’s <b>Home</b> page, click <b>Network Analytics</b>.</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Source IPs are stored for 30 days. Report periods older than 30 days do not include source IP data.
+</div>
+<p></p>
+<hr>
+<h2 id="h_3WlP6WsWFl28h92oS2k8O2">Navigate Network Analytics</h2>
+<h3>Headline summary and side panels</h3>
+<p>The headline and the side panels provide a summary of activity over the period selected in the <b>timeframe</b> drop-down list.</p><img src="https://images.ctfassets.net/slt3lc6tev37/5uydKR9QjJsn3ZBdZjoggr/3c8c4fbc537de5c6ccd0656e13ed7aaf/na-navigate.png" alt="Headline and side panel summarizing activity over the last 24 hours">
+<p>The headline provides the total packets or bits and the number of attacks detected and mitigated. When there is an attack in progress, the headline displays the maximum rate of packets (or bits) rather than the total count.</p>
+<p>To toggle your view of the data, click the <b>Packets</b> or <b>Bits</b> side panels.</p>
+<h3>Set the timeframe for the view</h3>
+<p>Use the <b>timeframe</b> drop-down list to change the time range over which Network Analytics displays data. When you select a timeframe, the entire view is updated to reflect your choice.</p>
+<p>When you select <i>Last 30 minutes</i>, the <b>Network Analytics</b> view displays the data from the last 30 minutes, refreshing every 20 seconds. A <i>Live </i>notification appears next to the statistic drop-down list to let you know that the view keeps updating automatically:</p><img src="https://images.ctfassets.net/slt3lc6tev37/74r5IQS94lsJIidfBP8kAY/50ef5aaf1731927636cf5f7f84e9f61c/hc-dash-Network_Analytics-auto_refresh.png" alt="Auto-refresh enabled in Network Analytics">
+<p>When you select the <i>Custom range</i> option, you can specify a time range of up to 30 days throughout any period during the last 365 days.</p>
+<h3>View by average rate or total volume </h3>
+<p>Choose a statistic from the drop-down list to toggle between plotting <i>Average rate</i><i><b> </b></i>and <i>Total count</i>. </p>
+<h3>Show IP prefix advertisement/withdrawal events</h3>
+<p>Enable the <b>Show annotations</b> toggle to show or hide annotations for advertised/withdrawn IP prefix events in the <b>Network Analytics </b>view. Click each annotation to get more details.</p><img src="https://images.ctfassets.net/slt3lc6tev37/7rJu3xcwzAdweQjR5RSqar/005c28e7cda831cac66ad0a8911cc81e/hc-dash-Network_Analytics-show_annotations.png" alt="Toggle button for displaying annotations in Network Analytics chart">
+<h3>Zoom into the Packets summary </h3>
+<p>Click and drag your mouse on a region of the chart to zoom in. Using this technique you can zoom into a time range as short as 3 minutes.</p><img src="https://images.ctfassets.net/slt3lc6tev37/38MOiZg00CCTHUY9yxMPnc/e35d295390ea32fdc8faecf1afe6d9b3/unnamed.gif" alt="Zooming into the Packets summary ">
+<p>To zoom out, click the <b>X</b> icon in the <b>time range</b> selector.</p>
+<hr>
+<h2 id="h_4Agjkc3QlLuhrCW43NsN3p">Apply filters to data </h2>
+<p>You can apply multiple filters and exclusions to adjust the scope of the data displayed in Network Analytics.</p>
+<p>Filters affect all of the data displayed in the Network Analytics page.</p>
+<p>There are two ways to filter Network Analytics data—use the <b>Add filter</b> button or click on one of the <b>stat filters</b>.</p>
+<h3>Use the Add filter button</h3>
+<p>Click the <b>Add filter</b> button to open the <b>New filter</b> popover. Specify a field, an operator, and a value to complete your filter expression. Click <b>Apply</b> to update the view.</p>
+<p>When applying filters, observe these guidelines:</p>
+<ul>
+	<li>Wildcards are not supported.</li>
+	<li>You do not need to wrap values in quotes.</li>
+	<li>When specifying an ASN number, leave out the <i>AS</i> prefix. For example, enter <i>1423</i> instead of <i>AS1423</i>.</li>
+</ul>
+<h3>Use a stat filter</h3>
+<p>To filter based on the type of data associated with one of the Network Analytics stats, use the <b>Filter</b> and <b>Exclude</b> buttons that display when you hover your pointer over the stat. </p>
+<p>In this example, clicking the <b>Filter</b> button narrows the scope of the view to only traffic associated with the <i>Allow</i> action.</p>
+<h3>Create a Magic Firewall rule from the applied filters</h3>
+<p></p>
+<div class="cf-sidebar-2 cf-note">This feature is only available for Magic Transit users.
+</div>
+<p>You can create a <a href="https://developers.cloudflare.com/magic-firewall"><u>Magic Firewall</u></a> rule that blocks all traffic matching the selected filters in Network Analytics. The currently supported filters are:</p>
+<ul>
+	<li>Destination IP</li>
+	<li>Protocol</li>
+	<li>Source data center</li>
+	<li>Source IP</li>
+	<li>TCP flags</li>
+</ul>
+<p>Other types of Network Analytics filters will not be added to the new rule definition. However, you can further configure the rule in Magic Firewall.</p>
+<p>Do the following:</p>
+<p>1. Apply one or more filters in Network Analytics.</p>
+<p>2. Click <b>Create Magic Firewall rule</b>. </p><img src="https://images.ctfassets.net/slt3lc6tev37/6lwDMou13Nqyw1chf3zo1M/7739061b584320745c15e3c2b2ff30de/hc-dash-Network_Analytics-create_firewall_rule.png" alt="Creating a Firewall Rule link in Network Analytics">
+<p>The Magic Firewall rule editor displays with the selected filters and values.</p>
+<p>3. Review the rule definition in the Magic Firewall rule editor.</p>
+<p>4. Click <b>Add new</b>.</p>
+<h3>Supported filter fields, operators, and values </h3>
+<p>The table below shows the range of fields, operators, and values you can use to filter Network Analytics.</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Operators</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Action</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>- Allow: Traffic allowed through Cloudflare's automated DDoS protection systems. May also include traffic mitigated by Firewall Rules, flowtrackd and L7 rules.
+				</p>
+				<p>- Block: Traffic blocked by Cloudflare's automated DDoS protection systems.
+				</p>
+				<p>- Connection-tracking: Applies only exclusively to L7, as Magic Transit is excluded from scope and no conntrack ever runs for Magic Transit prefixes.
+				</p>
+				<p>- Rate-limit: Can be applied per source IP, subnet or any connection. The decision is made programmatically based on heuristics.
+				</p>
+				<p>- Monitor: Attacks which were identified but have chosen to simply observe and not mitigate with any rule.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Attack ID</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Attack number</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Attack Type</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>UDP Flood</p>
+				<p>SYN Flood</p>
+				<p>ACK Flood</p>
+				<p>RST Flood</p>
+				<p>LDAP Flood</p>
+				<p>Christmas Flood</p>
+				<p>FIN Flood</p>
+				<p>GRE Flood</p>
+				<p>ICMP Flood</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Destination IP</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>IP address</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Destination Port</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+				<p>Greater than</p>
+				<p>Greater than or equals</p>
+				<p>Less than</p>
+				<p>Less than or equals</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Port number</p>
+				<p>Port range</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Destination IP range</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>IP range &amp; mask</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>IP Version</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>4 or 6</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Protocol</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>TCP</p>
+				<p>UDP</p>
+				<p>ICMP</p>
+				<p>GRE</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Source ASN</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>AS Number</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Source Country</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Country name</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Source data center</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Data center location</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Source IP</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>IP address</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>Source port</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+				<p>Greater than</p>
+				<p>Greater than or equals</p>
+				<p>Less than</p>
+				<p>Less than or equals</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Port number</p>
+				<p>Port range</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>TCP Flag</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>Equals</p>
+				<p>Does not equal</p>
+				<p>Contains</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>SYN, SYN-ACK, FIN, ACK, RST</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="h_4UZtmYClrU0N7OYwZgHHoh">Select a dimension to plot</h2>
+<p>You can plot Network Analytics data along a variety of dimensions. By default, Network Analytics displays data broken down by Action.</p>
+<p>Select one of the <b>Summary </b>tabs to view the data along a different dimension.</p><img src="https://images.ctfassets.net/slt3lc6tev37/72OhjGEI2UD69Y3Oyb71Fq/c4b8c00a06f948b78c89c962f6f6af2f/unnamed__1_.gif" alt="Visualizing data across multiple dimensions">
+<p>You can choose from these options: </p>
+<ul>
+	<li>Action</li>
+	<li>Attack type</li>
+	<li>Destination IP</li>
+	<li>Destination port</li>
+	<li>IP version</li>
+	<li>Protocol</li>
+	<li>Source ASN</li>
+	<li>Source country</li>
+	<li>Source data center</li>
+	<li>Source IP</li>
+	<li>Source port</li>
+	<li>TCP flag</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Data for source ASN, source IP, source port, and TCP flag is only available over the last 24 hours.
+</div>
+<h3>Share Network Analytics filters </h3>
+<p>When you add filters and specify a time range in the Network Analytics page, the URL changes to reflect those parameters.</p>
+<p>To share your view of the data, copy the URL and send it to other users so that they can work with the same view.</p><img src="https://images.ctfassets.net/slt3lc6tev37/3eGOmZzrmQ7nWEdJGgHuPa/c8e1386acb79eea07a285f985ab32196/hc-dashboard-network-analytics-6.png" alt="Selecting the URL of the Network Analytics page">
+<p></p>
+<hr>
+<h2 id="h_6GOQ2ficyicPxirroGewJP">View the Activity log</h2>
+<p>The Network Analytics <b>Activity log</b> shows up to 500 log events in the currently selected time range, paginated with 10 results per page per time range view. (The <a href="https://developers.cloudflare.com/analytics/graphql-api/"><u>GraphQL Analytics API</u></a> does not have this limitation.) </p>
+<p>To display event details, click the expansion widget associated with the events.</p>
+<h3>Configure columns</h3>
+<p>To configure which columns display in the Activity log, click the <b>Edit columns</b> button. </p>
+<p>This is particularly useful when you would like to identify a DDoS attack, during which you can specify the desired attributes such as IP addresses, max bit rate, and attack ID among others.</p>
+<h3>View top items</h3>
+<p>The <b>Source Country,</b> <b>Source</b>, and <b>Destination</b> panels display the top items in each view.</p>
+<p>To select the number of items to display, use the drop-down list associated with the view.</p>
+<p>To see the top data centers, select <i>Data center</i> from the drop-down list in the <b>Source country</b> view. The <b>Source data center</b> view replaces the <b>Source country</b> view. </p>
+<hr>
+<h2 id="h_3grb6OPVreABUQaQBekfHn">Export log data and reports</h2>
+<h3>Export activity log data </h3>
+<p>You can export up to 500 raw events from the Activity log at a time. This option is useful when you need to combine and analyze Cloudflare data with data stored in a separate system or database, such as a security information and event management system (SIEM).</p>
+<p>To export log data, click <b>Export</b>.</p>
+<p>Choose either CSV or JSON format for rendering exported data. The downloaded file name will reflect the selected time range, using this pattern:</p>
+<p><i>network-analytics-attacks-[start time]-[end time].json</i></p>
+<h3>Export a Network Analytics report </h3>
+<p>To print or download a snapshot report from <b>Network Analytics</b>, follow these steps:</p>
+<p>Click <b>Print report</b>. Your web browser's print interface displays options for printing or saving as a PDF.</p>
+<p></p>
+<hr>
+<h2 id="h_6tCVFw0V6ufdvQnRIxu19t">Limitations</h2>
+<p>Network Analytics currently has these limitations:</p>
+<ul>
+	<li>Network Analytics v1 provides insights on <a href="https://blog.cloudflare.com/who-ddosd-austin/"><u>denial of service daemon (dosd)</u></a> attacks. Although it provides a timely view of the data, it does not have a complete view of all events. </li>
+	<li>The following data sources are not available in Network Analytics v1:<ul>
+			<li>Firewall Rules <i>(available in Network Analytics v2)</i>
+			</li>
+			<li>Application layer rules</li>
+			<li>Gatekeeper and manually applied rules</li>
+			<li>
+				<a href="https://blog.cloudflare.com/announcing-flowtrackd/"><u>flowtrackd</u></a> (Advanced TCP protection) <i>(available in Network Analytics v2)</i>
+			</li>
+			<li>WARP traffic and <a href="https://support.cloudflare.com/hc/en-us/articles/205177068"><u>Orange-clouded traffic</u></a>
+			</li>
+		</ul>
+	</li>
+	<li>Data from Cloudflare services that proxy traffic, such as CDN, is not available in Network Analytics.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="7flIreW1Np8fuxZYTbduF2">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/analytics/network-analytics/">Cloudflare Network Analytics v2</a></li>
+	<li><a href="https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2">Migrating from Network Analytics v1 to Network Analytics v2</a></li>
+	<li><a href="https://developers.cloudflare.com/analytics/graphql-api/">Cloudflare GraphQL API</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/360037684111">Cloudflare Analytics: a quick overview</a></li>
+	<li><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&amp;page=1">IANA port numbers and service names</a></li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_2CqXhNxV03M5IUwklSR3n6">Frequently asked questions</h2>
+<h3>How long does Cloudflare retain data in the Network Analytics portal?</h3>
+<p>If you are using Network Analytics v2 (NAv2), the range of historical data you can query is <b>90 days</b>.
+</p>
+<p>Network Analytics v1 (NAv1) uses GraphQL nodes to roll up data into 1 minute, 1 hour, and 1 day IP flows. For example, the ipFlows1mGroups node stores data in minute-wise aggregations.</p>
+<p>To identify the range of historical data you can query in NAv1, refer to this table. Use the <i><b>notOlderThan</b></i> column as an indicator of retention time.</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<th>
+				<p>GraphQL data node</p>
+			</th>
+			<th>
+				<p>maxDuration*</p>
+			</th>
+			<th>
+				<p>notOlderThan**</p>
+			</th>
+			<th>
+				<p>time range selections in Network Analytics</p>
+			</th>
+			<th>
+				<p>Number of data points</p>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="1" rowspan="4">
+				<p>ipFlows1mGroups</p>
+			</td>
+			<td colspan="1" rowspan="4">
+				<p>25 hours</p>
+			</td>
+			<td colspan="1" rowspan="4">
+				<p>30 days</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>30 minutes</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>30</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>6 hours</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>71</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>12 hours</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>48</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>24 hours</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>96</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="2">
+				<p>ipFlows1dGroups</p>
+			</td>
+			<td colspan="1" rowspan="2">
+				<p>6 months</p>
+			</td>
+			<td colspan="1" rowspan="2">
+				<p>1 year</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>1 week</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>168</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="1" rowspan="1">
+				<p>1 month</p>
+			</td>
+			<td colspan="1" rowspan="1">
+				<p>30</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p><i><b>*maxDuration</b></i><i> defines the time window that can be requested in one query (varies by data node).</i></p>
+<p><i><b>**notOlderThan</b></i><i> limits how far back in the record a query can search. It is indicative of how long the data stays in our database. </i></p>
+<p>When working with attack logs in the dashboard, keep the following in mind:</p>
+<ul>
+	<li>Attack logs are stored with start and end timestamps, packet and bit statistics for minimum, maximum, and average data rate, as well as totals, attack type, and action taken. </li>
+	<li>Source IP addresses are considered personally identifiable information. Therefore, Cloudflare only stores them for 30 days. After 30 days, source IP addresses are discarded, and the logs are rolled up first into 1-hour groups, then 1-day groups. The 1-hour rollups are stored for 6 month. The one day rollups are stored for 1 year.</li>
+</ul>
+<p>For more information on querying and accessing log data, refer to the <a href="https://developers.cloudflare.com/analytics/graphql-api/limits"><u>GraphQL Analytics API</u></a>. </p>
+<h3>Why does Network Analytics say the destination IP is “unavailable”?</h3>
+<p>The destination IP is indicated as <i>Unavailable</i>, when the destination IP was not included in the real-time signature generated by our <a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/"><u>DDoS protection systems</u></a>. </p>
+<p>To view the destination IP, filter by <b>Attack ID</b> and scroll to the <b>Destination</b> section in the top items lists. When you filter on a specific Attack ID, the entire Network Analytics dashboard becomes an attack report. </p>

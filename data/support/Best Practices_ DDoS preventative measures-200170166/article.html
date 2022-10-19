@@ -1,0 +1,42 @@
+<p><i>Learn best practices to secure your Cloudflare-enabled site from DDoS attacks.</i></p>
+<hr>
+<h2 id="7whoNX8YE1ZTuRQ2T1Jb8s">Overview</h2>
+<p>Ensure your site is fully prepared for possible DDoS attacks via the recommendations below.</p>
+<h3>Handle a false positive</h3>
+<p>Refer to our guide on <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive/">DDoS false positive</a> for further details.</p>
+<h3>Handle a false negative or an incomplete mitigation</h3>
+<p>Refer to our guide on <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-negative/">DDoS false negative</a> for further details.</p>
+<h3>Proxy your DNS records to Cloudflare</h3>
+<p>Attackers attempt to identify your origin IP address to directly attack your origin web server without Cloudflare’s protections. Hide your origin IP address from direct attack by proxying traffic to Cloudflare.</p>
+<p>Set your DNS records for maximum protection via the following steps:</p>
+<ol>
+	<li><a href="https://support.cloudflare.com/hc/articles/200169626">Enable the Cloudflare proxy (orange-cloud)</a></li>
+	<li>Remove DNS records used for FTP or SSH and instead use your origin IP to directly perform FTP or SSH requests. Alternatively, proxy FTP and SSH via <a href="https://developers.cloudflare.com/spectrum/get-started">Cloudflare Spectrum</a>.</li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200168876">Grey-cloud A, AAAA, or CNAME records corresponding to your mail server</a></li>
+	<li>Remove wildcard records within Free, Pro, or Business domains because they expose your origin IP address. <a href="https://support.cloudflare.com/hc/articles/360017421192#CloudflareDNSFAQ-DoesCloudflaresupportwildcardDNSentries">Cloudflare only protects wildcard records for domains on Enterprise plans</a>.</li>
+</ol>
+<h3>Managing attacks bypassing Cloudflare and do not limit or throttle requests from Cloudflare IPs</h3>
+<ol>
+	<li>It is important that your origin web server <a href="https://support.cloudflare.com/hc/articles/201897700">allowlist Cloudflare IPs</a><a href="https://support.cloudflare.com/hc/articles/201897700"></a> and explicitly blocks traffic not from Cloudflare or your trusted partner, vendor, or application IP addresses.</li>
+	<li>Block port 80 at your origin and enforce using HTTPS traffic by enabling the "Always use HTTPS" feature within the <b>Edge Certificates</b> tab of the Cloudflare <b>SSL/TLS</b> app or <a href="https://support.cloudflare.com/hc/en-us/articles/200172336-Creating-Page-Rules">via the <b>Page Rules</b> app</a>.</li>
+	<li>Enable the feature <a href="https://support.cloudflare.com/hc/en-us/articles/204899617-Authenticated-Origin-Pulls">Authenticated Origin Pull </a>as this will only accept requests from Cloudflare.</li>
+</ol>
+<h3>Restore original visitor IPs in your origin server logs</h3>
+<p>To see the real IPs behind an attack, <a href="https://support.cloudflare.com/hc/sections/200805497">restore the original visitor IPs</a> in your origin server logs. Otherwise, all traffic lists Cloudflare’s IPs in your logs. Cloudflare always includes the original visitor IP address in the request, <a href="https://support.cloudflare.com/hc/articles/200170986">as an HTTP header.</a> Inform your hosting provider that you use a reverse proxy and that all traffic will come from Cloudflare’s IPs when looking at current connections.</p>
+<h3>Change server IP addresses after moving site to Cloudflare</h3>
+<p>Cloudflare hides your origin server IP addresses for traffic you proxy to Cloudflare. As an extra security precaution, we recommend contacting your hosting provider and requesting new origin server IPs.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">This task may incur a charge, so discuss with your hosting provider based on the risk of attack to your site.
+</div>
+<h3>Use Rate Limiting to prevent brute force and Layer 7 DDoS attacks</h3>
+<p>To thwart attacks disguised as normal HTTP requests, Rate Limiting allows website administrators to specify fine-grained thresholds on the load they expect their web server to receive. With one simple click, setup basic rate limiting to <a href="https://support.cloudflare.com/hc/articles/115001993248">protect your login pages from brute force attacks</a>.</p>
+<p>Cloudflare Free, Pro, and Business plans include 10,000 free requests per month. Refer to our guide on <a href="https://support.cloudflare.com/hc/en-us/articles/235240767-Cloudflare-Rate-Limiting">Cloudflare Rate Limiting</a> for further details.</p>
+<hr>
+<h2 id="5Gw9ZLeuyZkz2NqdEgZTxW">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/ddos-protection/">Cloudflare DDoS Protection Developers Guide</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172676">Understanding Cloudflare DDOS protection</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170196">Responding to DDoS attacks</a></li>
+	<li><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">What is a DDoS attack?</a></li>
+</ul>
+<p></p>

@@ -1,0 +1,55 @@
+<p><i>Learn how Cloudflare uses Network Error Logging to detect reachability issues from users to Cloudflare’s network.</i></p>
+<hr>
+<h2 id="h_6bxEgIX4i8Wc44DZiHtrSW">Overview</h2>
+<p>Cloudflare Network Error Logging (NEL) is available in all Cloudflare data centers.  NEL is a browser-based technology used to quickly identify problems with site visitors connecting to Cloudflare.  NEL is a public component built into browsers.   </p>
+<p>Network Error Logging can be used to help triage end-user connectivity issues that our customers’ end users experience.  Some incidents on the internet can be scoped to specific Internet Service Providers (ISPs) in certain locations due to physical activity on the network (maintenance, fiber cuts, sporting events, etc.).  Having the location/ASN data allows engineers to root cause external provider issues and rule out Cloudflare as a root cause.</p>
+<p>Connectivity loss can also result from end users changing IP addresses. For example, an end user may connect to a site from a home Wi-Fi and then leave their house.  The change from the home Wi-Fi network to a mobile network changes the end user’s IP address, interrupts any current connections, and could be reported as TCP.abort or TCP.timed_out failures.  By comparing the last known good client IP with the client IP that reported the failure, Cloudflare determines whether the failures were due to a roaming end user.  The diagram below shows how NEL captures connectivity losses resulting from end user IP changes:</p><img src="https://images.ctfassets.net/slt3lc6tev37/4CBgHIEaUJqSvsIjAyES28/241c4d79e95da936689711692b2904ef/pasted_image_0__1_.png" alt="Diagram showing how Network Error Logging captures connectivity losses resulting from end user IP changes. For more details, continue reading.">
+<p><b>NEL process</b>:</p>
+<ol>
+	<li>User moves from WiFi to mobile.</li>
+	<li>Customer connects via mobile IP.</li>
+	<li>All connections made to Cloudflare over WiFi are timed out due to src-dest mismatch.</li>
+	<li>Connections are re-established over mobile connections and the user reports failures over their mobile connection to the Cloudflare NEL endpoint.</li>
+</ol>
+<p>The Report-To header is present in all requests to Cloudflare zones that have NEL enabled:  </p>
+<p><code>report-to: {"group":"cf-nel","max_age":31536000,"endpoints":[{"url":"</code><a href="https://gcp.nel.cloudflare.com/report?lkg-colo=lhr&amp;lkg-time=1600338181&amp;lkg-ip=1.1.1.1"><code>https://a.nel.cloudflare.com/report?lkg-colo=lhr&amp;lkg-time=1600338181</code></a><code>"}]}</code></p>
+<p>A sample Network Error Report payload appears as follows:</p>
+<p></p>
+<pre>
+{
+  "age": 20,
+  "type": "network-error",
+  "url": "https://example.com/previous-page",
+  "body": {
+    "elapsed_time": 18,
+    "method": "POST",
+    "phase": "dns",
+    "protocol": "http/1.1",
+    "referrer": "https://example.com/previous-page",
+    "sampling_fraction": 1,
+    "server_ip": "",
+    "status_code": 0,
+    "type": "dns.name_not_resolved",
+    "url": "https://example-host.com/"
+  }
+}
+</pre>
+<p>Cloudflare NEL uses end-user IP address to determine the following:</p>
+<ul>
+	<li>an estimate of the client's location (country, city),</li>
+	<li>the client's Autonomous System Number (ASN), and</li>
+	<li>whether the client changed IP addresses before they experienced a failure.</li>
+</ul>
+<p>The client IP address is only stored in volatile memory for the lifetime of the request to Cloudflare’s NEL endpoint (order of milliseconds) and is dropped immediately after the request completes. Cloudflare does not log the client IP address anywhere in the Network Error Logging pipeline. Customers can opt out of having their end users consume the NEL headers by emailing Cloudflare support.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">NEL metrics are not currently available on the Cloudflare dashboard.
+</div>
+<hr>
+<h2 id="h_4qbCh9g7NSFN1XjOFKgzY9">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://www.w3.org/TR/network-error-logging/"><u>W3C specification</u></a><a href="https://developers.google.com/web/updates/2018/09/reportingapi"><u></u></a>
+	</li>
+	<li><a href="https://developers.google.com/web/updates/2018/09/reportingapi"><u>Google Chrome integration</u></a></li>
+</ul>
+<p></p>

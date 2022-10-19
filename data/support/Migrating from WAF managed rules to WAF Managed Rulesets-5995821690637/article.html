@@ -1,0 +1,355 @@
+<p><i>Learn about the benefits of WAF Managed Rulesets and how you can migrate your zones from WAF managed rules to the new WAF Managed Rulesets.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#migration-impact">Migration impact</a></li>
+		<li><a href="#eligible-zones">Eligible zones</a></li>
+		<li><a href="#start-migration">Starting the migration</a></li>
+		<li><a href="##post-migration-recommendations">Post-migration recommendations</a></li>
+		<li><a href="#api-operations">API operations</a></li>
+		<li><a href="##errors">Possible migration errors</a></li>
+		<li><a href="#remarks">Final remarks</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>On May 4, 2022, Cloudflare started phase 1 of the WAF migration from <a href="https://support.cloudflare.com/hc/articles/200172016">WAF managed rules</a> to the new <a href="https://developers.cloudflare.com/waf/managed-rulesets/">WAF Managed Rulesets</a>, allowing a first set of eligible zones to migrate. Phase 2, available since September 19, 2022 for API users only, allows the remaining zones to migrate to WAF Managed Rulesets. In the coming months, zones included in phase 2 will also be able to start the update in the Cloudflare dashboard.
+
+</p>
+<p>
+	You can start the update process for a zone in the Cloudflare dashboard or via API. Currently, the update process is always started by you. <b>The migration is irreversible</b> — once you update to the new WAF Managed Rulesets, you cannot go back to using WAF managed rules.
+</p>
+<p>Once the migration finishes, the <b>Managed rules</b> tab in the Cloudflare dashboard (available in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Managed rules</b>) will display a new interface, and the WAF managed rules APIs will stop working.</p>
+<h2>Main benefits</h2>
+<p>WAF Managed Rulesets provide the following benefits over WAF managed rules:
+</p>
+<ul>
+	<li>
+		<b>New matching engine</b> – WAF Managed Rulesets are powered by the Ruleset Engine, which allows faster managed rule deployments and the ability to check even more traffic without scaling issues. The rules follow the same syntax used in other Cloudflare security products like WAF custom rules and firewall rules.
+	</li>
+	<li>
+		<b>Updated Managed Rulesets</b> – The Cloudflare OWASP Core Ruleset, one of WAF's Managed Rulesets, is based on the latest version of the OWASP Core Ruleset (v3.x), which adds paranoia levels and improves false positives rates compared to the version used in WAF managed rules (2.x). You also have more control over the sensitivity score, with a clear indication of how much each rule contributes to the score and what was the total score of a triggered request.
+	</li>
+	<li>
+		<b>Better rule browsing and configuration</b> – Deploy Managed Rulesets with a single click to get immediate protection. Override the behavior of entire rulesets, or customize a single rule. Apply overrides to all rules with a specific tag to adjust rules applicable to a given software or attack vector. You can deploy configurations like the following:
+		<ul>
+			<li>Deploy the Cloudflare Managed Ruleset across all my zones.</li>
+			<li>
+				Deploy the Cloudflare OWASP Core Ruleset on all traffic that does not contain <code>/api/*</code> in the path.</li>
+			<li>Disable Managed Rulesets across my account for traffic coming from my IP.</li>
+		</ul>
+	</li>
+</ul>
+<p>
+</p>
+<p>For more information on the benefits of WAF Managed Rulesets, refer to our <a href="https://blog.cloudflare.com/new-cloudflare-waf/">blog post</a>.
+</p>
+<p></p>
+<hr>
+<h2 id="migration-impact">Migration impact</h2>
+<h3>For migrations started in the dashboard</h3>
+<p>If your zone is eligible for migration (refer to the <a href="#eligible-zones">phase 1 requirements</a>), when you start the update your current WAF managed rules configuration will be migrated to a WAF Managed Rulesets configuration. The same protection applies to your zone when you move to the new WAF.</p>
+<h3>For migrations started via API</h3>
+<p>Users starting the migration process via API are no longer bound to the phase 1 requirements — they will be able to migrate all their zones that do not have URI-based WAF overrides.</p>
+<p>Most WAF managed rules configuration settings will be migrated to WAF Managed Rulesets, but some specific configurations originally defined in the OWASP ModSecurity Core Rule Set will be lost — you will have to create these configurations in WAF Managed Rulesets, if needed.</p>
+<h4><b>Configurations that will be migrated</b></h4>
+<p>The update process via API will create an equivalent configuration for the following settings of WAF managed rules:</p>
+<ul>
+	<li>
+		Global settings of OWASP ModSecurity Core Rule Set.</li>
+	<li>
+		Firewall rules configured with <i>Bypass</i> &gt; <i>WAF Managed Rules</i>.
+	</li>
+	<li>Page Rules configured with <i>Disable Security</i>.
+	</li>
+	<li>Page Rules configured with <i>Web Application Firewall: Off</i> or <i>Web Application Firewall: On</i>.</li>
+</ul>
+<h4>
+	<b>Configurations that will be lost in the update process</b>
+</h4>
+<p>The update process started via API will not migrate specific settings at the rule or group level of the OWASP ModSecurity Core Rule Set, available in WAF managed rules.</p>
+<p>
+	The OWASP version supporting WAF managed rules and WAF Managed Rulesets is quite different, and there is no direct equivalence between rules in the two versions. You will need to configure specific OWASP rules again in the Cloudflare OWASP Core Ruleset, available in WAF Managed Rulesets. For more information on configuring this Managed Ruleset, refer to <a href="https://developers.cloudflare.com/waf/managed-rulesets/reference/owasp-core-ruleset/">Cloudflare OWASP Core Ruleset</a> in the developer documentation.
+</p>
+<h4>
+	<b>Configurations that will prevent you from updating</b>
+</h4>
+<p>If a zone has <a href="https://api.cloudflare.com/#waf-overrides-properties">URI-based WAF overrides</a> (only available via API), you will not have the option to migrate to WAF Managed Rulesets. To update to WAF Managed Rulesets you must:</p>
+<ol>
+	<li>
+		Delete any existing URI-based WAF overrides using the <a href="https://api.cloudflare.com/#waf-overrides-delete-a-waf-override">Delete a WAF override</a> API operation.</li>
+	<li>Follow the update process described below.
+	</li>
+</ol>
+<h3>Cloudflare dashboard changes</h3>
+<p>After the update process is complete, the Cloudflare dashboard will display the WAF Managed Rulesets interface in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Managed rules</b>, where you can deploy Managed Rulesets and adjust their configuration.</p><img src="https://images.ctfassets.net/slt3lc6tev37/7ojdgQ02a7qmhTH5Sko3dn/207ba861d2154b2c32555c5bd3d3808f/waf-migration-dashboard-differences.png" alt="After migrating to WAF Managed Rulesets, the Cloudflare dashboard will display a new interface where you can deploy Managed Rulesets to your zone.">
+<p>Unlike the WAF managed rules, there is no global on/off setting to enable the WAF in the new interface. Instead, you deploy each WAF Managed Ruleset individually in your zone.</p>
+<p>For more information about configuring WAF Managed Rulesets in the dashboard, refer to <a href="https://developers.cloudflare.com/waf/managed-rulesets/deploy-zone-dashboard/"><u>Deploy Managed Rulesets for a zone in the dashboard</u></a> in the developer documentation.</p>
+<h3>API changes</h3>
+<p>Once the migration is complete, the APIs for interacting with WAF managed rules <b>will stop working</b>. These APIs are the following:</p>
+<ul>
+	<li><a href="https://api.cloudflare.com/#waf-packages-properties"><u>WAF packages</u></a></li>
+	<li><a href="https://api.cloudflare.com/#waf-rule-groups-properties"><u>WAF rule groups</u></a></li>
+	<li><a href="https://api.cloudflare.com/#waf-rules-properties"><u>WAF rules</u></a></li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">If you have any integrations using the WAF managed rules APIs stated above, you must update them before migrating to WAF Managed Rulesets.
+</div>
+<p>To interact with WAF Managed Rulesets you must use the <a href="https://developers.cloudflare.com/ruleset-engine/managed-rulesets/"><u>Rulesets API</u></a>. For more information on deploying WAF Managed Rulesets via API, refer to <a href="https://developers.cloudflare.com/waf/managed-rulesets/deploy-api/"><u>Deploy rulesets via API</u></a> in the developer documentation.</p>
+<p>
+
+
+
+
+
+
+
+
+</p>
+<p></p>
+<hr>
+<h2 id="eligible-zones">Eligible zones</h2>
+<h3>Phase 1 (since May 4, 2022)</h3>
+<p>In phase 1 the migration became available to a subset of eligible zones. If you wish to start the migration in the Cloudflare dashboard, your zone must meet all phase 1 requirements, which are the following:</p>
+<ul>
+	<li>The zone has:<ul>
+			<li>WAF disabled, or</li>
+			<li>WAF enabled and only the Cloudflare Managed Ruleset is enabled (the OWASP ModSecurity Core Rule Set must be disabled).</li>
+		</ul>
+	</li>
+	<li>The zone has no <a href="https://developers.cloudflare.com/firewall/cf-dashboard/"><u>firewall rules</u></a> or <a href="https://support.cloudflare.com/hc/articles/218411427"><u>Page Rules</u></a> bypassing, enabling, or disabling WAF managed rules:<ul>
+			<li>Firewall rules configured with <i>Bypass</i> &gt; <i>WAF Managed Rules</i>.</li>
+			<li>Page Rules configured with <i>Disable Security</i>.</li>
+			<li>Page Rules configured with <i>Web Application Firewall: Off</i> or <i>Web Application Firewall: On.</i>
+			</li>
+		</ul>
+	</li>
+	<li>The zone has no <a href="https://api.cloudflare.com/#waf-overrides-properties"><u>URI-based WAF overrides</u></a> (only available via API).</li>
+</ul>
+<h3>Phase 2 (since September 19, 2022 – for API users only)</h3>
+<p>In phase 2 all zones are eligible for migration. This phase is currently only available to customers that wish to migrate to WAF Managed Rulesets via API.</p>
+<p>Pro and Business customers can update from WAF managed rules to WAF Managed Rulesets via API. Once WAF Managed Rulesets are enabled, the previous version (WAF managed rules) will be automatically disabled.</p>
+<p>Enterprise customers can enable a new WAF Managed Rulesets configuration while keeping WAF managed rules (previous version) enabled, allowing them to check the impact of the new WAF configuration. After reviewing the behavior of the new configuration and making any required adjustments to specific Managed Ruleset rules, Enterprise users can then finish the migration, which will disable WAF managed rules.</p>
+<p><b>Note: </b>Zones that have URI-based WAF overrides, which you could only manage via API, will not be able to migrate immediately to WAF Managed Rulesets. You must delete these overrides before migrating.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="start-migration">Starting the migration</h2>
+<p>You can start the WAF update in the Cloudflare dashboard or via API.</p>
+<h3>Using the dashboard</h3>
+<p>1. Log in to the <a href="https://dash.cloudflare.com/"><u>Cloudflare dashboard</u></a>, and select your account and zone.</p>
+<p>2. Go to <b>Security</b> &gt; <b>WAF </b>&gt; <b>Managed rules</b>.</p><img src="https://images.ctfassets.net/slt3lc6tev37/rIAYRiUgQJgLThpc7AIKB/1d2af1bf578dd8f58ecbab8ccd518da3/waf-migration-banner.png" alt="The migration banner displayed in WAF &gt; Managed rules, available for eligible zones, allows you to update from managed rules to WAF Managed Rulesets.">
+<p>3. In the update banner, click <b>Update now</b>. This banner is only displayed in eligible zones.</p>
+<p>4. In the pop-up dialog, confirm that you wish to start the migration from WAF managed rules to WAF Managed Rulesets by clicking <b>Update</b>. The migration is <b>irreversible.</b></p>
+<p>After confirming the operation, the migration will start.</p>
+<p>The migration process may take a couple of minutes. When the migration finishes, the dashboard will display the new WAF Managed Rulesets interface in <b>Security</b> &gt; <b>WAF</b> &gt; <b>Managed rules</b>. To check if the migration has finished, refresh the dashboard.</p>
+<h3>Using the API</h3>
+<p>1. Use the <a href="#api-operations">Check WAF update compatibility</a> API operation to determine if the zone can update to the new WAF, given its current configuration:</p>
+<p></p>
+<pre>$ curl "https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/waf_migration/check?phase_two=1" \
+-H "Authorization: Bearer &lt;API_TOKEN&gt;"</pre>
+<p>
+</p>
+<p>Example response:</p>
+<p></p>
+<pre>{
+  "result": {
+    "compatible": true,
+    "migration_state": "start"
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}</pre>
+<p>If the response includes <code>"compatible": true</code>, this means that the zone can update to the new WAF and you can proceed with the update process. If the response includes <code>"compatible": false</code>, this means that your zone is not eligible for the update, given its current configuration. Refer to <a href="#eligible-zones">Eligible zones</a> for details.</p>
+<p>2. To get the new WAF configuration corresponding to your current configuration, use the <a href="#api-operations">Get new WAF configuration</a> API operation:</p>
+<p></p>
+<pre>$ curl "https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/waf_migration/config?phase_two=1" \
+-H "Authorization: Bearer &lt;API_TOKEN&gt;"</pre>
+<p>Example response:</p>
+<p></p>
+<pre>{
+  "result": {
+    "name": "default",
+    "rules": [
+      {
+        "id": "",
+        "version": "",
+        "action": "execute",
+        "expression": "true",
+        "description": "",
+        "ref": "",
+        "enabled": true,
+        "action_parameters": {
+          "id": "efb7b8c949ac4650a09736fc376e9aee",
+          "overrides": {
+            "rules": [
+              {
+                "id": "23ee7cebe6e8443e99ecf932ab579455",
+                "action": "log",
+                "enabled": false
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}</pre>
+<p>The returned configuration in the example above, which would match the existing configuration for the previous WAF version, contains:</p>
+<ul>
+	<li>A rule that executes the Cloudflare Managed Ruleset (ruleset with ID <code>efb7b8c949ac4650a09736fc376e9aee</code>).</li>
+	<li>A single override for the rule "Apache Struts - Open Redirect - CVE:CVE-2013-2248" (rule with ID <code>23ee7cebe6e8443e99ecf932ab579455</code>) in the same ruleset, setting the action to <code>log</code> and disabling the rule.</li>
+</ul>
+<p>3. (Optional, for Enterprise customers only) If you are migrating an Enterprise zone to WAF Managed Rulesets, you can enter validation mode before finishing the migration. In this mode, both WAF implementations will be enabled. Use the Update zone entry point ruleset API operation, making sure you include the <code>waf_migration=validation&amp;phase_two=1</code> query string parameters:</p>
+<p></p>
+<pre>$ curl -X PUT \
+"https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=validation&amp;phase_two=1" \
+-H "Authorization: Bearer &lt;API_TOKEN&gt;" \
+-d '{
+  "name": "default",
+  "rules": [
+    {
+      "action": "execute",
+      "expression": "true",
+      "description": "",
+      "enabled": true,
+      "action_parameters": {
+        "id": "efb7b8c949ac4650a09736fc376e9aee",
+        "overrides": {
+          "rules": [
+            {
+              "id": "23ee7cebe6e8443e99ecf932ab579455",
+              "action": "log",
+              "enabled": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'
+</pre>
+<p>After invoking this API endpoint, both WAF managed rules and WAF Managed Rulesets will be enabled. Check the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans/#activity-log">Activity log</a> in Security Overview for any legitimate traffic getting blocked, and perform any required adjustments to the WAF Managed Rulesets configuration. For example, you can <a href="https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/">add an override</a> for a single rule that disables it or changes its action.
+</p>
+<p>4. To finish the migration and disable WAF managed rules, set the configuration for the new WAF using the settings you obtained in step 2 and possibly adjusted in step 3. Make sure you include the <code>waf_migration=pending&amp;phase_two=1</code> query string parameters.</p>
+<p></p>
+<pre>$ curl -X PUT \
+"https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=pending&amp;phase_two=1" \
+-H "Authorization: Bearer &lt;API_TOKEN&gt;" \
+-d '{
+  "name": "default",
+  "rules": [
+    {
+      "id": "",
+      "version": "",
+      "action": "execute",
+      "expression": "true",
+      "description": "",
+      "ref": "",
+      "enabled": true,
+      "action_parameters": {
+        "id": "efb7b8c949ac4650a09736fc376e9aee",
+        "overrides": {
+          "rules": [
+            {
+              "id": "23ee7cebe6e8443e99ecf932ab579455",
+              "action": "log",
+              "enabled": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}'</pre>
+<p>Once the provided configuration is saved and the new WAF is enabled, the previous version of the WAF will be automatically disabled, due to the presence of the <code>waf_migration=pending&amp;phase_two=1</code> parameters. This will make sure that your zone stays protected by one of the WAF versions during the update process.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-info">
+	<strong>Note:</strong> Pro and Business customers, which do not have access to the validation mode described in step 3, can update the rules (and overrides) in their zone entry point ruleset without triggering the migration by omitting the <code>waf_migration=pending&amp;phase_two=1</code> parameters. However, all the rules in their configuration must be disabled (<code>"enabled": false</code>). Only Enterprise customers can configure (enabled) rules deploying WAF Managed Rulesets without triggering the migration.
+</div>
+<p>
+</p>
+<hr>
+<h2 id="#post-migration-recommendations">Post-migration recommendations</h2>
+<p>Check the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans/#activity-log"><b><u>Activity log</u></b></a> in Security Overview in the days following the migration, looking for any legitimate requests being blocked by WAF Managed Rulesets. If you identify any incorrectly blocked requests, you can adjust the corresponding WAF rule action to <i>Log</i>. For more information on changing the action of a Managed Ruleset rule, refer to <a href="https://developers.cloudflare.com/waf/managed-rulesets/deploy-zone-dashboard/#configure-a-single-rule-in-a-managed-ruleset"><u>Configure a single rule in a Managed Ruleset</u></a> in the WAF documentation.</p>
+<hr>
+<h2 id="api-operations">API operations</h2>
+<p>Updating to the new WAF via API requires invoking the following API operations:</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Method + Endpoint</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<p>Check WAF update compatibility</p>
+			</td>
+			<td>
+				<p><code>GET /zones/&lt;ZONE_ID&gt;/waf_migration/check?phase_two=1</code></p>
+			</td>
+			<td>
+				<p>Checks if the current zone can be updated to the new WAF, given its current configuration.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Get new WAF configuration</p>
+			</td>
+			<td>
+				<p><code>GET /zones/&lt;ZONE_ID&gt;/waf_migration/config?phase_two=1</code></p>
+			</td>
+			<td>
+				<p>Obtains the new WAF configuration that is equivalent to the current configuration (previous WAF version).</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p><a href="https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/">Update zone entry point ruleset</a></p>
+			</td>
+			<td>
+				<p><code>PUT /zones/&lt;ZONE_ID&gt;/rulesets/phases/http_request_firewall_managed/entrypoint?waf_migration=&lt;VALUE&gt;&amp;phase_two=1</code></p>
+			</td>
+			<td>
+				<p>Updates the configuration of the zone entry point ruleset for the <code>http_request_firewall_managed</code> phase.<br>
+					Available values for the <code>waf_migration</code> query string parameter:</p>
+				<ul>
+					<li>
+						<code>pending</code> or <code>1</code>: Defines the new WAF Managed Rulesets configuration and disables WAF managed rules as soon as the provided configuration is saved and the new WAF is enabled.
+					</li>
+					<li>
+						<code>validation</code> or <code>2</code>: (Enterprise zones only) Defines the new WAF Managed Rulesets configuration and enables WAF Managed Rulesets side by side with WAF managed rules, entering validation mode. To exit validation mode and finish the migration, invoke the same API endpoint with <code>waf_migration=pending</code>.
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>You must prepend the Cloudflare API base URL to the endpoints listed above to obtain the full endpoint:
+</p>
+<p><code>https://api.cloudflare.com/client/v4</code>
+</p>
+<hr>
+<h2 id="#errors">Possible migration errors</h2>
+<p>Contact Cloudflare Support to get help with the following errors:</p>
+<ul>
+	<li>
+		The number of firewall rules to migrate exceeds 200.
+	</li>
+	<li>The length of a firewall rule expression is longer than 4 KB.
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="remarks">Final remarks</h2>
+<p>The concept of paranoia level did not exist in the OWASP version (2.x) used in WAF managed rules. Based on the OWASP guide recommendations, the WAF migration process will set the paranoia level of the Cloudflare OWASP Core Ruleset to <i>PL2</i>.
+</p>

@@ -1,0 +1,72 @@
+<p><i>Learn more about how to use Cloudflare Page Rules to override the URL or IP address of a request.</i></p>
+<hr>
+<h2 id="3NpWgpTsZg69hUpsmvPEqi">Overview</h2>
+<p>Cloudflare Page Rules allows you to override the URL or IP address of a request.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">This feature is only available to Enterprise users.
+</div>
+<p>A common use case for this functionality is when you are serving an application from the URI (e.g. mydomain.com/app). In this case the 'app' may live on another server and may even be hosted by a third party. Requests to this endpoint must be directed to the server for that third party application. You can specify a CNAME host.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The CNAME record must exist within the Cloudflare DNS.
+</div>
+<p>To make sure you have full control of these records, it is recommended that you set the Resolve Override within the same zone name.</p>
+<hr>
+<h2 id="4hxHPH2g1Cg3KBhlJSFLcD">Configure Resolve Override in Page Rules</h2>
+<p>To configure resolve override in Page Rules, do the following:</p>
+<p>1. <a href="https://support.cloudflare.com/hc/articles/360019093151#h_60566325041543261564371">Create a DNS record</a> (either CNAME or A record) for your domain. </p>
+<ul>
+	<li>This example shows a CNAME setup using <code>domain.s3.amazonaws.com</code>.
+		<ul>
+			<li>
+				<b>Type: </b>CNAME
+			</li>
+			<li>
+				<b>Name: </b><code>resolve.cloudflaredocs.com</code>
+			</li>
+			<li>
+				<b>Target: </b><code>domain.s3.amazonaws.com</code>
+			</li>
+			<li>
+				<b>TTL: </b>Auto
+			</li>
+			<li>
+				<b>Proxy status: </b>Proxied (orange cloud icon)
+			</li>
+		</ul>
+	</li>
+	<li>This example points to a web server IP address.
+		<ul>
+			<li>
+				<b>Type:</b> A
+			</li>
+			<li>
+				<b>Name: </b><code>resolve.cloudflaredocs.com</code>
+			</li>
+			<li>
+				<b>IPv4 address: </b><code>1.2.3.4</code>
+			</li>
+			<li>
+				<b>TTL:</b> Auto
+			</li>
+			<li>
+				<b>Proxy status:</b> Proxied (orange cloud icon)
+			</li>
+		</ul>
+	</li>
+</ul>
+<p>2. <a href="https://support.cloudflare.com/hc/articles/218411427#h_38Gq7mduJiXIjpVLxp3q19">Create a Page Rule</a> to override a URL or an IP address. </p>
+<ul>
+	<li>The following example Page Rule configuration would send all requests from a folder (<code>/app</code>) to an AWS S3 bucket:<ul>
+			<li>
+				<b>If the URL matches:</b> <code>example.com/app/*</code>
+			</li>
+			<li>
+				<b>Setting:</b> <i>Resolve Override</i> | <b>Value:</b> <code>resolve.example.com</code>
+			</li>
+			<li>
+				<b>Setting:</b> <i>Host Header Override</i> | <b>Value:</b> <code>examplebucket.s3.amazonaws.com</code>
+			</li>
+		</ul>
+	</li>
+</ul>
+<p></p>

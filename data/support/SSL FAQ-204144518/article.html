@@ -1,0 +1,124 @@
+<p><i>Find answers to common questions about the Cloudflare SSL/TLS app.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_e2bd076d-beb3-40e8-adbe-075ba5a8851e">I have multiple Cloudflare certificates, which one is used?</a></li>
+		<li><a href="#h_29550926411548959889544">Will having Cloudflare's SSL help with SEO?</a></li>
+		<li><a href="#h_7dc4564e-f93a-4e1d-a338-90903a812b95">How long does it take for Cloudflare's SSL to activate?</a></li>
+		<li><a href="#h_62d0852f-0bc5-4d54-a83f-971ca452398d">What does SSL invalid brand check mean?</a></li>
+		<li><a href="#h_848554486311548959913241">Does Cloudflare SSL support Internationalized Domain Names (IDN)?</a></li>
+		<li><a href="#h_a61bfdef-08dd-40f8-8888-7edd8e40d156">How do I redirect all visitors to HTTPS/SSL?</a></li>
+		<li><a href="#h_848554486311548959913241">Does SSL work for hosting partners?</a></li>
+		<li><a href="#h_293541339461548959928672">Are Cloudflare SSL certificates shared?</a></li>
+		<li><a href="#h_865954806521548960003696">An SSL certificate is installed at my website, why do I see a Cloudflare certificate?</a></li>
+		<li><a href="#h_406415940571548960012266">I want Cloudflare to use an SSL certificate I've purchased elsewhere</a></li>
+		<li><a href="#h_745887958641548960026645">Does Project Galileo include SSL support?</a></li>
+		<li><a href="#h_100356045661548960034406">Does enabling Cloudflare affect PayPal's TLS 1.2 requirement?</a></li>
+		<li><a href="#h_853db670-78aa-4c98-99d4-3aa3d38f8d59">How can I serve an SSL certificate from Cloudflare's China data centers?</a></li>
+		<li><a href="#h_db0bcd71-24f9-4b0c-8cfc-7a5ed0f27649">Does Cloudflare support TLS client authentication?</a></li>
+		<li><a href="#h_4e7e3537-ade2-431c-abe7-2dfe26e1cb9a">How do I enable Universal SSL with Github?</a></li>
+		<li><a href="#h_1EOYNdDFPc56u27vceZ3mW">How do I obtain an SSL certificate for customers on partial (CNAME) setup?</a></li>
+		<li><a href="#h_3k3bHm83HfwEKwYEeKg6v8">Can I use Certificate Pinning?</a></li>
+		<li><a href="#h_5nkf47qMrmcH3QRPWCheq0">Where can I learn more about SSL?</a></li>
+		<li><a href="#h_1c1HtnpJ7N3xARp0dlmp8e">Redsys doesn't seem to be working with my Let's Encrypt Certificiate?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_e2bd076d-beb3-40e8-adbe-075ba5a8851e">I have multiple Cloudflare certificates, which one is used?</h2>
+<p>Cloudflare certificates are prioritized by <a href="https://support.cloudflare.com/hc/articles/203295200"></a>certificate type and also by most specific hostname.</p>
+<p>Exceptions to general prioritization occur based on hostname specificity.  Certificates that mention a specific hostname are preferred to wildcard certificates. For example, a Universal SSL certificate that explicitly mentions <i>www.example.com</i> takes priority over a certificate that matches the <i>www</i> hostname via a wildcard such as <i>*.example.com.</i> </p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">When dealing with a child zone, a certificate uploaded whose subject or SAN is a wildcard for its parent domain, will show in the web UI as being ONLY for the Apex hostname in the domain. Otherwise, the UI will include with the wildcard (*) symbol as expect.
+</div>
+<p>For more details on hostname priority, refer to our <a href="https://developers.cloudflare.com/ssl/ssl-tls/certificate-and-hostname-priority">developer documentation</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_29550926411548959889544">Will having Cloudflare's SSL help with SEO?</h2>
+<p>Yes, Google announced that they use <a href="http://googleonlinesecurity.blogspot.co.uk/2014/08/https-as-ranking-signal_6.html">HTTPS as a ranking signal for SEO</a>.</p>
+<p>For further SEO tweaks, see our article on <a href="https://support.cloudflare.com/hc/en-us/articles/231109348-How-do-I-Improve-SEO-Rankings-On-My-Website-Using-Cloudflare-">improving SEO Rankings with Cloudflare</a>.</p>
+<hr>
+<h2 id="h_7dc4564e-f93a-4e1d-a338-90903a812b95">How long does it take for Cloudflare's SSL to activate?</h2>
+<p>If Cloudflare is your <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup">authoritative DNS provider</a>, Universal SSL certificates typically issue within 15 minutes of domain activation at Cloudflare and do not require further customer action after domain activation.  Alternatively, if you use <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">Cloudflare services via CNAME records</a> set at your authoritative DNS provider, provisioning your Universal SSL certificate requires manual addition of <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl#non-authoritative-partial-domains">DNS verification records</a> at your authoritative DNS provider.  <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">Advanced SSL certificates</a> also typically issue within 15 minutes.</p>
+<p>If the Certificate Authority requires a manual review of brand, phishing, or TLD requirements, a Universal SSL certificate can take longer than 24 hours to issue.</p>
+<hr>
+<h2 id="h_62d0852f-0bc5-4d54-a83f-971ca452398d">What does SSL invalid brand check mean?</h2>
+<p>Some domains are not eligible for the Universal SSL if they contain words that conflict with trademarked domains.  </p>
+<p>To resolve this issue, you can either:</p>
+<ul>
+	<li>
+		<a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading">Upload your own certificate</a> if the domain is on a Business or Enterprise plan, or
+	</li>
+	<li>Purchase an <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">advanced certificate</a>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_848554486311548959913241">Does Cloudflare SSL support Internationalized Domain Names (IDN)?</h2>
+<p>Cloudflare supports double byte / IDN / punycode domains.  Domains with non-Latin characters receive SSL certificates just like any other domain added to Cloudflare.</p>
+<hr>
+<h2 id="h_a61bfdef-08dd-40f8-8888-7edd8e40d156">How do I redirect all visitors to HTTPS/SSL?</h2>
+<p>Refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">Always Use HTTPS</a>.</p>
+<p></p>
+<hr>
+<h2 id="h_848554486311548959913241">Does SSL work for hosting partners?</h2>
+<p>A Free Universal SSL certificate is available for all new Cloudflare domains added via a hosting partner through both CNAME and Full DNS integrations. </p>
+<div class="cf-sidebar-2 cf-note">For domains added to Cloudflare prior to December 9, 2016, the hosting partner must delete and re-add the domain to Cloudflare to provision the SSL certificate.
+</div>Proxy a subdomain through Cloudflare to provision the Free Universal SSL certificate.
+<hr>
+<h2 id="h_293541339461548959928672">Are Cloudflare SSL certificates shared?</h2>
+<p>None of the SSL certificates issued by Cloudflare are shared across multiple domains for multiple customers.</p>
+<hr>
+<h2 id="h_865954806521548960003696">An SSL certificate is installed at my website, why do I see a Cloudflare certificate?</h2>
+<p>Cloudflare must decrypt traffic in order to cache and filter malicious traffic. Cloudflare either re-encrypts traffic or sends plain text traffic to the origin web server depending on the <a href="https://support.cloudflare.com/hc/articles/200170416">SSL option</a> selected in the <b>Overview</b> tab of the <b>SSL/TLS </b>app.</p>
+<hr>
+<h2 id="h_406415940571548960012266">I want Cloudflare to use an SSL certificate I've purchased elsewhere</h2>
+<p>Domains on Business and Enterprise plans are allowed to upload a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom SSL certificate</a>.</p>
+<hr>
+<h2 id="h_745887958641548960026645">Does Project Galileo include SSL support?</h2>
+<p>Project Galileo customers can use Cloudflare's <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">free Universal SSL</a> to secure site traffic.</p>
+<hr>
+<h2 id="h_100356045661548960034406">Does enabling Cloudflare affect PayPal's TLS 1.2 requirement?</h2>
+<p>No. Since Cloudflare does not proxy connections made directly to paypal.com, enabling Cloudflare for your domain does not affect how TLS connections are made.</p>
+<hr>
+<h2 id="h_853db670-78aa-4c98-99d4-3aa3d38f8d59">How can I serve an SSL certificate from Cloudflare's China data centers?</h2>
+<p>Cloudflare <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Universal SSL</a> and <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">advanced</a> certificates are not deployed in China.  If your domain is on an Enterprise plan and has been granted access to China data centers, Cloudflare's data centers in China only serve a SSL certificate for your domain under the following conditions:</p>
+<ol>
+	<li>You have uploaded a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading">Custom SSL certificate</a>.</li>
+	<li>
+		<b>Allow Private Keys in China (Custom Certificates) </b>is set to <i>On </i>in the <b>Edge Certificates </b>tab of the Cloudflare <b>SSL/TLS </b>app.
+	</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_db0bcd71-24f9-4b0c-8cfc-7a5ed0f27649">Does Cloudflare support TLS client authentication?</h2>
+<p>TLS Client Authentication validates that a certificate presented by a client is signed by the company’s root Certificate Authority certificate.  By validating this certificate on each request, access can be limited to authorized client connections.  To enable TLS client authentication via Cloudflare, refer to our documentation on <a href="https://developers.cloudflare.com/access/service-auth/mtls/">Mutual TLS authentication</a>.</p>
+<hr>
+<h2 id="h_4e7e3537-ade2-431c-abe7-2dfe26e1cb9a">How do I enable Universal SSL with Github?</h2>
+<p>Refer to the Cloudflare blog post about <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">using Cloudflare's Universal SSL with GitHub Pages</a>.</p>
+<hr>
+<h2 id="h_1EOYNdDFPc56u27vceZ3mW">How do I obtain an SSL certificate for customers on partial (CNAME) setup?</h2>
+<p>To receive an SSL certificate, proxy traffic through Cloudflare. The SSL certificate will be automatically issued within a few minutes.</p>
+<p>Pausing Cloudflare or disabling the proxy will prevent SSL certificate provisioning</p>
+<p>Currently, HTTP is the only officially supported domain validation method for SSL certificates for domains on a partial setup activated via a hosting provider. Cloudflare will add DNS as an alternative validation method (DCV) at a later date.</p>
+<p>If you would like to complete validation using HTTP without proxying through Cloudflare, this is accomplished via the Cloudflare API.  Reach out to <a href="mailto:partnersupport@cloudflare.com">partnersupport@cloudflare.com</a> if you need assistance.</p>
+<hr>
+<h2 id="h_3k3bHm83HfwEKwYEeKg6v8">Can I use Certificate Pinning?</h2>
+<p>No. Multiple industry leaders — including <a href="https://www.digicert.com/blog/certificate-pinning-what-is-certificate-pinning">Digicert</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning">Mozilla</a> — have discouraged certificate pinning because of security concerns.</p>
+<p>For a safer alternative, use <a href="https://developers.cloudflare.com/ssl/edge-certificates/certificate-transparency-monitoring">Certificate Transparency Monitoring</a>.</p>
+<hr>
+<h2 id="h_5nkf47qMrmcH3QRPWCheq0">Where can I learn more about SSL?</h2>
+<p>To learn more about SSL, go to the <a href="https://www.cloudflare.com/learning/ssl/what-is-ssl/">Cloudflare Learning Center</a>.</p>
+<p>For SSL terms and definitions, go to the <a href="https://developers.cloudflare.com/fundamentals/glossary">Cloudflare Glossary</a>.</p>
+<hr>
+<h2 id="h_1c1HtnpJ7N3xARp0dlmp8e">Redsys doesn't seem to be working with my Let's Encrypt Certificiate?</h2>
+<p>The Let's Encrypt Certificate Authority and SNI are not currently supported by Redsys.</p>
+<p>We recommend either :</p>
+<ul>
+	<li>Changing the Universal Certificate to CA back to Digicert (default)</li>
+</ul>
+<p>OR</p>
+<ul>
+	<li>Advanced Certificate Manager or Custom Certificate using a different CA other than Let's Encrypt</li>
+</ul>
+<p>
+
+</p>

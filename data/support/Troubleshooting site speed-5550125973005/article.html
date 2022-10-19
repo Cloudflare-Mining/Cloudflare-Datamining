@@ -1,0 +1,87 @@
+<p><i>Diagnose common site performance issues</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_cc46eb80-3869-41b1-82e1-c7d38d101a8d">Overview</a></li>
+		<li><a href="#h_31e13144-7a29-4e21-8c12-2fd6925b5e98">Test performance with Webpagetest.org</a></li>
+		<li><a href="#t6h7weVxZEw2CViGvwVx9">Test with Cloudflare</a></li>
+		<li><a href="#1lNGpxpUd9iljCfBGIJrTe">Test directly to your origin web server</a></li>
+		<li><a href="#4Xv8atgaRc5AaXZQ9giRdy">Review page load speed results</a></li>
+		<li><a href="#h_0c9875b8-7170-4552-8f67-60c82b74efd9">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_cc46eb80-3869-41b1-82e1-c7d38d101a8d">Overview</h2>
+<p>You can access performance options in the Speed app of the <a href="https://dash.cloudflare.com/?to=/:account/:zone/speed">Cloudflare dashboard</a>.</p><img src="https://images.ctfassets.net/slt3lc6tev37/3kVDogSmIUkHWk31jGJxP3/9fdbfdb965f190063c6ec5c8297452f8/speed.PNG" alt="Location of the speed icon on the Cloudflare dashboard.">
+<p></p>
+<p>If your site loads slowly, use the following steps to troubleshoot:</p>
+<ol>
+	<li>Examine your origin web server for excess load or traffic. Ask your hosting provider to help review your origin web server health.</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/200172856-Troubleshooting-and-optimizing-site-speed#h_31e13144-7a29-4e21-8c12-2fd6925b5e98">Use webpagetest.org</a> to confirm whether the slowness occurs via Cloudflare or directly at your origin web server.
+	</li>
+	<li>Review <a href="https://developers.cloudflare.com/fundamentals/get-started/task-guides/optimize-site-speed/">Cloudflare options to optimize performance</a>.</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare does not consider Time-to-First-Byte (TTFB) the most important measure of page load speed. If you are concerned about a slower TTFB while using Cloudflare, refer to our blog post about <a href="http://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles">Cloudflare and TTFB</a>.
+</div>
+<p></p>
+<hr>
+<h2 id="h_31e13144-7a29-4e21-8c12-2fd6925b5e98">Test performance with Webpagetest.org</h2>
+<p>You can use <a href="https://www.webpagetest.org/">webpagetest.org</a> to troubleshoot speed issues. webpagetest.org tests site speed and provides data on resource load time (images, CSS, HTML etc). webpagetest.org helps rule out local Internet issues such as a poor Internet connection.</p>
+<p>To assess the cause of slowness:</p>
+<ul>
+	<li>run a test with Cloudflare</li>
+	<li>test direct to your origin web server</li>
+	<li>review page load speed results</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="t6h7weVxZEw2CViGvwVx9">Test with Cloudflare</h2>
+<p>If Cloudflare is currently enabled to proxy your site traffic (not <a href="https://support.cloudflare.com/hc/articles/200169176">temporarily paused</a> or grey-clouded), determine your page speed through Cloudflare:</p>
+<p>1. Visit  <a href="https://www.webpagetest.org/">https://www.webpagetest.org/</a>.</p>
+<p>2. Choose a geographic <b>Test Location</b> and a <b>Browser</b> that closely matches the browser and location of your visitor experiencing slow page loads.</p>
+<p>3. Enter the URL for a slow loading page and click <b>START TEST</b>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Your first results likely contain uncached resources and provide inaccurate results for purposes of comparison. Run a second test before saving results.
+</div>
+<p>4. Copy the browser URL to your completed test results in case you need to open a ticket with Cloudflare support.</p>
+<hr>
+<h2 id="1lNGpxpUd9iljCfBGIJrTe">Test directly to your origin web server</h2>
+<p><a href="https://support.cloudflare.com/hc/articles/203118044#h_8654c523-e31e-4f40-a3c7-0674336a2753">Temporarily pause Cloudflare</a> or grey-cloud the subdomain’s DNS record in the Cloudflare <b>DNS</b> app to test performance while bypassing Cloudflare:</p>
+<p>1. Visit  <a href="https://www.webpagetest.org/">https://www.webpagetest.org/</a>.</p>
+<p>2. Choose a geographic <b>Test Location</b> and a <b>Browser </b>as your Test with Cloudflare.</p>
+<p>3. Enter the same URL as used for your Test with Cloudflare and click <b>START TEST</b>.</p>
+<p>4. Copy the browser URL to your completed test results in case you need to open a ticket with Cloudflare support.</p>
+<hr>
+<h2 id="4Xv8atgaRc5AaXZQ9giRdy">Review page load speed results</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-info">Important thing to take into consideration is the version of the HTTP protocol used. It is not uncommon to see longer TTFB for certain assets (like images or javascript) when using <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/">HTTP/2</a>.
+	When using HTTP/2, the browser requests resources over one connection in streams, assigning priority to each one of them. As soon as the browser recognizes an asset is needed, a request for it will be sent immediately without waiting for previous resources to be processed. If the server responding respects the assigned priority, the resources of low priority requested early on in the page load will have to wait until higher priority requests have been processed resulting in a longer TTFB.
+</div>
+<p>Review your average page load speed:</p>
+<ol>
+	<li>Click <b>Plot Full Results</b> under <b>Performance Results</b>.</li>
+	<li>Scroll to <b>Load Time </b>and review the <b>Mean</b> time.</li>
+	<li>Compare the following between the Cloudflare and direct-to-origin tests:</li>
+</ol>
+<ul>
+	<li>If <b>Mean </b>page load to the origin server is slower than through Cloudflare, investigate the source of slowness with your hosting provider.</li>
+	<li>Slowness for only the first request of a resource indicates your server took too long to generate a response. The first time a resource is requested, it is likely uncached at Cloudflare and the request has to go to your origin server. Investigate slowness with your hosting provider.</li>
+	<li>If <b>Mean </b>page load to the origin server is faster than through Cloudflare, open a <a href="https://support.cloudflare.com/hc/en-us/requests/new">Cl</a><a href="https://support.cloudflare.com/hc/en-us/requests/new">oudflare support ticket</a> providing the following details:<ul>
+			<li>The slow URL</li>
+			<li>The webpagetest.org URLs you compared. Provide the direct URL links to test results, rather than a screenshot or attachment.</li>
+			<li>A <a href="https://support.cloudflare.com/entries/22050846">traceroute to your domain</a>.</li>
+		</ul>
+	</li>
+</ul>
+<p>4. Review <a href="https://support.cloudflare.com/hc/en-us/articles/200172856-Troubleshooting-and-optimizing-site-speed#h_c2f90417-ee71-4b65-b6c7-3636ee2b3c63">Cloudflare options to optimize performance</a>.</p>
+<hr>
+<h2 id="h_0c9875b8-7170-4552-8f67-60c82b74efd9">Related resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/fundamentals/get-started/task-guides/optimize-site-speed/">Optimize site performance</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360058639551-WordPress-com-and-Cloudflare">WordPress.com and Cloudflare</a></li>
+	<li><a href="https://developers.cloudflare.com/analytics/web-analytics">Cloudflare Web Analytics</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360044640572-Understanding-Cache-Analytics">Understanding Cache Analytics</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115000244811-What-external-tools-can-I-use-to-measure-Argo-s-page-speed-improvements-">What external tools can I use to measure Argo's page speed improvements?</a></li>
+</ul>
+<p></p>

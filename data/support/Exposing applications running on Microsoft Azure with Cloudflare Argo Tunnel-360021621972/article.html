@@ -1,0 +1,69 @@
+<p><i>With Cloudflare Argo Tunnel, you can expose your Microsoft Azure applications securely to the Internet without having to open up firewalls.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4pLDXlsvOM4nlfGioEifo9">Overview</a></li>
+		<li><a href="#h_2O3CB7t09zR1WjSfFFrYuK">Installing the prebuilt Linux image</a></li>
+		<li><a href="#h_4MTLFJDCutYQTjWTuGqA59">Configuring the VM</a></li>
+		<li><a href="#h_2nnWYzxBv7YnxUAjDGVRLP">Changing the Cloudflared configuration</a></li>
+		<li><a href="#h_46Dx6PEj0fvkUknClu7np7">Relevant resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4pLDXlsvOM4nlfGioEifo9">Overview</h2>
+<p>Cloudflare Argo Tunnel can expose applications running on the Microsoft Azure platform. See Cloudflare's <a href="https://developers.cloudflare.com/argo-tunnel/quickstart/">install &amp; configure Argo Tunnel</a> guide. Also, a prebuilt Cloudflare Linux image exists on the Azure Marketplace. To simplify the process of connecting Azure applications to Cloudflare’s network, deploy the prebuilt image to an Azure resource group.</p>
+<p>Prerequisites include:</p>
+<ul>
+	<li>a Cloudflare account enabled with Argo Tunnel</li>
+	<li>at least one domain connected to the Cloudflare account</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_2O3CB7t09zR1WjSfFFrYuK">Installing the prebuilt Linux image</h2>
+<p>The prebuilt Cloudflare Linux image resides on the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?tab=Overview">Azure Marketplace</a> or can be opened in the <a href="https://portal.azure.com/#create/cloudflare.cloudflare_azurecloudflare_azure">Azure Portal</a>.</p>
+<p>The Cloudflare virtual machine (VM) is customizable. However, we recommend the following:</p>
+<ul>
+	<li>Do not alter the disk image for the VM.</li>
+	<li>Switch <b>authentication type </b>to <i>password </i>and create a username and password.</li>
+	<li>Enable SSH in the <b>inbound port rules</b>.</li>
+	<li>Add the Cloudflare VM to the same virtual network as the exposed Azure applications.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_4MTLFJDCutYQTjWTuGqA59">Configuring the VM</h2>
+<p>SSH into the Cloudflare VM. A simple application called <b>example.py </b>is included in the VM for testing. The test application launches a Python Flask service that listens on localhost port 5000. To start the test application, type the <i>screen</i> command at the command prompt. Then, start the application in the screen session by running:</p>
+<p><code>python /usr/cloudflare/example.py</code></p>
+<p>Exit the screen session with a keyboard shortcut <i>Ctrl</i> + <i>a</i> + <i>d. </i>To reattach the screen session, enter the following command:</p>
+<p><code>screen -r</code></p>
+<p>Also, to permanently end the screen session and related processes, type the following command within the screen session:</p>
+<p><code>exit</code></p>
+<p>The Azure Cloudflare image is preinstalled with the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps"><b>cloudflared</b> client for Argo Tunnel</a>.  However, configuration is required to connect an application to the Cloudflare network. The first step is to run the following command within the Cloudflare VM:</p>
+<p><code>cloudflared login</code></p>
+<p>The command outputs a link that allows a domain to be authorized for use with Argo Tunnel. After the Cloudflare account is authorized, run the following command to configure Argo Tunnel with the information necessary to expose the Azure application:</p>
+<p><code>cloudsetup</code></p>
+<p></p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Set the <strong>origin IP</strong> to <em>127.0.0.1</em> if the application is running on the Cloudflare VM instance.
+</div>
+<p>When using the Cloudflare VM to expose an Azure resource on a different instance, the <b>origin IP</b> is the private virtual network IP of the resource running the exposed application. The <i>cloudsetup</i> utility automatically starts <b>cloudflared</b> as a service within the instance.</p>
+<p>Check the status of the <b>cloudflared</b> service:</p>
+<p><code>service cloudflared status</code></p>
+<p>At this point, the application should be live at the authorized Cloudflare domain and using the hostname supplied within the <i>cloudsetup</i> utility.</p>
+<p></p>
+<hr>
+<h2 id="h_2nnWYzxBv7YnxUAjDGVRLP">Changing the Cloudflared configuration</h2>
+<p>1. Stop the <b>cloudflared</b> tunnel service before changing the configuration of the Cloudflare Argo Tunnel VM:</p>
+<p><code>service cloudflared stop</code></p>
+<p></p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">If switching domains, first delete the certificate stored in <em>~/.cloudflared/</em> or to authorize a different domain, run: <em>cloudflared login</em>
+</div>
+<p>2. Delete the <b>cloudflared</b> config:</p>
+<p><code>sudo rm /etc/cloudflared/config.yml</code></p>
+<p>3. Run <i>cloudsetup</i> again to reconfigure subdomain info, origin IP, and port settings. The <i>cloudsetup</i> utility automatically restarts the tunnel service.</p>
+<hr>
+<h2 id="h_46Dx6PEj0fvkUknClu7np7">Relevant resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/201720164">Add a domain to Cloudflare</a></li>
+	<li><a href="https://developers.cloudflare.com/argo-tunnel/quickstart/">Argo Tunnel Developer Documentation</a></li>
+</ul>
+<p></p>

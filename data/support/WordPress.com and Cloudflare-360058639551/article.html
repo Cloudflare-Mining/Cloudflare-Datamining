@@ -1,0 +1,78 @@
+<p><i>Ensure your WordPress.com site is fast, reliable, and secure no matter what devices your visitors are using.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_6geQpwFj9GEzzZt2pixXo4">Getting started with WordPress.com and Cloudflare</a></li>
+		<li><a href="#h_rENK9zE8zLcM0z3wcubyo">Enabling additional Cloudflare products</a></li>
+		<li><a href="#h_3nFj39ds1Btia06vFDqhrF">Troubleshooting</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_6geQpwFj9GEzzZt2pixXo4">Getting started with WordPress.com and Cloudflare</h2>
+<p>Cloudflare and WordPress.com are partnering to offer customers Cloudflare's performance and security solutions with WordPress.com's web-hosting platform. Getting started is easy.</p>
+<p>1. Add your WordPress site to Cloudflare. Visit <a href="https://support.cloudflare.com/hc/en-us/articles/201720164">Creating a Cloudflare account and adding a website</a> for more information.</p>
+<p>During this process, Cloudflare scans your existing WordPress.com DNS records and displays them. The records will look similar to the examples below.</p>
+<ul>
+	<li><code>A example.com 192.0.78.12</code></li>
+	<li><code>A example.com 192.0.78.13</code></li>
+</ul>
+<p>WordPress.com does not guarantee the IP address will never change. For maximum uptime, you should complete the following:</p>
+<p>2. Find your <code>&lt;site&gt;.wordpress.com</code> domain from the <a href="https://wordpress.com/domains/manage">Manage Domains</a> page. The domain will look like <code>examplecom.wordpress.com</code>, i.e. your domain with non-alphanumeric characters removed.</p>
+<p>3. Enter the domain into your browser's address bar to make sure the domain is correct.</p>
+<p>4. Add the record <code>CNAME @ examplecom.wordpress.com</code>.</p>
+<p>5. Remove the A records.</p><img src="https://images.ctfassets.net/slt3lc6tev37/2X3QQDms28XZHvDg6th1OW/6d0cd41afd368aaff88bdf6212f19e7d/add-cname-wp.png" alt="Example of completed CNAME record setup.">
+<p>Congratulations! Your site is now accelerated and protected by Cloudflare.</p>
+<p></p>
+<hr>
+<h2 id="h_rENK9zE8zLcM0z3wcubyo">Enabling additional Cloudflare products</h2>
+<h2><b>Cloudflare Web Analytics (Free)</b></h2>
+<p>Cloudflare Web Analytics gives web creators the information they need in a simple, clean way that doesn't sacrifice their visitors' privacy. One of the goals of the partnership is to bring a privacy-first analytics solution to WordPress.com sites.</p>
+<h3>Cloudflare</h3>
+<p>1. <a href="https://dash.cloudflare.com">Open your dashboard</a> and select the Account menu &gt; <b>Account Home</b>.</p>
+<p>2. On the Account homepage, select <b>Web Analytics</b> from the bottom, right of the page.</p>
+<p>3. Enter the hostname to use with Web Analytics. Typically the hostname is your top-level domain, like <code>example.com</code>.</p>
+<p>4. Click <b>Next</b>.</p>
+<p>5. Select <b>Click to copy </b>under <b>Copy JS Snippet</b>.</p>
+<h3>WordPress</h3>
+<p>1. Open WordPress and select your site.</p>
+<p>2. Select <b>Tools </b>&gt; <b>Marketing</b>.</p>
+<p>3. Locate the Cloudflare section.</p>
+<p>4. Paste the code snippet you copied from Cloudflare into the <b>Tracking ID </b>field. The field will extract the Tracking ID from the snippet.</p>
+<p>5. Toggle <b>Add to Cloudflare</b> to enable the tracking.</p>
+<p>WordPress.com automatically adds the javascript to each page of your site. You can view the new insights from your Cloudflare dashboard under <b>Web Analytics</b>.</p>
+<h2><b>Automatic Platform Optimization for WordPress.com ($5/month, included with Pro and Business plans)</b></h2>
+<p>Cloudflare's <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress/">Automatic Platform Optimization</a> for WordPress.com is the easiest way to drastically speed up your WordPress.com site. With the <a href="https://wordpress.org/plugins/cloudflare/">APO plugin</a>, Cloudflare accelerates your WordPress.com site by intelligently caching dynamic content, which means fast performance for your visitors no matter where they are. Find out more from our <a href="https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress/">blog</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312-Understanding-Automatic-Platform-Optimization-APO-with-WordPress">support article</a>.</p>
+<h3><b>Requirements</b></h3>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress/">Automatic Platform Optimization (APO)</a> feature requires that you be on a <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/">Full Setup</a> using Cloudflare nameservers.
+</div>
+<ul>
+	<li>Cloudflare free plan + $5/month APO add-on <u>or</u> a Pro or Business plan subscription (includes APO)</li>
+	<li>WordPress.com Business plan or above (requires plugins)</li>
+</ul>
+<h3><b>Install and enable APO</b></h3>
+<p>1. From WordPress, install the <a href="https://wordpress.org/plugins/cloudflare/">Cloudflare WordPress plugin</a> on your WordPress website or update to the latest version (3.8.2 or higher).</p>
+<p>2. <a href="https://wordpress.org/plugins/cloudflare/#installation"><u>Authenticate the plugin</u></a> to connect to Cloudflare if you have not already done so.</p>
+<p>3. From the Home screen of the Cloudflare section, turn on Automatic Platform Optimization.</p>
+<p>For more details, see <a href="https://support.cloudflare.com/hc/en-us/articles/360049822312-Understanding-Automatic-Platform-Optimization-APO-with-WordPress#h_01EEXXJ3TS1J0Z7151CSBM9BYP"><u>Understanding Automatic Platform Optimization (APO) with WordPress</u></a>.</p>
+<hr>
+<h2 id="h_3nFj39ds1Btia06vFDqhrF">Troubleshooting</h2>
+<h3><b>How do I verify that Cloudflare is now my DNS provider on record?</b></h3>
+<p>1. Visit <a href="https://dnschecker.org/#A/s-steiner.com">https://dnschecker.org</a>.</p>
+<p>2. From the dropdown under <b>DNS Check, s</b>elect NS record.</p>
+<p>3. In the text field, enter your domain name and click <b>Search</b>.</p>
+<p>4. Verify that your Cloudflare nameservers display.</p>
+<h3><b>How can I confirm APO is up and running?</b></h3>
+<p>In a terminal, use the following cURL. The header <code>'accept: text/html'</code> is important</p>
+<pre>% curl -svo /dev/null -A "CF" 'https://example.com/' -H 'accept: text/html' 2&gt;&amp;1 | grep 'cf-cache-status\|cf-edge\|cf-apo-via'
+&lt; cf-cache-status: HIT
+&lt; cf-apo-via: cache
+&lt; cf-edge-cache: cache,platform=wordpress</pre>
+<p>As always, <code>cf-cache-status</code> displays if the asset hit the cache or was considered dynamic and served from the origin.</p>
+<ul>
+	<li>The <code>cf-apo-via</code><b> </b>header returns the APO status for the given request.</li>
+	<li>The <code>cf-edge-cache</code><b> </b>header means the WordPress plugin is installed and enabled.</li>
+</ul>
+<h3>How can I verify APO and the WordPress.com integration works?</h3>
+<p>1. Publish a change on your WordPress website.</p>
+<p>2. Refresh the page twice.</p>
+<p>3. You should see a change. The page should be cached with <code>cf-cache-status: HIT</code> and <code>cf-apo-via: cache</code> in a response header.</p>

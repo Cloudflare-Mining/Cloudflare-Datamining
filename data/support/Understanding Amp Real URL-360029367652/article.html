@@ -1,0 +1,66 @@
+<p><i>Learn how the free Cloudflare AMP Real URL feature quickly serves content from AMP cache while preserving the original domain and URL in the visitor’s browser.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_f44c308d-2759-4691-8492-204923dfc35f">Overview</a></li>
+		<li><a href="#h_db8edabb-d26e-421e-b23b-be071b74a97a">Enable AMP Real URL</a></li>
+		<li><a href="#h_8d16b7d3-4468-4d3d-a872-1150f88a117b">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_f44c308d-2759-4691-8492-204923dfc35f">Overview</h2>
+<p>AMP Real URL quickly serves AMP pages from cache while retaining the original page URL in the visitor’s browser.  AMP Real URL is especially useful to customers with AMP traffic from primary search results like e-commerce, job boards, and ad-supported sites. News publishers also benefit from search results that live outside their “top stories” box.  Links from the "top stories" carousel do not currently support AMP Real URL.    </p>
+<p>Google is currently adding features to Chrome in order to deliver pre-rendered, SXG-verified pages in the carousel. Currently, only Chrome on Android supports Amp Real URL because it is the only browser that supports Signed Exchanges (SXG).</p>
+<p>Google’s AMP Crawler downloads the content of your website and stores it in the AMP Cache.  It may take up to a week for Google to begin showing the correct URL depending on when Google's AMP Crawler crawls your site.
+
+	With AMP Real URL enabled, Cloudflare digitally signs content provided to Google’s crawlers to cryptographically prove who generated the content. The digital signature allows modern browsers to show the correct URL in the address bar to a visitor arriving to your AMP content from Google’s search results. The diagram below demonstrates the signed exchanges process for digitally signing the content:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5nawp6WW9d0nAwYuqfJiTh/69ce98b4c3b81319ba2331f8607f5df2/image1.png" alt="">
+<p></p>
+<h3 id="undefined">Benefits</h3>
+<p>There are several benefits to Amp Real URL for Amp content:</p>
+<ul>
+	<li>
+		<b>Brand Protection</b>: Maintains a unique Internet presence for publishers.
+	</li>
+	<li>
+		<b>Easier Analytics</b>: Simplifies web analytics by allowing both AMP or non-AMP visitors to use the same tracking domain.
+	</li>
+	<li>
+		<b>Increased Screen Space</b>: Doesn’t waste extra browser space to show the real URL.
+	</li>
+	<li>
+		<b>Reduced Bounce Rate</b>: Lowers bounce rate of website visitors to Google or other sites.
+	</li>
+	<li>
+		<b>Content Signing</b>: Prevents content manipulation by external third parties.
+	</li>
+	<li>
+		<b>Additional benefits</b>: Simplifies AMP by fixing reliability issues in the following manner:<ul>
+			<li>Shows the “green lock” icon in the browser beside the URL.</li>
+			<li>Doesn’t open links using complex iframe mechanics traditionally used by AMP.</li>
+			<li>Copying a site URL works similar to non-AMP websites.</li>
+		</ul>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_db8edabb-d26e-421e-b23b-be071b74a97a">Enable AMP Real URL</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">AMP Real URL is a free Cloudflare product and only supports UTF-8 encoded websites. Domains on Cloudflare CNAME setups cannot utilize AMP Real URL.
+</div>
+<p>Enable AMP Real URL via the following steps:</p>
+<ol>
+	<li>Log in to your Cloudflare account</li>
+	<li>Select your domain</li>
+	<li>Click the <b>Speed </b>app</li>
+	<li>Click the <b>Optimization </b>tab</li>
+	<li>Toggle <b>AMP Real URL </b>to <i>On</i>
+	</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare adds CAA records to your domain when AMP Real URL is enabled.
+</div>
+<hr>
+<h2 id="h_8d16b7d3-4468-4d3d-a872-1150f88a117b">Related Resources</h2>
+<ul>
+	<li><a href="https://blog.cloudflare.com/announcing-amp-real-url/">AMP Real URL blog post</a></li>
+</ul>
+<p></p>
