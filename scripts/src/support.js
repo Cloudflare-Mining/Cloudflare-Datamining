@@ -36,8 +36,10 @@ async function run(){
 		await fs.ensureDir(articleDir);
 		const {
 			body,
+			// remove some fields that create unstable diffs
 			vote_sum,
 			vote_count,
+			updated_at, // edited_at seems more stable. This changes whenever votees and things change, which is very frequent
 			...info
 		} = article;
 		await fs.writeJson(path.resolve(articleDir, 'article.json'), info, {spaces: '\t'});
