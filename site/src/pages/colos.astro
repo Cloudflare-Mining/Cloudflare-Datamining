@@ -73,7 +73,7 @@ async function getColosStatus(){
 
 	const coloStatusRes = await fetch('https://colos-status.jross.workers.dev/');
 	const coloStatus = await coloStatusRes.json();
-	let colosStatuses = {Online: 0, China: 0, Offline: 0};
+	const colosStatuses = {Online: 0, China: 0, Offline: 0};
 	let totalColos = 0;
 
 	for(const row of tableRows){
@@ -117,7 +117,7 @@ async function getColosStatus(){
 		const status = row.querySelector('td:nth-child(1)')?.textContent;
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
-		if(!status || colosStatuses[status] === undefined) {
+		if(!status || colosStatuses[status] === undefined){
 			continue;
 		}
 		total.textContent = colosStatuses[status];
