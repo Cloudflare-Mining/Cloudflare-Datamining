@@ -4,7 +4,7 @@ import Table from '../../components/Table.astro';
 import MainHeading from '../../components/MainHeading.astro';
 import SubHeading from '../../components/SubHeading.astro';
 
-const importFiles = await import.meta.glob('../../../../data/products/pages/*.json');
+const importFiles = import.meta.glob('../../../../data/products/pages/*.json');
 
 const packageVersions: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-dpkg.json')) as string]();
 const CPU: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-lscpu.json')) as string]();
