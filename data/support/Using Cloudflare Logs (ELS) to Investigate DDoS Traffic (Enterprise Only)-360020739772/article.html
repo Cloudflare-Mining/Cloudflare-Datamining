@@ -1,0 +1,123 @@
+<p><i>Learn how to pinpoint sources of malicious traffic by effectively sorting Cloudflare Logs (formerly ELS). </i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#3HsXqW7d3IsVSiXaSahndu">Overview</a></li>
+		<li><a href="#5M6vcNVVDhT11LZLh4j9Sb">Step 1: Gather the information you need before querying Cloudflare Logs</a></li>
+		<li><a href="#2jBVMFoEjzNQo8pBRDIDZA">Step 2: Download and save the logs</a></li>
+		<li><a href="#2tevqpfbZxVtOz6bAILuu8">Step 3: Sort the logs</a></li>
+		<li><a href="#bNjbvBfyV4w7fQ9iHGUVV">Example workflow</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="3HsXqW7d3IsVSiXaSahndu">Overview</h2>
+<p>With Cloudflare Logs (formerly ELS) you have access to useful data for analyzing traffic that might show patterns associated with a DDoS attack. You can perform this type of analysis by sorting your Cloudflare Logs data. To get started, follow the steps outlined below and review the example workflow provided.</p>
+<p>Before following these instructions, you need:</p>
+<ul>
+	<li><a href="http://www.linfo.org/cat.html">cat</a></li>
+	<li><a href="https://stedolan.github.io/jq/">jq</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">Cloudflare Logs Logpull API</a></li>
+</ul>
+<p></p>
+<hr>
+<h2 id="5M6vcNVVDhT11LZLh4j9Sb">Step 1: Gather the information you need before querying Cloudflare Logs</h2>
+<p>Gather the following information:</p>
+<ol>
+	<li>Zone administrator email address</li>
+	<li>Zone ID (found under <b>Overview</b>&gt;<b>Zone ID</b>)</li>
+	<li>Client API key</li>
+	<li>Start time (example format: 1529171100)</li>
+	<li>End time (example format: 1529171100)</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">For the purposes of this tutorial, you can use the following website to convert times to Unix time: <a href="https://www.epochconverter.com/">https://www.epochconverter.com/</a>
+</div>
+<hr>
+<h2 id="2jBVMFoEjzNQo8pBRDIDZA">Step 2: Download and save the logs</h2>
+<p>The Cloudflare endpoint has a 1 hour time swath limit and the logs file size must be under 1GB per request. If the file size exceeds 1GB, the download will cut off at 1GB even if logged events from the time requested are not included. To avoid truncating your logs, decrease the time from 1 hour to 45 minutes and so on until the log file size is under 1GB.</p>
+<h3>Option 1: Download all fields</h3>
+<p>Download <b>all</b> fields from Cloudflare Logs, save to els.txt:</p>
+<p>Template:</p>
+<p></p>
+<pre>curl -sv -o <strong>els.txt</strong> -H "X-Auth-Email: <strong>email</strong>" -H "X-Auth-Key: <strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>zone id</strong>/logs/received?start=<strong>starttime</strong>&amp;end=<strong>endtime</strong>&amp;fields=(curl -s -H "X-Auth-Email: <strong>email</strong>" -H "X-Auth-Key: <strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>zone id</strong>/logs/received/fields" | jq '. | to_entries[] | .key' -r | paste -sd "," -)"</pre>
+<p>Example (with values):</p>
+<p></p>
+<pre>curl -sv -o <strong>els.txt</strong> -H "X-Auth-Email: <strong>monkey@bannana.com</strong>" -H "X-Auth-Key: <strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>5b5f0xxxcbfbaxxxxxx0416d22f7b</strong>/logs/received?start=<strong>1529171100</strong>&amp;end=<strong>1529171100</strong>&amp;fields=(curl -s -H "X-Auth-Email: <strong>monkey@bannana.com</strong>" -H "X-Auth-Key: <strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>zone id</strong>/logs/received/fields" | jq '. | to_entries[] | .key' -r | paste -sd "," -)"</pre>
+<h3>Option 2: Download specific fields</h3>
+<p>Download <b>specific</b> fields from Cloudflare Logs, save to els.txt:</p>
+<p>This command will include only the following fields in the logs you requested: <i>CacheCacheStatus, CacheResponseBytes, CacheResponseStatus, CacheTieredFill, ClientASN</i>.</p>
+<p>See the full list of Cloudflare Logs fields <a href="https://support.cloudflare.com/hc/en-us/articles/216672448-Enterprise-Log-Share-Logpull-REST-API">here</a>. 
+
+	Template:</p>
+<p></p>
+<pre>curl -sv -o<strong> els.txt</strong>-H "X-Auth-Email:<strong>email</strong>" -H "X-Auth-Key:<strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>zone id</strong>/logs/received?start=<strong>starttime</strong>&amp;end=<strong>endtime</strong>&amp;fields=<strong>CacheCacheStatus,CacheResponseBytes,CacheResponseStatus,CacheTieredFill,ClientASN</strong>”</pre>
+<p>Example (with values):</p>
+<p></p>
+<pre>curl -sv -o<strong> els.txt</strong>-H "X-Auth-Email:<strong>monkey@bannana.com</strong>" -H "X-Auth-Key:<strong>api key</strong>" "https://api.cloudflare.com/client/v4/zones/<strong>xx5x0xxxc45baxxxxxx0x6d23fxx</strong>/logs/received?start=<strong>1529171100</strong>&amp;end=<strong>1529171100</strong>&amp;fields=<strong>CacheCacheStatus,CacheResponseBytes,CacheResponseStatus,CacheTieredFill,ClientASN</strong>”</pre>
+<p></p>
+<hr>
+<h2 id="2tevqpfbZxVtOz6bAILuu8">Step 3: Sort the logs</h2>
+<p>Sort the logs by field value and output them to a file.</p>
+<ul>
+	<li>Sort by HTTP 200 response, output to file called els-200.txt</li>
+</ul>
+<p></p>
+<pre>~$ cat <strong>els.txt</strong>| grep "<strong>:200,</strong>" &gt; <strong>els-200.txt</strong></pre>
+<ul>
+	<li>Sort by HTTP 525 response, output to file called els-525.txt</li>
+</ul>
+<p></p>
+<pre>~$ cat <strong>els.txt</strong>| grep "<strong>:525,</strong>" &gt; <strong>els-525.txt</strong></pre>
+<h3>Where does the field value ":525," come from?</h3>
+<p>The pattern <i>:525,</i> (colon, status code, comma) is unique to the <i>EdgeResponseStatus</i> field. Simply searching the HTTP status code <i>525</i> without a colon and trailing comma would also include log entries which had the pattern <i>525</i> in other fields like <i>EdgeStartTimeStamp</i>, for example, which contains many numbers and may also contain the number sequence <i>525</i>.</p><img src="https://images.ctfassets.net/slt3lc6tev37/1MKfoRN8NRopliwk78OIYR/ad8febc4fc2f5eca0e889de10a998d39/hc-external-edge_response_status_ELS.png" alt="screenshot of output files with EdgeResponseStatus field highlighted
+">
+<p>The output files (els-200.txt and els-525.txt) are not very readable as-is. In order to view them in a more readable format, use jq in the following command:</p>
+<p></p>
+<pre>~$ cat els-525.txt | jq '.'</pre>
+<h3>Count the requests by field and output them to a file</h3>
+<p>In this example, we count requests by SSL protocol version, which is denoted by the <i>ClientSSLProtocol</i> field in Cloudflare Logs (note the period before the field name below).</p>
+<p></p>
+<pre>~$ jq -r <strong>.ClientSSLProtocol </strong><strong>els-200.txt</strong> |sort -n |uniq -c |sort -n &gt; <strong>ClientSSLProtocol.txt</strong></pre>
+<p></p>
+<pre>~$ cat <strong>ClientSSLProtocol.txt</strong><strong><br></strong></pre>
+<h3>Example Output:</h3><img src="https://images.ctfassets.net/slt3lc6tev37/3jZfwyJZpGu8wGDuXECSNg/74499b74318e66a055bb7d1097ebcf10/hc-import-11.png" alt="screenshot of example output when sorting ELS logs
+">
+<p>The <i>ClientRequestURI, ClientIP, ClientRequestUserAgent, ClientCountry</i> and <i>ClientRequestHost</i> fields are typically the most useful in finding attack patterns in these logs.</p>
+<ul>
+	<li>Sorting by <i>ClientRequestUserAgent </i>allows you to set User Agent blocking rules.</li>
+	<li>Sorting by <i>ClientCountry </i>allows you to set firewall rules based on country.</li>
+	<li>Sorting by <i>ClientRequestURI </i>will allow you to set rate limiting rules for the pages with the highest number of requests.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="bNjbvBfyV4w7fQ9iHGUVV">Example workflow</h2>
+<p>Often, you’ll need to sort by many fields to analyze and identify the source of an attack. For example, take a look at the following workflow:</p>
+<p><b>Action 1</b>: Sort your downloaded Cloudflare Logs by <i>HTTP 200</i> response, output to els-200.txt.</p>
+<p><b>Reason</b>: You’re not interested in responses that are being blocked by Cloudflare already; that is, requests which result in a HTTP response <i>503</i> or <i>403</i>. A request that results in a <i>200 HTTP</i> response at our edge is not blocked by Cloudflare and is likely going all the way through to the origin if the asset is not cached on Cloudflare's edge. Such requests, when malicious, are designed specifically to overburden the origin.</p>
+<p><b>How to</b>:</p>
+<p></p>
+<pre>~$ cat <strong>els.txt</strong> | grep "<strong>:200,</strong>" &gt; <strong>els-200.txt</strong></pre>
+<p><b>Action 2</b>: Sort your "HTTP 200 only" logs by URI, output to els-200-URI.txt.</p>
+<p><b>Reason</b>: Of the 200 responses, you want to see the pages which are being requested the most.
+
+	<b>How to</b>:
+</p>
+<p>Find the top URIs:</p>
+<p></p>
+<pre>~$ jq -r <strong>.ClientRequestURI </strong><strong>els-200.txt</strong> |sort -n |uniq -c |sort -n &gt;<strong> els-200-top-URIs.txt</strong></pre>
+<p></p>
+<pre>~$ cat<strong> els-200-top-URIs.txt</strong></pre>
+<p>Pick a URI from this list and output log entries with that URI to their own file. To do this, replace <i>/ClientRequestURI/path/to/something/</i> in the command below with the URI of your choosing:</p>
+<p></p>
+<pre>~$ cat <strong>els-200.txt</strong>| grep "<strong>/ClientRequestURI/path/to/something/</strong>" &gt; <strong>els-200-URI-1.txt</strong></pre>
+<p><b>Action 3</b>: Count URI Specific, "HTTP 200 only" responses by IP address, output to els-200-URI-1-Top-IP.txt</p>
+<p><b>Reason</b>: You want to see the top IP addresses which are requesting the URI and resulting in a 200 response.</p>
+<p><b>How to:</b></p>
+<p><b></b></p>
+<pre>~$ jq -r <strong>.ClientIP els-200-URI-1.txt</strong> |sort -n |uniq -c |sort -n &gt;<strong> els-200-URI-1-Top-IP.txt</strong></pre><b></b>
+<p><b>Output the contents of the file:</b></p>
+<p><b></b></p>
+<pre>~$ cat<strong> els-200-URI-1-Top-IP.txt</strong><strong><br></strong></pre><b></b>
+<p>You can narrow down 200 HTTP responses by both the request URI and the IPs which are requesting those URIs. You could also sort the logs the other way round, narrowing down the log entries by top IP addresses and then seeing which URI is requested the most by IP address.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Seeing a high number of requests from a single User-Agent or IP does not, on its own, mean the requester is malicious.
+</div>

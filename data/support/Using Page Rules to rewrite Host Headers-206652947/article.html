@@ -1,0 +1,16 @@
+<p><i>Learn how to use Page Rules to rewrite host headers.</i></p>
+<hr>
+<h2 id="h_TMWeBlaIj95nbNJpFtY2x">Using Page Rules to rewrite Host Headers</h2>
+<p>Customers can rewrite Host Headers using the Cloudflare <b>Rules</b> app. This feature is currently available for domains on the Enterprise plan.</p>
+<p>A common use case for this functionality is when your content is hosted on an Amazon S3 bucket. Amazon has designed their system to only accept host headers that have the same name as the bucket hosting your content. In this way, a request to "Host: your-domain.com" must be rewritten to “Host: your-bucket.s3.amazonaws.com", or else the request will be denied.
+
+</p>
+<div class="cf-sidebar-2 cf-note">In some cases you can adjust your Amazon S3 Bucket to accept Host Headers that are not the bucket name.
+</div>
+<p>To rewrite the Host Header:</p>
+<p>1. Go to <b>Rules</b> &gt; <b>Page Rules</b> and create a new Page Rule.</p>
+<p>2. Specify the URL to match. </p>
+<p>3. In <b>Pick a Setting, </b>select <i>Host Header Override</i>. Then, enter the override value.</p>
+<p>4. Click <b>Save and Deploy</b>.</p>
+<p>Now, any request matching the URL you specified will have the host header overridden to the one you entered in the <b>Host Header Override</b> text box. See the example below:</p><img src="https://images.ctfassets.net/slt3lc6tev37/4ScGNPdiGmAafcc3fGFT0J/d73f3ac14a7ea6a3a34134f29cc7c0d3/page-rule-host-header-override_resized.png" alt="Example configuration of a Page Rule that overrides the Host Header for all requests to theburritobot.com">
+<p></p>

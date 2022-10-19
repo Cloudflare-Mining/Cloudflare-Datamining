@@ -1,0 +1,28 @@
+<p><i>Learn how Cloudflare calculates your invoice and how to set billing usage alerts for add-on services, such as Workers, Rate Limiting, and Argo.</i></p>
+<hr>
+<h2 id="X2G1KoVrDGnHW64TSM7ym">Overview</h2>
+<p>For some Cloudflare subscriptions and services, you will be charged based on how much a feature was used during your previous billing period. This differs from other services, which are a prepaid flat fee for the upcoming month (e.g. plans, page rules, etc.).</p>
+<p>For example, if your billing date is March 15 and you enabled Cloudflare Workers in the dashboard on March 1, your March 15 invoice will include the Workers charges from March 1-15. The next invoice on April 15 will include charges for Workers usage between March 16 and April 15.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The pricing structure varies based on the service being used.
+</div>
+<p>Please review the product-specific pages for details on pricing and charges:</p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115000224192">Argo</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360007897072">Cloudflare Access</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115005254367">Load Balancing</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/115000272247">Cloudflare Rate Limiting</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360016450871">Cloudflare Stream</a></li>
+	<li><a href="https://developers.cloudflare.com/workers/about/pricing/">Cloudflare Workers and Workers KV</a></li>
+</ul>
+<p></p>
+<hr>
+<h2 id="11aoHZtimmL8WRIrA1jmD0">Usage-Based billing notifications</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The usage-based billing alerts feature is currently in beta and only available to some Cloudflare users.
+</div>
+<p>To monitor the usage of Cloudflare add-ons, you can enable email notifications. When enabled, you will receive a notification to the billing email address on file when the traffic, queries, requests, or minutes watched exceed your desired threshold.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The email notifications are for informational purposes only. Actual usage and billing may vary. Your monthly invoice is the most reliable source for billing information.
+</div>
+<p>For help creating usage-based billing alerts, refer to our <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/">Notifications documentation</a>. For the <i>Event Type </i>of your notification, you would select <b>Usage-Based Billing</b>.</p>

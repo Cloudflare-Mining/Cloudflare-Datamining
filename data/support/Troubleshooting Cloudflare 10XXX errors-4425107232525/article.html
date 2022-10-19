@@ -1,0 +1,176 @@
+<p><i>Diagnose and resolve 10XXX errors for Cloudflare proxied sites.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#error10028">Error 10028: The add list items operation contains duplicate items</a></li>
+		<li><a href="#error10043">Error 10043: Source URL in redirect is too long</a></li>
+		<li><a href="#error10044">Error 10044: Target URL in redirect is too long</a></li>
+		<li><a href="#error10045">Error 10045: Invalid redirect source URL</a></li>
+		<li><a href="#error10046">Error 10046: Invalid redirect target URL</a></li>
+		<li><a href="#error10047">Error 10047: Invalid redirect status code</a></li>
+		<li><a href="#error10048">Error 10048: Preserve path suffix requires subpath matching enabled</a></li>
+		<li><a href="#error10049">Error 10049: Invalid scheme in redirect source URL</a></li>
+		<li><a href="#error10050">Error 10050: Invalid redirect source URL with user info</a></li>
+		<li><a href="#error10051">Error 10051: Missing authority in redirect source URL</a></li>
+		<li><a href="#error10052">Error 10052: Invalid redirect source URL with port</a></li>
+		<li><a href="#error10053">Error 10053: Invalid redirect source URL with query string</a></li>
+		<li><a href="#error10054">Error 10054: Invalid redirect source URL with fragment</a></li>
+		<li><a href="#error10055">Error 10055: Query string settings incompatible with redirect target URL</a></li>
+		<li><a href="#error10056">Error 10056: The add list items operation contains different types of list items</a></li>
+		<li><a href="#error10058">Error 10058: List items incompatible with list type</a></li>
+		<li><a href="#error10059">Error 10059: Maximum number of repeated URL source paths exceeded</a></li>
+		<li><a href="#error10060">Error 10060: Missing scheme in redirect target URL</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="error10028">Error 10028: The add list items operation contains duplicate items</h2>
+<p>This error occurs when there are duplicate list items in a single operation to add items to a List (either an IP List or a Bulk Redirect List).</p>
+<p>This error can happen when you:</p>
+<ul>
+	<li>Add a repeated IP address to an IP List</li>
+	<li>Add a repeated source URL to a Bulk Redirect List</li>
+</ul>
+<h3><b>Resolution</b></h3>
+<p>Remove the duplicate item and try again.
+</p>
+<hr>
+<h2 id="error10043">Error 10043: Source URL in redirect is too long</h2>
+<p>This error occurs when the source URL value of a URL redirect is too long. The maximum length of a source URL is 32,768 characters.</p>
+<h3><b>Resolution</b></h3>
+<p>Use a shorter URL as the source URL.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10044">Error 10044: Target URL in redirect is too long</h2>
+<p>This error occurs when the target URL value of a URL redirect is too long. The maximum length of a target URL is 32,768 characters.</p>
+<h3><b>Resolution</b></h3>
+<p>Use a shorter URL as the target URL.</p>
+<hr>
+<h2 id="error10045">Error 10045: Invalid redirect source URL</h2>
+<p>This error occurs when you specify a source URL of a URL redirect that is not a valid URL.</p>
+<h3><b>Resolution</b></h3>
+<p>Specify a valid URL as the source URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.</p>
+<hr>
+<h2 id="error10046">Error 10046: Invalid redirect target URL</h2>
+<p>This error occurs when you specify a target URL of a URL redirect that is not a valid URL.</p>
+<h3><b>Resolution</b></h3>
+<p>Specify a valid URL as the target URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect target URLs.</p>
+<hr>
+<h2 id="error10047">Error 10047: Invalid redirect status code</h2>
+<p>This error occurs when you specify a URL redirect status code that is not supported. </p>
+<h3><b>Resolution</b></h3>
+<p>Use one of the supported status codes in the URL redirect: <code>301</code>, <code>302</code>, <code>307</code>, or <code>308</code>.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10048">Error 10048: Preserve path suffix requires subpath matching enabled</h2>
+<p>This error occurs when you enable the <b>Preserve path suffix</b> option in a redirect without enabling the <b>Subpath matching</b> option.</p>
+<p>The <b>Preserve path suffix</b> option of a URL redirect is only applicable when the <b>Subpath matching</b> option is also enabled. </p>
+<h3><b>Resolution</b></h3>
+<p>Enable <b>Subpath matching</b> for the URL redirect with <b>Preserve path suffix</b> enabled.
+
+</p>
+<hr>
+<h2 id="error10049">Error 10049: Invalid scheme in redirect source URL</h2>
+<p>This error occurs when the source URL of a URL redirect has an invalid scheme.</p>
+<p><b>Resolution</b></p>
+<p>Review the source URL and ensure that it uses one of the supported schemes: <code>http</code>, <code>https</code>, or empty (no scheme information, which means that it applies to both schemes).</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10050">Error 10050: Invalid redirect source URL with user info</h2>
+<p>This error occurs when the source URL of a URL redirect includes a user info component (for example, <code>https://user:password@example.com</code>), which is not supported.</p>
+<h3><b>Resolution</b></h3>
+<p>Remove the user info component from the redirect source URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10051">Error 10051: Missing authority in redirect source URL</h2>
+<p>This error occurs when the source URL of a URL redirect does not include an authority component (for example, <code>http:///path</code>, without a hostname), which is mandatory.</p>
+<h3><b>Resolution</b></h3>
+<p>Add an authority component to the redirect source URL (for example, include a hostname).</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the required URL components for redirect source URLs.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10052">Error 10052: Invalid redirect source URL with port</h2>
+<p>This error occurs when the source URL of a URL redirect includes a port (for example, <code>https://example.com:8081</code>), which is not supported.</p>
+<h3><b>Resolution</b></h3>
+<p>Remove the port from the redirect source URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.</p>
+<hr>
+<h2 id="error10053">Error 10053: Invalid redirect source URL with query string</h2>
+<p>This error occurs when the source URL of a URL redirect includes a query string component, which is not supported.</p>
+<h3><b>Resolution</b></h3>
+<p>Remove the query string from the redirect source URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10054">Error 10054: Invalid redirect source URL with fragment</h2>
+<p>This error occurs when the source URL of a URL redirect includes a fragment component (for example, <code>https://example.com/search/#fragment</code>).</p>
+<p>Fragment components are not part of an HTTP request; they are an indication for the browser to scroll to a specific location once the page has loaded.</p>
+<h3><b>Resolution</b></h3>
+<p>Remove the fragment from the redirect source URL.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the supported URL components for redirect source URLs.
+
+</p>
+<hr>
+<h2 id="error10055">Error 10055: Query string settings incompatible with redirect target URL</h2>
+<p>This error occurs when you enable the <b>Preserve query string </b>option of a URL redirect, but also provide a query string in the redirect target URL. In this case, the URL redirect would have conflicting configuration on how to handle the query string of incoming requests.</p>
+<h3><b>Resolution</b></h3>
+<p>Perform one of the following:</p>
+<ul>
+	<li>Disable the <b>Preserve query string </b>option in the URL redirect</li>
+	<li>Remove the query string component from the redirect target URL</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="error10056">Error 10056: The add list items operation contains different types of list items</h2>
+<p>This error occurs when there are different types of list items (both IP addresses and URL redirects) in a single operation to add items to a List. The error may occur for an IP List or a Bulk Redirect List.</p>
+<h3><b>Resolution</b></h3>
+<p>Remove the list items that do not apply to the list type. This means:</p>
+<ul>
+	<li>Removing IP addresses from a request to add items to a Bulk Redirect List</li>
+	<li>Removing URL redirects from a request to add items to an IP List</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="error10058">Error 10058: List items incompatible with list type</h2>
+<p>This error occurs when you are adding items to a List (either IP List or Bulk Redirect List) and the list items are incompatible with the list type.</p>
+<h3><b>Resolution</b></h3>
+<p>Make sure you are adding the items to the correct list:</p>
+<ul>
+	<li>IP Lists can only contain IP addresses as list items</li>
+	<li>Bulk Redirect Lists can only contain URL redirects as list items</li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="error10059">Error 10059: Maximum number of repeated URL source paths exceeded</h2>
+<p>This error occurs when you have more than the maximum number of URL redirects with the same source URL path across all Bulk Redirect Lists in your account, regardless of the URL redirect domain.</p>
+<h3><b>Resolution</b></h3>
+<p>Review the path of your source URLs so that you do not have more than the maximum number of URL redirects sharing the same URL path in your account, regardless of their domain or the list they belong to.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/parameters"><u>URL redirect parameters</u></a> for more information on the current limits.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="error10060">Error 10060: Missing scheme in redirect target URL</h2>
+<p>This error occurs when the target URL of a URL redirect does not include a scheme, which is mandatory.</p>
+<h3><b>Resolution</b></h3>
+<p>Review the target URL of the URL redirect and ensure that it contains a scheme (for example, <code>https</code>).</p>
+<p>Refer to <a href="https://developers.cloudflare.com/rules/bulk-redirects/reference/url-components"><u>Supported URL components in Bulk Redirects</u></a> for details on the required URL components for redirect target URLs.</p>
+<p>
+
+</p>

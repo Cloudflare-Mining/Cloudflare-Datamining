@@ -1,0 +1,71 @@
+<p><i>This article provides guidance to troubleshoot common concerns about Cloudflare DNS.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_84167303211544035341530">Why do I have a dc-######### subdomain?</a></li>
+		<li><a href="#h_62993872051544035354776">Why are DNS queries returning incorrect results?</a></li>
+		<li><a href="#h_75993570981544035362746">No A, AAAA or CNAME record found?</a></li>
+		<li><a href="#h_752983037101544035373001">Why have I received an email: Your Name Servers have Changed?</a></li>
+		<li><a href="#h_84167303211544035341531">Why can't I add certain TLDs via the DNS API?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_84167303211544035341530">Why do I have a dc-######### subdomain?</h2>
+<p>The dc-##### subdomain is added to overcome a conflict created when your SRV or <i>MX record</i> resolves to a domain configured to proxy to Cloudflare.
+</p>
+<p>Therefore, Cloudflare will create a dc-##### DNS record that resolves to the origin IP address. The dc-##### record ensures that traffic for your MX or SRV record isn’t proxied (it directly resolves to your origin IP) while the Cloudflare proxy works for all other traffic.</p>
+<p>For example, before using Cloudflare, suppose your DNS records for mail are as follows:</p>
+<p><code>example.com MX example.com</code>
+	<code>example.com A 192.0.2.1</code>
+</p>
+<p>After using Cloudflare and proxying the <i>A record</i>, Cloudflare will provide DNS responses with a Cloudflare IP (203.0.113.1 in the example below):</p>
+<p><code>example.com MX example.com</code>
+	<code>example.com A 203.0.113.1</code>
+</p>
+<p>Since proxying mail traffic to Cloudflare would break your mail services, Cloudflare detects this situation and creates a dc-##### record:</p>
+<p><code>example.com MX dc-1234abcd.example.com</code>
+	<code>dc-1234abcd.example.com A 192.0.2.1 </code>
+	<code>example.com A 203.0.113.1</code>
+</p>
+<p>Removing the dc-###### record is only possible via one of these methods:</p>
+<ul>
+	<li>If no mail is received for the domain, delete the <i>MX record.</i>
+	</li>
+	<li>If mail is received for the domain, update the <i>MX record </i>to resolve to a separate <i>A record </i>for a mail subdomain that isn’t proxied by Cloudflare:</li>
+</ul>
+<p><code>example.com MX mail.example.com</code>
+	<code>mail.example.com A 192.0.2.1</code>
+	<code>example.com A 203.0.113.1</code>
+
+</p>
+<div class="cf-sidebar-2 cf-warning">If your mail server resides on the same IP as your web server, your MX record will expose your origin IP address.
+</div>
+<hr>
+<h2 id="h_62993872051544035354776">Why are DNS queries returning incorrect results?</h2>
+<p>Third-party tools can sometimes fail to return correct DNS results if a recursive DNS cache fails to refresh. In this circumstance, purge your public DNS cache via these methods:</p>
+<ul>
+	<li><a href="http://www.opendns.com/support/cache/">Purging your DNS cache at OpenDNS</a></li>
+	<li><a href="https://developers.google.com/speed/public-dns/cache">Purging your DNS cache at Google</a></li>
+	<li>
+		<a href="https://documentation.cpanel.net/display/CKB/How%2BTo%2BClear%2BYour%2BDNS%2BCache">Purging your DNS cache locally</a>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_75993570981544035362746">No A, AAAA or CNAME record found?</h2>
+<p><i>No A, AAAA or CNAME record found</i> means the Cloudflare <b>DNS</b> app lacks proper records for DNS resolution.</p>
+<p><a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">Add the missing DNS records</a> to your domain.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Sites generally have at least an <em>A record</em> that points to the origin server IP address, typically for the www subdomain and the root domain.
+</div>
+<hr>
+<h2 id="h_752983037101544035373001">Why have I received an email: Your Name Servers have Changed?</h2>
+<p>For domains where Cloudflare hosts the DNS, Cloudflare continuously checks whether the domain uses Cloudflare’s nameservers for DNS resolution. If Cloudflare's nameservers are not used, the domain status is updated from <i>Active</i> to <i>Moved</i> in the Cloudflare <b>Overview</b> app and an email is sent to the customer.  Any domain <i>Moved</i> for more than 7 days is deleted unless the domain again becomes <i>Active</i>.</p>
+<p>Steps to resolve the issue require updating the DNS at your domain registrar to utilize the Cloudflare nameservers:</p>
+<ol>
+	<li>Follow steps 2 and 3 within our <a href="https://support.cloudflare.com/hc/en-us/articles/221327488-Why-was-my-domain-deleted-from-Cloudflare-">domain troubleshooting article</a>.</li>
+	<li>Click <b>Re-check Now </b>in the Cloudflare UI <b>Overview</b> app.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_84167303211544035341531">Why can't I add certain TLDs via the DNS API?</h2>
+<p>The DNS API cannot be used for domains with .cf, .ga, .gq, .ml, or .tk TLDs. Use the Cloudflare Dashboard for managing such TLDs. Enterprise customer can <a href="https://support.cloudflare.com/hc/articles/200172476#h_4b8753c8-f422-4c74-9e8e-07026c4da730">contact Cloudflare Support</a> to remove this limitation.</p>

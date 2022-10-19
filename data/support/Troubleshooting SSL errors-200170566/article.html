@@ -1,0 +1,157 @@
+<p><i>Troubleshoot common SSL errors observed when browsing to a domain proxied through Cloudflare.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_3jIO4zP2btTZfMBlTiW5ub">Overview</a></li>
+		<li><a href="#h_7ec9ed4a-80ae-4fca-8be7-89a13c195d19">Redirect loop errors or HTTP 525 or 526 errors</a></li>
+		<li><a href="#h_55e4d315-c60d-4798-9c4c-c75d9baed1b7">Only some of your subdomains return SSL errors</a></li>
+		<li><a href="#h_122b94f3-ff14-4544-b5fa-8875e08ff5f0"> Your Cloudflare Universal SSL certificate is not active</a></li>
+		<li><a href="#h_51354cf8-de93-4894-85e6-f0f7453d766d">OCSP response error</a></li>
+		<li><a href="#h_c1a6e78e-150d-4db6-89ab-eec7cb1ab03f"> SSL expired or SSL mismatch errors</a></li>
+		<li><a href="#hsts-incorrect-settings">Incorrect HSTS headers</a></li>
+		<li><a href="#h_4QwGoHmLUCx5y6JsQ5Loet">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_3jIO4zP2btTZfMBlTiW5ub">Overview</h2>
+<p>Until Cloudflare provides an SSL certificate for your domain, the following errors appear in various browsers for HTTPS traffic:</p>
+<p><b>Firefox</b></p>
+<p><i>     ssl_error_bad_cert_domain
+		     This connection is untrusted</i></p>
+<p><b>Chrome</b></p>
+<p><i>     Your connection is not private</i></p>
+<p><b>Safari</b></p>
+<p><i>     Safari can't verify the identity of the website</i></p>
+<p><b>Edge / Internet Explorer</b></p>
+<p><i>     There is a problem with this website's security certificate</i></p>
+<p>Even with a Cloudflare SSL certificate provisioned for your domain, older browsers display errors about untrusted SSL certificates because they do not <a href="https://en.wikipedia.org/wiki/Server_Name_Indication#Support">support the Server Name Indication (SNI) protocol</a> used by Cloudflare Universal SSL certificates.  <a href="https://caniuse.com/#feat=sni">Determine if your browser supports SNI</a>.</p>
+<p>It is possible for <a href="https://support.cloudflare.com/hc/articles/200172476#h_4b8753c8-f422-4c74-9e8e-07026c4da730">Cloudflare Support</a> to enable non-SNI support for domains on Pro, Business, or Enterprise plans for Universal, Advanced, Custom, or Custom Hostname certificates.</p>
+<p>Otherwise, if SSL errors occur when using a newer browser, review these common SSL error causes:</p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170566#h_7ec9ed4a-80ae-4fca-8be7-89a13c195d19">Redirect loop errors or HTTP 525 or 526 errors</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170566#h_55e4d315-c60d-4798-9c4c-c75d9baed1b7">Only some of your subdomains return SSL errors</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170566#h_122b94f3-ff14-4544-b5fa-8875e08ff5f0">Your Cloudflare Universal SSL certificate is not active</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170566#h_51354cf8-de93-4894-85e6-f0f7453d766d">OCSP response error</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170566#h_c1a6e78e-150d-4db6-89ab-eec7cb1ab03f">SSL expired or SSL mismatch errors</a></li>
+</ul>
+<p> </p>
+<div class="cf-sidebar-2 cf-note">To avoid SSL errors with the Cloudflare dashboard when using Kaspersky Antivirus, allow dash.cloudflare.com in Kaspersky.
+</div>
+<hr>
+<h2 id="h_7ec9ed4a-80ae-4fca-8be7-89a13c195d19">Redirect loop errors or HTTP 525 or 526 errors</h2>
+<p><b>Symptom</b></p>
+<p>Visitors observe <a href="https://support.cloudflare.com/hc/articles/115000219871">redirect loop errors</a> when browsing to your domain or observe HTTP <a href="https://support.cloudflare.com/hc/articles/115003011431#525error">525</a> or <a href="https://support.cloudflare.com/hc/articles/115003011431#526error">526</a> errors. These errors occur when the current Cloudflare SSL/TSL encryption mode in the Cloudflare <b>SSL/TLS</b> app is not compatible with your origin web server’s configuration.
+
+	<b>Resolution</b>
+</p>
+<p>For redirect loops, refer to our guide on <a href="https://support.cloudflare.com/hc/articles/115000219871">troubleshooting redirect loop errors</a>.</p>
+<p>To resolve HTTP <a href="https://support.cloudflare.com/hc/articles/115003011431#525error">525</a> or <a href="https://support.cloudflare.com/hc/articles/115003011431#526error">526</a> errors, follow the guidance in <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes">SSL encryption modes</a>.</p>
+<p>.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_55e4d315-c60d-4798-9c4c-c75d9baed1b7">Only some of your subdomains return SSL errors</h2>
+<p><b>Symptom
+
+	</b><a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Cloudflare Universal SSL</a> and only cover the root-level domain (<i>example.com</i>) and one level of subdomains (<i>*.example.com</i>). If visitors to your domain observe errors accessing a second level of subdomains in their browser (such as <i>dev.www.example.com</i>) but not the first level of subdomains (such as <i>www.example.com</i>), resolve the issue using one of the following methods below.</p>
+<p><b>Resolution</b></p>
+<ul>
+	<li>Ensure the domain is at least on a Business plan and upload a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom SSL certificate</a> that covers <i>dev.www.example.com</i>
+	</li>
+	<li>purchase an <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">advanced certificate</a> that covers <i>dev.www.example.com</i>
+	</li>
+	<li>if you have a valid certificate for the second level subdomains at your origin web server, click the orange cloud icon beside the <i>dev.www</i> hostname in the Cloudflare <b>DNS</b> app for <i>example.com</i>.
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_122b94f3-ff14-4544-b5fa-8875e08ff5f0"> Your Cloudflare Universal SSL certificate is not active</h2>
+<p><b>Symptom</b></p>
+<p>All active Cloudflare domains are provided a <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Universal SSL certificate</a>. If you observe SSL errors and do not have a certificate of <b>Type </b><i>Universal</i> within the <b>Edge Certificates</b> tab of the Cloudflare <b>SSL/TLS</b> app for your domain, the Universal SSL certificate has not yet provisioned.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare SSL certificates only apply for traffic proxied through Cloudflare. If SSL errors only occur for hostnames not proxied to Cloudflare, proxy those hostnames through Cloudflare:
+	<ul>
+		<li>For domains on Full DNS setups, click the grey cloud icon icon beside the DNS hostname in your Cloudflare DNS app until the icon becomes an orange cloud.</li>
+		<li>For domains on CNAME setups, review our guide on <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">adding DNS records to a CNAME setup</a>.</li>
+	</ul>
+</div>
+<p>Our SSL vendors verify each SSL certificate request before Cloudflare can issue a certificate for a domain name. This process may take anywhere from 15 minutes to 24 hours. Our SSL certificate vendors sometimes flag a domain name for additional review.</p>
+<p><b>Resolution</b></p>
+<p>If your domain is on a <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">partial setup</a>:
+
+	Confirm whether you have CAA DNS records enabled at your current hosting provider. If so, ensure you <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/caa-records">specify the Certificate Authorities that Cloudflare uses</a> to provision certificates for your domain.
+
+	If <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">Universal SSL</a> is disabled on your domain under the <b>Disable Universal SSL</b> section of the <b>Edge Certificates</b> tab in Cloudflare <b>SSL/TLS</b> app:</p>
+<ul>
+	<li>enable Universal SSL</li>
+	<li>purchase an <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager">advanced certificate</a>
+	</li>
+	<li>upload a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom SSL certificate</a> to Cloudflare
+	</li>
+</ul>
+<p>If your Cloudflare SSL certificate is not issued within 24 hours of Cloudflare domain activation:</p>
+<ul>
+	<li>If your origin web server has a valid SSL certificate, <a href="https://support.cloudflare.com/hc/articles/203118044#h_8654c523-e31e-4f40-a3c7-0674336a2753">temporarily pause Cloudflare</a>, and</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/requests/new">open a support ticket</a>  to provide the following information:
+		<ul>
+			<li>the affected domain name, and </li>
+			<li>a screenshot of the errors you observe.</li>
+		</ul>
+	</li>
+</ul>
+<p>Temporarily pausing Cloudflare will allow the HTTPS traffic to be served properly from your origin web server while the support team investigates the issue.</p>
+<hr>
+<h2 id="h_51354cf8-de93-4894-85e6-f0f7453d766d">OCSP response error</h2>
+<p><b>Symptom
+
+	</b>Visitors to your site observe an OCSP response error.</p>
+<p><b>Resolution
+	</b>
+	This error is either caused by the browser version or an issue requiring attention by one of Cloudflare’s SSL vendors. In order to properly diagnose, <a href="https://support.cloudflare.com/hc/en-us/requests/new">open a support ticket</a> with the following information provided by the visitor that observes the browser error:</p>
+<ol>
+	<li>The output from <a href="https://aboutmybrowser.com/"><i>https://aboutmybrowser.com/</i></a>
+		 </li>
+	<li>
+		<ol>
+			<li>The output of <i>https://example.com/cdn-cgi/trace</i> from the visitor’s browser. Replace <i>example.com </i> with your website’s domain name.</li>
+		</ol>
+	</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_c1a6e78e-150d-4db6-89ab-eec7cb1ab03f"> SSL expired or SSL mismatch errors</h2>
+<p><b>Symptom
+	</b>
+	Visitors observe error messages in their browser about SSL expiration or SSL mismatch.</p>
+<p><b>Resolution</b></p>
+<p>If you use a <a href="https://support.cloudflare.com/hc/articles/200170466">Custom SSL</a> certificate, first verify that it has not expired or upload a replacement SSL certificate.
+
+	<a href="https://support.cloudflare.com/hc/en-us/requests/new">Contact Cloudflare support</a> and provide the following information:
+</p>
+<ul>
+	<li>the affected domain name, and</li>
+	<li>a screenshot of the errors you observe.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="hsts-incorrect-settings">Incorrect HSTS headers</h2>
+<p><b>Symptom</b></p>
+<p>The HSTS headers (<code>Strict-Transport-Security</code> and <code>X-Content-Type-Options</code>) in the response do not match the configuration settings defined in <b>SSL/TLS</b> &gt; <b>Edge Certificates</b>.</p>
+<p><b>Resolution</b></p>
+<p>You may have configured <a href="https://developers.cloudflare.com/rules/transform/response-header-modification">HTTP Response Header Modification Rules</a> that are overriding the HSTS header values defined in the <b>SSL/TLS</b> app.</p>
+<ol>
+	<li>Go to <b>Rules</b> &gt; <b>Transform Rules</b>.</li>
+	<li>Under <b>HTTP Response Header Modification</b>, check the existing rules for a rule that is setting the value of one of the HSTS headers (<code>Strict-Transport-Security</code> or <code>X-Content-Type-Options</code>).</li>
+	<li>Delete (or edit) the rule so that the HSTS configuration settings defined in the <b>SSL/TLS</b> app are applied.</li>
+	<li>Repeat this procedure for the other HSTS header.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_4QwGoHmLUCx5y6JsQ5Loet">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/115000219871">Redirect loop errors</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170476">Mixed content errors</a></li>
+	<li><a href="https://caniuse.com/#feat=sni">Determine if your browser supports SNI</a></li>
+</ul>
+<p></p>

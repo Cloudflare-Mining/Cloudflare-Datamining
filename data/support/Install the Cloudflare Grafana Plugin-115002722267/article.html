@@ -1,0 +1,69 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_20GMNHd2HKNipnGnqtNroi">Overview</a></li>
+		<li><a href="#h_Fc1KYHdhCQOZRXlEcW0hY">Install the Cloudflare Grafana Plugin</a></li>
+		<li><a href="#h_1Mm4zyMUAPSpPfP4VxMgDi">Adding new panels with the Cloudflare Grafana Plugin</a></li>
+		<li><a href="#h_5BHWIJpy5x638HCcm6FFiZ">Troubleshooting</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_20GMNHd2HKNipnGnqtNroi">Overview</h2>
+<p>Installing the Cloudflare Grafana Plugin takes under 5 minutes and is the best way to start exploring your DNS analytics from Cloudflare. The Cloudflare Grafana plugin currently includes DNS and <a href="https://www.cloudflare.com/dns/virtual-dns/">Virtual DNS</a> analytics, and over time will be expanded to include other HTTP and Firewall data.</p><img src="https://images.ctfassets.net/slt3lc6tev37/6Rscg4vkapu4zA7oYwqz3c/9c47820b7e2d8e8b1252c4b21ad7e01f/hc-import-screen_shot_2017_02_09_at_11_34_40_am.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005755247/Screen_Shot_2017-02-09_at_11.34.40_AM.png
+Article IDs: 115002722267 | Install the Cloudflare Grafana Plugin
+">
+<p></p>
+<hr>
+<h2 id="h_Fc1KYHdhCQOZRXlEcW0hY">Install the Cloudflare Grafana Plugin</h2>
+<p>1. First you will <a href="http://docs.grafana.org/installation/">need to have a running version of Grafana</a>.</p>
+<p>2. Next use the Grafana CLI to install the Cloudflare plugin.</p>
+<p><code>grafana-cli plugins install cloudflare-app</code></p>
+<p>3. Now when you launch Grafana, you will see Cloudflare for Grafana on the home screen under installed apps.</p><img src="https://images.ctfassets.net/slt3lc6tev37/GxTt8kiB0u2h0SMj9pdMk/b0bf9af2cb61a09ea0bed03211e18b74/hc-import-screen_shot_20017_02_09_at_11_55_21_am.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005811168/Screen_Shot_20017-02-09_at_11.55.21_AM.png
+Article IDs: 115002722267 | Install the Cloudflare Grafana Plugin
+">
+<p>4. Click on the main Grafana icon in the top left corner and hover over the Cloudflare Plugin row and click on Plugin Config.</p><img src="https://images.ctfassets.net/slt3lc6tev37/2TZ9T5FhpNVRlJNaGFVDvA/c6b6a7ce1f1798b275e5b02686b6d169/hc-import-screen_shot_20917_02_09_at_11_55_21_am.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005755527/Screen_Shot_20917-02-09_at_11.55.21_AM.png
+Article IDs: 115002722267 | Install the Cloudflare Grafana Plugin
+">
+<p>5. This will take you to the Plugin Config page. We highly recommend that you generate an <a href="https://developers.cloudflare.com/api/tokens">API token</a> for this app. Please make sure the token has the following permissions:</p>
+<ul>
+	<li>Account / Account Settings / Read</li>
+	<li>Account / DNS Firewall / Read</li>
+	<li>Zone / Zone / Read</li>
+	<li>Zone / Analytics / Read</li>
+</ul>
+<p>Alternatively, you may authenticate with your email address and <a href="https://developers.cloudflare.com/api/keys">legacy API key</a>. You can find your Cloudflare API key here: <a href="https://www.cloudflare.com/a/account/my-account">https://www.cloudflare.com/a/account/my-account</a>.</p>
+<p>6. Now that you have configured the Cloudflare Grafana plugin with your account details, you can go to the main menu at the top and choose Cloudflare Grafana App &gt; Zones or Cloudflare Grafana App &gt; Virtual DNS if you are a Virtual DNS user.</p>
+<p><i>Note: If you are running Grafana behind Cloudflare, to use the Grafana Cloudflare App you will need to grey cloud (in the DNS editor) the Grafana subdomain so that it does not route through Cloudflare. Otherwise you will receive the error: "DNS points to prohibited IP".</i></p>
+<p><b>What can different plans see?</b></p>
+<p>Different Cloudflare plans have access to different levels of data.</p>
+<p>Free zones: # of queries per response code</p>
+<p>Pro zones: # of queries per colo</p>
+<p>Business zones: # of queries per response code and # of queries per record type</p>
+<p>Enterprise zones: # of queries per query name</p>
+<p>You can upgrade plans in your Cloudflare account dashboard here: https://www.cloudflare.com/a/overview/</p>
+<p></p>
+<hr>
+<h2 id="h_1Mm4zyMUAPSpPfP4VxMgDi">Adding new panels with the Cloudflare Grafana Plugin</h2>
+<p>You can use the Cloudflare Grafana plugin to add your own panels to your Grafana dashboards.</p>
+<p>When you are creating a new panel, from Panel Data Source, choose Cloudflare.</p>
+<p><i>For DNS</i></p>
+<p>Use the following fields:</p>
+<p>Source: Zone</p>
+<p>Tag: $zone</p><img src="https://images.ctfassets.net/slt3lc6tev37/2Zd6Lm1fpdGZ7sdCAcMqUY/4ba18e870eb73ee388baf623d2b5d0cd/hc-import-screen_shot_2017_02_08_at_1_09_26_pm.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005811428/Screen_Shot_2017-02-08_at_1.09.26_PM.png
+Article IDs: 115002722267 | Install the Cloudflare Grafana Plugin
+">
+<p><i>For Virtual DNS</i></p>
+<p>Use the following fields:</p>
+<p>Source: Virtual DNS</p>
+<p>Tag: $cluster</p><img src="https://images.ctfassets.net/slt3lc6tev37/4brt0QBKizrPMwKB29F58T/492b9ed4d7b6275c0bfaaa59069a1300/hc-import-screen_shot_20197_02_08_at_1_09_26_pm.png" alt="Old URL: https://support.cloudflare.com/hc/en-us/article_attachments/115005811488/Screen_Shot_20197-02-08_at_1.09.26_PM.png
+Article IDs: 115002722267 | Install the Cloudflare Grafana Plugin
+">
+<p></p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_5BHWIJpy5x638HCcm6FFiZ">Troubleshooting</h2>
+<p>1. "DNS points to prohibited IP" Error</p>
+<p>This means there's a loop created between Grafana and Cloudflare. To fix, you will need to "grey cloud" your grafana dashboard in the Cloudflare DNS dashboard (click on the orange cloud next to the DNS entry for the subdomain hosting your Grafana dashboard).</p>
+<p></p>

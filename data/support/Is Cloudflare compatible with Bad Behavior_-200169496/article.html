@@ -1,0 +1,17 @@
+<p><i></i></p>
+<hr>
+<h2 id="h_2CtfTuAPTzd2KH6Gxn3cbE">Bad Behavior compatibility</h2>
+<p>Absolutely. Please make sure you're working on the <a href="https://bad-behavior.ioerror.us/download/">latest version of Bad Behavior</a> to ensure best performance. You would also want to enable the following in Bad Behavior:</p>
+<ul>
+	<li>
+		<b>Reverse Proxy</b>: Turn on.
+	</li>
+	<li>
+		<b>Reverse Proxy Header</b>: Change the default of <code>X-Forwarded-For</code> to <code>CF-Connecting-IP</code>.
+	</li>
+</ul><img src="https://images.ctfassets.net/slt3lc6tev37/27yAqMAU4cFfHx303RYWDt/fc4beaa580e771a98d8b3e2774b92133/hc-import-cf_bad_behavior.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360020914452/cf-bad-behavior.png
+Article IDs: 200169496 | Is Cloudflare compatible with Bad Behavior?
+">
+<p></p>
+<p>Note: You don't need to allow Cloudflare's IPs because the <code>CF-Connecting-IP</code> value will restore this.</p>
+<p></p>

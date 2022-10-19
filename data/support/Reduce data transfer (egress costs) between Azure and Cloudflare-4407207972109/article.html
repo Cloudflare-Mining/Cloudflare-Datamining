@@ -1,0 +1,34 @@
+<p><i>Update Azure's routing preference to get lower data transfer costs</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_6z0G0yDWsLL7pWzxbfyRyc">Overview</a></li>
+		<li><a href="#h_5XYIimlg0wLn2e9WyoP3El">How to</a></li>
+		<li><a href="#h_6LkClPYXJE3QSjVgT3n5lL">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_6z0G0yDWsLL7pWzxbfyRyc">Overview</h2>
+<p>Cloudflare launched Bandwidth Alliance in 2018 – a group of forward-looking cloud and storage providers who have agreed to waive or steeply discount egress costs for mutual customers. </p>
+<p>Cloudflare customers using Azure can lower their egress bills between Cloudflare and Azure via <a href="https://docs.microsoft.com/en-us/azure/virtual-network/routing-preference-overview"><u>Microsoft Routing Preference</u></a>.</p>
+<hr>
+<h2 id="h_5XYIimlg0wLn2e9WyoP3El">How to</h2>
+<p>To lower your data transfer costs from Azure and Cloudflare: </p>
+<ol>
+	<li>In the Azure portal, go to your storage account. </li>
+	<li>Navigate to <b>Network Routing &gt; Firewalls and virtual networks</b>.</li>
+	<li>For <b>Routing preference</b>, choose <b>Internet routing</b>.</li>
+	<li>Publish route-specific endpoint to <b>Internet routing</b>.</li>
+	<li>Navigate to <b>Properties</b>.</li>
+	<li>Locate the endpoint values for <b>Internet Routing</b>.</li>
+	<li>Enter these endpoint values in your Cloudflare Dashboard.</li>
+</ol><img src="https://images.ctfassets.net/slt3lc6tev37/5oqqiiwMvDQgGsoOKQQ85C/16f51484a2db8c12fd383b412fa9cbee/Screen_Shot_2021-08-16_at_1.11.27_PM.png" alt="Example of where to enter endpoint URLs from Microsoft Azure into your Cloudflare dashboard.">
+<p>For additional details, refer to <a href="https://docs.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal"><u>Configure network routing preference for Azure Storage</u></a> and <a href="https://docs.microsoft.com/en-us/azure/storage/common/network-routing-preference"><u>Microsoft Routing Preference</u></a>.</p>
+<hr>
+<h2 id="h_6LkClPYXJE3QSjVgT3n5lL">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://blog.cloudflare.com/discounted-egress-for-cloudflare-customers-from-microsoft-azure-is-now-available/">Microsoft Azure data transfer announcement</a> (blog)
+	</li>
+	<li><a href="https://www.cloudflare.com/bandwidth-alliance/">Bandwidth Alliance</a></li>
+</ul>
+<p></p>

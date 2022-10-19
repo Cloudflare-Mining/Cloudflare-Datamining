@@ -1,0 +1,17 @@
+<p><i>Learn how to avoid blocking Facebook IPs via the Cloudflare Firewall app.</i></p>
+<hr>
+<h2 id="h_2FEPvCxu5NjpSXzlHeOUy2">Overview</h2>
+<p>Cloudflare does not block or challenge requests from Facebook by default. However, a post of a website to Facebook returns an <i>Attention Required</i> error in the following situations:</p>
+<ul>
+	<li>The security level is set to <a href="https://support.cloudflare.com/hc/articles/200170056">I'm Under Attack</a> globally or via a <a href="https://support.cloudflare.com/hc/articles/200172336">Page rule</a>.</li>
+	<li>There is a user-defined firewall challenge or block that includes a Facebook IP address.</li>
+</ul>
+<p>A country challenge can block a Facebook IP addresses.  Facebook is known to crawl from both the US and Ireland.</p>
+<p>To resolve issues sharing to Facebook, either:</p>
+<ul>
+	<li>Remove the corresponding IP, ASN, or Country <a href="https://support.cloudflare.com/hc/articles/360016473712">Firewall Rule</a> or <a href="https://support.cloudflare.com/hc/articles/217074967">IP Access Rule</a> that challenges or blocks Facebook IPs.</li>
+	<li>Allow AS32934 and AS63293 in your <a href="https://support.cloudflare.com/hc/articles/217074967">IP Access Rules</a> to override challenges, blocks, and Under Attack challenges.</li>
+</ul>
+<p>If you experience issues with Facebook sharing, you can re-scrape pages via the <b>Fetch New Scrape Information</b> option on Facebook's Object Debugger. Facebook re-scrapes content every 30 days unless instructed otherwise. Facebook <a href="https://developers.facebook.com/docs/sharing/opengraph/using-objects">provides an API</a> to help update a large number of resources.</p>
+<p>You can <a href="https://support.cloudflare.com/hc/articles/200172476#h_4b8753c8-f422-4c74-9e8e-07026c4da730">contact Cloudflare Support</a> with the URLs of your website that cannot share to Facebook, and confirmation you have re-scraped the URLs if you continue to have issues.</p>
+<p></p>

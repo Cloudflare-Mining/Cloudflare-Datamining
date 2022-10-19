@@ -1,0 +1,27 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_6b6yYdoWdnad2ZRMr6m4Yf">Problem Description</a></li>
+		<li><a href="#h_7i7rV8LnU9e8ciwxO8Cuxf">Root Cause</a></li>
+		<li><a href="#h_2FAtdBYJOPN4OnaRrQxenA">Solution</a></li>
+		<li><a href="#h_3SPo41tEH1GBnYGxOnIqrr">Additional Information</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_6b6yYdoWdnad2ZRMr6m4Yf">Problem Description</h2>
+<p>The error "You have reached your quota for the requested resource. (Code: 2005)" is thrown when trying to upload a new Custom Certificate or edit an existing one. 
+
+</p>
+<p></p>
+<hr>
+<h2 id="h_7i7rV8LnU9e8ciwxO8Cuxf">Root Cause</h2>
+<p>Usually this error is due to the fact that the quota for Custom Certificate is by <b>type</b> of certificate: <b>Custom Legacy</b> vs <b>Custom Modern</b>. By default when uploading a certificate, the type is set to <b>Custom Modern</b>. But if you only have quota for <b>Custom Legacy</b> certificates then the error will be thrown. </p>
+<hr>
+<h2 id="h_2FAtdBYJOPN4OnaRrQxenA">Solution</h2>
+<p>First of all check your entitlements under SSL/TLS -&gt; Edge Certificate. It will read:You can upload X Custom Legacy certificate pack.
+	You can upload Y Custom Modern certificate packs.Then when actually uploading or editing the certificate, make sure you select the appropriate option in the <b>Legacy Client Support</b> dropdown at the bottom. </p>
+<p></p>
+<hr>
+<h2 id="h_3SPo41tEH1GBnYGxOnIqrr">Additional Information</h2>
+<p>More details about Custom Certificates can be found here: </p>
+<p><a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates</a></p>

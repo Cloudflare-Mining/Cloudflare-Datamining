@@ -1,0 +1,112 @@
+<p><i>Learn more about how Cloudflare Rate Limiting billing is calculated.</i></p>
+<hr>
+<h2 id="52eXLz9PQBmKKjNCdRt4fP">Overview</h2>
+<p><a href="https://support.cloudflare.com/hc/articles/115001635128">Cloudflare Rate Limiting </a>automatically identifies and mitigates excessive request rates for specific URLs or for an entire domain.  Rate Limiting protects against <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service/">DDoS</a> and <a href="https://www.cloudflare.com/learning/bots/brute-force-attack/">Brute-force attacks</a>, and limits access to forum searches, API calls, or resources that involve database-intensive operations at your origin.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The billing information in this page refers to the <a href="https://support.cloudflare.com/hc/articles/115001635128">previous version of Cloudflare Rate Limiting</a>, which is billed based on usage.<br>
+	To benefit from <strong>unmetered rate limiting</strong> (new version), rewrite your current rules in the new version of the feature. For more information, refer to <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/">Rate limiting rules</a> in the developer documentation.
+</div>
+<p>Enterprise customers are charged a fixed rate as specified in their contract. All other plans are <a href="https://support.cloudflare.com/hc/en-us/articles/115004555148">billed based on usage</a>, which is reflected in the monthly subscription invoice.</p>
+<p>The first 10,000 billable requests across all your websites are free. You will then be charged $0.05 per 10,000 requests thereafter. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Rate Limiting rules in <em>Log</em> mode do not count as billable requests.
+</div>
+<p>For example, if you had a total of 35,000 good/allowed requests matching any rate-limiting rule:</p>
+<ul>
+	<li>1 - 10,000 are free.</li>
+	<li>10,001 - 20,000 cost $0.05</li>
+	<li>20,001 - 30,000 cost $0.05</li>
+	<li>30,001 - 35,000 cost $0.05 (billing is not prorated if you only use a portion of the 10,000 requests paid for)</li>
+</ul>
+<p>You will be charged $0.15 in total for Rate Limiting on your next <a href="https://support.cloudflare.com/hc/en-us/articles/200170286-How-does-CloudFlare-s-billing-for-apps-and-paid-plans-work-#section2">billing date</a>. The charge will appear as a line item on your invoice and will list the total number of requests billed.</p>
+<p>The first 10,000 requests are across all sites on your account, rather than receiving 10,000 free requests per site: if you have one site with 20,000 requests and another with 30,000, your bill will be $0.20 for the 50,000 total requests, not $0.15.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">To monitor the usage of Cloudflare add-ons or subscriptions, you can <a href="https://support.cloudflare.com/hc/en-us/articles/115004555148/#11aoHZtimmL8WRIrA1jmD0">enable email notifications</a>. When enabled, you will receive a notification to the billing email address on file when the traffic, queries, requests, or minutes watched exceed your desired threshold.
+</div>
+<hr>
+<h2 id="27xljww9DtwxJPWGfq1stA">Rate Limiting billable usage</h2>
+<p>Rate Limiting is billed based on the number of good (not blocked) requests that match your defined rules across all your websites. Each request is only counted once so you will not be double charged if a request matches multiple rules.</p>
+<p>For example, given a rule that matches example.com/ratelimit/* and blocks clients that send over 30 requests per minute:</p>
+<ul>
+	<li>Client A sends 20,000 requests to example.com/ratelimit/foo at a rate of 10 requests per minute. All requests are allowed.</li>
+	<li>Client B sends 90,000 requests to example.com/ratelimit/bar, usually at a rate of 10 requests per minute, but with bursts over 30 requests per minute. 60,000 of their requests are blocked during the bursts, and 30,000 are allowed when their request rate is lower.</li>
+	<li>Client C sends 20,000 requests to example.com/elsewhere at a rate of 40 requests per minute. While this exceeds the threshold, it doesn't match the rule path, so all 20,000 requests are allowed.</li>
+</ul>
+<p>In this example, 50,000 (30,000 + 20,000) requests are billable: clients A and B both sent requests that matched the rule, but some of client B's request were blocked, and those blocked requests were not billed. In total, the cost is (50,000 - 10,000) * $0.05 = $0.20.</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<td>
+				<p>
+					<strong>Client</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Request URL</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Requests</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Outcome</strong>
+				</p>
+			</td>
+			<td>
+				<p>
+					<strong>Monthly Cost</strong>
+				</p>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="width:15%">A</td>
+			<td style="width:28.1526%">example.com/ratelimit/foo</td>
+			<td style="width:11.8474%">20,000 at 10 req/min</td>
+			<td style="width:21%">
+				URL pattern matches but threshold is not exceeded. All requests pass
+				through.
+			</td>
+			<td>
+				<p>(2-1)*$0.05 = $0.05</p>
+				<p>
+					<em>Only charge for 10,000 requests because the first 10,000 allowed do not incur any cost.</em>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:15%">B</td>
+			<td style="width:28.1526%"> example.com/ratelimit/bar</td>
+			<td style="width:11.8474%">
+				<p>90,000:</p>
+				<p>60,000 at 30 req/min + 30,000 under 30 req/min</p>
+			</td>
+			<td style="width:21%">
+				URL pattern matches. Rule blocks 60,000 and allows 30,000 requests.
+			</td>
+			<td style="width:22%">3*$0.05 = $0.15</td>
+		</tr>
+		<tr>
+			<td style="width:15%">C</td>
+			<td style="width:28.1526%"> example.com/elsewhere</td>
+			<td style="width:11.8474%">20,000 at 40 req/min</td>
+			<td style="width:21%">
+				URL pattern doesn't match. Rule doesn't apply. All requests pass
+				through.
+			</td>
+			<td style="width:22%">$0.00</td>
+		</tr>
+		<tr>
+			<td style="width:15%">
+				<strong> Total to bill:</strong>
+			</td>
+			<td style="width:28.1526%">$0.20</td>
+		</tr>
+	</tbody>
+</table>

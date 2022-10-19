@@ -1,0 +1,40 @@
+<p><i>When you have grey-clouded DNS records, Cloudflare may warn you that your DNS records might reveal your origin server’s IP address. This is most common with A, AAAA, CNAME, and MX DNS records.</i></p>
+<hr>
+<h2 id="h_6DCwjJoDHCUf4wOGT2hWrQ">Overview</h2>
+<p>When your DNS records are orange-clouded, Cloudflare speeds up and protects your site.</p>
+<p>A <i>dig</i> query against your orange-clouded root domain returns a Cloudflare IP address. This way, your origin server’s IP address remains concealed from the public. Remember that orange cloud benefits only apply to HTTP traffic.</p>
+<p>Under certain circumstances, the <b>DNS Records</b> panel in the Cloudflare dashboard <b>DNS</b> app displays a warning whenever you have grey-clouded DNS records that may expose your origin server’s IP address. This warning does not block, or in any way affect, traffic destined to your site.</p>
+<p>When your server’s IP address is exposed, your server is more vulnerable to direct attacks.  It is still possible (but more difficult) for attackers to determine your origin server IP address when proxying traffic to Cloudflare.</p>
+<p>Below are two cases where you might see an IP exposure warning from Cloudflare.</p>
+<hr>
+<h2 id="h_6dFCYHKiLQUajEvtK7OVd8">Case 1 - DNS records that should be orange-clouded</h2>
+<p>If you see the following warning:</p>
+<p><code><i>This record is exposing your origin server’s IP address. To hide your origin IP address, and increase your server security, click on the grey cloud to change it to orange.</i></code></p>
+<p>Cloudflare recommends orange-clouding the record so that any dig query against that record returns a Cloudflare IP address and your origin server IP address remains concealed from the public.</p>
+<p>To take advantage of Cloudflare’s performance and security benefits, we recommend you orange-cloud DNS records that handle HTTP traffic, including A, AAAA, and CNAME.</p>
+<p>
+
+</p>
+<hr>
+<h2 id="h_2OTEXthZobkB0GLlBCnFw7">Case 2 - DNS records that need to be grey-clouded</h2>
+<p>When you have a grey-clouded <i>A</i>, <i>AAAA</i>, <i>CNAME</i>, or <i>MX</i> record pointing to the same origin server hosting your site, Cloudflare displays one of the following warnings:</p>
+<p><code><i>An A, AAAA, CNAME, or MX record is pointed to your origin server exposing your origin IP.</i></code></p>
+<p><code><i>This record is exposing your origin server’s IP address, potentially exposing it to denial of service.</i></code></p>
+<p><i></i></p>
+<div class="cf-sidebar-2 cf-info">Cloudflare now supports proxying wildcard '*' record for DNS management in all customer plans. This used to only be offered to Enterprise plans.
+</div><i></i>
+<p>
+	A <i>dig</i> query against these records reveals your origin server’s IP address. This information makes it easier for potential attackers to target your origin server directly.</p>
+<p>However, there are times when some of your DNS records need to remain grey-clouded. For example:</p>
+<ul>
+	<li>When you have to host multiple services (for example, a website and email) on the same physical server</li>
+</ul>
+<p>To mitigate this risk, we recommend that you:</p>
+<ul>
+	<li>Analyze the impact of hosting multiple services on the same origin server in cases when having grey-clouded DNS records can’t be avoided</li>
+	<li>Orange-cloud all records that share the same origin IP address as your root domain and can be safely proxied through Cloudflare</li>
+</ul>
+<p>
+
+
+</p>

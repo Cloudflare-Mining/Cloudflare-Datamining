@@ -1,0 +1,65 @@
+<p><i>This article answers several common questions about CAA DNS records.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_83030816011543365917896">What is CAA and how can I create one?</a></li>
+		<li><a href="#h_66255839481543365927385">How does Cloudflare evaluate CAA records?</a></li>
+		<li><a href="#1NjLKMPWXlhOiJkxogo1pC">Why must I disable Universal SSL if my CAA records exclude Universal SSL issuance?</a></li>
+		<li><a href="#h_645975761191543365946939">What records are added to keep Universal SSL enabled?</a></li>
+		<li><a href="#h_217748692231543365960592">What happens when Universal SSL is disabled?</a></li>
+		<li><a href="#h_322898447261543365970663">How do I re-enable Universal SSL?</a></li>
+		<li><a href="#h_681347546281543365982388">What are the dangers of setting CAA records?</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_83030816011543365917896">What is CAA and how can I create one?</h2>
+<p>A Certificate Authority Authorization (CAA) record allows domain owners to restrict issuance to specified Certificate Authorities (CAs). </p>
+<p>For more details and instructions on how to create these records, refer to our <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/caa-records">developer documentation</a>.</p>
+<hr>
+<h2 id="h_66255839481543365927385">How does Cloudflare evaluate CAA records?</h2>
+<p><i>CAA records</i> are evaluated by a CA, not by Cloudflare.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Setting a <em>CAA record</em> to specify one or more particular CAs has no effect on which CA(s) Cloudflare will use to issue a Universal or Advanced SSL certificate for your domain.
+</div>
+<hr>
+<h2 id="1NjLKMPWXlhOiJkxogo1pC">Why must I disable Universal SSL if my CAA records exclude Universal SSL issuance?</h2>
+<p>Since Universal SSL certificates are shared between customers, your <i>CAA records</i> may prevent issuance of another customer’s Universal SSL. Therefore, Cloudflare must disable Universal SSL for your domain to ensure your <i>CAA records</i> do not affect another customer.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<em>CAA records</em> are automatically added for the Universal SSL CA providers comodoca.com, digicert.com, and letsencrypt.org if Cloudflare's Universal SSL is enabled and you add a CAA record via the Cloudflare <strong>DNS</strong> app.
+</div>
+<p>If you do not require Universal SSL from Cloudflare, you can <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/enable-universal-ssl">disable Universal SSL</a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Disabling Universal SSL will leave your Cloudflare enabled DNS records without SSL support unless you have uploaded a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">custom SSL certificate</a> (requires Business or Enterprise plan).
+</div>
+<hr>
+<h2 id="h_645975761191543365946939">What records are added to keep Universal SSL enabled?</h2>
+<p>The following DNS records are automatically set if you continue to use Cloudflare’s free Universal SSL certificates:</p>
+<p></p>
+<pre>example.com. IN CAA 0 issue "comodoca.com"
+example.com. IN CAA 0 issue "digicert.com"
+example.com. IN CAA 0 issue "letsencrypt.org"
+example.com. IN CAA 0 issuewild "comodoca.com"
+example.com. IN CAA 0 issuewild "digicert.com"
+example.com. IN CAA 0 issuewild "letsencrypt.org"</pre>
+<div class="cf-sidebar-2 cf-warning">Do not use the <em>Only allow wildcards</em> option for the root record (which returns only <em>issuewild</em> records) for any domain that will use Cloudflare's Universal SSL.
+</div>
+<p>Used alone, <i>issuewild</i> only permits wildcard issuance.  Therefore, Cloudflare cannot add your root domain to the certificate unless you specify the <i>Allow wildcards and specific hostnames</i> option in the <b>Tag</b> dropdown:</p><img src="https://images.ctfassets.net/slt3lc6tev37/30YTDLuQvb4hGRxDKbXZVn/eb6378cc614b118ac4980749edec924f/dns_ui_updates_caa_records.png" alt="screenshot of the CAA records for comodoca.com in the Cloudflare dashboard tagged to only allow specific hostnames">
+<p></p>
+<hr>
+<h2 id="h_217748692231543365960592">What happens when Universal SSL is disabled?</h2>
+<p>Your domain name is immediately removed from the Universal SSL certificate and your users will observe SSL errors unless you <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">upload a custom SSL certificate</a> (requires Business or Enterprise plan).</p>
+<hr>
+<h2 id="h_322898447261543365970663">How do I re-enable Universal SSL?</h2>
+<p>To re-enable Universal SSL:</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Click the appropriate Cloudflare account for the domain where you want to disable Universal SSL.</li>
+	<li>Ensure the proper domain is selected.</li>
+	<li>Click the <b>SSL/TLS</b> app.</li>
+	<li>Scroll to the <b>Disable Universal SSL</b> section.</li>
+	<li>Click <b>Enable Universal SSL</b>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_681347546281543365982388">What are the dangers of setting CAA records?</h2>
+<p>If you are part of a large organization or one where multiple parties are tasked with obtaining SSL certificates, include <i>CAA records</i> that allow issuance for all CAs applicable for your organization.  Failure to do so can inadvertently block SSL issuance for other parts of your organization.</p>

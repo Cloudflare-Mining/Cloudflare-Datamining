@@ -1,0 +1,30 @@
+<p><i>Cloudflare Workers allows you to run JavaScript from Cloudflare’s 150+ data centers. Learn how to use Cloudflare Analytics for Workers.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_2fFcubz4ukNYtTF18oZYXV">What is a subrequest?</a></li>
+		<li><a href="#h_3c8nurjUX3nlzgWnzKJbNf">Zone analytics</a></li>
+		<li><a href="#h_1XnbwSAVKtt3ha5FOqcB6t">Worker analytics</a></li>
+		<li><a href="#h_6qsmsFSH6G7H5F1d6SdXad">FAQ</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_2fFcubz4ukNYtTF18oZYXV">What is a subrequest?</h2>
+<p>With a no-op Worker (a Worker that simply proxies traffic by passing on the original client request to the origin and proxying the response) running on a particular route, the request to the origin is counted as a “subrequest”, separate from initial client to edge request. Thus, unless the Worker responds with a static response and never hits an origin, the eyeball → edge request, and edge → origin request will each be counted separately towards the request or bandwidth count in Analytics.  Subrequests are not included in the <b>Requests</b> or <b>Bandwidth</b> graphs of the Cloudflare <b>Analytics</b> app.</p>
+<hr>
+<h2 id="h_3c8nurjUX3nlzgWnzKJbNf">Zone analytics</h2>
+<p>In the dashboard, the numbers in zone analytics reflect visitor traffic. That is, the number of requests shown in zone analytics (under the Analytics tabs in the dashboard) is the number of requests that were served to the client.</p>
+<p>Similarly, the bandwidth is counted based on the bandwidth that is sent to the client, and status codes reflect the status codes that were served back to the client (so if a subrequest received a 500, but you respond with a 200, a 200 will be shown in the status codes breakdown).</p>
+<hr>
+<h2 id="h_1XnbwSAVKtt3ha5FOqcB6t">Worker analytics</h2>
+<p>For a breakdown of subrequest traffic (origin facing traffic), you may go to the Cloudflare <b>Analytics</b> app and click on the <b>Workers</b> tab. Under the <b>Workers</b> tab, below the Service Workers panel, you will see a <b>Subrequests</b> breakdown by count, <b>Bandwidth</b> and <b>Status Codes</b>. This will help you spot and debug errors at your origin (such as spikes in 500s), and identify your cache-hit ratio to help you understand traffic going to your origin.</p>
+<hr>
+<h2 id="h_6qsmsFSH6G7H5F1d6SdXad">FAQ</h2>
+<p><b>Why don’t I see any analytics for Workers?</b></p>
+<ul>
+	<li>If you are not currently using Workers (don’t have Workers deployed on any routes or filters), we will not have any information to show you.</li>
+	<li>If your Worker sends a static response back to the client without ever calling fetch() to an origin, you are not making any subrequests, thus, all traffic will be shown in zone Analytics</li>
+</ul>
+<p><b>Will this impact billing? </b></p>
+<p>No, <a href="https://developers.cloudflare.com/workers/about/pricing/">billing for Workers</a> is based on requests that go through a Worker. </p>
+<p><b>Why am I seeing such a high cache hit ratio?</b></p>
+<p>Requests served by a Worker always show as cached. For an accurate cache hit ratio on subrequests, see the <b>Subrequests</b> graph in the <b>Analytics</b> app under the <b>Workers</b> analytics tab.</p>

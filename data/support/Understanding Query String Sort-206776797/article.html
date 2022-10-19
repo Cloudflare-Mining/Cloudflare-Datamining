@@ -1,0 +1,86 @@
+<p><i>Query String Sort allows customers to increase cache hits on resources with varied query strings.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#4bOMfCw5Cdgksx1sWNeOxb">Overview</a></li>
+		<li><a href="#4bJ4dl4TLlJR8NECznXDnI">Enable Query String Sort</a></li>
+		<li><a href="#12345679">Unexpected behavior with WordPress admin pages</a></li>
+		<li><a href="#12345681">Identifying the problem</a></li>
+		<li><a href="#12345682">Responding to the issue</a></li>
+		<li><a href="#59dCwvrvEAoqANWobKavtl">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="4bOMfCw5Cdgksx1sWNeOxb">Overview</h2>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-info">Query String Sort is only available to Enterprise customers.
+</div><b></b>
+<p>By default, Cloudflare’s cache treats resources as distinct if their URL query strings are in a different order.  For instance, these resources are cached separately:</p>
+<ul>
+	<li><code>/video/48088296?title=0&amp;byline=0&amp;portrait=0&amp;color=51a516</code></li>
+	<li><code>/video/48088296?byline=0&amp;color=51a516&amp;portrait=0&amp;title=0</code></li>
+</ul>
+<p><b>Query String Sort</b> increases cache-hit rates by first sorting query strings into a consistent order before checking the Cloudflare cache. If two query strings exist with the same name, the URL is sorted by the parameter value.  For example:</p>
+<p><code>/example/file?word=alpha&amp;word=beta
+		and
+		/example/file?word=beta&amp;word=alpha</code></p>
+<p>are sorted to:</p>
+<p><code>/example/file?word=alpha&amp;word=beta</code></p>
+<hr>
+<h2 id="4bJ4dl4TLlJR8NECznXDnI">Enable Query String Sort</h2>
+<p><b>Query String Sort</b> is available in the Cloudflare dashboard under the <b>Caching</b> app.</p>
+<ol>
+	<li>Log into your Cloudflare account.</li>
+	<li>Choose the appropriate domain for which you want to enable Query String Sort.</li>
+	<li>Click the <b>Caching</b> app.</li>
+	<li>Scroll down to <b>Enable Query String Sort</b>
+	</li>
+</ol>
+<p>Toggle the switch to <i>On</i>.</p>
+<hr>
+<h2 id="12345679">Unexpected behavior with WordPress admin pages</h2>
+<p>When a site or an application requires exact query string ordering, enabling Query String Sort might cause unexpected behavior.</p>
+<p>For example in the WordPress admin UI, you might notice any of the following behaviors:</p>
+<ul>
+	<li>No media appear in the Media Library</li>
+	<li>Inability to customize the site via <b>Appearance </b>&gt; <b>Customize</b>
+	</li>
+	<li>Inability to drag any widget to a sidebar in <b>Appearance </b>&gt; <b>Widgets</b>
+	</li>
+	<li>Inability to edit menus in <b>Appearance </b>&gt; <b>Menus</b>
+	</li>
+</ul>
+<p>To understand why this happens, note that WordPress <a href="https://wordpress.org/support/article/editing-wp-config-php/#disable-javascript-concatenation">concatenates Javascript files</a> to speed up the administration interface. The way WordPress implements this involves multiple occurrences of <i>load[]</i> parameters in the query string, where the order of those parameters is crucial.</p>
+<hr>
+<h2 id="12345681">Identifying the problem</h2>
+<p>The screenshot below shows an example where resources in the Media Library are not rendered correctly and the browser debugging console reveals that the page is throwing an error:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5J6DeP4vfM1zL3bbfjiKoV/3d63f0eebf2438de251ace16537b4226/media_library_enabling_query.png" alt="">
+<p></p>
+<p>When the page <code>load-scripts.php</code> loads, the browser sends a request to Cloudflare for:</p>
+<p></p>
+<pre>/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&amp;load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&amp;ver=5.0.3</pre>
+<p>With Query String Sort enabled, Cloudflare will then sort the parameters and values in the request query string, resulting in the following:</p>
+<p><i></i></p>
+<pre>/wp-admin/load-scripts.php?c=0&amp;load%5B%5D=equest,media-views,media-editor,media-audiovideo,mce-view,imgareaselect,image-edit,media-grid,media,svg-painter&amp;load%5B%5D=hoverIntent,common,admin-bar,underscore,shortcode,backbone,wp-util,wp-backbone,media-models,wp-plupload,wp-mediaelement,wp-api-r&amp;ver=5.0.3</pre><i></i>
+<p>Note that the <code>load[]</code> parameters were swapped, as <code>equest</code> should come before <code>hoverIntent</code> when alphabetically ordered.</p>
+<p>When this happens, you will most likely find errors in the browser console, such as:</p>
+<p><code>_____ is not defined at load-scripts.php?c=0&amp;load[]=...</code></p>
+<p>This type of error indicates that Query String Sort is inadvertently breaking some WordPress admin page functionality.</p>
+<p>After sorting, the query then goes to Cloudflare's cache infrastructure (and to the origin server, if the resource is not in the Cloudflare cache or is not cacheable). The origin server then serves the concatenated scripts, which are ordered differently. Because scripts might depend on other scripts, this process might break dependencies.</p>
+<hr>
+<h2 id="12345682">Responding to the issue</h2>
+<p>Start by analyzing your site or application behavior around the use of query strings. Do you have assets served with multiple possible arrangements of query strings?</p>
+<p>For example, you might have an image resizing endpoint or a search form, where the order of query parameters might vary<i>—like width, height, version, etc., </i>yet a unique parameter combination points to a single relevant asset.</p>
+<p>To minimize problems, consider:</p>
+<ul>
+	<li>Disabling <b>Query String Sort </b>for the site if you’re sure that this feature does not add value to any part of your site. Cloudflare disables this option by default in the <b>Caching </b>app.</li>
+	<li>Use Cloudflare <b>Page Rules </b>to enable <b>Query String Sort </b>for URLs where preserving the query string parameter order is not important.</li>
+	<li>Alternatively, use Cloudflare <b>Page Rules </b>to disable <b>Query String Sort </b>for URLs where a specific parameter order is required. For example, disable Query String Sort for <code>example.com/wp-admin/load-scripts.php* </code>or any URLs with similar requirements (replace example.com with your domain name).</li>
+</ul>
+<p>To learn more about Page Rules, visit <a href="https://support.cloudflare.com/hc/en-us/articles/218411427">Understanding and Configuring Cloudflare Page Rules</a>.</p>
+<hr>
+<h2 id="59dCwvrvEAoqANWobKavtl">Related resources</h2>
+<ul>
+	<li><a href="https://blog.cloudflare.com/increasing-cache-hit-rates-with-query-string-sort/"><u>Increasing Cache Hit Rates with Query String Sort</u></a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360031777052-Caution-when-enabling-Query-String-Sort-with-WordPress-admin-pages"><u>Caution When Enabling Query String Sort With WordPress Admin Pages</u></a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360023040812-Best-Practice-Caching-Everything-While-Ignoring-Query-Strings"><u>Best Practice: Caching Everything While Ignoring Query Strings</u></a></li>
+</ul>
+<p></p>

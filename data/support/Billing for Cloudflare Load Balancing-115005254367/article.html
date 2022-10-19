@@ -1,0 +1,44 @@
+<p><i>Learn more about how billing for Cloudflare Load Balancing is calculated.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#12345680">Overview</a></li>
+		<li><a href="#12345679">Cloudflare Load Balancing pricing</a></li>
+		<li><a href="#12345681">Load Balancing billable usage</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="12345680">Overview</h2>
+<p><b>Cloudflare Load Balancing</b> provides DNS-based load balancing and active health checks against origin web servers and pools. When enabled, Cloudflare Load Balancing is billed at the account level. In addition to the monthly subscription, we will count the number of DNS requests ("queries") for each configured Load Balancer, per month. </p>
+<p>The first 500,000 queries, shared across all Load Balancers in your account, are free: additional usage beyond this is charged at 50 cents per 500,000 queries, rounded up to the next 500k queries.</p>
+<p>For example:</p>
+<ul>
+	<li>81,451 DNS queries = subscription + $0 in usage.</li>
+	<li>511,881 DNS queries = subscription + $0.50 in usage</li>
+	<li>2,994,155 DNS queries = subscription + $2.50 in usage</li>
+</ul>
+<p>Note that the first 500,000 queries are based on all active Load Balancers in your account, not per site (domain), as Load Balancers can be shared across sites by configuring a CNAME record.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">To monitor the usage of Cloudflare add-ons or subscriptions, you can <a href="https://support.cloudflare.com/hc/en-us/articles/115004555148/#11aoHZtimmL8WRIrA1jmD0">enable email notifications</a>. When enabled, you will receive a notification to the billing email address on file when the traffic, queries, requests, or minutes watched exceed your desired threshold.
+</div>
+<hr>
+<h2 id="12345679">Cloudflare Load Balancing pricing</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Customers with China network access should not use the Load Balancer or HTTP 530 errors will occur.
+</div>
+<p>You can configure Load Balancing to fit your specific requirements based on the number of origins, health check frequency, the number of regions checked from, and geo-routing.</p>
+<p>The $5 subscription allows you to configure 2 origins per Cloudflare account, 5 origins per pool, 60-second health checks, and checks from one (1) region: ideal for straightforward load balancing or failover. Different pools containing the same origin IP address count as distinct origins for an account. </p>
+<p>For larger configurations, contact <a href="https://www.cloudflare.com/lp/dashboard-ss-load-balancing/">our sales team</a>. </p>
+<hr>
+<h2 id="12345681">Load Balancing billable usage</h2>
+<p>Usage is counted as authoritative <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS queries</a> against Cloudflare's nameservers for each of the Load Balanced hostnames you have configured.</p>
+<p>You can reduce the number of authoritative DNS queries by configuring your Load Balancer as "proxied" (orange cloud) for your HTTP(S) services, which will set the external DNS TTL to 5 minutes, maintain failover performance equivalent with very short DNS TTLs. <a href="https://support.cloudflare.com/hc/en-us/articles/115005138088-Load-Balancing-TTLs-and-Orange-vs-Grey-Cloud">Read more about the benefits of proxied (orange cloud) vs. unproxied (grey cloud).</a></p>
+<h3>Billing for Enterprise customers</h3>
+<p>Enterprise customers are billed based on discussions with the Cloudflare Enterprise Sales team. Enterprise customers also have access to additional features, including:</p>
+<ul>
+	<li>Running health checks from <a href="https://www.cloudflare.com/network/">every Cloudflare datacenter</a> (for increased failover granularity)</li>
+	<li>Per-data center steering (override the origins a specific location should use, and in which order)</li>
+	<li>Five-second health check intervals</li>
+	<li>Support for more than 20 origin servers</li>
+	<li>Cloudflare Enterprise Support (including 24x7 email, phone, and a named Solutions Engineer)</li>
+</ul>
+<p></p>

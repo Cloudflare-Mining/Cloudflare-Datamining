@@ -1,0 +1,148 @@
+<p><i>Learn how to actively monitor your origin server with Cloudflare Health Checks</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_1OObhDUpWMokbcpKJ6LG6k">Overview</a></li>
+		<li><a href="#setup">Step 1: Create a health check</a></li>
+		<li><a href="#notifications">Step 2: Create a health check notification</a></li>
+		<li><a href="#analytics">Use health check analytics</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_1OObhDUpWMokbcpKJ6LG6k">Overview</h2>
+<p>A <i>health check </i>actively monitors whether your origin server is online by sending specific requests at regular intervals.</p>
+<p>Cloudflare offers two types of health checks:</p>
+<ul>
+	<li>
+		<b>Standalone </b>health checks (included with all paid plans)
+	</li>
+	<li>
+		<b>Load Balancing </b>health checks (included as part of a <a href="https://developers.cloudflare.com/load-balancing/understand-basics/monitors/">Load Balancing subscription</a>)
+	</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-info">For more details about standalone health checks and health check analytics, refer to the <a href="https://blog.cloudflare.com/health-check-analytics-and-how-you-can-use-it/">blog post</a>.
+</div>
+<hr>
+<h2 id="setup">Step 1: Create a health check</h2>
+<p>To create a new health check:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">No code</div>
+	<div class="dropdown-content">
+		<p>To create a health check in the Cloudflare dashboard:</p>
+		<p>1. Navigate to <b>Traffic</b> &gt; <b>Health Checks</b>.</p>
+		<p>2. Click <b>Create</b>.</p>
+		<p>3. Fill out the form, paying special attention to:</p>
+		<ul>
+			<li>The values for <b>Interval</b> and <b>Check regions</b>, because decreasing the <b>Interval</b> and increasing <b>Check regions</b> may increase the load on your origin server.</li>
+			<li>
+				<b>Health change thresholds</b>, which specify the number of consecutive passed or failed checks before an origin changes status.
+			</li>
+		</ul>
+		<p>4. When you fill out the form, do not set up <b>Notifications</b>. </p>
+		<p>5. Click <b>Save and Deploy</b>.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">With code</div>
+	<div class="dropdown-content">
+		<p>To create a health check using code:</p>
+		<ul>
+			<li>Use the <a href="https://api.cloudflare.com/#health-checks-create-health-check">Cloudflare API</a>, but do not include the <code>notifications</code> parameter</li>
+			<li>Use the <a href="https://github.com/cloudflare/cloudflare-go/blob/master/healthchecks.go">Cloudflare Go library</a>, but disable notifications by including:</li>
+		</ul>
+		<p></p>
+		<pre>Notification: cloudflare.HealthcheckNotification{
+           Suspended:      true,
+           EmailAddresses: []string{},
+       }</pre>
+		<ul>
+			<li>Use the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/healthcheck">Cloudflare Terraform</a> library, specifying that <code>notification_suspended=true</code>
+			</li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+<p>Once you create a health check, you can <a href="#notifications">create notifications</a> and also monitor origin status using <a href="#analytics">Health Check Analytics</a>.</p>
+<p>These health checks will periodically send requests to the specified origin server with a User Agent of <code>Mozilla/5.0 (compatible; Cloudflare-Traffic-Manager/1.0; +https://www.cloudflare.com/traffic-manager/; healthcheck-id: &lt;HEALTHCHECK_ID&gt;</code>.</p>
+<hr>
+<h2 id="notifications">Step 2: Create a health check notification</h2>
+<p>Once you have <a href="#setup">created a health check</a>, set up health check notifications:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">No code</div>
+	<div class="dropdown-content">
+		<p>To create a health check notification in the dashboard:</p>
+		<p>1. Navigate to <b>Traffic</b> &gt; <b>Health Checks</b>.</p>
+		<p>2. Click <b>Configure an alert</b>.</p>
+		<p>3. Fill out the <b>Notification name </b>and <b>Description </b>and add a <b>Notification email</b>.</p>
+		<p>4. Click <b>Next</b>.</p>
+		<p>5. Add health checks to include in your alerts.</p>
+		<p>6. Choose the <b>Notification trigger</b>, which determines when you receive alerts.</p>
+		<p>7. Click <b>Create</b>.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">With code</div>
+	<div class="dropdown-content">
+		<p>To set up a health check notification with code:</p>
+		<ul>
+			<li>Use the <a href="https://api.cloudflare.com/#notification-policies-create-notification-policy">Cloudflare API</a> with the following parameters specified (beyond <code>name</code>, <code>mechanism</code>, etc.:</li>
+		</ul>
+		<p></p>
+		<pre>"alert_type":"health_check_status_notification",
+"filters":{ 
+     "health_check_id":["<id>"],
+     "status":["Unhealthy"]
+  }
+</id></pre>
+		<ul>
+			<li>Use the <a href="https://github.com/cloudflare/cloudflare-go/blob/master/notifications.go">Cloudflare Go library</a> to create a notification policy with the following parameters specified (beyond <code>Name</code>, <code>Mechanism</code>, etc.):</li>
+		</ul>
+		<p></p>
+		<pre>AlertType: "health_check_status_notification",
+Filters: map[string][]string{
+           // receive notifications when the status is unhealthy
+           "status": {"Unhealthy"},
+           // id of previously created healthcheck
+           "health_check_id": {healthcheckResponse.ID},
+       }
+</pre>
+		<ul>
+			<li>Use the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/notification_policy#with-filters">Cloudflare Terraform</a> library to create a notification policy with the following parameters specified (beyond <code>name</code>, <code>email_integration</code>, etc.)</li>
+		</ul>
+		<p></p>
+		<pre>alert_type = "health_check_status_notification"
+filters {
+   status = ["Unhealthy"]
+   health_check_id = [cloudflare_healthcheck.production.id]
+ }</pre>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">For more guidance on Cloudflare notifications — including how to set up webhooks and Pagerduty notifications — refer to the <a href="https://blog.cloudflare.com/get-updates-on-the-health-of-your-origin-where-you-need-them/">introductory blog</a> or our <a href="https://developers.cloudflare.com/fundamentals/notifications/">Notification documentation</a>.
+</div>
+<hr>
+<h2 id="analytics">Use health check analytics</h2>
+<p>Once you have <a href="#setup">set up a standalone health check</a> — likely including notification emails — use health check analytics to debug possible origin issues.</p>
+<p>To access health check analytics, go to <b>Traffic </b>&gt; <b>Health Check Analytics</b>. Once there, you can evaluate origin uptime and latency and specific event logs:</p>
+<ul>
+	<li>
+		<b>Health Checks By Uptime</b>: Shows the % of uptime for individual origins over time.
+	</li>
+	<li>
+		<b>Health Checks By Failure Reason</b>: Shows a breakdown of failures by the specific reason.
+	</li>
+	<li>
+		<b>Health Checks By Latency</b>: Shows average latency – measured in round trip time — for individual origins over time.
+	</li>
+	<li>
+		<b>Event Log</b>: Shows individual health check data. Click each record for additional details on <b>Round trip time</b>, the <b>Failure Reason</b>, the <b>Average Waterfall </b>(showing chronological data about request stages), and more.
+	</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-info">For more details about standalone health checks and health check analytics, refer to the <a href="https://blog.cloudflare.com/health-check-analytics-and-how-you-can-use-it/">blog post</a>.
+</div>

@@ -1,0 +1,80 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_3SxqQy11e9xU6QXvOK1fVP">Overview</a></li>
+		<li><a href="#h_1mMj92i7RHv4WdNVC1j4Aq">Can I display my waiting room page in another language?</a></li>
+		<li><a href="#h_4vv8eDzZWwvbRDTi0KK8aK">Which features are included in my Waiting Room plan?</a></li>
+		<li><a href="#h_1DwJ8gIpyN38LyzG4zJNut">Why are users being blocked from entering my waiting room?</a></li>
+		<li><a href="#h_6FEefmEQp6jT6TUiVWfLOP">How does Waiting Room interact with other Cloudflare products?</a></li>
+		<li><a href="#h_1c41QaQapy1qQ8ckunaYnb">Why does my waiting room look different than how I designed it?</a></li>
+		<li><a href="#h_7vqz5dunQeoQ9zDyO9PnzY">Why are some users not being queued in my waiting room?</a></li>
+		<li><a href="#h_6g1hfcD6ySGPYJoUwQ3EAw">What happens if a user refreshes their tab when in a waiting room?</a></li>
+		<li><a href="#h_6DAViF01SGNqJhaIKeg6pV">Why do I see a few users being queued in the dashboard?</a></li>
+		<li><a href="#h_7D4lmb3Wz5aHTso3vk0eJX">What can I update when my waiting room is actively queueing?</a></li>
+		<li><a href="#h_6Vtfqlqc3Y1JDYjNQhPv3I">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_3SxqQy11e9xU6QXvOK1fVP">Overview</h2>
+<p>Cloudflare Waiting Room keeps your site online during large surges of legitimate traffic.</p>
+<p>For more information about waiting rooms and how to set them up, see the <a href="https://developers.cloudflare.com/waiting-room/">developer documentation</a>.</p>
+<hr>
+<h2 id="h_1mMj92i7RHv4WdNVC1j4Aq">Can I display my waiting room page in another language?</h2>
+<p>Yes. For more details, refer to <a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room#default-waiting-room">Customize Waiting Rooms</a>.</p>
+<hr>
+<h2 id="h_4vv8eDzZWwvbRDTi0KK8aK">Which features are included in my Waiting Room plan?</h2>
+<p>To see which features are available to different plan types, see <a href="https://developers.cloudflare.com/waiting-room/about/plans">Plans</a>.</p>
+<hr>
+<h2 id="h_1DwJ8gIpyN38LyzG4zJNut">Why are users being blocked from entering my waiting room?</h2>
+<p>If you have Rate Limiting, check your <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/">rate limiting rules</a>.</p>
+<p>The Waiting Room queue page refreshes every 20 seconds by populating the refresh header. If you have a rule set to block requests from a specific IP within 20 seconds, the user in the waiting room will be blocked. Make sure your rules allow at least one request every 20 seconds.</p>
+<p>Your user also might not have <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie">cookies enabled</a>. If they do not enable cookies and your waiting room is actively queueing traffic, they will not reach your end point until the queueing stops.</p>
+<hr>
+<h2 id="h_6FEefmEQp6jT6TUiVWfLOP">How does Waiting Room interact with other Cloudflare products?</h2>
+<p>Some Cloudflare products run <i>before</i> a waiting room acts on traffic:</p>
+<ul>
+	<li>DDos Mitigation</li>
+	<li>Web Application Firewall (WAF)</li>
+	<li>Bot Management</li>
+	<li>Page Rules</li>
+</ul>
+<p>Other Cloudflare products run <i>after</i> a waiting room acts on traffic:</p>
+<ul>
+	<li>Workers</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_1c41QaQapy1qQ8ckunaYnb">Why does my waiting room look different than how I designed it?</h2>
+<p>If you have <a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room">customized your waiting room template</a>:</p>
+<ol>
+	<li>Preview your template before deploying it to production.</li>
+	<li>If you see any issues, check for proper syntax and a closing backslash (<b>/</b>).</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Only Enterprise customers can customize the appearance of their waiting room.
+</div>
+<hr>
+<h2 id="h_7vqz5dunQeoQ9zDyO9PnzY">Why are some users not being queued in my waiting room?</h2>
+<p>If you notice users not being queued to your waiting room, make sure the <b>path</b> exactly matches the <b>path</b> of your website.</p>
+<p>The path is case-sensitive, so if you have a waiting room set up for <b>/Black-Friday-Sale</b> and users go to <b>/black-friday-sale</b>, they will bypass your waiting room.</p>
+<p>For more details, see <a href="https://developers.cloudflare.com/waiting-room/reference/best-practices">Best practices for Waiting Rooms</a>.</p>
+<hr>
+<h2 id="h_6g1hfcD6ySGPYJoUwQ3EAw">What happens if a user refreshes their tab when in a waiting room?</h2>
+<p>A manual tab refresh has no effect on a user's position in your waiting room.</p>
+<p>However, if they close their tab and then try to access the application again during active queueing, they will lose their spot and have to go to the back of the queue.</p>
+<hr>
+<h2 id="h_6DAViF01SGNqJhaIKeg6pV">Why do I see a few users being queued in the dashboard?</h2>
+<p>Some users might be queued before your waiting room reaches is limit due to architectural designs. For more details on the behavior and how to fix it, see <a href="https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room#queueing-activation">Monitor Waiting Rooms</a>.</p>
+<hr>
+<h2 id="h_7D4lmb3Wz5aHTso3vk0eJX">What can I update when my waiting room is actively queueing?</h2>
+<p>You can update a <a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room">waiting room's template</a> and those changes will be visible to users in near-real time. We recommend these updates as a way to engage with users and provide updated information or expectations.</p>
+<p>You can also update the <a href="https://developers.cloudflare.com/waiting-room/reference/configuration-settings">configuration settings</a> of a waiting room, but only make these changes when necessary. These changes may impact the <b>estimated wait time</b> shown to end users and cause unnecessary confusion.</p>
+<hr>
+<h2 id="h_6Vtfqlqc3Y1JDYjNQhPv3I">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://developers.cloudflare.com/waiting-room/">Cloudflare Waiting Room</a> (Developer Documentation)
+	</li>
+	<li><a href="https://blog.cloudflare.com/cloudflare-waiting-room/">Blog post announcing Cloudflare Waiting Room</a></li>
+</ul>
+<p></p>

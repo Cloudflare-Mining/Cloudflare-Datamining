@@ -1,0 +1,42 @@
+<p><i>Optimize load times of non-cached content with Railgun.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_2pvwH6OFnVuIP04CZZamsb">Overview</a></li>
+		<li><a href="#h_3WufgktiQe7ENhzbSCuUvP">Single origin, multiple web servers, single Railgun listener</a></li>
+		<li><a href="#h_5z9oWGtcXh7lqGtvWrIu7G">Single origin, multiple web servers, multiple Railgun listeners</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_2pvwH6OFnVuIP04CZZamsb">Overview</h2>
+<p>If you are looking to use <a href="https://www.cloudflare.com/railgun">Cloudflare Railgun</a> to optimize the load times of dynamic (non-cached) content and you currently utilize a load balancer, a firewall, or a NAT scheme in front of your application, please review the following configurations and best practices associated with each setup.</p>
+<hr>
+<h2 id="h_3WufgktiQe7ENhzbSCuUvP">Single origin, multiple web servers, single Railgun listener</h2>
+<p><b>(This is our recommended configuration)</b></p><img src="https://images.ctfassets.net/slt3lc6tev37/3Nm0o9OIELrBCmXLBrhyC2/19c9e8c570834d5a8829c78fb2801e98/single-railgun-listener-diagram.png" alt="">
+<p></p>
+<p>We strongly encourage the installation of the Railgun client (rg-listener) “in front of” the load balancer/firewall/NAT scheme as per the illustration above.</p>
+<p>Upon activation of the Railgun client you must specify in the railgun.conf file the public IP address of the server it is installed on (3.3.3.3) for the “activation.railgun_host” setting. This will tell Cloudflare to forward all requests via the rg-sender, for content that can’t be served from our edge servers, to this server instead of your origin (1.1.1.1).</p>
+<p>Each request received by the server at 3.3.3.3 on port 2408 will then be processed by the rg-listener, have its host header checked and gets forwarded (by default) to the IP address of your origin server for the hostname according to your Cloudflare DNS configuration. The IP address gets sent with the request from rg-sender as an HTTP header - “CF-ORIGIN-IP”. The rg-listener strips out this header when forwarding requests to your origin over HTTP/S.</p>
+<p>The reason we recommend this setup is because Railgun, by design, keeps a persistent and encrypted connection open on port 2408. Placing the Railgun in front of other network equipment:</p>
+<p>- Allows load balancers to correctly distribute web requests to the web servers in the same way as it would without Railgun being used for the domain.</p>
+<p>- Allows a firewall to analyze the unencrypted traffic for threats in the same way as it would without Railgun being used for the domain.</p>
+<p>- Allows a NAT device to handle web requests in the same way as it would without Railgun being used for the domain.</p>
+<p>If connectivity to the rg-listener can not be established from the Cloudflare edge servers we will automatically fallback to sending the request directly to your origin (1.1.1.1) over HTTP 1.1 and dynamic content compression will be disabled.</p>
+<hr>
+<h2 id="h_5z9oWGtcXh7lqGtvWrIu7G">Single origin, multiple web servers, multiple Railgun listeners</h2>
+<p>It is also possible to put multiple rg-listeners behind the load balancer and have Railgun accelerate dynamic content, this setup provides additional fault tolerance for the Railgun service.</p><img src="https://images.ctfassets.net/slt3lc6tev37/2XsIf1lC1OMMdhzT5jE7yI/aacbcc94f3d935ea5191519d026351f6/multiple-railgun-listeners-diagram__1_.png" alt="">
+<p></p>
+<p>For this configuration to work you need to create a single “Railgun Server” in your Cloudflare dashboard, install the rg-listener on all three of your web servers (2.2.2.1, 2.2.2.2, 2.2.2.3) and activate them all using the SAME Railgun activation token.</p>
+<p>Within each of the railgun.conf files, you will also need to specify the public IP address of the load balancer (1.1.1.1) as the “activation.railgun_host”.</p>
+<p>We advise experienced systems administrators and engineers to use this setup when the benefits of maintaining content compression when running in a degraded state (due to server or rg-listener failure) is important.  Please consider the following, running Railgun behind a Load Balancer/Firewall/NAT could:</p>
+<p>- Add complexity to the network device configuration as traffic inbound on port 2408 needs to be distributed across the rg-listeners.</p>
+<p>- Prevent a Load Balancer from distributing requests correctly as all requests will be routed from the Load Balancer to the Railgun listeners in layer 4 (TCP) mode. The traffic can not be decrypted until it reaches the servers. </p>
+<p>- Prevent the firewall from analyzing incoming traffic as all inbound traffic from Cloudflare is encrypted with the Railgun's certificate.</p>
+<p>- Mean the web servers need more resources to accommodate running the Railgun listener clients.</p>
+<p>Also note that the server firewalls will need to be modified to allow traffic inbound on port 2408 as well as ensure connectivity with an instance of memcached can be established.</p>
+<p>Having Railgun installed behind a load balancer requires that the “<i>railgun-nat.conf</i>” file (found in the Railgun directory) is modified to ensure that each of the rg-listeners knows where to forward requests to. By default each client will forward the request to the “CF-ORIGIN-IP” (1.1.1.1) which may work, but it is more likely you will want the request to be processed by the web server on the same server as the rg-listener that received the request. </p><img src="https://images.ctfassets.net/slt3lc6tev37/23gy0eCMFEAy9MSLCf7Byb/55ce70d4b34df6f6e907bbf818e4b712/mceclip3.png" alt="">
+<p></p>
+<p>The <i>railgun-nat.conf</i> file overrides the default behavior. You can either add each of your hostnames with an appropriate IP address (in our example the localhost IP) or simply uncomment “default=127.0.0.1”. The “default” value here tells rg-listener that any request for a hostname not defined in the file should be forwarded to this IP.</p>
+<p>It is also recommended that a single centralized memcached instance is used by all of the servers running the rg-listener - ideally in an H/A clustered configuration for maximum uptime. Many hosting providers offer their own high-availability in-memory caching services that support memcached so you don’t have to build and maintain your own cluster. This will help to improve cache hit rates when rg-listener queries for a previously compressed version of an object to create deltas from. Whilst separate memcached instances for each rg-listener will work the effectiveness of compression will be impacted.</p>
+<p>If you need additional help in setting up Railgun with a Load Balancer/Firewall/NAT scheme, please contact support by opening up a ticket.</p>
+<p>For more advanced configurations please contact our Enterprise Sales team for more details.</p>
+<p></p>

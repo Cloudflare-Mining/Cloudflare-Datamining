@@ -1,0 +1,59 @@
+<p><i>Resolve errors with mixed content to ensure a visitor’s web browser doesn’t block HTTP resources served over HTTPS.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_4Kw94bkmYDhORbqHOrj0XY">Overview</a></li>
+		<li><a href="#h_a6c5a05b-baba-4f88-a75c-d61f206366ed">Symptoms of mixed content occurrence</a></li>
+		<li><a href="#h_6OcaQnpkFAYQ0skXDr2G73">Resolution</a></li>
+		<li><a href="#h_CsUBjd3kaF8k8Hw25cUIu"> Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_4Kw94bkmYDhORbqHOrj0XY">Overview</h2>
+<p>Domains added to Cloudflare receive SSL certificates and can serve traffic over HTTPS. However, after starting to use Cloudflare, some customers notice missing content or page rendering issues when they first serve HTTPS traffic.</p>
+<p>Typically, the problem is due to a request for HTTP resources from a web page served over HTTPS.  For example, you type <i>https://example.com</i> in a browser and the page contains an image reference via HTTP in the HTML to <i>&lt;img src="http://example.com/resource.jpg"&gt;</i>.</p>
+<p>Normally, if your website loads all resources securely over HTTPS, visitors observe a lock icon (typically a <b>green lock</b>) in the address bar of their browser.</p>
+<p>This indicates your site has a working SSL certificate and all resources loaded by the site are loaded over HTTPS. The green lock assures visitors that their connection is safe. One of the <a href="https://support.cloudflare.com/hc/articles/200170476#h_a6c5a05b-baba-4f88-a75c-d61f206366ed">symptoms of mixed content</a> is that different icons appear instead of the green lock icon.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Other causes of content rendering issues are <a href="https://support.cloudflare.com/hc/articles/200168056">Rocket Loader</a> and <a href="https://blog.cloudflare.com/an-all-new-and-improved-autominify/">Auto-Minify</a>. Test disabling both features if you do not observe mixed content errors.
+</div>
+
+<hr>
+<h2 id="h_a6c5a05b-baba-4f88-a75c-d61f206366ed">Symptoms of mixed content occurrence</h2>
+<p>Most modern browsers block HTTP requests on secure HTTPS pages. Blocked content can include images, JavaScript, CSS, or other content that affects how the page looks or behaves.</p>
+<h3>Browser indications</h3>
+<p>Each web browser uses different methods to warn visitors about mixed content on a website, potentially including:</p>
+<ul>
+	<li>A yellow triangle or information symbol beside the URL bar</li>
+	<li>Messages mentioning "secure content"</li>
+</ul>
+<h3><b>Console logs</b></h3>
+<ul>
+	<li>For mixed content warnings, the web browser loads the resources but users don’t see the green lock icon in the URL. Warning messages appear within the browser’s debug tools:
+	</li>
+</ul><img src="https://images.ctfassets.net/slt3lc6tev37/4O9moiE9PXOY7K91Cm2U1P/3239b9fb022ae56d885a8410f01b4439/hc-import-mixed_content_warning.png" alt="Screenshot of mixed content warnings displayed in a browser console.">
+<p>For mixed content errors, the browser refuses to load the resources over an insecure connection:
+</p><img src="https://images.ctfassets.net/slt3lc6tev37/3UJLcj7LiTabdt6EypprK4/01f550b3f4fc6d8edffa5863e5802561/hc-import-mixed_content_error.png" alt="Screenshot of mixed content errors displayed in a browser console.">
+<p>Information on using the browser’s debug tools to locate these issues are found in the documentation for <a href="https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content">Chrome</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">Firefox</a>. Alternatively, you can view your page source and find specific references of <i>http://</i> for paths to other resources.</p>
+<hr>
+<h2 id="h_6OcaQnpkFAYQ0skXDr2G73">Resolution</h2>
+<p>There are two methods to resolve mixed content errors.</p>
+<p>1. Load all resources via your HTML source without specifying the HTTP or HTTPS protocols. For example:</p>
+<p><i>     //domain.com/path/to.file</i></p>
+<p>     instead of</p>
+<p><i>     http://domain.com/path/to.file</i></p>
+<p>2. Depending on your Content Management System, check for plugins that automatically rewrite HTTP resources to HTTPS. Within the <b>SSL/TLS</b> app <b>Edge Certificates</b> tab, Cloudflare provides such a service via <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites">Automatic HTTPS Rewrites</a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare recommends WordPress users to install the <a href="https://wordpress.org/plugins/cloudflare/">Cloudflare WordPress plugin</a> and enable the <em>Automatic HTTPS rewrites</em> option within the plugin. Alternatively, Cloudflare recommends the <a href="https://en-gb.wordpress.org/plugins/ssl-insecure-content-fixer/">SSL insecure content fixer</a> or <a href="https://en-gb.wordpress.org/plugins/really-simple-ssl/">Really Simple SSL</a> plugin to automatically replace the HTTP with HTTPS.
+</div>
+
+<hr>
+<h2 id="h_CsUBjd3kaF8k8Hw25cUIu"> Related resources</h2>
+<ul>
+	<li><a href="https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content">Debugging mixed content in Chrome</a></li>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">Debugging mixed content in Firefox</a></li>
+	<li>
+		<a href="https://community.cloudflare.com/t/community-tip-fixing-mixed-content-errors/42476">Community Tip - Fixing mixed content errors</a>
+
+	</li>
+</ul>
+<p></p>

@@ -1,0 +1,18 @@
+<p><i>Speed up your forums with Cloudflare</i></p>
+<hr>
+<h2 id="h_1YnrY3d4ldNQTF4rdI5swF">Overview</h2>
+<p>Many widely used forum platforms are compatible with Cloudflare.</p>
+<p>These include:</p>
+<ul>
+	<li>vBulletin</li>
+	<li>Xenforo</li>
+	<li>MyBB</li>
+</ul>
+<p>If you have a forum using these platforms, you can increase its speed and safety by adding Cloudflare.</p>
+<hr>
+<h2 id="h_7ymPJP4lvojjPPrhEq3ukL">Steps</h2>
+<p><b>1</b>. Cloudflare acts as a reverse proxy, meaning that all visitor IP addresses will become Cloudflare-affiliated IP addresses. If you are using services like <b>Stopforumspan</b> or blocking registration by IP address, you need to <a href="https://support.cloudflare.com/hc/articles/200170786">restore original visitor IPs</a>.</p>
+<p><b>2</b>. To prevent admin functions from being affected by caching or performance features, create a <a href="https://support.cloudflare.com/hc/articles/218411427">Page Rule</a> to exclude the admin section of your site.</p>
+<p><b>3</b>. If you want certain services to access your website (APIs or certain IPs), <a href="https://support.cloudflare.com/hc/articles/217074967">configure IP access rules</a>.</p>
+<p><b>4</b>. Review your DNS records to make sure all your subdomain records are present. If you cannot find a subdomain, <a href="https://support.cloudflare.com/hc/articles/360019093151">add the DNS record</a>.</p>
+<p><b>5</b>. Review your Cloudflare <a href="https://support.cloudflare.com/hc/categories/200275238">performance</a> and <a href="https://support.cloudflare.com/hc/categories/200275228-Firewall">security settings</a>.</p>

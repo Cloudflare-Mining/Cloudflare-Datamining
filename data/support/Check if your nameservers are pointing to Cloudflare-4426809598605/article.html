@@ -1,0 +1,30 @@
+<p><i></i></p>
+<hr>
+<h2 id="Sup6FYrwnD8xnENE3Xrez4nu">Verify your domain nameservers are pointing to Cloudflare</h2>
+<p>There are a couple of different methods on how to check whether the nameservers have been updated at your Registrar to point to the Cloudflare nameservers:</p>
+<ul>
+	<li>You can use the command line to confirm what are the nameservers assigned to your domain:</li>
+</ul>
+<p></p>
+<pre>*Linux/Unix*
+dig domain_name +trace @1.1.1.1 
+dig domain_name +trace @8.8.8.8
+
+*Windows*
+nslookup domain_name 1.1.1.1
+nslookup domain_name 8.8.8.8</pre>
+<ul>
+	<li>You can also use online tools, such as <a href="https://www.whatsmydns.net/">https://www.whatsmydns.net/</a>
+	</li>
+</ul>
+<p>If the nameservers returned here are not the ones provided and expected by Cloudflare, you'll need to check with your Registrar.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Most DNS tools online use cached query results, therefore it may take longer for them to show the updated nameservers.
+</div>
+<p>If you run into issues, below are some things you will want to confirm before reaching out to Support for further assistance:</p>
+<ul>
+	<li>check that <a href="https://support.cloudflare.com/hc/en-us/articles/360017421192-Cloudflare-DNS-FAQ#h_3yslZOSrNhsasnFQz7E8T1">no DS record</a> is present, if so remove them at your Registrar</li>
+	<li>check that <i><b>only</b></i><i> </i>the Cloudflare nameservers are present, and if not remove the other ones in Registrar configuration</li>
+	<li>check that the Cloudflare nameservers are spelled correctly in your Registrar configuration</li>
+</ul>
+<p>Once your domain is active on Cloudflare, review our <a href="https://support.cloudflare.com/hc/articles/360027989951#h_87dac948-9e12-47e0-a32c-2144aadd0a2a">best practices for active Cloudflare domains</a>.</p>

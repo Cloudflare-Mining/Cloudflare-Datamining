@@ -1,0 +1,13 @@
+<p><i>Learn how to use WordPress Multi-Site (WPMU) with Cloudflare.</i></p>
+<hr>
+<h2 id="h_3iWAR8hoON2DjrNj6jjKYH">Overview</h2>
+<p>WPMU (WordPress Multi-User) is the earlier version of WordPress Multi-Site, which is now part of the core WordPress software.</p>
+<p><b>To use a WPMU site configuration with Cloudflare, do the following:</b></p>
+<p>1. Add the root domain to Cloudflare (example.com) and point the DNS to Cloudflare, using the Cloudflare nameservers specified during the signup process and making the DNS change at your registrar.</p>
+<p>2. Define the wildcard subdomains in your DNS zone file during the signup process. Cloudflare cannot proxy wildcard DNS entries, so to benefit from Cloudflare performance and security, you must explicitly define any entries in your zone file as either CNAMEs or A record entries.</p>
+<p>Note: Having a proxy run over wildcard entries is available only at the Enterprise tier of service. The information above is related to customers on other Cloudflare plans. If you are looking for Enterprise support or quotes, then please create an <a href="https://www.cloudflare.com/enterprise-service-request">Enterprise request</a> via the form for a quote.</p>
+<p>Other recommended steps:</p>
+<p>1. Install the <a href="http://wordpress.org/extend/plugins/cloudflare/">Cloudflare WordPress plugin</a> to restore original visitor IP at the WordPress commenting level.</p>
+<p>2. <a href="https://support.cloudflare.com/hc/en-us/articles/200170786">Restore visitor IP addresses</a> so original visitor IP is restored at your server level.</p>
+<p>
+</p>

@@ -1,0 +1,20 @@
+<p><i></i></p>
+<hr>
+<h2 id="h_45Mlvbhm7tv3plksfGqrrM">Overview</h2>
+<p>To avoid getting a site offline error message when updating the admin section of your content management system, we recommend setting a <a href="http://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">Page Rule to exclude the admin section</a> of your CMS from Cloudflare.</p>
+<p>Please do the following on the Page Rule interface (we'll use WordPress admin section as an example):</p>
+<ol>
+	<li>Go to the Cloudflare <b>Rules</b> app.</li>
+	<li>Input the URL for the admin section, which is in this format: example.com/wp-admin/</li>
+	<li>Place a * before and after the URL, so it reads as *example.com/wp-admin/*.</li>
+	<li>For "Cache Level", choose "Bypass".</li>
+	<li>For Performance, choose "Disable Performance".</li>
+	<li>For security, choose "Disable Security".</li>
+	<li>Save the rule.</li>
+</ol>
+<p>It will take 3 minutes for the rule to take effect.</p>
+<p>Note: If you are not using WordPress, substitute the "/wp-admin/*" piece with the appropriate admin and login section for your CMS system.</p><img src="https://images.ctfassets.net/slt3lc6tev37/66WumCY0uV6P6gAfK6za6M/3d47812a07e1d7a4f425bee9dd2a8dc1/cf-dash-page_rule-create.png" alt="How to create a page rule to exclude admin pages.">
+<p></p>
+<p>
+
+</p>

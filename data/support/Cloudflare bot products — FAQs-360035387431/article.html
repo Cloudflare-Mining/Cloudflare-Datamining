@@ -1,0 +1,151 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#12345679">Overview</a></li>
+		<li><a href="#h_vGKNSEuBtE5ymreIHOucE">How does Cloudflare detect bots?</a></li>
+		<li><a href="#h_3dC1nAamuWNwImCpIkdlC8">How do I know what's included in my plan?</a></li>
+		<li><a href="#h_2PHwjg1FfXSS3K1aZE00yH">How do I set up my bot product?</a></li>
+		<li><a href="#Yandex-bot-unexpectedly-blocked-WAF-100203">Yandex bot unexpectedly blocked by the WAF managed rule with id 100203</a></li>
+		<li><a href="#h_4iPjq7Qq4Ozsq0XwibA2ea">How does machine learning work?</a></li>
+		<li><a href="#managed-challenge">Why am I seeing a Managed Challenge action for firewall rules?</a></li>
+		<li><a href="#h_131SlrJFhqmrJjs0joDaXE">What is the difference between the threat score and bot management score?</a></li>
+		<li><a href="#h_zzzgV0HSwPUhOEs5UY9sD">What is cf.bot_management.verified_bot?</a></li>
+		<li><a href="#h_5itGQRBabQ51RwT5cNJX8u">I run a good bot and want for it to be added to the allowlist (cf.bot_management.verified_bot). What should I do?</a></li>
+		<li><a href="#h_2Ffw8AKdwQySoI8rnO02pc">What information do I need to troubleshoot my bot issues?</a></li>
+		<li><a href="#5KX8t3C6SObnoWs5F6YOlU"> What should I do if I am getting False positives caused by Bot Fight Mode (BFM) or Super Bot Fight Mode (SBFM)?</a></li>
+		<li><a href="#h_6Q8mNs9Ur9mvXhjcH1KBcn">Super Bot Fight Mode feature (SBFM) is still blocking requests even though the feature is turned off, why?</a></li>
+		<li><a href="#3zR4ro73zaHshu5OldQIuB">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="12345679">Overview</h2>
+<p>Cloudflare’s bot solutions identify and mitigate automated traffic to protect your domain from bad bots.</p>
+<p>For more information about these bot solutions and how to set them up, see the <a href="https://developers.cloudflare.com/bots/">developer documentation</a>.</p>
+<hr>
+<h2 id="h_vGKNSEuBtE5ymreIHOucE">How does Cloudflare detect bots?</h2>
+<p>Cloudflare uses multiple methods to detect bots, but these vary by plan. For more details see, <a href="https://developers.cloudflare.com/bots/about/plans">Cloudflare bot products</a>.</p>
+<hr>
+<h2 id="h_3dC1nAamuWNwImCpIkdlC8">How do I know what's included in my plan?</h2>
+<p>To know what's included in your plan, see our <a href="https://developers.cloudflare.com/bots/about/plans">developer documentation</a>.</p>
+<hr>
+<h2 id="h_2PHwjg1FfXSS3K1aZE00yH">How do I set up my bot product?</h2>
+<p>To learn how to set up your bot product, see our <a href="https://developers.cloudflare.com/bots/get-started">developer documentation</a>.</p>
+<hr>
+<h2 id="Yandex-bot-unexpectedly-blocked-WAF-100203">Yandex bot unexpectedly blocked by the WAF managed rule with id 100203</h2>
+<p>Yandex updates their bots very frequently, you may see more false positives while these changes are propagated. New and recently updated bots will occasionally be blocked by Cloudflare WAF managed rule with id 100203, as the IP list of Yandex bots has not yet synced with Yandex's most recent changes.</p>
+<p><b>Workarounds:</b></p>
+<ul>
+	<li>Disable the WAF managed rule with id 100203 temporarily,</li>
+	<li>or create a firewall rule with the <i>Bypass</i> action to bypass WAF managed rules when a request is coming from the <b>Yandex IP</b> and the user-agent contains <b>Yandex. </b>See our <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions">developer documentation</a>. </li>
+</ul>
+<p><b>Solution:</b></p>
+<p>Once the new Yandex IP is propagated to our system, the requests won't be blocked any more. This can take up to 48 hours. If you see any Yandex bots still being blocked after 48 hours with no change to the bot, please contact <a href="https://support.cloudflare.com/hc/en-us/articles/200172476-Contacting-Cloudflare-Support">Cloudflare Support</a>.</p>
+<hr>
+<h2 id="h_4iPjq7Qq4Ozsq0XwibA2ea">How does machine learning work?</h2>
+<p>Supervised machine learning takes certain variables (X) like gender and age and predicts another variable (Y) like income. </p>
+<p>In Bot Management and Super Bot Fight Mode, the X variables are request features, while the Y variable represents the probability of solving a Captcha based on X values. </p>
+<p>Cloudflare uses data from millions of requests and re-train the system on a periodic basis. You can learn about this data from your own request logs such as Cloudflare Logpull and Logpush as well as the Firewall API.</p>
+<hr>
+<h2 id="managed-challenge">Why am I seeing a Managed Challenge action for firewall rules?</h2>
+<p>When you choose to challenge different bot categories with Bot Fight Mode or Super Bot Fight Mode, you will see Firewall Events with an <b>Action Taken</b> of <b>Managed Challenge</b>.</p>
+<p>You may also see Managed Challenge as a result of a <a href="https://support.cloudflare.com/hc/articles/200170136#managed-challenge">firewall rule</a>.</p>
+<hr>
+<h2 id="h_131SlrJFhqmrJjs0joDaXE">What is the difference between the threat score and bot management score?</h2>
+<p>The difference is significant:</p>
+<ul>
+	<li>Threat score (<i>cf.threat_score</i>) is what Cloudflare uses to determine IP Reputation. It goes from 0 (good) to 100 (bad).</li>
+	<li>Bot management score (<i>cf.bot_management.score) </i>is what Cloudflare uses in Bot Management to measure if the request is from a human or a script<b>. </b>The scores range from 1 (bot) to 99 (human). Lower scores indicate the request came from a script, API service, or an automated agent. Higher scores indicate that the request came from a human using a standard desktop or mobile web browser. </li>
+</ul>
+<p>These fields are available via <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules">Cloudflare Firewall Rules</a>.</p>
+<hr>
+<h2 id="h_zzzgV0HSwPUhOEs5UY9sD">What is cf.bot_management.verified_bot?</h2>
+<p>A request's <i>cf.bot_management.verified_bot</i> value is a boolean indicating whether such request comes from a Cloudflare allowed bot.</p>
+<p>Cloudflare has built an allowlist of good, automated bots, e.g. Google Search Engine, Pingdom, and more. </p>
+<p>This allowlist is large based on reverse DNS verification, meaning that the IPs we allow really match the requesting service. In addition to this, Cloudflare uses multiple validation methods including ASN blocks and public lists. If none of these validation types are available for a customer, we use internal Cloudflare data and machine learning to identify legitimate IP addresses from good bots.</p>
+<p>To allow traffic from good bots, use the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields#dynamic-fields">Verified Bot</a> field in your firewall rule.</p>
+<hr>
+<h2 id="h_5itGQRBabQ51RwT5cNJX8u">I run a good bot and want for it to be added to the allowlist (cf.bot_management.verified_bot). What should I do?</h2>
+<p>Cloudflare maintains a sample list of verified bots in <a href="https://radar.cloudflare.com/verified-bots">Cloudflare Radar</a>. </p>
+<p>As a bot operator, in order to be listed by Cloudflare as a Verified Bot, your bot must conform with our <a href="https://developers.cloudflare.com/bots/reference/verified-bots-policy/">verified bot public policy</a>.  If your bot meets this criteria, submit this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqYNuULEypMnp4i5pROSc-uP6x65Xub9svD27mb8JChA_-XA/viewform?usp=sf_link">online application</a>.</p>
+<h2>
+</h2>
+<p></p>
+<hr>
+<h2 id="h_2Ffw8AKdwQySoI8rnO02pc">What information do I need to troubleshoot my bot issues?</h2>
+<p>If you are experiencing errors with your bot solution and need to submit a Support request, include the following information:</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The following information gathering are required when you are experiencing issues (e.g. false positives) with Enterprise Bot Management only (Enterprise plan). Because Bot Fight Mode (BFM) and Super Bot Fight Mode (SBFM) are set at a domain level, we often find that disabling these features is the best solution to false positives. Please follow instructions in the following questions on how to disable BFM and SBFM features. We conduct more thorough investigations for Enterprise Bot Management.
+</div>
+<ul>
+	<li>RayIDs</li>
+	<li>IP addresses</li>
+	<li>Firewall Rule IDs, rule expression, CAPTCHA solve rates</li>
+	<li>Common user-agents among false positives</li>
+	<li>Common ASNs among false positives</li>
+	<li>Screenshots of strange activity from the firewall, such as a huge spike in challenged traffic on the graph</li>
+	<li>Problematic URIs or paths</li>
+	<li>Rough description of how your domain is configured.<ul>
+			<li>Is one zone SSL for SaaS while the others are not?</li>
+			<li>Is most API traffic sent to a particular URI?</li>
+			<li>How much mobile traffic do you expect?</li>
+		</ul>
+	</li>
+</ul>
+<h3></h3>
+<p></p>
+<hr>
+<h2 id="5KX8t3C6SObnoWs5F6YOlU"> What should I do if I am getting False positives caused by Bot Fight Mode (BFM) or Super Bot Fight Mode (SBFM)?</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Important considerations you need to be aware of before turning on BFM or SBFM:
+	<ul>
+		<li>Super Bot Fight Mode is a high security feature intended to very quickly help customers under active attack stop as many bots as possible. Due to the high security threshold, false positives do sometimes happen. If you turned on Super Bot Fight Mode during an attack, and the attack has subsided, we recommend either disabling the feature, using IP Access Rules to bypass BFM/SBFM or looking at <a href="https://developers.cloudflare.com/bots/plans/bm-subscription/">Bot Management for Enterprise</a>, which gives you the ability to precisely customize your security threshold and create exception rules as needed.</li>
+		<li>The current version of BFM/SBFM has limited control. You can’t bypass or skip BFM/SBFM using Firewall Rules or Page Rules. SBFM can be bypassed with IP access "Allow" action rules. BFM will be disabled if there are any IP access rules present.</li>
+	</ul>
+</div>
+<p><b>How to disable BFM</b><b>/SBFM feature?</b></p>
+<p>If you encounter any issues with BFM/SBFM feature (e.g. false positive), you can disable it under <b>Security</b> &gt; <b>Bots</b>.</p>
+<ul>
+	<li>For <b>Free</b> plans, toggle the <b>Bot Fight Mode</b> option to <b>Off</b>
+	</li>
+	<li>For <b>Pro</b> plans, click the <b>Configure Super Bot Fight Mode </b>link and set each of <b>Definitely automated</b> and <b>Verified bots</b> features to <b>Allow</b>, and toggle the <b>Static resource protection</b> and <b>JavaScript Detections</b> options to <b>Off</b>
+	</li>
+	<li>For <b>Business</b> and <b>Enterprise</b> (with no Bot Management add-on) plans, click the <b>Configure Super Bot Fight Mode</b> link and set each of <b>Definitely automated</b>, <b>Likely automated</b> and <b>Verified bots</b> features to <b>Allow</b>, and toggle the <b>Static resource protection</b> and <b>JavaScript Detections</b> options to <b>Off</b>
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_6Q8mNs9Ur9mvXhjcH1KBcn">Super Bot Fight Mode feature (SBFM) is still blocking requests even though the feature is turned off, why?</h2>
+<p>This is a known issue the Bots team is working to resolve in the near future. In the meantime, there is a workaround to resolve such issue.
+
+	You will need to run the following API command to check and remove the SBFM ruleset:</p>
+<p>1. List the existing Rulesets at the zone level</p>
+<p></p>
+<pre>curl -X GET "https://api.cloudflare.com/client/v4/zones/zone_id/rulesets" \
+     -H "X-Auth-Email: email" \
+     -H "X-Auth-Key: key" \
+     -H "Content-Type: application/json"</pre>
+<p>2. From the output in step 1, find the ruleset ID that is associated with the zone's SBFM configuration. You should be able to see <code>"kind": "zone"</code> and <code>"phase": "http_request_sbfm"</code> for that ruleset.</p>
+<p>3. Use the ruleset ID you found to delete the SBFM ruleset</p>
+<p></p>
+<pre>curl -X DELETE "https://api.cloudflare.com/client/v4/zones/zone_id/rulesets/rulesets_id" \
+     -H "X-Auth-Email: email" \
+     -H "X-Auth-Key: key" \
+     -H "Content-Type: application/json"</pre>
+<p>Note that you need to replace &lt;key&gt; with your own API key, which can be obtained from <a href="https://dash.cloudflare.com/profile/api-tokens">API tokens</a>.</p>
+<hr>
+<h2 id="3zR4ro73zaHshu5OldQIuB">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://developers.cloudflare.com/bots/">Cloudflare Bot Management</a> (Developer Documentation)
+	</li>
+	<li>
+		<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/">Cloudflare Firewall Rules</a> (Developers Documentation)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">Cloudflare Bot Management: machine learning and more</a> (Cloudflare Blog)
+	</li>
+	<li>
+		<a href="https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning/">Stop the Bots: Practical Lessons in Machine Learning</a> (Cloudflare Blog)
+	</li>
+</ul>
+<p></p>

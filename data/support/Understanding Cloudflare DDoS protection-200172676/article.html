@@ -1,0 +1,82 @@
+<p><i>Learn how Cloudflare protects against DDoS attacks and how to identify if your website is under attack.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_948b870f-2a72-481a-8186-cccc7f4f7c9b">Overview</a></li>
+		<li><a href="#http-ddos-managed-rules">The Cloudflare HTTP DDoS Attack Protection Managed Ruleset</a></li>
+		<li><a href="#network-ddos-managed-rules">The Cloudflare Network-layer DDoS Attack Protection Managed Ruleset</a></li>
+		<li><a href="#h_bc8656d7-0088-4da1-b8da-2a369caa72d3">Determine if you are under DDoS attack</a></li>
+		<li><a href="#h_60eb7a1e-a0b0-45c9-9c19-d67b93eea470">Is Cloudflare attacking me?</a></li>
+		<li><a href="#h_5d49e839-e040-49a9-acce-11bd03dfdcc2">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_948b870f-2a72-481a-8186-cccc7f4f7c9b">Overview</h2>
+<p>A <a href="https://www.cloudflare.com/ddos">Distributed Denial of Service attack</a> (DDoS) seeks to make an online service unavailable to its end users.  For all plan types, Cloudflare provides unmetered mitigation of DDoS attacks at Layer 3, 4, and 7. Cloudflare does not bill by attack size and does not have a cap on attack size, type, or duration.</p>
+<p>Cloudflare's network is built to automatically monitor and mitigate large <a href="https://www.cloudflare.com/ddos">DDoS attacks</a>. Caching your content at Cloudflare also protects your website against small DDoS attacks, but uncached assets require additional <a href="https://support.cloudflare.com/hc/articles/200170196">manual response to DDoS attacks</a>. </p>
+<p>Additionally, Cloudflare helps mitigate smaller DDoS attacks:</p>
+<ul>
+	<li>For zones on any plan, when the HTTP error rate is above the <i>High</i> (default) sensitivity level of 1,000 errors-per-second rate threshold. You can decrease the sensitivity level by <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http">configuring the HTTP DDoS Attack Protection Managed Ruleset</a>.
+	</li>
+</ul>
+<ul>
+	<li>For zones on Pro, Business and Enterprise plans, Cloudflare performs an additional check for better detection accuracy: the errors-per-second rate must also be at least five times the normal origin traffic levels.</li>
+</ul>
+<p>Cloudflare determines the error rate based on all HTTP errors in the 52X range (Internal Server Error) and in the 53X range, except for <a href="https://support.cloudflare.com/hc/articles/115003011431#530error">error 530</a>.</p>
+<p>Mitigations of HTTP DDoS attacks are shown in the Firewall analytics dashboard as HTTP DDoS events. These events are also available via <a href="https://developers.cloudflare.com/logs/"><u>Cloudflare Logs</u></a>.</p>
+<p>Currently, for DDoS mitigations based on HTTP error rate, customers cannot exclude specific HTTP error codes.</p>
+<p>Learn more about <a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks/">Famous DDoS Attacks</a> and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">DDoS</a> at the Cloudflare Learning Center. You can also review DDoS case studies in the related resources section at the end of this article.</p>
+<hr>
+<h2 id="http-ddos-managed-rules">The Cloudflare HTTP DDoS Attack Protection Managed Ruleset</h2>
+<p>The Cloudflare HTTP DDoS Attack Protection Managed Ruleset is a set of pre-configured rules used to match known attack patterns, known attack tools, suspicious patterns, protocol violations, requests causing large amounts of origin errors, excessive traffic hitting the origin/cache, and additional attack vectors at the application layer on the edge. The ruleset is available for Cloudflare customers on all plans and is enabled by default.</p>
+<p>If you are expecting large spikes of legitimate traffic, consider customizing your DDoS protection settings to avoid false positives, where legitimate traffic is falsely identified as attack traffic and blocked/challenged.</p>
+<p>Learn more about the Cloudflare HTTP DDoS Attack Protection Managed Ruleset and the available configuration settings in the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http"><u>Cloudflare Developers portal</u></a>.</p>
+<p>For more information on the actions applied by HTTP DDoS attack protection systems, refer to <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters#action">HTTP DDoS Attack Protection parameters: Action</a>.
+</p>
+<hr>
+<h2 id="network-ddos-managed-rules">The Cloudflare Network-layer DDoS Attack Protection Managed Ruleset</h2>
+<p>The Cloudflare Network-layer DDoS Attack Protection Managed Ruleset is a set of pre-configured rules used to match known DDoS attack vectors at levels 3 and 4 of the OSI model. The ruleset is available for Cloudflare customers on all plans and is enabled by default.</p>
+<p>Learn more about the Cloudflare Network-layer DDoS Attack Protection Managed Ruleset and the available configuration settings in the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network"><u>Cloudflare Developers portal</u></a>.</p>
+<p>For more information on the actions applied by L3/4 DDoS attack protection systems, refer to <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#action">Network-layer DDoS Attack Protection parameters: Action</a>.
+</p>
+<hr>
+<h2 id="h_bc8656d7-0088-4da1-b8da-2a369caa72d3">Determine if you are under DDoS attack</h2>
+<p>Common signs that you are under DDoS attack include:</p>
+<ul>
+	<li>Your site is offline or slow to respond to requests.</li>
+	<li>There are unexpected spikes in the graph of <b>Requests Through Cloudflare</b> or <b>Bandwidth</b> in your Cloudflare <b>Analytics</b> app.</li>
+	<li>There are strange requests in your origin web server logs that don’t match normal visitor behavior.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If you are currently under DDoS attack, refer to our guide on <a href="https://support.cloudflare.com/hc/en-us/articles/200170196-I-am-under-DDoS-attack-what-do-I-do-">responding to a DDoS attack</a>.
+</div>
+<p></p>
+<hr>
+<h2 id="h_60eb7a1e-a0b0-45c9-9c19-d67b93eea470">Is Cloudflare attacking me?</h2>
+<p>There are two common scenarios where Cloudflare is falsely perceived to attack your site:</p>
+<ul>
+	<li>Unless you <a href="https://support.cloudflare.com/hc/en-us/sections/200805497-Restoring-Visitor-IPs">restore the original visitor IP addresses</a>, Cloudflare IP addresses appear in your server logs for all proxied requests.</li>
+	<li>The attacker is spoofing Cloudflare's IPs. Cloudflare only <a href="https://support.cloudflare.com/hc/articles/200169156">sends traffic to your origin web server over a few specific ports</a> unless you use <a href="https://developers.cloudflare.com/spectrum/get-started/">Cloudflare Spectrum</a>.</li>
+</ul>
+<p>Ideally, because Cloudflare is a reverse proxy, your hosting provider observes attack traffic connecting from <a href="https://www.cloudflare.com/ips/">Cloudflare IP addresses</a>. In contrast, if you see connections from IP addresses that do not belong to Cloudflare, the attack is direct to your origin web server. Cloudflare cannot stop attacks directly to your origin IP address because the traffic bypasses Cloudflare’s network.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">If an attacker is directly targeting your origin web server, request your hosting provider change your origin IPs and update the IP information in your Cloudflare <strong>DNS</strong> app. Confirm all possible DNS records are orange-clouded and that your name servers still point to Cloudflare (unless using a <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">CNAME setup</a>) before changing your origin IP.
+</div>
+<hr>
+<h2 id="h_5d49e839-e040-49a9-acce-11bd03dfdcc2">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170196">Responding to DDoS attacks</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170166">Best Practices: DDoS preventative measures</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/360020739772-Using-Cloudflare-Logs-ELS-to-Investigate-DDoS-Traffic-Enterprise-Only-">Using Cloudflare Logs to investigate DDoS traffic (Enterprise Only)</a></li>
+	<li><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">What is a DDoS attack?</a></li>
+	<li><a href="http://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">How DNS Amplification Attacks Work</a></li>
+</ul>
+<h3>Case Studies:</h3>
+<ul>
+	<li><a href="http://blog.cloudflare.com/65gbps-ddos-no-problem">How to Launch a 65Gbps DDoS, and How to Stop One</a></li>
+	<li><a href="http://blog.cloudflare.com/ceasefires-dont-end-cyberwars">Ceasefires Don't End Cyberwars</a></li>
+	<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">Reflections on reflection (attacks)</a></li>
+	<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">Stupidly Simple DDoS Protocol (SSDP) generates 100 Gbps DDoS</a></li>
+	<li><a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">Memcrashed - Major amplification attacks from UDP port 11211</a></li>
+	<li><a href="https://blog.cloudflare.com/the-root-cause-of-large-ddos-ip-spoofing/">The real cause of large DDoS - IP Spoofing</a></li>
+</ul>
+<p></p>

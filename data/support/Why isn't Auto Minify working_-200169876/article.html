@@ -1,0 +1,26 @@
+<p><i>Learn about issues with Auto Minify.</i></p>
+<hr>
+<h2 id="h_3uerBzfKRl0Ee9b9IUS7mj">Why isn't Auto Minify working?</h2>
+<p>Once enabled, Cloudflare's Auto Minify will minify your HTML and your cached CSS and JS files. If you view the source of your files in your web browser or via a command line tool (such as cURL) and you do not see the code being minified, here are some things you should check:</p>
+<ul>
+	<li>Only files that are served via your orange-clouded DNS records will be minified — this means that code on third-party domains that are not using Cloudflare will not be minified.</li>
+	<li>For CSS and JS only a cache <code>HIT</code> will be minified — <a href="https://developers.cloudflare.com/cache/about/default-cache-behavior">refer to Default Cache Behavior</a> to check an individual file's cache status.</li>
+	<li>The feature will deliberately skip minification for JS/CSS files with <code>.min</code> in the name.</li>
+	<li>If your code has fatal syntax errors, Auto Minify may not be able to successfully minify the code — use syntax checkers (such as the ones recommended in this article) on your files to confirm this.</li>
+	<li>We will not minify inline JS/CSS inside your HTML.</li>
+	<li>We do not remove HTML comments by default. However, HTML Minification does remove comments like <code>&lt;!-- This is a comment —&gt;</code>. As a result, any tool or program relying on HTML comment might not work as expected. That is the case, for example, with the <a href="https://facetwp.com/using-facetwp-with-cloudflare/">FacetWP WordPress plugin</a>. In this case, the Auto Minify feature needs to be disabled for the HTML. This can be done by <a href="https://dash.cloudflare.com/login">logging in to the Cloudflare dashboard</a>, and selecting your account and website. Then, go to the <b>Speed</b> app &gt; <b>Optimization </b>tab. Auto Minify can also be disabled on specific URLs using a <a href="https://support.cloudflare.com/hc/articles/218411427">Page Rule</a>.</li>
+</ul>
+<p>If you want to manually confirm whether your files are getting minified, you can use a tool such as <code>cURL</code> to compare the response with and without Cloudflare — refer to <a href="https://support.cloudflare.com/hc/articles/219304477">Gathering information for troubleshooting sites</a> to learn how to do that or you can <a href="https://www.computerhope.com/issues/ch000746.htm">view the source code</a> in your browser directly.</p>
+<h2>Syntax checkers</h2>
+<p>To check the syntax of your HTML / CSS or JS files we recommend using online validators / tools such as the following to look for potential issues:</p>
+<ul>
+	<li><a href="https://validator.w3.org/">HTML</a></li>
+	<li><a href="http://jigsaw.w3.org/css-validator/">CSS</a></li>
+	<li>
+		<a href="https://www.javascriptlint.com/">JavaScript</a>
+	</li>
+</ul>
+<p>If you see that minification still is not taking effect after checking these steps, please <a href="https://support.cloudflare.com/hc/articles/200172476">contact Cloudflare Support</a>. You should include the URLs of the resources that you are seeing issues with.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">CSS &amp; JS minification will operate on cached CSS and JS files only. Once Cloudflare returns a cache HIT for the file it will be returned to browsers in minified form. This allows us to deliver a more complete minification result. If you need to enable or disable minification for CSS &amp; JS you will now need to <a href="https://developers.cloudflare.com/cache/how-to/purge-cache">purge your Cloudflare cache</a> to see the effect of any minification setting change.
+</div>

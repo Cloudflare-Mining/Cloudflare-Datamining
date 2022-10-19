@@ -1,0 +1,80 @@
+<p><i>Learn how to add multiple sites (10+) to Cloudflare at once using the Cloudflare API, or Cloudflare's CLI tool, flarectl.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#01EiMuIl9b6BVA2vUdCy2X">Overview</a></li>
+		<li><a href="#2C6OkWg2Flbl6ZBJss7FjH">Prerequisites</a></li>
+		<li><a href="#3Mk8dKAR73TTdEKH2WLfzb">Add domains via the API</a></li>
+		<li><a href="#194axRKd2V27vV5bs4e8iD">Add domains via flarectl (Cloudflare's CLI tool)</a></li>
+		<li><a href="#6yR1Cexb7t3HYDcHGVwMjn">Common issues</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="01EiMuIl9b6BVA2vUdCy2X">Overview</h2>
+<p>If you need to add multiple sites (10+) to Cloudflare at once, you can do so via the Cloudflare API. Adding multiple sites can be useful when you:</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">If you attempt to add more than 50 domains at a time, any additional domains will be blocked until they are processed.
+</div>
+<ul>
+	<li>Have multiple domains mapping back to a single, canonical domain - e.g. domains in different countries (.com.au, .co.uk, etc) that you want to have protected by Cloudflare</li>
+	<li>Are an agency or IT consultancy, and manage multiple domains on behalf of your customers (note: you should consider the Cloudflare <a href="https://www.cloudflare.com/partners/">Partner program</a>)</li>
+	<li>You're moving an existing set of sites over to Cloudflare</li>
+</ul>
+<p>Using the API will allow you to add multiple sites quickly &amp; efficiently, especially if you are already familiar with <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup">how to change your name-servers</a> or <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">add a DNS record</a>.</p>
+<hr>
+<h2 id="2C6OkWg2Flbl6ZBJss7FjH">Prerequisites</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">You cannot have more pending sites than active sites associated with your Cloudflare account. We recommend waiting until your pending sites have been processed before adding additional domains.
+</div>
+<p>To add multiple sites to Cloudflare via Automation, you'll need:</p>
+<ul>
+	<li>An existing account on Cloudflare (<a href="https://www.cloudflare.com/a/signup">sign up</a> / <a href="https://www.cloudflare.com/a/login">log-in</a>))</li>
+	<li>Basic familiarity with the command line</li>
+	<li>curl installed (by default on macOS &amp; Linux)</li>
+	<li>Your Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-">API key at hand</a>
+	</li>
+	<li>A list of domains you want to add, each on a separate line (newline separated) - e.g. "domains.txt"</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="3Mk8dKAR73TTdEKH2WLfzb">Add domains via the API</h2>
+<p>Cloudflare has a fully featured API (<a href="https://api.cloudflare.com/">documentation</a>) that allows you to automate the creation of new domains, as well as configure DNS records, Page Rules and our many security settings. We'll be using this API to automate adding multiple domains at once.</p>
+<p>Open your terminal application (e.g. Terminal, or Terminal.app) and set your API key &amp; email :</p>
+<p></p>
+<pre>export CF_API_EMAIL=you@example.com<br>export CF_API_KEY=abc123def456ghi789</pre>
+<p>Then, we'll write a simple for-loop that takes each domain name </p>
+<p></p>
+<pre>for domain in $(cat domains.txt); do \<br>  curl -X POST -H "X-Auth-Key: $CF_API_KEY" -H "X-Auth-Email: $CF_API_EMAIL" \<br>  -H "Content-Type: application/json" \<br>  "https://api.cloudflare.com/client/v4/zones" \<br>  --data '{"account": {"id": "id_of_that_account"}, "name":"'$domain'","jump_start":true}'; done</pre>
+<p>The "jump_start" key will have Cloudflare automatically attempt to scan for common DNS records—e.g. "www", "mail", "blog" and many others—so that you don't have to configure them by hand (you should still confirm we found them all).  <i>id_of_that_account </i>is found on the Cloudflare <b>Overview</b> app under <b>Account ID</b>.</p>
+<p>The API will return a response, including the <a href="https://support.cloudflare.com/hc/en-us/articles/206455647-How-do-I-change-my-domain-nameservers-">nameservers you'll need to change</a> at your registrar (where you registered the domain).</p>
+<p></p>
+<pre data-reactid="2415">{<br> "result": {<br> "id": "abc123def456ghi789",<br> "name": "example.com",<br> "status": "pending",<br> "paused": false,<br> "type": "full",<br> "development_mode": 0,<br> "name_servers": [<br> "chad.ns.cloudflare.com",<br> "lucy.ns.cloudflare.com"<br> ],<br> "original_name_servers": [<br> "ns-cloud-e1.googledomains.com",<br> "ns-cloud-e2.googledomains.com",<br> "ns-cloud-e3.googledomains.com",<br> "ns-cloud-e4.googledomains.com"<br> ],<br> "original_registrar": null,<br> "original_dnshost": null,<br> "modified_on": "2018-02-12T01:42:13.827149Z",<br> "created_on": "2018-02-12T01:42:13.827149Z",<br> "meta": {<br> "step": 4,<br> "wildcard_proxiable": false,<br> "custom_certificate_quota": 0,<br> "page_rule_quota": 3,<br> "phishing_detected": false,<br> "multiple_railguns_allowed": false<br> },<br> "owner": {<br> "id": "abc123def456ghi789",<br> "type": "user",<br> "email": "you@example.com"<br> },<br> "account": {<br> "id": "abc123def456ghi789",<br> "name": "you@example.com"<br> },<br> "permissions": [<br> "#access:edit",<br> "#access:read",<br> "#analytics:read",<br> "#app:edit",<br> "#billing:edit",<br> "#billing:read",<br> "#cache_purge:edit",<br> "#dns_records:edit",<br> "#dns_records:read",<br> "#lb:edit",<br> "#lb:read",<br> "#logs:read",<br> "#member:edit",<br> "#member:read",<br> "#organization:edit",<br> "#organization:read",<br> "#ssl:edit",<br> "#ssl:read",<br> "#subscription:edit",<br> "#subscription:read",<br> "#waf:edit",<br> "#waf:read",<br> "#worker:edit",<br> "#worker:read",<br> "#zone:edit",<br> "#zone:read",<br> "#zone_settings:edit",<br> "#zone_settings:read"<br> ],<br> "plan": {<br> "id": "0feeeeeeeeeeeeeeeeeeeeeeeeeeeeee",<br> "name": "Free Website",<br> "price": 0,<br> "currency": "USD",<br> "frequency": "",<br> "is_subscribed": true,<br> "can_subscribe": false,<br> "legacy_id": "free",<br> "legacy_discount": false,<br> "externally_managed": false<br> }<br> },<br> "success": true,<br> "errors": [],<br> "messages": []<br>}</pre>
+<p>Note the "name_servers" key in the response. These will be the same unique pair for all sites you add under your account - e.g.</p>
+<p></p>
+<pre>"name_servers": [
+   "chad.ns.cloudflare.com",
+   "lucy.ns.cloudflare.com"
+ ]</pre>
+<p>Copy your values (not the ones above!) and <a href="https://support.cloudflare.com/hc/en-us/articles/206455647-How-do-I-change-my-domain-nameservers-">update the nameservers</a> at your registrar.</p>
+<p></p>
+<hr>
+<h2 id="194axRKd2V27vV5bs4e8iD">Add domains via flarectl (Cloudflare's CLI tool)</h2>
+<p>You can also add domains using flarectl, Cloudflare's official CLI. You can <a href="https://github.com/cloudflare/cloudflare-go/releases">download a pre-built</a> package for your operating system (Windows, macOS/Darwin, Linux) and create domains using it.</p>
+<p>You'll need to set your API credentials first:</p>
+<p></p>
+<pre>export CF_API_EMAIL=you@example.com<br>export CF_API_KEY=abc123def456ghi789</pre>
+<p>... and then run the following command in flarectl:</p>
+<p></p>
+<pre>for domain in $(cat domains.txt); do flarectl zone create --zone=$domain --jumpstart=false; done</pre>
+<p>After this, you can get the name-servers for each domain via "flarectl zone list":</p>
+<p></p>
+<pre>for domain in $(cat domains.txt); do flarectl zone info --zone=$domain; done
+</pre>
+<p>Search for help or tips within the <a href="https://community.cloudflare.com/">Cloudflare Community</a>.</p>
+<hr>
+<h2 id="6yR1Cexb7t3HYDcHGVwMjn">Common issues</h2>
+<p>If any errors were returned in this process, the domain may not be registered (or only just registered), be a subdomain, or otherwise been invalid. The following articles cover the most common cases: </p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/205359838-I-cannot-add-my-domain-to-Cloudflare-">Why can't I add my domain to Cloudflare?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/205359838#h_874829316161540417303369">Site Banned</a></li>
+</ul>
+<p></p>

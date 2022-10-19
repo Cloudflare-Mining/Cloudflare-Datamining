@@ -1,0 +1,62 @@
+<p><i>Learn how to cache HTML files with WordPress and WooCommerce. </i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_24zf33jNnRTRIgS0u125M">Overview</a></li>
+		<li><a href="#h_1AbxKNJ2N0h5qLYSLbFVgs">Prerequisites</a></li>
+		<li><a href="#h_34POtXRzdAaqSliO4cWfzJ">Cache Static HTML with Cloudflare Page Rules</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_24zf33jNnRTRIgS0u125M">Overview</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Customers in all Cloudflare plans can configure caching HTML files. However, Business and Enterprise customers can bypass HTML caching when a cookie is sent with a request <em>Bypass Cache on Cookie</em> setting using Cloudflare <strong>Page Rules</strong>.
+</div>
+<p>This allows for static HTML to be cached at our edge, with no need for it to be regenerated from request to request. </p>
+<p>Enterprise Cloudflare customers can use <i>Custom Cache Keys</i> to take their performance further, contact your Customer Success Manager for more details.</p>
+<hr>
+<h2 id="h_1AbxKNJ2N0h5qLYSLbFVgs">Prerequisites</h2>
+<p>Before starting - be sure that Cloudflare is set to respect <i>Cache-Control</i> headers from your origin web server; otherwise, you may find <i>Cache-Control</i> headers are overridden by Cloudflare with the value set in the <b>Browser Cache TTL </b>option. To set the <i>Respect Existing Headers</i> option,</p>
+<ol>
+	<li>Log into your Cloudflare account.</li>
+	<li>Click the <b>Caching</b> app.</li>
+	<li>Scroll down to <b>Browser Cache TTL</b>, and select the <i>Respect Existing Headers</i> value.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_34POtXRzdAaqSliO4cWfzJ">Cache Static HTML with Cloudflare Page Rules</h2>
+<p>1. Log in to your Cloudflare account.</p>
+<p>2. Go to <b>Rules &gt;</b> <b>Page Rules </b>and select <b>Create Page Rule</b>.</p>
+<p>3. Set the page rule to match your WordPress installation path. If your site is at https://www.example.com, the rule would be <a href="https://www.example.com./">https://www.example.com.</a></p>
+<p>4. Select the appropriate settings to cache static HTML:</p>
+<ul>
+	<li>
+		<i>Cache Everything </i>instructs Cloudflare to cache static HTML.
+	</li>
+	<li>When the <i>Bypass Cache on Cookie </i>rule matches the criteria you set, Cloudflare won't cache HTML ((<a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Which-file-extensions-does-CloudFlare-cache-for-static-content-">whilst static images and other files will still be cached</a>). Depending on whether you're using raw WordPress, or WooCommerce, you should use one of the configurations below:</li>
+</ul>
+<p>
+
+</p>
+<div class="cf-sidebar-2 cf-warning">
+	<div class="table-responsive">
+		<table>
+			<tbody>
+				<tr style="height: 16px;">
+					<td style="height: 16px;">WordPress (native)</td>
+					<td style="height: 16px;">wp-.*|wordpress.*|comment_.*</td>
+				</tr>
+				<tr style="height: 16px;">
+					<td style="height: 16px;">WordPress with WooCommerce    </td>
+					<td style="height: 16px;">wp-.*|wordpress.*|comment_.*|woocommerce_.*</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p></p>
+<ul>
+	<li>Finally, setting <i>Edge Cache TTL </i>will define the maximum period of time Cloudflare should keep cached files before getting them back from the origin web server. Even after setting a long Edge Cache TTL time, you can still <a href="https://support.cloudflare.com/hc/en-us/articles/200169246-How-do-I-purge-my-cache-">manually clear the cache</a> or use our WordPress plugin to automatically manage cache purging.</li>
+</ul>
+<p>5. Click <b>Save and Deploy </b>to finish. </p>
+<p>Additionally, by using the <a href="https://support.cloudflare.com/hc/en-us/articles/115002708027-What-does-Automatic-Cache-Management-in-the-Cloudflare-Plugin-do-"><i>Automatic Cache Management</i> feature of the Cloudflare WordPress plugin</a>, you are able to automatically purge the cache for your site after your site changes (i.e. changing/customizing your theme or editing, deleting or creating a post, attachment or page).
+</p>

@@ -1,0 +1,51 @@
+<p><i>Apply certain sharing restrictions to your Cloudflare Stream videos.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#jyI294z2pZk9aMMCzbH8Y">Overview</a></li>
+		<li><a href="#12UQYDwiTlqmTAN2ZytTlj">Enable Signed URLs</a></li>
+		<li><a href="#3vxVmgugDD8HGumm688AHX">Restrict domains that can embed Stream video</a></li>
+		<li><a href="#5YfeEcDukK7GLdyiJbCjsN">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="jyI294z2pZk9aMMCzbH8Y">Overview</h2>
+<p>By default, videos on Cloudflare Stream are viewable by anyone at any time, until you delete the video. Users can view the source of the embed code in their browser and get a URL to the video to share it with others.</p>
+<p>
+	There are two options to secure your Cloudflare Stream video: by enabling signed URLs or restricting the domains that can embed the video.</p>
+<hr>
+<h2 id="12UQYDwiTlqmTAN2ZytTlj">Enable Signed URLs</h2>
+<p>Enabling Signed URLs adds an additional layer of security to your video as it restricts the available viewing period to your desired time frame.</p>
+<p>To enable Signed URLs in the Cloudflare dashboard:</p>
+<ol>
+	<li>Log in to your Cloudflare account.</li>
+	<li>Select the domain for which you would like to secure a Stream video.</li>
+	<li>Click the <b>Stream </b>icon in the dashboard.</li>
+	<li>Scroll down and click on the video that you would like to secure. </li>
+	<li>In the menu that appears, click the <b>Require Signed URLs </b>checkbox.</li>
+	<li>Before using the embed code to add the Stream video to your site, you must <a href="https://developers.cloudflare.com/stream/security/signed-urls/">create a signing key</a> and add that key to the embed code in the Cloudflare dashboard.</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">If <strong>Require Signed URLs</strong> is enabled and you do not add the signed key to the embed code, your video will not play. You must create a signing key and add it to the Stream embed code prior to embedding the video on your site.
+</div>
+<p>To learn how to enable signed URLs via the API, see the Stream <a href="https://developers.cloudflare.com/stream/security/signed-urls/">documentation</a>.</p>
+<p>
+
+
+</p>
+<hr>
+<h2 id="3vxVmgugDD8HGumm688AHX">Restrict domains that can embed Stream video</h2>
+<p>You can also use the Cloudflare Stream dashboard UI to restrict the domain(s) that can embed your video.</p>
+<p>To do this, follow Steps 1-4 above, then:</p>
+<p>5. Enter the domain(s) that are allowed to embed the video separated by commas.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-info">Cloudflare Stream video preview in the dashboard is disabled when setting domain restrictions. However, the video will play when embedded.
+</div>
+<p>For more information, review <a href="https://developers.cloudflare.com/stream/security/security-considerations/">these security considerations</a>.</p>
+<hr>
+<h2 id="5YfeEcDukK7GLdyiJbCjsN">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/360017801091">Understanding Cloudflare Stream</a></li>
+	<li><a href="https://api.cloudflare.com/#stream-videos-properties">Cloudflare Stream API documentation</a></li>
+	<li><a href="https://developers.cloudflare.com/stream/getting-started/">Cloudflare Stream developer documentation</a></li>
+</ul>
+<p></p>

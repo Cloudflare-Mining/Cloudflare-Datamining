@@ -1,0 +1,55 @@
+<p><i>Follow these steps to troubleshoot the most common issues with Image Resizing.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_23VrfpsRoWkuC78jtqCr29">Requests without resizing enabled</a></li>
+		<li><a href="#h_5pPfg7g6pE1xPQnHkb5Djl">Error responses from resizing</a></li>
+		<li><a href="#h_D32nleATv1wWhhQ84F0fX">Limits</a></li>
+		<li><a href="#h_3XpRCYhArxhIegVFixOiRq">Authorization and cookies are not supported</a></li>
+		<li><a href="#h_5k1Wrh2eQNOmh6UdfWxNAA">Caching and purging</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_23VrfpsRoWkuC78jtqCr29">Requests without resizing enabled</h2>
+<p>Does the response have a <code>Cf-Resized</code> header? <b>If not</b>, then resizing has not been attempted. Possible causes:</p>
+<ul>
+	<li>Image Resizing feature is not enabled in the Cloudflare Dashboard.</li>
+	<li>There is another Worker running on the same request. Resizing is "forgotten" as soon as one Worker calls another. Do not use Workers scoped to the entire domain <code>/*</code>.</li>
+	<li>Preview in the Editor in Cloudflare Dashboard does not simulate image resizing. You must deploy the Worker and test from another browser tab instead.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_5pPfg7g6pE1xPQnHkb5Djl">Error responses from resizing</h2>
+<p>When resizing fails, the response body contains an error message explaining the reason, as well as the <code>Cf-Resize</code>d header containing <code>err=code</code>:</p>
+<ul>
+	<li>9401 — Missing or invalid required arguments in <code>{cf:image{…}}</code> options, for example <code>width</code> is not a number.</li>
+	<li>9402 — Download of the original image failed, for example because the image was too large or the connection was interrupted.</li>
+	<li>9403 — <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers#prevent-request-loops">Request loop</a>. The service was asked to resize an already-resized image, or the Worker has fetched its own URL.</li>
+	<li>9406 &amp; 9419 — Invalid image URL specified (for example, contains spaces, unescaped Unicode, or non-HTTP/S URL).</li>
+	<li>9407 — Origin domain name lookup error.</li>
+	<li>9404 — Origin returned 404 HTTP status code. The image does not exist on the origin server, or a wrong URL was given to resize.</li>
+	<li>9408 — Origin returned 4xx HTTP status code. The origin server may be denying access to the image.</li>
+	<li>9509 — Origin returned 5xx HTTP status code. This is most likely a problem with the origin server-side software, not image resizing.</li>
+	<li>9412 — Origin returned a non-image, for example an HTML page. This usually happens when an invalid URL is specified, or server-side software has printed an error, or presented a login page.</li>
+	<li>9413 — The image is too large (exceeds 10,000 pixels width or height).</li>
+	<li>9420 — Origin server redirected to an invalid URL.</li>
+	<li>9421 — Origin redirected too many times.</li>
+	<li>9504, 9505 &amp; 9510 — Unable to contact origin. The origin server may be down or overloaded.</li>
+	<li>9524 — <code>/cdn-cgi/image/</code> resizing service could not perform resizing, probably because the image URL was intercepted by a Worker.</li>
+	<li>9511 — Image format not supported.</li>
+	<li>9522 — Exceeded processing limit. This may happen briefly after purging an entire zone or when requesting files with huge dimensions. If the problem persists, please contact support.</li>
+	<li>9424, 9516, 9517, 9518 &amp; 9523 — Internal errors. Please contact support if you encounter these errors.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_D32nleATv1wWhhQ84F0fX">Limits</h2>
+<p>Maximum image size is 100 megapixels (e.g. 10.000×10.000 pixels large). Maximum file size is 70 MB. GIF animations are limited to 100 megapixels total (sum of sizes of all frames).</p>
+<hr>
+<h2 id="h_3XpRCYhArxhIegVFixOiRq">Authorization and cookies are not supported</h2>
+<p>Image requests to the origin will be anonymized (no cookies, no auth, no custom headers). This is because we have to have one public cache for resized images, and it would be unsafe to share images that are personalized for individual visitors. </p>
+<p>However, in cases where customers agree to store such images in public cache, Cloudflare supports resizing images through Workers <a href="https://developers.cloudflare.com/images/image-resizing/control-origin-access#authenticated-origin">on authenticated origins</a>.</p>
+<hr>
+<h2 id="h_5k1Wrh2eQNOmh6UdfWxNAA">Caching and purging</h2>
+<p>Changes to image dimensions or other resizing options always take effect immediately — no purging necessary.</p>
+<p>Image requests consists of two parts: running Worker code, and image processing. The Worker code is always executed and uncached. Results of image processing are cached for one hour or longer if origin server's <code>Cache-Control</code> header allows. Source image is cached using regular caching rules. Resizing follows redirects internally, so the redirects are cached too.</p>
+<p>Because responses from Workers themselves are not cached at the edge, purging of <i>Worker URLs</i> does nothing. Resized image variants are cached together under their source’s URL. When purging, use the (full-size) source image’s URL, rather than URLs of the Worker that requested resizing.</p>
+<p>If the origin server sends an <code>Etag</code> HTTP header, the resized images will have an <code>Etag</code> HTTP header that has a format <code>cf-&lt;gibberish&gt;:&lt;etag of the original image&gt;</code>. You can compare the second part with the <code>Etag</code> header of the source image URL to check if the resized image is up to date.</p>

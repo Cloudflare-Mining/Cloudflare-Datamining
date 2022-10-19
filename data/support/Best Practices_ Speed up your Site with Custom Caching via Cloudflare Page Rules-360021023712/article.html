@@ -1,0 +1,71 @@
+<p><i>Boost site performance by fine-tuning your caching configuration through Cloudflare Page Rules.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_76YwdfM8FXPyFW3f93YWB3">Overview</a></li>
+		<li><a href="#h_6gie2If8qahIHHIu32HZXs">Before getting started</a></li>
+		<li><a href="#h_7JfAZiS5qMLcTkUpKvebHJ">Best Practice 1: Cache static, anonymous HTML (all domains)</a></li>
+		<li><a href="#h_ed961373-0972-441f-866d-89da71c5218e">Best Practice 2 - Cache HTML selectively (Business and Enterprise domains)</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_76YwdfM8FXPyFW3f93YWB3">Overview</h2>
+<p>Edge caching is a fundamental feature of the Cloudflare Content Delivery Network (CDN). As such, our edge network automatically caches a lot of content around the world. When visitors request a cached resource, it is served from the data center closest to them and therefore, the content loads faster.</p>
+<p>You can speed up your site’s performance even further thanks to the multiple caching settings available in <b>Cloudflare Page Rules</b>. Beyond the automatic caching Cloudflare offers by default, these additional best practices help you achieve even greater performance.</p>
+<hr>
+<h2 id="h_6gie2If8qahIHHIu32HZXs">Before getting started</h2>
+<p>Cloudflare does not cache HTML resources automatically. This prevents us from unintentionally caching pages that often contain dynamic elements. For example, the content on certain HTML pages may change based on specific visitor characteristics, such as authentication, personalization, and shopping cart information.</p>
+<p>However, you can configure HTML caching through specific Cloudflare Page Rules settings. The degree of HTML caching flexibility varies based on your domain plan as described in the best practice sections below.</p>
+<p>When configuring caching settings in the <b>Page Rules</b> app, you’re essentially manipulating certain options of the <b>Caching</b> app. The difference lies in that through <b>Page Rules</b>, you apply the caching settings at the URL level (not the entire site), after matching a specific pattern defined in a custom page rule. That way, you have fine-grained control over which specific resources to cache.</p>
+<p>For background information on Cloudflare’s caching tools and options, consult:</p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172516">Which file extensions does Cloudflare cache for static content?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/360021806811">Getting started with Cloudflare caching</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/218411427">Understanding and Configuring Cloudflare Page Rules</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200168256-What-are-Cloudflare-s-caching-levels-">What are Cloudflare's caching levels?</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172516">How can I tell if Cloudflare is caching my site or a specific file?</a></li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_7JfAZiS5qMLcTkUpKvebHJ">Best Practice 1: Cache static, anonymous HTML (all domains)</h2>
+<p>All domain plans can use the <i>Cache Everything</i> setting in the <b>Page Rules</b> app.</p>
+<p>However, this option caches all HTML regardless of the presence of dynamic content. If you use this approach to cache pages that contain dynamic content, it is quite likely that visitors will see information that is not intended for them.</p>
+<p>To add a <i>Cache Everything</i> page rule:</p>
+<ol>
+	<li>Within an application, go to <b>Rules &gt;</b> <b>Page Rules</b>.</li>
+	<li>Click either <i>Create Page Rule</i>, or the wrench icon next to an existing page rule.</li>
+	<li>Fill in the appropriate URL pattern.</li>
+	<li>Click <i>Add a Setting</i>, then select the <i>Cache Level </i>setting name.</li>
+	<li>Select the <i>Cache Everything </i>setting value.</li>
+	<li>Save and deploy the rule.</li>
+</ol>
+<p>In conclusion, this recommendation is only appropriate for HTML pages that are static and anonymous. To learn more, see <a href="https://support.cloudflare.com/hc/articles/202775670">How do I use Cache Everything with Cloudflare?</a></p>
+<hr>
+<h2 id="h_ed961373-0972-441f-866d-89da71c5218e">Best Practice 2 - Cache HTML selectively (Business and Enterprise domains)</h2>
+<p>Customers with Business and Enterprise domains have additional Page Rules settings that can be combined to selectively cache HTML content based on whether the page contains dynamic information.</p>
+<p>Below, we provide links to articles with specific instructions on implementing this recommendation. However, we can summarize the process as follows:</p>
+<p>1. Create a new page rule for the desired URL pattern.</p>
+<p>2. Add the following three settings:</p>
+<ul>
+	<li>
+		<i>Cache Everything </i>- to act as catch all for static, anonymous content
+	</li>
+	<li>
+		<i>Bypass Cache on Cookie </i>(available to Business and Enterprise domains only) - to bypass caching everything if the request has a matching cookie
+	</li>
+	<li>
+		<i>Edge Cache TTL </i>- to specify how long Cloudflare should keep the cached resource in our edge network before asking the origin for it again
+	</li>
+</ul>
+<p>3. Save and deploy your new rule
+</p>
+<div class="cf-sidebar-2 cf-tip">As an alternative to <em>Edge Cache TTL</em> (third bullet point in item 2 above), you could use the* Origin Cache Control* setting if you believe the cache-control headers set in your origin server are appropriate. <em>Learn more about <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852" title="Understanding Origin Cache-Control">Origin Cache Control</a>.</em>
+</div>
+<p>To learn more about the technique described, consult:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/caching-anonymous-page-views/">Caching Anonymous Page Views</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/236168808">Caching Anonymous Page Views with Magento 1 and Magento 2</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">How do I cache static HTML?</a></li>
+</ul>
+<p>Note that the Cloudflare <b>Caching</b> app allows you to purge the cache so that new requests are sent to the origin for re-fetching. To learn more, see <a href="https://support.cloudflare.com/hc/articles/200169246-">How do I purge my cache?</a>
+</p>

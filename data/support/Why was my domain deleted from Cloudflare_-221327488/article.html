@@ -1,0 +1,99 @@
+<p><em>This article provides steps to investigate and recover a domain deleted from a Cloudflare account.</em></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_71645430211540423470679">Overview</a></li>
+		<li><a href="#h_75178970471540423485029">Step 1 - Check Audit Logs in your Cloudflare account</a></li>
+		<li><a href="#h_84363930121540423493275">Step 2 - Check whether domain registration lists Cloudflare nameservers</a></li>
+		<li><a href="#h_670950877161540423505236">Step 3 - Check whether domain resolution uses Cloudflare nameservers</a></li>
+		<li><a href="#h_88537939911540919764865">Recover a deleted domain</a></li>
+		<li><a href="#h_186867048201540423513703">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_71645430211540423470679">Overview</h2>
+<p>Domain deletion commonly occurs for the following reasons:</p>
+<ul>
+	<li>A user with access to the Cloudflare account the domain was in removed it.</li>
+	<li>The nameservers no longer point to Cloudflare. Cloudflare continuously monitors domain registration.</li>
+	<li>The domain was not authenticated (pending for <span>28 days</span>).</li>
+</ul>
+<div class="cf-sidebar-2 cf-note">If the domain was incorrectly deleted, you can <strong>restore all DNS records and most configuration automatically</strong>. See <a href="#h_88537939911540919764865" target="_self">recover a deleted domain</a> for more.</div>
+<hr>
+<h2 id="h_75178970471540423485029">Step 1 - Check Audit Logs in your Cloudflare account</h2>
+<p>Cloudflare <strong>Audit Logs</strong> contain information about domain deletion.  Review <a href="https://support.cloudflare.com/hc/en-us/articles/115002833612-How-do-I-use-Audit-Logs-">using the Audit Logs</a> for additional information about the <strong>Audit Logs</strong> feature.</p>
+<ol>
+	<li>Log in to the Cloudflare dashboard.</li>
+	<li>Click the appropriate Cloudflare account where the deleted domain existed.</li>
+	<li>Click <strong>Audit Log</strong> in the second navigation bar from the top.</li>
+	<li>For <strong>Domain</strong>, enter the domain name that was deleted.</li>
+	<li>Click on a <em>Delete</em> <strong>Action</strong> and ensure that <strong>Resource</strong> says <em>Account</em>.</li>
+	<li>Observe the <strong>Date</strong>, <strong>User IP Address</strong>, and <strong>User</strong> that deleted the domain.</li>
+	<li>If <strong>User IP Address</strong> is <em>127.0.0.1</em> or contains no data, the deletion was automatically performed by Cloudflare’s systems: Move to Step 2 </li>
+</ol>
+<div class="cf-sidebar-2 cf-note">
+	<em>Delete</em> is an <strong>Action</strong> that denotes domain deletion but is also commonly used for deletion of other various account settings. Therefore, ensure that <strong>Resource</strong> says <em>Zone</em>.
+</div>
+<hr>
+<h2 id="h_84363930121540423493275">Step 2 - Check whether domain registration lists Cloudflare nameservers</h2>
+<div class="cf-sidebar-2 cf-tip">It is not necessary to check domain registration for domains utilizing a Cloudflare CNAME setup.</div>
+<p>1. Use either the command-line based “whois” application provided with your Operating System or a website such as <a href="https://whois.icann.org/en">whois.icann.org</a> or <a href="https://www.whois.net/">www.whois.net</a>.</p>
+<ul>
+	<li>If you are unable to find the nameserver details for your domain, reach out to your domain registrar or domain provider to provide the domain registration information.</li>
+	<li>Ensure Cloudflare’s nameservers are the only two nameservers listed in the domain registration details.</li>
+	<li>Ensure nameservers are spelled correctly in the domain registration.</li>
+</ul>
+<p>2. Confirm that the nameservers exactly match the nameservers provided within the <strong>Cloudflare Nameservers</strong> section of the Cloudflare <strong>DNS</strong> app.</p>
+<p>3. If you identify incorrect information, log in to your domain provider’s portal to make updates or contact your domain provider for assistance.</p>
+<hr>
+<h2 id="h_670950877161540423505236">Step 3 - Check whether domain resolution uses Cloudflare nameservers</h2>
+<div class="cf-sidebar-2 cf-tip">It is not necessary to check domain registration for domains utilizing a Cloudflare CNAME setup.</div>
+<p>1. Use command-line or third-party tools to confirm if Cloudflare's nameservers are configured:</p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">dig</div>
+	<div class="dropdown-content">
+		<pre>dig NS something.anotherdomain.com
+dig +trace NS something.anotherdomain.com
+dig NS something.anotherdomain.com @8.8.8.8</pre>
+		<p>The +trace option outputs detailed information when the DNS response fails. This information can be useful when troubleshooting the issue with your DNS provider.</p>
+		<p>The @8.8.8.8 option returns results from Google's public DNS resolver. The results will confirm whether public resolvers receive a DNS response.</p>
+		<p> </p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">nslookup</div>
+	<div class="dropdown-content">
+		<pre>nslookup -type=ns something.anotherdomain.com
+nslookup -type=ns something.anotherdomain.com 8.8.8.8</pre>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Third-party online tools</div>
+	<div class="dropdown-content">
+		<p>Some online services, such as <a href="https://www.whatsmydns.net/">whatsmydns.net</a>, check for DNS resolution worldwide.  </p>
+		<p> </p>
+	</div>
+</div>
+<ul>
+	<li>Ensure Cloudflare’s two nameservers are the only nameservers returned in the query results.</li>
+	<li>Ensure there are no misspelled nameservers.</li>
+	<li>Confirm the nameservers exactly match the nameservers provided within the <strong>Cloudflare Nameservers </strong>section of the Cloudflare <strong>DNS </strong>app.</li>
+</ul>
+<p>2. If you identify incorrect information, log in to your domain provider’s portal to make updates or contact your domain provider for assistance.</p>
+<p>3. If the nameserver and domain registration data are correct, reach out to your domain provider to confirm if there have been recent DNS propagation issues.</p>
+<div class="cf-sidebar-2 cf-note">Some registrars provide more than two nameservers; however, use only the two provided in the DNS app of your Cloudflare account.</div>
+<hr>
+<h2 id="h_88537939911540919764865">Recover a deleted domain</h2>
+<p>Recover a deleted domain via the <strong>+ Add site</strong> link located on the right side of the top navigation bar in the Cloudflare dashboard. If you re-add the domain to the same account within 7 days of deletion<strong> all DNS records and configuration automatically</strong>. After this, <em>settings and DNS records will not be recovered</em>.</p>
+<div class="cf-sidebar-2 cf-warning">Cloudflare support is unable to restore DNS or settings for deleted domains, you must re-add the domain to the same account within 7 days of deletion to automatically recover DNS records and most settings.</div>
+<hr>
+<h2 id="h_186867048201540423513703">Related resources</h2>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-">Secondary Nameservers</a> (Enterprise feature)
+	</li>
+	<li>
+		<a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">CNAME setup</a> (Business and Enterprise feature)
+	</li>
+	<li><a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup">How to change nameservers to Cloudflare</a></li>
+</ul>
+<p> </p>

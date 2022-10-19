@@ -1,0 +1,27 @@
+<p><i>Learn more about the Automatic Cache Management feature of the Cloudflare WordPress plugin</i></p>
+<hr>
+<h2 id="h_4JrZ5hVRzQ1u4hapY3SrYn">Overview</h2>
+<p>The Cloudflare WordPress plugin contains a feature called Automatic Cache Management. When a user adds, edits, or deletes a post, page, attachment, or comment - any associated URLs are purged from the Cloudflare cache. </p>
+<p>When you switch a theme or customise a theme within the WordPress admin panel, the cache will automatically be cleared too.</p>
+<p>Automatic Cache Management uses native hooks built into WordPress. The Cloudflare WordPress plugin purges the following cache URLs:</p>
+<ul>
+	<li>deleted_post</li>
+	<li>edit_post</li>
+	<li>delete_attachment</li>
+	<li>autoptimize_action_cachepurged (for compatibility with the Autoptimize WordPress plugin)</li>
+	<li>switch_theme</li>
+	<li>customize_save_after</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">This feature works great <a href="https://support.cloudflare.com/hc/articles/236166048">when caching HTML on WordPress</a> with the Bypass Cache on Cookie setting.
+</div>
+<hr>
+<h2 id="h_2RKmxHPOxz49YAmlS9lmWL">Enable Automatic Cache Management</h2>
+<p> To enable Automatic Cache Management after <a href="https://support.cloudflare.com/hc/en-us/articles/227634427-Using-Cloudflare-with-WordPress">installing the WordPress plugin</a>,</p>
+<ol>
+	<li> Log in to your WordPress account.</li>
+	<li>Click <b>Settings </b>and choose the Cloudflare plugin. The Cloudflare plugin home page appears.</li>
+	<li>Click <b>Enable</b> to the right of the <b>Automatic Cache</b> feature. A confirmation dialog appears.</li>
+	<li>Click <b>I'm sure </b>in the confirmation dialog<b> </b>to confirm.</li>
+</ol>
+<p></p>

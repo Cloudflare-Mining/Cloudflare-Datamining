@@ -1,0 +1,504 @@
+<p><i>Learn how to configure mod_cloudflare to log your visitor’s original IP address based on your origin web server type (including Apache, NGINX, Microsoft IIS, and others).</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#cF7JFXws2pZ4bgu">Overview</a></li>
+		<li><a href="#C5XWe97z77b3XZV">mod_remoteip</a></li>
+		<li><a href="#S7Z4EJQFN997YRY">mod_cloudflare</a></li>
+		<li><a href="#JUxJSMn3Ht5c5yq">Web server instructions</a></li>
+		<li><a href="#h_4vfodjrBunNww4MmSGAgmh">Restoring original visitor IP with HAProxy</a></li>
+		<li><a href="#h_qHFQv3Kt9lWvqXaP3womy">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="cF7JFXws2pZ4bgu">Overview</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
+</div>
+<p>When your <a href="https://support.cloudflare.com/hc/articles/205177068">website traffic is routed through the Cloudflare network</a>, we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a <a href="https://www.cloudflare.com/ips/">Cloudflare IP address</a>.</p>
+<p>For example, if you install applications that depend on the incoming IP address of the original visitor, a Cloudflare IP address is logged by default. The original visitor IP address appears in an appended HTTP header called <a href="https://support.cloudflare.com/hc/articles/200170986"><i>CF-Connecting-IP</i></a>. By following our <a href="https://support.cloudflare.com/hc/articles/200170786#JUxJSMn3Ht5c5yq">web server instructions</a>, you can log the original visitor IP address at your origin server. If this HTTP header is not available when requests reach your origin server, check your <a href="https://developers.cloudflare.com/rules/transform/">Transform Rules</a> and <a href="https://developers.cloudflare.com/rules/transform/managed-transforms/">Managed Transforms</a> configuration. </p>
+<p>The diagram below illustrates the different ways that IP addresses are handled with and without Cloudflare.</p><img src="https://images.ctfassets.net/slt3lc6tev37/1FajQF4usCDDGjiSWGPG5f/1e4f63012ad4b89a20fb4c917cab5b9e/Restoring_IPs__1_.png" alt="The diagram illustrates the different ways that IP addresses are handled with and without Cloudflare.">
+<p></p>
+<p></p>
+<hr>
+<h2 id="C5XWe97z77b3XZV">mod_remoteip</h2>
+<p></p>
+<h3 id="qqTNyd66SRMCetn">Overview</h3>
+<p>Cloudflare no longer updates and supports <i>mod_cloudflare. </i>However, if you are using an Apache web server with an operating system such as <b>Ubuntu Server 18.04</b> and <b>Debian 9 Stretch</b>, you can use <i>mod_remoteip </i>to log your visitor’s original IP address.</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="Jjeh68E46e25gcR" class="dropdown-header">Installing mod_remoteip</div>
+	<div class="dropdown-content">
+		<p></p>
+		<pre>As this module was created by an outside party, we can't provide technical support for issues related to the plugin.</pre>
+		<p>To install<i> mod_remoteip </i>on your Apache web server:</p>
+		<p>1. Enable <i>mod_remoteip </i>by issuing the following command:
+		</p>
+		<p></p>
+		<pre>sudo a2enmod remoteip</pre>
+
+		2. Update the site configuration to include <i>RemoteIPHeader CF-Connecting-IP</i>, e.g. <code>/etc/apache2/sites-available/000-default.conf</code>
+		<p></p>
+		<pre><virtualhost>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/html
+ServerName remoteip.andy.support
+RemoteIPHeader CF-Connecting-IP
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+</virtualhost></pre>
+
+		3. Update combined <i>LogFormat</i> entry in <code>apache.conf</code>, replacing <i>%h </i>with<i> %a in</i> <code>/etc/apache2/apache2.conf.</code> For example, if your current <i>LogFormat</i> appeared as follows<p></p>
+		<pre>LogFormat "%h %l %u %t \"%r\" %&gt;s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined</pre>
+		<p>you would update <i>LogFormat</i> to the following:</p>
+		<p></p>
+		<pre>LogFormat "%a %l %u %t \"%r\" %&gt;s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined</pre>
+
+		4. Define trusted proxy addresses by creating <code>/etc/apache2/conf-available/remoteip.conf</code> by entering the following code and <a href="https://www.cloudflare.com/ips/">Cloudflare IPs</a>:<p></p>
+		<pre>RemoteIPHeader CF-Connecting-IP
+RemoteIPTrustedProxy 192.0.2.1 (example IP address)
+RemoteIPTrustedProxy 192.0.2.2 (example IP address)
+(repeat for all Cloudflare IPs listed at https://www.cloudflare.com/ips/)</pre>
+		<p>5. Enable Apache configuration:</p>
+		<p></p>
+		<pre>sudo a2enconf remoteip
+Enabling conf remoteip.
+To activate the new configuration, you need to run:
+    service apache2 reload</pre>
+		<p>6. Test Apache configuration:</p>
+		<p></p>
+		<pre>sudo apache2ctl configtest
+Syntax OK</pre>
+
+		7. Restart Apache:<p></p>
+		<pre>sudo systemctl restart apache2</pre>
+
+		<div class="cf-sidebar-2 cf-note">For more information on <em>mod_remoteip</em>, refer to the<a href="https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html" title="Apache Module mod_remoteip"> Apache documentation</a>.
+		</div>
+	</div>
+</div>
+<hr>
+<h2 id="S7Z4EJQFN997YRY">mod_cloudflare</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="t7vBWVxHE65Rrb5" class="dropdown-header">Installing mod_cloudflare</div>
+	<div class="dropdown-content">
+		<p>There are two methods for installing mod_cloudflare: by downloading the Apache extension from Github or by adding code to your origin web server.</p>
+		<h3>Downloading packets or scripts from Github</h3>
+		<p>If you are using an Apache web server, you can download mod_cloudflare from <a href="https://github.com/cloudflare/mod_cloudflare">Github</a>.</p>
+		<h3>Adding code to your origin web server</h3>
+		<p>If you can't install mod_cloudflare, or if there is no Cloudflare plugin available for your content management system platform to restore original visitor IP, add this code to your origin web server in or before the &lt;body&gt; tag on any page that needs the original visitor IPs:</p>
+		<p><code>&lt;?php if (isset($_SERVER['HTTP_CF_CONNECTING_IP']))
+				$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP'];?&gt;</code></p>
+		<p>This command will only make the IP address available to scripts that need it. It doesn’t store the IP in your actual server logs.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="uA6EDwDr4bTYM9e" class="dropdown-header">Remove mod_cloudflare</div>
+	<div class="dropdown-content">
+		<h3>Apache</h3>
+		<p>To remove <i>mod_cloudflare</i>, you should comment out the Apache config line that loads <i>mod_cloudflare</i>.</p>
+		<p>This varies based on your Linux distribution, but for most people, if you look <code>in /etc/apache2</code>, you should be able to search to find the line:</p>
+		<p><code>LoadModule cloudflare_module</code></p>
+		<p>Comment or remove this line, then restart apache, and <i>mod_cloudflare</i> should be gone.</p>
+		<p>If you are running Ubuntu or Debian, you should see.</p>
+		<p><code>file/etc/apache2/mods-enabled/cloudflare.load</code></p>
+		<p>delete this file to remove <i>mod_cloudflare</i>, then restart Apache.</p>
+		<h3>Nginx</h3>
+		<p>Mod_cloudflare is installed by modifying <a href="http://nginx.org/en/docs/http/ngx_http_realip_module.html">the nginx configuration file</a> <code>nginx.conf</code> with the <code>ngx_http_realip_module</code>.</p>
+		<p>To remove <i>mod_cloudflare </i>you should comment or remove this line, then restart nginx, and <i>mod_cloudflare </i>should be gone<i>.</i></p>
+		<p><i></i></p>
+		<div class="cf-sidebar-2 cf-note">To remove <em>mod_cloudflare</em> from other web server types, consult your web server documentation for how to remove modules.
+		</div>
+		<i></i>
+	</div>
+</div>
+<hr>
+<h2 id="JUxJSMn3Ht5c5yq">Web server instructions</h2>
+<p>See below for instructions on how to configure your web server to log original visitor IPs based on your web server type:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="BNuWADnj5e9ZvJF" class="dropdown-header">Apache 2.4</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
+		</div>
+		<ol>
+			<li>Make sure the following is installed: <ul>
+					<li>Red Hat/Fedora<code>sudo yum install httpd-devel libtool git</code>
+					</li>
+					<li>Debian/Ubuntu<code>sudo apt-get install apache2-dev libtool git</code>
+					</li>
+				</ul>
+			</li>
+			<li>Clone the following for the most recent build of <i>mod_cloudflare</i>:<ul>
+					<li>Red Hat/Fedora/Debian/Ubuntu:<code>git clone https://github.com/cloudflare/mod_cloudflare.git; cd mod_cloudflare</code>
+					</li>
+				</ul>
+			</li>
+			<li>Use the Apache extension tool to convert the .c file into a module:<ul>
+					<li>Red Hat/Fedora/Debain/Ubuntu:<code>apxs -a -i -c mod_cloudflare.c</code>
+					</li>
+				</ul>
+			</li>
+			<li>Restart and verify the module is active:<ul>
+					<li>Red Hat/Fedora<code>service httpd restart; httpd -M|grep cloudflare</code>
+					</li>
+					<li>Debian/Ubuntu:<code>sudo apachectl restart; apache2ctl -M|grep cloudflare</code>
+					</li>
+				</ul>
+			</li>
+			<li>If your web server is behind a load balancer, add the following line to your Apache configuration (httpd.conf usually) and replace 123.123.123.123 with your load balancer's IP address:</li>
+		</ol>
+		<p></p>
+		<pre>IfModule cloudflare_module
+CloudFlareRemoteIPHeader X-Forwarded-For
+CloudFlareRemoteIPTrustedProxy __[insert your load balancer’s IP address]__
+DenyAllButCloudFlare
+/IfModule</pre>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="R8FGMtY5b3k5cez" class="dropdown-header">NGINX</div>
+	<div class="dropdown-content">
+		<p>Use the <a href="http://nginx.org/en/docs/http/ngx_http_realip_module.html"><code>ngx_http_realip_module</code> NGINX module</a> and the following configuration parameters:</p>
+		<p></p>
+		<pre>set_real_ip_from 192.0.2.1 (example IP address)
+(repeat for all Cloudflare IPs listed at https://www.cloudflare.com/ips/)
+
+#use any of the following two
+
+real_ip_header CF-Connecting-IP;
+#real_ip_header X-Forwarded-For;</pre>
+		<p>That list of prefixes needs to be updated regularly, and we publish the full list in <a href="https://www.cloudflare.com/ips">Cloudflare IP addresses</a>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">To Include the original visitor IP in your logs, add the variables $http_cf_connecting_ip and $http_x_forwarded_for in the log_format directive.
+		</div>
+		<p>Also see: <a href="https://danielmiessler.com/blog/getting-real-ip-addresses-using-cloudflare-nginx-and-varnish/">Cloudflare and NGINX</a>.</p>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="PC652N657K4Feu8" class="dropdown-header">EasyApache + cPanel</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
+		</div>
+		<ol>
+			<li>Run the following script to install mod_cloudflare as part of EasyApache: <code>bash &lt;(curl -s https://raw.githubusercontent.com/cloudflare/mod_cloudflare/master/EasyApache/installer.sh)</code>
+			</li>
+			<li>Upon installing, you will need to recompile your Apache with the new mod_cloudflare plugin.</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="UhzM8rasJ7YTJ29" class="dropdown-header">Railgun</div>
+	<div class="dropdown-content">
+		<p>When using Railgun (or other reverse proxy software, such as Varnish), user's requests will come from your Railgun server instead of Cloudflare. Because requests are not coming directly from Cloudflare, any added mods will not restore visitor IP addresses by default.</p>
+		<ol>
+			<li>To fix this, open up your Apache configuration. This can typically be found in <code>/etc/apache2/apache2.conf</code>, <code>/etc/httpd/httpd.conf</code>, <code>/usr/local/apache/conf/httpd.conf</code> or another location depending on configuration. If you're unsure, ask your hosting provider.</li>
+			<li>At the very end add:<code>CloudflareRemoteIPTrustedProxy railgun_address</code><code></code>So, if your Railgun server is located at 127.0.0.1, it will look like:<code>CloudflareRemoteIPTrustedProxy 127.0.0.1</code>
+			</li>
+			<li>If you have more than one server to add to the trusted proxy list, you can add them at the end:CloudflareRemoteIPTrustedProxy 127.0.0.1 127.0.0.2</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="23cb9ZaxFCjsaWY" class="dropdown-header">Lighttpd</div>
+	<div class="dropdown-content">
+		<p>To have Lighttpd automatically rewrite the server IP for the access logs and for your application, you can follow one of the two solutions below.</p>
+		<ol>
+			<li>Open your <b>lighttpd.conf</b> file and add <i>mod_extforward</i> to the <i>server.modules</i> list. It must come <b>after</b> <i>mod_accesslog</i> to show the real IP in the access logs</li>
+			<li>Add the following code block anywhere in the <b>lighttpd.conf</b> file after the server modules list and then restart Lighttpd</li>
+		</ol>
+		<p></p>
+		<pre>$HTTP["remoteip"] == "192.2.0.1 (example IP address)" 
+{
+extforward.forwarder = ( "all" =&gt; "trust" )
+extforward.headers = ("CF-Connecting-IP")
+}
+
+(repeat for all Cloudflare IPs listed at https://www.cloudflare.com/ips/)</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-tip">If your origin connects to the internet with IPv6, <strong>$HTTP["remoteip"]</strong>, which is required for matching the remote IP ranges does not work when IPv6 is enabled.
+			Using the above method will not work when trying to forward IP ranges.
+			Add the following lines to lighttpd.conf as an alternative solution:
+			<code>extforward.forwarder = ( "all" =&gt; "trust" )
+				extforward.headers = ("CF-Connecting-IP")</code>
+		</div>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="CeXavKS6FsjAa9J" class="dropdown-header">LiteSpeed server</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Go to your LiteSpeed Web Admin Console.</li>
+			<li>Enable the option Use Client IP in Header in Configuration.</li>
+			<li>Once enabled, your access logs will now show the correct IP addresses, and even PHP's <code>$_SERVER['REMOTE_ADDR'] </code>variable will contain the client real IP address, instead of a Cloudflare IP address, which in itself will resolve most problems you could hit when enabling Cloudflare on PHP-enabled web sites (like WordPress or vBulletin installs).</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="WDZQ5Zh3PrkHMaZ" class="dropdown-header">Microsoft IIS</div>
+	<div class="dropdown-content">
+		<h5>For IIS 7 - 8:</h5>
+		<p>Follow the directions <a href="https://techcommunity.microsoft.com/t5/iis-support-blog/how-to-use-x-forwarded-for-header-to-log-actual-client-ip/ba-p/873115">here</a>.</p>
+		<h5>For IIS 8.5 - 10:</h5>
+		<p>From IIS 8.5 onwards, custom logging is a built-in option. See <a href="http://www.iis.net/learn/get-started/whats-new-in-iis-85/enhanced-logging-for-iis85">IIS Enhanced Logging</a></p>
+		<ol>
+			<li>In IIS Manager, double click on <b>Logging</b> in the <i>Actions</i> menu of the site you are working on.</li>
+			<li>After this launches, select <b>W3C</b> as the format and then click <b>Select Fields</b> next to the format drop-down in the <i>Log File</i> sub-section.</li>
+			<li>Click on <b>Add Field</b> and add in <i>CF-Connecting-IP</i> header.</li>
+			<li>Click <b>Ok</b>. You should see your new entry reflected under <b>Custom Fields</b>. Click on <b>Apply</b> when you are back in the <i>Logging</i> window.</li>
+		</ol>
+		<p></p>
+		<ol>
+			<li>If this is successful, the log file should now have an underscore:You should also see the change in the fields:</li>
+			<li>Restart the site, then W3SVC, then the entire instance if the change doesn’t reflect immediately.When using enhanced logging in IIS 8.5+, it <b>does not restore</b><b> </b>original visitor IP at the application level.</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="v4zVU9xFnMRn64T" class="dropdown-header">Tomcat 7</div>
+	<div class="dropdown-content">
+		<p>To have Tomcat7 automatically restore the original visitor IP to your access logs and application you will need to add <code>%{CF-Connecting-IP}i</code> into your log schema.</p>
+		<p>As an example, you could add the below block to your <code>server.xml</code> file.</p>
+		<p><code>&lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+				prefix="localhost_access_log." suffix=".txt"
+				pattern="%{CF-Connecting-IP}i - %h %u %t - &amp;quot;%r&amp;quot; - %s - %b - %{CF-RAY}i"/&gt;</code></p>
+		<p>Which would result in your logs looking like this:</p>
+		<p><code>Visitor IP - Cloudflare IP - [04/Dec/2014:23:18:15 -0500] - "GET / HTTP/1.1" - 200 - 1895 - 193d704b85200296-SJC</code>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="GBQ86nPmFbD9v7T" class="dropdown-header">Magento</div>
+	<div class="dropdown-content">
+		<p>See this third-party tutorial on restoring original visitor IP with <a href="https://tall-paul.co.uk/2012/03/02/magento-show-remote-ip-when-using-cloudflare/">Magento and Cloudflare</a>.</p>
+		<p>Similarly, Cloudflare did not write this <a href="https://marketplace.magento.com/">Magento extension</a>, but some of our customers have found it helpful.</p>
+		<p>As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="4F6QC8mvCcRYskr" class="dropdown-header">IPB (Invision Power Board)</div>
+	<div class="dropdown-content">
+		<p>To enable correct IP matching when running an Invision Power Board 3 installation through Cloudflare, follow these directions:</p>
+		<p>Log into your IPB installation's ACP.</p>
+		<ol>
+			<li>Click <b>System</b>.</li>
+			<li>Under Overview, click <b>Security</b>.</li>
+			<li>Under Security Center, click <b>Security Settings</b>.Check that <i>Trust IP addresses provided by proxies?</i> is green.</li>
+		</ol>
+		<h5>IPB4 description of <i>Trust IP addresses provided by proxies?</i>
+		</h5>
+		<p>If your network environment means requests are handled through a proxy (such as in an intranet situation in an office or university, or on a load-balanced server cluster), you may need to enable this setting so that the correct IP address is used. However, when enabled, a malicious user can abuse the system to provide a fake IP address. In most environments, this setting should be left off.</p>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="HfA7S4nEU2Q6u5n" class="dropdown-header">Simple Machines forums (SMF) </div>
+	<div class="dropdown-content">
+		<p>Information about restoring original visitor IP with Simple Machines (SMF) can be found on the <a href="https://custom.simplemachines.org/mods/index.php?mod=2502">SMF Simple Machines forums</a>.</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="c7GJdv36kNX7T6X" class="dropdown-header">PHPBB</div>
+	<div class="dropdown-content">
+		<p>If you are using an Apache server, then we would recommend installing <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV">mod_remoteip</a> to restore the visitor IP back to your logs.</p>
+		<p>If you do not have access to your server to install a mod, then you may be able to <a href="https://www.phpbb.com/community/viewtopic.php?p=13936406#p13936406">modify the core</a>.</p>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="fPvF8CSWUKZ38n2" class="dropdown-header">MyBB forums</div>
+	<div class="dropdown-content">
+		<p>More recent versions of MyBB include a Scrutinize User's IP address option.</p>
+		<p><code>Admin CP &gt; Configuration &gt; Server and Optimization Options &gt; Scrutinize User's IP address? &gt; Yes</code></p>
+		<p>Alternatively, you may install the <a href="https://mods.mybb.com/view/antoligy-mybb-cloudflare-management-plugin">Cloudflare management plugin</a> available for MyBB 1.6.</p>
+		<h5>MyBB 1.6.0, 1.6.1, 1.6.2, or 1.6.3</h5>
+		<ol>
+			<li>Navigate to <code>./inc/functions.php</code>.</li>
+			<li>Go to line 2790.</li>
+			<li>Replace:<code>if(isset($_SERVER['REMOTE_ADDR']))</code>With:<code>if(isset($_SERVER['HTTP_CF_CONNECTING_IP']))</code><code></code>
+			</li>
+			<li>Then, replace:<code>$ip = $_SERVER['REMOTE_ADDR'];</code><code></code>With:<code>$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];</code>
+			</li>
+		</ol>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="ABXQ9Q8DAtrJBqe" class="dropdown-header">Vanilla forums</div>
+	<div class="dropdown-content">
+		<p>A member of the Vanilla team has written a <a href="https://open.vanillaforums.com/addon/cloudflaresupport-plugin">Cloudflare plugin for Vanilla</a> to restore original visitor IP to the log files for self-hosted sites.</p>
+		<p>As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.MediaWiki</p>
+		<ol>
+			<li>Open <code>includes/GlobalFunctions.php</code>. At approximately line 370, change the following:<code>$forward = "\t(proxied
+					via {$_SERVER['REMOTE_ADDR']}{$forward})";</code>to<code>$forward = "\t(proxied
+					via {$_SERVER['HTTP_CF_CONNECTING_IP']}{$forward})";</code><code></code>
+			</li>
+			<li>Open <code>includes/ProxyTools.php</code>. At approximately line 79, find:<code>if ( isset( $_SERVER['REMOTE_ADDR'] ) ){</code><code></code>and replace with:<code>if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ){</code><code></code>The second step only applies to MediaWiki versions 1.18.0 and older. Newer versions of MediaWiki have completely rewritten ProxyTools.php and the following code is no longer present.</li>
+			<li>Find at approximately line 80:<code>$ipchain = array( IP::canonicalize($_SERVER['REMOTE_ADDR']) );</code><code></code>Save and upload to your origin web server.</li>
+		</ol>
+		<h5>For versions around 1.27.1:</h5>
+		<ol>
+			<li>Go to line 1232 in <code>GlobalFunctions.php</code>, change <code>REMOTE_ADDR</code> to <code>HTTP_CF_CONNECTING_IP</code>.</li>
+			<li>Next, go to <code>WebRequest.php</code>, in lines 1151 to line 1159, change <code>REMOTE_ADDR</code> to <code>HTTP_CF_CONNECTING_IP</code>.</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="94qqwy3uRrtvBBt" class="dropdown-header">XenForo</div>
+	<div class="dropdown-content">
+		<p>A XenForo user has created a <a href="https://xenforo.com/community/resources/solidmean-cloudflare-detect.1595/">plugin for Cloudflare</a>.</p>
+		<p>As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.</p>
+		<ol>
+			<li>Open <code>library/config.php</code>.</li>
+			<li>At the end, add:<code></code><code>if (isset($_SERVER['HTTP_CF_CONNECTING_IP']))
+					{ $_SERVER['REMOTE_ADDR']
+					= $_SERVER['HTTP_CF_CONNECTING_IP'];}</code>
+			</li>
+			<li>Upload and overwrite.</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="zKu6HAB25rPJ62r" class="dropdown-header">PunBB</div>
+	<div class="dropdown-content">
+		<p>An outside party has created a <a href="http://punbb.informer.com/forums/post/147539/#p147539">module for Cloudflare and PunBB</a> that will restore original visitor IP.</p>
+		<p>As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.Cherokee server</p>
+		<ol>
+			<li>Launch <code>cherokee-admin</code> on your server.</li>
+			<li>Navigate to the <b>Cherokee Administration interface</b> in your web browser.</li>
+			<li>Select the <b>Virtual Server</b> for the domain that is being serviced by Cloudflare.</li>
+			<li>On the <i>Logging</i> tab for your selected <b>Virtual Server</b>, enable Accept Forwarded IPs.</li>
+			<li>In the <i>Accept from Hosts</i> box, enter <a href="https://www.cloudflare.com/ips/">Cloudflare's IP addresses</a>.</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="snAet3WYnM5Rp8h" class="dropdown-header">Livezilla</div>
+	<div class="dropdown-content">
+		<p>You can fix the IP address by changing the <code>PHP IP Server Param</code> field on the Livezilla server configuration to <code>HTTP_CF_CONNECTING_IP</code>.
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="jr3mGqVjv3bzV6x" class="dropdown-header">Datalife Engine</div>
+	<div class="dropdown-content">
+		<p>To restore visitor IP to DataLife Engine:</p>
+		<ol>
+			<li>Open:/engine/inc/include/functions.inc.phpFind:<code>$db_ip_split = explode( ".", $_SERVER['REMOTE_ADDR'] );</code><code></code>Change to:<code>$db_ip_split = explode(".", $_SERVER['HTTP_CF_CONNECTING_IP'] );</code><code></code>
+			</li>
+			<li>Find:<code>$ip_split = explode( ".", $_SERVER['REMOTE_ADDR'] );</code><code></code>Change to:<code>$ip_split = explode(".", $_SERVER['HTTP_CF_CONNECTING_IP'] );</code><code></code>
+			</li>
+			<li>Open:/engine/modules/addcomments.phpFind:<code>$_SERVER['REMOTE_ADDR'],</code><code></code>Change to:<code>$_SERVER['HTTP_CF_CONNECTING_IP'],</code>
+			</li>
+			<li>Find:<code>$db_ip_split = explode( ".", $_SERVER['REMOTE_ADDR'] );</code><code></code>Change to:<code>$db_ip_split = explode( ".", $_SERVER['HTTP_CF_CONNECTING_IP'] );</code>
+			</li>
+		</ol>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="H6ZJxXy76JY6gsZ" class="dropdown-header">TYPO3</div>
+	<div class="dropdown-content">
+		<p>An outside developer has created a <a href="https://extensions.typo3.org/extension/cloudflare/">Cloudflare extension for TYPO3</a> that will restore original visitor IP to your logs. The extension will also give the ability to clear your Cloudflare cache.</p>
+		<p>As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="7ZRk7SC9BkSDVrK" class="dropdown-header">VestaCP</div>
+	<div class="dropdown-content">
+		<p>If you use the hosting control panel VestaCP, you have both Nginx and Apache running on your server. Requests are proxied through Nginx before going to Apache.</p>
+		<p>Because of this Nginx proxy, you actually need to the instructions to configure Nginx to return the real visitor IP address. <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV">Mod_remoteip</a> for Apache is not needed unless you disable the Nginx server for some requests. Adding <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV">mod_remoteip</a> to Apache will not conflict with the Nginx server configuration.</p>
+		<p>
+
+		</p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="nDPAt25uQ6k8xDZ" class="dropdown-header">node.js</div>
+	<div class="dropdown-content">
+		<p>An outside developer has created a module to restore visitor IP called <a href="https://github.com/keverw/node_CloudFlare">node_cloudflare.</a></p>
+	</div>
+</div>
+<hr>
+<h2 id="h_4vfodjrBunNww4MmSGAgmh">Restoring original visitor IP with HAProxy</h2>
+<p>In order to extract the original client IP in the X_FORWARDD_FOR header, you need to use the following configuration in HAProxy:</p>
+<ol>
+	<li>Create a text file CF<code>_ips.lst</code> containing all IP ranges from https://www.cloudflare.com/en-gb/ips/ </li>
+	<li>Ensure to disable <code>option forwardfor</code> in HAProxy</li>
+</ol>
+<p>HAProxy config:</p>
+<p><code>acl from_cf src -f /path/to/CF_ips.lst</code></p>
+<p>
+	<code>acl cf_ip_hdr req.hdr(CF-Connecting-IP) -m found</code>
+</p>
+<p><code>http-request set-header X-Forwarded-For %[req.hdr(CF-Connecting-IP)] if from_cf cf_ip_hdr</code></p>
+<hr>
+<h2 id="h_qHFQv3Kt9lWvqXaP3womy">Related Resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/fundamentals/get-started/http-request-headers">HTTP request headers</a></li>
+	<li><a href="https://developers.cloudflare.com/rules/transform/">Transform Rules</a></li>
+</ul>
+<p></p>

@@ -1,0 +1,93 @@
+<p><i>Learn how to troubleshoot surges or spikes in web traffic.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_5rFDzgyxBWszoOjogWhqVo">Overview</a></li>
+		<li><a href="#h_51IUVKoN1SXLoeiEfMT1Nk">Use Cloudflare Page Rules to customize caching</a></li>
+		<li><a href="#h_2DyYJc8Vveadd5gXhl1cIc">Contact your hosting provider to understand the limits of your hosting plan</a></li>
+		<li><a href="#h_7vDo8JwSJMl247eE1dBhCD">Use Cloudflare IP addresses to your advantage</a></li>
+		<li><a href="#h_1yQrhwKdY5KficGTzxaiiX">Ensure Cloudflare IPs are allowed</a></li>
+		<li><a href="#h_35MP3ABgBUVl7vJ7FqpR84">What information do I need when submitting a support ticket?</a></li>
+		<li><a href="#h_6VlvaPVvYtCLHdYvXnFnoC">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_5rFDzgyxBWszoOjogWhqVo">Overview</h2>
+<p>There are many ways to protect and prepare your domain to handle spikes in traffic. We recommend the following strategies detailed below:</p>
+<ul>
+	<li>use Cloudflare Page Rules to customize caching</li>
+	<li>contact your hosting provider to understand the limits of your hosting plan</li>
+	<li>use Cloudflare IP addresses to your advantage</li>
+	<li>ensure Cloudflare IPs are allowed</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_51IUVKoN1SXLoeiEfMT1Nk">Use Cloudflare Page Rules to customize caching</h2>
+<p>By default Cloudflare <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Which-file-extensions-does-CloudFlare-cache-for-static-content-">caches static content</a> like images, CSS and JavaScript; however, you can extend Cloudflare caching to work with HTML by creating custom <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Page Rules</a>.</p>
+<h3>Cache everything</h3>
+<p>1. Log in to your Cloudflare account</p>
+<p>2. Go to <b>Rules &gt;</b> <b>Page Rules</b>. </p>
+<p>3. Select <b>Create Page Rule</b>.</p>
+<p>4.  For the url, enter either your entire website or a section of your site.</p>
+<p>5. For <b>Settings</b>, select <b>Cache Level</b> and then <b>Cache Everything</b>. Cloudflare will now fully cache HTML at our Edge network, instead of making roundtrips to your origin web server.</p>
+<p>6. To control how long Cloudflare caches resources, add another setting for <b>Edge Cache TTL </b>and select a time duration.</p>
+<p>With the Cache Everything option enabled, Cloudflare will be serving your entire site, taking the load off of your server completely, making your site as fast as possible.</p>
+<p>Cloudflare customers on the Business plan can use advanced caching techniques to cache static content on dynamic HTML sites to reduce load using the <i>Bypass Cache on Cookie</i> Page Rule option.</p>
+<h3>Cache anonymous page views</h3>
+<p>Before a visitor adds something to their shopping cart, logs in, or adds a comment, their page views are anonymous. By caching these types of page visits, you decrease server load, even if your site is dynamic. You can find out more information in the introductory blog post: <a href="https://blog.cloudflare.com/caching-anonymous-page-views/">Caching Anonymous Page Views</a>. </p>
+<p>There are multiple tutorials available on how you can do this:</p>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/236168808">Caching Anonymous Page Views with Magento 1 and Magento 2</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">Caching static HTML</a></li>
+</ul>
+<p>
+
+</p>
+<hr>
+<h2 id="h_2DyYJc8Vveadd5gXhl1cIc">Contact your hosting provider to understand the limits of your hosting plan</h2>
+<p>Cloudflare offsets most of the load to your website via caching and request filtering, but some traffic will still pass through to your host. Knowing the limits of your plan can help prevent a bottleneck from your host. </p>
+<p>Once you are aware of your plan limits, you can use a feature like <a href="https://support.cloudflare.com/hc/articles/115001635128">Rate Limiting </a>to restrict how many times anyone user can make a request to your website.</p>
+<hr>
+<h2 id="h_7vDo8JwSJMl247eE1dBhCD">Use Cloudflare IP addresses to your advantage</h2>
+<p>Take action to prevent attacks to your site during peak season by configuring your firewall to only accept traffic from Cloudflare IP addresses during the holidays. If you only accept <a href="https://www.cloudflare.com/ips">Cloudflare IPs</a>, you can prevent attackers from getting to your original IP address and knocking your site offline.</p>
+<p>Another option would be to <a href="https://support.cloudflare.com/hc/articles/200170786">restore visitor IP addresses</a> and add <i>DenyAllButCloudFlare</i> to your Apache configuration.</p>
+<hr>
+<h2 id="h_1yQrhwKdY5KficGTzxaiiX">Ensure Cloudflare IPs are allowed</h2>
+<p>Cloudflare operates as a reverse proxy to your site so all connections come from Cloudflare IPs, so restricting our IPs can cause issues for visitors trying to access your site. The list of Cloudflare IPs can be found here: <a href="https://www.cloudflare.com/ips">https://www.cloudflare.com/ips</a>.
+
+</p>
+<hr>
+<h2 id="h_35MP3ABgBUVl7vJ7FqpR84">What information do I need when submitting a support ticket?</h2>
+<p>Before the high traffic event occurs, you must <a href="https://support.cloudflare.com/hc/articles/200172476">open a Support ticket</a> and provide the information below.</p>
+<p><b>For WAF/CDN customers</b></p>
+<ul>
+	<li>Traffic origin region</li>
+	<li>Traffic duration</li>
+	<li>Traffic window (UTC)</li>
+	<li>Traffic method</li>
+	<li>Bandwidth size or range</li>
+	<li>Target IPs/range/zones/hostnames/full URLs</li>
+	<li>Contact in case of emergency</li>
+</ul>
+<p><b></b><a href="https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/#for-magic-transit-and-spectrum-customers"><b>​​</b></a><b>For Magic Transit and Spectrum customers</b></p>
+<ul>
+	<li>Traffic origin region</li>
+	<li>Traffic duration</li>
+	<li>Traffic window (UTC)</li>
+	<li>Traffic method</li>
+	<li>Bandwidth size or range</li>
+	<li>Target IPs/range/zones</li>
+	<li>Target Ports</li>
+	<li>Protocol</li>
+	<li>Max packet/bit rate</li>
+	<li>Contact in case of emergency</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_6VlvaPVvYtCLHdYvXnFnoC">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-">Understanding and Configuring Page Rules</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/202775670">Caching static HTML</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/115001635128">Cloudflare Rate Limiting</a></li>
+</ul>
+<p></p>

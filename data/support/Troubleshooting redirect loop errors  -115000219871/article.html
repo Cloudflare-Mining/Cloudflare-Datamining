@@ -1,0 +1,74 @@
+<p><i>Resolve redirect loop (too many redirects) errors that prevent visitors from viewing your website.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_KJBTccXPwMUMoH40fx6j7">Overview</a></li>
+		<li><a href="#h_dfa85774-c19f-4f49-b11b-bf9bacf6e831">Cloudflare SSL options incompatible with your origin web server</a></li>
+		<li><a href="#h_af6598f6-bc1c-4a4d-ac5f-538230a704b7">Page Rule misconfiguration</a></li>
+		<li><a href="#h_6b3jw9uv9EAHWRp3XHWfCA">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_KJBTccXPwMUMoH40fx6j7">Overview</h2>
+<p>The two typical causes of redirect loop errors are:</p>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/115000219871#h_dfa85774-c19f-4f49-b11b-bf9bacf6e831">Cloudflare SSL options that are incompatible</a> with your origin web server’s configuration, and
+	</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/115000219871#h_af6598f6-bc1c-4a4d-ac5f-538230a704b7">Page Rule misconfiguration</a>.
+	</li>
+</ul>
+<p>Browsers typically display error messages when redirect loop errors occur, such as:</p>
+<ul>
+	<li><i>The page isn’t redirecting properly</i></li>
+	<li><i>ERR_TOO_MANY_REDIRECTS</i></li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">For assistance determining if your origin web server is responding with redirects, contact your hosting provider or site administrator.
+</div>
+<hr>
+<h2 id="h_dfa85774-c19f-4f49-b11b-bf9bacf6e831">Cloudflare SSL options incompatible with your origin web server</h2>
+<p></p>
+<p>The most common cause of redirect loops is due to a combination of</p>
+<ol>
+	<li>a redirect performed by your origin web server, and</li>
+	<li>a <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes">Cloudflare SSL option </a>that is incompatible with the redirect performed by your origin.</li>
+</ol>
+<h3>Cause</h3>
+<p>The <i>Flexible</i> <b>SSL</b> encryption mode in the Cloudflare <b>SSL/TLS</b> app <b>Overview</b> tab encrypts traffic between the browser and the Cloudflare network over HTTPS. However, when the <i>Flexible</i> <b>SSL</b> option is enabled, Cloudflare sends requests to your origin web server unencrypted over HTTP. Redirect loops occur if your origin web server is configured to redirect all HTTP requests to HTTPS when using the <i>Flexible</i> <b>SSL</b> option.</p>
+<p>Redirect loops may also occur when using the <i>Full</i> or <i>Full(strict)</i> <b>SSL</b> option.  The only difference is that Cloudflare contacts your origin web server over HTTPS and the redirect loop occurs if your origin web server redirects HTTPS requests to HTTP.</p>
+<h3>Resolution</h3>
+<p>Resolve redirect loops via one of the following methods:</p>
+<ol>
+	<li>(Recommended) Remove the HTTPS to HTTP or HTTP to HTTPS redirects from your origin web server configuration. For example:<ul>
+			<li>Apache - RewriteRules</li>
+			<li>nginx - Rewrite directives and 301 return directives</li>
+		</ul>
+	</li>
+	<li>Update the Cloudflare <b>SSL</b> option in the <b>SSL/TLS</b> app <b>Overview</b> tab:<ul>
+			<li>If currently set to <i>Flexible</i>, update to <i>Full</i> if you have an SSL certificate configured at your origin web server.</li>
+			<li>(Not Recommended) If currently set to <i>Full</i>, update to <i>Flexible</i>.</li>
+		</ul>
+	</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Utilizing the <em>Off</em> <strong>SSL</strong> option and enabling <em>HSTS</em> either at Cloudflare via the <strong>SSL/TLS</strong> app or at your origin web server also causes redirect loops. Either adjust the <em>SSL</em> option to <em>Flexible</em> or <em>Full</em>, or disable <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security">HSTS</a>.
+</div>
+<p></p>
+<hr>
+<h2 id="h_af6598f6-bc1c-4a4d-ac5f-538230a704b7">Page Rule misconfiguration</h2>
+<h3>Cause</h3>
+<p>Redirect loops also occur if two conflicting <b>Page Rules</b> are configured with <i>Forwarding URL</i> settings. For example, one <b>Page Rule</b> redirects traffic for <i>a.example.com</i> to <i>b.example.com</i> and another page rule redirects traffic for <i>b.example.com</i> to <i>a.example.com</i>.</p>
+<h3>Resolution</h3>
+<p>Check the rules in <b>Rules &gt;</b> <b>Page Rules</b> to confirm if you have two rules configured to forward traffic to each other.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">To reduce the potential for redirect loops and <a href="https://support.cloudflare.com/hc/en-us/articles/200170476" title="Troubleshoot mixed content errors">mixed content errors</a>, Cloudflare recommends Wordpress users to install the <a href="https://wordpress.org/plugins/cloudflare/" title="Wordpress Cloudflare plugin">Cloudflare WordPress plugin</a> at their origin web server and enable the <em>Automatic HTTPS rewrites</em> option within the plugin. Alternatively, Cloudflare recommends the <a href="https://en-gb.wordpress.org/plugins/ssl-insecure-content-fixer/" title="Wordpress SSL Insecure Content Fixer">SSL insecure content fixer</a> or <a href="https://en-gb.wordpress.org/plugins/really-simple-ssl/" title="Wordpress Really Simple SSL plugin">Really Simple SSL plugin</a>.
+</div>
+<hr>
+<h2 id="h_6b3jw9uv9EAHWRp3XHWfCA">Related Resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes">Cloudflare SSL options</a></li>
+	<li><a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">Always Use HTTPS</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170476">Troubleshooting mixed content errors</a></li>
+</ul>
+<p></p>

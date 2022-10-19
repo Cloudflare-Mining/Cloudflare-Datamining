@@ -1,0 +1,35 @@
+<p><i>Learn how to include or exclude specific URLs from Cloudflare page rules</i></p>
+<hr>
+<h2 id="h_uB9imHa7GzHLy3aQB43T2">How do I include or exclude a specific URL from Cloudflare's page rules?</h2>
+<p>You can exclude certain URLs from Cloudflare's caching by using the <a href="http://dash.cloudflare.com/?to=/:account/:zone/rules">Page Rules</a> in the Cloudflare dashboard to set <b>Cache Level</b> to <i>Bypass</i>.
+
+	The first step to using <b>Page Rules</b> is to define a pattern that defines when the rule is triggered. These patterns can be simple, such as a single URL, or complicated including multiple wildcards. Imagine you have a content management system with a single administrative URL:</p>
+<p><code>https://www.example.com/admin.php</code></p>
+<p>If you want Cloudflare's performance and caching options off for this URL, then you would turn off the options using the drop down menus or toggles for the various Cloudflare features.</p>
+<h3>Wildcard and Advanced Pattern Matching</h3>
+<p>The pattern above will only match the following URL:</p>
+<p><code>https://www.example.com/admin.php</code></p>
+<p>It will not match any of the following URLs:</p>
+<p><code>http://www.example.com/admin.php  [http ≠ https]</code>
+	<code>https://example.com/admin.php  [missing www subdomain]</code>
+	<code>https://www.example.com/admin  [admin ≠ admin.php]</code>
+</p>
+<p>You can make rules more flexible by including wildcards with the * character. For example, if you wanted the pattern to match all four of the above URLs, you could use a pattern like:</p>
+<p><code>*example.com/admin*</code></p>
+<p>A wildcard can represent zero or more characters and can be used anywhere in the pattern. So, for example, the following pattern:</p>
+<p><code>https://www.example.com/*b*/*</code></p>
+<p>Would match:</p>
+<p><code>https://www.example.com/blog/</code>
+	<code>https://www.example.com/blog/index.php</code>
+	<code>https://www.example.com/b/admin/folder/index.php</code>
+	<code>https://www.example.com/myblog/</code>
+</p>
+<p>But would not match:   </p>
+<p><code>https://www.example.com/blog  [missing the trailing slash]</code>
+	<code>https://www.example.com/sam/index.php  [sam doesn't contain a "b"]
+
+	</code>
+</p>
+<div class="cf-sidebar-2 cf-note">Page Rules are applied in the order that they are listed. If you want to change the position of a Page Rule, you can drag it up or down using the icon on the left hand side.
+</div>
+<p>For a full Page Rule tutorial, <a href="https://support.cloudflare.com/hc/articles/218411427">visit this article.</a></p>

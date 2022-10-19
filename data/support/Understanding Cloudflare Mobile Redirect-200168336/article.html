@@ -1,0 +1,70 @@
+<p><i>Learn how Mobile Redirect optimizes the look and feel of your website for use on mobile devices.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_2CO1rvOheAy0qbHHwfdDpX">Overview</a></li>
+		<li><a href="#h_6ZJ5q6VQOabtFVZjC6Nugx">Enable Mobile Redirect </a></li>
+		<li><a href="#h_7ESfXrVVxMBftSz3dgicY6">Compatible mobile devices</a></li>
+		<li><a href="#h_7J8xJ1dHoOUZRR9C0g05Do"> Allow full site view</a></li>
+		<li><a href="#h_4tOvHQ74ti9jNRZV0yVCyR">Relevant resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_2CO1rvOheAy0qbHHwfdDpX">Overview</h2>
+<p>Mobile Redirect allows you to automatically redirect mobile device visitors to a mobile-optimized website or subdomain home page. The redirect is done at the edge of Cloudflare's network, improving the user experience by eliminating a roundtrip to your server.</p>
+<p>You must have Cloudflare's performance service enabled (<a href="https://support.cloudflare.com/hc/articles/200169626">"orange clouded"</a> in the <b>DNS</b> Settings) for the redirect to be active.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The mobile redirect service is not available to domains signed up through hosting partners initially. Want to be notified when it is? <a href="https://support.cloudflare.com/requests/new">Let us know</a>.
+</div>
+<hr>
+<h2 id="h_6ZJ5q6VQOabtFVZjC6Nugx">Enable Mobile Redirect </h2>
+<p>1. Log into your Cloudflare account.</p>
+<p>2. Click the appropriate Cloudflare account for the domain where you want to enable Mobile Redirect.</p>
+<p>3. Click the <b>Speed </b>app.</p>
+<p>4. Click the <b>Optimization</b> tab.</p>
+<p>5. Scroll down to the <b>Mobile </b>section of the <b>Optimization </b>tab.</p>
+<p>6. Select the subdomain that you would like to redirect from the drop down list.</p>
+<p>7. Choose <b>Keep Path </b>or <b>Drop Path</b><i>.</i></p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<strong>Keep Path</strong> will redirect all mobile requests to the same resource hosted on your mobile-optimized website. <strong>Drop Path</strong> will redirect all mobile requests to your mobile-optimized website homepage.
+</div>
+
+8. Toggle switch to <b>On</b>.
+<img src="https://images.ctfassets.net/slt3lc6tev37/7niclANP8QQiELP3EgmHNv/24f83cb43086770c740d6f97687de497/hc-import-speed_mobileredirect_enabled.png" alt="Old URL: https://support.cloudflare.com/hc/article_attachments/360034882552/speed_mobileredirect_enabled.png
+Article IDs: 200168336 | Understanding Cloudflare Mobile Redirect
+">
+<p>
+</p>
+<hr>
+<h2 id="h_7ESfXrVVxMBftSz3dgicY6">Compatible mobile devices</h2>
+<p>Browsers from the following mobile devices are redirected to the mobile-optimized subdomain:</p>
+<ul>
+	<li>iPhone</li>
+	<li>Android</li>
+	<li>iPod</li>
+	<li>Blackberry</li>
+	<li>Palm</li>
+	<li>Mobile</li>
+	<li>Windows CE</li>
+	<li>Opera mini</li>
+	<li>AvantGo</li>
+	<li>Docomo</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The iPad and Android tablet user agents will not match and trigger the mobile redirect feature.
+</div>
+<hr>
+<h2 id="h_7J8xJ1dHoOUZRR9C0g05Do"> Allow full site view</h2>
+<p>To allow your end users to view the full site on mobile, you'll need to set the value of the following cookie <i>on the root domain only</i> to 0 (zero) at your origin server:</p>
+<p><code>__cf_mob_redir = 0; domain=.example.com</code></p>
+<p>In this example, replace .example.com with your root domain.</p>
+<p>To renew the mobile redirect, delete the cookie, or set it to expire after whatever duration you choose.</p>
+<hr>
+<h2 id="h_4tOvHQ74ti9jNRZV0yVCyR">Relevant resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200169626">Identifying subdomains compatible with Cloudflare's proxy</a></li>
+</ul>
+<p></p>
+<p>
+
+</p>

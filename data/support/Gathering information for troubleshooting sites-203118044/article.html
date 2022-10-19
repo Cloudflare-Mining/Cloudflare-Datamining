@@ -1,0 +1,406 @@
+<p><i>Learn to gather data to diagnose issues and facilitate troubleshooting with Cloudflare support. For most troubleshooting, Cloudflare strongly recommends generating a HAR file as a starting point. </i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_b4be207a-9957-429a-a460-fc6f40a5e88a">Overview</a></li>
+		<li><a href="#h_8c9c815c-0933-49c0-ac00-b700700efce7">Generate a HAR file</a></li>
+		<li><a href="#h_4IZMzZw77k933KxMy17g8C">Export Console Log</a></li>
+		<li><a href="#h_22b01241-01a5-4bed-a897-6e97cff5c288">Identify the Cloudflare data center serving your request</a></li>
+		<li><a href="#h_0c7f48b3-fc29-4266-8c63-477fe61a11c4">Troubleshoot requests with cURL</a></li>
+		<li><a href="#h_8654c523-e31e-4f40-a3c7-0674336a2753">Temporarily pause Cloudflare</a></li>
+		<li><a href="#h_b8cebafd-9243-40e9-9c44-d4b94ccd3a87">Perform a traceroute</a></li>
+		<li><a href="#h_f7a7396f-ec41-4c52-abf5-a110cadaca7c">Add the CF-RAY header to your logs</a></li>
+		<li><a href="#h_6UDk1RsTwkoDD2fdvAeVpY">Perform a MTR</a></li>
+		<li><a href="#h_6S5XcNiYGQLLJo0Hnxys9w">Run Packet Captures</a></li>
+		<li><a href="#h_72a357d2-7fdb-47d8-a5c7-eadd8d60723e">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_b4be207a-9957-429a-a460-fc6f40a5e88a">Overview</h2>
+<p>It is important to capture as much information as possible to diagnose an issue and to <a href="https://support.cloudflare.com/hc/articles/200172476#h_7b55d494-b84d-439b-8e60-e291a9fd3d16">provide adequate details to Cloudflare support</a>. This article explains how to gather troubleshooting information commonly requested by Cloudflare Support.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare support cannot make configuration changes on behalf of customers due to security and liability concerns.
+</div>
+<hr>
+<h2 id="h_8c9c815c-0933-49c0-ac00-b700700efce7">Generate a HAR file</h2>
+<p>A HTTP Archive (HAR) records all web browser requests including the request and response headers, the body content, and the page load time.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">A HAR file can include sensitive details such as passwords, payment information, and private keys. Manually remove sensitive information from a HAR file via a text editor before providing to Cloudflare Support.
+</div>
+<p>Currently, only Chrome and Firefox can access the HAR feature by default. Other browsers either require a browser extension or cannot generate a HAR. When installing a browser extension, follow the instructions from the extension provider.</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Chrome</div>
+	<div class="dropdown-content">
+		<p>1. In a browser page, right-click anywhere and select <b>Inspect Element</b>.</p>
+		<p>2. The developer tools either appear at the bottom or left side of the browser. Click the <b>Network</b> tab. </p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/7MdbkL70GdvSFbMI4WTaHq/ae6263e63939e6155f60dccccbe7154c/image.png" alt="HAR network tab screenshot from Chrome developer tools">
+		<p>3. Check <b>Preserve log</b>.</p>
+		<p>4. Click record.</p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/48mAjN2IdJP9NWsDfetYUT/d5650dfa00afa42fe22e762179452fe3/image.png" alt="HAR record button in chrome dev tools.">
+		<p>5. Browse to the URL that causes issues. Once the issue is experienced, right click on any of the items within the <b>Network</b> tab and select <b>Save all as HAR with Content</b>.</p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/2nh0AU13KwCnJcwwhO7p1E/73561f8592c9784baf36d34d4281965b/image.png" alt="HAR save menu in Chrome developer tools.">
+		<p> 6. Attach the HAR file to your support ticket.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Firefox</div>
+	<div class="dropdown-content">
+		<p>1. From the application menu, select <b>Tools</b> &gt; <b>Web Developer</b> &gt; <b>Network</b> or press <i>Ctrl+Shift+I</i> (Windows/Linux) or <i>Cmd+Option+I</i> (OS X).</p>
+		<p>2. Browse to the URL that causes issues.</p>
+		<p>3. After duplicating the issue, right-click and choose <b>Save All As HAR</b>.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Microsoft Edge</div>
+	<div class="dropdown-content">
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Internet Explorer cannot build HAR files, but a similar functionality is described on <a href="https://msdn.microsoft.com/library/dn255004(v=vs.85).aspx">Microsoft Developer Network</a>.
+		</div>
+
+		1. Navigate to <b>Developer tools</b> (use <i>F12</i> as a shortcut) and select the <b>Network</b> tab.<p>2. Browse to the URL that causes issues.</p>
+		<p>3. After duplicating the issue, click on <b>Export as HAR</b> followed by <b>Save As...</b>.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Safari</div>
+	<div class="dropdown-content">
+		<p>1. In Safari, ensure a <b>Develop</b> menu appears at the top of the browser window. Otherwise, go to <b>Safari</b> &gt; <b>Preferences</b> &gt; <b>Advanced</b> and select <b>Show Develop Menu in menu bar</b></p>
+		<p>2. Navigate to <b>Develop</b> &gt; <b>Show Web Inspector</b>.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Web Inspector is not available until you browse a page other than Safari's starting page.
+		</div>
+		<p>3. Browse to the URL that causes issues.</p>
+		<p>4. Ctrl + click on a resource within Web Inspector and click <b>Export HAR</b>.</p>
+	</div>
+</div>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Mobile</div>
+	<div class="dropdown-content">
+		<p><b>For Android: </b></p>
+		<p>1. Enable USB Debugging mode on your mobile device.</p>
+		<p>2. Go to<code> chrome://inspect/#devices</code>.</p>
+		<p>3. If debugging mode is enabled, you will see your device listed below “Remote Target” like the example below:
+		</p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/56y2juD1TXLYqfBjANuvas/12f0d1a7856c5858fc3e7ba74ef8bbf5/step_1.jpg" alt="Where to find the Inspect Devices when in Debug Mode for Android.">
+		<p></p>
+		<p>4. Type in the URL, select <b>Open </b>and <b>inspect </b>to open Chrome’s DevTools.</p>
+		<p>5. Select the <b>Network</b> tab in the DevTools window.</p>
+		<p>6. Check <b>Preserve log</b>.</p>
+		<p>7. Click <b>record</b>.
+		</p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/5J1EcgR5lKE8PWU05hZtB4/f6ff3332dc20cff64779ee461c35f0dc/step_2_-_better.jpg" alt="Where to find the record button in Chrome's dev tools.">
+		<p></p>
+		<p></p>
+		<p>8. Browse to the URL that causes issues. Once the issue is experienced, right-click on any of the items within the <b>Network</b> tab and select <b>Save all as HAR with Content</b>.
+		</p>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/3xKO4qG2VFanIvIYW5V8d7/d963ba8c3fbaaaff6beaa0a18df8dcd6/step_3.png" alt="How to save HAR content. ">
+		<p>9. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in <a href="https://www.samsung.com/au/support/mobile-devices/screen-recorder/">Samsung's documentation here</a>.</p>
+		<hr>
+		<p><b>For iPhone:</b></p>
+		<p>Refer to <a href="https://support.okta.com/help/s/article/How-to-generate-a-HAR-capture-on-an-iOS-device?language=en_US">Okta </a>or <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW1">Apple's </a>support article on how to generate a HAR file from an iOS device. Attach the HAR file to your support ticket alongside a screen recording from the affected iOS device. Apple devices now have <a href="https://support.apple.com/en-us/HT207935">built-in screen recording functionality</a>.</p>
+	</div>
+</div>
+<hr>
+<h2 id="h_4IZMzZw77k933KxMy17g8C">Export Console Log</h2>
+<p>In certain situations when request is not issued or cancelled by the browser (for example, due to <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS">CORS</a>), we need to get JS console log output, in addition to the HAR file, to identify the root cause.</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Chrome</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Go to the <b>Console</b> tab from the Developer Tools bar.</li>
+			<li>Go to the Console Settings and select <b>Preserve Log</b>.</li>
+			<li>Leave the console open and perform the steps that reproduce the issue.</li>
+			<li>Right click on any of the items within the <b>Console</b> tab and select <b>Save as</b> log file.</li>
+			<li>Attach the log file to your support ticket.</li>
+		</ol>
+		<img src="https://images.ctfassets.net/slt3lc6tev37/3G1rqA6GrWTjFvO1w8vzzi/426880a2492f17baf4ffcbc1a3132505/console_snapshot.png" alt="How to find the console tab in Chrome's developer tools.">
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header"> In Firefox</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Go to the <b>Console</b> tab from the Web Developer Tools bar.</li>
+			<li>Go to the Console Settings and select <b>Persist Log</b> and <b>Show Timestamps</b>.</li>
+			<li>Leave the console open and perform the steps that reproduce the issue.</li>
+			<li>Right click, <b>Select All</b> messages and <b>Export Visible Messages to File</b>.</li>
+			<li>Attach the log file to your support ticket.</li>
+		</ol>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header"> In Microsoft Edge</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Go to the <b>Console</b> tab from the Developer Tools bar.</li>
+			<li>Go to the Console Settings and select <b>Preserve Log</b>.</li>
+			<li>Leave the console open and perform the steps that reproduce the issue.</li>
+			<li>Right click on any of the items within the <b>Console</b> tab and select <b>Save as</b> log file.</li>
+			<li>Attach the log file to your support ticket.</li>
+		</ol>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">In Safari</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Go to the <b>Console</b> tab from the Web Inspector bar.</li>
+			<li>Tick the box <b>Preserve Log</b>.</li>
+			<li>Leave the console open and perform the steps that reproduce the issue.</li>
+			<li>Select all the messages, right click and <b>Save Selected</b> to a log file.</li>
+			<li>Attach the log file to your support ticket.</li>
+		</ol>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<p></p>
+<hr>
+<h2 id="h_22b01241-01a5-4bed-a897-6e97cff5c288">Identify the Cloudflare data center serving your request</h2>
+<p><a href="https://www.cloudflare.com/network-map">A map of our data centers</a> is listed on the <a href="https://www.cloudflarestatus.com/">Cloudflare status page</a>, sorted by continent. The three-letter code in the data center name is the <a href="http://en.wikipedia.org/wiki/IATA_airport_code">IATA code</a> of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: <code>http://</code><code><i>www.example.com</i></code><code>/cdn-cgi/trace.</code></p>
+<p>Replace <i>www.example.com</i> with your domain and hostname.  Note the <b>colo</b> field from the output.</p>
+<p></p>
+<p></p>
+<hr>
+<h2 id="h_0c7f48b3-fc29-4266-8c63-477fe61a11c4">Troubleshoot requests with cURL</h2>
+<p>cURL is a command line tool for sending HTTP/HTTPS requests and is useful for troubleshooting:</p>
+<ul>
+	<li>HTTP/HTTPS Performance</li>
+	<li>HTTP Error Responses</li>
+	<li>HTTP Headers</li>
+	<li>APIs</li>
+	<li>Comparing Server/Proxy Responses</li>
+	<li>SSL Certificates</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">cURL is not installed by default in Windows and requires an <a href="http://curl.haxx.se/dlwiz/">install wizard</a>.
+</div>
+<p>Run the following command to send a standard HTTP GET request to your website (replace <i>www.example.com</i> with your domain and host name):</p>
+<p></p>
+<pre>curl -svo /dev/null http://<em>www.example.com</em>/
+</pre>
+<p>This example cURL command returns output detailing the HTTP response and request headers but discards the page body output. cURL output confirms the HTTP response and whether Cloudflare is currently proxying traffic for the site. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Review the <a href="https://curl.haxx.se/docs/manpage.html">cURL command options</a> for additional functionality.
+</div>
+<p>Expand the sections below for tips on troubleshooting HTTP errors, performance, caching, and SSL/TLS certificates:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">HTTP errors</div>
+	<div class="dropdown-content">
+		<p>When troubleshooting HTTP errors in responses from Cloudflare, test whether your origin caused the errors by sending requests directly to your origin web server. To troubleshoot HTTP errors, run a cURL directly to your origin web server IP address (bypassing Cloudflare’s proxy):</p>
+		<p></p>
+		<pre>curl -svo /dev/null http://example.com --connect-to ::203.0.113.34</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-tip">If you have multiple origin web servers, test each one to ensure there are no response differences. If you observe the issue when connecting directly to your origin web server, contact your hosting provider for assistance.
+		</div>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Performance</div>
+	<div class="dropdown-content">
+		<p>cURL measures latency or performance degradation for HTTP/HTTPS requests via the <a href="https://curl.haxx.se/docs/manpage.html#-w"><i>-w</i> or <i>--write-out</i> cURL options</a>. The example cURL below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:</p>
+		<p> </p>
+		<pre>curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
+\nHTTP Code: %{http_code} \
+\nHTTP Connect:%{http_connect} \
+\nNumber Connects: %{num_connects} \
+\nNumber Redirects: %{num_redirects} \
+\nRedirect URL: %{redirect_url} \
+\nSize Download: %{size_download} \
+\nSize Upload: %{size_upload} \
+\nSSL Verify: %{ssl_verify_result} \
+\nTime Handshake: %{time_appconnect} \
+\nTime Connect: %{time_connect} \
+\nName Lookup Time: %{time_namelookup} \
+\nTime Pretransfer: %{time_pretransfer} \
+\nTime Redirect: %{time_redirect} \
+\nTime Start Transfer: %{time_starttransfer} \
+\nTime Total: %{time_total} \
+\nEffective URL: %{url_effective}\n" 2&gt;&amp;1
+</pre>
+		<p><a href="https://blog.cloudflare.com/a-question-of-timing/">Explanation of this timing output</a> is found on the Cloudflare blog.</p>
+		<p></p>
+		<div class="cf-sidebar-2 cf-tip">As demonstrated in the preceding example, cleaner results are achieved by denoting a new line with <strong>\n</strong> before each variable. Otherwise, all metrics are displayed together on a single line.
+		</div>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Caching</div>
+	<div class="dropdown-content">
+		<p>cURL helps review the HTTP response headers that influence caching. In particular, review several HTTP headers when troubleshooting Cloudflare caching:</p>
+		<ul>
+			<li>CF-Cache-Status</li>
+			<li>Cache-control/Pragma</li>
+			<li>Expires</li>
+			<li>Last-Modified</li>
+			<li>S-Maxage</li>
+		</ul>
+		<p></p>
+		<div class="cf-sidebar-2 cf-note">Find specifics on <a href="https://support.cloudflare.com/hc/articles/202775670">Cloudflare's caching behavior</a> in Cloudflare’s Help Center.
+		</div>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">SSL/TLS certificates</div>
+	<div class="dropdown-content">
+		<h4>Reviewing Certificates with cURL</h4>
+		<p>The following cURL command shows the SSL certificate served by Cloudflare during an HTTPS request (replace <i>www.example.com</i> with your domain and host name):</p>
+		<p></p>
+		<pre>curl -svo /dev/null https://www.example.com/ 2&gt;&amp;1 | egrep -v "^{.*$|^}.*$|^* http.*$"</pre>
+		<p></p>
+		<div class="cf-sidebar-2 cf-tip">2<em>&gt;&amp;1 | egrep -v "^{.</em>$|^}.<em>$|^</em> http.*$" *cleans and parses the TLS handshake and certificate information.
+		</div>
+		<p>To display the origin certificate (assuming one is installed), replace <i>203.0.113.34</i> below with the actual IP address of your origin web server and replace <i>www.example.com</i> with your domain and host name:</p>
+		<p></p>
+		<pre>curl -svo /dev/null https://www.example.com --connect-to ::203.0.113.34 2&gt;&amp;1 | egrep -v "^{.*$|^}.*$|^* http.*$"</pre>
+		<h4>Testing TLS Versions</h4>
+		<p>If troubleshooting browser support or confirming what TLS versions are supported, cURL allows you to test a specific TLS version by adding one of the following options to your cURL:</p>
+		<ul>
+			<li>--tlsv1.0</li>
+			<li>--tlsv1.1</li>
+			<li>--tlsv1.2</li>
+			<li>--tlsv1.3</li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<hr>
+<h2 id="h_8654c523-e31e-4f40-a3c7-0674336a2753">Temporarily pause Cloudflare</h2>
+<p>For more details, refer to <a href="https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/manage-domains/pause-cloudflare/">Pause Cloudflare</a>.</p>
+<p></p>
+<p></p>
+<hr>
+<h2 id="h_b8cebafd-9243-40e9-9c44-d4b94ccd3a87">Perform a traceroute</h2>
+<p>Traceroute is a network diagnostic tool that measures the route latency of packets across a network. Most operating systems support the <i>traceroute</i> command. If you experience connectivity issues with your Cloudflare-proxied website and <a href="https://support.cloudflare.com/hc/articles/200172476">ask Cloudflare Support for assistance</a>, ensure to provide output from a traceroute.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Timeouts are possible for ping results because Cloudflare limits ping requests.
+</div>
+<p>Review the instructions below for running traceroute on different operating systems. Replace <i>www.example.com</i> with your domain and host name in the examples below:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Run traceroute on Windows</div>
+	<div class="dropdown-content">
+		<p>1. Open the <b>Start</b> menu.</p>
+		<p>2. Click <b>Run</b>.</p>
+		<p>3. To open the command line interface, type <b>cmd</b> and then click <b>OK</b>.</p>
+		<p>4. At the command line prompt, type:
+			For IPv4 -</p>
+		<p></p>
+		<pre>&gt; tracert <em>www.example.com</em></pre>
+		<p>For IPv6 -</p>
+		<p></p>
+		<pre>&gt; tracert -6 <em>www.example.com</em></pre>
+		<p>5. Press <b>Enter</b>.</p>
+		<p>6. You can copy the results to save in a file or paste in another program.</p>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Run traceroute on Linux</div>
+	<div class="dropdown-content">
+		<p>1. Open a terminal window.</p>
+		<p>2. At the command line prompt, type: </p>
+		<p>For IPv4 - </p>
+		<p></p>
+		<pre>&gt; traceroute <em>www.example.com</em></pre>
+		<p>For IPv6 - </p>
+		<p></p>
+		<pre>&gt; traceroute -6 <em>www.example.com</em></pre>
+		<p>3. You can copy the results to save in a file or paste in another program.</p>
+		<p></p>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Run traceroute on Mac OS</div>
+	<div class="dropdown-content">
+		<ol>
+			<li>Open the <b>Network Utility</b> application.</li>
+			<li>Click the <b>Traceroute</b> tab.</li>
+			<li>Type the <i>domain</i> or <i>IP address</i> in the appropriate input field and press <b>Trace</b>.</li>
+			<li>You can copy the results to save in a file or paste in another program.</li>
+		</ol>
+		<p>Alternatively, follow the same Linux traceroute instructions above when using the Mac OS terminal program.</p>
+	</div>
+</div>
+<hr>
+<h2 id="h_f7a7396f-ec41-4c52-abf5-a110cadaca7c">Add the CF-RAY header to your logs</h2>
+<p>The <b>CF-RAY</b> header traces a website request through Cloudflare's network. Provide the <b>CF-RAY </b>of a web request to Cloudflare support when troubleshooting an issue. You can also add <b>CF-RAY</b> to your logs by editing your origin web server configuration with the snippet below that corresponds to your brand of web server:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">For Apache web servers, add %{CF-Ray}i to LogFormat</div>
+	<div class="dropdown-content">
+		<p></p>
+		<pre>LogFormat "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-agent}i\" %{CF-Ray}i" cf_custom</pre>
+	</div>
+</div>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">For Nginx web servers, add '$http_cf_ray' to log_format</div>
+	<div class="dropdown-content">
+		<p></p>
+		<pre>log_format cf_custom '$remote_addr - $remote_user [$time_local] '
+'"$request" $status $body_bytes_sent '
+'"$http_referer" "$http_user_agent" '
+'$http_cf_ray';</pre>
+	</div>
+</div>
+<hr>
+<h2 id="h_6UDk1RsTwkoDD2fdvAeVpY">Perform a MTR</h2>
+<p>Traceroute (MTR) is a tool that combines traceroute and ping, which is another common method for testing network connectivity and speed. In addition to the hops along the network path, MTR shows constantly updating information about the latency and packet loss along the route to the destination. This helps in troubleshooting network issues by allowing you to see what’s happening along the path in real-time.</p>
+<p>MTR works by discovering the network path in a similar manner to traceroute, and then regularly sending packets to continue collecting information to provide an updated view into the network’s health and speed.</p>
+<p>Like traceroute, MTR can use ICMP or UDP for outgoing packets but relies on ICMP for return (Type 11: Time Exceeded) packets.</p>
+<p><b></b></p>
+<h3 id="undefined">How do I use MTR to generate network path report?</h3>
+<p><b>Using MTR on *NIX based machines</b></p>
+<p>Generally, we'd use MTR as the following:</p>
+<p><code>mtr -rw &lt;dest_hostname&gt;
+		e.g.:
+		mtr -rw one.one.one.one</code></p>
+<p>or with destination IP:</p>
+<p><code>mtr -rw &lt;dest_IP&gt;
+		e.g.:
+		mtr -rw 1.1.1.1</code></p><b></b>
+<p>Please refer to this documentation, which explains more about analysing MTR: <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/">How to read MTR</a>.<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/"></a></p>
+<hr>
+<h2 id="h_6S5XcNiYGQLLJo0Hnxys9w">Run Packet Captures</h2>
+<p><b>Why and when do you need Packet Captures?</b></p>
+<p>Issues that happen at the layers 3/4 occur before requests reaching Cloudflare's logging system, so they do not show up in the HTTP logs. Therefore, troubleshooting issues related to connection resets, packet loss or SSL handshake failures can be tricky without a deep investigation at the packet level.</p>
+<p>Some HTTP errors generated by Cloudflare, such as <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#520error">520s</a>, <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#524error">524s</a> and <a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors#525error">525s</a>, show underlying issues at layers 3/4, and might require a packet capture for further investigation.</p>
+<p><b>How to Run a Packet Capture</b></p>
+<p><b></b></p>
+<div class="cf-sidebar-2 cf-warning">Please be aware, if you transmit any sensitive information while a packet capture is running, it will be recorded.
+</div>
+<p>Cloudflare suggests <a href="https://www.wireshark.org/download.html">Wireshark</a> for running packet captures. For instructions on how to use the <i>tcpdump</i> command line, refer to <a href="https://www.wireshark.org/docs/wsug_html_chunked/AppToolstcpdump.html">this</a> article. </p>
+<ol>
+	<li>Close all programs/browser tabs that could be sending data in the background to avoid having to use a lot of display filters later.</li>
+	<li>Create your Wireshark capture filter (see <a href="https://wiki.wireshark.org/CaptureFilters">this</a> article for more information).</li>
+	<li>Select the appropriate interface (e.g. Wi-Fi: en0). If you're not sure which interface to use, Wireshark provides an I/O graph of each interface to give you a hint.</li>
+	<li>Click the blue shark fin icon in the top left-hand corner to start your packet capture. </li>
+	<li>Reproduce the issue while running capture.</li>
+	<li>Click the red square icon in the top left-hand corner to stop your packet capture. </li>
+	<li>Save as a pcap file and attach it to your support ticket.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="h_72a357d2-7fdb-47d8-a5c7-eadd8d60723e">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172476">Contacting Cloudflare Support</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/115003011431">Troubleshooting Cloudflare HTTP 5XX errors</a></li>
+	<li><a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/">Diagnosing network issues with MTR and traceroute</a></li>
+	<li><a href="https://curl.haxx.se/">cURL command line tool</a></li>
+</ul>
+<p> </p>

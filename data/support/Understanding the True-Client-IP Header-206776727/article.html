@@ -1,0 +1,13 @@
+<p><i>Learn how to see end-user IP addresses in origin requests with Cloudflare's True-Client-IP Header.</i></p>
+<hr>
+<h2 id="h_7EADhLcucMMgVFzramBnSA">Overview</h2>
+<p>Connections from Cloudflare to origin servers come from Cloudflare IPs. True-Client-IP is a solution that allows Cloudflare users to see the end user’s IP address, even when the traffic to the origin is sent directly from Cloudflare.</p>
+<p>For more details on <i>what</i> True-Client-IP is, refer to our <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#true-client-ip-enterprise-plan-only">product documentation</a>.</p>
+<hr>
+<h2 id="h_4bf7CC7xR9dZJjR4y6wwcG">Enable True-Client-IP Header</h2>
+<p>To add the <code>True-Client-IP</code> header to incoming requests, <a href="https://developers.cloudflare.com/rules/transform/managed-transforms/reference/">enable the <b>Add “True-Client-IP” header</b> Managed Transform</a>. </p>
+<p>For more information, refer to <a href="https://developers.cloudflare.com/rules/transform/managed-transforms/">Managed Transforms</a> in the developers documentation.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<strong>Note:</strong> Before Managed Transforms were available, you added the <code>True-Client-IP</code> header by enabling <strong>True-Client-IP Header</strong> in the <strong>Network</strong> app of the Cloudflare dashboard. The current recommended procedure is to enable the Managed Transform.
+</div>

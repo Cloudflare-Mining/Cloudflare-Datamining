@@ -1,0 +1,102 @@
+<p><i>Learn about recommended Page Rules.</i></p>
+<hr>
+<h2 id="h_6aeaN5DmdIzzfE1Xqjv732">Recommended Page Rules to consider</h2>
+<p>Use <a href="https://support.cloudflare.com/hc/en-us/articles/218411427">Cloudflare Page Rules</a> to improve the user experience of your domain with<b> hardened security</b> and <b>enhanced site performance,</b> while <b>increasing reliability</b> and <b>minimizing bandwidth usage</b> for your origin server.</p>
+<p>Keep in mind that not all rules will be right for everyone, but these are some of the most popular.</p>
+<ul>
+	<li>301/302 Forwarding URL</li>
+	<li>Security Level &amp; Cache Level</li>
+	<li>Edge Cache TTL, Always Online, and Browser Cache TTL</li>
+</ul>
+<p></p>
+<h3 id="undefined">301/302 Forwarding URL</h3>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">Consider using <a href="https://developers.cloudflare.com/rules/url-forwarding/dynamic-redirects/">Dynamic Redirects</a> or <a href="https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/">Bulk Redirects</a> to forward or redirect traffic to a different URL due to ease of use, maintenance, and cost. You should only use Page Rules when Dynamic or Bulk Redirects do not meet your use case.
+</div>
+<p>Two common examples for using forwarding URLs are: </p>
+<ul>
+	<li>Defining the root as the canonical version of your domain </li>
+	<li>Directing visitors to a specific page with an easy to remember URL</li>
+</ul>
+<p>This example Page Rule configuration defines the root as the canonical version of your domain:</p>
+<ul>
+	<li>
+		<b>If the URL matches</b>: <code>*www.example.com/*</code>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Forwarding URL</i> | <b>Select status code: </b><i>301 Permanent Redirect</i>
+	</li>
+	<li>
+		<b>Enter destination URL:</b> <code>https://example.com/$2</code>
+	</li>
+</ul>
+<p>This example redirects visitors to a specific page with an easy to remember URL:</p>
+<ul>
+	<li>
+		<b>If the URL matches: </b><code>*www.example.com/fb*</code>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Forwarding URL</i> | <b>Select status code:</b> <i>302 Temporary Redirect</i>
+	</li>
+	<li>
+		<b>Enter destination URL:</b> <code>https://www.facebook.com/username</code>
+	</li>
+</ul>
+<p></p>
+<p></p>
+<h3 id="undefined"> Security and Cache Level</h3>
+<p>Certain sections of a website, like the login or admin section, have different security and performance requirements than your general public facing pages.</p>
+<p>The following example Page Rule configuration performs several security and cache adjustments for requests targeting a specific path:</p>
+<ul>
+	<li>
+		<b>If the URL matches</b> <code>example.com/user*</code>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Security Level</i> | <b>Value:</b> <i>High</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Cache Level</i> | <b>Value:</b> <i>Bypass</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Disable Apps</i>
+	</li>
+</ul>
+<p></p>
+<p></p>
+<h3 id="undefined">Edge Cache TTL and Browser Cache TTL</h3>
+<p>Certain resources on your domain will likely not change often. For these resources, taking advantage of aggressive caching options can significantly reduce the load on your server and bandwidth utilization.</p>
+<h4>Examples</h4>
+<p>In the following example Page Rule configuration, the target is a folder that holds the majority of the image assets as well as some other types of multimedia.</p>
+<ul>
+	<li>
+		<b>If the URL matches: </b><code>example.com/sites/default/files*</code>
+	</li>
+	<li>
+		<b>Setting</b>: <i>Browser Cache TTL</i> | <b>Value</b>: <i>a day</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Cache Level | </i><b>Value: </b><i>Cache Everything</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Edge Cache TTL | </i> <b>Value:</b> <i>7 days</i>
+	</li>
+</ul>
+<p>The following example Page Rule configuration applies unique rules for critical pages that do not change very often.</p>
+<ul>
+	<li>
+		<b>If the URL matches: </b><code>example.com/terms-of-service</code>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Browser Cache TTL</i> | <b>Value:</b> <i>a day</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Always Online | </i><b>Value: </b><i>On</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Cache Level</i> | <b>Value:</b> <i>Cache Everything</i>
+	</li>
+	<li>
+		<b>Setting:</b> <i>Edge Cache TTL</i> | <b>Value:</b> <i>a month</i>
+	</li>
+</ul>
+<p></p>

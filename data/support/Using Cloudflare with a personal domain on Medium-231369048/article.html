@@ -1,0 +1,14 @@
+<p><i></i></p>
+<hr>
+<h2 id="h_54eCtf6uCeE4ZK7DcXs037">Overview</h2>
+<p>Setting up Cloudflare to work with a Medium publication requires several steps and can sometimes take several days before everything is working properly. This article contains the steps needed at each site and the approximate times.</p>
+<p>1. Go to <a href="https://medium.com/">medium.com</a> and create a publication using your Medium account. Note that Medium does not support custom domains with a standard Medium profile page (<b>medium.com/@username</b>). This will only work with a publication. To see complete instructions on creating a publication <a href="https://help.medium.com/hc/en-us/articles/214559417-New-Publication">click here</a>. </p>
+<p>2. Submit a request to Medium support for custom domain using <a href="https://help.medium.com/hc/en-us/requests/new?ticket_form_id=165177">this form</a>. In approximately 12-24 hours Medium will reply with a list of twelve A records and a CNAME that will need to be added to your DNS records in your Cloudflare account. The A records consist of 12 standard IP addresses, but the CNAME contains a custom token.</p>
+<p>3. The unique CNAME will consist of a domain and a target. Medium instructions typically encourage adding <b>.domain.com</b> or <b>.subdomain.domain.com </b>to the domain string, but Cloudflare customers do not need to include <b>.domain.com</b>. If pointing to a standard domain just include the string (we add the domain automatically). If pointing to a subdomain just include the subdomain without the domain.</p>
+<p>4. Make sure that all A records are proxied through Cloudflare (orange clouded). Do not proxy CNAME records (grey cloud). CNAME flattening should also be turned on. The CNAME configuration is only necessary while Medium is securing the SSL certificate. After it has been applied the CNAME can be removed.</p>
+<p>5. Go to the <b>Overview </b>tab of your Cloudflare <b>SSL/TLS </b>app and set SSL to <b>Full </b>or <b>Full (Strict)</b>.</p>
+<p></p>
+<p>Once the settings are configured correctly, Medium will validate the domain and obtain the SSL certificate. This can take 1-2 days, but sometimes longer. During this time you should expect your domain to direct to <b>medium.com</b>, or return an error. Once the SSL certificate has been applied you can change your CNAME settings, but the SSL setting must still be either Full or Full (Strict). </p>
+<p>
+
+</p>

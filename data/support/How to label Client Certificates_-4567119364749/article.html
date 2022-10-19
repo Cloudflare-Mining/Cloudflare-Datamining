@@ -1,0 +1,43 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_62f3UNTgHUv9agEtafQXjZ">Problem Description</a></li>
+		<li><a href="#h_2A9uvrlKcbsIkrZdXxpsc2">Root Cause</a></li>
+		<li><a href="#h_15mXFmlmLF12fIumU4iiz0">Solution</a></li>
+		<li><a href="#h_2I9ERoAWbStqHMY9q4v93o">Additional Information</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_62f3UNTgHUv9agEtafQXjZ">Problem Description</h2>
+<p><b>Applies to:</b>
+	Free ✅ / Pro ✅ / Business ✅ / Enterprise ✅</p>
+<p>When <a href="https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate">generating Client Certificates at Cloudflare</a> for use with <a href="https://developers.cloudflare.com/api-shield/products/mtls/configure">API Shield™</a> to protect your API or web application, it's hard to differentiate the generated certificates.</p>
+<hr>
+<h2 id="h_2A9uvrlKcbsIkrZdXxpsc2">Root Cause</h2>
+<p>The option to generate private key and CSR with Cloudflare is meant for simpler cases and the certificates will be generated with just "CN=Cloudflare, C=US" </p>
+<p></p>
+<hr>
+<h2 id="h_15mXFmlmLF12fIumU4iiz0">Solution</h2>
+<p>If you need to differentiate client certificates for your clients on a "per organization" basis, I would recommend you to generate your own private key and CSR. When you generate private key and CSR, you can then enter information that will be incorporated into your certificate request.</p>
+<p>For example, if you run the following command (with OpenSSL installed):</p>
+<p><code>openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr</code></p>
+<p>You can then specify:</p>
+<p><code>Country Name (2 letter code) []:</code></p>
+<p><code>State or Province Name (full name) []:</code></p>
+<p><code>Locality Name (eg, city) []:</code></p>
+<p><code>Organization Name (eg, company) []:</code></p>
+<p><code>Organizational Unit Name (eg, section) []:</code></p>
+<p><code>Common Name (eg, fully qualified host name) []:</code></p>
+<p><code>Email Address []:
+	</code></p>
+<p>Probably, adding Country Name and Organization Name will be enough, but you can provide as much info as you need or want.</p>
+<p>Those additional info will be included in the Certificate Subject, allowing you to easily identify which certificate belongs to which client, and making it easy to, for example, revoke a specific certificate, if and when needed.</p>
+<p>Here's an example on how it will look (with Country, Organization Name, and Organizational Unit Name) in Cloudflare Dashboard:</p><img src="https://images.ctfassets.net/slt3lc6tev37/2Z4c79KikKbF1pDBsd3rug/8ad4162c774c66f333b3cabb6a1031d4/chrome_mQRJVOpkTQ.png" alt="">
+<p></p>
+<hr>
+<h2 id="h_2I9ERoAWbStqHMY9q4v93o">Additional Information</h2>
+<p>References:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/introducing-api-shield/">Introducing API Shield</a></li>
+</ul>
+<p></p>

@@ -1,0 +1,69 @@
+<p><i>Learn more about how to handle failed payments for Cloudflare plans and add-ons or subscrictions.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#SXvtpKkb3dxkr97fnvQGP">Overview</a></li>
+		<li><a href="#h_10Y3WAWFvMoVNJRfGXDGtU">Payment Method Validation</a></li>
+		<li><a href="#gq3i7QxxnQvWr8S7TiPgQ">Common reasons for failed payments</a></li>
+		<li><a href="#2Q3oIZ5F0f6bRJCLI9izPy">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="SXvtpKkb3dxkr97fnvQGP">Overview</h2>
+<p>If payment for a new Cloudflare plan or add-on/subscription fails, you may need to ask your bank to remove a hold, update your Cloudflare billing information, or confirm that your account has sufficient funds</p>
+<p>If payment for a recurring charge for a Cloudflare plan or add-on/subscription is unsuccessful after five (5) days, your account is automatically downgraded to a Free plan. Downgrading to a Free plan does not suspend your website, but you will lose any subscriptions or add-on services associated with the Pro, Business, or Enterprise plan.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The five-day grace period for failed payments on recurring Cloudflare charges includes weekends and holidays. For example, if your payment fails on a Monday, your account will automatically downgrade to a Free plan without additional add-ons or subscriptions the following Friday.
+</div>
+<p>After confirming your payment method information, we suggest <a href="https://support.cloudflare.com/hc/en-us/articles/360033922371">manually updating your plan type</a> and subscriptions using the Cloudflare dashboard.</p>
+<hr>
+<h2 id="h_10Y3WAWFvMoVNJRfGXDGtU">Payment Method Validation</h2>
+<p>All changes to payment methods must now pass validation before being accepted. An error will result if the payment details are incorrect. </p>
+<p>Below are common validation methods as well as next steps to rectify the issue:</p>
+<p></p>
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">Credit Card as a payment method</div>
+	<div class="dropdown-content">
+		<p><b>Address validation - </b>The address entered is checked against a database to verify if it is correct. If there is a mismatch the verification will fail.</p>
+		<p><b>Card address validation - </b>The address entered on the Cloudflare Dashboard is validated against the address that the card is registered with at the card provider. If there is a mismatch the verification will fail.</p>
+		<p><b>CVC validation - </b>The CVC code is verified against the card entered. If there is a mismatch, the verification will fail. If the card is not accepted for use on our website it will be rejected.</p>
+		<p><b>Card type validation - </b>The card type is being validated, which means that card types that we do not support will fail. Not all card types are supported by us, this means that some Visa and Mastercard methods may not be supported.
+
+		</p>
+		<p></p>
+	</div>
+</div>
+
+<div class="dropdown-section">
+	<div id="undefined" class="dropdown-header">PayPal as a payment method</div>
+	<div class="dropdown-content">
+		<p><b>Address validation </b>- The address entered is checked against a database to verify if it is correct. If there is a mismatch the verification will fail.</p>
+		<p><b>Email validation </b>- A verification email is sent to the address on file for your PayPal account.
+
+		</p>
+	</div>
+</div>
+<hr>
+<h2 id="gq3i7QxxnQvWr8S7TiPgQ">Common reasons for failed payments</h2>
+<h3>Bank hold</h3>
+<p>The bank or card issuer has placed a hold or other similar measure that prevents Cloudflare from charging the card on file. The email you received alerting you about the failed payment lists the specific reason for the decline.</p>
+<p>Contact your bank to check for any restriction that would prevent Cloudflare from successfully processing your payment.</p>
+<h3>Incorrect billing information</h3>
+<p>The billing information that Cloudflare has on file is inaccurate or incomplete. Also, the credit card on file might have expired.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Gift cards and pre-payment cards may not be accepted for payment as they are not associated with a billing address.
+</div>
+<p>To ensure all billing information is current and accurate, see <a href="https://support.cloudflare.com/hc/en-us/articles/200170236-How-do-I-update-my-billing-information-">Updating your Cloudflare billing information</a>.</p>
+<h3>Insufficient funds</h3>
+<p>Cloudflare was unable to collect payment due to insufficient funds in the account on file. Contact your financial institution to ensure fund availability.</p>
+<h3>Cloudflare Registrar domain purchases</h3>
+<p>Cloudflare processes payments for Registrar domain transfers one at a time, which may trigger a failed payment for users that purchase multiple domains at a time. </p>
+<p>For example, if you register five (5) domains in one day, you will be charged five times. This may be flagged as fraud by your credit card company.</p>
+<p>Contact your financial institution to ensure that this payment will be processed.</p>
+<hr>
+<h2 id="2Q3oIZ5F0f6bRJCLI9izPy">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170286">Cloudflare billing policy</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/205610698">Understanding Cloudflare invoices</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/200170236">Updating your Cloudflare billing information</a></li>
+</ul>
+<p></p>

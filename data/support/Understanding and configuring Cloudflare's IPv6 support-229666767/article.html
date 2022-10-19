@@ -1,0 +1,72 @@
+<p><em>Learn how Cloudflare supports IPv6 traffic and the features Cloudflare recommends if your origin web server or application software does not support IPv6 traffic.</em></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_a843bd18-988d-41ff-8df6-81b0b2a31f3d">IPv6 support overview</a></li>
+		<li><a href="#h_2fa0b554-3fd2-44a3-9a77-ee116c31b8c3">Configure IPv6 compatibility</a></li>
+		<li><a href="#h_877db671-916a-4085-9676-8eb27eaa2a91">Enable Pseudo IPv4</a></li>
+		<li><a href="#h_117db6c9-d54c-4d44-8445-271ebbb2b240">Troubleshoot an IPv6 network issue</a></li>
+		<li><a href="#h_079b79ff-4034-4f4a-b687-22dfd7be544e">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_a843bd18-988d-41ff-8df6-81b0b2a31f3d">IPv6 support overview</h2>
+<p>Cloudflare provides free IPv6 support to all domains without requiring additional configuration or hardware.</p>
+<p>If your origin web server is not compatible with IPv6, Cloudflare allows toggling <strong>IPv6 Compatibility</strong> to <em>Off </em>for domains on <strong>Enterprise</strong> plans.</p>
+<p>Alternatively, if clients connect to your Cloudflare-proxied domain via IPv6 but the origin web server uses older software that only understands IPv4 formatted IP addresses, use Cloudflare’s <strong>Pseudo IPv4</strong> feature mentioned below.</p>
+<hr>
+<h2 id="h_2fa0b554-3fd2-44a3-9a77-ee116c31b8c3">Configure IPv6 compatibility</h2>
+<p>If your hosting provider supports IPv6 for your origin web server, Cloudflare’s IPv6 Compatibility allows you to route IPv6 connections through Cloudflare's global network when proxying <em>AAAA</em> DNS records. When both IPv4 and IPv6 connections are available, Cloudflare prefers IPv4.</p>
+<p>Domains on <strong>Enterprise </strong>plans can toggle IPv6 compatibility within the Cloudflare dashboard:</p>
+<ol>
+	<li>Login to your Cloudflare account.</li>
+	<li>Select the appropriate domain.</li>
+	<li>Click the <strong>Network</strong> app.</li>
+	<li>Toggle <strong>IPv6 Compatibility</strong> <em>Off </em>or <em>On</em>.</li>
+</ol>
+<p>Note that even when IPv6 is disabled, domains receive IPv6 traffic via the Tor network. To completely disable all IPv6 traffic, you can:</p>
+<ul>
+	<li>Disable <strong>Onion Routing</strong> via the <strong>Network</strong> tab of the Cloudflare dashboard. Read <a href="https://support.cloudflare.com/hc/articles/203306930">Understanding Cloudflare Tor support and Onion Routing</a>.</li>
+	<li>Use a firewall rule to block <em>0:0:0:0:0:0:0:0/0</em> using the filter <code>ip.src in {::/0}</code>. Learn how to create <a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/">firewall rules in Cloudflare</a>.</li>
+</ul>
+<p> </p>
+<hr>
+<h2 id="h_877db671-916a-4085-9676-8eb27eaa2a91">Enable Pseudo IPv4</h2>
+<p>Some older origin server analytics and fraud detection software expect IP addresses in an IPv4 format and do not support IPv6 addresses.</p>
+<p>To support migrating to IPv6, Cloudflare's <strong>Pseudo IPv4 </strong>provides an IPv6 to IPv4 translation service for all Cloudflare domains.</p>
+<p><strong>Pseudo IPv4</strong> uses the <a href="https://tools.ietf.org/html/rfc1112#section-4">Class E IPv4 address space</a> to provide as many unique IPv4 addresses corresponding to IPv6 addresses as possible.</p>
+<ul>
+	<li>Example Class E IPv4 address: <code>240.16.0.1</code>
+	</li>
+	<li>Example IPv6 address: <code>2400:cb00:f00d:dead:beef:1111:2222:3333</code>
+	</li>
+</ul>
+<div class="cf-sidebar-2 cf-note">Class E IPv4 addresses are designated as experimental and are not used for production Internet traffic.</div>
+<p>The three options available for configuring <strong>Pseudo IPv4</strong> are:</p>
+<ul>
+	<li>
+		<em>Off </em>- This is the default value.
+	</li>
+	<li>
+		<em>Add Header </em>- Cloudflare automatically adds the <code>Cf-Pseudo-IPv4 </code>header with a Class E IPv4 address hashed from the original IPv6 address.
+	</li>
+	<li>
+		<em>Overwrite Headers</em> - Cloudflare overwrites the existing <code>Cf-Connecting-IP</code><strong> </strong>and <code>X-Forwarded-For</code><strong> </strong>headers with a pseudo IPv4 address while preserving the real IPv6 address in a <code>Cf-Connecting-IPv6</code> header.
+	</li>
+</ul>
+<div class="cf-sidebar-2 cf-note">When using <em>Overwrite Headers</em>, no software changes are necessary in your origin web server.</div>
+<hr>
+<h2 id="h_117db6c9-d54c-4d44-8445-271ebbb2b240">Troubleshoot an IPv6 network issue</h2>
+<p>Provide the following information to <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a> if you experience issues with IPv6 connectivity:</p>
+<ul>
+	<li>A <a href="https://support.cloudflare.com/hc/articles/203118044#h_b8cebafd-9243-40e9-9c44-d4b94ccd3a87">traceroute</a> that demonstrates the IPv6 connection issues,</li>
+	<li>the<a href="https://support.cloudflare.com/hc/articles/203118044#h_22b01241-01a5-4bed-a897-6e97cff5c288"> Cloudflare data center serving your request</a> when the IPv6 issues occur, and</li>
+	<li>confirmation of whether disabling <a href="https://support.cloudflare.com/hc/articles/229666767#h_2fa0b554-3fd2-44a3-9a77-ee116c31b8c3">IPv6 Compatibility</a> resolves the issue.</li>
+</ul>
+<p> </p>
+<hr>
+<h2 id="h_079b79ff-4034-4f4a-b687-22dfd7be544e">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/203118044">Gathering information to troubleshoot site issues</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172476">Contacting Cloudflare support</a></li>
+</ul>
+<p> </p>

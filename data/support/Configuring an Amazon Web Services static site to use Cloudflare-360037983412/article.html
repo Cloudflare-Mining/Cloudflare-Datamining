@@ -1,0 +1,127 @@
+<p><i>Learn how to set up your static content site using Amazon Web Services S3 buckets and Cloudflare proxying.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#2CUQZmG3krFZdSo8thFJo7">Overview</a></li>
+		<li><a href="#3Pc20UO7uY3kc51PbUJn9o">Configure your AWS S3 buckets</a></li>
+		<li><a href="#77nNxWyQf69T1a78gPlCi9">Configure bucket policies to allow Cloudflare IP addresses</a></li>
+		<li><a href="#2ELMrSZnIFDAD82rqG5E26">Upload static content to your S3 bucket</a></li>
+		<li><a href="#7cfgBbwp6AWK3kYuC6K0ZY">Set up your site on Cloudflare</a></li>
+		<li><a href="#3Fue5PSpcB4YupWRirqqLj">Troubleshooting</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="2CUQZmG3krFZdSo8thFJo7">Overview</h2>
+<p>You can use Cloudflare to proxy sites that rely on Amazon Web Services (AWS) to store static content using Amazon's Simple Storage Service (S3).</p>
+<p>This article assumes that:</p>
+<ul>
+	<li>your site is associated with a registered domain, and</li>
+	<li>you have static content, such as images or HTML pages, to add to your S3 bucket.</li>
+</ul>
+<p>To get started, follow the instructions below.</p>
+<hr>
+<h2 id="3Pc20UO7uY3kc51PbUJn9o">Configure your AWS S3 buckets</h2>
+<p>An AWS S3 bucket is a public cloud storage resource. These buckets are similar to file folders, and store objects containing data and descriptive metadata. Learn more about <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html"><u></u></a><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">Working with Amazon S3 Buckets</a>.</p>
+<p>In this guide, let's assume that you'd like your site to be available via both:</p>
+<ul>
+	<li>A subdomain URL, such as <code>https://www.example.com</code>, and</li>
+	<li>the root domain URL, such as <code>https://example.com</code>.</li>
+</ul>
+<p>To accomplish this, you will need to configure two S3 buckets by completing the tasks below.</p>
+<h3>Task 1 - Set up an S3 bucket for a subdomain</h3>
+<p>To create and configure your subdomain S3 bucket, follow these instructions from Amazon:</p>
+<ol>
+	<li>Use the AWS management console to <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html">Create an S3 Bucket</a>. For the <b>Bucket name</b>, use the subdomain URL without the<code> https://</code> part; for example, <code>www.example.com</code>.</li>
+	<li>Then, <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html">Configure an S3 Bucket for Static Website Hosting</a>. After you save the static website hosting configuration, you can skip disabling public access for your bucket.</li>
+</ol>
+<h3>Task 2 - Set up an S3 bucket for a root domain</h3>
+<p>After you've set up your subdomain bucket, you can create and configure your root domain bucket. Follow these instructions from Amazon:</p>
+<ol>
+	<li>Use the AWS management console to <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html">Create an S3 Bucket</a>. For the <b>Bucket name</b>, use the domain URL without the<code> https://</code> part; for example, <code>example.com</code>.</li>
+	<li>Next, you need to redirect requests from this bucket's URL to the subdomain bucket URL you created. Follow the steps in <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html"></a><a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/redirect-website-requests.html"></a><a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/redirect-website-requests.html">Redirect Requests to an S3 Bucket Hosted Website to Another Host</a>. For <b>Target Bucket or Domain</b>, enter the same bucket name that you used for the subdomain bucket in Task 1; for example, <code>www.example.com</code>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="77nNxWyQf69T1a78gPlCi9">Configure bucket policies to allow Cloudflare IP addresses</h2>
+<p>Now that you've created your buckets and enabled hosting for static content, you can set up permissions to allow Cloudflare to access your bucket. This ensures that your site only responds to requests coming from the Cloudflare proxy. This is the <a href="https://www.cloudflare.com/ips/">current list of IP address ranges</a> used by the Cloudflare proxy.</p>
+<p>To set up your policy:</p>
+<ol>
+	<li>Follow these instructions from Amazon to <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html">Add an S3 Bucket Policy</a>. </li>
+	<li>For the step where you enter the policy in the <b>Bucket policy editor</b>, use this sample to fill out the needed JSON code, making sure to replace:<ul>
+			<li> <code>www.example.com</code> (appearing in <code>"Resource": "arn:aws:s3:::www.example.com/*"</code>) with the S3 bucket name for your subdomain URL.</li>
+			<li>The placeholder IP addresses with the current list of <a href="https://www.cloudflare.com/ips">Cloudflare IP addresses</a>
+			</li>
+		</ul>
+	</li>
+</ol>
+<p></p>
+<pre>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::www.example.com/*",
+            "Condition": {
+                "IpAddress": {
+                    "aws:SourceIp": [
+                        "192.2.0.1" (example IP address),
+                        "192.2.0.2" (example IP address),
+                        (add all IPs listed at https://www.cloudflare.com/ips)
+                    ]
+                }
+            }
+        }
+    ]
+}
+</pre>
+<p></p>
+<hr>
+<h2 id="2ELMrSZnIFDAD82rqG5E26">Upload static content to your S3 bucket</h2>
+<p>To add static content to your S3 bucket, follow Amazon's instructions for <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/upload-objects.html">Uploading Files and Folders to an S3 Bucket</a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">When uploading static content, you must select the correct properties and permissions. Also for each uploaded resource, enter the most appropriate value for the <em>Content-Type</em> header as this affects the way your content displays.
+</div>
+<hr>
+<h2 id="7cfgBbwp6AWK3kYuC6K0ZY">Set up your site on Cloudflare</h2>
+<p>Before setting up your site on Cloudflare, ensure you have the URLs or endpoints for both your subdomain and root buckets. For each bucket, you can find the URL in the AWS S3 console under <b>Properties</b> &gt; <b>Static website hosting</b> &gt; <b>Endpoint</b>.</p>
+<p>To get started:</p>
+<ol>
+	<li>Follow the instructions to <a href="https://support.cloudflare.com/hc/articles/201720164">Create a Cloudflare account and add a website</a>. If you already have an account, you can go directly to <b>Add a domain to Cloudflare</b>. </li>
+	<li>When you get to the step to verify your DNS records in the <b>DNS query results</b> screen, you will need to create two new CNAME records for the subdomain and root domain URLs, respectively.</li>
+	<li>Click <b>Add Record</b> to create the subdomain DNS record (e.g., <code>www.example.com</code>). Follow instructions for adding a <i>CNAME</i> record in <a href="https://support.cloudflare.com/hc/articles/360019093151">Managing DNS records in Cloudflare</a>. <ul>
+			<li>In the <b>Name</b> field, enter the subdomain name; for example, <i>www</i>.</li>
+			<li>In the <b>Value</b> field, enter the subdomain bucket endpoint. Do not include the <code>https://</code> part.</li>
+			<li>Click <b>Save</b>.</li>
+		</ul>
+	</li>
+	<li>Next for the root domain (e.g. <code>example.com</code>), click <b>Add Record. </b>Follow instructions for adding a <i>CNAME</i> record in <a href="https://support.cloudflare.com/hc/articles/360019093151">Managing DNS records in Cloudflare</a>. <ul>
+			<li>In the <b>Name</b> field, enter the root domain name; for example, <i>example.com</i>.</li>
+			<li>In the <b>Value</b> field, the root domain bucket endpoint. Do not include the <code>https://</code> part.</li>
+			<li>Click <b>Save</b>.</li>
+		</ul>
+	</li>
+	<li>To finish, <a href="https://support.cloudflare.com/hc/articles/205195708"><u>Change your domain nameservers to Cloudflare</u></a><u>.</u>
+	</li>
+</ol>
+<p>Once your site is fully configured in Cloudflare, your visitors can access your AWS S3 hosted content using either the subdomain or root domain endpoint you set up. </p>
+<p></p>
+<hr>
+<h2 id="3Fue5PSpcB4YupWRirqqLj">Troubleshooting</h2>
+<p><i>I keep getting “Invalid hostname: Use ‘@’ to represent the root domain.” when creating DNS records in Cloudflare.</i><i><b> </b></i></p>
+<ul>
+	<li>Make sure you are creating CNAME records and not another record type.</li>
+</ul>
+<hr>
+<p><i>Cloudflare is my domain name registrar and I don’t know how to change my nameservers.</i></p>
+<ul>
+	<li>You don’t need to change the nameservers if you are already using Cloudflare as a domain name registrar.</li>
+</ul>
+<hr>
+<p><i>My static HTML pages show up as HTML code without any formatting on my domain.</i></p>
+<ul>
+	<li>Ensure that you have selected the correct metadata options in <b>Set Properties </b>&gt;<b> Metadata </b>&gt;<b> Header: </b><i>Content-Type</i>, <b>Value: </b><i>text/html</i>.</li>
+</ul>
+<p></p>

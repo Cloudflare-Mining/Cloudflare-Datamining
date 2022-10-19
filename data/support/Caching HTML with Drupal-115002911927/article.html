@@ -1,0 +1,43 @@
+<p><i>Learn how to cache HTML with Drupal.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_1QNO3CGAVlCwyNDbLpRggM">Overview</a></li>
+		<li><a href="#h_6ixfDO9WT9V8IBHNDWFtzE">Enable Browser Cache TTL</a></li>
+		<li><a href="#h_6JyMJi8Fhl0DuxCFisGJix">Set Bypass Cache on Cookie</a></li>
+		<li><a href="#h_2rLaW7o7VT3R5L7BUac55v">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_1QNO3CGAVlCwyNDbLpRggM">Overview</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Customers in all Cloudflare plans can cache HTML files using Cloudflare <strong>Page Rules</strong>. However, only customers in the Business and Enterprise plans are able to bypass HTML caching whenever a cookie is sent with a <em>Bypass Cache on Cookie</em> setting using Cloudflare <strong>Page Rules</strong>.
+</div>
+<p>You can <a href="https://blog.cloudflare.com/caching-anonymous-page-views/">cache HTML of inactive users</a> and static content including likes, images, scripts, and stylesheets when using Drupal with Cloudflare by using the <i>Cache Everything</i> <b>Page Rule</b> with <b>Bypass Cache on Cookie </b>enabled.</p>
+<hr>
+<h2 id="h_6ixfDO9WT9V8IBHNDWFtzE">Enable Browser Cache TTL</h2>
+<p>To avoid browser cache collisions, you must first enable Bypass Cache on Cookie in the Cloudflare dashboard. To do this,</p>
+<p>1. Log in to your Cloudflare account.</p>
+<p>2. Click on the <b>Caching </b>app.</p>
+<p>3. Scroll down to <b>Browser Cache TTL </b>and choose <b>Respect Existing Headers</b>.</p>
+<p>Now, you can configure the <i>Bypass Cache on Cookie</i> setting using Cloudflare <b>Page Rules</b>. </p>
+<hr>
+<h2 id="h_6JyMJi8Fhl0DuxCFisGJix">Set Bypass Cache on Cookie</h2>
+<p>When the <i>Bypass Cache on Cookie</i> page rule matches the criteria we set, Cloudflare will cache static images and other files, without caching HTML. To configure <i>Bypass Cache on Cookie</i> using <b>Page Rules</b>, </p>
+<p>1. Log in to your Cloudflare account.</p>
+<p>2. Go to <b>Rules &gt; Page Rules</b>.</p>
+<p>3. Click the <b>Create Page Rule</b> button and enter your domain. In the example below, the domain is www.orangeclouded.com. </p>
+<p>4. Configure the Page Rules settings as follows:</p>
+<ul>
+	<li>use the <i>* </i>wildcard operator on the Drupal installation path to match the entire domain</li>
+	<li>set the Cache Level to Cache Everything</li>
+	<li>text, set <i>Bypass Cache on Cookie </i>rule for the Drupal variables. This rule will override the C<i>ache Everything </i>rule when a user is logged into Drupal</li>
+	<li>set the <i>Edge Cache TTL </i>setting to determine how long a Cloudflare cache server should store cached files.</li>
+</ul>
+<p>If you use additional cookies in your Drupal site, you must ensure these are in the Regex statement: <i>SESS.*|phpsessid=.*</i></p><img src="https://images.ctfassets.net/slt3lc6tev37/5SvVacibRGyMoGBT4XwElS/97bf0de2465a16a0e0cc023079b422bf/page_rules_caching_static_HTML_with_drupal.png" alt="The Create a Page Rule dialog with the Cache Level set to Cache Everything, Bypass Cache on Cookie set to Drupal variables, and Edge Cache TTL set to a month.">
+<p>Now, when Cloudflare is serving cached files, a C<i>F-Cache-Status: HIT</i> header will be sent back to the browser.</p>
+<hr>
+<h2 id="h_2rLaW7o7VT3R5L7BUac55v">Related Resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172516">Caching Cloudflare CDN</a></li>
+</ul>
+<p></p>

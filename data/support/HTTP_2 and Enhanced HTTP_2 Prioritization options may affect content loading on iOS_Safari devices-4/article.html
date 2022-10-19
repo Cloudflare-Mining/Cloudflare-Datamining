@@ -1,0 +1,22 @@
+<p><i>Safari and iOS users may notice that sites fail to open correctly with HTTP/2 options enabled.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_6yQaUjU9PYPXkn3LdF5SFd">Problem Description</a></li>
+		<li><a href="#h_4XAkXsZcmOsOycw4oDPQAK">What does HTTP/2 Prioritization do?</a></li>
+		<li><a href="#h_7JXsUZ2u54T7J5jqO0fNvQ">Workaround</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_6yQaUjU9PYPXkn3LdF5SFd">Problem Description</h2>
+<p>Some visitors using iOS/Safari browsers may notice not being able to load the site properly, such as images not displaying or content taking too long to load.</p>
+<hr>
+<h2 id="h_4XAkXsZcmOsOycw4oDPQAK">What does HTTP/2 Prioritization do?</h2>
+<p>With HTTP/2, by default, Cloudflare follows the order requested by the browser. This ordering varies from browser to browser and causes a significant difference in performance.</p>
+<p>With Enhanced HTTP/2 Prioritization enabled, resources are delivered in the optimal order for the fastest experience across all browsers. This option optimizes the order of resource delivery, independent of the browser.
+</p>
+<hr>
+<h2 id="h_7JXsUZ2u54T7J5jqO0fNvQ">Workaround</h2>
+<p>Check if <b>Enhanced HTTP/2 Prioritization</b> feature under the <b>Speed </b>app &gt; <b>Optimization</b> tab is enabled.</p>
+<p>The speed of loading web content from the user’s perspective is dependent on the order in which the resources load. The greatest improvements will be experienced by visitors using Safari and Edge browsers. In some cases, this may not occur.</p>
+<p>If you are seeing the behavior on iOS or Safari devices, disable the<b> Enhanced HTTP/2 Prioritization </b>feature under the <b>Speed </b>app &gt; <b>Optimization</b> tab.</p>
+<p>On occasion, this option can sometimes re-enable automatically if <b>HTTP/2</b> feature on the <b>Network </b>app is enabled. You may need to disable <b>HTTP/2</b> feature first.</p>

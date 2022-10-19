@@ -1,0 +1,42 @@
+<p><i>Learn how to best set up your personal Cloudflare account as a WP Engine customer, in addition to WP Engine’s Cloudflare security and performance benefits.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_426pkVmK3QbBCaOwSbVdwX">Using Cloudflare with WP Engine</a></li>
+		<li><a href="#h_57NyVyHcsEc61ZHxNEssJ5">Enabling O2O for your WP Engine Website</a></li>
+		<li><a href="#h_3rQGirDrKZQ41iihOTcwPW">Best practices</a></li>
+		<li><a href="#h_4DgxYAgp3tcSACs1ic5jEG">For additional help</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_426pkVmK3QbBCaOwSbVdwX">Using Cloudflare with WP Engine</h2>
+<h2>Overview</h2>
+<p>Cloudflare partners with WP Engine to provide WP Engine customers’ websites with Cloudflare’s performance and security benefits. Cloudflare’s Enterprise plans are still available for WP Engine customers that choose to use their own Cloudflare accounts to proxy web traffic. For those customers, enabling Cloudflare with your own account in addition to WP Engine’s Cloudflare benefits is called Orange-to-Orange (O2O). O2O applies both your and WP Engine’s security settings.</p>
+<p>Website visitor →  End customer Cloudflare (CF) Proxy → WP Engine CF Proxy → WP Engine Origin  </p><img src="https://images.ctfassets.net/slt3lc6tev37/5NUXJH73eEOCS2pFDCcRXA/2ff59f7565189772f346e7717e9f5e13/o2o.png" alt="In an orange to orange topology, Cloudflare Enterprise customers can apply their own account security settings to WP Engine.">
+<h3><b>Benefits</b></h3>
+<p>O2O benefits include your own version of Cloudflare’s WAF, Bot Management, and Waiting Room.  Additionally, O2O routing also enables you to take advantage of Cloudflare zones specifically customized for WP Engine traffic.</p>
+<hr>
+<h2 id="h_57NyVyHcsEc61ZHxNEssJ5">Enabling O2O for your WP Engine Website</h2>
+<p>Enabling O2O is only available on the Cloudflare Enterprise plan.</p>
+<p>To enable O2O on your account, you need to configure a CNAME DNS record that points your Hostname to the domain xx.<b>wpewaf.com</b> (Global Edge Security) or xx.<b>wpenginepowered.com</b> (Advanced Network). Set <b>Proxy status</b> to <b>Proxied</b>.</p>
+<hr>
+<h2 id="h_3rQGirDrKZQ41iihOTcwPW">Best practices</h2>
+<p>Certain Cloudflare features, when used with O2O, can interrupt the flow of traffic to your WP Engine site or display incorrect data to your visitors. Review best practices before using the following features:</p>
+<h3><b>Caching</b></h3>
+<p>Customers should disable caching for all hostnames that are routed through WP Engine’s Cloudflare zones. Traffic for other hostnames that are not CNAME’d to WP Engine’s zone can remain cached on the customer’s zone.</p>
+<p>By default, caching of HTML pages is disabled. Customers should not enable caching of HTML because WP Engine performs its own caching outside of Cloudflare. </p>
+<h4><b>Page Rules</b></h4>
+<p>Incorrectly configured Page Rules that match the subdomain used for WP Engine may block or interfere with the flow of visitors to your website. </p>
+<h3><b>Workers</b></h3>
+<p>Similar to Page Rules, Workers may interfere with the flow of traffic to your website.  Write Workers with caution. We recommend excluding the subdomain used with WP Engine from the Worker route.</p>
+<h3><b>Argo Smart Routing</b></h3>
+<p>Argo Smart Routing is not compatible for customers that have O2O configured. Traffic for other hostnames that are not CNAME’d to WP Engine’s zones can receive the benefits of Argo smart routing.  If you are using Global Edge Security which runs Argo natively, Argo Smart Routing will be less effective for O2O traffic.</p>
+<h3><b>Load Balancing</b></h3>
+<p>Load Balancing is not compatible with O2O for customers.</p>
+<p>Cloudflare cannot fix any configuration issues with the above features for O2O.</p>
+<hr>
+<h2 id="h_4DgxYAgp3tcSACs1ic5jEG">For additional help</h2>
+<p>If you are a WP Engine customer setting up your own Cloudflare account, contact your Cloudflare account team or Cloudflare Support for help in resolving issues. Cloudflare will refer to WP Engine if there are technical issues that Cloudflare cannot resolve.</p>
+<h3><b>Frequently asked questions</b></h3>
+<p>For questions about WP Engine specific setup, please refer to <a href="https://wpengine.com/support/advanced-network/"><u><b>https://wpengine.com/support/advanced-network/</b></u></a></p>
+<h3><b>How do I resolve SSL Errors? </b></h3>
+<p>If you see SSL errors, check to see if you have a CAA record.  If you do have a CAA record, check that it permits SSL certificates to be issued by "digicert.com" and "letsencrypt.org".  Here is a helpful <a href="https://support.cloudflare.com/hc/articles/115000310832-Certification-Authority-Authorization-CAA-FAQ#h_645975761191543365946939">Cloudflare support article</a>.</p>

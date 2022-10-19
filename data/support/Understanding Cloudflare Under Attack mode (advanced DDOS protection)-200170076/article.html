@@ -1,0 +1,41 @@
+<p><i>Learn how Cloudflare Under Attack mode protects your site and how to enable it when your site is under DDOS attack.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#4kib25x8t8BgoZzovHG74K">Overview</a></li>
+		<li><a href="#46JHelNg7SGPSK0osE9scS">Enable Cloudflare Under Attack mode</a></li>
+		<li><a href="#5nwmUhf1q0mAFVWg8TTJtl">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="4kib25x8t8BgoZzovHG74K">Overview</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The Under Attack mode requires your browser to support Javascript to display and pass the interstitial page, it is expected to observe impact on third party analytics tools.
+</div>
+<p>Cloudflare <b>Under Attack Mode</b> performs additional security checks to help mitigate Layer 7 DDoS attacks. Validated users access your website and suspicious traffic is blocked. It is designed to be used as one of the last resorts when a zone is under attacked (and will temporarily pause access to your site and impact your site analytics). </p>
+<p>When enabled, visitors see an interstitial page.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">To preview what <strong>I'm Under Attack</strong> mode looks like for your visitors, go to your <a href="dash.cloudflare.com/?to=/:account//configurations/custom-pages">Custom pages</a>. Then, next to <strong>I'm Under Attack Mode™ Challenge</strong>, click <strong>Custom Pages</strong> &gt; <strong>View default</strong>.
+</div>
+<p>The "<i>Checking your browser before accessing</i>..." challenge determines whether to block or allow a visitor within 5 seconds.  After passing the challenge, the visitor does not observe another challenge until the duration configured in <b>Challenge Passage</b>,<b> </b>in <b>Security</b> &gt; <b>Settings</b>.</p>
+<hr>
+<h2 id="46JHelNg7SGPSK0osE9scS">Enable Cloudflare Under Attack mode</h2>
+<p>Depending on your needs, there are a couple of possible configurations:</p>
+<ul>
+	<li>Enable <b>I'm Under Attack</b> mode outright for the entire site:<ul>
+			<li>Log in to your Cloudflare account.</li>
+			<li>Select the domain to protect.</li>
+			<li>Navigate to <b>Security</b> &gt; <b>Settings</b>.</li>
+			<li>Under <b>Security Level</b>, select <b>I'm Under Attack!</b>.</li>
+		</ul>
+	</li>
+	<li>Enable <b>I'm Under Attack</b> mode for specific web pages or sections of your site using a <a href="https://support.cloudflare.com/hc/en-us/articles/200172336-How-do-I-create-a-Page-Rule-">page rule</a>.</li>
+	<li>Conversely, use a <a href="https://support.cloudflare.com/hc/en-us/articles/200172336-How-do-I-create-a-Page-Rule-">page rule</a> to <i>disable </i><b>I'm Under Attack</b> mode (by setting <b>Security Level</b> to <b>Off</b>) for areas of your site broken by <b>I'm Under Attack </b>mode or known to not be attacked.</li>
+	<li>Enable <b>I'm Under Attack</b> mode (or other challenges) for specific ASNs (hosts/ISPs that own IP addresses — for example, Amazon has an ASN, Cloudflare has an ASN, Comcast has an ASN, etc.; this is useful if a majority of attack traffic comes from a specific host), countries, or IP ranges using <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-How-do-I-control-access-to-my-site-">IP Access Rules</a>.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="5nwmUhf1q0mAFVWg8TTJtl">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170136">Challenge Passage</a></li>
+</ul>
+<p></p>

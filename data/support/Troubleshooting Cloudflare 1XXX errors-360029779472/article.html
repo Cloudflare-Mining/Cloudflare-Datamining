@@ -1,0 +1,406 @@
+<p><i>Diagnose and resolve 1XXX errors for Cloudflare proxied sites.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_e6ba4204-ab4f-464b-afdc-e8177e418e34">Overview</a></li>
+		<li><a href="#error1000">Error 1000: DNS points to prohibited IP</a></li>
+		<li><a href="#error1001">Error 1001: DNS resolution error</a></li>
+		<li><a href="#error1002a">Error 1002: DNS points to Prohibited IP</a></li>
+		<li><a href="#error1003">Error 1002: Restricted</a></li>
+		<li><a href="#error1003">Error 1003 Access Denied: Direct IP Access Not Allowed</a></li>
+		<li><a href="#error1004">Error 1004: Host Not Configured to Serve Web Traffic</a></li>
+		<li><a href="#error100610071008">Errors 1006, 1007, 1008 or 1106 Access Denied: Your IP address has been banned</a></li>
+		<li><a href="#h_1FIuVf9XCVpeBz8Cn6B0Fj">Errors 1009 Access Denied: Country or region banned</a></li>
+		<li><a href="#error1010">Error 1010: The owner of this website has banned your access based on your browser's signature</a></li>
+		<li><a href="#error1011">Error 1011: Access Denied (Hotlinking Denied)</a></li>
+		<li><a href="#error1012">Error 1012: Access Denied</a></li>
+		<li><a href="#error1013">Error 1013: HTTP hostname and TLS SNI hostname mismatch</a></li>
+		<li><a href="#error1014">Error 1014: CNAME Cross-User Banned</a></li>
+		<li><a href="#error1015">Error 1015: You are being rate limited</a></li>
+		<li><a href="#error1016">Error 1016: Origin DNS error</a></li>
+		<li><a href="#error1018">Error 1018: Could not find host</a></li>
+		<li><a href="#error1019">Error 1019: Compute server error</a></li>
+		<li><a href="#error1020">Error 1020: Access denied</a></li>
+		<li><a href="#error1023">Error 1023: Could not find host</a></li>
+		<li><a href="#error1025">Error 1025: Please check back later</a></li>
+		<li><a href="#h_W81O7hTPalZtYqNYkIHgH">Error 1033: Argo Tunnel error</a></li>
+		<li><a href="#h_4eD6Gcxp4zQqS4ciCJaLt0">Error 1034: Edge IP Restricted</a></li>
+		<li><a href="#error1035">Error 1035: Invalid request rewrite (invalid URI path)</a></li>
+		<li><a href="#error1036">Error 1036: Invalid request rewrite (maximum length exceeded)</a></li>
+		<li><a href="#error1037">Error 1037: Invalid rewrite rule (failed to evaluate expression)</a></li>
+		<li><a href="#error1040">Error 1040: Invalid request rewrite (header modification not allowed)</a></li>
+		<li><a href="#error1041">Error 1041: Invalid request rewrite (invalid header value)</a></li>
+		<li><a href="#error1101">Error 1101: Rendering error</a></li>
+		<li><a href="#error1102">Error 1102: Rendering error</a></li>
+		<li><a href="#error1104">Error 1104: A variation of this email address is already taken in our system. Only one variation is allowed.</a></li>
+		<li><a href="#h_302a97f3-eba3-4c0a-a589-76ba95f60dcf">Error 1200: Cache connection limit</a></li>
+		<li><a href="#h_80755d09-43f2-4656-b1f9-2989196b30a6">Related resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_e6ba4204-ab4f-464b-afdc-e8177e418e34">Overview</h2>
+<p>The errors described in this document might occur when visiting a website proxied by Cloudflare. For Cloudflare API or dashboard errors, review our <a href="https://api.cloudflare.com/">Cloudflare API documentation</a>. HTTP 409, 530, 403, 429 errors are the HTTP error codes returned in the HTTP status header for a response. 1XXX errors appear in the HTML body of the response.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Cloudflare <strong><a href="https://support.cloudflare.com/hc/articles/200172706">Custom Error Pages</a></strong> allows customers to change the appearance of the default error pages discussed in this article.
+</div>
+<p>If the resolutions within each error description below do not resolve the error, <a href="https://support.cloudflare.com/hc/articles/200172476">contact Cloudflare Support</a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Only the site owner may contact Cloudflare for technical support. Lookup contact information for a domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>.
+</div>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Dedicated email support is available for all Pro, Business, and Enterprise Plan users. Business and Enterprise plan users also have access to chat support. If you require additional support, explore <a href="https://www.cloudflare.com/plans/">our plans</a>.
+</div>
+<hr>
+<h2 id="error1000">Error 1000: DNS points to prohibited IP</h2>
+<h3>Common causes</h3>
+<p>Cloudflare halted the request for one of the following reasons:</p>
+<ul>
+	<li>An A record within your Cloudflare DNS app points to a <a href="https://www.cloudflare.com/ips/">Cloudflare IP address</a>, or a Load Balancer Origin points to a proxied record.</li>
+	<li>Your Cloudflare DNS A or CNAME record references another reverse proxy (such as an nginx web server that uses the proxy_pass function) that then proxies the request to Cloudflare a second time.</li>
+	<li>The request X-Forwarded-For header is longer than 100 characters.</li>
+	<li>The request includes two X-Forwarded-For headers.</li>
+	<li>A Server Name Indication (SNI) issue or mismatch at the origin.</li>
+</ul>
+<h3>Resolution</h3>
+<ul>
+	<li>If an A record within your Cloudflare DNS app points to a <a href="https://www.cloudflare.com/ips/">Cloudflare IP address</a>, update the IP address to your origin web server IP address.</li>
+	<li>There is a reverse-proxy at your origin that sends the request back through the Cloudflare proxy. Instead of using a reverse-proxy, contact your hosting provider or site administrator to configure an HTTP redirect at your origin.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="error1001">Error 1001: DNS resolution error</h2>
+<h3>Common causes</h3>
+<ul>
+	<li>A web request was sent to a Cloudflare IP address for a non-existent Cloudflare domain.</li>
+	<li>An external domain that is not on using Cloudflare has a CNAME record to a domain active on Cloudflare</li>
+	<li>The target of the DNS CNAME record does not resolve.</li>
+	<li>A CNAME record in your Cloudflare DNS app requires resolution via a DNS provider that is currently offline.</li>
+	<li>
+		<a href="https://developers.cloudflare.com/cache/about/always-online">Always Online</a> is enabled for a <a href="https://developers.cloudflare.com/ssl/ssl-for-saas">Custom Hostname (SSL for SaaS</a>) domain.
+	</li>
+</ul>
+<h3>Resolution</h3>
+<p>A non-Cloudflare domain cannot CNAME to a Cloudflare domain unless the non-Cloudflare domain is added to a Cloudflare account. </p>
+<p>Attempting to directly access DNS records used for <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">Cloudflare CNAME setups</a> also causes error 1001 (For example: <i>www.example.com.cdn.cloudflare.net</i>).</p>
+<p>Disable <a href="https://developers.cloudflare.com/cache/how-to/enable-always-online">Always Online</a> if using <a href="https://developers.cloudflare.com/ssl/ssl-for-saas">Custom Hostnames (SSL for SaaS)</a>.</p>
+<p></p>
+<hr>
+<h2 id="error1002a">Error 1002: DNS points to Prohibited IP</h2>
+<h3>Common causes</h3>
+<ul>
+	<li>A DNS record in your Cloudflare DNS app points to one of <a href="https://www.cloudflare.com/ips/">Cloudflare's IP addresses</a>.</li>
+	<li>An incorrect target is specified for a CNAME record in your Cloudflare DNS app.</li>
+	<li>Your domain is not on Cloudflare but has a CNAME that refers to a Cloudflare domain.</li>
+</ul>
+<h3>Resolution</h3>
+<p>Update your Cloudflare <i>A</i> or <i>CNAME record</i> to point to your origin IP address instead of a Cloudflare IP address:</p>
+<ol>
+	<li>Contact your hosting provider to confirm your origin IP address or CNAME record target.</li>
+	<li>Log in to your Cloudflare account.</li>
+	<li>Select the domain that generates error 1002.</li>
+	<li>Select the <b>DNS </b>app.</li>
+	<li>Click <b>Value</b> for the <i>A </i>record to update.</li>
+	<li>Update the <i>A</i> record.</li>
+</ol>
+<p>To ensure your origin web server doesn’t proxy its own requests through Cloudflare, configure your origin webserver to resolve your Cloudflare domain to:</p>
+<ul>
+	<li>The internal NAT’d IP address, or</li>
+	<li>The public IP address of the origin web server.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="error1003">Error 1002: Restricted</h2>
+<h3>Common cause</h3>
+<p>The Cloudflare domain resolves to a local or disallowed IP address or an IP address not associated with the domain.</p>
+<h3>Resolution</h3>
+<p>If you own the website:</p>
+<ol>
+	<li>Confirm your origin web server IP addresses with your hosting provider,</li>
+	<li>Log in to your Cloudflare account, and</li>
+	<li>Update the A records in the Cloudflare DNS app to the IP address confirmed by your hosting provider.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="error1003">Error 1003 Access Denied: Direct IP Access Not Allowed</h2>
+<h3>Common cause</h3>
+<p>A client or browser directly accesses a <a href="https://www.cloudflare.com/ips">Cloudflare IP address</a>.</p>
+<h3>Resolution</h3>
+<p>Browse to the website domain name in your URL instead of the Cloudflare IP address.</p>
+<hr>
+<h2 id="error1004">Error 1004: Host Not Configured to Serve Web Traffic</h2>
+<h3>Common causes</h3>
+<ul>
+	<li>Cloudflare staff disabled proxying for the domain due to abuse or terms of service violations.</li>
+	<li>DNS changes have not yet propagated or the site owner’s DNS <i>A records </i>point to <a href="https://www.cloudflare.com/ips">Cloudflare IP addresses</a>.</li>
+</ul>
+<h3>Resolution</h3>
+<p>If the issue persists beyond 5 minutes, <a href="https://support.cloudflare.com/hc/articles/200172476">contact Cloudflare Support</a>.</p>
+<hr>
+<h2 id="error100610071008">Errors 1006, 1007, 1008 or 1106 Access Denied: Your IP address has been banned</h2>
+<h3>Common causes</h3>
+<p>A Cloudflare customer blocked traffic from your client or browser.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Error 1006 also occurs in the Cloudflare <strong>Workers</strong> app under the <strong>Preview</strong> tab when a customer uses <strong><a href="https://support.cloudflare.com/hc/articles/115001595131">Zone Lockdown</a></strong> or any other Cloudflare security feature to block the Google Cloud Platform IPs that the <strong>Preview</strong> tab relies upon.
+</div>
+<h3>Resolution</h3>
+<p>Request the website owner to investigate their Cloudflare security settings or allow your client IP address. Since the website owner blocked your request, Cloudflare support cannot override a customer’s security settings.</p>
+<hr>
+<h2 id="h_1FIuVf9XCVpeBz8Cn6B0Fj">Errors 1009 Access Denied: Country or region banned</h2>
+<h3>Common causes</h3>
+<p>The owner of the website (e.g. example.com) has banned the country or region your IP address in from accessing the website.</p>
+<h3>Resolution</h3>
+<p>Ensure your IP address is allowed under the <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Access Rules</a> security feature.</p>
+<hr>
+<h2 id="error1010">Error 1010: The owner of this website has banned your access based on your browser's signature</h2>
+<h3>Common cause</h3>
+<p>A website owner blocked your request based on your client's web browser.</p>
+<h3>Resolution</h3>
+<p>Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>. Site owners disable <b>Browser</b> <b>Integrity Check</b> via the <b>Settings</b> tab of the <b>Firewall</b> app.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Since the website owner performed the blocking, Cloudflare support cannot override a customer’s security settings.
+</div>
+<hr>
+<h2 id="error1011">Error 1011: Access Denied (Hotlinking Denied)</h2>
+<h3>Common cause</h3>
+<p>A request is made for a resource that uses <a href="https://support.cloudflare.com/hc/articles/200170026">Cloudflare hotlink protection</a>.</p>
+<h3>Resolution</h3>
+<p>Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>.  <b>Hotlink Protection</b> is managed via the Cloudflare <b>Scrape Shield</b> app.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Since the website owner performed the blocking, Cloudflare support cannot override a customer’s security settings.
+</div>
+<hr>
+<h2 id="error1012">Error 1012: Access Denied</h2>
+<h3>Common cause</h3>
+<p>A website owner forbids access based on malicious activity detected from the visitor’s computer or network (ip_address). The most likely cause is a virus or malware infection on the visitor’s computer.</p>
+<h3>Resolution</h3>
+<p>Update your antivirus software and run a full system scan. Cloudflare can not override the security settings the site owner has set for the domain. To request website access, contact the site owner to allow your IP address. If you cannot determine how to contact the website owner, lookup contact information for the domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Since the website owner performed the blocking, Cloudflare support cannot override a customer’s security settings.
+</div>
+<hr>
+<h2 id="error1013">Error 1013: HTTP hostname and TLS SNI hostname mismatch</h2>
+<h3>Common cause</h3>
+<p>The hostname sent by the client or browser via <a href="https://developers.cloudflare.com/fundamentals/glossary#server-name-indication-sni">Server Name Indication</a> (SNI) does not match the request host header.</p>
+<h3>Resolution</h3>
+<p>Error 1013 is commonly caused by the following:</p>
+<ul>
+	<li>your local browser setting the incorrect SNI host header, or</li>
+	<li>a network proxying SSL traffic caused a mismatch between SNI and the Host header of the request.</li>
+</ul>
+<p>Test for an SNI mismatch via an online tool such as: <a href="https://www.sslshopper.com/ssl-checker.html">SSL Shopper</a>.</p>
+<p>Provide Cloudflare Support the following information:</p>
+<ol>
+	<li>A <a href="https://support.cloudflare.com/hc/articles/203118044">HAR file</a> captured while duplicating the error.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="error1014">Error 1014: CNAME Cross-User Banned</h2>
+<h3>Common cause</h3>
+<p>By default, Cloudflare prohibits a DNS <i>CNAME record</i> between domains in different Cloudflare accounts. <i>CNAME records</i> are permitted within a domain (<i>www.example.com</i> CNAME to <i>api.example.com</i>) and across zones within the same user account (<i>www.example.com</i> CNAME to <i>www.example.net</i>) or using our <a href="https://www.cloudflare.com/saas/">Cloudflare for SaaS</a> solution.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">
+	<a href="https://www.cloudflare.com/apps/">Cloudflare Apps</a> are not currently supported by <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/">SSL for SaaS</a>, therefore any app using a domain configured on our SaaS solution may produce 1014 errors.
+</div>
+<h3>Resolution</h3>
+<p>To allow CNAME record resolution to a domain in a different Cloudflare account, the domain owner of the CNAME target must use <a href="https://www.cloudflare.com/saas/">Cloudflare for SaaS</a>; more specially our <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/">SSL for SaaS </a>solution.</p>
+<hr>
+<h2 id="error1015">Error 1015: You are being rate limited</h2>
+<h3>Common cause</h3>
+<p>The site owner implemented <a href="https://support.cloudflare.com/hc/articles/115001635128">Rate Limiting</a> that affects your visitor traffic.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<em>Unable to purge</em> is another 1015 error code relating to <a href="https://developers.cloudflare.com/cache/how-to/purge-cache">Cloudflare cache purge</a>. Retry the cache purge and contact <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare support</a> if errors persist.
+</div>
+<h3>Resolution</h3>
+<ul>
+	<li>If you are a site visitor, contact the site owner to request exclusion of your IP from rate limiting.</li>
+	<li>If you are the site owner, review <a href="https://support.cloudflare.com/hc/articles/115001635128">Cloudflare Rate Limiting thresholds</a> and adjust your Rate Limiting configuration. </li>
+	<li>If your Rate Limiting blocks requests in a short time period (i.e. 1 second) try increasing the time period to 10 seconds.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">If you expect a new Cloudflare Worker to exceed rate limits, refer to the <a href="https://developers.cloudflare.com/workers/platform/limits">Workers documentation</a> for guidance.
+</div>
+<hr>
+<h2 id="error1016">Error 1016: Origin DNS error</h2>
+<h3>Common cause</h3>
+<p>Cloudflare cannot resolve the origin web server’s IP address.</p>
+<p>Common causes for Error 1016 are:</p>
+<ul>
+	<li>A missing DNS <i>A record </i>that mentions origin IP address.</li>
+	<li>A <i>CNAME record </i>in the Cloudflare DNS points to an unresolvable external domain.</li>
+	<li>The origin host names (CNAMEs) in your Cloudflare <a href="https://developers.cloudflare.com/load-balancing/">Load Balancer</a> default, region, and fallback pools are unresolvable. Use a fallback pool configured with an origin IP as a backup in case all other pools are unavailable. </li>
+	<li>When creating a Spectrum app with a CNAME origin, you need first to create a CNAME on the Cloudflare DNS side that points to the origin. Please see <a href="https://developers.cloudflare.com/spectrum/how-to/cname-origins">Spectrum CNAME origins</a> for more details</li>
+</ul>
+<h3>Resolution</h3>
+<p>To resolve error 1016:</p>
+<ol>
+	<li>Verify your Cloudflare DNS settings include an <i>A record</i> that points to a valid IP address that resolves via a <a href="https://dnschecker.org/">DNS lookup tool</a>.</li>
+	<li>For a CNAME record pointing to a different domain, ensure that the target domain resolves via a <a href="https://dnschecker.org/">DNS lookup tool</a>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="error1018">Error 1018: Could not find host</h2>
+<h3>Common causes</h3>
+<ul>
+	<li>The Cloudflare domain was recently activated and there is a delay propagating the domain’s settings to the Cloudflare edge network.</li>
+	<li>The Cloudflare domain was created via a Cloudflare partner (e.g., a hosting provider) and the provider's DNS failed.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Error 1018 is returned via a HTTP 409 response code.
+</div>
+<h3>Resolution</h3>
+<p>Contact <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a> with the following details:</p>
+<ol>
+	<li>Your domain name</li>
+	<li>A screenshot of the 1018 error including the <b>RayID </b>mentioned in the error message</li>
+	<li>The time and timezone the 1018 error occurred</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="error1019">Error 1019: Compute server error</h2>
+<h3>Common cause</h3>
+<p>A Cloudflare Worker script recursively references itself.</p>
+<h3>Resolution</h3>
+<p>Ensure your Cloudflare Worker does not access a URL that calls the same Workers script.</p>
+<hr>
+<h2 id="error1020">Error 1020: Access denied</h2>
+<h3>Common cause</h3>
+<p>A client or browser is blocked by a Cloudflare customer’s Firewall Rules.</p>
+<h3>Resolution</h3>
+<p>If you are not the website owner, provide the website owner with a screenshot of the 1020 error message you received.</p>
+<p>If you are the website owner:</p>
+<ol>
+	<li>Retrieve a screenshot of the 1020 error from your customer</li>
+	<li>Search the <a href="https://developers.cloudflare.com/waf/analytics"><b>Firewall Events Log</b></a> within the <b>Overview </b>tab of your Cloudflare <b>Firewall </b>app for the <b>RayID </b>or client IP Address from the visitor’s 1020 error message.</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Convert the UTC timestamp of the 1020 error to your local timezone when searching in the <strong>Firewall Events Log</strong>.
+</div>
+<p>3. Assess the cause of the block and either update the <b>Firewall Rule </b>or allow the visitor’s IP address in <a href="https://support.cloudflare.com/hc/articles/217074967"><b>IP Access Rules</b></a>.</p>
+<hr>
+<h2 id="error1023">Error 1023: Could not find host</h2>
+<h3>Common causes</h3>
+<ul>
+	<li>If the owner just signed up for Cloudflare it can take a few minutes for the website's information to be distributed to our global network. Something is wrong with the site's configuration.</li>
+	<li>Usually, this happens when accounts have been signed up with a partner organization (e.g., hosting provider) and the provider's DNS fails.</li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Error 1023 is returned via a HTTP 409 response code.
+</div>
+<h3>Resolution</h3>
+<p>Contact <a href="https://support.cloudflare.com/hc/articles/200172476">Cloudflare Support</a> with the following details:</p>
+<ol>
+	<li>Your domain name</li>
+	<li>A screenshot of the 1023 error including the <b>RayID </b>mentioned in the error message</li>
+	<li>The time and timezone the 1023 error occurred</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="error1025">Error 1025: Please check back later</h2>
+<h3>Common cause</h3>
+<p>A request is not serviced because the domain has reached <a href="https://developers.cloudflare.com/workers/platform/limits">plan limits for Cloudflare Workers</a>.</p>
+<h3>Resolution:</h3>
+<p>Purchase the Unlimited Workers plan via the <a href="https://dash.cloudflare.com/redirect?account=workers/plans">Plans page</a> on the Workers dashboard.
+
+</p>
+<hr>
+<h2 id="h_W81O7hTPalZtYqNYkIHgH">Error 1033: Argo Tunnel error</h2>
+<h3>Common cause</h3>
+<p>You've requested a page on a website (<code>tunnel.example.com</code>) that is on the Cloudflare network. The host (<code>tunnel.example.com</code>) is configured as an Argo Tunnel, and Cloudflare is currently unable to resolve it.</p>
+<h3>Resolution</h3>
+<ul>
+	<li>
+		<b>If you are a visitor of this website</b>: Please try again in a few minutes.
+	</li>
+	<li>
+		<b>If you are the owner of this website</b>: Ensure that <i>cloudflared</i> is running and can reach the network. You may wish to enable <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/routing-to-tunnel/lb">load balancing</a> for your tunnel.
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_4eD6Gcxp4zQqS4ciCJaLt0">Error 1034: Edge IP Restricted</h2>
+<h3>Common cause</h3>
+<p>Customers who previously pointed their domains to <code>1.1.1.1</code> will now encounter <b>1034 error</b>. This is due to a new edge validation check in Cloudflare's systems to prevent misconfiguration and/or potential abuse.</p>
+<h3>Resolution</h3>
+<p>Ensure DNS records are pointed to IP addresses you control, and in the case a placeholder IP address is needed for “originless” setups, use the IPv6 reserved address <code>100::</code> or the IPv4 reserved address <code>192.0.2.0</code>.</p>
+<hr>
+<h2 id="error1035">Error 1035: Invalid request rewrite (invalid URI path)</h2>
+<h3>Common cause</h3>
+<p>The value or expression of your rewritten URI path is not valid.</p>
+<p>This error also occurs when the destination of the URL rewrite is a path under <code>/cdn-cgi/</code>.</p>
+<h3>Resolution</h3>
+<p>Make sure that the rewritten URI path is not empty and it starts with a <code>/</code> (slash) character.</p>
+<p>For example, the following URI path rewrite expression is not valid:</p>
+<p><code>concat(lower(ip.geoip.country), http.request.uri.path)</code></p>
+<p>To fix the expression above, add a <code>/</code> prefix:</p>
+<p><code>concat("/", lower(ip.geoip.country), http.request.uri.path)</code></p>
+<hr>
+<h2 id="error1036">Error 1036: Invalid request rewrite (maximum length exceeded)</h2>
+<h3>Common cause</h3>
+<p>
+	The value or expression of your rewritten URI path or query string is too long.
+</p>
+<h3>Resolution</h3>
+<p>Use a shorter value or expression for the new URI path/query string value.
+</p>
+<p></p>
+<hr>
+<h2 id="error1037">Error 1037: Invalid rewrite rule (failed to evaluate expression)</h2>
+<h3>Common cause
+</h3>
+<p>The expression of the rewrite rule could not be evaluated. There are several causes for this error, but it can mean that one expression element contained an undefined value when it was evaluated.
+</p>
+<p>For example, you get a 1037 error when using the following URL rewrite dynamic expression and the <code>X-Source</code> header is not included in the request:</p>
+<p>
+	<code>http.request.headers["x-source"][0]</code>
+</p>
+<h3>Resolution
+</h3>
+<p>Make sure that all the elements of your rewrite expression are defined. For example, if you are referring to a header value, ensure the header is set.
+</p>
+<hr>
+<h2 id="error1040">Error 1040: Invalid request rewrite (header modification not allowed)</h2>
+<h3>Common cause</h3>
+<p>You are trying to modify an HTTP header that HTTP Request Header Modification Rules cannot change.</p>
+<h3>Resolution</h3>
+<p>Make sure you are not trying to modify one of the <a href="https://developers.cloudflare.com/rules/transform#http-request-header-modification-rules">reserved HTTP request headers</a>.</p>
+<hr>
+<h2 id="error1041">Error 1041: Invalid request rewrite (invalid header value)</h2>
+<h3>Common causes</h3>
+<p>The added/modified header value is too long or it contains characters that are not allowed.</p>
+<h3>Resolution</h3>
+<ul>
+	<li>Use a shorter value or expression to define the header value.</li>
+	<li>Remove the characters that are not allowed. See <a href="https://developers.cloudflare.com/rules/transform/create-header-modification-rule#format-of-http-request-header-names-and-values">Format of HTTP request header names and values</a> in Developer Docs for more information on the allowed characters.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="error1101">Error 1101: Rendering error</h2>
+<h3>Common cause</h3>
+<p>A Cloudflare Worker throws a runtime JavaScript exception.</p>
+<h3>Resolution:</h3>
+<p><a href="https://support.cloudflare.com/hc/articles/200172476#h_7b55d494-b84d-439b-8e60-e291a9fd3d16">Provide appropriate issues details</a> to Cloudflare Support.</p>
+<hr>
+<h2 id="error1102">Error 1102: Rendering error</h2>
+<h3>Common cause</h3>
+<p>A Cloudflare Worker exceeds a <a href="https://developers.cloudflare.com/workers/learning/debugging-workers#identifying-and-handling-errors-and-exceptions">CPU time limit</a>. CPU time is the time spent executing code (for example, loops, parsing JSON, etc). Time spent on network requests (fetching, responding) does not count towards CPU time.</p>
+<h3>Resolution</h3>
+<p>Contact the developer of your Workers code to optimize code for a reduction in CPU usage in the active Workers scripts.</p>
+<hr>
+<h2 id="error1104">Error 1104: A variation of this email address is already taken in our system. Only one variation is allowed.</h2>
+<h3>Common cause</h3>
+<p>This error can occur if an email has been added with some variation of the email you're trying to add. For example, <i>my+user@example.com</i> and <i>my.user@example.com</i> will be treated the same in our system.</p>
+<h3>Resolution</h3>
+<p>Login as the old user and change email to a "throwaway" address, which will free up the new email.</p>
+<hr>
+<h2 id="h_302a97f3-eba3-4c0a-a589-76ba95f60dcf">Error 1200: Cache connection limit</h2>
+<h3>Common cause</h3>
+<p>There are too many requests queued on Cloudflare's edge that are awaiting process by your origin web server.  This limit protects Cloudflare's systems.</p>
+<h3>Resolution</h3>
+<p>Tune your origin webserver to accept incoming connections faster.  Adjust your caching settings to improve cache-hit rates so that fewer requests reach your origin web server.  Reach out to your hosting provider or web administrator for assistance.</p>
+<hr>
+<h2 id="h_80755d09-43f2-4656-b1f9-2989196b30a6">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172476#h_7b55d494-b84d-439b-8e60-e291a9fd3d16">Contacting Cloudflare Support</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200172706">Customizing Cloudflare error pages</a></li>
+</ul>
+<p></p>

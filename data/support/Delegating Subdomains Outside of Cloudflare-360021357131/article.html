@@ -1,0 +1,51 @@
+<p><i>Subdomain delegation provides the flexibility to independently manage certain subdomains outside of Cloudflare.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_3bNxFp2RjzuiFN3lPaEUm0">Overview</a></li>
+		<li><a href="#h_EuHGsm2rRimG6f7gNbFS5">Delegate a subdomain</a></li>
+		<li><a href="#h_2hxdhJK1weuTSLJq9JWCAU">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_3bNxFp2RjzuiFN3lPaEUm0">Overview</h2>
+<p>Subdomain delegation allows different individuals, teams, or organizations to manage different subdomains of a site.
+
+</p>
+<div class="cf-sidebar-2 cf-note">DNS delegation is not possible for Cloudflare domains using a <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">partial setup</a>.
+</div>
+<p>For instance, consider <i>example.com</i> as a Cloudflare domain with w<i>ww.example.com</i> managed in Cloudflare’s <b>DNS</b> app and <i>internal.example.com</i> delegated to nameservers outside of Cloudflare. In this example, <i>internal.example.com</i> can now be managed by individuals who do not have access to Cloudflare credentials for the <i>example.com</i> domain.
+
+</p>
+<div class="cf-sidebar-2 cf-warning">Cloudflare’s CDN and security services are not applied to delegated subdomains.
+</div>
+<hr>
+<h2 id="h_EuHGsm2rRimG6f7gNbFS5">Delegate a subdomain</h2>
+<p>To delegate a subdomain such as <i>internal.example.com</i>, tell DNS resolvers where to find the zone file:</p>
+<p>1. Log in to the Cloudflare dashboard and select your account.</p>
+<p>2. Select the domain that contains the subdomain to be delegated.</p>
+<p>3. Go to <b>DNS</b>.</p>
+<p>4. Create <i>NS records </i>for the subdomain. For example:</p>
+<ul>
+	<li><code>internal.example.com NS ns1.externalhost.com</code></li>
+	<li><code>internal.example.com NS ns2.externalhost.com</code></li>
+	<li><code>internal.example.com NS ns3.externalhost.com</code></li>
+</ul>
+<p></p>
+<div class="cf-sidebar-2 cf-note">
+	<em>A records</em> for the subdomain are only required as glue records for nameservers that are located in the subdomain of the current zone that is being delegated.
+</div>
+<p>5. (Optional) If the delegated nameserver has DNSSEC enabled, add the <i>DS record </i>in the Cloudflare <b>DNS </b>app.
+</p>
+<p></p>
+<hr>
+<h2 id="h_2hxdhJK1weuTSLJq9JWCAU">Related Resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records">Managing DNS records in Cloudflare</a></li>
+	<li><a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup">Understanding a CNAME setup</a></li>
+	<li>
+		<a href="https://www.ietf.org/rfc/rfc1912.txt">Glue Records</a> (RFC 1912 Section 2.3)
+	</li>
+</ul>
+<p>
+
+</p>

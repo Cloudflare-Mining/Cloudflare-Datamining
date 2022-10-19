@@ -1,0 +1,24 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_3RbpPIOC49WgjelR2dblil">Problem Description</a></li>
+		<li><a href="#h_2Dyn4t12WjQwFXyyVN1msS">Root Cause</a></li>
+		<li><a href="#h_5ty6jaOnzpY0Se6cRanrJZ">Solution</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_3RbpPIOC49WgjelR2dblil">Problem Description</h2>
+<p>Sometimes a customer wants to disable all of the "WEAK" (UPPERCASE, yellow &amp; <b>bold</b>) cipher suites in their<a href="https://www.ssllabs.com/ssltest/"> Qualys SSL Labs</a> report(s).</p>
+<p>They can use Cloudflare API: <a href="https://api.cloudflare.com/#zone-settings-change-ciphers-setting">https://api.cloudflare.com/#zone-settings-change-ciphers-setting</a> to change the required settings </p>
+<p>But the problem arises when the SSL Labs naming conventions and Cloudflare naming conventions are not same
+
+</p>
+<hr>
+<h2 id="h_2Dyn4t12WjQwFXyyVN1msS">Root Cause</h2>
+<p>SSL Labs follow RFC Naming Conventions while Cloudflare follows OpenSSL cipher naming convention
+</p>
+<p></p>
+<hr>
+<h2 id="h_5ty6jaOnzpY0Se6cRanrJZ">Solution</h2>
+<p>SSL/TLS to OpenSSL cipher list can help in the conversion process. <a href="https://www.openssl.org/docs/man1.0.2/man1/ciphers.html">https://www.openssl.org/docs/man1.0.2/man1/ciphers.html</a> </p>
+<p></p>

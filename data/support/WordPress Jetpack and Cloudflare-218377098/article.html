@@ -1,0 +1,17 @@
+<p><i>Learn how to utilize WAF managed rules to protect Jetpack.</i></p>
+<hr>
+<h2 id="h_2Hspl7hW9Y72xFfTqivLfS">Overview</h2>
+<p>Cloudflare and Jetpack for WordPress should require no additional configuration to operate together. However we do have some security features designed to protect your Jetpack installation, read on below to learn more.</p>
+<p></p>
+<h3 id="undefined">Default Jetpack protection from Cloudflare</h3>
+<p>The Cloudflare WAF managed rule WP0007 protects the <code>xmlrpc.php</code> file on all Cloudflare plans to allow only Jetpack to use the <code>xmlrpc.php?for=jetpack</code> query string. Cloudflare does this by only allowing the IP range of Jetpack’s automation systems. As such, any attempt to access <code>xmlrpc.php?for=jetpack</code> from an IP that is not a genuine Jetpack IP address will be blocked with a <code>HTTP 403 Forbidden</code> message from Cloudflare. This in itself is nothing to worry about and improves the security of your website and does not affect the functionality of Jetpack whatsoever.</p>
+<p>For more information about why this was originally implemented, take a look at our blog post on the subject:</p>
+<p><a href="https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/">https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/</a></p>
+<p></p>
+<p></p>
+<h3 id="undefined">Additional WAF managed rules that can impact Jetpack</h3>
+<p>There is a specific rule in <a href="https://www.cloudflare.com/waf/">Web Application Firewall (WAF)</a> managed rules that if enabled will block Jetpack’s servers from administering your settings. The WAF managed rule “WP0002 - Block WordPress XML-RPC” rule is disabled by default, but when enabled it completely disables access to the <code>xmlrpc.php</code> file. As such, we only recommend enabling this rule as an emergency measure if your <code>xmlrpc.php</code> endpoint is being attacked.</p>
+<p>For further guidance, please contact our Support team.</p>
+<p>
+
+</p>

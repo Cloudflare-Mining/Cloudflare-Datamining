@@ -1,0 +1,92 @@
+<p><i>Learn more about how to download, activate, and configure the Cloudflare WordPress plugin.</i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#55CvB1TzkjGdenqybYrKtj">Overview</a></li>
+		<li><a href="#39wKFjOcS9dtsrGKCJI6dY">Before getting started</a></li>
+		<li><a href="#4UfgkiAK0D5VALm2FcBLNV">Activate the WordPress Plugin</a></li>
+		<li><a href="#1BOpv05eyYbeYn1uJyJ0AE">Configure the Cloudflare WordPress plugin</a></li>
+		<li><a href="#h_1R2Ax7vChRCCUOwzUJBNxB">Removing Plugin</a></li>
+		<li><a href="#6TYDqGFVV5KJ2lTMMBXwgi">Related Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="55CvB1TzkjGdenqybYrKtj">Overview</h2>
+<p><a href="https://wordpress.com/">WordPress</a> <a href="https://wordpress.com/"></a>is a free and open-source content management system. Many WordPress sites use Cloudflare to increase site speed with our <a href="https://www.cloudflare.com/cdn">free CDN</a> and protect site resources with our <a href="https://www.cloudflare.com/security/">security features</a>. </p>
+<p>After <a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-CloudFlare-account-and-add-a-website">creating a Cloudflare account and adding a website</a>, using Cloudflare with WordPress requires installing the Cloudflare plugin and configuring security and performance settings.</p>
+<hr>
+<h2 id="39wKFjOcS9dtsrGKCJI6dY">Before getting started</h2>
+<p></p>
+<div class="cf-sidebar-2 cf-warning">The <a href="https://www.cloudflare.com/automatic-platform-optimization/wordpress/">Automatic Platform Optimization (APO)</a> feature requires that you be on a <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/">Full Setup</a> using Cloudflare nameservers.
+</div>
+<p>Before adding your WordPress site to Cloudflare, </p>
+<ul>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/201720164-Step-2-Create-a-CloudFlare-account-and-add-a-website">Create a Cloudflare account</a>. You can also learn more about how to get started with Cloudflare in our <a href="https://support.cloudflare.com/hc/sections/200820158-Cloudflare-101">Cloudflare 101</a> documentation.
+	</li>
+	<li>If you self-host an Apache server, download <a href="https://support.cloudflare.com/hc/articles/200170786">mod_remoteip</a> to ensure that your IP address is logged correctly in both Apache logs and web applications.</li>
+	<li>Add all <a href="https://www.cloudflare.com/ips/">Cloudflare IPs</a> to an allowlist to avoid rate-limiting or blocking.</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="4UfgkiAK0D5VALm2FcBLNV">Activate the WordPress Plugin</h2>
+<p>The <a href="https://wordpress.org/plugins/cloudflare/">Cloudflare plugin for WordPress</a> allows you to ensure your site is running optimally on the WordPress platform. </p>
+<p>To install and activate the plugin, </p>
+<ol>
+	<li>Log in to the WordPress dashboard.</li>
+	<li>Navigate to <b>Plugins</b>.</li>
+	<li>Search for 'Cloudflare', and click <b>Install.</b>
+	</li>
+	<li>Click <b>Activate Plugin</b>.</li>
+</ol>
+<p></p>
+<hr>
+<h2 id="1BOpv05eyYbeYn1uJyJ0AE">Configure the Cloudflare WordPress plugin</h2>
+<p>After installing the Cloudflare WordPress plugin, to configure plugin settings,</p>
+<ol>
+	<li>Click <b>Settings </b>and choose the Cloudflare plugin. The Cloudflare login page appears.</li>
+	<li>Enter your Cloudflare login credentials, including your email and Cloudflare <b>API key</b>, then click <b>Save API Credentials</b>.<ul>
+			<li>For more information about the API key and how to retrieve it, review our <a href="https://support.cloudflare.com/hc/articles/200167836-Managing-API-Tokens-and-Keys#h12345682">documentation</a>.</li>
+		</ul>
+	</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-tip">To ensure that the Cloudflare plugin works optimally on your WordPress site, apply the default plugin settings by clicking <strong>Apply</strong> in <strong>Settings</strong>.
+</div>
+<p>After configuring the Cloudflare WordPress plugin, customize your Cloudflare configuration with the following features to further improve security and performance: </p>
+<ul>
+	<li>Navigate to the <b>Firewall </b>app in the Cloudflare dashboard, then the <b>Managed Ruleset</b> tab, and toggle the Cloudflare WordPress rule to <i>On</i>
+	</li>
+	<li>Cache Static HTML with <a href="https://support.cloudflare.com/hc/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce"><b>Cloudflare Page Rules</b></a><b></b>
+	</li>
+	<li>Optimize images with <a href="https://support.cloudflare.com/hc/en-us/articles/360000607372-Using-Cloudflare-Polish-to-compress-images"><b>Polish</b></a> and <a href="https://support.cloudflare.com/hc/en-us/articles/219178057-Configuring-Cloudflare-Mirage"><b>Mirage</b></a><b></b>
+	</li>
+	<li>Enable <a href="https://support.cloudflare.com/hc/en-us/articles/115002816808-How-do-I-enable-HTTP-2-Server-Push-in-WordPress"><b>HTTP/2</b></a><b></b>
+	</li>
+	<li>
+		<a href="https://support.cloudflare.com/hc/en-us/articles/200168196-How-do-I-minify-HTML-CSS-and-JavaScript-to-optimize-my-site-"><b>Minify</b></a> HTML, CSS, and JavaScript
+	</li>
+</ul>
+<p></p>
+<hr>
+<h2 id="h_1R2Ax7vChRCCUOwzUJBNxB">Removing Plugin</h2>
+<p>In the event you cannot go back into your <i><b>wp-admin</b></i> area, in order to recover access, please perform any of the following:</p>
+<h4>Manual delete</h4>
+<ul>
+	<li>If you can access your wp-admin area, disable the Cloudflare plugin and/or upgrade it to <b>v3.8.2</b>
+	</li>
+	<li>If not, ssh into your server and delete the plugin directory, located at <b><i>../wp-content/plugins/cloudflare</i></b>, after which you can reinstall your plugin and your settings will be preserved.</li>
+	<li>Restore a website backup from your hosting provider dashboard</li>
+</ul>
+<h4>Delete the plugin from the hosting provider “file manager” from inside your cPanel (Plesk)</h4>
+<ul>
+	<li>Path to navigate to the plugin inside your FTP folders is:<b> wp-content -&gt; plugins -&gt; cloudflare</b>
+	</li>
+</ul>
+<p>Also as of WordPress 5.2, if WordPress is able to send emails, on a critical error, it will send the site owner a link to recovery mode which disables all plugins.</p>
+<hr>
+<h2 id="6TYDqGFVV5KJ2lTMMBXwgi">Related Resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/236166048">Caching Anonymous Page Views with WordPress or WooCommerce</a></li>
+	<li><a href="https://support.cloudflare.com/hc/en-us/articles/228503147-Speed-Up-WordPress-and-Improve-Performance">Speed Up WordPress and Improve Performance</a></li>
+</ul>
+<p></p>

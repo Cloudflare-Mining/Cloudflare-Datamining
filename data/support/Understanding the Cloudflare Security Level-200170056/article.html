@@ -1,0 +1,67 @@
+<p><i>Learn how the Cloudflare Security Level controls Captcha challenges for requests from low reputation IP addresses.</i></p>
+<hr>
+<h2 id="6YyjFFqTUWylYYFncoML4L">Overview</h2>
+<p><b>Security Level</b> uses the IP reputation of a visitor to decide whether to present a Managed Challenge page. Once the visitor enters the correct Managed Challenge, they receive the appropriate website resources. </p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">When <a href="https://support.cloudflare.com/hc/articles/200170076">I'm Under Attack mode</a> is enabled in <strong>Security</strong> &gt; <strong>Settings</strong> or via a <a href="https://support.cloudflare.com/hc/articles/200172336-How-do-I-create-a-PageRule-">Page Rule</a>, Security Level presents a JS challenge page.
+</div>
+<p>IP Reputation is calculated based on <a href="https://www.projecthoneypot.org/">Project Honeypot</a>, external public IP information, as well as internal threat intelligence from our <a href="https://support.cloudflare.com/hc/articles/200172016">WAF managed rules</a> and <a href="https://support.cloudflare.com/hc/articles/200172676">DDoS</a>.</p>
+<p></p>
+<table>
+	<thead>
+		<tr>
+			<th>
+				Security Level
+			</th>
+			<th>
+				Threat Scores
+			</th>
+			<th>
+				Description
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Off (Enterprise customers only)</td>
+			<td>N/A</td>
+			<td>Does not challenge IP addresses</td>
+		</tr>
+		<tr>
+			<td>Essentially off</td>
+			<td>greater than 49</td>
+			<td>Only challenges IP addresses with the worst reputation</td>
+		</tr>
+		<tr>
+			<td>Low</td>
+			<td>greater than 24</td>
+			<td>Challenges only the most threatening visitors</td>
+		</tr>
+		<tr>
+			<td>Medium</td>
+			<td>greater than 14</td>
+			<td>Challenges both moderate threat visitors and the most threatening visitors</td>
+		</tr>
+		<tr>
+			<td>High</td>
+			<td>greater than 0</td>
+			<td>Challenges all visitors that exhibit threatening behavior within the last 14 days</td>
+		</tr>
+		<tr>
+			<td>I’m Under Attack!</td>
+			<td>N/A</td>
+			<td>Only for use if your website is currently under a DDoS attack</td>
+		</tr>
+	</tbody>
+</table>
+<p>Cloudflare sets <b>Security Level</b> to <i>Medium </i>by default.  Change the <b>Security Level</b> settings in <b>Security</b> &gt; <b>Settings</b>. Also, the <b>Threat Score</b> values mentioned above are useful as <b>Field</b> criteria within <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/">firewall rules</a><b> </b>or <a href="https://developers.cloudflare.com/waf/custom-rules/">custom rules</a><b>. Security Level</b> is also configurable via Cloudflare <a href="https://support.cloudflare.com/hc/articles/218411427#summary-of-page-rules-settings">Page Rules</a>.</p>
+<p>To prevent bot IPs from attacking a website, a new website owner might set a <i>Medium</i> or <i>High</i> <b>Security Level</b> and lower <a href="https://support.cloudflare.com/hc/articles/200170136#2dwCrNWIMnNJDP6AVjEQ3e"><b>Challenge Passage</b></a> <i>5</i> to <i>30</i> minutes to ensure that Cloudflare is constantly protecting the site.  Alternatively, an experienced website administrator that is confident in their security settings might set <b>Security Level</b> to <i>Essentially Off</i> or <i>Low</i> while setting a higher <a href="https://support.cloudflare.com/hc/articles/200170136#2dwCrNWIMnNJDP6AVjEQ3e"><b>Challenge Passage</b></a> for a week, month, or even year to provide a less obtrusive visitor experience.</p>
+<p>Only use <a href="https://support.cloudflare.com/hc/articles/200170076"><b>I'm Under Attack!</b></a><b> </b>mode when a website is under a DDoS attack.  <b>I'm Under Attack!</b> mode may affect some actions on your domain, such as your API traffic.  Set a custom <b>Security Level</b> for your API or any other part of your domain by creating a <a href="https://support.cloudflare.com/hc/en-us/articles/200172336-How-do-I-create-a-PageRule-"><b>Page Rule</b></a> for that portion of your site traffic.</p>
+<hr>
+<h2 id="2epg0wnXd71yU0GHaal8Ql">Related resources</h2>
+<ul>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170136">Understanding Cloudflare Captchas, Managed Challenge, and Challenge Passage</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170076">Understanding Cloudflare Under Attack Mode</a></li>
+	<li><a href="https://support.cloudflare.com/hc/articles/200170196">Responding to DDoS attacks</a></li>
+</ul>
+<p></p>
