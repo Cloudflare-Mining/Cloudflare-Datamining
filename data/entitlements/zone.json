@@ -192,6 +192,18 @@
 		}
 	},
 	{
+		"id": "central_endpoint_list.max_schemas_per_zone",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1112,
+			"key": "central_endpoint_list.max_schemas_per_zone",
+			"name": "Central Endpoint List - Max Allowed Schemas Per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "cf_registrar.enabled",
 		"feature": {
 			"feature_set": "registrar",

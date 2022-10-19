@@ -648,6 +648,18 @@
 		}
 	},
 	{
+		"id": "ddos.l7_advanced_alerts_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1060,
+			"key": "ddos.l7_advanced_alerts_allowed",
+			"name": "L7 Advanced DDoS Alerts"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.l7_traffic_profiling_allowed",
 		"feature": {
 			"feature_set": "ddos",
