@@ -9,7 +9,10 @@ const updated = new Date().toISOString();
 			<a class="text-xl leading-none" href="/">
 				<span class="font-extrabold">Cloudflare</span><br>Datamining
 			</a>
-			<span class="hidden text-right leading-tight lg:block"><span class="text-xs uppercase">Last Updated</span><br/><span id="updated">{updated}</span></span>
+			<span class="hidden text-right leading-tight lg:block">
+				<span class="text-xs uppercase">Last Updated</span>
+				<time class="block" id="updated" datetime={updated}>{updated}</time>
+			</span>
 			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
 				<button id="toggle" type="button" class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:text-gray-500 dark:hover:bg-gray-800" aria-expanded="false">
 					<span class="sr-only">Toggle menu</span>
