@@ -56,7 +56,7 @@ await tryAndPush(
 	[
 		'data/cdn-cgi/*',
 	],
-	`${prefix} - Dev CDN CGI Data was updated!`,
+	`${prefix} - Dev CDN CGI Data was updated! [skip ci]`,
 	'CFData - Dev CDN CGI Update',
 	'Pushed Dev CDN CGI: ' + prefix,
 	'DISCORD_WEBHOOK_CDNCGI_DEV',
