@@ -172,7 +172,7 @@
 	"zoneless_workers.worker_details.origin_workers.toast.add_route_duplicate": "This DNS record already exists.",
 	"zoneless_workers.worker_details.origin_workers.toast.add_route_conflict_error_not_managed": "%{route} is already in use. Please delete the record for %{route} in <0>DNS settings</0> or enter in another route and try again.",
 	"zoneless_workers.worker_details.origin_workers.toast.add_route_conflict_error": "Once these DNS records are updated your %{service}'s %{environment} environment will no longer be invoked by %{route}.",
-	"zoneless_workers.worker_details.origin_workers.toast.add_route_success": "Your Worker is now connected. It may take up to 24 hours for changes to take effect.",
+	"zoneless_workers.worker_details.origin_workers.toast.add_route_success": "Your Worker is now connected. A new certificate is being issued and will become active in a few minutes. Propagating the changes may take up to 24 hours.",
 	"zoneless_workers.worker_details.origin_workers.toast.add_route_success2": "<0>%{service}u2019s %{environment}</0> environment is now configured as the origin for %{route}. It may take up to 24 hours for changes to take effect.",
 	"zoneless_workers.worker_details.origin_workers.toast.disconnect_route_success": "The custom domain has been deleted and disconnected from the Worker. It may take up to 24 hours for the changes to take effect.",
 	"zoneless_workers.worker_details.origin_workers.delete_modal.title": "Delete Custom Domain?",

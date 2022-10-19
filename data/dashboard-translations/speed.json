@@ -280,5 +280,16 @@
 	"speed.earlyhints.zone_api.title.patch": "Change Early Hints zone setting",
 	"speed.earlyhints.card_title": "Early Hints",
 	"speed.earlyhints.card_description": "Cloudflare's edge will cache and send 103 Early Hints responses with Link headers from your HTML pages. Early Hints allows browsers to preload linked assets before they see a 200 OK or other final response from the origin.",
-	"speed.earlyhints.card_help": "103 Early Hints is an HTTP status code designed to speed up content delivery. When enabled, Cloudflare can cache the Link headers marked with preload and/or preconnect from HTML pages and serve them in a 103 Early Hints response before reaching the origin server. Browsers can use these hints to fetch linked assets while waiting for the origin's final response, dramatically improving page load speeds.\n\nPlease see the [feature docs](https://developers.cloudflare.com/cache/about/early-hints) and [announcement blog](https://blog.cloudflare.com/early-hints) for more information."
+	"speed.earlyhints.card_help": "103 Early Hints is an HTTP status code designed to speed up content delivery. When enabled, Cloudflare can cache the Link headers marked with preload and/or preconnect from HTML pages and serve them in a 103 Early Hints response before reaching the origin server. Browsers can use these hints to fetch linked assets while waiting for the origin's final response, dramatically improving page load speeds.\n\nPlease see the [feature docs](https://developers.cloudflare.com/cache/about/early-hints) and [announcement blog](https://blog.cloudflare.com/early-hints) for more information.",
+	"speed.test.title": "Speed test",
+	"speed.test.subtitle": "Provides synthetic data and help you identify the opportunities to improve your website performance.",
+	"speed.test.run_form.url_label": "Enter zone URL, subdomain or path",
+	"speed.test.run_form.submit": "Run test",
+	"speed.test.table.page": "Page",
+	"speed.test.table.score_trend": "Score trend (last month)",
+	"speed.test.table.last_test": "Last test",
+	"speed.test.table.status": "Status",
+	"speed.test.status.complete": "Done",
+	"speed.test.status.failed": "Failed",
+	"speed.test.status.running": "Testing"
 }
