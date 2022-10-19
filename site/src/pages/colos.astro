@@ -22,13 +22,23 @@ for(const coloId in colos){
 	}
 }
 
-
 ---
 <Layout title="Colos - Cloudflare Datamining" description="A lot of Cloudflare locations and types with their current status.">
 	<MainHeading title="Colos" />
 	<Table
+		headers = {["Status", "Total", "%"]}
+		widths={["w-[80%]", "w-[10%]", "w-[10%]"]}
+		id="status"
+		data = {["Online", "Offline", "China"].map((name:string) => [
+			name,
+			'loading...',
+			'loading...',
+		])}
+	></Table>
+	<Table
 		headers = {["ID", "Colo", "Type", "Status"]}
 		widths={["w-[30%]", "w-[30%]", "w-[30%]", "w-[10%]"]}
+		id="colos"
 		data = {Object.keys(colos).map((id:string) => [
 			id,
 			colos[id],
@@ -41,11 +51,11 @@ for(const coloId in colos){
 <script>
 
 async function getColosStatus(){
-	const table = document.querySelector('table');
-	if(!table){
+	const coloTable = document.querySelector('table#colos');
+	if(!coloTable){
 		return;
 	}
-	const headers = table.querySelectorAll('thead tr th');
+	const headers = coloTable.querySelectorAll('thead tr th');
 	if(!headers){
 		return;
 	}
@@ -56,13 +66,15 @@ async function getColosStatus(){
 			break;
 		}
 	}
-	const tableRows = table.querySelectorAll('tbody tr');
+	let tableRows = coloTable.querySelectorAll('tbody tr');
 	if(!tableRows){
 		return;
 	}
 
 	const coloStatusRes = await fetch('https://colos-status.jross.workers.dev/');
 	const coloStatus = await coloStatusRes.json();
+	let colosStatuses = {Online: 0, China: 0, Offline: 0};
+	let totalColos = 0;
 
 	for(const row of tableRows){
 		const coloName = row.querySelector('td:nth-child(2)')?.textContent;
@@ -89,6 +101,27 @@ async function getColosStatus(){
 			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
 			spanElement.textContent = 'Offline';
 		}
+		colosStatuses[spanElement.textContent]++;
+		totalColos++;
+	}
+
+	const statusTable = document.querySelector('table#status');
+	if(!coloTable){
+		return;
+	}
+	tableRows = statusTable.querySelectorAll('tbody tr');
+	if(!tableRows){
+		return;
+	}
+	for(const row of tableRows){
+		const status = row.querySelector('td:nth-child(1)')?.textContent;
+		const total = row.querySelector('td:nth-child(2)');
+		const percent = row.querySelector('td:nth-child(3)');
+		if(!status || colosStatuses[status] === undefined) {
+			continue;
+		}
+		total.textContent = colosStatuses[status];
+		percent.textContent = Math.floor(colosStatuses[status] / totalColos * 100).toString() + "%";
 	}
 }
 
