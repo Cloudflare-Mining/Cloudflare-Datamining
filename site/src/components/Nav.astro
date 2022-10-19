@@ -142,11 +142,17 @@ const {usage} = Astro.props;
 <script>
 for(const button of document.querySelectorAll('button')){
 	button.addEventListener('click', function(){
-		const icon = document.querySelector(`#${button.id}-icon`)!;
 		document.querySelector(`#${button.id}-menu`)?.classList.toggle('hidden');
+		const icon = document.querySelector(`#${button.id}-icon`)!;
+		if(!icon){ return; }
 		icon.classList.toggle('text-gray-300');
 		icon.classList.toggle('text-gray-400');
 		icon.classList.toggle('rotate-90');
+		if(button.ariaExpanded === 'true'){
+			button.ariaExpanded = 'false';
+		}else{
+			button.ariaExpanded = 'true';
+		}
 	});
 }
 </script>

@@ -612,6 +612,18 @@
 		}
 	},
 	{
+		"id": "custom_pages.enabled",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1104,
+			"key": "custom_pages.enabled",
+			"name": "Custom Pages enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.l4_advanced_alerts_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -1002,6 +1014,18 @@
 			"id": 904,
 			"key": "logpush.audit_log_events.max_jobs_allowed",
 			"name": "Logpush - Audit Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.dns_firewall_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1114,
+			"key": "logpush.dns_firewall_logs.max_jobs_allowed",
+			"name": "Logpush - DNS Firewall Logs - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"
