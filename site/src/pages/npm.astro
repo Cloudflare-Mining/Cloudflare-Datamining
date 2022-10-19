@@ -2,7 +2,7 @@
 import NpmTable from '../components/NpmTable.astro';
 import Layout from '../layouts/Layout.astro';
 
-const importFiles = await import.meta.glob('../../../data/packages/**/info.json');
+const importFiles = import.meta.glob('../../../data/packages/**/info.json');
 
 const packages: any = {
 	'@cloudflare': {},
