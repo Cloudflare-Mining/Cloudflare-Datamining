@@ -1,0 +1,198 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-21.png" class="kg-image" alt="Stream Live is now Generally Available"></figure>
+	<p>Hoy, nos complace anunciar que Stream Live ya no está en versión beta, y está disponible para todos, listo para el tráfico de producción a escala. Stream Live es una función de <a href="https://www.cloudflare.com/es-es/products/cloudflare-stream/" target="_blank">Cloudflare Stream</a> que permite a los desarrolladores integrar funciones de vídeo en directo en sitios web y aplicaciones nativas.</p>
+	<p>Desde el <a href="https://blog.cloudflare.com/stream-live/">lanzamiento de la versión beta</a>, los desarrolladores han utilizado Stream para transmitir conciertos en directo de algunos de los artistas más famosos del mundo directamente a los fans, desarrollar plataformas de creadores de vídeo totalmente nuevas, operar un servicio OTT global en directo 24/7, y mucho más. Durante la versión beta, Stream ha ingerido y entregado millones de minutos de vídeo en directo a espectadores de todo el mundo.</p>
+	<p><strong>Trae tus grandes eventos en directo, tu nuevo y ambicioso servicio de suscripción de vídeo o la próxima aplicación de vídeo móvil con millones de usuarios. Estamos listos para ello.</strong></p>
+	<h2 id="la-transmisi-n-de-v-deo-en-directo-a-escala-no-es-f-cil">La transmisión de vídeo en directo a escala no es fácil</h2>
+	<p><strong>El vídeo en directo utiliza una gran cantidad de ancho de banda</strong>. Por ejemplo, una transmisión de vídeo en directo de una hora en 1080 p a 8 MB/s consume 3,6 GB. Considerando los <a href="https://blog.cloudflare.com/aws-egregious-egress/">precios de salida habituales de los proveedores de nube</a>, incluso una pequeña salida puede suponer la ruina.</p>
+	<p><strong>El vídeo en directo se debe codificar sobre la marcha, en tiempo real</strong>. Los espectadores esperan poder ver el vídeo en directo en su teléfono, mientras están conectados a redes móviles con menos ancho de banda, mayor latencia y conexiones que se interrumpen con frecuencia. Para que esto sea posible, el vídeo en directo se debe recodificar en tiempo real con varias resoluciones, de forma que un teléfono determinado pueda bajar la resolución y continuar la reproducción. Esto puede ser complejo (¿Qué velocidades de bits? ¿Qué códecs? ¿Cuántos?) y también costoso: ejecutar un conjunto de máquinas virtuales no es barato.</p>
+	<p><strong>La ubicación de ingesta es importante: los protocolos de transmisión en directo como RTMPS envían vídeo a través de TCP.</strong> Si un solo paquete se descarta o se pierde, la conexión se detiene por completo hasta que este se encuentra o se vuelve a transmitir. Esto se conoce como "bloqueo de cabecera de línea". Cuanto más lejos esté el emisor del servidor de ingesta, mayor será el número de saltos de la red, y mayor será la probabilidad de que se descarten o pierdan paquetes, lo que, en última instancia, causará latencia y almacenamiento en búfer a los espectadores.</p>
+	<p><strong>La ubicación de entrega importa</strong>. El vídeo en directo se debe almacenar en la caché y entregar desde puntos de presencia lo más cercanos posible a los espectadores. Cuanto más largos sean los viajes de ida y vuelta en la red, mayor será la probabilidad de que los vídeos se almacenen en búfer o que baje su calidad.</p>
+	<p><strong>Los protocolos de transmisión están cambiando</strong>. El protocolo más utilizado para la transmisión de vídeo en directo, RTMPS, se abandonó en 2012, y se remonta a la época del vídeo Flash a principios de la década del 2000. SRT, un nuevo estándar emergente, aún no se admite a nivel global. Y WebRTC se ha convertido hace poco en una opción para la transmisión de uno a muchos de alta definición a escala.</p>
+	<p>La forma tradicional de resolver esta cuestión ha sido combinar distintos servicios de nube de distintos proveedores. Un proveedor proporciona una excelente entrega de contenido, pero no la codificación. Otro proporciona las API o el hardware para la codificación, pero te deja que te apañes tú mismo y crees tu propia capa de almacenamiento. Como desarrollador, tienes que aprender, administrar y escribir una capa de código de cohesión en torno a detalles difíciles de comprender de los protocolos de transmisión de vídeo, los códecs, la configuración de la codificación y los canales de entrega.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-8.png" class="kg-image"></figure>
+	<p>Hemos desarrollado Stream Live para facilitar la transmisión de vídeo en directo, como añadir una etiqueta &lt;img&gt; a un sitio web. Ahora, el vídeo en directo es un elemento esencial del contenido de Internet, y creemos que cualquier desarrollador debería tener las herramientas para añadirlo a su sitio web o aplicación nativa.</p>
+	<p>Con Stream, tú o tus usuarios transmitís vídeo en directo directamente a Cloudflare, y Cloudflare entrega el vídeo directamente a tus espectadores. No necesitas administrar nunca los sistemas internos de codificación, almacenamiento o entrega. Simplemente se trata de entrada y salida de vídeo en directo.</p>
+	<h2 id="nuestra-red-nuestro-hardware-una-soluci-n-que-solo-cloudflare-puede-ofrecer">Nuestra red, nuestro hardware: una solución que solo Cloudflare puede ofrecer</h2>
+	<p>No somos los únicos que estamos desarrollando las API para el vídeo en directo, pero sí somos los únicos con nuestra <em>propia</em> red global y nuestro <em>propio</em> hardware que controlamos y optimizamos para vídeo. Esto nos permite hacer lo que otros no pueden, como una <a href="https://blog.cloudflare.com/magic-hdmi-cable/">latencia de pantalla a pantalla inferior a un segundo</a>, utilizando la reproducción RTMPS y SRT a escala.</p>
+	<p>Los códecs de vídeo más nuevos requieren codificadores de hardware especializados. Mientras que otros se encuentran atados por las limitaciones del hardware de los proveedores de nube pública, nosotros ya estamos trabajando para instalar el último hardware de codificación en nuestros propios bastidores, para que puedas entregar vídeo de alta resolución con incluso menos ancho de banda. Nuestro objetivo es poner directamente en tus manos lo que de otra forma solo es posible para los gigantes de la industria del vídeo. No te pierdas las interesantes actualizaciones de esta semana.</p>
+	<p>La mayoría de los proveedores limitan a cuántos destinos puedes retransmitir o transmitir simultáneamente. Puesto que utilizamos nuestra propia red, esto no nos preocupa. Te permitimos <a href="https://developers.cloudflare.com/stream/stream-live/simulcasting/" target="_blank">retransmitir a tantos destinos como necesites</a>.</p>
+	<p>Utilizando nuestra propia red, podemos establecer el precio de Stream en función de los minutos de vídeo entregados. A diferencia de otros, no pagamos a un tercero por el ancho de banda ni a continuación te aplicamos sus costes con un margen de beneficio. La situación vigente de cargar por el ancho de banda o el almacenamiento por GB te penaliza por entregar o almacenar contenido de alta resolución. Si preguntas repetidamente por qué, casi siempre descubrirás que otros te están cargando a ti sus propias estructuras de costes.</p>
+	<p>La codificación de vídeo consume muchos recursos informáticos, la entrega de vídeo consume mucho ancho de banda, y la ubicación importa en la ingesta de vídeo en directo. Cuando utilizas Stream, no necesitas preocuparte sobre cómo optimizar el rendimiento, encontrar una CDN y/o ajustar continuamente la configuración. Stream se encarga de estas tareas.</p>
+	<h2 id="libera-tu-v-deo-en-directo-de-los-modelos-comerciales-de-las-grandes-plataformas">Libera tu vídeo en directo de los modelos comerciales de las grandes plataformas</h2>
+	<p>Casi todas las empresas utilizan vídeo en directo, ya sea para interactuar con los clientes, para transmitir eventos o para monetizar contenido en directo. Pero pocos tienen los recursos de ingeniería especializados internos para entregar vídeo en directo a escala, y conectan varios servicios de nube de bajo nivel. Hasta la fecha, muchos de los mayores creadores de contenido se han visto obligados a depender de un número reducido de aplicaciones de redes sociales y servicios de transmisión de vídeo para entregar contenido en directo a escala.</p>
+	<p>A diferencia de la situación vigente, en la que te ves obligado a poner tu vídeo en directo en <em>sus</em> aplicaciones y servicios y adaptarte a <em>sus</em> modelos de negocio, Stream te proporciona el control total de tu vídeo en directo, en <em>tu</em> sitio web o aplicación, en cualquier dispositivo, a escala, sin enviar a tus usuarios al servicio de un tercero.</p>
+	<h2 id="codificaci-n-ingesta-y-an-lisis-sin-coste-sencilla-estructura-de-precios-por-minuto">Codificación, ingesta y análisis sin coste. Sencilla estructura de precios por minuto</h2>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dkn2 {
+			background-color: #CCC;
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0fkh {
+			background-color: #CCC;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-dkn2"></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Otros</span></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Codificación</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">USD por minuto</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gratuito</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ingesta</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">USD por GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gratuito</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Analytics</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Producto independiente</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gratuito</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Grabaciones en directo</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Minutos u horas después</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Al instante</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Almacenamiento</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">USD por GB </span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">por minuto almacenado</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Entrega</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">USD por GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">por minuto entregado</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>Otras plataformas cargan por la ingesta o la codificación. Muchos incluso te obligan a tener en cuenta a/desde dónde estás transmitiendo, la velocidad de bits y los fotogramas por segundo del vídeo, e incluso cuál de sus centros de datos utilizas.</p>
+	<p><strong>Con Stream, la codificación y la ingesta son gratuitos</strong>. Otras plataformas cargan por la entrega en función del ancho de banda, y te penalizan por entregar vídeo de alta calidad a tus espectadores. Si transmites a una resolución alta, pagas más.</p>
+	<p><strong>Con Stream, no pagas una penalización por entregar vídeo de alta resolución.</strong> El precio de Stream es sencillo: minutos de vídeo entregado o almacenado. Puesto que pagas por minuto, no por gigabyte, puedes transmitir a la resolución idónea para tus espectadores, sin preocuparte por los costes del ancho de banda.</p>
+	<p>Otras plataformas cargan aparte por los análisis, lo que requiere que compres otro producto para obtener métricas de tus transmisiones de vídeo en directo.</p>
+	<p><strong>Con Stream, los análisis son gratuitos.</strong> Stream proporciona una <a href="https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/" target="_blank">API</a> y un <a href="https://dash.cloudflare.com/?to=/:account/stream/analytics" target="_blank">panel de control</a> tanto para los análisis del lado del servidor como para los del lado del cliente. Se pueden consultar por vídeo, por creador, por país, y más. Puedes utilizarlos para identificar qué creadores de tu aplicación tienen las transmisiones de vídeo en directo con más visualizaciones, saber cuánto facturar a tus clientes por su propio uso, identificar dónde el contenido pasa a ser viral, y más.</p>
+	<p>Otras plataformas añaden las grabaciones en directo o el modo DVR como una función complementaria, y las grabaciones no están disponibles hasta minutos o incluso horas después de que finalice una transmisión en directo.</p>
+	<p><strong>Con Stream, las grabaciones en directo son una función integrada, disponible <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#replaying-recordings" target="_blank">inmediatamente tras la finalización de una transmisión en directo</a>.</strong> Cuando una transmisión en directo está disponible, funciona exactamente de la misma forma que cualquier otro vídeo cargado a Stream, lo que te permite utilizar sin problemas la misma API para administrar el contenido pregrabado y el contenido en directo.</p>
+	<h2 id="incorpora-v-deo-en-directo-en-tu-sitio-web-o-aplicaci-n-en-solo-unos-minutos">Incorpora vídeo en directo en tu sitio web o aplicación en solo unos minutos</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-26.png" class="kg-image"></figure>
+	<p>Cloudflare Stream te permite a ti o tus usuarios transmitir en directo utilizando los mismos protocolos y herramientas que utilizan organismos de radiodifusión de cualquier tamaño para transmitir en directo en YouTube o Twitch, pero te proporciona el control total del acceso y la presentación de las transmisiones en directo.</p>
+	<h3 id="paso-1-crea-una-entrada-en-directo">Paso 1: crea una entrada en directo</h3>
+	<p><a href="https://dash.cloudflare.com/?to=/:account/stream/inputs/create" target="_blank">Crea una nueva entrada en directo desde el panel de control de Stream</a> o utiliza la API de Stream:</p>
+	<p><strong>Solicitud</strong></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+-H "Authorization: Bearer &lt;YOUR_API_TOKEN&gt;" \
+-d "{"recording": { "mode": "automatic" } }" \
+https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Respuesta</strong></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+"result": {
+"uid": "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",
+"rtmps": {
+"url": "rtmps://live.cloudflare.com:443/live/",
+"streamKey": "&lt;PRIVATE_RTMPS_STREAM_KEY&gt;"
+},
+...
+}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="paso-2-utiliza-la-clave-rtmps-con-cualquier-software-de-difusi-n-en-directo-o-en-tu-propia-aplicaci-n-nativa">Paso 2: utiliza la clave RTMPS con cualquier software de difusión en directo, o en tu propia aplicación nativa</h3>
+	<p>Copia la URL y la clave RTMPS, y utilízalas con tu aplicación de transmisión en directo. Te recomendamos que utilices <a href="https://obsproject.com/" target="_blank">Open Broadcaster Software (OBS)</a> para empezar, pero cualquier software RTMPS o SRT debería poder interoperar con Stream Live.</p>
+	<p>Escribe la URL y la clave RTMPS de Stream del paso 1:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-7.png" class="kg-image"></figure>
+	<h3 id="paso-3-previsualiza-la-transmisi-n-en-directo-en-el-panel-de-control-de-cloudflare">Paso 3: previsualiza la transmisión en directo en el panel de control de Cloudflare</h3>
+	<p>En el panel de control de Stream, unos segundos después de iniciada la transmisión en directo, verás una vista previa de lo que verán tus espectadores, junto con el estado de la conexión en tiempo real de tu transmisión en directo.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-21-at-12.34.35-PM.png" class="kg-image"></figure>
+	<h3 id="paso-4-a-ade-reproducci-n-de-v-deo-en-directo-a-tu-sitio-web-o-aplicaci-n">Paso 4: añade reproducción de vídeo en directo a tu sitio web o aplicación</h3>
+	<p>Transmite tu vídeo utilizando nuestro <a href="https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/" target="_blank">código integrado de Stream Player</a>, o utiliza <a href="https://developers.cloudflare.com/stream/viewing-videos/using-own-player/" target="_blank">cualquier reproductor de vídeo que admita HLS o DASH</a>. Las transmisiones en directo se puede reproducir tanto en sitios web como en aplicaciones iOS y Android nativas.</p>
+	<p>Por ejemplo, en iOS, lo único que necesitas es proporcionar a AVPlayer la URL al manifesto HLS para tu entrada en directo, que puedes encontrar <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/" target="_blank">mediante la API</a> o en el <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">panel de control de Stream</a>.</p>
+	<pre><code class="language-swift">import SwiftUI
+import AVKit
+
+struct MyView: View {
+    // Change the url to the Cloudflare Stream HLS manifest URL
+    private let player = AVPlayer(url: URL(string: "https://customer-9cbb9x7nxdw5hb57.cloudflarestream.com/8f92fe7d2c1c0983767649e065e691fc/manifest/video.m3u8")!)
+
+    var body: some View {
+        VideoPlayer(player: player)
+            .onAppear() {
+                player.play()
+            }
+    }
+}
+
+struct MyView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyView()
+    }
+}</code></pre>
+	<p>Para ejecutar una aplicación de ejemplo completa en XCode, sigue <a href="https://developers.cloudflare.com/stream/examples/ios/" target="_blank">esta guía</a> en la documentación del desarrollador de Stream.</p>
+	<h2 id="las-empresas-est-n-desarrollando-plataformas-de-v-deo-totalmente-nuevas-en-stream">Las empresas están desarrollando plataformas de vídeo totalmente nuevas en Stream</h2>
+	<p>Los desarrolladores quieren tener el control, pero la mayoría de ellos no tienen tiempo para convertirse en expertos en vídeo. E incluso aquellos que están desarrollando nuevas plataformas innovadoras no desean administrar la infraestructura de transmisión.</p>
+	<p>Switcher Studio se dedica exclusivamente al vídeo en directo. Su aplicación iOS permite a los creadores y las empresas producir sus propias transmisiones en directo multicámara con su propia marca. Switcher utiliza Stream como un componente esencial de su infraestructura de transmisión en directo. En sus propias palabras:</p>
+	<blockquote><em>"Desde 2014, Switcher ha ayudado a los creadores a conectarse con su audiencia mediante transmisiones en directo. Ahora, nuestros usuarios crean más de 100 000 transmisiones por mes. A medida que crecíamos, necesitábamos una solución de entrega de contenido escalable. Cloudflare ofrece una entrega rápida y segura, e incluso nos ha permitido ofrecer nuevas funciones, como la multitransmisión. La confianza de nuestro equipo en Cloudflare Stream les permite centrarse en las herramientas de producción en directo que nos hacen únicos".</em></blockquote>
+	<p>Durante la versión beta de Stream Live, hemos trabajado con muchos clientes como Switcher, donde el vídeo en directo no es solo una función del producto, sino el <em>propio</em> producto. Incluso como expertos en vídeo en directo, eligen utilizar Stream para poder centrase en el valor único que crean para sus clientes, y dejan a Cloudflare la infraestructura de ingesta, codificación, grabación y entrega de vídeo en directo.</p>
+	<h2 id="empieza-ya-a-integrar-v-deo-en-directo-en-tu-sitio-web-o-aplicaci-n">Empieza ya a integrar vídeo en directo en tu sitio web o aplicación</h2>
+	<p>Solo te llevará unos minutos registrarte e iniciar tu primera transmisión en directo, utilizando el panel de control de Cloudflare, sin necesidad de código para empezar, solo las <a href="https://developers.cloudflare.com/stream/" target="_blank">API</a> para cuando estés listo para empezar a desarrollar tus propias funciones de vídeo en directo. <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Pruébalo</a>. Estamos listos para ti, sea cual sea el volumen de tu audiencia.</p>
+</div>

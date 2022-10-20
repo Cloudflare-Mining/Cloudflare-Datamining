@@ -1,0 +1,118 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image-3.png" class="kg-image"></figure>
+	<p>Toda propiedad de Internet es única, con su propio comportamiento y patrones de tráfico. Por ejemplo, es posible que un sitio web solo espere tráfico de usuarios de determinadas áreas geográficas, y que una red solo espere un conjunto limitado de protocolos.</p>
+	<p>Comprender que los patrones de tráfico de cada propiedad de Internet son únicos es lo que nos ha llevado a desarrollar el sistema Protección flexible contra DDoS, que pasa a formar parte de nuestro paquete de <a href="https://blog.cloudflare.com/es-es/deep-dive-cloudflare-autonomous-edge-ddos-protection-es-es/">defensas automatizadas contra DDoS</a> y lo optimiza. El nuevo sistema aprende tus patrones de tráfico únicos y se adapta para protegerte contra sofisticados ataques DDoS.</p>
+	<p>La Protección flexible contra DDoS ya está disponible a nivel general para todos los clientes Enterprise:</p>
+	<ul>
+		<li><strong>Protección flexible contra DDoS a HTTP</strong>: disponible para los clientes de WAF/CDN del plan Enterprise que también estén suscritos al servicio Protección de DDoS avanzada.</li>
+		<li><strong>Protección flexible contra DDoS a la capa 3 y 4</strong>: disponible para los clientes de Magic Transit y Spectrum del plan Enterprise.</li>
+	</ul>
+	<h3 id="la-protecci-n-flexible-contra-ddos-aprende-de-tus-patrones-de-tr-fico">La Protección flexible contra DDoS aprende de tus patrones de tráfico</h3>
+	<p>El sistema Protección flexible contra DDoS crea un perfil de tráfico analizando diariamente las velocidades máximas de tráfico de un cliente, durante los últimos 7 días. Los perfiles se recalculan cada día utilizando el historial de los últimos 7 días. A continuación, almacenamos las velocidades máximas de tráfico observadas para cada valor de dimensión predefinido. Cada perfil utiliza una dimensión, y estas dimensiones incluyen el país de origen de la solicitud, el país donde está ubicado el centro de datos de Cloudflare que ha recibido el paquete de IP, el agente de usuario, el protocolo de IP, los puertos de destino, y más.</p>
+	<p>Así, por ejemplo, para el <a href="https://blog.cloudflare.com/es-es/location-aware-ddos-protection-es-es/">perfil que utiliza el país de origen como una dimensión</a>, el sistema registrará las velocidades máximas de tráfico observadas por país, p. ej., 2000 solicitudes por segundo para Alemania, 3000 para Francia, 10 000 para Brasil, etc. Este ejemplo es para tráfico HTTP, pero la Protección flexible contra DDoS también crea perfiles de tráfico de las capas 3 y 4 para nuestros clientes Enterprise de Magic Transit y Spectrum.</p>
+	<p>Otro aspecto a destacar acerca de las velocidades máximas es que utilizamos velocidades con un percentil de 95. Esto significa que analizamos las velocidades máximas y descartamos el 5 % superior de las velocidades más altas. El objetivo es eliminar de los cálculos los valores atípicos.</p>
+	<p>Los perfiles de tráfico de calculan de forma asíncrona, lo que significa que esto no causa latencia en el tráfico de nuestros clientes. A continuación, el sistema distribuye una representación compacta del perfil en nuestra red, que nuestros sistemas de protección contra DDoS pueden utilizar para detectar y mitigar los ataques DDoS de forma mucho más rentable.</p>
+	<p>Además de los perfiles de tráfico, la Protección flexible contra DDoS también aprovecha las <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank">puntuaciones de bot</a> generadas por el <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">aprendizaje automático</a> de Cloudflare como una señal adicional para diferenciar entre el tráfico del usuario y el tráfico automatizado. El objetivo es diferenciar entre picos legítimos del tráfico del usuario que se desvían del perfil de tráfico y un pico de tráfico automatizado y potencialmente malicioso.</p>
+	<h3 id="f-cil-y-sin-configuraci-n">Fácil y sin configuración</h3>
+	<p>La Protección flexible contra DDoS simplemente funciona, sin configuración previa. Crea automáticamente los perfiles y, a continuación, los clientes pueden realizar ajustes según necesiten mediante <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/" target="_blank">Reglas administradas contra ataques DDoS</a>. Pueden cambiar el nivel de sensibilidad, aprovechar los campos de expresión para crear anulaciones (p. ej. excluir <em>este</em> tipo de tráfico), y cambiar la acción de mitigación para adaptar el comportamiento del sistema a sus necesidades y patrones de tráfico específicos.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image-4.png" class="kg-image"></figure>
+	<p>El sistema Protección flexible contra DDoS complementa el sistema de protección contra DDoS existente que aprovecha las huellas digitales dinámicas para detectar y mitigar los ataques DDoS. Ambos funcionan conjuntamente para proteger a nuestros clientes contra los ataques DDoS. Cuando los clientes de Cloudflare incorporan una nueva propiedad de Internet a Cloudflare, las huellas digitales dinámicas les protegen automáticamente, sin necesidad de ninguna acción del usuario. Cuando la Protección flexible contra DDos ha aprendido los patrones de tráfico legítimo de los usuarios y creado un perfil, estos pueden proporcionar una capa adicional de protección.</p>
+	<h3 id="reglas-incluidas-como-parte-de-la-protecci-n-flexible-contra-ddos">Reglas incluidas como parte de la Protección flexible contra DDoS</h3>
+	<p>Como parte de este lanzamiento, nos complace anunciar las funciones siguientes como parte de la Protección flexible contra DDoS de Cloudflare:</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-q2ib {
+			background-color: #CFE2F3;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-q2ib" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Creación de perfiles de dimensión</span></th>
+				<th class="tg-q2ib" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Disponibilidad</span></th>
+			</tr>
+			<tr>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Clientes de WAF/CDN del plan Enterprise con Protección avanzada frente a DDoS</span></th>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Clientes Enterprise de Magic Transit y Spectrum</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Errores de origen</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">País y región de IP de cliente</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Próximamente</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Agente de usuario (globalmente, no por cliente*)</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Protocolo IP</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Combinación de protocolo IP y puerto de destino</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Próximamente</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html--><small><sup>*</sup>La función de agente de usuario analiza, aprende y crea perfiles de los principales agentes de usuario observados en la red de Cloudflare. Esta función nos ayuda a identificar los ataques DDoS que aprovechan agentes de usuario heredados o incorrectamente configurados.</small>
+	<!--kg-card-end: html-->
+	<p>Excepto la Protección contra DDoS de agente de usuario, las reglas de Protección flexible contra DDoS se implementan en el modo "Log". Los clientes pueden observar el tráfico indicado, ajustar la sensibilidad si es necesario y, a continuación, implementar las reglas en el modo de mitigación. Para ello, puedes seguir los pasos descritos en <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive/" target="_blank">esta guía</a>.</p>
+	<h3 id="hacer-que-el-impacto-de-los-ataques-ddos-sea-cosa-del-pasado">Hacer que el impacto de los ataques DDoS sea cosa del pasado</h3>
+	<p>Nuestra misión en Cloudflare es ayudar a mejorar Internet. La visión del equipo de protección contra DDoS se deriva de esta misión: nuestro objetivo es hacer que el impacto de los ataques DDoS sea cosa del pasado. La Protección flexible contra DDoS de Cloudflare nos acerca a lograr esta visión, haciendo que la protección contra DDoS de Cloudflare sea más inteligente, sofisticada y adaptada a los patrones de tráfico únicos y a las necesidades individuales de nuestros clientes.</p>
+	<p>¿Quieres saber más sobre la Protección flexible contra DDoS de Cloudflare? Visita nuestro <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/" target="_blank">sitio para desarrolladores</a>.</p>
+	<p>¿Te interesa cambiar de plan para obtener acceso a la Protección flexible contra DDoS? Contacta con tu equipo de cuenta.</p>
+	<p>¿Eres nuevo en Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact/" target="_blank">Habla con un experto de Cloudflare</a>.</p>
+	<h3 id="ver-en-cloudflare-tv">Ver en Cloudflare TV<br></h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/15a28a27c4f115533951f075b1fad6b5/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F15a28a27c4f115533951f075b1fad6b5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>
