@@ -34,7 +34,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $xxx,xxx - $xxx,xxx.</span></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $95,000- $116,000.</span></p>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
