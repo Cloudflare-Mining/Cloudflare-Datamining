@@ -193,7 +193,8 @@ export const LoadBalancer = eg.object({
     pool_weights: eg.record(eg.string, eg.number).optional
   }).optional,
   ttl: eg.number.optional,
-  check_regions: eg.array(eg.string).optional
+  check_regions: eg.array(eg.string).optional,
+  adaptive_routing: eg.object({ failover_across_pools: eg.boolean })
 });
 
 export type LoadBalancer = TypeFromCodec<typeof LoadBalancer>;
