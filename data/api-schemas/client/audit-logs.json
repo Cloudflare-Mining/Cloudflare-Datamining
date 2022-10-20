@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/audit-logs.json",
 	"title": "Audit Logs",
-	"description": "A log of changes made to your Cloudflare account",
+	"description": "A log of changes made to your Cloudflare account.",
 	"cfDeprecations": {
 		"id": "org_deprecation",
 		"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
@@ -410,7 +410,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"user\"",
-						"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System",
+						"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
 						"enum": [
 							"user",
 							"admin",
@@ -420,7 +420,7 @@
 					"ip": {
 						"type": "string",
 						"example": "\"198.41.129.166\"",
-						"description": "The IP address of the request that performed the action"
+						"description": "The IP address of the request that performed the action."
 					}
 				}
 			},
@@ -466,7 +466,7 @@
 			"interface": {
 				"type": "string",
 				"example": "\"API\"",
-				"description": "The source of the event"
+				"description": "The source of the event."
 			},
 			"metadata": {
 				"type": "object",
@@ -496,6 +496,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"d5b0f326-1232-4452-8858-1089bd7168ef\",\n  \"action\": {\n    \"type\": \"change_setting\",\n    \"result\": true\n  },\n  \"actor\": {\n    \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n    \"email\": \"michelle@example.com\",\n    \"type\": \"user\",\n    \"ip\": \"198.41.129.166\"\n  },\n  \"newValue\": \"low\",\n  \"oldValue\": \"high\",\n  \"owner\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n  },\n  \"resource\": {\n    \"type\": \"zone\",\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n  },\n  \"interface\": \"API\",\n  \"metadata\": {\n    \"zone_name\": \"example.com\",\n    \"type\": \"firewall\",\n    \"name\": \"security_level\",\n    \"value\": \"high\"\n  },\n  \"when\": \"2017-04-26T17:31:07Z\"\n}",
 		"title": "Audit Logs",
-		"description": "A log of changes made to your Cloudflare account"
+		"description": "A log of changes made to your Cloudflare account."
 	}
 }

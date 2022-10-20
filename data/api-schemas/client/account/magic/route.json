@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Routes",
-			"description": "List all Magic static routes",
+			"description": "List all Magic static routes.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/magic/routes",
 			"method": "GET",
@@ -24,7 +24,7 @@
 		},
 		{
 			"title": "Route Details",
-			"description": "Get a specific Magic static route",
+			"description": "Get a specific Magic static route.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}",
 			"method": "GET",
@@ -47,7 +47,7 @@
 		},
 		{
 			"title": "Create Routes",
-			"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/routes?validate_only={#/definitions/validate_only}",
 			"method": "POST",
@@ -84,48 +84,48 @@
 							"properties": {
 								"prefix": {
 									"type": "string",
-									"description": "IP Prefix in Classless Inter-Domain Routing format",
+									"description": "IP Prefix in Classless Inter-Domain Routing format.",
 									"example": "192.0.2.0/24"
 								},
 								"nexthop": {
 									"type": "string",
-									"description": "The next-hop IP Address for the static route",
+									"description": "The next-hop IP Address for the static route.",
 									"example": "203.0.113.1"
 								},
 								"priority": {
 									"type": "integer",
-									"description": "Priority of the static route",
+									"description": "Priority of the static route.",
 									"example": 100
 								},
 								"description": {
 									"type": "string",
-									"description": "An optional human provided description of the static route",
+									"description": "An optional human provided description of the static route.",
 									"example": "New route for new prefix 203.0.113.1"
 								},
 								"weight": {
 									"type": "integer",
-									"description": "Optional weight of the ECMP scope - if provided",
+									"description": "Optional weight of the ECMP scope - if provided.",
 									"example": 100
 								},
 								"scope": {
 									"type": "object",
-									"description": "Used only for ECMP routes",
+									"description": "Used only for ECMP routes.",
 									"properties": {
 										"colo_regions": {
 											"type": "array",
-											"description": "List of colo regions for the ECMP scope",
+											"description": "List of colo regions for the ECMP scope.",
 											"items": {
 												"type": "string",
-												"description": "Scope colo region",
+												"description": "Scope colo region.",
 												"example": "APAC"
 											}
 										},
 										"colo_names": {
 											"type": "array",
-											"description": "List of colo names for the ECMP scope",
+											"description": "List of colo names for the ECMP scope.",
 											"items": {
 												"type": "string",
-												"description": "Scope colo name",
+												"description": "Scope colo name.",
 												"example": "den01"
 											}
 										}
@@ -150,7 +150,7 @@
 		},
 		{
 			"title": "Update Route",
-			"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -177,27 +177,27 @@
 					"prefix": {
 						"type": "string",
 						"example": "\"192.0.2.0/24\"",
-						"description": "IP Prefix in Classless Inter-Domain Routing format"
+						"description": "IP Prefix in Classless Inter-Domain Routing format."
 					},
 					"nexthop": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The next-hop IP Address for the static route"
+						"description": "The next-hop IP Address for the static route."
 					},
 					"priority": {
 						"type": "integer",
 						"example": "100",
-						"description": "Priority of the static route"
+						"description": "Priority of the static route."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"New route for new prefix 203.0.113.1\"",
-						"description": "An optional human provided description of the static route"
+						"description": "An optional human provided description of the static route."
 					},
 					"weight": {
 						"type": "integer",
 						"example": "100",
-						"description": "Optional weight of the ECMP scope - if provided"
+						"description": "Optional weight of the ECMP scope - if provided."
 					},
 					"scope": {
 						"type": "object",
@@ -206,25 +206,25 @@
 							"colo_regions": {
 								"type": "array",
 								"example": "[\n  \"APAC\"\n]",
-								"description": "List of colo regions for the ECMP scope",
+								"description": "List of colo regions for the ECMP scope.",
 								"items": {
 									"type": "string",
-									"description": "Scope colo region",
+									"description": "Scope colo region.",
 									"example": "APAC"
 								}
 							},
 							"colo_names": {
 								"type": "array",
 								"example": "[\n  \"den01\"\n]",
-								"description": "List of colo names for the ECMP scope",
+								"description": "List of colo names for the ECMP scope.",
 								"items": {
 									"type": "string",
-									"description": "Scope colo name",
+									"description": "Scope colo name.",
 									"example": "den01"
 								}
 							}
 						},
-						"description": "Used only for ECMP routes"
+						"description": "Used only for ECMP routes."
 					}
 				},
 				"required_props": [],
@@ -279,7 +279,7 @@
 									"properties": {
 										"id": {
 											"$comment": "Must be present as a definition for URI Templating",
-											"description": "Account identifier tag",
+											"description": "Account identifier tag.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
@@ -297,48 +297,48 @@
 									"properties": {
 										"prefix": {
 											"type": "string",
-											"description": "IP Prefix in Classless Inter-Domain Routing format",
+											"description": "IP Prefix in Classless Inter-Domain Routing format.",
 											"example": "192.0.2.0/24"
 										},
 										"nexthop": {
 											"type": "string",
-											"description": "The next-hop IP Address for the static route",
+											"description": "The next-hop IP Address for the static route.",
 											"example": "203.0.113.1"
 										},
 										"priority": {
 											"type": "integer",
-											"description": "Priority of the static route",
+											"description": "Priority of the static route.",
 											"example": 100
 										},
 										"description": {
 											"type": "string",
-											"description": "An optional human provided description of the static route",
+											"description": "An optional human provided description of the static route.",
 											"example": "New route for new prefix 203.0.113.1"
 										},
 										"weight": {
 											"type": "integer",
-											"description": "Optional weight of the ECMP scope - if provided",
+											"description": "Optional weight of the ECMP scope - if provided.",
 											"example": 100
 										},
 										"scope": {
 											"type": "object",
-											"description": "Used only for ECMP routes",
+											"description": "Used only for ECMP routes.",
 											"properties": {
 												"colo_regions": {
 													"type": "array",
-													"description": "List of colo regions for the ECMP scope",
+													"description": "List of colo regions for the ECMP scope.",
 													"items": {
 														"type": "string",
-														"description": "Scope colo region",
+														"description": "Scope colo region.",
 														"example": "APAC"
 													}
 												},
 												"colo_names": {
 													"type": "array",
-													"description": "List of colo names for the ECMP scope",
+													"description": "List of colo names for the ECMP scope.",
 													"items": {
 														"type": "string",
-														"description": "Scope colo name",
+														"description": "Scope colo name.",
 														"example": "den01"
 													}
 												}
@@ -361,7 +361,7 @@
 		},
 		{
 			"title": "Delete Route",
-			"description": "Disable and remove a specific Magic static route",
+			"description": "Disable and remove a specific Magic static route.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}",
 			"method": "DELETE",
@@ -395,46 +395,46 @@
 				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
 				"readOnly": true,
 				"maxLength": 32,
-				"description": "Route identifier tag"
+				"description": "Route identifier tag."
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2017-06-14T00:00:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the route was created"
+				"description": "When the route was created."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2017-06-14T05:20:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the route was last modified"
+				"description": "When the route was last modified."
 			},
 			"prefix": {
 				"type": "string",
 				"example": "\"192.0.2.0/24\"",
-				"description": "IP Prefix in Classless Inter-Domain Routing format"
+				"description": "IP Prefix in Classless Inter-Domain Routing format."
 			},
 			"nexthop": {
 				"type": "string",
 				"example": "\"203.0.113.1\"",
-				"description": "The next-hop IP Address for the static route"
+				"description": "The next-hop IP Address for the static route."
 			},
 			"priority": {
 				"type": "integer",
 				"example": "100",
-				"description": "Priority of the static route"
+				"description": "Priority of the static route."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"New route for new prefix 203.0.113.1\"",
-				"description": "An optional human provided description of the static route"
+				"description": "An optional human provided description of the static route."
 			},
 			"weight": {
 				"type": "integer",
 				"example": "100",
-				"description": "Optional weight of the ECMP scope - if provided"
+				"description": "Optional weight of the ECMP scope - if provided."
 			},
 			"scope": {
 				"type": "object",
@@ -443,25 +443,25 @@
 					"colo_regions": {
 						"type": "array",
 						"example": "[\n  \"APAC\"\n]",
-						"description": "List of colo regions for the ECMP scope",
+						"description": "List of colo regions for the ECMP scope.",
 						"items": {
 							"type": "string",
-							"description": "Scope colo region",
+							"description": "Scope colo region.",
 							"example": "APAC"
 						}
 					},
 					"colo_names": {
 						"type": "array",
 						"example": "[\n  \"den01\"\n]",
-						"description": "List of colo names for the ECMP scope",
+						"description": "List of colo names for the ECMP scope.",
 						"items": {
 							"type": "string",
-							"description": "Scope colo name",
+							"description": "Scope colo name.",
 							"example": "den01"
 						}
 					}
 				},
-				"description": "Used only for ECMP routes"
+				"description": "Used only for ECMP routes."
 			}
 		},
 		"required_props": [

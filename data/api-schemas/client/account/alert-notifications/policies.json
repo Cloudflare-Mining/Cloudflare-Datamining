@@ -79,7 +79,7 @@
 										"readOnly": true,
 										"type": "string",
 										"maxLength": 36,
-										"description": "API uuid tag",
+										"description": "API uuid tag.",
 										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 									}
 								}
@@ -161,7 +161,7 @@
 										"readOnly": true,
 										"type": "string",
 										"maxLength": 36,
-										"description": "API uuid tag",
+										"description": "API uuid tag.",
 										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 									}
 								}
@@ -217,7 +217,7 @@
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"name": {
 				"type": "string",
@@ -255,7 +255,7 @@
 								"readOnly": true,
 								"type": "string",
 								"maxLength": 36,
-								"description": "API uuid tag",
+								"description": "API uuid tag.",
 								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 							}
 						}
@@ -275,7 +275,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -284,7 +284,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			}

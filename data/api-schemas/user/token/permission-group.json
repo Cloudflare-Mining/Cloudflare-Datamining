@@ -1,24 +1,24 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/user/token/permission-group.json",
 	"title": "Permission Groups",
-	"description": "Named groups of permissions used for creating API Tokens access policies",
+	"description": "Named groups of permissions used for creating API tokens access policies.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Permission Groups",
-			"description": "Find all available permission groups",
+			"description": "Find all available permission groups.",
 			"rel": "self",
 			"href": "user/tokens/permission_groups",
 			"method": "GET",
 			"cfRequestHeaders": {
-				"description": "Headers for Client API requests using API Tokens without payload",
+				"description": "Headers for Client API requests using API Tokens without payload.",
 				"type": "object",
 				"required": [
 					"Authorization"
 				],
 				"properties": {
 					"Authorization": {
-						"description": "API Token of \"bearer\" token type",
+						"description": "API Token of \"bearer\" token type.",
 						"type": "string",
 						"minLength": 47,
 						"maxLength": 87,
@@ -53,19 +53,19 @@
 			"id": {
 				"type": "string",
 				"example": "\"5f48a472240a4b489a21d43bd19a06e1\"",
-				"description": "Identifier of the group",
+				"description": "Identifier of the group.",
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"DNS Firewall Read\"",
-				"description": "Name of the group",
+				"description": "Name of the group.",
 				"readOnly": true
 			},
 			"scopes": {
 				"type": "array",
 				"example": "[\n  \"com.cloudflare.api.account\"\n]",
-				"description": "Scopes the permission group is applicable for",
+				"description": "Scopes that the permission group is applicable for.",
 				"readOnly": true,
 				"items": {
 					"type": "string",
@@ -86,6 +86,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"5f48a472240a4b489a21d43bd19a06e1\",\n  \"name\": \"DNS Firewall Read\",\n  \"scopes\": [\n    \"com.cloudflare.api.account\"\n  ]\n}",
 		"title": "Permission Groups",
-		"description": "Named groups of permissions used for creating API Tokens access policies"
+		"description": "Named groups of permissions used for creating API tokens access policies."
 	}
 }

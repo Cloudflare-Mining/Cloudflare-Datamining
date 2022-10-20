@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/domain.json",
 	"title": "Domain Intelligence",
-	"description": "Domain overview (Beta)",
+	"description": "Domain overview (Beta).",
 	"links": [
 		{
 			"title": "Get Domain Details",
@@ -48,7 +48,7 @@
 					"domain": {
 						"type": "string",
 						"example": "\"cloudflare.com\"",
-						"description": "Accepts multiple values, i.e. `?domain=cloudflare.com&domain=example.com`"
+						"description": "Accepts multiple values, i.e. `?domain=cloudflare.com&domain=example.com`."
 					}
 				},
 				"required_props": [
@@ -74,7 +74,7 @@
 			"resolves_to_refs": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": \"ipv4-addr--baa568ec-6efe-5902-be55-0663833db537\",\n    \"value\": \"192.0.2.0\"\n  }\n]",
-				"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to",
+				"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
 				"items": {
 					"type": "object",
 					"properties": {
@@ -84,7 +84,7 @@
 							"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537"
 						},
 						"value": {
-							"description": "IP address or domain name",
+							"description": "IP address or domain name.",
 							"type": "string",
 							"example": "192.0.2.0"
 						}
@@ -94,11 +94,11 @@
 			"popularity_rank": {
 				"type": "integer",
 				"example": "18",
-				"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000"
+				"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000."
 			},
 			"risk_score": {
 				"type": "number",
-				"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk)"
+				"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk)."
 			},
 			"application": {
 				"type": "object",
@@ -113,12 +113,12 @@
 						"example": "\"CLOUDFLARE\""
 					}
 				},
-				"description": "Application that the hostname belongs to"
+				"description": "Application that the hostname belongs to."
 			},
 			"risk_types": {
 				"type": "array",
 				"example": "[]",
-				"description": "A subset of the following security risk categories: `[{\"id\": 68, \"super_category_id\": 21, \"name\": \"Anonymizer\"}, {\"id\": 117, \"super_category_id\": 21, \"name\": \"Malware\"}, {\"id\": 131, \"super_category_id\": 21, \"name\": \"Phishing\"}, {\"id\": 169, \"super_category_id\": 21, \"name\": \"New Domains\"}, {\"id\": 175, \"super_category_id\": 21, \"name\": \"DNS Tunneling (Beta)\"}, {\"id\": 176, \"super_category_id\": 21, \"name\": \"DGA Domains (Beta)\"}]`",
+				"description": "A subset of the following security risk categories: `[{\"id\": 68, \"super_category_id\": 21, \"name\": \"Anonymizer\"}, {\"id\": 117, \"super_category_id\": 21, \"name\": \"Malware\"}, {\"id\": 131, \"super_category_id\": 21, \"name\": \"Phishing\"}, {\"id\": 169, \"super_category_id\": 21, \"name\": \"New Domains\"}, {\"id\": 175, \"super_category_id\": 21, \"name\": \"DNS Tunneling (Beta)\"}, {\"id\": 176, \"super_category_id\": 21, \"name\": \"DGA Domains (Beta)\"}]`.",
 				"items": {
 					"type": "object",
 					"properties": {
@@ -137,7 +137,7 @@
 			"content_categories": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": 155,\n    \"super_category_id\": 26,\n    \"name\": \"Technology\"\n  }\n]",
-				"description": "Current content categories",
+				"description": "Current content categories.",
 				"items": {
 					"type": "object",
 					"properties": {
@@ -160,10 +160,10 @@
 					"suspected_malware_family": {
 						"type": "string",
 						"example": "\"\"",
-						"description": "Suspected DGA malware family"
+						"description": "Suspected DGA malware family."
 					}
 				},
-				"description": "Additional information related to the host name"
+				"description": "Additional information related to the host name."
 			}
 		},
 		"required_props": [],
@@ -180,6 +180,6 @@
 		"objects": [],
 		"example": "{\n  \"domain\": \"cloudflare.com\",\n  \"resolves_to_refs\": [\n    {\n      \"id\": \"ipv4-addr--baa568ec-6efe-5902-be55-0663833db537\",\n      \"value\": \"192.0.2.0\"\n    }\n  ],\n  \"popularity_rank\": 18,\n  \"application\": {\n    \"id\": 1370,\n    \"name\": \"CLOUDFLARE\"\n  },\n  \"risk_types\": [],\n  \"content_categories\": [\n    {\n      \"id\": 155,\n      \"super_category_id\": 26,\n      \"name\": \"Technology\"\n    }\n  ],\n  \"additional_information\": {\n    \"suspected_malware_family\": \"\"\n  }\n}",
 		"title": "Domain Intelligence",
-		"description": "Domain overview (Beta)"
+		"description": "Domain overview (Beta)."
 	}
 }

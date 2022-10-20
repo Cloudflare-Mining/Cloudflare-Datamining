@@ -248,7 +248,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
-						"description": "Contact Identifier",
+						"description": "Contact Identifier.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -258,7 +258,7 @@
 							"null"
 						],
 						"example": "\"John\"",
-						"description": "User's first name",
+						"description": "User's first name.",
 						"maxLength": 60
 					},
 					"last_name": {
@@ -267,18 +267,18 @@
 							"null"
 						],
 						"example": "\"Appleseed\"",
-						"description": "User's last name",
+						"description": "User's last name.",
 						"maxLength": 60
 					},
 					"organization": {
 						"type": "string",
 						"example": "\"Cloudflare, Inc.\"",
-						"description": "Name of organization"
+						"description": "Name of organization."
 					},
 					"address": {
 						"type": "string",
 						"example": "\"123 Sesame St.\"",
-						"description": "Address"
+						"description": "Address."
 					},
 					"address2": {
 						"type": "string",
@@ -288,12 +288,12 @@
 					"city": {
 						"type": "string",
 						"example": "\"Austin\"",
-						"description": "City"
+						"description": "City."
 					},
 					"state": {
 						"type": "string",
 						"example": "\"TX\"",
-						"description": "State"
+						"description": "State."
 					},
 					"zip": {
 						"type": [
@@ -319,7 +319,7 @@
 							"null"
 						],
 						"example": "\"+1 123-123-1234\"",
-						"description": "User's telephone number",
+						"description": "User's telephone number.",
 						"maxLength": 20
 					},
 					"email": {
@@ -331,7 +331,7 @@
 					"fax": {
 						"type": "string",
 						"example": "\"123-867-5309\"",
-						"description": "Contact fax number"
+						"description": "Contact fax number."
 					}
 				},
 				"description": "Shows contact information for domain registrant.",
@@ -340,7 +340,7 @@
 						"id": "https://api.cloudflare.com/schemas/v4/client/account/registrar/contacts.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"title": "Registrar Contacts",
-						"description": "Manage registrant contact info for WHOIS and RDAP",
+						"description": "Manage registrant contact info for WHOIS and RDAP.",
 						"type": "object",
 						"allOf": [
 							{
@@ -358,14 +358,14 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Contact Identifier",
+										"description": "Contact Identifier.",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
 										"readOnly": true,
 										"type": "string"
 									},
 									"first_name": {
-										"description": "User's first name",
+										"description": "User's first name.",
 										"type": [
 											"string",
 											"null"
@@ -374,7 +374,7 @@
 										"example": "John"
 									},
 									"last_name": {
-										"description": "User's last name",
+										"description": "User's last name.",
 										"type": [
 											"string",
 											"null"
@@ -383,12 +383,12 @@
 										"example": "Appleseed"
 									},
 									"organization": {
-										"description": "Name of organization",
+										"description": "Name of organization.",
 										"example": "Cloudflare, Inc.",
 										"type": "string"
 									},
 									"address": {
-										"description": "Address",
+										"description": "Address.",
 										"example": "123 Sesame St.",
 										"type": "string"
 									},
@@ -398,12 +398,12 @@
 										"type": "string"
 									},
 									"city": {
-										"description": "City",
+										"description": "City.",
 										"example": "Austin",
 										"type": "string"
 									},
 									"state": {
-										"description": "State",
+										"description": "State.",
 										"example": "TX",
 										"type": "string"
 									},
@@ -426,7 +426,7 @@
 										"example": "US"
 									},
 									"phone": {
-										"description": "User's telephone number",
+										"description": "User's telephone number.",
 										"type": [
 											"string",
 											"null"
@@ -441,7 +441,7 @@
 										"example": "user@example.com"
 									},
 									"fax": {
-										"description": "Contact fax number",
+										"description": "Contact fax number.",
 										"type": "string",
 										"example": "123-867-5309"
 									}
@@ -470,14 +470,14 @@
 									],
 									"properties": {
 										"id": {
-											"description": "Contact Identifier",
+											"description": "Contact Identifier.",
 											"example": "ea95132c15732412d22c1476fa83f27a",
 											"maxLength": 32,
 											"readOnly": true,
 											"type": "string"
 										},
 										"first_name": {
-											"description": "User's first name",
+											"description": "User's first name.",
 											"type": [
 												"string",
 												"null"
@@ -486,7 +486,7 @@
 											"example": "John"
 										},
 										"last_name": {
-											"description": "User's last name",
+											"description": "User's last name.",
 											"type": [
 												"string",
 												"null"
@@ -495,12 +495,12 @@
 											"example": "Appleseed"
 										},
 										"organization": {
-											"description": "Name of organization",
+											"description": "Name of organization.",
 											"example": "Cloudflare, Inc.",
 											"type": "string"
 										},
 										"address": {
-											"description": "Address",
+											"description": "Address.",
 											"example": "123 Sesame St.",
 											"type": "string"
 										},
@@ -510,12 +510,12 @@
 											"type": "string"
 										},
 										"city": {
-											"description": "City",
+											"description": "City.",
 											"example": "Austin",
 											"type": "string"
 										},
 										"state": {
-											"description": "State",
+											"description": "State.",
 											"example": "TX",
 											"type": "string"
 										},
@@ -538,7 +538,7 @@
 											"example": "US"
 										},
 										"phone": {
-											"description": "User's telephone number",
+											"description": "User's telephone number.",
 											"type": [
 												"string",
 												"null"
@@ -553,7 +553,7 @@
 											"example": "user@example.com"
 										},
 										"fax": {
-											"description": "Contact fax number",
+											"description": "Contact fax number.",
 											"type": "string",
 											"example": "123-867-5309"
 										}
@@ -565,13 +565,13 @@
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"description": "Schema for an API response from Cloudflare that contains a single result object.",
 											"type": "object",
 											"allOf": [
 												{
 													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-													"description": "Common schema for all Cloudflare v4 API responses",
+													"description": "Common schema for all Cloudflare v4 API responses.",
 													"type": "object",
 													"required": [
 														"success",
@@ -584,7 +584,7 @@
 															"$comment": "This subschema describes successful responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		true
@@ -646,7 +646,7 @@
 															"$comment": "This subschema describes failure responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		false
@@ -781,13 +781,13 @@
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"description": "Schema for an API response from Cloudflare that contains a single result object.",
 											"type": "object",
 											"allOf": [
 												{
 													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-													"description": "Common schema for all Cloudflare v4 API responses",
+													"description": "Common schema for all Cloudflare v4 API responses.",
 													"type": "object",
 													"required": [
 														"success",
@@ -800,7 +800,7 @@
 															"$comment": "This subschema describes successful responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		true
@@ -862,7 +862,7 @@
 															"$comment": "This subschema describes failure responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		false
@@ -1006,14 +1006,14 @@
 									],
 									"properties": {
 										"id": {
-											"description": "Contact Identifier",
+											"description": "Contact Identifier.",
 											"example": "ea95132c15732412d22c1476fa83f27a",
 											"maxLength": 32,
 											"readOnly": true,
 											"type": "string"
 										},
 										"first_name": {
-											"description": "User's first name",
+											"description": "User's first name.",
 											"type": [
 												"string",
 												"null"
@@ -1022,7 +1022,7 @@
 											"example": "John"
 										},
 										"last_name": {
-											"description": "User's last name",
+											"description": "User's last name.",
 											"type": [
 												"string",
 												"null"
@@ -1031,12 +1031,12 @@
 											"example": "Appleseed"
 										},
 										"organization": {
-											"description": "Name of organization",
+											"description": "Name of organization.",
 											"example": "Cloudflare, Inc.",
 											"type": "string"
 										},
 										"address": {
-											"description": "Address",
+											"description": "Address.",
 											"example": "123 Sesame St.",
 											"type": "string"
 										},
@@ -1046,12 +1046,12 @@
 											"type": "string"
 										},
 										"city": {
-											"description": "City",
+											"description": "City.",
 											"example": "Austin",
 											"type": "string"
 										},
 										"state": {
-											"description": "State",
+											"description": "State.",
 											"example": "TX",
 											"type": "string"
 										},
@@ -1074,7 +1074,7 @@
 											"example": "US"
 										},
 										"phone": {
-											"description": "User's telephone number",
+											"description": "User's telephone number.",
 											"type": [
 												"string",
 												"null"
@@ -1089,7 +1089,7 @@
 											"example": "user@example.com"
 										},
 										"fax": {
-											"description": "Contact fax number",
+											"description": "Contact fax number.",
 											"type": "string",
 											"example": "123-867-5309"
 										}
@@ -1101,13 +1101,13 @@
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"description": "Schema for an API response from Cloudflare that contains a single result object.",
 											"type": "object",
 											"allOf": [
 												{
 													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-													"description": "Common schema for all Cloudflare v4 API responses",
+													"description": "Common schema for all Cloudflare v4 API responses.",
 													"type": "object",
 													"required": [
 														"success",
@@ -1120,7 +1120,7 @@
 															"$comment": "This subschema describes successful responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		true
@@ -1182,7 +1182,7 @@
 															"$comment": "This subschema describes failure responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		false
@@ -1317,13 +1317,13 @@
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"description": "Schema for an API response from Cloudflare that contains a single result object.",
 											"type": "object",
 											"allOf": [
 												{
 													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-													"description": "Common schema for all Cloudflare v4 API responses",
+													"description": "Common schema for all Cloudflare v4 API responses.",
 													"type": "object",
 													"required": [
 														"success",
@@ -1336,7 +1336,7 @@
 															"$comment": "This subschema describes successful responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		true
@@ -1398,7 +1398,7 @@
 															"$comment": "This subschema describes failure responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		false
@@ -1533,13 +1533,13 @@
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+											"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 											"type": "object",
 											"anyOf": [
 												{
 													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-													"description": "Common schema for all Cloudflare v4 API responses",
+													"description": "Common schema for all Cloudflare v4 API responses.",
 													"type": "object",
 													"required": [
 														"success",
@@ -1552,7 +1552,7 @@
 															"$comment": "This subschema describes successful responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		true
@@ -1614,7 +1614,7 @@
 															"$comment": "This subschema describes failure responses",
 															"properties": {
 																"success": {
-																	"description": "Whether the API call was successful or not",
+																	"description": "Whether the API call was successful or not.",
 																	"type": "boolean",
 																	"enum": [
 																		false
@@ -1725,22 +1725,22 @@
 															"type": "object",
 															"properties": {
 																"page": {
-																	"description": "Current page within paginated list of results",
+																	"description": "Current page within paginated list of results.",
 																	"type": "number",
 																	"example": 1
 																},
 																"per_page": {
-																	"description": "Number of results per page of results",
+																	"description": "Number of results per page of results.",
 																	"type": "number",
 																	"example": 20
 																},
 																"count": {
-																	"description": "Total results returned based on your search parameters",
+																	"description": "Total results returned based on your search parameters.",
 																	"type": "number",
 																	"example": 1
 																},
 																"total_count": {
-																	"description": "Total results available without any search parameters",
+																	"description": "Total results available without any search parameters.",
 																	"type": "number",
 																	"example": 2000
 																}
@@ -1754,12 +1754,12 @@
 													"type": "object",
 													"properties": {
 														"page": {
-															"description": "Requested page within paginated list of results",
+															"description": "Requested page within paginated list of results.",
 															"type": "number",
 															"example": 1
 														},
 														"per_page": {
-															"description": "Maximum number of results requested",
+															"description": "Maximum number of results requested.",
 															"type": "number",
 															"example": 20
 														}
@@ -1769,22 +1769,22 @@
 													"type": "object",
 													"properties": {
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"type": "number",
 															"example": 1
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"type": "number",
 															"example": 20
 														},
 														"count": {
-															"description": "Total results returned based on your search parameters",
+															"description": "Total results returned based on your search parameters.",
 															"type": "number",
 															"example": 1
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"type": "number",
 															"example": 2000
 														}
@@ -1811,26 +1811,26 @@
 						"definitions": {
 							"account_identifier": {
 								"$comment": "Must be present as a definition for URI Templating",
-								"description": "Account identifier tag",
+								"description": "Account identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
 								"example": "01a7362d577a6c3019a474fd6f485823"
 							},
 							"contact_identifier": {
-								"description": "Contact Identifier",
+								"description": "Contact Identifier.",
 								"example": "ea95132c15732412d22c1476fa83f27a",
 								"maxLength": 32,
 								"readOnly": true,
 								"type": "string"
 							},
 							"organization": {
-								"description": "Name of organization",
+								"description": "Name of organization.",
 								"example": "Cloudflare, Inc.",
 								"type": "string"
 							},
 							"address": {
-								"description": "Address",
+								"description": "Address.",
 								"example": "123 Sesame St.",
 								"type": "string"
 							},
@@ -1840,17 +1840,17 @@
 								"type": "string"
 							},
 							"city": {
-								"description": "City",
+								"description": "City.",
 								"example": "Austin",
 								"type": "string"
 							},
 							"state": {
-								"description": "State",
+								"description": "State.",
 								"example": "TX",
 								"type": "string"
 							},
 							"fax": {
-								"description": "Contact fax number",
+								"description": "Contact fax number.",
 								"type": "string",
 								"example": "123-867-5309"
 							},
@@ -1869,14 +1869,14 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Contact Identifier",
+										"description": "Contact Identifier.",
 										"example": "ea95132c15732412d22c1476fa83f27a",
 										"maxLength": 32,
 										"readOnly": true,
 										"type": "string"
 									},
 									"first_name": {
-										"description": "User's first name",
+										"description": "User's first name.",
 										"type": [
 											"string",
 											"null"
@@ -1885,7 +1885,7 @@
 										"example": "John"
 									},
 									"last_name": {
-										"description": "User's last name",
+										"description": "User's last name.",
 										"type": [
 											"string",
 											"null"
@@ -1894,12 +1894,12 @@
 										"example": "Appleseed"
 									},
 									"organization": {
-										"description": "Name of organization",
+										"description": "Name of organization.",
 										"example": "Cloudflare, Inc.",
 										"type": "string"
 									},
 									"address": {
-										"description": "Address",
+										"description": "Address.",
 										"example": "123 Sesame St.",
 										"type": "string"
 									},
@@ -1909,12 +1909,12 @@
 										"type": "string"
 									},
 									"city": {
-										"description": "City",
+										"description": "City.",
 										"example": "Austin",
 										"type": "string"
 									},
 									"state": {
-										"description": "State",
+										"description": "State.",
 										"example": "TX",
 										"type": "string"
 									},
@@ -1937,7 +1937,7 @@
 										"example": "US"
 									},
 									"phone": {
-										"description": "User's telephone number",
+										"description": "User's telephone number.",
 										"type": [
 											"string",
 											"null"
@@ -1952,7 +1952,7 @@
 										"example": "user@example.com"
 									},
 									"fax": {
-										"description": "Contact fax number",
+										"description": "Contact fax number.",
 										"type": "string",
 										"example": "123-867-5309"
 									}
@@ -1963,13 +1963,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains a single result object",
+										"description": "Schema for an API response from Cloudflare that contains a single result object.",
 										"type": "object",
 										"allOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -1982,7 +1982,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -2044,7 +2044,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -2171,13 +2171,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+										"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 										"type": "object",
 										"anyOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -2190,7 +2190,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -2252,7 +2252,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -2363,22 +2363,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -2392,12 +2392,12 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Requested page within paginated list of results",
+														"description": "Requested page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Maximum number of results requested",
+														"description": "Maximum number of results requested.",
 														"type": "number",
 														"example": 20
 													}
@@ -2407,22 +2407,22 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Current page within paginated list of results",
+														"description": "Current page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Number of results per page of results",
+														"description": "Number of results per page of results.",
 														"type": "number",
 														"example": 20
 													},
 													"count": {
-														"description": "Total results returned based on your search parameters",
+														"description": "Total results returned based on your search parameters.",
 														"type": "number",
 														"example": 1
 													},
 													"total_count": {
-														"description": "Total results available without any search parameters",
+														"description": "Total results available without any search parameters.",
 														"type": "number",
 														"example": 2000
 													}

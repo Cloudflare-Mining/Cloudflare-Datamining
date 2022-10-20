@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/miscategorization.json",
 	"title": "Miscategorization",
-	"description": "Miscategorization",
+	"description": "Miscategorization.",
 	"links": [
 		{
 			"title": "Create Miscategorization",
@@ -44,16 +44,16 @@
 								"example": "\"2001:0DB8::\""
 							}
 						],
-						"description": "Provide only if indicator_type is `ipv4` or `ipv6`"
+						"description": "Provide only if indicator_type is `ipv4` or `ipv6`."
 					},
 					"url": {
 						"type": "string",
-						"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`"
+						"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`."
 					},
 					"content_adds": {
 						"type": "array",
 						"example": "[\n  82\n]",
-						"description": "Content category IDs to add",
+						"description": "Content category IDs to add.",
 						"items": {
 							"type": "integer"
 						}
@@ -61,7 +61,7 @@
 					"content_removes": {
 						"type": "array",
 						"example": "[\n  155\n]",
-						"description": "Content category IDs to remove",
+						"description": "Content category IDs to remove.",
 						"items": {
 							"type": "integer"
 						}
@@ -69,7 +69,7 @@
 					"security_adds": {
 						"type": "array",
 						"example": "[\n  117,\n  131\n]",
-						"description": "Security category IDs to add",
+						"description": "Security category IDs to add.",
 						"items": {
 							"type": "integer"
 						}
@@ -77,7 +77,7 @@
 					"security_removes": {
 						"type": "array",
 						"example": "[\n  83\n]",
-						"description": "Security category IDs to remove",
+						"description": "Security category IDs to remove.",
 						"items": {
 							"type": "integer"
 						}
@@ -96,7 +96,7 @@
 				"objects": [],
 				"example": "{\n  \"indicator_type\": \"domain\",\n  \"ip\": \"192.0.2.0\",\n  \"content_adds\": [\n    82\n  ],\n  \"content_removes\": [\n    155\n  ],\n  \"security_adds\": [\n    117,\n    131\n  ],\n  \"security_removes\": [\n    83\n  ]\n}",
 				"title": "Miscategorization",
-				"description": "Miscategorization"
+				"description": "Miscategorization."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}
@@ -134,16 +134,16 @@
 						"example": "\"2001:0DB8::\""
 					}
 				],
-				"description": "Provide only if indicator_type is `ipv4` or `ipv6`"
+				"description": "Provide only if indicator_type is `ipv4` or `ipv6`."
 			},
 			"url": {
 				"type": "string",
-				"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`"
+				"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`."
 			},
 			"content_adds": {
 				"type": "array",
 				"example": "[\n  82\n]",
-				"description": "Content category IDs to add",
+				"description": "Content category IDs to add.",
 				"items": {
 					"type": "integer"
 				}
@@ -151,7 +151,7 @@
 			"content_removes": {
 				"type": "array",
 				"example": "[\n  155\n]",
-				"description": "Content category IDs to remove",
+				"description": "Content category IDs to remove.",
 				"items": {
 					"type": "integer"
 				}
@@ -159,7 +159,7 @@
 			"security_adds": {
 				"type": "array",
 				"example": "[\n  117,\n  131\n]",
-				"description": "Security category IDs to add",
+				"description": "Security category IDs to add.",
 				"items": {
 					"type": "integer"
 				}
@@ -167,7 +167,7 @@
 			"security_removes": {
 				"type": "array",
 				"example": "[\n  83\n]",
-				"description": "Security category IDs to remove",
+				"description": "Security category IDs to remove.",
 				"items": {
 					"type": "integer"
 				}
@@ -186,6 +186,6 @@
 		"objects": [],
 		"example": "{\n  \"indicator_type\": \"domain\",\n  \"ip\": \"192.0.2.0\",\n  \"content_adds\": [\n    82\n  ],\n  \"content_removes\": [\n    155\n  ],\n  \"security_adds\": [\n    117,\n    131\n  ],\n  \"security_removes\": [\n    83\n  ]\n}",
 		"title": "Miscategorization",
-		"description": "Miscategorization"
+		"description": "Miscategorization."
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/ca.json",
 	"title": "Zone-Level Access short-lived certificate CAs",
-	"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.).",
 	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates/",
 	"type": "object",
 	"links": [
@@ -90,6 +90,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"public_key\": \"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"\n}",
 		"title": "Zone-Level Access short-lived certificate CAs",
-		"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
+		"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)."
 	}
 }

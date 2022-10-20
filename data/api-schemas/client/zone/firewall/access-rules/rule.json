@@ -351,7 +351,7 @@
 		},
 		{
 			"title": "Delete an IP Access rule",
-			"description": "Deletes an IP Access rule defined at the zone level.\n\nOptionally, you can use the `cascade` property to specify that you wish to delete similar rules in other zones managed by the same zone owner. ",
+			"description": "Deletes an IP Access rule defined at the zone level.\n\nOptionally, you can use the `cascade` property to specify that you wish to delete similar rules in other zones managed by the same zone owner.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/firewall/access_rules/rules/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -624,14 +624,14 @@
 							"id": {
 								"type": "string",
 								"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-								"description": "Account identifier tag",
+								"description": "Account identifier tag.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"Demo Account\"",
-								"description": "Account name",
+								"description": "Account name.",
 								"maxLength": 100
 							},
 							"type": {
@@ -640,7 +640,7 @@
 								"enum": [
 									"account"
 								],
-								"description": "The scope of the rule",
+								"description": "The scope of the rule.",
 								"readOnly": true
 							}
 						},
@@ -659,14 +659,14 @@
 							"id": {
 								"type": "string",
 								"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-								"description": "Organization identifier tag",
+								"description": "Organization identifier tag.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"Cloudflare, Inc.\"",
-								"description": "Organization Name",
+								"description": "Organization Name.",
 								"maxLength": 100
 							},
 							"type": {
@@ -674,7 +674,7 @@
 								"enum": [
 									"organization"
 								],
-								"description": "The scope of the rule",
+								"description": "The scope of the rule.",
 								"readOnly": true
 							}
 						},
@@ -693,14 +693,14 @@
 							"id": {
 								"type": "string",
 								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
-								"description": "Zone identifier tag",
+								"description": "Zone identifier tag.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"example.com\"",
-								"description": "The domain name",
+								"description": "The domain name.",
 								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 								"maxLength": 253,
 								"readOnly": true

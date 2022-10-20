@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/peer.json",
 	"title": "Secondary DNS (Peer)",
-	"description": "Peer nameservers for secondary DNS",
+	"description": "Peer nameservers for secondary DNS.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Peers",
-			"description": "List Peers",
+			"description": "List Peers.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Peer Details",
-			"description": "Get Peer",
+			"description": "Get Peer.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
 			"method": "GET",
@@ -54,7 +54,7 @@
 		},
 		{
 			"title": "Update Peer",
-			"description": "Modify Peer",
+			"description": "Modify Peer.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
 			"method": "PUT",
@@ -84,7 +84,7 @@
 						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -106,12 +106,12 @@
 					"tsig_id": {
 						"type": "string",
 						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
-						"description": "TSIG authentication will be used for zone transfer if configured"
+						"description": "TSIG authentication will be used for zone transfer if configured."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"my-peer-1\"",
-						"description": "The name of the peer"
+						"description": "The name of the peer."
 					}
 				},
 				"required_props": [
@@ -127,13 +127,13 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip\": \"192.0.2.53\",\n  \"port\": 53,\n  \"ixfr_enable\": false,\n  \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"my-peer-1\"\n}",
 				"title": "Secondary DNS (Peer)",
-				"description": "Peer nameservers for secondary DNS"
+				"description": "Peer nameservers for secondary DNS."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip\": \"192.0.2.53\",\n    \"port\": 53,\n    \"ixfr_enable\": false,\n    \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"my-peer-1\"\n  }\n}"
 		},
 		{
 			"title": "Delete Peer",
-			"description": "Delete Peer",
+			"description": "Delete Peer.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -157,7 +157,7 @@
 		},
 		{
 			"title": "Create Peer",
-			"description": "Create Peer",
+			"description": "Create Peer.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers",
 			"method": "POST",
@@ -200,12 +200,12 @@
 					"tsig_id": {
 						"type": "string",
 						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
-						"description": "TSIG authentication will be used for zone transfer if configured"
+						"description": "TSIG authentication will be used for zone transfer if configured."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"my-peer-1\"",
-						"description": "The name of the peer"
+						"description": "The name of the peer."
 					}
 				},
 				"required_props": [
@@ -234,7 +234,7 @@
 				"example": "\"23ff594956f20c2a721606e94745a8aa\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -256,12 +256,12 @@
 			"tsig_id": {
 				"type": "string",
 				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
-				"description": "TSIG authentication will be used for zone transfer if configured"
+				"description": "TSIG authentication will be used for zone transfer if configured."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"my-peer-1\"",
-				"description": "The name of the peer"
+				"description": "The name of the peer."
 			}
 		},
 		"required_props": [
@@ -277,6 +277,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip\": \"192.0.2.53\",\n  \"port\": 53,\n  \"ixfr_enable\": false,\n  \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"my-peer-1\"\n}",
 		"title": "Secondary DNS (Peer)",
-		"description": "Peer nameservers for secondary DNS"
+		"description": "Peer nameservers for secondary DNS."
 	}
 }

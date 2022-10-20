@@ -34,12 +34,12 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Requested page within paginated list of results"
+						"description": "Requested page within paginated list of results."
 					},
 					"per_page": {
 						"type": "number",
 						"example": "20",
-						"description": "Maximum number of results requested"
+						"description": "Maximum number of results requested."
 					},
 					"enabled": {
 						"type": "boolean",
@@ -125,14 +125,14 @@
 								"type": "string",
 								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
 								"$comment": "Must be present as a definition for URI Templating",
-								"description": "Zone identifier tag",
+								"description": "Zone identifier tag.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"example.com\"",
-								"description": "The domain name",
+								"description": "The domain name.",
 								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 								"maxLength": 253,
 								"readOnly": true
@@ -234,7 +234,7 @@
 								"type": "string",
 								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
 								"$comment": "Must be present as a definition for URI Templating",
-								"description": "Zone identifier tag",
+								"description": "Zone identifier tag.",
 								"maxLength": 32,
 								"readOnly": true
 							}
@@ -281,14 +281,14 @@
 						"type": "string",
 						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
 						"$comment": "Must be present as a definition for URI Templating",
-						"description": "Zone identifier tag",
+						"description": "Zone identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"example.com\"",
-						"description": "The domain name",
+						"description": "The domain name.",
 						"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 						"maxLength": 253,
 						"readOnly": true

@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/ssl/ssl-recommender.json",
 	"title": "SSL/TLS Mode Recommendation",
-	"description": "SSL/TLS Recommendation for a zone",
+	"description": "SSL/TLS Recommendation for a zone.",
 	"type": "object",
 	"links": [
 		{
 			"title": "SSL/TLS Recommendation",
-			"description": "Retrieve the SSL/TLS Recommender's recommendation for a zone",
+			"description": "Retrieve the SSL/TLS Recommender's recommendation for a zone.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/ssl/recommendation",
 			"method": "GET",
@@ -37,7 +37,7 @@
 			"success": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Whether the API call was successful or not",
+				"description": "Whether the API call was successful or not.",
 				"enum": [
 					true
 				]
@@ -90,7 +90,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"ssl_recommendation\"",
-						"description": "Identifier of a recommedation result"
+						"description": "Identifier of a recommedation result."
 					},
 					"value": {
 						"type": "string",
@@ -106,7 +106,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -123,6 +123,6 @@
 		"objects": [],
 		"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ssl_recommendation\",\n    \"value\": \"strict\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
 		"title": "SSL/TLS Mode Recommendation",
-		"description": "SSL/TLS Recommendation for a zone"
+		"description": "SSL/TLS Recommendation for a zone."
 	}
 }

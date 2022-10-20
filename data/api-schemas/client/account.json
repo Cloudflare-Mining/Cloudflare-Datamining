@@ -1,11 +1,11 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account.json",
 	"title": "Accounts",
-	"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details.",
+	"description": "An account is the root object that owns other resources such as zones, load balancers, and billing details.",
 	"links": [
 		{
 			"title": "List Accounts",
-			"description": "List all accounts you have ownership or verified access to",
+			"description": "List all accounts you have ownership or verified access to.",
 			"rel": "collection",
 			"href": "accounts",
 			"method": "GET",
@@ -34,7 +34,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -42,7 +42,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Maximum number of results per page"
+						"description": "Maximum number of results per page."
 					},
 					"direction": {
 						"type": "string",
@@ -51,12 +51,12 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order results"
+						"description": "Direction to order results."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"example.com\"",
-						"description": "Name of the account",
+						"description": "Name of the account.",
 						"readOnly": true
 					}
 				},
@@ -74,7 +74,7 @@
 		},
 		{
 			"title": "Account Details",
-			"description": "Get information about a specific account that you are a member of",
+			"description": "Get information about a specific account that you are a member of.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}",
 			"method": "GET",
@@ -97,7 +97,7 @@
 		},
 		{
 			"title": "Update Account",
-			"description": "Update an existing Account",
+			"description": "Update an existing account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}",
 			"method": "PUT",
@@ -124,14 +124,14 @@
 					"id": {
 						"type": "string",
 						"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-						"description": "Account identifier tag",
+						"description": "Account identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Demo Account\"",
-						"description": "Account name",
+						"description": "Account name.",
 						"maxLength": 100
 					},
 					"settings": {
@@ -141,22 +141,22 @@
 							"enforce_twofactor": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 								"default": false
 							},
 							"use_account_custom_ns_by_default": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+								"description": "Indicates whether new zones should use the account-level custom nameservers by default.",
 								"default": false
 							}
 						},
-						"description": "Account settings"
+						"description": "Account settings."
 					},
 					"created_on": {
 						"type": "string",
 						"example": "\"2014-03-01T12:21:02.0000Z\"",
-						"description": "describes when account was created",
+						"description": "describes when account was created.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -171,7 +171,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
 				"title": "Accounts",
-				"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details."
+				"description": "An account is the root object that owns other resources such as zones, load balancers, and billing details."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
 		}
@@ -191,14 +191,14 @@
 			"id": {
 				"type": "string",
 				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-				"description": "Account identifier tag",
+				"description": "Account identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Demo Account\"",
-				"description": "Account name",
+				"description": "Account name.",
 				"maxLength": 100
 			},
 			"settings": {
@@ -208,22 +208,22 @@
 					"enforce_twofactor": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+						"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 						"default": false
 					},
 					"use_account_custom_ns_by_default": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+						"description": "Indicates whether new zones should use the account-level custom nameservers by default.",
 						"default": false
 					}
 				},
-				"description": "Account settings"
+				"description": "Account settings."
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2014-03-01T12:21:02.0000Z\"",
-				"description": "describes when account was created",
+				"description": "describes when account was created.",
 				"format": "date-time",
 				"readOnly": true
 			}
@@ -238,6 +238,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
 		"title": "Accounts",
-		"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details."
+		"description": "An account is the root object that owns other resources such as zones, load balancers, and billing details."
 	}
 }

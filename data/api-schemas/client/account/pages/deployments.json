@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/pages/deployments.json",
 	"title": "Pages Deployment",
-	"description": "A Pages deployment is a published build for a commit on Pages",
+	"description": "A Pages deployment is a published build for a commit on Pages.",
 	"cfExtendedDescription": "**For more detailed documentation on using the API for Pages see the [Pages docs](https://developers.cloudflare.com/pages/).**",
 	"type": "object",
 	"cfDeprecations": {
@@ -15,7 +15,7 @@
 	"links": [
 		{
 			"title": "Get deployments",
-			"description": "Fetch a list of deployments from a project",
+			"description": "Fetch a list of deployments from a project.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments",
 			"method": "GET",
@@ -27,12 +27,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -48,7 +48,7 @@
 		},
 		{
 			"title": "Get deployment info",
-			"description": "Fetch a deployment",
+			"description": "Fetch a deployment.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments/{#/definitions/deployment_identifier}",
 			"method": "GET",
@@ -60,12 +60,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -81,7 +81,7 @@
 		},
 		{
 			"title": "Get deployment stage logs",
-			"description": "Fetch deploy logs",
+			"description": "Fetch deploy logs.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments/{#/definitions/deployment_identifier}/history/{#/definitions/deployment_stage_name}/logs",
 			"method": "GET",
@@ -99,12 +99,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -120,7 +120,7 @@
 		},
 		{
 			"title": "Get deployment logs",
-			"description": "Fetch deploy logs",
+			"description": "Fetch deploy logs.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments/{#/definitions/deployment_identifier}/history/logs",
 			"method": "GET",
@@ -132,12 +132,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -153,7 +153,7 @@
 		},
 		{
 			"title": "Delete deployment",
-			"description": "Destroy a deployment",
+			"description": "Destroy a deployment.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments/{#/definitions/deployment_identifier}",
 			"method": "DELETE",
@@ -165,12 +165,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -198,12 +198,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -219,7 +219,7 @@
 		},
 		{
 			"title": "Retry deployment",
-			"description": "Retry a previous deployment",
+			"description": "Retry a previous deployment.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/deployments/{#/definitions/deployment_identifier}/retry",
 			"method": "POST",
@@ -231,12 +231,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -264,12 +264,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -332,51 +332,51 @@
 			"id": {
 				"type": "string",
 				"example": "\"f64788e9-fccd-4d4a-a28a-cb84f88f6\"",
-				"description": "Id of the deployment",
+				"description": "Id of the deployment.",
 				"readOnly": true
 			},
 			"short_id": {
 				"type": "string",
 				"example": "\"f64788e9\"",
-				"description": "Short Id (8 character) of the deployment",
+				"description": "Short Id (8 character) of the deployment.",
 				"readOnly": true
 			},
 			"project_id": {
 				"type": "string",
 				"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-				"description": "Id of the project",
+				"description": "Id of the project.",
 				"readOnly": true
 			},
 			"project_name": {
 				"type": "string",
 				"example": "\"ninjakittens\"",
 				"readOnly": true,
-				"description": "Name of the project"
+				"description": "Name of the project."
 			},
 			"environment": {
 				"type": "string",
 				"example": "\"preview\"",
-				"description": "Type of deploy",
+				"description": "Type of deploy.",
 				"readOnly": true,
 				"pattern": "preview|production"
 			},
 			"url": {
 				"type": "string",
 				"example": "\"https://f64788e9.ninjakittens.pages.dev\"",
-				"description": "The live URL to view this deployment",
+				"description": "The live URL to view this deployment.",
 				"readOnly": true
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2021-03-09T00:55:03.923456Z\"",
-				"description": "When the deployment was created",
+				"description": "When the deployment was created.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2021-03-09T00:58:59.045655\"",
-				"description": "When the deployment was last modified",
+				"description": "When the deployment was last modified.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -386,13 +386,13 @@
 					"null"
 				],
 				"example": "[\n  \"https://branchname.projectname.pages.dev\"\n]",
-				"description": "A list of alias URLs pointing to this deployment",
+				"description": "A list of alias URLs pointing to this deployment.",
 				"readOnly": true
 			},
 			"is_skipped": {
 				"type": "boolean",
 				"example": "true",
-				"description": "If the deployment has been skipped",
+				"description": "If the deployment has been skipped.",
 				"readOnly": true
 			},
 			"latest_stage": {
@@ -402,7 +402,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"deploy\"",
-						"description": "The current build stage",
+						"description": "The current build stage.",
 						"pattern": "queued|initialize|clone_repo|build|deploy"
 					},
 					"started_on": {
@@ -411,7 +411,7 @@
 							"null"
 						],
 						"example": "\"2021-03-09T00:55:03.923456Z\"",
-						"description": "When the stage started",
+						"description": "When the stage started.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -421,25 +421,25 @@
 							"null"
 						],
 						"example": "\"2021-03-09T00:58:59.045655\"",
-						"description": "When the stage ended",
+						"description": "When the stage ended.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"status": {
 						"type": "string",
 						"example": "\"success\"",
-						"description": "State of the current stage",
+						"description": "State of the current stage.",
 						"pattern": "success|idle|active|failure|canceled",
 						"readOnly": true
 					}
 				},
 				"readOnly": true,
-				"description": "The status of the deployment"
+				"description": "The status of the deployment."
 			},
 			"env_vars": {
 				"type": "object",
 				"example": "{\n  \"BUILD_VERSION\": {\n    \"value\": \"3.3\"\n  },\n  \"ENV\": {\n    \"value\": \"STAGING\"\n  }\n}",
-				"description": "A dict of env variables to build this deploy",
+				"description": "A dict of env variables to build this deploy.",
 				"readOnly": true
 			},
 			"deployment_trigger": {
@@ -449,7 +449,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"ad_hoc\"",
-						"description": "What caused the deployment",
+						"description": "What caused the deployment.",
 						"pattern": "push|ad_hoc",
 						"readOnly": true
 					},
@@ -460,46 +460,46 @@
 							"branch": {
 								"type": "string",
 								"example": "\"main\"",
-								"description": "Where the trigger happened",
+								"description": "Where the trigger happened.",
 								"readOnly": true
 							},
 							"commit_hash": {
 								"type": "string",
 								"example": "\"ad9ccd918a81025731e10e40267e11273a263421\"",
-								"description": "Hash of the deployment trigger commit",
+								"description": "Hash of the deployment trigger commit.",
 								"readOnly": true
 							},
 							"commit_message": {
 								"type": "string",
 								"example": "\"Update index.html\"",
-								"description": "Message of the deployment trigger commit",
+								"description": "Message of the deployment trigger commit.",
 								"readOnly": true
 							}
 						},
-						"description": "Additional info about the trigger"
+						"description": "Additional info about the trigger."
 					}
 				},
-				"description": "Info about what caused the deployment",
+				"description": "Info about what caused the deployment.",
 				"readOnly": true
 			},
 			"stages": {
 				"type": "array",
 				"example": "[\n  {\n    \"name\": \"queued\",\n    \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n    \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n    \"status\": \"active\"\n  },\n  {\n    \"name\": \"initialize\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"clone_repo\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"build\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"deploy\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  }\n]",
 				"readOnly": true,
-				"description": "List of past stages",
+				"description": "List of past stages.",
 				"items": {
-					"description": "The status of the deployment",
+					"description": "The status of the deployment.",
 					"type": "object",
 					"readOnly": true,
 					"properties": {
 						"name": {
-							"description": "The current build stage",
+							"description": "The current build stage.",
 							"type": "string",
 							"pattern": "queued|initialize|clone_repo|build|deploy",
 							"example": "deploy"
 						},
 						"started_on": {
-							"description": "When the stage started",
+							"description": "When the stage started.",
 							"format": "date-time",
 							"type": [
 								"string",
@@ -509,7 +509,7 @@
 							"example": "2021-03-09T00:55:03.923456Z"
 						},
 						"ended_on": {
-							"description": "When the stage ended",
+							"description": "When the stage ended.",
 							"format": "date-time",
 							"type": [
 								"string",
@@ -519,7 +519,7 @@
 							"example": "2021-03-09T00:58:59.045655"
 						},
 						"status": {
-							"description": "State of the current stage",
+							"description": "State of the current stage.",
 							"type": "string",
 							"pattern": "success|idle|active|failure|canceled",
 							"readOnly": true,
@@ -538,7 +538,7 @@
 							"null"
 						],
 						"example": "\"npm run build\"",
-						"description": "Command used to build project"
+						"description": "Command used to build project."
 					},
 					"destination_dir": {
 						"type": [
@@ -546,7 +546,7 @@
 							"null"
 						],
 						"example": "\"build\"",
-						"description": "Output directory of the build"
+						"description": "Output directory of the build."
 					},
 					"root_dir": {
 						"type": [
@@ -554,7 +554,7 @@
 							"null"
 						],
 						"example": "\"/\"",
-						"description": "Directory to run the command"
+						"description": "Directory to run the command."
 					},
 					"web_analytics_tag": {
 						"type": [
@@ -562,7 +562,7 @@
 							"null"
 						],
 						"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-						"description": "The classifying tag for analytics"
+						"description": "The classifying tag for analytics."
 					},
 					"web_analytics_token": {
 						"type": [
@@ -570,11 +570,11 @@
 							"null"
 						],
 						"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-						"description": "The auth token for analytics"
+						"description": "The auth token for analytics."
 					}
 				},
 				"readOnly": true,
-				"description": "Configs for the project build process"
+				"description": "Configs for the project build process."
 			},
 			"source": {
 				"type": "object",
@@ -583,7 +583,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"github\"",
-						"description": "Project host type",
+						"description": "Project host type.",
 						"readOnly": true
 					},
 					"config": {
@@ -593,33 +593,33 @@
 							"owner": {
 								"type": "string",
 								"example": "\"cloudflare\"",
-								"description": "Project owner username",
+								"description": "Project owner username.",
 								"readOnly": true
 							},
 							"repo_name": {
 								"type": "string",
 								"example": "\"ninjakittens\"",
-								"description": "Project repository name"
+								"description": "Project repository name."
 							},
 							"production_branch": {
 								"type": "string",
 								"example": "\"main\"",
-								"description": "Project production branch name"
+								"description": "Project production branch name."
 							},
 							"pr_comments_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Enable Pages to comment on Pull Requests"
+								"description": "Enable Pages to comment on Pull Requests."
 							},
 							"production_deployments_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Toggle production deployments on this repo"
+								"description": "Toggle production deployments on this repo."
 							},
 							"preview_deployment_setting": {
 								"type": "string",
 								"example": "\"custom\"",
-								"description": "Preview deployment setting",
+								"description": "Preview deployment setting.",
 								"enum": [
 									"all",
 									"none",
@@ -629,18 +629,18 @@
 							"preview_branch_includes": {
 								"type": "array",
 								"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 							},
 							"preview_branch_excludes": {
 								"type": "array",
 								"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 							}
 						}
 					}
 				},
 				"readOnly": true,
-				"description": "Configs for the project source"
+				"description": "Configs for the project source."
 			}
 		},
 		"required_props": [],
@@ -665,6 +665,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 		"title": "Pages Deployment",
-		"description": "A Pages deployment is a published build for a commit on Pages"
+		"description": "A Pages deployment is a published build for a commit on Pages."
 	}
 }

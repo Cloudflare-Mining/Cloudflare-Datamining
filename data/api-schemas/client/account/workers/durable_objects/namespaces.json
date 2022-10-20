@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/durable_objects/namespaces.json",
 	"title": "Durable Objects Namespace",
-	"description": "A Namespace is a collection of Durable Objects of the same class",
+	"description": "A Namespace is a collection of Durable Objects of the same class.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Namespaces",
-			"description": "Returns the namespaces owned by an account",
+			"description": "Returns the namespaces owned by an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/workers/durable_objects/namespaces",
 			"method": "GET",
@@ -24,12 +24,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -44,7 +44,7 @@
 		},
 		{
 			"title": "List Objects",
-			"description": "Returns the Durable Objects in a given namespace",
+			"description": "Returns the Durable Objects in a given namespace.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/workers/durable_objects/namespaces/{#/definitions/id}/objects",
 			"method": "GET",
@@ -62,12 +62,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -130,25 +130,25 @@
 				"type": "string",
 				"example": "\"5fd1cafff895419c8bcc647fc64ab8f0\"",
 				"readOnly": true,
-				"description": "ID of the namespace"
+				"description": "ID of the namespace."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"some_namespace_name\"",
 				"readOnly": true,
-				"description": "Name of the namespace"
+				"description": "Name of the namespace."
 			},
 			"script": {
 				"type": "string",
 				"example": "\"some_script_name\"",
 				"readOnly": true,
-				"description": "Name of the script implementing the namespace"
+				"description": "Name of the script implementing the namespace."
 			},
 			"class": {
 				"type": "string",
 				"example": "\"SomeClass\"",
 				"readOnly": true,
-				"description": "Name of the class implementing the namespace"
+				"description": "Name of the class implementing the namespace."
 			}
 		},
 		"required_props": [],
@@ -161,6 +161,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"5fd1cafff895419c8bcc647fc64ab8f0\",\n  \"name\": \"some_namespace_name\",\n  \"script\": \"some_script_name\",\n  \"class\": \"SomeClass\"\n}",
 		"title": "Durable Objects Namespace",
-		"description": "A Namespace is a collection of Durable Objects of the same class"
+		"description": "A Namespace is a collection of Durable Objects of the same class."
 	}
 }

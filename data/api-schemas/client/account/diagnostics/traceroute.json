@@ -29,7 +29,7 @@
 						"type": "array",
 						"example": "[\n  \"203.0.113.1\",\n  \"cloudflare.com\"\n]",
 						"items": {
-							"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings",
+							"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings.",
 							"type": "string",
 							"example": "203.0.113.1"
 						},
@@ -38,9 +38,9 @@
 					"colos": {
 						"type": "array",
 						"example": "[\n  \"den\",\n  \"sin\"\n]",
-						"description": "If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes",
+						"description": "If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes.",
 						"items": {
-							"description": "Source colo name",
+							"description": "Source colo name.",
 							"type": "string"
 						}
 					},
@@ -50,7 +50,7 @@
 							"packets_per_ttl": {
 								"type": "integer",
 								"example": "10",
-								"description": "Number of packets sent at each TTL",
+								"description": "Number of packets sent at each TTL.",
 								"default": 3,
 								"minimum": 0,
 								"maximum": 10
@@ -58,7 +58,7 @@
 							"packet_type": {
 								"type": "string",
 								"example": "\"icmp\"",
-								"description": "Type of packet sent",
+								"description": "Type of packet sent.",
 								"default": "icmp",
 								"enum": [
 									"icmp",
@@ -71,7 +71,7 @@
 							"max_ttl": {
 								"type": "integer",
 								"example": "5",
-								"description": "Max TTL",
+								"description": "Max TTL.",
 								"default": 15,
 								"minimum": 0,
 								"maximum": 64
@@ -79,7 +79,7 @@
 							"wait_time": {
 								"type": "integer",
 								"example": "1",
-								"description": "Set the time (in seconds) to wait for a response to a probe",
+								"description": "Set the time (in seconds) to wait for a response to a probe.",
 								"default": 1,
 								"minimum": 1,
 								"maximum": 5
@@ -87,7 +87,7 @@
 							"port": {
 								"type": "integer",
 								"example": "0",
-								"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol",
+								"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol.",
 								"default": 0,
 								"minimum": 0,
 								"maximum": 65535
@@ -132,7 +132,7 @@
 			"target": {
 				"type": "string",
 				"example": "\"1.1.1.1\"",
-				"description": "The target hostname, IPv6, or IPv6 address"
+				"description": "The target hostname, IPv6, or IPv6 address."
 			},
 			"colos": {
 				"type": "array",
@@ -142,7 +142,7 @@
 					"properties": {
 						"error": {
 							"type": "string",
-							"description": "Errors resulting from collecting traceroute from colo to target",
+							"description": "Errors resulting from collecting traceroute from colo to target.",
 							"enum": [
 								"",
 								"Could not gather traceroute data: Code 1",
@@ -157,24 +157,24 @@
 							"properties": {
 								"name": {
 									"type": "string",
-									"description": "Source colo name",
+									"description": "Source colo name.",
 									"example": "den01"
 								},
 								"city": {
 									"type": "string",
-									"description": "Source colo city",
+									"description": "Source colo city.",
 									"example": "Denver, CO, US"
 								}
 							}
 						},
 						"traceroute_time_ms": {
 							"type": "integer",
-							"description": "Total time of traceroute in ms",
+							"description": "Total time of traceroute in ms.",
 							"example": 969
 						},
 						"target_summary": {
 							"type": "object",
-							"description": "Aggregated statistics from all hops about the target",
+							"description": "Aggregated statistics from all hops about the target.",
 							"example": {
 								"asn": "",
 								"ip": "1.1.1.1",
@@ -193,22 +193,22 @@
 								"properties": {
 									"packets_ttl": {
 										"type": "integer",
-										"description": "The time to live (TTL)",
+										"description": "The time to live (TTL).",
 										"example": 1
 									},
 									"packets_sent": {
 										"type": "integer",
-										"description": "Number of packets sent with specified TTL",
+										"description": "Number of packets sent with specified TTL.",
 										"example": 3
 									},
 									"packets_lost": {
 										"type": "integer",
-										"description": "Number of packets where no response was received",
+										"description": "Number of packets where no response was received.",
 										"example": 0
 									},
 									"nodes": {
 										"type": "array",
-										"description": "An array of node objects",
+										"description": "An array of node objects.",
 										"items": {
 											"type": "object",
 											"properties": {
@@ -221,35 +221,35 @@
 												},
 												"asn": {
 													"type": "string",
-													"description": "AS number associated with the node object"
+													"description": "AS number associated with the node object."
 												},
 												"ip": {
 													"type": "string",
-													"description": "IP address of the node"
+													"description": "IP address of the node."
 												},
 												"name": {
 													"type": "string",
-													"description": "Host name of the address, this may be the same as the IP address"
+													"description": "Host name of the address, this may be the same as the IP address."
 												},
 												"packet_count": {
 													"type": "integer",
-													"description": "Number of packets with a response from this node"
+													"description": "Number of packets with a response from this node."
 												},
 												"mean_rtt_ms": {
 													"type": "number",
-													"description": "Mean RTT in ms"
+													"description": "Mean RTT in ms."
 												},
 												"std_dev_rtt_ms": {
 													"type": "number",
-													"description": "Standard deviation of the RTTs in ms"
+													"description": "Standard deviation of the RTTs in ms."
 												},
 												"min_rtt_ms": {
 													"type": "number",
-													"description": "Minimum RTT in ms"
+													"description": "Minimum RTT in ms."
 												},
 												"max_rtt_ms": {
 													"type": "number",
-													"description": "Maximum RTT in ms"
+													"description": "Maximum RTT in ms."
 												}
 											},
 											"example": {

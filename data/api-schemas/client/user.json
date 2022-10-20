@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user.json",
 	"title": "User",
-	"description": "The currently logged in/authenticated User",
+	"description": "The currently logged in/authenticated User.",
 	"type": "object",
 	"links": [
 		{
@@ -28,7 +28,7 @@
 		},
 		{
 			"title": "Edit User",
-			"description": "Edit part of your user details",
+			"description": "Edit part of your user details.",
 			"rel": "self",
 			"href": "user",
 			"method": "PATCH",
@@ -58,7 +58,7 @@
 							"null"
 						],
 						"example": "\"John\"",
-						"description": "User's first name",
+						"description": "User's first name.",
 						"maxLength": 60
 					},
 					"last_name": {
@@ -67,7 +67,7 @@
 							"null"
 						],
 						"example": "\"Appleseed\"",
-						"description": "User's last name",
+						"description": "User's last name.",
 						"maxLength": 60
 					},
 					"telephone": {
@@ -76,7 +76,7 @@
 							"null"
 						],
 						"example": "\"+1 123-123-1234\"",
-						"description": "User's telephone number",
+						"description": "User's telephone number.",
 						"maxLength": 20
 					},
 					"country": {
@@ -137,7 +137,7 @@
 					"null"
 				],
 				"example": "\"John\"",
-				"description": "User's first name",
+				"description": "User's first name.",
 				"maxLength": 60
 			},
 			"last_name": {
@@ -146,13 +146,13 @@
 					"null"
 				],
 				"example": "\"Appleseed\"",
-				"description": "User's last name",
+				"description": "User's last name.",
 				"maxLength": 60
 			},
 			"username": {
 				"type": "string",
 				"example": "\"cfuser12345\"",
-				"description": "A username used to access other cloudflare services, like support",
+				"description": "A username used to access other cloudflare services, like support.",
 				"pattern": "^[a-z0-9]+([\\-\\._]?[a-z0-9]+)+$",
 				"minLength": 3,
 				"maxLength": 90
@@ -163,7 +163,7 @@
 					"null"
 				],
 				"example": "\"+1 123-123-1234\"",
-				"description": "User's telephone number",
+				"description": "User's telephone number.",
 				"maxLength": 20
 			},
 			"country": {
@@ -194,21 +194,21 @@
 			"modified_on": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00Z\"",
-				"description": "Last time the user was modified",
+				"description": "Last time the user was modified.",
 				"readOnly": true,
 				"format": "date-time"
 			},
 			"two_factor_authentication_enabled": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
+				"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
 				"readOnly": true,
 				"default": false
 			},
 			"suspended": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Indicates whether the user is prevented from performing certain actions within their account",
+				"description": "Indicates whether the user is prevented from performing certain actions within their account.",
 				"readOnly": true,
 				"default": false
 			},
@@ -216,7 +216,7 @@
 				"type": "array",
 				"example": "[\n  \"new_feature\"\n]",
 				"items": {
-					"description": "A beta feature ID",
+					"description": "A beta feature ID.",
 					"type": "string",
 					"example": "new_feature"
 				},
@@ -230,19 +230,19 @@
 					"id": "https://api.cloudflare.com/schemas/v4/client/user/organization.json",
 					"title": "User's Organizations",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "A list of organizations this user is a member of",
+					"description": "A list of organizations this user is a member of.",
 					"cfExtendedDescription": "Please use equivalent `/accounts` API endpoints. Account APIs provide a broader range of features and are backwards-compatible to organization APIs.",
 					"type": "object",
 					"properties": {
 						"id": {
-							"description": "Organization identifier tag",
+							"description": "Organization identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "01a7362d577a6c3019a474fd6f485823"
 						},
 						"name": {
-							"description": "Organization Name",
+							"description": "Organization Name.",
 							"type": "string",
 							"maxLength": 100,
 							"example": "Cloudflare, Inc."
@@ -253,12 +253,12 @@
 								"member",
 								"invited"
 							],
-							"description": "Whether or not the user is a member of the organization or has an inivitation pending",
+							"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
 							"example": "member"
 						},
 						"permissions": {
 							"type": "array",
-							"description": "Access permissions for this User",
+							"description": "Access permissions for this User.",
 							"readOnly": true,
 							"items": {
 								"type": "string",
@@ -268,7 +268,7 @@
 						},
 						"roles": {
 							"type": "array",
-							"description": "List of role names for the User at the Organization",
+							"description": "List of role names for the User at the Organization.",
 							"readOnly": true,
 							"items": {
 								"type": "string",
@@ -279,7 +279,7 @@
 					},
 					"definitions": {
 						"identifier": {
-							"description": "Organization identifier tag",
+							"description": "Organization identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -291,7 +291,7 @@
 								"member",
 								"invited"
 							],
-							"description": "Whether or not the user is a member of the organization or has an inivitation pending",
+							"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
 							"example": "member"
 						},
 						"single_organization_response": {
@@ -299,13 +299,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"description": "Schema for an API response from Cloudflare that contains a single result object.",
 									"type": "object",
 									"allOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -318,7 +318,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -380,7 +380,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -508,13 +508,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+									"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 									"type": "object",
 									"anyOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -527,7 +527,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -589,7 +589,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -700,22 +700,22 @@
 													"type": "object",
 													"properties": {
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"type": "number",
 															"example": 1
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"type": "number",
 															"example": 20
 														},
 														"count": {
-															"description": "Total results returned based on your search parameters",
+															"description": "Total results returned based on your search parameters.",
 															"type": "number",
 															"example": 1
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"type": "number",
 															"example": 2000
 														}
@@ -729,12 +729,12 @@
 											"type": "object",
 											"properties": {
 												"page": {
-													"description": "Requested page within paginated list of results",
+													"description": "Requested page within paginated list of results.",
 													"type": "number",
 													"example": 1
 												},
 												"per_page": {
-													"description": "Maximum number of results requested",
+													"description": "Maximum number of results requested.",
 													"type": "number",
 													"example": 20
 												}
@@ -744,22 +744,22 @@
 											"type": "object",
 											"properties": {
 												"page": {
-													"description": "Current page within paginated list of results",
+													"description": "Current page within paginated list of results.",
 													"type": "number",
 													"example": 1
 												},
 												"per_page": {
-													"description": "Number of results per page of results",
+													"description": "Number of results per page of results.",
 													"type": "number",
 													"example": 20
 												},
 												"count": {
-													"description": "Total results returned based on your search parameters",
+													"description": "Total results returned based on your search parameters.",
 													"type": "number",
 													"example": 1
 												},
 												"total_count": {
-													"description": "Total results available without any search parameters",
+													"description": "Total results available without any search parameters.",
 													"type": "number",
 													"example": 2000
 												}
@@ -784,7 +784,7 @@
 					"links": [
 						{
 							"title": "List Organizations",
-							"description": "List organizations the user is associated with",
+							"description": "List organizations the user is associated with.",
 							"rel": "collection",
 							"href": "user/organizations",
 							"method": "GET",
@@ -796,11 +796,11 @@
 											"member",
 											"invited"
 										],
-										"description": "Whether or not the user is a member of the organization or has an inivitation pending",
+										"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
 										"example": "member"
 									},
 									"name": {
-										"description": "Organization Name",
+										"description": "Organization Name.",
 										"type": "string",
 										"maxLength": 100,
 										"example": "Cloudflare, Inc."
@@ -809,14 +809,14 @@
 										"type": "number",
 										"minimum": 1,
 										"default": 1,
-										"description": "Page number of paginated results"
+										"description": "Page number of paginated results."
 									},
 									"per_page": {
 										"type": "number",
 										"minimum": 5,
 										"maximum": 50,
 										"default": 20,
-										"description": "Number of organizations per page"
+										"description": "Number of organizations per page."
 									},
 									"order": {
 										"type": "string",
@@ -826,7 +826,7 @@
 											"status"
 										],
 										"example": "status",
-										"description": "Field to order organizations by"
+										"description": "Field to order organizations by."
 									},
 									"direction": {
 										"type": "string",
@@ -835,7 +835,7 @@
 											"desc"
 										],
 										"example": "desc",
-										"description": "Direction to order organizations"
+										"description": "Direction to order organizations."
 									},
 									"match": {
 										"type": "string",
@@ -844,7 +844,7 @@
 											"all"
 										],
 										"default": "all",
-										"description": "Whether to match all search requirements or at least one (any)"
+										"description": "Whether to match all search requirements or at least one (any)."
 									}
 								}
 							},
@@ -853,13 +853,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+										"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 										"type": "object",
 										"anyOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -872,7 +872,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -934,7 +934,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -1045,22 +1045,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -1074,12 +1074,12 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Requested page within paginated list of results",
+														"description": "Requested page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Maximum number of results requested",
+														"description": "Maximum number of results requested.",
 														"type": "number",
 														"example": 20
 													}
@@ -1089,22 +1089,22 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Current page within paginated list of results",
+														"description": "Current page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Number of results per page of results",
+														"description": "Number of results per page of results.",
 														"type": "number",
 														"example": 20
 													},
 													"count": {
-														"description": "Total results returned based on your search parameters",
+														"description": "Total results returned based on your search parameters.",
 														"type": "number",
 														"example": 1
 													},
 													"total_count": {
-														"description": "Total results available without any search parameters",
+														"description": "Total results available without any search parameters.",
 														"type": "number",
 														"example": 2000
 													}
@@ -1135,7 +1135,7 @@
 						},
 						{
 							"title": "Organization Details",
-							"description": "Get a specific organization the user is associated with",
+							"description": "Get a specific organization the user is associated with.",
 							"rel": "self",
 							"href": "user/organizations/{#/definitions/identifier}",
 							"method": "GET",
@@ -1144,13 +1144,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains a single result object",
+										"description": "Schema for an API response from Cloudflare that contains a single result object.",
 										"type": "object",
 										"allOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -1163,7 +1163,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -1225,7 +1225,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -1358,7 +1358,7 @@
 						},
 						{
 							"title": "Leave Organization",
-							"description": "Remove association to an organization",
+							"description": "Remove association to an organization.",
 							"rel": "self",
 							"href": "user/organizations/{#/definitions/identifier}",
 							"method": "DELETE",
@@ -1366,7 +1366,7 @@
 								"type": "object",
 								"properties": {
 									"id": {
-										"description": "Organization identifier tag",
+										"description": "Organization identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -1408,6 +1408,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n  \"email\": \"user@example.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Appleseed\",\n  \"username\": \"cfuser12345\",\n  \"telephone\": \"+1 123-123-1234\",\n  \"country\": \"US\",\n  \"zipcode\": \"12345\",\n  \"created_on\": \"2014-01-01T05:20:00Z\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\",\n  \"two_factor_authentication_enabled\": false,\n  \"suspended\": false\n}",
 		"title": "User",
-		"description": "The currently logged in/authenticated User"
+		"description": "The currently logged in/authenticated User."
 	}
 }

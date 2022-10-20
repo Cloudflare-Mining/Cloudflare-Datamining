@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-firewall.json",
 	"title": "DNS Firewall",
-	"description": "DNS Firewall cluster management",
+	"description": "DNS Firewall cluster management.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List DNS Firewall Clusters",
-			"description": "List configured DNS Firewall clusters for an account",
+			"description": "List configured DNS Firewall clusters for an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall",
 			"method": "GET",
@@ -33,14 +33,14 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Page number of paginated results",
+						"description": "Page number of paginated results.",
 						"minimum": 1,
 						"default": 1
 					},
 					"per_page": {
 						"type": "number",
 						"example": "20",
-						"description": "Number of DNS records per page",
+						"description": "Number of DNS records per page.",
 						"minimum": 5,
 						"maximum": 100,
 						"default": 20
@@ -58,7 +58,7 @@
 		},
 		{
 			"title": "DNS Firewall Cluster Details",
-			"description": "Show a single configured DNS Firewall cluster for an account",
+			"description": "Show a single configured DNS Firewall cluster for an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
 			"method": "GET",
@@ -81,7 +81,7 @@
 		},
 		{
 			"title": "Update DNS Firewall Cluster",
-			"description": "Modify a DNS Firewall Cluster configuration",
+			"description": "Modify a DNS Firewall Cluster configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -110,14 +110,14 @@
 						"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"My Awesome DNS Firewall cluster\"",
-						"description": "DNS Firewall Cluster Name",
+						"description": "DNS Firewall Cluster Name.",
 						"maxLength": 160
 					},
 					"origin_ips": {
@@ -126,13 +126,13 @@
 						"items": {
 							"anyOf": [
 								{
-									"description": "Origin DNS Server IPv4 Address",
+									"description": "Origin DNS Server IPv4 Address.",
 									"type": "string",
 									"format": "ipv4",
 									"example": "192.0.2.1"
 								},
 								{
-									"description": "Origin DNS Server IPv6 Address",
+									"description": "Origin DNS Server IPv6 Address.",
 									"type": "string",
 									"format": "ipv6",
 									"example": "2001:DB8:100::CF"
@@ -146,13 +146,13 @@
 						"items": {
 							"anyOf": [
 								{
-									"description": "Origin DNS Server IPv4 Address",
+									"description": "Origin DNS Server IPv4 Address.",
 									"type": "string",
 									"format": "ipv4",
 									"example": "203.0.113.1"
 								},
 								{
-									"description": "Origin DNS Server IPv6 Address",
+									"description": "Origin DNS Server IPv6 Address.",
 									"type": "string",
 									"format": "ipv6",
 									"example": "2001:DB8:ab::CF"
@@ -163,7 +163,7 @@
 					"minimum_cache_ttl": {
 						"type": "number",
 						"example": "60",
-						"description": "Minimum DNS Cache TTL",
+						"description": "Minimum DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": 60
@@ -171,7 +171,7 @@
 					"maximum_cache_ttl": {
 						"type": "number",
 						"example": "900",
-						"description": "Maximum DNS Cache TTL",
+						"description": "Maximum DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": 900
@@ -182,7 +182,7 @@
 							"null"
 						],
 						"example": "900",
-						"description": "Negative DNS Cache TTL",
+						"description": "Negative DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": null
@@ -190,12 +190,12 @@
 					"deprecate_any_requests": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Deprecate the response to ANY requests"
+						"description": "Deprecate the response to ANY requests."
 					},
 					"ecs_fallback": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent."
 					},
 					"ratelimit": {
 						"type": [
@@ -227,12 +227,12 @@
 								"default": true
 							}
 						},
-						"description": "Attack mitigation settings"
+						"description": "Attack mitigation settings."
 					},
 					"modified_on": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
-						"description": "Last modification of DNS Firewall cluster",
+						"description": "Last modification of DNS Firewall cluster.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -254,14 +254,14 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"My Awesome DNS Firewall cluster\",\n  \"origin_ips\": [\n    \"192.0.2.1\",\n    \"198.51.100.1\",\n    \"2001:DB8:100::CF\"\n  ],\n  \"dns_firewall_ips\": [\n    \"203.0.113.1\",\n    \"203.0.113.254\",\n    \"2001:DB8:AB::CF\",\n    \"2001:DB8:CD::CF\"\n  ],\n  \"minimum_cache_ttl\": 60,\n  \"maximum_cache_ttl\": 900,\n  \"negative_cache_ttl\": 900,\n  \"deprecate_any_requests\": true,\n  \"ecs_fallback\": false,\n  \"ratelimit\": 600,\n  \"attack_mitigation\": {\n    \"enabled\": true,\n    \"only_when_origin_unhealthy\": false\n  },\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"description": "DNS Firewall cluster management",
+				"description": "DNS Firewall cluster management.",
 				"title": "DNS Firewall"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"My Awesome DNS Firewall cluster\",\n    \"origin_ips\": [\n      \"192.0.2.1\",\n      \"198.51.100.1\",\n      \"2001:DB8:100::CF\"\n    ],\n    \"dns_firewall_ips\": [\n      \"203.0.113.1\",\n      \"203.0.113.254\",\n      \"2001:DB8:AB::CF\",\n      \"2001:DB8:CD::CF\"\n    ],\n    \"minimum_cache_ttl\": 60,\n    \"maximum_cache_ttl\": 900,\n    \"negative_cache_ttl\": 900,\n    \"deprecate_any_requests\": true,\n    \"ecs_fallback\": false,\n    \"ratelimit\": 600,\n    \"attack_mitigation\": {\n      \"enabled\": true,\n      \"only_when_origin_unhealthy\": false\n    },\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Delete DNS Firewall Cluster",
-			"description": "Delete a configured DNS Firewall Cluster",
+			"description": "Delete a configured DNS Firewall Cluster.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -284,7 +284,7 @@
 		},
 		{
 			"title": "Create DNS Firewall Cluster",
-			"description": "Create a configured DNS Firewall Cluster",
+			"description": "Create a configured DNS Firewall Cluster.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall",
 			"method": "POST",
@@ -311,7 +311,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"My Awesome DNS Firewall cluster\"",
-						"description": "DNS Firewall Cluster Name",
+						"description": "DNS Firewall Cluster Name.",
 						"maxLength": 160
 					},
 					"origin_ips": {
@@ -320,13 +320,13 @@
 						"items": {
 							"anyOf": [
 								{
-									"description": "Origin DNS Server IPv4 Address",
+									"description": "Origin DNS Server IPv4 Address.",
 									"type": "string",
 									"format": "ipv4",
 									"example": "192.0.2.1"
 								},
 								{
-									"description": "Origin DNS Server IPv6 Address",
+									"description": "Origin DNS Server IPv6 Address.",
 									"type": "string",
 									"format": "ipv6",
 									"example": "2001:DB8:100::CF"
@@ -337,7 +337,7 @@
 					"minimum_cache_ttl": {
 						"type": "number",
 						"example": "60",
-						"description": "Minimum DNS Cache TTL",
+						"description": "Minimum DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": 60
@@ -345,7 +345,7 @@
 					"maximum_cache_ttl": {
 						"type": "number",
 						"example": "900",
-						"description": "Maximum DNS Cache TTL",
+						"description": "Maximum DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": 900
@@ -356,7 +356,7 @@
 							"null"
 						],
 						"example": "900",
-						"description": "Negative DNS Cache TTL",
+						"description": "Negative DNS Cache TTL.",
 						"minimum": 30,
 						"maximum": 36000,
 						"default": null
@@ -364,12 +364,12 @@
 					"deprecate_any_requests": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Deprecate the response to ANY requests"
+						"description": "Deprecate the response to ANY requests."
 					},
 					"ecs_fallback": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent."
 					},
 					"ratelimit": {
 						"type": [
@@ -412,14 +412,14 @@
 				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"My Awesome DNS Firewall cluster\"",
-				"description": "DNS Firewall Cluster Name",
+				"description": "DNS Firewall Cluster Name.",
 				"maxLength": 160
 			},
 			"origin_ips": {
@@ -428,13 +428,13 @@
 				"items": {
 					"anyOf": [
 						{
-							"description": "Origin DNS Server IPv4 Address",
+							"description": "Origin DNS Server IPv4 Address.",
 							"type": "string",
 							"format": "ipv4",
 							"example": "192.0.2.1"
 						},
 						{
-							"description": "Origin DNS Server IPv6 Address",
+							"description": "Origin DNS Server IPv6 Address.",
 							"type": "string",
 							"format": "ipv6",
 							"example": "2001:DB8:100::CF"
@@ -448,13 +448,13 @@
 				"items": {
 					"anyOf": [
 						{
-							"description": "Origin DNS Server IPv4 Address",
+							"description": "Origin DNS Server IPv4 Address.",
 							"type": "string",
 							"format": "ipv4",
 							"example": "203.0.113.1"
 						},
 						{
-							"description": "Origin DNS Server IPv6 Address",
+							"description": "Origin DNS Server IPv6 Address.",
 							"type": "string",
 							"format": "ipv6",
 							"example": "2001:DB8:ab::CF"
@@ -465,7 +465,7 @@
 			"minimum_cache_ttl": {
 				"type": "number",
 				"example": "60",
-				"description": "Minimum DNS Cache TTL",
+				"description": "Minimum DNS Cache TTL.",
 				"minimum": 30,
 				"maximum": 36000,
 				"default": 60
@@ -473,7 +473,7 @@
 			"maximum_cache_ttl": {
 				"type": "number",
 				"example": "900",
-				"description": "Maximum DNS Cache TTL",
+				"description": "Maximum DNS Cache TTL.",
 				"minimum": 30,
 				"maximum": 36000,
 				"default": 900
@@ -484,7 +484,7 @@
 					"null"
 				],
 				"example": "900",
-				"description": "Negative DNS Cache TTL",
+				"description": "Negative DNS Cache TTL.",
 				"minimum": 30,
 				"maximum": 36000,
 				"default": null
@@ -492,12 +492,12 @@
 			"deprecate_any_requests": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Deprecate the response to ANY requests"
+				"description": "Deprecate the response to ANY requests."
 			},
 			"ecs_fallback": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+				"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent."
 			},
 			"ratelimit": {
 				"type": [
@@ -529,12 +529,12 @@
 						"default": true
 					}
 				},
-				"description": "Attack mitigation settings"
+				"description": "Attack mitigation settings."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
-				"description": "Last modification of DNS Firewall cluster",
+				"description": "Last modification of DNS Firewall cluster.",
 				"format": "date-time",
 				"readOnly": true
 			}
@@ -556,7 +556,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"My Awesome DNS Firewall cluster\",\n  \"origin_ips\": [\n    \"192.0.2.1\",\n    \"198.51.100.1\",\n    \"2001:DB8:100::CF\"\n  ],\n  \"dns_firewall_ips\": [\n    \"203.0.113.1\",\n    \"203.0.113.254\",\n    \"2001:DB8:AB::CF\",\n    \"2001:DB8:CD::CF\"\n  ],\n  \"minimum_cache_ttl\": 60,\n  \"maximum_cache_ttl\": 900,\n  \"negative_cache_ttl\": 900,\n  \"deprecate_any_requests\": true,\n  \"ecs_fallback\": false,\n  \"ratelimit\": 600,\n  \"attack_mitigation\": {\n    \"enabled\": true,\n    \"only_when_origin_unhealthy\": false\n  },\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-		"description": "DNS Firewall cluster management",
+		"description": "DNS Firewall cluster management.",
 		"title": "DNS Firewall"
 	}
 }

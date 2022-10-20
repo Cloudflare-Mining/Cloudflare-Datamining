@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/asn.json",
 	"title": "ASN Intelligence",
-	"description": "Autonomous system overview (Beta)",
+	"description": "Autonomous system overview (Beta).",
 	"links": [
 		{
 			"title": "Get ASN Overview",
@@ -52,7 +52,7 @@
 					"isp",
 					"organization"
 				],
-				"description": "Infrastructure type of this ASN"
+				"description": "Infrastructure type of this ASN."
 			},
 			"domain_count": {
 				"type": "integer",
@@ -78,6 +78,6 @@
 		"objects": [],
 		"example": "{\n  \"asn\": 13335,\n  \"description\": \"CLOUDFLARENET\",\n  \"country\": \"US\",\n  \"type\": \"hosting_provider\",\n  \"domain_count\": 1,\n  \"top_domains\": [\n    \"example.com\"\n  ]\n}",
 		"title": "ASN Intelligence",
-		"description": "Autonomous system overview (Beta)"
+		"description": "Autonomous system overview (Beta)."
 	}
 }

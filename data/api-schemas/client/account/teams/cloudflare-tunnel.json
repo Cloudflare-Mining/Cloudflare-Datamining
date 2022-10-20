@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/cloudflare-tunnel.json",
 	"title": "Cloudflare Tunnel",
-	"description": "A tunnel that can route traffic to a user origin",
+	"description": "A tunnel that can route traffic to a user origin.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Cloudflare Tunnels",
-			"description": "List, search and filter an account's Cloudflare Tunnels",
+			"description": "List, search and filter an account's Cloudflare Tunnels.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel",
 			"method": "GET",
@@ -22,12 +22,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"blog\"",
-						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 					},
 					"uuid": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the tunnel",
+						"description": "UUID of the tunnel.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -35,13 +35,13 @@
 					"is_deleted": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If not provided, all tunnels will be included"
+						"description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If not provided, all tunnels will be included."
 					},
 					"existed_at": {
 						"type": "string",
 						"example": "\"2019-10-12T07:20:50.52Z\"",
 						"format": "date-time",
-						"description": "If provided, include only tunnels that were created before this time and not deleted at this time"
+						"description": "If provided, include only tunnels that were created before this time and not deleted at this time."
 					}
 				},
 				"required_props": [],
@@ -58,7 +58,7 @@
 		},
 		{
 			"title": "Create Cloudflare Tunnel",
-			"description": "Create a Cloudflare Tunnel in an account",
+			"description": "Create a Cloudflare Tunnel in an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel",
 			"method": "POST",
@@ -74,12 +74,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"blog\"",
-						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 					},
 					"tunnel_secret": {
 						"type": "string",
 						"example": "\"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"",
-						"description": "A secret encoded as a base64 string. The Create Cloudflare Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password"
+						"description": "A secret encoded as a base64 string. The Create Cloudflare Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password."
 					}
 				},
 				"required_props": [
@@ -94,7 +94,7 @@
 		},
 		{
 			"title": "Update Cloudflare Tunnel",
-			"description": "Updates a Cloudflare Tunnel in an account",
+			"description": "Updates a Cloudflare Tunnel in an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}",
 			"method": "PATCH",
@@ -110,12 +110,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"blog\"",
-						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 					},
 					"tunnel_secret": {
 						"type": "string",
 						"example": "\"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"",
-						"description": "A secret encoded as a base64 string. The endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password"
+						"description": "A secret encoded as a base64 string. The endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password."
 					}
 				},
 				"required_props": [],
@@ -130,7 +130,7 @@
 		},
 		{
 			"title": "Get Cloudflare Tunnel",
-			"description": "Get the details of a Cloudflare Tunnel from an account",
+			"description": "Get the details of a Cloudflare Tunnel from an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}",
 			"method": "GET",
@@ -152,7 +152,7 @@
 		},
 		{
 			"title": "Delete Cloudflare Tunnel",
-			"description": "Delete a Cloudflare Tunnel from an account",
+			"description": "Delete a Cloudflare Tunnel from an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}",
 			"method": "DELETE",
@@ -174,7 +174,7 @@
 		},
 		{
 			"title": "List Cloudflare Tunnel Connections",
-			"description": "List all of the connection resources for a Cloudflare Tunnel",
+			"description": "List all of the connection resources for a Cloudflare Tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}/connections",
 			"method": "GET",
@@ -196,7 +196,7 @@
 		},
 		{
 			"title": "Clean Up Cloudflare Tunnel Connections",
-			"description": "Remove stale connection resources from a Cloudflare Tunnel",
+			"description": "Remove stale connection resources from a Cloudflare Tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}/connections",
 			"method": "DELETE",
@@ -218,7 +218,7 @@
 		},
 		{
 			"title": "Get Cloudflare Tunnel Token",
-			"description": "Gets the Tunnel for a previously created Cloudflare Tunnel",
+			"description": "Gets the Tunnel for a previously created Cloudflare Tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}/token",
 			"method": "GET",
@@ -248,7 +248,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the tunnel",
+				"description": "UUID of the tunnel.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36
@@ -256,13 +256,13 @@
 			"name": {
 				"type": "string",
 				"example": "\"blog\"",
-				"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+				"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
 				"format": "date-time",
-				"description": "Timestamps when the resource was created, formatted in RFC 3339"
+				"description": "Timestamps when the resource was created, formatted in RFC 3339."
 			},
 			"deleted_at": {
 				"type": [
@@ -270,7 +270,7 @@
 					"null"
 				],
 				"example": "\"2009-11-10T23:00:00Z\"",
-				"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
+				"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted.",
 				"format": "date-time"
 			},
 			"conns_active_at": {
@@ -279,7 +279,7 @@
 					"null"
 				],
 				"example": "\"2009-11-10T23:00:00Z\"",
-				"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive",
+				"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive.",
 				"format": "date-time"
 			},
 			"conns_inactive_at": {
@@ -288,27 +288,27 @@
 					"null"
 				],
 				"example": "\"2009-11-10T23:00:00Z\"",
-				"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active",
+				"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active.",
 				"format": "date-time"
 			},
 			"status": {
 				"type": "string",
 				"example": "\"active\"",
-				"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge)"
+				"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge)."
 			},
 			"connections": {
 				"type": "array",
 				"example": "[\n  {\n    \"colo_name\": \"DFW\",\n    \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n    \"is_pending_reconnect\": false,\n    \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n    \"client_version\": \"2022.7.1\",\n    \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"origin_ip\": \"85.12.78.6\"\n  }\n]",
-				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
+				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
 				"items": {
 					"properties": {
 						"colo_name": {
-							"description": "Short ID for the colo this connection is connected to",
+							"description": "Short ID for the colo this connection is connected to.",
 							"type": "string",
 							"example": "DFW"
 						},
 						"id": {
-							"description": "UUID of the tunnel's connection",
+							"description": "UUID of the tunnel's connection.",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
@@ -316,12 +316,12 @@
 							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
 						"is_pending_reconnect": {
-							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
+							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
 							"type": "boolean",
 							"example": false
 						},
 						"client_id": {
-							"description": "UUID of the cloudflared instance",
+							"description": "UUID of the cloudflared instance.",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
@@ -329,7 +329,7 @@
 							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
 						"client_version": {
-							"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
+							"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection.",
 							"type": "string",
 							"example": "2022.7.1"
 						},
@@ -337,10 +337,10 @@
 							"type": "string",
 							"format": "date-time",
 							"example": "2021-01-25T18:22:34.317854Z",
-							"description": "Timestamp when the connection was established, formatted in RFC 3339"
+							"description": "Timestamp when the connection was established, formatted in RFC 3339."
 						},
 						"origin_ip": {
-							"description": "The publicly perceived IP of the host running the cloudflared instance",
+							"description": "The publicly perceived IP of the host running the cloudflared instance.",
 							"type": "string",
 							"example": "85.12.78.6"
 						}
@@ -363,6 +363,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"blog\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2009-11-10T23:00:00Z\",\n  \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n  \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n  \"status\": \"active\",\n  \"connections\": [\n    {\n      \"colo_name\": \"DFW\",\n      \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n      \"is_pending_reconnect\": false,\n      \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n      \"client_version\": \"2022.7.1\",\n      \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"origin_ip\": \"85.12.78.6\"\n    }\n  ]\n}",
 		"title": "Cloudflare Tunnel",
-		"description": "A tunnel that can route traffic to a user origin"
+		"description": "A tunnel that can route traffic to a user origin."
 	}
 }

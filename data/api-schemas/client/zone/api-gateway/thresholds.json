@@ -2,7 +2,7 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/thresholds.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Thresholds",
-	"description": "Suggested thresholding information",
+	"description": "Suggested thresholding information.",
 	"type": "object",
 	"readOnly": true,
 	"properties": {
@@ -60,7 +60,7 @@
 				"last_updated": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "Last modification time",
+					"description": "Last modification time.",
 					"type": "string",
 					"format": "date-time",
 					"readOnly": true,
@@ -132,7 +132,7 @@
 		"last_updated": {
 			"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-			"description": "Last modification time",
+			"description": "Last modification time.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,

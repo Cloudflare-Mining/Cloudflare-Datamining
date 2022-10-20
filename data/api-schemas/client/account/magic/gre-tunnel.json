@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/magic/gre-tunnel.json",
 	"title": "Magic GRE tunnels",
-	"description": "GRE tunnels that connect Cloudflare with your endpoints",
+	"description": "GRE tunnels that connect Cloudflare with your endpoints.",
 	"type": "object",
 	"links": [
 		{
@@ -286,7 +286,7 @@
 									"properties": {
 										"id": {
 											"$comment": "Must be present as a definition for URI Templating",
-											"description": "Account identifier tag",
+											"description": "Account identifier tag.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
@@ -418,7 +418,7 @@
 				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
 				"readOnly": true,
 				"maxLength": 32,
-				"description": "Tunnel identifier tag"
+				"description": "Tunnel identifier tag."
 			},
 			"created_on": {
 				"type": "string",
@@ -517,6 +517,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"GRE_1\",\n  \"customer_gre_endpoint\": \"203.0.113.1\",\n  \"cloudflare_gre_endpoint\": \"203.0.113.1\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for ISP X\",\n  \"ttl\": 64,\n  \"mtu\": 1476,\n  \"health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  }\n}",
 		"title": "Magic GRE tunnels",
-		"description": "GRE tunnels that connect Cloudflare with your endpoints"
+		"description": "GRE tunnels that connect Cloudflare with your endpoints."
 	}
 }

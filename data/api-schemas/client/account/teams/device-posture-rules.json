@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Device Posture Rules",
-			"description": "List Device Posture Rules for an account",
+			"description": "List Device Posture Rules for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/posture",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Device Posture Rules Details",
-			"description": "Fetch a single Device Posture Rule",
+			"description": "Fetch a single Device Posture Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Create Device Posture Rule",
-			"description": "Create a new Device Posture Rule",
+			"description": "Create a new Device Posture Rule.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/posture",
 			"method": "POST",
@@ -64,7 +64,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"The rule for admin serial numbers\"",
-						"description": "The description of the Device Posture Rule"
+						"description": "The description of the Device Posture Rule."
 					},
 					"schedule": {
 						"type": "string",
@@ -100,7 +100,7 @@
 								"type": "string",
 								"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 								"maxLength": 36,
-								"description": "API uuid tag"
+								"description": "API uuid tag."
 							}
 						},
 						"description": "The value to be checked against."
@@ -129,7 +129,7 @@
 		},
 		{
 			"title": "Update Device Posture Rule",
-			"description": "Update a Device Posture Rule",
+			"description": "Update a Device Posture Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
 			"method": "PUT",
@@ -163,7 +163,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"The rule for admin serial numbers\"",
-						"description": "The description of the Device Posture Rule"
+						"description": "The description of the Device Posture Rule."
 					},
 					"schedule": {
 						"type": "string",
@@ -199,7 +199,7 @@
 								"type": "string",
 								"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 								"maxLength": 36,
-								"description": "API uuid tag"
+								"description": "API uuid tag."
 							}
 						},
 						"description": "The value to be checked against."
@@ -228,7 +228,7 @@
 		},
 		{
 			"title": "Delete Device Posture Rule",
-			"description": "Delete a Device Posture Rule",
+			"description": "Delete a Device Posture Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
 			"method": "DELETE",
@@ -249,7 +249,7 @@
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"type": {
 				"type": "string",
@@ -272,7 +272,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"The rule for admin serial numbers\"",
-				"description": "The description of the Device Posture Rule"
+				"description": "The description of the Device Posture Rule."
 			},
 			"schedule": {
 				"type": "string",
@@ -308,7 +308,7 @@
 						"type": "string",
 						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					}
 				},
 				"description": "The value to be checked against."

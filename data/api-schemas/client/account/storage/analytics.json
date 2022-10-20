@@ -18,12 +18,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -93,13 +93,13 @@
 					"sort": {
 						"type": "array",
 						"example": "[\n  \"+requests\",\n  \"-responseCode\"\n]",
-						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
 						"default": "[]"
 					},
 					"filters": {
 						"type": "string",
 						"example": "\"requestType==read AND responseCode!=200\"",
-						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     .",
 						"default": "\"\""
 					}
 				},
@@ -138,7 +138,7 @@
 			"rows": {
 				"type": "number",
 				"example": "2",
-				"description": "Total number of rows in the result",
+				"description": "Total number of rows in the result.",
 				"minimum": 0
 			},
 			"data": {
@@ -254,13 +254,13 @@
 					"sort": {
 						"type": "array",
 						"example": "[\n  \"+requests\",\n  \"-responseCode\"\n]",
-						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
 						"default": "[]"
 					},
 					"filters": {
 						"type": "string",
 						"example": "\"requestType==read AND responseCode!=200\"",
-						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     .",
 						"default": "\"\""
 					}
 				},
@@ -308,12 +308,12 @@
 								"default": "[]"
 							},
 							"sort": {
-								"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+								"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
 								"type": "array",
 								"default": "[]"
 							},
 							"filters": {
-								"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+								"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     .",
 								"type": "string",
 								"default": "\"\""
 							}

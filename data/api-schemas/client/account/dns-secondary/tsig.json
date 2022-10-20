@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/tsig.json",
 	"title": "Secondary DNS (TSIG)",
-	"description": "TSIG key management for secondary DNS",
+	"description": "TSIG key management for secondary DNS.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List TSIGs",
-			"description": "List TSIGs",
+			"description": "List TSIGs.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "TSIG Details",
-			"description": "Get TSIG",
+			"description": "Get TSIG.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
 			"method": "GET",
@@ -54,7 +54,7 @@
 		},
 		{
 			"title": "Update TSIG",
-			"description": "Modify TSIG",
+			"description": "Modify TSIG.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
 			"method": "PUT",
@@ -84,24 +84,24 @@
 						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"tsig.customer.cf.\"",
-						"description": "TSIG key name"
+						"description": "TSIG key name."
 					},
 					"secret": {
 						"type": "string",
 						"example": "\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\"",
-						"description": "TSIG secret. "
+						"description": "TSIG secret."
 					},
 					"algo": {
 						"type": "string",
 						"example": "\"hmac-sha512.\"",
-						"description": "TSIG algorithm"
+						"description": "TSIG algorithm."
 					}
 				},
 				"required_props": [
@@ -114,13 +114,13 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"tsig.customer.cf.\",\n  \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n  \"algo\": \"hmac-sha512.\"\n}",
 				"title": "Secondary DNS (TSIG)",
-				"description": "TSIG key management for secondary DNS"
+				"description": "TSIG key management for secondary DNS."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"tsig.customer.cf.\",\n    \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n    \"algo\": \"hmac-sha512.\"\n  }\n}"
 		},
 		{
 			"title": "Delete TSIG",
-			"description": "Delete TSIG",
+			"description": "Delete TSIG.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -144,7 +144,7 @@
 		},
 		{
 			"title": "Create TSIG",
-			"description": "Create TSIG",
+			"description": "Create TSIG.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs",
 			"method": "POST",
@@ -172,7 +172,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"tsig.customer.cf.\"",
-						"description": "TSIG key name"
+						"description": "TSIG key name."
 					},
 					"secret": {
 						"type": "string",
@@ -182,7 +182,7 @@
 					"algo": {
 						"type": "string",
 						"example": "\"hmac-sha512.\"",
-						"description": "TSIG algorithm"
+						"description": "TSIG algorithm."
 					}
 				},
 				"required_props": [
@@ -209,24 +209,24 @@
 				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"tsig.customer.cf.\"",
-				"description": "TSIG key name"
+				"description": "TSIG key name."
 			},
 			"secret": {
 				"type": "string",
 				"example": "\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\"",
-				"description": "TSIG secret. "
+				"description": "TSIG secret."
 			},
 			"algo": {
 				"type": "string",
 				"example": "\"hmac-sha512.\"",
-				"description": "TSIG algorithm"
+				"description": "TSIG algorithm."
 			}
 		},
 		"required_props": [
@@ -239,6 +239,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"tsig.customer.cf.\",\n  \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n  \"algo\": \"hmac-sha512.\"\n}",
 		"title": "Secondary DNS (TSIG)",
-		"description": "TSIG key management for secondary DNS"
+		"description": "TSIG key management for secondary DNS."
 	}
 }

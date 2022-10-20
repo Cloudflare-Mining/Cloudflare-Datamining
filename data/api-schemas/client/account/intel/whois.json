@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/whois.json",
 	"title": "WHOIS Record",
-	"description": "WHOIS (Beta)",
+	"description": "WHOIS (Beta).",
 	"links": [
 		{
 			"title": "Get WHOIS Record",
@@ -95,6 +95,6 @@
 		"objects": [],
 		"example": "{\n  \"domain\": \"cloudflare.com\",\n  \"created_date\": \"2009-02-17\",\n  \"updated_date\": \"2017-05-24\",\n  \"registrant\": \"DATA REDACTED\",\n  \"registrant_org\": \"DATA REDACTED\",\n  \"registrant_country\": \"United States\",\n  \"registrant_email\": \"https://domaincontact.cloudflareregistrar.com/cloudflare.com\",\n  \"registrar\": \"Cloudflare, Inc.\",\n  \"nameservers\": [\n    \"ns3.cloudflare.com\",\n    \"ns4.cloudflare.com\",\n    \"ns5.cloudflare.com\",\n    \"ns6.cloudflare.com\",\n    \"ns7.cloudflare.com\"\n  ]\n}",
 		"title": "WHOIS Record",
-		"description": "WHOIS (Beta)"
+		"description": "WHOIS (Beta)."
 	}
 }

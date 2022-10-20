@@ -1,11 +1,11 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/role.json",
 	"title": "Account Roles",
-	"description": "A Role defines what permissions a Member of an Account has.",
+	"description": "A role defines what permissions a member of an account has.",
 	"links": [
 		{
 			"title": "List Roles",
-			"description": "Get all available roles for an account",
+			"description": "Get all available roles for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/roles",
 			"method": "GET",
@@ -22,7 +22,7 @@
 		},
 		{
 			"title": "Role Details",
-			"description": "Get information about a specific role for an account",
+			"description": "Get information about a specific role for an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/roles/{#/definitions/identifier}",
 			"method": "GET",
@@ -47,21 +47,21 @@
 			"id": {
 				"type": "string",
 				"example": "\"3536bcfad5faccb999b47003c79917fb\"",
-				"description": "Role identifier tag",
+				"description": "Role identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Account Administrator\"",
-				"description": "Role Name",
+				"description": "Role Name.",
 				"maxLength": 120,
 				"readOnly": true
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Administrative access to the entire Account\"",
-				"description": "Description of role's permissions",
+				"description": "Description of role's permissions.",
 				"readOnly": true
 			},
 			"permissions": {
@@ -240,7 +240,7 @@
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"title": "Permissions Object",
-				"description": "Access permissions for a Role",
+				"description": "Access permissions for a Role.",
 				"definitions": {
 					"grants": {
 						"type": "object",
@@ -272,6 +272,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n  \"name\": \"Account Administrator\",\n  \"description\": \"Administrative access to the entire Account\",\n  \"permissions\": {\n    \"analytics\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"billing\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"cache_purge\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns_records\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"lb\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"logs\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"organization\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"ssl\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"waf\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zones\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zone_settings\": {\n      \"read\": true,\n      \"write\": true\n    }\n  }\n}",
 		"title": "Account Roles",
-		"description": "A Role defines what permissions a Member of an Account has."
+		"description": "A role defines what permissions a member of an account has."
 	}
 }

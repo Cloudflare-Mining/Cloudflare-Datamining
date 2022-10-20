@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Virtual Networks",
-			"description": "List, search and filter an account's virtual networks",
+			"description": "List, search and filter an account's virtual networks.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks",
 			"method": "GET",
@@ -22,7 +22,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the virtual network",
+						"description": "UUID of the virtual network.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -30,7 +30,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"us-east-1-vpc\"",
-						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty."
 					},
 					"is_default": {
 						"type": "boolean",
@@ -40,7 +40,7 @@
 					"is_deleted": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If not provided, all virtual networks will be included"
+						"description": "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If not provided, all virtual networks will be included."
 					}
 				},
 				"required_props": [],
@@ -57,7 +57,7 @@
 		},
 		{
 			"title": "Create Virtual Network",
-			"description": "Add a new virtual network to the account",
+			"description": "Add a new virtual network to the account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks",
 			"method": "POST",
@@ -73,12 +73,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"us-east-1-vpc\"",
-						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty."
 					},
 					"comment": {
 						"type": "string",
 						"example": "\"Staging VPC for data science\"",
-						"description": "Optional remark describing the virtual network. Empty if none"
+						"description": "Optional remark describing the virtual network. Empty if none."
 					},
 					"is_default": {
 						"type": "boolean",
@@ -100,7 +100,7 @@
 		},
 		{
 			"title": "Update Virtual Network",
-			"description": "Update an existing virtual network in the account",
+			"description": "Update an existing virtual network in the account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks/{#/definitions/vnet_id}",
 			"method": "PATCH",
@@ -116,12 +116,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"us-east-1-vpc\"",
-						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty."
 					},
 					"comment": {
 						"type": "string",
 						"example": "\"Staging VPC for data science\"",
-						"description": "Optional remark describing the virtual network. Empty if none"
+						"description": "Optional remark describing the virtual network. Empty if none."
 					},
 					"is_default_network": {
 						"type": "boolean",
@@ -142,7 +142,7 @@
 		},
 		{
 			"title": "Delete Virtual Network",
-			"description": "Delete an existing virtual network from the account",
+			"description": "Delete an existing virtual network from the account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks/{#/definitions/vnet_id}",
 			"method": "DELETE",
@@ -162,7 +162,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the virtual network",
+				"description": "UUID of the virtual network.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36
@@ -170,7 +170,7 @@
 			"name": {
 				"type": "string",
 				"example": "\"us-east-1-vpc\"",
-				"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+				"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty."
 			},
 			"is_default_network": {
 				"type": "boolean",
@@ -180,12 +180,12 @@
 			"comment": {
 				"type": "string",
 				"example": "\"Staging VPC for data science\"",
-				"description": "Optional remark describing the virtual network. Empty if none"
+				"description": "Optional remark describing the virtual network. Empty if none."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "Timestamp of when the virtual network was created, formatted in RFC 3339",
+				"description": "Timestamp of when the virtual network was created, formatted in RFC 3339.",
 				"format": "date-time"
 			},
 			"deleted_at": {
@@ -194,7 +194,7 @@
 					"null"
 				],
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "If present, indicates that the virtual network was deleted at the given date (formatted in RFC 3339). If absent, the virtual network has not been deleted",
+				"description": "If present, indicates that the virtual network was deleted at the given date (formatted in RFC 3339). If absent, the virtual network has not been deleted.",
 				"format": "date-time",
 				"readOnly": true
 			}

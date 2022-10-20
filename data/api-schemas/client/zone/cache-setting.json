@@ -124,7 +124,7 @@
 								"uniqueItems": true
 							}
 						},
-						"description": "Value of the zone setting"
+						"description": "Value of the zone setting."
 					}
 				},
 				"required_props": [
@@ -255,7 +255,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"variants\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"variants"
 						]
@@ -268,7 +268,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],

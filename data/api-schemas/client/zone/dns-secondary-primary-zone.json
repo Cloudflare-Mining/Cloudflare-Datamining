@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Primary Zone Configuration Details",
-			"description": "Get primary zone configuration for outgoing zone transfers",
+			"description": "Get primary zone configuration for outgoing zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
 			"method": "GET",
@@ -24,7 +24,7 @@
 		},
 		{
 			"title": "Update Primary Zone Configuration",
-			"description": "Update primary zone configuration for outgoing zone transfers",
+			"description": "Update primary zone configuration for outgoing zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
 			"method": "PUT",
@@ -48,19 +48,19 @@
 						"example": "\"269d8f4853475ca241c4e730be286b20\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"www.example.com.\"",
-						"description": "Zone name"
+						"description": "Zone name."
 					},
 					"peers": {
 						"type": "array",
 						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-						"description": "A list of peer tags"
+						"description": "A list of peer tags."
 					}
 				},
 				"required_props": [
@@ -76,7 +76,7 @@
 		},
 		{
 			"title": "Delete Primary Zone Configuration",
-			"description": "Delete primary zone configuration for outgoing zone transfers",
+			"description": "Delete primary zone configuration for outgoing zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
 			"method": "DELETE",
@@ -94,7 +94,7 @@
 		},
 		{
 			"title": "Create Primary Zone Configuration",
-			"description": "Create primary zone configuration for outgoing zone transfers",
+			"description": "Create primary zone configuration for outgoing zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
 			"method": "POST",
@@ -118,19 +118,19 @@
 						"example": "\"269d8f4853475ca241c4e730be286b20\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"www.example.com.\"",
-						"description": "Zone name"
+						"description": "Zone name."
 					},
 					"peers": {
 						"type": "array",
 						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-						"description": "A list of peer tags"
+						"description": "A list of peer tags."
 					}
 				},
 				"required_props": [
@@ -146,7 +146,7 @@
 		},
 		{
 			"title": "Enable Outgoing Zone Transfers",
-			"description": "Enable outgoing zone transfers for primary zone",
+			"description": "Enable outgoing zone transfers for primary zone.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/enable",
 			"method": "POST",
@@ -182,7 +182,7 @@
 		},
 		{
 			"title": "Get Outgoing Zone Transfer Status",
-			"description": "Get primary zone transfer status",
+			"description": "Get primary zone transfer status.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/status",
 			"method": "GET",
@@ -228,19 +228,19 @@
 				"example": "\"269d8f4853475ca241c4e730be286b20\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"www.example.com.\"",
-				"description": "Zone name"
+				"description": "Zone name."
 			},
 			"peers": {
 				"type": "array",
 				"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-				"description": "A list of peer tags"
+				"description": "A list of peer tags."
 			}
 		},
 		"required_props": [

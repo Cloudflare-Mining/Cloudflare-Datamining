@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/phishing.json",
 	"title": "Phishing URL Scanner",
-	"description": "Phishing URL Scanner (Beta)",
+	"description": "Phishing URL Scanner (Beta).",
 	"links": [
 		{
 			"title": "Scan suspicious url",
@@ -25,7 +25,7 @@
 					"skip": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Whether to skip the initial URL scanner and require a full HTML scan",
+						"description": "Whether to skip the initial URL scanner and require a full HTML scan.",
 						"default": false
 					}
 				},
@@ -49,27 +49,27 @@
 			"url": {
 				"type": "string",
 				"example": "\"https://www.cloudflare.com\"",
-				"description": "URL that was scanned"
+				"description": "URL that was scanned."
 			},
 			"phishing": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Whether the URL has been classified as phishing"
+				"description": "Whether the URL has been classified as phishing."
 			},
 			"verified": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Whether the URL has been hand verified"
+				"description": "Whether the URL has been hand verified."
 			},
 			"score": {
 				"type": "number",
 				"example": "0.99",
-				"description": "Score reported from the classifer for the given URL"
+				"description": "Score reported from the classifer for the given URL."
 			},
 			"classifier": {
 				"type": "string",
 				"example": "\"MACHINE_LEARNING_v2\"",
-				"description": "Type of classifier that labelled this URL"
+				"description": "Type of classifier that labelled this URL."
 			}
 		},
 		"required_props": [],
@@ -83,6 +83,6 @@
 		"objects": [],
 		"example": "{\n  \"url\": \"https://www.cloudflare.com\",\n  \"phishing\": false,\n  \"verified\": false,\n  \"score\": 0.99,\n  \"classifier\": \"MACHINE_LEARNING_v2\"\n}",
 		"title": "Phishing URL Scanner",
-		"description": "Phishing URL Scanner (Beta)"
+		"description": "Phishing URL Scanner (Beta)."
 	}
 }

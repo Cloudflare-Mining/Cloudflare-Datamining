@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/analytics.json",
 	"title": "Zone Analytics",
-	"description": "Analytics data for a zone",
+	"description": "Analytics data for a zone.",
 	"cfDeprecations": {
 		"zone_analytics_deprecation": {
 			"id": "zone_analytics_deprecation",
@@ -50,7 +50,7 @@
 							"integer"
 						],
 						"example": "\"2015-01-01T12:23:00Z\"",
-						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
 						"default": -10080
 					},
 					"until": {
@@ -118,7 +118,7 @@
 							"integer"
 						],
 						"example": "\"2015-01-01T12:23:00Z\"",
-						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
 						"default": -10080
 					},
 					"until": {
@@ -170,7 +170,7 @@
 									"integer"
 								],
 								"example": "\"2015-01-01T12:23:00Z\"",
-								"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+								"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
 								"default": -10080
 							},
 							"until": {
@@ -189,17 +189,17 @@
 									"all": {
 										"type": "integer",
 										"example": "1234085328",
-										"description": "Total number of requests served"
+										"description": "Total number of requests served."
 									},
 									"cached": {
 										"type": "integer",
 										"example": "1234085328",
-										"description": "Total number of cached requests served"
+										"description": "Total number of cached requests served."
 									},
 									"uncached": {
 										"type": "integer",
 										"example": "13876154",
-										"description": "Total number of requests served from the origin"
+										"description": "Total number of requests served from the origin."
 									},
 									"content_type": {
 										"type": "object",
@@ -209,7 +209,7 @@
 									"country": {
 										"type": "object",
 										"example": "{\n  \"US\": 4181364,\n  \"AG\": 37298,\n  \"GI\": 293846\n}",
-										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country"
+										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country."
 									},
 									"ssl": {
 										"type": "object",
@@ -218,15 +218,15 @@
 											"encrypted": {
 												"type": "integer",
 												"example": "12978361",
-												"description": "The number of requests served over HTTPS"
+												"description": "The number of requests served over HTTPS."
 											},
 											"unencrypted": {
 												"type": "integer",
 												"example": "781263",
-												"description": "The number of requests served over HTTP"
+												"description": "The number of requests served over HTTP."
 											}
 										},
-										"description": "A break down of requests served over HTTPS"
+										"description": "A break down of requests served over HTTPS."
 									},
 									"ssl_protocols": {
 										"type": "object",
@@ -235,35 +235,35 @@
 											"TLSv1": {
 												"type": "integer",
 												"example": "398232",
-												"description": "The number of requests served over TLS v1.0"
+												"description": "The number of requests served over TLS v1.0."
 											},
 											"TLSv1.1": {
 												"type": "integer",
 												"example": "12532236",
-												"description": "The number of requests served over TLS v1.1"
+												"description": "The number of requests served over TLS v1.1."
 											},
 											"TLSv1.2": {
 												"type": "integer",
 												"example": "2447136",
-												"description": "The number of requests served over TLS v1.2"
+												"description": "The number of requests served over TLS v1.2."
 											},
 											"TLSv1.3": {
 												"type": "integer",
 												"example": "10483332",
-												"description": "The number of requests served over TLS v1.3"
+												"description": "The number of requests served over TLS v1.3."
 											},
 											"none": {
 												"type": "integer",
 												"example": "781263",
-												"description": "The number of requests served over HTTP"
+												"description": "The number of requests served over HTTP."
 											}
 										},
-										"description": "A breakdown of requests by their SSL protocol"
+										"description": "A breakdown of requests by their SSL protocol."
 									},
 									"http_status": {
 										"type": "object",
 										"example": "{\n  \"200\": 13496983,\n  \"301\": 283,\n  \"400\": 187936,\n  \"402\": 1828,\n  \"404\": 1293\n}",
-										"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code",
+										"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
 										"patternProperties": {
 											"^[1-5][0-9][0-9]$": {
 												"type": "integer",
@@ -272,7 +272,7 @@
 										}
 									}
 								},
-								"description": "Breakdown of totals for requests"
+								"description": "Breakdown of totals for requests."
 							},
 							"bandwidth": {
 								"type": "object",
@@ -281,17 +281,17 @@
 									"all": {
 										"type": "integer",
 										"example": "213867451",
-										"description": "The total number of bytes served within the time frame"
+										"description": "The total number of bytes served within the time frame."
 									},
 									"cached": {
 										"type": "integer",
 										"example": "113205063",
-										"description": "The number of bytes that were cached (and served) by Cloudflare"
+										"description": "The number of bytes that were cached (and served) by Cloudflare."
 									},
 									"uncached": {
 										"type": "integer",
 										"example": "113205063",
-										"description": "The number of bytes that were fetched and served from the origin server"
+										"description": "The number of bytes that were fetched and served from the origin server."
 									},
 									"content_type": {
 										"type": "object",
@@ -301,7 +301,7 @@
 									"country": {
 										"type": "object",
 										"example": "{\n  \"US\": 123145433,\n  \"AG\": 2342483,\n  \"GI\": 984753\n}",
-										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country"
+										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country."
 									},
 									"ssl": {
 										"type": "object",
@@ -310,15 +310,15 @@
 											"encrypted": {
 												"type": "integer",
 												"example": "37592942",
-												"description": "The number of bytes served over HTTPS"
+												"description": "The number of bytes served over HTTPS."
 											},
 											"unencrypted": {
 												"type": "integer",
 												"example": "237654192",
-												"description": "The number of bytes served over HTTP"
+												"description": "The number of bytes served over HTTP."
 											}
 										},
-										"description": "A break down of bytes served over HTTPS"
+										"description": "A break down of bytes served over HTTPS."
 									},
 									"ssl_protocols": {
 										"type": "object",
@@ -327,33 +327,33 @@
 											"TLSv1": {
 												"type": "integer",
 												"example": "398232",
-												"description": "The number of requests served over TLS v1.0"
+												"description": "The number of requests served over TLS v1.0."
 											},
 											"TLSv1.1": {
 												"type": "integer",
 												"example": "12532236",
-												"description": "The number of requests served over TLS v1.1"
+												"description": "The number of requests served over TLS v1.1."
 											},
 											"TLSv1.2": {
 												"type": "integer",
 												"example": "2447136",
-												"description": "The number of requests served over TLS v1.2"
+												"description": "The number of requests served over TLS v1.2."
 											},
 											"TLSv1.3": {
 												"type": "integer",
 												"example": "10483332",
-												"description": "The number of requests served over TLS v1.3"
+												"description": "The number of requests served over TLS v1.3."
 											},
 											"none": {
 												"type": "integer",
 												"example": "781263",
-												"description": "The number of requests served over HTTP"
+												"description": "The number of requests served over HTTP."
 											}
 										},
-										"description": "A breakdown of requests by their SSL protocol"
+										"description": "A breakdown of requests by their SSL protocol."
 									}
 								},
-								"description": "Breakdown of totals for bandwidth in the form of bytes"
+								"description": "Breakdown of totals for bandwidth in the form of bytes."
 							},
 							"threats": {
 								"type": "object",
@@ -362,7 +362,7 @@
 									"all": {
 										"type": "integer",
 										"example": "23423873",
-										"description": "The total number of identifiable threats received over the time frame"
+										"description": "The total number of identifiable threats received over the time frame."
 									},
 									"country": {
 										"type": "object",
@@ -375,7 +375,7 @@
 										"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests."
 									}
 								},
-								"description": "Breakdown of totals for threats"
+								"description": "Breakdown of totals for threats."
 							},
 							"pageviews": {
 								"type": "object",
@@ -384,15 +384,15 @@
 									"all": {
 										"type": "integer",
 										"example": "5724723",
-										"description": "The total number of pageviews served within the time range"
+										"description": "The total number of pageviews served within the time range."
 									},
 									"search_engine": {
 										"type": "object",
 										"example": "{\n  \"googlebot\": 35272,\n  \"pingdom\": 13435,\n  \"bingbot\": 5372,\n  \"baidubot\": 1345\n}",
-										"description": "A variable list of key/value pairs representing the search engine and number of hits"
+										"description": "A variable list of key/value pairs representing the search engine and number of hits."
 									}
 								},
-								"description": "Breakdown of totals for pageviews"
+								"description": "Breakdown of totals for pageviews."
 							},
 							"uniques": {
 								"type": "object",
@@ -401,12 +401,12 @@
 									"all": {
 										"type": "integer",
 										"example": "12343",
-										"description": "Total number of unique IP addresses within the time range"
+										"description": "Total number of unique IP addresses within the time range."
 									}
 								}
 							}
 						},
-						"description": "Breakdown of totals by data type"
+						"description": "Breakdown of totals by data type."
 					},
 					"timeseries": {
 						"type": "array",
@@ -420,7 +420,7 @@
 										"string",
 										"integer"
 									],
-									"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+									"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
 									"default": -10080,
 									"example": "2015-01-01T12:23:00Z"
 								},
@@ -435,21 +435,21 @@
 								},
 								"requests": {
 									"type": "object",
-									"description": "Breakdown of totals for requests",
+									"description": "Breakdown of totals for requests.",
 									"properties": {
 										"all": {
 											"type": "integer",
-											"description": "Total number of requests served",
+											"description": "Total number of requests served.",
 											"example": 1234085328
 										},
 										"cached": {
 											"type": "integer",
-											"description": "Total number of cached requests served",
+											"description": "Total number of cached requests served.",
 											"example": 1234085328
 										},
 										"uncached": {
 											"type": "integer",
-											"description": "Total number of requests served from the origin",
+											"description": "Total number of requests served from the origin.",
 											"example": 13876154
 										},
 										"content_type": {
@@ -465,7 +465,7 @@
 										},
 										"country": {
 											"type": "object",
-											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country",
+											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
 											"example": {
 												"US": 4181364,
 												"AG": 37298,
@@ -474,54 +474,54 @@
 										},
 										"ssl": {
 											"type": "object",
-											"description": "A break down of requests served over HTTPS",
+											"description": "A break down of requests served over HTTPS.",
 											"properties": {
 												"encrypted": {
 													"type": "integer",
-													"description": "The number of requests served over HTTPS",
+													"description": "The number of requests served over HTTPS.",
 													"example": 12978361
 												},
 												"unencrypted": {
 													"type": "integer",
-													"description": "The number of requests served over HTTP",
+													"description": "The number of requests served over HTTP.",
 													"example": 781263
 												}
 											}
 										},
 										"ssl_protocols": {
 											"type": "object",
-											"description": "A breakdown of requests by their SSL protocol",
+											"description": "A breakdown of requests by their SSL protocol.",
 											"properties": {
 												"TLSv1": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.0",
+													"description": "The number of requests served over TLS v1.0.",
 													"example": 398232
 												},
 												"TLSv1.1": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.1",
+													"description": "The number of requests served over TLS v1.1.",
 													"example": 12532236
 												},
 												"TLSv1.2": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.2",
+													"description": "The number of requests served over TLS v1.2.",
 													"example": 2447136
 												},
 												"TLSv1.3": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.3",
+													"description": "The number of requests served over TLS v1.3.",
 													"example": 10483332
 												},
 												"none": {
 													"type": "integer",
-													"description": "The number of requests served over HTTP",
+													"description": "The number of requests served over HTTP.",
 													"example": 781263
 												}
 											}
 										},
 										"http_status": {
 											"type": "object",
-											"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code",
+											"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code.",
 											"patternProperties": {
 												"^[1-5][0-9][0-9]$": {
 													"type": "integer",
@@ -540,21 +540,21 @@
 								},
 								"bandwidth": {
 									"type": "object",
-									"description": "Breakdown of totals for bandwidth in the form of bytes",
+									"description": "Breakdown of totals for bandwidth in the form of bytes.",
 									"properties": {
 										"all": {
 											"type": "integer",
-											"description": "The total number of bytes served within the time frame",
+											"description": "The total number of bytes served within the time frame.",
 											"example": 213867451
 										},
 										"cached": {
 											"type": "integer",
-											"description": "The number of bytes that were cached (and served) by Cloudflare",
+											"description": "The number of bytes that were cached (and served) by Cloudflare.",
 											"example": 113205063
 										},
 										"uncached": {
 											"type": "integer",
-											"description": "The number of bytes that were fetched and served from the origin server",
+											"description": "The number of bytes that were fetched and served from the origin server.",
 											"example": 113205063
 										},
 										"content_type": {
@@ -570,7 +570,7 @@
 										},
 										"country": {
 											"type": "object",
-											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country",
+											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
 											"example": {
 												"US": 123145433,
 												"AG": 2342483,
@@ -579,47 +579,47 @@
 										},
 										"ssl": {
 											"type": "object",
-											"description": "A break down of bytes served over HTTPS",
+											"description": "A break down of bytes served over HTTPS.",
 											"properties": {
 												"encrypted": {
 													"type": "integer",
-													"description": "The number of bytes served over HTTPS",
+													"description": "The number of bytes served over HTTPS.",
 													"example": 37592942
 												},
 												"unencrypted": {
 													"type": "integer",
-													"description": "The number of bytes served over HTTP",
+													"description": "The number of bytes served over HTTP.",
 													"example": 237654192
 												}
 											}
 										},
 										"ssl_protocols": {
 											"type": "object",
-											"description": "A breakdown of requests by their SSL protocol",
+											"description": "A breakdown of requests by their SSL protocol.",
 											"properties": {
 												"TLSv1": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.0",
+													"description": "The number of requests served over TLS v1.0.",
 													"example": 398232
 												},
 												"TLSv1.1": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.1",
+													"description": "The number of requests served over TLS v1.1.",
 													"example": 12532236
 												},
 												"TLSv1.2": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.2",
+													"description": "The number of requests served over TLS v1.2.",
 													"example": 2447136
 												},
 												"TLSv1.3": {
 													"type": "integer",
-													"description": "The number of requests served over TLS v1.3",
+													"description": "The number of requests served over TLS v1.3.",
 													"example": 10483332
 												},
 												"none": {
 													"type": "integer",
-													"description": "The number of requests served over HTTP",
+													"description": "The number of requests served over HTTP.",
 													"example": 781263
 												}
 											}
@@ -628,11 +628,11 @@
 								},
 								"threats": {
 									"type": "object",
-									"description": "Breakdown of totals for threats",
+									"description": "Breakdown of totals for threats.",
 									"properties": {
 										"all": {
 											"type": "integer",
-											"description": "The total number of identifiable threats received over the time frame",
+											"description": "The total number of identifiable threats received over the time frame.",
 											"example": 23423873
 										},
 										"country": {
@@ -658,16 +658,16 @@
 								},
 								"pageviews": {
 									"type": "object",
-									"description": "Breakdown of totals for pageviews",
+									"description": "Breakdown of totals for pageviews.",
 									"properties": {
 										"all": {
 											"type": "integer",
-											"description": "The total number of pageviews served within the time range",
+											"description": "The total number of pageviews served within the time range.",
 											"example": 5724723
 										},
 										"search_engine": {
 											"type": "object",
-											"description": "A variable list of key/value pairs representing the search engine and number of hits",
+											"description": "A variable list of key/value pairs representing the search engine and number of hits.",
 											"example": {
 												"googlebot": 35272,
 												"pingdom": 13435,
@@ -682,7 +682,7 @@
 									"properties": {
 										"all": {
 											"type": "integer",
-											"description": "Total number of unique IP addresses within the time range",
+											"description": "Total number of unique IP addresses within the time range.",
 											"example": 12343
 										}
 									}
@@ -699,12 +699,12 @@
 				"objects": [],
 				"example": "{\n  \"totals\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"requests\": {\n      \"all\": 1234085328,\n      \"cached\": 1234085328,\n      \"uncached\": 13876154,\n      \"content_type\": {\n        \"css\": 15343,\n        \"html\": 1234213,\n        \"javascript\": 318236,\n        \"gif\": 23178,\n        \"jpeg\": 1982048\n      },\n      \"country\": {\n        \"US\": 4181364,\n        \"AG\": 37298,\n        \"GI\": 293846\n      },\n      \"ssl\": {\n        \"encrypted\": 12978361,\n        \"unencrypted\": 781263\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      },\n      \"http_status\": {\n        \"200\": 13496983,\n        \"301\": 283,\n        \"400\": 187936,\n        \"402\": 1828,\n        \"404\": 1293\n      }\n    },\n    \"bandwidth\": {\n      \"all\": 213867451,\n      \"cached\": 113205063,\n      \"uncached\": 113205063,\n      \"content_type\": {\n        \"css\": 237421,\n        \"html\": 1231290,\n        \"javascript\": 123245,\n        \"gif\": 1234242,\n        \"jpeg\": 784278\n      },\n      \"country\": {\n        \"US\": 123145433,\n        \"AG\": 2342483,\n        \"GI\": 984753\n      },\n      \"ssl\": {\n        \"encrypted\": 37592942,\n        \"unencrypted\": 237654192\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      }\n    },\n    \"threats\": {\n      \"all\": 23423873,\n      \"country\": {\n        \"US\": 123,\n        \"CN\": 523423,\n        \"AU\": 91\n      },\n      \"type\": {\n        \"user.ban.ip\": 123,\n        \"hot.ban.unknown\": 5324,\n        \"macro.chl.captchaErr\": 1341,\n        \"macro.chl.jschlErr\": 5323\n      }\n    },\n    \"pageviews\": {\n      \"all\": 5724723,\n      \"search_engine\": {\n        \"googlebot\": 35272,\n        \"pingdom\": 13435,\n        \"bingbot\": 5372,\n        \"baidubot\": 1345\n      }\n    },\n    \"uniques\": {\n      \"all\": 12343\n    }\n  },\n  \"timeseries\": [\n    {\n      \"since\": \"2015-01-01T12:23:00Z\",\n      \"until\": \"2015-01-02T12:23:00Z\",\n      \"requests\": {\n        \"all\": 1234085328,\n        \"cached\": 1234085328,\n        \"uncached\": 13876154,\n        \"content_type\": {\n          \"css\": 15343,\n          \"html\": 1234213,\n          \"javascript\": 318236,\n          \"gif\": 23178,\n          \"jpeg\": 1982048\n        },\n        \"country\": {\n          \"US\": 4181364,\n          \"AG\": 37298,\n          \"GI\": 293846\n        },\n        \"ssl\": {\n          \"encrypted\": 12978361,\n          \"unencrypted\": 781263\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        },\n        \"http_status\": {\n          \"200\": 13496983,\n          \"301\": 283,\n          \"400\": 187936,\n          \"402\": 1828,\n          \"404\": 1293\n        }\n      },\n      \"bandwidth\": {\n        \"all\": 213867451,\n        \"cached\": 113205063,\n        \"uncached\": 113205063,\n        \"content_type\": {\n          \"css\": 237421,\n          \"html\": 1231290,\n          \"javascript\": 123245,\n          \"gif\": 1234242,\n          \"jpeg\": 784278\n        },\n        \"country\": {\n          \"US\": 123145433,\n          \"AG\": 2342483,\n          \"GI\": 984753\n        },\n        \"ssl\": {\n          \"encrypted\": 37592942,\n          \"unencrypted\": 237654192\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        }\n      },\n      \"threats\": {\n        \"all\": 23423873,\n        \"country\": {\n          \"US\": 123,\n          \"CN\": 523423,\n          \"AU\": 91\n        },\n        \"type\": {\n          \"user.ban.ip\": 123,\n          \"hot.ban.unknown\": 5324,\n          \"macro.chl.captchaErr\": 1341,\n          \"macro.chl.jschlErr\": 5323\n        }\n      },\n      \"pageviews\": {\n        \"all\": 5724723,\n        \"search_engine\": {\n          \"googlebot\": 35272,\n          \"pingdom\": 13435,\n          \"bingbot\": 5372,\n          \"baidubot\": 1345\n        }\n      },\n      \"uniques\": {\n        \"all\": 12343\n      }\n    }\n  ]\n}",
 				"title": "Dashboard response",
-				"description": "Totals and timeseries data"
+				"description": "Totals and timeseries data."
 			}
 		],
 		"example": "{\n  \"totals\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"requests\": {\n      \"all\": 1234085328,\n      \"cached\": 1234085328,\n      \"uncached\": 13876154,\n      \"content_type\": {\n        \"css\": 15343,\n        \"html\": 1234213,\n        \"javascript\": 318236,\n        \"gif\": 23178,\n        \"jpeg\": 1982048\n      },\n      \"country\": {\n        \"US\": 4181364,\n        \"AG\": 37298,\n        \"GI\": 293846\n      },\n      \"ssl\": {\n        \"encrypted\": 12978361,\n        \"unencrypted\": 781263\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      },\n      \"http_status\": {\n        \"200\": 13496983,\n        \"301\": 283,\n        \"400\": 187936,\n        \"402\": 1828,\n        \"404\": 1293\n      }\n    },\n    \"bandwidth\": {\n      \"all\": 213867451,\n      \"cached\": 113205063,\n      \"uncached\": 113205063,\n      \"content_type\": {\n        \"css\": 237421,\n        \"html\": 1231290,\n        \"javascript\": 123245,\n        \"gif\": 1234242,\n        \"jpeg\": 784278\n      },\n      \"country\": {\n        \"US\": 123145433,\n        \"AG\": 2342483,\n        \"GI\": 984753\n      },\n      \"ssl\": {\n        \"encrypted\": 37592942,\n        \"unencrypted\": 237654192\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      }\n    },\n    \"threats\": {\n      \"all\": 23423873,\n      \"country\": {\n        \"US\": 123,\n        \"CN\": 523423,\n        \"AU\": 91\n      },\n      \"type\": {\n        \"user.ban.ip\": 123,\n        \"hot.ban.unknown\": 5324,\n        \"macro.chl.captchaErr\": 1341,\n        \"macro.chl.jschlErr\": 5323\n      }\n    },\n    \"pageviews\": {\n      \"all\": 5724723,\n      \"search_engine\": {\n        \"googlebot\": 35272,\n        \"pingdom\": 13435,\n        \"bingbot\": 5372,\n        \"baidubot\": 1345\n      }\n    },\n    \"uniques\": {\n      \"all\": 12343\n    }\n  },\n  \"timeseries\": [\n    {\n      \"since\": \"2015-01-01T12:23:00Z\",\n      \"until\": \"2015-01-02T12:23:00Z\",\n      \"requests\": {\n        \"all\": 1234085328,\n        \"cached\": 1234085328,\n        \"uncached\": 13876154,\n        \"content_type\": {\n          \"css\": 15343,\n          \"html\": 1234213,\n          \"javascript\": 318236,\n          \"gif\": 23178,\n          \"jpeg\": 1982048\n        },\n        \"country\": {\n          \"US\": 4181364,\n          \"AG\": 37298,\n          \"GI\": 293846\n        },\n        \"ssl\": {\n          \"encrypted\": 12978361,\n          \"unencrypted\": 781263\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        },\n        \"http_status\": {\n          \"200\": 13496983,\n          \"301\": 283,\n          \"400\": 187936,\n          \"402\": 1828,\n          \"404\": 1293\n        }\n      },\n      \"bandwidth\": {\n        \"all\": 213867451,\n        \"cached\": 113205063,\n        \"uncached\": 113205063,\n        \"content_type\": {\n          \"css\": 237421,\n          \"html\": 1231290,\n          \"javascript\": 123245,\n          \"gif\": 1234242,\n          \"jpeg\": 784278\n        },\n        \"country\": {\n          \"US\": 123145433,\n          \"AG\": 2342483,\n          \"GI\": 984753\n        },\n        \"ssl\": {\n          \"encrypted\": 37592942,\n          \"unencrypted\": 237654192\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        }\n      },\n      \"threats\": {\n        \"all\": 23423873,\n        \"country\": {\n          \"US\": 123,\n          \"CN\": 523423,\n          \"AU\": 91\n        },\n        \"type\": {\n          \"user.ban.ip\": 123,\n          \"hot.ban.unknown\": 5324,\n          \"macro.chl.captchaErr\": 1341,\n          \"macro.chl.jschlErr\": 5323\n        }\n      },\n      \"pageviews\": {\n        \"all\": 5724723,\n        \"search_engine\": {\n          \"googlebot\": 35272,\n          \"pingdom\": 13435,\n          \"bingbot\": 5372,\n          \"baidubot\": 1345\n        }\n      },\n      \"uniques\": {\n        \"all\": 12343\n      }\n    }\n  ]\n}",
 		"which_of": "oneOf",
 		"title": "Zone Analytics",
-		"description": "Analytics data for a zone"
+		"description": "Analytics data for a zone."
 	}
 }

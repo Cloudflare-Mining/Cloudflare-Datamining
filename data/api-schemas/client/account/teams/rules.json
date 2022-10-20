@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Zero Trust Gateway Rules",
-			"description": "List Zero Trust Gateway Rules for an account",
+			"description": "List Zero Trust Gateway Rules for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/rules",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Zero Trust Gateway Rule Details",
-			"description": "Fetch a single Zero Trust Gateway Rule",
+			"description": "Fetch a single Zero Trust Gateway Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Create Zero Trust Gateway Rule",
-			"description": "Create a new Zero Trust Gateway Rule",
+			"description": "Create a new Zero Trust Gateway Rule.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/rules",
 			"method": "POST",
@@ -51,12 +51,12 @@
 					"description": {
 						"type": "string",
 						"example": "\"Block the bad websites based on host name\"",
-						"description": "The description of the Rule"
+						"description": "The description of the Rule."
 					},
 					"action": {
 						"type": "string",
 						"example": "\"allow\"",
-						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'.",
 						"enum": [
 							"on",
 							"off",
@@ -75,7 +75,7 @@
 					"filters": {
 						"type": "array",
 						"example": "[\n  \"http\"\n]",
-						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 						"items": {
 							"type": "string",
 							"enum": [
@@ -84,13 +84,13 @@
 								"l4"
 							],
 							"example": "http",
-							"description": "The protocol or layer to use"
+							"description": "The protocol or layer to use."
 						}
 					},
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Set if the rule is enabled"
+						"description": "Set if the rule is enabled."
 					},
 					"precedence": {
 						"type": "integer",
@@ -100,17 +100,17 @@
 					"traffic": {
 						"type": "string",
 						"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
-						"description": "The wirefilter expression to be used for traffic matching"
+						"description": "The wirefilter expression to be used for traffic matching."
 					},
 					"identity": {
 						"type": "string",
 						"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
-						"description": "The wirefilter expression to be used for identity matching"
+						"description": "The wirefilter expression to be used for identity matching."
 					},
 					"device_posture": {
 						"type": "string",
 						"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
-						"description": "The wirefilter expression to be used for device posture check matching"
+						"description": "The wirefilter expression to be used for device posture check matching."
 					},
 					"rule_settings": {
 						"type": "object",
@@ -119,26 +119,26 @@
 							"block_page_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Enable the custom block page"
+								"description": "Enable the custom block page."
 							},
 							"block_reason": {
 								"type": "string",
 								"example": "\"This website is a security risk\"",
-								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)."
 							},
 							"override_host": {
 								"type": "string",
 								"example": "\"example.com\"",
-								"description": "Override matching DNS queries with this"
+								"description": "Override matching DNS queries with this."
 							},
 							"override_ips": {
 								"type": "array",
 								"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
-								"description": "Override matching DNS queries with this",
+								"description": "Override matching DNS queries with this.",
 								"items": {
 									"type": "string",
 									"example": "1.1.1.1",
-									"description": "IPv4 or IPv6 address"
+									"description": "IPv4 or IPv6 address."
 								}
 							},
 							"l4override": {
@@ -148,12 +148,12 @@
 									"ip": {
 										"type": "string",
 										"example": "\"1.1.1.1\"",
-										"description": "IPv4 or IPv6 address"
+										"description": "IPv4 or IPv6 address."
 									},
 									"port": {
 										"type": "integer",
 										"example": "80",
-										"description": "A port number to use for TCP/UDP overrides"
+										"description": "A port number to use for TCP/UDP overrides."
 									}
 								},
 								"description": "Send matching traffic to the supplied destination IP address and port."
@@ -175,30 +175,30 @@
 									"dp": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable printing"
+										"description": "Disable printing."
 									},
 									"dcp": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable copy-paste"
+										"description": "Disable copy-paste."
 									},
 									"dd": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable download"
+										"description": "Disable download."
 									},
 									"du": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable upload"
+										"description": "Disable upload."
 									},
 									"dk": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable keyboard usage"
+										"description": "Disable keyboard usage."
 									}
 								},
-								"description": "Configure how browser isolation behaves"
+								"description": "Configure how browser isolation behaves."
 							},
 							"check_session": {
 								"type": "object",
@@ -207,23 +207,23 @@
 									"enforce": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable session enforcement for this fule"
+										"description": "Enable session enforcement for this fule."
 									},
 									"duration": {
 										"type": "string",
 										"example": "\"300s\"",
-										"description": "Configure how fresh the session needs to be to be considered valid"
+										"description": "Configure how fresh the session needs to be to be considered valid."
 									}
 								},
-								"description": "Configure how session check behaves"
+								"description": "Configure how session check behaves."
 							},
 							"insecure_disable_dnssec_validation": {
 								"type": "boolean",
 								"example": "false",
-								"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+								"description": "INSECURE - disable DNSSEC validation (for allow actions)."
 							}
 						},
-						"description": "Additional settings that modify the rule's action"
+						"description": "Additional settings that modify the rule's action."
 					}
 				},
 				"required_props": [
@@ -247,7 +247,7 @@
 		},
 		{
 			"title": "Update Zero Trust Gateway Rule",
-			"description": "Update a configured Zero Trust Gateway Rule",
+			"description": "Update a configured Zero Trust Gateway Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
 			"method": "PUT",
@@ -268,12 +268,12 @@
 					"description": {
 						"type": "string",
 						"example": "\"Block the bad websites based on host name\"",
-						"description": "The description of the Rule"
+						"description": "The description of the Rule."
 					},
 					"action": {
 						"type": "string",
 						"example": "\"allow\"",
-						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'.",
 						"enum": [
 							"on",
 							"off",
@@ -292,7 +292,7 @@
 					"filters": {
 						"type": "array",
 						"example": "[\n  \"http\"\n]",
-						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 						"items": {
 							"type": "string",
 							"enum": [
@@ -301,13 +301,13 @@
 								"l4"
 							],
 							"example": "http",
-							"description": "The protocol or layer to use"
+							"description": "The protocol or layer to use."
 						}
 					},
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Set if the rule is enabled"
+						"description": "Set if the rule is enabled."
 					},
 					"precedence": {
 						"type": "integer",
@@ -317,17 +317,17 @@
 					"traffic": {
 						"type": "string",
 						"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
-						"description": "The wirefilter expression to be used for traffic matching"
+						"description": "The wirefilter expression to be used for traffic matching."
 					},
 					"identity": {
 						"type": "string",
 						"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
-						"description": "The wirefilter expression to be used for identity matching"
+						"description": "The wirefilter expression to be used for identity matching."
 					},
 					"device_posture": {
 						"type": "string",
 						"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
-						"description": "The wirefilter expression to be used for device posture check matching"
+						"description": "The wirefilter expression to be used for device posture check matching."
 					},
 					"rule_settings": {
 						"type": "object",
@@ -336,26 +336,26 @@
 							"block_page_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Enable the custom block page"
+								"description": "Enable the custom block page."
 							},
 							"block_reason": {
 								"type": "string",
 								"example": "\"This website is a security risk\"",
-								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)."
 							},
 							"override_host": {
 								"type": "string",
 								"example": "\"example.com\"",
-								"description": "Override matching DNS queries with this"
+								"description": "Override matching DNS queries with this."
 							},
 							"override_ips": {
 								"type": "array",
 								"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
-								"description": "Override matching DNS queries with this",
+								"description": "Override matching DNS queries with this.",
 								"items": {
 									"type": "string",
 									"example": "1.1.1.1",
-									"description": "IPv4 or IPv6 address"
+									"description": "IPv4 or IPv6 address."
 								}
 							},
 							"l4override": {
@@ -365,12 +365,12 @@
 									"ip": {
 										"type": "string",
 										"example": "\"1.1.1.1\"",
-										"description": "IPv4 or IPv6 address"
+										"description": "IPv4 or IPv6 address."
 									},
 									"port": {
 										"type": "integer",
 										"example": "80",
-										"description": "A port number to use for TCP/UDP overrides"
+										"description": "A port number to use for TCP/UDP overrides."
 									}
 								},
 								"description": "Send matching traffic to the supplied destination IP address and port."
@@ -392,30 +392,30 @@
 									"dp": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable printing"
+										"description": "Disable printing."
 									},
 									"dcp": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable copy-paste"
+										"description": "Disable copy-paste."
 									},
 									"dd": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable download"
+										"description": "Disable download."
 									},
 									"du": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable upload"
+										"description": "Disable upload."
 									},
 									"dk": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Disable keyboard usage"
+										"description": "Disable keyboard usage."
 									}
 								},
-								"description": "Configure how browser isolation behaves"
+								"description": "Configure how browser isolation behaves."
 							},
 							"check_session": {
 								"type": "object",
@@ -424,23 +424,23 @@
 									"enforce": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable session enforcement for this fule"
+										"description": "Enable session enforcement for this fule."
 									},
 									"duration": {
 										"type": "string",
 										"example": "\"300s\"",
-										"description": "Configure how fresh the session needs to be to be considered valid"
+										"description": "Configure how fresh the session needs to be to be considered valid."
 									}
 								},
-								"description": "Configure how session check behaves"
+								"description": "Configure how session check behaves."
 							},
 							"insecure_disable_dnssec_validation": {
 								"type": "boolean",
 								"example": "false",
-								"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+								"description": "INSECURE - disable DNSSEC validation (for allow actions)."
 							}
 						},
-						"description": "Additional settings that modify the rule's action"
+						"description": "Additional settings that modify the rule's action."
 					}
 				},
 				"required_props": [
@@ -464,7 +464,7 @@
 		},
 		{
 			"title": "Delete Zero Trust Gateway Rule",
-			"description": "Delete a Zero Trust Gateway Rule",
+			"description": "Delete a Zero Trust Gateway Rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
 			"method": "DELETE",
@@ -485,7 +485,7 @@
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 				"maxLength": 36,
-				"description": "API Resource UUID tag"
+				"description": "API Resource UUID tag."
 			},
 			"name": {
 				"type": "string",
@@ -495,7 +495,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"Block the bad websites based on host name\"",
-				"description": "The description of the Rule"
+				"description": "The description of the Rule."
 			},
 			"precedence": {
 				"type": "integer",
@@ -505,12 +505,12 @@
 			"enabled": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Set if the rule is enabled"
+				"description": "Set if the rule is enabled."
 			},
 			"action": {
 				"type": "string",
 				"example": "\"allow\"",
-				"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+				"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'.",
 				"enum": [
 					"on",
 					"off",
@@ -529,7 +529,7 @@
 			"filters": {
 				"type": "array",
 				"example": "[\n  \"http\"\n]",
-				"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+				"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
 				"items": {
 					"type": "string",
 					"enum": [
@@ -538,23 +538,23 @@
 						"l4"
 					],
 					"example": "http",
-					"description": "The protocol or layer to use"
+					"description": "The protocol or layer to use."
 				}
 			},
 			"traffic": {
 				"type": "string",
 				"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
-				"description": "The wirefilter expression to be used for traffic matching"
+				"description": "The wirefilter expression to be used for traffic matching."
 			},
 			"identity": {
 				"type": "string",
 				"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
-				"description": "The wirefilter expression to be used for identity matching"
+				"description": "The wirefilter expression to be used for identity matching."
 			},
 			"device_posture": {
 				"type": "string",
 				"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
-				"description": "The wirefilter expression to be used for device posture check matching"
+				"description": "The wirefilter expression to be used for device posture check matching."
 			},
 			"rule_settings": {
 				"type": "object",
@@ -563,26 +563,26 @@
 					"block_page_enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Enable the custom block page"
+						"description": "Enable the custom block page."
 					},
 					"block_reason": {
 						"type": "string",
 						"example": "\"This website is a security risk\"",
-						"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+						"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)."
 					},
 					"override_host": {
 						"type": "string",
 						"example": "\"example.com\"",
-						"description": "Override matching DNS queries with this"
+						"description": "Override matching DNS queries with this."
 					},
 					"override_ips": {
 						"type": "array",
 						"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
-						"description": "Override matching DNS queries with this",
+						"description": "Override matching DNS queries with this.",
 						"items": {
 							"type": "string",
 							"example": "1.1.1.1",
-							"description": "IPv4 or IPv6 address"
+							"description": "IPv4 or IPv6 address."
 						}
 					},
 					"l4override": {
@@ -592,12 +592,12 @@
 							"ip": {
 								"type": "string",
 								"example": "\"1.1.1.1\"",
-								"description": "IPv4 or IPv6 address"
+								"description": "IPv4 or IPv6 address."
 							},
 							"port": {
 								"type": "integer",
 								"example": "80",
-								"description": "A port number to use for TCP/UDP overrides"
+								"description": "A port number to use for TCP/UDP overrides."
 							}
 						},
 						"description": "Send matching traffic to the supplied destination IP address and port."
@@ -619,30 +619,30 @@
 							"dp": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Disable printing"
+								"description": "Disable printing."
 							},
 							"dcp": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Disable copy-paste"
+								"description": "Disable copy-paste."
 							},
 							"dd": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Disable download"
+								"description": "Disable download."
 							},
 							"du": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Disable upload"
+								"description": "Disable upload."
 							},
 							"dk": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Disable keyboard usage"
+								"description": "Disable keyboard usage."
 							}
 						},
-						"description": "Configure how browser isolation behaves"
+						"description": "Configure how browser isolation behaves."
 					},
 					"check_session": {
 						"type": "object",
@@ -651,30 +651,30 @@
 							"enforce": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Enable session enforcement for this fule"
+								"description": "Enable session enforcement for this fule."
 							},
 							"duration": {
 								"type": "string",
 								"example": "\"300s\"",
-								"description": "Configure how fresh the session needs to be to be considered valid"
+								"description": "Configure how fresh the session needs to be to be considered valid."
 							}
 						},
-						"description": "Configure how session check behaves"
+						"description": "Configure how session check behaves."
 					},
 					"insecure_disable_dnssec_validation": {
 						"type": "boolean",
 						"example": "false",
-						"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+						"description": "INSECURE - disable DNSSEC validation (for allow actions)."
 					}
 				},
-				"description": "Additional settings that modify the rule's action"
+				"description": "Additional settings that modify the rule's action."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -683,7 +683,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -693,7 +693,7 @@
 					"null"
 				],
 				"example": "null",
-				"description": "Date of deletion, if any",
+				"description": "Date of deletion, if any.",
 				"format": "date-time",
 				"readOnly": true
 			}

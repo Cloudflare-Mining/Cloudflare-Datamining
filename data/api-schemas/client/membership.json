@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/membership.json",
 	"title": "User's Account Memberships",
-	"description": "A list of memberships of accounts this user can access",
+	"description": "A list of memberships of accounts this user can access.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Memberships",
-			"description": "List memberships of accounts the user can access",
+			"description": "List memberships of accounts the user can access.",
 			"rel": "collection",
 			"href": "memberships",
 			"method": "GET",
@@ -27,12 +27,12 @@
 							"pending",
 							"rejected"
 						],
-						"description": "Status of this membership"
+						"description": "Status of this membership."
 					},
 					"account.name": {
 						"type": "string",
 						"example": "\"Demo Account\"",
-						"description": "Account name",
+						"description": "Account name.",
 						"maxLength": 100
 					},
 					"page": {
@@ -40,7 +40,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -48,7 +48,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Number of memberships per page"
+						"description": "Number of memberships per page."
 					},
 					"order": {
 						"type": "string",
@@ -58,7 +58,7 @@
 							"account.name",
 							"status"
 						],
-						"description": "Field to order memberships by"
+						"description": "Field to order memberships by."
 					},
 					"direction": {
 						"type": "string",
@@ -67,7 +67,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order memberships"
+						"description": "Direction to order memberships."
 					}
 				},
 				"required_props": [],
@@ -86,7 +86,7 @@
 		},
 		{
 			"title": "Membership Details",
-			"description": "Get a specific membership",
+			"description": "Get a specific membership.",
 			"rel": "self",
 			"href": "memberships/{#/definitions/identifier}",
 			"method": "GET",
@@ -98,7 +98,7 @@
 		},
 		{
 			"title": "Update Membership",
-			"description": "Accept or reject this account invitation",
+			"description": "Accept or reject this account invitation.",
 			"rel": "self",
 			"href": "memberships/{#/definitions/identifier}",
 			"method": "PUT",
@@ -118,7 +118,7 @@
 							"accepted",
 							"rejected"
 						],
-						"description": "Whether to accept or reject this account invitation"
+						"description": "Whether to accept or reject this account invitation."
 					}
 				},
 				"required_props": [
@@ -132,7 +132,7 @@
 		},
 		{
 			"title": "Delete Membership",
-			"description": "Remove the associated member from an account",
+			"description": "Remove the associated member from an account.",
 			"rel": "self",
 			"href": "memberships/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -158,14 +158,14 @@
 			"id": {
 				"type": "string",
 				"example": "\"4536bcfad5faccb111b47003c79917fa\"",
-				"description": "Membership identifier tag",
+				"description": "Membership identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"code": {
 				"type": "string",
 				"example": "\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\"",
-				"description": "The unique activation code for the account membership",
+				"description": "The unique activation code for the account membership.",
 				"maxLength": 64,
 				"readOnly": true
 			},
@@ -177,7 +177,7 @@
 					"pending",
 					"rejected"
 				],
-				"description": "Status of this membership"
+				"description": "Status of this membership."
 			},
 			"account": {
 				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
@@ -185,14 +185,14 @@
 					"id": {
 						"type": "string",
 						"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-						"description": "Account identifier tag",
+						"description": "Account identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Demo Account\"",
-						"description": "Account name",
+						"description": "Account name.",
 						"maxLength": 100
 					},
 					"settings": {
@@ -202,22 +202,22 @@
 							"enforce_twofactor": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 								"default": false
 							},
 							"use_account_custom_ns_by_default": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+								"description": "Indicates whether new zones should use the account-level custom nameservers by default.",
 								"default": false
 							}
 						},
-						"description": "Account settings"
+						"description": "Account settings."
 					},
 					"created_on": {
 						"type": "string",
 						"example": "\"2014-03-01T12:21:02.0000Z\"",
-						"description": "describes when account was created",
+						"description": "describes when account was created.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -233,36 +233,36 @@
 						],
 						"properties": {
 							"id": {
-								"description": "Account identifier tag",
+								"description": "Account identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
 								"example": "01a7362d577a6c3019a474fd6f485823"
 							},
 							"name": {
-								"description": "Account name",
+								"description": "Account name.",
 								"type": "string",
 								"maxLength": 100,
 								"example": "Demo Account"
 							},
 							"settings": {
 								"type": "object",
-								"description": "Account settings",
+								"description": "Account settings.",
 								"properties": {
 									"enforce_twofactor": {
 										"type": "boolean",
-										"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+										"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 										"default": false
 									},
 									"use_account_custom_ns_by_default": {
 										"type": "boolean",
-										"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+										"description": "Indicates whether new zones should use the account-level custom nameservers by default.",
 										"default": false
 									}
 								}
 							},
 							"created_on": {
-								"description": "describes when account was created",
+								"description": "describes when account was created.",
 								"type": "string",
 								"format": "date-time",
 								"readOnly": true,
@@ -271,14 +271,14 @@
 						},
 						"definitions": {
 							"identifier": {
-								"description": "Account identifier tag",
+								"description": "Account identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
 								"example": "01a7362d577a6c3019a474fd6f485823"
 							},
 							"name": {
-								"description": "Account name",
+								"description": "Account name.",
 								"type": "string",
 								"maxLength": 100,
 								"example": "Demo Account"
@@ -289,14 +289,14 @@
 								"type": "object",
 								"properties": {
 									"id": {
-										"description": "Account identifier tag",
+										"description": "Account identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
 										"example": "01a7362d577a6c3019a474fd6f485823"
 									},
 									"name": {
-										"description": "Account name",
+										"description": "Account name.",
 										"type": "string",
 										"maxLength": 100,
 										"example": "Demo Account"
@@ -306,7 +306,7 @@
 										"enum": [
 											"account"
 										],
-										"description": "The scope of the rule",
+										"description": "The scope of the rule.",
 										"readOnly": true,
 										"example": "account"
 									}
@@ -320,7 +320,7 @@
 			"roles": {
 				"type": "array",
 				"example": "[\n  \"Account Administrator\"\n]",
-				"description": "List of role names for the User at the Account",
+				"description": "List of role names for the user at the account.",
 				"readOnly": true,
 				"items": {
 					"type": "string",
@@ -505,7 +505,7 @@
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"title": "Permissions Object",
-						"description": "Access permissions for a Role",
+						"description": "Access permissions for a Role.",
 						"type": "object",
 						"properties": {
 							"analytics": {
@@ -744,7 +744,7 @@
 						}
 					}
 				],
-				"description": "All access permissions for the User at the Account",
+				"description": "All access permissions for the user at the account.",
 				"readOnly": true
 			}
 		},
@@ -760,6 +760,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"status\": \"accepted\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  },\n  \"roles\": [\n    \"Account Administrator\"\n  ],\n  \"permissions\": {\n    \"analytics\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"billing\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"cache_purge\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns_records\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"lb\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"logs\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"organization\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"ssl\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"waf\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zones\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zone_settings\": {\n      \"read\": true,\n      \"write\": true\n    }\n  }\n}",
 		"title": "User's Account Memberships",
-		"description": "A list of memberships of accounts this user can access"
+		"description": "A list of memberships of accounts this user can access."
 	}
 }

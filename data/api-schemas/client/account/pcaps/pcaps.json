@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/pcaps/pcaps.json",
 	"title": "Magic PCAP collection",
-	"description": "APIs for collecting account PCAPs inside Magic Transit",
+	"description": "APIs for collecting account PCAPs inside Magic Transit.",
 	"type": "object",
 	"links": [
 		{
@@ -272,12 +272,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -387,7 +387,7 @@
 				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -396,7 +396,7 @@
 				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -781,6 +781,6 @@
 		"objects": [],
 		"example": "{\n  \"identifier\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"account_identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"pcaps_request_simple\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_response_simple\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_request_full\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  },\n  \"pcaps_response_full\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"error_message\": \"No packets matched the filter in the time limit given. Please modify the filter or try again.\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  }\n}",
 		"title": "Magic PCAP collection",
-		"description": "APIs for collecting account PCAPs inside Magic Transit"
+		"description": "APIs for collecting account PCAPs inside Magic Transit."
 	}
 }

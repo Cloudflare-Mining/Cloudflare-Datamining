@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-error-responses.json",
 	"title": "Custom Error Responses",
-	"description": "Custom Error Responses",
+	"description": "Custom Error Responses.",
 	"cfExtendedDescription": "",
 	"type": "object",
 	"links": [
@@ -213,21 +213,21 @@
 							"type": "string"
 						},
 						"action_parameters": {
-							"description": "The action parameters for the serve_error action",
+							"description": "The action parameters for the serve_error action.",
 							"properties": {
 								"content": {
 									"type": "string",
-									"description": "The new content for the response error",
+									"description": "The new content for the response error.",
 									"example": "some html error page"
 								},
 								"content_type": {
 									"type": "string",
-									"description": "The content-type of the response error",
+									"description": "The content-type of the response error.",
 									"example": "text/html"
 								},
 								"status_code": {
 									"type": "number",
-									"description": "The HTTP status code of the response error",
+									"description": "The HTTP status code of the response error.",
 									"example": 530
 								}
 							}
@@ -248,6 +248,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_custom_errors\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"serve_error\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"Change error response based on geolocation\",\n      \"action_parameters\": {\n        \"content\": \"some html error page\",\n        \"content_type\": \"text/html\",\n        \"status_code\": 530\n      }\n    }\n  ]\n}",
 		"title": "Custom Error Responses",
-		"description": "Custom Error Responses"
+		"description": "Custom Error Responses."
 	}
 }

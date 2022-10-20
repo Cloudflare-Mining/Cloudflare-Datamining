@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-ns.json",
 	"title": "Account-Level Custom Nameservers Usage for a Zone",
-	"description": "Per-zone usage of Cloudflare account-level custom nameservers",
+	"description": "Per-zone usage of Cloudflare account-level custom nameservers.",
 	"type": "object",
 	"links": [
 		{
@@ -54,7 +54,7 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Whether zone uses account-level custom nameservers"
+						"description": "Whether zone uses account-level custom nameservers."
 					}
 				},
 				"required_props": [],
@@ -87,7 +87,7 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Whether zone uses account-level custom nameservers"
+						"description": "Whether zone uses account-level custom nameservers."
 					}
 				},
 				"required_props": [],
@@ -101,6 +101,6 @@
 		"example": "{\n  \"enabled\": true\n}",
 		"which_of": "oneOf",
 		"title": "Account-Level Custom Nameservers Usage for a Zone",
-		"description": "Per-zone usage of Cloudflare account-level custom nameservers"
+		"description": "Per-zone usage of Cloudflare account-level custom nameservers."
 	}
 }

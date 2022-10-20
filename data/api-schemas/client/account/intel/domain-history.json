@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/domain-history.json",
 	"title": "Domain History",
-	"description": "Historical domain categorization (Beta)",
+	"description": "Historical domain categorization (Beta).",
 	"links": [
 		{
 			"title": "Get Domain History",
@@ -93,6 +93,6 @@
 		"objects": [],
 		"example": "{\n  \"domain\": \"cloudflare.com\",\n  \"categorizations\": [\n    {\n      \"categories\": [\n        {\n          \"id\": 155,\n          \"name\": \"Technology\"\n        }\n      ],\n      \"start\": \"2021-04-01\",\n      \"end\": \"2021-04-30\"\n    }\n  ]\n}",
 		"title": "Domain History",
-		"description": "Historical domain categorization (Beta)"
+		"description": "Historical domain categorization (Beta)."
 	}
 }

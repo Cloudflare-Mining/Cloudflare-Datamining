@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/magic/ipsec-tunnel.json",
 	"title": "Magic IPsec tunnels",
-	"description": "IPsec tunnels that connect Cloudflare with your endpoints",
+	"description": "IPsec tunnels that connect Cloudflare with your endpoints.",
 	"type": "object",
 	"links": [
 		{
@@ -79,12 +79,12 @@
 								},
 								"customer_endpoint": {
 									"type": "string",
-									"description": "The IP address assigned to the customer side of the IPsec tunnel",
+									"description": "The IP address assigned to the customer side of the IPsec tunnel.",
 									"example": "203.0.113.1"
 								},
 								"cloudflare_endpoint": {
 									"type": "string",
-									"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel",
+									"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 									"example": "203.0.113.1"
 								},
 								"interface_address": {
@@ -99,7 +99,7 @@
 								},
 								"psk": {
 									"type": "string",
-									"description": "A randomly generated or provided string for use in the IPsec tunnel",
+									"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 									"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
 								}
 							}
@@ -167,12 +167,12 @@
 					"customer_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the customer side of the IPsec tunnel"
+						"description": "The IP address assigned to the customer side of the IPsec tunnel."
 					},
 					"cloudflare_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel"
+						"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel."
 					},
 					"interface_address": {
 						"type": "string",
@@ -187,7 +187,7 @@
 					"psk": {
 						"type": "string",
 						"example": "\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"",
-						"description": "A randomly generated or provided string for use in the IPsec tunnel"
+						"description": "A randomly generated or provided string for use in the IPsec tunnel."
 					}
 				},
 				"required_props": [],
@@ -234,7 +234,7 @@
 									"properties": {
 										"id": {
 											"$comment": "Must be present as a definition for URI Templating",
-											"description": "Account identifier tag",
+											"description": "Account identifier tag.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
@@ -259,12 +259,12 @@
 												},
 												"customer_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the customer side of the IPsec tunnel",
+													"description": "The IP address assigned to the customer side of the IPsec tunnel.",
 													"example": "203.0.113.1"
 												},
 												"cloudflare_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel",
+													"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
 													"example": "203.0.113.1"
 												},
 												"interface_address": {
@@ -279,7 +279,7 @@
 												},
 												"psk": {
 													"type": "string",
-													"description": "A randomly generated or provided string for use in the IPsec tunnel",
+													"description": "A randomly generated or provided string for use in the IPsec tunnel.",
 													"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
 												}
 											}
@@ -332,7 +332,7 @@
 				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
 				"readOnly": true,
 				"maxLength": 32,
-				"description": "Tunnel identifier tag"
+				"description": "Tunnel identifier tag."
 			},
 			"created_on": {
 				"type": "string",
@@ -356,12 +356,12 @@
 			"customer_endpoint": {
 				"type": "string",
 				"example": "\"203.0.113.1\"",
-				"description": "The IP address assigned to the customer side of the IPsec tunnel"
+				"description": "The IP address assigned to the customer side of the IPsec tunnel."
 			},
 			"cloudflare_endpoint": {
 				"type": "string",
 				"example": "\"203.0.113.1\"",
-				"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel"
+				"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel."
 			},
 			"interface_address": {
 				"type": "string",
@@ -438,6 +438,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"IPsec_1\",\n  \"customer_endpoint\": \"203.0.113.1\",\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for ISP X\",\n  \"psk_metadata\": {\n    \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n  },\n  \"tunnel_health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  },\n  \"allow_null_cipher\": \"true\"\n}",
 		"title": "Magic IPsec tunnels",
-		"description": "IPsec tunnels that connect Cloudflare with your endpoints"
+		"description": "IPsec tunnels that connect Cloudflare with your endpoints."
 	}
 }

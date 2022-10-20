@@ -48,7 +48,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -76,7 +76,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -117,13 +117,13 @@
 					"consecutive_up": {
 						"type": "integer",
 						"example": "3",
-						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times",
+						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"consecutive_down": {
 						"type": "integer",
 						"example": "2",
-						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times",
+						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"probe_zone": {
@@ -201,7 +201,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -229,7 +229,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -270,13 +270,13 @@
 					"consecutive_up": {
 						"type": "integer",
 						"example": "3",
-						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times",
+						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"consecutive_down": {
 						"type": "integer",
 						"example": "2",
-						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times",
+						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"probe_zone": {
@@ -342,7 +342,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -370,7 +370,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -411,13 +411,13 @@
 					"consecutive_up": {
 						"type": "integer",
 						"example": "3",
-						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times",
+						"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"consecutive_down": {
 						"type": "integer",
 						"example": "2",
-						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times",
+						"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 						"default": 0
 					},
 					"probe_zone": {
@@ -517,7 +517,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -622,7 +622,7 @@
 				"example": "\"f1aba936b94213e5b8dca0c0dbf1f9cc\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -631,7 +631,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -640,7 +640,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -661,7 +661,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"Login page monitor\"",
-				"description": "Object description"
+				"description": "Object description."
 			},
 			"method": {
 				"type": "string",
@@ -689,7 +689,7 @@
 			"timeout": {
 				"type": "integer",
 				"example": "3",
-				"description": "The timeout (in seconds) before marking the health check as failed",
+				"description": "The timeout (in seconds) before marking the health check as failed.",
 				"default": 5
 			},
 			"retries": {
@@ -730,13 +730,13 @@
 			"consecutive_up": {
 				"type": "integer",
 				"example": "3",
-				"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times",
+				"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
 				"default": 0
 			},
 			"consecutive_down": {
 				"type": "integer",
 				"example": "2",
-				"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times",
+				"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
 				"default": 0
 			},
 			"probe_zone": {

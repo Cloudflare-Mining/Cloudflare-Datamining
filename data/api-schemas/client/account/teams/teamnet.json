@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Tunnel Routes",
-			"description": "List, search and filter an account's tunnel routes",
+			"description": "List, search and filter an account's tunnel routes.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes",
 			"method": "GET",
@@ -22,7 +22,7 @@
 					"tunnel_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the tunnel",
+						"description": "UUID of the tunnel.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -30,33 +30,33 @@
 					"comment": {
 						"type": "string",
 						"example": "\"Example comment for this route\"",
-						"description": "Optional remark describing the route. Empty if none"
+						"description": "Optional remark describing the route. Empty if none."
 					},
 					"is_deleted": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, only include deleted routes. If false, exclude deleted routes. If not provided, all routes will be included"
+						"description": "If true, only include deleted routes. If false, exclude deleted routes. If not provided, all routes will be included."
 					},
 					"network_subset": {
 						"type": "string",
 						"example": "\"172.16.0.0%2F16\"",
-						"description": "If set, only list routes that are a subset of this network"
+						"description": "If set, only list routes that are a subset of this network."
 					},
 					"network_superset": {
 						"type": "string",
 						"example": "\"172.16.0.0%2F16\"",
-						"description": "If set, only list routes that are a superset of this network"
+						"description": "If set, only list routes that are a superset of this network."
 					},
 					"existed_at": {
 						"type": "string",
 						"example": "\"2019-10-12T07:20:50.52Z\"",
-						"description": "If provided, include only routes that were created before this time and not deleted at this time",
+						"description": "If provided, include only routes that were created before this time and not deleted at this time.",
 						"format": "date-time"
 					},
 					"virtual_network_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the virtual network",
+						"description": "UUID of the virtual network.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -79,7 +79,7 @@
 		},
 		{
 			"title": "Get Tunnel Route by IP",
-			"description": "Find the Tunnel Route that encompasses the given IP",
+			"description": "Find the Tunnel Route that encompasses the given IP.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/ip/{#/definitions/ip}",
 			"method": "GET",
@@ -95,7 +95,7 @@
 					"virtual_network_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the virtual network",
+						"description": "UUID of the virtual network.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -112,7 +112,7 @@
 		},
 		{
 			"title": "Create Route",
-			"description": "Add a new route to the account's routing table for the given tunnel",
+			"description": "Add a new route to the account's routing table for the given tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "POST",
@@ -128,7 +128,7 @@
 					"tunnel_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the tunnel for which this route is being added",
+						"description": "UUID of the tunnel for which this route is being added.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -136,12 +136,12 @@
 					"comment": {
 						"type": "string",
 						"example": "\"Example comment for this route\"",
-						"description": "Optional remark describing the route. Empty if none"
+						"description": "Optional remark describing the route. Empty if none."
 					},
 					"virtual_network_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "optional UUID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided",
+						"description": "optional UUID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -161,7 +161,7 @@
 		},
 		{
 			"title": "Update Route",
-			"description": "Update an existing route in the account's routing table for the given tunnel",
+			"description": "Update an existing route in the account's routing table for the given tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "PATCH",
@@ -177,7 +177,7 @@
 					"tunnel_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the tunnel this route should belong to",
+						"description": "UUID of the tunnel this route should belong to.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -185,17 +185,17 @@
 					"comment": {
 						"type": "string",
 						"example": "\"Example comment for this route\"",
-						"description": "Optional remark describing the route. Empty if none"
+						"description": "Optional remark describing the route. Empty if none."
 					},
 					"network": {
 						"type": "string",
 						"example": "\"172.16.0.0/16\"",
-						"description": "New CIDR of this route"
+						"description": "New CIDR of this route."
 					},
 					"virtual_network_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the virtual network to which this route belongs to",
+						"description": "UUID of the virtual network to which this route belongs to.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -215,7 +215,7 @@
 		},
 		{
 			"title": "Delete Route",
-			"description": "Delete an existing route from the account's routing table",
+			"description": "Delete an existing route from the account's routing table.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "DELETE",
@@ -231,7 +231,7 @@
 					"virtual_network_id": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the virtual network",
+						"description": "UUID of the virtual network.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -256,12 +256,12 @@
 			"network": {
 				"type": "string",
 				"example": "\"172.16.0.0/16\"",
-				"description": "CIDR notation of the IPv4 or IPv6 range of the network the route connects to"
+				"description": "CIDR notation of the IPv4 or IPv6 range of the network the route connects to."
 			},
 			"tunnel_id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the Tunnel the route belongs to",
+				"description": "UUID of the Tunnel the route belongs to.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36
@@ -269,17 +269,17 @@
 			"tunnel_name": {
 				"type": "string",
 				"example": "\"blog\"",
-				"description": "User-friendly name of the Tunnel the route belongs to"
+				"description": "User-friendly name of the Tunnel the route belongs to."
 			},
 			"comment": {
 				"type": "string",
 				"example": "\"Example comment for this route\"",
-				"description": "Optional remark describing the route. Empty if none"
+				"description": "Optional remark describing the route. Empty if none."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "Timestamps when the route was created, formatted in RFC 3339",
+				"description": "Timestamps when the route was created, formatted in RFC 3339.",
 				"format": "date-time"
 			},
 			"deleted_at": {
@@ -288,14 +288,14 @@
 					"null"
 				],
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "If present, indicates route was deleted at the given date (formatted in RFC 3339). If absent, route has not been deleted",
+				"description": "If present, indicates route was deleted at the given date (formatted in RFC 3339). If absent, route has not been deleted.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"virtual_network_id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the virtual network this route belongs to",
+				"description": "UUID of the virtual network this route belongs to.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36

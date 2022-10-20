@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/loadbalancing/analytics.json",
 	"title": "Load Balancer Healthcheck Events",
-	"description": "User-level Load Balancing Healthcheck Events Log",
+	"description": "User-level Load Balancing Healthcheck Events Log.",
 	"type": "object",
 	"links": [
 		{
@@ -22,13 +22,13 @@
 					"since": {
 						"type": "string",
 						"example": "\"2016-11-11T12:00:00Z\"",
-						"description": "Start date and time of requesting data period in the ISO8601 format",
+						"description": "Start date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"until": {
 						"type": "string",
 						"example": "\"2016-11-11T13:00:00Z\"",
-						"description": "End date and time of requesting data period in the ISO8601 format",
+						"description": "End date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"origin_name": {
@@ -46,7 +46,7 @@
 						"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -114,6 +114,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": 2,\n  \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n  \"pool\": {\n    \"id\": \"74bc6a8b9b0dda3d651707a2928bad0c\",\n    \"name\": \"some-pool\",\n    \"healthy\": true,\n    \"changed\": true,\n    \"minimum_origins\": 1\n  },\n  \"origins\": [\n    {\n      \"name\": \"some-origin\",\n      \"address\": \"198.51.100.4\",\n      \"ip\": \"198.51.100.4\",\n      \"enabled\": true,\n      \"healthy\": true,\n      \"failure_reason\": \"No failures\",\n      \"changed\": true\n    }\n  ]\n}",
 		"title": "Load Balancer Healthcheck Events",
-		"description": "User-level Load Balancing Healthcheck Events Log"
+		"description": "User-level Load Balancing Healthcheck Events Log."
 	}
 }
