@@ -16,8 +16,14 @@ async function run(){
 
 	// get categories
 	const categoriesReq = await fetch('https://cloudflare.zendesk.com/api/v2/help_center/en-us/categories.json');
-	const categories = await categoriesReq.json();
-	await fs.writeJson(path.resolve(dir, 'categories.json'), categories?.categories, {spaces: '\t'});
+	const rawCategories = await categoriesReq.json();
+	const categories = [];
+	for(const category of rawCategories?.categories ?? []){
+		const {updated_at, ...rest} = category;
+		categories.push(rest);
+	}
+
+	await fs.writeJson(path.resolve(dir, 'categories.json'), categories, {spaces: '\t'});
 
 	// get articles
 	const articles = [];
