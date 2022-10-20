@@ -62,7 +62,7 @@
 					"position": {
 						"type": "string",
 						"example": "\"center\"",
-						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 						"default": "upperRight",
 						"readOnly": true
 					}
@@ -97,12 +97,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -160,7 +160,7 @@
 					"position": {
 						"type": "string",
 						"example": "\"center\"",
-						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 						"default": "upperRight",
 						"readOnly": true
 					}
@@ -305,7 +305,7 @@
 			"position": {
 				"type": "string",
 				"example": "\"center\"",
-				"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+				"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 				"default": "upperRight",
 				"readOnly": true
 			}

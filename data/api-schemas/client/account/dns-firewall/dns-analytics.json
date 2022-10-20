@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-firewall/dns-analytics.json",
 	"title": "DNS Firewall Analytics",
-	"description": "Analytics for a DNS Firewall cluster",
+	"description": "Analytics for a DNS Firewall cluster.",
 	"type": "object",
 	"links": [
 		{
@@ -27,9 +27,9 @@
 					"dimensions": {
 						"type": "array",
 						"example": "[\n  \"responseCode\",\n  \"queryName\"\n]",
-						"description": "Array of dimensions",
+						"description": "Array of dimensions.",
 						"items": {
-							"description": "Dimension name",
+							"description": "Dimension name.",
 							"type": "string",
 							"example": "responseCode"
 						}
@@ -37,9 +37,9 @@
 					"metrics": {
 						"type": "array",
 						"example": "[\n  \"queryCount\",\n  \"responseTimeAvg\"\n]",
-						"description": "Array of metrics",
+						"description": "Array of metrics.",
 						"items": {
-							"description": "Metric name",
+							"description": "Metric name.",
 							"type": "string",
 							"example": "queries"
 						}
@@ -47,9 +47,9 @@
 					"sort": {
 						"type": "array",
 						"example": "[\n  \"+responseCode\",\n  \"-queryName\"\n]",
-						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending)",
+						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending).",
 						"items": {
-							"description": "Dimension name (may be prefixed by - (descending) or + (ascending)",
+							"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 							"type": "string",
 							"example": "+responseCode"
 						}
@@ -57,24 +57,24 @@
 					"filters": {
 						"type": "string",
 						"example": "\"responseCode==NOERROR\"",
-						"description": "Segmentation filter in 'attribute operator value' format"
+						"description": "Segmentation filter in 'attribute operator value' format."
 					},
 					"since": {
 						"type": "string",
 						"example": "\"2016-11-11T12:00:00Z\"",
-						"description": "Start date and time of requesting data period in the ISO8601 format",
+						"description": "Start date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"until": {
 						"type": "string",
 						"example": "\"2016-11-11T13:00:00Z\"",
-						"description": "End date and time of requesting data period in the ISO8601 format",
+						"description": "End date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"limit": {
 						"type": "integer",
 						"example": "100",
-						"description": "Limit number of returned metrics, default is 100"
+						"description": "Limit number of returned metrics, default is 100."
 					}
 				},
 				"required_props": [
@@ -90,7 +90,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"dimensions\": [\n    \"responseCode\",\n    \"queryName\"\n  ],\n  \"metrics\": [\n    \"queryCount\",\n    \"responseTimeAvg\"\n  ],\n  \"sort\": [\n    \"+responseCode\",\n    \"-queryName\"\n  ],\n  \"filters\": \"responseCode==NOERROR\",\n  \"since\": \"2016-11-11T12:00:00Z\",\n  \"until\": \"2016-11-11T13:00:00Z\",\n  \"limit\": 100\n}",
-				"description": "Report query metadata"
+				"description": "Report query metadata."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"rows\": 100,\n    \"totals\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"min\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"max\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"data_lag\": 60\n  }\n}"
 		},
@@ -117,9 +117,9 @@
 					"dimensions": {
 						"type": "array",
 						"example": "[\n  \"responseCode\",\n  \"queryName\"\n]",
-						"description": "Array of dimensions",
+						"description": "Array of dimensions.",
 						"items": {
-							"description": "Dimension name",
+							"description": "Dimension name.",
 							"type": "string",
 							"example": "responseCode"
 						}
@@ -127,9 +127,9 @@
 					"metrics": {
 						"type": "array",
 						"example": "[\n  \"queryCount\",\n  \"responseTimeAvg\"\n]",
-						"description": "Array of metrics",
+						"description": "Array of metrics.",
 						"items": {
-							"description": "Metric name",
+							"description": "Metric name.",
 							"type": "string",
 							"example": "queries"
 						}
@@ -137,9 +137,9 @@
 					"sort": {
 						"type": "array",
 						"example": "[\n  \"+responseCode\",\n  \"-queryName\"\n]",
-						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending)",
+						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending).",
 						"items": {
-							"description": "Dimension name (may be prefixed by - (descending) or + (ascending)",
+							"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
 							"type": "string",
 							"example": "+responseCode"
 						}
@@ -147,28 +147,28 @@
 					"filters": {
 						"type": "string",
 						"example": "\"responseCode==NOERROR\"",
-						"description": "Segmentation filter in 'attribute operator value' format"
+						"description": "Segmentation filter in 'attribute operator value' format."
 					},
 					"since": {
 						"type": "string",
 						"example": "\"2016-11-11T12:00:00Z\"",
-						"description": "Start date and time of requesting data period in the ISO8601 format",
+						"description": "Start date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"until": {
 						"type": "string",
 						"example": "\"2016-11-11T13:00:00Z\"",
-						"description": "End date and time of requesting data period in the ISO8601 format",
+						"description": "End date and time of requesting data period in the ISO8601 format.",
 						"format": "date-time"
 					},
 					"limit": {
 						"type": "integer",
 						"example": "100",
-						"description": "Limit number of returned metrics, default is 100"
+						"description": "Limit number of returned metrics, default is 100."
 					},
 					"time_delta": {
 						"example": "\"hour\"",
-						"description": "Unit of time to group data by",
+						"description": "Unit of time to group data by.",
 						"enum": [
 							"all",
 							"auto",
@@ -211,6 +211,6 @@
 		"objects": [],
 		"example": "{}",
 		"title": "DNS Firewall Analytics",
-		"description": "Analytics for a DNS Firewall cluster"
+		"description": "Analytics for a DNS Firewall cluster."
 	}
 }

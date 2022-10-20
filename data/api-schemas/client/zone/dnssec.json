@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dnssec.json",
 	"title": "DNSSEC",
-	"description": "Manage DNSSEC for a zone",
+	"description": "Manage DNSSEC for a zone.",
 	"type": "object",
 	"links": [
 		{
 			"title": "DNSSEC Details",
-			"description": "Details about DNSSEC status and configuration",
+			"description": "Details about DNSSEC status and configuration.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/dnssec",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "Edit DNSSEC Status",
-			"description": "Enable or disable DNSSEC",
+			"description": "Enable or disable DNSSEC.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/dnssec",
 			"method": "PATCH",
@@ -59,7 +59,7 @@
 							"active",
 							"disabled"
 						],
-						"description": "Status of DNSSEC, based on user-desired state and presence of necessary records"
+						"description": "Status of DNSSEC, based on user-desired state and presence of necessary records."
 					}
 				},
 				"required_props": [
@@ -73,7 +73,7 @@
 		},
 		{
 			"title": "Delete DNSSEC records",
-			"description": "Delete DNSSEC",
+			"description": "Delete DNSSEC.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/dnssec",
 			"method": "DELETE",
@@ -110,7 +110,7 @@
 					"pending-disabled",
 					"error"
 				],
-				"description": "Status of DNSSEC, based on user-desired state and presence of necessary records"
+				"description": "Status of DNSSEC, based on user-desired state and presence of necessary records."
 			},
 			"flags": {
 				"type": [
@@ -118,7 +118,7 @@
 					"null"
 				],
 				"example": "257",
-				"description": "Flag for DNSSEC record",
+				"description": "Flag for DNSSEC record.",
 				"readOnly": true
 			},
 			"algorithm": {
@@ -127,7 +127,7 @@
 					"null"
 				],
 				"example": "\"13\"",
-				"description": "Algorithm key code",
+				"description": "Algorithm key code.",
 				"readOnly": true
 			},
 			"key_type": {
@@ -136,7 +136,7 @@
 					"null"
 				],
 				"example": "\"ECDSAP256SHA256\"",
-				"description": "Algorithm key type",
+				"description": "Algorithm key type.",
 				"readOnly": true
 			},
 			"digest_type": {
@@ -145,7 +145,7 @@
 					"null"
 				],
 				"example": "\"2\"",
-				"description": "Coded type for digest algorithm",
+				"description": "Coded type for digest algorithm.",
 				"readOnly": true
 			},
 			"digest_algorithm": {
@@ -154,7 +154,7 @@
 					"null"
 				],
 				"example": "\"SHA256\"",
-				"description": "Type of digest algorithm",
+				"description": "Type of digest algorithm.",
 				"readOnly": true
 			},
 			"digest": {
@@ -163,7 +163,7 @@
 					"null"
 				],
 				"example": "\"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\"",
-				"description": "Digest hash",
+				"description": "Digest hash.",
 				"readOnly": true
 			},
 			"ds": {
@@ -172,7 +172,7 @@
 					"null"
 				],
 				"example": "\"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\"",
-				"description": "Full DS record",
+				"description": "Full DS record.",
 				"readOnly": true
 			},
 			"key_tag": {
@@ -181,7 +181,7 @@
 					"null"
 				],
 				"example": "42",
-				"description": "Code for key tag",
+				"description": "Code for key tag.",
 				"readOnly": true
 			},
 			"public_key": {
@@ -190,7 +190,7 @@
 					"null"
 				],
 				"example": "\"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\"",
-				"description": "Public key for DS record",
+				"description": "Public key for DS record.",
 				"readOnly": true
 			},
 			"modified_on": {
@@ -201,7 +201,7 @@
 				"example": "\"2014-01-01T05:20:00Z\"",
 				"format": "date-time",
 				"readOnly": true,
-				"description": "When DNSSEC was last modified"
+				"description": "When DNSSEC was last modified."
 			}
 		},
 		"required_props": [],
@@ -221,6 +221,6 @@
 		"objects": [],
 		"example": "{\n  \"status\": \"active\",\n  \"flags\": 257,\n  \"algorithm\": \"13\",\n  \"key_type\": \"ECDSAP256SHA256\",\n  \"digest_type\": \"2\",\n  \"digest_algorithm\": \"SHA256\",\n  \"digest\": \"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n  \"ds\": \"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n  \"key_tag\": 42,\n  \"public_key\": \"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\"\n}",
 		"title": "DNSSEC",
-		"description": "Manage DNSSEC for a zone"
+		"description": "Manage DNSSEC for a zone."
 	}
 }

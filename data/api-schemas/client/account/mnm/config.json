@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/mnm/config.json",
 	"title": "Magic Network Monitoring Configuration",
-	"description": "APIs for Configuring Network Monitoring",
+	"description": "APIs for Configuring Network Monitoring.",
 	"type": "object",
 	"links": [
 		{
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Create account configuration",
-			"description": "Create a new network monitoring configuration",
+			"description": "Create a new network monitoring configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
 			"method": "POST",
@@ -42,7 +42,7 @@
 		},
 		{
 			"title": "Update account configuration fields",
-			"description": "Update fields in an existing network monitoring configuration",
+			"description": "Update fields in an existing network monitoring configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
 			"method": "PATCH",
@@ -66,7 +66,7 @@
 		},
 		{
 			"title": "Delete account configuration",
-			"description": "Delete an existing network monitoring configuration",
+			"description": "Delete an existing network monitoring configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
 			"method": "DELETE",
@@ -88,7 +88,7 @@
 				"example": "\"6f91088a406011ed95aed352566e8d4c\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			}
@@ -100,6 +100,6 @@
 		"objects": [],
 		"example": "{\n  \"account_identifier\": \"6f91088a406011ed95aed352566e8d4c\"\n}",
 		"title": "Magic Network Monitoring Configuration",
-		"description": "APIs for Configuring Network Monitoring"
+		"description": "APIs for Configuring Network Monitoring."
 	}
 }

@@ -7,7 +7,7 @@
 	"links": [
 		{
 			"title": "Start Tail",
-			"description": "Starts a tail that receives logs and exception from a Worker",
+			"description": "Starts a tail that receives logs and exception from a Worker.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails",
 			"method": "POST",
@@ -19,12 +19,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -46,7 +46,7 @@
 		},
 		{
 			"title": "List Tails",
-			"description": "Get list of tails currently deployed on a worker",
+			"description": "Get list of tails currently deployed on a worker.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails",
 			"method": "GET",
@@ -58,12 +58,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -84,7 +84,7 @@
 		},
 		{
 			"title": "Delete Tail",
-			"description": "Deletes a tail from a Worker",
+			"description": "Deletes a tail from a Worker.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails/{#/definitions/id}",
 			"method": "DELETE",
@@ -96,12 +96,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -136,7 +136,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"03dc9f77817b488fb26c5861ec18f791\"",
-				"description": "Identifier for the tail"
+				"description": "Identifier for the tail."
 			},
 			"url": {
 				"type": "string",
@@ -146,7 +146,7 @@
 			"expires_at": {
 				"type": "string",
 				"example": "\"2021-08-20T19:15:51Z\"",
-				"description": "Timestamp when the tail will be deleted",
+				"description": "Timestamp when the tail will be deleted.",
 				"format": "date-time"
 			}
 		},

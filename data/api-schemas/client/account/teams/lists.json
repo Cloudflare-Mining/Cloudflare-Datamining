@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Zero Trust Lists",
-			"description": "List Zero Trust Lists for an account",
+			"description": "List Zero Trust Lists for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Zero Trust List Details",
-			"description": "Fetch a single Zero Trust List",
+			"description": "Fetch a single Zero Trust List.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Zero Trust List Items",
-			"description": "Fetch all items of a single Zero Trust List",
+			"description": "Fetch all items of a single Zero Trust List.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}/items",
 			"method": "GET",
@@ -46,14 +46,14 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Page number of paginated results",
+						"description": "Page number of paginated results.",
 						"minimum": 1,
 						"default": 1
 					},
 					"per_page": {
 						"type": "number",
 						"example": "50",
-						"description": "Number of items per page",
+						"description": "Number of items per page.",
 						"minimum": 5,
 						"maximum": 1000,
 						"default": 50
@@ -71,7 +71,7 @@
 		},
 		{
 			"title": "Create Zero Trust List",
-			"description": "Create a new Zero Trust List",
+			"description": "Create a new Zero Trust List.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists",
 			"method": "POST",
@@ -92,7 +92,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"The serial numbers for administrators\"",
-						"description": "The description of the List"
+						"description": "The description of the List."
 					},
 					"type": {
 						"type": "string",
@@ -121,7 +121,7 @@
 								"created_at": {
 									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Creation time",
+									"description": "Creation time.",
 									"type": "string",
 									"format": "date-time",
 									"readOnly": true,
@@ -146,7 +146,7 @@
 		},
 		{
 			"title": "Update Zero Trust List",
-			"description": "Update a configured Zero Trust List",
+			"description": "Update a configured Zero Trust List.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
 			"method": "PUT",
@@ -167,7 +167,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"The serial numbers for administrators\"",
-						"description": "The description of the List"
+						"description": "The description of the List."
 					}
 				},
 				"required_props": [
@@ -183,7 +183,7 @@
 		},
 		{
 			"title": "Patch Zero Trust List",
-			"description": "Append or remove an item from a configured Zero Trust List",
+			"description": "Append or remove an item from a configured Zero Trust List.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
 			"method": "PATCH",
@@ -211,7 +211,7 @@
 								"created_at": {
 									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Creation time",
+									"description": "Creation time.",
 									"type": "string",
 									"format": "date-time",
 									"readOnly": true,
@@ -243,7 +243,7 @@
 		},
 		{
 			"title": "Delete Zero Trust List",
-			"description": "Delete a Zero Trust List",
+			"description": "Delete a Zero Trust List.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
 			"method": "DELETE",
@@ -264,7 +264,7 @@
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 				"maxLength": 36,
-				"description": "API Resource UUID tag"
+				"description": "API Resource UUID tag."
 			},
 			"name": {
 				"type": "string",
@@ -274,7 +274,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"The serial numbers for administrators\"",
-				"description": "The description of the List"
+				"description": "The description of the List."
 			},
 			"type": {
 				"type": "string",
@@ -293,7 +293,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -302,7 +302,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},

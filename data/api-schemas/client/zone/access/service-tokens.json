@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/service-tokens.json",
 	"title": "Zone-Level Access service tokens",
-	"description": "Service tokens allow automated requests to reach applications protected by Access. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-service-tokens-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"description": "Service tokens allow automated requests to reach applications protected by Access. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-service-tokens-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.).",
 	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/",
 	"type": "object",
 	"links": [
@@ -102,7 +102,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -111,7 +111,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -146,6 +146,6 @@
 		"objects": [],
 		"example": "{\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"CI/CD token\",\n  \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n}",
 		"title": "Zone-Level Access service tokens",
-		"description": "Service tokens allow automated requests to reach applications protected by Access. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-service-tokens-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
+		"description": "Service tokens allow automated requests to reach applications protected by Access. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-service-tokens-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)."
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-	"description": "Common schema for all Cloudflare v4 API responses",
+	"description": "Common schema for all Cloudflare v4 API responses.",
 	"type": "object",
 	"required": [
 		"success",
@@ -14,7 +14,7 @@
 			"$comment": "This subschema describes successful responses",
 			"properties": {
 				"success": {
-					"description": "Whether the API call was successful or not",
+					"description": "Whether the API call was successful or not.",
 					"type": "boolean",
 					"enum": [
 						true
@@ -76,7 +76,7 @@
 			"$comment": "This subschema describes failure responses",
 			"properties": {
 				"success": {
-					"description": "Whether the API call was successful or not",
+					"description": "Whether the API call was successful or not.",
 					"type": "boolean",
 					"enum": [
 						false

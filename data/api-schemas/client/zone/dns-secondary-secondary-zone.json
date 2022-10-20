@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Secondary Zone Configuration Details",
-			"description": "Get secondary zone configuration for incoming zone transfers",
+			"description": "Get secondary zone configuration for incoming zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "Update Secondary Zone Configuration",
-			"description": "Update secondary zone configuration for incoming zone transfers",
+			"description": "Update secondary zone configuration for incoming zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
 			"method": "PUT",
@@ -58,19 +58,19 @@
 						"example": "\"269d8f4853475ca241c4e730be286b20\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"www.example.com.\"",
-						"description": "Zone name"
+						"description": "Zone name."
 					},
 					"peers": {
 						"type": "array",
 						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-						"description": "A list of peer tags"
+						"description": "A list of peer tags."
 					},
 					"auto_refresh_seconds": {
 						"type": "number",
@@ -94,7 +94,7 @@
 		},
 		{
 			"title": "Delete Secondary Zone Configuration",
-			"description": "Delete secondary zone configuration for incoming zone transfers",
+			"description": "Delete secondary zone configuration for incoming zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
 			"method": "DELETE",
@@ -117,7 +117,7 @@
 		},
 		{
 			"title": "Create Secondary Zone Configuration",
-			"description": "Create secondary zone configuration for incoming zone transfers",
+			"description": "Create secondary zone configuration for incoming zone transfers.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
 			"method": "POST",
@@ -146,19 +146,19 @@
 						"example": "\"269d8f4853475ca241c4e730be286b20\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"www.example.com.\"",
-						"description": "Zone name"
+						"description": "Zone name."
 					},
 					"peers": {
 						"type": "array",
 						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-						"description": "A list of peer tags"
+						"description": "A list of peer tags."
 					},
 					"auto_refresh_seconds": {
 						"type": "number",
@@ -215,19 +215,19 @@
 				"example": "\"269d8f4853475ca241c4e730be286b20\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"www.example.com.\"",
-				"description": "Zone name"
+				"description": "Zone name."
 			},
 			"peers": {
 				"type": "array",
 				"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
-				"description": "A list of peer tags"
+				"description": "A list of peer tags."
 			},
 			"auto_refresh_seconds": {
 				"type": "number",

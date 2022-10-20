@@ -20,12 +20,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -76,12 +76,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -127,7 +127,7 @@
 				"type": "string",
 				"example": "\"*/30 * * * *\"",
 				"readOnly": false,
-				"description": "Raw cron expression",
+				"description": "Raw cron expression.",
 				"media": {
 					"type": "application/javascript"
 				}
@@ -136,14 +136,14 @@
 				"type": "string",
 				"example": "\"2017-01-01T00:00:00Z\"",
 				"readOnly": true,
-				"description": "When the Cron was created",
+				"description": "When the Cron was created.",
 				"format": "date-time"
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2017-01-01T00:00:00Z\"",
 				"readOnly": true,
-				"description": "When the Cron was last modified",
+				"description": "When the Cron was last modified.",
 				"format": "date-time"
 			}
 		},

@@ -37,13 +37,13 @@
 					"since": {
 						"type": "string",
 						"example": "\"2022-05-19T20:29:58.679897Z\"",
-						"description": "Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339",
+						"description": "Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339.",
 						"format": "date-time"
 					},
 					"before": {
 						"type": "string",
 						"example": "\"2022-05-20T20:29:58.679897Z\"",
-						"description": "Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339",
+						"description": "Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339.",
 						"format": "date-time"
 					}
 				},
@@ -57,7 +57,7 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 25,\n  \"since\": \"2022-05-19T20:29:58.679897Z\",\n  \"before\": \"2022-05-20T20:29:58.679897Z\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"SSL Notification Event Policy\",\n      \"description\": \"Universal Certificate validation status, issuance, renewal, and expiration notices\",\n      \"alert_body\": \"SSL certificate has expired\",\n      \"alert_type\": \"universal_ssl_event_type\",\n      \"mechanism\": \"test@example.com\",\n      \"mechanism_type\": \"email\",\n      \"sent\": \"2021-10-08T17:52:17.571336Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"SSL Notification Event Policy\",\n      \"description\": \"Universal Certificate validation status, issuance, renewal, and expiration notices.\",\n      \"alert_body\": \"SSL certificate has expired\",\n      \"alert_type\": \"universal_ssl_event_type\",\n      \"mechanism\": \"test@example.com\",\n      \"mechanism_type\": \"email\",\n      \"sent\": \"2021-10-08T17:52:17.571336Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1\n  }\n}"
 		}
 	],
 	"html_id": "notification-history",
@@ -73,7 +73,7 @@
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"name": {
 				"type": "string",

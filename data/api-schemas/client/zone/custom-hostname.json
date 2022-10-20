@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Custom Hostnames",
-			"description": "List, search, sort, and filter all of your custom hostnames",
+			"description": "List, search, sort, and filter all of your custom hostnames.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames",
 			"method": "GET",
@@ -48,7 +48,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -56,7 +56,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Number of hostnames per page"
+						"description": "Number of hostnames per page."
 					},
 					"order": {
 						"example": "\"ssl\"",
@@ -64,7 +64,7 @@
 							"ssl",
 							"ssl_status"
 						],
-						"description": "Field to order hostnames by",
+						"description": "Field to order hostnames by.",
 						"default": "ssl"
 					},
 					"direction": {
@@ -73,7 +73,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order hostnames"
+						"description": "Direction to order hostnames."
 					},
 					"ssl": {
 						"example": "\"0\"",
@@ -82,7 +82,7 @@
 							1
 						],
 						"default": "0",
-						"description": "Whether to filter hostnames based on if they have SSL enabled"
+						"description": "Whether to filter hostnames based on if they have SSL enabled."
 					}
 				},
 				"required_props": [],
@@ -205,7 +205,7 @@
 												"description": "Whether or not Early Hints is enabled."
 											}
 										},
-										"description": "SSL specific settings"
+										"description": "SSL specific settings."
 									},
 									"bundle_method": {
 										"type": "string",
@@ -226,12 +226,12 @@
 									"custom_certificate": {
 										"type": "string",
 										"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
-										"description": "If a custom uploaded certificate is used"
+										"description": "If a custom uploaded certificate is used."
 									},
 									"custom_key": {
 										"type": "string",
 										"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
-										"description": "The key for a custom uploaded certificate"
+										"description": "The key for a custom uploaded certificate."
 									}
 								},
 								"required_props": [],
@@ -248,7 +248,7 @@
 								"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
 							}
 						],
-						"description": "SSL properties used when creating the custom hostname"
+						"description": "SSL properties used when creating the custom hostname."
 					}
 				},
 				"required_props": [
@@ -381,7 +381,7 @@
 												"description": "Whether or not Early Hints is enabled."
 											}
 										},
-										"description": "SSL specific settings"
+										"description": "SSL specific settings."
 									},
 									"bundle_method": {
 										"type": "string",
@@ -402,12 +402,12 @@
 									"custom_certificate": {
 										"type": "string",
 										"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
-										"description": "If a custom uploaded certificate is used"
+										"description": "If a custom uploaded certificate is used."
 									},
 									"custom_key": {
 										"type": "string",
 										"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
-										"description": "The key for a custom uploaded certificate"
+										"description": "The key for a custom uploaded certificate."
 									}
 								},
 								"required_props": [],
@@ -424,7 +424,7 @@
 								"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
 							}
 						],
-						"description": "SSL properties used when creating the custom hostname"
+						"description": "SSL properties used when creating the custom hostname."
 					},
 					"custom_metadata": {
 						"type": "object",
@@ -435,7 +435,7 @@
 									"key": {
 										"type": "string",
 										"example": "\"value\"",
-										"description": "Unique metadata for this hostname"
+										"description": "Unique metadata for this hostname."
 									}
 								},
 								"required_props": [],
@@ -503,7 +503,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
-				"description": "Custom hostname identifier tag",
+				"description": "Custom hostname identifier tag.",
 				"minLength": 36,
 				"maxLength": 36,
 				"readOnly": true
@@ -524,7 +524,7 @@
 							"id": {
 								"type": "string",
 								"example": "\"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
-								"description": "Custom hostname SSL identifier tag",
+								"description": "Custom hostname SSL identifier tag.",
 								"minLength": 36,
 								"maxLength": 36
 							},
@@ -554,7 +554,7 @@
 									"holding_deployment"
 								],
 								"readOnly": true,
-								"description": "Status of the hostname's SSL certificates"
+								"description": "Status of the hostname's SSL certificates."
 							},
 							"method": {
 								"example": "\"txt\"",
@@ -578,12 +578,12 @@
 								"type": "array",
 								"example": "[\n  {\n    \"txt_name\": \"_acme-challenge.app.example.com\",\n    \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n    \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n    \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n    \"emails\": [\n      \"administrator@example.com\",\n      \"webmaster@example.com\"\n    ]\n  }\n]",
 								"items": {
-									"description": "Certificate's required validation record",
+									"description": "Certificate's required validation record.",
 									"type": "object",
 									"properties": {
 										"txt_name": {
 											"type": "string",
-											"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation ",
+											"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
 											"example": "_acme-challenge.app.example.com"
 										},
 										"txt_value": {
@@ -603,7 +603,7 @@
 										},
 										"emails": {
 											"type": "array",
-											"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation",
+											"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 											"example": [
 												"administrator@example.com",
 												"webmaster@example.com"
@@ -621,7 +621,7 @@
 									"properties": {
 										"message": {
 											"type": "string",
-											"description": "A domain validation error",
+											"description": "A domain validation error.",
 											"example": "SERVFAIL looking up CAA for app.example.com"
 										}
 									}
@@ -630,12 +630,12 @@
 							"hosts": {
 								"type": "array",
 								"example": "[\n  \"app.example.com\",\n  \"*.app.example.com\"\n]",
-								"description": "A list of Hostnames on a custom uploaded certificate"
+								"description": "A list of Hostnames on a custom uploaded certificate."
 							},
 							"issuer": {
 								"type": "string",
 								"example": "\"DigiCertInc\"",
-								"description": "The issuer on a custom uploaded certificate"
+								"description": "The issuer on a custom uploaded certificate."
 							},
 							"serial_number": {
 								"type": "string",
@@ -645,7 +645,7 @@
 							"signature": {
 								"type": "string",
 								"example": "\"SHA256WithRSA\"",
-								"description": "The signature on a custom uploaded certificate"
+								"description": "The signature on a custom uploaded certificate."
 							},
 							"uploaded_on": {
 								"type": "string",
@@ -662,7 +662,7 @@
 							"custom_csr_id": {
 								"type": "string",
 								"example": "\"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\"",
-								"description": "The identifier for the Custom CSR that was used"
+								"description": "The identifier for the Custom CSR that was used."
 							},
 							"settings": {
 								"type": "object",
@@ -712,7 +712,7 @@
 										"description": "Whether or not Early Hints is enabled."
 									}
 								},
-								"description": "SSL specific settings"
+								"description": "SSL specific settings."
 							},
 							"bundle_method": {
 								"type": "string",
@@ -743,12 +743,12 @@
 							"custom_certificate": {
 								"type": "string",
 								"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
-								"description": "If a custom uploaded certificate is used"
+								"description": "If a custom uploaded certificate is used."
 							},
 							"custom_key": {
 								"type": "string",
 								"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
-								"description": "The key for a custom uploaded certificate"
+								"description": "The key for a custom uploaded certificate."
 							}
 						},
 						"required_props": [],
@@ -777,7 +777,7 @@
 						"example": "{\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"status\": \"pending_validation\",\n  \"method\": \"txt\",\n  \"type\": \"dv\",\n  \"validation_records\": [\n    {\n      \"txt_name\": \"_acme-challenge.app.example.com\",\n      \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n      \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n      \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n      \"emails\": [\n        \"administrator@example.com\",\n        \"webmaster@example.com\"\n      ]\n    }\n  ],\n  \"validation_errors\": [\n    {\n      \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n    }\n  ],\n  \"hosts\": [\n    \"app.example.com\",\n    \"*.app.example.com\"\n  ],\n  \"issuer\": \"DigiCertInc\",\n  \"serial_number\": \"6743787633689793699141714808227354901\",\n  \"signature\": \"SHA256WithRSA\",\n  \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n  \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n  \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"certificate_authority\": \"digicert\",\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
 					}
 				],
-				"description": "SSL properties for the custom hostname"
+				"description": "SSL properties for the custom hostname."
 			},
 			"custom_metadata": {
 				"type": "object",
@@ -788,7 +788,7 @@
 							"key": {
 								"type": "string",
 								"example": "\"value\"",
-								"description": "Unique metadata for this hostname"
+								"description": "Unique metadata for this hostname."
 							}
 						},
 						"required_props": [],
@@ -849,7 +849,7 @@
 								"enum": [
 									"txt"
 								],
-								"description": "DNS Record type"
+								"description": "DNS Record type."
 							},
 							"name": {
 								"type": "string",

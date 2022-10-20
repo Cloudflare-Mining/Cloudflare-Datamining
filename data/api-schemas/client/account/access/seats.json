@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Update a user seat",
-			"description": "Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false. ",
+			"description": "Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/seats",
 			"method": "PATCH",
@@ -71,7 +71,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -80,7 +80,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},

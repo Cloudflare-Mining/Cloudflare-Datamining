@@ -20,12 +20,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -77,12 +77,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -136,7 +136,7 @@
 				"type": "string",
 				"example": "\"example-subdomain\"",
 				"readOnly": false,
-				"description": "Name of the subdomain",
+				"description": "Name of the subdomain.",
 				"pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
 			}
 		},

@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/logpush.json",
 	"title": "Logpush Jobs",
-	"description": "Logpush jobs",
+	"description": "Logpush jobs.",
 	"type": [
 		"object",
 		"null"
@@ -611,6 +611,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": 1,\n  \"enabled\": false,\n  \"name\": \"example.com\",\n  \"dataset\": \"http_requests\",\n  \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n  \"last_complete\": null,\n  \"last_error\": null,\n  \"error_message\": null,\n  \"frequency\": \"high\"\n}",
 		"title": "Logpush Jobs",
-		"description": "Logpush jobs"
+		"description": "Logpush jobs."
 	}
 }

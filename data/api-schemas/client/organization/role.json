@@ -19,7 +19,7 @@
 				"display": true
 			},
 			"title": "List Roles",
-			"description": "Get all available roles for an organization",
+			"description": "Get all available roles for an organization.",
 			"rel": "collection",
 			"href": "organizations/{#/definitions/organization_identifier}/roles",
 			"method": "GET",
@@ -48,7 +48,7 @@
 				"display": true
 			},
 			"title": "Role Details",
-			"description": "Get information about a specific role for an organization",
+			"description": "Get information about a specific role for an organization.",
 			"rel": "self",
 			"href": "organizations/{#/definitions/organization_identifier}/roles/{#/definitions/identifier}",
 			"method": "GET",
@@ -79,27 +79,27 @@
 			"id": {
 				"type": "string",
 				"example": "\"3536bcfad5faccb999b47003c79917fb\"",
-				"description": "Role identifier tag",
+				"description": "Role identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Organization Admin\"",
-				"description": "Role Name",
+				"description": "Role Name.",
 				"maxLength": 120,
 				"readOnly": true
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Administrative access to the entire Organization\"",
-				"description": "Description of role's permissions",
+				"description": "Description of role's permissions.",
 				"readOnly": true
 			},
 			"permissions": {
 				"type": "array",
 				"example": "[\n  \"#zones:read\"\n]",
-				"description": "Access permissions for this User",
+				"description": "Access permissions for this User.",
 				"readOnly": true,
 				"items": {
 					"type": "string",

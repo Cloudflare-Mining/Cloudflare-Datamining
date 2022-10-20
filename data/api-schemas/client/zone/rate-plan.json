@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/rate-plan.json",
 	"title": "Zone Rate Plan",
-	"description": "A zone rate plan from the billing service",
+	"description": "A zone rate plan from the billing service.",
 	"type": "object",
 	"links": [
 		{
@@ -83,31 +83,31 @@
 			"id": {
 				"type": "string",
 				"example": "\"free\"",
-				"description": "Plan identifier tag",
+				"description": "Plan identifier tag.",
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Free Plan\"",
-				"description": "The plan name",
+				"description": "The plan name.",
 				"maxLength": 80,
 				"readOnly": true
 			},
 			"currency": {
 				"type": "string",
 				"example": "\"USD\"",
-				"description": "The monetary unit in which pricing information is displayed",
+				"description": "The monetary unit in which pricing information is displayed.",
 				"readOnly": true
 			},
 			"duration": {
 				"type": "number",
 				"example": "1",
-				"description": "The duration of the plan subscription"
+				"description": "The duration of the plan subscription."
 			},
 			"frequency": {
 				"type": "string",
 				"example": "\"monthly\"",
-				"description": "The frequency at which you will be billed for this plan",
+				"description": "The frequency at which you will be billed for this plan.",
 				"enum": [
 					"weekly",
 					"monthly",
@@ -119,16 +119,16 @@
 			"components": {
 				"type": "array",
 				"example": "[\n  {\n    \"name\": \"page_rules\",\n    \"default\": 5,\n    \"unit_price\": 1\n  }\n]",
-				"description": "Array of available components values for the plan",
+				"description": "Array of available components values for the plan.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/component-value.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 					"title": "Cloudflare A La Carte Addon",
-					"description": "Abstract Cloudflare a la carte addon",
+					"description": "Abstract Cloudflare a la carte addon.",
 					"type": "object",
 					"properties": {
 						"name": {
-							"description": "The unique component",
+							"description": "The unique component.",
 							"enum": [
 								"zones",
 								"page_rules",
@@ -138,12 +138,12 @@
 							"example": "page_rules"
 						},
 						"default": {
-							"description": "The default amount allocated",
+							"description": "The default amount allocated.",
 							"type": "number",
 							"example": 5
 						},
 						"unit_price": {
-							"description": "The unit price of the addon",
+							"description": "The unit price of the addon.",
 							"type": "number",
 							"readOnly": true,
 							"example": 1
@@ -151,7 +151,7 @@
 					},
 					"definitions": {
 						"name": {
-							"description": "The unique component",
+							"description": "The unique component.",
 							"enum": [
 								"zones",
 								"page_rules",
@@ -161,12 +161,12 @@
 							"example": "page_rules"
 						},
 						"default": {
-							"description": "The default amount allocated",
+							"description": "The default amount allocated.",
 							"type": "number",
 							"example": 5
 						},
 						"unit_price": {
-							"description": "The unit price of the addon",
+							"description": "The unit price of the addon.",
 							"type": "number",
 							"readOnly": true,
 							"example": 1
@@ -187,6 +187,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"free\",\n  \"name\": \"Free Plan\",\n  \"currency\": \"USD\",\n  \"duration\": 1,\n  \"frequency\": \"monthly\",\n  \"components\": [\n    {\n      \"name\": \"page_rules\",\n      \"default\": 5,\n      \"unit_price\": 1\n    }\n  ]\n}",
 		"title": "Zone Rate Plan",
-		"description": "A zone rate plan from the billing service"
+		"description": "A zone rate plan from the billing service."
 	}
 }

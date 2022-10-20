@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/billing/history.json",
 	"title": "User Billing History",
-	"description": "A user billing history",
+	"description": "A user billing history.",
 	"type": "object",
 	"links": [
 		{
 			"title": "Billing History Details",
 			"trakalIgnore": true,
-			"description": "Access your billing history object",
+			"description": "Access your billing history object.",
 			"rel": "self",
 			"href": "user/billing/history",
 			"method": "GET",
@@ -36,7 +36,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -44,7 +44,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Number of items per page"
+						"description": "Number of items per page."
 					},
 					"order": {
 						"type": "string",
@@ -54,26 +54,26 @@
 							"occured_at",
 							"action"
 						],
-						"description": "Field to order billing history by"
+						"description": "Field to order billing history by."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"charge\"",
-						"description": "The billing item type",
+						"description": "The billing item type.",
 						"maxLength": 30,
 						"readOnly": true
 					},
 					"occured_at": {
 						"type": "string",
 						"example": "\"2014-03-01T12:21:59.3456Z\"",
-						"description": "When the billing item was created",
+						"description": "When the billing item was created.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"action": {
 						"type": "string",
 						"example": "\"subscription\"",
-						"description": "The billing item action",
+						"description": "The billing item action.",
 						"maxLength": 30,
 						"readOnly": true
 					}
@@ -102,48 +102,48 @@
 			"id": {
 				"type": "string",
 				"example": "\"b69a9f3492637782896352daae219e7d\"",
-				"description": "Billing item identifier tag",
+				"description": "Billing item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"type": {
 				"type": "string",
 				"example": "\"charge\"",
-				"description": "The billing item type",
+				"description": "The billing item type.",
 				"maxLength": 30,
 				"readOnly": true
 			},
 			"action": {
 				"type": "string",
 				"example": "\"subscription\"",
-				"description": "The billing item action",
+				"description": "The billing item action.",
 				"maxLength": 30,
 				"readOnly": true
 			},
 			"description": {
 				"type": "string",
 				"example": "\"The billing item description\"",
-				"description": "The billing item description",
+				"description": "The billing item description.",
 				"maxLength": 255,
 				"readOnly": true
 			},
 			"occurred_at": {
 				"type": "string",
 				"example": "\"2014-03-01T12:21:59.3456Z\"",
-				"description": "When the billing item was created",
+				"description": "When the billing item was created.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"amount": {
 				"type": "number",
 				"example": "20.99",
-				"description": "The amount associated with this billing item",
+				"description": "The amount associated with this billing item.",
 				"readOnly": true
 			},
 			"currency": {
 				"type": "string",
 				"example": "\"USD\"",
-				"description": "The monetary unit in which pricing information is displayed",
+				"description": "The monetary unit in which pricing information is displayed.",
 				"readOnly": true
 			},
 			"zone": {
@@ -154,7 +154,7 @@
 						"type": "string",
 						"example": "\"example.com\"",
 						"readOnly": true,
-						"description": "The domain name",
+						"description": "The domain name.",
 						"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
 						"maxLength": 253
 					}
@@ -175,6 +175,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"b69a9f3492637782896352daae219e7d\",\n  \"type\": \"charge\",\n  \"action\": \"subscription\",\n  \"description\": \"The billing item description\",\n  \"occurred_at\": \"2014-03-01T12:21:59.3456Z\",\n  \"amount\": 20.99,\n  \"currency\": \"USD\",\n  \"zone\": {\n    \"name\": \"example.com\"\n  }\n}",
 		"title": "User Billing History",
-		"description": "A user billing history"
+		"description": "A user billing history."
 	}
 }

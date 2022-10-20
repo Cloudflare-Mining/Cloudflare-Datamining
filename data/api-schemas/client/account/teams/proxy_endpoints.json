@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Proxy Endpoint Details",
-			"description": "List Zero Trust Gateway Proxy Endpoints for an account",
+			"description": "List Zero Trust Gateway Proxy Endpoints for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "List Proxy Endpoints",
-			"description": "Fetch a single Zero Trust Gateway Proxy Endpoint",
+			"description": "Fetch a single Zero Trust Gateway Proxy Endpoint.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Create Proxy Endpoint",
-			"description": "Create a new Zero Trust Gateway Proxy Endpoint",
+			"description": "Create a new Zero Trust Gateway Proxy Endpoint.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints",
 			"method": "POST",
@@ -46,15 +46,15 @@
 					"name": {
 						"type": "string",
 						"example": "\"Devops team\"",
-						"description": "The name of the Proxy Endpoint"
+						"description": "The name of the Proxy Endpoint."
 					},
 					"ips": {
 						"type": "array",
 						"example": "[\n  \"192.0.2.1/32\"\n]",
-						"description": "A list of CIDRs to restrict ingress connections",
+						"description": "A list of CIDRs to restrict ingress connections.",
 						"items": {
 							"type": "string",
-							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 							"example": "192.0.2.1/32"
 						}
 					},
@@ -78,7 +78,7 @@
 		},
 		{
 			"title": "Update Proxy Endpoint",
-			"description": "Update a new Zero Trust Gateway Proxy Endpoint",
+			"description": "Update a new Zero Trust Gateway Proxy Endpoint.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
 			"method": "PATCH",
@@ -94,15 +94,15 @@
 					"name": {
 						"type": "string",
 						"example": "\"Devops team\"",
-						"description": "The name of the Proxy Endpoint"
+						"description": "The name of the Proxy Endpoint."
 					},
 					"ips": {
 						"type": "array",
 						"example": "[\n  \"192.0.2.1/32\"\n]",
-						"description": "A list of CIDRs to restrict ingress connections",
+						"description": "A list of CIDRs to restrict ingress connections.",
 						"items": {
 							"type": "string",
-							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 							"example": "192.0.2.1/32"
 						}
 					},
@@ -125,7 +125,7 @@
 		},
 		{
 			"title": "Delete Proxy Endpoint",
-			"description": "Delete a Zero Trust Gateway Proxy Endpoint",
+			"description": "Delete a Zero Trust Gateway Proxy Endpoint.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
 			"method": "DELETE",
@@ -147,22 +147,22 @@
 				"example": "\"ed35569b41ce4d1facfe683550f54086\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Devops team\"",
-				"description": "The name of the Proxy Endpoint"
+				"description": "The name of the Proxy Endpoint."
 			},
 			"ips": {
 				"type": "array",
 				"example": "[\n  \"192.0.2.1/32\"\n]",
-				"description": "A list of CIDRs to restrict ingress connections",
+				"description": "A list of CIDRs to restrict ingress connections.",
 				"items": {
 					"type": "string",
-					"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+					"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25.",
 					"example": "192.0.2.1/32"
 				}
 			},
@@ -176,7 +176,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -185,7 +185,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			}

@@ -283,13 +283,13 @@
 					"required_tokens": {
 						"type": "array",
 						"example": "[\n  \"::CAPTCHA_BOX::\"\n]",
-						"description": "String tokens that must be present in your customized HTML page",
+						"description": "String tokens that must be present in your customized HTML page.",
 						"readOnly": true,
 						"uniqueItems": true,
 						"default": [],
 						"items": {
 							"type": "string",
-							"description": "String token"
+							"description": "String token."
 						}
 					},
 					"preview_target": {

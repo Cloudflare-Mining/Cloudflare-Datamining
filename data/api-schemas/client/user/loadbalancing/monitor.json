@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Monitors",
-			"description": "List configured monitors for a user",
+			"description": "List configured monitors for a user.",
 			"rel": "collection",
 			"href": "user/load_balancers/monitors",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Create Monitor",
-			"description": "Create a configured monitor",
+			"description": "Create a configured monitor.",
 			"rel": "collection",
 			"href": "user/load_balancers/monitors",
 			"method": "POST",
@@ -48,7 +48,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -76,7 +76,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -145,7 +145,7 @@
 		},
 		{
 			"title": "Monitor Details",
-			"description": "List a single configured monitor for a user",
+			"description": "List a single configured monitor for a user.",
 			"rel": "self",
 			"href": "user/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "GET",
@@ -157,7 +157,7 @@
 		},
 		{
 			"title": "Update Monitor",
-			"description": "Modify a configured monitor",
+			"description": "Modify a configured monitor.",
 			"rel": "self",
 			"href": "user/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "PUT",
@@ -187,7 +187,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -215,7 +215,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -314,7 +314,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Login page monitor\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"method": {
 						"type": "string",
@@ -342,7 +342,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -410,7 +410,7 @@
 		},
 		{
 			"title": "Delete Monitor",
-			"description": "Delete a configured monitor",
+			"description": "Delete a configured monitor.",
 			"rel": "self",
 			"href": "user/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -475,7 +475,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -530,7 +530,7 @@
 		},
 		{
 			"title": "Preview Result",
-			"description": "Get the result of a previous preview operation using the provided preview_id",
+			"description": "Get the result of a previous preview operation using the provided preview_id.",
 			"rel": "self",
 			"href": "user/load_balancers/preview/{#/definitions/preview_id}",
 			"method": "GET",
@@ -552,7 +552,7 @@
 		},
 		{
 			"title": "List Monitor References",
-			"description": "Get the list of resources that reference the provided monitor",
+			"description": "Get the list of resources that reference the provided monitor.",
 			"rel": "self",
 			"href": "user/load_balancers/monitors/{#/definitions/identifier}/references",
 			"method": "GET",
@@ -574,7 +574,7 @@
 				"example": "\"f1aba936b94213e5b8dca0c0dbf1f9cc\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -583,7 +583,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -592,7 +592,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -613,7 +613,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"Login page monitor\"",
-				"description": "Object description"
+				"description": "Object description."
 			},
 			"method": {
 				"type": "string",
@@ -641,7 +641,7 @@
 			"timeout": {
 				"type": "integer",
 				"example": "3",
-				"description": "The timeout (in seconds) before marking the health check as failed",
+				"description": "The timeout (in seconds) before marking the health check as failed.",
 				"default": 5
 			},
 			"retries": {

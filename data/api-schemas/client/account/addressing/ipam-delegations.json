@@ -34,12 +34,12 @@
 					"cidr": {
 						"type": "string",
 						"example": "\"192.0.2.0/24\"",
-						"description": "IP Prefix in Classless Inter-Domain Routing format"
+						"description": "IP Prefix in Classless Inter-Domain Routing format."
 					},
 					"delegated_account_id": {
 						"type": "string",
 						"example": "\"b1946ac92492d2347c6235b4d2611184\"",
-						"description": "Account identifier for the account to which prefix is being delegated",
+						"description": "Account identifier for the account to which prefix is being delegated.",
 						"maxLength": 32,
 						"readOnly": true
 					}
@@ -76,7 +76,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"d933b1530bc56c9953cf8ce166da8004\"",
-				"description": "Delegation identifier tag",
+				"description": "Delegation identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -85,7 +85,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -94,19 +94,19 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"cidr": {
 				"type": "string",
 				"example": "\"192.0.2.0/24\"",
-				"description": "IP Prefix in Classless Inter-Domain Routing format"
+				"description": "IP Prefix in Classless Inter-Domain Routing format."
 			},
 			"delegated_account_id": {
 				"type": "string",
 				"example": "\"b1946ac92492d2347c6235b4d2611184\"",
-				"description": "Account identifier for the account to which prefix is being delegated",
+				"description": "Account identifier for the account to which prefix is being delegated.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -115,7 +115,7 @@
 				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			}

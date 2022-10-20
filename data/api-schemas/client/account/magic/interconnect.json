@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/magic/interconnect.json",
 	"title": "Magic Interconnects",
-	"description": "Interconnects used with Cloudflare CNI",
+	"description": "Interconnects used with Cloudflare CNI.",
 	"type": "object",
 	"links": [
 		{
@@ -75,7 +75,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Tunnel for Interconnect to ORD\"",
-						"description": "An optional description of the interconnect"
+						"description": "An optional description of the interconnect."
 					},
 					"gre": {
 						"type": "object",
@@ -84,12 +84,12 @@
 							"cloudflare_endpoint": {
 								"type": "string",
 								"example": "\"203.0.113.1\"",
-								"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect"
+								"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect."
 							},
 							"customer_endpoint": {
 								"type": "string",
 								"example": "\"203.0.113.1\"",
-								"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect"
+								"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect."
 							},
 							"is_colo_cast": {
 								"type": "boolean",
@@ -143,7 +143,7 @@
 									"properties": {
 										"id": {
 											"$comment": "Must be present as a definition for URI Templating",
-											"description": "Account identifier tag",
+											"description": "Account identifier tag.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
@@ -167,7 +167,7 @@
 										},
 										"description": {
 											"type": "string",
-											"description": "An optional description of the interconnect",
+											"description": "An optional description of the interconnect.",
 											"example": "Tunnel for Interconnect to ORD"
 										},
 										"gre": {
@@ -176,12 +176,12 @@
 											"properties": {
 												"cloudflare_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect",
+													"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
 													"example": "203.0.113.1"
 												},
 												"customer_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect",
+													"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect.",
 													"example": "203.0.113.1"
 												},
 												"is_colo_cast": {
@@ -221,7 +221,7 @@
 				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
 				"readOnly": true,
 				"maxLength": 32,
-				"description": "Tunnel identifier tag"
+				"description": "Tunnel identifier tag."
 			},
 			"created_on": {
 				"type": "string",
@@ -250,7 +250,7 @@
 			"description": {
 				"type": "string",
 				"example": "\"Tunnel for Interconnect to ORD\"",
-				"description": "An optional description of the interconnect"
+				"description": "An optional description of the interconnect."
 			},
 			"health_check": {
 				"type": "object",
@@ -286,12 +286,12 @@
 					"cloudflare_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect"
+						"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect."
 					},
 					"customer_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect"
+						"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect."
 					},
 					"is_colo_cast": {
 						"type": "boolean",
@@ -330,6 +330,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"pni_ord\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for Interconnect to ORD\",\n  \"health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  },\n  \"gre\": {\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"customer_endpoint\": \"203.0.113.1\",\n    \"is_colo_cast\": true\n  },\n  \"mtu\": 1476,\n  \"colo_name\": \"pni_ord\"\n}",
 		"title": "Magic Interconnects",
-		"description": "Interconnects used with Cloudflare CNI"
+		"description": "Interconnects used with Cloudflare CNI."
 	}
 }

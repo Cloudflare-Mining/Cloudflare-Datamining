@@ -29,12 +29,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -103,12 +103,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -176,12 +176,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -241,12 +241,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -309,12 +309,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -382,12 +382,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -445,12 +445,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -486,12 +486,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -519,12 +519,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -553,12 +553,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -609,14 +609,14 @@
 			"id": {
 				"type": "string",
 				"example": "\"107b9558-dd06-4bbd-5fef-9c2c16bb7900\"",
-				"description": "Image unique identifier",
+				"description": "Image unique identifier.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"filename": {
 				"type": "string",
 				"example": "\"logo.png\"",
-				"description": "Image file name",
+				"description": "Image file name.",
 				"maxLength": 32,
 				"readOnly": true
 			},

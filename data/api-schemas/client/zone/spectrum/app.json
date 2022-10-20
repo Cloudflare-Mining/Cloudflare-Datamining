@@ -198,7 +198,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}
@@ -334,7 +334,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -415,7 +415,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}
@@ -615,7 +615,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}
@@ -751,7 +751,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -832,7 +832,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}
@@ -1060,7 +1060,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}
@@ -1204,7 +1204,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -1285,7 +1285,7 @@
 										"example": "[\n  \"192.0.2.1\"\n]",
 										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
 										"items": {
-											"description": "Edge anycast IPs",
+											"description": "Edge anycast IPs.",
 											"example": "192.0.2.1",
 											"type": "string"
 										}

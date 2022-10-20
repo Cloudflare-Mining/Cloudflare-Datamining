@@ -80,7 +80,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -228,7 +228,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"ssh\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -263,7 +263,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -410,7 +410,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"vnc\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -445,7 +445,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -592,7 +592,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"saas\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -685,7 +685,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Creation time",
+								"description": "Creation time.",
 								"format": "date-time",
 								"readOnly": true
 							},
@@ -694,7 +694,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Last modification time",
+								"description": "Last modification time.",
 								"format": "date-time",
 								"readOnly": true
 							}
@@ -706,7 +706,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -752,7 +752,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"app_launcher\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -790,7 +790,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -834,7 +834,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"warp\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -872,7 +872,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -916,7 +916,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"biso\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -954,7 +954,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -998,7 +998,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"bookmark\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -1090,7 +1090,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1238,7 +1238,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"ssh\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -1273,7 +1273,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1420,7 +1420,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"vnc\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -1455,7 +1455,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1602,7 +1602,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"saas\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -1695,7 +1695,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Creation time",
+								"description": "Creation time.",
 								"format": "date-time",
 								"readOnly": true
 							},
@@ -1704,7 +1704,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Last modification time",
+								"description": "Last modification time.",
 								"format": "date-time",
 								"readOnly": true
 							}
@@ -1716,7 +1716,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1762,7 +1762,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"dash_sso\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -1786,7 +1786,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1854,7 +1854,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"app_launcher\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -1892,7 +1892,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -1936,7 +1936,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"warp\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -1974,7 +1974,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -2018,7 +2018,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"biso\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -2056,7 +2056,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -2100,7 +2100,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"bookmark\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -2231,14 +2231,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -2247,14 +2247,14 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
@@ -2296,7 +2296,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -2436,14 +2436,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -2452,21 +2452,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"saas\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -2559,7 +2559,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Creation time",
+								"description": "Creation time.",
 								"format": "date-time",
 								"readOnly": true
 							},
@@ -2568,7 +2568,7 @@
 								"example": "\"2014-01-01T05:20:00.12345Z\"",
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Last modification time",
+								"description": "Last modification time.",
 								"format": "date-time",
 								"readOnly": true
 							}
@@ -2580,7 +2580,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -2618,14 +2618,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -2634,21 +2634,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"ssh\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -2683,7 +2683,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -2823,14 +2823,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -2839,21 +2839,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"vnc\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -2888,7 +2888,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -3028,14 +3028,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -3044,21 +3044,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"app_launcher\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -3096,7 +3096,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -3133,14 +3133,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -3149,21 +3149,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"warp\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -3201,7 +3201,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -3238,14 +3238,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -3254,21 +3254,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"biso\"",
-						"description": "The application type",
+						"description": "The application type.",
 						"enum": [
 							"self_hosted",
 							"saas",
@@ -3306,7 +3306,7 @@
 						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
-							"description": "The identity providers selected for application",
+							"description": "The identity providers selected for application.",
 							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
@@ -3343,14 +3343,14 @@
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36,
-						"description": "API uuid tag"
+						"description": "API uuid tag."
 					},
 					"created_at": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Creation time",
+						"description": "Creation time.",
 						"format": "date-time",
 						"readOnly": true
 					},
@@ -3359,21 +3359,21 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Last modification time",
+						"description": "Last modification time.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"aud": {
 						"type": "string",
 						"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-						"description": "Audience tag",
+						"description": "Audience tag.",
 						"maxLength": 64,
 						"readOnly": true
 					},
 					"type": {
 						"type": "string",
 						"example": "\"bookmark\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",

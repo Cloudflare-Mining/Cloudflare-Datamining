@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/passive-dns-by-ip.json",
 	"title": "Passive DNS by IP",
-	"description": "Passive DNS by IP (Beta)",
+	"description": "Passive DNS by IP (Beta).",
 	"links": [
 		{
 			"title": "Get Passive DNS by IP",
@@ -25,24 +25,24 @@
 					"start": {
 						"type": "string",
 						"example": "\"2021-04-01\"",
-						"description": "Defaults to 30 days before the end parameter value",
+						"description": "Defaults to 30 days before the end parameter value.",
 						"format": "date"
 					},
 					"end": {
 						"type": "string",
 						"example": "\"2021-04-30\"",
-						"description": "Defaults to the current date",
+						"description": "Defaults to the current date.",
 						"format": "date"
 					},
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Requested page within paginated list of results"
+						"description": "Requested page within paginated list of results."
 					},
 					"per_page": {
 						"type": "number",
 						"example": "20",
-						"description": "Maximum number of results requested"
+						"description": "Maximum number of results requested."
 					}
 				},
 				"required_props": [],
@@ -68,24 +68,24 @@
 			"reverse_records": {
 				"type": "array",
 				"example": "[\n  {\n    \"first_seen\": \"2021-04-01\",\n    \"last_seen\": \"2021-04-30\",\n    \"hostname\": \"cloudflare.com\"\n  }\n]",
-				"description": "Reverse DNS look-ups observed during the time period",
+				"description": "Reverse DNS look-ups observed during the time period.",
 				"items": {
 					"type": "object",
 					"properties": {
 						"first_seen": {
-							"description": "First seen date of the DNS record during the time period",
+							"description": "First seen date of the DNS record during the time period.",
 							"type": "string",
 							"format": "date",
 							"example": "2021-04-01"
 						},
 						"last_seen": {
-							"description": "Last seen date of the DNS record during the time period",
+							"description": "Last seen date of the DNS record during the time period.",
 							"type": "string",
 							"format": "date",
 							"example": "2021-04-30"
 						},
 						"hostname": {
-							"description": "Hostname that the IP was observed resolving to",
+							"description": "Hostname that the IP was observed resolving to.",
 							"type": "string",
 							"example": "cloudflare.com"
 						}
@@ -95,17 +95,17 @@
 			"count": {
 				"type": "number",
 				"example": "1",
-				"description": "Total results returned based on your search parameters"
+				"description": "Total results returned based on your search parameters."
 			},
 			"page": {
 				"type": "number",
 				"example": "1",
-				"description": "Current page within paginated list of results"
+				"description": "Current page within paginated list of results."
 			},
 			"per_page": {
 				"type": "number",
 				"example": "20",
-				"description": "Number of results per page of results"
+				"description": "Number of results per page of results."
 			}
 		},
 		"required_props": [],
@@ -118,6 +118,6 @@
 		"objects": [],
 		"example": "{\n  \"reverse_records\": [\n    {\n      \"first_seen\": \"2021-04-01\",\n      \"last_seen\": \"2021-04-30\",\n      \"hostname\": \"cloudflare.com\"\n    }\n  ],\n  \"count\": 1,\n  \"page\": 1,\n  \"per_page\": 20\n}",
 		"title": "Passive DNS by IP",
-		"description": "Passive DNS by IP (Beta)"
+		"description": "Passive DNS by IP (Beta)."
 	}
 }

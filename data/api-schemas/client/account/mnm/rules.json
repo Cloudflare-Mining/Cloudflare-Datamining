@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/mnm/rules.json",
 	"title": "Magic Network Monitoring Rules",
-	"description": "APIs for Network Monitoring Rules",
+	"description": "APIs for Network Monitoring Rules.",
 	"type": "object",
 	"links": [
 		{
@@ -78,7 +78,7 @@
 		},
 		{
 			"title": "Update advertisement for rule",
-			"description": "Update advertisement for rule",
+			"description": "Update advertisement for rule.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/mnm/rules/{#/definitions/rule_identifier}/advertisement",
 			"method": "PATCH",
@@ -100,7 +100,7 @@
 				"example": "\"6f91088a406011ed95aed352566e8d4c\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -109,7 +109,7 @@
 				"example": "\"2890e6fa406311ed9b5a23f70f6fb8cf\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			}
@@ -122,6 +122,6 @@
 		"objects": [],
 		"example": "{\n  \"account_identifier\": \"6f91088a406011ed95aed352566e8d4c\",\n  \"rule_identifier\": \"2890e6fa406311ed9b5a23f70f6fb8cf\"\n}",
 		"title": "Magic Network Monitoring Rules",
-		"description": "APIs for Network Monitoring Rules"
+		"description": "APIs for Network Monitoring Rules."
 	}
 }

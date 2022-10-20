@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/addressing/address-maps.json",
 	"title": "IP Address Management Address Maps",
-	"description": "(Beta) Address Maps allow you to specify which BYOIP (Bring your own IP) addresses are assigned to your proxied zones",
+	"description": "(Beta) Address Maps allow you to specify which BYOIP (Bring your own IP) addresses are assigned to your proxied zones.",
 	"type": "object",
 	"links": [
 		{
@@ -37,7 +37,7 @@
 							"null"
 						],
 						"example": "\"My Ecommerce zones\"",
-						"description": "An optional description field which may be used to describe the types of IPs or zones on the map"
+						"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
 					}
 				},
 				"required_props": [],
@@ -82,7 +82,7 @@
 							"null"
 						],
 						"example": "\"My Ecommerce zones\"",
-						"description": "An optional description field which may be used to describe the types of IPs or zones on the map"
+						"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
 					},
 					"default_sni": {
 						"type": [
@@ -199,7 +199,7 @@
 				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -209,18 +209,18 @@
 					"null"
 				],
 				"example": "\"My Ecommerce zones\"",
-				"description": "An optional description field which may be used to describe the types of IPs or zones on the map"
+				"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
 			},
 			"can_delete": {
 				"type": "boolean",
 				"example": "true",
-				"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps",
+				"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.",
 				"readOnly": true
 			},
 			"can_modify_ips": {
 				"type": "boolean",
 				"example": "true",
-				"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps",
+				"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.",
 				"readOnly": true
 			},
 			"default_sni": {
@@ -236,7 +236,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -245,7 +245,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			}
@@ -263,6 +263,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"description\": \"My Ecommerce zones\",\n  \"can_delete\": true,\n  \"can_modify_ips\": true,\n  \"default_sni\": \"*.example.com\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
 		"title": "IP Address Management Address Maps",
-		"description": "(Beta) Address Maps allow you to specify which BYOIP (Bring your own IP) addresses are assigned to your proxied zones"
+		"description": "(Beta) Address Maps allow you to specify which BYOIP (Bring your own IP) addresses are assigned to your proxied zones."
 	}
 }

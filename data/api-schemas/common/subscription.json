@@ -2,7 +2,7 @@
 	"id": "https://api.cloudflare.com/schemas/v4/common/subscription.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Subscription",
-	"description": "A base subscription object",
+	"description": "A base subscription object.",
 	"type": "object",
 	"required": [
 		"id",
@@ -16,14 +16,14 @@
 	],
 	"properties": {
 		"id": {
-			"description": "Subscription identifier tag",
+			"description": "Subscription identifier tag.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
 			"example": "506e3185e9c882d175a2d0cb0093d9f2"
 		},
 		"status": {
-			"description": "The state of the subscription",
+			"description": "The state of the subscription.",
 			"enum": [
 				"active",
 				"expired",
@@ -33,19 +33,19 @@
 			"example": "active"
 		},
 		"price": {
-			"description": "The price of the subscription that will be billed, in US dollars",
+			"description": "The price of the subscription that will be billed, in US dollars.",
 			"type": "number",
 			"readOnly": true,
 			"example": 20
 		},
 		"currency": {
-			"description": "The monetary unit in which pricing information is displayed",
+			"description": "The monetary unit in which pricing information is displayed.",
 			"type": "string",
 			"readOnly": true,
 			"example": "USD"
 		},
 		"frequency": {
-			"description": "How often the subscription is renewed automatically",
+			"description": "How often the subscription is renewed automatically.",
 			"enum": [
 				"weeks",
 				"months",
@@ -58,37 +58,37 @@
 			"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
 			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 			"title": "Cloudflare Plan",
-			"description": "Abstract Cloudflare plan",
+			"description": "Abstract Cloudflare plan.",
 			"type": "object",
 			"properties": {
 				"id": {
-					"description": "Plan identifier tag",
+					"description": "Plan identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "e592fd9519420ba7405e1307bff33214"
 				},
 				"name": {
-					"description": "The plan name",
+					"description": "The plan name.",
 					"type": "string",
 					"maxLength": 80,
 					"readOnly": true,
 					"example": "Pro Plan"
 				},
 				"price": {
-					"description": "The price of the subscription that will be billed, in US dollars",
+					"description": "The price of the subscription that will be billed, in US dollars.",
 					"type": "number",
 					"readOnly": true,
 					"example": 20
 				},
 				"currency": {
-					"description": "The monetary unit in which pricing information is displayed",
+					"description": "The monetary unit in which pricing information is displayed.",
 					"type": "string",
 					"readOnly": true,
 					"example": "USD"
 				},
 				"frequency": {
-					"description": "The frequency at which you will be billed for this plan",
+					"description": "The frequency at which you will be billed for this plan.",
 					"type": "string",
 					"enum": [
 						"weekly",
@@ -103,33 +103,33 @@
 			},
 			"definitions": {
 				"identifier": {
-					"description": "Plan identifier tag",
+					"description": "Plan identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "e592fd9519420ba7405e1307bff33214"
 				},
 				"name": {
-					"description": "The plan name",
+					"description": "The plan name.",
 					"type": "string",
 					"maxLength": 80,
 					"readOnly": true,
 					"example": "Pro Plan"
 				},
 				"price": {
-					"description": "The price of the subscription that will be billed, in US dollars",
+					"description": "The price of the subscription that will be billed, in US dollars.",
 					"type": "number",
 					"readOnly": true,
 					"example": 20
 				},
 				"currency": {
-					"description": "The monetary unit in which pricing information is displayed",
+					"description": "The monetary unit in which pricing information is displayed.",
 					"type": "string",
 					"readOnly": true,
 					"example": "USD"
 				},
 				"frequency": {
-					"description": "The frequency at which you will be billed for this plan",
+					"description": "The frequency at which you will be billed for this plan.",
 					"type": "string",
 					"enum": [
 						"weekly",
@@ -144,42 +144,42 @@
 			}
 		},
 		"activated_on": {
-			"description": "When the subscription was activated",
+			"description": "When the subscription was activated.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-03-01T12:20:00Z"
 		},
 		"cancelled_on": {
-			"description": "When the subscription was cancelled",
+			"description": "When the subscription was cancelled.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-04-01T12:20:00Z"
 		},
 		"expired_on": {
-			"description": "When the subscription expired",
+			"description": "When the subscription expired.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-04-02T12:20:00Z"
 		},
 		"expires_on": {
-			"description": "When the subscription will expire",
+			"description": "When the subscription will expire.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-03-31T12:20:00Z"
 		},
 		"renewed_on": {
-			"description": "When the subscription was renewed",
+			"description": "When the subscription was renewed.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-05-11T12:20:00Z"
 		},
 		"created_on": {
-			"description": "When the subscription was initially created",
+			"description": "When the subscription was initially created.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
@@ -188,27 +188,27 @@
 	},
 	"definitions": {
 		"identifier": {
-			"description": "Subscription identifier tag",
+			"description": "Subscription identifier tag.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
 			"example": "506e3185e9c882d175a2d0cb0093d9f2"
 		},
 		"label": {
-			"description": "The label for the subscription type",
+			"description": "The label for the subscription type.",
 			"type": "string",
 			"maxLength": 80,
 			"example": "business"
 		},
 		"name": {
-			"description": "Name of the subscription",
+			"description": "Name of the subscription.",
 			"type": "string",
 			"maxLength": 80,
 			"readOnly": true,
 			"example": "Business Account"
 		},
 		"status": {
-			"description": "The state of the subscription",
+			"description": "The state of the subscription.",
 			"enum": [
 				"active",
 				"expired",
@@ -221,37 +221,37 @@
 			"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
 			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 			"title": "Cloudflare Plan",
-			"description": "Abstract Cloudflare plan",
+			"description": "Abstract Cloudflare plan.",
 			"type": "object",
 			"properties": {
 				"id": {
-					"description": "Plan identifier tag",
+					"description": "Plan identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "e592fd9519420ba7405e1307bff33214"
 				},
 				"name": {
-					"description": "The plan name",
+					"description": "The plan name.",
 					"type": "string",
 					"maxLength": 80,
 					"readOnly": true,
 					"example": "Pro Plan"
 				},
 				"price": {
-					"description": "The price of the subscription that will be billed, in US dollars",
+					"description": "The price of the subscription that will be billed, in US dollars.",
 					"type": "number",
 					"readOnly": true,
 					"example": 20
 				},
 				"currency": {
-					"description": "The monetary unit in which pricing information is displayed",
+					"description": "The monetary unit in which pricing information is displayed.",
 					"type": "string",
 					"readOnly": true,
 					"example": "USD"
 				},
 				"frequency": {
-					"description": "The frequency at which you will be billed for this plan",
+					"description": "The frequency at which you will be billed for this plan.",
 					"type": "string",
 					"enum": [
 						"weekly",
@@ -266,33 +266,33 @@
 			},
 			"definitions": {
 				"identifier": {
-					"description": "Plan identifier tag",
+					"description": "Plan identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "e592fd9519420ba7405e1307bff33214"
 				},
 				"name": {
-					"description": "The plan name",
+					"description": "The plan name.",
 					"type": "string",
 					"maxLength": 80,
 					"readOnly": true,
 					"example": "Pro Plan"
 				},
 				"price": {
-					"description": "The price of the subscription that will be billed, in US dollars",
+					"description": "The price of the subscription that will be billed, in US dollars.",
 					"type": "number",
 					"readOnly": true,
 					"example": 20
 				},
 				"currency": {
-					"description": "The monetary unit in which pricing information is displayed",
+					"description": "The monetary unit in which pricing information is displayed.",
 					"type": "string",
 					"readOnly": true,
 					"example": "USD"
 				},
 				"frequency": {
-					"description": "The frequency at which you will be billed for this plan",
+					"description": "The frequency at which you will be billed for this plan.",
 					"type": "string",
 					"enum": [
 						"weekly",
@@ -307,19 +307,19 @@
 			}
 		},
 		"price": {
-			"description": "The price of the subscription that will be billed, in US dollars",
+			"description": "The price of the subscription that will be billed, in US dollars.",
 			"type": "number",
 			"readOnly": true,
 			"example": 20
 		},
 		"currency": {
-			"description": "The monetary unit in which pricing information is displayed",
+			"description": "The monetary unit in which pricing information is displayed.",
 			"type": "string",
 			"readOnly": true,
 			"example": "USD"
 		},
 		"frequency": {
-			"description": "How often the subscription is renewed automatically",
+			"description": "How often the subscription is renewed automatically.",
 			"enum": [
 				"weeks",
 				"months",
@@ -329,42 +329,42 @@
 			"example": "months"
 		},
 		"activated_on": {
-			"description": "When the subscription was activated",
+			"description": "When the subscription was activated.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-03-01T12:20:00Z"
 		},
 		"cancelled_on": {
-			"description": "When the subscription was cancelled",
+			"description": "When the subscription was cancelled.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-04-01T12:20:00Z"
 		},
 		"expired_on": {
-			"description": "When the subscription expired",
+			"description": "When the subscription expired.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-04-02T12:20:00Z"
 		},
 		"expires_on": {
-			"description": "When the subscription will expire",
+			"description": "When the subscription will expire.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-03-31T12:20:00Z"
 		},
 		"renewed_on": {
-			"description": "When the subscription was renewed",
+			"description": "When the subscription was renewed.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-05-11T12:20:00Z"
 		},
 		"created_on": {
-			"description": "When the subscription was initially created",
+			"description": "When the subscription was initially created.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,

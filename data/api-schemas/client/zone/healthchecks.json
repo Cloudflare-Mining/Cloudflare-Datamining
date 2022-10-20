@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/healthchecks.json",
 	"title": "Health Checks",
-	"description": "Zone-level stand-alone health checks",
+	"description": "Zone-level stand-alone health checks.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Health Checks",
-			"description": "List configured health checks",
+			"description": "List configured health checks.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks",
 			"method": "GET",
@@ -28,14 +28,14 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Page number of paginated results",
+						"description": "Page number of paginated results.",
 						"minimum": 1,
 						"default": 1
 					},
 					"per_page": {
 						"type": "number",
 						"example": "25",
-						"description": "Number of items per page",
+						"description": "Number of items per page.",
 						"minimum": 5,
 						"maximum": 1000,
 						"default": 25
@@ -43,7 +43,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"server-1\"",
-						"description": "Filter health checks with name partially matching this string"
+						"description": "Filter health checks with name partially matching this string."
 					}
 				},
 				"required_props": [],
@@ -59,7 +59,7 @@
 		},
 		{
 			"title": "Create Health Check",
-			"description": "Create a new health check",
+			"description": "Create a new health check.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks",
 			"method": "POST",
@@ -103,7 +103,7 @@
 						"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -131,13 +131,13 @@
 					"consecutive_successes": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive successes required from a health check before changing the health to healthy",
+						"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
 						"default": 1
 					},
 					"consecutive_fails": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy",
+						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
 						"default": 1
 					},
 					"http_config": {
@@ -207,7 +207,7 @@
 								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden."
 							}
 						},
-						"description": "Parameters specific to an HTTP or HTTPS health check"
+						"description": "Parameters specific to an HTTP or HTTPS health check."
 					},
 					"tcp_config": {
 						"type": [
@@ -232,7 +232,7 @@
 								"default": 80
 							}
 						},
-						"description": "Parameters specific to TCP health check"
+						"description": "Parameters specific to TCP health check."
 					},
 					"timeout": {
 						"type": "integer",
@@ -282,7 +282,7 @@
 		},
 		{
 			"title": "Health Check Details",
-			"description": "Fetch a single configured health check",
+			"description": "Fetch a single configured health check.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/{#/definitions/identifier}",
 			"method": "GET",
@@ -300,7 +300,7 @@
 		},
 		{
 			"title": "Update Health Check",
-			"description": "Update a configured health check",
+			"description": "Update a configured health check.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/{#/definitions/identifier}",
 			"method": "PUT",
@@ -344,7 +344,7 @@
 						"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -372,13 +372,13 @@
 					"consecutive_successes": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive successes required from a health check before changing the health to healthy",
+						"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
 						"default": 1
 					},
 					"consecutive_fails": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy",
+						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
 						"default": 1
 					},
 					"http_config": {
@@ -448,7 +448,7 @@
 								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden."
 							}
 						},
-						"description": "Parameters specific to an HTTP or HTTPS health check"
+						"description": "Parameters specific to an HTTP or HTTPS health check."
 					},
 					"tcp_config": {
 						"type": [
@@ -473,7 +473,7 @@
 								"default": 80
 							}
 						},
-						"description": "Parameters specific to TCP health check"
+						"description": "Parameters specific to TCP health check."
 					},
 					"timeout": {
 						"type": "integer",
@@ -523,7 +523,7 @@
 		},
 		{
 			"title": "Patch Health Check",
-			"description": "Patch a configured health check",
+			"description": "Patch a configured health check.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -567,7 +567,7 @@
 						"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -595,13 +595,13 @@
 					"consecutive_successes": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive successes required from a health check before changing the health to healthy",
+						"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
 						"default": 1
 					},
 					"consecutive_fails": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy",
+						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
 						"default": 1
 					},
 					"http_config": {
@@ -671,7 +671,7 @@
 								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden."
 							}
 						},
-						"description": "Parameters specific to an HTTP or HTTPS health check"
+						"description": "Parameters specific to an HTTP or HTTPS health check."
 					},
 					"tcp_config": {
 						"type": [
@@ -696,7 +696,7 @@
 								"default": 80
 							}
 						},
-						"description": "Parameters specific to TCP health check"
+						"description": "Parameters specific to TCP health check."
 					},
 					"timeout": {
 						"type": "integer",
@@ -746,7 +746,7 @@
 		},
 		{
 			"title": "Delete Health Check",
-			"description": "Delete a health check",
+			"description": "Delete a health check.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -764,7 +764,7 @@
 		},
 		{
 			"title": "Create Preview Health Check",
-			"description": "Create a new preview health check",
+			"description": "Create a new preview health check.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/preview",
 			"method": "POST",
@@ -808,7 +808,7 @@
 						"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -836,13 +836,13 @@
 					"consecutive_successes": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive successes required from a health check before changing the health to healthy",
+						"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
 						"default": 1
 					},
 					"consecutive_fails": {
 						"type": "integer",
 						"example": "1",
-						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy",
+						"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
 						"default": 1
 					},
 					"http_config": {
@@ -912,7 +912,7 @@
 								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden."
 							}
 						},
-						"description": "Parameters specific to an HTTP or HTTPS health check"
+						"description": "Parameters specific to an HTTP or HTTPS health check."
 					},
 					"tcp_config": {
 						"type": [
@@ -937,7 +937,7 @@
 								"default": 80
 							}
 						},
-						"description": "Parameters specific to TCP health check"
+						"description": "Parameters specific to TCP health check."
 					},
 					"timeout": {
 						"type": "integer",
@@ -987,7 +987,7 @@
 		},
 		{
 			"title": "Health Check Preview Details",
-			"description": "Fetch a single configured health check preview",
+			"description": "Fetch a single configured health check preview.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/preview/{#/definitions/identifier}",
 			"method": "GET",
@@ -1005,7 +1005,7 @@
 		},
 		{
 			"title": "Delete Preview Health Check",
-			"description": "Delete a health check",
+			"description": "Delete a health check.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/healthchecks/preview/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -1033,7 +1033,7 @@
 				"example": "\"699d98642c564d2e855e9661899b7252\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -1042,7 +1042,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -1051,7 +1051,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -1080,7 +1080,7 @@
 				"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
 				"items": {
 					"type": "string",
-					"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only)",
+					"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
 					"enum": [
 						"WNAM",
 						"ENAM",
@@ -1108,13 +1108,13 @@
 			"consecutive_successes": {
 				"type": "integer",
 				"example": "1",
-				"description": "The number of consecutive successes required from a health check before changing the health to healthy",
+				"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
 				"default": 1
 			},
 			"consecutive_fails": {
 				"type": "integer",
 				"example": "1",
-				"description": "The number of consecutive fails required from a health check before changing the health to unhealthy",
+				"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
 				"default": 1
 			},
 			"http_config": {
@@ -1184,7 +1184,7 @@
 						"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden."
 					}
 				},
-				"description": "Parameters specific to an HTTP or HTTPS health check"
+				"description": "Parameters specific to an HTTP or HTTPS health check."
 			},
 			"tcp_config": {
 				"type": [
@@ -1209,7 +1209,7 @@
 						"default": 80
 					}
 				},
-				"description": "Parameters specific to TCP health check"
+				"description": "Parameters specific to TCP health check."
 			},
 			"timeout": {
 				"type": "integer",
@@ -1277,6 +1277,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\",\n  \"status\": \"healthy\",\n  \"failure_reason\": \"\"\n}",
 		"title": "Health Checks",
-		"description": "Zone-level stand-alone health checks"
+		"description": "Zone-level stand-alone health checks."
 	}
 }

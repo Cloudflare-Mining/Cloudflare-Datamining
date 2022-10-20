@@ -7,7 +7,7 @@
 	"links": [
 		{
 			"title": "Get projects",
-			"description": "Fetch a list of all user projects",
+			"description": "Fetch a list of all user projects.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects",
 			"method": "GET",
@@ -19,12 +19,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -40,7 +40,7 @@
 		},
 		{
 			"title": "Get project",
-			"description": "Fetch a project by name",
+			"description": "Fetch a project by name.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}",
 			"method": "GET",
@@ -52,12 +52,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -73,7 +73,7 @@
 		},
 		{
 			"title": "Delete project",
-			"description": "Destroy a project by name",
+			"description": "Destroy a project by name.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}",
 			"method": "DELETE",
@@ -85,12 +85,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -106,7 +106,7 @@
 		},
 		{
 			"title": "Create project",
-			"description": "Make a new project",
+			"description": "Make a new project.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects",
 			"method": "POST",
@@ -118,12 +118,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -151,31 +151,31 @@
 					"name": {
 						"type": "string",
 						"example": "\"NextJS Blog\"",
-						"description": "Name of the project"
+						"description": "Name of the project."
 					},
 					"id": {
 						"type": "string",
 						"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-						"description": "Id of the project",
+						"description": "Id of the project.",
 						"readOnly": true
 					},
 					"created_on": {
 						"type": "string",
 						"example": "\"2017-01-01T00:00:00Z\"",
-						"description": "When the project was created",
+						"description": "When the project was created.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"subdomain": {
 						"type": "string",
 						"example": "\"helloworld.pages.dev\"",
-						"description": "The Cloudflare subdomain associated with the project",
+						"description": "The Cloudflare subdomain associated with the project.",
 						"readOnly": true
 					},
 					"domains": {
 						"type": "array",
 						"example": "[\n  \"customdomain.com\",\n  \"customdomain.org\"\n]",
-						"description": "A list of associated custom domains for the project",
+						"description": "A list of associated custom domains for the project.",
 						"readOnly": true
 					},
 					"source": {
@@ -185,7 +185,7 @@
 							"type": {
 								"type": "string",
 								"example": "\"github\"",
-								"description": "Project host type",
+								"description": "Project host type.",
 								"readOnly": true
 							},
 							"config": {
@@ -195,33 +195,33 @@
 									"owner": {
 										"type": "string",
 										"example": "\"cloudflare\"",
-										"description": "Project owner username",
+										"description": "Project owner username.",
 										"readOnly": true
 									},
 									"repo_name": {
 										"type": "string",
 										"example": "\"ninjakittens\"",
-										"description": "Project repository name"
+										"description": "Project repository name."
 									},
 									"production_branch": {
 										"type": "string",
 										"example": "\"main\"",
-										"description": "Project production branch name"
+										"description": "Project production branch name."
 									},
 									"pr_comments_enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable Pages to comment on Pull Requests"
+										"description": "Enable Pages to comment on Pull Requests."
 									},
 									"production_deployments_enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Toggle production deployments on this repo"
+										"description": "Toggle production deployments on this repo."
 									},
 									"preview_deployment_setting": {
 										"type": "string",
 										"example": "\"custom\"",
-										"description": "Preview deployment setting",
+										"description": "Preview deployment setting.",
 										"enum": [
 											"all",
 											"none",
@@ -231,18 +231,18 @@
 									"preview_branch_includes": {
 										"type": "array",
 										"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 									},
 									"preview_branch_excludes": {
 										"type": "array",
 										"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 									}
 								}
 							}
 						},
 						"readOnly": true,
-						"description": "Configs for the project source"
+						"description": "Configs for the project source."
 					},
 					"build_config": {
 						"type": "object",
@@ -254,7 +254,7 @@
 									"null"
 								],
 								"example": "\"npm run build\"",
-								"description": "Command used to build project"
+								"description": "Command used to build project."
 							},
 							"destination_dir": {
 								"type": [
@@ -262,7 +262,7 @@
 									"null"
 								],
 								"example": "\"build\"",
-								"description": "Output directory of the build"
+								"description": "Output directory of the build."
 							},
 							"root_dir": {
 								"type": [
@@ -270,7 +270,7 @@
 									"null"
 								],
 								"example": "\"/\"",
-								"description": "Directory to run the command"
+								"description": "Directory to run the command."
 							},
 							"web_analytics_tag": {
 								"type": [
@@ -278,7 +278,7 @@
 									"null"
 								],
 								"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-								"description": "The classifying tag for analytics"
+								"description": "The classifying tag for analytics."
 							},
 							"web_analytics_token": {
 								"type": [
@@ -286,10 +286,10 @@
 									"null"
 								],
 								"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-								"description": "The auth token for analytics"
+								"description": "The auth token for analytics."
 							}
 						},
-						"description": "Configs for the project build process"
+						"description": "Configs for the project build process."
 					},
 					"deployment_configs": {
 						"type": "object",
@@ -313,13 +313,13 @@
 													"value": {
 														"type": "string",
 														"example": "\"3.3\"",
-														"description": "Environment variable value"
+														"description": "Environment variable value."
 													}
 												},
-												"description": "Environment variable"
+												"description": "Environment variable."
 											}
 										},
-										"description": "Environment variables for build configs"
+										"description": "Environment variables for build configs."
 									},
 									"kv_namespaces": {
 										"type": [
@@ -334,13 +334,13 @@
 													"namespace_id": {
 														"type": "string",
 														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-														"description": "ID of the KV namespace"
+														"description": "ID of the KV namespace."
 													}
 												},
-												"description": "KV binding"
+												"description": "KV binding."
 											}
 										},
-										"description": "KV namespaces used for Pages Functions"
+										"description": "KV namespaces used for Pages Functions."
 									},
 									"durable_object_namespaces": {
 										"type": [
@@ -355,13 +355,13 @@
 													"namespace_id": {
 														"type": "string",
 														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-														"description": "ID of the Durabble Object namespace"
+														"description": "ID of the Durabble Object namespace."
 													}
 												},
-												"description": "Durabble Object binding"
+												"description": "Durabble Object binding."
 											}
 										},
-										"description": "Durabble Object namespaces used for Pages Functions"
+										"description": "Durabble Object namespaces used for Pages Functions."
 									},
 									"r2_buckets": {
 										"type": [
@@ -376,13 +376,13 @@
 													"name": {
 														"type": "string",
 														"example": "\"some-bucket\"",
-														"description": "Name of the R2 bucket"
+														"description": "Name of the R2 bucket."
 													}
 												},
-												"description": "R2 binding"
+												"description": "R2 binding."
 											}
 										},
-										"description": "R2 buckets used for Pages Functions"
+										"description": "R2 buckets used for Pages Functions."
 									},
 									"d1_databases": {
 										"type": [
@@ -397,26 +397,26 @@
 													"id": {
 														"type": "string",
 														"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
-														"description": "UUID of the D1 database"
+														"description": "UUID of the D1 database."
 													}
 												},
-												"description": "D1 binding"
+												"description": "D1 binding."
 											}
 										},
-										"description": "D1 databases used for Pages Functions"
+										"description": "D1 databases used for Pages Functions."
 									},
 									"compatibility_date": {
 										"type": "string",
 										"example": "\"2022-01-01\"",
-										"description": "Compatibility date used for Pages Functions"
+										"description": "Compatibility date used for Pages Functions."
 									},
 									"compatibility_flags": {
 										"type": "array",
 										"example": "[\n  \"url_standard\"\n]",
-										"description": "Compatibility flags used for Pages Functions"
+										"description": "Compatibility flags used for Pages Functions."
 									}
 								},
-								"description": "Configs for preview deploys"
+								"description": "Configs for preview deploys."
 							},
 							"production": {
 								"type": "object",
@@ -436,13 +436,13 @@
 													"value": {
 														"type": "string",
 														"example": "\"3.3\"",
-														"description": "Environment variable value"
+														"description": "Environment variable value."
 													}
 												},
-												"description": "Environment variable"
+												"description": "Environment variable."
 											}
 										},
-										"description": "Environment variables for build configs"
+										"description": "Environment variables for build configs."
 									},
 									"kv_namespaces": {
 										"type": [
@@ -457,13 +457,13 @@
 													"namespace_id": {
 														"type": "string",
 														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-														"description": "ID of the KV namespace"
+														"description": "ID of the KV namespace."
 													}
 												},
-												"description": "KV binding"
+												"description": "KV binding."
 											}
 										},
-										"description": "KV namespaces used for Pages Functions"
+										"description": "KV namespaces used for Pages Functions."
 									},
 									"durable_object_namespaces": {
 										"type": [
@@ -478,13 +478,13 @@
 													"namespace_id": {
 														"type": "string",
 														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-														"description": "ID of the Durabble Object namespace"
+														"description": "ID of the Durabble Object namespace."
 													}
 												},
-												"description": "Durabble Object binding"
+												"description": "Durabble Object binding."
 											}
 										},
-										"description": "Durabble Object namespaces used for Pages Functions"
+										"description": "Durabble Object namespaces used for Pages Functions."
 									},
 									"r2_buckets": {
 										"type": [
@@ -499,13 +499,13 @@
 													"name": {
 														"type": "string",
 														"example": "\"some-bucket\"",
-														"description": "Name of the R2 bucket"
+														"description": "Name of the R2 bucket."
 													}
 												},
-												"description": "R2 binding"
+												"description": "R2 binding."
 											}
 										},
-										"description": "R2 buckets used for Pages Functions"
+										"description": "R2 buckets used for Pages Functions."
 									},
 									"d1_databases": {
 										"type": [
@@ -520,29 +520,29 @@
 													"id": {
 														"type": "string",
 														"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
-														"description": "UUID of the D1 database"
+														"description": "UUID of the D1 database."
 													}
 												},
-												"description": "D1 binding"
+												"description": "D1 binding."
 											}
 										},
-										"description": "D1 databases used for Pages Functions"
+										"description": "D1 databases used for Pages Functions."
 									},
 									"compatibility_date": {
 										"type": "string",
 										"example": "\"2022-01-01\"",
-										"description": "Compatibility date used for Pages Functions"
+										"description": "Compatibility date used for Pages Functions."
 									},
 									"compatibility_flags": {
 										"type": "array",
 										"example": "[\n  \"url_standard\"\n]",
-										"description": "Compatibility flags used for Pages Functions"
+										"description": "Compatibility flags used for Pages Functions."
 									}
 								},
-								"description": "Configs for production deploys"
+								"description": "Configs for production deploys."
 							}
 						},
-						"description": "Configs for deployments in a project"
+						"description": "Configs for deployments in a project."
 					},
 					"latest_deployment": {
 						"example": "{}",
@@ -559,51 +559,51 @@
 									"id": {
 										"type": "string",
 										"example": "\"f64788e9-fccd-4d4a-a28a-cb84f88f6\"",
-										"description": "Id of the deployment",
+										"description": "Id of the deployment.",
 										"readOnly": true
 									},
 									"short_id": {
 										"type": "string",
 										"example": "\"f64788e9\"",
-										"description": "Short Id (8 character) of the deployment",
+										"description": "Short Id (8 character) of the deployment.",
 										"readOnly": true
 									},
 									"project_id": {
 										"type": "string",
 										"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-										"description": "Id of the project",
+										"description": "Id of the project.",
 										"readOnly": true
 									},
 									"project_name": {
 										"type": "string",
 										"example": "\"ninjakittens\"",
 										"readOnly": true,
-										"description": "Name of the project"
+										"description": "Name of the project."
 									},
 									"environment": {
 										"type": "string",
 										"example": "\"preview\"",
-										"description": "Type of deploy",
+										"description": "Type of deploy.",
 										"readOnly": true,
 										"pattern": "preview|production"
 									},
 									"url": {
 										"type": "string",
 										"example": "\"https://f64788e9.ninjakittens.pages.dev\"",
-										"description": "The live URL to view this deployment",
+										"description": "The live URL to view this deployment.",
 										"readOnly": true
 									},
 									"created_on": {
 										"type": "string",
 										"example": "\"2021-03-09T00:55:03.923456Z\"",
-										"description": "When the deployment was created",
+										"description": "When the deployment was created.",
 										"format": "date-time",
 										"readOnly": true
 									},
 									"modified_on": {
 										"type": "string",
 										"example": "\"2021-03-09T00:58:59.045655\"",
-										"description": "When the deployment was last modified",
+										"description": "When the deployment was last modified.",
 										"format": "date-time",
 										"readOnly": true
 									},
@@ -613,13 +613,13 @@
 											"null"
 										],
 										"example": "[\n  \"https://branchname.projectname.pages.dev\"\n]",
-										"description": "A list of alias URLs pointing to this deployment",
+										"description": "A list of alias URLs pointing to this deployment.",
 										"readOnly": true
 									},
 									"is_skipped": {
 										"type": "boolean",
 										"example": "true",
-										"description": "If the deployment has been skipped",
+										"description": "If the deployment has been skipped.",
 										"readOnly": true
 									},
 									"latest_stage": {
@@ -629,7 +629,7 @@
 											"name": {
 												"type": "string",
 												"example": "\"deploy\"",
-												"description": "The current build stage",
+												"description": "The current build stage.",
 												"pattern": "queued|initialize|clone_repo|build|deploy"
 											},
 											"started_on": {
@@ -638,7 +638,7 @@
 													"null"
 												],
 												"example": "\"2021-03-09T00:55:03.923456Z\"",
-												"description": "When the stage started",
+												"description": "When the stage started.",
 												"format": "date-time",
 												"readOnly": true
 											},
@@ -648,25 +648,25 @@
 													"null"
 												],
 												"example": "\"2021-03-09T00:58:59.045655\"",
-												"description": "When the stage ended",
+												"description": "When the stage ended.",
 												"format": "date-time",
 												"readOnly": true
 											},
 											"status": {
 												"type": "string",
 												"example": "\"success\"",
-												"description": "State of the current stage",
+												"description": "State of the current stage.",
 												"pattern": "success|idle|active|failure|canceled",
 												"readOnly": true
 											}
 										},
 										"readOnly": true,
-										"description": "The status of the deployment"
+										"description": "The status of the deployment."
 									},
 									"env_vars": {
 										"type": "object",
 										"example": "{\n  \"BUILD_VERSION\": {\n    \"value\": \"3.3\"\n  },\n  \"ENV\": {\n    \"value\": \"STAGING\"\n  }\n}",
-										"description": "A dict of env variables to build this deploy",
+										"description": "A dict of env variables to build this deploy.",
 										"readOnly": true
 									},
 									"deployment_trigger": {
@@ -676,7 +676,7 @@
 											"type": {
 												"type": "string",
 												"example": "\"ad_hoc\"",
-												"description": "What caused the deployment",
+												"description": "What caused the deployment.",
 												"pattern": "push|ad_hoc",
 												"readOnly": true
 											},
@@ -687,46 +687,46 @@
 													"branch": {
 														"type": "string",
 														"example": "\"main\"",
-														"description": "Where the trigger happened",
+														"description": "Where the trigger happened.",
 														"readOnly": true
 													},
 													"commit_hash": {
 														"type": "string",
 														"example": "\"ad9ccd918a81025731e10e40267e11273a263421\"",
-														"description": "Hash of the deployment trigger commit",
+														"description": "Hash of the deployment trigger commit.",
 														"readOnly": true
 													},
 													"commit_message": {
 														"type": "string",
 														"example": "\"Update index.html\"",
-														"description": "Message of the deployment trigger commit",
+														"description": "Message of the deployment trigger commit.",
 														"readOnly": true
 													}
 												},
-												"description": "Additional info about the trigger"
+												"description": "Additional info about the trigger."
 											}
 										},
-										"description": "Info about what caused the deployment",
+										"description": "Info about what caused the deployment.",
 										"readOnly": true
 									},
 									"stages": {
 										"type": "array",
 										"example": "[\n  {\n    \"name\": \"queued\",\n    \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n    \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n    \"status\": \"active\"\n  },\n  {\n    \"name\": \"initialize\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"clone_repo\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"build\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"deploy\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  }\n]",
 										"readOnly": true,
-										"description": "List of past stages",
+										"description": "List of past stages.",
 										"items": {
-											"description": "The status of the deployment",
+											"description": "The status of the deployment.",
 											"type": "object",
 											"readOnly": true,
 											"properties": {
 												"name": {
-													"description": "The current build stage",
+													"description": "The current build stage.",
 													"type": "string",
 													"pattern": "queued|initialize|clone_repo|build|deploy",
 													"example": "deploy"
 												},
 												"started_on": {
-													"description": "When the stage started",
+													"description": "When the stage started.",
 													"format": "date-time",
 													"type": [
 														"string",
@@ -736,7 +736,7 @@
 													"example": "2021-03-09T00:55:03.923456Z"
 												},
 												"ended_on": {
-													"description": "When the stage ended",
+													"description": "When the stage ended.",
 													"format": "date-time",
 													"type": [
 														"string",
@@ -746,7 +746,7 @@
 													"example": "2021-03-09T00:58:59.045655"
 												},
 												"status": {
-													"description": "State of the current stage",
+													"description": "State of the current stage.",
 													"type": "string",
 													"pattern": "success|idle|active|failure|canceled",
 													"readOnly": true,
@@ -765,7 +765,7 @@
 													"null"
 												],
 												"example": "\"npm run build\"",
-												"description": "Command used to build project"
+												"description": "Command used to build project."
 											},
 											"destination_dir": {
 												"type": [
@@ -773,7 +773,7 @@
 													"null"
 												],
 												"example": "\"build\"",
-												"description": "Output directory of the build"
+												"description": "Output directory of the build."
 											},
 											"root_dir": {
 												"type": [
@@ -781,7 +781,7 @@
 													"null"
 												],
 												"example": "\"/\"",
-												"description": "Directory to run the command"
+												"description": "Directory to run the command."
 											},
 											"web_analytics_tag": {
 												"type": [
@@ -789,7 +789,7 @@
 													"null"
 												],
 												"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-												"description": "The classifying tag for analytics"
+												"description": "The classifying tag for analytics."
 											},
 											"web_analytics_token": {
 												"type": [
@@ -797,11 +797,11 @@
 													"null"
 												],
 												"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-												"description": "The auth token for analytics"
+												"description": "The auth token for analytics."
 											}
 										},
 										"readOnly": true,
-										"description": "Configs for the project build process"
+										"description": "Configs for the project build process."
 									},
 									"source": {
 										"type": "object",
@@ -810,7 +810,7 @@
 											"type": {
 												"type": "string",
 												"example": "\"github\"",
-												"description": "Project host type",
+												"description": "Project host type.",
 												"readOnly": true
 											},
 											"config": {
@@ -820,33 +820,33 @@
 													"owner": {
 														"type": "string",
 														"example": "\"cloudflare\"",
-														"description": "Project owner username",
+														"description": "Project owner username.",
 														"readOnly": true
 													},
 													"repo_name": {
 														"type": "string",
 														"example": "\"ninjakittens\"",
-														"description": "Project repository name"
+														"description": "Project repository name."
 													},
 													"production_branch": {
 														"type": "string",
 														"example": "\"main\"",
-														"description": "Project production branch name"
+														"description": "Project production branch name."
 													},
 													"pr_comments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Enable Pages to comment on Pull Requests"
+														"description": "Enable Pages to comment on Pull Requests."
 													},
 													"production_deployments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Toggle production deployments on this repo"
+														"description": "Toggle production deployments on this repo."
 													},
 													"preview_deployment_setting": {
 														"type": "string",
 														"example": "\"custom\"",
-														"description": "Preview deployment setting",
+														"description": "Preview deployment setting.",
 														"enum": [
 															"all",
 															"none",
@@ -856,18 +856,18 @@
 													"preview_branch_includes": {
 														"type": "array",
 														"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 													},
 													"preview_branch_excludes": {
 														"type": "array",
 														"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 													}
 												}
 											}
 										},
 										"readOnly": true,
-										"description": "Configs for the project source"
+										"description": "Configs for the project source."
 									}
 								},
 								"required_props": [],
@@ -892,10 +892,10 @@
 								"objects": [],
 								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 								"title": "Pages Deployment",
-								"description": "A Pages deployment is a published build for a commit on Pages"
+								"description": "A Pages deployment is a published build for a commit on Pages."
 							}
 						],
-						"description": "Most recent deployment to the repo",
+						"description": "Most recent deployment to the repo.",
 						"readOnly": true
 					},
 					"canonical_deployment": {
@@ -913,51 +913,51 @@
 									"id": {
 										"type": "string",
 										"example": "\"f64788e9-fccd-4d4a-a28a-cb84f88f6\"",
-										"description": "Id of the deployment",
+										"description": "Id of the deployment.",
 										"readOnly": true
 									},
 									"short_id": {
 										"type": "string",
 										"example": "\"f64788e9\"",
-										"description": "Short Id (8 character) of the deployment",
+										"description": "Short Id (8 character) of the deployment.",
 										"readOnly": true
 									},
 									"project_id": {
 										"type": "string",
 										"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-										"description": "Id of the project",
+										"description": "Id of the project.",
 										"readOnly": true
 									},
 									"project_name": {
 										"type": "string",
 										"example": "\"ninjakittens\"",
 										"readOnly": true,
-										"description": "Name of the project"
+										"description": "Name of the project."
 									},
 									"environment": {
 										"type": "string",
 										"example": "\"preview\"",
-										"description": "Type of deploy",
+										"description": "Type of deploy.",
 										"readOnly": true,
 										"pattern": "preview|production"
 									},
 									"url": {
 										"type": "string",
 										"example": "\"https://f64788e9.ninjakittens.pages.dev\"",
-										"description": "The live URL to view this deployment",
+										"description": "The live URL to view this deployment.",
 										"readOnly": true
 									},
 									"created_on": {
 										"type": "string",
 										"example": "\"2021-03-09T00:55:03.923456Z\"",
-										"description": "When the deployment was created",
+										"description": "When the deployment was created.",
 										"format": "date-time",
 										"readOnly": true
 									},
 									"modified_on": {
 										"type": "string",
 										"example": "\"2021-03-09T00:58:59.045655\"",
-										"description": "When the deployment was last modified",
+										"description": "When the deployment was last modified.",
 										"format": "date-time",
 										"readOnly": true
 									},
@@ -967,13 +967,13 @@
 											"null"
 										],
 										"example": "[\n  \"https://branchname.projectname.pages.dev\"\n]",
-										"description": "A list of alias URLs pointing to this deployment",
+										"description": "A list of alias URLs pointing to this deployment.",
 										"readOnly": true
 									},
 									"is_skipped": {
 										"type": "boolean",
 										"example": "true",
-										"description": "If the deployment has been skipped",
+										"description": "If the deployment has been skipped.",
 										"readOnly": true
 									},
 									"latest_stage": {
@@ -983,7 +983,7 @@
 											"name": {
 												"type": "string",
 												"example": "\"deploy\"",
-												"description": "The current build stage",
+												"description": "The current build stage.",
 												"pattern": "queued|initialize|clone_repo|build|deploy"
 											},
 											"started_on": {
@@ -992,7 +992,7 @@
 													"null"
 												],
 												"example": "\"2021-03-09T00:55:03.923456Z\"",
-												"description": "When the stage started",
+												"description": "When the stage started.",
 												"format": "date-time",
 												"readOnly": true
 											},
@@ -1002,25 +1002,25 @@
 													"null"
 												],
 												"example": "\"2021-03-09T00:58:59.045655\"",
-												"description": "When the stage ended",
+												"description": "When the stage ended.",
 												"format": "date-time",
 												"readOnly": true
 											},
 											"status": {
 												"type": "string",
 												"example": "\"success\"",
-												"description": "State of the current stage",
+												"description": "State of the current stage.",
 												"pattern": "success|idle|active|failure|canceled",
 												"readOnly": true
 											}
 										},
 										"readOnly": true,
-										"description": "The status of the deployment"
+										"description": "The status of the deployment."
 									},
 									"env_vars": {
 										"type": "object",
 										"example": "{\n  \"BUILD_VERSION\": {\n    \"value\": \"3.3\"\n  },\n  \"ENV\": {\n    \"value\": \"STAGING\"\n  }\n}",
-										"description": "A dict of env variables to build this deploy",
+										"description": "A dict of env variables to build this deploy.",
 										"readOnly": true
 									},
 									"deployment_trigger": {
@@ -1030,7 +1030,7 @@
 											"type": {
 												"type": "string",
 												"example": "\"ad_hoc\"",
-												"description": "What caused the deployment",
+												"description": "What caused the deployment.",
 												"pattern": "push|ad_hoc",
 												"readOnly": true
 											},
@@ -1041,46 +1041,46 @@
 													"branch": {
 														"type": "string",
 														"example": "\"main\"",
-														"description": "Where the trigger happened",
+														"description": "Where the trigger happened.",
 														"readOnly": true
 													},
 													"commit_hash": {
 														"type": "string",
 														"example": "\"ad9ccd918a81025731e10e40267e11273a263421\"",
-														"description": "Hash of the deployment trigger commit",
+														"description": "Hash of the deployment trigger commit.",
 														"readOnly": true
 													},
 													"commit_message": {
 														"type": "string",
 														"example": "\"Update index.html\"",
-														"description": "Message of the deployment trigger commit",
+														"description": "Message of the deployment trigger commit.",
 														"readOnly": true
 													}
 												},
-												"description": "Additional info about the trigger"
+												"description": "Additional info about the trigger."
 											}
 										},
-										"description": "Info about what caused the deployment",
+										"description": "Info about what caused the deployment.",
 										"readOnly": true
 									},
 									"stages": {
 										"type": "array",
 										"example": "[\n  {\n    \"name\": \"queued\",\n    \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n    \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n    \"status\": \"active\"\n  },\n  {\n    \"name\": \"initialize\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"clone_repo\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"build\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"deploy\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  }\n]",
 										"readOnly": true,
-										"description": "List of past stages",
+										"description": "List of past stages.",
 										"items": {
-											"description": "The status of the deployment",
+											"description": "The status of the deployment.",
 											"type": "object",
 											"readOnly": true,
 											"properties": {
 												"name": {
-													"description": "The current build stage",
+													"description": "The current build stage.",
 													"type": "string",
 													"pattern": "queued|initialize|clone_repo|build|deploy",
 													"example": "deploy"
 												},
 												"started_on": {
-													"description": "When the stage started",
+													"description": "When the stage started.",
 													"format": "date-time",
 													"type": [
 														"string",
@@ -1090,7 +1090,7 @@
 													"example": "2021-03-09T00:55:03.923456Z"
 												},
 												"ended_on": {
-													"description": "When the stage ended",
+													"description": "When the stage ended.",
 													"format": "date-time",
 													"type": [
 														"string",
@@ -1100,7 +1100,7 @@
 													"example": "2021-03-09T00:58:59.045655"
 												},
 												"status": {
-													"description": "State of the current stage",
+													"description": "State of the current stage.",
 													"type": "string",
 													"pattern": "success|idle|active|failure|canceled",
 													"readOnly": true,
@@ -1119,7 +1119,7 @@
 													"null"
 												],
 												"example": "\"npm run build\"",
-												"description": "Command used to build project"
+												"description": "Command used to build project."
 											},
 											"destination_dir": {
 												"type": [
@@ -1127,7 +1127,7 @@
 													"null"
 												],
 												"example": "\"build\"",
-												"description": "Output directory of the build"
+												"description": "Output directory of the build."
 											},
 											"root_dir": {
 												"type": [
@@ -1135,7 +1135,7 @@
 													"null"
 												],
 												"example": "\"/\"",
-												"description": "Directory to run the command"
+												"description": "Directory to run the command."
 											},
 											"web_analytics_tag": {
 												"type": [
@@ -1143,7 +1143,7 @@
 													"null"
 												],
 												"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-												"description": "The classifying tag for analytics"
+												"description": "The classifying tag for analytics."
 											},
 											"web_analytics_token": {
 												"type": [
@@ -1151,11 +1151,11 @@
 													"null"
 												],
 												"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-												"description": "The auth token for analytics"
+												"description": "The auth token for analytics."
 											}
 										},
 										"readOnly": true,
-										"description": "Configs for the project build process"
+										"description": "Configs for the project build process."
 									},
 									"source": {
 										"type": "object",
@@ -1164,7 +1164,7 @@
 											"type": {
 												"type": "string",
 												"example": "\"github\"",
-												"description": "Project host type",
+												"description": "Project host type.",
 												"readOnly": true
 											},
 											"config": {
@@ -1174,33 +1174,33 @@
 													"owner": {
 														"type": "string",
 														"example": "\"cloudflare\"",
-														"description": "Project owner username",
+														"description": "Project owner username.",
 														"readOnly": true
 													},
 													"repo_name": {
 														"type": "string",
 														"example": "\"ninjakittens\"",
-														"description": "Project repository name"
+														"description": "Project repository name."
 													},
 													"production_branch": {
 														"type": "string",
 														"example": "\"main\"",
-														"description": "Project production branch name"
+														"description": "Project production branch name."
 													},
 													"pr_comments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Enable Pages to comment on Pull Requests"
+														"description": "Enable Pages to comment on Pull Requests."
 													},
 													"production_deployments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Toggle production deployments on this repo"
+														"description": "Toggle production deployments on this repo."
 													},
 													"preview_deployment_setting": {
 														"type": "string",
 														"example": "\"custom\"",
-														"description": "Preview deployment setting",
+														"description": "Preview deployment setting.",
 														"enum": [
 															"all",
 															"none",
@@ -1210,18 +1210,18 @@
 													"preview_branch_includes": {
 														"type": "array",
 														"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 													},
 													"preview_branch_excludes": {
 														"type": "array",
 														"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 													}
 												}
 											}
 										},
 										"readOnly": true,
-										"description": "Configs for the project source"
+										"description": "Configs for the project source."
 									}
 								},
 								"required_props": [],
@@ -1246,16 +1246,16 @@
 								"objects": [],
 								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 								"title": "Pages Deployment",
-								"description": "A Pages deployment is a published build for a commit on Pages"
+								"description": "A Pages deployment is a published build for a commit on Pages."
 							}
 						],
-						"description": "Most recent deployment to the repo",
+						"description": "Most recent deployment to the repo.",
 						"readOnly": true
 					},
 					"production_branch": {
 						"type": "string",
 						"example": "\"main\"",
-						"description": "Production branch of the project. Used to identify production deployments",
+						"description": "Production branch of the project. Used to identify production deployments.",
 						"readOnly": false
 					}
 				},
@@ -1294,12 +1294,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -1402,31 +1402,31 @@
 			"name": {
 				"type": "string",
 				"example": "\"NextJS Blog\"",
-				"description": "Name of the project"
+				"description": "Name of the project."
 			},
 			"id": {
 				"type": "string",
 				"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-				"description": "Id of the project",
+				"description": "Id of the project.",
 				"readOnly": true
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2017-01-01T00:00:00Z\"",
-				"description": "When the project was created",
+				"description": "When the project was created.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"subdomain": {
 				"type": "string",
 				"example": "\"helloworld.pages.dev\"",
-				"description": "The Cloudflare subdomain associated with the project",
+				"description": "The Cloudflare subdomain associated with the project.",
 				"readOnly": true
 			},
 			"domains": {
 				"type": "array",
 				"example": "[\n  \"customdomain.com\",\n  \"customdomain.org\"\n]",
-				"description": "A list of associated custom domains for the project",
+				"description": "A list of associated custom domains for the project.",
 				"readOnly": true
 			},
 			"source": {
@@ -1436,7 +1436,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"github\"",
-						"description": "Project host type",
+						"description": "Project host type.",
 						"readOnly": true
 					},
 					"config": {
@@ -1446,33 +1446,33 @@
 							"owner": {
 								"type": "string",
 								"example": "\"cloudflare\"",
-								"description": "Project owner username",
+								"description": "Project owner username.",
 								"readOnly": true
 							},
 							"repo_name": {
 								"type": "string",
 								"example": "\"ninjakittens\"",
-								"description": "Project repository name"
+								"description": "Project repository name."
 							},
 							"production_branch": {
 								"type": "string",
 								"example": "\"main\"",
-								"description": "Project production branch name"
+								"description": "Project production branch name."
 							},
 							"pr_comments_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Enable Pages to comment on Pull Requests"
+								"description": "Enable Pages to comment on Pull Requests."
 							},
 							"production_deployments_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Toggle production deployments on this repo"
+								"description": "Toggle production deployments on this repo."
 							},
 							"preview_deployment_setting": {
 								"type": "string",
 								"example": "\"custom\"",
-								"description": "Preview deployment setting",
+								"description": "Preview deployment setting.",
 								"enum": [
 									"all",
 									"none",
@@ -1482,18 +1482,18 @@
 							"preview_branch_includes": {
 								"type": "array",
 								"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 							},
 							"preview_branch_excludes": {
 								"type": "array",
 								"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 							}
 						}
 					}
 				},
 				"readOnly": true,
-				"description": "Configs for the project source"
+				"description": "Configs for the project source."
 			},
 			"build_config": {
 				"type": "object",
@@ -1505,7 +1505,7 @@
 							"null"
 						],
 						"example": "\"npm run build\"",
-						"description": "Command used to build project"
+						"description": "Command used to build project."
 					},
 					"destination_dir": {
 						"type": [
@@ -1513,7 +1513,7 @@
 							"null"
 						],
 						"example": "\"build\"",
-						"description": "Output directory of the build"
+						"description": "Output directory of the build."
 					},
 					"root_dir": {
 						"type": [
@@ -1521,7 +1521,7 @@
 							"null"
 						],
 						"example": "\"/\"",
-						"description": "Directory to run the command"
+						"description": "Directory to run the command."
 					},
 					"web_analytics_tag": {
 						"type": [
@@ -1529,7 +1529,7 @@
 							"null"
 						],
 						"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-						"description": "The classifying tag for analytics"
+						"description": "The classifying tag for analytics."
 					},
 					"web_analytics_token": {
 						"type": [
@@ -1537,10 +1537,10 @@
 							"null"
 						],
 						"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-						"description": "The auth token for analytics"
+						"description": "The auth token for analytics."
 					}
 				},
-				"description": "Configs for the project build process"
+				"description": "Configs for the project build process."
 			},
 			"deployment_configs": {
 				"type": "object",
@@ -1564,13 +1564,13 @@
 											"value": {
 												"type": "string",
 												"example": "\"3.3\"",
-												"description": "Environment variable value"
+												"description": "Environment variable value."
 											}
 										},
-										"description": "Environment variable"
+										"description": "Environment variable."
 									}
 								},
-								"description": "Environment variables for build configs"
+								"description": "Environment variables for build configs."
 							},
 							"kv_namespaces": {
 								"type": [
@@ -1585,13 +1585,13 @@
 											"namespace_id": {
 												"type": "string",
 												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-												"description": "ID of the KV namespace"
+												"description": "ID of the KV namespace."
 											}
 										},
-										"description": "KV binding"
+										"description": "KV binding."
 									}
 								},
-								"description": "KV namespaces used for Pages Functions"
+								"description": "KV namespaces used for Pages Functions."
 							},
 							"durable_object_namespaces": {
 								"type": [
@@ -1606,13 +1606,13 @@
 											"namespace_id": {
 												"type": "string",
 												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-												"description": "ID of the Durabble Object namespace"
+												"description": "ID of the Durabble Object namespace."
 											}
 										},
-										"description": "Durabble Object binding"
+										"description": "Durabble Object binding."
 									}
 								},
-								"description": "Durabble Object namespaces used for Pages Functions"
+								"description": "Durabble Object namespaces used for Pages Functions."
 							},
 							"r2_buckets": {
 								"type": [
@@ -1627,13 +1627,13 @@
 											"name": {
 												"type": "string",
 												"example": "\"some-bucket\"",
-												"description": "Name of the R2 bucket"
+												"description": "Name of the R2 bucket."
 											}
 										},
-										"description": "R2 binding"
+										"description": "R2 binding."
 									}
 								},
-								"description": "R2 buckets used for Pages Functions"
+								"description": "R2 buckets used for Pages Functions."
 							},
 							"d1_databases": {
 								"type": [
@@ -1648,26 +1648,26 @@
 											"id": {
 												"type": "string",
 												"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
-												"description": "UUID of the D1 database"
+												"description": "UUID of the D1 database."
 											}
 										},
-										"description": "D1 binding"
+										"description": "D1 binding."
 									}
 								},
-								"description": "D1 databases used for Pages Functions"
+								"description": "D1 databases used for Pages Functions."
 							},
 							"compatibility_date": {
 								"type": "string",
 								"example": "\"2022-01-01\"",
-								"description": "Compatibility date used for Pages Functions"
+								"description": "Compatibility date used for Pages Functions."
 							},
 							"compatibility_flags": {
 								"type": "array",
 								"example": "[\n  \"url_standard\"\n]",
-								"description": "Compatibility flags used for Pages Functions"
+								"description": "Compatibility flags used for Pages Functions."
 							}
 						},
-						"description": "Configs for preview deploys"
+						"description": "Configs for preview deploys."
 					},
 					"production": {
 						"type": "object",
@@ -1687,13 +1687,13 @@
 											"value": {
 												"type": "string",
 												"example": "\"3.3\"",
-												"description": "Environment variable value"
+												"description": "Environment variable value."
 											}
 										},
-										"description": "Environment variable"
+										"description": "Environment variable."
 									}
 								},
-								"description": "Environment variables for build configs"
+								"description": "Environment variables for build configs."
 							},
 							"kv_namespaces": {
 								"type": [
@@ -1708,13 +1708,13 @@
 											"namespace_id": {
 												"type": "string",
 												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-												"description": "ID of the KV namespace"
+												"description": "ID of the KV namespace."
 											}
 										},
-										"description": "KV binding"
+										"description": "KV binding."
 									}
 								},
-								"description": "KV namespaces used for Pages Functions"
+								"description": "KV namespaces used for Pages Functions."
 							},
 							"durable_object_namespaces": {
 								"type": [
@@ -1729,13 +1729,13 @@
 											"namespace_id": {
 												"type": "string",
 												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
-												"description": "ID of the Durabble Object namespace"
+												"description": "ID of the Durabble Object namespace."
 											}
 										},
-										"description": "Durabble Object binding"
+										"description": "Durabble Object binding."
 									}
 								},
-								"description": "Durabble Object namespaces used for Pages Functions"
+								"description": "Durabble Object namespaces used for Pages Functions."
 							},
 							"r2_buckets": {
 								"type": [
@@ -1750,13 +1750,13 @@
 											"name": {
 												"type": "string",
 												"example": "\"some-bucket\"",
-												"description": "Name of the R2 bucket"
+												"description": "Name of the R2 bucket."
 											}
 										},
-										"description": "R2 binding"
+										"description": "R2 binding."
 									}
 								},
-								"description": "R2 buckets used for Pages Functions"
+								"description": "R2 buckets used for Pages Functions."
 							},
 							"d1_databases": {
 								"type": [
@@ -1771,29 +1771,29 @@
 											"id": {
 												"type": "string",
 												"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
-												"description": "UUID of the D1 database"
+												"description": "UUID of the D1 database."
 											}
 										},
-										"description": "D1 binding"
+										"description": "D1 binding."
 									}
 								},
-								"description": "D1 databases used for Pages Functions"
+								"description": "D1 databases used for Pages Functions."
 							},
 							"compatibility_date": {
 								"type": "string",
 								"example": "\"2022-01-01\"",
-								"description": "Compatibility date used for Pages Functions"
+								"description": "Compatibility date used for Pages Functions."
 							},
 							"compatibility_flags": {
 								"type": "array",
 								"example": "[\n  \"url_standard\"\n]",
-								"description": "Compatibility flags used for Pages Functions"
+								"description": "Compatibility flags used for Pages Functions."
 							}
 						},
-						"description": "Configs for production deploys"
+						"description": "Configs for production deploys."
 					}
 				},
-				"description": "Configs for deployments in a project"
+				"description": "Configs for deployments in a project."
 			},
 			"latest_deployment": {
 				"example": "{}",
@@ -1810,51 +1810,51 @@
 							"id": {
 								"type": "string",
 								"example": "\"f64788e9-fccd-4d4a-a28a-cb84f88f6\"",
-								"description": "Id of the deployment",
+								"description": "Id of the deployment.",
 								"readOnly": true
 							},
 							"short_id": {
 								"type": "string",
 								"example": "\"f64788e9\"",
-								"description": "Short Id (8 character) of the deployment",
+								"description": "Short Id (8 character) of the deployment.",
 								"readOnly": true
 							},
 							"project_id": {
 								"type": "string",
 								"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-								"description": "Id of the project",
+								"description": "Id of the project.",
 								"readOnly": true
 							},
 							"project_name": {
 								"type": "string",
 								"example": "\"ninjakittens\"",
 								"readOnly": true,
-								"description": "Name of the project"
+								"description": "Name of the project."
 							},
 							"environment": {
 								"type": "string",
 								"example": "\"preview\"",
-								"description": "Type of deploy",
+								"description": "Type of deploy.",
 								"readOnly": true,
 								"pattern": "preview|production"
 							},
 							"url": {
 								"type": "string",
 								"example": "\"https://f64788e9.ninjakittens.pages.dev\"",
-								"description": "The live URL to view this deployment",
+								"description": "The live URL to view this deployment.",
 								"readOnly": true
 							},
 							"created_on": {
 								"type": "string",
 								"example": "\"2021-03-09T00:55:03.923456Z\"",
-								"description": "When the deployment was created",
+								"description": "When the deployment was created.",
 								"format": "date-time",
 								"readOnly": true
 							},
 							"modified_on": {
 								"type": "string",
 								"example": "\"2021-03-09T00:58:59.045655\"",
-								"description": "When the deployment was last modified",
+								"description": "When the deployment was last modified.",
 								"format": "date-time",
 								"readOnly": true
 							},
@@ -1864,13 +1864,13 @@
 									"null"
 								],
 								"example": "[\n  \"https://branchname.projectname.pages.dev\"\n]",
-								"description": "A list of alias URLs pointing to this deployment",
+								"description": "A list of alias URLs pointing to this deployment.",
 								"readOnly": true
 							},
 							"is_skipped": {
 								"type": "boolean",
 								"example": "true",
-								"description": "If the deployment has been skipped",
+								"description": "If the deployment has been skipped.",
 								"readOnly": true
 							},
 							"latest_stage": {
@@ -1880,7 +1880,7 @@
 									"name": {
 										"type": "string",
 										"example": "\"deploy\"",
-										"description": "The current build stage",
+										"description": "The current build stage.",
 										"pattern": "queued|initialize|clone_repo|build|deploy"
 									},
 									"started_on": {
@@ -1889,7 +1889,7 @@
 											"null"
 										],
 										"example": "\"2021-03-09T00:55:03.923456Z\"",
-										"description": "When the stage started",
+										"description": "When the stage started.",
 										"format": "date-time",
 										"readOnly": true
 									},
@@ -1899,25 +1899,25 @@
 											"null"
 										],
 										"example": "\"2021-03-09T00:58:59.045655\"",
-										"description": "When the stage ended",
+										"description": "When the stage ended.",
 										"format": "date-time",
 										"readOnly": true
 									},
 									"status": {
 										"type": "string",
 										"example": "\"success\"",
-										"description": "State of the current stage",
+										"description": "State of the current stage.",
 										"pattern": "success|idle|active|failure|canceled",
 										"readOnly": true
 									}
 								},
 								"readOnly": true,
-								"description": "The status of the deployment"
+								"description": "The status of the deployment."
 							},
 							"env_vars": {
 								"type": "object",
 								"example": "{\n  \"BUILD_VERSION\": {\n    \"value\": \"3.3\"\n  },\n  \"ENV\": {\n    \"value\": \"STAGING\"\n  }\n}",
-								"description": "A dict of env variables to build this deploy",
+								"description": "A dict of env variables to build this deploy.",
 								"readOnly": true
 							},
 							"deployment_trigger": {
@@ -1927,7 +1927,7 @@
 									"type": {
 										"type": "string",
 										"example": "\"ad_hoc\"",
-										"description": "What caused the deployment",
+										"description": "What caused the deployment.",
 										"pattern": "push|ad_hoc",
 										"readOnly": true
 									},
@@ -1938,46 +1938,46 @@
 											"branch": {
 												"type": "string",
 												"example": "\"main\"",
-												"description": "Where the trigger happened",
+												"description": "Where the trigger happened.",
 												"readOnly": true
 											},
 											"commit_hash": {
 												"type": "string",
 												"example": "\"ad9ccd918a81025731e10e40267e11273a263421\"",
-												"description": "Hash of the deployment trigger commit",
+												"description": "Hash of the deployment trigger commit.",
 												"readOnly": true
 											},
 											"commit_message": {
 												"type": "string",
 												"example": "\"Update index.html\"",
-												"description": "Message of the deployment trigger commit",
+												"description": "Message of the deployment trigger commit.",
 												"readOnly": true
 											}
 										},
-										"description": "Additional info about the trigger"
+										"description": "Additional info about the trigger."
 									}
 								},
-								"description": "Info about what caused the deployment",
+								"description": "Info about what caused the deployment.",
 								"readOnly": true
 							},
 							"stages": {
 								"type": "array",
 								"example": "[\n  {\n    \"name\": \"queued\",\n    \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n    \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n    \"status\": \"active\"\n  },\n  {\n    \"name\": \"initialize\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"clone_repo\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"build\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"deploy\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  }\n]",
 								"readOnly": true,
-								"description": "List of past stages",
+								"description": "List of past stages.",
 								"items": {
-									"description": "The status of the deployment",
+									"description": "The status of the deployment.",
 									"type": "object",
 									"readOnly": true,
 									"properties": {
 										"name": {
-											"description": "The current build stage",
+											"description": "The current build stage.",
 											"type": "string",
 											"pattern": "queued|initialize|clone_repo|build|deploy",
 											"example": "deploy"
 										},
 										"started_on": {
-											"description": "When the stage started",
+											"description": "When the stage started.",
 											"format": "date-time",
 											"type": [
 												"string",
@@ -1987,7 +1987,7 @@
 											"example": "2021-03-09T00:55:03.923456Z"
 										},
 										"ended_on": {
-											"description": "When the stage ended",
+											"description": "When the stage ended.",
 											"format": "date-time",
 											"type": [
 												"string",
@@ -1997,7 +1997,7 @@
 											"example": "2021-03-09T00:58:59.045655"
 										},
 										"status": {
-											"description": "State of the current stage",
+											"description": "State of the current stage.",
 											"type": "string",
 											"pattern": "success|idle|active|failure|canceled",
 											"readOnly": true,
@@ -2016,7 +2016,7 @@
 											"null"
 										],
 										"example": "\"npm run build\"",
-										"description": "Command used to build project"
+										"description": "Command used to build project."
 									},
 									"destination_dir": {
 										"type": [
@@ -2024,7 +2024,7 @@
 											"null"
 										],
 										"example": "\"build\"",
-										"description": "Output directory of the build"
+										"description": "Output directory of the build."
 									},
 									"root_dir": {
 										"type": [
@@ -2032,7 +2032,7 @@
 											"null"
 										],
 										"example": "\"/\"",
-										"description": "Directory to run the command"
+										"description": "Directory to run the command."
 									},
 									"web_analytics_tag": {
 										"type": [
@@ -2040,7 +2040,7 @@
 											"null"
 										],
 										"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-										"description": "The classifying tag for analytics"
+										"description": "The classifying tag for analytics."
 									},
 									"web_analytics_token": {
 										"type": [
@@ -2048,11 +2048,11 @@
 											"null"
 										],
 										"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-										"description": "The auth token for analytics"
+										"description": "The auth token for analytics."
 									}
 								},
 								"readOnly": true,
-								"description": "Configs for the project build process"
+								"description": "Configs for the project build process."
 							},
 							"source": {
 								"type": "object",
@@ -2061,7 +2061,7 @@
 									"type": {
 										"type": "string",
 										"example": "\"github\"",
-										"description": "Project host type",
+										"description": "Project host type.",
 										"readOnly": true
 									},
 									"config": {
@@ -2071,33 +2071,33 @@
 											"owner": {
 												"type": "string",
 												"example": "\"cloudflare\"",
-												"description": "Project owner username",
+												"description": "Project owner username.",
 												"readOnly": true
 											},
 											"repo_name": {
 												"type": "string",
 												"example": "\"ninjakittens\"",
-												"description": "Project repository name"
+												"description": "Project repository name."
 											},
 											"production_branch": {
 												"type": "string",
 												"example": "\"main\"",
-												"description": "Project production branch name"
+												"description": "Project production branch name."
 											},
 											"pr_comments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Enable Pages to comment on Pull Requests"
+												"description": "Enable Pages to comment on Pull Requests."
 											},
 											"production_deployments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Toggle production deployments on this repo"
+												"description": "Toggle production deployments on this repo."
 											},
 											"preview_deployment_setting": {
 												"type": "string",
 												"example": "\"custom\"",
-												"description": "Preview deployment setting",
+												"description": "Preview deployment setting.",
 												"enum": [
 													"all",
 													"none",
@@ -2107,18 +2107,18 @@
 											"preview_branch_includes": {
 												"type": "array",
 												"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 											},
 											"preview_branch_excludes": {
 												"type": "array",
 												"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 											}
 										}
 									}
 								},
 								"readOnly": true,
-								"description": "Configs for the project source"
+								"description": "Configs for the project source."
 							}
 						},
 						"required_props": [],
@@ -2143,10 +2143,10 @@
 						"objects": [],
 						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 						"title": "Pages Deployment",
-						"description": "A Pages deployment is a published build for a commit on Pages"
+						"description": "A Pages deployment is a published build for a commit on Pages."
 					}
 				],
-				"description": "Most recent deployment to the repo",
+				"description": "Most recent deployment to the repo.",
 				"readOnly": true
 			},
 			"canonical_deployment": {
@@ -2164,51 +2164,51 @@
 							"id": {
 								"type": "string",
 								"example": "\"f64788e9-fccd-4d4a-a28a-cb84f88f6\"",
-								"description": "Id of the deployment",
+								"description": "Id of the deployment.",
 								"readOnly": true
 							},
 							"short_id": {
 								"type": "string",
 								"example": "\"f64788e9\"",
-								"description": "Short Id (8 character) of the deployment",
+								"description": "Short Id (8 character) of the deployment.",
 								"readOnly": true
 							},
 							"project_id": {
 								"type": "string",
 								"example": "\"7b162ea7-7367-4d67-bcde-1160995d5\"",
-								"description": "Id of the project",
+								"description": "Id of the project.",
 								"readOnly": true
 							},
 							"project_name": {
 								"type": "string",
 								"example": "\"ninjakittens\"",
 								"readOnly": true,
-								"description": "Name of the project"
+								"description": "Name of the project."
 							},
 							"environment": {
 								"type": "string",
 								"example": "\"preview\"",
-								"description": "Type of deploy",
+								"description": "Type of deploy.",
 								"readOnly": true,
 								"pattern": "preview|production"
 							},
 							"url": {
 								"type": "string",
 								"example": "\"https://f64788e9.ninjakittens.pages.dev\"",
-								"description": "The live URL to view this deployment",
+								"description": "The live URL to view this deployment.",
 								"readOnly": true
 							},
 							"created_on": {
 								"type": "string",
 								"example": "\"2021-03-09T00:55:03.923456Z\"",
-								"description": "When the deployment was created",
+								"description": "When the deployment was created.",
 								"format": "date-time",
 								"readOnly": true
 							},
 							"modified_on": {
 								"type": "string",
 								"example": "\"2021-03-09T00:58:59.045655\"",
-								"description": "When the deployment was last modified",
+								"description": "When the deployment was last modified.",
 								"format": "date-time",
 								"readOnly": true
 							},
@@ -2218,13 +2218,13 @@
 									"null"
 								],
 								"example": "[\n  \"https://branchname.projectname.pages.dev\"\n]",
-								"description": "A list of alias URLs pointing to this deployment",
+								"description": "A list of alias URLs pointing to this deployment.",
 								"readOnly": true
 							},
 							"is_skipped": {
 								"type": "boolean",
 								"example": "true",
-								"description": "If the deployment has been skipped",
+								"description": "If the deployment has been skipped.",
 								"readOnly": true
 							},
 							"latest_stage": {
@@ -2234,7 +2234,7 @@
 									"name": {
 										"type": "string",
 										"example": "\"deploy\"",
-										"description": "The current build stage",
+										"description": "The current build stage.",
 										"pattern": "queued|initialize|clone_repo|build|deploy"
 									},
 									"started_on": {
@@ -2243,7 +2243,7 @@
 											"null"
 										],
 										"example": "\"2021-03-09T00:55:03.923456Z\"",
-										"description": "When the stage started",
+										"description": "When the stage started.",
 										"format": "date-time",
 										"readOnly": true
 									},
@@ -2253,25 +2253,25 @@
 											"null"
 										],
 										"example": "\"2021-03-09T00:58:59.045655\"",
-										"description": "When the stage ended",
+										"description": "When the stage ended.",
 										"format": "date-time",
 										"readOnly": true
 									},
 									"status": {
 										"type": "string",
 										"example": "\"success\"",
-										"description": "State of the current stage",
+										"description": "State of the current stage.",
 										"pattern": "success|idle|active|failure|canceled",
 										"readOnly": true
 									}
 								},
 								"readOnly": true,
-								"description": "The status of the deployment"
+								"description": "The status of the deployment."
 							},
 							"env_vars": {
 								"type": "object",
 								"example": "{\n  \"BUILD_VERSION\": {\n    \"value\": \"3.3\"\n  },\n  \"ENV\": {\n    \"value\": \"STAGING\"\n  }\n}",
-								"description": "A dict of env variables to build this deploy",
+								"description": "A dict of env variables to build this deploy.",
 								"readOnly": true
 							},
 							"deployment_trigger": {
@@ -2281,7 +2281,7 @@
 									"type": {
 										"type": "string",
 										"example": "\"ad_hoc\"",
-										"description": "What caused the deployment",
+										"description": "What caused the deployment.",
 										"pattern": "push|ad_hoc",
 										"readOnly": true
 									},
@@ -2292,46 +2292,46 @@
 											"branch": {
 												"type": "string",
 												"example": "\"main\"",
-												"description": "Where the trigger happened",
+												"description": "Where the trigger happened.",
 												"readOnly": true
 											},
 											"commit_hash": {
 												"type": "string",
 												"example": "\"ad9ccd918a81025731e10e40267e11273a263421\"",
-												"description": "Hash of the deployment trigger commit",
+												"description": "Hash of the deployment trigger commit.",
 												"readOnly": true
 											},
 											"commit_message": {
 												"type": "string",
 												"example": "\"Update index.html\"",
-												"description": "Message of the deployment trigger commit",
+												"description": "Message of the deployment trigger commit.",
 												"readOnly": true
 											}
 										},
-										"description": "Additional info about the trigger"
+										"description": "Additional info about the trigger."
 									}
 								},
-								"description": "Info about what caused the deployment",
+								"description": "Info about what caused the deployment.",
 								"readOnly": true
 							},
 							"stages": {
 								"type": "array",
 								"example": "[\n  {\n    \"name\": \"queued\",\n    \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n    \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n    \"status\": \"active\"\n  },\n  {\n    \"name\": \"initialize\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"clone_repo\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"build\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  },\n  {\n    \"name\": \"deploy\",\n    \"started_on\": null,\n    \"ended_on\": null,\n    \"status\": \"idle\"\n  }\n]",
 								"readOnly": true,
-								"description": "List of past stages",
+								"description": "List of past stages.",
 								"items": {
-									"description": "The status of the deployment",
+									"description": "The status of the deployment.",
 									"type": "object",
 									"readOnly": true,
 									"properties": {
 										"name": {
-											"description": "The current build stage",
+											"description": "The current build stage.",
 											"type": "string",
 											"pattern": "queued|initialize|clone_repo|build|deploy",
 											"example": "deploy"
 										},
 										"started_on": {
-											"description": "When the stage started",
+											"description": "When the stage started.",
 											"format": "date-time",
 											"type": [
 												"string",
@@ -2341,7 +2341,7 @@
 											"example": "2021-03-09T00:55:03.923456Z"
 										},
 										"ended_on": {
-											"description": "When the stage ended",
+											"description": "When the stage ended.",
 											"format": "date-time",
 											"type": [
 												"string",
@@ -2351,7 +2351,7 @@
 											"example": "2021-03-09T00:58:59.045655"
 										},
 										"status": {
-											"description": "State of the current stage",
+											"description": "State of the current stage.",
 											"type": "string",
 											"pattern": "success|idle|active|failure|canceled",
 											"readOnly": true,
@@ -2370,7 +2370,7 @@
 											"null"
 										],
 										"example": "\"npm run build\"",
-										"description": "Command used to build project"
+										"description": "Command used to build project."
 									},
 									"destination_dir": {
 										"type": [
@@ -2378,7 +2378,7 @@
 											"null"
 										],
 										"example": "\"build\"",
-										"description": "Output directory of the build"
+										"description": "Output directory of the build."
 									},
 									"root_dir": {
 										"type": [
@@ -2386,7 +2386,7 @@
 											"null"
 										],
 										"example": "\"/\"",
-										"description": "Directory to run the command"
+										"description": "Directory to run the command."
 									},
 									"web_analytics_tag": {
 										"type": [
@@ -2394,7 +2394,7 @@
 											"null"
 										],
 										"example": "\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\"",
-										"description": "The classifying tag for analytics"
+										"description": "The classifying tag for analytics."
 									},
 									"web_analytics_token": {
 										"type": [
@@ -2402,11 +2402,11 @@
 											"null"
 										],
 										"example": "\"021e1057c18547eca7b79f2516f06o7x\"",
-										"description": "The auth token for analytics"
+										"description": "The auth token for analytics."
 									}
 								},
 								"readOnly": true,
-								"description": "Configs for the project build process"
+								"description": "Configs for the project build process."
 							},
 							"source": {
 								"type": "object",
@@ -2415,7 +2415,7 @@
 									"type": {
 										"type": "string",
 										"example": "\"github\"",
-										"description": "Project host type",
+										"description": "Project host type.",
 										"readOnly": true
 									},
 									"config": {
@@ -2425,33 +2425,33 @@
 											"owner": {
 												"type": "string",
 												"example": "\"cloudflare\"",
-												"description": "Project owner username",
+												"description": "Project owner username.",
 												"readOnly": true
 											},
 											"repo_name": {
 												"type": "string",
 												"example": "\"ninjakittens\"",
-												"description": "Project repository name"
+												"description": "Project repository name."
 											},
 											"production_branch": {
 												"type": "string",
 												"example": "\"main\"",
-												"description": "Project production branch name"
+												"description": "Project production branch name."
 											},
 											"pr_comments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Enable Pages to comment on Pull Requests"
+												"description": "Enable Pages to comment on Pull Requests."
 											},
 											"production_deployments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Toggle production deployments on this repo"
+												"description": "Toggle production deployments on this repo."
 											},
 											"preview_deployment_setting": {
 												"type": "string",
 												"example": "\"custom\"",
-												"description": "Preview deployment setting",
+												"description": "Preview deployment setting.",
 												"enum": [
 													"all",
 													"none",
@@ -2461,18 +2461,18 @@
 											"preview_branch_includes": {
 												"type": "array",
 												"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
-												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 											},
 											"preview_branch_excludes": {
 												"type": "array",
 												"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
-												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard."
 											}
 										}
 									}
 								},
 								"readOnly": true,
-								"description": "Configs for the project source"
+								"description": "Configs for the project source."
 							}
 						},
 						"required_props": [],
@@ -2497,16 +2497,16 @@
 						"objects": [],
 						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 						"title": "Pages Deployment",
-						"description": "A Pages deployment is a published build for a commit on Pages"
+						"description": "A Pages deployment is a published build for a commit on Pages."
 					}
 				],
-				"description": "Most recent deployment to the repo",
+				"description": "Most recent deployment to the repo.",
 				"readOnly": true
 			},
 			"production_branch": {
 				"type": "string",
 				"example": "\"main\"",
-				"description": "Production branch of the project. Used to identify production deployments",
+				"description": "Production branch of the project. Used to identify production deployments.",
 				"readOnly": false
 			}
 		},

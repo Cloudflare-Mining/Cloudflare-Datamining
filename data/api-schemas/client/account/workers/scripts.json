@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/scripts.json",
 	"title": "Worker Script",
-	"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge",
+	"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge.",
 	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
 	"type": "object",
 	"links": [
@@ -20,12 +20,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -77,12 +77,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -123,7 +123,7 @@
 						"media": {
 							"type": "application/json"
 						},
-						"description": "Worker script"
+						"description": "Worker script."
 					},
 					"\"second-file.js\"": {
 						"type": "string",
@@ -131,7 +131,7 @@
 						"media": {
 							"type": "application/json"
 						},
-						"description": "Worker script"
+						"description": "Worker script."
 					}
 				},
 				"required_props": [],
@@ -159,12 +159,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -198,12 +198,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -245,12 +245,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -281,12 +281,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -329,12 +329,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -379,7 +379,7 @@
 				"type": "string",
 				"example": "\"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\"",
 				"readOnly": true,
-				"description": "Raw script content, as a string",
+				"description": "Raw script content, as a string.",
 				"media": {
 					"type": "application/javascript"
 				}
@@ -388,12 +388,12 @@
 				"type": "string",
 				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
 				"readOnly": true,
-				"description": "Hashed script content, can be used in a If-None-Match header when updating"
+				"description": "Hashed script content, can be used in a If-None-Match header when updating."
 			},
 			"size": {
 				"type": "number",
 				"example": "1024",
-				"description": "Size of the script, in bytes",
+				"description": "Size of the script, in bytes.",
 				"readOnly": true
 			},
 			"usage_model": {
@@ -406,7 +406,7 @@
 				"type": "string",
 				"example": "\"2017-01-01T00:00:00Z\"",
 				"readOnly": true,
-				"description": "When the script was last modified",
+				"description": "When the script was last modified.",
 				"format": "date-time"
 			}
 		},
@@ -421,6 +421,6 @@
 		"objects": [],
 		"example": "{\n  \"script\": \"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\",\n  \"etag\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"size\": 1024,\n  \"usage_model\": \"unbound\",\n  \"modified_on\": \"2017-01-01T00:00:00Z\"\n}",
 		"title": "Worker Script",
-		"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge"
+		"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge."
 	}
 }

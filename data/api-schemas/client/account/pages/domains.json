@@ -7,7 +7,7 @@
 	"links": [
 		{
 			"title": "Get domains",
-			"description": "Fetch a list of all domains",
+			"description": "Fetch a list of all domains.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains",
 			"method": "GET",
@@ -19,12 +19,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -40,7 +40,7 @@
 		},
 		{
 			"title": "Add domain",
-			"description": "Add a new domain for the Pages project",
+			"description": "Add a new domain for the Pages project.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains",
 			"method": "POST",
@@ -52,12 +52,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -84,7 +84,7 @@
 		},
 		{
 			"title": "Get domain",
-			"description": "Fetch a single domain",
+			"description": "Fetch a single domain.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains/{#/definitions/domain_name}",
 			"method": "GET",
@@ -96,12 +96,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -117,7 +117,7 @@
 		},
 		{
 			"title": "Patch domain",
-			"description": "Retry the validation status of a single domain",
+			"description": "Retry the validation status of a single domain.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains/{#/definitions/domain_name}",
 			"method": "PATCH",
@@ -129,12 +129,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -150,7 +150,7 @@
 		},
 		{
 			"title": "Delete domain",
-			"description": "Delete a domain",
+			"description": "Delete a domain.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains/{#/definitions/domain_name}",
 			"method": "DELETE",
@@ -162,12 +162,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -230,19 +230,19 @@
 			"id": {
 				"type": "string",
 				"example": "\"8232210c-6818-4e34-8d95-cc386874b8d2\"",
-				"description": "Id of the domain",
+				"description": "Id of the domain.",
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"example.com\"",
-				"description": "Custom domain",
+				"description": "Custom domain.",
 				"readOnly": true
 			},
 			"status": {
 				"type": "string",
 				"example": "\"pending\"",
-				"description": "Status of the custom domain",
+				"description": "Status of the custom domain.",
 				"readOnly": true
 			},
 			"verification_data": {
@@ -252,7 +252,7 @@
 					"status": {
 						"type": "string",
 						"example": "\"active\"",
-						"description": "Status of the stage",
+						"description": "Status of the stage.",
 						"readOnly": true
 					}
 				},
@@ -266,13 +266,13 @@
 					"status": {
 						"type": "string",
 						"example": "\"active\"",
-						"description": "Status of the stage",
+						"description": "Status of the stage.",
 						"readOnly": true
 					},
 					"method": {
 						"type": "string",
 						"example": "\"http\"",
-						"description": "Method of validation",
+						"description": "Method of validation.",
 						"readOnly": true
 					}
 				},
@@ -282,14 +282,14 @@
 			"zone_tag": {
 				"type": "string",
 				"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
-				"description": "Zone identifier tag",
+				"description": "Zone identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2017-01-01T00:00:00Z\"",
-				"description": "When the domain was added",
+				"description": "When the domain was added.",
 				"format": "date-time",
 				"readOnly": true
 			}

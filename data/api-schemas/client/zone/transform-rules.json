@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/transform-rules.json",
 	"title": "Transform Rules",
-	"description": "Transform Rules",
+	"description": "Transform Rules.",
 	"cfExtendedDescription": "",
 	"type": "object",
 	"links": [
@@ -297,6 +297,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_request_transform\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"rewrite\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"change request based on ip location\",\n      \"action_parameters\": {\n        \"uri\": {\n          \"path\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          },\n          \"query\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          }\n        }\n      }\n    }\n  ]\n}",
 		"title": "Transform Rules",
-		"description": "Transform Rules"
+		"description": "Transform Rules."
 	}
 }

@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/device-posture-integrations.json",
 	"title": "Device Posture Integrations",
-	"description": "Device posture integrations allow third party APIs to act as device posture providers",
+	"description": "Device posture integrations allow third party APIs to act as device posture providers.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Device Posture Integrations",
-			"description": "List Device Posture Integrations for an account",
+			"description": "List Device Posture Integrations for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/integration",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Device Posture Integration Details",
-			"description": "Fetch a single Device Posture Integration",
+			"description": "Fetch a single Device Posture Integration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
 			"method": "GET",
@@ -30,7 +30,7 @@
 		},
 		{
 			"title": "Create Device Posture Integration",
-			"description": "Create a new Device Posture Integration",
+			"description": "Create a new Device Posture Integration.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/integration",
 			"method": "POST",
@@ -62,7 +62,7 @@
 					"interval": {
 						"type": "string",
 						"example": "\"10m\"",
-						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")."
 					},
 					"config": {
 						"type": "object",
@@ -73,22 +73,22 @@
 									"api_url": {
 										"type": "string",
 										"example": "\"https://as123.awmdm.com/API\"",
-										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard."
 									},
 									"auth_url": {
 										"type": "string",
 										"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
-										"description": "The Workspace One Authorization URL depending on your region"
+										"description": "The Workspace One Authorization URL depending on your region."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard."
 									}
 								},
 								"required_props": [
@@ -106,22 +106,22 @@
 									"api_url": {
 										"type": "string",
 										"example": "\"https://api.us-2.crowdstrike.com\"",
-										"description": "The Crowdstrike API URL"
+										"description": "The Crowdstrike API URL."
 									},
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Crowdstrike customer ID"
+										"description": "The Crowdstrike customer ID."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Crowdstrike client ID"
+										"description": "The Crowdstrike client ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Crowdstrike client secret"
+										"description": "The Crowdstrike client secret."
 									}
 								},
 								"required_props": [
@@ -139,17 +139,17 @@
 									"client_key": {
 										"type": "string",
 										"example": "\"example client key\"",
-										"description": "The Uptycs client secret"
+										"description": "The Uptycs client secret."
 									},
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Uptycs customer ID"
+										"description": "The Uptycs customer ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Uptycs client secret"
+										"description": "The Uptycs client secret."
 									}
 								},
 								"required_props": [
@@ -166,17 +166,17 @@
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Intune customer ID"
+										"description": "The Intune customer ID."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Intune client ID"
+										"description": "The Intune client ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Intune client secret"
+										"description": "The Intune client secret."
 									}
 								},
 								"required_props": [
@@ -189,7 +189,7 @@
 								"example": "{\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
 							}
 						],
-						"description": "The configuration object containing third party integration information"
+						"description": "The configuration object containing third party integration information."
 					}
 				},
 				"required_props": [
@@ -206,7 +206,7 @@
 		},
 		{
 			"title": "Update Device Posture Integration",
-			"description": "Update a Device Posture Integration",
+			"description": "Update a Device Posture Integration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
 			"method": "PATCH",
@@ -238,7 +238,7 @@
 					"interval": {
 						"type": "string",
 						"example": "\"10m\"",
-						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")."
 					},
 					"config": {
 						"type": "object",
@@ -249,22 +249,22 @@
 									"api_url": {
 										"type": "string",
 										"example": "\"https://as123.awmdm.com/API\"",
-										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard."
 									},
 									"auth_url": {
 										"type": "string",
 										"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
-										"description": "The Workspace One Authorization URL depending on your region"
+										"description": "The Workspace One Authorization URL depending on your region."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard"
+										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard."
 									}
 								},
 								"required_props": [
@@ -282,22 +282,22 @@
 									"api_url": {
 										"type": "string",
 										"example": "\"https://api.us-2.crowdstrike.com\"",
-										"description": "The Crowdstrike API URL"
+										"description": "The Crowdstrike API URL."
 									},
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Crowdstrike customer ID"
+										"description": "The Crowdstrike customer ID."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Crowdstrike client ID"
+										"description": "The Crowdstrike client ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Crowdstrike client secret"
+										"description": "The Crowdstrike client secret."
 									}
 								},
 								"required_props": [
@@ -315,17 +315,17 @@
 									"client_key": {
 										"type": "string",
 										"example": "\"example client key\"",
-										"description": "The Uptycs client secret"
+										"description": "The Uptycs client secret."
 									},
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Uptycs customer ID"
+										"description": "The Uptycs customer ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Uptycs client secret"
+										"description": "The Uptycs client secret."
 									}
 								},
 								"required_props": [
@@ -342,17 +342,17 @@
 									"customer_id": {
 										"type": "string",
 										"example": "\"example customer id\"",
-										"description": "The Intune customer ID"
+										"description": "The Intune customer ID."
 									},
 									"client_id": {
 										"type": "string",
 										"example": "\"example client id\"",
-										"description": "The Intune client ID"
+										"description": "The Intune client ID."
 									},
 									"client_secret": {
 										"type": "string",
 										"example": "\"example client secret\"",
-										"description": "The Intune client secret"
+										"description": "The Intune client secret."
 									}
 								},
 								"required_props": [
@@ -365,7 +365,7 @@
 								"example": "{\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
 							}
 						],
-						"description": "The configuration object containing third party integration information"
+						"description": "The configuration object containing third party integration information."
 					}
 				},
 				"required_props": [],
@@ -382,7 +382,7 @@
 		},
 		{
 			"title": "Delete Device Posture Integration",
-			"description": "Delete a Device Posture Integration",
+			"description": "Delete a Device Posture Integration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
 			"method": "DELETE",
@@ -403,7 +403,7 @@
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"type": {
 				"type": "string",
@@ -424,7 +424,7 @@
 			"interval": {
 				"type": "string",
 				"example": "\"10m\"",
-				"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+				"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")."
 			},
 			"config": {
 				"type": "object",
@@ -435,17 +435,17 @@
 							"api_url": {
 								"type": "string",
 								"example": "\"https://as123.awmdm.com/API\"",
-								"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+								"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard."
 							},
 							"auth_url": {
 								"type": "string",
 								"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
-								"description": "The Workspace One Authorization URL depending on your region"
+								"description": "The Workspace One Authorization URL depending on your region."
 							},
 							"client_id": {
 								"type": "string",
 								"example": "\"example client id\"",
-								"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+								"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard."
 							}
 						},
 						"required_props": [
@@ -456,10 +456,10 @@
 						"optional_props": [],
 						"objects": [],
 						"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\"\n}",
-						"description": "The Workspace One Config Response"
+						"description": "The Workspace One Config Response."
 					}
 				],
-				"description": "The configuration object containing third party integration information"
+				"description": "The configuration object containing third party integration information."
 			}
 		},
 		"required_props": [],
@@ -473,6 +473,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"type\": \"workspace_one\",\n  \"name\": \"My Workspace One Integration\",\n  \"interval\": \"10m\",\n  \"config\": {\n    \"api_url\": \"https://as123.awmdm.com/API\",\n    \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n    \"client_id\": \"example client id\"\n  }\n}",
 		"title": "Device Posture Integrations",
-		"description": "Device posture integrations allow third party APIs to act as device posture providers"
+		"description": "Device posture integrations allow third party APIs to act as device posture providers."
 	}
 }

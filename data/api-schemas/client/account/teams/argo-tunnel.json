@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/argo-tunnel.json",
 	"title": "Argo Tunnel",
-	"description": "A tunnel that can route traffic to a user origin",
+	"description": "A tunnel that can route traffic to a user origin.",
 	"cfExtendedDescription": "Please use equivalent Cloudflare Tunnels API endpoints.",
 	"cfDeprecations": {
 		"argo_tunnel_deprecation": {
@@ -15,7 +15,7 @@
 	"links": [
 		{
 			"title": "List Argo Tunnels",
-			"description": "List, search and filter an account's Argo Tunnels",
+			"description": "List, search and filter an account's Argo Tunnels.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/tunnels",
 			"method": "GET",
@@ -37,12 +37,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"blog\"",
-						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 					},
 					"uuid": {
 						"type": "string",
 						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-						"description": "UUID of the tunnel",
+						"description": "UUID of the tunnel.",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
 						"maxLength": 36
@@ -50,13 +50,13 @@
 					"is_deleted": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If not provided, all tunnels will be included"
+						"description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If not provided, all tunnels will be included."
 					},
 					"existed_at": {
 						"type": "string",
 						"example": "\"2019-10-12T07:20:50.52Z\"",
 						"format": "date-time",
-						"description": "If provided, include only tunnels that were created before this time and not deleted at this time"
+						"description": "If provided, include only tunnels that were created before this time and not deleted at this time."
 					}
 				},
 				"required_props": [],
@@ -73,7 +73,7 @@
 		},
 		{
 			"title": "Create Argo Tunnel",
-			"description": "Create an Argo Tunnel in an account",
+			"description": "Create an Argo Tunnel in an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/tunnels",
 			"method": "POST",
@@ -95,12 +95,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"blog\"",
-						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+						"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 					},
 					"tunnel_secret": {
 						"type": "string",
 						"example": "\"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"",
-						"description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password"
+						"description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password."
 					}
 				},
 				"required_props": [
@@ -115,7 +115,7 @@
 		},
 		{
 			"title": "Get Argo Tunnel",
-			"description": "Get the details of an Argo Tunnel from an account",
+			"description": "Get the details of an Argo Tunnel from an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/tunnels/{#/definitions/tunnel_id}",
 			"method": "GET",
@@ -143,7 +143,7 @@
 		},
 		{
 			"title": "Delete Argo Tunnel",
-			"description": "Delete an Argo Tunnel from an account",
+			"description": "Delete an Argo Tunnel from an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/tunnels/{#/definitions/tunnel_id}",
 			"method": "DELETE",
@@ -171,7 +171,7 @@
 		},
 		{
 			"title": "Clean Up Argo Tunnel Connections",
-			"description": "Remove stale connection resources from an Argo Tunnel",
+			"description": "Remove stale connection resources from an Argo Tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/tunnels/{#/definitions/tunnel_id}/connections",
 			"method": "DELETE",
@@ -207,7 +207,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the tunnel",
+				"description": "UUID of the tunnel.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36
@@ -215,12 +215,12 @@
 			"name": {
 				"type": "string",
 				"example": "\"blog\"",
-				"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty"
+				"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "Timestamps when the tunnel was created, formatted in RFC 3339",
+				"description": "Timestamps when the tunnel was created, formatted in RFC 3339.",
 				"format": "date-time"
 			},
 			"deleted_at": {
@@ -229,17 +229,17 @@
 					"null"
 				],
 				"example": "\"2009-11-10T23:00:00Z\"",
-				"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
+				"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted.",
 				"format": "date-time"
 			},
 			"connections": {
 				"type": "array",
 				"example": "[\n  {\n    \"colo_name\": \"DFW\",\n    \"uuid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"is_pending_reconnect\": false\n  }\n]",
-				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
+				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
 				"items": {
 					"properties": {
 						"colo_name": {
-							"description": "Short ID for the colo this connection is connected to",
+							"description": "Short ID for the colo this connection is connected to.",
 							"type": "string",
 							"example": "DFW"
 						},
@@ -249,11 +249,11 @@
 							"readOnly": true,
 							"type": "string",
 							"maxLength": 36,
-							"description": "API uuid tag",
+							"description": "API uuid tag.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 						},
 						"is_pending_reconnect": {
-							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
+							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
 							"type": "boolean",
 							"example": false
 						}
@@ -273,6 +273,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"blog\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2009-11-10T23:00:00Z\",\n  \"connections\": [\n    {\n      \"colo_name\": \"DFW\",\n      \"uuid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"is_pending_reconnect\": false\n    }\n  ]\n}",
 		"title": "Argo Tunnel",
-		"description": "A tunnel that can route traffic to a user origin"
+		"description": "A tunnel that can route traffic to a user origin."
 	}
 }

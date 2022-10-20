@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/identity-providers.json",
 	"title": "Zone-Level Access identity providers",
-	"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.).",
 	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/",
 	"type": "object",
 	"links": [
@@ -141,7 +141,7 @@
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"name": {
 				"type": "string",
@@ -170,6 +170,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"Widget Corps OTP\",\n  \"type\": \"onetimepin\",\n  \"config\": {}\n}",
 		"title": "Zone-Level Access identity providers",
-		"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
+		"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)."
 	}
 }

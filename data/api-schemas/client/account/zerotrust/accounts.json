@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Create Zero Trust account",
-			"description": "Create Zero Trust account with existing cloudflare account",
+			"description": "Create Zero Trust account with existing cloudflare account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway",
 			"method": "POST",
@@ -23,7 +23,7 @@
 						"type": "string",
 						"example": "\"699d98642c564d2e855e9661899b7252\"",
 						"maxLength": 32,
-						"description": "Cloudflare account tag"
+						"description": "Cloudflare account tag."
 					}
 				},
 				"required_props": [
@@ -37,7 +37,7 @@
 		},
 		{
 			"title": "Get Zero Trust account information",
-			"description": "Get Zero Trust account information",
+			"description": "Get Zero Trust account information.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway",
 			"method": "GET",
@@ -49,7 +49,7 @@
 		},
 		{
 			"title": "Update Zero Trust account configuration",
-			"description": "Updates the current Zero Trust account configuration",
+			"description": "Updates the current Zero Trust account configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/configuration",
 			"method": "PUT",
@@ -73,20 +73,20 @@
 									"enabled_download_phase": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Set to enable antivirus scan on downloads"
+										"description": "Set to enable antivirus scan on downloads."
 									},
 									"enabled_upload_phase": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Set to enable antivirus scan on uploads"
+										"description": "Set to enable antivirus scan on uploads."
 									},
 									"fail_closed": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Block requests for files that cannot be scanned"
+										"description": "Block requests for files that cannot be scanned."
 									}
 								},
-								"description": "Anti virus settings"
+								"description": "Anti virus settings."
 							},
 							"tls_decrypt": {
 								"type": "object",
@@ -95,10 +95,10 @@
 									"enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable inspecting encrypted HTTP traffic"
+										"description": "Enable inspecting encrypted HTTP traffic."
 									}
 								},
-								"description": "TLS interception settings"
+								"description": "TLS interception settings."
 							},
 							"activity_log": {
 								"type": "object",
@@ -107,10 +107,10 @@
 									"enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable activity logging"
+										"description": "Enable activity logging."
 									}
 								},
-								"description": "Activity log settings"
+								"description": "Activity log settings."
 							},
 							"block_page": {
 								"type": "object",
@@ -119,50 +119,50 @@
 									"enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2"
+										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2."
 									},
 									"name": {
 										"type": "string",
 										"example": "\"Cloudflare\"",
-										"description": "Block page title"
+										"description": "Block page title."
 									},
 									"footer_text": {
 										"type": "string",
 										"example": "\"--footer--\"",
-										"description": "Block page footer text"
+										"description": "Block page footer text."
 									},
 									"header_text": {
 										"type": "string",
 										"example": "\"--header--\"",
-										"description": "Block page header text"
+										"description": "Block page header text."
 									},
 									"mailto_address": {
 										"type": "string",
 										"example": "\"admin@example.com\"",
-										"description": "Admin email for users to contact"
+										"description": "Admin email for users to contact."
 									},
 									"mailto_subject": {
 										"type": "string",
 										"example": "\"Blocked User Inquiry\"",
-										"description": "Subject line for emails created from block page"
+										"description": "Subject line for emails created from block page."
 									},
 									"logo_path": {
 										"type": "string",
 										"example": "\"https://logos.com/a.png\"",
-										"description": "Full URL to the logo file"
+										"description": "Full URL to the logo file."
 									},
 									"background_color": {
 										"type": "string",
 										"example": "true",
-										"description": "Block page background color in #rrggbb format"
+										"description": "Block page background color in #rrggbb format."
 									},
 									"suppress_footer": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Suppress detailed info at the bottom of the block page"
+										"description": "Suppress detailed info at the bottom of the block page."
 									}
 								},
-								"description": "Block page layout settings"
+								"description": "Block page layout settings."
 							},
 							"browser_isolation": {
 								"type": "object",
@@ -171,10 +171,10 @@
 									"url_browser_isolation_enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable Browser Isolation"
+										"description": "Enable Browser Isolation."
 									}
 								},
-								"description": "Browser isolation settings"
+								"description": "Browser isolation settings."
 							},
 							"fips": {
 								"type": "object",
@@ -183,13 +183,13 @@
 									"tls": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2"
+										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2."
 									}
 								},
-								"description": "FIPS settings"
+								"description": "FIPS settings."
 							}
 						},
-						"description": "account settings"
+						"description": "account settings."
 					}
 				},
 				"required_props": [],
@@ -198,13 +198,13 @@
 				],
 				"objects": [],
 				"example": "{\n  \"settings\": {\n    \"antivirus\": {\n      \"enabled_download_phase\": false,\n      \"enabled_upload_phase\": false,\n      \"fail_closed\": false\n    },\n    \"tls_decrypt\": {\n      \"enabled\": true\n    },\n    \"activity_log\": {\n      \"enabled\": true\n    },\n    \"block_page\": {\n      \"enabled\": true,\n      \"name\": \"Cloudflare\",\n      \"footer_text\": \"--footer--\",\n      \"header_text\": \"--header--\",\n      \"mailto_address\": \"admin@example.com\",\n      \"mailto_subject\": \"Blocked User Inquiry\",\n      \"logo_path\": \"https://logos.com/a.png\",\n      \"background_color\": true,\n      \"suppress_footer\": false\n    },\n    \"browser_isolation\": {\n      \"url_browser_isolation_enabled\": true\n    },\n    \"fips\": {\n      \"tls\": true\n    }\n  }\n}",
-				"description": "account settings"
+				"description": "account settings."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true,\n        \"suppress_footer\": false\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Get Zero Trust account configuration",
-			"description": "Describes current Zero Trust account configuration",
+			"description": "Describes current Zero Trust account configuration.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/configuration",
 			"method": "GET",
@@ -216,7 +216,7 @@
 		},
 		{
 			"title": "Update device settings for the Zero Trust account",
-			"description": "Updates the current device settings for Zero Trust account",
+			"description": "Updates the current device settings for Zero Trust account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/settings",
 			"method": "PUT",
@@ -232,12 +232,12 @@
 					"gateway_proxy_enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Enable gateway proxy filtering on TCP"
+						"description": "Enable gateway proxy filtering on TCP."
 					},
 					"gateway_udp_proxy_enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Enable gateway proxy filtering on UDP"
+						"description": "Enable gateway proxy filtering on UDP."
 					}
 				},
 				"required_props": [],
@@ -252,7 +252,7 @@
 		},
 		{
 			"title": "Get device settings for Zero Trust account",
-			"description": "Describes the current device settings Zero Trust account",
+			"description": "Describes the current device settings Zero Trust account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/devices/settings",
 			"method": "GET",
@@ -264,7 +264,7 @@
 		},
 		{
 			"title": "Update logging settings for the Zero Trust account",
-			"description": "Updates the current logging settings for the Zero Trust accounty",
+			"description": "Updates the current logging settings for the Zero Trust accounty.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/logging",
 			"method": "PUT",
@@ -288,15 +288,15 @@
 									"log_all": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Log all requests to this service"
+										"description": "Log all requests to this service."
 									},
 									"log_blocks": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Log only blocking requests to this service"
+										"description": "Log only blocking requests to this service."
 									}
 								},
-								"description": "Logging settings for DNS firewall"
+								"description": "Logging settings for DNS firewall."
 							},
 							"l4": {
 								"type": "object",
@@ -305,15 +305,15 @@
 									"log_all": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Log all requests to this service"
+										"description": "Log all requests to this service."
 									},
 									"log_blocks": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Log only blocking requests to this service"
+										"description": "Log only blocking requests to this service."
 									}
 								},
-								"description": "Logging settings for Network firewall"
+								"description": "Logging settings for Network firewall."
 							},
 							"http": {
 								"type": "object",
@@ -322,23 +322,23 @@
 									"log_all": {
 										"type": "boolean",
 										"example": "false",
-										"description": "Log all requests to this service"
+										"description": "Log all requests to this service."
 									},
 									"log_blocks": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Log only blocking requests to this service"
+										"description": "Log only blocking requests to this service."
 									}
 								},
-								"description": "Logging settings for HTTP/HTTPS firewall"
+								"description": "Logging settings for HTTP/HTTPS firewall."
 							}
 						},
-						"description": "Logging settings by rule type"
+						"description": "Logging settings by rule type."
 					},
 					"redact_pii": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent)"
+						"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent)."
 					}
 				},
 				"required_props": [],
@@ -353,7 +353,7 @@
 		},
 		{
 			"title": "Get logging settings for the Zero Trust account",
-			"description": "Describes the current logging settings for Zero Trust account",
+			"description": "Describes the current logging settings for Zero Trust account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/gateway/logging",
 			"method": "GET",
@@ -374,13 +374,13 @@
 				"type": "string",
 				"example": "\"699d98642c564d2e855e9661899b7252\"",
 				"maxLength": 32,
-				"description": "Cloudflare account tag"
+				"description": "Cloudflare account tag."
 			},
 			"gateway_tag": {
 				"type": "string",
 				"example": "\"f174e90afafe4643bbbc4a0ed4fc8415\"",
 				"maxLength": 32,
-				"description": "Gateway internal id"
+				"description": "Gateway internal id."
 			},
 			"provider_name": {
 				"type": "string",

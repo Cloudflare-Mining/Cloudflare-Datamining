@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/zone-latency.json",
 	"title": "Argo Analytics for Zone",
-	"description": "Argo Smart Routing Analytics for a zone",
+	"description": "Argo Smart Routing Analytics for a zone.",
 	"type": "object",
 	"links": [
 		{
@@ -43,7 +43,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"bins\": 3\n}",
-				"description": "Query parameters"
+				"description": "Query parameters."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"bins\": 3,\n    \"range\": {\n      \"min\": 0,\n      \"max\": 2500\n    },\n    \"time_range\": {\n      \"since\": \"2019-03-04T22:05:00Z\",\n      \"until\": \"2019-03-06T22:05:00Z\"\n    },\n    \"data\": {\n      \"labels\": [\n        \"without_argo\",\n        \"with_argo\"\n      ],\n      \"counts\": [\n        [\n          3306,\n          362,\n          1267\n        ],\n        [\n          30685,\n          11775,\n          42169\n        ]\n      ],\n      \"averages\": [\n        192,\n        120\n      ],\n      \"percent_smart_routed\": 42.5\n    }\n  }\n}"
 		}
@@ -158,6 +158,6 @@
 		"objects": [],
 		"example": "{\n  \"bins\": 3,\n  \"range\": {\n    \"min\": 0,\n    \"max\": 2500\n  },\n  \"time_range\": {\n    \"since\": \"2019-03-04T22:05:00Z\",\n    \"until\": \"2019-03-06T22:05:00Z\"\n  },\n  \"data\": {\n    \"labels\": [\n      \"without_argo\",\n      \"with_argo\"\n    ],\n    \"counts\": [\n      [\n        3306,\n        362,\n        1267\n      ],\n      [\n        30685,\n        11775,\n        42169\n      ]\n    ],\n    \"averages\": [\n      192,\n      120\n    ],\n    \"percent_smart_routed\": 42.5\n  }\n}",
 		"title": "Argo Analytics for Zone",
-		"description": "Argo Smart Routing Analytics for a zone"
+		"description": "Argo Smart Routing Analytics for a zone."
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/loadbalancing/search.json",
 	"title": "Account Load Balancer Search",
-	"description": "Account-level Load Balancer Search",
+	"description": "Account-level Load Balancer Search.",
 	"type": "object",
 	"links": [
 		{
@@ -22,13 +22,13 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Requested page within paginated list of results",
+						"description": "Requested page within paginated list of results.",
 						"minimum": 1
 					},
 					"per_page": {
 						"type": "number",
 						"example": "25",
-						"description": "Maximum number of results requested",
+						"description": "Maximum number of results requested.",
 						"minimum": 1,
 						"maximum": 1000,
 						"default": 25
@@ -36,7 +36,7 @@
 					"query": {
 						"type": "string",
 						"example": "\"primary\"",
-						"description": "Search query term",
+						"description": "Search query term.",
 						"default": ""
 					},
 					"references": {
@@ -83,7 +83,7 @@
 							"example": "17b5962d775c646f3f9725cbc7a53df4",
 							"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "API item identifier tag",
+							"description": "API item identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true
@@ -144,6 +144,6 @@
 		"objects": [],
 		"example": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"resource_name\": \"primary-dc-1\",\n      \"resource_type\": \"pool\",\n      \"references\": [\n        {\n          \"resource_id\": \"699d98642c564d2e855e9661899b7252\",\n          \"resource_name\": \"www.example.com\",\n          \"resource_type\": \"load_balancer\",\n          \"reference_type\": \"referrer\"\n        },\n        {\n          \"resource_id\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n          \"resource_name\": \"Login page monitor\",\n          \"resource_type\": \"monitor\",\n          \"reference_type\": \"referral\"\n        }\n      ]\n    }\n  ]\n}",
 		"title": "Account Load Balancer Search",
-		"description": "Account-level Load Balancer Search"
+		"description": "Account-level Load Balancer Search."
 	}
 }

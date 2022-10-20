@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/ip.json",
 	"title": "IP Intelligence",
-	"description": "IP overview (Beta)",
+	"description": "IP overview (Beta).",
 	"links": [
 		{
 			"title": "Get IP Overview",
@@ -85,7 +85,7 @@
 							"isp",
 							"organization"
 						],
-						"description": "Infrastructure type of this ASN"
+						"description": "Infrastructure type of this ASN."
 					},
 					"country": {
 						"type": "string",
@@ -96,7 +96,7 @@
 						"example": "\"CLOUDFLARENET\""
 					}
 				},
-				"description": "Specifies a reference to the autonomous systems (AS) that the IP address belongs to"
+				"description": "Specifies a reference to the autonomous systems (AS) that the IP address belongs to."
 			},
 			"risk_types": {
 				"type": "array",
@@ -126,6 +126,6 @@
 		"objects": [],
 		"example": "{\n  \"ip\": \"192.0.2.0\",\n  \"belongs_to_ref\": {\n    \"id\": \"autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8\",\n    \"value\": 13335,\n    \"type\": \"hosting_provider\",\n    \"country\": \"US\",\n    \"description\": \"CLOUDFLARENET\"\n  },\n  \"risk_types\": [\n    {\n      \"id\": 131,\n      \"super_category_id\": 21,\n      \"name\": \"Phishing\"\n    }\n  ]\n}",
 		"title": "IP Intelligence",
-		"description": "IP overview (Beta)"
+		"description": "IP overview (Beta)."
 	}
 }

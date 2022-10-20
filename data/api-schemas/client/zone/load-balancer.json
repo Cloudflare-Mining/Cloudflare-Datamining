@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/load-balancer.json",
 	"title": "Load Balancers",
-	"description": "Zone-level Load Balancers",
+	"description": "Zone-level Load Balancers.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Load Balancers",
-			"description": "List configured load balancers",
+			"description": "List configured load balancers.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/load_balancers",
 			"method": "GET",
@@ -34,7 +34,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Load Balancer for www.example.com\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"name": {
 						"type": "string",
@@ -60,7 +60,7 @@
 						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
 						"items": {
 							"type": "string",
-							"description": "A pool ID"
+							"description": "A pool ID."
 						},
 						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
 					},
@@ -242,7 +242,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -383,7 +383,7 @@
 											"type": "array",
 											"items": {
 												"type": "string",
-												"description": "A pool ID"
+												"description": "A pool ID."
 											},
 											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
 											"example": [
@@ -566,7 +566,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Load Balancer for www.example.com\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"name": {
 						"type": "string",
@@ -592,7 +592,7 @@
 						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
 						"items": {
 							"type": "string",
-							"description": "A pool ID"
+							"description": "A pool ID."
 						},
 						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
 					},
@@ -780,7 +780,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -921,7 +921,7 @@
 											"type": "array",
 											"items": {
 												"type": "string",
-												"description": "A pool ID"
+												"description": "A pool ID."
 											},
 											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
 											"example": [
@@ -1093,7 +1093,7 @@
 					"description": {
 						"type": "string",
 						"example": "\"Load Balancer for www.example.com\"",
-						"description": "Object description"
+						"description": "Object description."
 					},
 					"name": {
 						"type": "string",
@@ -1119,7 +1119,7 @@
 						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
 						"items": {
 							"type": "string",
-							"description": "A pool ID"
+							"description": "A pool ID."
 						},
 						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
 					},
@@ -1307,7 +1307,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -1448,7 +1448,7 @@
 											"type": "array",
 											"items": {
 												"type": "string",
-												"description": "A pool ID"
+												"description": "A pool ID."
 											},
 											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
 											"example": [
@@ -1625,7 +1625,7 @@
 				"example": "\"699d98642c564d2e855e9661899b7252\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -1634,7 +1634,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -1643,14 +1643,14 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Load Balancer for www.example.com\"",
-				"description": "Object description"
+				"description": "Object description."
 			},
 			"name": {
 				"type": "string",
@@ -1682,7 +1682,7 @@
 				"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
 				"items": {
 					"type": "string",
-					"description": "A pool ID"
+					"description": "A pool ID."
 				},
 				"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
 			},
@@ -1864,7 +1864,7 @@
 						},
 						"condition": {
 							"type": "string",
-							"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+							"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
 							"example": "http.request.uri.path contains \"/testing\""
 						},
 						"overrides": {
@@ -2005,7 +2005,7 @@
 									"type": "array",
 									"items": {
 										"type": "string",
-										"description": "A pool ID"
+										"description": "A pool ID."
 									},
 									"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
 									"example": [
@@ -2159,6 +2159,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Load Balancer for www.example.com\",\n  \"name\": \"www.example.com\",\n  \"enabled\": true,\n  \"ttl\": 30,\n  \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"default_pools\": [\n    \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"region_pools\": {\n    \"WNAM\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"ENAM\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"country_pools\": {\n    \"US\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"GB\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"pop_pools\": {\n    \"LAX\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"LHR\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\",\n      \"f9138c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"SJC\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"proxied\": true,\n  \"steering_policy\": \"dynamic_latency\",\n  \"session_affinity\": \"cookie\",\n  \"session_affinity_attributes\": {\n    \"samesite\": \"Auto\",\n    \"secure\": \"Auto\",\n    \"drain_duration\": 100,\n    \"zero_downtime_failover\": \"sticky\"\n  },\n  \"session_affinity_ttl\": 5000,\n  \"adaptive_routing\": {\n    \"failover_across_pools\": true\n  },\n  \"location_strategy\": {\n    \"prefer_ecs\": \"always\",\n    \"mode\": \"resolver_ip\"\n  },\n  \"random_steering\": {\n    \"pool_weights\": {\n      \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n      \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n    },\n    \"default_weight\": 0.2\n  },\n  \"rules\": [\n    {\n      \"name\": \"route the path /testing to testing datacenter.\",\n      \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n      \"overrides\": {\n        \"session_affinity\": \"cookie\",\n        \"session_affinity_ttl\": 5000,\n        \"session_affinity_attributes\": {\n          \"samesite\": \"Auto\",\n          \"secure\": \"Auto\",\n          \"drain_duration\": 100,\n          \"zero_downtime_failover\": \"sticky\"\n        },\n        \"adaptive_routing\": {\n          \"failover_across_pools\": true\n        },\n        \"location_strategy\": {\n          \"prefer_ecs\": \"always\",\n          \"mode\": \"resolver_ip\"\n        },\n        \"ttl\": 30,\n        \"steering_policy\": \"dynamic_latency\",\n        \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"default_pools\": [\n          \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"pop_pools\": {\n          \"LAX\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"LHR\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\",\n            \"f9138c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"SJC\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"region_pools\": {\n          \"WNAM\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"ENAM\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"country_pools\": {\n          \"US\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"GB\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"random_steering\": {\n          \"pool_weights\": {\n            \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n            \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n          },\n          \"default_weight\": 0.2\n        }\n      },\n      \"priority\": 55,\n      \"disabled\": false,\n      \"terminates\": false,\n      \"fixed_response\": {\n        \"message_body\": \"Testing Hello\",\n        \"status_code\": 200,\n        \"content_type\": \"application/json\",\n        \"location\": \"www.example.com\"\n      }\n    }\n  ]\n}",
 		"title": "Load Balancers",
-		"description": "Zone-level Load Balancers"
+		"description": "Zone-level Load Balancers."
 	}
 }

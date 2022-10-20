@@ -2,18 +2,18 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-certificate.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Custom SSL for a Zone",
-	"description": "Custom SSL certificate for a zone",
+	"description": "Custom SSL certificate for a zone.",
 	"type": "object",
 	"definitions": {
 		"identifier": {
-			"description": "Custom certificate identifier tag",
+			"description": "Custom certificate identifier tag.",
 			"type": "string",
 			"maxLength": 36,
 			"readOnly": true,
 			"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"
 		},
 		"zone_identifier": {
-			"description": "Zone identifier tag",
+			"description": "Zone identifier tag.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
@@ -23,7 +23,7 @@
 			"type": "array",
 			"items": {
 				"type": "string",
-				"description": "The valid hosts for the certificates",
+				"description": "The valid hosts for the certificates.",
 				"maxLength": 253,
 				"readOnly": true,
 				"example": "example.com"
@@ -32,7 +32,7 @@
 		"issuer": {
 			"type": "string",
 			"readOnly": true,
-			"description": "The certificate authority that issued the certificate",
+			"description": "The certificate authority that issued the certificate.",
 			"example": "GlobalSign"
 		},
 		"status": {
@@ -44,7 +44,7 @@
 				"initializing"
 			],
 			"readOnly": true,
-			"description": "Status of the zone's custom SSL",
+			"description": "Status of the zone's custom SSL.",
 			"example": "active"
 		},
 		"priority": {
@@ -56,38 +56,38 @@
 		"signature": {
 			"type": "string",
 			"readOnly": true,
-			"description": "The type of hash used for the certificate",
+			"description": "The type of hash used for the certificate.",
 			"example": "SHA256WithRSA"
 		},
 		"expires_on": {
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate from the authority expires",
+			"description": "When the certificate from the authority expires.",
 			"example": "2016-01-01T05:20:00Z"
 		},
 		"uploaded_on": {
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate was uploaded to Cloudflare",
+			"description": "When the certificate was uploaded to Cloudflare.",
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"modified_on": {
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate was last modified",
+			"description": "When the certificate was last modified.",
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"private_key": {
 			"type": "string",
-			"description": "The zone's private key",
+			"description": "The zone's private key.",
 			"example": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
 		},
 		"certificate": {
 			"type": "string",
-			"description": "The zone's SSL certificate or certificate and the intermediate(s)",
+			"description": "The zone's SSL certificate or certificate and the intermediate(s).",
 			"example": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n"
 		},
 		"bundle_method": {
@@ -135,13 +135,13 @@
 				{
 					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "Schema for an API response from Cloudflare that contains a single result object",
+					"description": "Schema for an API response from Cloudflare that contains a single result object.",
 					"type": "object",
 					"allOf": [
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Common schema for all Cloudflare v4 API responses",
+							"description": "Common schema for all Cloudflare v4 API responses.",
 							"type": "object",
 							"required": [
 								"success",
@@ -154,7 +154,7 @@
 									"$comment": "This subschema describes successful responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												true
@@ -216,7 +216,7 @@
 									"$comment": "This subschema describes failure responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												false
@@ -334,7 +334,7 @@
 							"type": "object",
 							"properties": {
 								"id": {
-									"description": "Custom certificate identifier tag",
+									"description": "Custom certificate identifier tag.",
 									"type": "string",
 									"maxLength": 36,
 									"readOnly": true,
@@ -351,13 +351,13 @@
 				{
 					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "Schema for an API response from Cloudflare that contains a single result object",
+					"description": "Schema for an API response from Cloudflare that contains a single result object.",
 					"type": "object",
 					"allOf": [
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Common schema for all Cloudflare v4 API responses",
+							"description": "Common schema for all Cloudflare v4 API responses.",
 							"type": "object",
 							"required": [
 								"success",
@@ -370,7 +370,7 @@
 									"$comment": "This subschema describes successful responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												true
@@ -432,7 +432,7 @@
 									"$comment": "This subschema describes failure responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												false
@@ -559,13 +559,13 @@
 				{
 					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+					"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 					"type": "object",
 					"anyOf": [
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Common schema for all Cloudflare v4 API responses",
+							"description": "Common schema for all Cloudflare v4 API responses.",
 							"type": "object",
 							"required": [
 								"success",
@@ -578,7 +578,7 @@
 									"$comment": "This subschema describes successful responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												true
@@ -640,7 +640,7 @@
 									"$comment": "This subschema describes failure responses",
 									"properties": {
 										"success": {
-											"description": "Whether the API call was successful or not",
+											"description": "Whether the API call was successful or not.",
 											"type": "boolean",
 											"enum": [
 												false
@@ -751,22 +751,22 @@
 									"type": "object",
 									"properties": {
 										"page": {
-											"description": "Current page within paginated list of results",
+											"description": "Current page within paginated list of results.",
 											"type": "number",
 											"example": 1
 										},
 										"per_page": {
-											"description": "Number of results per page of results",
+											"description": "Number of results per page of results.",
 											"type": "number",
 											"example": 20
 										},
 										"count": {
-											"description": "Total results returned based on your search parameters",
+											"description": "Total results returned based on your search parameters.",
 											"type": "number",
 											"example": 1
 										},
 										"total_count": {
-											"description": "Total results available without any search parameters",
+											"description": "Total results available without any search parameters.",
 											"type": "number",
 											"example": 2000
 										}
@@ -780,12 +780,12 @@
 							"type": "object",
 							"properties": {
 								"page": {
-									"description": "Requested page within paginated list of results",
+									"description": "Requested page within paginated list of results.",
 									"type": "number",
 									"example": 1
 								},
 								"per_page": {
-									"description": "Maximum number of results requested",
+									"description": "Maximum number of results requested.",
 									"type": "number",
 									"example": 20
 								}
@@ -795,22 +795,22 @@
 							"type": "object",
 							"properties": {
 								"page": {
-									"description": "Current page within paginated list of results",
+									"description": "Current page within paginated list of results.",
 									"type": "number",
 									"example": 1
 								},
 								"per_page": {
-									"description": "Number of results per page of results",
+									"description": "Number of results per page of results.",
 									"type": "number",
 									"example": 20
 								},
 								"count": {
-									"description": "Total results returned based on your search parameters",
+									"description": "Total results returned based on your search parameters.",
 									"type": "number",
 									"example": 1
 								},
 								"total_count": {
-									"description": "Total results available without any search parameters",
+									"description": "Total results available without any search parameters.",
 									"type": "number",
 									"example": 2000
 								}
@@ -846,7 +846,7 @@
 	],
 	"properties": {
 		"id": {
-			"description": "Custom certificate identifier tag",
+			"description": "Custom certificate identifier tag.",
 			"type": "string",
 			"maxLength": 36,
 			"readOnly": true,
@@ -856,7 +856,7 @@
 			"type": "array",
 			"items": {
 				"type": "string",
-				"description": "The valid hosts for the certificates",
+				"description": "The valid hosts for the certificates.",
 				"maxLength": 253,
 				"readOnly": true,
 				"example": "example.com"
@@ -865,13 +865,13 @@
 		"issuer": {
 			"type": "string",
 			"readOnly": true,
-			"description": "The certificate authority that issued the certificate",
+			"description": "The certificate authority that issued the certificate.",
 			"example": "GlobalSign"
 		},
 		"signature": {
 			"type": "string",
 			"readOnly": true,
-			"description": "The type of hash used for the certificate",
+			"description": "The type of hash used for the certificate.",
 			"example": "SHA256WithRSA"
 		},
 		"status": {
@@ -883,7 +883,7 @@
 				"initializing"
 			],
 			"readOnly": true,
-			"description": "Status of the zone's custom SSL",
+			"description": "Status of the zone's custom SSL.",
 			"example": "active"
 		},
 		"bundle_method": {
@@ -917,7 +917,7 @@
 			"example": "(country: US) or (region: EU)"
 		},
 		"zone_id": {
-			"description": "Zone identifier tag",
+			"description": "Zone identifier tag.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
@@ -927,21 +927,21 @@
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate was uploaded to Cloudflare",
+			"description": "When the certificate was uploaded to Cloudflare.",
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"modified_on": {
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate was last modified",
+			"description": "When the certificate was last modified.",
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"expires_on": {
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
-			"description": "When the certificate from the authority expires",
+			"description": "When the certificate from the authority expires.",
 			"example": "2016-01-01T05:20:00Z"
 		},
 		"priority": {
@@ -956,7 +956,7 @@
 			"id": "https://api.cloudflare.com/schemas/v4/client/zone/keyless-certificate.json",
 			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 			"title": "Keyless SSL for a Zone",
-			"description": "A Keyless certificate is an SSL certificate where the SSL private key is not stored on Cloudflare",
+			"description": "A Keyless certificate is an SSL certificate where the SSL private key is not stored on Cloudflare.",
 			"type": "object",
 			"allOf": [
 				{
@@ -974,7 +974,7 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Keyless certificate identifier tag",
+							"description": "Keyless certificate identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -982,7 +982,7 @@
 						},
 						"name": {
 							"type": "string",
-							"description": "The keyless SSL name",
+							"description": "The keyless SSL name.",
 							"maxLength": 180,
 							"readOnly": true,
 							"example": "example.com Keyless SSL"
@@ -990,13 +990,13 @@
 						"host": {
 							"type": "string",
 							"pattern": "hostname_or_ip",
-							"description": "The keyless SSL name",
+							"description": "The keyless SSL name.",
 							"maxLength": 253,
 							"example": "example.com"
 						},
 						"port": {
 							"type": "number",
-							"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+							"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
 							"maxLength": 65535,
 							"default": 24008,
 							"example": 24008
@@ -1007,18 +1007,18 @@
 								"active",
 								"deleted"
 							],
-							"description": "Status of the Keyless SSL",
+							"description": "Status of the Keyless SSL.",
 							"readOnly": true,
 							"example": "active"
 						},
 						"enabled": {
 							"type": "boolean",
-							"description": "Whether or not the Keyless SSL is on or off",
+							"description": "Whether or not the Keyless SSL is on or off.",
 							"readOnly": true,
 							"example": false
 						},
 						"permissions": {
-							"description": "Available permissions for the Keyless SSL for the current user requesting the item",
+							"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
 							"readOnly": true,
 							"type": "array",
 							"example": [
@@ -1031,21 +1031,21 @@
 							"type": "string",
 							"format": "date-time",
 							"example": "2014-01-01T05:20:00Z",
-							"description": "When the Keyless SSL was created"
+							"description": "When the Keyless SSL was created."
 						},
 						"modified_on": {
 							"readOnly": true,
 							"type": "string",
 							"format": "date-time",
 							"example": "2014-01-01T05:20:00Z",
-							"description": "When the Keyless SSL was last modified"
+							"description": "When the Keyless SSL was last modified."
 						}
 					}
 				}
 			],
 			"definitions": {
 				"identifier": {
-					"description": "Keyless certificate identifier tag",
+					"description": "Keyless certificate identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1053,7 +1053,7 @@
 				},
 				"name": {
 					"type": "string",
-					"description": "The keyless SSL name",
+					"description": "The keyless SSL name.",
 					"maxLength": 180,
 					"readOnly": true,
 					"example": "example.com Keyless SSL"
@@ -1061,13 +1061,13 @@
 				"host": {
 					"type": "string",
 					"pattern": "hostname_or_ip",
-					"description": "The keyless SSL name",
+					"description": "The keyless SSL name.",
 					"maxLength": 253,
 					"example": "example.com"
 				},
 				"port": {
 					"type": "number",
-					"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+					"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
 					"maxLength": 65535,
 					"default": 24008,
 					"example": 24008
@@ -1078,19 +1078,19 @@
 						"active",
 						"deleted"
 					],
-					"description": "Status of the Keyless SSL",
+					"description": "Status of the Keyless SSL.",
 					"readOnly": true,
 					"example": "active"
 				},
 				"enabled": {
 					"type": "boolean",
-					"description": "Whether or not the Keyless SSL is on or off",
+					"description": "Whether or not the Keyless SSL is on or off.",
 					"readOnly": true,
 					"example": false
 				},
 				"certificate": {
 					"type": "string",
-					"description": "The zone's SSL certificate or SSL certificate and intermediate(s)",
+					"description": "The zone's SSL certificate or SSL certificate and intermediate(s).",
 					"example": "-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV BAYTAlVTMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX aWRnaXRzIFB0eSBMdGQwHhcNMTQwMzExMTkyMTU5WhcNMTQwNDEwMTkyMTU5WjBF MQswCQYDVQQGEwJVUzETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50 ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAvq3sKsHpeduJHimOK+fvQdKsI8z8A05MZyyLp2/R/GE8FjNv+hkVY1WQ LIyTNNQH7CJecE1nbTfo8Y56S7x/rhxC6/DJ8MIulapFPnorq46KU6yRxiM0MQ3N nTJHlHA2ozZta6YBBfVfhHWl1F0IfNbXCLKvGwWWMbCx43OfW6KTkbRnE6gFWKuO fSO5h2u5TaWVuSIzBvYs7Vza6m+gtYAvKAJV2nSZ+eSEFPDo29corOy8+huEOUL8 5FAw4BFPsr1TlrlGPFitduQUHGrSL7skk1ESGza0to3bOtrodKei2s9bk5MXm7lZ qI+WZJX4Zu9+mzZhc9pCVi8r/qlXuQIDAQABo4GnMIGkMB0GA1UdDgQWBBRvavf+ sWM4IwKiH9X9w1vl6nUVRDB1BgNVHSMEbjBsgBRvavf+sWM4IwKiH9X9w1vl6nUV RKFJpEcwRTELMAkGA1UEBhMCVVMxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAM15n7fdxhRtMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQEFBQADggEBABY2ZzBaW0dMsAAT7tPJzrVWVzQx6KU4 UEBLudIlWPlkAwTnINCWR/8eNjCCmGA4heUdHmazdpPa8RzwOmc0NT1NQqzSyktt vTqb4iHD7+8f9MqJ9/FssCfTtqr/Qst/hGH4Wmdf1EJ/6FqYAAb5iRlPgshFZxU8 uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8 /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----"
 				},
 				"bundle_method": {
@@ -1119,7 +1119,7 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Keyless certificate identifier tag",
+							"description": "Keyless certificate identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -1127,7 +1127,7 @@
 						},
 						"name": {
 							"type": "string",
-							"description": "The keyless SSL name",
+							"description": "The keyless SSL name.",
 							"maxLength": 180,
 							"readOnly": true,
 							"example": "example.com Keyless SSL"
@@ -1135,13 +1135,13 @@
 						"host": {
 							"type": "string",
 							"pattern": "hostname_or_ip",
-							"description": "The keyless SSL name",
+							"description": "The keyless SSL name.",
 							"maxLength": 253,
 							"example": "example.com"
 						},
 						"port": {
 							"type": "number",
-							"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+							"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
 							"maxLength": 65535,
 							"default": 24008,
 							"example": 24008
@@ -1152,18 +1152,18 @@
 								"active",
 								"deleted"
 							],
-							"description": "Status of the Keyless SSL",
+							"description": "Status of the Keyless SSL.",
 							"readOnly": true,
 							"example": "active"
 						},
 						"enabled": {
 							"type": "boolean",
-							"description": "Whether or not the Keyless SSL is on or off",
+							"description": "Whether or not the Keyless SSL is on or off.",
 							"readOnly": true,
 							"example": false
 						},
 						"permissions": {
-							"description": "Available permissions for the Keyless SSL for the current user requesting the item",
+							"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
 							"readOnly": true,
 							"type": "array",
 							"example": [
@@ -1176,14 +1176,14 @@
 							"type": "string",
 							"format": "date-time",
 							"example": "2014-01-01T05:20:00Z",
-							"description": "When the Keyless SSL was created"
+							"description": "When the Keyless SSL was created."
 						},
 						"modified_on": {
 							"readOnly": true,
 							"type": "string",
 							"format": "date-time",
 							"example": "2014-01-01T05:20:00Z",
-							"description": "When the Keyless SSL was last modified"
+							"description": "When the Keyless SSL was last modified."
 						}
 					}
 				},
@@ -1192,13 +1192,13 @@
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Schema for an API response from Cloudflare that contains a single result object",
+							"description": "Schema for an API response from Cloudflare that contains a single result object.",
 							"type": "object",
 							"allOf": [
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Common schema for all Cloudflare v4 API responses",
+									"description": "Common schema for all Cloudflare v4 API responses.",
 									"type": "object",
 									"required": [
 										"success",
@@ -1211,7 +1211,7 @@
 											"$comment": "This subschema describes successful responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														true
@@ -1273,7 +1273,7 @@
 											"$comment": "This subschema describes failure responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														false
@@ -1400,13 +1400,13 @@
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Schema for an API response from Cloudflare that contains a single result object",
+							"description": "Schema for an API response from Cloudflare that contains a single result object.",
 							"type": "object",
 							"allOf": [
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Common schema for all Cloudflare v4 API responses",
+									"description": "Common schema for all Cloudflare v4 API responses.",
 									"type": "object",
 									"required": [
 										"success",
@@ -1419,7 +1419,7 @@
 											"$comment": "This subschema describes successful responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														true
@@ -1481,7 +1481,7 @@
 											"$comment": "This subschema describes failure responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														false
@@ -1599,7 +1599,7 @@
 									"type": "object",
 									"properties": {
 										"id": {
-											"description": "Keyless certificate identifier tag",
+											"description": "Keyless certificate identifier tag.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
@@ -1616,13 +1616,13 @@
 						{
 							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+							"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 							"type": "object",
 							"anyOf": [
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Common schema for all Cloudflare v4 API responses",
+									"description": "Common schema for all Cloudflare v4 API responses.",
 									"type": "object",
 									"required": [
 										"success",
@@ -1635,7 +1635,7 @@
 											"$comment": "This subschema describes successful responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														true
@@ -1697,7 +1697,7 @@
 											"$comment": "This subschema describes failure responses",
 											"properties": {
 												"success": {
-													"description": "Whether the API call was successful or not",
+													"description": "Whether the API call was successful or not.",
 													"type": "boolean",
 													"enum": [
 														false
@@ -1808,22 +1808,22 @@
 											"type": "object",
 											"properties": {
 												"page": {
-													"description": "Current page within paginated list of results",
+													"description": "Current page within paginated list of results.",
 													"type": "number",
 													"example": 1
 												},
 												"per_page": {
-													"description": "Number of results per page of results",
+													"description": "Number of results per page of results.",
 													"type": "number",
 													"example": 20
 												},
 												"count": {
-													"description": "Total results returned based on your search parameters",
+													"description": "Total results returned based on your search parameters.",
 													"type": "number",
 													"example": 1
 												},
 												"total_count": {
-													"description": "Total results available without any search parameters",
+													"description": "Total results available without any search parameters.",
 													"type": "number",
 													"example": 2000
 												}
@@ -1837,12 +1837,12 @@
 									"type": "object",
 									"properties": {
 										"page": {
-											"description": "Requested page within paginated list of results",
+											"description": "Requested page within paginated list of results.",
 											"type": "number",
 											"example": 1
 										},
 										"per_page": {
-											"description": "Maximum number of results requested",
+											"description": "Maximum number of results requested.",
 											"type": "number",
 											"example": 20
 										}
@@ -1852,22 +1852,22 @@
 									"type": "object",
 									"properties": {
 										"page": {
-											"description": "Current page within paginated list of results",
+											"description": "Current page within paginated list of results.",
 											"type": "number",
 											"example": 1
 										},
 										"per_page": {
-											"description": "Number of results per page of results",
+											"description": "Number of results per page of results.",
 											"type": "number",
 											"example": 20
 										},
 										"count": {
-											"description": "Total results returned based on your search parameters",
+											"description": "Total results returned based on your search parameters.",
 											"type": "number",
 											"example": 1
 										},
 										"total_count": {
-											"description": "Total results available without any search parameters",
+											"description": "Total results available without any search parameters.",
 											"type": "number",
 											"example": 2000
 										}
@@ -1888,7 +1888,7 @@
 					]
 				},
 				"zone_identifier": {
-					"description": "Zone identifier tag",
+					"description": "Zone identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1898,7 +1898,7 @@
 			"links": [
 				{
 					"title": "List Keyless SSL Configurations",
-					"description": "List all Keyless SSL configurations for a given zone",
+					"description": "List all Keyless SSL configurations for a given zone.",
 					"rel": "collection",
 					"href": "zones/{#/definitions/zone_identifier}/keyless_certificates",
 					"method": "GET",
@@ -1907,13 +1907,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+								"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 								"type": "object",
 								"anyOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -1926,7 +1926,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -1988,7 +1988,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2099,22 +2099,22 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Current page within paginated list of results",
+														"description": "Current page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Number of results per page of results",
+														"description": "Number of results per page of results.",
 														"type": "number",
 														"example": 20
 													},
 													"count": {
-														"description": "Total results returned based on your search parameters",
+														"description": "Total results returned based on your search parameters.",
 														"type": "number",
 														"example": 1
 													},
 													"total_count": {
-														"description": "Total results available without any search parameters",
+														"description": "Total results available without any search parameters.",
 														"type": "number",
 														"example": 2000
 													}
@@ -2128,12 +2128,12 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Requested page within paginated list of results",
+												"description": "Requested page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Maximum number of results requested",
+												"description": "Maximum number of results requested.",
 												"type": "number",
 												"example": 20
 											}
@@ -2143,22 +2143,22 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Current page within paginated list of results",
+												"description": "Current page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Number of results per page of results",
+												"description": "Number of results per page of results.",
 												"type": "number",
 												"example": 20
 											},
 											"count": {
-												"description": "Total results returned based on your search parameters",
+												"description": "Total results returned based on your search parameters.",
 												"type": "number",
 												"example": 1
 											},
 											"total_count": {
-												"description": "Total results available without any search parameters",
+												"description": "Total results available without any search parameters.",
 												"type": "number",
 												"example": 2000
 											}
@@ -2207,27 +2207,27 @@
 							"host": {
 								"type": "string",
 								"pattern": "hostname_or_ip",
-								"description": "The keyless SSL name",
+								"description": "The keyless SSL name.",
 								"maxLength": 253,
 								"example": "example.com"
 							},
 							"port": {
 								"type": "number",
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
 								"maxLength": 65535,
 								"default": 24008,
 								"example": 24008
 							},
 							"name": {
 								"type": "string",
-								"description": "The keyless SSL name",
+								"description": "The keyless SSL name.",
 								"maxLength": 180,
 								"readOnly": true,
 								"example": "example.com Keyless SSL"
 							},
 							"certificate": {
 								"type": "string",
-								"description": "The zone's SSL certificate or SSL certificate and intermediate(s)",
+								"description": "The zone's SSL certificate or SSL certificate and intermediate(s).",
 								"example": "-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV BAYTAlVTMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX aWRnaXRzIFB0eSBMdGQwHhcNMTQwMzExMTkyMTU5WhcNMTQwNDEwMTkyMTU5WjBF MQswCQYDVQQGEwJVUzETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50 ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAvq3sKsHpeduJHimOK+fvQdKsI8z8A05MZyyLp2/R/GE8FjNv+hkVY1WQ LIyTNNQH7CJecE1nbTfo8Y56S7x/rhxC6/DJ8MIulapFPnorq46KU6yRxiM0MQ3N nTJHlHA2ozZta6YBBfVfhHWl1F0IfNbXCLKvGwWWMbCx43OfW6KTkbRnE6gFWKuO fSO5h2u5TaWVuSIzBvYs7Vza6m+gtYAvKAJV2nSZ+eSEFPDo29corOy8+huEOUL8 5FAw4BFPsr1TlrlGPFitduQUHGrSL7skk1ESGza0to3bOtrodKei2s9bk5MXm7lZ qI+WZJX4Zu9+mzZhc9pCVi8r/qlXuQIDAQABo4GnMIGkMB0GA1UdDgQWBBRvavf+ sWM4IwKiH9X9w1vl6nUVRDB1BgNVHSMEbjBsgBRvavf+sWM4IwKiH9X9w1vl6nUV RKFJpEcwRTELMAkGA1UEBhMCVVMxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAM15n7fdxhRtMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQEFBQADggEBABY2ZzBaW0dMsAAT7tPJzrVWVzQx6KU4 UEBLudIlWPlkAwTnINCWR/8eNjCCmGA4heUdHmazdpPa8RzwOmc0NT1NQqzSyktt vTqb4iHD7+8f9MqJ9/FssCfTtqr/Qst/hGH4Wmdf1EJ/6FqYAAb5iRlPgshFZxU8 uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8 /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----"
 							},
 							"bundle_method": {
@@ -2248,13 +2248,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"description": "Schema for an API response from Cloudflare that contains a single result object.",
 								"type": "object",
 								"allOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2267,7 +2267,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -2329,7 +2329,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2466,7 +2466,7 @@
 				},
 				{
 					"title": "Get Keyless SSL Configuration",
-					"description": "Get details for one Keyless SSL configuration",
+					"description": "Get details for one Keyless SSL configuration.",
 					"rel": "self",
 					"href": "zones/{#/definitions/zone_identifier}/keyless_certificates/{#/definitions/identifier}",
 					"method": "GET",
@@ -2475,13 +2475,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"description": "Schema for an API response from Cloudflare that contains a single result object.",
 								"type": "object",
 								"allOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2494,7 +2494,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -2556,7 +2556,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2693,7 +2693,7 @@
 				},
 				{
 					"title": "Edit Keyless SSL Configuration",
-					"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port,certificate,enabled",
+					"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port,certificate,enabled.",
 					"rel": "self",
 					"href": "zones/{#/definitions/zone_identifier}/keyless_certificates/{#/definitions/identifier}",
 					"method": "PATCH",
@@ -2703,27 +2703,27 @@
 							"host": {
 								"type": "string",
 								"pattern": "hostname_or_ip",
-								"description": "The keyless SSL name",
+								"description": "The keyless SSL name.",
 								"maxLength": 253,
 								"example": "example.com"
 							},
 							"name": {
 								"type": "string",
-								"description": "The keyless SSL name",
+								"description": "The keyless SSL name.",
 								"maxLength": 180,
 								"readOnly": true,
 								"example": "example.com Keyless SSL"
 							},
 							"port": {
 								"type": "number",
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
 								"maxLength": 65535,
 								"default": 24008,
 								"example": 24008
 							},
 							"enabled": {
 								"type": "boolean",
-								"description": "Whether or not the Keyless SSL is on or off",
+								"description": "Whether or not the Keyless SSL is on or off.",
 								"readOnly": true,
 								"example": false
 							}
@@ -2734,13 +2734,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"description": "Schema for an API response from Cloudflare that contains a single result object.",
 								"type": "object",
 								"allOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2753,7 +2753,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -2815,7 +2815,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2960,13 +2960,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"description": "Schema for an API response from Cloudflare that contains a single result object.",
 								"type": "object",
 								"allOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2979,7 +2979,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -3041,7 +3041,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -3159,7 +3159,7 @@
 										"type": "object",
 										"properties": {
 											"id": {
-												"description": "Keyless certificate identifier tag",
+												"description": "Keyless certificate identifier tag.",
 												"type": "string",
 												"maxLength": 32,
 												"readOnly": true,
@@ -3206,21 +3206,21 @@
 							"initializing"
 						],
 						"readOnly": true,
-						"description": "Status of the zone's custom SSL",
+						"description": "Status of the zone's custom SSL.",
 						"example": "active"
 					},
 					"page": {
 						"type": "number",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Number of zones per page"
+						"description": "Number of zones per page."
 					},
 					"match": {
 						"type": "string",
@@ -3229,7 +3229,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)"
+						"description": "Whether to match all search requirements or at least one (any)."
 					}
 				}
 			},
@@ -3238,13 +3238,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+						"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 						"type": "object",
 						"anyOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -3257,7 +3257,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -3319,7 +3319,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -3430,22 +3430,22 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Current page within paginated list of results",
+												"description": "Current page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Number of results per page of results",
+												"description": "Number of results per page of results.",
 												"type": "number",
 												"example": 20
 											},
 											"count": {
-												"description": "Total results returned based on your search parameters",
+												"description": "Total results returned based on your search parameters.",
 												"type": "number",
 												"example": 1
 											},
 											"total_count": {
-												"description": "Total results available without any search parameters",
+												"description": "Total results available without any search parameters.",
 												"type": "number",
 												"example": 2000
 											}
@@ -3459,12 +3459,12 @@
 								"type": "object",
 								"properties": {
 									"page": {
-										"description": "Requested page within paginated list of results",
+										"description": "Requested page within paginated list of results.",
 										"type": "number",
 										"example": 1
 									},
 									"per_page": {
-										"description": "Maximum number of results requested",
+										"description": "Maximum number of results requested.",
 										"type": "number",
 										"example": 20
 									}
@@ -3474,22 +3474,22 @@
 								"type": "object",
 								"properties": {
 									"page": {
-										"description": "Current page within paginated list of results",
+										"description": "Current page within paginated list of results.",
 										"type": "number",
 										"example": 1
 									},
 									"per_page": {
-										"description": "Number of results per page of results",
+										"description": "Number of results per page of results.",
 										"type": "number",
 										"example": 20
 									},
 									"count": {
-										"description": "Total results returned based on your search parameters",
+										"description": "Total results returned based on your search parameters.",
 										"type": "number",
 										"example": 1
 									},
 									"total_count": {
-										"description": "Total results available without any search parameters",
+										"description": "Total results available without any search parameters.",
 										"type": "number",
 										"example": 2000
 									}
@@ -3524,7 +3524,7 @@
 		},
 		{
 			"title": "Create SSL Configuration",
-			"description": "Upload a new SSL certificate for a zone",
+			"description": "Upload a new SSL certificate for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/custom_certificates",
 			"method": "POST",
@@ -3537,12 +3537,12 @@
 				"properties": {
 					"certificate": {
 						"type": "string",
-						"description": "The zone's SSL certificate or certificate and the intermediate(s)",
+						"description": "The zone's SSL certificate or certificate and the intermediate(s).",
 						"example": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n"
 					},
 					"private_key": {
 						"type": "string",
-						"description": "The zone's private key",
+						"description": "The zone's private key.",
 						"example": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
 					},
 					"bundle_method": {
@@ -3592,13 +3592,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"description": "Schema for an API response from Cloudflare that contains a single result object.",
 						"type": "object",
 						"allOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -3611,7 +3611,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -3673,7 +3673,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -3818,13 +3818,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"description": "Schema for an API response from Cloudflare that contains a single result object.",
 						"type": "object",
 						"allOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -3837,7 +3837,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -3899,7 +3899,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -4045,12 +4045,12 @@
 				"properties": {
 					"private_key": {
 						"type": "string",
-						"description": "The zone's private key",
+						"description": "The zone's private key.",
 						"example": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n-----END RSA PRIVATE KEY-----\n"
 					},
 					"certificate": {
 						"type": "string",
-						"description": "The zone's SSL certificate or certificate and the intermediate(s)",
+						"description": "The zone's SSL certificate or certificate and the intermediate(s).",
 						"example": "-----BEGIN CERTIFICATE-----\nMIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\nBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\naWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\nMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\nZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\nCgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\nCGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\nKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\ndZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\nizNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\nGKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\nBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\nMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\nMlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\nSvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\nYbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n-----END CERTIFICATE-----\n"
 					},
 					"bundle_method": {
@@ -4090,13 +4090,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"description": "Schema for an API response from Cloudflare that contains a single result object.",
 						"type": "object",
 						"allOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -4109,7 +4109,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -4171,7 +4171,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -4317,13 +4317,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"description": "Schema for an API response from Cloudflare that contains a single result object.",
 						"type": "object",
 						"allOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -4336,7 +4336,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -4398,7 +4398,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -4516,7 +4516,7 @@
 								"type": "object",
 								"properties": {
 									"id": {
-										"description": "Custom certificate identifier tag",
+										"description": "Custom certificate identifier tag.",
 										"type": "string",
 										"maxLength": 36,
 										"readOnly": true,
@@ -4569,7 +4569,7 @@
 							"type": "object",
 							"properties": {
 								"id": {
-									"description": "Custom certificate identifier tag",
+									"description": "Custom certificate identifier tag.",
 									"type": "string",
 									"maxLength": 36,
 									"readOnly": true,
@@ -4591,13 +4591,13 @@
 					{
 						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+						"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 						"type": "object",
 						"anyOf": [
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Common schema for all Cloudflare v4 API responses",
+								"description": "Common schema for all Cloudflare v4 API responses.",
 								"type": "object",
 								"required": [
 									"success",
@@ -4610,7 +4610,7 @@
 										"$comment": "This subschema describes successful responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													true
@@ -4672,7 +4672,7 @@
 										"$comment": "This subschema describes failure responses",
 										"properties": {
 											"success": {
-												"description": "Whether the API call was successful or not",
+												"description": "Whether the API call was successful or not.",
 												"type": "boolean",
 												"enum": [
 													false
@@ -4783,22 +4783,22 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Current page within paginated list of results",
+												"description": "Current page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Number of results per page of results",
+												"description": "Number of results per page of results.",
 												"type": "number",
 												"example": 20
 											},
 											"count": {
-												"description": "Total results returned based on your search parameters",
+												"description": "Total results returned based on your search parameters.",
 												"type": "number",
 												"example": 1
 											},
 											"total_count": {
-												"description": "Total results available without any search parameters",
+												"description": "Total results available without any search parameters.",
 												"type": "number",
 												"example": 2000
 											}
@@ -4812,12 +4812,12 @@
 								"type": "object",
 								"properties": {
 									"page": {
-										"description": "Requested page within paginated list of results",
+										"description": "Requested page within paginated list of results.",
 										"type": "number",
 										"example": 1
 									},
 									"per_page": {
-										"description": "Maximum number of results requested",
+										"description": "Maximum number of results requested.",
 										"type": "number",
 										"example": 20
 									}
@@ -4827,22 +4827,22 @@
 								"type": "object",
 								"properties": {
 									"page": {
-										"description": "Current page within paginated list of results",
+										"description": "Current page within paginated list of results.",
 										"type": "number",
 										"example": 1
 									},
 									"per_page": {
-										"description": "Number of results per page of results",
+										"description": "Number of results per page of results.",
 										"type": "number",
 										"example": 20
 									},
 									"count": {
-										"description": "Total results returned based on your search parameters",
+										"description": "Total results returned based on your search parameters.",
 										"type": "number",
 										"example": 1
 									},
 									"total_count": {
-										"description": "Total results available without any search parameters",
+										"description": "Total results available without any search parameters.",
 										"type": "number",
 										"example": 2000
 									}

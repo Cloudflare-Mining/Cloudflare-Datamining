@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/loadbalancing/region.json",
 	"title": "Load Balancer Regions",
-	"description": "Region-Country geographic mappings for load balancers",
+	"description": "Region-Country geographic mappings for load balancers.",
 	"type": "object",
 	"links": [
 		{
@@ -62,7 +62,7 @@
 			"iso_standard": {
 				"type": "string",
 				"example": "\"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\"",
-				"description": "The ISO standard followed in the API"
+				"description": "The ISO standard followed in the API."
 			},
 			"regions": {
 				"type": "array",
@@ -73,7 +73,7 @@
 					"properties": {
 						"region_code": {
 							"type": "string",
-							"description": "A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia)",
+							"description": "A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -141,6 +141,6 @@
 		"objects": [],
 		"example": "{\n  \"iso_standard\": \"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\",\n  \"regions\": [\n    {\n      \"region_code\": \"WNAM\",\n      \"countries\": [\n        {\n          \"country_code_a2\": \"US\",\n          \"country_name\": \"United States\",\n          \"country_subdivisions\": [\n            {\n              \"subdivision_code_a2\": \"CA\",\n              \"subdivision_name\": \"California\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
 		"title": "Load Balancer Regions",
-		"description": "Region-Country geographic mappings for load balancers"
+		"description": "Region-Country geographic mappings for load balancers."
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/setting.json",
 	"title": "Zone Settings",
-	"description": "A Zone setting changes how the Zone works in relation to caching, security, or other features of Cloudflare",
+	"description": "A Zone setting changes how the Zone works in relation to caching, security, or other features of Cloudflare.",
 	"cfDeprecations": {
 		"zone_settings_cfduid_deprecation": {
 			"id": "zone_settings_cfduid_deprecation",
@@ -14,7 +14,7 @@
 	"links": [
 		{
 			"title": "Get all Zone settings",
-			"description": "Available settings for your user in relation to a zone",
+			"description": "Available settings for your user in relation to a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/settings",
 			"method": "GET",
@@ -37,7 +37,7 @@
 		},
 		{
 			"title": "Get Advanced DDOS setting",
-			"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones",
+			"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 			"rel": "tag:cloudflare.com,2017:setting-advanced-ddos",
 			"href": "zones/{#/definitions/zone_identifier}/settings/advanced_ddos",
 			"method": "GET",
@@ -175,7 +175,7 @@
 		},
 		{
 			"title": "Get Browser Cache TTL setting",
-			"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276)",
+			"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276).",
 			"rel": "tag:cloudflare.com,2017:setting-browser-cache-ttl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/browser_cache_ttl",
 			"method": "GET",
@@ -198,7 +198,7 @@
 		},
 		{
 			"title": "Get Browser Check setting",
-			"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086)",
+			"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086).",
 			"rel": "tag:cloudflare.com,2017:setting-browser-check",
 			"href": "zones/{#/definitions/zone_identifier}/settings/browser_check",
 			"method": "GET",
@@ -221,7 +221,7 @@
 		},
 		{
 			"title": "Get Cache Level setting",
-			"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256)",
+			"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256).",
 			"rel": "tag:cloudflare.com,2017:setting-cache-level",
 			"href": "zones/{#/definitions/zone_identifier}/settings/cache_level",
 			"method": "GET",
@@ -244,7 +244,7 @@
 		},
 		{
 			"title": "Get Challenge TTL setting",
-			"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136)",
+			"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136).",
 			"rel": "tag:cloudflare.com,2017:setting-challenge-ttl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/challenge_ttl",
 			"method": "GET",
@@ -313,7 +313,7 @@
 		},
 		{
 			"title": "Get Email Obfuscation setting",
-			"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016)",
+			"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016).",
 			"rel": "tag:cloudflare.com,2017:setting-email-obfuscation",
 			"href": "zones/{#/definitions/zone_identifier}/settings/email_obfuscation",
 			"method": "GET",
@@ -336,7 +336,7 @@
 		},
 		{
 			"title": "Get Hotlink Protection setting",
-			"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026)",
+			"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026).",
 			"rel": "tag:cloudflare.com,2017:setting-hotlink-protection",
 			"href": "zones/{#/definitions/zone_identifier}/settings/hotlink_protection",
 			"method": "GET",
@@ -359,7 +359,7 @@
 		},
 		{
 			"title": "Get IP Geolocation setting",
-			"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236)",
+			"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236).",
 			"rel": "tag:cloudflare.com,2017:setting-ip-geolocation",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ip_geolocation",
 			"method": "GET",
@@ -382,7 +382,7 @@
 		},
 		{
 			"title": "Get IPv6 setting",
-			"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586)",
+			"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
 			"rel": "tag:cloudflare.com,2017:setting-ipv6",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ipv6",
 			"method": "GET",
@@ -612,7 +612,7 @@
 		},
 		{
 			"title": "Get Privacy Pass setting",
-			"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass)",
+			"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
 			"rel": "tag:cloudflare.com,2017:setting-privacy-pass",
 			"href": "zones/{#/definitions/zone_identifier}/settings/privacy_pass",
 			"method": "GET",
@@ -704,7 +704,7 @@
 		},
 		{
 			"title": "Get Security Level setting",
-			"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056)",
+			"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056).",
 			"rel": "tag:cloudflare.com,2017:setting-security-level",
 			"href": "zones/{#/definitions/zone_identifier}/settings/security_level",
 			"method": "GET",
@@ -727,7 +727,7 @@
 		},
 		{
 			"title": "Get Server Side Exclude setting",
-			"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036)",
+			"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036).",
 			"rel": "tag:cloudflare.com,2017:setting-server-side-exclude",
 			"href": "zones/{#/definitions/zone_identifier}/settings/server_side_exclude",
 			"method": "GET",
@@ -773,7 +773,7 @@
 		},
 		{
 			"title": "Get SSL setting",
-			"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416)",
+			"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416).",
 			"rel": "tag:cloudflare.com,2017:setting-ssl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ssl",
 			"method": "GET",
@@ -888,7 +888,7 @@
 		},
 		{
 			"title": "Get TLS Client Auth setting",
-			"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only)",
+			"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only).",
 			"rel": "tag:cloudflare.com,2017:setting-tls-client-auth",
 			"href": "zones/{#/definitions/zone_identifier}/settings/tls_client_auth",
 			"method": "GET",
@@ -934,7 +934,7 @@
 		},
 		{
 			"title": "Get Proxy Read Timeout setting",
-			"description": "Maximum time between two read operations from origin",
+			"description": "Maximum time between two read operations from origin.",
 			"rel": "tag:cloudflare.com,2017:setting-proxy-read-timeout",
 			"href": "zones/{#/definitions/zone_identifier}/settings/proxy_read_timeout",
 			"method": "GET",
@@ -957,7 +957,7 @@
 		},
 		{
 			"title": "Get Web Application Firewall (WAF) setting",
-			"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016)",
+			"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016).",
 			"rel": "tag:cloudflare.com,2017:setting-waf",
 			"href": "zones/{#/definitions/zone_identifier}/settings/waf",
 			"method": "GET",
@@ -1026,7 +1026,7 @@
 		},
 		{
 			"title": "Get Origin Max HTTP version setting",
-			"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
+			"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\").",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
 			"href": "zones/{#/definitions/zone_identifier}/settings/origin_max_http_version",
 			"method": "GET",
@@ -1072,7 +1072,7 @@
 		},
 		{
 			"title": "Get Pseudo IPv4 setting",
-			"description": "Value of the Pseudo IPv4 setting",
+			"description": "Value of the Pseudo IPv4 setting.",
 			"rel": "tag:cloudflare.com,2017:setting-pseudo-ipv4",
 			"href": "zones/{#/definitions/zone_identifier}/settings/pseudo_ipv4",
 			"method": "GET",
@@ -1187,7 +1187,7 @@
 		},
 		{
 			"title": "Edit zone settings info",
-			"description": "Edit settings for a zone",
+			"description": "Edit settings for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/settings",
 			"method": "PATCH",
@@ -1263,7 +1263,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -1309,7 +1309,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -1355,7 +1355,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off",
 						"cfNotes": "Default value depends on the zone's plan level."
 					}
@@ -1402,7 +1402,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -1448,7 +1448,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on",
 						"cfNotes": "Default value depends on the zone's plan level."
 					}
@@ -1464,7 +1464,7 @@
 		},
 		{
 			"title": "Change Browser Cache TTL setting",
-			"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276)",
+			"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276).",
 			"rel": "tag:cloudflare.com,2017:setting-browser-cache-ttl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/browser_cache_ttl",
 			"method": "PATCH",
@@ -1522,7 +1522,7 @@
 							31536000
 						],
 						"default": 14400,
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"cfNotes": "Setting a TTL of 0 is equivalent to selecting `Respect Existing Headers`"
 					}
 				},
@@ -1537,7 +1537,7 @@
 		},
 		{
 			"title": "Change Browser Check setting",
-			"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086)",
+			"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086).",
 			"rel": "tag:cloudflare.com,2017:setting-browser-check",
 			"href": "zones/{#/definitions/zone_identifier}/settings/browser_check",
 			"method": "PATCH",
@@ -1569,7 +1569,7 @@
 							"off"
 						],
 						"default": "on",
-						"description": "Value of the zone setting"
+						"description": "Value of the zone setting."
 					}
 				},
 				"required_props": [
@@ -1583,7 +1583,7 @@
 		},
 		{
 			"title": "Change Cache Level setting",
-			"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256)",
+			"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256).",
 			"rel": "tag:cloudflare.com,2017:setting-cache-level",
 			"href": "zones/{#/definitions/zone_identifier}/settings/cache_level",
 			"method": "PATCH",
@@ -1616,7 +1616,7 @@
 							"simplified"
 						],
 						"default": "aggressive",
-						"description": "Value of the zone setting"
+						"description": "Value of the zone setting."
 					}
 				},
 				"required_props": [
@@ -1630,7 +1630,7 @@
 		},
 		{
 			"title": "Change Challenge TTL setting",
-			"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136)",
+			"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136).",
 			"rel": "tag:cloudflare.com,2017:setting-challenge-ttl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/challenge_ttl",
 			"method": "PATCH",
@@ -1674,7 +1674,7 @@
 							31536000
 						],
 						"default": 1800,
-						"description": "Value of the zone setting"
+						"description": "Value of the zone setting."
 					}
 				},
 				"required_props": [
@@ -1780,7 +1780,7 @@
 		},
 		{
 			"title": "Change Email Obfuscation setting",
-			"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016)",
+			"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016).",
 			"rel": "tag:cloudflare.com,2017:setting-email-obfuscation",
 			"href": "zones/{#/definitions/zone_identifier}/settings/email_obfuscation",
 			"method": "PATCH",
@@ -1811,7 +1811,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -1857,7 +1857,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -1903,7 +1903,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -1918,7 +1918,7 @@
 		},
 		{
 			"title": "Change Hotlink Protection setting",
-			"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026)",
+			"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026).",
 			"rel": "tag:cloudflare.com,2017:setting-hotlink-protection",
 			"href": "zones/{#/definitions/zone_identifier}/settings/hotlink_protection",
 			"method": "PATCH",
@@ -1949,7 +1949,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -1964,7 +1964,7 @@
 		},
 		{
 			"title": "Change IP Geolocation setting",
-			"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236)",
+			"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236).",
 			"rel": "tag:cloudflare.com,2017:setting-ip-geolocation",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ip_geolocation",
 			"method": "PATCH",
@@ -1995,7 +1995,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -2010,7 +2010,7 @@
 		},
 		{
 			"title": "Change IPv6 setting",
-			"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586)",
+			"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
 			"rel": "tag:cloudflare.com,2017:setting-ipv6",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ipv6",
 			"method": "PATCH",
@@ -2041,7 +2041,7 @@
 							"off",
 							"on"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -2471,7 +2471,7 @@
 		},
 		{
 			"title": "Change Privacy Pass setting",
-			"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass)",
+			"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
 			"rel": "tag:cloudflare.com,2017:setting-privacy-pass",
 			"href": "zones/{#/definitions/zone_identifier}/settings/privacy_pass",
 			"method": "PATCH",
@@ -2502,7 +2502,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -2548,7 +2548,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -2644,25 +2644,25 @@
 									"enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Whether or not strict transport security is enabled"
+										"description": "Whether or not strict transport security is enabled."
 									},
 									"max_age": {
 										"type": "number",
 										"example": "86400",
-										"description": "Max age in seconds of the strict transport security"
+										"description": "Max age in seconds of the strict transport security."
 									},
 									"include_subdomains": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Include all subdomains for strict transport security"
+										"description": "Include all subdomains for strict transport security."
 									},
 									"nosniff": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header"
+										"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header."
 									}
 								},
-								"description": "Strict Transport Security"
+								"description": "Strict Transport Security."
 							}
 						}
 					}
@@ -2678,7 +2678,7 @@
 		},
 		{
 			"title": "Change Security Level setting",
-			"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056)",
+			"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056).",
 			"rel": "tag:cloudflare.com,2017:setting-security-level",
 			"href": "zones/{#/definitions/zone_identifier}/settings/security_level",
 			"method": "PATCH",
@@ -2713,7 +2713,7 @@
 							"high",
 							"under_attack"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "medium"
 					}
 				},
@@ -2728,7 +2728,7 @@
 		},
 		{
 			"title": "Change Server Side Exclude setting",
-			"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036)",
+			"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036).",
 			"rel": "tag:cloudflare.com,2017:setting-server-side-exclude",
 			"href": "zones/{#/definitions/zone_identifier}/settings/server_side_exclude",
 			"method": "PATCH",
@@ -2759,7 +2759,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on"
 					}
 				},
@@ -2774,7 +2774,7 @@
 		},
 		{
 			"title": "Change SSL setting",
-			"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416)",
+			"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416).",
 			"rel": "tag:cloudflare.com,2017:setting-ssl",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ssl",
 			"method": "PATCH",
@@ -2808,7 +2808,7 @@
 							"strict"
 						],
 						"default": "off",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"cfNotes": "Depends on the zone's plan level"
 					}
 				},
@@ -2851,7 +2851,7 @@
 						"type": "boolean",
 						"example": "false",
 						"default": false,
-						"description": "ssl-recommender enrollment setting"
+						"description": "ssl-recommender enrollment setting."
 					}
 				},
 				"required_props": [
@@ -2865,7 +2865,7 @@
 		},
 		{
 			"title": "Change TLS Client Auth setting",
-			"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only)",
+			"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only).",
 			"rel": "tag:cloudflare.com,2017:setting-tls-client-auth",
 			"href": "zones/{#/definitions/zone_identifier}/settings/tls_client_auth",
 			"method": "PATCH",
@@ -2897,7 +2897,7 @@
 							"off"
 						],
 						"default": "on",
-						"description": "value of the zone setting"
+						"description": "value of the zone setting."
 					}
 				},
 				"required_props": [
@@ -2942,7 +2942,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -2957,7 +2957,7 @@
 		},
 		{
 			"title": "Change Proxy Read Timeout setting",
-			"description": "Maximum time between two read operations from origin",
+			"description": "Maximum time between two read operations from origin.",
 			"rel": "tag:cloudflare.com,2017:setting-proxy-read-timeout",
 			"href": "zones/{#/definitions/zone_identifier}/settings/proxy_read_timeout",
 			"method": "PATCH",
@@ -2985,7 +2985,7 @@
 						"type": "number",
 						"example": "100",
 						"default": 100,
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"cfNotes": "Value must be between 1 and 6000"
 					}
 				},
@@ -3142,7 +3142,7 @@
 		},
 		{
 			"title": "Change Web Application Firewall (WAF) setting",
-			"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016)",
+			"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016).",
 			"rel": "tag:cloudflare.com,2017:setting-waf",
 			"href": "zones/{#/definitions/zone_identifier}/settings/waf",
 			"method": "PATCH",
@@ -3173,7 +3173,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -3280,7 +3280,7 @@
 		},
 		{
 			"title": "Change Origin Max HTTP version setting",
-			"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
+			"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
 			"href": "zones/{#/definitions/zone_identifier}/settings/origin_max_http_version",
 			"method": "PATCH",
@@ -3311,7 +3311,7 @@
 							"1",
 							"2"
 						],
-						"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
+						"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\").",
 						"default": "2"
 					}
 				},
@@ -3372,7 +3372,7 @@
 		},
 		{
 			"title": "Change Pseudo IPv4 setting",
-			"description": "Value of the Pseudo IPv4 setting",
+			"description": "Value of the Pseudo IPv4 setting.",
 			"rel": "tag:cloudflare.com,2017:setting-pseudo-ipv4",
 			"href": "zones/{#/definitions/zone_identifier}/settings/pseudo_ipv4",
 			"method": "PATCH",
@@ -3404,7 +3404,7 @@
 							"add_header",
 							"overwrite_header"
 						],
-						"description": "Value of the Pseudo IPv4 setting",
+						"description": "Value of the Pseudo IPv4 setting.",
 						"default": "off"
 					}
 				},
@@ -3666,7 +3666,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"always_online\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"always_online"
 						]
@@ -3680,7 +3680,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -3695,7 +3695,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -3706,7 +3706,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -3726,7 +3726,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"advanced_ddos\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"advanced_ddos"
 						]
@@ -3740,7 +3740,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -3756,7 +3756,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -3767,7 +3767,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -3780,7 +3780,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"advanced_ddos\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Advanced DDoS Protection",
-				"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones"
+				"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones."
 			},
 			{
 				"all_props": {
@@ -3816,7 +3816,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -3827,7 +3827,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -3847,7 +3847,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"browser_cache_ttl\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"browser_cache_ttl"
 						]
@@ -3861,7 +3861,7 @@
 							"number"
 						],
 						"example": "14400",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							0,
 							30,
@@ -3903,7 +3903,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -3914,7 +3914,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -3927,14 +3927,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"browser_cache_ttl\",\n  \"value\": 14400,\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Browser Cache TTL",
-				"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276)"
+				"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"browser_check\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"browser_check"
 						]
@@ -3948,7 +3948,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -3963,7 +3963,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -3974,7 +3974,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -3987,14 +3987,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"browser_check\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Browser Check",
-				"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086)"
+				"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"flatten_at_root\"",
-						"description": "How to flatten the cname destination",
+						"description": "How to flatten the cname destination.",
 						"enum": [
 							"cname_flattening"
 						]
@@ -4008,7 +4008,7 @@
 							"string"
 						],
 						"example": "\"flatten_at_root\"",
-						"description": "Value of the cname flattening setting",
+						"description": "Value of the cname flattening setting.",
 						"enum": [
 							"flatten_at_root",
 							"flatten_all"
@@ -4023,7 +4023,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4034,7 +4034,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4047,14 +4047,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"flatten_at_root\",\n  \"value\": \"flatten_at_root\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Cloudflare CNAME Flattening",
-				"description": "Whether or not cname flattening is on"
+				"description": "Whether or not cname flattening is on."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"cache_level\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"cache_level"
 						]
@@ -4068,7 +4068,7 @@
 							"string"
 						],
 						"example": "\"aggressive\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"aggressive",
 							"basic",
@@ -4084,7 +4084,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4095,7 +4095,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4108,14 +4108,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"cache_level\",\n  \"value\": \"aggressive\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Cloudflare Cache Level",
-				"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256)"
+				"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"challenge_ttl\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"challenge_ttl"
 						]
@@ -4129,7 +4129,7 @@
 							"number"
 						],
 						"example": "1800",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							300,
 							900,
@@ -4156,7 +4156,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4167,7 +4167,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4180,14 +4180,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"challenge_ttl\",\n  \"value\": 1800,\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Challenge Page TTL",
-				"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136)"
+				"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"development_mode\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"development_mode"
 						]
@@ -4216,7 +4216,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4227,13 +4227,13 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					},
 					"time_remaining": {
 						"type": "number",
 						"example": "3600",
 						"readOnly": true,
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"cfNotes": "The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false."
 					}
 				},
@@ -4284,7 +4284,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4295,7 +4295,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4315,7 +4315,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"edge_cache_ttl\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"edge_cache_ttl"
 						]
@@ -4329,7 +4329,7 @@
 							"number"
 						],
 						"example": "7200",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							30,
 							60,
@@ -4364,7 +4364,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4375,7 +4375,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4395,7 +4395,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"origin_error_page_pass_thru\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"origin_error_page_pass_thru"
 						]
@@ -4409,7 +4409,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -4424,7 +4424,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4435,7 +4435,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4455,7 +4455,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"sort_query_string_for_cache\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"sort_query_string_for_cache"
 						]
@@ -4469,7 +4469,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -4484,7 +4484,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4495,7 +4495,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4515,7 +4515,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"email_obfuscation\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"email_obfuscation"
 						]
@@ -4529,7 +4529,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -4544,7 +4544,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4555,7 +4555,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4568,14 +4568,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"email_obfuscation\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Email Obfuscation",
-				"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016)"
+				"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"hotlink_protection\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"hotlink_protection"
 						]
@@ -4589,7 +4589,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -4604,7 +4604,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4615,7 +4615,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4628,14 +4628,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"hotlink_protection\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Hotlink Protection",
-				"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026)"
+				"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"ip_geolocation\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"ip_geolocation"
 						]
@@ -4649,7 +4649,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -4664,7 +4664,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4675,7 +4675,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4688,14 +4688,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"ip_geolocation\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "IP Geolocation",
-				"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236)"
+				"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"ipv6\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"ipv6"
 						]
@@ -4709,7 +4709,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"on"
@@ -4724,7 +4724,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4735,7 +4735,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4748,7 +4748,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"ipv6\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "IPv6",
-				"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586)"
+				"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586)."
 			},
 			{
 				"all_props": {
@@ -4784,7 +4784,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4795,7 +4795,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4808,14 +4808,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"websockets\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "WebSockets",
-				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)"
+				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"sha1_support\"",
-						"description": "Zone setting identifier",
+						"description": "Zone setting identifier.",
 						"enum": [
 							"sha1_support"
 						]
@@ -4829,7 +4829,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"on"
@@ -4844,7 +4844,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4855,7 +4855,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4868,7 +4868,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"sha1_support\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Toggle SHA1 support",
-				"description": "Allow SHA1 support"
+				"description": "Allow SHA1 support."
 			},
 			{
 				"all_props": {
@@ -4904,7 +4904,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4915,7 +4915,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -4988,7 +4988,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -4999,7 +4999,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5019,7 +5019,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"max_upload\"",
-						"description": "identifier of the zone setting",
+						"description": "identifier of the zone setting.",
 						"enum": [
 							"max_upload"
 						]
@@ -5033,7 +5033,7 @@
 							"number"
 						],
 						"example": "100",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							100,
 							200,
@@ -5050,7 +5050,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5061,7 +5061,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5074,7 +5074,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"max_upload\",\n  \"value\": 100,\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Max Upload",
-				"description": "Maximum size of an allowable upload"
+				"description": "Maximum size of an allowable upload."
 			},
 			{
 				"all_props": {
@@ -5131,7 +5131,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5142,7 +5142,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5191,7 +5191,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5202,7 +5202,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5252,7 +5252,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5263,7 +5263,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5312,7 +5312,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5323,7 +5323,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5372,7 +5372,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5383,7 +5383,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5403,7 +5403,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"privacy_pass\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"privacy_pass"
 						]
@@ -5417,7 +5417,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -5432,7 +5432,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5443,7 +5443,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5456,14 +5456,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"privacy_pass\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Privacy Pass",
-				"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass)"
+				"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"response_buffering\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"response_buffering"
 						]
@@ -5477,7 +5477,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -5492,7 +5492,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5503,7 +5503,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5552,7 +5552,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5563,7 +5563,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5583,7 +5583,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"security_header\"",
-						"description": "ID of the zone's security header",
+						"description": "ID of the zone's security header.",
 						"enum": [
 							"security_header"
 						]
@@ -5597,7 +5597,7 @@
 							"object"
 						],
 						"example": "{\n  \"strict_transport_security\": {\n    \"enabled\": true,\n    \"max_age\": 86400,\n    \"include_subdomains\": true,\n    \"nosniff\": true\n  }\n}",
-						"description": "Current value of the zone setting",
+						"description": "Current value of the zone setting.",
 						"properties": {
 							"strict_transport_security": {
 								"type": "object",
@@ -5606,25 +5606,25 @@
 									"enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Whether or not strict transport security is enabled"
+										"description": "Whether or not strict transport security is enabled."
 									},
 									"max_age": {
 										"type": "number",
 										"example": "86400",
-										"description": "Max age in seconds of the strict transport security"
+										"description": "Max age in seconds of the strict transport security."
 									},
 									"include_subdomains": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Include all subdomains for strict transport security"
+										"description": "Include all subdomains for strict transport security."
 									},
 									"nosniff": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header"
+										"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header."
 									}
 								},
-								"description": "Strict Transport Security"
+								"description": "Strict Transport Security."
 							}
 						}
 					},
@@ -5636,7 +5636,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5647,7 +5647,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5667,7 +5667,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"security_level\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"security_level"
 						]
@@ -5681,7 +5681,7 @@
 							"string"
 						],
 						"example": "\"medium\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"essentially_off",
@@ -5700,7 +5700,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5711,7 +5711,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5724,14 +5724,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"security_level\",\n  \"value\": \"medium\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Security Level",
-				"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056)"
+				"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"server_side_exclude\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"server_side_exclude"
 						]
@@ -5745,7 +5745,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -5760,7 +5760,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5771,7 +5771,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5784,14 +5784,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"server_side_exclude\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Server Side Exclude",
-				"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036)"
+				"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"ssl\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"ssl"
 						]
@@ -5805,7 +5805,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"flexible",
@@ -5823,7 +5823,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5834,7 +5834,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5847,7 +5847,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"ssl\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "SSL",
-				"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416)"
+				"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416)."
 			},
 			{
 				"all_props": {
@@ -5856,13 +5856,13 @@
 						"enum": [
 							"ssl_recommender"
 						],
-						"description": "Enrollment value for SSL/TLS Recommender"
+						"description": "Enrollment value for SSL/TLS Recommender."
 					},
 					"enabled": {
 						"type": "boolean",
 						"example": "false",
 						"default": false,
-						"description": "ssl-recommender enrollment setting"
+						"description": "ssl-recommender enrollment setting."
 					},
 					"editable": {
 						"type": "boolean",
@@ -5872,7 +5872,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5883,7 +5883,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5903,7 +5903,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"tls_client_auth\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"tls_client_auth"
 						]
@@ -5917,7 +5917,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "value of the zone setting",
+						"description": "value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -5932,7 +5932,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -5943,7 +5943,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -5956,14 +5956,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"tls_client_auth\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "TLS Client Authentication",
-				"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only)"
+				"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only)."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"true_client_ip_header\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"true_client_ip_header"
 						]
@@ -5977,7 +5977,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -5992,7 +5992,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6003,7 +6003,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6023,7 +6023,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"proxy_read_timeout\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"proxy_read_timeout"
 						]
@@ -6037,7 +6037,7 @@
 							"number"
 						],
 						"example": "100",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": 100,
 						"cfNotes": "Value must be between 1 and 6000"
 					},
@@ -6049,7 +6049,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6060,7 +6060,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6073,14 +6073,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"proxy_read_timeout\",\n  \"value\": 100,\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Proxy Read Timeout",
-				"description": "Maximum time between two read operations from origin"
+				"description": "Maximum time between two read operations from origin."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"waf\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"waf"
 						]
@@ -6094,7 +6094,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6109,7 +6109,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6120,7 +6120,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6133,7 +6133,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"waf\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Web Application Firewall",
-				"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016)"
+				"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016)."
 			},
 			{
 				"all_props": {
@@ -6171,7 +6171,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6182,7 +6182,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6231,7 +6231,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6242,7 +6242,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6293,7 +6293,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6304,7 +6304,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6354,7 +6354,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6365,7 +6365,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6385,7 +6385,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"automatic_https_rewrites\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"automatic_https_rewrites"
 						]
@@ -6399,7 +6399,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6415,7 +6415,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6426,7 +6426,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6475,7 +6475,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6486,7 +6486,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6535,7 +6535,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6546,7 +6546,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6568,7 +6568,7 @@
 						"enum": [
 							"origin_max_http_version"
 						],
-						"description": "Identifier of the zone setting"
+						"description": "Identifier of the zone setting."
 					},
 					"modified_on": {
 						"type": [
@@ -6578,7 +6578,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6589,7 +6589,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"origin_max_http_version\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Origin Max HTTP version",
-				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)"
+				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)."
 			},
 			{
 				"all_props": {
@@ -6625,7 +6625,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6636,7 +6636,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6656,7 +6656,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"pseudo_ipv4\"",
-						"description": "Value of the Pseudo IPv4 setting",
+						"description": "Value of the Pseudo IPv4 setting.",
 						"enum": [
 							"pseudo_ipv4"
 						],
@@ -6671,7 +6671,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the Pseudo IPv4 setting",
+						"description": "Value of the Pseudo IPv4 setting.",
 						"enum": [
 							"off",
 							"add_header",
@@ -6687,7 +6687,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6698,7 +6698,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6711,14 +6711,14 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"pseudo_ipv4\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Pseudo IPv4 Value",
-				"description": "The value set for the Pseudo IPv4 setting"
+				"description": "The value set for the Pseudo IPv4 setting."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"always_use_https\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"always_use_https"
 						]
@@ -6732,7 +6732,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6747,7 +6747,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6758,7 +6758,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6778,7 +6778,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"opportunistic_onion\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"opportunistic_onion"
 						]
@@ -6792,7 +6792,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6808,7 +6808,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6819,7 +6819,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6839,7 +6839,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"orange_to_orange\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"orange_to_orange"
 						]
@@ -6853,7 +6853,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6868,7 +6868,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6879,7 +6879,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6929,7 +6929,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -6940,7 +6940,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -6990,7 +6990,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -7001,7 +7001,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -7021,7 +7021,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"automatic_platform_optimization\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"automatic_platform_optimization"
 						]
@@ -7098,7 +7098,7 @@
 							true,
 							false
 						],
-						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)",
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
 						"default": true
 					},
 					"modified_on": {
@@ -7109,7 +7109,7 @@
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "last time this setting was modified"
+						"description": "last time this setting was modified."
 					}
 				},
 				"required_props": [],
@@ -7128,6 +7128,6 @@
 		"example": "{\n  \"id\": \"always_online\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 		"which_of": "oneOf",
 		"title": "Zone Settings",
-		"description": "A Zone setting changes how the Zone works in relation to caching, security, or other features of Cloudflare"
+		"description": "A Zone setting changes how the Zone works in relation to caching, security, or other features of Cloudflare."
 	}
 }

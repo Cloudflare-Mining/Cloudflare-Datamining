@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/custom-ns.json",
 	"title": "Account-Level Custom Nameservers",
-	"description": "Configure custom nameservers that can be used by multiple zones in the account",
+	"description": "Configure custom nameservers that can be used by multiple zones in the account.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Account Custom Nameservers",
-			"description": "List an account's custom nameservers",
+			"description": "List an account's custom nameservers.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/custom_ns",
 			"method": "GET",
@@ -55,7 +55,7 @@
 					"ns_name": {
 						"type": "string",
 						"example": "\"ns1.example.com\"",
-						"description": "The FQDN of the name server",
+						"description": "The FQDN of the name server.",
 						"format": "hostname"
 					}
 				},
@@ -159,12 +159,12 @@
 					"dns_records": {
 						"type": "array",
 						"example": "[\n  {\n    \"type\": \"A\",\n    \"value\": \"1.1.1.1\"\n  }\n]",
-						"description": "A and AAAA records associated with the nameserver",
+						"description": "A and AAAA records associated with the nameserver.",
 						"items": {
 							"properties": {
 								"type": {
 									"type": "string",
-									"description": "DNS record type",
+									"description": "DNS record type.",
 									"enum": [
 										"A",
 										"AAAA"
@@ -173,7 +173,7 @@
 								},
 								"value": {
 									"type": "string",
-									"description": "DNS record contents (an IPv4 or IPv6 address)",
+									"description": "DNS record contents (an IPv4 or IPv6 address).",
 									"example": "1.1.1.1"
 								}
 							}
@@ -182,13 +182,13 @@
 					"ns_name": {
 						"type": "string",
 						"example": "\"ns1.example.com\"",
-						"description": "The FQDN of the name server",
+						"description": "The FQDN of the name server.",
 						"format": "hostname"
 					},
 					"status": {
 						"type": "string",
 						"example": "\"verified\"",
-						"description": "Verification status of the nameserver",
+						"description": "Verification status of the nameserver.",
 						"enum": [
 							"moved",
 							"pending",
@@ -198,7 +198,7 @@
 					"zone_tag": {
 						"type": "string",
 						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
-						"description": "Zone identifier tag",
+						"description": "Zone identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					}
@@ -213,12 +213,12 @@
 				"objects": [],
 				"example": "{\n  \"dns_records\": [\n    {\n      \"type\": \"A\",\n      \"value\": \"1.1.1.1\"\n    }\n  ],\n  \"ns_name\": \"ns1.example.com\",\n  \"status\": \"verified\",\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
 				"title": "Custom NS",
-				"description": "A single account custom nameserver"
+				"description": "A single account custom nameserver."
 			}
 		],
 		"example": "{\n  \"dns_records\": [\n    {\n      \"type\": \"A\",\n      \"value\": \"1.1.1.1\"\n    }\n  ],\n  \"ns_name\": \"ns1.example.com\",\n  \"status\": \"verified\",\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
 		"which_of": "oneOf",
 		"title": "Account-Level Custom Nameservers",
-		"description": "Configure custom nameservers that can be used by multiple zones in the account"
+		"description": "Configure custom nameservers that can be used by multiple zones in the account."
 	}
 }

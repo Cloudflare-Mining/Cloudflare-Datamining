@@ -2,7 +2,7 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/definitions/invite.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Invite",
-	"description": "An invitation to join an organization",
+	"description": "An invitation to join an organization.",
 	"type": "object",
 	"required": [
 		"id",
@@ -27,14 +27,14 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Invite identifier tag",
+							"description": "Invite identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 						},
 						"invited_member_id": {
-							"description": "Id of the user to be added to the Organization",
+							"description": "Id of the user to be added to the Organization.",
 							"type": [
 								"string",
 								"null"
@@ -44,27 +44,27 @@
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"invited_member_email": {
-							"description": "Email address of the user to be added to the Organization",
+							"description": "Email address of the user to be added to the Organization.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"organization_id": {
-							"description": "ID of the Organization the user will be added to",
+							"description": "ID of the Organization the user will be added to.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"organization_name": {
-							"description": "Organization Name",
+							"description": "Organization Name.",
 							"type": "string",
 							"maxLength": 100,
 							"readOnly": true,
 							"example": "Cloudflare, Inc."
 						},
 						"roles": {
-							"description": "Roles to be assigned to this Member",
+							"description": "Roles to be assigned to this Member.",
 							"type": "array",
 							"items": {
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -80,7 +80,7 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -88,20 +88,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -112,7 +112,7 @@
 								},
 								"definitions": {
 									"identifier": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -120,20 +120,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -142,7 +142,7 @@
 										}
 									},
 									"organization_identifier": {
-										"description": "Organization identifier tag",
+										"description": "Organization identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -153,13 +153,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains a single result object",
+												"description": "Schema for an API response from Cloudflare that contains a single result object.",
 												"type": "object",
 												"allOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -172,7 +172,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -234,7 +234,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -362,13 +362,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+												"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 												"type": "object",
 												"anyOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -381,7 +381,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -443,7 +443,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -554,22 +554,22 @@
 																"type": "object",
 																"properties": {
 																	"page": {
-																		"description": "Current page within paginated list of results",
+																		"description": "Current page within paginated list of results.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"per_page": {
-																		"description": "Number of results per page of results",
+																		"description": "Number of results per page of results.",
 																		"type": "number",
 																		"example": 20
 																	},
 																	"count": {
-																		"description": "Total results returned based on your search parameters",
+																		"description": "Total results returned based on your search parameters.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"total_count": {
-																		"description": "Total results available without any search parameters",
+																		"description": "Total results available without any search parameters.",
 																		"type": "number",
 																		"example": 2000
 																	}
@@ -583,12 +583,12 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Requested page within paginated list of results",
+																"description": "Requested page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Maximum number of results requested",
+																"description": "Maximum number of results requested.",
 																"type": "number",
 																"example": 20
 															}
@@ -598,22 +598,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -638,20 +638,20 @@
 							}
 						},
 						"invited_by": {
-							"description": "The email address of the user who created the invite",
+							"description": "The email address of the user who created the invite.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"invited_on": {
-							"description": "When the invite was sent",
+							"description": "When the invite was sent.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
 							"example": "2014-01-01T05:20:00Z"
 						},
 						"expires_on": {
-							"description": "When the invite is no longer active",
+							"description": "When the invite is no longer active.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
@@ -662,13 +662,13 @@
 				{
 					"properties": {
 						"organization_is_enforcing_twofactor": {
-							"description": "Current status of two factor enforcement on the organization",
+							"description": "Current status of two factor enforcement on the organization.",
 							"type": "boolean",
 							"example": true,
 							"default": false
 						},
 						"status": {
-							"description": "Current status of the invitation",
+							"description": "Current status of the invitation.",
 							"type": "string",
 							"enum": [
 								"pending",
@@ -694,14 +694,14 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Invite identifier tag",
+							"description": "Invite identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 						},
 						"invited_member_id": {
-							"description": "Id of the user to be added to the Organization",
+							"description": "Id of the user to be added to the Organization.",
 							"type": [
 								"string",
 								"null"
@@ -711,27 +711,27 @@
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"invited_member_email": {
-							"description": "Email address of the user to be added to the Organization",
+							"description": "Email address of the user to be added to the Organization.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"organization_id": {
-							"description": "ID of the Organization the user will be added to",
+							"description": "ID of the Organization the user will be added to.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"organization_name": {
-							"description": "Organization Name",
+							"description": "Organization Name.",
 							"type": "string",
 							"maxLength": 100,
 							"readOnly": true,
 							"example": "Cloudflare, Inc."
 						},
 						"roles": {
-							"description": "Roles to be assigned to this Member",
+							"description": "Roles to be assigned to this Member.",
 							"type": "array",
 							"items": {
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -747,7 +747,7 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -755,20 +755,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -779,7 +779,7 @@
 								},
 								"definitions": {
 									"identifier": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -787,20 +787,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -809,7 +809,7 @@
 										}
 									},
 									"organization_identifier": {
-										"description": "Organization identifier tag",
+										"description": "Organization identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -820,13 +820,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains a single result object",
+												"description": "Schema for an API response from Cloudflare that contains a single result object.",
 												"type": "object",
 												"allOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -839,7 +839,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -901,7 +901,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -1029,13 +1029,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+												"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 												"type": "object",
 												"anyOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -1048,7 +1048,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -1110,7 +1110,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -1221,22 +1221,22 @@
 																"type": "object",
 																"properties": {
 																	"page": {
-																		"description": "Current page within paginated list of results",
+																		"description": "Current page within paginated list of results.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"per_page": {
-																		"description": "Number of results per page of results",
+																		"description": "Number of results per page of results.",
 																		"type": "number",
 																		"example": 20
 																	},
 																	"count": {
-																		"description": "Total results returned based on your search parameters",
+																		"description": "Total results returned based on your search parameters.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"total_count": {
-																		"description": "Total results available without any search parameters",
+																		"description": "Total results available without any search parameters.",
 																		"type": "number",
 																		"example": 2000
 																	}
@@ -1250,12 +1250,12 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Requested page within paginated list of results",
+																"description": "Requested page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Maximum number of results requested",
+																"description": "Maximum number of results requested.",
 																"type": "number",
 																"example": 20
 															}
@@ -1265,22 +1265,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -1305,20 +1305,20 @@
 							}
 						},
 						"invited_by": {
-							"description": "The email address of the user who created the invite",
+							"description": "The email address of the user who created the invite.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"invited_on": {
-							"description": "When the invite was sent",
+							"description": "When the invite was sent.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
 							"example": "2014-01-01T05:20:00Z"
 						},
 						"expires_on": {
-							"description": "When the invite is no longer active",
+							"description": "When the invite is no longer active.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
@@ -1329,7 +1329,7 @@
 				{
 					"properties": {
 						"status": {
-							"description": "Current status of the invitation",
+							"description": "Current status of the invitation.",
 							"enum": [
 								"pending",
 								"accepted",
@@ -1345,34 +1345,34 @@
 	],
 	"definitions": {
 		"identifier": {
-			"description": "Invite identifier tag",
+			"description": "Invite identifier tag.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
 			"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 		},
 		"invited_by": {
-			"description": "The email address of the user who created the invite",
+			"description": "The email address of the user who created the invite.",
 			"type": "string",
 			"maxLength": 90,
 			"example": "user@example.com"
 		},
 		"invited_on": {
-			"description": "When the invite was sent",
+			"description": "When the invite was sent.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"expires_on": {
-			"description": "When the invite is no longer active",
+			"description": "When the invite is no longer active.",
 			"type": "string",
 			"format": "date-time",
 			"readOnly": true,
 			"example": "2014-01-01T05:20:00Z"
 		},
 		"invited_member_email": {
-			"description": "Email address of the user to be added to the Organization",
+			"description": "Email address of the user to be added to the Organization.",
 			"type": "string",
 			"maxLength": 90,
 			"example": "user@example.com"
@@ -1385,14 +1385,14 @@
 			],
 			"properties": {
 				"id": {
-					"description": "Invite identifier tag",
+					"description": "Invite identifier tag.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 				},
 				"invited_member_id": {
-					"description": "Id of the user to be added to the Organization",
+					"description": "Id of the user to be added to the Organization.",
 					"type": [
 						"string",
 						"null"
@@ -1402,27 +1402,27 @@
 					"example": "5a7805061c76ada191ed06f989cc3dac"
 				},
 				"invited_member_email": {
-					"description": "Email address of the user to be added to the Organization",
+					"description": "Email address of the user to be added to the Organization.",
 					"type": "string",
 					"maxLength": 90,
 					"example": "user@example.com"
 				},
 				"organization_id": {
-					"description": "ID of the Organization the user will be added to",
+					"description": "ID of the Organization the user will be added to.",
 					"type": "string",
 					"maxLength": 32,
 					"readOnly": true,
 					"example": "5a7805061c76ada191ed06f989cc3dac"
 				},
 				"organization_name": {
-					"description": "Organization Name",
+					"description": "Organization Name.",
 					"type": "string",
 					"maxLength": 100,
 					"readOnly": true,
 					"example": "Cloudflare, Inc."
 				},
 				"roles": {
-					"description": "Roles to be assigned to this Member",
+					"description": "Roles to be assigned to this Member.",
 					"type": "array",
 					"items": {
 						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -1438,7 +1438,7 @@
 						],
 						"properties": {
 							"id": {
-								"description": "Role identifier tag",
+								"description": "Role identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
@@ -1446,20 +1446,20 @@
 							},
 							"name": {
 								"type": "string",
-								"description": "Role Name",
+								"description": "Role Name.",
 								"maxLength": 120,
 								"readOnly": true,
 								"example": "Organization Admin"
 							},
 							"description": {
 								"type": "string",
-								"description": "Description of role's permissions",
+								"description": "Description of role's permissions.",
 								"readOnly": true,
 								"example": "Administrative access to the entire Organization"
 							},
 							"permissions": {
 								"type": "array",
-								"description": "Access permissions for this User",
+								"description": "Access permissions for this User.",
 								"readOnly": true,
 								"items": {
 									"type": "string",
@@ -1470,7 +1470,7 @@
 						},
 						"definitions": {
 							"identifier": {
-								"description": "Role identifier tag",
+								"description": "Role identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
@@ -1478,20 +1478,20 @@
 							},
 							"name": {
 								"type": "string",
-								"description": "Role Name",
+								"description": "Role Name.",
 								"maxLength": 120,
 								"readOnly": true,
 								"example": "Organization Admin"
 							},
 							"description": {
 								"type": "string",
-								"description": "Description of role's permissions",
+								"description": "Description of role's permissions.",
 								"readOnly": true,
 								"example": "Administrative access to the entire Organization"
 							},
 							"permissions": {
 								"type": "array",
-								"description": "Access permissions for this User",
+								"description": "Access permissions for this User.",
 								"readOnly": true,
 								"items": {
 									"type": "string",
@@ -1500,7 +1500,7 @@
 								}
 							},
 							"organization_identifier": {
-								"description": "Organization identifier tag",
+								"description": "Organization identifier tag.",
 								"type": "string",
 								"maxLength": 32,
 								"readOnly": true,
@@ -1511,13 +1511,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains a single result object",
+										"description": "Schema for an API response from Cloudflare that contains a single result object.",
 										"type": "object",
 										"allOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -1530,7 +1530,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -1592,7 +1592,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -1720,13 +1720,13 @@
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+										"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 										"type": "object",
 										"anyOf": [
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Common schema for all Cloudflare v4 API responses",
+												"description": "Common schema for all Cloudflare v4 API responses.",
 												"type": "object",
 												"required": [
 													"success",
@@ -1739,7 +1739,7 @@
 														"$comment": "This subschema describes successful responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	true
@@ -1801,7 +1801,7 @@
 														"$comment": "This subschema describes failure responses",
 														"properties": {
 															"success": {
-																"description": "Whether the API call was successful or not",
+																"description": "Whether the API call was successful or not.",
 																"type": "boolean",
 																"enum": [
 																	false
@@ -1912,22 +1912,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -1941,12 +1941,12 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Requested page within paginated list of results",
+														"description": "Requested page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Maximum number of results requested",
+														"description": "Maximum number of results requested.",
 														"type": "number",
 														"example": 20
 													}
@@ -1956,22 +1956,22 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Current page within paginated list of results",
+														"description": "Current page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Number of results per page of results",
+														"description": "Number of results per page of results.",
 														"type": "number",
 														"example": 20
 													},
 													"count": {
-														"description": "Total results returned based on your search parameters",
+														"description": "Total results returned based on your search parameters.",
 														"type": "number",
 														"example": 1
 													},
 													"total_count": {
-														"description": "Total results available without any search parameters",
+														"description": "Total results available without any search parameters.",
 														"type": "number",
 														"example": 2000
 													}
@@ -1996,20 +1996,20 @@
 					}
 				},
 				"invited_by": {
-					"description": "The email address of the user who created the invite",
+					"description": "The email address of the user who created the invite.",
 					"type": "string",
 					"maxLength": 90,
 					"example": "user@example.com"
 				},
 				"invited_on": {
-					"description": "When the invite was sent",
+					"description": "When the invite was sent.",
 					"type": "string",
 					"format": "date-time",
 					"readOnly": true,
 					"example": "2014-01-01T05:20:00Z"
 				},
 				"expires_on": {
-					"description": "When the invite is no longer active",
+					"description": "When the invite is no longer active.",
 					"type": "string",
 					"format": "date-time",
 					"readOnly": true,
@@ -2027,14 +2027,14 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Invite identifier tag",
+							"description": "Invite identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 						},
 						"invited_member_id": {
-							"description": "Id of the user to be added to the Organization",
+							"description": "Id of the user to be added to the Organization.",
 							"type": [
 								"string",
 								"null"
@@ -2044,27 +2044,27 @@
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"invited_member_email": {
-							"description": "Email address of the user to be added to the Organization",
+							"description": "Email address of the user to be added to the Organization.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"organization_id": {
-							"description": "ID of the Organization the user will be added to",
+							"description": "ID of the Organization the user will be added to.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"organization_name": {
-							"description": "Organization Name",
+							"description": "Organization Name.",
 							"type": "string",
 							"maxLength": 100,
 							"readOnly": true,
 							"example": "Cloudflare, Inc."
 						},
 						"roles": {
-							"description": "Roles to be assigned to this Member",
+							"description": "Roles to be assigned to this Member.",
 							"type": "array",
 							"items": {
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -2080,7 +2080,7 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2088,20 +2088,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -2112,7 +2112,7 @@
 								},
 								"definitions": {
 									"identifier": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2120,20 +2120,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -2142,7 +2142,7 @@
 										}
 									},
 									"organization_identifier": {
-										"description": "Organization identifier tag",
+										"description": "Organization identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2153,13 +2153,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains a single result object",
+												"description": "Schema for an API response from Cloudflare that contains a single result object.",
 												"type": "object",
 												"allOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -2172,7 +2172,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -2234,7 +2234,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -2362,13 +2362,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+												"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 												"type": "object",
 												"anyOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -2381,7 +2381,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -2443,7 +2443,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -2554,22 +2554,22 @@
 																"type": "object",
 																"properties": {
 																	"page": {
-																		"description": "Current page within paginated list of results",
+																		"description": "Current page within paginated list of results.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"per_page": {
-																		"description": "Number of results per page of results",
+																		"description": "Number of results per page of results.",
 																		"type": "number",
 																		"example": 20
 																	},
 																	"count": {
-																		"description": "Total results returned based on your search parameters",
+																		"description": "Total results returned based on your search parameters.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"total_count": {
-																		"description": "Total results available without any search parameters",
+																		"description": "Total results available without any search parameters.",
 																		"type": "number",
 																		"example": 2000
 																	}
@@ -2583,12 +2583,12 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Requested page within paginated list of results",
+																"description": "Requested page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Maximum number of results requested",
+																"description": "Maximum number of results requested.",
 																"type": "number",
 																"example": 20
 															}
@@ -2598,22 +2598,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -2638,20 +2638,20 @@
 							}
 						},
 						"invited_by": {
-							"description": "The email address of the user who created the invite",
+							"description": "The email address of the user who created the invite.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"invited_on": {
-							"description": "When the invite was sent",
+							"description": "When the invite was sent.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
 							"example": "2014-01-01T05:20:00Z"
 						},
 						"expires_on": {
-							"description": "When the invite is no longer active",
+							"description": "When the invite is no longer active.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
@@ -2662,13 +2662,13 @@
 				{
 					"properties": {
 						"organization_is_enforcing_twofactor": {
-							"description": "Current status of two factor enforcement on the organization",
+							"description": "Current status of two factor enforcement on the organization.",
 							"type": "boolean",
 							"example": true,
 							"default": false
 						},
 						"status": {
-							"description": "Current status of the invitation",
+							"description": "Current status of the invitation.",
 							"type": "string",
 							"enum": [
 								"pending",
@@ -2694,14 +2694,14 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Invite identifier tag",
+							"description": "Invite identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 						},
 						"invited_member_id": {
-							"description": "Id of the user to be added to the Organization",
+							"description": "Id of the user to be added to the Organization.",
 							"type": [
 								"string",
 								"null"
@@ -2711,27 +2711,27 @@
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"invited_member_email": {
-							"description": "Email address of the user to be added to the Organization",
+							"description": "Email address of the user to be added to the Organization.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"organization_id": {
-							"description": "ID of the Organization the user will be added to",
+							"description": "ID of the Organization the user will be added to.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
 							"example": "5a7805061c76ada191ed06f989cc3dac"
 						},
 						"organization_name": {
-							"description": "Organization Name",
+							"description": "Organization Name.",
 							"type": "string",
 							"maxLength": 100,
 							"readOnly": true,
 							"example": "Cloudflare, Inc."
 						},
 						"roles": {
-							"description": "Roles to be assigned to this Member",
+							"description": "Roles to be assigned to this Member.",
 							"type": "array",
 							"items": {
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -2747,7 +2747,7 @@
 								],
 								"properties": {
 									"id": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2755,20 +2755,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -2779,7 +2779,7 @@
 								},
 								"definitions": {
 									"identifier": {
-										"description": "Role identifier tag",
+										"description": "Role identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2787,20 +2787,20 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "Role Name",
+										"description": "Role Name.",
 										"maxLength": 120,
 										"readOnly": true,
 										"example": "Organization Admin"
 									},
 									"description": {
 										"type": "string",
-										"description": "Description of role's permissions",
+										"description": "Description of role's permissions.",
 										"readOnly": true,
 										"example": "Administrative access to the entire Organization"
 									},
 									"permissions": {
 										"type": "array",
-										"description": "Access permissions for this User",
+										"description": "Access permissions for this User.",
 										"readOnly": true,
 										"items": {
 											"type": "string",
@@ -2809,7 +2809,7 @@
 										}
 									},
 									"organization_identifier": {
-										"description": "Organization identifier tag",
+										"description": "Organization identifier tag.",
 										"type": "string",
 										"maxLength": 32,
 										"readOnly": true,
@@ -2820,13 +2820,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains a single result object",
+												"description": "Schema for an API response from Cloudflare that contains a single result object.",
 												"type": "object",
 												"allOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -2839,7 +2839,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -2901,7 +2901,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -3029,13 +3029,13 @@
 											{
 												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-												"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+												"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 												"type": "object",
 												"anyOf": [
 													{
 														"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 														"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-														"description": "Common schema for all Cloudflare v4 API responses",
+														"description": "Common schema for all Cloudflare v4 API responses.",
 														"type": "object",
 														"required": [
 															"success",
@@ -3048,7 +3048,7 @@
 																"$comment": "This subschema describes successful responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			true
@@ -3110,7 +3110,7 @@
 																"$comment": "This subschema describes failure responses",
 																"properties": {
 																	"success": {
-																		"description": "Whether the API call was successful or not",
+																		"description": "Whether the API call was successful or not.",
 																		"type": "boolean",
 																		"enum": [
 																			false
@@ -3221,22 +3221,22 @@
 																"type": "object",
 																"properties": {
 																	"page": {
-																		"description": "Current page within paginated list of results",
+																		"description": "Current page within paginated list of results.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"per_page": {
-																		"description": "Number of results per page of results",
+																		"description": "Number of results per page of results.",
 																		"type": "number",
 																		"example": 20
 																	},
 																	"count": {
-																		"description": "Total results returned based on your search parameters",
+																		"description": "Total results returned based on your search parameters.",
 																		"type": "number",
 																		"example": 1
 																	},
 																	"total_count": {
-																		"description": "Total results available without any search parameters",
+																		"description": "Total results available without any search parameters.",
 																		"type": "number",
 																		"example": 2000
 																	}
@@ -3250,12 +3250,12 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Requested page within paginated list of results",
+																"description": "Requested page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Maximum number of results requested",
+																"description": "Maximum number of results requested.",
 																"type": "number",
 																"example": 20
 															}
@@ -3265,22 +3265,22 @@
 														"type": "object",
 														"properties": {
 															"page": {
-																"description": "Current page within paginated list of results",
+																"description": "Current page within paginated list of results.",
 																"type": "number",
 																"example": 1
 															},
 															"per_page": {
-																"description": "Number of results per page of results",
+																"description": "Number of results per page of results.",
 																"type": "number",
 																"example": 20
 															},
 															"count": {
-																"description": "Total results returned based on your search parameters",
+																"description": "Total results returned based on your search parameters.",
 																"type": "number",
 																"example": 1
 															},
 															"total_count": {
-																"description": "Total results available without any search parameters",
+																"description": "Total results available without any search parameters.",
 																"type": "number",
 																"example": 2000
 															}
@@ -3305,20 +3305,20 @@
 							}
 						},
 						"invited_by": {
-							"description": "The email address of the user who created the invite",
+							"description": "The email address of the user who created the invite.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
 						},
 						"invited_on": {
-							"description": "When the invite was sent",
+							"description": "When the invite was sent.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
 							"example": "2014-01-01T05:20:00Z"
 						},
 						"expires_on": {
-							"description": "When the invite is no longer active",
+							"description": "When the invite is no longer active.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
@@ -3329,7 +3329,7 @@
 				{
 					"properties": {
 						"status": {
-							"description": "Current status of the invitation",
+							"description": "Current status of the invitation.",
 							"enum": [
 								"pending",
 								"accepted",

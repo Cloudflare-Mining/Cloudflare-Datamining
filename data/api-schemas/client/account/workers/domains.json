@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/domains.json",
 	"title": "Worker Domain",
-	"description": "A Worker Domain lets you attach workers to a specific zone and hostname (Beta)",
+	"description": "A Worker Domain lets you attach workers to a specific zone and hostname (Beta).",
 	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
 	"type": "object",
 	"links": [
@@ -20,12 +20,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -58,7 +58,7 @@
 					"zone_id": {
 						"type": "string",
 						"example": "\"593c9c94de529bbbfaac7c53ced0447d\"",
-						"description": "Identifier of the zone",
+						"description": "Identifier of the zone.",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"maxLength": 32,
@@ -67,22 +67,22 @@
 					"zone_name": {
 						"type": "string",
 						"example": "\"example.com\"",
-						"description": "Name of the zone"
+						"description": "Name of the zone."
 					},
 					"hostname": {
 						"type": "string",
 						"example": "\"foo.example.com\"",
-						"description": "Hostname of the Worker Domain"
+						"description": "Hostname of the Worker Domain."
 					},
 					"service": {
 						"type": "string",
 						"example": "\"foo\"",
-						"description": "Worker service associated with the zone and hostname"
+						"description": "Worker service associated with the zone and hostname."
 					},
 					"environment": {
 						"type": "string",
 						"example": "\"production\"",
-						"description": "Worker environment associated with the zone and hostname"
+						"description": "Worker environment associated with the zone and hostname."
 					}
 				},
 				"required_props": [],
@@ -113,12 +113,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -151,7 +151,7 @@
 					"zone_id": {
 						"type": "string",
 						"example": "\"593c9c94de529bbbfaac7c53ced0447d\"",
-						"description": "Identifier of the zone",
+						"description": "Identifier of the zone.",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"maxLength": 32,
@@ -160,17 +160,17 @@
 					"hostname": {
 						"type": "string",
 						"example": "\"foo.example.com\"",
-						"description": "Hostname of the Worker Domain"
+						"description": "Hostname of the Worker Domain."
 					},
 					"service": {
 						"type": "string",
 						"example": "\"foo\"",
-						"description": "Worker service associated with the zone and hostname"
+						"description": "Worker service associated with the zone and hostname."
 					},
 					"environment": {
 						"type": "string",
 						"example": "\"production\"",
-						"description": "Worker environment associated with the zone and hostname"
+						"description": "Worker environment associated with the zone and hostname."
 					}
 				},
 				"required_props": [
@@ -200,12 +200,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -247,12 +247,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -298,7 +298,7 @@
 			"id": {
 				"type": "string",
 				"example": "\"dbe10b4bc17c295377eabd600e1787fd\"",
-				"description": "Identifer of the Worker Domain",
+				"description": "Identifer of the Worker Domain.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"maxLength": 32,
@@ -307,7 +307,7 @@
 			"zone_id": {
 				"type": "string",
 				"example": "\"593c9c94de529bbbfaac7c53ced0447d\"",
-				"description": "Identifier of the zone",
+				"description": "Identifier of the zone.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"maxLength": 32,
@@ -316,22 +316,22 @@
 			"zone_name": {
 				"type": "string",
 				"example": "\"example.com\"",
-				"description": "Name of the zone"
+				"description": "Name of the zone."
 			},
 			"hostname": {
 				"type": "string",
 				"example": "\"foo.example.com\"",
-				"description": "Hostname of the Worker Domain"
+				"description": "Hostname of the Worker Domain."
 			},
 			"service": {
 				"type": "string",
 				"example": "\"foo\"",
-				"description": "Worker service associated with the zone and hostname"
+				"description": "Worker service associated with the zone and hostname."
 			},
 			"environment": {
 				"type": "string",
 				"example": "\"production\"",
-				"description": "Worker environment associated with the zone and hostname"
+				"description": "Worker environment associated with the zone and hostname."
 			}
 		},
 		"required_props": [],
@@ -346,6 +346,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"dbe10b4bc17c295377eabd600e1787fd\",\n  \"zone_id\": \"593c9c94de529bbbfaac7c53ced0447d\",\n  \"zone_name\": \"example.com\",\n  \"hostname\": \"foo.example.com\",\n  \"service\": \"foo\",\n  \"environment\": \"production\"\n}",
 		"title": "Worker Domain",
-		"description": "A Worker Domain lets you attach workers to a specific zone and hostname (Beta)"
+		"description": "A Worker Domain lets you attach workers to a specific zone and hostname (Beta)."
 	}
 }

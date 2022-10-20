@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/organization/railgun.json",
 	"title": "Organization Railgun",
-	"description": "Cloudflare Railgun for Organizations",
+	"description": "Cloudflare Railgun for Organizations.",
 	"cfExtendedDescription": "Please use equivalent `/accounts` API endpoints. Account APIs provide a broader range of features and are backwards-compatible to organization APIs.",
 	"cfDeprecations": {
 		"id": "org_deprecation",
@@ -377,6 +377,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"e928d310693a83094309acf9ead50448\",\n  \"name\": \"My Railgun.\",\n  \"status\": \"active\",\n  \"enabled\": true,\n  \"zones_connected\": 2,\n  \"build\": \"b1234\",\n  \"version\": \"2.1\",\n  \"revision\": \"123\",\n  \"activation_key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n  \"activated_on\": \"2014-01-02T02:20:00Z\",\n  \"created_on\": \"2014-01-01T05:20:00Z\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\"\n}",
 		"title": "Organization Railgun",
-		"description": "Cloudflare Railgun for Organizations"
+		"description": "Cloudflare Railgun for Organizations."
 	}
 }

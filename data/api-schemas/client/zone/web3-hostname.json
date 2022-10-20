@@ -202,20 +202,20 @@
 						"enum": [
 							"block"
 						],
-						"description": "Behavior of the content list"
+						"description": "Behavior of the content list."
 					},
 					"entries": {
 						"type": "array",
 						"example": "[\n  {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"type\": \"cid\",\n    \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n    \"description\": \"this is my content list entry\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
-						"description": "Content list entries",
+						"description": "Content list entries.",
 						"items": {
-							"description": "Content list entry to be blocked",
+							"description": "Content list entry to be blocked.",
 							"type": "object",
 							"properties": {
 								"id": {
 									"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "API item identifier tag",
+									"description": "API item identifier tag.",
 									"type": "string",
 									"maxLength": 32,
 									"readOnly": true,
@@ -227,13 +227,13 @@
 										"cid",
 										"content_path"
 									],
-									"description": "Type of content list entry to block",
+									"description": "Type of content list entry to block.",
 									"example": "cid"
 								},
 								"content": {
 									"type": "string",
 									"maxLength": 500,
-									"description": "CID or content path of content to block",
+									"description": "CID or content path of content to block.",
 									"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB"
 								},
 								"description": {
@@ -245,7 +245,7 @@
 								"created_on": {
 									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Creation time",
+									"description": "Creation time.",
 									"type": "string",
 									"format": "date-time",
 									"readOnly": true,
@@ -254,7 +254,7 @@
 								"modified_on": {
 									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Last modification time",
+									"description": "Last modification time.",
 									"type": "string",
 									"format": "date-time",
 									"readOnly": true,
@@ -318,13 +318,13 @@
 							"cid",
 							"content_path"
 						],
-						"description": "Type of content list entry to block"
+						"description": "Type of content list entry to block."
 					},
 					"content": {
 						"type": "string",
 						"example": "\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\"",
 						"maxLength": 500,
-						"description": "CID or content path of content to block"
+						"description": "CID or content path of content to block."
 					},
 					"description": {
 						"type": "string",
@@ -389,13 +389,13 @@
 							"cid",
 							"content_path"
 						],
-						"description": "Type of content list entry to block"
+						"description": "Type of content list entry to block."
 					},
 					"content": {
 						"type": "string",
 						"example": "\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\"",
 						"maxLength": 500,
-						"description": "CID or content path of content to block"
+						"description": "CID or content path of content to block."
 					},
 					"description": {
 						"type": "string",
@@ -445,7 +445,7 @@
 				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -494,7 +494,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -503,7 +503,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			}

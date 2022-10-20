@@ -97,12 +97,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -324,12 +324,12 @@
 				],
 				"properties": {
 					"X-Auth-Email": {
-						"description": "Your Cloudflare email",
+						"description": "Your Cloudflare email.",
 						"type": "string",
 						"example": "user@example.com"
 					},
 					"X-Auth-Key": {
-						"description": "Your Cloudflare API key",
+						"description": "Your Cloudflare API key.",
 						"type": "string",
 						"minLength": 45,
 						"maxLength": 45,
@@ -657,7 +657,7 @@
 						"type": "string",
 						"example": "\"https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"",
 						"readOnly": true,
-						"description": "DASH Media Presentation Description for the video"
+						"description": "DASH Media Presentation Description for the video."
 					}
 				},
 				"readOnly": true
@@ -850,7 +850,7 @@
 					"position": {
 						"type": "string",
 						"example": "\"center\"",
-						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 						"default": "upperRight",
 						"readOnly": true
 					}
@@ -914,7 +914,7 @@
 									"type": "number"
 								},
 								"position": {
-									"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+									"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 									"default": "upperRight",
 									"example": "center",
 									"readOnly": true,
@@ -927,13 +927,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"description": "Schema for an API response from Cloudflare that contains a single result object.",
 									"type": "object",
 									"allOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -946,7 +946,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -1008,7 +1008,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -1146,12 +1146,12 @@
 							],
 							"properties": {
 								"X-Auth-Email": {
-									"description": "Your Cloudflare email",
+									"description": "Your Cloudflare email.",
 									"type": "string",
 									"example": "user@example.com"
 								},
 								"X-Auth-Key": {
-									"description": "Your Cloudflare API key",
+									"description": "Your Cloudflare API key.",
 									"type": "string",
 									"minLength": 45,
 									"maxLength": 45,
@@ -1205,7 +1205,7 @@
 									"type": "number"
 								},
 								"position": {
-									"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+									"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 									"default": "upperRight",
 									"example": "center",
 									"readOnly": true,
@@ -1218,13 +1218,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"description": "Schema for an API response from Cloudflare that contains a single result object.",
 									"type": "object",
 									"allOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -1237,7 +1237,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -1299,7 +1299,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -1434,13 +1434,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+									"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 									"type": "object",
 									"anyOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -1453,7 +1453,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -1515,7 +1515,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -1626,22 +1626,22 @@
 													"type": "object",
 													"properties": {
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Current page within paginated list of results.",
 															"type": "number",
 															"example": 1
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Number of results per page of results.",
 															"type": "number",
 															"example": 20
 														},
 														"count": {
-															"description": "Total results returned based on your search parameters",
+															"description": "Total results returned based on your search parameters.",
 															"type": "number",
 															"example": 1
 														},
 														"total_count": {
-															"description": "Total results available without any search parameters",
+															"description": "Total results available without any search parameters.",
 															"type": "number",
 															"example": 2000
 														}
@@ -1655,12 +1655,12 @@
 											"type": "object",
 											"properties": {
 												"page": {
-													"description": "Requested page within paginated list of results",
+													"description": "Requested page within paginated list of results.",
 													"type": "number",
 													"example": 1
 												},
 												"per_page": {
-													"description": "Maximum number of results requested",
+													"description": "Maximum number of results requested.",
 													"type": "number",
 													"example": 20
 												}
@@ -1670,22 +1670,22 @@
 											"type": "object",
 											"properties": {
 												"page": {
-													"description": "Current page within paginated list of results",
+													"description": "Current page within paginated list of results.",
 													"type": "number",
 													"example": 1
 												},
 												"per_page": {
-													"description": "Number of results per page of results",
+													"description": "Number of results per page of results.",
 													"type": "number",
 													"example": 20
 												},
 												"count": {
-													"description": "Total results returned based on your search parameters",
+													"description": "Total results returned based on your search parameters.",
 													"type": "number",
 													"example": 1
 												},
 												"total_count": {
-													"description": "Total results available without any search parameters",
+													"description": "Total results available without any search parameters.",
 													"type": "number",
 													"example": 2000
 												}
@@ -1718,13 +1718,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"description": "Schema for an API response from Cloudflare that contains a single result object.",
 									"type": "object",
 									"allOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -1737,7 +1737,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -1799,7 +1799,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -1934,13 +1934,13 @@
 								{
 									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"description": "Schema for an API response from Cloudflare that contains a single result object.",
 									"type": "object",
 									"allOf": [
 										{
 											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-											"description": "Common schema for all Cloudflare v4 API responses",
+											"description": "Common schema for all Cloudflare v4 API responses.",
 											"type": "object",
 											"required": [
 												"success",
@@ -1953,7 +1953,7 @@
 													"$comment": "This subschema describes successful responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																true
@@ -2015,7 +2015,7 @@
 													"$comment": "This subschema describes failure responses",
 													"properties": {
 														"success": {
-															"description": "Whether the API call was successful or not",
+															"description": "Whether the API call was successful or not.",
 															"type": "boolean",
 															"enum": [
 																false
@@ -2193,7 +2193,7 @@
 								"type": "number"
 							},
 							"position": {
-								"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+								"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 								"default": "upperRight",
 								"example": "center",
 								"readOnly": true,
@@ -2248,7 +2248,7 @@
 								"type": "number"
 							},
 							"position": {
-								"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+								"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 								"default": "upperRight",
 								"example": "center",
 								"readOnly": true,
@@ -2261,13 +2261,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"description": "Schema for an API response from Cloudflare that contains a single result object.",
 								"type": "object",
 								"allOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2280,7 +2280,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -2342,7 +2342,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2469,13 +2469,13 @@
 							{
 								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
 								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-								"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+								"description": "Schema for an API response from Cloudflare that contains multiple result objects.",
 								"type": "object",
 								"anyOf": [
 									{
 										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
 										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-										"description": "Common schema for all Cloudflare v4 API responses",
+										"description": "Common schema for all Cloudflare v4 API responses.",
 										"type": "object",
 										"required": [
 											"success",
@@ -2488,7 +2488,7 @@
 												"$comment": "This subschema describes successful responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															true
@@ -2550,7 +2550,7 @@
 												"$comment": "This subschema describes failure responses",
 												"properties": {
 													"success": {
-														"description": "Whether the API call was successful or not",
+														"description": "Whether the API call was successful or not.",
 														"type": "boolean",
 														"enum": [
 															false
@@ -2661,22 +2661,22 @@
 												"type": "object",
 												"properties": {
 													"page": {
-														"description": "Current page within paginated list of results",
+														"description": "Current page within paginated list of results.",
 														"type": "number",
 														"example": 1
 													},
 													"per_page": {
-														"description": "Number of results per page of results",
+														"description": "Number of results per page of results.",
 														"type": "number",
 														"example": 20
 													},
 													"count": {
-														"description": "Total results returned based on your search parameters",
+														"description": "Total results returned based on your search parameters.",
 														"type": "number",
 														"example": 1
 													},
 													"total_count": {
-														"description": "Total results available without any search parameters",
+														"description": "Total results available without any search parameters.",
 														"type": "number",
 														"example": 2000
 													}
@@ -2690,12 +2690,12 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Requested page within paginated list of results",
+												"description": "Requested page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Maximum number of results requested",
+												"description": "Maximum number of results requested.",
 												"type": "number",
 												"example": 20
 											}
@@ -2705,22 +2705,22 @@
 										"type": "object",
 										"properties": {
 											"page": {
-												"description": "Current page within paginated list of results",
+												"description": "Current page within paginated list of results.",
 												"type": "number",
 												"example": 1
 											},
 											"per_page": {
-												"description": "Number of results per page of results",
+												"description": "Number of results per page of results.",
 												"type": "number",
 												"example": 20
 											},
 											"count": {
-												"description": "Total results returned based on your search parameters",
+												"description": "Total results returned based on your search parameters.",
 												"type": "number",
 												"example": 1
 											},
 											"total_count": {
-												"description": "Total results available without any search parameters",
+												"description": "Total results available without any search parameters.",
 												"type": "number",
 												"example": 2000
 											}
@@ -2820,7 +2820,7 @@
 						"type": "number"
 					},
 					"position": {
-						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
 						"default": "upperRight",
 						"example": "center",
 						"readOnly": true,

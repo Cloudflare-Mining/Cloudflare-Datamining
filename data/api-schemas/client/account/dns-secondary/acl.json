@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/acl.json",
 	"title": "Secondary DNS (ACL)",
-	"description": "Access Control List (ACL) management for secondary DNS",
+	"description": "Access Control List (ACL) management for secondary DNS.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List ACLs",
-			"description": "List ACLs",
+			"description": "List ACLs.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "ACL Details",
-			"description": "Get ACL",
+			"description": "Get ACL.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
 			"method": "GET",
@@ -52,7 +52,7 @@
 		},
 		{
 			"title": "Update ACL",
-			"description": "Modify ACL",
+			"description": "Modify ACL.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
 			"method": "PUT",
@@ -82,7 +82,7 @@
 						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -94,7 +94,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"my-acl-1\"",
-						"description": "The name of the acl"
+						"description": "The name of the acl."
 					}
 				},
 				"required_props": [
@@ -106,13 +106,13 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
 				"title": "Secondary DNS (ACL)",
-				"description": "Access Control List (ACL) management for secondary DNS"
+				"description": "Access Control List (ACL) management for secondary DNS."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip_range\": \"192.0.2.53/28\",\n    \"name\": \"my-acl-1\"\n  }\n}"
 		},
 		{
 			"title": "Delete ACL",
-			"description": "Delete ACL",
+			"description": "Delete ACL.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -136,7 +136,7 @@
 		},
 		{
 			"title": "Create ACL",
-			"description": "Create ACL",
+			"description": "Create ACL.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls",
 			"method": "POST",
@@ -166,7 +166,7 @@
 						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-						"description": "API item identifier tag",
+						"description": "API item identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -178,7 +178,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"my-acl-1\"",
-						"description": "The name of the acl"
+						"description": "The name of the acl."
 					}
 				},
 				"required_props": [
@@ -190,7 +190,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
 				"title": "Secondary DNS (ACL)",
-				"description": "Access Control List (ACL) management for secondary DNS"
+				"description": "Access Control List (ACL) management for secondary DNS."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip_range\": \"192.0.2.53/28\",\n    \"name\": \"my-acl-1\"\n  }\n}"
 		}
@@ -206,7 +206,7 @@
 				"example": "\"23ff594956f20c2a721606e94745a8aa\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -218,7 +218,7 @@
 			"name": {
 				"type": "string",
 				"example": "\"my-acl-1\"",
-				"description": "The name of the acl"
+				"description": "The name of the acl."
 			}
 		},
 		"required_props": [
@@ -230,6 +230,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
 		"title": "Secondary DNS (ACL)",
-		"description": "Access Control List (ACL) management for secondary DNS"
+		"description": "Access Control List (ACL) management for secondary DNS."
 	}
 }

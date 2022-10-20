@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/organization.json",
 	"title": "User's Organizations",
-	"description": "A list of organizations this user is a member of",
+	"description": "A list of organizations this user is a member of.",
 	"cfExtendedDescription": "Please use equivalent `/accounts` API endpoints. Account APIs provide a broader range of features and are backwards-compatible to organization APIs.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Organizations",
-			"description": "List organizations the user is associated with",
+			"description": "List organizations the user is associated with.",
 			"rel": "collection",
 			"href": "user/organizations",
 			"method": "GET",
@@ -33,12 +33,12 @@
 							"member",
 							"invited"
 						],
-						"description": "Whether or not the user is a member of the organization or has an inivitation pending"
+						"description": "Whether or not the user is a member of the organization or has an inivitation pending."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Cloudflare, Inc.\"",
-						"description": "Organization Name",
+						"description": "Organization Name.",
 						"maxLength": 100
 					},
 					"page": {
@@ -46,7 +46,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -54,7 +54,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Number of organizations per page"
+						"description": "Number of organizations per page."
 					},
 					"order": {
 						"type": "string",
@@ -64,7 +64,7 @@
 							"name",
 							"status"
 						],
-						"description": "Field to order organizations by"
+						"description": "Field to order organizations by."
 					},
 					"direction": {
 						"type": "string",
@@ -73,7 +73,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order organizations"
+						"description": "Direction to order organizations."
 					},
 					"match": {
 						"type": "string",
@@ -83,7 +83,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)"
+						"description": "Whether to match all search requirements or at least one (any)."
 					}
 				},
 				"required_props": [],
@@ -103,7 +103,7 @@
 		},
 		{
 			"title": "Organization Details",
-			"description": "Get a specific organization the user is associated with",
+			"description": "Get a specific organization the user is associated with.",
 			"rel": "self",
 			"href": "user/organizations/{#/definitions/identifier}",
 			"method": "GET",
@@ -121,7 +121,7 @@
 		},
 		{
 			"title": "Leave Organization",
-			"description": "Remove association to an organization",
+			"description": "Remove association to an organization.",
 			"rel": "self",
 			"href": "user/organizations/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -147,14 +147,14 @@
 			"id": {
 				"type": "string",
 				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-				"description": "Organization identifier tag",
+				"description": "Organization identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Cloudflare, Inc.\"",
-				"description": "Organization Name",
+				"description": "Organization Name.",
 				"maxLength": 100
 			},
 			"status": {
@@ -164,12 +164,12 @@
 					"member",
 					"invited"
 				],
-				"description": "Whether or not the user is a member of the organization or has an inivitation pending"
+				"description": "Whether or not the user is a member of the organization or has an inivitation pending."
 			},
 			"permissions": {
 				"type": "array",
 				"example": "[\n  \"#zones:read\"\n]",
-				"description": "Access permissions for this User",
+				"description": "Access permissions for this User.",
 				"readOnly": true,
 				"items": {
 					"type": "string",
@@ -180,7 +180,7 @@
 			"roles": {
 				"type": "array",
 				"example": "[\n  \"All Privileges - Super Administrator\"\n]",
-				"description": "List of role names for the User at the Organization",
+				"description": "List of role names for the User at the Organization.",
 				"readOnly": true,
 				"items": {
 					"type": "string",
@@ -200,6 +200,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Cloudflare, Inc.\",\n  \"status\": \"member\",\n  \"permissions\": [\n    \"#zones:read\"\n  ],\n  \"roles\": [\n    \"All Privileges - Super Administrator\"\n  ]\n}",
 		"title": "User's Organizations",
-		"description": "A list of organizations this user is a member of"
+		"description": "A list of organizations this user is a member of."
 	}
 }

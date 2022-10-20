@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/configuration.json",
 	"title": "API Shield Settings",
-	"description": "API Shield-specific configuration options",
+	"description": "API Shield-specific configuration options.",
 	"cfExtendedDescription": "",
 	"type": "object",
 	"links": [
@@ -141,7 +141,7 @@
 				"objects": [],
 				"example": "{\n  \"auth_id_characteristics\": [\n    {\n      \"type\": \"header\",\n      \"name\": \"authorization\"\n    }\n  ]\n}",
 				"title": "API Shield Settings",
-				"description": "API Shield-specific configuration options"
+				"description": "API Shield-specific configuration options."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null\n}"
 		}
@@ -211,6 +211,6 @@
 		"objects": [],
 		"example": "{\n  \"auth_id_characteristics\": [\n    {\n      \"type\": \"header\",\n      \"name\": \"authorization\"\n    }\n  ]\n}",
 		"title": "API Shield Settings",
-		"description": "API Shield-specific configuration options"
+		"description": "API Shield-specific configuration options."
 	}
 }

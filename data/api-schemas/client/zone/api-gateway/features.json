@@ -61,7 +61,7 @@
 							"example": "\"2014-01-01T05:20:00.12345Z\"",
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Last modification time",
+							"description": "Last modification time.",
 							"format": "date-time",
 							"readOnly": true
 						}
@@ -85,20 +85,20 @@
 			"objects": [],
 			"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
 			"title": "Thresholds",
-			"description": "Suggested thresholding information"
+			"description": "Suggested thresholding information."
 		}
 	],
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/features.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Features",
-	"description": "An optional object that contains one or more requested features",
+	"description": "An optional object that contains one or more requested features.",
 	"readOnly": true,
 	"definitions": {
 		"thresholds": {
 			"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/thresholds.json",
 			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 			"title": "Thresholds",
-			"description": "Suggested thresholding information",
+			"description": "Suggested thresholding information.",
 			"type": "object",
 			"readOnly": true,
 			"properties": {
@@ -156,7 +156,7 @@
 						"last_updated": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-							"description": "Last modification time",
+							"description": "Last modification time.",
 							"type": "string",
 							"format": "date-time",
 							"readOnly": true,
@@ -228,7 +228,7 @@
 				"last_updated": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-					"description": "Last modification time",
+					"description": "Last modification time.",
 					"type": "string",
 					"format": "date-time",
 					"readOnly": true,

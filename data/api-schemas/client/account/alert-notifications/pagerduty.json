@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List PagerDuty services",
-			"description": "Get a list of all configured PagerDuty services",
+			"description": "Get a list of all configured PagerDuty services.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/pagerduty",
 			"method": "GET",
@@ -36,12 +36,12 @@
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "API uuid tag."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"My PagerDuty Service\"",
-				"description": "The name of the pagerduty service"
+				"description": "The name of the pagerduty service."
 			}
 		},
 		"required_props": [],

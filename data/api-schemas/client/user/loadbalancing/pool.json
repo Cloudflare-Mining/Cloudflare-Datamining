@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/loadbalancing/pool.json",
 	"title": "Load Balancer Pools",
-	"description": "User-level Load Balancer Pools",
+	"description": "User-level Load Balancer Pools.",
 	"type": "object",
 	"links": [
 		{
@@ -79,7 +79,7 @@
 						"default": null,
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -171,7 +171,7 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"title": "Load Balancer origin",
-							"description": "Load Balancer Origin",
+							"description": "Load Balancer Origin.",
 							"type": "object",
 							"definitions": {
 								"name": {
@@ -447,7 +447,7 @@
 						"default": null,
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -539,7 +539,7 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"title": "Load Balancer origin",
-							"description": "Load Balancer Origin",
+							"description": "Load Balancer Origin.",
 							"type": "object",
 							"definitions": {
 								"name": {
@@ -798,7 +798,7 @@
 						"default": null,
 						"items": {
 							"type": "string",
-							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only)",
+							"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
 							"enum": [
 								"WNAM",
 								"ENAM",
@@ -890,7 +890,7 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"title": "Load Balancer origin",
-							"description": "Load Balancer Origin",
+							"description": "Load Balancer Origin.",
 							"type": "object",
 							"definitions": {
 								"name": {
@@ -1207,7 +1207,7 @@
 					"timeout": {
 						"type": "integer",
 						"example": "3",
-						"description": "The timeout (in seconds) before marking the health check as failed",
+						"description": "The timeout (in seconds) before marking the health check as failed.",
 						"default": 5
 					},
 					"retries": {
@@ -1284,7 +1284,7 @@
 				"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag",
+				"description": "API item identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -1293,7 +1293,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -1302,7 +1302,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -1397,7 +1397,7 @@
 				"default": null,
 				"items": {
 					"type": "string",
-					"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only)",
+					"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
 					"enum": [
 						"WNAM",
 						"ENAM",
@@ -1424,7 +1424,7 @@
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 					"title": "Load Balancer origin",
-					"description": "Load Balancer Origin",
+					"description": "Load Balancer Origin.",
 					"type": "object",
 					"definitions": {
 						"name": {
@@ -1642,6 +1642,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      }\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}",
 		"title": "Load Balancer Pools",
-		"description": "User-level Load Balancer Pools"
+		"description": "User-level Load Balancer Pools."
 	}
 }

@@ -226,7 +226,7 @@
 		},
 		{
 			"title": "Update routing rule",
-			"description": "Update actions and matches, or enable/disable specific routing rules",
+			"description": "Update actions and matches, or enable/disable specific routing rules.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/{#/definitions/rule_identifier}",
 			"method": "PUT",
@@ -494,7 +494,7 @@
 									"type": "array",
 									"items": {
 										"type": "string",
-										"description": "Input value for action",
+										"description": "Input value for action.",
 										"maxLength": 90,
 										"example": "destinationaddress@example.net"
 									}

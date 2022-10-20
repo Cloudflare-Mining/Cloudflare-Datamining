@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/organizations.json",
 	"title": "Zone-Level Zero Trust organization",
-	"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.).",
 	"type": "object",
 	"links": [
 		{
@@ -208,7 +208,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Creation time",
+				"description": "Creation time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -217,7 +217,7 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "Last modification time",
+				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
 			},
@@ -273,6 +273,6 @@
 		"objects": [],
 		"example": "{\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Widget Corps Internal Applications\",\n  \"auth_domain\": \"test.cloudflareaccess.com\",\n  \"login_design\": {\n    \"background_color\": \"#c5ed1b\",\n    \"text_color\": \"#c5ed1b\",\n    \"logo_path\": \"https://example.com/logo.png\",\n    \"header_text\": \"This is an example description.\",\n    \"footer_text\": \"This is an example description.\"\n  }\n}",
 		"title": "Zone-Level Zero Trust organization",
-		"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
+		"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)."
 	}
 }

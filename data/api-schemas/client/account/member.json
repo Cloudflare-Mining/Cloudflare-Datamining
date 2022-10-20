@@ -1,11 +1,11 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/member.json",
 	"title": "Account Members",
-	"description": "An association between a Cloudflare user and an account",
+	"description": "An association between a Cloudflare user and an account.",
 	"links": [
 		{
 			"title": "List Members",
-			"description": "List all members of an account",
+			"description": "List all members of an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/members",
 			"method": "GET",
@@ -34,7 +34,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "Page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -42,7 +42,7 @@
 						"minimum": 5,
 						"maximum": 50,
 						"default": 20,
-						"description": "Maximum number of results per page"
+						"description": "Maximum number of results per page."
 					},
 					"direction": {
 						"type": "string",
@@ -51,7 +51,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order results"
+						"description": "Direction to order results."
 					}
 				},
 				"required_props": [],
@@ -67,7 +67,7 @@
 		},
 		{
 			"title": "Add Member",
-			"description": "Add a user to the list of members for this account",
+			"description": "Add a user to the list of members for this account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/members",
 			"method": "POST",
@@ -106,14 +106,14 @@
 						],
 						"readOnly": false,
 						"default": "pending",
-						"description": "A member's status in the account"
+						"description": "A member's status in the account."
 					},
 					"roles": {
 						"type": "array",
 						"example": "[\n  \"3536bcfad5faccb999b47003c79917fb\"\n]",
-						"description": "Array of roles associated with this member",
+						"description": "Array of roles associated with this member.",
 						"items": {
-							"description": "Role identifier tag",
+							"description": "Role identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -135,7 +135,7 @@
 		},
 		{
 			"title": "Member Details",
-			"description": "Get information about a specific member of an account",
+			"description": "Get information about a specific member of an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
 			"method": "GET",
@@ -158,7 +158,7 @@
 		},
 		{
 			"title": "Update Member",
-			"description": "Modify an account member",
+			"description": "Modify an account member.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
 			"method": "PUT",
@@ -185,14 +185,14 @@
 					"id": {
 						"type": "string",
 						"example": "\"4536bcfad5faccb111b47003c79917fa\"",
-						"description": "Membership identifier tag",
+						"description": "Membership identifier tag.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"code": {
 						"type": "string",
 						"example": "\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\"",
-						"description": "The unique activation code for the account membership",
+						"description": "The unique activation code for the account membership.",
 						"maxLength": 64,
 						"readOnly": true
 					},
@@ -213,7 +213,7 @@
 									"null"
 								],
 								"example": "\"John\"",
-								"description": "User's first name",
+								"description": "User's first name.",
 								"maxLength": 60
 							},
 							"last_name": {
@@ -222,7 +222,7 @@
 									"null"
 								],
 								"example": "\"Appleseed\"",
-								"description": "User's last name",
+								"description": "User's last name.",
 								"maxLength": 60
 							},
 							"email": {
@@ -234,7 +234,7 @@
 							"two_factor_authentication_enabled": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
+								"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
 								"readOnly": true,
 								"default": false
 							}
@@ -253,12 +253,12 @@
 							"pending",
 							"rejected"
 						],
-						"description": "A member's status in the account"
+						"description": "A member's status in the account."
 					},
 					"roles": {
 						"type": "array",
 						"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Account Administrator\",\n    \"description\": \"Administrative access to the entire Account\",\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n]",
-						"description": "Roles assigned to this member",
+						"description": "Roles assigned to this member.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/account/role.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -273,7 +273,7 @@
 							],
 							"properties": {
 								"id": {
-									"description": "Role identifier tag",
+									"description": "Role identifier tag.",
 									"type": "string",
 									"maxLength": 32,
 									"readOnly": true,
@@ -281,14 +281,14 @@
 								},
 								"name": {
 									"type": "string",
-									"description": "Role Name",
+									"description": "Role Name.",
 									"maxLength": 120,
 									"readOnly": true,
 									"example": "Account Administrator"
 								},
 								"description": {
 									"type": "string",
-									"description": "Description of role's permissions",
+									"description": "Description of role's permissions.",
 									"readOnly": true,
 									"example": "Administrative access to the entire Account"
 								},
@@ -296,7 +296,7 @@
 									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
 									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 									"title": "Permissions Object",
-									"description": "Access permissions for a Role",
+									"description": "Access permissions for a Role.",
 									"type": "object",
 									"properties": {
 										"analytics": {
@@ -537,7 +537,7 @@
 							},
 							"definitions": {
 								"identifier": {
-									"description": "Role identifier tag",
+									"description": "Role identifier tag.",
 									"type": "string",
 									"maxLength": 32,
 									"readOnly": true,
@@ -558,13 +558,13 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"user\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Appleseed\",\n    \"email\": \"user@example.com\",\n    \"two_factor_authentication_enabled\": false\n  },\n  \"status\": \"accepted\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Account Administrator\",\n      \"description\": \"Administrative access to the entire Account\",\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}",
 				"title": "Account Members",
-				"description": "An association between a Cloudflare user and an account"
+				"description": "An association between a Cloudflare user and an account."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"user\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"email\": \"user@example.com\",\n      \"two_factor_authentication_enabled\": false\n    },\n    \"status\": \"accepted\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Account Administrator\",\n        \"description\": \"Administrative access to the entire Account\",\n        \"permissions\": {\n          \"analytics\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"billing\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"cache_purge\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns_records\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"lb\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"logs\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"organization\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"ssl\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"waf\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zones\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zone_settings\": {\n            \"read\": true,\n            \"write\": true\n          }\n        }\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Remove Member",
-			"description": "Remove a member from an account",
+			"description": "Remove a member from an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -595,14 +595,14 @@
 			"id": {
 				"type": "string",
 				"example": "\"4536bcfad5faccb111b47003c79917fa\"",
-				"description": "Membership identifier tag",
+				"description": "Membership identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"code": {
 				"type": "string",
 				"example": "\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\"",
-				"description": "The unique activation code for the account membership",
+				"description": "The unique activation code for the account membership.",
 				"maxLength": 64,
 				"readOnly": true
 			},
@@ -623,7 +623,7 @@
 							"null"
 						],
 						"example": "\"John\"",
-						"description": "User's first name",
+						"description": "User's first name.",
 						"maxLength": 60
 					},
 					"last_name": {
@@ -632,7 +632,7 @@
 							"null"
 						],
 						"example": "\"Appleseed\"",
-						"description": "User's last name",
+						"description": "User's last name.",
 						"maxLength": 60
 					},
 					"email": {
@@ -644,7 +644,7 @@
 					"two_factor_authentication_enabled": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
+						"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
 						"readOnly": true,
 						"default": false
 					}
@@ -663,12 +663,12 @@
 					"pending",
 					"rejected"
 				],
-				"description": "A member's status in the account"
+				"description": "A member's status in the account."
 			},
 			"roles": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Account Administrator\",\n    \"description\": \"Administrative access to the entire Account\",\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n]",
-				"description": "Roles assigned to this member",
+				"description": "Roles assigned to this member.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/account/role.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -683,7 +683,7 @@
 					],
 					"properties": {
 						"id": {
-							"description": "Role identifier tag",
+							"description": "Role identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -691,14 +691,14 @@
 						},
 						"name": {
 							"type": "string",
-							"description": "Role Name",
+							"description": "Role Name.",
 							"maxLength": 120,
 							"readOnly": true,
 							"example": "Account Administrator"
 						},
 						"description": {
 							"type": "string",
-							"description": "Description of role's permissions",
+							"description": "Description of role's permissions.",
 							"readOnly": true,
 							"example": "Administrative access to the entire Account"
 						},
@@ -706,7 +706,7 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"title": "Permissions Object",
-							"description": "Access permissions for a Role",
+							"description": "Access permissions for a Role.",
 							"type": "object",
 							"properties": {
 								"analytics": {
@@ -947,7 +947,7 @@
 					},
 					"definitions": {
 						"identifier": {
-							"description": "Role identifier tag",
+							"description": "Role identifier tag.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -968,6 +968,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"user\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Appleseed\",\n    \"email\": \"user@example.com\",\n    \"two_factor_authentication_enabled\": false\n  },\n  \"status\": \"accepted\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Account Administrator\",\n      \"description\": \"Administrative access to the entire Account\",\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}",
 		"title": "Account Members",
-		"description": "An association between a Cloudflare user and an account"
+		"description": "An association between a Cloudflare user and an account."
 	}
 }
