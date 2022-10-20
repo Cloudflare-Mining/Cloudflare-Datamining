@@ -1,0 +1,129 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2 обеспечивает разработчикам хранение объектов без платы за исходящий трафик. До появления R2 поставщики облачных сервисов приучали нас к тому, что необходимо платить своего рода «налог на передачу данных» при каждом использовании данных, которые мы у них храним. Кто хранит данные, не планируя к ним обращаться? Никто. Однако при каждом считывании данных с вас взимается плата за исходящий трафик. R2 дает разработчикам возможность бесплатного доступа к данным, освобождая от привязанности к экосистеме, которая долгое время связывала руки создателям приложений.</p>
+	<p>В мае 2022 года мы запустили открытую бета-версию R2 и были поражены результатом. Всего за 4 месяца более 12 тыс. разработчиков начали работу с R2, и это число быстро растет. Разработчики пришли к нам для создания самых разных приложений: от подкастов до видеоплатформ и сайтов электронной коммерции, и среди них — такие пользователи как <a href="https://www.vecteezy.com/" target="_blank">Vecteezy</a>, тратившие шестизначные суммы на исходящий трафик. Мы быстро учились, получили отличную обратную связь и сегодня рады объявить о том, что R2 отныне находится в общей доступности.</p>
+	<p>Мы не стали бы просить вас довериться технологии, которую не используем сами. В процессе открытого бета-тестирования мы занялись переносом наших собственных продуктов на R2. Так, например, сервис Cloudflare Images, успешно обслуживающий в рабочем режиме тысячи клиентов, теперь функционирует на R2.</p>
+	<h2 id="-r2">Какие возможности дает R2?</h2>
+	<h3 id="-s3">Совместимость с S3</h3>
+	<p>R2 предоставляет разработчикам привычный интерфейс для хранения данных, API S3. Совместимость с S3 позволяет с легкостью осуществить миграцию ваших приложений и немедленно начать пользоваться преимуществами R2.</p>
+	<p>Давайте посмотрим на некоторые базовые операции с данными на JavaScript. Чтобы проделать их самостоятельно, вам нужно будет <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">сгенерировать ключ доступа</a>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// First we import our bindings as usual
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// Then we create a new client. Note that while R2 requires a region for S3 compatibility, only “auto” is supported
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// And now we can use our client to list associated buckets just like we would with any other S3 compatible object storage
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Вне зависимости от языка API S3 выглядит привычно. У нас есть примеры на <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Java</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php/" target="_blank">PHP</a> и <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/" target="_blank">Ruby</a>.</p>
+	<h3 id="-auto">Регион: Auto</h3>
+	<p>Мы не хотим жить в мире, где разработчикам приходится тратить время, гадая на кофейной гуще, пытаясь предсказать, откуда их приложение будет получать трафик. Необходимость выбрать регион в качестве первого шага при разработке приложения заставляет принимать решения по оптимизации задолго до появления первых пользователей.</p>
+	<p>Совместимость с S3 требует указать регион, однако мы поддерживаем единственный вариант выбора: ‘Auto’. Сейчас R2 автоматически размещает корзину в ближайшем доступном регионе в зависимости от того, откуда получен запрос на создание корзины. Если я создам корзину, сидя у себя дома в Остине, эта корзина будет размещена в ближайшем к Остину доступном регионе R2.</p>
+	<p>В будущем R2 будет использовать анализ запросов на доступ для автоматической оптимизации мест хранения данных, чтобы обеспечить наилучшее качество обслуживания пользователей.</p>
+	<h3 id="-cloudflare-workers">Интеграция с Cloudflare Workers</h3>
+	<p>Платформа Workers предоставляет разработчикам мощные вычислительные ресурсы по всей сети Cloudflare. При развертывании на Workers ваш код автоматически размещается в <a href="https://www.cloudflare.com/network/" target="_blank">более чем 275 точках присутствия</a> Cloudflare по всему миру. Workers в сочетании с R2 дает возможность разработчикам добавлять к данным собственную логику, без ущерба для производительности. Workers построена на изолятах, а не на контейнерах, поэтому в ней отсутствует проблема долгих холодных запусков.</p>
+	<p>Давайте попробуем создать простой REST API для корзины R2. Сначала <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">создайте</a> корзину, затем добавьте к своему воркеру <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">связку</a> с R2.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // we’ll derive a key from the url path
+
+    switch (request.method) {
+      // For writes, we capture the request body and write that out to our bucket under the associated key
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+      // For reads, we’ll use our key to perform a lookup
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+        // if we don’t find the given key we’ll return a 404 error
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Таким образом, с помощью Workers API мы можем добавлять к горячему пути запроса R2 самую разнообразную полезную логику.</p>
+	<h3 id="-url">Предварительно подписанные URL</h3>
+	<p>Иногда у вас будет возникать необходимость разрешить пользователям доступ к отдельным объектам в R2, не создавая при этом для них ненужных барьеров. С помощью предварительно подписанного URL можно предоставить пользователю разрешение для любой уникальной комбинации объекта и действия. Можно создать предварительно подписанный URL, чтобы разрешить пользователю выгрузить файл или поделиться файлом, не предоставляя ему при этом доступа ко всей корзине.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// With getSignedUrl we can produce a custom url with a one hour expiration which will allow our end user to upload their dog pic
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Предварительно подписанные URL облегчают разработчикам создание приложений, дающих пользователям возможность безопасного прямого доступа к R2.</p>
+	<h3 id="-">Общедоступные корзины</h3>
+	<p>Включение <a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">общедоступного доступа для корзины R2</a> дает возможность разрешить неаутентифицированные запросы к данной корзине. Само по себе это едва ли может быть полезно, но если эти корзины связаны с доменом в вашей учетной записи Cloudflare, вы можете подключить к хранящимся в R2 данным другие функции Cloudflare, такие как Access, кэширование и управление ботами.</p>
+	<p>Таким образом, общедоступные корзины позволяют установить связь между функциями Cloudflare, ориентированными на домен, и вашими корзинами в R2.</p>
+	<h3 id="--1">Прозрачное ценообразование</h3>
+	<p>В R2 не взимается плата за исходящий трафик. Стоимость зависит только от трех факторов: объем хранения, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">операции класса A</a> (запись, списки) и <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">операции класса B</a> (считывание).</p>
+	<ul>
+		<li>Хранение стоит $0,015 за 1 Гбайт в месяц.</li>
+		<li>Операции класса A стоят $4,50 за 1 млн.</li>
+		<li>Операции класса B стоят $0,36 за 1 млн.</li>
+	</ul>
+	<p>Но прежде чем начать платить за R2, у вас есть возможность попробовать наш сервис совершенно бесплатно. Включен следующий объем использования:</p>
+	<ul>
+		<li>10 Гбайт-месяцев хранения данных</li>
+		<li>1 млн операций класса A в месяц</li>
+		<li>10 млн операций класса B в месяц</li>
+	</ul>
+	<h2 id="--2">Что дальше?</h2>
+	<p>Выпуск R2 в общую доступность — лишь начало нашей работы в сфере хранения объектов. Мы рады поделиться нашими дальнейшими планами.</p>
+	<h3 id="--3">Жизненные циклы объектов</h3>
+	<p>В будущем R2 даст возможность разработчикам настраивать политики для объектов. Например, можно будет настроить политику, удаляющую объект через 60 дней после последнего доступа. Возможность настройки жизненных циклов позволяет передать управление объектами хранилищу объектов.</p>
+	<h3 id="--4">Юрисдикционные ограничения</h3>
+	<p>Хотя мы не планируем поддерживать регионы в явном виде, мы знаем, что во многих случаях для соответствия нормативным требованиям необходимо обеспечить локальность данных. Юрисдикционные ограничения дадут возможность разработчикам задать юрисдикцию, например "ЕС", и тем самым запретить передачу данных за пределы данной юрисдикции.</p>
+	<h3 id="--5">Миграция в живой среде без простоев</h3>
+	<p>Миграция больших массивов данных происходит в живой среде и занимает продолжительное время. Резервирование кэша — удобный способ быстро осуществить миграцию данных в управляемый экземпляр R2 и сократить затраты на исходящий трафик одним нажатием кнопки. В будущем мы расширим сферу применения данного метода, что позволит осуществлять миграцию любых существующих корзин хранения объектов из S3 в R2.</p>
+	<p>Мы приглашаем всех зарегистрироваться и начать работу с R2 уже сегодня. Присоединяйтесь к растущему сообществу разработчиков, использующих Cloudflare. Если у вас есть комментарии или вопросы, вы можете найти нас на нашем сервере Discord <a href="https://discord.gg/V3GEduuBjP" target="_blank">здесь</a>. Мы с нетерпением будем ждать результаты ваших разработок!</p>
+	<h3 id="-cloudflare-tv">Посмотреть на Cloudflare TV</h3>
+</div>

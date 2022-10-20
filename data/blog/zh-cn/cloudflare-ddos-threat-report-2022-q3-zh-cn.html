@@ -1,0 +1,139 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image13.png" class="kg-image" alt="Cloudflare DDoS threat report 2022 Q3"></figure>
+	<p>欢迎阅读我们的 2022 年第三季度 DDoS 威胁报告。本报告介绍有关 DDoS 威胁形势的洞察和趋势——反映了在 Cloudflare <a href="https://www.cloudflare.com/network/" target="_blank">全球网络</a>中观察到的情况。</p>
+	<p>多 Tb 级 DDoS 攻击日益频繁。在第三季度，Cloudflare 自动检测并缓解了多次超过 1 Tbps 的攻击。最大的一次攻击是由一种 Mirai 僵尸网络变种发动的 2.5 Tbps DDoS 攻击，目标是 Minecraft 的 Wynncraft 服务器。就比特率而言，这是我们所看到过的最大一次攻击。 </p>
+	<p>这是一次由 UDP 和 TCP 洪水组成的多手段攻击。然而， 由于 Cloudflare 过滤了攻击流量，Wynncraft 根本没有注意到这次攻击。Wynncraft 是一个<a href="https://en.wikipedia.org/wiki/Massively_multiplayer_online_role-playing_game" target="_blank">大型多人在线角色扮演游戏</a> Minecraft 服务器，单个服务器可容纳数十万名用户同时游玩。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/1.png" class="kg-image" alt="A graph of the 2.5 Tbps DDoS attack that targeted Wynncraft">
+		<figcaption>Mirai 僵尸网络对 Wynncraft 发动的 2.5 Tbps DDoS 攻击</figcaption>
+	</figure>
+	<h2 id="-ddos-">总体 DDoS 攻击趋势</h2>
+	<p>总体而言，本季度我们观察到：</p>
+	<ul>
+		<li>与去年相比，DDoS 攻击有所增加。</li>
+		<li>长时间持续的容量耗尽型攻击，<a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 僵尸网络</a>及其<a href="https://blog.cloudflare.com/mantis-botnet/">变种</a>产生的攻击激增。</li>
+		<li>针对台湾地区和日本的袭击激增。</li>
+	</ul>
+	<h2 id="-ddos--1">应用层 DDoS 攻击</h2>
+	<ul>
+		<li>HTTP DDoS 攻击同比增长 111%，但季度环比下降 10%。</li>
+		<li>针对台湾地区的 HTTP DDoS 攻击环比增加 200%；针对日本的攻击环比增长 105%。</li>
+		<li>勒索 DDoS 攻击报告同比增长 67%，环比增长 15%。</li>
+	</ul>
+	<h2 id="-ddos--2">网络层 DDoS 攻击</h2>
+	<ul>
+		<li>L3/4 DDoS 攻击同比增长 97%，环比增长 24%。</li>
+		<li>Mirai 僵尸网络发起的 L3/4 DDoS 攻击环比增长 405%。</li>
+		<li>游戏/博彩业是 L3/4 DDoS 攻击的最主要目标，包括一次大规模的 2.5 Tbps DDoS 攻击。 </li>
+	</ul>
+	<p>本报告基于 Cloudflare DDoS 防护系统自动检测并缓解的 DDoS 攻击。如需进一步了解其工作原理，请查看<a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">这篇深入剖析的博客文章</a>。</p>
+	<p><strong>在</strong><a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank"><strong> Cloudflare Radar</strong></a><strong> 上查看报告的交互式版本。</strong></p>
+	<h2 id="-">勒索攻击</h2>
+	<p><a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">勒索 DDoS 攻击</a>是指攻击者要求支付赎金以停止或避免攻击，通常为比特币形式。在第三季度，接受我们调查的 Cloudflare 客户中有 15% 报告称遭受到附带威胁或赎金要求的 HTTP DDoS 攻击。这意味着报告的勒索 DDoS 攻击环比增长 15%，同比增长 67%。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/2.png" class="kg-image" alt="Graph of Ransom DDoS attacks by quarter" title="Chart">
+		<figcaption>勒索 DDoS 攻击季度分布</figcaption>
+	</figure>
+	<p>第三季度期间，我们观察到，自 2022 年 6 月以来，勒索攻击的报告持续下降。然而，勒索攻击报告在 9 月再次激增。在 9 月份，几乎每四个受访者中就有一个报告遭到勒索 DDoS 攻击或威胁，这是 2022 年迄今最高的一个月。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/3.png" class="kg-image" alt="Graph of Ransom DDoS attacks by month" title="Chart">
+		<figcaption>勒索 DDoS 攻击月度分布</figcaption>
+	</figure>
+	<p><strong>我们如何计算勒索 DDoS 攻击趋势</strong></p>
+	<p>我们的系统持续分析流量，并在检测到 DDoS 攻击时自动应用缓解措施。每个遭受 DDoS 攻击的客户都会收到自动调查的提示，以帮助我们更好地了解攻击的性质和缓解是否成功。两年多来，Cloudflare 一直对受到攻击的客户进行调查。调查的问题之一是客户是否收到威胁或勒索信，要求其支付赎金来换取停止 DDoS 攻击。过去一年来，我们平均每个季度收集到 174 份答卷。本调查的答卷用于计算勒索 DDoS 攻击的比例。</p>
+	<h2 id="-ddos--3">应用层 DDoS 攻击</h2>
+	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack/" target="_blank">应用层 DDoS 攻击</a>，特别是 HTTP DDoS 攻击，旨在通过使 Web 服务器无法处理合法用户请求来造成破坏。如果服务器收到的请求数量超过其处理能力，服务器将丢弃合法请求甚至崩溃，导致对合法用户的服务性能下降或宕机。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/4.png" class="kg-image" alt="A diagram of an application-layer DDoS attack denying service to legitimate users"></figure>
+	<h3 id="-ddos--4">应用层 DDoS 攻击趋势</h3>
+	<p>下图中可以看到一个清晰的趋势，自 2022 年一季度以来，每个季度的攻击减少约 10%。然而，尽管呈下降趋势，与 2021 年三季度相比，2022 年三季度的 HTTP DDoS 攻击同比依然增长了 111%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/5.png" class="kg-image" alt="Graph of HTTP DDoS attacks by quarter" title="Chart">
+		<figcaption>HTTP DDoS 攻击季度分布</figcaption>
+	</figure>
+	<p>三季度期间，9 月和 8 月的攻击分布相当均匀，分别占 36% 和 35%。7 月攻击数量为季度最低水平（29%）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/001.png" class="kg-image" alt="Graph of HTTP DDoS attacks by month in 2022 Q3" title="Chart">
+		<figcaption>2022 年第三季度 HTTP DDoS 攻击月度分布</figcaption>
+	</figure>
+	<h3 id="-ddos--5">应用层 DDoS 攻击：行业分布</h3>
+	<p>通过按客户所在行业统计，我们可以看到，互联网公司运营的 HTTP 应用程序在第三季度受到最多攻击。对互联网行业的攻击环比增长 131%，同比增长 300%。</p>
+	<p>其次是电信行业，环比增长 93%，同比增长 2317%！第三位是游戏/博彩行业，增幅较小，环比增长 17%，同比增长 36%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/7.png" class="kg-image" alt="Graph of the top industries targeted by HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度受到最多 HTTP DDoS 攻击的行业</figcaption>
+	</figure>
+	<h3 id="-ddos--6">应用层 DDoS 攻击：目标国家/地区分布</h3>
+	<p>按客户的账单地址进行统计，让我们了解哪些国家/地区受到更多攻击。第三季度期间，美国公司运营的 HTTP 应用程序受到最多攻击。针对美国网站的攻击数量环比增长 60%，同比增长 105%。其次是中国，环比增长 332%，同比增长 800%。</p>
+	<p>就乌克兰而言，我们看到针对乌克兰网站的攻击环比增加 67%，但同比下降 50%。此外，针对俄罗斯网站的攻击环比增长 31%，同比增长 2400%！</p>
+	<p>在东亚地区，我们可以看到针对台湾公司的攻击环比增长 200%，同比增长 60%，而针对日本公司的攻击环比增长 105%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/8.png" class="kg-image" alt="Graph of the top countries targeted by HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度受到最多 HTTP DDoS 攻击的国家/地区</figcaption>
+	</figure>
+	<p>当我们聚焦于特定的国家时，我们可以发现以下趋势，就俄乌冲突和东亚地缘政治事件提供一些耐人寻味的洞察：</p>
+	<p><strong>在乌克兰，</strong>我们看到被攻击的行业发生了令人意外的变化。在过去的两个季度中，广播、在线媒体和出版公司受到最多攻击，这似乎是为了压制信息，让平民无法获得信息。然而，在本季度这些行业跌出了前十名。取而代之，市场营销和广告行业（40%）占据了首位，其次是教育行业（20%）和政府管理（8%）。</p>
+	<p><strong>在俄罗斯，</strong>对银行、金融服务和保险（BFSI）行业的攻击继续存在（25%）。尽管如此，对 BFSI 行业的攻击仍环比减少了 44%。其次是会展活动服务行业（20%），加密货币（16%），广播媒体（13%）和零售（11%）。攻击流量的很大一部分来自德国的 IP 地址，其余分布在全球各地。</p>
+	<p><strong>在台湾地区，</strong>受到最多攻击的行业是在线媒体（50%）和互联网（23%）。对这些行业的攻击是全球分布的，表明使用了僵尸网络。</p>
+	<p><strong>在日本，</strong>受到最多攻击的是互联网/媒体和互联网（52%），商业服务（12%）和政府-国家（11%）。</p>
+	<h3 id="-ddos--7">应用层 DDoS 攻击流量来源国家/地区分布</h3>
+	<p>在分析具体来源国家/地区指标时，需要注意的是，尽管来源国家/地区值得关注，但它不一定表明攻击者的位置。DDoS 攻击通常是远程发动的，为了避免被发现，攻击者会竭尽全力隐藏他们的实际位置。如果有的话，它表明了僵尸网络节点的位置。也就是说，通过将攻击 IP 地址映射到它们的位置，我们可以了解攻击流量来自哪里。</p>
+	<p>经过两个季度，中国取代美国，成为 HTTP DDoS 攻击流量的主要来源地。在第三季度，中国是 HTTP DDoS 攻击流量的主要来源地。来自中国注册 IP 地址的攻击流量同比增长 29%，环比增长 19%。印度是仅次于中国的第二大 HTTP DDoS 攻击来源，同比增长 61%。印度之后是美国和巴西。</p>
+	<p>在乌克兰，我们可以看到本季度源于乌克兰和俄罗斯 IP 地址的攻击流量有所下降，分别下降了 29% 和 11%。然而，来自这两个国家的攻击流量同比仍分别增长 47% 和 18%。</p>
+	<p>另一个引人注目的数据是，源于日本 IP 地址的攻击流量同比增长了 130%。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/9.png" class="kg-image" alt="Graph of the top source countries of HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度 HTTP DDoS 攻击的主要来源国家/地区</figcaption>
+	</figure>
+	<h2 id="-ddos--8">网络层 DDoS 攻击</h2>
+	<p>应用层攻击的目标是（<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>）第七层的应用程序，其上运行着最终用户尝试访问的服务（对我们而言是 HTTP/S），而<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">网络层攻击</a>旨在使网络基础设施（例如内联路由器和服务器）及互联网链路本身不堪重负。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/10.png" class="kg-image" alt="Diagram of a L3/4 DDoS attack"></figure>
+	<h3 id="-ddos--9">网络层 DDoS 攻击趋势</h3>
+	<p>在第三季度，L3/4 DDoS 攻击同比增长 97%，环比增长 24%。此外，图中可见，在过去的三个季度里，攻击事件有明显增加的趋势。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/11.png" class="kg-image" alt="Graph of L3/4 DDoS attacks by quarter" title="Chart">
+		<figcaption>L3/4 DDoS 攻击季度分布</figcaption>
+	</figure>
+	<p>详细分析可见，本季度大部分时间的攻击是均匀分布的，仅 7 月所占比例略高。<br></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/12.png" class="kg-image" alt="Graph of L3/4 DDoS attacks by month in 2022 Q3" title="Chart">
+		<figcaption>2022 年第三季度 L3/4 DDoS 攻击月度分布</figcaption>
+	</figure>
+	<h3 id="-ddos--10">网络层 DDoS 攻击：行业分布</h3>
+	<p>第三季度期间，游戏/博彩行业是 L3/4 DDoS 攻击的最主要目标。Cloudflare 为游戏/赌博行业网络接收的流量中，接近五分之一来自 DDoS 攻击。这相当于环比增长 381%。</p>
+	<p>第二大目标是电信行业，发送到电信网络的流量中，接近 6% 来自 DDoS 攻击。这比上一季度下降了 58%，当时电信是受到最多 L3/4 DDoS 攻击的行业。</p>
+	<p>接下来是信息技术和服务行业，以及软件行业。两者受到的攻击均显著增加，环比增幅分别达到 89% 和 150%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/13.png" class="kg-image" alt="Graph of the top industries targeted by L3/4 DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度受到最多 L3/4 DDoS 攻击的行业</figcaption>
+	</figure>
+	<h3 id="-ddos--11">网络层 DDoS 攻击：按目标国家/地区分布</h3>
+	<p>在第三季度，新加坡公司受到最多 L3/4 DDoS 攻击，针对这些公司网络的流量中，超过 15% 与 DDoS 攻击相关。这相当于环比增长惊人的 1175%。 </p>
+	<p>美国居第二位，针对美国网络的攻击流量环比减少了 45%。第三位为中国大陆，环比上升 62%。针对台湾地区公司的攻击也环比上升 200%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/14.png" class="kg-image" alt="Graph of the top countries targeted by L3/4 DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度受到最多 L3/4 DDoS 攻击的国家/地区</figcaption>
+	</figure>
+	<h3 id="-ddos--12">网络层 DDoS 攻击：出口国家分布</h3>
+	<p>第三季度，在 Cloudflare 位于阿塞拜疆的数据中心，攻击流量的占比最大。这些数据中心接收的所有数据包中，超过三分之一属于 L3/4 DDoS 攻击。这相当于环比增长 44%，同比增幅达到惊人的 59 倍。 </p>
+	<p>同样，我们位于突尼斯的数据中心也录得攻击数据包的激增——是前一年的 173 倍。津巴布韦和德国的攻击活动也录得显著增长。</p>
+	<p>在东亚，我们位于台湾的数据中心受到的攻击环比增长 207%，同比增长 1989%。我们在日本也录得类似的数字，攻击环比增长 278%，同比增长 1921%。</p>
+	<p>乌克兰方面，我们位于乌克兰和俄罗斯的数据中心观察到的攻击数据包数量有所下降，环比降幅分别为 49% 和 16%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/0011.png" class="kg-image" alt="A graph of top Cloudflare data center locations with the highest percentage of DDoS attack traffic in 2022 Q3">
+		<figcaption>2022 年第三季度 DDoS 攻击流量百分比最高的 Cloudflare 数据中心所在地</figcaption>
+	</figure>
+	<h3 id="--1">攻击手段和新兴威胁</h3>
+	<p>攻击手段是指用于发动攻击或尝试造成拒绝服务的方法。第三季度期间，<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>和<a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 攻击</a>依然是使用最多的 DDoS 攻击手段，合计占 71%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/16.png" class="kg-image" alt="A graph of the top attacks vectors in 2022 Q3">
+		<figcaption>2022 年第三季度主要攻击手段</figcaption>
+	</figure>
+	<p>上一个季度中，我们发现滥用 CHARGEN、Ubiquity Discovery Protocol 协议的攻击和 Memcached 反射攻击<a href="https://classic.radar.cloudflare.com/notebooks/ddos-2022-q2#emerging-threats" target="_blank">卷土重来</a>。虽然 Memcached DDoS 攻击也略有增长（48%），但在本季度，滥用 BitTorrent 协议的攻击（1221%）以及由 Mirai 僵尸网络及其变体发起的攻击增长更为显著。<br></p>
+	<p><strong>BitTorrent DDoS 攻击环比增长 1221%</strong></p>
+	<p><a href="https://en.wikipedia.org/wiki/BitTorrent" target="_blank">BitTorrent 协议</a>是一种用于点对点文件共享的通信协议。为了帮助 BitTorrent 客户端以有效的方式找到和下载文件，BitTorrent 客户端可以使用 <a href="https://en.wikipedia.org/wiki/BitTorrent_tracker" target="_blank">BitTorrent Trackers</a> 或<a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank">分布式哈希表（DHT）</a>来识别为目标下载文件 <a href="https://en.wikipedia.org/wiki/Glossary_of_BitTorrent_terms#Seed_/_seeding" target="_blank">做种</a>的点。这个概念可被滥用来发动 DDoS 攻击。恶意行为者可以<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">假冒</a> 受害者的 IP 地址作为 Trackers 和 DHT 系统中的种子 IP 地址。然后客户端会从这些 IP 请求文件。如果有足够多的客户端请求该文件，它就能用超出其处理能力的流量淹没受害者。<br></p>
+	<p><strong>Mirai DDoS 攻击环比增长 405%</strong></p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai</a> 是 <a href="https://www.cloudflare.com/learning/ddos/glossary/malware/" target="_blank">一种恶意软件</a>，感染在 <a href="https://en.wikipedia.org/wiki/ARC_(processor)" target="_blank">ARC 处理器</a>上运行的智能设备，将这些设备变成一个僵尸网络，用来发动 DDoS 攻击。这个处理器运行一个精简版的 Linux 操作系统。如果不更改默认的用户名和密码组合，Mirai 就能够登录设备，感染并接管设备。僵尸网络操作者可以指示僵尸网络向受害者的 IP 地址发送大量的 UDP 数据包来进行攻击。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/22.png" class="kg-image" alt="A graph of the top emerging threats in 2022 Q3">
+		<figcaption>2022 年第三季度主要新兴威胁</figcaption>
+	</figure>
+	<h3 id="-ddos--13">网络层 DDoS 攻击按攻击速率和持续时间分布</h3>
+	<p>虽然 TB 级攻击变得更加频繁，但它们依然未成为主流。大部分攻击很小（以 Cloudflare 规模衡量）。超过 95% 的攻击峰值低于每秒 50000 个数据包（pps），超过 97% 的攻击峰值低于每秒 500 兆比特(Mbps)。我们称之为“网络破坏行为”。 </p>
+	<p>什么是网络破坏行为？ “经典的” 破坏行为是指蓄意破坏公共或私人<em>实物</em>财产，例如在建筑物侧面涂鸦。而在网络世界中，网络破坏行为是指对互联网资产进行蓄意破坏。如今，各种僵尸网络的源代码都可以在网上找到，而且有许多免费的工具可以用来发送大量的数据包。任何 <a href="https://en.wikipedia.org/wiki/Script_kiddie" target="_blank"><em>“脚本小子”</em></a>都可以使用这些工具在考试季对学校或他们希望关闭或破坏的任何其他网站进行攻击。与此相反，有组织犯罪、<a href="https://de.wikipedia.org/wiki/Advanced_Persistent_Threat" target="_blank">高级持续威胁（APT）</a>行为者和国家级行为者发动的攻击规模大得多、复杂得多。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/18.png" class="kg-image" alt="A graph of the distribution of DDoS attacks by bitrate in 2022 Q3">
+		<figcaption>2022 年第三季度 DDoS 攻击的比特率分布</figcaption>
+	</figure>
+	<p>同样，大多数攻击非常短促，在 20 分钟内就结束了（94%）。本季度我们确实看到持续 1-3 小时的攻击增加了 9%，超过 3 小时的攻击增加了 3%——但这些仍然属于少数。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/19.png" class="kg-image" alt="A graph of the QoQ change in the duration of DDoS attacks in 2022 Q3">
+		<figcaption>2022 年第三季度 DDoS 攻击的持续时间环比变化</figcaption>
+	</figure>
+	<p>即使是最大规模的攻击，例如本季度初我们缓解的 2.6 Tbps 攻击，以及我们在夏季缓解的<a href="https://blog.cloudflare.com/zh-cn/26m-rps-ddos-zh-cn/">每秒 2600 万请求（rps）的攻击</a>，攻击的峰值也是非常短暂的。整个 2.5 Tbps 攻击持续约 2 分钟，而 2600 万 rps 攻击的峰值仅持续 15 秒。这凸显了我们需要自动化、始终启用的解决方案。安全团队无法做出足够快的反应。当安全工程师看到他们手机上的 PagerDuty 通知时，攻击已经平息了。</p>
+	<h2 id="--2">摘要</h2>
+	<p>攻击可能是由人类发动的，但它们是由机器人执行的——要打赢这场战役，您必须用机器人对抗机器人。检测和缓解必须尽可能实现自动化，因为完全依靠人类将使防御方处于不利地位。Cloudflare 的自动化系统持续为客户检测和缓解 DDoS 攻击，让他们得以高枕无忧。 </p>
+	<p>多年来，攻击者和受雇攻击者发动 DDoS 攻击变得更容易、更便宜、更易得到。与此同时，我们也希望确保各种大小组织的防御者对抗各种 DDoS 攻击的工作甚至更加容易，而且免费。2017 年起，我们开始向所有客户免费提供 <a href="https://blog.cloudflare.com/unmetered-mitigation/">不计量和无限的 DDoS 防护</a> ，从而开创了先河。Cloudflare 的使命是帮助构建更好的互联网。更好的互联网是更安全、更快、更可靠的互联网——即使面对 DDoS 攻击也如此。</p>
+</div>
