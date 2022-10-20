@@ -2393,13 +2393,13 @@ Commit \u2014 `).concat(g.commit)
 					return r().createElement(ws, g)
 				},
 				xs = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(98538), e.e(87327), e.e(74879)]).then(e.bind(e, "../react/pages/magic/magic-transit/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(98538), e.e(15065), e.e(74879)]).then(e.bind(e, "../react/pages/magic/magic-transit/Main.tsx"))
 				}),
 				ks = function(g) {
 					return r().createElement(xs, g)
 				},
 				Us = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(98538), e.e(87327), e.e(4861)]).then(e.bind(e, "../react/pages/magic/magic-wan/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(98538), e.e(15065), e.e(4861)]).then(e.bind(e, "../react/pages/magic/magic-wan/Main.tsx"))
 				}),
 				Bl = function(g) {
 					return r().createElement(Us, g)
@@ -6300,12 +6300,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Mc({}, {
-					branch: "release-1666188299",
+					branch: "alvis/INCIDENT-3127-revert-LOUI-2732",
 					isReleaseCandidate: "true",
-					commit: "6ad4e634f747eb809a3fa11e0aca0dfe5256ba10",
+					commit: "92f2628c91da065c74612716d175bd59cf9f590e",
 					env: "production",
-					builtAt: 1666188607958,
-					dashVersion: "09b4b93f647885bc84cb1ae419bada5eb7c1f29b",
+					builtAt: 1666275196922,
+					dashVersion: "0b2f093c2b1357ff2f2280cc62957b554195f068",
 					versions: {
 						"@cloudflare/app-dash": "25.100.2",
 						node: "14.18.3",
@@ -17174,11 +17174,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return O
 					}),
 					ipsecTunnel: (0, s.ZP)("ipsecTunnel"),
-					networkMonitoring: Ks,
-					interconnects: (0, s.ZP)("interconnects", {
-						insertDelete: "interconnect"
-					}),
-					interconnect: (0, s.ZP)("interconnect")
+					networkMonitoring: Ks
 				}),
 				eu = e("../react/pages/email/logic.ts"),
 				po = e("../react/pages/email/redux/actions.ts"),
@@ -18440,11 +18436,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, {
 					entityType: "greTunnels",
 					to: "greTunnel"
-				}, {
-					entityType: "interconnect"
-				}, {
-					entityType: "interconnects",
-					to: "interconnect"
 				}, {
 					entityType: "healthCheck"
 				}, {
@@ -77798,4 +77789,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=4de35cdaf60987be437b.js.map
+//# sourceMappingURL=d602cd8d422e1ef23585.js.map
