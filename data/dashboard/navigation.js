@@ -516,9 +516,9 @@ const navigation = {
 			var H = (0, s.getZone)(v);
 			if ((0, m.zoneIsDNSOnly)(v) || !z(v, "zone_settings", "spectrum.app") || !H) return !1;
 			var K = !!((0, u.userHasEntZones)(v) || (0, s.userHasDelegatedEntZones)(v)),
-				te = !!(0, m.getAccountEntitlement)(v, "proxy_anything.enabled"),
+				ee = !!(0, m.getAccountEntitlement)(v, "proxy_anything.enabled"),
 				ne = !!(0, s.isFree)(H);
-			return te || K || !ne
+			return ee || K || !ne
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
