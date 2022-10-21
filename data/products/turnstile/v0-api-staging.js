@@ -3,7 +3,7 @@
 		return e.indexOf(s) !== -1
 	}
 
-	function C(e) {
+	function $(e) {
 		return b(["auto", "dark", "light"], e)
 	}
 	var q = /^[0-9A-Za-z_-]{3,100}$/;
@@ -31,7 +31,7 @@
 		Z = "cf_challenge_response",
 		Q = "cf-turnstile-response",
 		ee = "g-recaptcha-response",
-		x = !1;
+		C = !1;
 
 	function u(e) {
 		console.error(`[Cloudflare Turnstile] ${e}.`)
@@ -44,21 +44,21 @@
 	function L(e) {
 		B(e, "")
 	}
-	var _ = "cf-chl-widget-";
+	var x = "cf-chl-widget-";
 
 	function z(e) {
-		return e.startsWith(_) ? e.substring(_.length) : null
+		return e.startsWith(x) ? e.substring(x.length) : null
 	}
 
-	function v(e) {
-		return `${_}${e}`
+	function _(e) {
+		return `${x}${e}`
 	}
 
 	function B(e, s) {
 		let i = document.getElementById(`${e}_response`);
 		i !== null && (i.value = s);
 		let d = document.getElementById(`${e}_legacy_response`);
-		if (d !== null && (d.value = s), x) {
+		if (d !== null && (d.value = s), C) {
 			let t = document.getElementById(`${e}_g_response`);
 			t !== null && (t.value = s)
 		}
@@ -77,7 +77,7 @@
 		for (; e && e.top !== e && !e.location.href.startsWith("http");) e = e.top;
 		return e.location.href
 	}
-	var k = function() {
+	var y = function() {
 		let e = new Map,
 			s = function(t) {
 				var a;
@@ -88,7 +88,7 @@
 					return
 				}
 				if (!n.widgetId || !e.has(n.widgetId)) return;
-				let o = v(n.widgetId),
+				let o = _(n.widgetId),
 					l = e.get(n.widgetId);
 				switch (n.event) {
 					case "init": {
@@ -176,7 +176,7 @@
 
 		function d(t) {
 			if (typeof t == "string") {
-				if (t.startsWith(_) && (t = z(t)), e.has(t)) return t;
+				if (t.startsWith(x) && (t = z(t)), e.has(t)) return t;
 				try {
 					let n = document.querySelector(t);
 					return n ? d(n) : null
@@ -215,8 +215,8 @@
 					g = a.sitekey,
 					p = (R = a.theme) != null ? R : "auto",
 					h = (M = a.size) != null ? M : "normal",
-					y = a.callback,
-					A = a["expired-callback"],
+					A = a.callback,
+					v = a["expired-callback"],
 					V = a["timeout-callback"],
 					U = a["error-callback"];
 				if (typeof g != "string") {
@@ -231,7 +231,7 @@
 					u(`Invalid type for parameter "size", expected normal|compact, got "${h}" ${typeof h}`);
 					return
 				}
-				if (!C(p)) {
+				if (!$(p)) {
 					u(`Invalid type for parameter "theme", expected dark|light|auto, got "${p}" ${typeof p}`);
 					return
 				}
@@ -254,24 +254,24 @@
 				}
 				c = c === void 0 ? null : c;
 				let j = "https://challenges.cloudflare.com",
-					$ = i(),
-					I = v($);
-				if (e.set($, {
+					k = i(),
+					I = _(k);
+				if (e.set(k, {
 						action: r,
 						cData: c,
-						cbSuccess: y,
+						cbSuccess: A,
 						cbError: U,
-						cbExpired: A,
+						cbExpired: v,
 						cbTimeout: V,
 						params: a
-					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${$}/${g}/${p}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
+					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${k}/${g}/${p}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
 					let f = document.createElement("input");
 					if (f.type = "hidden", f.name = (W = a["response-field-name"]) != null ? W : Q, f.id = `${I}_response`, o.appendChild(f), typeof a["response-field-name"] != "string" && ne(g)) {
 						let T = document.createElement("input");
 						T.type = "hidden", T.name = Z, T.id = `${I}_legacy_response`, o.appendChild(T)
 					}
 				}
-				if (x) {
+				if (C) {
 					let f = document.createElement("input");
 					f.type = "hidden", f.name = ee, f.id = `${I}_g_response`, o.appendChild(f)
 				}
@@ -283,7 +283,7 @@
 					u(`Nothing to reset found for ${t}`);
 					return
 				}
-				let o = v(n),
+				let o = _(n),
 					l = document.querySelector(`#${o}`);
 				l.src += "", L(o)
 			},
@@ -293,7 +293,7 @@
 					E(`Nothing to remove found for ${t}`);
 					return
 				}
-				let o = v(n),
+				let o = _(n),
 					l = [`iframe#${o}`, `input#${o}_response`, `input#${o}_legacy_response`, `input#${o}_g_response`],
 					a = document.querySelectorAll(l.join(", "));
 				for (let r = 0; r < a.length; ++r) a[r].remove();
@@ -309,18 +309,22 @@
 			}
 		}
 	}();
-	window.cfChallengeAPI = k;
-	window.turnstile = k;
+	"Proxy" in window ? window.cfChallengeAPI = new Proxy(y, {
+		get(e, s) {
+			return E("window.cfChallengeAPI is deprecated, please move to window.turnstile"), e[s]
+		}
+	}) : window.cfChallengeAPI = y;
+	window.turnstile = y;
 
 	function ie(e) {
-		var A;
+		var v;
 		let i = {
 				sitekey: e.getAttribute("data-sitekey")
 			},
 			d = e.getAttribute("data-tabindex");
 		d && (i.tabindex = parseInt(d, 10));
 		let t = e.getAttribute("data-theme");
-		t && (C(t) ? i.theme = t : E(`Unknown data-theme value: "${t}"`));
+		t && ($(t) ? i.theme = t : E(`Unknown data-theme value: "${t}"`));
 		let n = e.getAttribute("data-size");
 		n && (S(n) ? i.size = n : E(`Unknown data-size value: "${n}"`));
 		let o = e.getAttribute("data-base-url");
@@ -337,17 +341,17 @@
 		g && window[g] && (i["expired-callback"] = window[g]);
 		let p = e.getAttribute("data-timeout-callback");
 		p && window[p] && (i["timeout-callback"] = window[p]);
-		let h = (A = e.getAttribute("data-response-field")) != null ? A : "true";
+		let h = (v = e.getAttribute("data-response-field")) != null ? v : "true";
 		i["response-field"] = h === "true";
-		let y = e.getAttribute("data-response-field-name");
-		return y && (i["response-field-name"] = y), i
+		let A = e.getAttribute("data-response-field-name");
+		return A && (i["response-field-name"] = A), i
 	}
 
 	function F() {
 		let e = [Y, J];
-		x && e.push(K);
+		C && e.push(K);
 		let s = document.querySelectorAll(e.join(", "));
-		for (let i = 0; i < s.length; i++) k.render(s[i])
+		for (let i = 0; i < s.length; i++) y.render(s[i])
 	}
 
 	function oe() {
@@ -370,7 +374,7 @@
 	var w = ae();
 	if (w) {
 		let e = w.get("compat");
-		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? E("grecaptcha is already defined. The compatibility layer will not be enabled") : (E("Compatibility layer enabled"), x = !0, window.grecaptcha = k): e !== null && E(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(i, d) {
+		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? E("grecaptcha is already defined. The compatibility layer will not be enabled") : (E("Compatibility layer enabled"), C = !0, window.grecaptcha = y): e !== null && E(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(i, d) {
 			b(["onload", "compat", "render"], d) || E(`Unknown parameter passed to api.js: "?${d}=...", ignoring`)
 		});
 		let s = w.get("onload");
