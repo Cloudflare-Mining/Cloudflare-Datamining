@@ -31,7 +31,9 @@ const tableHeaders = headers ?? ["Entitlement", "Default Value"];
 								</thead>
 								<tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-600 dark:bg-gray-700">
 									{Object.keys(data[namespace]).map(pkg => <tr>
-										<td class="truncate whitespace-nowrap py-2 pl-2 pr-3 font-mono text-sm text-gray-500 first:pl-4 dark:text-gray-300">{data[namespace][pkg].name}</td>
+										<td class="truncate whitespace-nowrap py-2 pl-2 pr-3 font-mono text-sm text-gray-500 first:pl-4 dark:text-gray-300">
+											<a href={data[namespace][pkg]?.links.homepage} target="_blank">{data[namespace][pkg].name}</a>
+										</td>
 										<td class="flex flex-col truncate whitespace-nowrap py-2 pl-2 pr-3 text-sm text-gray-500 first:pl-4 dark:text-gray-300">
 											<p>
 												{data[namespace][pkg].description}
