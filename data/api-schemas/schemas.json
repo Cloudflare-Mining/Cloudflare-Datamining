@@ -92556,11 +92556,6 @@
 																				"type": "string",
 																				"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect.",
 																				"example": "203.0.113.1"
-																			},
-																			"is_colo_cast": {
-																				"type": "boolean",
-																				"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
-																				"default": true
 																			}
 																		}
 																	},
@@ -92831,11 +92826,6 @@
 												"type": "string",
 												"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect.",
 												"example": "203.0.113.1"
-											},
-											"is_colo_cast": {
-												"type": "boolean",
-												"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
-												"default": true
 											}
 										}
 									}
