@@ -16,8 +16,7 @@
 		<li>To install core software development tools: gcc or clang, libc development packages, make, autoconf, automake, autotools-dev, libtool, pkg-config, git</li>
 		<li>To install some additional software dependencies: C Unit tester: (cunit &gt;=2.1), libev development packages. Check the homepage of Cloudflare ngtcp2 copy if you are unsure.</li>
 	</ul>
-	<p>Once you are confident with your setup, run the following commands to retrieve and build the ngtcp2 client and its major dependency OpenSSL:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once you are confident with your setup, run the following commands to retrieve and build the ngtcp2 client and its major dependency OpenSSL:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ git clone --depth 1 -b quic-draft-14 https://github.com/tatsuhiro-t/openssl
 $ cd openssl
 $ ./config enable-tls1_3 --prefix=$PWD/build
@@ -32,23 +31,20 @@ $ make check
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="testing-quic">Testing QUIC</h3>
-	<p>If you are still with me, congratulations! The next step is to pre-fabricate a HTTP/1.1 request that we can pass to our QUIC client, in order to avoid typing it out repeatedly. From your ngtcp2 directory, invoke the command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you are still with me, congratulations! The next step is to pre-fabricate a HTTP/1.1 request that we can pass to our QUIC client, in order to avoid typing it out repeatedly. From your ngtcp2 directory, invoke the command:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ echo -ne "GET / HTTP/1.1\r\nHost: cloudflare-quic.com\r\n\r\n" &gt; cloudflare-quic.req
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>One of the promises of QUIC is the new <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-http/" target="_blank">QUIC HTTP</a> protocol, which is another IETF standard being developed in conjunction with the QUIC transport layer. It is a re-engineering of the HTTP/2 protocol to allow it to benefit from the many advantages of QUIC.</p>
 	<p>The design of QUIC HTTP is in a high state of flux at this time and is an elusive target for software implementors, but it is clearly on the Cloudflare product roadmap. For now, <strong>cloudflare-quic.com</strong> will use HTTP/1.1 for utility and simplicity.</p>
-	<p>Now it’s time to invoke the ngtcp2 command line client and establish your QUIC connection to <strong>cloudflare-quic.com</strong>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now it’s time to invoke the ngtcp2 command line client and establish your QUIC connection to <strong>cloudflare-quic.com</strong>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ examples/client cloudflare-quic.com 443 -d cloudflare-quic.req
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>To be perfectly honest, the debugging output of the ngtcp2 client is not particularly pretty, but who cares! You are now a QUIC pioneer, riding the crest of a new technological wave! Your reward will be the eye-rolls of the teenagers of 2050.</p>
 	<h3 id="the-handshake">The HANDSHAKE</h3>
 	<p>Let’s go over some of the ngtcp2 debugging output that you hopefully can see after invoking your HTTP request over QUIC, and at the same time, let’s relate this output back to some important features of the QUIC protocol.</p>
-	<h4 id="client-hello">Client HELLO</h4>
-	<!--kg-card-begin: markdown-->
+	<h4 id="client-hello">Client HELLO</h4><!--kg-card-begin: markdown-->
 	<pre><code>01 I00000000 0x07ff706cb107568ef7116f5f58a9ed9010 pkt tx pkt 0 dcid=0xba006470cf7c05009e219ff201e4adbef8a3 scid=0x07ff706cb107568ef7116f5f58a9ed9010 type=Initial(0x7f) len=0
 02 I00000000 0x07ff706cb107568ef7116f5f58a9ed9010 frm tx 0 Initial(0x7f) CRYPTO(0x18) offset=0 len=309
 03 I00000000 0x07ff706cb107568ef7116f5f58a9ed9010 frm tx 0 Initial(0x7f) PADDING(0x00) len=878
@@ -74,8 +70,7 @@ $ make check
 	<p>Secondly, to reduce the effectiveness of amplification attacks. This type of attack is where bad actors take advantage of network services that produce server responses vastly greater in size than the barely-validated request that solicited them. By spoofing the address of a victim, a bad actor can bombard the victim with large volumes of server responses given a relatively small volume of requests to the server. By requiring that an initial request be large, QUIC helps to make the amplification value much lower. UDP based amplification attacks are a very real issue, and you can read Cloudflare's account of a such an attack <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">here</a>.</p>
 	<p>QUIC defines a number of other mechanisms to protect against amplification attacks as well as DDoS attacks and you will see some of these a bit later.</p>
 	<h4 id="server-hello">Server HELLO</h4>
-	<p>Further down you will see the first packet returned from the server, which is the server initial packet:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Further down you will see the first packet returned from the server, which is the server initial packet:</p><!--kg-card-begin: markdown-->
 	<pre><code>01 I00000160 0x07ff706cb107568ef7116f5f58a9ed9010 pkt rx pkt 0 dcid=0x07ff706cb107568ef7116f5f58a9ed9010 scid=0x3afafde2c24248817832ffe545d874a2a01f type=Initial(0x7f) len=111
 02 I00000160 0x07ff706cb107568ef7116f5f58a9ed9010 frm rx 0 Initial(0x7f) CRYPTO(0x18) offset=0 len=90
 …
@@ -95,8 +90,7 @@ $ make check
 	<p>Without any form of source validation, QUIC servers will severely limit the amount of data that they send to clients. This protects helpless, spoofed victims of amplification attacks (in conjunction with the client initial packet minimum size requirement described above), and also helps protect the QUIC server from the equivalent of a TCP SYN attack, by constraining the commitment that the QUIC server will make to an unvalidated client.</p>
 	<p>For Cloudflare, there are vast unknowns in regard to DDoS and SYN style attacks against QUIC and it is a subject we are supremely interested in. While these threat models remain unknown, our protections around <strong>cloudflare-quic.com</strong> will be effective but… remorseless.</p>
 	<h4 id="the-request">The REQUEST</h4>
-	<p>Once the TLS handshake is complete, we can see the transmission of the first layer 7 data:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once the TLS handshake is complete, we can see the transmission of the first layer 7 data:</p><!--kg-card-begin: markdown-->
 	<pre><code>01 I00000315 0xac791937b009b7a61927361d9d453b48e0 pkt tx pkt 0 dcid=0x3afafde2c24248817832ffe545d874a2a01f scid=0x07ff706cb107568ef7116f5f58a9ed9010 type=Short(0x00) len=0
 02 I00000315 0xac791937b009b7a61927361d9d453b48e0 frm tx 0 Short(0x00) STREAM(0x13) id=0x0 fin=1 offset=0 len=45 uni=0
 03 Ordered STREAM data stream_id=0x0
@@ -109,8 +103,7 @@ $ make check
 	<p>Firstly, QUIC streams are extremely fast to create as they rely on the authenticated client server relationship previously established by the QUIC connection. Evidence of this can be seen in the example above where a stream’s data is transmitted in the same packet that the stream was established.</p>
 	<p>Secondly, because ordering and reliability are independent for each QUIC stream, the loss of data belonging to one stream will not affect any other streams, providing a solution to the head of line blocking problem that affects protocols that multiplex over TCP, like HTTP/2.</p>
 	<h4 id="the-response">The RESPONSE</h4>
-	<p>Now you should be able to see the fruit of your QUIC toil: the HTTP response!</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now you should be able to see the fruit of your QUIC toil: the HTTP response!</p><!--kg-card-begin: markdown-->
 	<pre><code>01 I00001755 0x07ff706cb107568ef7116f5f58a9ed9010 con recv packet len=719
 02 I00001755 0x07ff706cb107568ef7116f5f58a9ed9010 pkt rx pkt 3 dcid=0x07ff706cb107568ef7116f5f58a9ed9010 scid=0x type=Short(0x00) len=0
 03 I00001755 0x07ff706cb107568ef7116f5f58a9ed9010 frm rx 3 Short(0x00) MAX_DATA(0x04) max_data=1048621

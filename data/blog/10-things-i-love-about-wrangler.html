@@ -15,11 +15,9 @@
 	</figure>
 	<p>It's now much simpler to get started with a new project. Previously, you would have to create a <code>wrangler.toml</code> configuration file, and fill it in with details about your cloudflare account, how the project was structured, setting up a custom build process and so on. We heard feedback from many of you who would get frustrated during this step, and how it would take many minutes before you could get to developing a simple Worker.</p>
 	<p>Let's fix that. You no longer need to create a configuration file when starting, and none of the fields are mandatory. Wrangler infers details about your account and project as you start developing, and you can add configuration incrementally when you need to.</p>
-	<p>In fact, you don't even need to install Wrangler to start! You can create a Worker (say, as <code>index.js</code>) and use <code>npx</code> (a utility that comes installed with <code>node.js</code>) to fetch Wrangler from the npm registry and start developing immediately!</p>
-	<!--kg-card-begin: html-->
+	<p>In fact, you don't even need to install Wrangler to start! You can create a Worker (say, as <code>index.js</code>) and use <code>npx</code> (a utility that comes installed with <code>node.js</code>) to fetch Wrangler from the npm registry and start developing immediately!</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 65.85365853658537%;"><iframe src="https://iframe.videodelivery.net/17180d41b7d1046f77076a661db97912?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F17180d41b7d1046f77076a661db97912%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D16s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>This is great for extremely simple Workers, but why stop there?</p>
 	<h3 id="3-wrangler-init-my-worker-y-one-liner-to-set-up-a-full-project-">3. <code>wrangler init my-worker -y</code>, one liner to set up a full project:</h3>
 	<p>We noticed users would struggle to set up a project with Wrangler, even after they'd installed Wrangler and configured <code>wrangler.toml</code>. Most users want to set up a <code>package.json</code>, commonly use <code>typescript</code> to write code, and set up <code>git</code> to track changes in this project. So, we expanded the <code>wrangler init &lt;project name&gt;</code> command to set up a production grade project. You can optionally choose to use <code>typescript</code>, install the official type definitions for Workers, and use <code>git</code> to track changes.</p>

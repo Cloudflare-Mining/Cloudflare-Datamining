@@ -14,8 +14,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image12-2.png" class="kg-image" alt="AF_XDP UMEM representation"></figure>
 	<p>The interactions and synchronization between the kernel and userspace happen via a set of queues (circular buffers) as well as a socket from the AF_XDP family.</p>
 	<p>Most of the work is about managing the ownership of the descriptors. Which descriptors the kernel owns and which descriptors the userspace owns.</p>
-	<p>The interface provided for the ownership management are a set of queues:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The interface provided for the ownership management are a set of queues:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -77,8 +76,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed1.png" class="kg-image" alt="overview of flowtrackd interactions with Xsks in namespaces"></figure>
 	<h2 id="what-invalid-argument-">What "Invalid argument" ??!</h2>
 	<p>We were happily near the end of the rewrite when, suddenly, after porting our integration tests in the CI, flowtrackd crashed!</p>
-	<p>The following errors was displayed:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The following errors was displayed:</p><!--kg-card-begin: markdown-->
 	<pre><code>[...]
 Thread 'main' panicked at 'failed to create Xsk: Libbpf("Invalid argument")', flowtrack-io/src/packet_driver.rs:144:22
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
@@ -92,8 +90,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 	<p>The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994" target="_blank"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
 	<p>The <a href="https://www.mankier.com/3/libxdp" target="_blank">libxdp manual page</a> doesn't help us here…</p>
 	<p>Which argument is "invalid"? And why is this error not showing up when we run flowtrackd locally but only in the CI?</p>
-	<p>We can try to reproduce locally with a similar network setup script used in the CI:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can try to reproduce locally with a similar network setup script used in the CI:</p><!--kg-card-begin: markdown-->
 	<pre><code>#!/bin/bash
  
 set -e -u -x -o pipefail
@@ -121,8 +118,7 @@ ip netns exec $TEST_NAMESPACE ip addr add 169.254.0.2/30 dev $INNER_VETH
 	<p>For the rest of the blogpost, we set the number of queues per interface to 1. If you have questions about the set command in the script, <a href="https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down/">check this out</a>.</p>
 	<p>Not much success triggering the error.</p>
 	<p>What differs between my laptop setup and the CI setup?</p>
-	<p>I managed to find out that when the outer and inner interface <strong>index numbers</strong> are the same then it crashes. Even though the interfaces don't have the same name, and they are not in the same network namespace. When the tests are run by the CI, both interfaces got index number 5 which was not the case on my laptop since I have more interfaces:</p>
-	<!--kg-card-begin: markdown-->
+	<p>I managed to find out that when the outer and inner interface <strong>index numbers</strong> are the same then it crashes. Even though the interfaces don't have the same name, and they are not in the same network namespace. When the tests are run by the CI, both interfaces got index number 5 which was not the case on my laptop since I have more interfaces:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip -o link | cut -d' ' -f1,2
 1: lo:
 2: wwan0:
@@ -134,8 +130,7 @@ ip netns exec $TEST_NAMESPACE ip addr add 169.254.0.2/30 dev $INNER_VETH
 29: outer@if2:
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We can edit the script to set a fixed interface index number:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can edit the script to set a fixed interface index number:</p><!--kg-card-begin: markdown-->
 	<pre><code>ip link \
   add name $OUTER_VETH numrxqueues $QUEUES numtxqueues $QUEUES index 4242 type veth \
   peer name $INNER_VETH netns $TEST_NAMESPACE numrxqueues $QUEUES numtxqueues $QUEUES index 4242
@@ -143,8 +138,7 @@ ip netns exec $TEST_NAMESPACE ip addr add 169.254.0.2/30 dev $INNER_VETH
 	<!--kg-card-end: markdown-->
 	<p>And we can now reproduce the issue locally!</p>
 	<p>Interesting observation: I was not able to reproduce this issue with the previous flowtrackd version. Is this somehow related to the shared UMEM feature that we are now using?</p>
-	<p>Back to the "invalid" argument. strace to the rescue:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Back to the "invalid" argument. strace to the rescue:</p><!--kg-card-begin: markdown-->
 	<pre><code>sudo strace -f -x ./flowtrackd -v -c flowtrackd.toml --ingress outer --egress inner --egress-netns inner-ns
  
 [...]
@@ -194,16 +188,14 @@ ip netns exec $TEST_NAMESPACE ip addr add 169.254.0.2/30 dev $INNER_VETH
 	<!--kg-card-end: markdown-->
 	<p>Ok, the second <code>bind() syscall</code> returns the EINVAL value.</p>
 	<p>The <code>sa_family</code> is the right one. Is something wrong with <code>sa_data="\x01\x00\x92\x10\x00\x00\x00\x00\x00\x00\x09\x00\x00\x00"</code> ?</p>
-	<p>Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702" target="_blank">bind syscall kernel code</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let's look at the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/socket.c#L1702" target="_blank">bind syscall kernel code</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>err = sock-&gt;ops-&gt;bind(sock, (struct sockaddr *) &amp;address, addrlen);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The bind function of the protocol specific socket operations gets called. Searching for "AF_XDP" in the code, we quickly found the bind function call related to the <a href="https://elixir.bootlin.com/linux/v5.15/source/net/xdp/xsk.c#L857" target="_blank">AF_XDP socket address family</a>.</p>
 	<p>So, where in the syscall could this value be returned?</p>
 	<p>First, let's examine the syscall parameters to see if the libbpf <code>xsk_socket__create_shared()</code> function sets weird values for us.</p>
-	<p>We use the <a href="https://linux.die.net/man/1/pahole" target="_blank">pahole</a> tool to print the structure definitions:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We use the <a href="https://linux.die.net/man/1/pahole" target="_blank">pahole</a> tool to print the structure definitions:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pahole sockaddr
 struct sockaddr {
         sa_family_t                sa_family;            /*     0     2 */
@@ -226,8 +218,7 @@ struct sockaddr_xdp {
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p>
-	<!--kg-card-begin: html-->
+	<p>Translation of the arguments of the bind syscall (the 14 bytes of <code>sa_data</code>) for the first <code>bind()</code> call:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -319,10 +310,8 @@ struct sockaddr_xdp {
 				<td class="tg-jf6t">expected</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
-	<p>Second <code>bind()</code> call:</p>
-	<!--kg-card-begin: html-->
+	</table><!--kg-card-end: html-->
+	<p>Second <code>bind()</code> call:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -414,8 +403,7 @@ struct sockaddr_xdp {
 				<td class="tg-jf6t">expected</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>The arguments look good...</p>
 	<p>We could statically try to infer where the EINVAL was returned looking at the source code. But this analysis has its limits and can be error-prone.</p>
 	<p>Overall, it seems that the network namespaces are not taken into account somewhere because it seems that there is some confusion with the interface indexes.</p>
@@ -431,8 +419,7 @@ struct sockaddr_xdp {
 		<li>Check where the EINVAL value is returned.</li>
 	</ul>
 	<p>We could have used <a href="https://buildroot.org/" target="_blank">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
-	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and a ssh server selected in the installation wizard):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and a ssh server selected in the installation wizard):</p><!--kg-card-begin: markdown-->
 	<pre><code>qemu-img create -f qcow2 ubuntu-21.10-live-server-amd64.qcow2 20G
  
 qemu-system-x86_64 \
@@ -446,8 +433,7 @@ qemu-system-x86_64 \
   -net user,hostfwd=tcp::10022-:22
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html" target="_blank">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel" target="_blank">link</a>) with the following changes in the menuconfig:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And then build a kernel (<a href="https://www.josehu.com/memo/2021/01/02/linux-kernel-build-debug.html" target="_blank">link</a> and <a href="https://www.starlab.io/blog/using-gdb-to-debug-the-linux-kernel" target="_blank">link</a>) with the following changes in the menuconfig:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Cryptographic API -&gt; Certificates for signature checking -&gt; Provide system-wide ring of trusted keys
 			<ul>
@@ -470,16 +456,14 @@ qemu-system-x86_64 \
 			</ul>
 		</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code>git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git &amp;&amp; cd linux/
 git checkout v5.15
 make menuconfig
 make -j$(nproc) bzImage
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We can now run Ubuntu with our custom kernel waiting for gdb to be connected:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can now run Ubuntu with our custom kernel waiting for gdb to be connected:</p><!--kg-card-begin: markdown-->
 	<pre><code>qemu-system-x86_64 \
   -kernel /home/bastien/work/linux/arch/x86_64/boot/bzImage \
   -append "root=/dev/sda2 console=ttyS0 nokaslr" \
@@ -495,8 +479,7 @@ make -j$(nproc) bzImage
   -s -S
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And we can fire up gdb and set a breakpoint on the xsk_bind function:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And we can fire up gdb and set a breakpoint on the xsk_bind function:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ gdb  -ex "add-auto-load-safe-path $(pwd)" -ex "file vmlinux" -ex "target remote :1234" -ex "hbreak start_kernel" -ex "continue"
 (gdb) b xsk_bind
 (gdb) continue
@@ -518,8 +501,7 @@ make -j$(nproc) bzImage
 	<p>The issue is in the comparison performed in the <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L888" target="_blank"><code>xsk_get_ctx()</code></a> to find the right socket context structure associated with the (ifindex, queue_id) pair in the linked-list. The UMEM being shared across Xsks, the same <code>umem-&gt;ctx_list</code> linked list head is used to find the sockets that use this UMEM. Remember that in our setup, flowtrackd attaches itself to two network devices that live in different network namespaces. Using the interface index and the queue_id to find the right context (FILL and COMPLETION queues) associated to a socket is not sufficient because another network interface with the same interface index can exist at the same time in another network namespace.</p>
 	<h2 id="what-can-we-do-about-it">What can we do about it?</h2>
 	<p>We need to tell apart two network devices "system-wide". That means across the network namespace boundaries.</p>
-	<p>Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html" target="_blank">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Could we fetch and store the network namespace inode number of the current process (<code>stat -c%i -L /proc/self/ns/net</code>) at the context creation and then use it in the comparison? According to <a href="https://man7.org/linux/man-pages/man7/inode.7.html" target="_blank">man 7 inode</a>: "Each file in a filesystem has a unique inode number. Inode numbers are guaranteed to be unique only within a filesystem". However, inode numbers can be reused:</p><!--kg-card-begin: markdown-->
 	<pre><code># ip netns add a
 # stat -c%i /run/netns/a
 4026532570

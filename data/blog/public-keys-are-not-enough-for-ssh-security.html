@@ -48,11 +48,9 @@ Host cfpipe-vm.example.com
     IdentityFile ~/.cloudflared/vm.example.com-cf_key
     CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</code></pre>
 	<p>Users need to append that output to their SSH config file. Once saved, they can connect over SSH to the protected resource. Access will prompt them to authenticate with their SSO credentials in the browser, in the same way they login to any other browser-based tool. If they already have an active browser session with their credentials, they’ll just see a success page.</p>
-	<p>In their terminal, <code>cloudflared</code> will establish the session and issue the client certificate that corresponds to their identity.</p>
-	<!--kg-card-begin: html-->
+	<p>In their terminal, <code>cloudflared</code> will establish the session and issue the client certificate that corresponds to their identity.</p><!--kg-card-begin: html-->
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script>
-	<!--kg-card-end: html-->
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
 	<h2 id="what-s-next">What’s next?</h2>
 	<p>With short-lived certificates, Access can become a single SSO-integrated gateway for your team and infrastructure in any environment. Users can SSH directly to a given machine and administrators can replace their jumphosts altogether, removing that overhead. The feature is available today for all Access customers. You can get started by following the documentation available <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">here</a>.</p>
 </div>

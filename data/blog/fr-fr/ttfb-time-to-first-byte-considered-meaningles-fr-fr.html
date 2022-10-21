@@ -11,8 +11,7 @@
 	<p></p>
 	<p>Le TTFB indiqué ne correspond pas au moment où est reçu le premier octet de données de la page, mais au premier octet de la réponse HTTP. Ce sont deux choses très différentes, car les en-têtes de réponse peuvent être générés très rapidement, mais ce sont les données qui affecteront la mesure la plus importante de toutes : la durée d'affichage de la page pour l'utilisateur.</p>
 	<p>Chez Cloudflare, nous utilisons beaucoup nginx et, lors de nos recherches sur le TTFB, nous avons constaté une différence significative dans la TTFB de nginx selon que la compression est utilisée ou non. La compression Gzip des pages Web réduit considérablement le temps de chargement d'une page Web, mais elle-même est coûteuse en termes de temps. De ce fait, le TTFB est plus long, même si le téléchargement complet est plus rapide.</p>
-	<p>Pour illustrer cela, nous avons pris la page Wikipedia la plus volumineuse (<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">List of Advanced Dungeons and Dragons 2nd Edition Monsters</a>) et l'avons chargée via nginx, avec et sans compression gzip. Le tableau ci-dessous indique le TTFB et le temps total de téléchargement avec la compression activée et désactivée.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour illustrer cela, nous avons pris la page Wikipedia la plus volumineuse (<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">List of Advanced Dungeons and Dragons 2nd Edition Monsters</a>) et l'avons chargée via nginx, avec et sans compression gzip. Le tableau ci-dessous indique le TTFB et le temps total de téléchargement avec la compression activée et désactivée.</p><!--kg-card-begin: markdown-->
 	<pre><code>                                    |  TTFB   |  Page chargée
 ----------------------------------- | ------- | -------------
 Aucune compression (gzip désactivé) | 213us   | 43ms

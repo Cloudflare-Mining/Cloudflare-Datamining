@@ -16,8 +16,7 @@
 	<p>Practically speaking, this means that you can now write applications that not only interoperate with any WebAssembly runtime implementing the standard, but also any POSIX compliant system! This means the exact same 'Hello World!' that runs on your local Linux/Mac/Windows WSL machine.</p>
 	<h3 id="show-me-the-code">Show me the code</h3>
 	<p>WASI sounds great, but does it actually make my life easier? You tell us. Let’s run through an example of how this would work in practice.<br></p>
-	<p>First, let’s generate a basic Rust “Hello, world!” application, compile, and run it.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, let’s generate a basic Rust “Hello, world!” application, compile, and run it.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ cargo new hello_world
 $ cd ./hello_world
 $ cargo build --release
@@ -27,15 +26,13 @@ $ ./target/release/hello_world
 Hello, world!
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>It doesn’t get much simpler than this. You’ll notice we only define a main() function followed by a println to stdout.</p>
-	<!--kg-card-begin: markdown-->
+	<p>It doesn’t get much simpler than this. You’ll notice we only define a main() function followed by a println to stdout.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn main() {
     println!("Hello, world!");
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now, let’s take the exact same program and compile against the wasm32-wasi target, and run it in an ‘off the shelf’ wasm runtime such as <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now, let’s take the exact same program and compile against the wasm32-wasi target, and run it in an ‘off the shelf’ wasm runtime such as <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ cargo build --target wasm32-wasi --release
 $ wasmtime target/wasm32-wasi/release/hello_world.wasm
 
@@ -43,8 +40,7 @@ Hello, world!
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Neat! The same code compiles and runs in multiple POSIX environments.</p>
-	<p>Finally, let’s take the binary we just generated for Wasmtime, but instead publish it to Workers using Wrangler2.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, let’s take the binary we just generated for Wasmtime, but instead publish it to Workers using Wrangler2.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
@@ -54,15 +50,13 @@ Hello, world!
 	<p>Unsurprisingly, it works! The same code is compatible in multiple POSIX environments and the same binary is compatible across multiple WASM runtimes.</p>
 	<h3 id="running-your-cli-apps-in-the-cloud">Running your CLI apps in the cloud</h3>
 	<p>The attentive reader may notice that we played a small trick with the HTTP request made via cURL. In this example, we actually stream stdin and stdout to/from the Worker using the HTTP request and response body respectively. This pattern enables some really interesting use cases, specifically, programs designed to run on the command line can be deployed as 'services' to the cloud.</p>
-	<p>‘Hexyl’ is an example that works completely out of the box. Here, we ‘cat’ a binary file on our local machine and ‘pipe’ the output to curl, which will then POST that output to our service and stream the result back. Following the steps we used to compile our 'Hello World!', we can compile hexyl.</p>
-	<!--kg-card-begin: markdown-->
+	<p>‘Hexyl’ is an example that works completely out of the box. Here, we ‘cat’ a binary file on our local machine and ‘pipe’ the output to curl, which will then POST that output to our service and stream the result back. Following the steps we used to compile our 'Hello World!', we can compile hexyl.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ git clone git@github.com:sharkdp/hexyl.git
 $ cd ./hexyl
 $ cargo build --target wasm32-wasi --release
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And without further modification we were able to take a real-world program and create something we can now run or deploy. Again, let's tell wrangler2 to preview hexyl, but this time give it some input.</p>
-	<!--kg-card-begin: markdown-->
+	<p>And without further modification we were able to take a real-world program and create something we can now run or deploy. Again, let's tell wrangler2 to preview hexyl, but this time give it some input.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hexyl.wasm
 $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
@@ -72,27 +66,23 @@ $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Give it a try yourself by hitting <a href="https://hexly.examples.workers.dev" target="_blank">https://hexyl.examples.workers.dev</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Give it a try yourself by hitting <a href="https://hexly.examples.workers.dev" target="_blank">https://hexyl.examples.workers.dev</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">echo "Hello world\!" | curl https://hexyl.examples.workers.dev/ -X POST --data-binary @- --output -
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A more useful example, but requires a bit more work, would be to deploy a utility such as swc (swc.rs), to the cloud and use it as an on demand JavaScript/TypeScript transpilation service. Here, we have a few extra steps to ensure that the compiled output is as small as possible, but it otherwise runs out-of-the-box. Those steps are detailed in <a href="https://github.com/zebp/wasi-example-swc" target="_blank">https://github.com/zebp/wasi-example-swc</a>, but for now let’s gloss over that and interact with the hosted example.</p>
-	<!--kg-card-begin: markdown-->
+	<p>A more useful example, but requires a bit more work, would be to deploy a utility such as swc (swc.rs), to the cloud and use it as an on demand JavaScript/TypeScript transpilation service. Here, we have a few extra steps to ensure that the compiled output is as small as possible, but it otherwise runs out-of-the-box. Those steps are detailed in <a href="https://github.com/zebp/wasi-example-swc" target="_blank">https://github.com/zebp/wasi-example-swc</a>, but for now let’s gloss over that and interact with the hosted example.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ echo "const x = (x, y) =&gt; x * y;" | curl -X POST --data-binary @- https://swc-wasi.examples.workers.dev/ --output -
 
 var x=function(a,b){return a*b}
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Finally, we can also do the same with C/C++, but requires a little more lifting to get our Makefile right. Here we show an example of compiling zstd and uploading it as a streaming compression service.</p>
-	<p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank">https://github.com/zebp/wasi-example-zstd</a></p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank">https://github.com/zebp/wasi-example-zstd</a></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ echo "Hello world\!" | curl https://zstd.examples.workers.dev/ -s -X POST --data-binary @- | file -
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="what-if-i-want-to-use-wasi-from-within-a-javascript-worker">What if I want to use WASI from within a JavaScript Worker?</h3>
-	<p>Wrangler can make it really easy to deploy code without having to worry about the Workers ecosystem, but in some cases you may actually want to invoke your WASI based WASM module from Javascript. This can be achieved with the following simple boilerplate. An updated README will be kept at <a href="https://github.com/cloudflare/workers-wasi" target="_blank">https://github.com/cloudflare/workers-wasi</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wrangler can make it really easy to deploy code without having to worry about the Workers ecosystem, but in some cases you may actually want to invoke your WASI based WASM module from Javascript. This can be achieved with the following simple boilerplate. An updated README will be kept at <a href="https://github.com/cloudflare/workers-wasi" target="_blank">https://github.com/cloudflare/workers-wasi</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { WASI } from "@cloudflare/workers-wasi";
 import demoWasm from "./demo.wasm";
 
@@ -120,8 +110,7 @@ export default {
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now with our JavaScript boilerplate and wasm, we can easily deploy our worker with Wrangler’s WASM feature.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now with our JavaScript boilerplate and wasm, we can easily deploy our worker with Wrangler’s WASM feature.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler publish
 Total Upload: 473.89 KiB / gzip: 163.79 KiB
 Uploaded wasi-javascript (2.75 sec)

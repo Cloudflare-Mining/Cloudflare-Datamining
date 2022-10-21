@@ -14,8 +14,7 @@
 	<p>This change is totally invisible to the application. To any external observer, everything behaves as it did before. But, since the system now considers a Worker to be idle during response streaming, the response streaming time will no longer be billed. So, if you saw a drop in your bill, this is why!</p>
 	<h3 id="but-it-doesn-t-stop-there-">But it doesn’t stop there!</h3>
 	<p>The change also applies to a few other frequently used scenarios, namely Websocket proxying, reading from the cache and streaming from KV.</p>
-	<p><strong>WebSockets</strong>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>WebSockets</strong>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export default {
   async fetch(request: Request) {
     //Do anything before
@@ -28,8 +27,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Reading from Cache</strong>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Reading from Cache</strong>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export default {
   async fetch(request: Request) {
     let response = await caches.default.match('https://example.com')
@@ -41,8 +39,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Streaming from KV</strong>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Streaming from KV</strong>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">interface Env {
   MY_KV_NAME: KVNamespace
 }

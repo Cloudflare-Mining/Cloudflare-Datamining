@@ -27,8 +27,7 @@
 	<p>A 3-phase feed is set up by joining any of its three coils into line pairs. L1, L2, and L3 coils are live wires with each on their own <em>phase</em> carrying their own <em>phase</em> voltage and <em>phase</em> current. Two phases joining together form one <em>line</em> carrying a common <em>line</em> voltage and <em>line</em> current. L1 and L2 phase voltages create the L1/L2 line voltage. L2 and L3 phase voltages create the L2/L3 line voltage. L1 and L3 phase voltages create the L1/L3 line voltage.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image9-1.jpg" class="kg-image"></figure>
 	<p>Let’s take a moment to clarify the terminology. Some other sources may refer to line voltage (or current) as line-to-line or phase-to-phase voltage (or current). It can get confusing, because line voltage is the same as phase voltage in 1-phase circuits, as there’s only one phase. Also, the <em>magnitude</em> of the line voltage is equal to the <em>magnitude</em> of the phase voltage in 3-phase Delta circuits, while the <em>magnitude</em> of the line current is equal to the <em>magnitude</em> of the phase current in 3-phase Wye circuits.</p>
-	<p>Conversely, the line current equals to phase current times √3 in Delta circuits. In Wye circuits, the line voltage equals to phase voltage times √3.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Conversely, the line current equals to phase current times √3 in Delta circuits. In Wye circuits, the line voltage equals to phase voltage times √3.</p><!--kg-card-begin: markdown-->
 	<p>In Delta circuits:<br>
 		V<sub>line</sub> = V<sub>phase</sub><br>
 		I<sub>line = √3 x I<sub>phase</sub></sub></p>
@@ -45,58 +44,44 @@
 	<p>Thanks to a neutral line, a Wye PDU can offer a second voltage source that is √3 times lower for smaller devices, like laptops or monitors. Common voltages for Wye PDUs are 230V/400V or 120V/208V, particularly in North America.</p>
 	<h3 id="where-does-the-3-come-from">Where does the √3 come from?</h3>
 	<p>Why are we multiplying by √3? As the name implies, we are adding phasors. Phasors are complex numbers representing sine wave functions. Adding phasors is like adding vectors. Say your GPS tells you to walk 1 mile East (vector a), then walk a 1 mile North (vector b). You walked 2 miles, but you only moved by 1.4 miles NE from the original location (vector a+b). That 1.4 miles of “work” is what we want.</p>
-	<p>Let’s take in our application L1 and L2 in a Delta circuit. we add phases L1 and L2, we get a L1/L2 line. We assume the 2 coils are identical. Let’s say α represents the voltage magnitude for each phase. The 2 phases are 120 degrees offset as designed in the 3-phase power generator:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s take in our application L1 and L2 in a Delta circuit. we add phases L1 and L2, we get a L1/L2 line. We assume the 2 coils are identical. Let’s say α represents the voltage magnitude for each phase. The 2 phases are 120 degrees offset as designed in the 3-phase power generator:</p><!--kg-card-begin: markdown-->
 	<pre><code>|L1| = |L2| = α
 L1 = |L1|∠0° = α∠0°
 L2 = |L2|∠-120° = α∠-120°
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Using vector addition to solve for L1/L2:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Using vector addition to solve for L1/L2:</p><!--kg-card-begin: markdown-->
 	<pre><code>L1/L2 = L1 + L2
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image10.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image10.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = α∠\text{0°} - α∠\text{-120°}$$</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = (α\cos{\text{0°}}+jα\sin{\text{0°}})-(α\cos{\text{-120°}}+jα\sin{\text{-120°}})$$</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = (α\cos{\text{0°}}-α\cos{\text{-120°}})+j(α\sin{\text{0°}}-α\sin{\text{-120°}})$$</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = \frac{3}{2}α+j\frac{\sqrt3}{2}α$$</p>
 	<!--kg-card-end: markdown-->
-	<p>Convert L1/L2 into polar form:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Convert L1/L2 into polar form:</p><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = \sqrt{(\frac{3}{2}α)^2 + (\frac{\sqrt3}{2}α)^2}∠\tan^{-1}(\frac{\frac{\sqrt3}{2}α}{\frac{3}{2}α})$$</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>$$\text{L1/L2} = \sqrt 3α∠\text{30°}$$</p>
 	<!--kg-card-end: markdown-->
-	<p>Since voltage is a scalar, we’re only interested in the “work”:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Since voltage is a scalar, we’re only interested in the “work”:</p><!--kg-card-begin: markdown-->
 	<pre><code>|L1/L2| = √3α
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Given that α also applies for L3. This means for any of the three line pairs, we multiply the phase voltage by √3 to calculate the line voltage.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Given that α also applies for L3. This means for any of the three line pairs, we multiply the phase voltage by √3 to calculate the line voltage.</p><!--kg-card-begin: markdown-->
 	<p>V<sub>line</sub> = √3 x V<sub>phase</sub></p>
 	<!--kg-card-end: markdown-->
-	<p>Now with the three line powers being equal, we can add them all to get the overall effective power. The derivation below works for both Delta and Wye circuits.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now with the three line powers being equal, we can add them all to get the overall effective power. The derivation below works for both Delta and Wye circuits.</p><!--kg-card-begin: markdown-->
 	<p>P<sub>overall</sub> = 3 x P<sub>line</sub><br>
 		P<sub>overall</sub> = 3 x (V<sub>line</sub> x I<sub>line</sub>)<br>
 		P<sub>overall</sub> = (3/√3) x (V<sub>phase</sub> x I<sub>phase</sub>)<br>
 		P<sub>overall</sub> = √3 x V<sub>phase</sub> x I<sub>phase</sub></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p>Using the US example, V<sub>phase</sub> is 208V and I<sub>phase</sub> is 24A. This leads to the overall 3-phase power to be 8646W (√3 x 208V x 24A) or 8.6kW. There lies the biggest advantage for using 3-phase systems. Adding 2 sets of coils and wires (ignoring the neutral wire), we’ve turned a generator that can produce √3 or 1.7 times more power!</p>
 	<!--kg-card-end: markdown-->
 	<h3 id="dealing-with-3-phase">Dealing with 3-phase</h3>

@@ -18,22 +18,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/uHWAmWDUYVNmDByskHnBsSf_-poXNMAz7sxTw-bjNYHldqbU5ecTj_upSCKIHoXRnolnrlpPqvyDbBray-TaRkDJcGOO9CKQUdY3CpvwmaNn0rRkqqnPLAJJaE0DV8lZZwuXmWakt0sBIRnyO816EQBQe4FR2FodxSxIkZ4BZcFPABFYypeOtoFAaA" class="kg-image" alt="A complex representation of a Toroid, using nodes and paths on an SVG file"></figure>
 	<p>Contrary to the bitmaps where pixels arrange together to create the visual perception of an image to the human eye, that vector image can be resized with no quality loss. That happens because resizing that SVG to 300% of its original size is redefining the size of the vectors to 300%, not expanding pixels to 300%. </p>
 	<p>This becomes evident when we’re dealing with small resolution images.</p>
-	<p>Here is the 100px width SVG from the Toroid shown above:</p>
-	<!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in a 100px width SVG" width="100" height="100"></p>
-	<!--kg-card-end: html-->
-	<p>and the correspondent 100 pixels width PNG:</p>
-	<!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/image3-18.png" alt="a toroid, in a small PNG file encoding" width="100" height="61"></p>
-	<!--kg-card-end: html-->
-	<p>Now here is the same SVG with the HTML width attribute set at 300px:</p>
-	<!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="300"></p>
-	<!--kg-card-end: html-->
-	<p>and the same PNG you saw before, but, upscaled by 3x, so the width is also 300px:</p>
-	<!--kg-card-begin: html-->
-	<p><img src="https://blog.cloudflare.com/content/images/2022/09/unnamed.png" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="183"></p>
-	<!--kg-card-end: html-->
+	<p>Here is the 100px width SVG from the Toroid shown above:</p><!--kg-card-begin: html-->
+	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in a 100px width SVG" width="100" height="100"></p><!--kg-card-end: html-->
+	<p>and the correspondent 100 pixels width PNG:</p><!--kg-card-begin: html-->
+	<p><img src="https://blog.cloudflare.com/content/images/2022/09/image3-18.png" alt="a toroid, in a small PNG file encoding" width="100" height="61"></p><!--kg-card-end: html-->
+	<p>Now here is the same SVG with the HTML width attribute set at 300px:</p><!--kg-card-begin: html-->
+	<p><img src="https://blog.cloudflare.com/content/images/2022/09/Toroid.svg" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="300"></p><!--kg-card-end: html-->
+	<p>and the same PNG you saw before, but, upscaled by 3x, so the width is also 300px:</p><!--kg-card-begin: html-->
+	<p><img src="https://blog.cloudflare.com/content/images/2022/09/unnamed.png" alt="a toroid, in the same SVG we used before but with a 300px width attribute" width="300" height="183"></p><!--kg-card-end: html-->
 	<p>The visual quality loss on the PNG is obvious when it gets scaled up.</p>
 	<p>Keep in mind: The Toroid shown above is stored in an SVG file of 142Kb. And that is a very complex and heavy SVG file already.</p>
 	<p>Now, if you do want to display a PNG with an original width of 1024px to present a high quality image of the same Toroid above, the size will become an issue:</p>
@@ -41,11 +33,9 @@
 	<p>The new 1024px PNG, however, weighs 344 KB. That’s about 2.4 times the weight of the unique SVG that you could use in any size.</p>
 	<p>Think about the storage and bandwidth savings when all you need to do with an SVG, to get the exact same displayed image is use a <code>width=”1024”</code> in your HTML. It requires less than half of the kilobytes used on the PNG.</p>
 	<p>Couple all of this with the flexibility of using attributes like <code>viewbox</code> in your HTML code, and you can pan, zoom, crop, scale, all without ever needing anything other than the one and original SVG file.</p>
-	<p>Here’s an example of an SVG being resized on the client side, with no visual quality loss:</p>
-	<!--kg-card-begin: html-->
+	<p>Here’s an example of an SVG being resized on the client side, with no visual quality loss:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 51.45833333333333%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b498796dbfd78dfdae4702d86aad8b6e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb498796dbfd78dfdae4702d86aad8b6e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>Let’s do a quick summary of what we covered so far: SVG files are wonderful for vector images like illustrations, charts, logos, and are infinitely scalable with no need to resize on the server side;</p>
 	<p>the same generated image, but on a bitmap is either heavier than the SVG when used in high resolutions, or with very noticeable loss of visual quality when scaled up from a lower resolution.</p>
 	<h3 id="so-what-are-the-downsides-of-using-svg-files">So, what are the downsides of using SVG files?</h3>
@@ -72,18 +62,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-8.png" class="kg-image" alt="Comparing an SVG file with XML code that contains threats, to the same one but filtered, and made safe, by our tool."></figure>
 	<p>Removed are the external references, foreignObjects and any other potential threats.</p>
 	<h3 id="how-you-can-use-svg-files-in-cloudflare-images">How you can use SVG files in Cloudflare Images</h3>
-	<p>Starting now you can upload SVG files to Cloudflare Images and serve them at will. Uploading the images can be done like for any other supported format, <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/" target="_blank">via UI</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/" target="_blank">API</a>.</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 50%%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4df9e5608e70f983c65703e3f7d98cfc/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4df9e5608e70f983c65703e3f7d98cfc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>Starting now you can upload SVG files to Cloudflare Images and serve them at will. Uploading the images can be done like for any other supported format, <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/" target="_blank">via UI</a> or <a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/" target="_blank">API</a>.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 50%%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4df9e5608e70f983c65703e3f7d98cfc/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4df9e5608e70f983c65703e3f7d98cfc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Variants, <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/resize-images/" target="_blank">named </a>or <a href="https://developers.cloudflare.com/images/cloudflare-images/transform/flexible-variants/" target="_blank">flexible</a>, are intended to transform bitmap (raster) images into whatever size you want to serve them.</p>
 	<p>SVG files, as vector images, do not require resizing inside the Images pipeline.<br><br>This results in a banner with the following message when you’re previewing an SVG in the UI:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-30.png" class="kg-image" alt="Since Variants get disabled for SVG files, a banner will remind you of that in the Dashboard"></figure>
 	<p>And as a result, all variants listed will show the exact same image in the exact same dimensions.</p>
-	<p>Because an image is worth a thousand words, especially when trying to describe behaviors, here is what will it look like if you scroll through the variants preview:</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 50%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4d7fb2347054fca3418a8edd3840b427/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4d7fb2347054fca3418a8edd3840b427%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>Because an image is worth a thousand words, especially when trying to describe behaviors, here is what will it look like if you scroll through the variants preview:</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 50%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/4d7fb2347054fca3418a8edd3840b427/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F4d7fb2347054fca3418a8edd3840b427%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>With Cloudflare Images you do get a default Public Variant listed when you start using the product, and so you can immediately start serving your SVG files using it, just like this:<br><br>https://imagedelivery.net/&lt;your_account_hash&gt;/&lt;your_SVG_ID&gt;/public<br><br>And, as shown from above, you can use any of your variant names to serve the image, as it won’t affect the output at all.</p>
 	<p>If you’re an Image Resizing customer, you can also benefit from serving your files with our tool. Make sure you head to the <a href="https://developers.cloudflare.com/images/image-resizing/" target="_blank">Developer Documentation</a> pages to see how.</p>
 	<h3 id="what-s-next">What’s next?</h3>

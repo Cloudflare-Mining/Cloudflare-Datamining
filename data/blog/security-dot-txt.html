@@ -31,8 +31,7 @@
 	</ul>
 	<p>Certainly, we could manage this project through a manual process involving extensive documentation and coordination for manual deployments but we felt it was important to build this out as a full service that was easily maintainable. Manual maintenance and deployments do not necessarily scale well over time, especially for something that isn’t touched that often. We wanted to make that process as easy as possible since security.txt is meant to be a regularly maintained, living document. </p>
 	<p>We quickly turned to <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> for the task. Using the <a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler CLI</a> we can achieve the ease of deployment and automation requirements as well as track the project in git. In under half an hour I was able to build out a full prototype that addressed all of the requirements of the Internet-Draft and deploy it to a staging instance of our website. Since then, members from our team made some revisions to the text itself, updated the expiration on our PGP key, and bumped up to the latest draft version.</p>
-	<p>One cool decision we made is that the security.txt file is created from a template at build time which allows us to perform dynamic operations on our baseline security.txt. For example, <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09#section-3.5.5" target="_blank">Section 3.5.5</a> of the draft calls for a date and time after which the data contained in the "security.txt" file is considered stale and should not be used. To address this field, we wrote a short node.js script that automatically sets an expiration of 365 days after the point of deployment, encouraging regular updates:</p>
-	<!--kg-card-begin: markdown-->
+	<p>One cool decision we made is that the security.txt file is created from a template at build time which allows us to perform dynamic operations on our baseline security.txt. For example, <a href="https://tools.ietf.org/html/draft-foudil-securitytxt-09#section-3.5.5" target="_blank">Section 3.5.5</a> of the draft calls for a date and time after which the data contained in the "security.txt" file is considered stale and should not be used. To address this field, we wrote a short node.js script that automatically sets an expiration of 365 days after the point of deployment, encouraging regular updates:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const dayjs = require('dayjs')
 const fs = require('fs')
 
@@ -51,17 +50,14 @@ const main = async () =&gt; {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt" target="_blank">security@cloudflare.com PGP key</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt" target="_blank">security@cloudflare.com PGP key</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>sign:
 	gpg --local-user security@cloudflare.com -o src/txt/security.txt --clearsign src/txt/security.txt.temp
 	rm src/txt/security.txt.temp
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>And finally, leveraging the <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.8.0" target="_blank">multi-route support in wrangler 1.8</a> alongside the <code>request</code> object that gets passed into our Worker, we can serve our PGP public key and security.txt at the same time on two routes using one Worker, differentiated based on what the eyeball is asking for:</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">import pubKey from './txt/security-cloudflare-public-06A67236.txt'
 import securityTxt from './txt/security.txt'
 

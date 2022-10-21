@@ -6,8 +6,7 @@
 	<h2 id="que-pouvez-vous-attendre-de-la-solution-r2">Que pouvez-vous attendre de la solution R2 ?</h2>
 	<h3 id="compatibilit-s3">Compatibilité S3</h3>
 	<p>La solution R2 propose aux développeurs une interface familière pour le stockage d'objets, l'API S3. Grâce à la compatibilité S3, vous pouvez procéder facilement à la migration de vos applications et commencer à tirer parti des avantages de R2 dès la mise en œuvre du service.</p>
-	<p>Examinons certaines opérations JavaScript de base relatives aux données. Pour les essayer de votre côté, vous aurez besoin de <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">générer une clé d'accès</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Examinons certaines opérations JavaScript de base relatives aux données. Pour les essayer de votre côté, vous aurez besoin de <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">générer une clé d'accès</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Nous importons tout d'abord nos liaisons, comme à l'accoutumée.
 import {
   S3Client,
@@ -39,8 +38,7 @@ console.log(
 	<p>À l'avenir, la solution R2 s'appuiera sur des modèles d'accès aux données pour optimiser automatiquement l'endroit dans lequel les données sont stockées, afin d'assurer la meilleure expérience utilisateur.</p>
 	<h3 id="int-gration-cloudflare-workers">Intégration à Cloudflare Workers</h3>
 	<p>La plateforme Workers offre aux développeurs de puissantes capacités de traitement sur l'ensemble du réseau Cloudflare. Lorsque vous déployez du code sur Workers, ce dernier est déployé sur les <a href="https://www.cloudflare.com/network/" target="_blank">plus de 275 emplacements </a>du réseau Cloudflare à travers le monde, et ce automatiquement. Couplée à R2, la plateforme Workers permet aux développeurs d'ajouter une logique personnalisée autour de leurs données, sans impact sur les performances. La solution Workers est bâtie sur l'utilisation d'isolats plutôt que de conteneurs. Vous n'aurez donc plus à composer avec des démarrages à froid particulièrement longs.</p>
-	<p>Essayons de créer une simple API REST pour un compartiment R2 ! <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">Créez</a> tout d'abord votre compartiment, avant d'ajouter une <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">liaison</a> R2 à votre Worker.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Essayons de créer une simple API REST pour un compartiment R2 ! <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">Créez</a> tout d'abord votre compartiment, avant d'ajouter une <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">liaison</a> R2 à votre Worker.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,8 +73,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>Grâce à cette API Workers, nous pouvons ajouter toutes sortes de logiques utiles au hot path d'une requête R2.</p>
 	<h3 id="url-pr-sign-es">URL présignées</h3>
-	<p>Vous souhaiterez parfois accorder à vos utilisateurs des autorisations d'accès à des objets spécifiques stockés sur R2 sans les faire passer par une procédure d'authentification longue et complexe. Grâce aux URL présignées, vous pouvez déléguer des autorisations à vos utilisateurs pour n'importe quelle combinaison d'objet et d'action. Préparez une URL présignée pour permettre à un utilisateur de télécharger un fichier vers le système ou de partager un fichier sans lui donner accès à l'intégralité du compartiment.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous souhaiterez parfois accorder à vos utilisateurs des autorisations d'accès à des objets spécifiques stockés sur R2 sans les faire passer par une procédure d'authentification longue et complexe. Grâce aux URL présignées, vous pouvez déléguer des autorisations à vos utilisateurs pour n'importe quelle combinaison d'objet et d'action. Préparez une URL présignée pour permettre à un utilisateur de télécharger un fichier vers le système ou de partager un fichier sans lui donner accès à l'intégralité du compartiment.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand
@@ -125,8 +122,6 @@ console.log(
 	<h3 id="migration-en-direct-sans-interruption-de-service">Migration en direct sans interruption de service</h3>
 	<p>Pour les vastes ensembles de données, les migrations s'effectuent en direct et de manière continue, car le processus de déplacement des données demande du temps. La fonctionnalité Cache Reserve constitue un moyen facile de procéder rapidement à la migration de vos ressources vers une instance R2 gérée. Vous pourrez ainsi réduire vos frais de trafic sortant en cliquant simplement sur un bouton. À l'avenir, nous étendrons ce mécanisme afin de vous permettre de procéder à la migration de n'importe lequel de vos compartiments de stockage d'objets S3 vers R2.</p>
 	<p>Nous invitons tout le monde à s'inscrire et à commencer à essayer la solution R2 dès aujourd'hui. Rejoignez la communauté croissante de développeurs travaillant sur Cloudflare. Si vous avez des commentaires ou des questions, n'hésitez pas à nous contacter sur notre serveur Discord, disponible <a href="https://discord.gg/c2eACA4qXA" target="_blank">ici</a> ! Nous avons hâte de voir ce que vous allez développer.</p>
-	<h3 id="regarder-sur-cloudflare-tv">Regarder sur Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="regarder-sur-cloudflare-tv">Regarder sur Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

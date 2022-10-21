@@ -37,8 +37,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--4-.png" class="kg-image"></figure>
 	<p>Si bien Cloudflare admite un tipo determinado de flujo de solicitudes, sería imposible esperar que diferentes proveedores de servicios cumplan exactamente con las mismas características de interacción. Uno de los principales cambios en la extensión v2.0 fue una reescritura técnica para en su lugar utilizar un archivo de configuración central. La configuración se especifica en el <a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">código fuente</a> de la extensión y permite una modificación más sencilla de las características de navegación que inician las acciones de Privacy Pass. Esto permite agregar flujos de solicitudes nuevos y completamente diferentes, simplemente mediante la clonación y adaptación de la configuración para nuevos proveedores.</p>
 	<p>Pronto se implementará una nueva versión de la extensión, para demostrar que tales integraciones ahora son posibles con otros servicios además de Cloudflare. Esta nueva versión es compatible con el proveedor de CAPTCHA <a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>. Los usuarios que resuelvan desafíos efímeros provistos por hCaptcha recibirán tokens que protegen la confidencialidad y que serán intercambiados en otros sitios de clientes de hCaptcha.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><span style="color:grey"><small><em>“hCaptcha pone el acento en la privacidad del usuario, y el respaldo a Privacy Pass es una prolongación natural de nuestro trabajo en esta área. Esperamos trabajar con Cloudflare y otros, para que esta norma se adopte de manera amplia. Actualmente estamos investigando otras aplicaciones. La implementación de Privacy Pass en nuestro servicio a nivel global fue relativamente simple, y nos agradó trabajar con el equipo de Cloudflare para mejorar la extensión del navegador Chrome de código abierto con el fin de ofrecer la mejor experiencia a nuestros usuarios”.</em></small></span></p><small>
 	</small>
 	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, fundador de hCaptcha</small></p>
@@ -112,8 +111,7 @@
 	<h1 id="anexo"><strong>Anexo</strong></h1>
 	<p>Aquí presentamos algunos detalles adicionales relacionados con los temas que tratamos anteriormente.</p>
 	<h2 id="a-formato-de-confirmaci-n-para-rotaciones-de-claves"><strong>A. Formato de confirmación para rotaciones de claves</strong></h2>
-	<p>Las confirmaciones de clave son necesarias para que el servidor demuestre que está actuando honestamente durante el protocolo de Privacy Pass. Las confirmaciones que utiliza Privacy Pass para la versión v2.0 tienen un formato ligeramente diferente al de la versión anterior.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Las confirmaciones de clave son necesarias para que el servidor demuestre que está actuando honestamente durante el protocolo de Privacy Pass. Las confirmaciones que utiliza Privacy Pass para la versión v2.0 tienen un formato ligeramente diferente al de la versión anterior.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">"2.00": {
   "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
   "expiry": "2020-01-11T10:29:10.658286752Z",
@@ -126,8 +124,7 @@
 	<p>Cuando un cliente recupera la confirmación, verifica que no haya vencido y que se compruebe la firma mediante la clave de verificación correspondiente que está integrada en la configuración de la extensión. Si estas comprobaciones se aprueban, recupera H y verifica la respuesta de emisión enviada por el servidor. Las versiones anteriores de estas confirmaciones no incluían firmas, pero estas firmas se validarán a partir de v2.0.</p>
 	<p>Cuando un servidor desea rotar la clave, simplemente genera una nueva clave k2 y agrega una nueva confirmación a k2 con un nuevo identificador como 2.01. Luego puede usar k2 como secreto para las operaciones VOPRF que necesita calcular.</p>
 	<h2 id="b-solicitud-de-api-de-intercambio-de-muestra"><strong>B. Solicitud de API de intercambio de muestra</strong></h2>
-	<p>La API de intercambio está disponible a través de HTTPS mediante el envío de solicitudes POST a <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Las solicitudes a este punto de conexión deben especificar los datos de Privacy Pass mediante el uso de la sintaxis JSON-RPC 2.0 en el cuerpo de la solicitud. Analicemos una solicitud de ejemplo:</p>
-	<!--kg-card-begin: markdown-->
+	<p>La API de intercambio está disponible a través de HTTPS mediante el envío de solicitudes POST a <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Las solicitudes a este punto de conexión deben especificar los datos de Privacy Pass mediante el uso de la sintaxis JSON-RPC 2.0 en el cuerpo de la solicitud. Analicemos una solicitud de ejemplo:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "method": "redeem",
@@ -147,8 +144,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>En lo que se muestra arriba: params.data[0] son los datos de entrada del cliente que se utilizan para generar un token en la etapa de emisión; params.data[1] es la etiqueta HMAC que el servidor utiliza para verificar un intercambio; y params.data[2] es un objeto JSON con codificación base64 convertido a representación textual que especifica los parámetros hash a curva que utiliza el cliente. Por ejemplo, el último elemento de la matriz corresponde al objeto:</p>
-	<!--kg-card-begin: markdown-->
+	<p>En lo que se muestra arriba: params.data[0] son los datos de entrada del cliente que se utilizan para generar un token en la etapa de emisión; params.data[1] es la etiqueta HMAC que el servidor utiliza para verificar un intercambio; y params.data[2] es un objeto JSON con codificación base64 convertido a representación textual que especifica los parámetros hash a curva que utiliza el cliente. Por ejemplo, el último elemento de la matriz corresponde al objeto:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     curve: "p256",
     hash: "sha256",
@@ -159,8 +155,7 @@
 	<p>Lo que especifica que el cliente ha utilizado la curva P-256, con la función hash SHA-256, y el método SSWU para aplicar la función hash a la curva. Esto permite que el servidor verifique la transacción con el conjunto de cifrado correcto. El cliente debe vincular la solicitud de intercambio con cierta información fija, que almacena como secuencias múltiples en la matriz params.bindings. Por ejemplo, podría enviar el encabezado Host de la solicitud HTTP, y la ruta HTTP que se utilizó (esto es lo que se usa en la extensión del navegador Privacy Pass). Por último, params.compressed es un valor booleano opcional (predeterminado como falso) que indica si la etiqueta HMAC se calculó con codificaciones de puntos comprimidos o sin comprimir.</p>
 	<p>Actualmente, los únicos conjuntos de cifrado admitidos son el ejemplo anterior, o el mismo excepto con el método igual al incremento para el método hash-e-incremento de función hash a una curva. Este es el método original que se utiliza en v1.0 de Privacy Pass y solo es compatible con versiones anteriores. Consulta la <a href="https://privacypass.github.io/api-redeem" target="_blank">documentación provista</a> para obtener más detalles.</p>
 	<h3 id="respuesta-de-ejemplo"><strong>Respuesta de ejemplo</strong></h3>
-	<p>Si se envía una solicitud a la API de intercambio y se verifica correctamente, se obtendría la siguiente respuesta.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Si se envía una solicitud a la API de intercambio y se verifica correctamente, se obtendría la siguiente respuesta.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "result": "success",
@@ -168,8 +163,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Cuando se produce un error se obtiene algo similar a lo siguiente.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cuando se produce un error se obtiene algo similar a lo siguiente.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "error": {

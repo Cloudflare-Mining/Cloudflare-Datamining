@@ -9,15 +9,13 @@
 	<h2 id="apt-over-the-internet">APT over the Internet</h2>
 	<p>Prior to version 1.5, APT did not include support for HTTPS - if you wanted to install a package over the Internet, your connection was not encrypted. This reduces privacy - an attacker snooping traffic could determine specific package version your system is installing. It also exposes you to on-path attacker attacks where an attacker could, for example, exploit a remote code execution vulnerability. Just 6 months ago, we saw an example of the latter with <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-3462" target="_blank">CVE-2019-3462</a>.</p>
 	<p>Enter the APT HTTPS transport - an optional transport you can install to add support for connecting to repositories over HTTPS. Once installed, users need to configure their APT <a href="https://manpages.debian.org/stretch/apt/sources.list.5.en.html" target="_blank">sources.list</a> with repositories using HTTPS.</p>
-	<p>The challenge here, of course, is that the most common way to install this transport is via APT and HTTP - a classic bootstrapping problem! An alternative here is to download the .deb package via curl and install it via dpkg. You’ll find the links to apt-transport-https binaries for Stretch <a href="https://packages.debian.org/stretch/apt-transport-https#pdownload" target="_blank">here</a> - once you have the URL path for your system architecture, you can download it from the <a href="https://deb.debian.org/" target="_blank">deb.debian.org</a> mirror-redirector over HTTPS, e.g. for amd64 (a.k.a. x86_64):</p>
-	<!--kg-card-begin: markdown-->
+	<p>The challenge here, of course, is that the most common way to install this transport is via APT and HTTP - a classic bootstrapping problem! An alternative here is to download the .deb package via curl and install it via dpkg. You’ll find the links to apt-transport-https binaries for Stretch <a href="https://packages.debian.org/stretch/apt-transport-https#pdownload" target="_blank">here</a> - once you have the URL path for your system architecture, you can download it from the <a href="https://deb.debian.org/" target="_blank">deb.debian.org</a> mirror-redirector over HTTPS, e.g. for amd64 (a.k.a. x86_64):</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -o apt-transport-https.deb -L https://deb.debian.org/debian/pool/main/a/apt/apt-transport-https_1.4.9_amd64.deb 
 HASH=c8c4366d1912ff8223615891397a78b44f313b0a2f15a970a82abe48460490cb &amp;&amp; echo "$HASH  apt-transport-https.deb" | sha256sum -c
 sudo dpkg -i apt-transport-https.deb
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To confirm which APT transports are installed on your system, you can list each “method binary” that is installed:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To confirm which APT transports are installed on your system, you can list each “method binary” that is installed:</p><!--kg-card-begin: markdown-->
 	<pre><code>ls /usr/lib/apt/methods
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -47,8 +45,7 @@ sudo dpkg -i apt-transport-https.deb
 	<p>To use our APT transport, you’ll need an APT repository that’s protected by Cloudflare Access. Our instructions (below) for using our transport will use apt.example.com as a hostname.</p>
 	<p>To use our APT transport with your own web-based APT repository, refer to our <a href="https://developers.cloudflare.com/access/setting-up-access/" target="_blank">Setting Up Access</a> guide.</p>
 	<h3 id="apt-transport-installation">APT Transport Installation</h3>
-	<p>To install from source, both tools require Go - once you <a href="https://golang.org/dl/" target="_blank">install Go</a>, you can install `cloudflared` and our APT transport with four commands:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To install from source, both tools require Go - once you <a href="https://golang.org/dl/" target="_blank">install Go</a>, you can install `cloudflared` and our APT transport with four commands:</p><!--kg-card-begin: markdown-->
 	<pre><code>go get github.com/cloudflare/cloudflared/cmd/cloudflared
 sudo cp ${GOPATH:-~/go}/bin/cloudflared /usr/local/bin/cloudflared
 go get github.com/cloudflare/apt-transport-cloudflared/cmd/cfd
@@ -56,14 +53,12 @@ sudo cp ${GOPATH:-~/go}/bin/cfd /usr/lib/apt/methods/cfd
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above commands should place the cloudflared executable in <em>/usr/local/bin</em> (which should be on your PATH), and the APT transport binary in the required <em>/usr/lib/apt/methods</em> directory.</p>
-	<p>To confirm cloudflared is on your path, run:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To confirm cloudflared is on your path, run:</p><!--kg-card-begin: markdown-->
 	<pre><code>which cloudflared
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above command should return <em>/usr/local/bin/cloudflared</em></p>
-	<p>Now that the custom transport is installed, to start using it simply configure an APT source with the cfd:// rather than https:// e.g:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now that the custom transport is installed, to start using it simply configure an APT source with the cfd:// rather than https:// e.g:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cat /etc/apt/sources.list.d/example.list 
 deb [arch=amd64] cfd://apt.example.com/v2/stretch stable common
 </code></pre>
@@ -71,8 +66,7 @@ deb [arch=amd64] cfd://apt.example.com/v2/stretch stable common
 	<p>Next time you do `apt-get update` and `apt-get install`, a browser window will open asking you to log-in over Cloudflare Access, and your package will be retrieved using the token returned by `cloudflared`.</p>
 	<h4 id="fetching-a-gpg-key-over-access">Fetching a GPG Key over Access</h4>
 	<p>Usually, private APT repositories will use <a href="https://wiki.debian.org/SecureApt" target="_blank">SecureApt</a> and have their own GPG public key that users must install to verify the integrity of data retrieved from that repository.</p>
-	<p>Users can also leverage cloudflared for securely downloading and installing those keys, e.g:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Users can also leverage cloudflared for securely downloading and installing those keys, e.g:</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared access login https://apt.example.com
 cloudflared access curl https://apt.example.com/public.gpg | sudo apt-key add -
 </code></pre>

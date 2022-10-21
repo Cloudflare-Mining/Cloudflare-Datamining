@@ -15,18 +15,15 @@
 	<p>Cloudflare รู้ว่าองค์กรอย่างที่ปรึกษาด้านการดูแลสุขขภาพด้านบนต้องการที่จะเพิ่มความปลอดภัยและการมองเห็นผู้ใช้ที่กระจัดกระจายได้ WARP อุปกรณ์ของลูกค้าเราจะเข้ามาช่วยในเรื่องนี้โดยเปิดใช้งานการยืนยันตัวตนและการบังคับใช้นโยบายอุปกรณ์แบบ posture-aware ที่ปลายทาง</p>
 	<p>เราได้เพิ่มประสิทธิภาพลูกค้าของเราเพื่อให้สามารถใช้งานวิธีการได้หลากหลาย ดังนั้นองค์กรจึงมีความยืดหยุ่นตามที่ต้องการเพื่อเปิดใช้งานความสามารถ Zero Trust ของ Cloudflare for Teams ได้อย่างง่ายดาย ตัวอย่างเช่น WARP ทำงานทั่วระบบการดำเนินการหลักทั้งหมด (เช่น Windows, MacOS, Linux, chrome OS, iOS, and Android) และหากไม่พิจารณาเรื่องการใช้งานด้านกลไล WARP ใช้ <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">ปัจจัยที่มีร่วมกัน</a> เพื่อให้ผู้ดูแลของคุณมีประสบการณ์ที่สอดคล้องกัน</p>
 	<p>เพื่อแสดงให้เห็นการใช้งานที่มีประสิทธิภาพ นี่เป็นการจำลองสถานการณ์ทั่วไปเกี่ยวกับวิธีการใช้งานลูกค้าของเราบน Windows โดยมีการเปลี่ยนแปลงเพียงเล็กน้อยในบรรทัดคำสั่ง</p>
-	<p>1. หากคุณต้องการใช้กฎการคัดกรอง HTTP Browser Isolation หรือทำอะไรก็ตามกับ Device Posture สิ่งสำคัญคือการยืนยันตัวตนผู้ใช้ต่อ Teams Organization และส่งข้อมูลการรับส่งข้อมูลไปที่ WARP</p>
-	<!--kg-card-begin: markdown-->
+	<p>1. หากคุณต้องการใช้กฎการคัดกรอง HTTP Browser Isolation หรือทำอะไรก็ตามกับ Device Posture สิ่งสำคัญคือการยืนยันตัวตนผู้ใช้ต่อ Teams Organization และส่งข้อมูลการรับส่งข้อมูลไปที่ WARP</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2. หากคุณไม่สนใจเกี่ยวกับการยืนยันตัวตนและต้องการติดตั้งแบบเงียบๆ เหมือนกับสถานการณ์ด้านบน คุณต้องใช้<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">โทเค็นบริการ</a> และปิดการใช้งาน UI เริ่มต้นของลูกค้า</p>
-	<!--kg-card-begin: markdown-->
+	<p>2. หากคุณไม่สนใจเกี่ยวกับการยืนยันตัวตนและต้องการติดตั้งแบบเงียบๆ เหมือนกับสถานการณ์ด้านบน คุณต้องใช้<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">โทเค็นบริการ</a> และปิดการใช้งาน UI เริ่มต้นของลูกค้า</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3. พนักงานของคุณมีการเดินทางไปในประเทศหรือสถานที่ที่ไม่อนุญาตให้มีการรับส่งข้อมูลเข้ารหัสใน tunnel หรือไม่? คุณสามารถให้พวกเขาปิด WARP แต่ก็ยังต้องปฏิบัติตามกฎ DNS ของบริษัท</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. พนักงานของคุณมีการเดินทางไปในประเทศหรือสถานที่ที่ไม่อนุญาตให้มีการรับส่งข้อมูลเข้ารหัสใน tunnel หรือไม่? คุณสามารถให้พวกเขาปิด WARP แต่ก็ยังต้องปฏิบัติตามกฎ DNS ของบริษัท</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
 </code></pre>
 	<!--kg-card-end: markdown-->

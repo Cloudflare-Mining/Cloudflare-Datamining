@@ -17,8 +17,7 @@
 	<h2 id="esempio-end-to-end">Esempio end-to-end</h2>
 	<h3 id="fase-1-definizione-del-nome-host-personalizzato">Fase 1: Definizione del nome host personalizzato</h3>
 	<p>I clienti Cloudflare per SaaS definiscono i domini dei propri clienti creando nomi host personalizzati. I nomi host personalizzati indicano quali domini devono essere instradati all'origine del provider SaaS. I nomi host personalizzati possono definire domini specifici, come <code>example.com</code>, oppure possono utilizzare un carattere jolly, come <code>*.example.com</code> che consente l'instradamento di tutti i sottodomini in example.com al servizio SaaS. WAF per SaaS supporta entrambi i tipi di nomi host personalizzati, in modo che i provider SaaS abbiano flessibilità nella scelta dell'ambito della loro protezione.</p>
-	<p>Il primo passo consiste nel creare un nome host personalizzato per definire il dominio del tuo cliente. Ciò può essere fatto tramite il dashboard o l'API. </p>
-	<!--kg-card-begin: markdown-->
+	<p>Il primo passo consiste nel creare un nome host personalizzato per definire il dominio del tuo cliente. Ciò può essere fatto tramite il dashboard o l'API. </p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
      -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
      -H "Content-Type: application/json" \
@@ -33,8 +32,7 @@
 	<p>Successivamente, è necessario creare un'associazione tra i nomi host personalizzati (il dominio del cliente) e il set di regole del firewall che vorresti allegare. </p>
 	<p>Questo viene fatto associando un blob JSON a un nome host personalizzato. Il nostro prodotto, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a> consente ai clienti di completare facilmente questa operazione tramite un'API. </p>
 	<p>Nell'esempio seguente, un blob JSON con due campi ("customer_id" e "security_level") verrà associato a ogni richiesta per <code>*.example.com</code> e <code>example.com</code>.</p>
-	<p>Non esiste uno schema predeterminato per i metadati personalizzati. I nomi e la struttura dei campi sono completamente personalizzabili in base alle esigenze dei nostri clienti. In questo esempio abbiamo scelto il tag "security_level" a cui ci aspettiamo di assegnare tre valori (basso, medio o alto). Questi valori, a loro volta, attiveranno tre diversi set di regole.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Non esiste uno schema predeterminato per i metadati personalizzati. I nomi e la struttura dei campi sono completamente personalizzabili in base alle esigenze dei nostri clienti. In questo esempio abbiamo scelto il tag "security_level" a cui ci aspettiamo di assegnare tre valori (basso, medio o alto). Questi valori, a loro volta, attiveranno tre diversi set di regole.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\
@@ -48,8 +46,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="fase-3-attivazione-dei-prodotti-di-sicurezza-in-base-ai-tag">Fase 3: Attivazione dei prodotti di sicurezza in base ai tag</h3>
 	<p>Infine, puoi attivare una regola basata sul nome host personalizzato. Il campo dei metadati personalizzati, ad esempio "security_level" è disponibile nel motore del set di regole in cui viene eseguito il WAF. Nel nostro esempio, "security_level" può essere utilizzato per attivare diverse configurazioni di prodotti come WAF, Firewall Rules, Advanced Rate Limiting e Transform Rules.</p>
-	<p>Le regole possono essere create tramite il dashboard o tramite l'API, come mostrato di seguito. Qui, una regola di limitazione della velocità viene attivata sul traffico con "security_level" impostato su <em>low</em>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Le regole possono essere create tramite il dashboard o tramite l'API, come mostrato di seguito. Qui, una regola di limitazione della velocità viene attivata sul traffico con "security_level" impostato su <em>low</em>.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\

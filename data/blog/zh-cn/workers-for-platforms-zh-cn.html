@@ -42,8 +42,7 @@
 	<h3 id="trace-worker"><strong>Trace Worker</strong></h3>
 	<p>有烟的地方就有火，有代码的地方也一定会有 bug。在为开发人员提供编写和部署代码的工具时，您还必须为他们提供调试代码的方法。</p>
 	<p>Trace Worker 允许您收集有关由 Worker 处理的请求的任何信息，包括任何日志或异常，并将它们传递给您的客户。Trace Worker 能接收有关其他 Worker 执行情况的信息，并可以将其转发到您选择的目的地，从而实现实时日志记录或长期存储等用例。</p>
-	<p>下面是一个简单的 Trace Worker，它会将其跟踪数据发送到一个 HTTP 端点：</p>
-	<!--kg-card-begin: markdown-->
+	<p>下面是一个简单的 Trace Worker，它会将其跟踪数据发送到一个 HTTP 端点：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("trace", event =&gt; {
   event.waitUntil(fetch("http://example.com/trace", {
     method: "POST",
@@ -52,8 +51,7 @@
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>下面的示例展示了 event.traces 中的数据可能的样子：</p>
-	<!--kg-card-begin: markdown-->
+	<p>下面的示例展示了 event.traces 中的数据可能的样子：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">[
   {
     "scriptName": "Example script",
@@ -93,8 +91,7 @@
 	<h3 id="-worker-"><strong>使用动态分派将多个 Worker 链接在一起</strong></h3>
 	<p>在与我们一些早期客户合作的过程中，我们经常听到的另一个需求是在运行客户代码之前能够运行自己的代码。也许您想运行一层身份验证，清理输入或输出，或者是在下游提供有用的信息（如用户或帐户 ID）。</p>
 	<p>为此，您可能需要维护自己的 Worker。但是，当它执行完成后，您希望能够使用<em>客户的</em>代码调用下一个 Worker。</p>
-	<p>示例：</p>
-	<!--kg-card-begin: markdown-->
+	<p>示例：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
 let response = await user_worker.fetch(request);
 </code></pre>

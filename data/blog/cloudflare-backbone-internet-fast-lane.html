@@ -18,8 +18,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/averages.png" class="kg-image" alt="A bar chart showing an overall decrease in average response times when using the Cloudflare backbone, compared to the public Internet."></figure>
 	<p>With the backbone disabled, if a visitor from São Paulo performed a request to our service, they would be routed to our São Paulo data center via <a href="https://blog.cloudflare.com/a-brief-anycast-primer/">BGP Anycast</a>. With caching disabled, our São Paulo data center forwarded the request over the public Internet to the origin server in Chicago. On average, the entire process to fetch data from the origin server and return to the response to the requesting user took 335.8 milliseconds.</p>
 	<p>Once the backbone was enabled and requests were created, our software performed tests to determine the fastest healthy route to the origin, whether it was a route on the public Internet or through our private backbone. For this test the backbone was faster, resulting in an average total request time of 230.2 milliseconds. Just by routing the request through our private backbone, we <strong>improved the average response time by 31%</strong>.</p>
-	<p>We saw even better improvement when testing from Tokyo. When routing the request over the public Internet, the request took an average of 424 milliseconds. By enabling our backbone which created a faster path, the request took an average of 234 milliseconds, creating an <strong>average response time improvement of 44%</strong>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We saw even better improvement when testing from Tokyo. When routing the request over the public Internet, the request took an average of 424 milliseconds. By enabling our backbone which created a faster path, the request took an average of 234 milliseconds, creating an <strong>average response time improvement of 44%</strong>.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -79,8 +78,6 @@
 	<p>And while these thousands of fiber optic connections are already fixing today’s Internet issues, we truly are just getting started.</p>
 	<p>Want to help build the future Internet? Networks that are faster, safer, and more reliable than they are today? The Cloudflare Infrastructure team is <a href="https://www.cloudflare.com/careers/jobs/?department=Infrastructure&amp;location=default" target="_blank">currently hiring</a>!</p>
 	<p>If you operate an ISP or transit network and would like to bring your users faster and more reliable access to websites and services powered by Cloudflare’s rapidly expanding network, please reach out to our Edge Partnerships team at epp@cloudflare.com.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

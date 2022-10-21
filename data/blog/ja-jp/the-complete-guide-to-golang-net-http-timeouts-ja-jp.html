@@ -12,8 +12,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Timeouts-001.png" class="kg-image" alt="HTTP server phases"></figure>
 	<p>インターネットに公開されるHTTP サーバーが、クライアント接続でタイムアウトを実行することは重要です。タイムアウトが実行されなければ、クライアントが非常に遅かったり消えたりして、ファイル記述子の漏えいにつながる可能性があり、最終的に次のようなエラーが生じることになります。</p>
 	<p><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></p>
-	<p><code>http.Server</code>では、 <code>ReadTimeout</code>と <code>WriteTimeout</code>の2つのタイムアウトが公開されています。この二つを設定するには、サーバーを明示的に使用して行います。</p>
-	<!--kg-card-begin: markdown-->
+	<p><code>http.Server</code>では、 <code>ReadTimeout</code>と <code>WriteTimeout</code>の2つのタイムアウトが公開されています。この二つを設定するには、サーバーを明示的に使用して行います。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">srv := &amp;http.Server{
     ReadTimeout: 5 * time.Second,
     WriteTimeout: 10 * time.Second,
@@ -38,8 +37,7 @@ log.Println(srv.ListenAndServe())
 	<h3 id="--2">クライアントのタイムアウト</h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Timeouts-002-1.png" class="kg-image" alt="HTTP Client phases"></figure>
 	<p>クライアント側のタイムアウトは、使用するタイムアウトによって、より簡単になる場合もあれば、はるかに複雑になる場合もありますが、リソースの漏えいやフリーズを防止するためにも同様に重要です。</p>
-	<p>最も使いやすいのは、<a href="https://golang.org/pkg/net/http/#Client" target="_blank">http.Client</a>の <code>Timeout</code>フィールドです。これはダイアルから（接続が再利用されていない場合）本文の読み込みまで、交換（exchange）全体をカバーするものです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最も使いやすいのは、<a href="https://golang.org/pkg/net/http/#Client" target="_blank">http.Client</a>の <code>Timeout</code>フィールドです。これはダイアルから（接続が再利用されていない場合）本文の読み込みまで、交換（exchange）全体をカバーするものです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">c := &amp;http.Client{
     Timeout: 15 * time.Second,
 }
@@ -53,8 +51,7 @@ resp, err := c.Get("https://blog.filippo.io/")
 		<li>http.Transport.TLSHandshakeTimeoutは、TLSハンドシェイクの実行に要する時間を制限します。</li>
 		<li>http.Transport.ResponseHeaderTimeoutは、レスポンスのヘッダーを読み取る時間を制限します。</li>
 		<li>HTTP.Transport.ExpectContinueTimeoutは、「<em>Expect:100-continue」を含む</em>リクエストヘッダーを送信してから本文を送信する許可を受けるまでの間、クライアントが待機する時間を制限します。1.6でこれを設定すると、<a href="https://github.com/golang/go/issues/14391" target="_blank">HTTP/2が無効になる</a>こと注意してください。(DefaultTransport<a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179" target="_blank">は、1.6.2から特別なケースになっています</a>)。</li>
-	</ul>
-	<!--kg-card-begin: markdown-->
+	</ul><!--kg-card-begin: markdown-->
 	<pre><code>c := &amp;http.Client{
     Transport: &amp;http.Transport{
         Dial: (&amp;net.Dialer{
@@ -74,8 +71,7 @@ resp, err := c.Get("https://blog.filippo.io/")
 	<h4 id="--3"><strong>キャンセルとコンテキスト</strong></h4>
 	<p> <code>net/http</code>では、クライアントリクエストを取り消す方法が2つあります。 Request.Cancelと、1.7の新機能、Contextです。</p>
 	<p>Request.Cancelはオプショナルなチャネルで、設定してから閉じると、まるで Request.Timeout が選択されたように、リクエストが停止されます。（これらは実際に同じメカニズムで実装されますが、この記事を書いている間に、1.7で <a href="https://github.com/golang/go/issues/16094" target="_blank">バグを1つみつけました</a>。そのバグでは、すべてのキャンセルがタイムアウトエラーとして返されます。）</p>
-	<p>より細かいタイムアウトの設定を行うには、 <code>Request.Cancel</code>と <code>time.Timer</code>を使用することができます。これならストリーミングが許可され、本文からデータを読み込むたびに、期限が引き伸ばされます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>より細かいタイムアウトの設定を行うには、 <code>Request.Cancel</code>と <code>time.Timer</code>を使用することができます。これならストリーミングが許可され、本文からデータを読み込むたびに、期限が引き伸ばされます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">package main
 
 import (
@@ -122,8 +118,7 @@ func main() {
 	<!--kg-card-end: markdown-->
 	<p>上記の例では、5秒のタイムアウトをリクエストを実行するフェーズに設定していますが、8ラウンドで本文を読み取るのに少なくとも8秒間を費やし、そのたびに2秒のタイムアウトが必要になります。このようにしながら、途切れることなく、ストリーミングを永久に続けることができます。本文のデータの受信に2秒以上かかる場合は、io.CopyNが「 <code>net/http: request canceled</code>」を返します。</p>
 	<p>1.7では、contextパッケージはスタンダードライブラリに進化しています。そこでは <a href="https://blog.golang.org/context" target="_blank">コンテキストに関する情報がたくさんあります</a>が、ここでコンテキストは、Request.Cancelに代わるもので、非推奨であることを理解してください。</p>
-	<p>コンテキストを使ってリクエストをキャンセルするには、 <code>context.WithCancel</code>で、新しいコンテキストと <code>cancel()</code>機能を入手して、 <code>Request.WithContext</code>と結び付けられているリクエストを作成します。リクエストをキャンセルしたい場合には、 &nbsp;<code>cancel()</code>を呼び出すことで、コンテキストをキャンセルします。 （キャンセルチャネルを閉じる代わりにこれを行います）。</p>
-	<!--kg-card-begin: markdown-->
+	<p>コンテキストを使ってリクエストをキャンセルするには、 <code>context.WithCancel</code>で、新しいコンテキストと <code>cancel()</code>機能を入手して、 <code>Request.WithContext</code>と結び付けられているリクエストを作成します。リクエストをキャンセルしたい場合には、 &nbsp;<code>cancel()</code>を呼び出すことで、コンテキストをキャンセルします。 （キャンセルチャネルを閉じる代わりにこれを行います）。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">ctx, cancel := context.WithCancel(context.TODO())
 timer := time.AfterFunc(5*time.Second, func() {
 	cancel()

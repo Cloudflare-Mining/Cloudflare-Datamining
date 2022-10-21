@@ -18,8 +18,7 @@
 	<p>Besonders interessiert hat mich eine der Folgen der Funktionsweise von dynamischem RAM. Denn jedes Bit von Daten wird durch die Ladung (oder deren Fehlen) auf einem kleinen Kondensator im RAM-Chip gespeichert. Aber diese Kondensatoren verlieren mit der Zeit allmählich ihre Ladung. Um den Verlust der gespeicherten Daten zu vermeiden, müssen sie regelmäßig aufgefrischt werden, um die Ladung (falls vorhanden) wieder auf ihr ursprüngliches Niveau zu bringen. Bei diesem <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">Refresh-Prozess</a> wird der Wert jedes Bits gelesen und dann zurückgeschrieben. Während dieser „Auffrischungs“-Zeit ist der Speicher blockiert und kann keine normalen Operationen wie Laden oder Speichern von Bits ausführen.</p>
 	<p>Das hat mich schon seit geraumer Zeit beschäftigt und ich habe mich gefragt: Ist es möglich, die Verzögerung bei der Wiederauffrischung in der Software zu bemerken?</p>
 	<h2 id="einf-hrung-in-den-refresh-von-dynamischem-ram"><strong>Einführung in den Refresh von dynamischem RAM</strong></h2>
-	<p>Jedes DIMM-Modul besteht aus „cells“ („Zellen“) und „rows“ („Zeilen“), „columns“ („Spalten“), „sides“ („Seiten“) und/oder „ranks“ („Reihen“). In <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">dieser Präsentation der University of Utah</a> werden die Bezeichnungen erklärt (auf Englisch). Sie können die Konfiguration des Speichers in Ihrem Computer mit dem Befehl decode-dimms überprüfen. Hier ist ein Beispiel:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Jedes DIMM-Modul besteht aus „cells“ („Zellen“) und „rows“ („Zeilen“), „columns“ („Spalten“), „sides“ („Seiten“) und/oder „ranks“ („Reihen“). In <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">dieser Präsentation der University of Utah</a> werden die Bezeichnungen erklärt (auf Englisch). Sie können die Konfiguration des Speichers in Ihrem Computer mit dem Befehl decode-dimms überprüfen. Hier ist ein Beispiel:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ decode-dimms
 Size                                       4096 MB
 Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
@@ -42,8 +41,7 @@ Ranks                                      2
 	<p>Für die Dauer des Refresh-Vorgangs ist der gesamte Speicherchip blockiert. Das bedeutet, dass jedes einzelne Bit im Speicher alle 7812 ns für mehr als 75 ns blockiert ist. Lassen Sie uns das messen.</p>
 	<h2 id="vorbereitung-eines-experiments"><strong>Vorbereitung eines Experiments</strong></h2>
 	<p>Um Vorgänge mit Nanosekunden-Granularität zu messen, müssen wir eine enge Programmschleife schreiben, beispielsweise in C. Sie sieht folgendermaßen aus:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>  for (i = 0; i &lt; ...; i++) {
 		// Perform memory load. Any load instruction will do
 		*(volatile int *) one_global_var;
@@ -66,8 +64,7 @@ Ranks                                      2
 	<p>Der Code ist wirklich unkompliziert: Eine Speicherauslesung durchführen. Die Daten aus CPU-Caches löschen. Die Zeit messen.</p>
 	<p>(Anmerkung: Bei <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">einem zweiten Experiment versuchte ich, MOVNTDQA zu verwenden</a>, um die Speicherladung durchzuführen, aber das erfordert eine spezielle, nicht Cache-fähige Speicherseite, für die Root-Zugriff notwendig ist.)</p>
 	<p>Auf meinem Computer erzeugt das Daten wie diese:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code># timestamp, loop duration
 3101895733,     134
 3101895865,     132
@@ -93,8 +90,7 @@ Ranks                                      2
 		<li>Ich habe mich für ein Abtastintervall von 100 ns entschieden, aber jede Zahl bis zu <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">einem Nyquist-Wert (doppelte erwartete Frequenz) funktioniert auch gut</a>.</li>
 		<li>Die Daten müssen mit festen Zeitabständen abgetastet werden, bevor sie in die FFT eingespeist werden. Alle vernünftigen Abtastmethoden funktionieren gut; ich habe am Ende eine einfache lineare Interpolation durchgeführt.</li>
 	</ul>
-	<p>Der Algorithmus sieht ungefähr so aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Der Algorithmus sieht ungefähr so aus:</p><!--kg-card-begin: markdown-->
 	<pre><code>UNIT=100ns
 A = [(timestamp, loop_duration),...] 
 p = 1
@@ -109,8 +105,7 @@ for curr_ts in frange(fist_ts, last_ts, UNIT):
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Was mit meinen Daten einen ziemlich langweiligen Vektor wie diesen hier erzeugt:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -119,8 +114,7 @@ for curr_ts in frange(fist_ts, last_ts, UNIT):
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Der Vektor ist jedoch ziemlich lang, normalerweise etwa ~200.000 Datenpunkte. Wenn die Daten so aufbereitet sind, sind wir bereit, sie in die FFT einzuspeisen!</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>C = numpy.fft.fft(B)
 C = numpy.abs(C)
 F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
@@ -141,8 +135,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/5.png" class="kg-image"></figure>
 	<p></p>
 	<p>Wir können die ersten drei Spitzen deutlich sehen. Nach ein wenig Herumrechnen, bei dem Messwerte, die mindestens zehnmal so groß wie der Durchschnitt sind, herausgefiltert werden, können wir die zugrunde liegenden Frequenzen extrahieren:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>127850.0
 127900.0
 127950.0
@@ -161,8 +154,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<p>Hurra! Die erste Frequenzspitze ist in der Tat das, wonach wir gesucht haben, und korreliert tatsächlich mit den Refresh-Zeiten.</p>
 	<p>Die anderen Spitzen bei 256 kHz, 384 kHz, 512 kHz und so weiter sind Multiplikatoren unserer Basisfrequenz von 128 kHz, sogenannte Oberwellen. Dabei handelt es sich um einen zu erwartenden Nebeneffekt <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">der Durchführung von FFT bei etwas wie einer Rechteckwelle</a>.</p>
 	<p>Um das Experimentieren zu erleichtern, haben wir <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">eine Kommandozeilenversion dieses Tools erstellt</a>. Sie können den Code selbst ausführen. Hier ist ein Probelauf auf meinem Server:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>~/2018-11-memory-refresh$ make
 gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 ./measure-dram | python3 ./analyze-dram.py

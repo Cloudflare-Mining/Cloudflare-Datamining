@@ -6,8 +6,7 @@
 	<p>现代操作系统提供了允许“分割”内核资源的设施。例如，FreeBSD 有“jail”，Solaris 有“区域”。Linux 有所不同，它提供一组看起来独立的设施，每个设施允许隔离特定资源。这些称为“命名空间”，多年来一直在内核中增长。它们是 Docker、lxc 或 firejail 等流行工具的基础。许多命名空间都是无争议的，例如 UTS 命名空间，它允许主机系统隐藏其主机名和时间。其他一些命名空间则比较复杂，但直接明了，例如，NET 和 NS (mount) 命名空间就令人难以理解。最后，还有一个非常特殊且稀奇的 USER 命名空间。</p>
 	<p>USER 命名空间的特殊之处在于，它允许所有者以其中的“根”用户身份操作。具体机制超出了本博客文章的讨论范围，但简单地说，在它的基础上，Docker 等工具才能不以真正的根用户身份操作，并且它还是无根容器等事项的基础。</p>
 	<p>鉴于其性质，允许无特权的用户访问 USER 命名空间始终会带来极大的安全风险。其中一种风险就是特权提升。</p>
-	<p>特权提升是操作系统的常见攻击面。用户可以获取特权的一种方式是通过 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank">syscall</a> 将其命名空间映射到根命名空间，并指定 <em>CLONE_NEWUSER</em> 标志。这会指示 unshare 创建有完整权限的新用户命名空间，并将新用户和组 ID 映射到之前的命名空间。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank">unshare(1)</a> 程序将根映射到我们的原始命名空间：</p>
-	<!--kg-card-begin: markdown-->
+	<p>特权提升是操作系统的常见攻击面。用户可以获取特权的一种方式是通过 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank">syscall</a> 将其命名空间映射到根命名空间，并指定 <em>CLONE_NEWUSER</em> 标志。这会指示 unshare 创建有完整权限的新用户命名空间，并将新用户和组 ID 映射到之前的命名空间。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank">unshare(1)</a> 程序将根映射到我们的原始命名空间：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ id
 uid=1000(fred) gid=1000(fred) groups=1000(fred) …
 $ unshare -rU
@@ -23,14 +22,12 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 	<h2 id="-lsm-bpf">我们的解决方案 - LSM BPF</h2>
 	<p>由于限制 USER 命名空间的上游代码似乎行不通，我们决定使用 LSM BPF 来规避这些问题。这样做并不需要修改内核，而且我们可以制定守护访问权限的复杂规则。</p>
 	<h3 id="-hook-">找到合适的 hook 候选项</h3>
-	<p>首先，让我们找到所需的 syscall。我们可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank"><em>include/linux/syscalls.h</em></a> 文件中找到原型。这在其中并不太容易查找到，但以下这行：</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，让我们找到所需的 syscall。我们可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank"><em>include/linux/syscalls.h</em></a> 文件中找到原型。这在其中并不太容易查找到，但以下这行：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">/* kernel/fork.c */
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>提供了线索，这样我们就知道接下来要在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank"><em>kernel/fork.c</em></a> 中的什么地方查找。其中发出了对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank"><em>ksys_unshare()</em></a> 的调用。在该函数中深入探查，我们找到对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank"><em>unshare_userns()</em></a> 的调用。此操作有望成功。</p>
-	<p>到目前为止，我们确定了 syscall 实现，但接下来要弄清楚的是，哪些 hook 可供我们使用？因为我们通过<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank">手册页</a>可以知道，unshare 用于改变任务，所以我们来看一下 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank"><em>include/linux/lsm_hooks.h</em></a> 中基于任务的 hook。早在函数 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank"><em>unshare_userns()</em></a><em> </em> 中，我们就看到对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank"><em>prepare_creds()</em></a> 的调用。这非常类似于 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank"><em>cred_prepare</em></a> hook。为了验证我们是否通过 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank"><em>prepare_creds()</em></a> 获得匹配，我们观察对安全性 hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank"><em>security_prepare_creds()</em></a><em> </em>的调用，后者最终会调用该 hook：</p>
-	<!--kg-card-begin: markdown-->
+	<p>到目前为止，我们确定了 syscall 实现，但接下来要弄清楚的是，哪些 hook 可供我们使用？因为我们通过<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank">手册页</a>可以知道，unshare 用于改变任务，所以我们来看一下 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank"><em>include/linux/lsm_hooks.h</em></a> 中基于任务的 hook。早在函数 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank"><em>unshare_userns()</em></a><em> </em> 中，我们就看到对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank"><em>prepare_creds()</em></a> 的调用。这非常类似于 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank"><em>cred_prepare</em></a> hook。为了验证我们是否通过 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank"><em>prepare_creds()</em></a> 获得匹配，我们观察对安全性 hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank"><em>security_prepare_creds()</em></a><em> </em>的调用，后者最终会调用该 hook：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">…
 rc = call_int_hook(cred_prepare, 0, new, old, gfp);
 …
@@ -39,8 +36,7 @@ rc = call_int_hook(cred_prepare, 0, new, old, gfp);
 	<p>不必进一步详细探究细节，我们知道这个 hook 很适合使用，因为 <em>prepare_creds()</em> 刚好就在 <em>create_user_ns()</em>（位于 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank"><em>unshare_userns()</em></a> 中）之前调用，后者是我们试图阻止的操作。</p>
 	<h3 id="lsm-bpf-">LSM BPF 解决方案</h3>
 	<p>我们打算使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank">eBPF compile once-run everywhere (CO-RE)</a> 方法进行编译。这样一来，我们就可以在一个架构上编译，而在另一个架构上加载。但我们打算专门以 x86_64 为目标。适用于 ARM64 的 LSM BPF 仍在开发中，以下代码将无法在该架构上运行。敬请留意 <a href="https://lore.kernel.org/bpf/" target="_blank">BPF 邮寄列表</a>以关注进展。</p>
-	<p>测试该解决方案时采用的内核版本不低于 5.15，且配置了以下内容：</p>
-	<!--kg-card-begin: markdown-->
+	<p>测试该解决方案时采用的内核版本不低于 5.15，且配置了以下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>BPF_EVENTS
 BPF_JIT
 BPF_JIT_ALWAYS_ON
@@ -56,8 +52,7 @@ HAVE_DYNAMIC_FTRACE
 	<!--kg-card-end: markdown-->
 	<p>启动选项 <code>lsm=bpf</code> 在 <code>CONFIG_LSM</code> 未在列表中包含“bpf”时可能是必要的。</p>
 	<p>让我们从序言开始：</p>
-	<p><em>deny_unshare.bpf.c</em>：</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>deny_unshare.bpf.c</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">#include &lt;linux/bpf.h&gt;
 #include &lt;linux/capability.h&gt;
 #include &lt;linux/errno.h&gt;
@@ -73,8 +68,7 @@ HAVE_DYNAMIC_FTRACE
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>接下来，我们通过以下方式为 CO-RE 调整设置我们的必要结构：</p>
-	<p><em>deny_unshare.bpf.c</em>：</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>deny_unshare.bpf.c</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">…
 
 typedef unsigned int gfp_t;
@@ -103,8 +97,7 @@ char LICENSE[] SEC("license") = "GPL";
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>我们不需要完全充实 struct 的细节，只需提供程序正常运行所需信息的绝对下限。CO-RE 将执行为内核执行调整所需的任何操作。这样就可以很轻松地编写 LSM BPF 程序！</p>
-	<p><em>deny_unshare.bpf.c</em>：</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>deny_unshare.bpf.c</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">SEC("lsm/cred_prepare")
 int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
              gfp_t gfp, int ret)
@@ -149,8 +142,7 @@ int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>第一步是创建程序，第二步是加载程序并附加到我们所需的 hook。有几种方式可实现这一目的：<a href="https://github.com/cilium/ebpf" target="_blank">Cilium ebpf</a> 项目，<a href="https://github.com/libbpf/libbpf-rs" target="_blank">Rust 绑定</a>，以及 <a href="https://ebpf.io/projects/" target="_blank">ebpf.io</a> 项目环境页面上的其他几项。我们打算使用原生 libbpf。</p>
-	<p><em>deny_unshare.c</em>：</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>deny_unshare.c</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">#include &lt;bpf/libbpf.h&gt;
 #include &lt;unistd.h&gt;
 #include "deny_unshare.skel.h"
@@ -197,8 +189,7 @@ cleanup:
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>最后，我们使用以下 Makefile 来编译：</p>
-	<p><em>Makefile</em>：</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>Makefile</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-makefile">CLANG ?= clang-13
 LLVM_STRIP ?= llvm-strip-13
 ARCH := x86
@@ -238,23 +229,20 @@ deny_unshare: deny_unshare.c deny_unshare.skel.h
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--1">结果</h3>
-	<p>在新的终端窗口中，运行：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在新的终端窗口中，运行：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ make run
 …
 LSM loaded! ctrl+c to exit.
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在另一个终端窗口中，我们成功被阻止！</p>
-	<!--kg-card-begin: markdown-->
+	<p>在另一个终端窗口中，我们成功被阻止！</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ unshare -rU
 unshare: unshare failed: Cannot allocate memory
 $ id
 uid=1000(fred) gid=1000(fred) groups=1000(fred) …
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>策略还有一项始终允许特权通过的功能：</p>
-	<!--kg-card-begin: markdown-->
+	<p>策略还有一项始终允许特权通过的功能：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ sudo unshare -rU
 # id
 uid=0(root) gid=0(root) groups=0(root)
@@ -262,8 +250,7 @@ uid=0(root) gid=0(root) groups=0(root)
 	<!--kg-card-end: markdown-->
 	<p>在无特权的情况下，syscall 会及早中止。在有特权的情况下，对性能有何影响？</p>
 	<h3 id="--2">测量性能</h3>
-	<p>我们打算使用单行 unshare 来映射用户命名空间，并在其中执行测量的命令：</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们打算使用单行 unshare 来映射用户命名空间，并在其中执行测量的命令：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -272,32 +259,27 @@ uid=0(root) gid=0(root) groups=0(root)
 		<li>不带策略运行的命令</li>
 		<li>带策略运行的命令</li>
 	</ol>
-	<p>我们将使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank">ftrace</a> 记录测量：</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们将使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank">ftrace</a> 记录测量：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ sudo su
 # cd /sys/kernel/debug/tracing
 # echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>目前，我们专门为 unshare 的 syscall enter 和 exit 启用了跟踪。现在，我们设置 enter/exit 调用的时间分辨率，计算 CPU 周期数量：</p>
-	<!--kg-card-begin: markdown-->
+	<p>目前，我们专门为 unshare 的 syscall enter 和 exit 启用了跟踪。现在，我们设置 enter/exit 调用的时间分辨率，计算 CPU 周期数量：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>接下来，我们开始测量：</p>
-	<!--kg-card-begin: markdown-->
+	<p>接下来，我们开始测量：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
 [1] 92014
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在新的终端窗口中运行策略，然后运行下一个 syscall：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在新的终端窗口中运行策略，然后运行下一个 syscall：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
 [2] 92019
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>现在，我们来比较两个调用：</p>
-	<!--kg-card-begin: markdown-->
+	<p>现在，我们来比较两个调用：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># cat trace
 # tracer: nop
 #

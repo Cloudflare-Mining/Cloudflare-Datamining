@@ -36,8 +36,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Upstream-Read-Event.png" class="kg-image"></figure>
 	<p>Obwohl wir weiterhin Upstream-Daten in HTTP/2-Datenframes in den separaten Iterationen für jede Upstream-Verbindung einrahmen, übertragen wir diese Frames nicht mehr in eine einzelne Schreib-Warteschlange innerhalb jeder Iteration. Stattdessen ordnen wir die Frames in die oben beschriebenen Warteschlangen pro Stream ein. Anschließend posten wir ein einzelnes Ereignis bis zum Ende der Iterationen pro Verbindung und führen die Priorisierung, das Anstehen und das Schreiben der HTTP/2-Datenframes aller Streams in diesem einzelnen Ereignis durch.</p>
 	<p>Dieses einzelne Ereignis findet die Folge von Daten, die komfortabel in ihren jeweiligen Warteschlangen pro Stream in enger Proximität gespeichert sind, was das Potenzial der Edge-Priorisierungsalgorithmen erheblich steigert.</p>
-	<p>In einer Form, die dem tatsächlichem Code nahekommt, sieht der Kern dieser Modifikation etwa so aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In einer Form, die dem tatsächlichem Code nahekommt, sieht der Kern dieser Modifikation etwa so aus:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -55,8 +54,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Dazu:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dazu:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -73,8 +71,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><br></p>
-	<!--kg-card-begin: markdown-->
+	<p><br></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_write_streams(ngx_http_v2_connection *h2_conn)
 {
     ngx_http_v2_stream *h2_stream;

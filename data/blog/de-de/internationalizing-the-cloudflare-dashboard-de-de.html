@@ -9,14 +9,12 @@
 		<li>So können Übersetzungsteams an der Übersetzung dieser Strings arbeiten, ohne den Anwendungscode sehen oder bearbeiten zu müssen.</li>
 		<li>Die meisten Übersetzer verwenden in der Regel Übersetzungsmanagement-Anwendungen, die Aspekte des Arbeitsablaufs automatisieren und ihnen nützliche Werkzeuge zur Verfügung stellen (beispielsweise Translation Memory, Änderungsverfolgung und eine Reihe nützlicher Analyse- und Formatierungswerkzeuge). Diese Anwendungen benötigen standardisierte Textformate (wie json-, xml-, md- oder csv-Dateien).</li>
 	</ul>
-	<p>Aus technischer Sicht ermöglicht es die Trennung von Anwendungscode und Übersetzungen, Änderungen an Strings vorzunehmen, ohne Code neuzukompilieren und/oder erneut bereitstellen zu müssen. In unserer react-basierten Anwendung lief die Externalisierung der meisten unserer Strings darauf hinaus, Codeblöcke wie diesen zu bearbeiten:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Aus technischer Sicht ermöglicht es die Trennung von Anwendungscode und Übersetzungen, Änderungen an Strings vorzunehmen, ohne Code neuzukompilieren und/oder erneut bereitstellen zu müssen. In unserer react-basierten Anwendung lief die Externalisierung der meisten unserer Strings darauf hinaus, Codeblöcke wie diesen zu bearbeiten:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Button&gt;Cancel&lt;/Button&gt;
 &lt;Button&gt;Next&lt;/Button&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Zu:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Zu:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
 &lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
@@ -30,13 +28,11 @@
 	<!--kg-card-end: markdown-->
 	<p>Die oben gezeigte &lt;Trans&gt;-Komponente ist der grundlegende i18n-Baustein in unserer Anwendung. In diesem Schema werden übersetzte Zeichenketten in großen Wörterbüchern aufbewahrt, die durch eine Übersetzungs-ID verschlüsselt sind. Wir nennen diese Wörterbücher „Übersetzungskataloge“ und für jede von uns unterstützte Sprache gibt es eine Reihe von Übersetzungskatalogen.</p>
 	<p>Zur Laufzeit sucht die &lt;Trans&gt;-Komponente die Übersetzung im richtigen Katalog für den angegebenen Key heraus und fügt diese Übersetzung dann in die Seite ein (über das DOM). Der gesamte statische Text einer Anwendung kann mit einfachen Transformationen wie diesen externalisiert werden.</p>
-	<p>Wenn jedoch dynamische Daten mit statischem Text vermischt werden müssen, sieht die Lösung etwas komplizierter aus. Schauen Sie sich das folgende vermeintlich einfache Beispiel an, das aber mit potentiellen i18n-Fehlern durchsetzt ist:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wenn jedoch dynamische Daten mit statischem Text vermischt werden müssen, sieht die Lösung etwas komplizierter aus. Schauen Sie sich das folgende vermeintlich einfache Beispiel an, das aber mit potentiellen i18n-Fehlern durchsetzt ist:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Es mag verlockend sein, diesen Satz zu externalisieren, indem man ihn in einige wenige Teile aufbricht, etwa so:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Es mag verlockend sein, diesen Satz zu externalisieren, indem man ihn in einige wenige Teile aufbricht, etwa so:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
  &lt;Trans id="selected.prefix" /&gt; {totalSelected } &lt;Trans id="pageRules" /&gt;
 &lt;/span&gt;
@@ -73,8 +69,7 @@
 	<!--kg-card-end: markdown-->
 	<p>Damit scheint die Aufgabe erledigt und sogar elegant gelöst. Schließlich sind die Strings selected.prefix und pageRules.suffix doch sicherlich wiederverwendbar. Leider erweist sich das Zerschneiden von Sätzen und das anschließende Zusammensetzen der übersetzten Bits als der größte Fallstrick, wenn Strings für die Internationalisierung externalisiert werden.</p>
 	<p>Das Problem ist, dass bei der Übersetzung die verschiedenen Wörter in einem Satz <a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">auf verschiedene Weise verändert</a> werden können, je nach Kontexts (Singular vs. Plural, Artikel, die Übereinstimmung von Subjekt und Verb usw.). Diese Aspekte variieren stark von Sprache zu Sprache, genau wie die <a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">Satzstellung</a>. Beispielsweise folgt der Englische Satz „We like them“ der Satzstellung Subjekt-Verb-Objekt. In anderen Sprachen kann die Satzstellung variieren: Subjekt-Objekt-Verb („We them like“), Verb-Subjekt-Objekt („Like we them“) oder kann sogar ganz anders aussehen. Aufgrund dieser nuancierten Unterschiede zwischen Sprachen entstehen fast immer Lokalisierungsfehler, sobald die zerschnittenen Satzteile wieder zu einem Satz verkettet werden.</p>
-	<p>Das obige Code-Beispiel enthält tatsächliche Übersetzungen, die wir von unseren Übersetzungsteams erhalten haben, als wir ihnen „You’ve selected“ und "Page Rules" als separate Strings zur Verfügung gestellt haben. So würde dieser Satz aussehen, wenn er so in den verschiedenen Sprachen wiedergegeben würde:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Das obige Code-Beispiel enthält tatsächliche Übersetzungen, die wir von unseren Übersetzungsteams erhalten haben, als wir ihnen „You’ve selected“ und "Page Rules" als separate Strings zur Verfügung gestellt haben. So würde dieser Satz aussehen, wenn er so in den verschiedenen Sprachen wiedergegeben würde:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -98,8 +93,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>Zum Vergleich gaben wir den Übersetzungsteams den Satz auch als einzelnen String mit einem Platzhalter für die Variable. Hier ist das Ergebnis:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Zum Vergleich gaben wir den Übersetzungsteams den Satz auch als einzelnen String mit einem Platzhalter für die Variable. Hier ist das Ergebnis:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -124,8 +118,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>Wie Sie sehen können, sind die Übersetzungen für Japanisch und Deutsch anders aufgebaut. Wir haben es mit einem Lokalisierungsfehler zu tun.</p>
-	<p>Um zu gewährleisten, dass die Übersetzer den wahren Sinn Ihres Textes originalgetreu wiedergeben können, ist es wichtig, dass jeder Satz als ein ganzer externalisierter String erhalten bleibt. Unsere &lt;Trans&gt;-Komponente erlaubt die einfache Injektion von Werten in Template-Strings, was uns genau dies ermöglicht:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Um zu gewährleisten, dass die Übersetzer den wahren Sinn Ihres Textes originalgetreu wiedergeben können, ist es wichtig, dass jeder Satz als ein ganzer externalisierter String erhalten bleibt. Unsere &lt;Trans&gt;-Komponente erlaubt die einfache Injektion von Werten in Template-Strings, was uns genau dies ermöglicht:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -156,8 +149,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Auf diese Weise erhalten die Übersetzer den vollständigen Kontext des Satzes und können alle Wörter grammatikalisch korrekt übersetzen.</p>
-	<p>Vielleicht ist Ihnen ein weiteres potenzielles Problem aufgefallen. Was passiert in diesem Beispiel, wenn totalSelected nur 1 beträgt? Mit dem obigen Code würde der Nutzer „Sie haben 1 Page Rules zum Löschen ausgewählt“ sehen. Wir müssen den Satz bedingt pluralisieren, basierend auf dem Wert der dynamischen Daten. Das passiert sogar ziemlich oft und unsere &lt;Trans&gt;-Komponente handhabt dies automatisch über die smart_count-Funktion:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vielleicht ist Ihnen ein weiteres potenzielles Problem aufgefallen. Was passiert in diesem Beispiel, wenn totalSelected nur 1 beträgt? Mit dem obigen Code würde der Nutzer „Sie haben 1 Page Rules zum Löschen ausgewählt“ sehen. Wir müssen den Satz bedingt pluralisieren, basierend auf dem Wert der dynamischen Daten. Das passiert sogar ziemlich oft und unsere &lt;Trans&gt;-Komponente handhabt dies automatisch über die smart_count-Funktion:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -184,15 +176,13 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Hier werden die Singular- und Pluralversionen durch |||| abgegrenzt. &lt;Trans&gt; wählt je nach dem Wert der eingegebenen totalSelected-Variabel automatisch die richtige Übersetzung aus.</p>
-	<p>Ein weiterer Stolperstein tritt auf, wenn Markup mit einem Textblock vermischt wird, den wir als einen einzelnen String externalisieren möchten. Was passiert zum Beispiel, wenn ein Satzteil in Ihrem Satz ein Link zu einer anderen Seite sein soll?</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ein weiterer Stolperstein tritt auf, wenn Markup mit einem Textblock vermischt wird, den wir als einen einzelnen String externalisieren möchten. Was passiert zum Beispiel, wenn ein Satzteil in Ihrem Satz ein Link zu einer anderen Seite sein soll?</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   Don't forget to &lt;Link&gt;verify your email address.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Um diesen Anwendungsfall zu lösen, muss die &lt;Trans&gt;-Komponente die Injektion beliebiger Elemente in Platzhalter in einem Übersetzungsstring ermöglichen, wie z.&amp;nbsp;B:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Um diesen Anwendungsfall zu lösen, muss die &lt;Trans&gt;-Komponente die Injektion beliebiger Elemente in Platzhalter in einem Übersetzungsstring ermöglichen, wie z.&amp;nbsp;B:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   &lt;Trans id="notification.email_verification" Components={[Link]} componentProps={[{ to: '/profile' }]} /&gt;
 &lt;/VerificationReminder&gt;
@@ -204,8 +194,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In diesem Beispiel wird die &lt;Trans&gt;-Komponente Platzhalterelemente (&lt;0&gt;,&lt;1&gt;, usw.) durch Instanzen des Komponententyps ersetzen, die sich bei diesem Index in der Komponenten-Anordnung befinden. Sie gibt auch alle Daten weiter, die in componentProps zu dieser Instanz festgelegt sind. Das obige Beispiel würde in React auf Folgendes hinauslaufen:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In diesem Beispiel wird die &lt;Trans&gt;-Komponente Platzhalterelemente (&lt;0&gt;,&lt;1&gt;, usw.) durch Instanzen des Komponententyps ersetzen, die sich bei diesem Index in der Komponenten-Anordnung befinden. Sie gibt auch alle Daten weiter, die in componentProps zu dieser Instanz festgelegt sind. Das obige Beispiel würde in React auf Folgendes hinauslaufen:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">// en-US
 &lt;VerificationReminder&gt;
   Don't forget to &lt;Link to="/profile"&gt;verify your email address.&lt;/Link&gt;
@@ -247,15 +236,13 @@
 	</ul>
 	<p>Wenn Sie gerade erst mit i18n in einer neuen react-basierten Webanwendung beginnen, dann sind react-intl und i18n-next zwei beliebte Bibliotheken, die eine Komponente bieten, die der oben beschriebenen &lt;Trans&gt; ähnelt.</p>
 	<p>Der größte Schmerzpunkt der &lt;Trans&gt;-Komponente wie oben beschrieben ist, dass Strings in einer von Ihrem Quellcode getrennten Datei aufbewahrt werden müssen. Das Wechseln zwischen mehreren Dateien während Sie neuen Code schreiben oder bestehende Features modifizieren, kann einem einfach nur auf die Nerven. Noch mehr nervt es, wenn Übersetzungsdateien weit entfernt in der Verzeichnisstruktur gehalten werden, wie es oft notwendig ist.</p>
-	<p>Es gibt einige neue i18n-Bibliotheken wie <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a>, die dieses Problem durch einen extraktionsbasierten Ansatz bei der Handhabung von Übersetzungskatalogen umgehen. In diesem Schema verwenden Sie nach wie vor eine &lt;Trans&gt;-Komponente, aber Sie behalten Ihre Strings in der Komponente selbst und nicht in einem separaten Katalog:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Es gibt einige neue i18n-Bibliotheken wie <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a>, die dieses Problem durch einen extraktionsbasierten Ansatz bei der Handhabung von Übersetzungskatalogen umgehen. In diesem Schema verwenden Sie nach wie vor eine &lt;Trans&gt;-Komponente, aber Sie behalten Ihre Strings in der Komponente selbst und nicht in einem separaten Katalog:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Ein Tool, das Sie zur Erstellungszeit ausführen, übernimmt dann die Arbeit, alle diese Zeichenfolgen zu finden und in Kataloge zu extrahieren. Das oben genannte Beispiel würde dann zu den folgenden generierten Katalogen führen:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ein Tool, das Sie zur Erstellungszeit ausführen, übernimmt dann die Arbeit, alle diese Zeichenfolgen zu finden und in Kataloge zu extrahieren. Das oben genannte Beispiel würde dann zu den folgenden generierten Katalogen führen:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">// locales/en_US.json
 {
   "Hmm... We couldn't find any matching websites.": "Hmm... We couldn't find any matching websites.",
@@ -274,13 +261,11 @@
 	<p>Mit welchem Tech-Stack Sie auch immer arbeiten, es gibt wahrscheinlich einige i18n-Bibliotheken, die Ihnen dabei helfen können. Welche Option die richtige ist, hängt stark von den technischen Zwängen Ihrer Anwendung und vom Kontext der Ziele und der Kultur Ihres Teams ab.</p>
 	<p><strong>Zahlen, Daten und Uhrzeiten</strong></p>
 	<p>Als wir weiter oben über das Einfügen von übersetzten Datenstrings sprachen, haben wir einen wichtigen Punkt ausgelassen: Die Daten, die wir einfügen, müssen möglicherweise auch so formatiert werden, dass sie den lokalen Gewohnheiten des Nutzers entsprechen. Dies gilt für Daten, Uhrzeiten, Zahlen, Währungen und einige andere Arten von Daten.</p>
-	<p>Nehmen wir unser einfaches Beispiel von vorhin:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Nehmen wir unser einfaches Beispiel von vorhin:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Ohne richtige Formatierung wird dies bei kleinen Zahlen korrekt angezeigt, aber sobald es in die Tausende geht, werden Lokalisierungsprobleme auftreten. Die Art und Weise, wie Ziffern gruppiert und mit Symbolen getrennt werden <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">variiert je nach Kultur</a>. Hier sehen Sie, wie dreihunderttausend und drei Hundertstel in einigen verschiedenen Sprachregionen formatiert werden:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ohne richtige Formatierung wird dies bei kleinen Zahlen korrekt angezeigt, aber sobald es in die Tausende geht, werden Lokalisierungsprobleme auftreten. Die Art und Weise, wie Ziffern gruppiert und mit Symbolen getrennt werden <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">variiert je nach Kultur</a>. Hier sehen Sie, wie dreihunderttausend und drei Hundertstel in einigen verschiedenen Sprachregionen formatiert werden:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -359,8 +344,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>Die Art und Weise, wie Daten formatiert werden <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">unterscheidet sich von Land zu Land erheblich</a>. Wenn Sie Ihre Benutzeroberfläche hauptsächlich für ein US-amerikanisches Publikum entwickelt haben, zeigen Sie die Daten wahrscheinlich auf eine Art und Weise an, die für Nutzer von fast jedem anderen Land der Welt fremd und möglicherweise unintuitiv erscheint. Unter anderem kann die Datumsformatierung in Bezug auf die Wahl des Trennzeichens variieren (ob einzelne Ziffern mit Nullen aufgefüllt werden) und auch Tages-, Monats- und Jahreszahlen können unterschiedlich angeordnet sein. Im Folgenden wird gezeigt, wie der 4. März des laufenden Jahres in verschiedenen Sprachregionen formatiert wird:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Die Art und Weise, wie Daten formatiert werden <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">unterscheidet sich von Land zu Land erheblich</a>. Wenn Sie Ihre Benutzeroberfläche hauptsächlich für ein US-amerikanisches Publikum entwickelt haben, zeigen Sie die Daten wahrscheinlich auf eine Art und Weise an, die für Nutzer von fast jedem anderen Land der Welt fremd und möglicherweise unintuitiv erscheint. Unter anderem kann die Datumsformatierung in Bezug auf die Wahl des Trennzeichens variieren (ob einzelne Ziffern mit Nullen aufgefüllt werden) und auch Tages-, Monats- und Jahreszahlen können unterschiedlich angeordnet sein. Im Folgenden wird gezeigt, wie der 4. März des laufenden Jahres in verschiedenen Sprachregionen formatiert wird:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -439,8 +423,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>Auch das Uhrzeitformat variiert erheblich. Hier sehen Sie, wie die Urzeit in verschiedenen Sprachregionen formatiert wird:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Auch das Uhrzeitformat variiert erheblich. Hier sehen Sie, wie die Urzeit in verschiedenen Sprachregionen formatiert wird:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -524,8 +507,7 @@
 	<p>Als wir unser Projekt starteten, benutzten wir intensiv die <a href="https://momentjs.com/" target="_blank">Moment.js</a> Bibliothek für Datums- und Uhrzeitformatierung. Diese handliche Bibliothek abstrahiert die Details der Formatierung von Datumsangaben in verschiedenen Längen („Jul 9th 20“, „July 9th 2020“ vs. „Donnerstag“), zeigt relative Datumsangaben an („vor 2 Tagen“) und vieles mehr. Da fast alle unsere Datumsangaben aus Gründen der Lesbarkeit bereits über Moment.js formatiert wurden und da Moment.js bereits i18n-Unterstützung für eine große Anzahl von Sprachregionen bietet, konnten wir mit sehr geringem Aufwand einfach einige Schalter umlegen und die Datumsangaben richtig lokalisieren.</p>
 	<p>Es gibt einige heftige Kritiken an Moment.js (hauptsächlich in Bezug auf überflüssigen Ballast). Aber letztlich summierten sich die Vorteile eines Wechsel zu einer Alternative mit geringerem Platzbedarf nicht im Vergleich zu den Kosten, jedes Datums und jede Uhrzeit zu überarbeiten.</p>
 	<p>Die Zahlen waren eine ganz andere Geschichte. Wie Sie sich vielleicht vorstellen können, zeigen wir Tausende von rohen, unformatierten Zahlen auf dem gesamten Dashboard an. Sie aufzuspüren war ein mühsamer und oft manueller Prozess.</p>
-	<p>Um die eigentliche Formatierung der Zahlen zu handhaben, verwendeten wir die <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API </a>(die durch den ECMAScript-Standard definierte Internationalisierungsbibliothek):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Um die eigentliche Formatierung der Zahlen zu handhaben, verwendeten wir die <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API </a>(die durch den ECMAScript-Standard definierte Internationalisierungsbibliothek):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!
@@ -534,8 +516,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>Glücklicherweise ist die Browserunterstützung für Intl in den letzten Jahren ein gutes Stück vorangekommen und alle modernen Browser bieten volle Unterstützung.</p>
 	<p>Einige moderne JavaScript-Engines wie V8 bevorzugen sogar statt selbst gehosteten JavaScript-Implementierungen dieser Bibliotheken lieber C++ basierte Builtins, <a href="https://v8.dev/blog/intl" target="_blank">was zu einer erheblichen Beschleunigung führt</a>.</p>
 	<p>Die Unterstützung für ältere Browser kann jedoch lückenhaft sein. Hier ist ein <a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">einfache Demo-Site</a> (<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">Quellcode</a>), mit <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/" target="_blank"> </a>gebaut, die zeigt, wie Daten, Uhrzeiten und Zahlen in einer Handvoll von Sprachregionen angezeigt werden.</p>
-	<p>Einige Kombinationen aus alten Browsern und Betriebssystemen führen zu weniger als idealen Ergebnissen. So werden beispielsweise die gleichen Datums- und Uhrzeitangaben von oben unter Windows 8 mit IE 10 gerendert:</p>
-	<!--kg-card-begin: html-->
+	<p>Einige Kombinationen aus alten Browsern und Betriebssystemen führen zu weniger als idealen Ergebnissen. So werden beispielsweise die gleichen Datums- und Uhrzeitangaben von oben unter Windows 8 mit IE 10 gerendert:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -543,8 +524,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 				<td><img style="border-width: 0px; margin: 5px;" src="https://blog.cloudflare.com/content/images/2020/07/image2-7.png" alt="" width="283" height="343"></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Wenn Sie ältere Browser unterstützen müssen, kann dies mit einem Polyfill gelöst werden.</p>
 	<h3 id="-bersetzung">Übersetzung</h3>
 	<p>Mit der Externalisierung aller Strings und der sorgfältigen Formatierung aller eingespeisten Daten nach lokalen Standards ist der Großteil der technischen Arbeit abgeschlossen. An diesem Punkt können wir behaupten, dass wir unsere Anwendung internationalisiert haben, da wir sie so angepasst haben, dass sie leicht lokalisierbar ist.</p>
@@ -560,8 +540,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		<li>Platzhalterstrings werden für alle Sprachen hinzugefügt, wenn neue Strings zu unserem Basiskatalog hinzugefügt werden.</li>
 	</ul>
 	<p>Von dort werden die Übersetzungskataloge über die Benutzeroberfläche oder automatisierte Aufrufe der API in das Übersetzungsmanagementsystem hochgeladen. Vor der Übergabe an die Übersetzer werden die Dateien vorverarbeitet, indem jeder neue String mit einer Translation Memory verglichen wird (einem Cache für bereits übersetzte Strings und Sub-Strings). Wenn eine Übereinstimmung gefunden wird, wird die vorhandene Übersetzung verwendet. Dies spart nicht nur Kosten, da Strings nicht erneut übersetzt werden müssen, sondern verbessert auch die Qualität, da sichergestellt wird, dass zuvor überprüfte und genehmigte Übersetzungen verwendet werden, wann immer möglich.</p>
-	<p>Angenommen, Ihre lokalisierten Dateien sehen am Ende in etwa so aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Angenommen, Ihre lokalisierten Dateien sehen am Ende in etwa so aus:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">{
  "verify.button": "Verify Email",
  "other.verify.button": "Verify Email",

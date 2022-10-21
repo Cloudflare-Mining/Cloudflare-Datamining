@@ -44,8 +44,7 @@
 		<li>Ethereum smart contracts can store state on the blockchain. This means that the output of the function can vary as the blockchain changes. Although, technically this is deterministic in that the blockchain is an input to the function, it may still be impossible to derive the output in advance.</li>
 	</ul>
 	<p>This however means that they suffer from the same problems as any piece of software – bugs. However, unlike normal code where the authors can issue a patch, code stored on the blockchain is immutable. More problematically, even if the author provides a new smart contract, the old one is always still available on the blockchain.</p>
-	<p>This means that when writing contracts authors must be especially careful to write secure code, and include a kill switch to ensure that if bugs do reside in the code, they can be squashed. If there is no kill switch and there are vulnerabilities in the smart contract that can be exploited, it can potentially lead to the theft of resources from the smart contract or from other individuals. EVM Bytecode includes a special <code>SELFDESTRUCT</code> opcode that deletes a contract, and sends all funds to the specified address for just this purpose. </p>
-	<!--kg-card-begin: markdown-->
+	<p>This means that when writing contracts authors must be especially careful to write secure code, and include a kill switch to ensure that if bugs do reside in the code, they can be squashed. If there is no kill switch and there are vulnerabilities in the smart contract that can be exploited, it can potentially lead to the theft of resources from the smart contract or from other individuals. EVM Bytecode includes a special <code>SELFDESTRUCT</code> opcode that deletes a contract, and sends all funds to the specified address for just this purpose. </p><!--kg-card-begin: markdown-->
 	<p>The need to include a kill switch was brought into sharp focus during the <a href="https://en.wikipedia.org/wiki/The_DAO_(organization)" target="_blank">infamous DAO incident</a>. The DAO smart contract acted as a complex decentralized venture capital (VC) fund and held Ether worth 250 million dollars at its peack collected from a group of investors. Hackers exploited vulnerabilities in the smart contract and stole Ether wirth 50 million dollars.</p>
 	<!--kg-card-end: markdown-->
 	<p>Because there is no way to undo transactions in Ethereum, there was a highly controversial “hard fork,” where the majority of the community agreed to accept a block with an “irregular state change” that essentially drained all DAO funds into a special “WithdrawDAO” recovery contract. By convincing enough miners to accept this irregular block as valid, the DAO could return funds.</p>
@@ -103,8 +102,7 @@
 	<p>Visit <a href="https://cloudflare-eth.com" target="_blank">cloudflare-eth.com</a> to interact with our example app. But to really explore the Ethereum world, access the RPC API, where you can do anything that can be done on the Ethereum network itself, from examining contracts, to transferring funds. </p>
 	<p>Our Gateway accepts <code>POST</code> requests containing JSON. For a complete list of calls, visit the <a href="https://github.com/ethereum/wiki/wiki/JSON-RPC" target="_blank">Ethereum github page</a>. So, to get the block number of the most recent block, you could run:</p>
 	<pre><code class="language-bash">curl https://cloudflare-eth.com -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'</code></pre>
-	<p>and you would get a response something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>and you would get a response something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "id": 1,

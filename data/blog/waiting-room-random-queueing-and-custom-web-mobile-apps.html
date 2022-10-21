@@ -30,8 +30,7 @@
 		<li><strong>lastCheckInTime</strong>. The last time each user checked into the Waiting Room or origin website. When queueing, this is only updated for requests every refreshIntervalSeconds.</li>
 	</ul>
 	<p>For any given minute, we can calculate the number of users we can let into the origin website. Let’s say we deploy a Waiting Room on "https://example.com/waitingroom" that can support 10,000 <em>Total Active Users</em>, and we allow up to 2,000 <em>New Users Per Minute.</em> If there are currently 7,000 active users on the website, we have 10,000 - 7,000 = 3,000 open slots. However, we need to take the minimum (3,000, 2,000) = 2,000 since we need to respect the <em>New Users Per Minute </em>limit. Thus, we have 2,000 available slots we can give out.</p>
-	<p>Let’s assume there are 2,500 queued users that joined over the last three minutes in groups of 500, 1,000, and 1,000, respectively for the timestamps 15:54, 15:55, and 15:56. To respect FIFO queueing, we will take our 2,000 available slots and try to reserve them for users who joined first. Thus, we will reserve 500 available slots for the users who joined at 15:54 and then reserve 1000 available slots for the users who joined at 15:55. When we get to the users for 15:56, we see that we only have 500 slots left, which is not enough for the 1,000 queued users for this minute:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s assume there are 2,500 queued users that joined over the last three minutes in groups of 500, 1,000, and 1,000, respectively for the timestamps 15:54, 15:55, and 15:56. To respect FIFO queueing, we will take our 2,000 available slots and try to reserve them for users who joined first. Thus, we will reserve 500 available slots for the users who joined at 15:54 and then reserve 1000 available slots for the users who joined at 15:55. When we get to the users for 15:56, we see that we only have 500 slots left, which is not enough for the 1,000 queued users for this minute:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JSON">{
 	"activeUsers": 7000,
 	"buckets": [{
@@ -59,8 +58,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Since we have reserved slots for all users with bucketIds of 15:54 and 15:55, they can be let into the origin website from any data center. However, we can only let in a subset of the users who initially arrived at 15:56.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Since we have reserved slots for all users with bucketIds of 15:54 and 15:55, they can be let into the origin website from any data center. However, we can only let in a subset of the users who initially arrived at 15:56.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -106,8 +104,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-7.png" class="kg-image"></figure>
 	<p>Based on our data, we can see immediately for FIFO queueing that, as the arrival minute increases, the observed wait time increases linearly. This makes sense for a FIFO queue, since the “line” will just get longer if there are more users entering the queue than leaving it. For each arrival minute, there is very little variation among user wait times, meaning that if you and your friend join a Waiting Room at approximately the same time, you will both be accepted around the same time. If you join a couple of minutes before your friend, you will almost always be accepted first.</p>
 	<p>When looking at the results for random queueing, we observe users experiencing varied wait times regardless of the arrival minute. This is expected, and helps prove the “randomness” of the random queue! We can see that, if you join five minutes after your friend, although your friend will have more chances to get in, you may still be accepted first! However, there are so many data points overlapping with each other in the plot that it is hard to tell how they are distributed. For instance, it could be possible that most of these data points experience extreme wait times, but as humans we aren’t able to tell.</p>
-	<p>As a result, we created heatmaps of these plots in Python using <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html" target="_blank">numpy.histogram2d</a> and displayed them with <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html" target="_blank">matplotlib.pyplot</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>As a result, we created heatmaps of these plots in Python using <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html" target="_blank">numpy.histogram2d</a> and displayed them with <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html" target="_blank">matplotlib.pyplot</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -147,11 +144,9 @@ with open(filename) as file:
 	<p>Therefore, we can calculate the probability of a user being let into the origin in the next minute:</p>
 	<p>P(LetInOverMinute) = letInPerMinute / currentlyWaiting</p>
 	<p>If there are 100 users waiting in the queue, and we are currently letting in 10 users per minute, the probability a user will be let in over the next minute is 10 / 100 = .1 (10%).</p>
-	<p>Using P(LetInOverMinute), we can determine the n minutes needed for a p chance of being let into the origin:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Using P(LetInOverMinute), we can determine the n minutes needed for a p chance of being let into the origin:</p><!--kg-card-begin: markdown-->
 	<p>p = 1 - (1 - P(LetInOverMinute))<sup>n</sup></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>Recall that the probability of getting in at least once is the complement of not getting in at all. The probability of not being let into the origin over n minutes is (1 - P(LetInOverMinutes))<sup>n</sup>. Therefore, the probability of getting in at least once is 1 - (1 - P(LetInOverMinute))<sup>n</sup>. This equation can be simplified further:</p>
 	<!--kg-card-end: markdown-->
 	<p>n = log(1 - p) / log(1 - P(LetInOverMinute))</p>
@@ -164,8 +159,7 @@ with open(filename) as file:
 	<p>Before, customers could only deploy static <a href="https://mustache.github.io/" target="_blank">Mustache</a> HTML templates to customize the style of their Waiting Rooms. These templates work well for most use cases, but fall short if you want to display anything that requires state. Let’s imagine you’re queueing to buy concert tickets on your mobile device, and you see an embedded video of your favorite song. Naturally, you click on it and start singing along! A couple seconds later, the browser refreshes the page automatically to update your status in the Waiting Room, resetting your video to the start.</p>
 	<p>The purpose of the <a href="https://developers.cloudflare.com/waiting-room/how-to/mobile-traffic" target="_blank">new JSON response</a> is to give full control to a custom application, allowing it to determine what to display to the user and when to refresh. As a result, the application can maintain state and make sure your videos are never interrupted again!</p>
 	<p>Once the JSON response is enabled for a Waiting Room, any request to the Waiting Room with the header <code>Accept: application/json</code> will receive a JSON object with all the fields from the Mustache template.</p>
-	<p>An example request when the queueing method is FIFO:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example request when the queueing method is FIFO:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">curl -X GET "https://example.com/waitingroom" \
     -H "Accept: application/json"
 {
@@ -188,8 +182,7 @@ with open(filename) as file:
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>An example request when the queueing method is random:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example request when the queueing method is random:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">curl -X GET "https://example.com/waitingroom" \
     -H "Accept: application/json"
 {
@@ -217,8 +210,7 @@ with open(filename) as file:
 		<li>Don’t forget that Waiting Room uses a cookie to maintain a user’s status! Without a cookie in the request, the Waiting Room will think the user has just joined the queue.</li>
 		<li>Don’t forget to refresh! Inspect the ‘Refresh’ HTTP response header or the refreshIntervalSeconds property and send another request to the Waiting Room after that number of seconds.</li>
 		<li>Keep in mind that if the user’s request is let into the origin, JSON may not necessarily be returned. To gracefully parse all responses, send JSON from the origin website if the header <code>Accept: application/json</code> is present. For example, the origin could return:</li>
-	</ol>
-	<!--kg-card-begin: markdown-->
+	</ol><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
 	"cfWaitingRoom": {
 		"inWaitingRoom": false
@@ -240,8 +232,7 @@ with open(filename) as file:
 	<p>Why is this all important? In the past, we did not set SameSite, meaning it defaulted to <strong>SameSite=Lax</strong> for all responses. As a result, a user queueing through an IFrame would never have its cookie updated and appear to the Waiting Room as joining for the first time on every request. Today, we are introducing customization for both the SameSite and Secure attributes, which will allow Waiting Rooms to be displayed in IFrames!</p>
 	<p>At the moment, this is only configurable through the <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-api" target="_blank">Cloudflare API</a>. By default, the configuration for SameSite and Secure will be set to "auto", automatically selecting the most flexible option. In this case, SameSite will be set to None if <a href="https://blog.cloudflare.com/how-to-make-your-site-https-only/">Always Use HTTPS</a> is enabled, otherwise it will be set to Lax. Similarly, Secure will only be set if Always Use HTTPS is enabled. In other words, Waiting Room IFrames will work properly by default as long as Always Use HTTPS is toggled. If you are wondering why Always Use HTTPS is used here, remember that SameSite=None requires that Secure is also set, or else the browser will block the Waiting Room cookie.</p>
 	<p>If you decide to manually configure the behavior of SameSite and Secure through the API, be careful! We do guard against setting SameSite=None without Secure, but if you decide to set Secure on every request (secure="always") and don’t have Always Use HTTPS enabled, this means that a user who sends an insecure (HTTP) request to the Waiting Room will have its cookie blocked by its browser!</p>
-	<p>If you want to explore using IFrames with Waiting Room yourself, here is a simple example of a Cloudflare Worker that renders the Waiting Room on "https://example.com/waitingroom" in an IFrame:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you want to explore using IFrames with Waiting Room yourself, here is a simple example of a Cloudflare Worker that renders the Waiting Room on "https://example.com/waitingroom" in an IFrame:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const html = `&lt;!DOCTYPE html&gt;
 &lt;html&gt;
  &lt;head&gt;

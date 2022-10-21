@@ -31,8 +31,7 @@
 	<p>エージェントを数万人のユーザーにデプロイすることは、物流上のハードルが高くなります。当社は、お客様のチーム内でシームレスに大規模展開できるようにCloudflare for Teamsエージェントを構築しました。本日の発表では、APIとTerraformベースの制御により、組織全体にエージェントを展開するためのより多くのオプションを提供します。</p>
 	<p>管理業務を自動化することは、一貫性を保つための最良の方法です。Cloudflareでは、HTTPSリクエストとJSONレスポンスに基づく一連のRESTful APIの上にUIを構築しています。デバイス管理の場合、これらの同じAPIは、<a href="https://api.cloudflare.com/" target="_blank">APIドキュメント</a>と、さらに<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraformプロバイダー</a>を介してユーザに公開されます。<a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a>のWebバージョンで公開されているものはすべて、これらのインターフェースのいずれかを介して利用可能です。</p>
 	<p>自動化を実現する方法の例として、ドメインベースのスプリットトンネリングを見ていきましょう。参考に、<a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">APIドキュメント</a>と<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraformの同等のもの</a>を次に示します。</p>
-	<p>example.comのドメインベースのインクルードルールを作成するには、次のようにします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>example.comのドメインベースのインクルードルールを作成するには、次のようにします。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
@@ -40,8 +39,7 @@
      --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>それと同じルールをTerraformで作ると次のようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>それと同じルールをTerraformで作ると次のようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code># Including *.example.com in WARP routes
 resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
   account_id = "699d98642c564d2e855e9661899b7252"
@@ -53,15 +51,13 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>もう1つの一般的なタスクは、登録されたデバイスのレポートを作成することです。<a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>を使用して、組織に登録されているすべてのWindowsデバイスを一覧表示する方法を次の例で説明します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>もう1つの一般的なタスクは、登録されたデバイスのレポートを作成することです。<a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>を使用して、組織に登録されているすべてのWindowsデバイスを一覧表示する方法を次の例で説明します。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
      --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
      -H "Content-Type: application/json"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>そのコマンドを実行すると、次のようなJSONが返されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>そのコマンドを実行すると、次のようなJSONが返されます。</p><!--kg-card-begin: markdown-->
 	<pre><code>        {
             "created": "2021-12-01T17:14:23.847538Z",
             "device_type": "windows",
@@ -116,8 +112,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 		<li><strong>Telemetryと分析</strong>：クライアントやCloudflareのネットワークに流れるトラフィックに関連した、組織内のデバイスのパフォーマンスを確認できます。</li>
 	</ul>
 	<h3 id="--5"><strong>今すぐ接続する</strong></h3>
-	<p>以下に、すべてのクライアント向けのダウンロードを一覧表示します。</p>
-	<!--kg-card-begin: html-->
+	<p>以下に、すべてのクライアント向けのダウンロードを一覧表示します。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -183,6 +178,5 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">ダウンロードリリース</a></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 </div>

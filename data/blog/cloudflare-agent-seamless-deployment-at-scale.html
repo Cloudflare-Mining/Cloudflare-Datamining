@@ -31,8 +31,7 @@
 	<p>Deploying any agent to tens of thousands of users can become a logistical hurdle. We built the Cloudflare for Teams agent to be seamless to deploy at scale in your team. Today’s announcement gives you more options to rolling out the agent to your entire organization with API and Terraform based controls.</p>
 	<p>Automating administrative tasks is the best way to keep them consistent. At Cloudflare, we build our UI on top of a set of RESTful APIs based on HTTPS requests and JSON responses. These same APIs in the case of our device management are then exposed to users via our <a href="https://api.cloudflare.com/" target="_blank">API Documentation</a> and additionally via our <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraform provider</a>. Everything exposed in the web version of <a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a> is available via one of these interfaces.</p>
 	<p>As an example of how you can accomplish automation, we’ll take a look at our domain-based split tunneling. For reference, here’s the <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">API documentation</a> and the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraform equivalent</a>.</p>
-	<p>To create a domain-based include rule for example.com:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To create a domain-based include rule for example.com:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
@@ -40,8 +39,7 @@
      --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>That same rule could be created in Terraform with this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>That same rule could be created in Terraform with this:</p><!--kg-card-begin: markdown-->
 	<pre><code># Including *.example.com in WARP routes
 resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
   account_id = "699d98642c564d2e855e9661899b7252"
@@ -53,15 +51,13 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Another common task is to generate a report of enrolled devices. Using the <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>, the following example shows how to list all Windows devices registered with your organization:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Another common task is to generate a report of enrolled devices. Using the <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>, the following example shows how to list all Windows devices registered with your organization:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
      --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
      -H "Content-Type: application/json"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Running that command would return JSON that looks something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Running that command would return JSON that looks something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>        {
             "created": "2021-12-01T17:14:23.847538Z",
             "device_type": "windows",
@@ -116,8 +112,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 		<li><strong>Telemetry and Analytics</strong> about how devices in your organization are performing as it relates to our client and traffic flowing to Cloudflare’s network</li>
 	</ul>
 	<h3 id="get-connected-now">Get Connected Now</h3>
-	<p>You can find downloads for all our clients listed below:</p>
-	<!--kg-card-begin: html-->
+	<p>You can find downloads for all our clients listed below:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -183,6 +178,5 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">Download Release</a></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 </div>

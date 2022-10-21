@@ -42,8 +42,7 @@
 	<h3 id="trace-workers"><strong>Trace Workers</strong></h3>
 	<p>煙があるところには火があり、コードがあるところにはバグもあるはずです。開発者にコードを記述してデプロイするツールを提供する場合は、デバッグする手段も提供する必要があります。</p>
 	<p>Trace Workerを使用すると、ログや例外など、Workerによって処理されたリクエストに関するあらゆる情報を収集し、お客様に渡すことができます。Trace Workerは、他のWorkerの実行に関する情報を受け取るWorkerであり、選択した宛先に転送して、ライブロギングや長期保存などのユースケースを可能にします。</p>
-	<p>以下は、HTTPエンドポイントにトレースデータを送信するシンプルなトレースWorkerです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>以下は、HTTPエンドポイントにトレースデータを送信するシンプルなトレースWorkerです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("trace", event =&gt; {
   event.waitUntil(fetch("http://example.com/trace", {
     method: "POST",
@@ -52,8 +51,7 @@
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>以下は event.traces のデータの例です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>以下は event.traces のデータの例です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">[
   {
     "scriptName": "Example script",
@@ -93,8 +91,7 @@
 	<h3 id="-worker-"><strong>動的ディスパッチで複数のWorkerを連鎖させる</strong></h3>
 	<p>いくつかの初期のお客様との作業でよく聞かれた別のニーズは、お客様のコードを実行する前に、企業独自のコードを実行する機能についてです。たとえば、認証のレイヤーを実行したり、入力や出力をサニタイズしたり、有用な情報（ユーザーIDやアカウントIDなど）をダウンストリームに提供したりする必要がある場合があります。</p>
 	<p>そのためには、企業独自のWorkerを保守する必要があります。実行が完了したら、<em>お客様の</em>コードを使用して次のWorkerを呼び出すことができます。</p>
-	<p>例：</p>
-	<!--kg-card-begin: markdown-->
+	<p>例：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
 let response = await user_worker.fetch(request);
 </code></pre>

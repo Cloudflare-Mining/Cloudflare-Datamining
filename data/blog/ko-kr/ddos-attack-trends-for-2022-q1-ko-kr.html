@@ -50,10 +50,8 @@
 	<p>전 세계적으로 소비자 가전 산업은 전 분기 대비 5,086% 증가하여 가장 많은 공격을 받았습니다. 2위는 전 분기 대비 2,131% 증가한 온라인 미디어 산업이었고, 3위는 컴퓨터 소프트웨어 기업으로 전 분기 대비 76%, 전년 대비 1,472% 증가했습니다.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image9-5.png" class="kg-image" alt="2022년 1분기의 업계별 HTTP DDoS 공격 분포 그래프"></figure>
 	<p>그렇지만 우크라이나와 러시아만 집중해서 보면 방송 미디어, 온라인미디어 기업, 인터넷 기업이 가장 자주 목표가 되었음을 알 수 있습니다. <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out/">러시아로 유입되는 개방형 인터넷을 유지하고 공격이 외부로 유출되는 것을 차단하기 위해 Cloudflare에서 어떠한 일을 하고 있는지 </a>자세히 읽어보세요.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image14-1.png" class="kg-image" alt="2022년 1분기 러시아 산업에 대한 출처 국가별 HTTP DDoS 공격 분포 그래프"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image14-1.png" class="kg-image" alt="2022년 1분기 러시아 산업에 대한 출처 국가별 HTTP DDoS 공격 분포 그래프"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-6.png" class="kg-image" alt="2022년 1분기 러시아 산업에 대한 출처 국가별 HTTP DDoS 공격 분포 그래프"></figure>
 	<h3 id="-ddos--6">공격 출처 국가별 응용 프로그램 계층 DDoS 공격</h3>
 	<p>HTTP 공격의 출처를 파악하기 위해서는 공격 HTTP 요청을 생성한 클라이언트가 가진 소스 IP 주소의 지리적 위치를 살펴보아야 합니다. 네트워크 계층 공격 시와는 달리 HTTP 공격 시에는 소스 IP의 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">스푸핑</a>이 불가능합니다. 특정 국가에서 DDoS 활동 비율이 높다는 것은 대개 해당 국가 내에서 봇넷이 작동 중임을 의미합니다.</p>
@@ -69,14 +67,10 @@
 	<h3 id="-ddos--9">월별 네트워크 계층 DDoS 공격</h3>
 	<p><strong>HTTP DDoS 공격은 1분기에 급증한 반면, 네트워크 계층 DDoS 공격은 실제로 전 분기 대비 58% 감소했지만, 전년 대비로는 여전히 71% 증가했습니다.</strong></p>
 	<p>1분기를 자세히 살펴보면 네트워크 계층 DDoS 공격의 양이 분기 내내 거의 일관되게 유지되었으며 공격의 약 1/3이 매달 발생한다는 것을 알 수 있습니다. </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image28.png" class="kg-image" alt="지난 12개월 동안 월별 네트워크 계층 DDoS 공격의 연간 분포 그래프"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image23-3.png" class="kg-image" alt="지난 12개월 동안 월별 네트워크 계층 DDoS 공격의 분기별 분포 그래프"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image28.png" class="kg-image" alt="지난 12개월 동안 월별 네트워크 계층 DDoS 공격의 연간 분포 그래프"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image23-3.png" class="kg-image" alt="지난 12개월 동안 월별 네트워크 계층 DDoS 공격의 분기별 분포 그래프"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed--3-.png" class="kg-image" alt="지난 12개월 동안 네트워크 계층 DDoS 공격의 분포 그래프"></figure>
 	<h2 id="cloudflare-ddos-">Cloudflare의 제로 데이 증폭 DDoS 공격 완화</h2>
 	<p>이러한 네트워크 계층 DDoS 공격 중에는 Cloudflare에서 자동으로 감지하고 완화하는 제로 데이 DDoS 공격도 있습니다.</p>
@@ -88,18 +82,14 @@
 	<p>이 보고서에서 우리는 처음으로 Spectrum 및 Magic 제품을 사용하는 고객의 업종에 따라 네트워크 계층 DDoS 공격을 분류하기 시작했습니다. 이 분류를 통해 우리는 네트워크 계층 DDoS 공격을 가장 많이 받는 업종을 파악할 수 있습니다.</p>
 	<p>1분기 통계를 살펴보면 Cloudflare 고객을 대상으로 실행된 공격 패킷 및 공격 바이트 측면에서 통신 산업이 가장 많이 목표가 되었음을 알 수 있습니다. &nbsp;Cloudflare에서 완화한 모든 공격 바이트의 8% 이상, 그리고 모든 공격 패킷의 10% 이상이 통신 회사를 표적으로 삼았습니다. &nbsp;</p>
 	<p>그 뒤를 바짝 따르며 게임/도박, 정보 기술 및 서비스 산업이 2위와 3위를 기록했습니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image20-1.png" class="kg-image" alt="Graph of the distribution of network-layer DDoS attack bytes by industry"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image20-1.png" class="kg-image" alt="Graph of the distribution of network-layer DDoS attack bytes by industry"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-7.png" class="kg-image" alt="산업별 네트워크 계층 DDoS 공격 바이트 및 패킷 분포 그래프"></figure>
 	<h3 id="-ddos--11">대상 국가별 네트워크 계층 DDoS 공격</h3>
 	<p>고객 업종별 분류와 유사하게, 응용 프로그램 계층 DDoS 공격의 경우와 마찬가지로 고객 청구서 발행 국가별 공격을 버킷팅하여 가장 많이 공격받는 국가를 식별할 수도 있습니다. </p>
 	<p>1분기 수치를 보면 미국이 가장 높은 비율로 DDoS 공격 트래픽의 표적이 되었음을 알 수 있습니다. 미국은 모든 공격 패킷의 10% 이상, 그리고 전체 공격 바이트의 거의 8%를 차지했습니다. 중국, 캐나다, 싱가포르 순으로 미국의 뒤를 이었습니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image19-1.png" class="kg-image" alt="Graph of the distribution of network-layer DDoS attack bytes by target country"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image19-1.png" class="kg-image" alt="Graph of the distribution of network-layer DDoS attack bytes by target country"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image15-2.png" class="kg-image" alt="대상 국가별 네트워크 계층 DDoS 공격 바이트 및 패킷 분포 그래프"></figure>
 	<h3 id="-ddos--12">수신 국가별 네트워크 계층 DDoS 공격</h3>
 	<p>네트워크 계층 DDoS 공격이 어디에서 발생했는지 파악하려고 할 때 응용 프로그램 계층 공격 분석에 사용하는 방법과 같은 방법을 사용할 수는 없습니다. 응용 프로그램 계층 DDoS 공격을 시작하려면 HTTP/S 연결을 설정하기 위해 클라이언트와 서버 간에 <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">성공적인 핸드셰이크</a>가 발생해야 합니다. 성공적인 핸드셰이크를 발생시키려면 공격은 소스 IP 주소를 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">스푸핑</a>할 수 없습니다. 공격자는 봇넷, 프록시 등의 방법을 사용하여 ID를 난독화할 수 있지만, 공격하는 클라이언트의 소스 IP 위치는 응용 프로그램 계층 DDoS 공격의 소스를 충분히 나타냅니다.</p>
@@ -107,10 +97,8 @@
 	<p>이러한 이유 때문에 네트워크 계층 DDoS 공격 소스를 분석할 때는 (잠재적으로) 스푸핑된 소스 IP가 아니라 트래픽이 수집된 Cloudflare 에지 데이터 센터 위치별로 트래픽을 버킷팅하여 공격이 어디에서 발생했는지 파악합니다. 전 세계 <a href="https://www.cloudflare.com/network" target="_blank">270여 개 도시</a>에 우리 데이터 센터가 있기 때문에 보고서에 지리적 위치를 정확하게 나타낼 수 있습니다. 그러나 이 방법도 100% 정확하지는 않습니다. 비용 절감, 혼잡 및 장애 관리 등 다양한 이유로 트래픽이 백홀되고 다양한 인터넷 서비스 공급자 및 국가를 통해 라우팅될 수 있기 때문입니다.</p>
 	<p>1분기에 아제르바이잔의 Cloudflare 데이터 센터에서 탐지된 공격의 비율은 전 분기 대비 16,624%, 전년 대비 96,900% 증가하여 아제르바이잔이 네트워크 계층 DDoS 활동 비율이 가장 높은 국가가 되었습니다(48.5%). </p>
 	<p>아제르바이잔 데이터 센터 다음은 우리의 팔레스타인 데이터 센터였으며, 전체 트래픽의 41.9%가 DDoS 트래픽이었습니다. 이는 전 분기 대비 10,120%, 전년 대비 46,456% 증가한 수치입니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-8.png" class="kg-image" alt="2022년 1분기 출처 국가별 네트워크 계층 DDoS 공격 분포 그래프"></figure>
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-8.png" class="kg-image" alt="2022년 1분기 출처 국가별 네트워크 계층 DDoS 공격 분포 그래프"></figure><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image12-1.png" class="kg-image" alt="2022년 1분기 출처 국가별 네트워크 계층 DDoS 공격 분포 지도"></figure>
 	<p>모든 지역 및 국가를 보려면 <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">인터랙티브 지도</a>를 참고하세요.</p>
 	<h3 id="--3">공격 벡터</h3>

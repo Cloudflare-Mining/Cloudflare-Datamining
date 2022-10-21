@@ -3,10 +3,8 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh4.googleusercontent.com/Sx-zlmvr7oQCEgESKFhkK6Roa2FvWo5IVm4DXvvPhJIQGj11lXtsFztQaAIPFLwleAOPGh7sFw-GN2Cljy-STatv7Rj4GlRnuPolaZT_AM4a318VvTei_gOx4rcAN2A9zbDLss9k" class="kg-image">
 		<figcaption>CC0 Public Domain, <a href="https://pxhere.com/en/photo/1526517" target="_blank">PxHere</a></figcaption>
 	</figure>
-	<p>Our edge servers are crowded. We run more than a dozen public facing services, leaving aside the all internal ones that do the work behind the scenes.</p>
-	<!--kg-card-begin: html-->
-	<div id="quiz-1-question">
-		<!--kg-card-end: html-->
+	<p>Our edge servers are crowded. We run more than a dozen public facing services, leaving aside the all internal ones that do the work behind the scenes.</p><!--kg-card-begin: html-->
+	<div id="quiz-1-question"><!--kg-card-end: html-->
 		<p>Quick Quiz #1: How many can you name? We blogged about them! <a href="https://blog.cloudflare.com/p/5e0f22d8-bcde-47a8-83b6-8410022eae36/#quiz-1">Jump to answer</a>.</p>
 		<p>These services are exposed on more than a million Anycast <a href="https://www.cloudflare.com/ips/" target="_blank">public IPv4 addresses</a> partitioned into 100+ network prefixes.</p>
 		<p>To keep things uniform every Cloudflare edge server runs all services and responds to every Anycast address. This allows us to make efficient use of the hardware by load-balancing traffic between all machines. We have shared the details of Cloudflare <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation/">edge</a><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/"> architecture</a> on the blog before.</p>
@@ -44,10 +42,8 @@ UNCONN 0      0           192.0.2.31:53        0.0.0.0:*    users:(("auth-dns",p
 		<pre><code>s = socket(AF_INET, SOCK_STREAM, 0)
 s.bind(('0.0.0.0', 12345))
 s.listen(16)
-</code></pre>
-		<!--kg-card-begin: html-->
-		<div id="quiz-2-question">
-			<!--kg-card-end: html-->
+</code></pre><!--kg-card-begin: html-->
+		<div id="quiz-2-question"><!--kg-card-end: html-->
 			<p>Quick Quiz #2: Is there another way to bind a socket to all local addresses? <a href="https://blog.cloudflare.com/p/5e0f22d8-bcde-47a8-83b6-8410022eae36/#quiz-2">Jump to answer</a>.</p>
 			<p>In other words, compared to the naive “one address, one socket” approach, <code>INADDR_ANY</code> allows us to have a single catch-all listening socket for the whole IP range on which we accept incoming connections.</p>
 			<p>In Linux this is possible thanks to a two-phase listening socket lookup, where it falls back to search for an <code>INADDR_ANY</code> socket if a more specific match has not been found.</p>
@@ -59,10 +55,8 @@ s.listen(16)
 			<pre><code>bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
 bind(4, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EADDRINUSE (Address already in use)
 </code></pre>
-			<p>Unless your service is UDP-only, setting the <code>SO_REUSEADDR</code> socket option, will not help you overcome this restriction. The only way out is to turn to <code>SO_REUSEPORT</code>, normally used to construct a load-balancing socket group. And that is only if you are lucky enough to run the port-conflicting services as the same user (UID). That is a story for another post.</p>
-			<!--kg-card-begin: html-->
-			<div id="quiz-3-question">
-				<!--kg-card-end: html-->
+			<p>Unless your service is UDP-only, setting the <code>SO_REUSEADDR</code> socket option, will not help you overcome this restriction. The only way out is to turn to <code>SO_REUSEPORT</code>, normally used to construct a load-balancing socket group. And that is only if you are lucky enough to run the port-conflicting services as the same user (UID). That is a story for another post.</p><!--kg-card-begin: html-->
+			<div id="quiz-3-question"><!--kg-card-end: html-->
 				<p>Quick Quiz #3: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict? <a href="https://blog.cloudflare.com/p/5e0f22d8-bcde-47a8-83b6-8410022eae36/#quiz-3">Jump to answer</a>.</p>
 				<h2 id="life-gets-real-one-port-two-services">Life gets real - one port, two services</h2>
 				<p>As it happens, at the Cloudflare edge we do host services that share the same port number but otherwise respond to requests on non-overlapping IP ranges. A prominent example of such port-sharing is our <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">1.1.1.1</a> recursive DNS resolver running side-by-side with the<a href="https://www.cloudflare.com/dns/" target="_blank"> authoritative DNS service</a> that we offer to all customers.</p>
@@ -108,15 +102,12 @@ s2.listen(1)
 				<p>These are some of the questions we needed to answer, and after running it in production for a while now, we have a good idea of what the consequences of using TPROXY are.</p>
 				<p>That said, it would not come as a shock, if tomorrow we’d discovered something new about TPROXY. Due to its complexity we’ve always considered using it to steer local-destined traffic a <a href="https://blog.cloudflare.com/how-we-built-spectrum/">hack</a>, a use-case outside of its intended application. No matter how well understood, a hack remains a hack.</p>
 				<h2 id="can-bpf-make-life-easier">Can BPF make life easier?</h2>
-				<p>Despite its complex nature TPROXY shows us something important. No matter what IP or port the listening socket is bound to, with a bit of support from the network stack, we can steer any connection to it. As long the application is ready to handle this situation, things work.</p>
-				<!--kg-card-begin: html-->
-				<div id="quiz-4-question">
-					<!--kg-card-end: html-->
+				<p>Despite its complex nature TPROXY shows us something important. No matter what IP or port the listening socket is bound to, with a bit of support from the network stack, we can steer any connection to it. As long the application is ready to handle this situation, things work.</p><!--kg-card-begin: html-->
+				<div id="quiz-4-question"><!--kg-card-end: html-->
 					<p>Quick Quiz #4: Are there really no problems with accepting any connection on any socket? <a href="https://blog.cloudflare.com/p/5e0f22d8-bcde-47a8-83b6-8410022eae36/#quiz-4">Jump to answer</a>.</p>
 					<p>This is a really powerful concept. With a bunch of TPROXY rules, we can configure any mapping between (address, port) tuples and listening sockets.</p>
 					<p><strong>💡 Idea #1:</strong> A local-destined connection can be accepted by any listening socket.</p>
-					<p>We didn’t tell you the whole story before. When we published <code>SO_BINDTOPREFIX</code> patches, they did not just get rejected. <a href="https://meta.wikimedia.org/wiki/Cunningham%27s_Law" target="_blank">As sometimes happens</a> by posting the wrong answer, we got <a href="https://lore.kernel.org/netdev/1459261895.6473.176.camel@edumazet-glaptop3.roam.corp.google.com/" target="_blank">the right answer</a> to our problem</p>
-					<!--kg-card-begin: markdown-->
+					<p>We didn’t tell you the whole story before. When we published <code>SO_BINDTOPREFIX</code> patches, they did not just get rejected. <a href="https://meta.wikimedia.org/wiki/Cunningham%27s_Law" target="_blank">As sometimes happens</a> by posting the wrong answer, we got <a href="https://lore.kernel.org/netdev/1459261895.6473.176.camel@edumazet-glaptop3.roam.corp.google.com/" target="_blank">the right answer</a> to our problem</p><!--kg-card-begin: markdown-->
 					<blockquote>
 						<p>❝BPF is absolutely the way to go here, as it allows for whatever user specified tweaks, like a list of destination subnetwork, or/and a list of source network, or the date/time of the day, or port knocking without netfilter, or … you name it.❞</p>
 					</blockquote>
@@ -125,8 +116,7 @@ s2.listen(1)
 					<p><strong>💡 Idea #2:</strong> How we pick a listening socket can be tweaked with BPF.</p>
 					<p>Combine the two ideas together and we arrive at an exciting concept. Let’s run BPF code to match an incoming packet with a listening socket, ignoring the address the socket is bound to. 🤯</p>
 					<p>Here’s an example to illustrate it.</p>
-					<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/idea_program_socket_lookup_with_bpf-2.png" class="kg-image"></figure>
-					<!--kg-card-begin: markdown-->
+					<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/idea_program_socket_lookup_with_bpf-2.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 					<p>All packets coming on <code>192.0.2.0/24</code> prefix, port <code>53</code> are steered to socket <code>sk:2</code>, while traffic targeted at <code>203.0.113.1</code>, on any port number lands in socket <code>sk:4</code>.</p>
 					<!--kg-card-end: markdown-->
 					<h2 id="welcome-bpf-inet_lookup">Welcome BPF inet_lookup</h2>
@@ -145,8 +135,7 @@ s2.listen(1)
 					<h2 id="demo-time-">Demo time!</h2>
 					<p>This is not just a concept. We have already published a first working <a href="https://lore.kernel.org/bpf/20190828072250.29828-1-jakub@cloudflare.com/" target="_blank">set of patches for the kernel</a> together with ancillary <a href="https://github.com/majek/inet-tool" target="_blank">user-space tooling</a> to configure the socket lookup to your needs.</p>
 					<p>If you would like to see it in action, you are in luck. We’ve put together a demo that shows just how easily you can bind a network service to (i) a single port, (ii) all ports, or (iii) a network prefix. On-the-fly, without having to restart the service! There is a port scan running to prove it.</p>
-					<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>
-					<!--kg-card-begin: markdown-->
+					<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p><!--kg-card-begin: markdown-->
 					<p><a href="https://asciinema.org/a/266328" target="_blank"><img src="https://asciinema.org/a/266328.svg" alt="asciicast"></a></p>
 					<!--kg-card-end: markdown-->
 					<h2 id="summary">Summary</h2>

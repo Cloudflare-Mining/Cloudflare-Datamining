@@ -4,8 +4,7 @@
 	<p>Did you notice the small caveat? We cache after the <em>first</em> request in <em>many</em> cases, not all. One notable exception since 2010 up until now: requests with <em>query strings</em>. When a request came with a query string (think <a href="https://example.com/image.jpg?width=500" target="_blank">https://example.com/image.jpg?width=500</a>; the <code>?width=500</code> is the query string), we needed to see it a whole <em>three </em>times before we would cache it on our <a href="https://support.cloudflare.com/hc/en-us/articles/200168256-Understand-Cloudflare-Caching-Level" target="_blank">default cache level</a>. Weird!</p>
 	<p>This is a short tale of that strange exception, why we thought we needed it, and how, more than ten years later, we showed ourselves that we didn’t.</p>
 	<h3 id="two-misses-too-many">Two MISSes too many</h3>
-	<p>To see the exception in action, here’s a command we ran a couple weeks ago. It requests an image hosted on <code>example.com</code> five times and prints each response’s <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN#h_bd959d6a-39c0-4786-9bcd-6e6504dcdb97" target="_blank">CF-Cache-Status header</a>. That header tells us what the cache did while serving the request.</p>
-	<!--kg-card-begin: markdown-->
+	<p>To see the exception in action, here’s a command we ran a couple weeks ago. It requests an image hosted on <code>example.com</code> five times and prints each response’s <a href="https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN#h_bd959d6a-39c0-4786-9bcd-6e6504dcdb97" target="_blank">CF-Cache-Status header</a>. That header tells us what the cache did while serving the request.</p><!--kg-card-begin: markdown-->
 	<pre><code>❯ for i in {1..5}; do curl -svo /dev/null example.com/image.jpg 2&gt;&amp;1 | grep -e 'CF-Cache-Status'; sleep 3; done
 &lt; CF-Cache-Status: MISS
 &lt; CF-Cache-Status: HIT
@@ -15,8 +14,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The MISS means that we couldn’t find the asset in the cache and had to retrieve it from the origin server. On the HITs, we served the asset from cache.</p>
-	<p>Now, just by adding a query string to the same request (<code>?query=val</code>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now, just by adding a query string to the same request (<code>?query=val</code>):</p><!--kg-card-begin: markdown-->
 	<pre><code>❯ for i in {1..5}; do curl -svo /dev/null example.com/image.jpg\?query\=val 2&gt;&amp;1 | grep -e 'CF-Cache-Status'; sleep 3; done
 &lt; CF-Cache-Status: MISS
 &lt; CF-Cache-Status: MISS

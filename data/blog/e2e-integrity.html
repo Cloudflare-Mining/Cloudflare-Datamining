@@ -6,8 +6,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/ipfs-blog-post-image-1-copy@3.5x--1-.png" class="kg-image"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/ipfs-blog-post-image-2-copy@3.5x--1-.png" class="kg-image"></figure>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<h3 id="cnamesetupwithuniversalssl">CNAME Setup with Universal SSL</h3>
 	<p>The first step is to choose a domain name for your website. Websites should be given their own domain name, rather than served directly from the gateway by root hash, so that they are considered a distinct origin by the browser. This is primarily to prevent cache poisoning, but there are several functional advantages as well. It gives websites their own instance of localStorage and their own cookie jar which are sandboxed from inspection and manipulation by malicious third-party documents. It also lets them run Service Workers without conflict, and request special permissions of the user like access to the webcam or GPS. But most importantly, having a domain name makes a website easier to identify and remember.</p>
 	<p>Now that you've chosen a domain, rather than using it as-is, you’ll need to add "ipfs-sec" as the left-most subdomain. So for example, you'd use "ipfs-sec.example.com" instead of just "example.com". The ipfs-sec subdomain is special because it signals to the user and to their browser that your website is capable of being served with end-to-end integrity.</p>
@@ -24,10 +23,7 @@
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/IPFS-tech-post-@3.5x.png" class="kg-image">
 		<figcaption><em>Chain of trust in DNSSEC.</em></figcaption>
-	</figure>
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	</figure><!--kg-card-begin: html--><br><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p>The second project we built out was a browser extension that requests these proofs from IPFS gateways and ipfs-sec domains, and is capable of verifying them. The extension uses the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest" target="_blank">webRequest API</a> to sit between the browser's network stack and its rendering engine, preventing any unexpected data from being show to the user or unexpected code from being executed. The code for the browser extension is <a href="https://github.com/cloudflare/ipfs-ext" target="_blank">available on Github</a>, and can be installed through <a href="https://addons.mozilla.org/en-US/firefox/addon/cloudflare-ipfs-validator/" target="_blank">Firefox's add-on store</a>. We’re excited to add support for Chrome as well, but that can’t move forward until <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=487422" target="_blank">this ticket</a> in their bug tracker is addressed.</p>
 	<p>On the other hand, if a user doesn't have the extension installed, the gateway won't see the <code>X-Ipfs-Secure-Gateway</code> header and will serve the page like a normal website, without any proofs. This provides a graceful upgrade path to using IPFS, either through our extension that uses a third-party gateway or perhaps another browser extension that runs a proper IPFS node in-browser.</p>
 	<h3 id="exampleapplication">Example Application</h3>

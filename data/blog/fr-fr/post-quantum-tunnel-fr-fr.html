@@ -18,8 +18,7 @@
 	<p>Les acteurs malveillants n'ont besoin d'avoir accès qu'à une seule connexion vulnérable, mais ils ne disposent pas d'un accès omniprésent : avec chaque connexion à laquelle nous appliquons une sécurité post-quantique, nous supprimons une opportunité de compromission.</p>
 	<p>Nous sommes impatients de voir les tunnels post-quantiques devenir la solution par défaut, mais pour l'instant, il s'agit d'une fonctionnalité bêta. La raison est que la cryptographie employée et son intégration au protocole réseau ne sont pas encore définitives. Si nous faisions dès maintenant de la sécurité post-quantique la fonctionnalité par défaut, cela exigerait des utilisateurs qu'ils mettent à jour <code>cloudflared</code> plus souvent que ce que nous pouvons raisonnablement attendre d'eux.</p>
 	<h2 id="premiers-pas">Premiers pas</h2>
-	<p>Si des mises à jour fréquentes de <code>cloudflared</code> ne vous posent pas de problème, nous vous invitons à essayer Post-Quantum Cloudflare Tunnel. Assurez-vous d'utiliser la version <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> ou une version ultérieure, et exécutez simplement <code>cloudflared</code> avec l'indicateur <code>--post-quantum</code> :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Si des mises à jour fréquentes de <code>cloudflared</code> ne vous posent pas de problème, nous vous invitons à essayer Post-Quantum Cloudflare Tunnel. Assurez-vous d'utiliser la version <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> ou une version ultérieure, et exécutez simplement <code>cloudflared</code> avec l'indicateur <code>--post-quantum</code> :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -37,8 +36,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Si vous exécutez <code>cloudflared</code><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank"> en tant que service</a>, vous pouvez activer la sécurité post-quantique en ajoutant l'indicateur post-quantum: true dans le fichier de configuration du tunnel. De manière pratique, le service <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">se mettra automatiquement à jour</a> s'il n'a pas été installé par un gestionnaire de packages.</p>
-	<p>Si, pour une raison quelconque, la création d'un tunnel post-quantique échoue, vous verrez s'afficher un message d'erreur du type</p>
-	<!--kg-card-begin: markdown-->
+	<p>Si, pour une raison quelconque, la création d'un tunnel post-quantique échoue, vous verrez s'afficher un message d'erreur du type</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

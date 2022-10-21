@@ -5,10 +5,8 @@
 	<p>对于感觉陌生的人来说，cdnjs 是一个描述面向 JavaScript（JS）的内容交付网络（CDN）的首字母缩写词。<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">CDN</a> 是一个由地理上分散的服务器构成的网络，主要用于提供互联网内容，不论这些内容是回忆、小猫视频还是 HTML 网页。而本文所说的 CDN 是指 Cloudflare 那个由 200 多个分布于全球的数据中心构成并且<a href="https://blog.cloudflare.com/cloudflare-network-expands-to-more-than-100-countries/">依然在不断壮大的网络</a>。</p>
 	<p>这与您相关的原因在于：它使页面加载时间快如闪电。您访问的每个网站基本上都需要获取 JS 库才能加载，也包括本网站。假设您要一个位于悉尼的网站，它包含一个来自 jQuery 的本地文件。jQuery 是一个流行的库，可见于 <a href="https://w3techs.com/technologies/details/js-jquery" target="_blank">76.2%</a> 的网站。如果您位于纽约，那么可能会注意到一个延迟，因为获取这个文件所需的时间轻易会超过 300ms，更不用说 <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a/">TLS 握手</a>涉及的往返时间了。不过，如果该网站使用 <a href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" target="_blank">cdnjs.cloudflare.com</a> 来引用 jQuery，您可以从 Cloudflare 距您最近的布法罗数据中心检索这个文件，将延迟缩短到闪电般的 20ms。</p>
 	<p>尽管 cdnjs 在幕后运作，但有<a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank">超过 11%</a> 的网站使用它，使互联网变得更加快速、更加可靠。在 7 月份，cdnjs 服务了将近 <a href="https://github.com/cdnjs/cf-stats/blob/master/2020/cdnjs_July_2020.md" target="_blank">1900 亿个请求</a>，涉及的数据量达到了 3.46PB。</p>
-	<h3 id="-">文件存储在哪里？</h3>
-	<!--kg-card-begin: html-->
-	<p><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
-	<!--kg-card-end: html-->
+	<h3 id="-">文件存储在哪里？</h3><!--kg-card-begin: html-->
+	<p><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p><!--kg-card-end: html-->
 	<p>cdnjs 加快了互联网速度，凭借的当然不是魔法！</p>
 	<p>在过去，Cloudflare 某个核心数据中心的若干<a href="https://www.cloudflare.com/load-balancing/" target="_blank">负载均衡</a>服务器会定期从后备存储中提取 cdnjs 文件，充当 cdnjs.cloudflare.com 的源站。有人请求了新文件时，Cloudflare 会将它<a href="https://www.cloudflare.com/learning/cdn/what-is-caching/" target="_blank">缓存</a> ，从而能够从我们的任何数据中心快速获取到这个文件。</p>
 	<p>后备存储是 JS、CSS 和其他 Web 库的目录，采用开源 <a href="https://github.com/" target="_blank">GitHub</a> 存储库的形式。这意味着，包括您在内的任何人都可以出力贡献，但要经过审核和其他流程。</p>
@@ -34,10 +32,8 @@
 	<p>后来，我们想到了一个主意。将 Cdnjs 文件的压缩版本存储在 Workers KV 中，这不仅能解决文件大小超限问题，还可优化文件的服务方式。</p>
 	<p>如果您支付过互联网账单，就会知道<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world/">带宽有多么昂贵</a>！因此，所有现代浏览器都会尽可能<a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805/">获取压缩的 Web 内容</a>。同样在 Cloudflare，我们经常试验通过<a href="https://blog.cloudflare.com/results-experimenting-brotli/">即时压缩</a>来减小我们的带宽，只要被接受，我们就将压缩后的内容提供给浏览者。结果，我们决定提前压缩所有 cdnjs 文件，并将它们以最佳的 <a href="https://github.com/google/brotli" target="_blank">Brotli</a> 和 <a href="https://www.gzip.org/" target="_blank">gzip</a> 形式写入 Workers KV。这样，我们可以使用比即时压缩时更高的压缩级别，因为不再有延迟方面的要求。</p>
 	<p>如此一来，我们可以更快的速度提供更小的 cdnjs 文件！</p>
-	<h3 id="-cdnjs">全面改造 cdnjs</h3>
-	<!--kg-card-begin: html-->
-	<p><a href="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" target="_blank" rel="noopener"><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" width="800" height="498"></a></p>
-	<!--kg-card-end: html-->
+	<h3 id="-cdnjs">全面改造 cdnjs</h3><!--kg-card-begin: html-->
+	<p><a href="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" target="_blank" rel="noopener"><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" width="800" height="498"></a></p><!--kg-card-end: html-->
 	<p>现在，如果您要将自己的 JavaScript 库包含在 cdnjs 中，首先在 GitHub 上创建一个对我们新存储库 <a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/packages</a> 的 PR。这个存储库很容易克隆，大小仅为 50MB，由数千个 JSON 文件构成，各自描述一个 cdnjs 程序包并说明如何从 npm 或 git 自动更新。当您的文件获得我们新版自动 CI 的验证（由<a href="https://github.com/cdnjs/tools" target="_blank">新版机器人</a>提供支持），并由维护人员进行合并后，您的程序包就会自动登记到我们的自动更新服务中。</p>
 	<p>新系统优先考虑了安全性和可维护性。首先，cdnjs 版本文件由我们的机器人创建，最大程度降低了合并新版本时出现人为错误的可能。虽然 JSON 文件是由易错的人类添加到 <a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/packages</a> 中的，但会经过机器人的检查，然后再由维护人员审批。每个文件都会对照 <a href="https://github.com/cdnjs/tools/blob/master/schema_human.json" target="_blank">JSON 架构</a>自动验证，另外也会检查在 npm 或 GitHub 上流行程度。</p>
 	<p>当机器人发现新版本时，它会将文件的 Brotli 和 gzip 压缩版本推送到 Workers KV 中的文件命名空间。对于每个条目，机器人会在 <a href="https://blog.cloudflare.com/catching-up-with-workers-kv/">Workers KV 中写入一些元数据</a>，用于 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag" target="_blank">ETag</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified" target="_blank">Last-Modified</a> HTTP 标头。与之前类似，机器人也会计算未压缩文件的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">子资源完整性</a>（SRI）哈希，但现在将它们推送到 Workers KV 中的 SRI 命名空间。</p>

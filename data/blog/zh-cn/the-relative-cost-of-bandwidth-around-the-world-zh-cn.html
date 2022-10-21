@@ -10,8 +10,7 @@
 	<p>为了与互联网连接，CloudFlare要从许多不同的提供商那里购买带宽(传输流量)。世界各地区的带宽费率不同，有时我们从一级供应商购买，有时我们从区域运输供应商那里购买。这些供应商要么与我们需要直接到达的网络对等(绕过任何其他的一级)，要么与其他运输供应商互连。</p>
 	<p>CloudFlare以批发的方式购买传输服务，并根据我们在各个月的消耗力进行购买。与Amazon Web services (AWS)或传统的CDNs等云服务不同的是，这些云服务为通过网络交付的单个比特位(称为“stock”)付费，而我们为一段时间内的最大利用率付费(称为“flow”)。通常，我们根据每个提供商在一个月内每秒使用的最大兆字节数付费。</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/image01_6.png" class="kg-image"></figure>
-	<!--kg-card-begin: html--><small>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/image01_6.png" class="kg-image"></figure><!--kg-card-begin: html--><small>
 		<font style="vertical-align: inherit;">
 			<font style="vertical-align: inherit;">过去3个月</font>
 		</font><a href="https://www.cloudflare.com/network-map" target="_blank">
@@ -24,8 +23,7 @@
 			<font style="vertical-align: inherit;">。</font>
 			<font style="vertical-align: inherit;">每种颜色代表我们28个数据中心之一。</font>
 		</font>
-	</small>
-	<!--kg-card-end: html-->
+	</small><!--kg-card-end: html-->
 	<p>大多数传输供应商协定对占当月流量使用率95％的用量进行收费。这意味着在计算一个月的使用量时，您可以舍去大约36个不必要的连续小时的峰值利用率。传说在它的早期，谷歌曾经利用这些协议，在一个月的大部分时间里使用非常少的带宽，然后在某个24小时内在数据中心之间传输它的指标，这是一个非常高带宽的操作。这是一种聪明的策略，可以避免高带宽的开销，尽管这种策略无疑是不能长久使用的。</p>
 	<p>另一个微妙之处在于，当你批发购买传输流量时，你通常只需要为网络的入口流量(“入口”)或出口流量(“出口”)付费，而不是同时付费。一般来说，你需要为流量更大的那一个付费。</p>
 	<p>CloudFlare是一个缓存代理，因此（流量）出口(out)通常超过入口(in)，通常约为4-5倍。因此，我们的带宽账单是根据出口计算的，所以我们不用支付入口的费用。这就是当我们的网络上的一个站点受到DDoS攻击时，我们不额外收费的部分原因。攻击会增加我们的入口流量，但是，除非攻击非常大，否则我们的入口流量仍然不会超过出口，因此我们的带宽开销不会增加。</p>
@@ -71,12 +69,10 @@
 	<p>为了让你了解澳大利亚是多么的不正常，在CloudFlare，我们每个月为服务于整个欧洲的带宽支付的费用与我们为澳大利亚支付的一样多。但是欧洲人口(7.5亿)大约是澳大利亚人口(2200万)的33倍。</p>
 	<p>如果澳大利亚人想知道为什么互联网和其他许多服务在他们的国家比世界上其他任何地方都贵，他们只需要看看澳洲电信。有趣的是，即使只在国内提供流量，澳洲电信也保持着高昂的价格。考虑到澳大利亚幅员辽阔，人口相对集中，很难从Telstra的市场实力以外的任何因素来判断其定价是否合理。在北美等网络日益整合的地区，澳大利亚电信的经历为我们提供了一个警示。</p>
 	<h2 id="--8">结论</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/image04_4.png" class="kg-image"></figure>
-	<!--kg-card-begin: html--><small>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/image04_4.png" class="kg-image"></figure><!--kg-card-begin: html--><small>
 		<font style="vertical-align: inherit;">
 			<font style="vertical-align: inherit;">上图显示了假设基准传输成本为每月10美元/兆比特每秒（Mbps）（我们知道这是高于实际定价的，这里仅作为基准）的不同地区带宽相对成本。</font>
 		</font>
-	</small>
-	<!--kg-card-end: html-->
+	</small><!--kg-card-end: html-->
 	<p>虽然我们一直将CloudFlare的定价保持在一定水平，即无论在全球何处传输流量，都按统一的费率收费，但不同地区之间的实际带宽价格是存在显著差异的。我们将继续努力降低我们的传输比例，并增加我们的对等网络连接，以尽可能低的价格提供最好的服务。与此同时，如果你是一家网络服务提供商，希望为CloudFlare网络背后日益增长的互联网中的部分网络提供更好的连接，请知悉，我们有一个开放的政策，并且总是乐于与之对等。</p>
 </div>

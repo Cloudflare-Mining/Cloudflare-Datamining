@@ -8,8 +8,7 @@
 	<p>Magic Firewall menyediakan sintaks yang sangat kuat untuk pencocokan pada berbagai parameter paket, tetapi juga terbatas pada kecocokan yang disediakan oleh nftables. Meskipun hal tersebut lebih dari cukup untuk berbagai kasus penggunaan, Magic Firewall tidak memberikan fleksibilitas yang cukup untuk menerapkan penguraian paket lanjutan dan pencocokan konten yang kami inginkan. Kami membutuhkan lebih banyak kekuatan.</p>
 	<h3 id="halo-ebpf-temui-nftables-"><strong>Halo eBPF, temui Nftables!</strong></h3>
 	<p>Saat ingin menambahkan lebih banyak kekuatan untuk kebutuhan jaringan Linux Anda, Extended Berkeley Packet Filter (<a href="https://ebpf.io/" target="_blank">eBPF</a>) adalah pilihan yang tepat. Dengan eBPF, Anda dapat menyisipkan program pemrosesan paket yang dijalankan <em>di kernel</em>, memberi Anda fleksibilitas paradigma pemrograman yang sudah dikenal dengan kecepatan eksekusi di dalam kernel. Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf/">menyukai eBPF</a> dan teknologi ini telah mengubah banyak produk kami. Tentu saja, kami ingin menemukan cara untuk menggunakan eBPF guna memperluas penggunaan nftables di Magic Firewall. Ini berarti dapat mencocokkan dengan menggunakan program eBPF dalam tabel dan rantai sebagai aturan. Dengan melakukan ini, kita dapat memiliki kue dan memakannya juga, dengan menjaga infrastruktur dan kode yang ada, dan memperluasnya lebih jauh.</p>
-	<p>Jika nftables dapat memanfaatkan eBPF secara alami, cerita ini akan jauh lebih pendek; sayangnya, kami harus melanjutkan pencarian kami. Untuk memulai pencarian, kami tahu bahwa iptables terintegrasi dengan eBPF. Misalnya, seseorang dapat menggunakan iptables dan program eBPF yang disematkan untuk menjatuhkan paket dengan perintah berikut:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Jika nftables dapat memanfaatkan eBPF secara alami, cerita ini akan jauh lebih pendek; sayangnya, kami harus melanjutkan pencarian kami. Untuk memulai pencarian, kami tahu bahwa iptables terintegrasi dengan eBPF. Misalnya, seseorang dapat menggunakan iptables dan program eBPF yang disematkan untuk menjatuhkan paket dengan perintah berikut:</p><!--kg-card-begin: markdown-->
 	<pre><code>iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -17,8 +16,7 @@
 	<p>Karena kami tahu <em>iptables</em> dapat menggunakan eBPF, mengapa tidak menggunakannya saja? Magic Firewall saat ini memanfaatkan nftables, yang merupakan pilihan tepat untuk kasus penggunaan kami karena fleksibilitasnya dalam sintaks dan antarmuka yang dapat diprogram. Jadi, kita perlu menemukan cara untuk menggunakan ekstensi xt_bpf dengan nftables.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
 	<p>Diagram <a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank">ini</a> membantu menjelaskan hubungan antara iptables, nftables dan kernel. nftables API dapat digunakan oleh program iptables dan nft userspace, dan dapat mengonfigurasi kecocokan xtables (termasuk xt_bpf) dan kecocokan nftables normal.</p>
-	<p>Ini berarti bahwa dengan panggilan API yang tepat (pesan netlink/netfilter), kita dapat menyematkan kecocokan xt_bpf ke dalam aturan nftables. Untuk melakukan ini, kita perlu memahami pesan netfilter mana yang perlu kita kirim. Dengan menggunakan alat seperti strace, Wireshark, dan terutama menggunakan <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">sumber</a> di mana kita dapat membuat pesan yang dapat menambahkan aturan eBPF dengan tabel dan rantai.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ini berarti bahwa dengan panggilan API yang tepat (pesan netlink/netfilter), kita dapat menyematkan kecocokan xt_bpf ke dalam aturan nftables. Untuk melakukan ini, kita perlu memahami pesan netfilter mana yang perlu kita kirim. Dengan menggunakan alat seperti strace, Wireshark, dan terutama menggunakan <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">sumber</a> di mana kita dapat membuat pesan yang dapat menambahkan aturan eBPF dengan tabel dan rantai.</p><!--kg-card-begin: markdown-->
 	<pre><code>NFTA_RULE_TABLE table
 NFTA_RULE_CHAIN chain
 NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
@@ -30,8 +28,7 @@ NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
 		NFTA_MATCH_INFO ebpf_bytes	
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Struktur pesan netlink/netfilter untuk menambahkan kecocokan eBPF akan terlihat seperti contoh di atas. Tentu saja, pesan ini perlu disematkan dengan benar dan menyertakan langkah bersyarat, seperti putusan, ketika ada kecocokan. Langkah selanjutnya adalah penguraian kode format <code>ebpf_bytes</code> seperti yang ditunjukkan pada contoh di bawah ini.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Struktur pesan netlink/netfilter untuk menambahkan kecocokan eBPF akan terlihat seperti contoh di atas. Tentu saja, pesan ini perlu disematkan dengan benar dan menyertakan langkah bersyarat, seperti putusan, ketika ada kecocokan. Langkah selanjutnya adalah penguraian kode format <code>ebpf_bytes</code> seperti yang ditunjukkan pada contoh di bawah ini.</p><!--kg-card-begin: markdown-->
 	<pre><code> struct xt_bpf_info_v1 {
 	__u16 mode;
 	__u16 bpf_program_num_elem;
@@ -48,8 +45,7 @@ NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
 	<p>Dengan informasi ini kami dapat menulis kode yang dapat membuat pesan netlink dan membuat serial dengan benar dari setiap bidang data yang relevan. Pendekatan ini hanyalah langkah pertama, kami juga sedang mempertimbangkan untuk memasukkan ini ke dalam alat yang tepat daripada mengirim pesan netfilter kustom.</p>
 	<h3 id="cukup-tambahkan-ebpf"><strong>Cukup tambahkan eBPF</strong></h3>
 	<p>Sekarang kami perlu membuat program eBPF dan memuatnya ke dalam tabel dan rantai nftables yang ada. Mulai menggunakan eBPF bisa menjadi sedikit menakutkan. Jenis program mana yang ingin kami gunakan? Bagaimana kami mengkompilasi dan memuat program eBPF kami? Kami memulai proses ini dengan melakukan beberapa eksplorasi dan penelitian.</p>
-	<p>Pertama kami membuat program contoh untuk mencobanya.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pertama kami membuat program contoh untuk mencobanya.</p><!--kg-card-begin: markdown-->
 	<pre><code>SEC("socket")
 int filter(struct __sk_buff *skb) {
   /* get header */
@@ -78,8 +74,7 @@ int filter(struct __sk_buff *skb) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Potongan skrip di atas adalah contoh program eBPF yang hanya menerima paket yang memiliki rangkaian ajaib di akhir payload. Ini memerlukan pemeriksaan total panjang paket untuk menemukan di mana memulai pencarian. Untuk kejelasan, contoh ini menghilangkan pemeriksaan kesalahan dan header.</p>
-	<p>Setelah kami memiliki program, langkah selanjutnya adalah mengintegrasikannya ke dalam alat kami. Kami mencoba beberapa teknologi untuk memuat program, seperti BCC, libbpf, dan kami bahkan membuat pemuat khusus. Pada akhirnya, kami menggunakan <a href="https://github.com/cilium/ebpf/" target="_blank">pustaka ebpf cilium</a>, karena kami menggunakan Golang untuk program bidang kontrol dan pustaka memudahkan untuk menghasilkan, menyematkan, dan memuat program eBPF.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Setelah kami memiliki program, langkah selanjutnya adalah mengintegrasikannya ke dalam alat kami. Kami mencoba beberapa teknologi untuk memuat program, seperti BCC, libbpf, dan kami bahkan membuat pemuat khusus. Pada akhirnya, kami menggunakan <a href="https://github.com/cilium/ebpf/" target="_blank">pustaka ebpf cilium</a>, karena kami menggunakan Golang untuk program bidang kontrol dan pustaka memudahkan untuk menghasilkan, menyematkan, dan memuat program eBPF.</p><!--kg-card-begin: markdown-->
 	<pre><code># nft list ruleset
 table ip mfw {
 	chain input {

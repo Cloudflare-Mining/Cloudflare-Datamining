@@ -84,8 +84,7 @@
 	<p>虽然乌克兰战争爆发已超过四个月，但互联网仍是活跃的战场，多个城市和多个网络出现持续的互联网中断。但是，本文仅着重提一提第二季度期间观察到的两个类似事件。</p>
 	<p>被俄罗斯占领的赫尔松市在 4 月 30 日 16:00 UTC（当地时间 19:00）到 5 月 4 日 04:30 UTC（当地时间 07:30）期间遭遇接近全面的互联网中断。按照<a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664" target="_blank">乌克兰副总理 Mykhailo Fedorov</a> 以及<a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank">国家特别通信和信息保护署</a>的说法，此次中断的原因是“光纤干线中断以及该地区运营商设备供电中断”。下图显示赫尔松市在此次中断开始后大约 24 小时内基本上没有流量，接下来几天的流量也很小。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image41.png" class="kg-image"></figure>
-	<p>大约在恢复少量流量的时候，我们还观察到某个 <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4 前缀</a>的路由切换，这一信息由 <a href="https://radar.cloudflare.com/asn/47598" target="_blank">AS47598</a> (Khersontelecom) 公布。如下表所示，中断之前，它通过其他多家乌克兰网络提供商访问互联网，包括 <a href="https://radar.cloudflare.com/asn/12883" target="_blank">AS12883</a>、<a href="https://radar.cloudflare.com/asn/3326" target="_blank">AS3326</a> 和 <a href="https://radar.cloudflare.com/asn/35213" target="_blank">AS35213</a>。但是，随着流量的恢复，其路由路径显示俄罗斯网络 <a href="https://radar.cloudflare.com/asn/201776" target="_blank">AS201776</a> (Miranda) 成为上游提供商。流经 Miranda 的路径还包括 <a href="https://radar.cloudflare.com/asn/12389" target="_blank">AS12389</a> (Rostelecom)，后者宣称自己是“<a href="https://www.company.rt.ru/en/" target="_blank">俄罗斯最大的数字服务提供商</a>”。</p>
-	<!--kg-card-begin: markdown-->
+	<p>大约在恢复少量流量的时候，我们还观察到某个 <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4 前缀</a>的路由切换，这一信息由 <a href="https://radar.cloudflare.com/asn/47598" target="_blank">AS47598</a> (Khersontelecom) 公布。如下表所示，中断之前，它通过其他多家乌克兰网络提供商访问互联网，包括 <a href="https://radar.cloudflare.com/asn/12883" target="_blank">AS12883</a>、<a href="https://radar.cloudflare.com/asn/3326" target="_blank">AS3326</a> 和 <a href="https://radar.cloudflare.com/asn/35213" target="_blank">AS35213</a>。但是，随着流量的恢复，其路由路径显示俄罗斯网络 <a href="https://radar.cloudflare.com/asn/201776" target="_blank">AS201776</a> (Miranda) 成为上游提供商。流经 Miranda 的路径还包括 <a href="https://radar.cloudflare.com/asn/12389" target="_blank">AS12389</a> (Rostelecom)，后者宣称自己是“<a href="https://www.company.rt.ru/en/" target="_blank">俄罗斯最大的数字服务提供商</a>”。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -108,8 +107,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>随着此次中断于 5 月 4 日结束，我们观察到 Khersontelecom 的路由路径发生更新，使其能够通过非俄罗斯的上游提供商访问全球互联网。</p>
-	<!--kg-card-begin: markdown-->
+	<p>随着此次中断于 5 月 4 日结束，我们观察到 Khersontelecom 的路由路径发生更新，使其能够通过非俄罗斯的上游提供商访问全球互联网。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -134,8 +132,7 @@
 	<!--kg-card-end: markdown-->
 	<p>关于此次中断和重新路由事件的更多详情可在<a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/"><em>“Tracking shifts in Internet connectivity in Kherson, Ukraine”</em>（跟踪乌克兰赫尔松市的互联网连接切换情况）这篇博客文章</a>中找到。</p>
 	<p>一个月后即 <a href="https://twitter.com/CloudflareRadar/status/1531380535922200579" target="_blank">5 月 30 日</a>，我们再次观察到赫尔松市于 14:35 UTC（当地时间 17:35）开始出现严重互联网中断。同样，我们也观察到 Khersontelecom 的路由发生更新，从乌克兰上游提供商切换到俄罗斯提供商。截至 6 月底，赫尔松市的互联网中断以及通过俄罗斯上游提供商进行的路由都得以稳定维持，但流量丧失情况远不如 4 月/5 月中断情况那么严重。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image14.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image14.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -161,8 +158,6 @@
 	<h2 id="--9">总结</h2>
 	<p>本文并未详尽说明整个第二季度发生的所有互联网中断、断网和中断情况。有些情况极其短暂或范围不广，而另一些情况虽然被观察到，但其根本原因不明或无法通过公开信息推测。话虽如此，但有必要更多地公开报道这些事件，这样社区就能分享关于所发生的事件、发生原因及其影响（对人类、经济或其他方面的影响）的信息。</p>
 	<p>欢迎在推特上关注 <a href="https://twitter.com/CloudflareRadar" target="_blank">@CloudflareRadar</a>，以获得有关互联网中断的最新动态，并使用 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 来获得有关互联网趋势的最新信息。</p>
-	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

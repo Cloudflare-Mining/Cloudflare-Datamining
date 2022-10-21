@@ -29,14 +29,12 @@
 	<p>We agree that it is difficult to tease out computing time from Time to First Byte. To look at that particular aspect of serverless computing, we look at Wait, which is a value that contains the least amount of variables: we aren’t caching anything during our tests, DNS isn’t part of the wait time, and the only thing impacting Wait aside from the time spent on the machine is the Connect time.</p>
 	<p>However, since we’re trying to measure the end user experience and not just the amount of time spent on a server, we want to use both the Wait and TTFB so that we can show the time spent both on the server and how that impacts end-to-end performance.</p>
 	<h3 id="what-s-in-the-test">What’s in the test?</h3>
-	<p>For our test this time around, we decided to measure three things: a simple JavaScript function like last time, a complex JavaScript function, and a complex Rust function. Here are the functions for each of them:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For our test this time around, we decided to measure three things: a simple JavaScript function like last time, a complex JavaScript function, and a complex Rust function. Here are the functions for each of them:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function getErrorResponse(event, message, status) {
   return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">function testHardBusyLoop() {
   let value = 0;
   let offset = Date.now();
@@ -48,8 +46,7 @@
   return value;
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
   let mut value = 0;
   let offset = Date::now().as_millis();
@@ -77,8 +74,7 @@
 	<p>Cloudflare became #1 in more countries in Africa and Europe, some of which previously did not have enough samples to officially be counted to one provider or another.</p>
 	<h2 id="workers-vs-compute-edge">Workers vs Compute@Edge</h2>
 	<p>Moving on from general network results, what does performance look like when comparing serverless compute products across providers — in this case, Cloudflare Workers performance to Compute@Edge? Looking at the Catchpoint data, the first thing we noticed was Cloudflare is faster than Fastly in all tests at the 95th percentile for Time to First Byte:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-30.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-30.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -115,8 +111,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>Cloudflare is significantly faster at all tests compared to Fastly. But let’s dig into why that is. Looking at p95 Wait, we can see that Cloudflare does have an edge in most tests related to compute on-box:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image10-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image10-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -153,8 +148,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>Looking at the Wait times, you can see that Cloudflare does have a significant edge in on-box performance, except in Rust, where Fastly claims their workloads are the most optimized. This data backs up that claim. But why is Fastly so much slower on Time to First Byte? The answer lies in the rest of the request. While latency spent in compute matters, it only matters in conjunction with the rest of the network performance. And Cloudflare has an advantage over Fastly in Connect times and SSL establishment times:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-24.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-24.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

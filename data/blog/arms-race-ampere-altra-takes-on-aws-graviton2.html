@@ -6,8 +6,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image13-1.png" class="kg-image" alt="The Mt. Snow 1P server equipped with the Ampere Altra Q80-30">
 		<figcaption>The Mt. Snow 1P server equipped with the Ampere Altra Q80-30</figcaption>
 	</figure>
-	<p>The Ampere Altra and AWS Graviton2 alike are based on the Neoverse N1 platform by ARM, manufactured on the TSMC 7nm process. The N1 reference core features an 11-stage out-of-order execution pipeline along with the <a href="https://www.arm.com/solutions/infrastructure" target="_blank">following specifications</a> in ARM nomenclature.</p>
-	<!--kg-card-begin: html-->
+	<p>The Ampere Altra and AWS Graviton2 alike are based on the Neoverse N1 platform by ARM, manufactured on the TSMC 7nm process. The N1 reference core features an 11-stage out-of-order execution pipeline along with the <a href="https://www.arm.com/solutions/infrastructure" target="_blank">following specifications</a> in ARM nomenclature.</p><!--kg-card-begin: html-->
 	<center>
 		<table>
 			<thead>
@@ -43,10 +42,8 @@
 				</tr>
 			</tbody>
 		</table>
-	</center>
-	<!--kg-card-end: html-->
-	<p>A <a href="https://developer.arm.com/ip-products/processors/neoverse/neoverse-n1" target="_blank">N1 core</a> contains 64KiB of L1 instruction and 64KiB of L1 data caches and a dedicated L2 cache that can be implemented with up to 1MiB per core. The L3 cache or the System Level Cache can be implemented with up to 256MiB (up to 4MiB per slice, up to 64 slices) shared by all cores.</p>
-	<!--kg-card-begin: html-->
+	</center><!--kg-card-end: html-->
+	<p>A <a href="https://developer.arm.com/ip-products/processors/neoverse/neoverse-n1" target="_blank">N1 core</a> contains 64KiB of L1 instruction and 64KiB of L1 data caches and a dedicated L2 cache that can be implemented with up to 1MiB per core. The L3 cache or the System Level Cache can be implemented with up to 256MiB (up to 4MiB per slice, up to 64 slices) shared by all cores.</p><!--kg-card-begin: html-->
 	<center>
 		<style type="text/css">
 			.tg {
@@ -118,8 +115,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</center>
-	<!--kg-card-end: html-->
+	</center><!--kg-card-end: html-->
 	<p>A pair of N1 cores can optionally be combined into a dual-core configuration through the Component Aggregation Layer, then placed inside the mesh interconnects named the Coherent Mesh Network or <a href="https://developer.arm.com/ip-products/system-ip/corelink-interconnect/corelink-coherent-mesh-network-family/corelink-cmn-600" target="_blank">CMN-600</a> that supports up to 64 pairs of cores, totaling 128 cores.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image14-2.png" class="kg-image" alt="Component Aggregation Layer (CAL) supports up to two N1 cores">
 		<figcaption>Component Aggregation Layer (CAL) supports up to two N1 cores</figcaption>
@@ -130,8 +126,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image17-1.png" class="kg-image" alt="Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores">
 		<figcaption>Coherent Mesh Network (CMN-600) can be scaled up to 8x8 XPs supporting up to 128 cores</figcaption>
 	</figure>
-	<h2 id="system-specifications">System Specifications</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="system-specifications">System Specifications</h2><!--kg-card-begin: html-->
 	<center>
 		<table>
 			<thead>
@@ -184,15 +179,12 @@
 				</tr>
 			</tbody>
 		</table>
-	</center>
-	<!--kg-card-end: html-->
-	<p>We can verify that the two processors are based on the Neoverse N1 platform by checking <code>CPU part</code> inside <code>cpuinfo</code>, which returns <code>0xd0c</code>, the <a href="https://developer.arm.com/documentation/100616/0301/register-descriptions/aarch64-system-registers/midr-el1--main-id-register--el1" target="_blank">designated part number for the Neoverse N1</a>.</p>
-	<!--kg-card-begin: markdown-->
+	</center><!--kg-card-end: html-->
+	<p>We can verify that the two processors are based on the Neoverse N1 platform by checking <code>CPU part</code> inside <code>cpuinfo</code>, which returns <code>0xd0c</code>, the <a href="https://developer.arm.com/documentation/100616/0301/register-descriptions/aarch64-system-registers/midr-el1--main-id-register--el1" target="_blank">designated part number for the Neoverse N1</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code>sung@ampere-altra:~$ cat /proc/cpuinfo | grep 'CPU part' | head -1
 CPU part	: 0xd0c
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code>sung@aws-graviton2:~$ cat /proc/cpuinfo | grep 'CPU part' | head -1
 CPU part	: 0xd0c
 </code></pre>

@@ -6,8 +6,7 @@
 	<h2 id="-">什么是电子邮件欺骗和网络钓鱼？</h2>
 	<p>欺骗指为了获得某种非法利益而伪装成别人的过程。例如<strong>域名欺骗</strong>：某人托管 mycoolwebpaqe.xyz 网站以欺骗 mycoolwebpage.xyz 的用户提供敏感信息，使用户误以为这是正确的网站。在浏览器的地址栏并排查看时，很难发现两者的区别。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/Screen-Shot-2021-09-25-at-10.05.21-AM.png" class="kg-image"></figure>
-	<p>此外还有<strong>电子邮件欺骗</strong>。为了了解它是如何工作的，请看一下我通过自己的个人电子邮件地址收到的一封 Cloudflare 产品更新电子邮件。对于大多数电子邮件提供者，您可以查看电子邮件的完整源代码，其中包含多个标头以及电子邮件的主体。</p>
-	<!--kg-card-begin: markdown-->
+	<p>此外还有<strong>电子邮件欺骗</strong>。为了了解它是如何工作的，请看一下我通过自己的个人电子邮件地址收到的一封 Cloudflare 产品更新电子邮件。对于大多数电子邮件提供者，您可以查看电子邮件的完整源代码，其中包含多个标头以及电子邮件的主体。</p><!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
 From: Cloudflare &lt;product-updates@cloudflare.com&gt;
 Reply-To: product-updates@cloudflare.com
@@ -33,8 +32,7 @@ To: &lt;my_personal_email_address&gt;
 	</ul>
 	<p>然而，正确配置它们并非易事，尤其是对缺乏经验的人而言。如果您的配置过于严格，合法的电子邮件将被丢弃或标记为垃圾邮件。如果配置过于宽松，您的域名可能被滥用于电子邮件欺骗。</p>
 	<h2 id="-spf-">发送方策略框架 (SPF)</h2>
-	<p>SPF 用于指定哪些 IP 地址和域被允许代表您的域发送电子邮件。SPF 策略以 TXT 记录的形式发布在您的网域上，以便人人都能通过 DNS访问。我们来检查 cloudflare.com 上的 TXT 记录：</p>
-	<!--kg-card-begin: markdown-->
+	<p>SPF 用于指定哪些 IP 地址和域被允许代表您的域发送电子邮件。SPF 策略以 TXT 记录的形式发布在您的网域上，以便人人都能通过 DNS访问。我们来检查 cloudflare.com 上的 TXT 记录：</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -50,8 +48,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>关于所有机制的完整列表以及关于 SPF 的更多信息，请参阅 <a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>。</p>
 	<h2 id="-dkim-">域名密钥识别邮件 (DKIM)</h2>
 	<p>好啦，通过使用 SPF，我们已经确保只有允许的 IP 地址和域名才能代表 cloudflare.com 发送电子邮件。但是，如果其中一个 IP 在我们没有注意到的情况下改变了所有者并更新了 SPF 记录，我们怎么办？或者，如果其他人也使用谷歌的电子邮件服务器以相同的 IP 试图欺骗来自 cloudflare.com 的电子邮件怎么办？</p>
-	<p>此时即可使用 DKIM。DKIM 提供一种机制，可加密签署电子邮件的多个部分 — 通常为主体和某些标头 — 它使用的是<a href="https://www.cloudflare.com/zh-cn/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公共密钥加密</a>。在深入了解其工作原理之前，我们先看看 cloudflare.com 使用的 DKIM 记录：</p>
-	<!--kg-card-begin: markdown-->
+	<p>此时即可使用 DKIM。DKIM 提供一种机制，可加密签署电子邮件的多个部分 — 通常为主体和某些标头 — 它使用的是<a href="https://www.cloudflare.com/zh-cn/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公共密钥加密</a>。在深入了解其工作原理之前，我们先看看 cloudflare.com 使用的 DKIM 记录：</p><!--kg-card-begin: markdown-->
 	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -69,8 +66,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>完整 DKIM 规范可参阅 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank">RFC4871</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank">RFC5672</a>。</p>
 	<h2 id="-dmarc-">基于域名的邮件身份验证报告和一致性 (DMARC)</h2>
 	<p>基于域名的邮件身份验证报告和一致性，这个名称确实很拗口。我们来关注两个词：<em>报告</em>和<em>一致性</em>。这正是 DMARC 提供的内容。定期报告让邮件发送者知道有多少邮件不符合要求，可能受到欺骗。一致性有助于向邮件接收者提供一个明确的信号，告诉他们如何处理不符合要求的邮件。即使没有 DMARC 记录，邮件接收者也可能会对 SPF 或 DKIM 检查不通过的邮件施加自己的策略。但是，在 DMARC 记录上配置的策略是电子邮件发送者的显式指令，因此它增强了电子邮件接收者处理不符合要求电子邮件的信心。</p>
-	<p>这是 cloudflare.com 的 DMARC 记录</p>
-	<!--kg-card-begin: markdown-->
+	<p>这是 cloudflare.com 的 DMARC 记录</p><!--kg-card-begin: markdown-->
 	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -91,8 +87,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>现在我们已经知道了问题是什么，以及如何使用 SPF、DKIM 和 DMARC 来解决问题，下面，我们看看它们的普及情况。</p>
 	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a> 已经发布了一个代表性数据集中采用 DMARC 记录的域名的情况。其中显示，到 2020 年底，仍只有不到 50% 的域名拥有 DMARC 记录。记住，没有 DMARC 记录，就不会明确执行 SPF 和 DKIM 检查。研究进一步表明，在具有 DMARC 记录的域名中，超过 65% 的域名使用仅监视策略 (p:none)，因此，推动更高的采用率潜力巨大。该研究没有提到这些域名是否有在发送或接收电子邮件，但即使它们没有接收或发送，安全配置也应该包括 DMARC 记录（稍后详细介绍）。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-37.png" class="kg-image"></figure>
-	<p>2021 年 8 月 1 日的另一份<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">报告</a>指出，属于银行业实体的域名也出现了类似情况。在美国 2881 家银行实体中，只有 44% 的实体在其域名上发布了 DMARC 记录。在有 DMARC 记录的实体中，大约有 2/5 的实体将 DMARC 策略设置为 None，另外 8% 的实体存在“配置错误”情况。丹麦银行领域的域名中使用 DMARC 的比例非常高，达94%，而日本只有 13% 的域名使用 DMARC。SPF 的采用平均显著高于 DMARC，这可能与 2006 年首次引入 SPF 标准作为<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">实验性 RFC</a>、而 DMARC 仅在 2015 年<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">才成为标准</a>这一情况有关。</p>
-	<!--kg-card-begin: html-->
+	<p>2021 年 8 月 1 日的另一份<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">报告</a>指出，属于银行业实体的域名也出现了类似情况。在美国 2881 家银行实体中，只有 44% 的实体在其域名上发布了 DMARC 记录。在有 DMARC 记录的实体中，大约有 2/5 的实体将 DMARC 策略设置为 None，另外 8% 的实体存在“配置错误”情况。丹麦银行领域的域名中使用 DMARC 的比例非常高，达94%，而日本只有 13% 的域名使用 DMARC。SPF 的采用平均显著高于 DMARC，这可能与 2006 年首次引入 SPF 标准作为<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">实验性 RFC</a>、而 DMARC 仅在 2015 年<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">才成为标准</a>这一情况有关。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -193,8 +188,7 @@ To: &lt;my_personal_email_address&gt;
 				<td class="tg-2bn0">13%</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>这表明我们还有很大的改进空间。</p>
 	<h2 id="-dns-">进入：电子邮件安全 DNS 向导</h2>
 	<p>那么，我们要怎样做才能增加 SPF、DKIM 和 DMARC 的采用率并应对电子邮件欺骗和网络钓鱼？进入新的 Cloudflare <em>电子邮件安全 DNS 向导</em>。</p>
@@ -205,15 +199,12 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image.png" class="kg-image"></figure>
 	<p>为了开始使用<em>电子邮件安全 DNS 向导</em>，您可以直接点击警告中的链接（引导您进入向导的相关部分）或点击新的<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">电子邮件安全部分</a>中的<strong>配置</strong>。后者将向您显示以下可用选项：</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQYxUkch2oVOQI=s0" class="kg-image"></figure>
-	<p>有两种情况。您使用您的域名发送电子邮件，或没有这样做。如果是前者，您可以通过以下几个简单的步骤配置 SPF、DKIM 和 DMARC 记录。这里是针对 SPF 的步骤： </p>
-	<!--kg-card-begin: html-->
+	<p>有两种情况。您使用您的域名发送电子邮件，或没有这样做。如果是前者，您可以通过以下几个简单的步骤配置 SPF、DKIM 和 DMARC 记录。这里是针对 SPF 的步骤： </p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>如果您的域名不发送电子邮件，有一个简单的方法可一键配置所有三个记录：</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu4Vz-5IAj1JKK=s0" class="kg-image"></figure>
-	<p>单击 <strong>Submit</strong> 之后，将创建所有三个记录，并以相应方式配置，使所有电子邮件都检查不通过并被传入电子邮件服务器拒绝。</p>
-	<!--kg-card-begin: markdown-->
+	<p>单击 <strong>Submit</strong> 之后，将创建所有三个记录，并以相应方式配置，使所有电子邮件都检查不通过并被传入电子邮件服务器拒绝。</p><!--kg-card-begin: markdown-->
 	<pre><code>example.com			TXT	"v=spf1 -all"
 *._domainkey.example.com.	TXT	"v=DKIM1; p="
 _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"

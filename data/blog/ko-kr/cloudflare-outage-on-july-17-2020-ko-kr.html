@@ -25,16 +25,14 @@
 	<p>영향을 받지 않은 데이터 센터에서는 사고 시간 중 CPU 사용에 변화가 없었습니다. 해당 데이터 센터는 사고 시간 중 그대로 녹색이었다는 사실에서 이를 알 수 있습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-11.png" class="kg-image"></figure>
 	<h3 id="--1">사고 내용 및 조치</h3>
-	<p>애틀랜타에 백본 정체가 발생하자 저희 팀은 애틀랜타의 백본 트래픽 일부를 제거하기로 결정했습니다. 하지만 백본에서 애틀랜타 경로를 제거하는 대신, 라우터 설정의 한 줄 변경으로 인해 BGP 경로가 백본으로 누출기 시작했습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>애틀랜타에 백본 정체가 발생하자 저희 팀은 애틀랜타의 백본 트래픽 일부를 제거하기로 결정했습니다. 하지만 백본에서 애틀랜타 경로를 제거하는 대신, 라우터 설정의 한 줄 변경으로 인해 BGP 경로가 백본으로 누출기 시작했습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>{master}[edit]
 atl01# show | compare
 [edit policy-options policy-statement 6-BBONE-OUT term 6-SITE-LOCAL from]
 !       inactive: prefix-list 6-SITE-LOCAL { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>전체 코드는 다음과 같습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>전체 코드는 다음과 같습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>from {
     prefix-list 6-SITE-LOCAL;
 }

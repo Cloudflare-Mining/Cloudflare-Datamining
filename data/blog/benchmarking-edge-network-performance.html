@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/benchmarking-edge-network-performance-fr-fr/">Français</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><em><small>This blog was published on 17 September, 2021. As we continue to optimize our network we're publishing regular updates, which are available <a href="https://blog.cloudflare.com/tag/network-performance-update/">here</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image20.png" class="kg-image"></figure>
@@ -32,8 +31,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image"></figure>
 	<p>The Resource Timing API is supported by pretty<a href="https://caniuse.com/resource-timing" target="_blank"> much every browser</a> enabling measurement on everything from old versions of Internet Explorer, to mobile browsers on iOS and Android to the latest version of Chrome. Using this API gives us a view of real world use on real world browsers.</p>
 	<p>We don't just instruct the browser to download an image too. To make sure that we're fair and replicate the real-life end-user experience, we make sure that no local caching was involved in the request, check if the object has been compressed by the server or not, take the HTTP headers size into account, and record if the connection has been pre-warmed or not, to name a few technical details.</p>
-	<p>Here's a high-level example on how this works:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here's a high-level example on how this works:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">await fetch("https://example.com/100KB.png?r=7562574954", {
               mode: "cors",
               cache: "no-cache",
@@ -95,8 +93,7 @@ performance.getEntriesByType("resource");
 	<p>Hence, we have 18 charts showing all combinations of (TCP connection time, TTFB, TTLB), (mean, p95) and (all networks, top 1,000 networks by IP count, top 1,000 networks by observations).</p>
 	<p>You’ll see that in two of the charts Cloudflare is not #1 of 18 (we’re #2). We’ll be working to make sure we’re #1 for every measurement over the next few weeks. Both of those are average times. We’re most interested in the p95 measurements because they show the “reasonable worst case” scenario for someone using the Internet. But as we go about optimizing performance we want to be #1 on every chart so that we’re top no matter how performance is measured.</p>
 	<h3 id="tcp-connection-time">TCP Connection Time</h3>
-	<p>Let’s start with TCP connection time to get a sense of how well-connected the five companies we’ve measured. Recall that longer bars are better here, they indicate that the particular CDN was the highest performance for that many networks: more networks is better.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s start with TCP connection time to get a sense of how well-connected the five companies we’ve measured. Recall that longer bars are better here, they indicate that the particular CDN was the highest performance for that many networks: more networks is better.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -117,8 +114,7 @@ performance.getEntriesByType("resource");
 	</table>
 	<!--kg-card-end: markdown-->
 	<h3 id="time-to-first-byte-ttfb-">Time To First Byte (TTFB)</h3>
-	<p>Next up is TTFB for the five companies. Once again, longer bars is better means more networks where that CDN had the lowest TTFB.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next up is TTFB for the five companies. Once again, longer bars is better means more networks where that CDN had the lowest TTFB.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -139,8 +135,7 @@ performance.getEntriesByType("resource");
 	</table>
 	<!--kg-card-end: markdown-->
 	<h3 id="time-to-last-byte-ttlb-">Time To Last Byte (TTLB)</h3>
-	<p>And finally the TTLB measurements. Once again, longer bars is better means more networks where that CDN had the lowest TTLB.</p>
-	<!--kg-card-begin: markdown-->
+	<p>And finally the TTLB measurements. Once again, longer bars is better means more networks where that CDN had the lowest TTLB.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

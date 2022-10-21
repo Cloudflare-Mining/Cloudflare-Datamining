@@ -31,8 +31,7 @@
 	<p>Now that all employees are using their YubiKeys for phishing-resistant MFA are we finished? Well, what about SSH and non-HTTP protocols? We wanted a single unified approach to identity and access management so bringing security keys to arbitrary other protocols was our next consideration.</p>
 	<h3 id="using-security-keys-with-ssh">Using security keys with SSH</h3>
 	<p>To support bringing security keys to SSH connections we deployed <a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a> to all of our production infrastructure. Cloudflare Tunnel seamlessly integrates with Cloudflare Access regardless of the protocol transiting the tunnel, and running a tunnel requires the tunnel client <a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a>. This means that we could deploy the cloudflared binary to all of our infrastructure and create a tunnel to each machine, create Cloudflare Access policies where security keys are required, and ssh connections would start requiring security keys through Cloudflare Access.</p>
-	<p>In practice these steps are less intimidating than they sound and the Zero Trust developer docs have a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/" target="_blank">fantastic tutorial</a> on how to do this. Each of our servers have a configuration file required to start the tunnel. Systemd invokes cloudflared which uses this (or similar) configuration file when starting the tunnel.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In practice these steps are less intimidating than they sound and the Zero Trust developer docs have a <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/" target="_blank">fantastic tutorial</a> on how to do this. Each of our servers have a configuration file required to start the tunnel. Systemd invokes cloudflared which uses this (or similar) configuration file when starting the tunnel.</p><!--kg-card-begin: markdown-->
 	<pre><code>tunnel: 37b50fe2-a52a-5611-a9b1-ear382bd12a6
 credentials-file: /root/.cloudflared/37b50fe2-a52a-5611-a9b1-ear382bd12a6.json
 
@@ -42,8 +41,7 @@ ingress:
   - service: http_status:404
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When an operator needs to SSH into our infrastructure they use the ProxyCommand SSH directive to invoke cloudflared, authenticate using Cloudflare Access, and then forward the SSH connection through Cloudflare. Our employees’ SSH configurations have an entry that looks kind of like this, and can be generated with a helper command in cloudflared:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When an operator needs to SSH into our infrastructure they use the ProxyCommand SSH directive to invoke cloudflared, authenticate using Cloudflare Access, and then forward the SSH connection through Cloudflare. Our employees’ SSH configurations have an entry that looks kind of like this, and can be generated with a helper command in cloudflared:</p><!--kg-card-begin: markdown-->
 	<pre><code>Host *.ssh.cloudflare.com
     ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com
 </code></pre>

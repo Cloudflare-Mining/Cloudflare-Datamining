@@ -14,8 +14,7 @@
 		<li><em><em><em>Replace the router placeholder in the command snippet with the actual value.</em></em></em></li>
 		<li><em><em><em>Execute the command.</em></em></em></li>
 	</ol>
-	<p>In our new workflow, this step becomes a single task in the DAG named “enable_anycast”:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In our new workflow, this step becomes a single task in the DAG named “enable_anycast”:</p><!--kg-card-begin: markdown-->
 	<pre><code>enable_anycast = builder.wrap_class(AsyncSaltAPIOperator)(
              task_id='enable_anycast',
              target='{{ params.netops }}',
@@ -40,8 +39,7 @@
 	<p><strong>Macros</strong><br>Macros are used to pass dynamic information into task instances at runtime. Macros are a way to expose objects to templates. In other words, macros are functions that take input, modify that input, and give the modified output.</p>
 	<h3 id="adapting-tasks-for-preconditions-and-human-intervention">Adapting tasks for preconditions and human intervention</h3>
 	<p>There are a few steps in the SOP that require certain preconditions to be met. We use sensors to set dependencies between these tasks, and even between different DAGs, so that one does not run until the dependency has been met.</p>
-	<p>Below is an example of a sensor that waits until all nodes resolve to their assigned DNS records:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Below is an example of a sensor that waits until all nodes resolve to their assigned DNS records:</p><!--kg-card-begin: markdown-->
 	<pre><code>verify_node_dns = builder.wrap_class(DNSSensor)(
             task_id='verify_node_dns',
             zone=domain,
@@ -52,8 +50,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>In addition, some of our tasks still require input from a &nbsp;human operator. In these circumstances, we use sensors as blocking tasks that prevent work from starting until certain preconditions are met. We use these to set dependencies between tasks and even DAGs so that one does not run until the dependency has finished successfully.</p>
-	<p>The code below is a simple example of a task that will send notifications to get the attention of a human operator, and waits until a Change Request ticket has been provided and verified:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The code below is a simple example of a task that will send notifications to get the attention of a human operator, and waits until a Change Request ticket has been provided and verified:</p><!--kg-card-begin: markdown-->
 	<pre><code>verify_jira_input = builder.wrap_class(InputSensor)(
             task_id='verify_jira_input',
             var_key='jira',
@@ -67,15 +64,13 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image2-20.png" class="kg-image"></figure>
 	<h3 id="managing-dependencies-between-tasks">Managing Dependencies Between Tasks</h3>
 	<p>Replacing SOP steps with DAG tasks was only the first part of our journey towards greater automation. We also had to define the dependencies between these tasks and construct the workflow accordingly.</p>
-	<p>Here’s an example of what this looks like in code:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s an example of what this looks like in code:</p><!--kg-card-begin: markdown-->
 	<pre><code>verify_cr &gt;&gt; parse_cr &gt;&gt; [execute_offline, execute_online]
         execute_online &gt;&gt; silence_highstate_runner &gt;&gt; silence_metals &gt;&gt; \
             disable_highstate_runner
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The code simply uses bit shift operators to chain the operations. A list of tasks can also be set as dependencies:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The code simply uses bit shift operators to chain the operations. A list of tasks can also be set as dependencies:</p><!--kg-card-begin: markdown-->
 	<pre><code>change_metal_status &gt;&gt;  [wait_for_change_metal_status, verify_zone_update] &gt;&gt; \
 evaluate_ecmp_management
 </code></pre>
@@ -105,9 +100,7 @@ evaluate_ecmp_management
 	<h3 id="what-s-next-for-praas">What’s next for PraaS</h3>
 	<p>Onboarding of the other provisioning activities into PraaS, such as decommissioning, is already ongoing.</p>
 	<p>For expansions, our ultimate goal is a fully autonomous system that monitors whether new servers have been racked in our edge data centers — and automatically triggers expansions — with no human intervention.</p>
-	<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
+	<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/46b03ce3929263a54c073d14a343df16?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 </div>

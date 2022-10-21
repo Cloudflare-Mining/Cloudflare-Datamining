@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-2.png" class="kg-image" alt="Defending against future threats: Cloudflare goes post-quantum"></figure>
 	<p>我们日常使用的加密技术会有过时的一天。难以准确预判，但大约 <a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report/" target="_blank">15 到 40 年之间</a>，预计会诞生足够强大的量子计算机，它<a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">能够解密</a>当今互联网上的几乎所有加密数据。</p>
-	<p>幸运的是，有一种解决方案：<strong>后量子</strong> (PQ) 加密技术能够抵御量子计算机的威胁。就在三个月前即 2022 年 7 月，历经六年的全球竞争之后，以 AES 和 SHA2 著称的美国国家标准与技术研究院 (NIST) <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">宣布</a>推出了他们将进行标准化的后量子加密技术。NIST 计划在 2024 年发布最终标准，但我们希望帮助推动及早采用后量子加密技术。</p>
-	<!--kg-card-begin: markdown-->
+	<p>幸运的是，有一种解决方案：<strong>后量子</strong> (PQ) 加密技术能够抵御量子计算机的威胁。就在三个月前即 2022 年 7 月，历经六年的全球竞争之后，以 AES 和 SHA2 著称的美国国家标准与技术研究院 (NIST) <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">宣布</a>推出了他们将进行标准化的后量子加密技术。NIST 计划在 2024 年发布最终标准，但我们希望帮助推动及早采用后量子加密技术。</p><!--kg-card-begin: markdown-->
 	<p>从今天开始，作为测试版服务，通过 Cloudflare 提供的所有网站和 API 都将支持后量子混合密钥协议。此项默认开启<sup>1</sup>；无需选择加入。这意味着，如果您的浏览器/应用支持该协议，与我们网络的连接也就能够抵御未来任何量子计算机的威胁。</p>
 	<!--kg-card-end: markdown-->
 	<p>我们免费提供这种后量子加密技术：我们相信，后量子安全性应当成为互联网的新基准。</p>
@@ -31,10 +30,8 @@
 	<ul>
 		<li>使用<strong>数字签名</strong>算法，例如 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">RSA</a> 或 <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">ECDSA</a>，有两个密钥：一个<em>公钥</em>和一个<em>私钥</em>。只有使用私钥才能创建消息的<em>签名</em>。有对应公钥的任何人都可以检查签名对于给定消息是否确实有效。这些数字签名在用于对网站进行身份验证的 <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>TLS 证书</em></a>中居于核心地位。<br>RSA 和 ECDSA 都容易受到量子攻击。我们尚未将它们替换为后量子签名。原因是，身份验证不太紧迫：我们只需要在足够大型的量子计算机建造出来时将其替换即可，而当下由有漏洞的密钥协议保护的任何数据都可以存储起来并在未来解密。尽管时间宽裕，但部署后量子身份验证会<a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">相当有挑战性</a>。</li>
 	</ul>
-	<p>那么，这些构建块是如何组合起来创建 TLS 的呢？</p>
-	<!--kg-card-begin: html-->
-	<h2 id="tls-anchor">TLS 1.3 的高度概述</h2>
-	<!--kg-card-end: html-->
+	<p>那么，这些构建块是如何组合起来创建 TLS 的呢？</p><!--kg-card-begin: html-->
+	<h2 id="tls-anchor">TLS 1.3 的高度概述</h2><!--kg-card-end: html-->
 	<p>TLS 连接始于<strong>握手</strong>，后者用于对服务器进行身份验证并派生共享密钥。浏览器（客户端）首先发送一条 <em>ClientHello</em> 消息，其中包含其支持的 AEAD、签名算法和密钥协议方法的列表。为避免往返，客户端可以猜测服务器支持什么，并发送一个或多个<em>客户端密钥共享</em>来开始密钥协议。猜测可能正确（下图左侧），也可能客户端需要重试（右侧）。</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4.png" class="kg-image" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.">
 		<figcaption><em>已对服务器进行身份验证的 TLS 1.3 的协议流，左侧是支持的客户端密钥共享，右侧是 </em>HelloRetryRequest<em>。</em></figcaption>
@@ -53,18 +50,15 @@
 	<p><strong>结束握手</strong><br>服务器响应的最后一部分是<em>“服务器完成的”</em>，是目前为止整个记录上的<em>消息身份验证代码</em> (MAC)。这些工作大部分已由握手签名完成，但在没有握手签名的其他 TLS 运行模式（例如会话恢复）中，这很重要。</p>
 	<p>使用所选 AEAD 和服务器密钥共享，客户端可以计算共享密钥并解密和验证证书链、握手签名和握手 MAC。我们之前没有提到这一点，但共享密钥并未直接用于加密，而是作为额外措施与通信记录<a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93" target="_blank">混合在一起</a>，从而派生出多个特定密钥以供在握手期间以及后面的主连接期间使用。</p>
 	<p>客户端发送其自己的握手 MAC，然后继续发送使用握手期间派生的密钥加密的特定于应用程序的数据，才能结束握手。</p>
-	<p><strong>喂！重试请求？</strong><br>我们刚才概述的就是一种理想的流程，即客户端发送服务器支持的密钥共享。实际情况可能并非如此。服务器如果不接受客户端公告的任何密钥协议，就会告知客户端并中止连接。</p>
-	<!--kg-card-begin: html-->如果有双方都支持的密钥协议，但客户端未针对该协议发送密钥共享，则服务器将使用 HelloRetryRequest (HRR) 消息进行响应，请求客户端支持的特定密钥协议的密钥共享, <a href="#tls-anchor">如图右侧所示</a>。反过来，客户端会使用带有所选密钥共享的新 ClientHello 进行响应。
-	<p></p>
-	<!--kg-card-end: html-->
+	<p><strong>喂！重试请求？</strong><br>我们刚才概述的就是一种理想的流程，即客户端发送服务器支持的密钥共享。实际情况可能并非如此。服务器如果不接受客户端公告的任何密钥协议，就会告知客户端并中止连接。</p><!--kg-card-begin: html-->如果有双方都支持的密钥协议，但客户端未针对该协议发送密钥共享，则服务器将使用 HelloRetryRequest (HRR) 消息进行响应，请求客户端支持的特定密钥协议的密钥共享, <a href="#tls-anchor">如图右侧所示</a>。反过来，客户端会使用带有所选密钥共享的新 ClientHello 进行响应。
+	<p></p><!--kg-card-end: html-->
 	<p>这并非事情的全貌：服务器也可以发送 <em>HelloRetryRequest</em>，请求它所偏好的不同密钥协议，而不是客户端为其发送共享的协议。例如，如果客户端支持某后量子密钥协议，但未针对该协议发送密钥共享，则服务器可以将 <em>HelloRetryRequest</em> 发送到该协议。</p>
 	<p><em>HelloRetryRequest</em> 如今很罕见。几乎每个服务器都支持 X25519 密钥协议，而且几乎每个客户端（目前的比例高达 98%）都会发送 X25519 密钥共享。早先，P-256 是名副其实的标准，在很长一段时间内，许多浏览器会同时发送 P-256 和 X25519 密钥共享，防止发出 HelloRetryRequest。正如后面要讨论的那样，我们可能无法承受发送两个后量子密钥共享的高昂代价。</p>
 	<p><strong>理论上是这样</strong><br>TLS 1.3 设计为能够灵活应对其使用的加密技术中的各种情况，而不会降低安全性或性能，这便于我们迁移到后量子加密技术。理论上是这样，但现实中存在一些严重的问题，我们会在后面详谈。但首先，我们来看一下我们已经部署的后量子密钥协议。</p>
 	<h3 id="-">我们已经部署的内容</h3>
 	<p>今天，我们启用了对 <strong>X25519Kyber512Draft00</strong> 和 <strong>X25519Kyber768Draft00</strong> 密钥协议的支持，使用的分别为 TLS 标识符 0xfe30 和 0xfe31。这些就是我们今年 7 月在有限数量的区域上<a href="https://blog.cloudflare.com/experiment-with-pq/">启用</a>的相同密钥协议。</p>
 	<p>这两个密钥协议是一种<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank"><strong>混合协议</strong></a>，将经典的 <a href="https://www.rfc-editor.org/rfc/rfc8410" target="_blank">X25519</a> 分别与新的后量子 Kyber512 和 Kyber768 相结合（按此顺序）。这意味着，如果 Kyber 不安全，连接的安全性仍然与 X25519 等同。</p>
-	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 目前是 NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">选择</a>进行标准化的唯一密钥协议。Kyber 要求 CPU 非常轻量：它比以快速著称的 X25519 还要快。另一方面，其密钥共享明显更大：</p>
-	<!--kg-card-begin: html-->
+	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 目前是 NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">选择</a>进行标准化的唯一密钥协议。Kyber 要求 CPU 非常轻量：它比以快速著称的 X25519 还要快。另一方面，其密钥共享明显更大：</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -173,9 +167,7 @@
 				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17,000</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p><em><small>X25519 和 Kyber 之间的大小和 CPU 性能比较。性能在不同硬件平台和实现约束之间的差异非常大，应仅视为粗略参考。</small></em></p>
 	<!--kg-card-end: markdown-->
 	<p>在 NIST 于 2024 年进行最终标准化之前，Kyber 预计会有轻微改动，但这些改动向后不兼容。此外，与 TLS 的集成（包括混合密钥协议的选择与细节）尚未由 TLS 工作组最终确定。最终确定之后，我们会立即加以采用。</p>
@@ -204,8 +196,7 @@
 	<p>互联网是一个高度异构的系统。要找到所有问题，我们需要足够数量的各类测试者。我们与浏览器一起密切合作，添加对这些密钥协议的支持，但可能不是每个网络中都有其中一个浏览器。</p>
 	<p>因此，为了向互联网提供帮助，请尝试将您的一小部分流量切换到 Cloudflare 域，以使用这些新的密钥协议方法。我们为 <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>、<a href="https://github.com/cloudflare/go" target="_blank">Go</a> 和 <a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a> 设立了开源分叉。对于 BoringSSL 和 Go，请查看<a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">此处的示例代码</a>。如果您有任何问题，请向 <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> 发送邮件告诉我们。我们将在 IETF <a href="https://datatracker.ietf.org/group/tls/about/" target="_blank">TLS 工作组</a>层面讨论所有问题和解决办法。</p>
 	<h2 id="--5">前景</h2>
-	<p>过渡到后量子安全互联网势不容缓，但也存在一些挑战。如今，我们已经在我们的所有服务器（构成互联网中不小的一部分）上部署了初步后量子密钥协议，这样我们大家就可以立即开始测试这场大迁移。我们希望到 2024 年 NIST 最终完成 Kyber 时，我们大家都为顺畅过渡到后量子互联网打好了基础。</p>
-	<!--kg-card-begin: markdown-->
+	<p>过渡到后量子安全互联网势不容缓，但也存在一些挑战。如今，我们已经在我们的所有服务器（构成互联网中不小的一部分）上部署了初步后量子密钥协议，这样我们大家就可以立即开始测试这场大迁移。我们希望到 2024 年 NIST 最终完成 Kyber 时，我们大家都为顺畅过渡到后量子互联网打好了基础。</p><!--kg-card-begin: markdown-->
 	<p>.....<br>
 		<small><sup>1</sup>只有在基于 TLS 1.3（包括 HTTP/3）的协议中，我们才会支持这些后量子密钥协议。一个例外情况是：目前，我们在 FIPS 模式下禁止交换这些网站的混合密钥。</small>
 	</p>

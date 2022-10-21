@@ -45,8 +45,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/tor-resquest@2x.png" class="kg-image"></figure>
 	<p></p>
 	<p>In dem gleichen Sinne, wie Cloudflare die IP-Adressen besitzt, auf denen die Websites unserer Kunden bereitgestellt werden, betreiben wir zehn .onion-Adressen. Stellen Sie sich diese als zehn Cloudflare Points of Presence (oder PoPs) im Tor-Netzwerk vor. Der genaue Header sieht ungefähr so aus, nur, dass alle zehn .onion-Adressen enthalten sind, von denen jede mit dem Präfix „cflare“ beginnt:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -54,8 +53,7 @@
 	<p>Dies gibt einfach nur an, dass der maßgebliche Zugriff auf „cloudflare.com“ mit HTTP/2 („h2“) über den Onion Service „cflare2n[....].onion“ über den virtuellen Port 443 möglich ist. Das Feld „ma“ (max-age) gibt an, wie viele Sekunden lang sich der Client an die Existenz des alternativen Dienstes erinnern soll, und „persist“ gibt an, ob der Alternative-Dienst-Cache gelöscht werden soll, wenn das Netzwerk unterbrochen wird.</p>
 	<p>Sobald der Browser diesen Header erhält, versucht er, eine neue Tor-Verbindung zum im Alt-Svc-Header angebotenen Onion Service herzustellen und zu bestätigen, dass der Server, der auf dem virtuellen Port 443 lauscht, ein gültiges Zertifikat für „cloudflare.com“ vorlegen kann – d. h. für den ursprünglichen Hostnamen und nicht für die .onion-Adresse.</p>
 	<p>Der Onion Service leitet dann das Client-Hello-Paket an einen lokalen Server weiter, der ein Zertifikat für „cloudflare.com“ bereitstellen kann. Auf diese Weise kann der Tor-Daemon minimalisiert werden. Hier ist eine Beispiel-Konfigurationsdatei:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>SocksPort 0
 HiddenServiceNonAnonymousMode 1
 HiddenServiceSingleHopMode 1
@@ -86,8 +84,7 @@ Log notice stdout
 	<p>Denken Sie daran, dass ein Austrittsknoten zwar viele verschiedene Clients bereitstellen kann, aus Sicht von Cloudflare jedoch sämtliche Zugriffe von einer IP-Adresse kommen. Diese Bündelung hilft, den böswilligen Traffic in legitimem Datenverkehr zu verstecken, aber sie ist für die Sicherheit oder Privatsphäre von Tor nicht unbedingt erforderlich. Tatsächlich kann sie Benutzern schaden, indem sie ihren Traffic <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">schlechten Austrittsknoten</a> aussetzt.</p>
 	<p>Denken Sie daran, dass Tor-Verbindungen zu Onion Services eine Verbindungsnummer haben, mit der wir Rate Limiting für die Verbindung betreiben können. Nun stellt sich die Frage, wie man einen Server wie nginx mit minimalem Aufwand über diese Nummer informiert. Wie sich herausgestellt hat, können wir mit nur einer <a href="https://github.com/torproject/tor/pull/343/" target="_blank">kleinen Änderung</a> in der Tor-Binärdatei einen <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">Proxy-Protokoll</a>-Header am Anfang jedes Pakets einfügen, das an den Server weitergeleitet wird. Dieses Protokoll wurde entwickelt, um TCP-Proxys zu helfen, Parameter weiterzugeben, die bei der Übersetzung verloren gehen können, zum Beispiel Quell- und Ziel-IP-Adressen. Es wird bereits von nginx, Apache, Caddy usw. unterstützt.</p>
 	<p>Glücklicherweise ist der IPv6-Raum so groß, dass wir die Tor-Verbindungsnummer als IP-Adresse in einem ungenutzten Bereich kodieren und über das Proxy-Protokoll an den Server senden können. Hier ein Beispiel für den Header, den unser Tor-Daemon in die Verbindung einfügen würde:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>PROXY TCP6 2405:8100:8000:6366:1234:ABCD ::1 43981 443\r\n
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -128,8 +125,7 @@ Log notice stdout
 	<p>Während wir diesen Dienst anbieten und verbessern, werden wir Ihnen <a href="https://trac.torproject.org/projects/tor/ticket/27502" target="_blank">mitteilen</a>, was wir lernen. In der Zwischenzeit können Sie diese Idee auf <a href="https://github.com/mahrud/caddy-altonions" target="_blank">Caddy</a> ausprobieren und uns Kommentare oder Vorschläge senden.</p>
 	<h3 id="danksagung"><strong>Danksagung</strong></h3>
 	<p>Unser Dank gilt Patrick McManus von Mozilla für die Unterstützung von .onion Alternative Services in Firefox; Arthur Edelstein vom Tor-Projekt für die Überprüfung und Aktivierung von HTTP/2 und HTTP Alternative Services in Tor Browser 8.0; Alexander Færøy und George Kadianakis vom Tor-Projekt für die Unterstützung des Proxy-Protokolls in Onion Services; dem gesamten Tor-Projekt-Team für unbezahlbare Unterstützung und Diskussionen; und zu guter Letzt den vielen Leuten bei Cloudflare, die bei diesem Projekt geholfen haben.</p>
-	<h4 id="vom-cloudflare-onion-service-verwendete-adressen"><strong>Vom Cloudflare Onion Service verwendete Adressen</strong></h4>
-	<!--kg-card-begin: markdown-->
+	<h4 id="vom-cloudflare-onion-service-verwendete-adressen"><strong>Vom Cloudflare Onion Service verwendete Adressen</strong></h4><!--kg-card-begin: markdown-->
 	<pre><code>cflarexljc3rw355ysrkrzwapozws6nre6xsy3n4yrj7taye3uiby3ad.onion
 cflarenuttlfuyn7imozr4atzvfbiw3ezgbdjdldmdx7srterayaozid.onion
 cflares35lvdlczhy3r6qbza5jjxbcplzvdveabhf7bsp7y4nzmn67yd.onion

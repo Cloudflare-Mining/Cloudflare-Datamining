@@ -11,8 +11,7 @@
 	<p>Pour comprendre ce que signifie le terme <em>« imprévisible »</em>, il faut se rappeler que toute cryptographie est basée sur une asymétrie des informations. Si vous essayez d'effectuer une opération cryptographique en toute sécurité, vous craignez que quelqu'un (un <em>adversaire</em>) tente de mettre à mal votre système de sécurité. La seule chose qui vous distingue de votre adversaire, c'est que vous savez certaines choses que ce dernier ne sait pas, et la cryptographie a pour fonction de garantir que cette asymétrie des informations vous protège suffisamment.</p>
 	<p>Prenons un exemple simple. Supposons que vous et un ami vouliez aller au cinéma, mais que vous ne vouliez pas que votre pire ennemie sache quel film vous allez voir (de peur qu'elle ne débarque pour vous gâcher la séance !). Cette semaine, c'est à vous de choisir le film. Une fois votre choix arrêté, vous devrez envoyer un message à votre ami pour lui indiquer le film que vous avez choisi, mais vous devrez faire en sorte que, même si votre pire ennemie intercepte le message, elle ne puisse pas comprendre les informations qu'il contient.</p>
 	<p>Vous imaginez le stratagème suivant : étant donné que seuls deux films sont projetés en ce moment, vous appelez le premier A et le second B. Ensuite, en présence de votre ami, vous lancez une pièce. Vous vous mettez d'accord sur le tableau suivant en indiquant le message que vous allez envoyer en fonction de votre choix de film et selon que la pièce tombe du côté pile (P) ou du côté face (F). Une fois que vous aurez décidé quel film vous voulez voir, vous utiliserez ce tableau pour envoyer un message crypté à votre ami pour le lui faire savoir.</p>
-	<p></p>
-	<!--kg-card-begin: html-->
+	<p></p><!--kg-card-begin: html-->
 	<center>
 		<div style="border: 1px solid black;">
 			<table style="background-color: transparent;">
@@ -51,8 +50,7 @@
 				</tbody>
 			</table>
 		</div>
-	</center>
-	<!--kg-card-end: html-->
+	</center><!--kg-card-end: html-->
 	<p></p>
 	<p>Si vous choisissez le film B, et que la pièce tombe du côté face, vous envoyez le message suivant : « Gaby va se coucher dans l’herbe ». Puisque votre ami sait que la pièce de monnaie est tombée du côté face (il était là quand c'est arrivé), il sait que vous avez choisi le film B. Maintenant, mettez-vous à la place de votre pire ennemie. Elle ne sait pas de quel côté est tombée la pièce. Tout ce qu'elle sait, c'est qu'il y a 50 % de chances que la pièce soit tombée du côté pile, et autant qu’elle soit tombée du côté face. Ainsi, le message « Gaby va se coucher dans l’herbe » ne risque pas de lui dévoiler quel film vous avez choisi. Il y a 50 % de chances que la pièce soit tombée du côté face (qui correspond au film B), et 50 % de chances qu'elle soit tombée du côté pile (qui correspond au film A). Elle n’est pas plus avancée !</p>
 	<p>Revenons maintenant à la notion d’<em>imprévisibilité</em>. Imaginez que le résultat du lancer de pièce soit totalement prévisible, parce que votre pire ennemie l'a truquée pour qu'elle tombe toujours du côté face au premier lancer, du côté pile au deuxième lancer, du côté face au troisième, et ainsi de suite. Puisqu'elle saurait qu'il y a 100 % de chances que la pièce tombe du côté pile au premier lancer, elle comprendrait tout de suite quel film vous avez choisi, quel que soit le message envoyé. Bien que la pièce truquée présente encore quelques propriétés « aléatoires » de base, selon l'acception du terme dans le domaine des statistiques (elle tombe autant du côté pile que du côté face), elle est <em>prévisible</em>, et donc inutile en cryptographie. Attention : dans le contexte de la cryptographie, <em>aléatoire</em> est pour nous synonyme d'<em>imprévisible</em>.</p>

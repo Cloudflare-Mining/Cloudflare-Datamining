@@ -31,8 +31,7 @@
 		<figcaption>LOL HTML architecture</figcaption>
 	</figure>
 	<p>Having two different parser implementations for the same grammar will increase development costs and is error-prone due to implementation inconsistencies. We minimize these risks by implementing a small Rust macro-based DSL which is similar in spirit to Ragel. The DSL program describes <a href="https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton" target="_blank">Nondeterministic finite automaton</a> states and actions associated with each state transition and matched input byte.</p>
-	<p>An example of a DSL state definition:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example of a DSL state definition:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">tag_name_state {
    whitespace =&gt; ( finish_tag_name?; --&gt; before_attribute_name_state )
    b'/'       =&gt; ( finish_tag_name?; --&gt; self_closing_start_tag_state )
@@ -45,8 +44,7 @@
 	<p>We no longer need to reimplement the code that drives the parsing process for each of our parsers. All we need to do is to define different action implementations for each. In the case of the tag scanner, the majority of these actions are a no-op, so the Rust compiler does the NFA optimization job for us: it optimizes away state branches with no-op actions and even whole states if all of the branches have no-op actions. Now that’s cool.</p>
 	<h4 id="byte-slice-processing-optimisations">Byte slice processing optimisations</h4>
 	<p>Moving to a memory-safe language provided new challenges. Rust has great memory safety mechanisms, however sometimes they have a runtime performance cost.</p>
-	<p>The task of the parser is to scan through the input and find the boundaries of lexical units of the language - tokens and their internal parts. For example, an HTML start tag token consists of multiple parts: a byte slice of input that represents the tag name and multiple pairs of input slices that represent attributes and values:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The task of the parser is to scan through the input and find the boundaries of lexical units of the language - tokens and their internal parts. For example, an HTML start tag token consists of multiple parts: a byte slice of input that represents the tag name and multiple pairs of input slices that represent attributes and values:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">struct StartTagToken&lt;'i&gt; {
    name: &amp;'i [u8],
    attributes: Vec&lt;(&amp;'i [u8], &amp;'i [u8])&gt;,
@@ -54,8 +52,7 @@
 }</code></pre>
 	<!--kg-card-end: markdown-->
 	<p>As Rust uses bound checks on memory access, construction of a token might be a relatively expensive operation. We need to be capable of constructing thousands of them in a fraction of second, so every CPU instruction counts.</p>
-	<p>Following the principle of doing as little as possible to improve performance we use a “token outline” representation of tokens: instead of having memory slices for token parts we use numeric ranges which are lazily transformed into a byte slice when required.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Following the principle of doing as little as possible to improve performance we use a “token outline” representation of tokens: instead of having memory slices for token parts we use numeric ranges which are lazily transformed into a byte slice when required.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">struct StartTagTokenOutline {
    name: Range&lt;usize&gt;,
    attributes: Vec&lt;(Range&lt;usize&gt;, Range&lt;usize&gt;)&gt;,
@@ -76,17 +73,14 @@
 	<p>It did not work well with our dual parser architecture. We first need to to match just a tag name from the tag scanner, and then, if we fail, query the lexer for the attributes. The selectors library wasn’t designed with this architecture in mind so we needed ugly hacks to bail out from matching in case of insufficient information. It was inefficient as we needed to start matching again after the bailout doing twice the work. There were other problems, such as the integration of lazy character decoding and integration of tag name comparison using tag name hashes.</p>
 	<h5 id="matching-direction">Matching direction</h5>
 	<p>The main problem encountered was the need to backtrack all the open elements for matching. Browsers match selectors from right to left and traverse all ancestors of an element. This <a href="https://stackoverflow.com/a/5813672" target="_blank">StackOverflow</a> has a good explanation of why they do it this way. We would need to store information about all open elements and their attributes - something that we can’t do while operating with tight memory constraints. This matching approach would be inefficient for our case - unlike browsers, we expect to have just a few selectors and a lot of elements. In this case it is much more efficient to match selectors from left to right.</p>
-	<p>And this is when we had a revelation. Consider the following CSS selector: </p>
-	<!--kg-card-begin: markdown-->
+	<p>And this is when we had a revelation. Consider the following CSS selector: </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-css">body &gt; div.foo  img[alt] &gt; div.foo ul</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>It can be split into individual components attributed to a particular element with hierarchical combinators in between:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It can be split into individual components attributed to a particular element with hierarchical combinators in between:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-css">body &gt; div.foo img[alt] &gt; div.foo  ul
 ---    ------- --------   -------  --</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Each component is easy to match having a start tag token - it’s just a matter of comparison of token fields with values in the component. Let’s dive into abstract thinking and imagine that each such component is a character in the infinite alphabet of all possible components:</p>
-	<!--kg-card-begin: html-->
+	<p>Each component is easy to match having a start tag token - it’s just a matter of comparison of token fields with values in the component. Let’s dive into abstract thinking and imagine that each such component is a character in the infinite alphabet of all possible components:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -110,17 +104,14 @@
 				<td>d</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
-	<p>Let’s rewrite our selector with selector components replaced by our imaginary characters:</p>
-	<!--kg-card-begin: markdown-->
+	</table><!--kg-card-end: html-->
+	<p>Let’s rewrite our selector with selector components replaced by our imaginary characters:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-css">a &gt; b c &gt; b d</code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Does this remind you of something?</p>
 	<p>A &nbsp; `&gt;` combinator can be considered a child element, or “immediately followed by”.</p>
 	<p>The ` ` (space) is a descendant element can be thought of as there might be zero or more elements in between.</p>
-	<p>There is a very well known abstraction to express these relations - regular expressions. The selector replacing combinators can be replaced with a regular expression syntax:</p>
-	<!--kg-card-begin: markdown-->
+	<p>There is a very well known abstraction to express these relations - regular expressions. The selector replacing combinators can be replaced with a regular expression syntax:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-perl">ab.*cb.*d</code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We transformed our CSS selector into a regular expression that can be executed on the sequence of start tag tokens. Note that not all CSS selectors can be converted to such a regular grammar and the input on which we match has some specifics, which we’ll discuss later. However, it was a good starting point: it allowed us to express a significant subset of selectors.</p>
@@ -135,8 +126,7 @@
 		<li><em>thread L1, L2</em> - spawns threads for labels L1 and L2, effectively splitting the execution;</li>
 		<li><em>match</em> - succeed the thread with a match;</li>
 	</ul>
-	<p>For example, using this instructions set regular expression “<em>ab*c” </em>can be translated into<em>:</em></p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, using this instructions set regular expression “<em>ab*c” </em>can be translated into<em>:</em></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-assembler">    expect a
 L1: thread L2, L3
 L2: expect b
@@ -144,8 +134,7 @@ L2: expect b
 L3: expect c
     match</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Let’s try to translate the regular expression ab.*cb.*d from the selector we saw earlier:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s try to translate the regular expression ab.*cb.*d from the selector we saw earlier:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-assembler">    expect a
     expect b
 L1: thread L2, L3
@@ -159,8 +148,7 @@ L5: expect [any]
 L6: expect d
     match</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>That looks complex! Though this assembly language is designed for regular expressions in general, and regular expressions can be much more complex than our case. For us the only kind of repetition that matters is “<em>.*”</em>. So, instead of expressing it with multiple instructions we can use just one called <em>hereditary_jmp</em>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>That looks complex! Though this assembly language is designed for regular expressions in general, and regular expressions can be much more complex than our case. For us the only kind of repetition that matters is “<em>.*”</em>. So, instead of expressing it with multiple instructions we can use just one called <em>hereditary_jmp</em>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-assembler">    expect a
     expect b
     hereditary_jmp L1
@@ -175,8 +163,7 @@ L2: expect d
 	<p>A regular string is just a contiguous sequence of characters, whereas we operate on a sequence of open elements. As new tokens arrive this sequence can grow as well as shrink. Assume we represent &lt;div&gt; as ‘a’ character in our imaginary language, so having <code>&lt;div&gt;&lt;div&gt;&lt;div&gt;</code> input we can represent it as <code>aaa</code>, if the next token in the input is <code>&lt;/div&gt;</code> then our “string” shrinks to <code>aa</code>.</p>
 	<p>You might think at this point that our abstraction doesn’t work and we should try something else. What we have as an input for our machine is a stack of open elements and we needed a stack-like structure to store our hereditrary_jmp instruction labels that VM had seen so far. So, why not store it on the open element stack? If we store the next instruction pointer on each of stack items on which the <code>expect</code> instruction was successfully executed, we’ll have a full snapshot of the VM state, so we can easily roll back to it if our stack shrinks.</p>
 	<p>With this implementation we don’t need to store anything except a tag name on the stack, and, considering that we can use the tag name hashing algorithm, it is just a 64-bit integer per open element. As an additional small optimization, to avoid traversing of the whole stack in search of active hereditary jumps on each new input we store an index of the first ancestor with a hereditary jump on each stack item.</p>
-	<p>For example, having the following selector “<em>body</em> &gt; <em>div span”</em> we’ll have the following VM program (let’s get rid of labels and just use instruction indices instead):</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, having the following selector “<em>body</em> &gt; <em>div span”</em> we’ll have the following VM program (let’s get rid of labels and just use instruction indices instead):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-assembler">0| expect &lt;body&gt;
 1| expect &lt;div&gt;
 2| hereditary_jmp 3
@@ -191,8 +178,7 @@ L2: expect d
 	<p>which instructs VM to jump to instruction at index 1, effectively rolling back to matching the <em>div</em> component of the selector.</p>
 	<p>We mentioned earlier that we can bail out from the matching process if we only have a tag name from the tag scanner and we need to obtain more information by running the lexer? With a VM approach it is as easy as stopping the execution of the current instruction and resuming it later when we get the required information.</p>
 	<h5 id="duplicate-selectors">Duplicate selectors</h5>
-	<p>As we need a separate program for each selector we need to match, how can we stop the same simple components doing the same job? The AST for our selector matching program is a <a href="https://en.wikipedia.org/wiki/Radix_tree" target="_blank">radix tree</a>-like structure whose edge labels are simple selector components and nodes are hierarchical combinators.<br>For example for the following selectors:</p>
-	<!--kg-card-begin: markdown-->
+	<p>As we need a separate program for each selector we need to match, how can we stop the same simple components doing the same job? The AST for our selector matching program is a <a href="https://en.wikipedia.org/wiki/Radix_tree" target="_blank">radix tree</a>-like structure whose edge labels are simple selector components and nodes are hierarchical combinators.<br>For example for the following selectors:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-css">body &gt; div &gt; link[rel]
 body &gt; span
 body &gt; span a</code></pre>

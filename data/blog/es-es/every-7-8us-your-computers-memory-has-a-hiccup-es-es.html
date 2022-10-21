@@ -19,8 +19,7 @@
 	<p>Esto es algo que me ha preocupado durante cierto tiempo y me pregunté... ¿se puede percibir el retraso de la actualización en el software?</p>
 	<h2 id="manual-b-sico-de-actualizaci-n-de-la-ram-din-mica"><strong>Manual básico de actualización de la RAM dinámica</strong></h2>
 	<p>Cada módulo DIMM está compuesto por «celdas» y «filas», «columnas», «lados» y/o «rangos». En esta presentación de <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">la Universidad de Utah se explica la nomenclatura</a>. Puede comprobar la configuración de la memoria en su ordenador con el comando decode-dimms. A continuación, un ejemplo:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ decode-dimms
 Size                                       4096 MB
 Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
@@ -44,8 +43,7 @@ Ranks                                      2
 	<p>Durante la acción de actualización, se bloquea el chip de memoria completo. Esto significa que cada uno de los bits en la memoria se bloquea por más de 75 ns cada 7812 ns. Midámoslo.</p>
 	<h2 id="preparaci-n-de-un-experimento"><strong>Preparación de un experimento</strong></h2>
 	<p>Para medir las operaciones con una granularidad a nanosegundo, tenemos que escribir un bucle ajustado, tal vez en C. Se ve así:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>  for (i = 0; i &lt; ...; i++) {
 		// Perform memory load. Any load instruction will do
 		*(volatile int *) one_global_var;
@@ -68,8 +66,7 @@ Ranks                                      2
 	<p>El código es realmente sencillo. Realizar una lectura de memoria. Limpiar datos de las memorias caché de la CPU. Medir tiempo.</p>
 	<p>(Nota: en <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">el segundo experimento, intenté usar MOVNTDQA</a> para realizar la carga de datos, pero esto requiere una página especial que no se pueda guardar en caché, y para ello se necesita acceso de administrador.)</p>
 	<p>En mi ordenador, genera datos como estos:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code># timestamp, loop duration
 3101895733,     134
 3101895865,     132
@@ -95,15 +92,13 @@ Ranks                                      2
 		<li>Fijé un intervalo de muestro de 100 ns, pero cualquier número hasta <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">un valor de Nyquist (frecuencia doble esperada) también funciona bien</a>.</li>
 		<li>Los datos se deben muestrear con tiempos fijos antes de introducirlos en la FFT. Todos los métodos de muestreo razonables funcionan adecuadamente, y terminé realizando una interpolación lineal básica.</li>
 	</ul>
-	<p>El algoritmo es parecido al siguiente:</p>
-	<!--kg-card-begin: markdown-->
+	<p>El algoritmo es parecido al siguiente:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ decode-dimms
 Size                                       4096 MB
 Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
 Ranks                                      2
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code>UNIT=100ns
 A = [(timestamp, loop_duration),...] 
 p = 1
@@ -118,8 +113,7 @@ for curr_ts in frange(fist_ts, last_ts, UNIT):
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Que en mis datos produce un vector bastante aburrido como este:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -128,8 +122,7 @@ for curr_ts in frange(fist_ts, last_ts, UNIT):
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Sin embargo, el vector es bastante largo, normalmente con alrededor de 200 000 puntos de datos. Los datos preparados así ya están listos para introducirse en FFT.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>C = numpy.fft.fft(B)
 C = numpy.abs(C)
 F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
@@ -150,8 +143,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/5.png" class="kg-image"></figure>
 	<p></p>
 	<p>Primero, podemos ver tres picos claros. Después de un poco de insípida aritmética, con un filtrado de la lectura de al menos 10 veces el tamaño de la media, podemos extraer las frecuencias subyacentes:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>127850.0
 127900.0
 127950.0
@@ -170,8 +162,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<p>¡Hurra! El primer pico de frecuencia es ciertamente lo que estábamos buscando y, de hecho, se correlaciona con los tiempos de actualización.</p>
 	<p>Los otros picos a 256 kHz, 384 kHz, 512 kHz, etc., son multiplicaciones de nuestra frecuencia base de 128 kHz, llamada armonía. Estos son un efecto secundario de <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">realizar la FFT sobre algo parecido a una onda cuadrada</a>, y es algo totalmente esperado.</p>
 	<p>Para una experimentación más sencilla, <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">preparamos una versión de la línea de comando de esta herramienta</a>. Usted mismo puede ejecutar el código. A continuación, una ejecución de muestra en mi servidor:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>~/2018-11-memory-refresh$ make
 gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 ./measure-dram | python3 ./analyze-dram.py

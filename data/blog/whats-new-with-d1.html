@@ -53,8 +53,7 @@
 	<p>With D1, we can do better.</p>
 	<p>The <em>point</em> of a stored procedure was to execute directly next to the data—uploading the code and executing it inside the database was simply a means to that end. But we're using Workers, a global JavaScript execution platform, can we use them to solve this problem?</p>
 	<p>It turns out, absolutely! But here we have a few options of exactly how to make it work, and we're working with our private beta users to find the right API. In this section, I'd like to share with you our current leading proposal, and invite you all to give us your feedback.</p>
-	<p>When you connect a Worker project to a D1 database, you add the section like the following to your <code>wrangler.toml</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When you connect a Worker project to a D1 database, you add the section like the following to your <code>wrangler.toml</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-yaml">[[ d1_databases ]]
 # What binding name to use (e.g. env.DB):
 binding = "DB"
@@ -70,8 +69,7 @@ preview_database_id = "48a4224e-...3b09"
 procedures = "./src/db/procedures.js"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>That D1 Procedures file would contain the following (note the new <code>db.transaction()</code> API, that is only available within a file like this):</p>
-	<!--kg-card-begin: markdown-->
+	<p>That D1 Procedures file would contain the following (note the new <code>db.transaction()</code> API, that is only available within a file like this):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default class Procedures {
   constructor(db, env, ctx) {
     this.db = db
@@ -144,8 +142,7 @@ procedures = "./src/db/procedures.js"
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And in your Worker, your DB binding now has a “Procedures” property with your function names available:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And in your Worker, your DB binding now has a “Procedures” property with your function names available:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const { error, amount_charged, remaining_balance } =
   await env.DB.Procedures.Checkout(params.cartId)
 
@@ -170,8 +167,7 @@ if (error) {
 	<h2 id="the-d1-ecosystem-contributions-from-the-community">The D1 ecosystem: contributions from the community</h2>
 	<p>We've told you about what we've been up to and what's ahead, but one of the unique things about this project is all the contributions from our users. One of our favorite parts of private betas is not only getting feedback and feature requests, but also seeing what ideas and projects come to fruition. While sometimes this means personal projects, with D1, we’re seeing some incredible contributions to the D1 ecosystem. Needless to say, the work on D1 hasn’t just been coming from within the D1 team, but also from the wider community and other developers at Cloudflare. Users have been showing off their D1 additions within our Discord private beta channel and giving others the opportunity to use them as well. We wanted to take a moment to highlight them.</p>
 	<h3 id="workers-qb">workers-qb</h3>
-	<p>Dealing with raw SQL syntax is powerful (and using the D1 .bind() API, safe against SQL injections) but it can be a little clumsy. On the other hand, most existing query builders assume direct access to the underlying DB, and so aren’t suitable to use with D1. So Cloudflare developer Gabriel Massadas designed a small, zero-dependency query builder called <code>workers-qb</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dealing with raw SQL syntax is powerful (and using the D1 .bind() API, safe against SQL injections) but it can be a little clumsy. On the other hand, most existing query builders assume direct access to the underlying DB, and so aren’t suitable to use with D1. So Cloudflare developer Gabriel Massadas designed a small, zero-dependency query builder called <code>workers-qb</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { D1QB } from 'workers-qb'
 const qb = new D1QB(env.DB)
 
@@ -191,8 +187,7 @@ const fetched = await qb.fetchOne({
 	<p>This includes all bells and whistles you would expect from a modern database console including multiline input, command history, validation for things D1 may not yet support, and ability to save your Cloudflare credentials for later use.</p>
 	<p>Check out the full project on <a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank">GitHub</a> or <a href="https://www.npmjs.com/package/d1-console" target="_blank">NPM</a> for more information.</p>
 	<h3 id="miniflare-test-integration">Miniflare test Integration</h3>
-	<p>The <a href="https://miniflare.dev/" target="_blank">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest" target="_blank">Jest</a> and <a href="https://miniflare.dev/testing/vitest" target="_blank">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest#isolated-storage" target="_blank"><em>Isolated Storage</em></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The <a href="https://miniflare.dev/" target="_blank">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest" target="_blank">Jest</a> and <a href="https://miniflare.dev/testing/vitest" target="_blank">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest#isolated-storage" target="_blank"><em>Isolated Storage</em></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import Worker from ‘../src/index.ts’
 const { DB } = getMiniflareBindings();
 

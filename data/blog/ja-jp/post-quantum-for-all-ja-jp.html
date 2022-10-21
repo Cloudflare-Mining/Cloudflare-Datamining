@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-2.png" class="kg-image" alt="Defending against future threats: Cloudflare goes post-quantum"></figure>
 	<p>私たちが毎日使っている暗号技術には有効期限があります。予測は簡単ではありませんが、<a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report/" target="_blank">この先の15年から40年の間</a>のどこかで、十分に強力な量子コンピュータが作られ、基本的に現在インターネット上にあるあらゆる暗号データを<a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">解読できる</a>ようになると予想されています。</p>
-	<p>幸い、ソリューションとしてポスト<strong>量子</strong>(PQ)暗号化があり、これは量子コンピュータの脅威に対しても安全な設計がなされています。わずか3か月前の2022年7月、AESとSHA2で知られる米国国立標準技術研究所(NIST)は、6年間の世界的なコンテストの後、どのポスト量子暗号を標準化するかを<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">発表しました</a>。NISTは2024年に最終規格を公開する予定ですが、ポスト量子暗号の早期採用を促進したいと考えています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>幸い、ソリューションとしてポスト<strong>量子</strong>(PQ)暗号化があり、これは量子コンピュータの脅威に対しても安全な設計がなされています。わずか3か月前の2022年7月、AESとSHA2で知られる米国国立標準技術研究所(NIST)は、6年間の世界的なコンテストの後、どのポスト量子暗号を標準化するかを<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">発表しました</a>。NISTは2024年に最終規格を公開する予定ですが、ポスト量子暗号の早期採用を促進したいと考えています。</p><!--kg-card-begin: markdown-->
 	<p>本日よりベータサービスとして、Cloudflareを通じて提供されるすべてのWebサイトとAPIは、ポスト量子ハイブリッド鍵合意をサポートしています。これはデフォルトで有効になっています<sup>1</sup>。オプトインは必要ありません。つまり、お使いのブラウザやアプリが対応していれば、当社のネットワークへの接続は、将来の量子コンピュータに対しても安全です。</p>
 	<!--kg-card-end: markdown-->
 	<p>当社は、このポスト量子暗号を無償で提供します。ポスト量子セキュリティは、インターネットの新しいベースラインとなるべきものだと考えているからです。</p>
@@ -31,10 +30,8 @@
 	<ul>
 		<li><a href="https://en.wikipedia.org/wiki/RSA_(%E6%9A%97%E5%8F%B7%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)" target="_blank">RSA</a> や <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">ECDSA</a> などの<strong>デジタル署名</strong>アルゴリズムには、<em>公開鍵</em>と<em>プライベートキー</em>の2つの鍵があります。プライベートキーでのみ、メッセージの<em>署名</em>を作成できます。対応する公開鍵を持つ人は誰でも、特定のメッセージに対して署名が本当に有効かどうかを確認できます。これらのデジタル署名は、Webサイトの認証に使用される<a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>TLS 証明書</em></a>の重要な部分です。<br>RSA もECDSA も量子攻撃には脆弱ですが、まだポスト量子署名に置き換えていません。それは認証の方が緊急性が低く、十分な大きさの量子コンピュータができるまでに置き換えればよいからです。現在脆弱な鍵合意で保護されているデータについては、今保存され、将来解読される可能性があります。時間があるとはいえ、ポスト量子認証のデプロイはかなり<a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">ハードルが高く</a>なることでしょう。</li>
 	</ul>
-	<p>では、これらの要素がどのように組み合わされてTLSが構成されているのでしょうか。</p>
-	<!--kg-card-begin: html-->
-	<h2 id="tls-anchor">TLS 1.3 のハイレベルな概要</h2>
-	<!--kg-card-end: html-->
+	<p>では、これらの要素がどのように組み合わされてTLSが構成されているのでしょうか。</p><!--kg-card-begin: html-->
+	<h2 id="tls-anchor">TLS 1.3 のハイレベルな概要</h2><!--kg-card-end: html-->
 	<p>TLS接続は、<strong>ハンドシェイク</strong>で始まり、これはサーバーの認証と共有鍵の導出に使用されます。ブラウザ (クライアント) は、まず<em>ClientHello</em>メッセージを送信し、サポートする AEAD、署名アルゴリズム、および鍵合意方法のリストを含みます。ラウンドトリップをなくすために、クライアントはサーバーが何をサポートしているかを推測し、1つ以上の<em>クライアント共有鍵</em>を送信して鍵合意を開始することが許可されています。この推測が正しい場合 (下図の左側) もあれば、クライアントは再試行しなければならない場合 (下図の右側) もあります。</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4.png" class="kg-image" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.">
 		<figcaption><em>サーバー認証型TLS 1.3 のプロトコルフロー。左側にサポートされているクライアントの共有鍵、右側に</em>HelloRetryRequest<em>がある。</em></figcaption>
@@ -53,18 +50,15 @@
 	<p><strong>ハンドシェイクのまとめ</strong><br>サーバーの応答の最後の部分は、<em>「server finished」</em>であり、ここまでのすべてのトランスクリプトに関する<em>メッセージ認証コード</em> (MAC) です。ほとんどの作業はハンドシェイク署名によって行われましたが、セッション再開のようなハンドシェイク署名のないTLSの他の動作モードでは、これは重要となります。</p>
 	<p>選択したAEADとサーバの共有鍵により、クライアントは共有鍵を計算し、証明書チェーン、ハンドシェイク署名、ハンドシェイクMACを復号・検証することができます。言及していませんでしたが、共有鍵が暗号化に直接使用されることはありません。付け加えますと、共有鍵は、通信のトランスクリプトと<a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93" target="_blank">一緒に組み合わされて</a>、ハンドシェイクとその後のメイン接続で使用するいくつかの特定の鍵を作成するために使用されます。</p>
 	<p>ハンドシェイクを終了するために、クライアントは自身のハンドシェイクMACを送信し、その後、ハンドシェイク中に得られた鍵で暗号化されたアプリケーション固有のデータの送信に進むことができます。</p>
-	<p><strong>Hello! リトライリクエストとは？</strong><br>今描いたのは、クライアントがサーバーがサポートする共有鍵を送信するという望ましい流れです。リトライリクエストでは異なることがあります。もしサーバーがクライアントから宣伝されたどの鍵合意をも受け入れない場合、サーバーはクライアントにそのことを伝え、接続を中断します。</p>
-	<!--kg-card-begin: html-->両者がサポートする鍵同意があるものの、クライアントが共有鍵を送信していない場合、サーバーは HelloRetryRequest (HRR) メッセージで応答し、<a href="#tls-anchor">右図のようにクライアントがサポートする特定の鍵合意の共有鍵が要求されます</a>。一方、クライアントは選択された共有鍵とともに、新しい ClientHelloで応答します。
-	<p></p>
-	<!--kg-card-end: html-->
+	<p><strong>Hello! リトライリクエストとは？</strong><br>今描いたのは、クライアントがサーバーがサポートする共有鍵を送信するという望ましい流れです。リトライリクエストでは異なることがあります。もしサーバーがクライアントから宣伝されたどの鍵合意をも受け入れない場合、サーバーはクライアントにそのことを伝え、接続を中断します。</p><!--kg-card-begin: html-->両者がサポートする鍵同意があるものの、クライアントが共有鍵を送信していない場合、サーバーは HelloRetryRequest (HRR) メッセージで応答し、<a href="#tls-anchor">右図のようにクライアントがサポートする特定の鍵合意の共有鍵が要求されます</a>。一方、クライアントは選択された共有鍵とともに、新しい ClientHelloで応答します。
+	<p></p><!--kg-card-end: html-->
 	<p>これで終わりではありません。サーバーは、クライアントが共有を送信した鍵合意よりも優先する別の鍵合意を要求するために、<em>HelloRetryRequest</em>を送信することも許可されています。例えば、サーバーは、クライアントがポスト量子鍵合意をサポートしているものの、そのための共有鍵を送信していない場合、<em> HelloRetryRequest</em>を送信することができます。</p>
 	<p><em>HelloRetryRequest</em>は、今日では稀です。ほとんどすべてのサーバーが X25519 鍵合意をサポートし、ほとんどすべてのクライアント (現在 98%) が X25519 共有鍵を送信しています。以前はP-256が事実上の標準であり、長い間、多くのブラウザは HelloRetryRequest を防止するために P-256 と X25519 共有鍵の両方を送信していました。後述しますが、ポスト量子共有鍵を2つ送信する余裕はないかもしれません。</p>
 	<p><strong>理論的な話</strong><br>TLS 1.3 は、セキュリティやパフォーマンスを犠牲にすることなく、使用する暗号を柔軟に変更できるように設計されており、ポスト量子暗号への移行には好都合です。理論的にはそうなのですが、実際には重大な問題があります。詳しくは後ほど説明します。その前に、当社がデプロイしたポスト量子鍵合意を確認しておきましょう。</p>
 	<h3 id="-">デプロイした内容</h3>
 	<p>本日、<strong>X25519Kyber512Draft00</strong> および <strong>X25519Kyber768Draft00</strong> 鍵合意のサポートを、それぞれTLS 識別子 0xfe30 および 0xfe31 を使用して有効にしました。これらは、今年7月に限られた数のゾーンで<a href="https://blog.cloudflare.com/experiment-with-pq/">有効にした</a>ものとまったく同じ鍵合意です。</p>
 	<p>この2つの鍵合意は、古典的な<a href="https://www.rfc-editor.org/rfc/rfc8410" target="_blank"> X25519</a> と新しいポスト量子 Kyber512 と Kyber768 をそれぞれ、この順番で組み合わせた<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank"><strong>ハイブリッド</strong></a>です。つまり、Kyberが安全でないことが判明しても、接続は X25519 と同じ安全性が保たれます。</p>
-	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>は、今のところ、NISTが標準化として<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">選択した</a>唯一の鍵合意です。KyberはCPUの負荷が非常に軽く、すでに知られている X25519 よりも高速です。その一方で、共有鍵はずっと大きいものです。</p>
-	<!--kg-card-begin: html-->
+	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>は、今のところ、NISTが標準化として<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">選択した</a>唯一の鍵合意です。KyberはCPUの負荷が非常に軽く、すでに知られている X25519 よりも高速です。その一方で、共有鍵はずっと大きいものです。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -173,9 +167,7 @@
 				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17,000</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p><em><small>X25519とKyberのサイズとCPU性能の比較。性能はハードウェアプラットフォームや実装の制約によって大きく異なるため、あくまで目安として捉えてください。</small></em></p>
 	<!--kg-card-end: markdown-->
 	<p>Kyberは、2024年のNISTによる最終的な標準化までに、マイナーな後方互換性のない変更が行われると予想されています。また、ハイブリッド鍵合意の選択と詳細を含むTLSとの統合は、TLSワーキンググループによってまだ最終化されていません。それが決まれば、速やかに適用していきます。</p>
@@ -204,8 +196,7 @@
 	<p>インターネットは非常に異機種な環境にあるシステムです。すべての問題を発見するためには、十分な数の多様なテスターが必要です。これらの鍵同意のサポートを追加するためにブラウザと協業していますが、すべてのネットワークはこれらのブラウザの1つであるとは限りません。</p>
 	<p>そこで、インターネットを支援するために、あなたのトラフィックの一部をCloudflareドメインに切り替え、これらの新しい鍵合意方式を使用してみてください。当社は<a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>、<a href="https://github.com/cloudflare/go" target="_blank">Go</a>、<a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a>の方式をオープンソース化しています。BoringSSLとGoについては、<a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">こちらのサンプルコード</a>をご覧ください。もし何か問題があれば、<a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> までお知らせください。問題点や回避策については、IETF <a href="https://datatracker.ietf.org/group/tls/about/" target="_blank">TLSワーキンググループ</a>で検討していく予定です。</p>
 	<h2 id="--5">展望</h2>
-	<p>ポスト量子セキュアインターネットへの移行は急務ですが、課題がないわけではありません。今日、当社はすべてのサーバー (インターネットのかなりの部分) に予備的なポスト量子鍵合意をデプロイし、今日から皆で大規模な移行をテストできるようにしました。2024年、NISTがKyberに弓を引くとき、私たちは皆、ポスト量子インターネットへのスムーズな移行のための土台を築いていることでしょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ポスト量子セキュアインターネットへの移行は急務ですが、課題がないわけではありません。今日、当社はすべてのサーバー (インターネットのかなりの部分) に予備的なポスト量子鍵合意をデプロイし、今日から皆で大規模な移行をテストできるようにしました。2024年、NISTがKyberに弓を引くとき、私たちは皆、ポスト量子インターネットへのスムーズな移行のための土台を築いていることでしょう。</p><!--kg-card-begin: markdown-->
 	<p>.....<br>
 		<small><sup>1</sup>当社は、HTTP/3を含むTLS 1.3 ベースのプロトコルのみで、これらのポスト量子鍵合意をサポートします。例外として、FIPSモードのWebサイトでは、現時点ではハイブリッド鍵交換を無効にしています。</small>
 	</p>

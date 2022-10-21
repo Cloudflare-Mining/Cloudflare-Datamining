@@ -15,8 +15,7 @@
 	<p><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">以前ご説明したように</a>、AVIFは、HEIF ISO規格と、<a href="https://aomedia.org/" target="_blank">Mozilla、Xiph、Google、Cisco、およびその他多くの</a>ロイヤリティフリーのAV1コーデックを組み合わせたものです。</p>
 	<p>「現在、JPEGはウェブ上で最も人気のある画像形式です。古くから非常に好調で、互換性に優れているため、今後も人気が続くと思われます。JPEG 2000、JPEG XR、WebPなど、JPEGに置き換わる試みはこれまで多くありました。しかし、これらの形式による圧縮の改善はささやかなもので、画質で必ずしもJPEGに勝るとは限りませんでした。 <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank">AVIFの圧縮と画質は、それらすべてよりも大幅に優れています</a>。」1</p>
 	<h3 id="cloudflare-images-avif-"><strong>Cloudflare ImagesでAVIFをサポートする方法</strong></h3>
-	<p>注意事項として、<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">画像配信</a>はCloudflareが管理するimagedelivery.netドメインを介して行われます。それはCloudflare Workersを活用します。AcceptHTTPリクエストヘッダーに基づいてAVIFフォーマットをリクエストするロジックは次のとおりです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>注意事項として、<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">画像配信</a>はCloudflareが管理するimagedelivery.netドメインを介して行われます。それはCloudflare Workersを活用します。AcceptHTTPリクエストヘッダーに基づいてAVIFフォーマットをリクエストするロジックは次のとおりです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const WEBP_ACCEPT_HEADER = /image\/webp/i;
 const AVIF_ACCEPT_HEADER = /image\/avif/i;
 
@@ -59,8 +58,7 @@ async function handleRequest(event) {
 	<p>WebPおよびAVIF形式へのすべての変換は、現時点では画像配信のリクエストフェーズで行われることに注意してください。将来的には、アップロードフェーズで画像を変換する機能を追加する予定です。</p>
 	<h3 id="-"><strong>ぼかし機能の導入</strong></h3>
 	<p>ImagesとImage Resizingで最も要望の多かった機能の1つは、ぼかし機能のサポートを追加することでした。最近、<a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank">URL形式</a>と<a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank">Cloudflare Workers</a>の両方でぼかし機能のサポートを追加しました。</p>
-	<p>Cloudflare Imagesはバリアントを使用しています。バリアントを作成するときに、バリアント名、幅、高さ、およびバリアントをパブリックにアクセス可能にするかどうかなどのプロパティを定義できます。ぼかし機能は、<a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank">バリアントAPI</a>を介したバリアントの新しいオプションとして利用できるようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cloudflare Imagesはバリアントを使用しています。バリアントを作成するときに、バリアント名、幅、高さ、およびバリアントをパブリックにアクセス可能にするかどうかなどのプロパティを定義できます。ぼかし機能は、<a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank">バリアントAPI</a>を介したバリアントの新しいオプションとして利用できるようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants" \
      -H "Authorization: Bearer &lt;api_token&gt;" \
      -H "Content-Type: application/json" \
@@ -68,27 +66,21 @@ async function handleRequest(event) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Cloudflare Imagesでぼかし機能を使用する事例の1つに、プレミアムコンテンツへのアクセス制御があります。</p>
-	<p>お客様は、アクセストークンが必要な画像をアップロードします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>お客様は、アクセストークンが必要な画像をアップロードします。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1" \
      -H "Authorization: Bearer &lt;api_token&gt;"
      --form 'file=@./&lt;file_name&gt;' \
      --form 'requireSignedURLs=true'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>APIを介して定義したバリアントを使用して、署名を提供せずに画像を取得できます。</p>
-	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps">
-	<!--kg-card-end: html-->
-	<p>保護された画像にアクセスするには、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank">有効な署名付きURL</a>が必要です。</p>
-	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
+	<p>APIを介して定義したバリアントを使用して、署名を提供せずに画像を取得できます。</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"><!--kg-card-end: html-->
+	<p>保護された画像にアクセスするには、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank">有効な署名付きURL</a>が必要です。</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
 	Cloudflare 社のロビーにあるラバランプ <a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank">@mahtin</a>
-	<br>
-	<!--kg-card-end: html-->
+	<br><!--kg-card-end: html-->
 	<p>画像のぼかし機能と画像へのアクセス制限の組み合わせは、多くのシナリオに統合でき、コンテンツ発行者に強力なツールセットを提供します。</p>
 	<p>ぼかしオプションを使用してバリアントを定義する機能は、Cloudflareダッシュボードで間もなく使用できるようになります。</p>
 	<h3 id="--1"><strong>カスタムドメインからの画像の提供</strong></h3>
-	<p>Cloudflare Imagesのお客様にとって重要なユースケースの1つは、カスタムドメインからの画像を提供することです。クライアントで追加のTLSネゴシエーションを必要としないことで、遅延の短縮と読み込みパフォーマンスの改善ができます。Cloudflare Workersを使用しているお客様は、次の例を使用して、この機能を今すぐ追加できます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cloudflare Imagesのお客様にとって重要なユースケースの1つは、カスタムドメインからの画像を提供することです。クライアントで追加のTLSネゴシエーションを必要としないことで、遅延の短縮と読み込みパフォーマンスの改善ができます。Cloudflare Workersを使用しているお客様は、次の例を使用して、この機能を今すぐ追加できます。</p><!--kg-card-begin: markdown-->
 	<pre><code>const IMAGE_DELIVERY_HOST = "https://imagedelivery.net";
 
 addEventListener("fetch", async (event) =&gt; {
@@ -104,8 +96,7 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>簡素化するために、Workersスクリプトは、デプロイされているドメインからimagedelivery.netにリダイレクトします。Cloudflare ImagesのURLと同じ形式を想定しています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>簡素化するために、Workersスクリプトは、デプロイされているドメインからimagedelivery.netにリダイレクトします。Cloudflare ImagesのURLと同じ形式を想定しています。</p><!--kg-card-begin: markdown-->
 	<pre><code>https://&lt;customdomain.net&gt;/&lt;encoded account id&gt;/&lt;image id&gt;/&lt;variant name&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -115,8 +106,7 @@ async function handleRequest(request) {
 		<li>アカウントIDまたはバリアント名を自動的に入力</li>
 		<li>Cloudflare ImagesをカスタムURLに完全にマッピング</li>
 	</ul>
-	<p>CloudflareのドメインからCloudflare Imagesを簡単に提供したいお客様のために、次の形式を使用してCloudflare Imagesを提供する機能を追加します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>CloudflareのドメインからCloudflare Imagesを簡単に提供したいお客様のために、次の形式を使用してCloudflare Imagesを提供する機能を追加します。</p><!--kg-card-begin: markdown-->
 	<pre><code>https://&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -133,17 +123,13 @@ async function handleRequest(request) {
 	<ul>
 		<li>Stream: 10,000分間の動画の保存と、50,000分の提供</li>
 		<li>Images: 500,000枚の画像の保存と、1000,000枚の画像の提供</li>
-	</ul>
-	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included">
-	<!--kg-card-end: html-->
+	</ul><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included"><!--kg-card-end: html-->
 	<p>これらの新しいバンドルは、11月末からすべてのお客様にご利用いただけます。</p>
 	<h3 id="--2"><strong>次は何を？</strong></h3>
-	<p>ここで止まることはなく、すでにImagesの次の機能に狙いを定めています。その1つがImages Analyticsです。製品の優れた分析を行うことは非常に重要であるため、すべてのお客様がすべての画像とその使用状況を追跡できるように、Cloudflare Imagesに分析機能を導入します。</p>
-	<!--kg-card-begin: html-->
+	<p>ここで止まることはなく、すでにImagesの次の機能に狙いを定めています。その1つがImages Analyticsです。製品の優れた分析を行うことは非常に重要であるため、すべてのお客様がすべての画像とその使用状況を追跡できるように、Cloudflare Imagesに分析機能を導入します。</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<hr>
 	<p>1<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">/generate-avif-images-with-image-resizing/#what-is-avif</a></p>
 </div>

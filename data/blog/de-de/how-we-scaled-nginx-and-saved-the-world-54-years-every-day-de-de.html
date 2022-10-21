@@ -3,8 +3,7 @@
 	<p>10 Millionen Websites, Apps und APIs nutzen Cloudflare, um ihren Besuchern einen Geschwindigkeitsschub zu verpassen. Zu Spitzenzeiten bearbeiten wir in unseren 151 Rechenzentren mehr als 10 Millionen Anfragen pro Sekunde. Im Laufe der Jahre haben wir viele Änderungen an unserer Version von NGINX vorgenommen, um unserem Wachstum gerecht zu werden. In diesem Blogbeitrag geht es um eine davon.</p>
 	<h3 id="so-funktioniert-nginx"><strong>So funktioniert NGINX</strong></h3>
 	<p>NGINX ist eines der Programme, das die Verwendung von Ereignisschleifen zur Lösung des <a href="http://www.kegel.com/c10k.html" target="_blank">C10K-Problems</a> populär gemacht hat. Jedes Mal, wenn ein Netzwerkereignis eintritt (eine neue Verbindung, eine Anfrage oder eine Meldung, dass wir mehr Daten senden können usw.), wacht NGINX auf, verarbeitet das Ereignis und macht dann wieder das, was auch immer es tun muss (das kann das Verarbeiten von anderen Ereignissen sein). Wenn ein Ereignis eintrifft, stehen die mit dem Ereignis verbundenen Daten schon bereit, sodass NGINX viele Anfragen gleichzeitig effizient verarbeiten kann, ohne zu warten.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
 // events is list of active events
 // handle event[0]: incoming request GET http://example.com/
@@ -13,8 +12,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>So könnte beispielsweise ein Codeabschnitt aussehen, mit dem Daten aus einem Datei-Deskriptor (fd) gelesen werden:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>// we got a read event on fd
 while (buf_len &gt; 0) {
     ssize_t n = read(fd, buf, buf_len);
@@ -39,8 +37,7 @@ while (buf_len &gt; 0) {
 	<p>Wenn fd eine normale Datei in Linux ist, kommt es nie zu <code>EWOULDBLOCK</code> and <code>EAGAIN</code> und das Leseereignis wartet immer darauf, den gesamten Puffer zu lesen. Dies gilt auch dann, wenn die Datei mit <code>O_NONBLOCK</code> geöffnet wurde. Um <code>open(2)</code> zu zitieren:</p>
 	<blockquote>Beachten Sie, dass dieses Flag keine Auswirkung auf reguläre Dateien und blockorientierte Geräte hat.</blockquote>
 	<p>Mit anderen Worten, der obige Code reduziert sich im Wesentlichen auf:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>if (read(fd, buf, buf_len) &gt; 0) {
    return buf_len;
 }
@@ -54,8 +51,7 @@ while (buf_len &gt; 0) {
 	<p>SSDs sind sehr schnell, aber sie sind bekanntermaßen auch kompliziert. In ihnen befinden sich Computer, die E/As aneinanderreihen und neu ordnen sowie verschiedene Hintergrundaufgaben wie Speicherbereinigung und Defragmentierung ausführen. Ab und zu wird eine Anfrage so verlangsamt, dass dies merkliche Auswirkungen hat. Mein Kollege <a href="https://twitter.com/ibobrik?lang=en" target="_blank">Ivan Babrou</a> hat einige E/A-Benchmark-Tests durchgeführt und erlebte Lesespitzen von bis zu 1 Sekunde. Darüber hinaus weisen einige unserer SSDs mehr Performance-Ausreißer auf als andere. In Zukunft werden wir Leistungskonstanz bei unseren SSD-Käufen berücksichtigen, aber bis dahin benötigen wir eine Lösung für unsere bestehende Hardware.</p>
 	<h3 id="gleichm-ige-lastverteilung-mit-so_reuseport"><strong>Gleichmäßige Lastverteilung mit </strong><code>SO_REUSEPORT</code></h3>
 	<p>Eine einzelne langsame Antwort alle Jubeljahre einmal ist schwer zu vermeiden, aber was wir wirklich nicht wollen, ist eine E/A, die eine Sekunde dauert und dabei die 1.000 anderen Anfragen blockiert, die wir innerhalb derselben Sekunde erhalten. Konzeptionell kann NGINX viele Anfragen parallel verarbeiten, führt aber nur jeweils einen Ereignishandler aus. Deshalb habe ich eine Metrik hinzugefügt, die dies misst:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>if (read(fd, buf, buf_len) &gt; 0) {
    return buf_len;
 }
@@ -67,8 +63,7 @@ while (buf_len &gt; 0) {
 	<p><code>SO_REUSEPORT</code> kann das Problem der ungleichen Verteilung lösen. Marek Majkowski hat bereits im Zusammenhang mit anderen NGINX-Instanzen über den <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Nachteil</a> geschrieben, aber dieser Nachteil trifft in unserem Fall meist nicht zu, da Upstream-Verbindungen in unserem Cache-Prozess langlebig sind, sodass eine etwas höhere Latenz beim Öffnen der Verbindung vernachlässigbar ist. Diese Konfigurationsänderung allein, mit der <code>SO_REUSEPORT</code> aktiviert wird, verbesserte die Höchst-P99 um 33 %.</p>
 	<h3 id="verschieben-von-read-in-den-thread-pool-keine-wunderl-sung"><strong>Verschieben von read() in den Thread-Pool: keine Wunderlösung</strong></h3>
 	<p>Eine Lösung dafür besteht darin, dafür zu sorgen, dass read() nicht blockiert. Tatsächlich ist diese Funktion <a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank">im Upstream von NGINX implementiert</a>! Wenn die folgende Konfiguration verwendet wird, werden <code>read()</code> und <code>write()</code> in einem Thread-Pool ausgeführt und blockieren die Ereignisschleife nicht:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>aio         threads;
 aio_write   on;
 </code></pre>
@@ -79,8 +74,7 @@ aio_write   on;
 	<p>Außerdem befassen wir uns vor allem mit der P99- (und P999-)Performance. Lösungen, die bei der Durchschnitts-Performance helfen, helfen nicht unbedingt bei Ausreißern.</p>
 	<p>Zu guter Letzt sind in unserer Umgebung die typischen Dateigrößen auch viel kleiner. 90 % unserer Cache-Treffer sind für Dateien, die kleiner als 60 KB sind. Kleinere Dateien bedeuten weniger Gelegenheiten für Blockierungen (wir lesen normalerweise die gesamte Datei in zwei Lesezugriffen).</p>
 	<p>Wenn wir uns die Festplatten-E/A ansehen, die bei einem Cache-Treffer ausgeführt werden muss:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>// we got a request for https://example.com which has cache key 0xCAFEBEEF
 fd = open("/cache/prefix/dir/EF/BE/CAFEBEEF", O_RDONLY);
 // read up to 32KB for the metadata as well as the headers
@@ -90,8 +84,7 @@ read(fd, buf, 32*1024);
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>32 KB ist keine statische Zahl. Wenn die Header klein sind, müssen wir nur 4 KB lesen (wir verwenden kein direktes E/A, sodass der Kernel auf 4 KB aufrunden wird). Das open() scheint harmlos zu sein, aber es hat tatsächlich seine Kosten. Als Minimum muss der Kernel prüfen, ob die Datei existiert und ob der aufrufende Prozess die Berechtigung hat, sie zu öffnen. Dazu müsste er den Inode von <code>/cache/prefix/dir/EF/BE/CAFEBEEF</code> finden, wozu er <code>CAFEBEEF</code> in <code>/cache/prefix/dir/EF/BE/</code> nachschlagen müsste. Um es kurz zu fassen, im schlimmsten Fall muss der Kernel die folgenden Lookups durchführen:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>/cache
 /cache/prefix
 /cache/prefix/dir

@@ -12,8 +12,7 @@
 	<p>Para entender lo que significa <em>impredecibles</em>, ayuda tener en cuenta que toda la criptografía se basa en una asimetría de la información. Si quieres realizar una operación criptográfica de manera segura, entonces lo que te preocupa es que alguien, un <em>adversario</em>, intente quebrantar tu seguridad. Lo único que te distingue del adversario es que sabes algunas cosas que el adversario no sabe, y el objetivo de la criptografía es garantizar que esta asimetría de la información sea suficiente para mantenerte seguro.</p>
 	<p>Consideremos un sencillo ejemplo. Imagina que un amigo y tú queréis ir a ver una película, pero no quieres que tu enemigo averigüe a qué película iréis (por si aparece y os estropea la película). Esta semana, es tu turno para elegir película. Una vez que has hecho tu elección, tendrás que enviar un mensaje a tu amigo diciéndole qué película has elegido, pero necesitarás asegurarte de que, incluso si tu enemigo intercepta el mensaje, no sea capaz de averiguar lo que dice.</p>
 	<p>Diseñas el siguiente plan: puesto que ahora mismo hay solamente dos películas disponibles para ver, se etiqueta una con A y la otra con B. Entonces, en presencia de tu amigo, lanzas una moneda. Os ponéis de acuerdo en la siguiente tabla que define el mensaje que enviarás dependiendo de la película que elijas y de si la moneda cae en cara (C) o cruz (Z). Más tarde, una vez que hayas decidido qué película ver, usarás esta tabla para enviar un mensaje cifrado a tu amigo diciéndole qué película has elegido.</p>
-	<p></p>
-	<!--kg-card-begin: html-->
+	<p></p><!--kg-card-begin: html-->
 	<center>
 		<div style="border: 1px solid black;">
 			<table style="background-color: transparent;">
@@ -52,8 +51,7 @@
 				</tbody>
 			</table>
 		</div>
-	</center>
-	<!--kg-card-end: html-->
+	</center><!--kg-card-end: html-->
 	<p></p>
 	<p>Si te hubieras decidido por la película B y la moneda hubiera caído en cara, enviarías el mensaje, "En Jalapa, Jamaica y Java ájanse en junio enebros y jaras". Puesto que tu amigo sabe que la moneda cayó en cara (estaba allí cuando pasó) él sabe que debes haberte decidido por la película B. Pero considéralo desde la perspectiva de tu enemigo. No sabe el resultado del sorteo; solo sabe que hay un 50 % de probabilidad de que la moneda cayera en cara y un 50 % de probabilidad de que cayera en cruz. Por lo tanto, ver el mensaje "En Jalapa, Jamaica y Java ájanse en junio enebros y jaras" no le sirve para nada. Hay una probabilidad del 50 % de que la moneda cayera en cara (lo que implica la película B) y un 50 % de que cayera en cruz (lo que implica la película A). ¡Sigue sin saber nada más que antes!</p>
 	<p>Volvamos ahora al concepto de <em>impredecibilidad</em>. Imagina que el resultado del sorteo fuera completamente predecible: pongamos que tu enemigo hubiera puesto una moneda trucada que siempre diera cara en la primera tirada, cruz en la segunda, cara en la tercera y así sucesivamente. Como sabría que había una probabilidad del 100 % de que la primera tirada diera cara, entonces independientemente del mensaje que hubieras enviado, sabría qué película vais a ver. Mientras que la moneda trucada todavía tiene algunas propiedades básicas de la "aleatoriedad" según se entiende el término en el área de la estadística (cae en cara con tanta frecuencia como en cruz), es <em>predecible</em>, lo que la hace inútil para la criptografía. La lección: cuando hablamos de <em>aleatorio</em> en el contexto de la criptografía, significa <em>impredecible</em>.</p>

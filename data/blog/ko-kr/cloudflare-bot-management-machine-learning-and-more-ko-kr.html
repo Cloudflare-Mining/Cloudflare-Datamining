@@ -83,8 +83,7 @@
 	</ul>
 	<p>ClickHouse 및 <a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place/">GraphQL API</a>로 구동되는 Cloudflare의 <a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">방화벽 분석</a> 도구를 사용하는 고객은 직관적인 인터페이스를 통해 보안 위협을 신속하게 식별하고 조사할 수 있습니다. Cloudflare는 분석 외에도 모든 봇 관련 활동에 대한 자세한 로그를 <a href="https://developers.cloudflare.com/logs/logpull-api/" target="_blank">Logpull API</a> 및/또는 <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">LogPush</a>를 통해 제공하며, 여기서 해당 로그를 고객의 클라우드 스토리지로 손쉽게 가져올 수 있습니다.</p>
 	<h3 id="cloudflare-workers-"><strong>Cloudflare Workers 통합</strong></h3>
-	<p>고객이 점수를 기반으로 요청을 처리하는 데 더 많은 유연성을 원하는 경우(예: 신규 HTML 페이지 콘텐츠 삽입, 기존 HTML 페이지 콘텐츠 변경, 봇에 잘못된 데이터 제공, 특정 요청에 대한 지연), Cloudflare Workers을 통해 그러한 작업들을 수행할 수 있습니다. 예를 들어 다음과 같은 간단한 코드 스니펫을 사용하여 해당 점수를 오리진 서버로 다시 전달한 다음 고급 실시간 분석 또는 완화 조치를 진행할 수 있습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>고객이 점수를 기반으로 요청을 처리하는 데 더 많은 유연성을 원하는 경우(예: 신규 HTML 페이지 콘텐츠 삽입, 기존 HTML 페이지 콘텐츠 변경, 봇에 잘못된 데이터 제공, 특정 요청에 대한 지연), Cloudflare Workers을 통해 그러한 작업들을 수행할 수 있습니다. 예를 들어 다음과 같은 간단한 코드 스니펫을 사용하여 해당 점수를 오리진 서버로 다시 전달한 다음 고급 실시간 분석 또는 완화 조치를 진행할 수 있습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })

@@ -55,7 +55,6 @@ func (j DummyJob) Do() error {
 </pre>
 	<p>It sets a <code>Done</code> flag when the <code>Worker</code>'s <code>do</code> function actually runs the <code>DummyJob</code>. Since <code>DummyJob</code> meets the <code>Job</code> interface it can be sent down the <code>w.In</code> channel to a <code>Worker</code> for processing.</p>
 	<p></p>
-	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <em>at all</em> were needed to <code>CompressionJob</code> to achieve this.
-		<!--kg-card-end: markdown-->
+	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <em>at all</em> were needed to <code>CompressionJob</code> to achieve this.<!--kg-card-end: markdown-->
 	</p>
 </div>

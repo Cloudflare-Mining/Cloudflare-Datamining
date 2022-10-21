@@ -5,8 +5,7 @@
 	<p>And naturally, gRPC plugs in to <a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>, allowing you to add more security by enforcing client authentication and schema validation at the edge.</p>
 	<h3 id="what-is-grpc">What is gRPC?</h3>
 	<p>Protocols like JSON-REST have been the bread and butter of Internet facing APIs for several years. They're great in that they operate over HTTP, their payloads are human readable, and a large body of tooling exists to quickly set up an API for another machine to talk to. However, the same things that make these protocols popular are also weaknesses; JSON, as an example, is inefficient to store and transmit, and expensive for computers to parse.</p>
-	<p>In 2015, Google introduced <a href="https://grpc.io/" target="_blank">gRPC</a>, a protocol designed to be fast and efficient, relying on binary protocol buffers to serialize messages before they are transferred over the wire. This prevents (normal) humans from reading them but results in much higher processing efficiency. gRPC has become increasingly popular in the era of microservices because it neatly addresses the shortfalls laid out above.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In 2015, Google introduced <a href="https://grpc.io/" target="_blank">gRPC</a>, a protocol designed to be fast and efficient, relying on binary protocol buffers to serialize messages before they are transferred over the wire. This prevents (normal) humans from reading them but results in much higher processing efficiency. gRPC has become increasingly popular in the era of microservices because it neatly addresses the shortfalls laid out above.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -21,10 +20,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>gRPC relies on HTTP/2 as a transport mechanism. This poses a problem for customers trying to deploy common security technologies like web application firewalls, as most reverse proxy solutions (including Cloudflare’s HTTP stack, until today) downgrade HTTP requests down to HTTP/1.1 before sending them off to an origin.</p>
 	<p>Beyond microservices in a datacenter, the original use case for gRPC, adoption has grown in many other contexts. Many popular mobile apps have millions of users, that all rely on messages being sent back and forth between mobile phones and servers. We've seen many customers wire up API connectivity for their mobile apps by using the same gRPC API endpoints they already have inside their data centers for communication with clients in the outside world.</p>
 	<p>While this solves the efficiency issues with running services at scale, it exposes critical parts of these customers' infrastructure to the Internet, introducing security and reliability issues. Today we are introducing support for gRPC at Cloudflare, to secure and improve the experience of running gRPC APIs on the Internet.</p>

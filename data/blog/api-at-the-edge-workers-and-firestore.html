@@ -10,8 +10,7 @@
 		<li>We want to blocklist a few key subdomains, and be able to detect and blocklist more as we continue on.</li>
 	</ol>
 	<h3 id="user-flow">User Flow</h3>
-	<p>At a high, procedural level, our little system needed to handle the following roadmap:</p>
-	<!--kg-card-begin: markdown-->
+	<p>At a high, procedural level, our little system needed to handle the following roadmap:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Visitor submits a form with their desired subdomain and email address.</li>
 		<li>The form is sent off to a worker, whose job is to:<br>
@@ -66,8 +65,7 @@
 	<p>Because we are planning on running this client in the Workers runtime and we don’t have access to either the DOM or the Node runtime, we’ll have to rely on the REST API rather than either of the JavaScript client libraries.That’s okay though; the REST API is quite robust, and <a href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount#jwt-auth" target="_blank">authentication is possible using just a JWT</a>, rather than the full OAuth 2.0 handshake procedure.</p>
 	<h3 id="generating-jwts">Generating JWTs</h3>
 	<p>To keep the configuration out of the source code, I wrote a node script for assembling the various pieces of the configuration into a JSON blob.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const fs = require('fs')
 const path = require('path')
 const YAML = require('yaml-js')
@@ -109,8 +107,7 @@ console.log('Worker metadata file created at', metadataFilename)
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>I leaned on <code>node-jose</code> for JWT generation, and wrapped it into a small token function that adds the required timestamps to the payload, and generates a JWT:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import jose from 'node-jose';
 
 /**
@@ -146,8 +143,7 @@ export default async function generateJWT(config) {
 	<p></p>
 	<h3 id="adding-jwt-configuration-to-kv">Adding JWT Configuration to KV</h3>
 	<p>We needed somewhere to keep this configuration that is easily accessible by our Workers but not simply committed in our source code. KV works well in this situation, so I created a namespace and add the JSON-stringified value under they key config.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const fetch = require('node-fetch')
 
 const {
@@ -206,8 +202,7 @@ setUpKV()
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/gRKZ8N4A7GDO-pkQj41EBOWc8V5_v819r8qISqpnnlnzFTCNjeCnI9Wz7NUX0q-U4jY-8PRPhcSwqt-XqXtAgpPT5--eduthMQSOEN9uO6CZCT6hMC8qPBszzKiYsFaa_tu8n1pz" class="kg-image"></figure>
 	<p></p>
 	<p>I built a small client that can create and retrieve documents from GCP; this is bare bones, you can add methods that follow this pattern for updating and other operations as you wish. The Worker can then pull the config out of KV and use it to initialize the client.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { generateJWT } from './generateJWT'
 
 async function buildGCPClient() {
@@ -271,8 +266,7 @@ export async function buildGCPClient() {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>I can also use this same client locally to run queries against the store. In that case, rather than grabbing the config from kv, I construct the client using the configuration file I created above locally. I also bind `node-fetch` to `global.fetch` in these scripts.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { GCPClient } from './lib/GCPClient'
 
 // Use the listDocuments endpoint to query all current reservations
@@ -308,14 +302,11 @@ getReservations(client)
 		<li>Finally, even though our datastore is effectively centralized, using Workers means that all the requests to various APIs - our email service, logging service, and of course GCP- are made from the Edge.Running at the edge leverages our network and keeps our auth data where we want it, while using Cloud Firestore guarantees immediate consistency and performant querying for our Workers running around the world.</li>
 	</ul>
 	<p>Building out this API using Workers was an eye-opening experience. We love any opportunity to use our own products, keeping us in touch with the experience and guiding our roadmap for future development. We’re also extremely excited to see what all of you do on Workers.dev!</p>
-	<hr>
-	<!--kg-card-begin: markdown-->
+	<hr><!--kg-card-begin: markdown-->
 	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="_blank"><em>here</em></a>.</small></p>
 	<p align="center">
 		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
-	</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
+	</p><!--kg-card-end: markdown--><!--kg-card-begin: html-->
 	<style>
 		figcaption {
 			text-align: center;
@@ -334,7 +325,6 @@ getReservations(client)
 		h3+figure {
 			margin-bottom: 1em;
 		}
-	</style>
-	<!--kg-card-end: html-->
+	</style><!--kg-card-end: html-->
 	<hr>
 </div>

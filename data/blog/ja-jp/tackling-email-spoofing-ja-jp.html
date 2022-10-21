@@ -6,8 +6,7 @@
 	<h2 id="-">メールスプーフィング・フィッシングとは？</h2>
 	<p>スプーフィングは他の誰かになりすますことで、何らかの不法利益を得るために行われる場合があります。例として<strong>ドメインスプーフィング</strong>があり、mycoolwebpaqe.xyzのようなWebサイトをホストして、 mycoolwebpage.xyzのユーザーをだまし、機密情報を提供させ、気づかぬうちに偽のWebサイトにアクセスさせます。ブラウザでアドレスバーを横に並べてみても、違いをみつけることがとても難しくなっています。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/3-7.png" class="kg-image"></figure>
-	<p>また、<strong>メールスプーフィング</strong>もあります。この仕組みを理解するために、筆者のメールアドレスで受信したCloudflare製品更新のメールを見てみましょう。ほとんどのメールプロバイダーでは、いくつかのヘッダーとメール本文を含むメールのソース全体を見ることができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>また、<strong>メールスプーフィング</strong>もあります。この仕組みを理解するために、筆者のメールアドレスで受信したCloudflare製品更新のメールを見てみましょう。ほとんどのメールプロバイダーでは、いくつかのヘッダーとメール本文を含むメールのソース全体を見ることができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
 From: Cloudflare &lt;product-updates@cloudflare.com&gt;
 Reply-To: product-updates@cloudflare.com
@@ -33,8 +32,7 @@ To: &lt;my_personal_email_address&gt;
 	</ul>
 	<p>しかし、これらを正確に設定するのは、特に経験の少ない方にとっては容易なことではありません。設定が厳しすぎると、正当なメールがドロップされたり、スパムとしてマークされたりします。設定が緩すぎると、ドメインがメールスプーフィングに不正利用されてしまうかもしれません。</p>
 	<h3 id="sender-policy-framework-spf-">Sender Policy Framework（SPF）</h3>
-	<p>SPFは、お客さまのドメインに代わってどのIP アドレスとドメインがメール送信を許可されているかを指定するのに使用されます。SPFポリシーはお客様のドメインのTXTレコードとして発行され、DNS経由で誰でもアクセスできます。cloudflare.comのTXTレコードをみてみましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>SPFは、お客さまのドメインに代わってどのIP アドレスとドメインがメール送信を許可されているかを指定するのに使用されます。SPFポリシーはお客様のドメインのTXTレコードとして発行され、DNS経由で誰でもアクセスできます。cloudflare.comのTXTレコードをみてみましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -50,8 +48,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>すべての機構を網羅したリストとSPFの詳細については、<a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>をご参照ください。</p>
 	<h3 id="domainkeys-identified-mail-dkim-">DomainKeys Identified Mail（DKIM）</h3>
 	<p>SPFで、許可されたIPアドレスとドメインのみがcloudflare.comに代わってメールを送信できるようにしましたが、あるIPがオーナーを変更し、Cloudflareがそれに気づかずSPFレコードを更新しなかった場合はどうなるでしょう。あるいは、同じIPでGoogleのメールサーバーを使用している別の誰かが、cloudflare.comになりすましてメールを送信しようとしたらどうなるでしょう。</p>
-	<p>こんなときに役立つのがDKIMです。DKIMは、<a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号方式</a>でメールの一部分（通常は本文や特定のヘッダー）に暗号化署名するメカニズムを提供します。この仕組みについて説明する前に、cloudflare.comでDKIMレコードが使われている例についてみていきましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>こんなときに役立つのがDKIMです。DKIMは、<a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号方式</a>でメールの一部分（通常は本文や特定のヘッダー）に暗号化署名するメカニズムを提供します。この仕組みについて説明する前に、cloudflare.comでDKIMレコードが使われている例についてみていきましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -68,8 +65,7 @@ To: &lt;my_personal_email_address&gt;
 	</ol>
 	<p>DKIMの仕様の全容については、<a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank">RFC4871</a>と<a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank">RFC5672</a>をご参照ください。</p>
 	<h2 id="domain-based-message-authentication-reporting-and-conformance-dmarc-">Domain-based Message Authentication Reporting and Conformance（DMARC）</h2>
-	<p>Domain-based Message Authentication Reporting and Conformanceは、とても長い用語ですが、次の2つの単語に焦点を当ててみましょう：<em>Reporting（レポート）</em>と<em>Conformance（適合性）</em>です。DMARCはまさにこの2つを提供するものです。定期レポートでは、不適合のメールやスプーフィングされている可能性のあるメールの数をメール送信者に知らせます。Conformanceは、メールの受信者に不適合メールの取り扱いについて明確なシグナルを送る手助けをします。メール受信者は、DMARCレコードがなくても、SPFやDKIMチェックに不合格だったメールに関する独自のポリシーを適用する場合があります。しかし、DMARCレコードで設定されているポリシーはメール送信者の明示的指示であるため、メール受信者が不適合メールの取り扱いについて自信をもって行えるようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Domain-based Message Authentication Reporting and Conformanceは、とても長い用語ですが、次の2つの単語に焦点を当ててみましょう：<em>Reporting（レポート）</em>と<em>Conformance（適合性）</em>です。DMARCはまさにこの2つを提供するものです。定期レポートでは、不適合のメールやスプーフィングされている可能性のあるメールの数をメール送信者に知らせます。Conformanceは、メールの受信者に不適合メールの取り扱いについて明確なシグナルを送る手助けをします。メール受信者は、DMARCレコードがなくても、SPFやDKIMチェックに不合格だったメールに関する独自のポリシーを適用する場合があります。しかし、DMARCレコードで設定されているポリシーはメール送信者の明示的指示であるため、メール受信者が不適合メールの取り扱いについて自信をもって行えるようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflare.comのDMARCレコードを以下に記載しています。
 _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"
 </code></pre>
@@ -91,8 +87,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 	<p>ここまで、問題点や、SPF、DKIM、DMARCを使ってそれを解消する方法について学んできましたので、ここからは、これらがどの程度広く採用されているのかについてみていきます。</p>
 	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a>はドメインのDMARCレコードの採用状況を、代表的なデータセットで発表しています。それによれば、2020年末時点でDMARCレコードを有するドメインは依然50%未満に留まっています。DMARCレコードがなければ、SPFおよびDKIMチェックを適切に実行できません。さらにこの調査では、DMARCレコードを有するドメインのうち65%以上が監視のみのポリシー（p=none）を適用しており、採用率引き上げの余地が大いにあることがわかっています。それらのドメインがメールの送信側なのか受信側なのかについての言及はありませんが、いずれにせよ、セキュアな設定にはDMARCレコードが含まれるべきです。（この点に関しては後で詳しくみていきます）。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/10.png" class="kg-image"></figure>
-	<p>2021年8月1日付の別の<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">レポート</a>でも、銀行セクターの事業体のドメインに関して同様の状況を報告しています。米国にある2,881の銀行事業体のうち、ドメインでDMARCレコードを発行しているのは44%に過ぎません。DMARCレコードを有するドメインでも、だいたい5件中2件はDMARCポリシーを「None」に設定していて、8%は「Misconfigured」（不適切な設定）とみなされています。デンマークでは銀行セクターのドメインのDMARC採用率が94%ときわめて高く、日本はそれとは対照的に、DMARCを使用しているドメインはわずか13%に留まります。SPFの採用は平均するとDMARCよりも有意に高くなっています。これは、SPF標準がはじめて<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">実験的なRFC</a>として導入されたのが2006年で、DMARCが<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">標準になったのが</a>2015年だったことに関連しているかもしれません。</p>
-	<!--kg-card-begin: html-->
+	<p>2021年8月1日付の別の<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">レポート</a>でも、銀行セクターの事業体のドメインに関して同様の状況を報告しています。米国にある2,881の銀行事業体のうち、ドメインでDMARCレコードを発行しているのは44%に過ぎません。DMARCレコードを有するドメインでも、だいたい5件中2件はDMARCポリシーを「None」に設定していて、8%は「Misconfigured」（不適切な設定）とみなされています。デンマークでは銀行セクターのドメインのDMARC採用率が94%ときわめて高く、日本はそれとは対照的に、DMARCを使用しているドメインはわずか13%に留まります。SPFの採用は平均するとDMARCよりも有意に高くなっています。これは、SPF標準がはじめて<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">実験的なRFC</a>として導入されたのが2006年で、DMARCが<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">標準になったのが</a>2015年だったことに関連しているかもしれません。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -193,8 +188,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 				<td class="tg-2bn0">13%</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>この表から、改善の余地がかなりあることがわかります。</p>
 	<h2 id="email-security-dns-wizard-">Email Security DNS Wizardの登場</h2>
 	<p>では、SPF、DKIM、DMARCの採用率を上げ、メールのスプーフィングやフィッシングに対抗するためにCloudflareは何をしているのでしょうか？ その答えは、新しく登場したCloudflare <em>Email Security DNS Wizard</em>です。</p>
@@ -209,14 +203,11 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/12.png" class="kg-image"></figure>
 	<p><em>Email Security DNS Wizard</em>を使い始めるには、警告にあるリンクを直接クリックしてWizardの関連セクションにアクセスするか、新しい<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">Email Security セクション</a>にある<strong>Configure（設定）</strong> をクリックします。後者の方法では、下記のオプションが利用可能です。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/13.png" class="kg-image"></figure>
-	<p>シナリオは2つ。ドメインを使用してメールを送信している場合と、していない場合です。ドメインを使用してメールを送信している場合、いくつかの簡単なステップに従えばSPF、DKIM、DMARCのレコードを設定することができます。SPFのステップは次のとおりです。 </p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>シナリオは2つ。ドメインを使用してメールを送信している場合と、していない場合です。ドメインを使用してメールを送信している場合、いくつかの簡単なステップに従えばSPF、DKIM、DMARCのレコードを設定することができます。SPFのステップは次のとおりです。 </p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>ドメインがメールを送信していない場合であれば、たった1回のクリックでこれら3つのレコードすべてを簡単に設定できる方法があります。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/14-1.png" class="kg-image"></figure>
-	<p><strong>Submit</strong>をクリックすると、すべてのメールがチェックで不合格となり、メールの受信サーバーが拒否するよう、3つのレコードすべてを設定します。</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Submit</strong>をクリックすると、すべてのメールがチェックで不合格となり、メールの受信サーバーが拒否するよう、3つのレコードすべてを設定します。</p><!--kg-card-begin: markdown-->
 	<pre><code>example.com			TXT	"v=spf1 -all"
 *._domainkey.example.com.	TXT	"v=DKIM1; p="
 _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"

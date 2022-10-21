@@ -202,8 +202,7 @@
 		<li>Repeat Step 2 and 3 for \( (\tfrac{\pi}{4}) &nbsp;2^{ N/2} \) times.</li>
 		<li>Measure the qubit and return the bits obtained.</li>
 	</ol>
-	<p>Alternatively, the second step can be better understood as a conditional statement:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Alternatively, the second step can be better understood as a conditional statement:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-fortran">IF f(x) = 1 THEN
      Negate the amplitude of the solution state.
 ELSE
@@ -218,8 +217,7 @@ ENDIF
 	<p>Multiplying integers is an easy task to accomplish, however, finding the factors that compose an integer is difficult. The <em>integer factorization</em> problem is to decompose a given integer number into its prime factors. For example, 42 has three factors 2, 3, and 7 since \( 2\times 3\times 7 = 42\). As the numbers get bigger, integer factorization becomes more difficult to solve, and the hardest instances of integer factorization are when the factors are only two different large primes. Thus, given an integer number \(N\), to find primes \(p\) and \(q\) such that \( N = p \times q\), is known as <em>integer splitting</em>. </p>
 	<p>Factoring integers is like cutting wood, and the specific task of splitting integers is analogous to using an axe for splitting the log in two parts. There exist many different tools (algorithms) for accomplishing each task.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/split-logs-@2x-1.png" class="kg-image"></figure>
-	<p>For integer factorization, trial division, the Rho method, the elliptic curve method are common algorithms. Fermat's method, the quadratic- and rational-sieve, leads to the (general) number field sieve (NFS) algorithm for integer splitting. The latter relies on finding a congruence of squares, that is, splitting \(N\) as a product of squares such that $$ N = x^2 - y^2 = (x+y)\times(x-y) $$ The complexity of NFS is mainly attached to the number of pairs \((x, y)\) that must be examined before getting a pair that factors \(N\). The NFS algorithm has subexponential complexity on the size of \(N\), meaning that the time required for splitting an integer increases significantly as the size of \(N\) grows. For large integers, the problem becomes intractable for classical computers. </p>
-	<!--kg-card-begin: markdown-->
+	<p>For integer factorization, trial division, the Rho method, the elliptic curve method are common algorithms. Fermat's method, the quadratic- and rational-sieve, leads to the (general) number field sieve (NFS) algorithm for integer splitting. The latter relies on finding a congruence of squares, that is, splitting \(N\) as a product of squares such that $$ N = x^2 - y^2 = (x+y)\times(x-y) $$ The complexity of NFS is mainly attached to the number of pairs \((x, y)\) that must be examined before getting a pair that factors \(N\). The NFS algorithm has subexponential complexity on the size of \(N\), meaning that the time required for splitting an integer increases significantly as the size of \(N\) grows. For large integers, the problem becomes intractable for classical computers. </p><!--kg-card-begin: markdown-->
 	<h3 id="theaxeofthorshor">The Axe of <s>Thor</s> Shor</h3>
 	<!--kg-card-end: markdown-->
 	<p></p>

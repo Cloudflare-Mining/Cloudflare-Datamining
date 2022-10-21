@@ -14,8 +14,7 @@
 		<li><strong>APIトラフィック</strong>: レスポンスのコンテンツタイプが<code>XML</code>、<code>JSON</code>、 <code>gRPC</code>、またはそれに類似するすべてのHTTPリクエストです。軽減されたリクエストなど、レスポンスのコンテンツタイプが使用できない場合、代わりに同等の<code>Accept</code>コンテンツタイプ（ユーザーエージェントによって指定される）が使用されます。後者の場合、APIトラフィックは完全には考慮されませんが、インサイトの面では引き続き役に立ちます。</li>
 	</ul>
 	<p>特に指定がない限り、この記事における評価対象の期間は、2021年12月1日から2022年3月1日までの3か月間です。</p>
-	<p>最後に、このデータはCloudflareネットワーク上で観測されたトラフィックのみに基づいて算出されており、必ずしもインターネット全体のHTTPトラフィックパターンを表しているわけではないことにご注意ください。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最後に、このデータはCloudflareネットワーク上で観測されたトラフィックのみに基づいて算出されており、必ずしもインターネット全体のHTTPトラフィックパターンを表しているわけではないことにご注意ください。</p><!--kg-card-begin: markdown-->
 	<p><small>*HTTPトラフィックに言及する場合は、HTTPとHTTPSの両方を指します。</small></p>
 	<!--kg-card-end: markdown-->
 	<h2 id="--1">グローバルトラフィックのインサイト</h2>
@@ -25,8 +24,7 @@
 	<p>Cloudflareを利用するサイトオーナーは、不要なトラフィックや悪意のあるトラフィックを軽減するツールを利用し、リクエストがクリーンであると判断された場合にのみアプリケーションへのアクセスを許可することができます。これは、当社の<a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS軽減</a>、<a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>管理ルールセット、スキーマ検証などのフルマネージド機能と、ユーザーがトラフィック遮断のための独自のフィルターを定義できるカスタムルールの両方を使用して行うことが可能です。</p>
 	<p>トラフィックを軽減したCloudflareの機能（ソース）のトップ5を見ると、Cloudflareの各機能が、お客様のサイトやアプリケーションをオンラインかつ安全に保つためにどれだけ貢献しているかがよくわかります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-1.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -74,8 +72,7 @@
 	<h3 id="-http-">最も一般的な攻撃ベクトルであるHTTP異常</h3>
 	<p>管理WAFルールを細かく見ていくと、Cloudflareが保護するインターネットプロパティに対して、悪意のあるユーザーがどのような種類の攻撃ベクトルを試みているのかが明確になります。</p>
 	<p>Cloudflareの管理WAFルールでブロックされるHTTPリクエストの大部分（54%以上）には、不正なメソッド名、ヘッダー内のNULLバイト文字、非標準ポート、コンテンツの長さ0の<code>POST</code>リクエストなどのHTTP異常が含まれています。</p>
-	<p>このカテゴリーで一般的な攻撃の種類を以下に示します。関連性がある攻撃はグループ化されています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>このカテゴリーで一般的な攻撃の種類を以下に示します。関連性がある攻撃はグループ化されています。</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -114,8 +111,7 @@
 	<!--kg-card-end: markdown-->
 	<p>XSSやSQLiなど、より一般的に知られていて参照されている攻撃ベクトルは、軽減されたリクエスト全体の約13%に過ぎません。興味深いことに、情報漏えいを目的とした攻撃は3番目に多く（10%）、ソフトウェア固有のCVEベースの攻撃は、軽減されたリクエストの約12%を占めています（SQLiのみよりも多い）。これは、ソフトウェアのパッチを迅速に提供することの重要性と、最近の<a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a>のようなCVE概念実証（PoC）がアプリケーションへの侵害に使用される可能性の両方を示すものです。軽減されたリクエストの割合が高い攻撃ベクトルのトップ10は、以下のとおりです。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-96.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -178,8 +174,7 @@
 	<p>すべてのカスタムルールの約64%に見られる最も一般的なフィールドは、ソースIPアドレスか、クライアントの国の場所など、IPアドレスから簡単に派生させられるフィールドです。IPアドレスは、セキュリティポリシーにとって<a href="https://blog.cloudflare.com/icloud-private-relay/">あまり役に立たない</a>シグナルになりつつありますが、多くの場合、攻撃の際に最も迅速かつシンプルに実装できるフィルターです。また、お客様は、 IPアドレスベースのフィールドへの依存度を下げるために、<a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">ゼロトラストポートフォリオ</a>で提供されているような、より優れたアプローチを採用し始めています。</p>
 	<p>フィールドのトップ10は以下のとおりです。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-79.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -243,8 +238,7 @@
 	<p>分析期間中、ボットトラフィックはHTTPリクエスト全体の約38％を占めていました。このトラフィックには、Cloudflareが追跡している数百の<a href="https://radar.cloudflare.com/verified-bots" target="_blank">検証済みボット</a>からのボットトラフィックと、ボットスコアが30以下のリクエスト（自動化されている可能性が高いことを示す）が含まれています。</p>
 	<p>全体として、ボットトラフィックがセキュリティ設定とマッチングする場合、お客様はボットトラフィックの41%に対してオリジンへの通過を許可しており、ブロックしている自動リクエストはわずか6.4%です。これには、GoogleBotのような<a href="https://blog.cloudflare.com/ja-jp/friendly-bots-ja-jp/">検証済みボット</a>からのトラフィックも含まれており、最終的にサイトオーナーとエンドユーザーにメリットをもたらしていることに注意してください。自動化それ自体は、必ずしもサイトにとって有害ではありません。これが、検証済みボットのトラフィックをセグメント化し、「ボットか否か」という二元的な指標ではなく、きめ細かいボットスコアをお客様に提供している理由です。Webサイト運営者は、さまざまな種類のボットトラフィックに正確に対応できる柔軟性を求めており、実際にこの柔軟性を活用していることがわかります。なお、セルフサーブのお客様は、<a href="https://blog.cloudflare.com/ja-jp/super-bot-fight-mode-ja-jp/">スーパーボットファイトモード</a>機能を使用して、ボットトラフィックの対処方法を決定することもできます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-6.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -284,8 +278,7 @@
 	<h3 id="-http-3-1-">検証されていないボットHTTPトラフィックの3分の1以上を軽減</h3>
 	<p>Cloudflareが観測した全ボットトラフィックの31%は検証されていません。これらのトラフィックは、スキャナー、クローラー、ハッカーが構築したボットなど、何千ものカスタムビルドの自動化ツールから発生しているものです。前述のとおり、自動化されたボットが必ずしも悪意のあるアクションをとっているわけではありません。特定されたボットトラフィックに対するお客様の対応を見てみると、検証されていないボットからのHTTPリクエストの38.5%が軽減されていることがわかります。これは明らかに、上図に示したボットトラフィック全体のアクションと比較して、より防御に徹した設定です。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-17.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -335,8 +328,7 @@
 	<p>WAF管理ルールによる軽減をAPIトラフィックに限って見てみると、世界的な傾向と比較して顕著な違いが見受けられます。この違いとして、攻撃の種類がより均等に分布していることなどが挙げられますが、より顕著なのはSQLインジェクション攻撃がトップであることです。</p>
 	<p>また、コマンドインジェクション攻撃も14.3%と非常に多く、デシリアライゼーションなどのベクトルも現れ、軽減されたリクエスト全体の1%以上を占めています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-36.png" class="kg-image" title="Chart"></figure>
-	<p>参考用の表形式データ:</p>
-	<!--kg-card-begin: markdown-->
+	<p>参考用の表形式データ:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;

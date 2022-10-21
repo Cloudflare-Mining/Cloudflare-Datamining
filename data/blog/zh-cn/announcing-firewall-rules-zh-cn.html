@@ -3,14 +3,12 @@
 	<p>网络威胁的景观每秒钟都在变化。随着攻击者的进步，他们变得更加活跃和狡猾，漏洞出现的速度比工程师修补应用程序的速度还要快。Cloudflare的部分使命就是确保您和您的应用程序的安全。今天，Cloudflare推出了一项新功能，为客户提供他们一直在要求的东西——对他们的传入请求进行细粒度控制。</p>
 	<p>Cloudflare已经提供了许多强大的防火墙工具，如IP规则、CIDR规则、ASN规则、国家规则、HTTP用户代理阻塞、区域锁定(针对只允许来自那些IP的流量的uri)，以及我们在WAF (Web应用程序防火墙)中全面管理的规则。但有时，您需要结合这些功能来完全缓解攻击，并显示一个打破现有工具边界的限制规则，以便能够在请求来自该（攻击者）IP，以及user-agent（用户代理）请求头匹配这些（攻击者）IP中的一个时，阻止流量进入此URI。</p>
 	<h2 id="-">灵活性和控制力</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Stefano-Kocka.jpg" class="kg-image"></figure>
-	<!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Stefano-Kocka.jpg" class="kg-image"></figure><!--kg-card-begin: html-->
 	<p align="right"><small>
 			<font style="vertical-align: inherit;">
 				<font style="vertical-align: inherit;">©Stefano Kocka：源自维基百科</font>
 			</font>
-		</small></p>
-	<!--kg-card-end: html-->
+		</small></p><!--kg-card-end: html-->
 	<p>当我们与客户讨论他们的需求时，我们发现了一些共同的主题，同时我们也回顾了客户支持团队所看到的功能需求，我们将反馈和功能需求的最重要部分分为三个核心需求:</p>
 	<ol>
 		<li>更灵活地创建防火墙规则，该规则不仅限于匹配单个属性，比如IP地址和用户代理</li>

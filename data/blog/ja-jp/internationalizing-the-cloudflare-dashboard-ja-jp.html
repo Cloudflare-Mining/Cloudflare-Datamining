@@ -9,14 +9,12 @@
 		<li>これを行うと、翻訳チームがアプリケーションコードを表示したり変更することなく、文字列の翻訳に取り組むことができます。</li>
 		<li>ほとんどの翻訳者がワークフロー面を自動化し、役に立つユーティリティ（翻訳メモリ、変更のトラッキング、複数の便利な解析ツールや書式設定ツール）を提供する翻訳管理アプリケーションを使います。このようなアプリケーションは（json、xml、md、csvファイルなど）標準化されたテキスト形式が必要です。</li>
 	</ul>
-	<p>エンジニアの観点からは、翻訳からアプリケーションコードを分離することで、コードの再コンパイルしたり再デプロイしたりしなくても文字列の変更ができます。当社のReactベースのアプリケーションでは、文字列のほとんどを外部化して、次のようなコードブロックの変更にまとめました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>エンジニアの観点からは、翻訳からアプリケーションコードを分離することで、コードの再コンパイルしたり再デプロイしたりしなくても文字列の変更ができます。当社のReactベースのアプリケーションでは、文字列のほとんどを外部化して、次のようなコードブロックの変更にまとめました。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Button&gt;Cancel&lt;/Button&gt;
 &lt;Button&gt;Next&lt;/Button&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>これを次のようにします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>これを次のようにします。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
 &lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
@@ -30,13 +28,11 @@
 	<!--kg-card-end: markdown-->
 	<p>上記の&lt;Trans&gt;コンポーネントは、当社アプリケーションで基本的なi18nビルディングブロックです。このスキームで、翻訳された文字列は翻訳IDによってキー設定された大きな辞書に保存されます。これを「翻訳カタログ」と呼び、当社がサポートする各言語の翻訳カタログのセットに入れます。</p>
 	<p>実行時、この&lt;Trans&gt;コンポーネントは提示されるキーの正しいカタログで翻訳を検索し、ページ（DOM経由で）この翻訳を挿入します。アプリケーションの静的テキストは全てこのように簡単な変換で外部化できます。</p>
-	<p>ただし、動的データを静的テキストと混在させる必要がある場合は、ソリューションが多少複雑になります。i18nの地雷でいっぱいの一見簡単な例を考えていきましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ただし、動的データを静的テキストと混在させる必要がある場合は、ソリューションが多少複雑になります。i18nの地雷でいっぱいの一見簡単な例を考えていきましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>次のように、この文をいくつかに切り刻んで外部化したくなるかもしれません。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次のように、この文をいくつかに切り刻んで外部化したくなるかもしれません。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
  &lt;Trans id="selected.prefix" /&gt; {totalSelected } &lt;Trans id="pageRules" /&gt;
 &lt;/span&gt;
@@ -73,8 +69,7 @@
 	<!--kg-card-end: markdown-->
 	<p>これで作業は完了し、エレガントなソリューションに見えるかもしれません。結局のところ、selected.prefixとpageRules.suffix文字列はリユースするようになっているようです。しかし、このように文を切り刻んでから翻訳されたビットを連結させると、国際化のための文字列の外部化する際に一つの大きな落とし穴となってしまいます。</p>
 	<p>この問題は、翻訳されると文を構成する様々な語がコンテクスト（単数形コンテクスト vs 複数形コンテクスト、女性形と男性形に起因、主語/述語の一致など）に基づいて、<a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">さまざまな方法でモーフィングされる</a>ことです。これは、<a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">語順</a>のように言語間で大きく異なります。英語を例にすると、We like themという文は、主語-動詞-目的語の順ですが、他の言語の語順に従うと、主語-目的語-述語（We them like）だったり、述語-主語-目的語（Like we them）だったり、他の語順に従うこともあります。言語間にはこうした微妙な違いがあるため、翻訳された句を連結させて1つの文にするのは、ほとんどの場合、ローカライゼーションエラーとなるのです。</p>
-	<p>上記のコード例は、「選択しました」と「ページルール」を別の文字列として提供した際に、当社の翻訳チームから戻された実際の翻訳です。この文は、さまざまな言語でレンダリングされたときにどのように見えるかの一例です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>上記のコード例は、「選択しました」と「ページルール」を別の文字列として提供した際に、当社の翻訳チームから戻された実際の翻訳です。この文は、さまざまな言語でレンダリングされたときにどのように見えるかの一例です。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -98,8 +93,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>比較するために、変数のプレースホルダーを使って、単一の文字列として文を示しました。そして結果がこちらです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>比較するために、変数のプレースホルダーを使って、単一の文字列として文を示しました。そして結果がこちらです。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -124,8 +118,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>ご覧の通り、日本語とドイツ語の翻訳は同じではありません。ローカライザーションにはバグがありました。</p>
-	<p>翻訳者が忠実にテキストの意味を正しく伝えることができるように、各文を単一の外部化された文字列としてそのままにしておくことが重要です。当社の&lt;Trans&gt;コンポーネントによって、テンプレート文字列に値を簡単に注入することができるため、そっくりこちらのようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>翻訳者が忠実にテキストの意味を正しく伝えることができるように、各文を単一の外部化された文字列としてそのままにしておくことが重要です。当社の&lt;Trans&gt;コンポーネントによって、テンプレート文字列に値を簡単に注入することができるため、そっくりこちらのようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -156,8 +149,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>これによって、翻訳者は文の完全なコンテクストで作業することができるようになり、すべての語が正しい語形変化で翻訳されます。</p>
-	<p>別の潜在的な問題にお気づきになりましたか。この例で、totalSelectedが1だけの場合、どうなるのでしょうか。上記のコードの場合、ユーザーは「削除のために1 Page Rulesを選択しました」というメッセージが表示されます。動的データの値に基づいて、条件付きで文を複数形にする必要があります。これはかなり一般的なユースケースとなり、当社の&lt;Trans&gt;コンポーネントがsmart_count機能を経由して自動的に処理します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>別の潜在的な問題にお気づきになりましたか。この例で、totalSelectedが1だけの場合、どうなるのでしょうか。上記のコードの場合、ユーザーは「削除のために1 Page Rulesを選択しました」というメッセージが表示されます。動的データの値に基づいて、条件付きで文を複数形にする必要があります。これはかなり一般的なユースケースとなり、当社の&lt;Trans&gt;コンポーネントがsmart_count機能を経由して自動的に処理します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -184,15 +176,13 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>ここでは、単数形バージョンと複数形バージョンは||||で区切られます。&lt;Trans&gt;はtotalSelected値渡し変数に応じて、正しい翻訳を自動的に選択します。</p>
-	<p>単一の文字列として外部化したいテキストのブロックとしてマークアップが混ざると、別の障害として発生します。たとえば、文中にあるいくつかの句に他のページへのリンクが必要な場合はどうなりますか。</p>
-	<!--kg-card-begin: markdown-->
+	<p>単一の文字列として外部化したいテキストのブロックとしてマークアップが混ざると、別の障害として発生します。たとえば、文中にあるいくつかの句に他のページへのリンクが必要な場合はどうなりますか。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   Don't forget to &lt;Link&gt;verify your email address.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>このユースケースを解決するために、&lt;Trans&gt;コンポーネントは、任意のエレメントを次のような翻訳文字列でプレースホルダーに注入できます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>このユースケースを解決するために、&lt;Trans&gt;コンポーネントは、任意のエレメントを次のような翻訳文字列でプレースホルダーに注入できます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   &lt;Trans id="notification.email_verification" Components={[Link]} componentProps={[{ to: '/profile' }]} /&gt;
 &lt;/VerificationReminder&gt;
@@ -204,8 +194,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>この例では、&lt;Trans&gt;コンポーネントはプレースホルダーエレメント（&lt;0&gt;、&lt;1&gt;など）をComponents配列のインデックスに位置するコンポーネントタイプのインスタンスに置き換えます。componentPropsで指定されたデータもそのインスタンスに転送します。上記の例は、Reactで次にまとめられます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この例では、&lt;Trans&gt;コンポーネントはプレースホルダーエレメント（&lt;0&gt;、&lt;1&gt;など）をComponents配列のインデックスに位置するコンポーネントタイプのインスタンスに置き換えます。componentPropsで指定されたデータもそのインスタンスに転送します。上記の例は、Reactで次にまとめられます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">// en-US
 &lt;VerificationReminder&gt;
   Don't forget to &lt;Link to="/profile"&gt;verify your email address.&lt;/Link&gt;
@@ -247,15 +236,13 @@
 	</ul>
 	<p>新規のReactベースウェブアプリでi18nを使い始めている場合、react-intlとi18n-nextの２つは人気ライブラリで、すでに述べたように&lt;Trans&gt;と類似したコンポーネントを提供します。</p>
 	<p>大まかに説明したように、&lt;Trans&gt;コンポーネントの最大の問題点は、文字列をソースコードとは別のファイルに入れなければならないことです。新規コードを作成したり、既存の機能を修正したりする際に複数のファイルを切り替えるのは面倒です。もし翻訳ファイルがディレクトリ構造から遠く離れたところにある場合、ディレクトリ内に存在する必要がある場合も多く、さらに面倒です。</p>
-	<p>新規のi18nライブラリには<a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a>といったものもあり、翻訳カタログを取り扱うための抽出ベースのアプローチをとることで、この問題を回避します。このスキームで、&lt;Trans&gt;コンポーネントをまだ使いますが、別のカタログではなく、コンポーネント自体に文字列を保持します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>新規のi18nライブラリには<a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a>といったものもあり、翻訳カタログを取り扱うための抽出ベースのアプローチをとることで、この問題を回避します。このスキームで、&lt;Trans&gt;コンポーネントをまだ使いますが、別のカタログではなく、コンポーネント自体に文字列を保持します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>ビルド時に実行するツールは、こうした文字列をすべて見つけ、カタログに抽出する作業を行います。たとえば、上記の結果では、次のようなカタログが生成されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ビルド時に実行するツールは、こうした文字列をすべて見つけ、カタログに抽出する作業を行います。たとえば、上記の結果では、次のようなカタログが生成されます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">// locales/en_US.json
 {
   "Hmm... We couldn't find any matching websites.": "Hmm... We couldn't find any matching websites.",
@@ -274,13 +261,11 @@
 	<p>作業しているテックスタックがどちらであっても、助けてくれるi18nライブラリはいくつかあります。どちらを選択するかは、ご利用のアプリケーションの技術的制約やチームの目標や文化の状況によっても大きく変わってきます。</p>
 	<p><strong>数値、日付、時間</strong></p>
 	<p>以前、データ翻訳された文字列の注入について話した時には触れなかった大きな問題があります。注入するデータもユーザーの現地の慣習に準拠するようにフォーマットする必要があるかもしれないということです。日付、時間、数値、通貨、その他の種類のデータに当てはまることです。</p>
-	<p>前回の内容からシンプルな例を見てみましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>前回の内容からシンプルな例を見てみましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>適切に書式が設定されていなければ、小さな数値が正しく表示されても、何千という数になるとすぐにローカライゼーションの問題が発生します。桁をグループに分けて、シンボルで区切る方法は<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">文化によって異なります</a>。ここで30万と300分の1が異なるロケールでどのようなフォーマットになるか示されています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>適切に書式が設定されていなければ、小さな数値が正しく表示されても、何千という数になるとすぐにローカライゼーションの問題が発生します。桁をグループに分けて、シンボルで区切る方法は<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">文化によって異なります</a>。ここで30万と300分の1が異なるロケールでどのようなフォーマットになるか示されています。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -359,8 +344,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>日付をフォーマットする方法は<a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">国ごとに大きく異なります</a>。米国のオーディエンスを念頭に置いてUIを開発した場合、他の国にいるユーザーにとって使い慣れていない日付の表示方法を使うことになります。とりわけ、日付のフォーマットはセパレーターの選択、一桁の場合にゼロが追加されている、日付は日/月/年という順番かという点において異なります。今年の3月4日が異なるロケールでどのようにフォーマットされるか紹介します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>日付をフォーマットする方法は<a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">国ごとに大きく異なります</a>。米国のオーディエンスを念頭に置いてUIを開発した場合、他の国にいるユーザーにとって使い慣れていない日付の表示方法を使うことになります。とりわけ、日付のフォーマットはセパレーターの選択、一桁の場合にゼロが追加されている、日付は日/月/年という順番かという点において異なります。今年の3月4日が異なるロケールでどのようにフォーマットされるか紹介します。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -439,8 +423,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>時間のフォーマットも大きく異なります。こちらは時間のフォーマットの違いをいくつかのロケールで示しました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>時間のフォーマットも大きく異なります。こちらは時間のフォーマットの違いをいくつかのロケールで示しました。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -524,8 +507,7 @@
 	<p>プロジェクトを開始した時、当社は<a href="https://momentjs.com/" target="_blank">moment.js</a>ライブラリをデータおよび時間のフォーマットに広く使用していました。この便利なライブラリは、長さが異なる日付のフォーマット（「20年7月9日」、「2020年7月9日」、vs 「木曜日」）を無視して、多数ある中から相対的な日（「2日前」）を表示します。ほぼすべての日付は、可読性を考慮してMoment.js経由ですでにフォーマットされており、Moment.jsは大多数のロケールでi18nがあります。つまり、スイッチを二つ切ることができ、影響をほとんど与えずに、適切に日付をローカライズできたということです。</p>
 	<p>Mement.jsに関しては強い（大抵は誇張した）批判がありますが、すべての日付と時間をやり直す場合にかかるコストと比較すると、最終的にフットプリントが少ない代替品に切り替える方がメリットが得られます。</p>
 	<p>数値に関しては、話が違ってきます。すでにご想像されたかもしれませんが、ダッシュボード全体には何千もの未加工でフォーマットされていない数値がありました。そのすべてを追跡するのは骨が折れますし、手動による作業になることもありました。</p>
-	<p>実際の数値をフォーマット化するために、当社は<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API</a>（the Internationalization library defined by the ECMAScript standard：ECMAScript標準で定義された国際化ライブラリ）を使用しました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>実際の数値をフォーマット化するために、当社は<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API</a>（the Internationalization library defined by the ECMAScript standard：ECMAScript標準で定義された国際化ライブラリ）を使用しました。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!
@@ -534,8 +516,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>ラッキーにも、Intlのブラウザサポートは、完全サポート付きの最新ブラウザになり、大きな発展を遂げています。</p>
 	<p>V8のような最新のJavaScriptエンジンの中には、C++ベースの組み込み関数を選び、こうしたライブラリのセルフホストJavaScriptを実装しなくなるものもあり、<a href="https://v8.dev/blog/intl" target="_blank">その結果として大幅なスピードアップにつながりました</a>。</p>
 	<p>古いブラウザのサポートは、やや欠けているものがありますが、ここで<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">https://intl-formatting.jculvey.workers.dev/</a>で構築された<a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">シンプルなデモサイト</a>（<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">ソースコード</a>）を使って、いくつかのロケールで日付、時間、数値がどのようにレンダリングされているかをご紹介しましょう。</p>
-	<p>古いブラウザとOSの組み合わせによっては、理想的とは言えない結果になるでしょう。こちらは、上記と同じ日付と時間がIE10を使うWindows 8でレンダリングされている例です。</p>
-	<!--kg-card-begin: html-->
+	<p>古いブラウザとOSの組み合わせによっては、理想的とは言えない結果になるでしょう。こちらは、上記と同じ日付と時間がIE10を使うWindows 8でレンダリングされている例です。</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -543,8 +524,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 				<td><img style="border-width: 0px; margin: 5px;" src="https://blog.cloudflare.com/content/images/2020/07/image2-7.png" alt="" width="283" height="343"></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>古いブラウザをサポートする必要がある場合は、Polyfillで解決できます。</p>
 	<h3 id="--5">翻訳する</h3>
 	<p>すべての文字列が外部化され、ロケール特有の基準で慎重にフォーマット化されたデータがすべて挿入されると、エンジニアの作業はだいたい終了です。この時点で、当社は簡単にローカライズする方法を採用したために、アプリケーションを国際化できたということが言えると思います。</p>
@@ -560,8 +540,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		<li>新しい文字列が当社のベースカタログに追加されると、全言語のプレースホルダー文字列が追加される</li>
 	</ul>
 	<p>そこからUIを経由する、またはAPIへの自動呼び出しを介して翻訳管理システムへと翻訳カタログがアップロードされます。ファイルは、翻訳者に手渡される前に、事前処理として新しい各文字列と翻訳メモリ（以前に翻訳された文字列と部分文字列のキャッシュ）が比較されます。一致する翻訳があれば、既存のものが使われます。これは文字列を翻訳し直す手間を省くことでコストカットできるだけでなく、すでにレビューして承認されている翻訳ができる限り使われるようにして、品質を向上させます。</p>
-	<p>ロケールファイルは最後、以下のようになるとしましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ロケールファイルは最後、以下のようになるとしましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">{
  "verify.button": "Verify Email",
  "other.verify.button": "Verify Email",

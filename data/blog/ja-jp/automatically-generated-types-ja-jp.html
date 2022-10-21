@@ -7,18 +7,15 @@
 	<p>これは、スタティックタイプが常に正確かつ最新であることを意味しています。また、プロジェクトが他の静的型付け言語のWorkersを実行して、私たちの中間表現から彼ら独自のタイプを生成することができます。こちらはCloudflareボットからのPR例です。ランタイム型の変更が検出され、中間表現と共にTypeScriptファイルが更新されます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-12.png" class="kg-image"></figure>
 	<h2 id="--1"><strong>自動生成された型の使用</strong></h2>
-	<p>最初に、以下のように「wrangler」を使用して新しいTypeScriptプロジェクトを生成します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最初に、以下のように「wrangler」を使用して新しいTypeScriptプロジェクトを生成します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ wrangler generate my-typescript-worker https://github.com/cloudflare/worker-typescript-template
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>既にTypeScriptプロジェクトがある場合は、以下を使用して最新バージョンの<a href="https://github.com/cloudflare/workers-types" target="_blank">workers-types</a>をインストールします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>既にTypeScriptプロジェクトがある場合は、以下を使用して最新バージョンの<a href="https://github.com/cloudflare/workers-types" target="_blank">workers-types</a>をインストールします。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ npm install --save-dev @cloudflare/workers-types
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>次に、 <code>@cloudflare/workers-types</code> をプロジェクトのtsconfig.jsonファイルに追加します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次に、 <code>@cloudflare/workers-types</code> をプロジェクトのtsconfig.jsonファイルに追加します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "compilerOptions": {
     "target": "ES2020",
@@ -32,8 +29,7 @@
 	<p>その後、ユーザーが選択したIDEで型が自動作成されます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-19.png" class="kg-image"></figure>
 	<h2 id="--2"><strong>仕組み</strong></h2>
-	<p>以下は、Workersランタイムのコードベースからのサンプルコードです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>以下は、Workersランタイムのコードベースからのサンプルコードです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">class Blob: public js::Object {
 public:
   typedef kj::Array&lt;kj::OneOf&lt;kj::Array&lt;const byte&gt;, kj::String, js::Ref&lt;Blob&gt;&gt;&gt; Bits;
@@ -54,8 +50,7 @@ public:
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Pythonスクリプトはビルドごとにこのコード上で実行され、識別子、あらゆる引数タイプ、あらゆる戻り値のタイプを含む関数に関する情報が記された<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank">抽象構文ツリー</a>が生成されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pythonスクリプトはビルドごとにこのコード上で実行され、識別子、あらゆる引数タイプ、あらゆる戻り値のタイプを含む関数に関する情報が記された<a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank">抽象構文ツリー</a>が生成されます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "name": "Blob",
   "kind": "class",
@@ -95,8 +90,7 @@ public:
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>最後に、<a href="https://github.com/cloudflare/workers-types" target="_blank">TypeScript型</a>のリポジトリに、更新された型のPRが自動的に送信されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最後に、<a href="https://github.com/cloudflare/workers-types" target="_blank">TypeScript型</a>のリポジトリに、更新された型のPRが自動的に送信されます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">declare type BlobBits = (ArrayBuffer | string | Blob)[];
 
 interface BlobOptions {
@@ -111,8 +105,7 @@ declare class Blob {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--3"><strong>オーバーライド</strong></h3>
-	<p>一部のケースで、TypeScriptはC++ランタイムでサポートされない概念をサポートします。つまり、ジェネリックおよび関数のオーバーロードです。これらの場合、生成された型をpartial宣言でオーバーライドします。例えば、DurableObjectStorageではgetterおよびsetter関数のためにジェネリックが多用されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>一部のケースで、TypeScriptはC++ランタイムでサポートされない概念をサポートします。つまり、ジェネリックおよび関数のオーバーロードです。これらの場合、生成された型をpartial宣言でオーバーライドします。例えば、DurableObjectStorageではgetterおよびsetter関数のためにジェネリックが多用されます。</p><!--kg-card-begin: markdown-->
 	<pre><code>declare abstract class DurableObjectStorage {
 	 get&lt;T = unknown&gt;(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise&lt;T | undefined&gt;;
 	 get&lt;T = unknown&gt;(keys: string[], options?: DurableObjectStorageOperationsGetOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
@@ -134,8 +127,6 @@ declare class Blob {
 	<p>JSON IR (<a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank">中間表現</a>)はTypeScriptの型と共にオープンソース化され、<a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json" target="_blank">このGiHubリポジトリ内</a>に置かれています。また、IRの書式を示す、<a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json" target="_blank">タイプスキーマ</a>自体もオープンソース化しました。自分の言語のWorkersタイプを作成する場合は、「正規化された」データ構造で宣言を記述するIRを取得し、そこから型を生成することができます。</p>
 	<p>`workers.json`内の宣言には、関数シグネチャーを導出するための要素と、識別子、引数型、戻り値型、エラー管理などの、コード生成に必要な他の要素が含まれています。具体的なユースケースとしては、WebAssemblyをコンパイルする言語のための外部関数宣言を生成して、Workersランタイムから利用可能な一連の関数呼び出しを正確にインポートすることです。</p>
 	<h2 id="--5"><strong>まとめ</strong></h2>
-	<p>CloudflareはTypeScriptおよびRustのエコシステムのサポートに大きな関心を持っています。Brendan氏は両方の言語の型情報を常に最新かつ正確に保つためのツールを作成しました。また、JSONフォーマットの型情報自体をオープンソース化しているため、関心のある方はどなたでもお好みの任意の言語で型データを作成することができます！</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>CloudflareはTypeScriptおよびRustのエコシステムのサポートに大きな関心を持っています。Brendan氏は両方の言語の型情報を常に最新かつ正確に保つためのツールを作成しました。また、JSONフォーマットの型情報自体をオープンソース化しているため、関心のある方はどなたでもお好みの任意の言語で型データを作成することができます！</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

@@ -5,8 +5,7 @@
 	<h3 id="charging-for-stocks-paying-for-flows">Charging for Stocks, Paying for Flows</h3>
 	<p>AWS charges customers based on the amount of data delivered — 1 terabyte (TB) per month, for example. To visualize that, imagine data is water. AWS fills a bucket full of water and then charges you based on how much water is in the bucket. This is known as charging based on “stocks.”</p>
 	<p>On the other hand, AWS pays for bandwidth based on the capacity of their network. The base unit of wholesale bandwidth is priced as one Megabit per second per month (1 Mbps). Typically, a provider like AWS, will pay for bandwidth on a monthly fee based on the number of Mbps that their network uses at its peak capacity. So, extending the analogy, AWS doesn't pay for the amount of water that ends up in their customers' buckets, but rather the capacity based on the diameter of the “hose” that is used to fill them. This is known as paying for “flows.”</p>
-	<h3 id="translating-flows-to-stocks">Translating Flows to Stocks</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="translating-flows-to-stocks">Translating Flows to Stocks</h3><!--kg-card-begin: markdown-->
 	<p>You can translate between flow and stock pricing by knowing that a 1 Mbps connection (think of it as the "hose") can transfer 0.3285 TB (328GB) if utilized to its fullest capacity over the course of a month (think of it as running the "hose" at full capacity to fill the "bucket" for a month).<sup>1</sup> AWS obviously has more than 1 Mbps of capacity — they can certainly transfer more than 0.3285 TB per month — but you can use this as the base unit of their bandwidth costs, and compare it against what they charge a customer to deliver 1 Terabyte (1TB), in order to figure out the AWS bandwidth markup.</p>
 	<!--kg-card-end: markdown-->
 	<p>One more subtlety to be as accurate as possible. Wholesale bandwidth is also billed at the 95th percentile. That effectively cuts off the peak hour or so of use every day. That means a 1 Mbps connection running at 100% can actually likely transfer closer to 0.3458 TB (346GB) per month.</p>
@@ -40,8 +39,7 @@
 	<p>All the data above is derived from what’s published on AWS’s simple pricing calculator. There’s no doubt that some large customers are able to negotiate lower prices. But these are the prices charged to small businesses and startups by default. And, when we’ve reviewed pricing even with large AWS customers, the egress fees remain egregious.</p>
 	<h3 id="it-s-not-too-late-">It’s Not Too Late!</h3>
 	<p>We have a lot of mutual customers who use Cloudflare and AWS. They’re a great service, and we want to support our mutual customers and provide services in a way that meets their needs and is always as secure, fast, reliable, and efficient as possible. We remain hopeful that AWS will do the right thing, lower their egress fees, join the Bandwidth Alliance — following the lead of the majority of the rest of the hosting industry — and pass along savings from peering with Cloudflare and other networks to all their customers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3.gif" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3.gif" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>.......<br>
 		<sup>1</sup><small>Here’s the calculation to convert a 1 Mbps flow into TB stocks: 1 Mbps @ 100% for 1 month = (1 million bits per second) * (60 seconds / minute) * (60 minutes / hour) * (730 hours on average/month) divided by (eight bits / byte) divided by 10^12 (to convert bytes to Terabytes) = 0.3285 TB/month.</small>
 	</p>

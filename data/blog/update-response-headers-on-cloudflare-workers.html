@@ -5,8 +5,7 @@
 	<p>This post assumes you have a basic understanding of JavaScript, as that’s the language used to write a Cloudflare Worker.</p>
 	<h3 id="the-basic-pattern">The Basic Pattern</h3>
 	<p>The basic pattern starts with adding ‘fetch’ event listener to intercept the requests. You can configure which requests to intercept on the Cloudflare dashboard or using the <a href="https://developers.cloudflare.com/workers/api/#create-a-route" target="_blank">Cloudflare API</a>.</p>
-	<p>Then, modify the hostname of the URL and send the request to the new host.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, modify the hostname of the URL and send the request to the new host.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   var url = new URL(event.request.url);
 
@@ -20,8 +19,7 @@
 	<p>This doesn’t do anything useful yet, but this is the basic pattern that will be used in the rest of the examples.</p>
 	<h3 id="load-balancer-with-random-routing">Load Balancer with Random Routing</h3>
 	<p>When you have a list of origin servers, pick a random host to route to.</p>
-	<p>This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p>
-	<!--kg-card-begin: markdown-->
+	<p>This is a very basic load balancing technique to evenly distribute the traffic across all origin servers.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var hostnames = [
   "0.example.com",
   "1.example.com",
@@ -43,8 +41,7 @@ function getRandomInt(max) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="load-balancer-with-fallback">Load Balancer with Fallback</h3>
-	<p>What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p>
-	<!--kg-card-begin: markdown-->
+	<p>What about when a host is down? A simple fallback strategy is to route the request to a different host. Use this only if you know the requests are idempotent. In general, this means GET requests are okay, but you might wish to handle POST requests another way.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
 
   // Randomly pick the primary host
@@ -76,14 +73,12 @@ function getRandomInt(max) {
 	<!--kg-card-end: markdown-->
 	<h3 id="geographic-routing">Geographic Routing</h3>
 	<p>Cloudflare adds <a href="https://support.cloudflare.com/hc/en-us/articles/200168236-What-does-Cloudflare-IP-Geolocation-do-" target="_blank">CF-IPCountry</a> header to all requests once Cloudflare IP Geolocation is enabled.</p>
-	<p>You can access it using:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can access it using:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var countryCode = event.request.headers.get(‘CF-IPCountry’);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We can use the countryCode to route requests from different locations to different servers in different regions. </p>
-	<p>For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, 80% of the traffic to Codiva.io is from the US and India. So, I have servers in two different regions (Oregon, USA; and Mumbai, India). Requests from India and &nbsp;other countries near it are routed to servers in India. All other requests are routed to the US data center.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const US_HOST = "us.example.com"
 const IN_HOST = "in.example.com"
 
@@ -110,8 +105,7 @@ addEventListener('fetch', event =&gt; {
 	<!--kg-card-end: markdown-->
 	<h3 id="putting-it-all-together">Putting it all together</h3>
 	<p></p>
-	<p>Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now, let us combine the geographic routing, random load balancing and fallback into a single worker:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const US_HOSTS = [
   "0.us.example.com",
   "1.us.example.com",

@@ -53,8 +53,7 @@
 	<h3 id="reusability">Reusability</h3>
 	<p>The core of HPKE’s construction is its key schedule. It allows secrets produced and shared with KEMs and pre-shared keys to be mixed together to produce additional shared secrets between sender and receiver for performing authenticated encryption and decryption. HPKE allows applications to build on this key schedule without using the corresponding AEAD functionality, for example, by <a href="https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hpke-12#section-5.3" target="_blank">exporting a shared application-specific secret</a>. Using HPKE in an “export-only” fashion allows applications to use other, non-standard AEAD algorithms for encryption, should that be desired. It also allows applications to use a KEM different from those specified in the standard, as is done in the proposed <a href="https://claucece.github.io/draft-celi-wiggers-tls-authkem/draft-celi-wiggers-tls-authkem.html" target="_blank">TLS AuthKEM draft</a>.</p>
 	<h3 id="interface-simplicity">Interface simplicity</h3>
-	<p>HPKE hides the complexity of message encryption from callers. Encrypting a message with additional authenticated data from sender to receiver for their public key is as simple as the following two calls:</p>
-	<!--kg-card-begin: markdown-->
+	<p>HPKE hides the complexity of message encryption from callers. Encrypting a message with additional authenticated data from sender to receiver for their public key is as simple as the following two calls:</p><!--kg-card-begin: markdown-->
 	<pre><code>// Create an HPKE context to send messages to the receiver
 encapsulatedKey, senderContext = SetupBaseS(receiverPublicKey, ”shared application info”)
 

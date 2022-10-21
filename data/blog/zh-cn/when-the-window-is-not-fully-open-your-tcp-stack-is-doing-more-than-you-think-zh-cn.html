@@ -15,8 +15,7 @@
 		<li>服务器不会通过 <code>recv()</code> 接收任何数据。我们预期所有数据在接收队列中保留并等待。</li>
 		<li>我们修复了 SO_RCVBUF，以便更好地展示。</li>
 	</ul>
-	<p>简化的伪代码可能类似于（<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py" target="_blank">有本事就编写完整代码试试</a>）：</p>
-	<!--kg-card-begin: markdown-->
+	<p>简化的伪代码可能类似于（<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py" target="_blank">有本事就编写完整代码试试</a>）：</p><!--kg-card-begin: markdown-->
 	<pre><code>sd = socket.socket(AF_INET, SOCK_STREAM, 0)
 sd.bind(('127.0.0.3', 1234))
 sd.listen(32)
@@ -38,14 +37,12 @@ while true:
 	</ul>
 	<h3 id="--1">一点理论知识</h3>
 	<p>首先，我们来确立一些通用术语。我会遵循 <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>iproute2</code> 包内 <code>ss</code> Linux 工具中使用的措辞</a>。</p>
-	<p>首先，存在缓冲区预算限制。<a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> 手册页</a>称之为 <strong>skmem_rb</strong>，在内核中名为 <strong>sk_rcvbuf</strong>。该值通常使用 <code>net.ipv4.tcp_rmem</code> 设置由 Linux 自动调整机制来控制：</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，存在缓冲区预算限制。<a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> 手册页</a>称之为 <strong>skmem_rb</strong>，在内核中名为 <strong>sk_rcvbuf</strong>。该值通常使用 <code>net.ipv4.tcp_rmem</code> 设置由 Linux 自动调整机制来控制：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sysctl net.ipv4.tcp_rmem
 net.ipv4.tcp_rmem = 4096 131072 6291456
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>或者，也可以使用 <code>setsockopt(SO_RCVBUF)</code> 对套接字进行设置。请注意，内核将提供给此 setsockopt 的值加倍了。例如，SO_RCVBUF=16384 将导致 skmem_rb=32768。此 setsockopt 允许的最大值默认仅限于微薄的 208KiB：</p>
-	<!--kg-card-begin: markdown-->
+	<p>或者，也可以使用 <code>setsockopt(SO_RCVBUF)</code> 对套接字进行设置。请注意，内核将提供给此 setsockopt 的值加倍了。例如，SO_RCVBUF=16384 将导致 skmem_rb=32768。此 setsockopt 允许的最大值默认仅限于微薄的 208KiB：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sysctl net.core.rmem_max net.core.wmem_max
 net.core.rmem_max = 212992
 net.core.wmem_max = 212992
@@ -84,16 +81,14 @@ net.core.wmem_max = 212992
 		<li>最后，虚线显示 <strong>rcv_ssthresh</strong>，暂时别管它，后面会提到。</li>
 	</ul>
 	<h3 id="--3">超出预算很不好</h3>
-	<p>请特别注意，最终 <strong>skmem_r</strong> 高于 <strong>skmem_rb</strong>！这个结果令人大感意外，也不能接受。采用 <strong>skmem_rb</strong> 内存预算的根本意义就是避免超出预算。下面是 <code>ss</code> 的显示情况：</p>
-	<!--kg-card-begin: markdown-->
+	<p>请特别注意，最终 <strong>skmem_r</strong> 高于 <strong>skmem_rb</strong>！这个结果令人大感意外，也不能接受。采用 <strong>skmem_rb</strong> 内存预算的根本意义就是避免超出预算。下面是 <code>ss</code> 的显示情况：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ss -m
 Netid  State  Recv-Q  Send-Q  Local Address:Port  Peer Address:Port   
 tcp    ESTAB  62464   0       127.0.0.3:1234      127.0.0.2:1235
      skmem:(r73984,rb65536,...)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>可以看到，skmem_rb 是 65536，而 skmem_r 是 73984，超出了 8448 字节！发生这种情况时，我们面临一个更大的问题。在大约第 62 个数据包处，公告窗口为 3072 字节，虽然不断在发送数据包，但接收端却无法处理它们！要验证这一点很容易，只需查看 nstat TcpExtTCPRcvQDrop 计数器：</p>
-	<!--kg-card-begin: markdown-->
+	<p>可以看到，skmem_rb 是 65536，而 skmem_r 是 73984，超出了 8448 字节！发生这种情况时，我们面临一个更大的问题。在大约第 62 个数据包处，公告窗口为 3072 字节，虽然不断在发送数据包，但接收端却无法处理它们！要验证这一点很容易，只需查看 nstat TcpExtTCPRcvQDrop 计数器：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ nstat -az TcpExtTCPRcvQDrop
 TcpExtTCPRcvQDrop    13    0.0
 </code></pre>
@@ -129,8 +124,7 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>前两个因素最重要。下面的运行中，专门将发送端配置为造成高昂的元数据开销并使合并无效（<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py#L90" target="_blank">设置的细节很乱</a>）：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-10.png" class="kg-image"></figure>
 	<p>您可以看到内核多次达到 TCP 折叠，这完全不可取。每次折叠内核都很可能重写完整的接收缓冲区。这整个内核机制，从利用 tcp_adv_win_scale 为元数据预留一些空间，通过使用合并来降低每个数据包的内存开销，一直到 rcv_ssthresh 限值，其目的都是为了避免发生过于频繁达到折叠的这种情况。</p>
-	<p>内核机制往往没什么问题，TCP 折叠在实践中也很少发生。但是，我们注意到，对于特定类型的流量，情况并非如此。一个例子是 <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/" target="_blank">WebSocket 流量中有大量小数据包</a>，而读取器速度很慢。有一条<a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c#L452" target="_blank">内核注释谈到了</a>这种情况：</p>
-	<!--kg-card-begin: markdown-->
+	<p>内核机制往往没什么问题，TCP 折叠在实践中也很少发生。但是，我们注意到，对于特定类型的流量，情况并非如此。一个例子是 <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/" target="_blank">WebSocket 流量中有大量小数据包</a>，而读取器速度很慢。有一条<a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c#L452" target="_blank">内核注释谈到了</a>这种情况：</p><!--kg-card-begin: markdown-->
 	<pre><code>* The scheme does not work when sender sends good segments opening
 * window and then starts to feed us spaghetti. But it should work
 * in common situations. Otherwise, we have to rely on queue collapsing.
@@ -149,8 +143,7 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>在此运行中，将 <strong>skmem_rb</strong> 设置为 2MiB。与之前的运行不同的是，缓冲区预算很大，并且接收窗口并未从 50% 的 skmem_rb 开始！而是从 64KiB 开始，并线性增长。Linux 需要一些时间才能将接收窗口增加到完整大小，在本例中大约为 800KiB。窗口受 <strong>rcv_ssthresh</strong> 限制。此变量开始于 64KiB，然后以每个数据包对应两个完整 MSS 数据包的速度增长，这样总大小 (truesize) 与有效负载大小的比率就能达到“良好”状态。</p>
 	<p><a href="https://lore.kernel.org/lkml/CANn89i+mhqGaM2tuhgEmEPbbNu_59GGMhBMha4jnnzFE=UBNYg@mail.gmail.com/" target="_blank">Eric Dumazet 介绍了</a>这种行为：</p>
 	<blockquote>堆栈对于 RWIN 增加比较保守，它想接收数据包来大致了解 skb-&gt;len/skb-&gt;truesize 比率，以便将内存预算转换为 RWIN。<br>有些驱动程序必须分配 16K 的缓冲区（甚至是 32K 的缓冲区），才刚好够保存一个分段（有效负载小于 1500 字节），而另一些驱动程序则能够更高效地打包内存。</blockquote>
-	<p>这种缓慢打开窗口的行为是固定的，无法在 vanilla 内核中配置。<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank">我们准备了内核补丁，允许一开始使用更高的 rcv_ssthresh</a>，具体基于逐个路由的选项 <code>initrwnd</code>：</p>
-	<!--kg-card-begin: markdown-->
+	<p>这种缓慢打开窗口的行为是固定的，无法在 vanilla 内核中配置。<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank">我们准备了内核补丁，允许一开始使用更高的 rcv_ssthresh</a>，具体基于逐个路由的选项 <code>initrwnd</code>：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip route change local 127.0.0.0/8 dev lo initrwnd 1000
 </code></pre>
 	<!--kg-card-end: markdown-->

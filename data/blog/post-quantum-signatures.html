@@ -54,8 +54,7 @@
 	<p>The basic building blocks of Dilithium are polynomials and rings. This is the second-last box of the Chinese box, and we will explore it now.</p>
 	<p>A polynomial ring, <em>R</em>, is a <a href="https://en.wikipedia.org/wiki/Ring_(mathematics)" target="_blank">ring</a> of all polynomials. A ring is a set in which two operations can exist: addition and multiplication of integers; and a polynomial is an expression of variables and coefficients. The “size” of these polynomials, defined as the size of the largest coefficient, plays a crucial role for these kinds of algorithms.</p>
 	<p>In the case of Dilithium, the <em>Generation </em>algorithm creates a <em>k x l</em> matrix <em>A</em>. Each entry of this matrix is a polynomial in the defined ring. The generation algorithm also creates random private vectors <em>s1 </em>and <em>s2</em>, whose components are elements of <em>R</em>, the ring<em>. </em>The public key is the matrix <em>A</em> and <em>t = As1 + s2</em>. It is infeasible for a quantum computer to know the secret values given just <em>t</em> and <em>A</em>. This problem is called Module-Learning With Errors (MLWE) problem, and it is a variant of LWE as seen <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation">in this blog post</a>.</p>
-	<p>Armed with the public and private keys, the Dilithium <em>identification scheme </em>proceeds as follows (some details are left out for simplicity, like the rejection sampling):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Armed with the public and private keys, the Dilithium <em>identification scheme </em>proceeds as follows (some details are left out for simplicity, like the rejection sampling):</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>The prover wants to prove they know the private key. They generate a random secret nonce y whose coefficient is less than a security parameter. They then compute Ay and set a commitment w1 to be the “high-order”<sup>1</sup> bits of the coefficients in this vector.</li>
 		<li>The verifier accepts the commitment and creates a challenge c.</li>
@@ -84,8 +83,7 @@
 		<li>“The Design and Cryptanalysis of Post-Quantum Digital Signature Algorithms” by Ward Beullens: <a href="https://www.esat.kuleuven.be/cosic/publications/thesis-417.pdf" target="_blank">https://www.esat.kuleuven.be/cosic/publications/thesis-417.pdf</a></li>
 		<li>“How To Prove Yourself: Practical Solutions to Identification and Signature Problems” by Amos Fiat and Adi Shamir: <a href="https://link.springer.com/content/pdf/10.1007/3-540-47721-7_12.pdf" target="_blank">https://link.springer.com/content/pdf/10.1007/3-540-47721-7_12.pdf</a></li>
 	</ul>
-	<p>.....</p>
-	<!--kg-card-begin: markdown-->
+	<p>.....</p><!--kg-card-begin: markdown-->
 	<p><small><sup>1</sup>This “high-order” and “low-order” procedure decomposes a vector, and there is a specific procedure for this for Dilithium. It aims to reduce the size of the public key.</small></p>
 	<!--kg-card-end: markdown-->
 </div>

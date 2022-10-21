@@ -24,8 +24,7 @@
 		<li>特定のkey:valueペアのメッセージを、メトリックとして解析します</li>
 		<li>そのメトリックを、サーバーレスの新しい時系列分析サービスであるWorkers Analytics Engineに直接書き込んで、GraphQLで直接クエリできるようにします</li>
 	</ol>
-	<p>これにより、外部のメトリクスサービスを立ち上げて保守したり、別のクラウドサービスを設定したり、どのように拡張するかを考えたりする必要がなく、すべてCloudflare上で直接行うことができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>これにより、外部のメトリクスサービスを立ち上げて保守したり、別のクラウドサービスを設定したり、どのように拡張するかを考えたりする必要がなく、すべてCloudflare上で直接行うことができます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-TypeScript">
 async function pubsub(
   messages: Array&lt;PubSubMessage&gt;,
@@ -78,8 +77,7 @@ const worker = {
 export default worker;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>そしてこれらのメトリクスを、使い慣れた言語であるSQLを使って直接問い合わせることができます。このクエリでは作成したメトリクスを使用して、決済デバイスで処理されたトランザクションの内訳を、マーチャントごとにグループ化して表示します（繰り返しますが、すべてCloudflareで処理されます）。</p>
-	<!--kg-card-begin: markdown-->
+	<p>そしてこれらのメトリクスを、使い慣れた言語であるSQLを使って直接問い合わせることができます。このクエリでは作成したメトリクスを使用して、決済デバイスで処理されたトランザクションの内訳を、マーチャントごとにグループ化して表示します（繰り返しますが、すべてCloudflareで処理されます）。</p><!--kg-card-begin: markdown-->
 	<pre><code>SELECT
   label_2 as region,
   label_3 as merchantId,

@@ -37,8 +37,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--4-.png" class="kg-image"></figure>
 	<p>Cloudflareは特定の種類の要求フローをサポートしていますが、異なるサービスプロバイダーが完全に合致するインタラクション特性に準拠することはおそらく不可能でしょう。拡張版v2.0の主要変更点の 1 つは、中央コンフィグレーションファイルを使用することなく、技術的書き換えで対処することです。拡張機能の<a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">ソースコード</a>でコンフィグレーションが規定されているため、プライバシーパスアクションを開始する際に要求されるブラウジング特性の変更をより簡易にすることが可能となります。これにより、新規プロバイダー用にこのコンフィグレーションを単に複製して適用することで、まったく異なる新しい要求フローを追加することが可能になりました。</p>
 	<p>Cloudflare以外の他のサービスとの間でこのような統合が可能となったことは、CAPTCHAプロバイダーの<a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>によってサポートされるまったく新しいバージョンの拡張機能が間もなく展開されることで明らかになることでしょう。hCaptchaが要求する一時的な課題に対処する際、ユーザーは、他のhCaptchaの顧客サイトで引き換え可能なプライバシー保護トークンを受けとり、それに対処することが可能になります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><span style="color:grey"><small><em>“「hCaptchaはユーザーのプライバシーに焦点を当てます。そして、プライバシーパスをサポートすることは当社事業領域の自然な延長線上にあります。当社はCloudflareおよびその他のベンダーとの協働により、これを一般的で広範な業界標準にすることを目標に掲げております。また、当社では現在別のアプリケーション開発にも注力しているところです。グローバルに展開しているサービスにプライバシーパスを実装することは比較的直接的で実直な試みです。当社はCloudflareチームとの充実した協働により、オープンソースのChromeブラウザー拡張機能を改善し、当社のユーザー向けに最高のエクスペリエンスを提供することが可能となりました。」 - エリ＝シャドゥル・ケドゥリ、hCaptcha 創設者”</em></small></span></p><small>
 	</small>
 	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, founder of hCaptcha</small></p>
@@ -112,8 +111,7 @@
 	<h1 id="--11"><strong>付録</strong></h1>
 	<p>ここでは上記で取り上げたトピックに関連する追加情報を記述しています。</p>
 	<h2 id="a-"><strong>A.キーローテーションのコミットメントフォーマット</strong></h2>
-	<p>サーバーがプライバシーパスプロトコルの最中に真正に動作していることを証明するためには、キーコミットメントが必要となります。プライバシーパスがv2.0リリースで使用しているコミットメントフォーマットは、以前のリリースのものとは若干異なります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>サーバーがプライバシーパスプロトコルの最中に真正に動作していることを証明するためには、キーコミットメントが必要となります。プライバシーパスがv2.0リリースで使用しているコミットメントフォーマットは、以前のリリースのものとは若干異なります。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">"2.00": {
   "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
   "expiry": "2020-01-11T10:29:10.658286752Z",
@@ -126,8 +124,7 @@
 	<p>クライアントがコミットメントを取得するとき、サーバーは有効期限が切れていないことを確認します。そして、これに対応した拡張機能のコンフィグレーションに埋め込まれている検証キーを使用して、シグネチャーが検証を実行します。これらの確認が承認されると、Hを取得し、サーバーが送信した発行応答を検証します。以前のバージョンではこのコミットメントにはシグネチャーは含まれていませんでしたが、このシグネチャーは v2.0 以降は有効化されます。</p>
 	<p>サーバーがキーローテーションを実行するとき、サーバーは単に新しいキーk2を生成し、2.01などの新しい識別子を使用してk2に新しいコミットメントとして追加します。その後、k2はVOPRF操作のシークレットキーとしてを使用され、必要とする計算が実行されます。</p>
 	<h2 id="b-api-"><strong>B.引換 API 要求の事例</strong></h2>
-	<p>引換APIは、HTTPS経由で実行されます。そのときPOSTは<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>に送信されます。このエンドポイントへの要求では、要求の本文に JSON-RPC 2.0 シンタックスを使用してプライバシー パス データを指定する必要があります。要求の事例を見てみましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>引換APIは、HTTPS経由で実行されます。そのときPOSTは<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>に送信されます。このエンドポイントへの要求では、要求の本文に JSON-RPC 2.0 シンタックスを使用してプライバシー パス データを指定する必要があります。要求の事例を見てみましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "method": "redeem",
@@ -147,8 +144,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>上記の捕捉説明: params.data[0]は、発行段階でトークンを生成するために使用されるクライアント入力データです。params.data[1]は、サーバーが引換を検証するために使用する HMAC タグです。params.data[2] は、クライアントが使用するhash-to-curveのパラメータを指定する、文字列化されたbase64エンコードJSONオブジェクトです。たとえば、配列の最後の要素はオブジェクトに対応します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>上記の捕捉説明: params.data[0]は、発行段階でトークンを生成するために使用されるクライアント入力データです。params.data[1]は、サーバーが引換を検証するために使用する HMAC タグです。params.data[2] は、クライアントが使用するhash-to-curveのパラメータを指定する、文字列化されたbase64エンコードJSONオブジェクトです。たとえば、配列の最後の要素はオブジェクトに対応します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     curve: "p256",
     hash: "sha256",
@@ -159,8 +155,7 @@
 	<p>これはクライアントがcurve P-256を使用したことを示しています。このとき、ハッシュ関数はSHA-256であり、SSWU方式はhash to curveを使用しています。これにより、サーバーが真正な暗号スイートを使用し、トランザクションを検証をすることが可能とないります。クライアントは引換要求を一定の固定情報とバインドする必要があります。そこではparams.bindings配列に複数の文字列として格納されます。たとえば、HTTP要求のHostヘッダーと使用されたHTTPパス（これはプライバシーパスブラウザー拡張機能で使用されたもの）を送信することができます 。最後に、params.compressedはオプションのブール値（デフォルトは false）です。その値はHMACタグが圧縮あるいは非圧縮ポイントエンコーディングのどちらで計算されたかを示します。</p>
 	<p>現在サポートされている暗号スイートは上記の事例のみです。または、hash-and-increment方式のインクリメントに等しい方式を除き、hashing to curveと同様の方式もサポートされています。これはプライバシー パスの v1.0で使用された元の方式です。またそれは、後方互換性のためだけにサポートされています。詳細については<a href="https://privacypass.github.io/api-redeem" target="_blank">提供済ドキュメント</a>をご参照ください。</p>
 	<h3 id="--12"><strong>応答の事例</strong></h3>
-	<p>要求が引換 API に送信され、正常に検証された場合、次の応答が返されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>要求が引換 API に送信され、正常に検証された場合、次の応答が返されます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "result": "success",
@@ -168,8 +163,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>エラーが発生すると、次に類似するメッセージが返されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>エラーが発生すると、次に類似するメッセージが返されます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "error": {

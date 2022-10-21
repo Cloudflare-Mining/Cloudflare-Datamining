@@ -14,16 +14,14 @@
 		<li>And finally… run the Tunnel!</li>
 	</ol>
 	<p>These steps give you control over how your services connect to Cloudflare, but they are also a chore. Today’s change, which we are calling quick Tunnels, not only removes some onboarding requirements, we’re also condensing these into a single step.</p>
-	<p>If you have a service running locally that you want to share with teammates or an audience, you can use this single command to connect your service to Cloudflare’s edge. First, you need to install the Cloudflare connector, a lightweight daemon called <code>cloudflared</code>. Once installed, you can run the command below.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you have a service running locally that you want to share with teammates or an audience, you can use this single command to connect your service to Cloudflare’s edge. First, you need to install the Cloudflare connector, a lightweight daemon called <code>cloudflared</code>. Once installed, you can run the command below.</p><!--kg-card-begin: markdown-->
 	<p><code>cloudflared tunnel</code></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-36.png" class="kg-image"></figure>
 	<p>When run, <code>cloudflared</code> will generate a URL that consists of a random subdomain of the website <code>trycloudflare.com</code> and point traffic to localhost port 8080. If you have a web service running at that address, users who visit the subdomain generated will be able to visit your web service through Cloudflare’s network.</p>
 	<h3 id="configuring-quick-tunnels">Configuring Quick Tunnels</h3>
 	<p>We built this feature with the single command in mind, but if you have services that are running at different default locations, you can optionally configure your quick Tunnel to support that.</p>
-	<p>One example is if you’re building a multiplayer game that you want to share with friends. If that game is available locally on your origin, or even your laptop, at localhost:3000, you can run the command below.</p>
-	<!--kg-card-begin: markdown-->
+	<p>One example is if you’re building a multiplayer game that you want to share with friends. If that game is available locally on your origin, or even your laptop, at localhost:3000, you can run the command below.</p><!--kg-card-begin: markdown-->
 	<p><code>cloudflared tunnel --url localhost:3000</code></p>
 	<!--kg-card-end: markdown-->
 	<p>You can do this with IP addresses or URLs, as well. Anything that <code>cloudflared</code> can reach can be made available through this service.</p>

@@ -7,8 +7,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-2.png" class="kg-image"></figure>
 	<p>I was able to change the code in the text area on the left, click “Update”, and the changes would be reflected on the right — fairly self-explanatory. There was also a testing tab which allowed me to handcraft HTTP requests with different methods and custom headers. So far so good.</p>
 	<p>As my project evolved, it became clear that I needed to leave the Workers editor behind. Anything more than a one-off script tends to require JavaScript modules and multiple files. I spent some time setting up a local development environment for myself with <a href="https://npmjs.com" target="_blank">npm</a> and <a href="https://webpack.js.org/" target="_blank">webpack</a> (see, purgatory: a place or state of temporary suffering. <a href="https://www.merriam-webster.com/dictionary/purgatory" target="_blank">merriam-webster.com</a>).</p>
-	<p>After I finally got everything working, my iteration cycle looked a bit like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After I finally got everything working, my iteration cycle looked a bit like this:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Make a change to my code</li>
 		<li>Run <code>npm run build</code> (which ran webpack and bundled my code in a single script)</li>
@@ -21,8 +20,7 @@
 		<li>Rinse and repeat</li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<p>There were two main things here that were decidedly <strong>not</strong> a fantastic developer experience:</p>
-	<!--kg-card-begin: markdown-->
+	<p>There were two main things here that were decidedly <strong>not</strong> a fantastic developer experience:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Inspecting the value of a variable by adding a console.log statement would take me ~2-3 minutes and involved lots of manual steps to perform a full rebuild.</li>
 		<li>I was unable to use familiar HTTP clients such as cURL and Postman without deploying to production. This was because the Workers Preview UI was an iframe nested in the dashboard.</li>
@@ -36,8 +34,7 @@
 	<p>Most web developers are familiar with developing their applications on <code>localhost</code>, and since Wrangler is written in Rust, it means we could start up a server on localhost that would handle requests to a Worker. The idea was to somehow start a server on <code>localhost</code> and then transform incoming requests and send them off to a preview session running on a Cloudflare server.</p>
 	<h3 id="proof-of-concept">Proof of Concept</h3>
 	<p>What we came up with ended up looking a little something like this — when a developer runs <code>wrangler dev</code>, do the following:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/wrangler.dev-flowchart@2x.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/wrangler.dev-flowchart@2x.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Build the Worker</li>
 		<li>Upload the Worker via the Cloudflare API as a previewable Worker</li>
@@ -45,34 +42,29 @@
 		<li>Start listening for incoming HTTP requests at <code>localhost:8787</code></li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<p><em> Top secret fact: 8787 spells out Rust on a phone numpad </em>—<em> Happy Easter!</em></p>
-	<!--kg-card-begin: markdown-->
+	<p><em> Top secret fact: 8787 spells out Rust on a phone numpad </em>—<em> Happy Easter!</em></p><!--kg-card-begin: markdown-->
 	<ol start="5">
 		<li>All incoming requests to <code>localhost:8787</code> are modified:</li>
 	</ol>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<ul>
 		<li>All headers are prepended with <code>cf-ew-raw-</code> (for instance, <code>X-Auth-Header</code> would become <code>cf-ew-raw-X-Auth-Header</code>)</li>
 		<li>The URL is changed to <code>https://rawhttp.cloudflareworkers.com/${path}</code></li>
 		<li>The Host header is changed to <code>rawhttp.cloudflareworkers.com</code></li>
 		<li>The <code>cf-ew-preview</code> header is added with the access token returned from the API in step 3</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<ol start="6">
 		<li>After sending this request, the response is modified</li>
 	</ol>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<ul>
 		<li>All headers not prefixed with <code>cf-ew-raw-</code> are discarded and headers with the prefix have it removed (for instance, <code>cf-ew-raw-X-Auth-Success</code> would become <code>X-Auth-Success</code>)</li>
 	</ul>
 	<!--kg-card-end: markdown-->
 	<p>The hard part here was already done — the Workers Core team had already implemented the API to support the Preview UI. We just needed to gently nudge Wrangler and the API to be the best of friends. After some investigation into Rust’s HTTP ecosystem, we settled on using the HTTP library <a href="https://hyper.rs/" target="_blank">hyper</a>, which I highly recommend if you’re in need of a low level HTTP library — it’s fast, correct, and the ergonomics are constantly improving. After a bit of work, we got a prototype working and carved Wrangler ❤️ Cloudflare API into the old oak tree down by <a href="https://en.wikipedia.org/wiki/Lady_Bird_Lake" target="_blank">Lady Bird Lake</a>.</p>
 	<h3 id="usage">Usage</h3>
-	<p>Let’s say I have a Workers script that looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s say I have a Workers script that looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -83,14 +75,12 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If I created a Wrangler project with this code and ran <code>wrangler dev</code>, this is what it looked like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If I created a Wrangler project with this code and ran <code>wrangler dev</code>, this is what it looked like:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ wrangler dev
 👂  Listening on http://127.0.0.1:8787
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In another terminal session, I could run the following:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In another terminal session, I could run the following:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ curl localhost:8787
 Hello, World!
 </code></pre>
@@ -99,8 +89,7 @@ Hello, World!
 	<h3 id="just-the-right-amount-of-scope-creep">Just the Right Amount of Scope Creep</h3>
 	<p>At this point, our initial goal was complete: any HTTP client could test out a Worker before it was deployed. However, <code>wrangler dev</code> was still missing crucial functionality. When running <code>wrangler preview</code>, it’s possible to view <code>console.log</code> output in the browser editor. This is incredibly useful for debugging Workers applications, and something with a name like <code>wrangler dev</code> should include a way to view those logs as well. “This will be easy,” I said, not yet knowing what I was signing up for. Buckle up!</p>
 	<h3 id="console-log-v8-and-the-chrome-devtools-protocol-oh-my-">console.log, V8, and the Chrome Devtools Protocol, Oh My!</h3>
-	<p>My first goal was to get a <code>Hello, World!</code> message streamed to my terminal session so that developers can debug their applications using <code>wrangler dev</code>. Let’s take the script from earlier and add a <code>console.log</code> statement to it:</p>
-	<!--kg-card-begin: markdown-->
+	<p>My first goal was to get a <code>Hello, World!</code> message streamed to my terminal session so that developers can debug their applications using <code>wrangler dev</code>. Let’s take the script from earlier and add a <code>console.log</code> statement to it:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })

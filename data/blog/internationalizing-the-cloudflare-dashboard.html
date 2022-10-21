@@ -9,14 +9,12 @@
 		<li>It enables translation teams to work on translating these strings without needing to view or change any application code.</li>
 		<li>Most translators typically use Translation Management applications which automate aspects of the workflow and provide them with useful utilities (like translation memory, change tracking, and a number of useful parsing and formatting tools). These applications expect standardized text formats (such as json, xml, md, or csv files).</li>
 	</ul>
-	<p>From an engineering perspective, separating application code from translations allows for making changes to strings without re-compiling and/or re-deploying code. In our React based application, externalizing most of our strings boiled down to changing blocks of code like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>From an engineering perspective, separating application code from translations allows for making changes to strings without re-compiling and/or re-deploying code. In our React based application, externalizing most of our strings boiled down to changing blocks of code like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Button&gt;Cancel&lt;/Button&gt;
 &lt;Button&gt;Next&lt;/Button&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Into this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Into this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
 &lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
@@ -30,13 +28,11 @@
 	<!--kg-card-end: markdown-->
 	<p>The <code>&lt;Trans&gt;</code> component shown above is the fundamental i18n building block in our application. In this scheme, translated strings are kept in large dictionaries keyed by a translation id. We call these dictionaries “translation catalogs”, and there are a set of translation catalogs for each language that we support.</p>
 	<p>At runtime, the <code>&lt;Trans&gt;</code> component looks up the translation in the correct catalog for the provided key and then inserts this translation into the page (via the DOM). All of an application's static text can be externalized with simple transformations like these.</p>
-	<p>However, when dynamic data needs to be intermixed with static text, the solution becomes a little more complicated. Consider the following seemingly straightforward example which is riddled with i18n landmines:</p>
-	<!--kg-card-begin: markdown-->
+	<p>However, when dynamic data needs to be intermixed with static text, the solution becomes a little more complicated. Consider the following seemingly straightforward example which is riddled with i18n landmines:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>It may be tempting to externalize this sentence by chopping it up into a few parts, like so:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It may be tempting to externalize this sentence by chopping it up into a few parts, like so:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
  &lt;Trans id="selected.prefix" /&gt; {totalSelected } &lt;Trans id="pageRules" /&gt;
 &lt;/span&gt;
@@ -73,8 +69,7 @@
 	<!--kg-card-end: markdown-->
 	<p>This gets the job done and may even seem like an elegant solution. After all, both the <code>selected.prefix</code> and <code>pageRules.suffix</code> strings seem like they are destined to be reused. Unfortunately, chopping sentences up and then concatenating translated bits back together like this turns out to be the single largest pitfall when externalizing strings for internationalization.</p>
 	<p>The problem is that when translated, the various words that make up a sentence can be <a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">morphed in different ways</a> based on context (singular vs plural contexts, due to word gender, subject/verb agreement, etc). This varies significantly from language to language, as does <a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">word order</a>. For example in English, the sentence “We like them” follows a subject-verb-object order, while other languages might follow subject-object-verb (We them like), verb-subject-object (Like we them), or even other orderings. Because of these nuanced differences between languages, concatenating translated phrases into a sentence will almost always lead to localization errors.</p>
-	<p>The code example above contains actual translations we got back from our translation teams when we supplied them with “You’ve selected” and “Page Rules” as separate strings. Here’s how this sentence would look when rendered in the different languages:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The code example above contains actual translations we got back from our translation teams when we supplied them with “You’ve selected” and “Page Rules” as separate strings. Here’s how this sentence would look when rendered in the different languages:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -98,8 +93,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>To compare, we also gave them the sentence as a single string using a placeholder for the variable, and here’s the result:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To compare, we also gave them the sentence as a single string using a placeholder for the variable, and here’s the result:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -124,8 +118,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>As you can see, the translations differ for Japanese and German. We’ve got a localization bug on our hands.</p>
-	<p>So, In order to guarantee that translators will be able to convey the true meaning of your text with fidelity, it's important to keep each sentence intact as a single externalized string. Our <code>&lt;Trans&gt;</code> component allows for easy injection of values into template strings which allows us to do exactly that:</p>
-	<!--kg-card-begin: markdown-->
+	<p>So, In order to guarantee that translators will be able to convey the true meaning of your text with fidelity, it's important to keep each sentence intact as a single externalized string. Our <code>&lt;Trans&gt;</code> component allows for easy injection of values into template strings which allows us to do exactly that:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -156,8 +149,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This allows translators to have the full context of the sentence, ensuring that all words will be translated with the correct inflection.</p>
-	<p>You may have noticed another potential issue. What happens in this example when <code>totalSelected</code> is just 1? With the above code, the user would see “You've selected 1 Page Rules for deletion”. We need to conditionally pluralize the sentence based on the value of our dynamic data. This turns out to be a fairly common use case, and our <code>&lt;Trans&gt;</code> component handles this automatically via the <code>smart_count</code> feature:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You may have noticed another potential issue. What happens in this example when <code>totalSelected</code> is just 1? With the above code, the user would see “You've selected 1 Page Rules for deletion”. We need to conditionally pluralize the sentence based on the value of our dynamic data. This turns out to be a fairly common use case, and our <code>&lt;Trans&gt;</code> component handles this automatically via the <code>smart_count</code> feature:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -184,15 +176,13 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Here, the singular and plural versions are delimited by <code>||||</code>. <code>&lt;Trans&gt;</code> will automatically select the right translation to use depending on the value of the passed in <code>totalSelected</code> variable.</p>
-	<p>Yet another stumbling block occurs when markup is mixed in with a block of text we'd like to externalize as a single string. For example, what if you need some phrase in your sentence to be a link to another page?</p>
-	<!--kg-card-begin: markdown-->
+	<p>Yet another stumbling block occurs when markup is mixed in with a block of text we'd like to externalize as a single string. For example, what if you need some phrase in your sentence to be a link to another page?</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   Don't forget to &lt;Link&gt;verify your email address.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To solve for this use case, the <code>&lt;Trans&gt;</code> component allows for arbitrary elements to be injected into placeholders in a translation string, like so:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To solve for this use case, the <code>&lt;Trans&gt;</code> component allows for arbitrary elements to be injected into placeholders in a translation string, like so:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   &lt;Trans id="notification.email_verification" Components={[Link]} componentProps={[{ to: '/profile' }]} /&gt;
 &lt;/VerificationReminder&gt;
@@ -204,8 +194,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In this example, the <code>&lt;Trans&gt;</code> component will replace placeholder elements (&lt;0&gt;,&lt;1&gt;, etc.) with instances of the component type located at that index in the <code>Components</code> array. It also passes along any data specified in <code>componentProps</code> to that instance. The example above would boil down to the following in React:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example, the <code>&lt;Trans&gt;</code> component will replace placeholder elements (&lt;0&gt;,&lt;1&gt;, etc.) with instances of the component type located at that index in the <code>Components</code> array. It also passes along any data specified in <code>componentProps</code> to that instance. The example above would boil down to the following in React:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">// en-US
 &lt;VerificationReminder&gt;
   Don't forget to &lt;Link to="/profile"&gt;verify your email address.&lt;/Link&gt;
@@ -247,15 +236,13 @@
 	</ul>
 	<p>If you're just getting started with i18n in a new React based web-app, react-intl and i18n-next are 2 popular libraries that supply a component similar to <code>&lt;Trans&gt;</code> described above.</p>
 	<p>The biggest pain point of the <code>&lt;Trans&gt;</code> component as outlined is that strings have to be kept in a separate file from your source code. Switching between multiple files as you author new code or modify existing features is just plain annoying. It's even more annoying if the translation files are kept far away in the directory structure, as they often need to be.</p>
-	<p>There are some new i18n libraries such as <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a> that obviate this problem by taking an extraction based approach to handling translation catalogs. In this scheme, you still use a <code>&lt;Trans&gt;</code>component, but you keep your strings in the component itself, not a separate catalog:</p>
-	<!--kg-card-begin: markdown-->
+	<p>There are some new i18n libraries such as <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a> that obviate this problem by taking an extraction based approach to handling translation catalogs. In this scheme, you still use a <code>&lt;Trans&gt;</code>component, but you keep your strings in the component itself, not a separate catalog:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A tool that you run at build time then does the work of finding all of these strings and extracting then into catalogs for you. For example, the above would result in the following generated catalogs:</p>
-	<!--kg-card-begin: markdown-->
+	<p>A tool that you run at build time then does the work of finding all of these strings and extracting then into catalogs for you. For example, the above would result in the following generated catalogs:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">// locales/en_US.json
 {
   "Hmm... We couldn't find any matching websites.": "Hmm... We couldn't find any matching websites.",
@@ -274,13 +261,11 @@
 	<p>Whichever tech stack you're working with, there are likely a few i18n libraries that can help you out. Which one to pick is highly dependent on technical constraints of your application and the context of your team's goals and culture.</p>
 	<h3 id="numbers-dates-and-times">Numbers, Dates, and Times</h3>
 	<p>Earlier when we talked about injecting data translated strings, we glossed over a major issue: the data we're injecting may also need to be formatted to conform to the user's local customs. This is true for dates, times, numbers, currencies and some other types of data.</p>
-	<p>Let's take our simple example from earlier:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let's take our simple example from earlier:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Without proper formatting, this will appear correct for small numbers, but as soon as things get into the thousands, localization problems will arise, since the way that digits are grouped and separated with symbols <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">varies by culture</a>. Here's how three-hundred thousand and three hundredths is formatted in a few different locales:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Without proper formatting, this will appear correct for small numbers, but as soon as things get into the thousands, localization problems will arise, since the way that digits are grouped and separated with symbols <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">varies by culture</a>. Here's how three-hundred thousand and three hundredths is formatted in a few different locales:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -357,11 +342,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
-	<p>The way that dates are formatted <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">varies significantly from country to country</a>. If you've developed your UI mainly with a US audience in mind, you're probably displaying dates in a way that will feel foreign and perhaps un-intuitive to users from just about any other place in the world. Among other things, date formatting can vary in terms of separator choice, whether single digits are zero padded, and in the way that the day, month, and year portions are ordered. Here's how the March 4th of the current year is formatted in a few different locales:</p>
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
+	<p>The way that dates are formatted <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">varies significantly from country to country</a>. If you've developed your UI mainly with a US audience in mind, you're probably displaying dates in a way that will feel foreign and perhaps un-intuitive to users from just about any other place in the world. Among other things, date formatting can vary in terms of separator choice, whether single digits are zero padded, and in the way that the day, month, and year portions are ordered. Here's how the March 4th of the current year is formatted in a few different locales:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -438,11 +420,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
-	<p>Time format varies significantly as well. Here's how time is formatted in a few selected locales:</p>
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
+	<p>Time format varies significantly as well. Here's how time is formatted in a few selected locales:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -519,16 +498,13 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
 	<h3 id="libraries-for-handling-numbers-dates-and-times">Libraries for Handling Numbers, Dates, and Times</h3>
 	<p>Ensuring the correct format for all these types of data for all supported locales is no easy task. Fortunately, there are a number of mature, battle-tested libraries that can help you out.</p>
 	<p>When we kicked off our project, we were using the <a href="https://momentjs.com/" target="_blank">Moment.js</a> library extensively for date and time formatting. This handy library abstracts away the details of formatting dates to different lengths ("Jul 9th 20", "July 9th 2020", vs "Thursday"), displaying relative dates ("2 days ago"), amongst many other things. Since almost all of our dates were already being formatted via Moment.js for readability, and since Moment.js already has i18n support for a large number of locales, it meant that we were able to flip a couple of switches and have properly localized dates with very little effort.</p>
 	<p>There are some strong criticisms of Moment.js (mainly bloat), but ultimately the benefits realized from switching to a lower footprint alternative when compared to the cost it would take to redo every date and time didn't add up.</p>
 	<p>Numbers were a very different story. We had, as you might imagine, thousands of raw, unformatted numbers being displayed throughout the dashboard. Hunting them down was a laborious and often manual process.</p>
-	<p>To handle the actual formatting of numbers, we used the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API </a>(the Internationalization library defined by the ECMAScript standard):</p>
-	<!--kg-card-begin: markdown-->
+	<p>To handle the actual formatting of numbers, we used the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API </a>(the Internationalization library defined by the ECMAScript standard):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!
@@ -537,8 +513,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>Fortunately, browser support for Intl has come quite a long way in recent years, with all modern browsers having full support.</p>
 	<p>Some modern JavaScript engines like V8 have even moved away from self-hosted JavaScript implementations of these libraries in favor of C++ based builtins, <a href="https://v8.dev/blog/intl" target="_blank">resulting in significant speedup</a>.</p>
 	<p>Support for older browsers can be somewhat lacking however. Here's a <a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">simple demo site</a> ( <a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">source code</a>) that’s built with <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/" target="_blank"> </a>that shows how dates, times, and numbers are rendered in a hand-full of locales.</p>
-	<p>Some combinations of old browsers and OS's will yield less than ideal results. For example, here's how the same dates and times from above are rendered on Windows 8 with IE 10:</p>
-	<!--kg-card-begin: html-->
+	<p>Some combinations of old browsers and OS's will yield less than ideal results. For example, here's how the same dates and times from above are rendered on Windows 8 with IE 10:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -546,8 +521,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 				<td><img style="border-width: 0px; margin: 5px;" src="https://blog.cloudflare.com/content/images/2020/07/image2-7.png" alt="" width="283" height="343"></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>If you need to support older browsers, this can be solved with a polyfill.</p>
 	<h3 id="translating">Translating</h3>
 	<p>With all strings externalized, and all injected data being carefully formatted to locale specific standards, the bulk of the engineering work is complete. At this point, we can now claim that we’ve <strong>internationalized</strong> our application, since we’ve adapted it in a way that makes it easy to localize.</p>
@@ -563,8 +537,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		<li>Placeholder strings are added for all languages when new strings are added to our base catalog</li>
 	</ul>
 	<p>From there, the translation catalogs are uploaded to the Translation Management system via the UI or automated calls to the API. Before handing it off to translators, the files are pre-processed by comparing each new string against a Translation Memory (a cache of previously translated strings and substrings). If a match is found, the existing translation is used. Not only does this save cost by not re-translating strings, but it improves quality by ensuring that previously reviewed and approved translations are used when possible.</p>
-	<p>Suppose your locale files end up looking something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Suppose your locale files end up looking something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">{
  "verify.button": "Verify Email",
  "other.verify.button": "Verify Email",

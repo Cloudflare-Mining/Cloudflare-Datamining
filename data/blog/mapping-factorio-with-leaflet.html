@@ -36,8 +36,7 @@
 	<p><br>While Google Cloud Storage is more expensive than B2, it has much lower latency to the US and worldwide destinations because of their network and multi-regional object storage. However, it's not time to move the whole site over to GCS just yet; the upload API calls alone would cost $85 for 17 million files.</p>
 	<h3 id="multi-tier-object-storage">Multi-Tier Object Storage</h3>
 	<p>The first few zoom levels are stored in GCS, while the rest are in B2. Cloudflare Workers figure out where files are located by checking both sources simultaneously. By doing this, 66% of requested files come from GCS with a mean latency of &lt;350ms, while only storing 24% of files on GCS. Another benefit to using B2 as the primary storage is if GCS becomes too expensive in the future, I can move all requests to B2.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Race GCS and B2
 let gcsReq = new Request('https://storage.googleapis.com/bucketName' + url.pathname, event.request)
 let b2Req = new Request(getB2Url(request) + '/bucketName' + url.pathname, event.request);
@@ -69,8 +68,7 @@ return response;
 	<p></p>
 	<h3 id="tracking-subrequests">Tracking Subrequests</h3>
 	<p>The Cloudflare Workers dashboard contains a few analytics for subrequests, but there is no way to see what responses came from B2 vs. GCS. Fortunately, it’s easy to send request stats to a 3rd party service like StatHat with a few lines of JavaScript.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript"> // Fetch from GCS and B2 with caching
 let reqStartTime = Date.now();
 let gcsPromise = fetch(gcsReq, cfSettings);
@@ -86,8 +84,7 @@ if (response.ok) {
 	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank"><strong>here</strong></a>. &nbsp;</p>
 	<h3 id="making-b2-faster-with-argo">Making B2 Faster with Argo</h3>
 	<p>Tracking request time surfaced another issue. Requests to B2 from countries outside of North America are still quite slow. Cloudflare's Argo can reduce latency by over 50%, but is too expensive to enable for the whole site. Additionally, it would be redundant to smart-route content from GCS that Google already does an excellent job of keeping latency down. Cloudflare request headers include the country of origin, making it trivial to route this subset of requests through an Argo-enabled domain.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Use CF Argo for non-US/CA users
 function getB2Url(request) {
     let b2BackendUrl = 'https://b2.my-argo-enabled-domain.com/file';

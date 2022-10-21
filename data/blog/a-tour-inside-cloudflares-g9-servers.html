@@ -4,8 +4,7 @@
 	<p>Here though we’re going to blog about muscle.</p>
 	<p>Since the last time we blogged about our G4 servers, we’ve iterated one generation each of the past 5 years. Our latest generation is now the G9 server. From a G4 server comprising 12 Intel Sandybridge CPU cores, our G9 server has 192 Intel Skylake CPU cores ready to handle today’s load across Cloudflare’s network. This server is <a href="https://www.qct.io/product/index/Server/rackmount-server/Multi-node-Server/QuantaPlex-T42S-2U-4Node" target="_blank">QCT’s T42S-2U multi-node server</a> where we have 4 nodes per chassis, therefore each node has 48 cores. Maximizing compute density is the primary goal since rental colocation space and power are costly. This 2U4N chassis form factor has served us well for the past 3 generations, we’re revisiting this option once more.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/MSUVbbiNbqCozo5hb0cnaWlQeUUxq3JdbJoZvUrGnY0ly9unm8JfFMKeTcKHp0P49HmMHdJ8f1Fvw7lHu8R1FmEQKKpbUjtP4qdkWMviOf0-NKmksk_Uy_7rFEhGxk2muRYO68Me" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/MSUVbbiNbqCozo5hb0cnaWlQeUUxq3JdbJoZvUrGnY0ly9unm8JfFMKeTcKHp0P49HmMHdJ8f1Fvw7lHu8R1FmEQKKpbUjtP4qdkWMviOf0-NKmksk_Uy_7rFEhGxk2muRYO68Me" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Exploded picture of the G9 server’s main components. 4 sleds represent 4 nodes, each with 2 24-core Intel CPUs</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p>Each high-level hardware component has gone through their own upgrade as well for a balanced scale up keeping our stack CPU bound, making this generation the most radical revision since we moved on from using HP 5 years ago. Let’s glance through each of those components.</p>
@@ -31,13 +30,11 @@
 	</ul>
 	<p>Our<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/"> DDoS mitigation program</a> is all done in userspace, so network adapter model can be anything on market as long as it<a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank"> supports XDP</a>. We went with Mellanox for their solid reliability and their readily available 2x25G CX4 model. Upgrading to 25G intra-rack ethernet network is easy future-proofing since the 10G SFP+ ethernet port shares the same physical form factor as the 25G’s SFP28. Switch and NIC vendors offer models that can be configured as either 10G or 25G.</p>
 	<p>Another change is the adapter’s form factor itself being an OCP mezzanine instead of the more conventional Low Profile sized card. QCT is a server system integrator participating in the <a href="https://www.opencompute.org/" target="_blank">Open Compute Project</a>, a non-profit organization establishing an open source hardware ecosystem founded by Facebook, Intel, and Rackspace. Their T42S-2U motherboards each include 2 PCIe x16 Gen3 expansion slots: 1 fit for a regular I/O card and 1 for an OCP mezzanine. The form factor change allows us to occupy the OCP slot leaving the regular slot free to integrate something else that may not be offered with an OCP form factor like a high capacity NVMe SSD or a GPU. We like that our server has the room for upgrades if needed.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image3.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image3.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Both Low Profile and OCP adapters offer the same throughput and features</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/qncCFb7XX0ZvJyvXxWcJdv6rJ_6Yqs_BYRj5xZokMll0d3sFgJX5eBqi1N8KUIuqyBV_niKttp0PsYgkDsnpQsQBOmXGEYPCkgANeTldyf-75KjYkR3DpueCUK2hCoOy4NjmQqsI" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/qncCFb7XX0ZvJyvXxWcJdv6rJ_6Yqs_BYRj5xZokMll0d3sFgJX5eBqi1N8KUIuqyBV_niKttp0PsYgkDsnpQsQBOmXGEYPCkgANeTldyf-75KjYkR3DpueCUK2hCoOy4NjmQqsI" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Rear side of G9 chassis showing all 4 sled nodes, each leaving room to add on a PCI card</em></small></p>
 	<!--kg-card-end: markdown-->
 	<h4 id="memory">Memory</h4>
@@ -71,14 +68,12 @@
 	<p></p>
 	<p>Great! They're doing over 2x the requests compared to G8 with about 10% less CPU usage. Note that all results here are based from non-optimized systems, so we could add more load on the G9 and have their CPU usage comparable to the G8. Additionally, they're doing that amount with better CPU processing time shown as nginx execution time. You can see the latency gap between generations widening as we go towards the 99.9th percentile:</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-6.53.13-PM-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-6.53.13-PM-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Long-tail latencies for NGINX CPU processing time (lower is better)</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p>Talking about latency, let’s check how our new SSDs are doing on that front:</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-04-at-4.59.41-PM.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-04-at-4.59.41-PM.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Cache disk IOPS and latency (lower is better)</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p>The trend still holds that G9 is doing better. It’s a good thing that the G9’s SSDs aren’t seeing as many IOPS since it means we’re not hitting cache disks as often and are able to store and process more on CPU and memory. We’ve cut the read cache hits and latency by half. Less writes results in better performance consistency and longevity.</p>

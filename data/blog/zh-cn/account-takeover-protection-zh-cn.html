@@ -16,8 +16,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/2-14.png" class="kg-image" alt="The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule">
 		<figcaption>要使用新的开放代理托管列表，请前往 Account Home → Configurations → Lists，或在自定义规则中直接使用</figcaption>
 	</figure>
-	<p>在编写自定义防火墙规则时，将该 IP 列表与额外过滤器结合起来，可降低针对验证端点的恶意登录风险。使用 wirefilter 语法并利用这一新列表编写的规则示例如下：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在编写自定义防火墙规则时，将该 IP 列表与额外过滤器结合起来，可降低针对验证端点的恶意登录风险。使用 wirefilter 语法并利用这一新列表编写的规则示例如下：</p><!--kg-card-begin: markdown-->
 	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -37,8 +36,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/4-5.png" class="kg-image" alt="Exposed Credential Checks can be easily enabled with our Managed Ruleset. Alternatively, you can write your own custom rules.">
 		<figcaption>通过我们的托管规则及即可轻松启用暴露凭据检查。另外，您也可以编写自定义规则。‌‌</figcaption>
 	</figure>
-	<p>对于任何受 Cloudflare 保护的应用程序，其登录请求都将通过 WAF 路由，这为在“路径上”进行暴露凭据检查提供了机会。启用后，对于任何验证尝试，WAF 将自动根据 Cloudflare 收集和维护的一个泄露凭据数据库来检查最终用户凭据。在找到匹配的情况下，WAF 将向源添加一个标头，您的应用程序将收到有关泄露凭据的警告，并采取有关行动，例如为该用户触发密码重置流程或双重验证质询。</p>
-	<!--kg-card-begin: markdown-->
+	<p>对于任何受 Cloudflare 保护的应用程序，其登录请求都将通过 WAF 路由，这为在“路径上”进行暴露凭据检查提供了机会。启用后，对于任何验证尝试，WAF 将自动根据 Cloudflare 收集和维护的一个泄露凭据数据库来检查最终用户凭据。在找到匹配的情况下，WAF 将向源添加一个标头，您的应用程序将收到有关泄露凭据的警告，并采取有关行动，例如为该用户触发密码重置流程或双重验证质询。</p><!--kg-card-begin: markdown-->
 	<p>处理用户名和密码至少可以说是高度敏感的，我们设计暴露凭据检查功能是为了保护用户凭据。一个重要的设计原则是，用户名/密码对永远不应该暴露在 WAF 进程的边界之外，从而确保我们可以在不增加任何额外风险的情况下执行检查。这意味着，这个功能绝对不会将用户名和密码发送到 WAF 进程以外或存入日志<sup>1</sup>，因为我们无意知道这些凭据是什么——除非它们对您的网络安全构成威胁。但除此之外，我们还建立了一个保护隐私的加密协议来执行数据库查询。简单地说，我们对 WAF 进程中的用户名/密码对使用一个键控加密哈希函数，并检查生成的哈希值是否与数据库中已知泄露凭证的键控哈希值相匹配。我们将在后续的技术深入探讨中进一步说明这一点。</p>
 	<!--kg-card-end: markdown-->
 	<p>今天开始，Enterprise 用户可在<a href="https://www.cloudflare.com/zh-cn/waf/exposed-credential-checks/" target="_blank">这个页面</a>联系我们团队来使用这个功能。暴露凭据检查作为一种托管规则集提供，对 WordPress、Joomla 等常见系统中“开箱即用”，也可以作为自定义规则的过滤器，以支持任何应用程序。</p>
@@ -47,8 +45,7 @@
 	<p>然而，用户使用的设备也许仍不够安全。已经遭遇入侵的设备上的有效验证会话可能导致数据渗漏，或更严重的是，该终端用户帐户或应用程序被完全破坏。企业尝试通过管理和发放企业设备来降低这种风险，通过移动设备管理（MDM）解决方案在这些设备上执行安全策略。</p>
 	<p>为了解决这个问题，我们正在改良 Cloudflare Access，以强制要求仅企业设备能访问敏感的应用程序。通过访问规则，现在有可能在允许访问前根据一个受管设备列表来验证某个设备的序列号。即使某个用户的凭据已暴露，由于设备的序列号不在受管设备列表中，任何未授权访问都会被阻止。如需了解更多信息，请查看我们的<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">近期公告</a>。</p>
 	<h3 id="--1">失败登录的速率限制</h3>
-	<p>暴力攻击出奇地有效，尤其是在通过循环使用已泄露凭据数据库。为了阻止这些攻击，将其速度降至执行代价太大的程度往往就已经足够。</p>
-	<!--kg-card-begin: markdown-->
+	<p>暴力攻击出奇地有效，尤其是在通过循环使用已泄露凭据数据库。为了阻止这些攻击，将其速度降至执行代价太大的程度往往就已经足够。</p><!--kg-card-begin: markdown-->
 	<p>在发生失败登录尝试时，很多用户名/密码表单会发出一个 HTTP 403 Forbidden 状态码或其他可辨识的错误信息<sup>2</sup>。这可用作发出速率限制响应的一个非常有效的信号，从而避免对合法用户的任何潜在副作用。</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/5-5.png" class="kg-image" alt="The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.">
@@ -59,8 +56,7 @@
 	<h3 id="--2">未来计划</h3>
 	<p>我们正在花大量时间思考如何通过简单的一键式解决方案来为终端用户帐户提供最佳保护。</p>
 	<p>通过利用我们网络的可见性，我们正在开始获得只有 Cloudflare 的规模才能提供的有价值的信息。我们的托管开放代理列表就是一个这样的例子，但我们已经在试验基于异常的检测，这远远超出简单的设备态势或速率限制。此外，我们也在思考通过用例和情景，如何在我们的全体客户中更广泛地共享已验证的异常，使我们回到最初基于 Cloudflare 所构建的方式的社区保护。</p>
-	<p>.....</p>
-	<!--kg-card-begin: markdown-->
+	<p>.....</p><!--kg-card-begin: markdown-->
 	<p><sup>1</sup>其他 Cloudflare 功能，例如<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">加密 WAF 负载记录（Encrypted WAF Payload Logging</a>）, 可记录任何请求的部分，但将使用客户的公钥对其加密。<br>
 		<sup>2</sup>很多渗透测试报告将凸显，针对失败登录尝试的响应上的差异是一种信息披露漏洞。
 	</p>

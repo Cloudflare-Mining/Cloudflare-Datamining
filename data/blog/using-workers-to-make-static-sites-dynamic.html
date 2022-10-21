@@ -12,8 +12,7 @@
 	<h4 id="geo-targeting">Geo-Targeting</h4>
 	<p>We operate static websites around the world in many languages and use Cloudflare to serve them. Users get there from a google search or by clicking a link somewhere else on the Internet. Often, the site they land on may not be a perfect match for interests because the link they clicked wasn’t pointing at the most optimal location. For example, a user in Canada lands on a UK site and sees prices in Pounds Sterling instead of Canadian Dollars or a person in Italy lands on a US site and sees English content instead of Italian. </p>
 	<p>The conundrum of static websites is that the pages load exceptionally fast but once there, we have no further ability to tailor the experience in line with the user's preferences.</p>
-	<p>With Workers, we were able to solve this problem by reading request headers at the edge. Cloudflare detects the origin IP of the incoming request and appends a two-letter country code to a header called <em>‘Cf-Ipcountry.’</em> We were able to write a simple worker that reads this header, checks the country code, and then redirects to the appropriate site version if it exists.</p>
-	<!--kg-card-begin: markdown-->
+	<p>With Workers, we were able to solve this problem by reading request headers at the edge. Cloudflare detects the origin IP of the incoming request and appends a two-letter country code to a header called <em>‘Cf-Ipcountry.’</em> We were able to write a simple worker that reads this header, checks the country code, and then redirects to the appropriate site version if it exists.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(fetchAndApply(event.request))
 })
@@ -43,8 +42,7 @@ async function fetchAndApply(request) {
 	<h3 id="restricting-access-to-content">Restricting Access To Content</h3>
 	<p>With most sites, there will be occasions when a page needs to be online but not available to the public. For example, an agency demonstrating a new landing page to a client before final approval. </p>
 	<p>In some cases, companies may need many layers of security to protect their intellectual property and avoid something being seen before it is ready, but for most the information just needs to be hidden and military grade security isn't required. </p>
-	<p>With a Content Management System this is easy to do, but is difficult with a static site. Using Workers, we were able to put together a simple solution that prevents access to the page unless a certain header is present in the request, which can also be adapted to look for a query parameter. </p>
-	<!--kg-card-begin: markdown-->
+	<p>With a Content Management System this is easy to do, but is difficult with a static site. Using Workers, we were able to put together a simple solution that prevents access to the page unless a certain header is present in the request, which can also be adapted to look for a query parameter. </p><!--kg-card-begin: markdown-->
 	<pre><code>addEventListener('fetch', event =&gt; {
   event.respondWith(fetchAndApply(event.request))
 })

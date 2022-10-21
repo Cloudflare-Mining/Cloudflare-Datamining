@@ -15,8 +15,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Workers-KV-Blog.svg" class="kg-image"></figure>
 	<p></p>
 	<p>In this example your authentication system will store a token when a user logs in. I'm using <code>curl</code>, but the backend code for your system is more likely to use whatever interface it has for making HTTPS requests. This request stores a blob of JSON identifying this token in a Worker KV namespace <code>$NAMESPACE_ID</code> with a key of <code>$TOKEN_ID</code>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$TOKEN_ID \
 -X PUT \
 -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
@@ -29,8 +28,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Your Worker code, which runs on every request, will check if the token the user provides matches one you have stored. A single line of code (<code>TOKEN_STORE.get()</code>) pulls the JSON stored above from the Worker KV</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
@@ -58,8 +56,7 @@ async function handleRequest(request) {
 	<h3 id="dynamic-data">Dynamic Data</h3>
 	<p>Traditionally you’ve had to decide between showing a super fast static site to your visitors, or being able to include dynamic data customizing your site for each visitor. That customization could be showing different products based on the customer’s profile, A/B testing site variants, or even including the customer’s current shopping cart and account information. Rather than waiting for this information to be served from a central database, it’s now possible to store it close to every visitor, delivering a custom page as quickly as you could a static resource.</p>
 	<p>For example, let’s say we have translations of our site stored as JSON in the KV store. We can dynamically insert this translation data as Javascript into the HTML of our site. In this example our site has a block which looks like this:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;html&gt;
  &lt;head&gt;
    &lt;script&gt;
@@ -73,8 +70,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Our worker replaces that text with the content of our translations. You could alternatively use a Javascript templating engine or parse the content of the page to do something like Server-Side Includes.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -101,8 +97,7 @@ async function handleRequest(request) {
 	<p>Workers is a full programming environment, meaning this is just the beginning. We have customers rendering their entire React App inside Workers, fully bootstrapping the data required to render their site.</p>
 	<h3 id="configuration">Configuration</h3>
 	<p>The Workers KV store creates a powerful way to configure your running Workers without having to redeploy them. You might want to implement feature flags to enable or disable features at will, or to dynamically update the data your code uses to make decisions. Workers deploy in under 30 seconds, but it’s common to have more data than can easily fit in Worker code. For example, we have customers interested in using Workers KV to block messages from lost or stolen IoT devices before they ever reach their origin:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
@@ -122,8 +117,7 @@ async function handleRequest(request) {
 	<h3 id="cloud-functions">Cloud Functions</h3>
 	<p>One thing we’re excited about when we think about the Workers KV store is the potential for building beyond web applications. There are many situations where developers are looking for an easy way to execute code without worrying about provisioning or maintaining infrastructure. One of the most common cases we see is joining systems together.</p>
 	<p>For example, one of our customers is planning on using Workers KV to connect their Point of Sale system with their Delivery Service’s API:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// The endpoint we have bound this to is polled periodically
 addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))

@@ -16,8 +16,7 @@
 	<h3 id="api-compatible-s3">API compatible S3</h3>
 	<p>Pour l'API compatible S3, l'authentification s'effectue de la même manière que sur S3 : en analysant une URL R2 selon le processus SigV4. Le processus SigV4 signe les requêtes à l'aide d'une clé secrète afin de les authentifier auprès du service R2. Cette opération implique que l'accès public à la solution R2 par Internet n'est aujourd'hui possible qu'en hébergeant un Worker, en le connectant à R2 et en routant les requêtes via ce dernier.</p>
 	<p>Le moyen le plus simple de tester l'API compatible S3 consiste à utiliser un client S3. Le SDK <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> constitue l'un des clients S3 les plus populaires.</p>
-	<p>Dans Python, copiez le script suivant et renseignez les <code>account_id</code>, <code>access_key</code>, et <code>secret_access_key</code> avec les identifiants de votre compte R2.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dans Python, copiez le script suivant et renseignez les <code>account_id</code>, <code>access_key</code>, et <code>secret_access_key</code> avec les identifiants de votre compte R2.</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
 

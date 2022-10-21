@@ -52,8 +52,7 @@
 	<p>When we compare the two build types as shown below we can see that per-record builds are on average <strong>150x</strong> faster than full builds. The build time below includes both database query time and Quicksilver write time.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-51.png" class="kg-image"></figure>
 	<p>From there, our records are propagated to our global network through Quicksilver.</p>
-	<p>The 150x improvement above is with respect to averages, but what about that 4000x that I mentioned at the start? As you can imagine, as the size of the zone increases, the difference between full build time and per-record build time also increases. I used a test zone of one million records and ran several per-record builds, followed by several full builds. The results are shown in the table below:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The 150x improvement above is with respect to averages, but what about that 4000x that I mentioned at the start? As you can imagine, as the size of the zone increases, the difference between full build time and per-record build time also increases. I used a test zone of one million records and ran several per-record builds, followed by several full builds. The results are shown in the table below:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

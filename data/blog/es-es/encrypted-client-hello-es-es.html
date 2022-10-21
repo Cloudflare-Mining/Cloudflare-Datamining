@@ -29,8 +29,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image9-4.png" class="kg-image">
 		<figcaption><strong>Diagrama 2:</strong> Protocolo de enlace TLS 1.3 con la extensión ESNI. Es idéntico al protocolo de enlace TLS 1.3, excepto que la extensión de la SNI ha sido reemplazada por la ESNI.<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
-	<p>Para la distribución de claves, la ESNI se basaba en otro protocolo crítico: el <em>sistema de nombre de dominio</em> (DNS). Para usar la ESNI para conectarse a un sitio web, el cliente aprovechaba sus consultas estándar A/AAAA y solicitaba un registro TXT, que contenía la clave pública de la ESNI. Por ejemplo, para obtener la clave de crypto.dance, el cliente solicitaba el registro TXT de _esni.crypto.dance:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Para la distribución de claves, la ESNI se basaba en otro protocolo crítico: el <em>sistema de nombre de dominio</em> (DNS). Para usar la ESNI para conectarse a un sitio web, el cliente aprovechaba sus consultas estándar A/AAAA y solicitaba un registro TXT, que contenía la clave pública de la ESNI. Por ejemplo, para obtener la clave de crypto.dance, el cliente solicitaba el registro TXT de _esni.crypto.dance:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-base64">$ dig _esni.crypto.dance TXT +short
 "/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="
 </code></pre>

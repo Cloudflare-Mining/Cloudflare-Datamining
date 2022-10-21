@@ -13,8 +13,7 @@
 	<p>实际说来，这意味着现在可以编写的应用程序不仅能够与实现该标准的任何 WebAssembly 运行时互操作，还能与任何符合 POSIX 标准的系统互操作！这意味着，完全相同的“Hello World!” 可在本地 Linux/Mac/Windows WSL 机器上运行。</p>
 	<h3 id="-">代码细节</h3>
 	<p>WASI 听起来很不错，但它能真正简化编程工作吗？谁用谁知道。我们来看一个例子，看看它如何运用于实践。</p>
-	<p>首先，生成一个基本的 Rust“Hello, world!”应用程序，对其进行编译并运行。</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，生成一个基本的 Rust“Hello, world!”应用程序，对其进行编译并运行。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ cargo new hello_world
 $ cd ./hello_world
 $ cargo build --release
@@ -24,15 +23,13 @@ $ ./target/release/hello_world
 Hello, world!
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>这是再简单不过的了。可以看到，我们只定义了一个 main() 函数，接着是用一个 println 语句打印到 stdout。</p>
-	<!--kg-card-begin: markdown-->
+	<p>这是再简单不过的了。可以看到，我们只定义了一个 main() 函数，接着是用一个 println 语句打印到 stdout。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn main() {
     println!("Hello, world!");
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p>
-	<!--kg-card-begin: markdown-->
+	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
@@ -40,8 +37,7 @@ Hello, world!
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>太棒了！相同的代码在多个 POSIX 环境中顺利编译并运行。</p>
-	<p>最后，来看看我们刚才为 Wasmtime 生成的二进制文件，但这次改用 Wrangler2 将其发布到 Workers。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最后，来看看我们刚才为 Wasmtime 生成的二进制文件，但这次改用 Wrangler2 将其发布到 Workers。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
@@ -51,15 +47,13 @@ Hello, world!
 	<p>不出所料，成功了！相同的代码兼容了多个 POSIX 环境，并且相同的二进制文件兼容了多个 WASM 运行时。</p>
 	<h3 id="-cli-">在云中运行 CLI 应用</h3>
 	<p>细心的读者可能会注意到，我们在通过 cURL 发出的 HTTP 请求中做了一点手脚。在这个例子中，我们实际上是分别使用 HTTP 请求和响应主体来与 Worker 之间进行 stdin 和 stdout 流传输。利用这个模式，可以实现一些非常有意思的用例，具体来说，设计为在命令行中运行的程序可以作为“服务”部署到云中。</p>
-	<p>“Hexyl”就是一个完全开箱即用的例子。这里，我们对本地机器上的二进制文件执行“cat”命令，并通过“pipe”命令将输出输送到 curl，后者会通过 POST 命令将输出发布到我们的服务，并流传输回结果。按照我们用于编译“Hello World!”的步骤，我们可以编译 hexyl。</p>
-	<!--kg-card-begin: markdown-->
+	<p>“Hexyl”就是一个完全开箱即用的例子。这里，我们对本地机器上的二进制文件执行“cat”命令，并通过“pipe”命令将输出输送到 curl，后者会通过 POST 命令将输出发布到我们的服务，并流传输回结果。按照我们用于编译“Hello World!”的步骤，我们可以编译 hexyl。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ git clone git@github.com:sharkdp/hexyl.git
 $ cd ./hexyl
 $ cargo build --target wasm32-wasi --release
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>无需任何修改，我们就能利用一个现实的程序来创建立即就能运行或部署的用例。同样，我们让 wrangler2 预览 hexyl，但这次给它提供一些输入。</p>
-	<!--kg-card-begin: markdown-->
+	<p>无需任何修改，我们就能利用一个现实的程序来创建立即就能运行或部署的用例。同样，我们让 wrangler2 预览 hexyl，但这次给它提供一些输入。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hexyl.wasm
 $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
@@ -69,27 +63,23 @@ $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>点击 <a href="https://hexly.examples.workers.dev/" target="_blank">https://hexyl.examples.workers.dev</a>，自己试一试。</p>
-	<!--kg-card-begin: markdown-->
+	<p>点击 <a href="https://hexly.examples.workers.dev/" target="_blank">https://hexyl.examples.workers.dev</a>，自己试一试。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">echo "Hello world\!" | curl https://hexyl.examples.workers.dev/ -X POST --data-binary @- --output -
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>一个更有用、但也更复杂一些的例子就是将 swc (swc.rs) 等实用工具部署到云中并将其用作按需 JavaScript/TypeScript 跨平台编译服务。这里，我们可以执行几个额外步骤，确保编译的输出尽可能小，但除此之外，它基本上是开箱即用的。这些步骤在 <a href="https://github.com/zebp/wasi-example-swc" target="_blank">https://github.com/zebp/wasi-example-swc</a> 中详述，但目前我们只是粗略概括一下，看看托管示例。</p>
-	<!--kg-card-begin: markdown-->
+	<p>一个更有用、但也更复杂一些的例子就是将 swc (swc.rs) 等实用工具部署到云中并将其用作按需 JavaScript/TypeScript 跨平台编译服务。这里，我们可以执行几个额外步骤，确保编译的输出尽可能小，但除此之外，它基本上是开箱即用的。这些步骤在 <a href="https://github.com/zebp/wasi-example-swc" target="_blank">https://github.com/zebp/wasi-example-swc</a> 中详述，但目前我们只是粗略概括一下，看看托管示例。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ echo "const x = (x, y) =&gt; x * y;" | curl -X POST --data-binary @- https://swc-wasi.examples.workers.dev/ --output -
 
 var x=function(a,b){return a*b}
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>最后，我们还可以对 C/C++ 执行相同的操作，但需要做一些修改，将 Makefile 调整正确。这里有一个例子，说明如何编译 zstd 并将其上传作为流传输压缩服务。</p>
-	<p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank">https://github.com/zebp/wasi-example-zstd</a></p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank">https://github.com/zebp/wasi-example-zstd</a></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ echo "Hello world\!" | curl https://zstd.examples.workers.dev/ -s -X POST --data-binary @- | file -
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="-javascript-worker-wasi-"><strong>如果我想在 JavaScript Worker 中使用 WASI 该怎么办？</strong></h3>
-	<p>利用 Wrangler，可以非常轻松地部署代码，不用管 Workers 生态系统，但在一些情况下，可能实际上需要从 Javascript 调用基于 WASI 的 WASM 模块。这可以使用以下简单样板来实现。<a href="https://github.com/cloudflare/workers-wasi" target="_blank">https://github.com/cloudflare/workers-wasi</a> 中将保留一份更新的 README。</p>
-	<!--kg-card-begin: markdown-->
+	<p>利用 Wrangler，可以非常轻松地部署代码，不用管 Workers 生态系统，但在一些情况下，可能实际上需要从 Javascript 调用基于 WASI 的 WASM 模块。这可以使用以下简单样板来实现。<a href="https://github.com/cloudflare/workers-wasi" target="_blank">https://github.com/cloudflare/workers-wasi</a> 中将保留一份更新的 README。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { WASI } from "@cloudflare/workers-wasi";
 import demoWasm from "./demo.wasm";
 
@@ -117,8 +107,7 @@ export default {
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>现在借助 JavaScript 样板和 wasm，我们可以利用 Wrangler 的 WASM 功能轻松部署 Worker。</p>
-	<!--kg-card-begin: markdown-->
+	<p>现在借助 JavaScript 样板和 wasm，我们可以利用 Wrangler 的 WASM 功能轻松部署 Worker。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler publish
 Total Upload: 473.89 KiB / gzip: 163.79 KiB
 Uploaded wasi-javascript (2.75 sec)

@@ -91,8 +91,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/9.png" class="kg-image"></figure>
 	<p>ここで表示されている文字データの中で本稿と関連する部分は、ECDHE_RSAです。ECDHEは、Elliptic Curve Diffie Hellman Ephemeral（楕円曲線ディフィー・ヘルマンEphemeral）の略で（Ephemeralは「短命の」を意味し、鍵を使い捨てるの意）、楕円曲線に基づく鍵交換メカニズムのことです。このアルゴリズムはCloudflareがSSLで<a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">perfect forward secrecy</a>を提供するのに使用しています。RSAの部分は、RSAがサーバーのIDを証明するのに使われていることを意味します。</p>
 	<p>CloudflareがRSAを使う理由は、CloudflareのSSL証明書がRSAキーペアに結びつけられているためです。最新のブラウザでは、楕円曲線に基づく証明書もサポートしています。CloudflareのSSL証明書が楕円曲線証明書の場合、ページのこの部分にECDHE_ECDSAと表示されます。サーバーのID証明は、楕円曲線デジタル署名アルゴリズムであるECDSAを使用して行われます。</p>
-	<p>CloudflareのECDHEのECC曲線（これはGoogle.comで使用されているのと同じ曲線です）：</p>
-	<!--kg-card-begin: markdown-->
+	<p>CloudflareのECDHEのECC曲線（これはGoogle.comで使用されているのと同じ曲線です）：</p><!--kg-card-begin: markdown-->
 	<pre><code>最大値： 115792089210356248762697446949407573530086143415290314195533631308867097853951
 曲線： y² = x³ + ax + b
 a = 115792089210356248762697446949407573530086143415290314195533631308867097853948
@@ -100,8 +99,7 @@ b = 4105836372515214212932612978004726840911444101599372555483525631403946740129
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>RSAと比較すると、ECDSAのパフォーマンスの向上には目を見張るものがあります。アセンブリ最適化楕円曲線コードを持たない古いバージョンの OpenSSLでも、256ビットキーを持つECDSA署名は、2,048ビットのキーを持つRSA署名よりも20倍も高速です。</p>
-	<p>MacBook ProのOpenSSL 0.9.8では、「スピード」ベンチマークは以下を返します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>MacBook ProのOpenSSL 0.9.8では、「スピード」ベンチマークは以下を返します。</p><!--kg-card-begin: markdown-->
 	<pre><code>Doing 256 bit sign ecdsa's for 10s: 42874 256 bit ECDSA signs in 9.99s
 Doing 2048 bit private rsa's for 10s: 1864 2048 bit private RSA's in 9.99s
 </code></pre>

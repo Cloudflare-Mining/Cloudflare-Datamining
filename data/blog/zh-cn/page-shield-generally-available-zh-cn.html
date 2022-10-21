@@ -18,14 +18,12 @@
 	<p>与任何安全产品一样，我们可以将 Page Shield 视为提供可见性、检测、缓解和预防功能。第一步是可见性。</p>
 	<h3 id="--1"><strong>可见性</strong></h3>
 	<p>开启后，Page Shield 的当前迭代会使用通过<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">仅限报告的指令</a>部署的<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">内容安全策略</a> (CSP) 来从浏览器收集信息。这样一来，我们可以向您提供在您应用程序上运行的所有脚本的列表。</p>
-	<p>用 HTTP 的术语来说，这是添加到从源服务器返回浏览器的页面响应示例的 HTTP 响应标头。CSP 标头类似于以下内容：</p>
-	<!--kg-card-begin: markdown-->
+	<p>用 HTTP 的术语来说，这是添加到从源服务器返回浏览器的页面响应示例的 HTTP 响应标头。CSP 标头类似于以下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>上述标头告诉浏览器，不应加载任何脚本 <code>(script-src 'none')</code>，并应将任何违规情况报告给提供的端点 <code>(report-uri /cdn-cgi/script_monitor/report)</code>。还请注意，违规报告端点解析为处理违规的 <a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">Cloudflare 网络</a>，因此没有更多流量到达源服务器。</p>
-	<p>浏览器发送的每个违规报告实施为 HTTP POST 请求，向我们提供了有关脚本的信息。下面是一个示例：</p>
-	<!--kg-card-begin: markdown-->
+	<p>浏览器发送的每个违规报告实施为 HTTP POST 请求，向我们提供了有关脚本的信息。下面是一个示例：</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
       "document-uri":"https://www.example.com/",

@@ -9,8 +9,7 @@
 	<h2 id="what-can-you-expect-from-r2">What can you expect from R2?</h2>
 	<h3 id="s3-compatibility">S3 Compatibility</h3>
 	<p>R2 gives developers a familiar interface for object storage, the S3 API. With S3 Compatibility, you can easily migrate your applications and start taking advantage of what R2 has to offer right out of the gate.</p>
-	<p>Let’s take a look at some basic data operations in javascript. To try this out on your own, you’ll need to <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generate an Access Key</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s take a look at some basic data operations in javascript. To try this out on your own, you’ll need to <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generate an Access Key</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// First we import our bindings as usual
 import {
   S3Client,
@@ -42,8 +41,7 @@ console.log(
 	<p>In the future, R2 will use data access patterns to automatically optimize where data is stored for the best user experience.</p>
 	<h3 id="cloudflare-workers-integration">Cloudflare Workers Integration</h3>
 	<p>The Workers platform offers developers powerful compute across Cloudflare’s network. When you deploy on Workers, your code is deployed to Cloudflare’s <a href="https://www.cloudflare.com/network/" target="_blank">more than 275 locations</a> across the globe, automatically. When paired with R2, Workers allows developers to add custom logic around their data without any performance overhead. Workers is built on isolates and not containers, and as a result you don’t have to deal with lengthy cold starts.</p>
-	<p>Let’s try creating a simple REST API for an R2 bucket! First, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">create</a> your bucket and then add an R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">binding</a> to your worker.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s try creating a simple REST API for an R2 bucket! First, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">create</a> your bucket and then add an R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">binding</a> to your worker.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -78,8 +76,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>Through this Workers API, we can add all sorts of useful logic to the hot path of a R2 request.</p>
 	<h3 id="presigned-urls">Presigned URLs</h3>
-	<p>Sometimes you’ll want to give your users permissions to specific objects in R2 without requiring them to jump through hoops. Through pre-signed URLs you can delegate your permissions to your users for any unique combination of object and action. Mint a pre-signed URL to let a user upload a file or share a file without giving access to the entire bucket.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Sometimes you’ll want to give your users permissions to specific objects in R2 without requiring them to jump through hoops. Through pre-signed URLs you can delegate your permissions to your users for any unique combination of object and action. Mint a pre-signed URL to let a user upload a file or share a file without giving access to the entire bucket.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand
@@ -128,8 +125,6 @@ console.log(
 	<h3 id="live-migration-without-downtime">Live Migration without Downtime</h3>
 	<p>For large datasets, migrations are live and ongoing, as it takes time to move data over. Cache reserve is an easy way to quickly migrate your assets into a managed R2 instance to reduce your egress costs at the touch of a button. In the future, we'll be extending this mechanism so that you can migrate any of your existing S3 object storage buckets to R2.</p>
 	<p>We invite everyone to sign up and get started with R2 today. Join the growing community of developers building on Cloudflare. If you have any feedback or questions, find us on our Discord server <a href="https://discord.gg/V3GEduuBjP" target="_blank">here</a>! We can’t wait to see what you build.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

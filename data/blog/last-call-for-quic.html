@@ -7,8 +7,7 @@
 	<p>Although specification and implementation work hand in hand, they often progress at different rates, and that is totally fine. The QUIC specification has been mature and deployable for a long time now. HTTP/3 has been <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">generally available</a> on the Cloudflare edge since September 2019, and we've been delighted to see support roll out in user agents such as Chrome, Firefox, Safari, curl and so on. Although draft 32 is the latest specification, the community has for the time being settled on draft 29 as a solid basis for interoperability. This shouldn't be surprising, as foundational aspects crystallize the scope of changes between iterations decreases. For the average person in the street, there's not really much difference between 29 and 32. <br><br>So today, if you visit a website with HTTP/3 enabled—such as <a href="https://cloudflare-quic.com" target="_blank">https://cloudflare-quic.com</a>—you’ll probably see response headers that contain Alt-Svc: h3-29="… . And in a while, once Last Call completes and the RFCs ship, you'll start to see websites simply offer Alt-Svc: h3="… (note, no draft version!).</p>
 	<h3 id="need-a-deep-dive">Need a deep dive?</h3>
 	<p>We've collected a bunch of resource links at <a href="https://cloudflare-quic.com" target="_blank">https://cloudflare-quic.com</a>. If you're more of an interactive visual learner, you might be pleased to hear that I've also been hosting a series on <a href="https://cloudflare.tv/live" target="_blank">Cloudflare TV</a> called "Levelling up Web Performance with HTTP/3". There are over 12 hours of content including the basics of QUIC, ways to measure and debug the protocol in action using tools like Wireshark, and several deep dives into specific topics. I've also been lucky to have some guest experts join me along the way. The table below gives an overview of the episodes that are available on demand.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-36.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-36.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -67,10 +66,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="whither-quic">Whither QUIC?</h3>
 	<p>So does Last Call mean QUIC is "done"? Not by a long shot. The new protocol is a giant leap for the Internet, because it enables new opportunities and innovation. QUIC v1 is basically the set of documents that have gone into Last Call. We'll continue to see people gain experience deploying and testing this, and no doubt cool blog posts about tweaking parameters for efficiency and performance are on the radar. But QUIC and HTTP/3 are extensible, so we'll see people interested in trying new things like multipath, different congestion control approaches, or new ways to carry data unreliably such as the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-datagram/" target="_blank">DATAGRAM frame</a>.</p>
 	<p>We're also seeing people interested in using QUIC for other use cases. Mapping other application protocols like DNS to QUIC is a rapid way to get its improvements. We're seeing people that want to use QUIC as a substrate for carrying other transport protocols, hence the formation of the <a href="https://datatracker.ietf.org/wg/masque/about/" target="_blank">MASQUE Working Group</a>. There's folks that want to use QUIC and HTTP/3 as a "supercharged WebSocket", hence the formation of the <a href="https://datatracker.ietf.org/wg/webtrans/documents/" target="_blank">WebTransport Working Group</a>.</p>

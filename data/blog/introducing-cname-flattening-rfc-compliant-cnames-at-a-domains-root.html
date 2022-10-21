@@ -45,7 +45,6 @@
 	<p><em>"CloudFlare's CNAME flattening solved a specific issue we saw with email resolution on our domain. When we first configured our DNS records for Junction we took advantage of a CloudFlare feature to set a CNAME record for our zone apex. This helped us resolve our root -- jct.com -- to an AWS ELB which routed traffic to our webservers and handled SSL termination. This worked well for resolving our http traffic, but we saw some issues with sending domains on older infrastructure that couldn't pick up our MX records correctly (we specifically saw this from senders on older versions of Microsoft SMTP Server). We worked with CloudFlare to isolate the problem and transition our domain to use their CNAME flattening solution. This effectively translates our CNAME to A records and keeps the IP addresses in sync with what is associated with our load balancer. All previous email problems have been resolved since we made the switch three months ago. A huge thanks to the CloudFlare team for getting a solution in place so quickly and an incredible level of support throughout the process."</em></p>
 	<ul>
 		<li>Dennis Coldwell, Head of Platform, <a href="https://jct.com/" target="_blank">Junction Investments</a></li>
-	</ul>
-	<!--kg-card-end: markdown-->
+	</ul><!--kg-card-end: markdown-->
 	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up" target="_blank">Sign up free</a> or choose one of our feature rich <a href="https://www.cloudflare.com/plans/#overview" target="_blank">paid plans</a>.</p>
 </div>

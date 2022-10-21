@@ -21,8 +21,7 @@
 	<p>An attacker only needs to have access to one vulnerable connection, but attackers don’t have access everywhere: with every connection we make post-quantum secure, we remove one opportunity for compromise.</p>
 	<p>We are eager to make post-quantum tunnels the default, but for now it is a beta feature. The reason is that the cryptography used and its integration into the network protocol are not yet final. Making post-quantum the default now, would require users to update <code>cloudflared</code> more often than we can reasonably expect them to.</p>
 	<h2 id="getting-started">Getting started</h2>
-	<p>Are frequent updates to <code>cloudflared</code> not a problem for you? Then please do give post-quantum Cloudflare Tunnel a try. Make sure you’re on at least <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> and simply run <code>cloudflared</code> with the <code>--post-quantum</code> flag:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Are frequent updates to <code>cloudflared</code> not a problem for you? Then please do give post-quantum Cloudflare Tunnel a try. Make sure you’re on at least <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> and simply run <code>cloudflared</code> with the <code>--post-quantum</code> flag:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -40,8 +39,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>If you run <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">as a service</a>, you can turn on post-quantum by adding <code>post-quantum: true</code> to the tunnel configuration file. Conveniently, the <code>cloudflared</code> service will <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">automatically update itself</a> if not installed by a package manager.</p>
-	<p>If, for some reason, creating a post-quantum tunnel fails, you’ll see an error message like</p>
-	<!--kg-card-begin: markdown-->
+	<p>If, for some reason, creating a post-quantum tunnel fails, you’ll see an error message like</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

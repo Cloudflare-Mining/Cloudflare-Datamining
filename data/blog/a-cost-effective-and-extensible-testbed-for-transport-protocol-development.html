@@ -37,8 +37,7 @@
 	<ul>
 		<li>Network Condition - Bandwidth, Latency, Packet Loss (upstream and downstream)</li>
 	</ul>
-	<p>For example using netem traffic shaper we can simulate LTE network as below,(RTT=50ms, BW=22Mbps upstream and downstream, with BDP queue size)</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example using netem traffic shaper we can simulate LTE network as below,(RTT=50ms, BW=22Mbps upstream and downstream, with BDP queue size)</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ tc qdisc add dev eth0 root handle 1:0 netem delay 25ms
 $ tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 22mbit buffer 68750 limit 70000
 </code></pre>

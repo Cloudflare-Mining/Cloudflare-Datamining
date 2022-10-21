@@ -51,8 +51,7 @@
 	<pre><code>alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1</code></pre>
 	<p>这只是表明“cloudflare.com”可以通过洋葱服务“cflare2n [...].onion”使用HTTP / 2（“h2”）通过虚拟端口443进行权威访问。字段“ma”(max –age)表示客户端应该记住备用服务是否存在多长时间，“persist”表示在网络中断时是否应该清除备用服务缓存。</p>
 	<p>一旦浏览器收到此请求头，它就会尝试为alt-svc请求头中公布的洋葱服务创建一个新的Tor电路，并确认侦听虚拟端口443的服务器可以为“cloudflare.com”提供有效的证书——即，原始主机名，而不是.onion地址。</p>
-	<p>然后，洋葱服务将Client Hello数据包中继到本地服务器，该服务器可以为“cloudflare.com”提供证书。这样，Tor守护程序本身可以非常小。以下是一个示例配置文件：</p>
-	<!--kg-card-begin: markdown-->
+	<p>然后，洋葱服务将Client Hello数据包中继到本地服务器，该服务器可以为“cloudflare.com”提供证书。这样，Tor守护程序本身可以非常小。以下是一个示例配置文件：</p><!--kg-card-begin: markdown-->
 	<pre><code>SocksPort 0
 HiddenServiceNonAnonymousMode 1
 HiddenServiceSingleHopMode 1

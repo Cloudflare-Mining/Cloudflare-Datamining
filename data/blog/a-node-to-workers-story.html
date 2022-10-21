@@ -13,8 +13,7 @@
 	<p>I decided to reduce the number of layers in our service by simply creating a serverless Cloudflare Worker with no maintenance, no new logins, and no unique backend configuration.</p>
 	<p>Here’s how I did it.</p>
 	<h3 id="goodbye-node">Goodbye Node</h3>
-	<p>The old service used the Node.js and Express.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The old service used the Node.js and Express.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">app.post('/blah', function(request, response) {
 </code></pre>
 	<p>This states that for every POST to an endpoint <code>/blah</code>, execute the callback function with a request and response object as arguments.</p>

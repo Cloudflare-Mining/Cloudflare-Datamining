@@ -30,18 +30,15 @@
 	<h2 id="--2"><strong>今日から始めるにはどうしたらいいですか？</strong></h2>
 	<p>チュートリアルや開発者向けドキュメントにあるガイドを使用して、Cloudflareのプライベートネットワークの構築は、もうすでに開始することができます。クリティカルパスを以下に示します。すでにお客様で、UDPや内部DNSアクセスの順番待ちリストに加わることに興味がある方は、この投稿の最後まで読み飛ばしてください。</p>
 	<h3 id="-cloudflare-"><strong>お客様のネットワークとCloudflareの接続</strong></h3>
-	<p>まず、お客様のネットワーク上に<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">cloudflaredをインストールし</a>、以下のコマンドで認証する必要があります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>まず、お客様のネットワーク上に<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">cloudflaredをインストールし</a>、以下のコマンドで認証する必要があります。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel login
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>次に、お客様のネットワークや環境を識別するために、使いやすい名前のトンネルを作成します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次に、お客様のネットワークや環境を識別するために、使いやすい名前のトンネルを作成します。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create acme-network
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>最後に、プライベートネットワークのIP/CIDRレンジでトンネルを設定することをおすすめします。こうすることで、このIPレンジへのすべてのリクエストが新しいトンネルにルーティングされる必要があることを、Cloudflare WARPエージェントに認識させることができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最後に、プライベートネットワークのIP/CIDRレンジでトンネルを設定することをおすすめします。こうすることで、このIPレンジへのすべてのリクエストが新しいトンネルにルーティングされる必要があることを、Cloudflare WARPエージェントに認識させることができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
 </code></pre>
 	<!--kg-card-end: markdown-->

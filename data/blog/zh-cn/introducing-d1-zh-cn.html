@@ -30,11 +30,9 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
 	<p>当然，如果命令行是您的难点，本周早些时候，我们还推出了<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新的和改进的 Wrangler 2</a>，它是管理和部署 Workers 的最佳工具，很快也会成为您部署 D1 的工具。Wrangler 还将附带原生 D1 支持，因此您可以使用一些简单的命令创建和管理数据库：</p>
 	<h3 id="-worker-d1">从您的 Worker 访问 D1</h3>
-	<p>将 D1 附加到您的 Worker 就像创建新绑定一样简单。您附加到 Worker 的每个 D1 数据库都在 env 参数上附加了自己的绑定：</p>
-	<!--kg-card-begin: html-->
+	<p>将 D1 附加到您的 Worker 就像创建新绑定一样简单。您附加到 Worker 的每个 D1 数据库都在 env 参数上附加了自己的绑定：</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>或者，对于一个稍微复杂的示例，您可以使用路由器和参数化查询安全地将参数从 URL 传递到数据库：</p>
 	<pre><code class="language-js">export default {
   async fetch(request, env, ctx) {

@@ -38,8 +38,7 @@
 	<h3 id="necesito-m-s-de-125-reglas-de-p-gina">Necesito más de 125 reglas de página</h3>
 	<p>Una de las limitaciones de Reglas de página es cómo cada regla de página se almacena y ejecuta en nuestra arquitectura back-end. No podemos ofrecer más de 125 reglas de página por zona sin que el rendimiento se vea afectado (la latencia en las solicitudes HTTP empieza a aumentar mientras estas se evalúan vs. las reglas de página cada vez requieren más tiempo). Para combatir esta limitación, los usuarios trasladaban cargas de trabajo sencillas a Workers, o dividían la zona en varios subdominios, cada uno de los cuales tenía una cuota de 125 reglas de página. Ninguna de estas soluciones era óptima para el cliente.</p>
 	<p>Para combatir esta limitación, hemos creado <em>todos</em> los productos de sustitución sobre nuestro<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank"> motor de reglas</a> ultrarápido, que también ejecuta productos como Reglas de transformación, Reglas personalizadas (WAF), Redirecciones masivas y API Shield.</p>
-	<p>Esto nos permite ofrecer mucha más cuota a los clientes, ya que este motor se ha creado para superar ampliamente las 125 reglas por producto. La siguiente tabla resume el impacto antes y después de estos nuevos productos, y muestra la cuota de reglas predeterminada por plan:</p>
-	<!--kg-card-begin: html-->
+	<p>Esto nos permite ofrecer mucha más cuota a los clientes, ya que este motor se ha creado para superar ampliamente las 125 reglas por producto. La siguiente tabla resume el impacto antes y después de estos nuevos productos, y muestra la cuota de reglas predeterminada por plan:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -85,8 +84,7 @@
 				<td>10</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p><em>No es posible comprar reglas adicionales para estos nuevos productos.</em></p>
 	<p>Esto significa que las zonas en el plan Enterprise ahora tienen un mínimo de <strong>500</strong> reglas para utilizar donde antes tenían 125 con Reglas de página. Para Enterprise, la cuota de los nuevos productos es negociable. Las zonas del plan Pro van de 20 a 100 reglas de página. Junto con el control detallado que ofrece el motor de reglas, estos cambios permiten a los clientes personalizar el tráfico de su zona hasta el más mínimo detalle.</p>
 	<p>La otra ventaja de crear todos estos productos sobre el motor de reglas es la extensibilidad. Actualmente, hay más de 30 productos que se han creado y se ejecutan sobre el motor de reglas. Cada uno de estos productos es básicamente un bucket lógico denominado "fase" que contiene un único conjunto de reglas cuyo ámbito es ese producto. Cada fase está restringida a acciones y campos específicos, por ejemplo, el campo cf.bot_management.score no está disponible en http_request_transform ya que no hemos calculado la puntuación del bot en el momento de realizar las reescrituras de URL. Además, solo se permite la acción "<code>rewrite</code>". En cambio, en Reglas de origen (http_request_origin) solo permitimos la acción "<code>route</code>".</p>

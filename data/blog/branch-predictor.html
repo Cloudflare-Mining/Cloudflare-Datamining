@@ -134,8 +134,7 @@ label_a:
 	<p>Then we quickly dived in very low level CPU features. By the end of this article, hopefully, an astute reader might get better intuition how a modern branch predictors works. </p>
 	<p>On x86 the hot code needs to split the BTB budget between function calls and taken branches. The BTB has only a size of 4096 entries. There are strong benefits in keeping the hot code under 16KiB.</p>
 	<p>On the other hand on M1 the BTB seems to be limited by L1 instruction cache. If you're writing super hot code, ideally it should fit 4KiB.</p>
-	<p>Finally, can you add this one more <code>if</code> statement? If it's never-taken, it's probably ok. I found no evidence that such branches incur any extra cost. But do avoid always-taken branches and function calls.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, can you add this one more <code>if</code> statement? If it's never-taken, it's probably ok. I found no evidence that such branches incur any extra cost. But do avoid always-taken branches and function calls.</p><!--kg-card-begin: markdown-->
 	<p><strong>Sources</strong></p>
 	<p>I'm not the first person to investigate how BTB works. I based my experiments on:</p>
 	<ul>
@@ -151,11 +150,8 @@ label_a:
 	<h3 id="ps">PS</h3>
 	<p>Oh, oh. But this is not the whole story! Similar research was the base to the <a href="https://spectreattack.com/spectre.pdf" target="_blank">Spectre v2</a> attack. The attack was exploiting the little known fact that the BPU state was not cleared between context switches. With the correct technique it was possible to train the BPU - in the case of Spectre it was iBTB - and force a privileged piece of code to be speculatively executed. This, combined with a cache side-channel data leak, allowed an attacker to steal secrets from the privileged kernel. Powerful stuff.</p>
 	<p>A proposed solution was to avoid using shared BTB. This can be done in two ways: make the indirect jumps to always fail to predict, or fix the CPU to avoid sharing BTB state across isolation domains. This is a long story, maybe for another time...</p>
-	<hr>
-	<!--kg-card-begin: html-->
-	<p><a name="footnotes">Footnotes</a></p>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	<hr><!--kg-card-begin: html-->
+	<p><a name="footnotes">Footnotes</a></p><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p><small>1. One historical solution to this specific 'if debug' problem is called "runtime nop'ing". The idea is to modify the code in runtime and patch the never-taken branch instruction with a <code>nop</code>. For example, see the "ISENABLED" discussion on <a href="https://bugzilla.mozilla.org/showbug.cgi?id=370906" target="_blank">https://bugzilla.mozilla.org/showbug.cgi?id=370906</a>.</small></p>
 	<p><small>2. Fun fact: modern compilers are pretty smart. New gcc (&gt;=11) and older clang (&gt;=3.7) are able to actually optimize it quite a lot. <a href="https://godbolt.org/z/KWYEW3d9s" target="_blank">See for yourself</a>. But, let's not get distracted by that. This article is about low level machine code branch instructions!</small></p>
 	<p><small>3. This is a simplification. There are of course more control flow instructions, like: software interrupts, syscalls, VMENTER/VMEXIT.</small></p>

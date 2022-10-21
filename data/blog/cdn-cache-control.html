@@ -14,8 +14,7 @@
 		<li> Return the Cloudflare-CDN-Cache-Control response header. This results in the same behavior as the origin returning CDN-Cache-Control except we will NOT proxy Cloudflare-CDN-Cache-Control downstream because it’s a header only used to control Cloudflare. This is beneficial if you want only Cloudflare to have a different caching behavior while having all downstream servers rely on Cache-Control, or you simply don’t want Cloudflare to proxy the CDN-Cache-Control header downstream.</li>
 		<li> Return both Cloudflare-CDN-Cache-Control and CDN-Cache-Control response headers. In this case, Cloudflare will only look at Cloudflare-CDN-Cache-Control when making caching decisions because it is the most specific version of CDN-Cache-Control and will proxy CDN-Cache-Control downstream. Only forwarding CDN-Cache-Control in this situation is beneficial if you want Cloudflare to have a different caching behavior than other CDNs downstream.</li>
 	</ol>
-	<p>For example, a response leaves the origin server and can hit the following caches on the way to the browser and can be controlled by the following response headers (assuming the other CDNs support CDN-Cache-Control):</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, a response leaves the origin server and can hit the following caches on the way to the browser and can be controlled by the following response headers (assuming the other CDNs support CDN-Cache-Control):</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -72,8 +71,7 @@
 		<li>Cache-Control: max-age=14400, s-maxage=84000</li>
 		<li>Set an Edge Cache TTL Page Rule on Cloudflare for 24400 seconds fixed to the asset’s path</li>
 	</ul>
-	<p>Cache Behavior:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cache Behavior:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -108,8 +106,7 @@
 		<li>Cloudflare-CDN-Cache-Control: max-age=24400</li>
 		<li>CDN-Cache-Control: 18000</li>
 	</ul>
-	<p>Cache Behavior:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cache Behavior:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -150,8 +147,7 @@
 	<ul>
 		<li>Cache-Control: stale-if-error=400</li>
 	</ul>
-	<p>Behavior in response to 5XX Error:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Behavior in response to 5XX Error:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -182,8 +178,7 @@
 		<li>Cloudflare-CDN-Cache-Control: stale-if-error=60</li>
 		<li>CDN-Cache-Control: stale-if-error=200</li>
 	</ul>
-	<p>Behavior in response to 5XX Error:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Behavior in response to 5XX Error:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

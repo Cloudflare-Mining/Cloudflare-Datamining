@@ -4,8 +4,7 @@
 	<h3 id="qu-est-ce-que-workers-kv"><strong>Qu'est-ce que Workers KV ?</strong></h3>
 	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> est un magasin largement distribué, voire cohérent, de valeurs clés qui s'étend à la périphérie mondiale de Cloudflare. Il vous permet de stocker des milliards de paires clé-valeur et de les lire avec une latence ultra-faible partout dans le monde. Vous pouvez désormais créer des applications entières avec les performances d'un cache statique CDN.</p>
 	<h3 id="comment-l-avons-nous-construit"><strong>Comment l'avons-nous construit ?</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> est une plateforme qui vous permet d'exécuter JavaScript sur la périphérie mondiale de plus de 175 centres de données Cloudflare. Avec seulement quelques lignes de programmation, vous pouvez acheminer des requêtes HTTP, modifier des réponses ou même créer de nouvelles réponses sans serveur d'origine.</p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> est une plateforme qui vous permet d'exécuter JavaScript sur la périphérie mondiale de plus de 175 centres de données Cloudflare. Avec seulement quelques lignes de programmation, vous pouvez acheminer des requêtes HTTP, modifier des réponses ou même créer de nouvelles réponses sans serveur d'origine.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -26,8 +25,7 @@ async function handleOneRedirect(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Les clients sont rapidement venus nous voir avec des cas d'utilisation qui nécessitent un moyen de stocker des données persistantes. Suivant notre exemple ci-dessus, il est facile de gérer une seule redirection, mais que faire si vous voulez en gérer des milliards ? Vous devez les « coder en dur » dans votre script Workers, les ranger dans moins de 1 Mo et les redéployer à chaque fois que vous souhaitez apporter un changement. Oh la la ! C’est pourquoi nous avons mis sur pied Workers KV.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Les clients sont rapidement venus nous voir avec des cas d'utilisation qui nécessitent un moyen de stocker des données persistantes. Suivant notre exemple ci-dessus, il est facile de gérer une seule redirection, mais que faire si vous voulez en gérer des milliards ? Vous devez les « coder en dur » dans votre script Workers, les ranger dans moins de 1 Mo et les redéployer à chaque fois que vous souhaitez apporter un changement. Oh la la ! C’est pourquoi nous avons mis sur pied Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
 // now that's more like it!
 addEventListener("fetch", event =&gt; {
@@ -96,8 +94,7 @@ async function handleBillionsOfRedirects(request) {
 	<h3 id="quoi-de-neuf-depuis-b-ta"><strong>Quoi de neuf depuis bêta ?</strong></h3>
 	<p>Notre demande la plus pressante et la plus courante était de faciliter l’écriture de données sur Workers KV. C'est pourquoi nous proposons trois nouvelles méthodes pour rendre cette expérience encore meilleure :</p>
 	<h4 id="1-criture-en-masse"><strong>1. Écriture en masse</strong></h4>
-	<p>Si vous souhaitez importer vos données existantes dans Workers KV, vous ne voudriez pas avoir à envoyer une requête HTTP pour <em>chaque </em>paire clé-valeur. C'est pourquoi nous avons ajouté un <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">point de terminaison de masse</a> à l'API de Cloudflare. Vous pouvez maintenant télécharger jusqu'à 10 000 paires (jusqu'à 100 Mo de données) en une seule requête PUT.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Si vous souhaitez importer vos données existantes dans Workers KV, vous ne voudriez pas avoir à envoyer une requête HTTP pour <em>chaque </em>paire clé-valeur. C'est pourquoi nous avons ajouté un <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">point de terminaison de masse</a> à l'API de Cloudflare. Vous pouvez maintenant télécharger jusqu'à 10 000 paires (jusqu'à 100 Mo de données) en une seule requête PUT.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
   -X PUT \
@@ -111,8 +108,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Étudions un exemple d'utilisation : vous souhaitez transférer la traduction de votre site Web vers Workers. Étant donné que vous lisez fréquemment les clés de traduction et que vous ne les mettez à jour que de temps en temps, cette application fonctionne bien avec le modèle de cohérence éventuel de Workers KV.</p>
-	<p>Dans cet exemple, nous nous sommes connectés à <a href="https://crowdin.com/" target="_blank">Crowdin</a>, une plateforme populaire de gestion des données de traduction. Ce Worker répond à un point de terminaison de /traduction, télécharge toutes vos clés de traduction et les écrit en bloc dans Workers KV, afin que vous puissiez les lire plus tard sur notre périphérie :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dans cet exemple, nous nous sommes connectés à <a href="https://crowdin.com/" target="_blank">Crowdin</a>, une plateforme populaire de gestion des données de traduction. Ce Worker répond à un point de terminaison de /traduction, télécharge toutes vos clés de traduction et les écrit en bloc dans Workers KV, afin que vous puissiez les lire plus tard sur notre périphérie :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -160,8 +156,7 @@ async function zipToJson(response) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Maintenant, lorsque vous voulez traduire une page, tout ce que vous avez à faire est de lire Workers KV :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Maintenant, lorsque vous voulez traduire une page, tout ce que vous avez à faire est de lire Workers KV :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function translate(keys, lang) {
   // You bind your translations namespace to the TRANSLATIONS variable.
   return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
@@ -169,16 +164,14 @@ async function zipToJson(response) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h4 id="2-cl-s-d-expiration"><strong>2. Clés d’expiration</strong></h4>
-	<p>Par défaut, les paires clé-valeur stockées dans Workers KV durent indéfiniment. Cependant, vous souhaitez parfois que vos données soient supprimées automatiquement après un certain temps. C'est pourquoi nous introduisons les options expiration et expirationTtl pour les opérations d'écriture.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Par défaut, les paires clé-valeur stockées dans Workers KV durent indéfiniment. Cependant, vous souhaitez parfois que vos données soient supprimées automatiquement après un certain temps. C'est pourquoi nous introduisons les options expiration et expirationTtl pour les opérations d'écriture.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Key expires 60 seconds from now.
 NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
 
 // Key expires if the UNIX epoch is in the past.
 NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
 curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
@@ -190,8 +183,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/ \
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Supposons que vous souhaitiez bloquer l’accès de votre site Web à des utilisateurs qui ont été signalés comme inappropriés, mais seulement pendant une semaine. Avec une clé d’expiration, vous pouvez définir le délai d’expiration sans avoir à vous soucier de le supprimer ultérieurement.</p>
-	<p>Dans cet exemple, nous supposons que les utilisateurs et les adresses IP sont identiques. Si votre application dispose d'une authentification, vous pouvez utiliser des jetons d'accès comme identificateur de clé.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dans cet exemple, nous supposons que les utilisateurs et les adresses IP sont identiques. Si votre application dispose d'une authentification, vous pouvez utiliser des jetons d'accès comme identificateur de clé.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = new URL(event.request.url)
   // An internal API that blocks a new user IP.
@@ -231,8 +223,7 @@ async function handleRequest(request) {
 	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/3uLKAterSnoEdOjkglAhz9xNTj5yFFb31XLh9_bWrWrpn0BDnAsO59sdHBIunEgWwkp7uPxU5Z_4n3OuyYJ8ljW4f9al2Flp1_sTLznxzeuVqcTRa7knglPr0lCjIP3UbvKBonw" class="kg-image"></figure>
 	<p>Considérez cette éventualité : vous voulez permettre à vos utilisateurs de charger leur GIF préféré dans leur profil sans avoir à stocker ces GIF en tant que fichiers binaires dans votre base de données ou à gérer un <em>autre </em>compartiment de stockage dans le cloud.</p>
 	<p>Workers KV convient parfaitement à ce cas d'utilisation ! Vous pouvez créer un espace de noms Workers KV pour les GIF de vos utilisateurs, qui soit rapide et fiable où que vos clients se trouvent.</p>
-	<p>Dans cet exemple, les utilisateurs téléchargent un lien vers leur GIF préféré, puis un travailleur le télécharge et le stocke à Workers KV.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dans cet exemple, les utilisateurs téléchargent un lien vers leur GIF préféré, puis un travailleur le télécharge et le stocke à Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = event.request.url
   var arg = request.url.split("/").pop()

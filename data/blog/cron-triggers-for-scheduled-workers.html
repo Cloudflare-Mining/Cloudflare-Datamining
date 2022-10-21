@@ -10,15 +10,13 @@
 	<h3 id="new-event-type">New Event Type</h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-23.png" class="kg-image"></figure>
 	<p>Cron Triggers gave us the opportunity to finally recognize a new Worker 'type' in our API. While Workers currently only run on web requests, we have lots of ideas for the future of edge computing that aren’t strictly tied to HTTP requests and responses. Expect to see even more new handlers in the future for other non-HTTP events like log information from your Worker (think custom wrangler tail!) or even TCP Workers.</p>
-	<p>Here’s an example of the new Javascript API:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s an example of the new Javascript API:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('scheduled', event =&gt; {
   event.waitUntil(someAsyncFunction(event))
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Where <code>event</code> has the following interface in Typescript:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Where <code>event</code> has the following interface in Typescript:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">interface ScheduledEvent {
   type: 'scheduled';
   scheduledTime: int; // milliseconds since the Unix epoch
@@ -30,8 +28,7 @@
 	<h5 id="put-client-v4-accounts-account_identifier-workers-scripts-name"><strong>PUT </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name</strong></h5>
 	<p>The script upload API remains the same, but during script validation we now detect and return the registered event handlers.</p>
 	<h5 id="put-client-v4-accounts-account_identifier-workers-scripts-name-schedules"><strong>PUT </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name/schedules</strong></h5>
-	<h6 id="body"><strong>Body</strong></h6>
-	<!--kg-card-begin: markdown-->
+	<h6 id="body"><strong>Body</strong></h6><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">[
  {"cron": "* * * * *"},
  ...
@@ -40,8 +37,7 @@
 	<!--kg-card-end: markdown-->
 	<p>This will create or modify all schedules for a script, removing all schedules not in the list. For now, there’s a limit of 3 distinct cron schedules. Schedules can be set to run as often as one minute and don’t accept schedules with years in them (sorry, you’ll have to run your Y3K migration script another way).</p>
 	<h5 id="get-client-v4-accounts-account_identifier-workers-scripts-name-schedules"><strong>GET </strong>/client/v4<strong>/accounts/:account_identifier/workers/scripts/:name/schedules</strong></h5>
-	<h6 id="response"><strong>Response</strong></h6>
-	<!--kg-card-begin: markdown-->
+	<h6 id="response"><strong>Response</strong></h6><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">{
  "schedules": [
    {

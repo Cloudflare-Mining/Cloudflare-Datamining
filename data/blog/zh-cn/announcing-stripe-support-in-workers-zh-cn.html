@@ -7,8 +7,7 @@
 	<p>今天，我很高兴能宣布 <a href="https://github.com/stripe/stripe-node" target="_blank"><code>stripe</code></a> JS 包对 Cloudflare Workers 的普遍可用。您现在可在项目中直接使用原生 Stripe SDK 了！想要立刻开始使用，请在您的项目中安装 <code>stripe</code>：`npm i stripe`。</p>
 	<p>对于已经将站点部署到 Cloudflare Pages 的开发人员来说，这也会提供一个绝佳的机会，可在其应用程序中直接使用 Stripe。本周我们宣布了 Cloudflare Pages 对无服务器函数的支持，因此，只需在您的 Pages 项目增加几行 JavaScript 代码，就能为您的数字产品接受付款，或为您的会员网站处理订阅。不需额外配置，而且会自动扩展，一如您的 Pages 站点。</p>
 	<p>我们准备了一个示例开源代码库，展示如何将 <a href="https://stripe.com/payments/checkout" target="_blank">Stripe Checkout</a> 集成到 Pages 应用中。不需要额外配置——正如我们昨日所宣布的那样，Pages 的新 Workers 函数功能允许您部署可无限扩展的函数，只需在您的项目文件中添加一个新的`functions`文件夹。请在 <a href="https://stripe.pages.dev" target="_blank">stripe.pages.dev</a> 查看实例演示，或<a href="https://github.com/cloudflare/stripe.pages.dev" target="_blank">浏览 Github 上的开源代码库</a>。</p>
-	<p>安装 SDK 后，您就可以开始在应用程序中直接接受支付。下面的例子展示了如何启动一个新的 <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank">Checkout 会话</a>，并重定向到 Stripe 托管的 Checkout 页面：</p>
-	<!--kg-card-begin: markdown-->
+	<p>安装 SDK 后，您就可以开始在应用程序中直接接受支付。下面的例子展示了如何启动一个新的 <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank">Checkout 会话</a>，并重定向到 Stripe 托管的 Checkout 页面：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const Stripe = require("stripe");
 
 const stripe = Stripe(STRIPE_API_KEY, {
@@ -42,8 +41,7 @@ export default {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>在 Cloudflare Workers 中原生支持 Stripe SDK，您可以利用的将不限于支付处理。<a href="https://stripe.com/docs/api?lang=node" target="_blank">Stripe 丰富文档</a>中的任何 JavaScript 示例在 Workers 中可直接运行，无需任何更改。</p>
-	<p>具体而言，通过使用 Workers 来处理大量可用的 Stripe webhook，您可以更好地掌握现有系统的运行情况，无需启动任何新的基础设施。下面的例子展示了如何安全地验证对 Worker 函数的传入 webhook 请求，并通过解析webhook 中的数据来执行业务逻辑：</p>
-	<!--kg-card-begin: markdown-->
+	<p>具体而言，通过使用 Workers 来处理大量可用的 Stripe webhook，您可以更好地掌握现有系统的运行情况，无需启动任何新的基础设施。下面的例子展示了如何安全地验证对 Worker 函数的传入 webhook 请求，并通过解析webhook 中的数据来执行业务逻辑：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const Stripe = require("stripe");
 
 const stripe = Stripe(STRIPE_API_KEY, {

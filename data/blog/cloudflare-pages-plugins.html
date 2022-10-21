@@ -9,8 +9,7 @@
 	<h2 id="how-does-it-work">How does it work?</h2>
 	<p>Today, Pages Plugins is launching with a couple of ready-made solutions for Sentry, Honeycomb, and Stytch (more below), but it’s important to note that developers anywhere can create and share their Pages Plugins, too! You just need to install a Plugin, mount it to a route within the <code>/functions</code> directory, and configure the Plugin according to its needs.</p>
 	<p>Let’s take a look at a Plugins example for a hypothetical ACME logger:</p>
-	<p>Assume you find an <code>@acme/pages-plugin-logger</code> package on npm and want to use it within your application – you’d install, import, and invoke it as you would any other npm module. After passing through the required (hypothetical) configuration and mounting it as the top-level middleware’s <code>onRequest</code> export, the ACME logger will be reporting on all incoming requests:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Assume you find an <code>@acme/pages-plugin-logger</code> package on npm and want to use it within your application – you’d install, import, and invoke it as you would any other npm module. After passing through the required (hypothetical) configuration and mounting it as the top-level middleware’s <code>onRequest</code> export, the ACME logger will be reporting on all incoming requests:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ts">// file: /functions/_middleware.ts
 
 import MyLogger from "@acme/pages-plugin-logger";
@@ -28,8 +27,7 @@ export const onRequest = MyLogger({
 	<p>Today, we’re proud to launch our Pages Plugins with <a href="https://sentry.io/welcome/" target="_blank">Sentry</a>, <a href="https://www.honeycomb.io/" target="_blank">Honeycomb</a> and <a href="https://stytch.com/" target="_blank">Stytch</a> as official partners!</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-22.png" class="kg-image" alt="Pages Plugins Partners"></figure>
 	<h3 id="sentry"><a href="https://sentry.io/welcome/" target="_blank">Sentry</a></h3>
-	<p><a href="https://sentry.io/" target="_blank">Sentry</a> provides developer-first application monitoring for real-time insights into your production deployments. With Sentry you can see the errors, crashes, or latencies experienced while using your app and get the deep context needed to solve issues quickly, like the line of code where the error occurred, the developer or commit that introduced the error, or the API call or database query causing the slowdown. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry" target="_blank">Sentry Plugin</a> automatically captures any exceptions in your Pages Functions and sends them to Sentry where you can aggregate, analyze, and triage any issues your application encounters.</p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://sentry.io/" target="_blank">Sentry</a> provides developer-first application monitoring for real-time insights into your production deployments. With Sentry you can see the errors, crashes, or latencies experienced while using your app and get the deep context needed to solve issues quickly, like the line of code where the error occurred, the developer or commit that introduced the error, or the API call or database query causing the slowdown. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry" target="_blank">Sentry Plugin</a> automatically captures any exceptions in your Pages Functions and sends them to Sentry where you can aggregate, analyze, and triage any issues your application encounters.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/_middleware.ts
 
 import sentryPlugin from "@cloudflare/pages-plugin-sentry";
@@ -40,8 +38,7 @@ export const onRequest = sentryPlugin({
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="honeycomb"><a href="https://www.honeycomb.io/" target="_blank">Honeycomb</a></h3>
-	<p>Similarly, Honeycomb is also an observability and monitoring platform meant to visualize, analyze and improve application quality and performance to help you find patterns and outliers in your application data. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb" target="_blank">Honeycomb Plugin</a> creates traces for every request that your Pages application receives and automatically sends that information to Honeycomb for analysis.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Similarly, Honeycomb is also an observability and monitoring platform meant to visualize, analyze and improve application quality and performance to help you find patterns and outliers in your application data. The <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb" target="_blank">Honeycomb Plugin</a> creates traces for every request that your Pages application receives and automatically sends that information to Honeycomb for analysis.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/_middleware.ts
 
 import honeycombPlugin from "@cloudflare/pages-plugin-honeycomb";
@@ -53,8 +50,7 @@ export const onRequest = honeycombPlugin({
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="stytch"><a href="https://stytch.com/?utm_source=cloudflare&amp;utm_medium=blog" target="_blank">Stytch</a></h3>
-	<p>Observability is just one use case of how Pages Plugins can help you build a more powerful app. Stytch is an API-first platform that improves security and promotes a better user experience with passwordless authentication. Our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch" target="_blank">Stytch Plugin</a> transparently validates user sessions, allowing you to easily protect parts of your application behind a Stytch login.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Observability is just one use case of how Pages Plugins can help you build a more powerful app. Stytch is an API-first platform that improves security and promotes a better user experience with passwordless authentication. Our <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch" target="_blank">Stytch Plugin</a> transparently validates user sessions, allowing you to easily protect parts of your application behind a Stytch login.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/_middleware.ts
 
 import stytchPlugin from "@cloudflare/pages-plugin-stytch";

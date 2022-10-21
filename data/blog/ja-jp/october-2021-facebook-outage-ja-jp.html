@@ -16,8 +16,7 @@
 	<p>当社の<a href="https://www.cloudflare.com/learning/" target="_blank">ラーニングセンター</a>には、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>と<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a> が何であるか、どのような仕組みになっているかについて概説した良い資料があります。</p>
 	<p>この簡略図は、インターネット上の6つの自律システムと、1つのパケットが始点から終点まで行くのに使える2つの経路を示しています。AS1 → AS2 → AS3 が最も速い経路です。AS1 → AS6 → AS5 → AS4 → AS3 は最も遅い経路ですが、最初の経路で障害が発生した際に使えます。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10.png" class="kg-image"></figure>
-	<p>15:58（協定世界時）現在、フェイスブックからDNSプレフィックスへの経路広報は停止しています。つまり、少なくともフェイスブックのDNSサーバーは利用できない状態にあるということです。そのためCloudflareの1.1.1.1DNSリソルバーは、facebook.comのIPアドレスを求めるクエリーに応答できなくなっています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>15:58（協定世界時）現在、フェイスブックからDNSプレフィックスへの経路広報は停止しています。つまり、少なくともフェイスブックのDNSサーバーは利用できない状態にあるということです。そのためCloudflareの1.1.1.1DNSリソルバーは、facebook.comのIPアドレスを求めるクエリーに応答できなくなっています。</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -27,8 +26,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>一方、フェイスブックの他のIPアドレスについてはルーティングが維持されていますが、DNSがなければフェイスブックと関連のサービスは事実上利用不可能ですので、あまり有用ではありません。</p>
-	<!--kg-card-begin: markdown-->
+	<p>一方、フェイスブックの他のIPアドレスについてはルーティングが維持されていますが、DNSがなければフェイスブックと関連のサービスは事実上利用不可能ですので、あまり有用ではありません。</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -52,8 +50,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9.png" class="kg-image"></figure>
 	<p>それらの取り消しによって、フェイスブックとそのサイトは事実上、インターネット接続を切っていました。</p>
 	<h3 id="dns-">DNSへの影響</h3>
-	<p>このことの直接の結果として、世界中のDNSリゾルバーがドメイン名の解決を停止しました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>このことの直接の結果として、世界中のDNSリゾルバーがドメイン名の解決を停止しました。</p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

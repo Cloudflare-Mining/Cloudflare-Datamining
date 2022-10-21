@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/geo-key-manager-how-it-works-de-de/">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/geo-key-manager-how-it-works-fr-fr/">Français</a>.and <a href="https://blog.cloudflare.com/es-es/geo-key-manager-how-it-works-es-es/">Español</a></small></em></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>Today we announced <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, a feature that gives customers unprecedented control over where their private keys are stored when uploaded to Cloudflare. This feature builds on a previous Cloudflare innovation called Keyless SSL and a novel cryptographic access control mechanism based on both identity-based encryption and broadcast encryption. In this post we’ll explain the technical details of this feature, the first of its kind in the industry, and how Cloudflare leveraged its existing network and technologies to build it.</p>
 	<h3 id="keysindifferentareacodes">Keys in different area codes</h3>
 	<p>Cloudflare launched <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys/">Keyless SSL</a> three years ago to wide acclaim. With Keyless SSL, customers are able to take advantage of the full benefits of Cloudflare’s network while keeping their HTTPS private keys inside their own infrastructure. Keyless SSL has been popular with customers in industries with regulations around the control of access to private keys, such as the financial industry. Keyless SSL adoption has been slower outside these regulated industries, partly because it requires customers to run custom software (the key server) inside their infrastructure.</p>

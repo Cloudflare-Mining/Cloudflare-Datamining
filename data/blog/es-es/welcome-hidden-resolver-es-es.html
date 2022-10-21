@@ -65,20 +65,17 @@
 	<ol>
 		<li>En primer lugar, descarga <code>Cloudflared</code> siguiendo la guía general para <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">Operar un cliente DNS mediante HTTPS</a>.</li>
 		<li>Ejecuta un proxy Tor SOCKS y usa socat para desviar el puerto TCP:443 al localhost:</li>
-	</ol>
-	<!--kg-card-begin: markdown-->
+	</ol><!--kg-card-begin: markdown-->
 	<pre><code>socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3. Da instrucciones a tu equipo para que trate la dirección .onion como localhost:</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. Da instrucciones a tu equipo para que trate la dirección .onion como localhost:</p><!--kg-card-begin: markdown-->
 	<pre><code>cat &lt;&lt; EOF &gt;&gt; /etc/hosts 
 127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion 
 128.EOF
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>4. Por último, inicia un DNS local mediante UDP daemon:</p>
-	<!--kg-card-begin: markdown-->
+	<p>4. Por último, inicia un DNS local mediante UDP daemon:</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
 INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
 INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"

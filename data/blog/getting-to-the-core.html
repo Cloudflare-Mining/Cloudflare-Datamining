@@ -4,8 +4,7 @@
 	<p>At the Cloudflare Core, we process logs to analyze attacks and compute analytics. In 2020, our Core servers were in need of a refresh, so we decided to redesign the hardware to be more in line with our Gen X edge servers. We designed two major server variants for the core. The first is Core Compute 2020, an AMD-based server for analytics and general-purpose compute paired with solid-state storage drives. The second is Core Storage 2020, an Intel-based server with twelve spinning disks to run database workloads.</p>
 	<h2 id="core-compute-2020">Core Compute 2020</h2>
 	<p>Earlier this year, we blogged about our 10th generation edge servers or Gen X and the <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers/">improvements</a> they delivered to our edge in <a href="https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu/">both</a> performance and <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale/">security</a>. The new Core Compute 2020 server leverages many of our learnings from the edge server. The Core Compute servers run a variety of workloads including Kubernetes, Kafka, and various smaller services.</p>
-	<h3 id="configuration-changes-kubernetes-">Configuration Changes (Kubernetes)</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="configuration-changes-kubernetes-">Configuration Changes (Kubernetes)</h3><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -48,8 +47,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p><strong>Configuration Changes (Kafka)</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Configuration Changes (Kafka)</strong></p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -108,8 +106,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-10.png" class="kg-image"></figure>
 	<h2 id="core-storage-2020">Core Storage 2020</h2>
 	<p>Another major workload we identified was <a href="https://blog.cloudflare.com/clickhouse-capacity-estimation-framework/">ClickHouse</a>, which performs analytics over large datasets. The last time we upgraded our servers running ClickHouse was back in <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/">2018</a>.</p>
-	<h3 id="configuration-changes">Configuration Changes</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="configuration-changes">Configuration Changes</h3><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -151,14 +148,11 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<p><strong>CPU Changes</strong></p>
 	<p>For ClickHouse, we use a 1U chassis with 12 x 10TB 3.5” hard drives. At the time we were designing Core Storage 2020 our server vendor did not yet have an AMD version of this chassis, so we remained on Intel. However, we moved Core Storage 2020 to a single 20 core / 40 thread Xeon processor, rather than the previous generation’s dual-socket 10 core / 20 thread processors. By moving to the single-socket Xeon 6210U processor, we were able to keep the same core count, but gained 17% higher base frequency and 26% higher max turbo frequency. Meanwhile, the total CPU thermal design profile (TDP), which is an approximation of the maximum power the CPU can draw, went down from 165W to 150W.</p>
-	<p>On a dual-socket server, remote memory accesses, which are memory accesses by a process on socket 0 to memory attached to socket 1, incur a latency penalty, as seen in this table:</p>
-	<!--kg-card-begin: markdown-->
+	<p>On a dual-socket server, remote memory accesses, which are memory accesses by a process on socket 0 to memory attached to socket 1, incur a latency penalty, as seen in this table:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -180,18 +174,15 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>An additional advantage of having a CPU with all 20 cores on the same socket is the elimination of these remote memory accesses, which take 76% longer than local memory accesses.</p>
 	<h3 id="memory-changes">Memory Changes</h3>
 	<p>The memory in the Core Storage 2020 host is rated for operation at 2933 MHz; however, in the 8 x 32GB configuration we need on these hosts, the Intel Xeon 6210U processor clocks them at 2666 MH. Compared to the previous generation, this gives us a 13% boost in memory speed. While we would get a slightly higher clock speed with a balanced, 6 DIMMs configuration, we determined that we are willing to sacrifice the slightly higher clock speed in order to have the additional RAM capacity provided by the 8 x 32GB configuration.</p>
 	<h3 id="storage-changes">Storage Changes</h3>
 	<p>Data capacity stayed the same, with 12 x 10TB SATA drives in RAID 0 configuration for best &nbsp;throughput. Unlike the previous generation, the drives in the Core Storage 2020 host are helium filled. Helium produces less drag than air, resulting in potentially lower latency.</p>
 	<h3 id="core-storage-2020-synthetic-benchmarking">Core Storage 2020 Synthetic benchmarking</h3>
-	<p>We performed synthetic four corners benchmarking: IOPS measurements of random reads and writes using 4k block size, and bandwidth measurements of sequential reads and writes using 128k block size. We used the fio tool to see what improvements we would get in a lab environment. The results show a 10% latency improvement and 11% IOPS improvement in random read performance. Random write testing shows 38% lower latency and 60% higher IOPS. Write throughput is improved by 23%, and read throughput is improved by a whopping 90%.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We performed synthetic four corners benchmarking: IOPS measurements of random reads and writes using 4k block size, and bandwidth measurements of sequential reads and writes using 128k block size. We used the fio tool to see what improvements we would get in a lab environment. The results show a 10% latency improvement and 11% IOPS improvement in random read performance. Random write testing shows 38% lower latency and 60% higher IOPS. Write throughput is improved by 23%, and read throughput is improved by a whopping 90%.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -240,13 +231,10 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="cpu-frequencies">CPU frequencies</h3>
-	<p>The higher base and turbo frequencies of the Core Storage 2020 host’s Xeon 6210U processor allowed that processor to achieve higher average frequencies while running our production ClickHouse workload. A recent snapshot of two production hosts showed the Core Storage 2020 host being able to sustain an average of 31% higher CPU frequency while running ClickHouse.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The higher base and turbo frequencies of the Core Storage 2020 host’s Xeon 6210U processor allowed that processor to achieve higher average frequencies while running our production ClickHouse workload. A recent snapshot of two production hosts showed the Core Storage 2020 host being able to sustain an average of 31% higher CPU frequency while running ClickHouse.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -265,14 +253,11 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="core-storage-2020-production-benchmarking">Core Storage 2020 Production benchmarking</h3>
 	<p>Our ClickHouse database hosts are continually performing merge operations to optimize the database data structures. Each individual merge operation takes just a few seconds on average, but since they’re constantly running, they can consume significant resources on the host. We sampled the average merge time every five minutes over seven days, and then sampled the data to find the average, minimum, and maximum merge times reported by a Compute 2020 host and by a previous generation host. Results are summarized below.</p>
-	<h3 id="clickhouse-merge-operation-performance-improvement-time-in-seconds-lower-is-better-">ClickHouse merge operation performance improvement<br>(time in seconds, lower is better)</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="clickhouse-merge-operation-performance-improvement-time-in-seconds-lower-is-better-">ClickHouse merge operation performance improvement<br>(time in seconds, lower is better)</h3><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -303,10 +288,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>Our lab-measured CPU frequency and storage performance improvements on Core Storage 2020 have translated into significantly reduced times to perform this database operation.</p>
 	<h2 id="conclusion">Conclusion</h2>
 	<p>With our Core 2020 servers, we were able to realize significant performance improvements, both in synthetic benchmarking outside production and in the production workloads we tested. This will allow Cloudflare to run the same workloads on fewer servers, saving CapEx costs and data center rack space. The similarity of the configuration of the Kubernetes and Kafka hosts should help with fleet management and spare parts management. For our next redesign, we will try to further converge the designs on which we run the major Core workloads to further improve efficiency.</p>

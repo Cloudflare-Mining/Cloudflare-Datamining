@@ -33,18 +33,15 @@
 	<h2 id="how-can-i-get-started-today">How can I get started today?</h2>
 	<p>You can already get started building your private network on Cloudflare with our tutorials and guides in our developer documentation. Below is the critical path. And if you’re already a customer, and you’re interested in joining the waitlist for UDP and Internal DNS access, please skip ahead to the end of this post!</p>
 	<h3 id="connecting-your-network-to-cloudflare">Connecting your network to Cloudflare</h3>
-	<p>First, you need to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">install cloudflared</a> on your network and authenticate it with the command below:</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, you need to <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">install cloudflared</a> on your network and authenticate it with the command below:</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel login
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Next, you’ll create a tunnel with a user-friendly name to identify your network or environment.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, you’ll create a tunnel with a user-friendly name to identify your network or environment.</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create acme-network
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally, you’ll want to configure your tunnel with the IP/CIDR range of your private network. By doing this, you’re making the Cloudflare WARP agent aware that any requests to this IP range need to be routed to our new tunnel.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, you’ll want to configure your tunnel with the IP/CIDR range of your private network. By doing this, you’re making the Cloudflare WARP agent aware that any requests to this IP range need to be routed to our new tunnel.</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
 </code></pre>
 	<!--kg-card-end: markdown-->

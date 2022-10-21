@@ -29,8 +29,7 @@
 	<h3 id="-qu-ha-pasado-hoy"><strong>¿Qué ha pasado hoy?</strong></h3>
 	<p>Cloudflare mantiene un rango de colectores de BGP que reúnen información de BGP de cientos de enrutadores alrededor del planeta.</p>
 	<p>Aproximadamente entre las <strong>11:05:00 y las 12:55:00 (UTC) de hoy</strong> vimos los siguientes anuncios:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.197.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.195.0/24|10297
@@ -66,8 +65,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
 	<p>Por ejemplo, la siguiente consulta te devolverá IP legítimas de Amazon:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig +short myetherwallet.com @205.251.195.239
 54.192.146.xx
 </code></pre>
@@ -109,8 +107,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 	<h3 id="-podr-amos-arreglarlo"><strong>¿Podríamos arreglarlo?</strong></h3>
 	<p>Es una pregunta difícil de responder. Hay propuestas para asegurar el BGP:</p>
 	<p>Pueden añadirse algunos términos a las bases de datos de los Registros Regionales de Internet, por lo que se puede generar una lista de fuentes permitidas:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
 route:      205.251.192.0/23	origin:     AS16509	source:     RADB
 route:      205.251.192.0/23	origin:     AS16509	source:     REACH

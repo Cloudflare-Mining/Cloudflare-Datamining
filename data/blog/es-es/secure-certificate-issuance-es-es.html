@@ -21,8 +21,7 @@
 	<p>Supongamos que Alice compra el nombre de dominio aliceswonderland.com y desea obtener un certificado específico para este dominio. Alice elige usar <em>Let's Encrypt</em> como su entidad de certificación. En primer lugar, Alice debe generar su propia clave privada y crear una solicitud de firma de certificado (CSR, <em>Certificate Signing Request</em>). Envía la CSR a<em> Let's Encrypt</em>, pero la CA no emitirá un certificado para esa CSR y la clave privada hasta que sepan que Alice es la propietaria de aliceswonderland.com. Alice puede optar por probar la propiedad de este dominio a través de la validación HTTP.</p>
 	<p>Cuando <em>Let's Encrypt </em>hace la DCV a través de HTTP, le solicita a Alice que coloque un archivo de nombre aleatorio en la ruta <code>/.well-known/acme-challenge</code> para su sitio web. La CA debe recuperar el archivo de texto mediante el envío de una solicitud HTTP <code>GET</code> a <code>http://aliceswonderland.com/.well-known/acme-challenge/&lt;random_filename&gt;</code>. Para que la DCV se haga correctamente, este punto de conexión debe tener el valor esperado.</p>
 	<p>Para la validación HTTP, Alice subiría un archivo a &nbsp;<code>http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz</code>,</p>
-	<p>que en el cuerpo tendría lo siguiente:</p>
-	<!--kg-card-begin: markdown-->
+	<p>que en el cuerpo tendría lo siguiente:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz
 
 GET /.well-known/acme-challenge/YnV0dHNz
@@ -36,8 +35,7 @@ YnV0dHNz.TEST_CLIENT_KEY
 	<!--kg-card-end: markdown-->
 	<p>La CA les indica que utilicen el <em>token </em>Base64 YnV0dHNz. TEST_CLIENT_KEY en una clave vinculada a la cuenta que solo conocen el solicitante del certificado y la CA. La CA utiliza esta combinación de campos para verificar que el solicitante del certificado posee realmente el dominio. ¡Finalmente, Alice puede obtener el certificado para su sitio web!</p>
 	<h3 id="validaci-n-del-sistema-de-nombres-de-dominio-dns-domain-name-system-"><strong>Validación del sistema de nombres de dominio (DNS, </strong><em><strong>Domain Name System</strong></em><strong>)</strong></h3>
-	<p>Para validar la propiedad del dominio, los usuarios también pueden añadir un registro DNS TXT que contenga una cadena de verificación o <em>token </em>de la CA para los registros de recursos de su dominio. Por ejemplo, este es un dominio para una empresa que se valida en Google:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Para validar la propiedad del dominio, los usuarios también pueden añadir un registro DNS TXT que contenga una cadena de verificación o <em>token </em>de la CA para los registros de recursos de su dominio. Por ejemplo, este es un dominio para una empresa que se valida en Google:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"
 </code></pre>

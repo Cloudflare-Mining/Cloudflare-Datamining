@@ -31,8 +31,7 @@
 	<p>Menerapkan agen apa pun ke puluhan ribu pengguna dapat menjadi rintangan logistik. Kami membangun agen Cloudflare for Teams agar mudah digunakan dalam skala besar di tim Anda. Pengumuman hari ini memberi Anda lebih banyak opsi untuk meluncurkan agen ke seluruh organisasi Anda dengan kontrol berbasis API dan Terraform.</p>
 	<p>Mengotomatiskan tugas administratif adalah cara terbaik untuk membuatnya tetap konsisten. Di Cloudflare, kami membangun UI kami di atas serangkaian RESTful API berdasarkan permintaan HTTPS dan respons JSON. API yang sama ini dalam hal manajemen perangkat kami kemudian diekspos ke pengguna melalui <a href="https://api.cloudflare.com/" target="_blank">Dokumentasi API</a> kami dan sebagai tambahan melalui <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">penyedia Terraform</a> kami. Semua yang diekspos dalam versi web <a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a> tersedia melalui salah satu antarmuka ini.</p>
 	<p>Sebagai contoh bagaimana Anda dapat melakukan otomatisasi, kami akan melihat domain-based split tunneling kami. Untuk referensi, berikut adalah <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">Dokumentasi API</a> dan <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraform yang setara</a>.</p>
-	<p>Untuk membuat aturan penyertaan berbasis domain untuk example.com:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Untuk membuat aturan penyertaan berbasis domain untuk example.com:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
@@ -40,8 +39,7 @@
      --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Aturan yang sama dapat dibuat di Terraform dengan ini:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Aturan yang sama dapat dibuat di Terraform dengan ini:</p><!--kg-card-begin: markdown-->
 	<pre><code># Including *.example.com in WARP routes
 resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
   account_id = "699d98642c564d2e855e9661899b7252"
@@ -53,15 +51,13 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Tugas umum lainnya adalah membuat laporan perangkat yang terdaftar. Menggunakan <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>, contoh berikut menunjukkan cara membuat daftar semua perangkat Windows yang terdaftar di organisasi Anda:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tugas umum lainnya adalah membuat laporan perangkat yang terdaftar. Menggunakan <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>, contoh berikut menunjukkan cara membuat daftar semua perangkat Windows yang terdaftar di organisasi Anda:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
      --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
      -H "Content-Type: application/json"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Menjalankan perintah itu akan mengembalikan JSON yang terlihat seperti ini:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Menjalankan perintah itu akan mengembalikan JSON yang terlihat seperti ini:</p><!--kg-card-begin: markdown-->
 	<pre><code>        {
             "created": "2021-12-01T17:14:23.847538Z",
             "device_type": "windows",
@@ -116,8 +112,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 		<li><strong>Telemetri dan Analytics</strong> tentang bagaimana kinerja perangkat di organisasi Anda terkait dengan klien kami dan traffic yang mengalir ke jaringan Cloudflare</li>
 	</ul>
 	<h3 id="terhubung-sekarang"><strong>Terhubung Sekarang</strong></h3>
-	<p>Anda dapat menemukan unduhan untuk semua klien kami yang tercantum di bawah ini:</p>
-	<!--kg-card-begin: html-->
+	<p>Anda dapat menemukan unduhan untuk semua klien kami yang tercantum di bawah ini:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -183,6 +178,5 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 </div>

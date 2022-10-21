@@ -13,8 +13,7 @@
 	</figure>
 	<h3 id="gortr"><a href="https://github.com/cloudflare/gortr" target="_blank">GoRTR</a></h3>
 	<p>As our network keeps growing, we needed a scalable solution to send the list of validated ROAs to our edge. Ideally using our CDN for caching the resources. We created <a href="https://github.com/cloudflare/gortr" target="_blank">GoRTR</a>, a small Go application which will fetch a JSON file using a format used by RPKI Validators. We made sure that it could be used with various servers and implemented cryptographic checks to ensure an untampered distribution. By default, it will fetch the list of prefixes available at <a href="https://rpki.cloudflare.com/rpki.json" target="_blank">rpki.cloudflare.com/rpki.json</a>.</p>
-	<p>You do not need to run your own validation software, just plug your RPKI-enabled router to GoRTR and start filtering. GoRTR will also expose a web server and Prometheus-type metrics. Nonetheless, if you want to run your own validation software, keep reading because OctoRPKI might be the solution for you. You can start GoRTR with Docker and plug your router to the port 8282 to receive a RTR feed:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You do not need to run your own validation software, just plug your RPKI-enabled router to GoRTR and start filtering. GoRTR will also expose a web server and Prometheus-type metrics. Nonetheless, if you want to run your own validation software, keep reading because OctoRPKI might be the solution for you. You can start GoRTR with Docker and plug your router to the port 8282 to receive a RTR feed:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ docker run -ti -p 8282:8282 cloudflare/gortr
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -27,8 +26,7 @@
 	<p>The <a href="https://github.com/cloudflare/cfrpki" target="_blank">repository</a> contains OctoRPKI plus a library to decode certificates, ROAs, manifests, etc. The code can start a synchronization with rsync and/or RRDP.</p>
 	<p>Similarly to GoRTR, it embeds an API to get the latest results of the synchronization and a Prometheus metrics endpoint to deploy alerting. Internally, we monitor the state of the validation using Prometheus. It is also providing data for a GraphQL API that will be released soon.</p>
 	<h3 id="you-can-start-it-with-docker-">You can start it with Docker.</h3>
-	<p>The docker image provides a way to instantly run OctoRPKI and comes complete with four of the five Trust Anchor Locator (TAL) files needed to operate (AFRINIC, APNIC, LACNIC, and RIPE). The fifth is the ARIN TAL, so don’t forget to add the TAL from ARIN. You can start the process of downloading it at the following address: <a href="https://www.arin.net/resources/rpki/tal.html" target="_blank">www.arin.net/resources/rpki/tal.html</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The docker image provides a way to instantly run OctoRPKI and comes complete with four of the five Trust Anchor Locator (TAL) files needed to operate (AFRINIC, APNIC, LACNIC, and RIPE). The fifth is the ARIN TAL, so don’t forget to add the TAL from ARIN. You can start the process of downloading it at the following address: <a href="https://www.arin.net/resources/rpki/tal.html" target="_blank">www.arin.net/resources/rpki/tal.html</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ docker run -ti \
      -p 8080:8080 \
      -v $PWD/cache:/cache \
@@ -36,8 +34,7 @@
    cloudflare/octorpki
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The results will be available on http://localhost:8080/output.json. To plug GoRTR to this file, use the <code>-cache URL</code> argument (you will need to load the public key which signs some fields in JSON).</p>
-	<!--kg-card-begin: markdown-->
+	<p>The results will be available on http://localhost:8080/output.json. To plug GoRTR to this file, use the <code>-cache URL</code> argument (you will need to load the public key which signs some fields in JSON).</p><!--kg-card-begin: markdown-->
 	<pre><code>$ gortr -cache http://localhost:8080/output.json -verify.key path-to-key
 </code></pre>
 	<!--kg-card-end: markdown-->

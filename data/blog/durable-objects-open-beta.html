@@ -3,10 +3,8 @@
 	<p>Back in September, we <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">announced</a> Durable Objects - a new paradigm for stateful serverless.</p>
 	<p>Since then, we’ve seen incredible demand and countless unlocked opportunities on our platform. We’ve watched large enterprises build applications from complex API features to real-time games in a matter of days from inception to launch. We’ve heard from developers that Durable Objects lets them spend time they used to waste configuring and deploying databases on building features for their apps. More than anything, we’ve heard that you want to start building with Durable Objects now.</p>
 	<p>As of today, Durable Objects beta access is available to anyone with a Cloudflare Workers® subscription - you can enable them now in the <a href="https://dash.cloudflare.com/" target="_blank">dashboard</a> by navigating to “Workers” and then “Durable Objects”. You can also upgrade to the <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.15.0-custom-builds-rc.2" target="_blank">latest version of Wrangler</a> to deploy Durable Objects!</p>
-	<p>Durable Objects are still in beta and are being made available to you for testing purposes. Storage is capped per-account at 10 GB of data, and there is no associated SLA for Object availability or durability.</p>
-	<!--kg-card-begin: html-->
-	<p style="text-align: center;"><strong><a href="https://dash.cloudflare.com" target="_blank">Enable beta access now »</a></strong></p>
-	<!--kg-card-end: html-->
+	<p>Durable Objects are still in beta and are being made available to you for testing purposes. Storage is capped per-account at 10 GB of data, and there is no associated SLA for Object availability or durability.</p><!--kg-card-begin: html-->
+	<p style="text-align: center;"><strong><a href="https://dash.cloudflare.com" target="_blank">Enable beta access now »</a></strong></p><!--kg-card-end: html-->
 	<h3 id="what-are-durable-objects">What are Durable Objects?</h3>
 	<p>Durable Objects provide two things: coordination across multiple Workers and strongly consistent edge storage.</p>
 	<p>Normally Cloudflare’s network executes a Worker wherever the client’s network request is terminated. This means there can be many instances of your Worker running at a given time all over the world, shown below.</p>
@@ -20,8 +18,7 @@
 	<p>While there’s no charge to use Durable Objects during the beta period, we want to share pricing so you can build your applications with confidence.</p>
 	<p>When you use Durable Objects, you are billed for the compute time your Object uses as well as the storage API operations your Object performs.</p>
 	<p>Durable Objects are significantly cheaper than comparable compute and storage offerings from the other major cloud providers.</p>
-	<p>As announced on the Workers Unbound <a href="https://blog.cloudflare.com/introducing-workers-unbound/">blog</a>, Durable Objects bills the standard Workers platform rates for long-running compute time.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As announced on the Workers Unbound <a href="https://blog.cloudflare.com/introducing-workers-unbound/">blog</a>, Durable Objects bills the standard Workers platform rates for long-running compute time.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -53,12 +50,10 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><sup>*Based on pricing disclosed on aws.amazon.com/lambda/pricing as of March 16, 2021. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month.</sup></p>
 	<!--kg-card-end: markdown-->
-	<p>Durable Objects charges per storage operation for reads, writes and deletes and per GB-Month for data stored. Operations are metered in 4 KB increments - for example, an 8 KB read or write would be billed as two operations. When compared to AWS DynamoDB, Durable Objects charge less for every type of operation, and depending on the size of your operations, your savings could be significant. All price comparisons we’re showing below are based on single-region, strongly consistent DynamoDB storage. AWS charges extra for multi-region and transactionally consistent storage, which is already included for Durable Objects. If you use these features in DynamoDB, your savings will be even greater.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Durable Objects charges per storage operation for reads, writes and deletes and per GB-Month for data stored. Operations are metered in 4 KB increments - for example, an 8 KB read or write would be billed as two operations. When compared to AWS DynamoDB, Durable Objects charge less for every type of operation, and depending on the size of your operations, your savings could be significant. All price comparisons we’re showing below are based on single-region, strongly consistent DynamoDB storage. AWS charges extra for multi-region and transactionally consistent storage, which is already included for Durable Objects. If you use these features in DynamoDB, your savings will be even greater.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -95,8 +90,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><sup>*Based on pricing disclosed on aws.amazon.com/dynamodb/pricing/on-demand/ as of March 16, 2021. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places.</sup></p>
 	<!--kg-card-end: markdown-->
 	<p>We chose to meter our requests in 4 KB increments across the board to provide the lowest prices with the greatest flexibility. Deletes do not have a size limit.</p>
@@ -115,9 +109,7 @@
 		<li>Platform stability and increased capacity.</li>
 	</ul>
 	<p>As we continue to add to the platform, we’re excited to see what you’re building as well. Come hang out in <a href="https://discord.gg/TGG8Fw4zKP" target="_blank">our Discord</a> to ask questions and share what you’re building on Durable Objects!</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.1875%;"><iframe src="https://iframe.videodelivery.net/e3b60d8931812206c33ca38c3fab3535?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 </div>

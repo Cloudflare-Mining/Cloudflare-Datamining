@@ -17,8 +17,7 @@
 	<p>You can see on the graph below in April we had this sharp decrease caused by topology changes. We got ~550T instead of ~850T among all shards and replicas.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-1.png" class="kg-image"></figure>
 	<p>When we tried to train our model based on the real data due to the April drop it thought we had a downward trend. Which was incorrect as we only dropped replicated data. The trend for unreplicated data hadn’t changed. So we decided to take into account only unreplicated data. It saved us from the topology change and node replacement in case of problems with hardware.</p>
-	<p>The rule that we use for metrics now is:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The rule that we use for metrics now is:</p><!--kg-card-begin: markdown-->
 	<pre><code>sum by(cluster) (
 max by (cluster, shardgroup) (
 node_clickhouse_shardgroupinfo{} *

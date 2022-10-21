@@ -54,8 +54,7 @@
 	<p><em>既知のHTTPS対応のURIを書き換えるシステムを作成する</em></p>
 	<p>最終的には、スマートな方法で解決することができました。リソースがHTTPSを使って提供できることがわかっている場合には、URIをhttp://からhttps://にアップグレードしました。どのリンクがアップグレード可能かを把握するために、EFFの優れた<a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a>拡張機能とGoogle Chromeの<a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">HSTS Preload</a>リストを使用して、SSLが有効になっているCloudflareサイトに関する知識を強化しました。</p>
 	<p>EFFがこのプロジェクトを手伝ってくれたことにとても感謝しています。</p>
-	<p>HTTPS Everywhere ルールセットは、http://から https://への切り替えに加えて、非常に特殊なURIをターゲットにできるルール（および除外）が含まれています。たとえば、gstatic.comの実際のHTTP Everywhereルールは次のようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>HTTPS Everywhere ルールセットは、http://から https://への切り替えに加えて、非常に特殊なURIをターゲットにできるルール（および除外）が含まれています。たとえば、gstatic.comの実際のHTTP Everywhereルールは次のようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>    &lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
     gstatic\.com/" to="https://$1.gstatic.com/"/&gt;
 </code></pre>

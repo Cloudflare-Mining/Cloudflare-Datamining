@@ -4,9 +4,7 @@
 	<p>使用“无服务器”方法让我们能够极大简化部署，使用<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">隔离技术</a>则使我们能够以更低的成本交付无服务器，而且没有令其他提供商却步的<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">漫长冷启动</a>。通过 <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a>，我们为平台添加了易于使用并且最终一致的边缘存储。</p>
 	<p>但直到今天，依然无法彻底在边缘管理具有强一致性的状态，或者在多个客户端之间进行实时协调。因此，应用程序的这些部分仍然必须托管在其他位置。</p>
 	<p>Durable Object 为存储和状态带来了一种真正的无服务器方法：具有一致、低延迟和分布式的特点，而且维护和扩展也毫不费力。它们还提供了一种在客户端之间进行协调的简便方法，不论是特定聊天室中的用户、特定文档的编辑器，还是特定智能家居中的 IoT 设备。Durable Object 是 Workers 堆栈中缺少的部分，它使整个应用程序可以完全在边缘上运行，彻底摆脱集中式“源站”服务器。</p>
-	<p>今天，我们将启动 Durable Object 的封闭测试。</p>
-	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">申请 Beta 测试邀请 » »</a>
-	<!--kg-card-end: html-->
+	<p>今天，我们将启动 Durable Object 的封闭测试。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">申请 Beta 测试邀请 » »</a><!--kg-card-end: html-->
 	<h3 id="-durable-object-">什么是“Durable Object”？</h3>
 	<p>坦率地说，为此产品取名颇为棘手，因为它与当今广泛使用的其他任何云技术都不一样。这个众所周知的事物披着许多层外衣，但最终我们决定采用“Unique Durable Object”，或简写为“Durable Object”。我来通过分解进行阐释：</p>
 	<ul>
@@ -34,8 +32,7 @@
 	<p>Durable Object 能够轻松做到。它不仅使分配协调点变得容易，而且 Cloudflare 会自动在使用它的用户附近创建协调者，并根据需要进行迁移，从而最大程度地减少延迟。提供本地持久存储意味着，即使最终的长期存储速度较慢，也可以立即可靠地保存对文档所做的更改。或者，您甚至可以将整个文档存储在边缘，彻底抛弃数据库。</p>
 	<p>随着 Durable Object 把门槛降低，我们希望实时协调变成整个网络的标杆。不再有任何理由让用户通过刷新来获得更新了。</p>
 	<h3 id="--3">示例：原子计数器</h3>
-	<p>这是一个 Durable Object 的极简示例，它可以递增、递减，并通过 HTTP 读取。即使同时接收到来自多个客户端的请求，此计数器也具有 一致性，不丢失任何增量或减量。同时，读取完全由内存提供，不需要访问磁盘访问。</p>
-	<!--kg-card-begin: markdown-->
+	<p>这是一个 Durable Object 的极简示例，它可以递增、递减，并通过 HTTP 读取。即使同时接收到来自多个客户端的请求，此计数器也具有 一致性，不丢失任何增量或减量。同时，读取完全由内存提供，不需要访问磁盘访问。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export class Counter {
   // Constructor called by the system when the object is needed to
   // handle requests.
@@ -87,8 +84,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>类绑定至 Durable Object 命名空间后，即可通过以下代码从世界上任何地方访问 <code>counter</code> 的特定实例：</p>
-	<!--kg-card-begin: markdown-->
+	<p>类绑定至 Durable Object 命名空间后，即可通过以下代码从世界上任何地方访问 <code>counter</code> 的特定实例：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Derive the ID for the counter object named "my-counter".
 // This name is associated with exactly one instance in the
 // whole world.
@@ -99,11 +95,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--4">演示：聊天</h3>
-	<p>聊天大概是最纯粹的实时协作。为此，我们制作了一个演示用的开源聊天应用，该应用使用 Durable Object 完全在边缘运行。</p>
-	<!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">尝试实时演示 »</a>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">查看 GitHub 上的源代码 »</a>
-	<!--kg-card-end: html-->
+	<p>聊天大概是最纯粹的实时协作。为此，我们制作了一个演示用的开源聊天应用，该应用使用 Durable Object 完全在边缘运行。</p><!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">尝试实时演示 »</a><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">查看 GitHub 上的源代码 »</a><!--kg-card-end: html-->
 	<p>此聊天应用使用一个 Durable Object 来控制每个聊天室。用户使用 WebSockets 连接到这个对象。来自一个用户的消息广播到所有其他用户。聊天记录也存储在持久存储中，但这仅用作历史记录。实时消息直接从一个用户中继到其他用户，不经过存储层。</p>
 	<p>另外，此演示还使用 Durable Object 实现第二个目的：对来自任何特定 IP 的消息应用速率限制。每个 IP 都分配到一个 Durable Object，跟踪最近的请求频率，因此用户发送过多消息时可能会被暂时屏蔽，即使在多个聊天室发送也一样。有趣的是，这些对象实际上不存储任何持久状态，因为它们只关心最近的历史记录，并且速率限制器偶尔随机重设也无关紧要。因此，这些速率限制器对象是不带存储的纯协调对象的示例。</p>
 	<p>这个聊天应用只有几百行代码。部署配置也只有几行。但是，它可以无缝扩展到任意数量的聊天室，仅受 Cloudflare 可用资源的限制。当然，由于每个对象都是单线程的，任何个体聊天室的可扩展性存在限制。不过，这个限制远超人类参与者所及的范围。</p>

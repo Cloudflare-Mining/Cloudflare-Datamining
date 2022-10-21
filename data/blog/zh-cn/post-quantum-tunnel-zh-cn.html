@@ -18,8 +18,7 @@
 	<p>攻击者只需要访问一个脆弱的连接，但攻击者不可能访问所有连接：只要使每个连接都成为后量子安全连接，我们就消除了一个漏洞。</p>
 	<p>我们迫切希望将后量子隧道设置为默认设置，但目前它还只是测试功能。因为使用的加密技术和将其集成到网络协议并不是最终的。现在就将后量子变成默认设置，会让用户更新 <code>cloudflared</code> 的频率超出我们的合理预期。</p>
 	<h2 id="--1">立即开始</h2>
-	<p>频繁更新 <code>cloudflared</code> 对您来说，不是问题？那么，请试试后量子 Cloudflare Tunnel。确保版本至少为 <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>，然后运行带 --post-quantum 标记的 <code>cloudflared</code> 即可：</p>
-	<!--kg-card-begin: markdown-->
+	<p>频繁更新 <code>cloudflared</code> 对您来说，不是问题？那么，请试试后量子 Cloudflare Tunnel。确保版本至少为 <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>，然后运行带 --post-quantum 标记的 <code>cloudflared</code> 即可：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -37,8 +36,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>如果您运行 <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">即服务</a>，您可以在隧道配置文件中添加 <code>post-quantum: true</code> 开启后量子。这样，<code>cloudflared</code> 服务就会<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">自动更新</a>（如果未使用软件包管理器安装）。</p>
-	<p>如果出于某些原因，创建后量子隧道失败，就会看到如下错误消息</p>
-	<!--kg-card-begin: markdown-->
+	<p>如果出于某些原因，创建后量子隧道失败，就会看到如下错误消息</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

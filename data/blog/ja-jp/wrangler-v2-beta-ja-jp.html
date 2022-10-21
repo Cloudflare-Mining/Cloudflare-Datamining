@@ -6,15 +6,11 @@
 	<p>すでに既存のツールに慣れ親しんでいる方には、wrangler CLIだけでなく、次のメジャーリリースであるwrangler 2.0の話です。この新しい体験を少しご覧いただきますので、お付き合いください。</p>
 	<h3 id="-">コンフィグ無し？問題なし</h3>
 	<p>Cloudflare Workerは、より簡単に使い始めることができます。ワーカーを実行するために必要なのは、1つのJavaScriptファイルだけで、設定は必要ありません。また、名前を決める必要もありません。</p>
-	<p><code>wrangler dev &lt;filename&gt;</code>を実行すれば、コードは自動的にバンドルされ、開発環境にデプロイされます。すると、ローカルホストプロキシを使ってその環境へHTTPリクエストを送ることができます。これが実際の様子です。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p><code>wrangler dev &lt;filename&gt;</code>を実行すれば、コードは自動的にバンドルされ、開発環境にデプロイされます。すると、ローカルホストプロキシを使ってその環境へHTTPリクエストを送ることができます。これが実際の様子です。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<h3 id="--1">ライブデバッグもこんなに簡単</h3>
-	<p>さて、Workerのデバッグ機能が一新されました。簡単なコマンドでリモートデバッグ機能にアクセスします。これは、Chromeで「Inspect」をクリックしたときに使われるものと同じで、ログ、例外、リクエストをインタラクティブに表示します。Workerがローカルで動作しているように感じられますが、実際にはCloudflareのネットワーク上で動作しています。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>さて、Workerのデバッグ機能が一新されました。簡単なコマンドでリモートデバッグ機能にアクセスします。これは、Chromeで「Inspect」をクリックしたときに使われるものと同じで、ログ、例外、リクエストをインタラクティブに表示します。Workerがローカルで動作しているように感じられますが、実際にはCloudflareのネットワーク上で動作しています。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>「ただ動く」デバッガー、そして変更を自動検出するデバッガーは、ただコードを書こうとしているときに、大きな違いをもたらします。さらに、デバッグ作業をより簡単にするために、さまざまな改良が加えられています。</p>
 	<ul>
 		<li>キーバインドによるショートカットで、機能の切り替えやウィンドウの表示を素早く行うことができます。</li>
@@ -23,10 +19,8 @@
 	</ul>
 	<p>デバッグセッションを開始するには、`wrangler dev &lt;filename&gt;` を実行し、次に「D」キーバインドを押します。</p>
 	<h3 id="--2">ローカルモード？スイッチを切り換えるだけ</h3>
-	<p><strong>新しいデバッグ環境のもう一つの特徴は、ローカルマシン上でWorkerを実行する「ローカルモード」に切り替えられることです。</strong>実際、キーバインドショートカット1つで「ネットワーク」と「ローカル」のモード切り換えが簡単にできます。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p><strong>新しいデバッグ環境のもう一つの特徴は、ローカルマシン上でWorkerを実行する「ローカルモード」に切り替えられることです。</strong>実際、キーバインドショートカット1つで「ネットワーク」と「ローカル」のモード切り換えが簡単にできます。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>どういった仕組みなのでしょうか。Cloudflareは最近、Node.jsでWorkerをローカルにエミュレートするプロジェクト<a href="https://github.com/cloudflare/miniflare" target="_blank">Miniflare</a>（<a href="https://twitter.com/_mrbbot" target="_blank">Brendan Coll</a>が作成）がCloudflare公式になったことを発表しました。Miniflareは、WorkersをNode.jsでローカルにエミュレートするプロジェクトで、単体テストやインターネット接続せずにWorkersをデバッグしたい場合に最適です。これをローカルの開発エクスペリエンスに直接統合したことにより、ネットワークとローカルホストの両方の利点を楽しむことができるようになりました。<br></p>
 	<h3 id="--3">ご感想をお聞かせください</h3>
 	<p>サーバーレスはシンプルであるべきです。Cloudflareでは、Workersの開発環境の改善ができたことを本当に嬉しく思います。これからもさらに多くのことを計画しています。</p>

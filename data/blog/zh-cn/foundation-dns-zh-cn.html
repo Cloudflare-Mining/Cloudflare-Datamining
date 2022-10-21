@@ -22,8 +22,7 @@
 	<p>DNS 生态系统的安全也很重要。Cloudflare 一直是 <a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC </a>支持者。通过 DNSSEC 签名和验证DNS 应答可以确保中间人攻击者<a href="https://blog.cloudflare.com/zh-cn/bgp-leaks-and-crypto-currencies-zh-cn/">不能劫持应答和重定向流量</a>。Cloudflare 一直向所有计划级别的用户免费提供 DNSSEC，并将继续将其作为 Foundation DNS 的一个免费选项。对于同时选择 Cloudflare 作为注册机构的客户，简单地一键部署 DNSSEC 是另一个重要功能，确保客户的域免遭劫持，用户得到保护。我们也支持 <a href="https://datatracker.ietf.org/doc/html/rfc8078" target="_blank">RFC 8078</a> <a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">在外部注册机构的一键部署</a>。</p>
 	<p>但还有一些其他问题会导致互联网的一部分停止工作，而且大多不受我们控制：<a href="https://blog.cloudflare.com/route-leak-detection/">路由泄漏</a> 或更严重的<a href="https://isbgpsafeyet.com/#whats-a-bgp-hijack" target="_blank">路由劫持</a>。虽然 DNSSEC 能帮助缓解路由劫持，但不幸的是，并非所有递归解析器都会验证DNSSEC。即使解析器进行了验证，针对名称服务器的路由泄漏或劫持仍将导致宕机。如果所有名称服务器 IP 都受到这一事件影响，您的域将变得无法解析。</p>
 	<p>对于很多提供商，每个名称服务器通常仅解析到一个 IPv4 和一个 IPv6 地址。如果这个 IP 地址不可达（例如，因为网络拥塞，或更糟糕的路由泄漏），那么整个名称服务器将变得不可用，导致您的域变得不可解析。更糟糕的是，一些提供商甚至为其所有的名称服务器使用相同的 IP 子网。因此，一旦这个子网出现问题，所有名称服务器都将下线。</p>
-	<p>我们看一个例子：</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们看一个例子：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig aws.com ns +short              
 ns-1500.awsdns-59.org.
 ns-164.awsdns-20.com.
@@ -42,15 +41,13 @@ $ dig ns-917.awsdns-50.net. +short
 	<!--kg-card-end: markdown-->
 	<p>所有名称服务器 IP 都是 205.251.192.0/21 的一部分。幸运的是，<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">AWS 现在 </a>通过<a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank">RPKI</a> 签名所有的 IP 范围，降低了泄漏的可能性……前提是解析器 ISP 验证 RPKI。但如果解析器 ISP不验证 RPKI 且这个子网被遭到泄漏或劫持，解析器将无法到达任何一个名称服务器，aws.com 将变得不可解析。</p>
 	<p>理所当然的是，Cloudflare 为我们所有路由签名，并正<a href="https://isbgpsafeyet.com/" target="_blank">推动整个互联网</a>最大程度减少路由泄漏的影响，但在 RPKI 得到广泛部署前，我们能采取什么措施来确保我们的 DNS 系统能在路由泄漏中屹立不倒呢？</p>
-	<p>今天，当您通过 Free、Pro、Business 或 Enterprise 计划使用 Cloudflare DNS 时，您的域获得两个形如 &lt;name&gt;.ns.cloudflare.com 的名称服务器，其中 &lt;name&gt; 是一个随机名称。</p>
-	<!--kg-card-begin: markdown-->
+	<p>今天，当您通过 Free、Pro、Business 或 Enterprise 计划使用 Cloudflare DNS 时，您的域获得两个形如 &lt;name&gt;.ns.cloudflare.com 的名称服务器，其中 &lt;name&gt; 是一个随机名称。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig isbgpsafeyet.com ns +short
 tom.ns.cloudflare.com.
 kami.ns.cloudflare.com.
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>正如前面所说，为了让一个域可用，其名称服务器必须可用。因此，这些名称服务器每一个都解析到 3 个任播 IPv4 地址和 3 个任播 IPv6 地址。</p>
-	<!--kg-card-begin: markdown-->
+	<p>正如前面所说，为了让一个域可用，其名称服务器必须可用。因此，这些名称服务器每一个都解析到 3 个任播 IPv4 地址和 3 个任播 IPv6 地址。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig tom.ns.cloudflare.com a +short
 173.245.59.147
 108.162.193.147

@@ -14,14 +14,12 @@
 	<p></p>
 	<p>The second key difference is that data is content-addressed, rather than location-addressed. That’s a bit of a subtle difference, but the ramifications are substantial, so it’s worth breaking down.</p>
 	<p>Currently, when you open your browser and navigate to example.com, you’re telling the browser “fetch me the data stored at example.com’s IP address” (this happens to be 93.184.216.34). That IP address marks where the content you want is stored in the network. You then send a request to the server at that IP address for the “example.com” content and the server sends back the relevant information. So at the most basic level, you tell the network where to look and the network sends back what it found.</p>
-	<p>IPFS turns that on its head.</p>
-	<!--kg-card-begin: markdown-->
+	<p>IPFS turns that on its head.</p><!--kg-card-begin: markdown-->
 	<p>With IPFS, every single block of data stored in the system is addressed by a cryptographic hash of its contents, i.e., a long string of letters and numbers that is unique to that block. When you want a piece of data in IPFS, you request it by its hash. So rather than asking the network “get me the content stored at 93.184.216.34,” you ask “get me the content that has a hash value of <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>.” (<code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code> happens to be the hash of a .txt file containing the string “I’m trying out IPFS”).</p>
 	<!--kg-card-end: markdown-->
 	<h3 id="how-is-this-so-different">How is this so different?</h3>
 	<p>Remember that with IPFS, you tell the network what to look for, and the network figures out where to look.</p>
-	<h3 id="why-does-this-matter">Why does this matter?</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="why-does-this-matter">Why does this matter?</h3><!--kg-card-begin: markdown-->
 	<p>First off, it makes the network more resilient. The content with a hash of <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code> could be stored on dozens of nodes, so if one node that was caching that content goes down, the network will just look for the content on another node.</p>
 	<p>Second, it introduces an automatic level of security. Let’s say you know the hash value of a file you want. So you ask the network, “get me the file with hash <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>” (the example.txt file from above). The network responds and sends the data. When you receive all the data, you can rehash it. If the data was changed at all in transit, the hash value you get will be different than the hash you asked for. You can think of the hash as like a unique fingerprint for the file. If you’re sent back a different file than you were expecting to receive, it’s going to have a different fingerprint. This means that the system has a built-in way of knowing whether or not content has been tampered with.</p>
 	<!--kg-card-end: markdown-->
@@ -34,12 +32,10 @@
 	<p>SHA-256 makes collisions extremely unlikely. Because SHA-256 computes a 256-bit hash, there are 2^256 possible IPFS addresses that the algorithm could produce. Hence, the chance that there are two files in IPFS that produce a collision is low. Very low. If you’re interested in more details, the <a href="https://en.wikipedia.org/wiki/Birthday_attack#Mathematics" target="_blank">birthday attack</a> Wikipedia page has a cool table showing exactly how unlikely collisions are, given a sufficiently strong hashing algorithm.</p>
 	<h3 id="how-exactly-do-you-access-content-on-ipfs">How exactly do you access content on IPFS?</h3>
 	<p>Now that we’ve walked through all the details of what IPFS is, you’re probably wondering how to use it. There are a number of ways to access content that’s been stored in the IPFS network, but we’re going to address two popular ones here. The first way is to download IPFS onto your computer. This turns your machine into a node of the IPFS network, and it’s the best way to interact with the network if you want to get down in the weeds. If you’re interested in playing around with IPFS, the Go implementation can be downloaded <a href="https://ipfs.io/docs/install/" target="_blank">here</a>.</p>
-	<p>But what if you want access to content that’s stored on IPFS without the hassle of operating a node locally on your machine? That’s where IPFS gateways come into play. IPFS gateways are third-party nodes that fetch content from the IPFS network and serve it to you over HTTPS. To use a gateway, you don’t need to download any software or type any code. You simply open up a browser and type in the gateway’s name and the hash of the content you’re looking for, and the gateway will serve the content in your browser.</p>
-	<!--kg-card-begin: markdown-->
+	<p>But what if you want access to content that’s stored on IPFS without the hassle of operating a node locally on your machine? That’s where IPFS gateways come into play. IPFS gateways are third-party nodes that fetch content from the IPFS network and serve it to you over HTTPS. To use a gateway, you don’t need to download any software or type any code. You simply open up a browser and type in the gateway’s name and the hash of the content you’re looking for, and the gateway will serve the content in your browser.</p><!--kg-card-begin: markdown-->
 	<p>Say you know you want to access the example.txt file from before, which has the hash <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>, and there’s a public gateway that is accessible at <code>https://example-gateway.com</code></p>
 	<!--kg-card-end: markdown-->
-	<p>To access that content, all you need to do is open a browser and type</p>
-	<!--kg-card-begin: markdown-->
+	<p>To access that content, all you need to do is open a browser and type</p><!--kg-card-begin: markdown-->
 	<pre><code>https://example-gateway.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy
 </code></pre>
 	<!--kg-card-end: markdown-->

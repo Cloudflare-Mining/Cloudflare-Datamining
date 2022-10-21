@@ -27,8 +27,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-gpb.png" class="kg-image"></figure>
 	<p></p>
 	<p>En el pico vimos 260 Gbps de tráfico de Memcached UDP entrante. Esto es enorme para un nuevo vector de amplificación. Pero los números no mienten. Es posible porque todos los paquetes reflejados son muy grandes. Así es como se ve en tcpdump:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
 IP 87.98.205.10.11211 &gt; 104.28.1.1.1635: UDP, length 13
 IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
@@ -48,8 +47,7 @@ IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13
 	<p>Me sorprendí al enterarme de que Memcached crea UDP, ¡pero es lo que hay! ¡La <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">especificación de protocolo</a> muestra que es uno de <em>los mejores protocolos que existen para usar en amplificación</em>! No hay absolutamente ninguna comprobación, y los datos se <em>le</em> entregarán al cliente con extrema rapidez. Además, la solicitud puede ser pequeña y la respuesta, enorme (hasta 1 MB).</p>
 	<p>Lanzar este tipo de ataque es muy sencillo. Primero, el atacante implanta una carga grande en un servidor Memcached expuesto. Luego, el atacante falsifica el mensaje de solicitud de "get" con destino de la IP de origen.</p>
 	<p>La ejecución sintética con Tcpdump muestra el tráfico:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo tcpdump -ni eth0 port 11211 -t
 IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
 IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
@@ -65,8 +63,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-map2.png" class="kg-image"></figure>
 	<p></p>
 	<p>Curiosamente, nuestros centros de datos en EWR, HAM y HKG han visto un número desproporcionadamente alto de IP atacantes. Esto es así porque la mayoría de los servidores vulnerables están ubicados en los principales proveedores de hosting. Los números de AS de las IP que hemos visto son estos:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
 │ 578 │ AS16276 │ OVH                                          │
 │ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
@@ -108,8 +105,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 		<li><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp" target="_blank">https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></li>
 	</ul>
 	<p>Puede probar con facilidad si su servidor es vulnerable ejecutando:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
 STAT pid 21357
 STAT uptime 41557034
@@ -121,8 +117,7 @@ STAT time 1519734962
 	<p>Si ve una respuesta que no está vacía (como la de arriba), su servidor es vulnerable.</p>
 	<h4 id="administradores-del-sistema"><strong>Administradores del sistema</strong></h4>
 	<p>¡Asegúrese de que los servidores Memcached cuenten con un firewall contra internet! Para probar si se puede acceder a ellos usando UDP, recomiendo el ejemplo nc anterior. Para verificar si TCP se cierra, ejecutE nmap:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ nmap TARGET -p 11211 -sU -sS --script memcached-info
 Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
 Nmap scan report for xxxx

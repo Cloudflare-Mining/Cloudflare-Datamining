@@ -26,8 +26,7 @@
 	<p>Finally, one of the most common use cases for URL redirects is to maintain uptime during a <strong>website migration. </strong>As companies migrate their websites from one platform to another, or one domain to another, URL redirects ensure visitors continue to see the correct content. Without these URL redirects, hyperlinks in emails, blogs, marketing brochures, etc. would fail to load, potentially costing the business revenue in lost sales and brand damage. For example, <code>www.example.com/products/golf/product-goes-here</code> would redirect to the new website at <code>products.example.com/golf/product-goes-here</code>.</p>
 	<h3 id="how-are-url-redirects-implemented-today">How are URL redirects implemented today?</h3>
 	<p>Ensuring these URL redirects are executed correctly is often the job of the reverse proxy — a server which sits between the client and the origin whose job is, amongst many others, to re-route received traffic to the correct destination.</p>
-	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server, the administrator would have a line in the config similar to the one below to implement a URL redirect:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server, the administrator would have a line in the config similar to the one below to implement a URL redirect:</p><!--kg-card-begin: markdown-->
 	<pre><code>`rewrite ^/oldpage$ http://www.example.com/newpage permanent;`
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -36,8 +35,7 @@
 	<p>As such, administrators have moved to platforms like Cloudflare where functionality such as URL redirects can be implemented in the cloud without the need to have administrator access to the origin.</p>
 	<p>The first way to implement a URL Redirect in Cloudflare is via a <a href="https://support.cloudflare.com/hc/en-us/articles/200172286-Configuring-URL-forwarding-or-redirects-with-Cloudflare-Page-Rules" target="_blank">Forwarding URL</a><em> </em>Page Rule. Users can create a Page Rule which matches on a specific URL and redirects matching traffic to another specific URL, along with a status code — either a permanent redirect (301) or a temporary redirect (302):</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-10.png" class="kg-image" title="Example of a Cloudflare Page Rule"></figure>
-	<p>Another method is to use Cloudflare Workers to implement URL redirects, either individually or as a map. For example, the code below is used to create a URL redirect map which runs when the Worker is invoked:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Another method is to use Cloudflare Workers to implement URL redirects, either individually or as a map. For example, the code below is used to create a URL redirect map which runs when the Worker is invoked:</p><!--kg-card-begin: markdown-->
 	<pre><code>const redirectMap = new Map([
  ["/bulk1", "https://" + externalHostname + "/redirect2"],
  ["/bulk2", "https://" + externalHostname + "/redirect3"],
@@ -79,8 +77,7 @@
 		<li>Load with URL redirects</li>
 		<li>Enable via a rule (You will also need to create the ruleset if doing this for the first time).</li>
 	</ol>
-	<p>For step 1, first create a mass redirect list via the API call:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For step 1, first create a mass redirect list via the API call:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists' \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
@@ -110,8 +107,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Capture the value of “id”, as this is the list id we will then add URL redirects to.</p>
-	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, in step 2 we will add URL redirects to our newly created list by executing a POST call to the id we captured previously - with our URL redirects in the body:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rules/lists/&lt;LIST_ID&gt;/items' \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
@@ -154,16 +150,14 @@
 	<!--kg-card-end: markdown-->
 	<p>In step 3 we enable this list by creating a new mass redirect rule within the mass redirect account-level ruleset.</p>
 	<p><strong>Note</strong>, if this is the first time you are creating a redirect rule you will need to use a different API call to create the ruleset. See the documentation <a href="https://developers.cloudflare.com/rules/bulk-redirects/create-api" target="_blank">here</a> for more details. All subsequent updates to the rulesets are made by calls similar to below.</p>
-	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Firstly, we need to find our account-level rulesets id. To do this we need to get a list of all account-level rulesets and look for the ruleset with the phase <code>http_request_redirect</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --location --request GET 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
 --header 'X-Auth-Key: &lt;API_KEY&gt;'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The output will look similar to:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The output will look similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "result": [
        {
@@ -202,8 +196,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Our redirect ruleset is at the bottom of the output. Next we will add our new bulk redirect rule to this ruleset:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our redirect ruleset is at the bottom of the output. Next we will add our new bulk redirect rule to this ruleset:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --location --request PUT 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/rulesets/&lt;RULESET_ID&gt; \
 --header 'X-Auth-Email: &lt;EMAIL_ADDRESS&gt;' \
 --header 'Content-Type: application/json' \
@@ -224,8 +217,7 @@
  ]
 }'
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>The output will look similar to:</p>
 	<pre><code>{
   "result": {
@@ -269,8 +261,7 @@
 	<p>The same premise also applies to <a href="https://www.cloudflare.com/en-gb/ssl-for-saas-providers/" target="_blank">SSL for SaaS</a> customers. For example, if <code>example.com</code> has 20 custom hostnames in their zone, customers can now create a Bulk Redirect List and Rule for each custom hostname, grouping each customer’s URL redirects into their own logical buckets.</p>
 	<p>Bulk Redirects is a game changer for companies with a large number of zones and customers under management.</p>
 	<h3 id="allowances">Allowances</h3>
-	<p>Bulk Redirects are available for all accounts. The packaging model for Bulk Redirects closely resembles that of “<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#entitlements" target="_blank">IP Lists</a>”. Accounts are entitled to a set number of Edge Rules (from which “Bulk Redirect Rules” draws down), Bulk Redirect Lists, and URL Redirects depending on the <em>highest </em>Cloudflare plan within their account.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Bulk Redirects are available for all accounts. The packaging model for Bulk Redirects closely resembles that of “<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/rules-lists#entitlements" target="_blank">IP Lists</a>”. Accounts are entitled to a set number of Edge Rules (from which “Bulk Redirect Rules” draws down), Bulk Redirect Lists, and URL Redirects depending on the <em>highest </em>Cloudflare plan within their account.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

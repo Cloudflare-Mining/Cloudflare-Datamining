@@ -4,10 +4,8 @@
 	<p>为了庆祝 <a href="https://blog.cloudflare.com/zh-cn/durable-objects-ga-zh-cn/">Durable Objects 正式发布</a>，我们使用称为 Full Tilt 的 Durable Objects 技术演示来开始这一系列。这个演示十分炫酷，将为我们的新系列带来良好开端。</p>
 	<p><a href="https://github.com/gzuidhof" target="_blank">Guido Zuidhof</a> 制作的 Full Tilt 是针对 Ludum Dare 的一个 Game Jam 项目，Ludum Dare 是最大和最古老的 Game Jam 之一，Guido Zuidhof 在此获得了创新类别的第一名。Game Jam 就像游戏的黑客松，您需要在很短的时间（通常为 48-72 小时）内从头开始创建游戏。</p>
 	<p>我们喜爱 Full Tilt，不仅仅是因为 Guido 采用 Workers 和 Durable Objects 来构建一个很酷的游戏（您可以通过手机控制计算机上的游戏），还因为它展示了 Durable Objects 的强大能力。在不到 48 小时的时间内，Guido 能够编写所有逻辑，在世界上尽可能靠近玩家的任何位置即时启动个人游戏服务器。其速度极快，让您感觉您正在直接控制计算机。</p>
-	<p>现在，就由 Guido 来讲述他开发 Full Tilt 的经历。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 76.28865979381443%;"><iframe src="https://iframe.videodelivery.net/9443c301ad57eb58d2068b3db7bb9bec?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>现在，就由 Guido 来讲述他开发 Full Tilt 的经历。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 76.28865979381443%;"><iframe src="https://iframe.videodelivery.net/9443c301ad57eb58d2068b3db7bb9bec?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>去年十月，我参加了 Ludum Dare 的第 49 届 Game Jam。我很喜欢 Game Jam 的一点是，时间限制会强制人们快速工作、经常迭代，最重要的是缩小范围。</p>
 	<p>在本次 Game Jam 中，我构建了 <a href="https://ldjam.com/events/ludum-dare/49/full-tilt" target="_blank">Full Tilt</a>，在这个游戏中，您可以将手机用作类似 Wiimote 的运动控制器，无缝操控在笔记本电脑的 Web 浏览器中运行的游戏。使其能够如此顺畅的秘密武器就是将 Game Jam 和 Jamstack 结合起来，并混合一些 Durable Objects。</p>
 	<p>您可以<a href="https://ld49.pages.dev/" target="_blank">在这里</a>试玩游戏。</p>
@@ -24,8 +22,7 @@
 	<p>我需要设置的第一项就是游戏房间。手机和计算机浏览器都应当能够连接到游戏房间，以便互相传递消息。</p>
 	<p>Durable Objects 允许我们创建大量小型的有状态“袖珍服务器”或“房间”，多个客户端可通过 WebSockets 同时与其连接，提供完美的小型按需游戏服务器。将 Durable Objects 视为一个单线程 JavaScript，它在最初客户要求创建该线程的位置附近的数据中心中运行。</p>
 	<p>当计算机上的浏览器开始游戏后，它要求我们的 Cloudflare Worker API 为当前游戏会话创建房间。该 API 请求是一个简单的 POST 请求，服务器使用四个字符的房间代码来响应，该房间代码唯一标识创建的房间。我们希望房间代码简短的原因是，当用户无法扫描 QR 码时，他们可能需要复制此代码并输入到智能手机中。</p>
-	<p>众所周知，人们并不擅长复写随机字符串，因为不同的字符看起来很相似，因此我们使用了有限的字符集，排除了最容易混淆的字符：</p>
-	<!--kg-card-begin: markdown-->
+	<p>众所周知，人们并不擅长复写随机字符串，因为不同的字符看起来很相似，因此我们使用了有限的字符集，排除了最容易混淆的字符：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const DICTIONARY = "2345679ADEFGHJKLMNPQRSTUVWXYZ"; // 29 chars (no 0, O, I, 1, B, 8)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -36,8 +33,7 @@
 	<p>但是一周后，问题出现了。当为身处洛杉矶的另一位玩家重复使用该房间代码时，该游戏房间 Durable Object 将在孟买复苏，而位于洛杉矶的玩家将面临可怕的延迟。未来，Durable Objects 可能会在数据中心间迁移，但这目前并不能保证。</p>
 	<p>取而代之，我们能做的是为每一个新游戏会话创建具有随机 ID 的新 Durable Object，并保持四个字符的房间代码与该随机 ID 的映射。我们在系统中引入了一些状态：我们需要一个真相中心来源，在这里，Durable Objects 可以再次发挥用途。</p>
 	<p>我们将创建单个“房间中心”Durable Object 跟踪从房间代码到 Durable Object ID 的这一映射，从而解决此问题。此 Durable Object 将有两个端点，一个用于请求新房间，另一个用于查找房间的信息。</p>
-	<p>下面是用于房间请求端点的请求处理器（参数是一个 <a href="https://sunderjs.com/docs/context" target="_blank">Sunder Context</a>，Sunder 是我用于此项目的 Web 框架）：</p>
-	<!--kg-card-begin: markdown-->
+	<p>下面是用于房间请求端点的请求处理器（参数是一个 <a href="https://sunderjs.com/docs/context" target="_blank">Sunder Context</a>，Sunder 是我用于此项目的 Web 框架）：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export async function handleRoomRequest(ctx: Context&lt;Env&gt;) {
     const now = Date.now();    
     const reqBody = await ctx.request.json();
@@ -80,8 +76,7 @@
 	<!--kg-card-end: markdown-->
 	<p>简而言之，我们生成几个房间代码，直到找到一个从未用过或在足够长的时间内未使用的房间代码。</p>
 	<p>这段代码中有一个很微妙但很重要的玄妙之处：Durable Object 在与房间中心通信的 Cloudflare Worker 中创建，而不是在房间中心本身中创建。我们的房间中心将在 Cloudflare 网络上某个位置的单个数据中心中运行。如果我们从这里创建游戏房间，则可能仍然距离最终用户十分遥远！</p>
-	<p>查找房间的信息则更为简单，我们返回房间数据或状态 404。</p>
-	<!--kg-card-begin: markdown-->
+	<p>查找房间的信息则更为简单，我们返回房间数据或状态 404。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export async function handleRoomLookup(ctx: Context&lt;Env, {roomCode: string}&gt;) {
     const now = Date.now();
 

@@ -87,8 +87,7 @@
 	<p>Now more than four months into the war in Ukraine, the Internet continues to be an active battlefield, with ongoing Internet outages in multiple cities and across multiple networks. However, we want to highlight here two similar events observed during the second quarter.</p>
 	<p>The Russian-occupied city of Kherson experienced a near-complete Internet outage between 1600 UTC (1900 local time) on April 30 and 0430 UTC (0730 local time) on May 4. According to social media posts from <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664" target="_blank">Ukraine’s vice Prime-Minister Mykhailo Fedorov</a> and the <a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank">State Service of Special Communications and Information Protection</a>, the outage was caused by “interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”. The graph below shows effectively no traffic for Kherson for approximately 24 hours after the disruption began, followed by a nominal amount of traffic for the next several days.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image41.png" class="kg-image"></figure>
-	<p>Around the time that the nominal amount of traffic returned, we also observed a shift in routing for an <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598" target="_blank">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883" target="_blank">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326" target="_blank">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213" target="_blank">AS35213</a>. However, as traffic returned, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776" target="_blank">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389" target="_blank">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en/" target="_blank">the largest digital services provider in Russia</a>”.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Around the time that the nominal amount of traffic returned, we also observed a shift in routing for an <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598" target="_blank">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883" target="_blank">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326" target="_blank">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213" target="_blank">AS35213</a>. However, as traffic returned, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776" target="_blank">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389" target="_blank">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en/" target="_blank">the largest digital services provider in Russia</a>”.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -111,8 +110,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>As the disruption ended on May 4, we observed updates to Khersontelecom’s routing path that enabled it to return to reaching the global Internet through non-Russian upstream providers.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As the disruption ended on May 4, we observed updates to Khersontelecom’s routing path that enabled it to return to reaching the global Internet through non-Russian upstream providers.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -137,8 +135,7 @@
 	<!--kg-card-end: markdown-->
 	<p>Additional details about this outage and re-routing event can be found in the <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/"><em>“Tracking shifts in Internet connectivity in Kherson, Ukraine”</em> blog post</a>.</p>
 	<p>A month later, on <a href="https://twitter.com/CloudflareRadar/status/1531380535922200579" target="_blank">May 30</a>, we again observed a significant Internet disruption in Kherson starting at 1435 UTC (1735 local time). And once again, we observed updated routing for Khersontelecom, as it shifted from Ukrainian upstream providers to Russian ones. As of the end of June, the Internet disruption in Kherson and the routing through Russian upstream providers both remain firmly in place, although the loss of traffic has not been nearly as significant as the April/May disruption.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image14.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image14.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -164,8 +161,6 @@
 	<h2 id="conclusion">Conclusion</h2>
 	<p>This post is by no means an exhaustive review of the Internet outages, shutdowns, and disruptions that have occurred throughout the second quarter. Some were extremely brief or limited in scope, while others were observed but had no known or publicly conjectured underlying cause. Having said that, it is important to bring increased visibility to these events so that the community can share information on what is happening, why it happened, and what the impact was — human, financial, or otherwise.</p>
 	<p>Follow <a href="https://twitter.com/CloudflareRadar" target="_blank">@CloudflareRadar</a> on Twitter for updates on Internet disruptions as they occur, and find up-to-date information on Internet trends using <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

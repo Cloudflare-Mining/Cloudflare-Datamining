@@ -12,8 +12,7 @@
 	<p>Before we begin, let’s introduce the players in our game.</p>
 	<p><strong>TCP receive window </strong>is the maximum number of unacknowledged user payload bytes the sender should transmit (bytes-in-flight) at any point in time. The size of the receive window can and does go up and down during the course of a TCP session. It is a mechanism whereby the receiver can tell the sender to stop sending if the sent packets cannot be successfully received because the receive buffers are full. It is this receive window that often limits throughput over high-latency networks.</p>
 	<p><strong>net.ipv4.tcp_adv_win_scale</strong> is a (non-intuitive) number used to account for the overhead needed by Linux to process packets. The receive window is specified in terms of user payload bytes. Linux needs additional memory beyond that to track other data associated with packets it is processing.</p>
-	<p>The value of the receive window changes during the lifetime of a TCP session, depending on a number of factors. The maximum value that the receive window can be is limited by the amount of free memory available in the receive buffer, according to this table:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The value of the receive window changes during the lifetime of a TCP session, depending on a number of factors. The maximum value that the receive window can be is limited by the amount of free memory available in the receive buffer, according to this table:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -88,8 +87,7 @@
 	<p>For throughput, although we have very fast and modern hardware on the Cloudflare global network, we don’t expect a single TCP session to saturate the hardware. We have arbitrarily chosen 3500 mbps as the highest supported throughput for our highest latency TCP sessions.</p>
 	<p>The calculation for those numbers results in a BDP of 131MB, which we round to the more aesthetic value of 128 MiB.</p>
 	<p>Recall that allocation of TCP memory includes metadata overhead in addition to packet data. The ratio of actual amount of memory allocated to user payload size varies, depending on NIC driver settings, packet size, and other factors. For full-sized packets on some of our hardware, we have measured average allocations up to 3 times the packet data size. In order to reduce the frequency of TCP collapse on our servers, we set tcp_adv_win_scale to -2. From the table above, we know that the max window size will be ¼ of the max buffer space.</p>
-	<p>We end up with the following sysctl values:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We end up with the following sysctl values:</p><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
 net.ipv4.tcp_adv_win_scale = -2
@@ -112,8 +110,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<p>Anomalies were seen during our “Attempt #1” that negatively impacted throughput. The anomalies were seen only under certain specific conditions, and we realized we needed a better benchmarking tool to detect and measure the performance impact of those anomalies.</p>
 	<p>This tool has turned into an invaluable resource during the development of this patch and raised confidence in our solution.</p>
 	<p>It consists of two Python programs. The reader opens a TCP session to the daemon, at which point the daemon starts sending user payload as fast as it can, and never stops sending.</p>
-	<p>The reader, on the other hand, starts and stops reading in a way to open up the TCP receive window wide open and then repeatedly causes the buffers to fill up completely. More specifically, the reader implemented this logic:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The reader, on the other hand, starts and stops reading in a way to open up the TCP receive window wide open and then repeatedly causes the buffers to fill up completely. More specifically, the reader implemented this logic:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>reads as fast as it can, for five seconds
 			<ul>
@@ -139,8 +136,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.12.11.png" class="kg-image"></figure>
 	<p>The Linux kernel is effective at freeing up space in order to make room for incoming packets when the receive buffer memory limit is hit. As documented previously, the cost for saving these packets (i.e. not dropping them) is latency.</p>
 	<p>However, the latency spikes, in <em>milliseconds</em>, for tcp_try_rmem_schedule(), are:</p>
-	<p>tcp_rmem 170 MiB, tcp_adv_win_scale +2 (170p2):</p>
-	<!--kg-card-begin: markdown-->
+	<p>tcp_rmem 170 MiB, tcp_adv_win_scale +2 (170p2):</p><!--kg-card-begin: markdown-->
 	<pre><code>@ms:
 [0]       27093 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 [1]           0 |
@@ -151,8 +147,7 @@ net.ipv4.tcp_adv_win_scale = -2
 [32, 64)     16 |
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>tcp_rmem 146 MiB, tcp_adv_win_scale +3 (146p3):</p>
-	<!--kg-card-begin: markdown-->
+	<p>tcp_rmem 146 MiB, tcp_adv_win_scale +3 (146p3):</p><!--kg-card-begin: markdown-->
 	<pre><code>@ms:
 (..., 16)  25984 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 [16, 20)       0 |
@@ -167,8 +162,7 @@ net.ipv4.tcp_adv_win_scale = -2
 [52, 56)       3 |
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>tcp_rmem 137 MiB, tcp_adv_win_scale +4 (137p4):</p>
-	<!--kg-card-begin: markdown-->
+	<p>tcp_rmem 137 MiB, tcp_adv_win_scale +4 (137p4):</p><!--kg-card-begin: markdown-->
 	<pre><code>@ms:
 (..., 16)  37222 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 [16, 20)       0 |
@@ -208,8 +202,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-13.png" class="kg-image"></figure>
 	<p>Using 6 MiB should result in a maximum latency of no more than 2 ms.</p>
 	<h2 id="cloudflare-production-network-results">Cloudflare production network results</h2>
-	<h3 id="current-production-settings-old-">Current production settings (“Old”)</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="current-production-settings-old-">Current production settings (“Old”)</h3><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 2097152 16777216
 net.ipv4.tcp_wmem = 4096 16384 33554432
 net.ipv4.tcp_adv_win_scale = -2
@@ -218,8 +211,7 @@ net.ipv4.tcp_notsent_lowat = 4294967295
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>tcp_collapse_max_bytes of 0 means that the custom feature is disabled and that the vanilla kernel logic is used for TCP collapse processing.</p>
-	<h3 id="new-settings-under-test-new-">New settings under test (“New”)</h3>
-	<!--kg-card-begin: markdown-->
+	<h3 id="new-settings-under-test-new-">New settings under test (“New”)</h3><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
 net.ipv4.tcp_adv_win_scale = -2
@@ -231,8 +223,7 @@ net.ipv4.tcp_notsent_lowat = 131072
 	<p>The middle value of tcp_rmem was changed as a result of separate work that found that Linux autotuning was setting receive buffers too high for localhost sessions. This updated setting reduces TCP memory usage for those sessions, but does not change anything about the type of TCP sessions that is the focus of this post.</p>
 	<p>For the following benchmarks, we used non-Cloudflare host machines in Iowa, US, and Melbourne, Australia performing data transfers to the Cloudflare data center in Marseille, France. In Marseille, we have some hosts configured with the existing production settings, and others with the system settings described in this post. Software used is perf3 version 3.9, kernel 5.15.32.</p>
 	<h3 id="throughput-results">Throughput results</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-36.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-36.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -287,8 +278,7 @@ net.ipv4.tcp_notsent_lowat = 131072
 	<p>Our web servers already set tcp_notsent_lowat to 131072 for its sockets. All other senders are using 4 GiB, the default value. We are changing the sysctl so that 131072 is in effect for all senders running on the server.</p>
 	<h2 id="conclusion">Conclusion</h2>
 	<p>The goal of this work is to open the throughput floodgates for high BDP connections while simultaneously ensuring very low HTTP request latency.</p>
-	<p>We have accomplished that goal.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We have accomplished that goal.</p><!--kg-card-begin: markdown-->
 	<p>...<br>
 		<em>We protect <a href="https://www.cloudflare.com/network-services/" target="_blank">entire corporate networks</a>, help customers build <a href="https://workers.cloudflare.com/" target="_blank">Internet-scale applications efficiently</a>, accelerate any <a href="https://www.cloudflare.com/performance/accelerate-internet-applications/" target="_blank">website or Internet application</a>, ward off <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS attacks</a>, keep <a href="https://www.cloudflare.com/application-security/" target="_blank">hackers at bay</a>, and can help you on <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">your journey to Zero Trust</a>.</em>
 	</p>

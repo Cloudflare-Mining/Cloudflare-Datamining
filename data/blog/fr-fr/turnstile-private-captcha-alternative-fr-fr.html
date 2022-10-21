@@ -1,10 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-21.png" class="kg-image" alt="Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA"></figure>
 	<p>Nous annonçons aujourd'hui le lancement de la version bêta ouverte de Turnstile, une solution de remplacement des CAPTCHA, totalement invisible. N'importe qui, n'importe où sur Internet, désireux de remplacer CAPTCHA sur son site sera en mesure d'appeler une simple API, sans qu'il soit nécessaire d'être un client de Cloudflare ni d'envoyer du trafic sur le réseau global de Cloudflare. <a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">Inscrivez-vous ici</a>.</p>
-	<p>Il est inutile de le répéter, les CAPTCHA nuisent terriblement à l'expérience utilisateur. Nous l'avons évoqué en détail précédemment <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">dans ce blog</a>, et un grand nombre de fois ailleurs. Le créateur des CAPTCHA a même déclaré publiquement qu'il regrettait « d'avoir involontairement créé un système <a href="https://thewalrus.ca/human-resources/" target="_blank">qui gaspillait, par épisodes de 10 secondes, des millions d'heures</a> de la plus précieuse des ressources : la matière grise. » Nous le détestons, vous le détestez, tout le monde le déteste. Aujourd'hui, nous proposons à chacun une meilleure option.</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>Il est inutile de le répéter, les CAPTCHA nuisent terriblement à l'expérience utilisateur. Nous l'avons évoqué en détail précédemment <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">dans ce blog</a>, et un grand nombre de fois ailleurs. Le créateur des CAPTCHA a même déclaré publiquement qu'il regrettait « d'avoir involontairement créé un système <a href="https://thewalrus.ca/human-resources/" target="_blank">qui gaspillait, par épisodes de 10 secondes, des millions d'heures</a> de la plus précieuse des ressources : la matière grise. » Nous le détestons, vous le détestez, tout le monde le déteste. Aujourd'hui, nous proposons à chacun une meilleure option.</p><!--kg-card-begin: html-->
+	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Turnstile est notre solution de remplacement aux CAPTCHA. Il choisit automatiquement parmi une série de questions de validation non intrusives présentées dans le navigateur et reposant sur la télémétrie et le comportement du client au cours de la session. Dans une précédente publication, nous avons expliqué comment <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">notre système Managed Challenge nous avait permis de réduire le recours aux CAPTCHA de 91 %</a>. Désormais tout le monde peut profiter de cette même technologie pour supprimer les CAPTCHA de son propre site.</p>
 	<h3 id="le-probl-me-des-captcha-n-est-pas-s-rieux-uniquement-pour-l-exp-rience-utilisateur-il-l-est-aussi-pour-la-confidentialit-">Le problème des CAPTCHA n'est pas sérieux uniquement pour l'expérience utilisateur, il l'est aussi pour la confidentialité</h3>
 	<p>Si le fait de devoir résoudre des CAPTCHA est frustrant pour l'utilisateur, pour le site Web cela suppose également d'éventuels compromis cachés. Si vous êtes un site modeste qui utilise aujourd'hui des CAPTCHA, vous avez essentiellement une option : un gorille de 400 kilos avec <a href="https://trends.builtwith.com/widgets/captcha" target="_blank">98 % de parts de marché des CAPTCHA</a>. Cet outil est gratuit, mais il a en réalité un coût en matière de confidentialité : vous devez remettre vos données à une entreprise de vente publicitaire. </p>
@@ -32,16 +30,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-39.png" class="kg-image"></figure>
 	<p>Ensuite, copiez et collez notre extrait de code HTML :</p>
 	<p><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></p>
-	<p>Une fois le script intégré, vous pouvez utiliser le rendu implicite. Une analyse du code HTML recherche alors des éléments de la classe cf-turnstile :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Une fois le script intégré, vous pouvez utiliser le rendu implicite. Une analyse du code HTML recherche alors des éléments de la classe cf-turnstile :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-HTML">&lt;form action="/login" method="POST"&gt;
   &lt;div class="cf-turnstile" data-sitekey="yourSiteKey"&gt;&lt;/div&gt;
   &lt;input type="submit"&gt;
 &lt;/form&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Une fois la validation réussie, un jeton est injecté dans votre formulaire, il se nomme cf-turnstile-response. Ce jeton peut être utilisé avec notre point de terminaison siteverify pour valider une question de validation. Un jeton ne peut être validé qu'une fois, et ne peut pas être présenté une deuxième fois. La validation peut se faire côté serveur, ou encore dans le cloud, par <a href="https://demo.turnstile.workers.dev/" target="_blank">exemple</a> à l'aide d'un simple extraction Workers (<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">Démo visible ici</a>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Une fois la validation réussie, un jeton est injecté dans votre formulaire, il se nomme cf-turnstile-response. Ce jeton peut être utilisé avec notre point de terminaison siteverify pour valider une question de validation. Un jeton ne peut être validé qu'une fois, et ne peut pas être présenté une deuxième fois. La validation peut se faire côté serveur, ou encore dans le cloud, par <a href="https://demo.turnstile.workers.dev/" target="_blank">exemple</a> à l'aide d'un simple extraction Workers (<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">Démo visible ici</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">async function handleRequest() {
     // ... Receive token
     let formData = new FormData();
@@ -57,8 +53,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Pour les cas d'utilisation plus complexes, la question de validation peut être invoquée explicitement via JavaScript :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour les cas d'utilisation plus complexes, la question de validation peut être invoquée explicitement via JavaScript :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">&lt;script&gt;
     window.turnstileCallbackFunction = function () {
         const turnstileOptions = {

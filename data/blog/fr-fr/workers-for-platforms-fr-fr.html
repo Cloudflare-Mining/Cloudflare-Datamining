@@ -42,8 +42,7 @@
 	<h3 id="trace-workers"><strong>Trace Workers</strong></h3>
 	<p>Il n'y a pas de fumée sans feu et, par extension, il n'y a pas de code sans bugs. Si vous confiez aux développeurs des outils destinés à rédiger et déployer du code, vous devez également leur offrir les moyens de déboguer ce dernier.</p>
 	<p>Les Trace Workers vous permettent de recueillir toutes les informations relatives à une requête traitée par un Worker (y compris les journaux ou les exceptions) et de les transmettre à votre client. Un Trace Worker est un Worker qui reçoit des informations sur l'exécution d'autres Workers et peut les transmettre à une destination de votre choix, afin de permettre divers scénarios d'utilisation, comme la journalisation en direct ou le stockage à long terme.</p>
-	<p>Les lignes ci-dessous décrivent un Trace Worker simple qui envoie ses données de suivi à un point de terminaison HTTP :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Les lignes ci-dessous décrivent un Trace Worker simple qui envoie ses données de suivi à un point de terminaison HTTP :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("trace", event =&gt; {
   event.waitUntil(fetch("http://example.com/trace", {
     method: "POST",
@@ -52,8 +51,7 @@
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Vous trouverez ci-dessous un exemple de ce à quoi pourraient ressembler les données contenues dans event.traces :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous trouverez ci-dessous un exemple de ce à quoi pourraient ressembler les données contenues dans event.traces :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">[
   {
     "scriptName": "Example script",
@@ -93,8 +91,7 @@
 	<h3 id="encha-nement-de-plusieurs-workers-l-aide-de-la-r-partition-dynamique"><strong>Enchaînement de plusieurs Workers à l'aide de la répartition dynamique</strong></h3>
 	<p>En travaillant avec quelques-uns de nos premiers clients, nous avons constaté qu'un autre besoin dont nous entendions souvent parler résidait dans la possibilité d'exécuter votre propre code, avant d'exécuter le code de votre client. L'idée ici pourrait être d'exécuter une couche d'authentification, de désinfecter une entrée ou une sortie, voire de transmettre des informations utiles en aval (des identifiants d'utilisateur ou de compte, par exemple).</p>
 	<p>Vous pourriez d'ailleurs souhaiter disposer de votre propre Worker pour ce faire. Toutefois, une fois l'exécution de ce dernier terminée, vous pourriez également avoir envie d'appeler le Worker suivant, à l'aide du code de votre <em>client</em>.</p>
-	<p>Exemple :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Exemple :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
 let response = await user_worker.fetch(request);
 </code></pre>

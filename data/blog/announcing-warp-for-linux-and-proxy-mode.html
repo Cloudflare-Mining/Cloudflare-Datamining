@@ -22,13 +22,11 @@
 	<p>Seasoned Linux developers can jump straight to <a href="https://pkg.cloudflareclient.com/install" target="_blank">https://pkg.cloudflareclient.com/install</a>. After linking our repository, get started with either <code>sudo apt install cloudflare-warp</code> or <code>sudo yum install cloudflare-warp</code>, depending on your distribution.</p>
 	<p>For more detailed installation instructions head over to our <a href="https://developers.cloudflare.com/warp-client/setting-up/linux/" target="_blank">WARP Client documentation</a>.</p>
 	<h2 id="using-the-cli">Using the CLI</h2>
-	<p>Once you’ve installed WARP, you can begin using the CLI with a single command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once you’ve installed WARP, you can begin using the CLI with a single command:</p><!--kg-card-begin: markdown-->
 	<pre><code>warp-cli --help
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The CLI will display the output below.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The CLI will display the output below.</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli --help
 WARP 0.2.0
 Cloudflare
@@ -90,26 +88,22 @@ SUBCOMMANDS:
     help                        Prints this message or the help of the given subcommand(s)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>You can begin connecting to Cloudflare’s network with just two commands. The first command, <code>register</code>, will prompt you to authenticate. The second command, <code>connect</code>, will enable the client, creating a WireGuard tunnel from your device to Cloudflare’s network.</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can begin connecting to Cloudflare’s network with just two commands. The first command, <code>register</code>, will prompt you to authenticate. The second command, <code>connect</code>, will enable the client, creating a WireGuard tunnel from your device to Cloudflare’s network.</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli register
 Success
 ~$ warp-cli connect
 Success
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Once you’ve connected the client, the best way to verify it is working is to run our trace command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once you’ve connected the client, the best way to verify it is working is to run our trace command:</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ curl https://www.cloudflare.com/cdn-cgi/trace/
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And look for the following output:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And look for the following output:</p><!--kg-card-begin: markdown-->
 	<pre><code>warp=on
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Want to switch from encrypting all traffic in WARP to just using our <a href="https://developers.cloudflare.com/1.1.1.1/" target="_blank">1.1.1.1 DNS resolver</a>? Use the <code>warp-cli set-mode</code> command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Want to switch from encrypting all traffic in WARP to just using our <a href="https://developers.cloudflare.com/1.1.1.1/" target="_blank">1.1.1.1 DNS resolver</a>? Use the <code>warp-cli set-mode</code> command:</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli help set-mode
 warp-cli-set-mode 
  
@@ -126,8 +120,7 @@ ARGS:
 Success
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Protecting yourself against <a href="https://blog.cloudflare.com/introducing-1-1-1-1-for-families/">malware with 1.1.1.1 for Families</a> is just as easy, and it can be used with either WARP enabled or in straight DNS mode:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Protecting yourself against <a href="https://blog.cloudflare.com/introducing-1-1-1-1-for-families/">malware with 1.1.1.1 for Families</a> is just as easy, and it can be used with either WARP enabled or in straight DNS mode:</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli set-families-mode --help
 warp-cli-set-families-mode 
  
@@ -147,8 +140,7 @@ Success
 	<h2 id="a-note-on-cloudflare-for-teams-support">A note on Cloudflare for Teams support</h2>
 	<p>Cloudflare for Teams support is on the way, and just like our other clients, it will ship in the same package. Stay tuned for an in-app update or reach out to your Account Executive to be notified when a beta is available.</p>
 	<h2 id="we-need-feedback">We need feedback</h2>
-	<p>If you encounter an error, send us feedback with the <code>sudo warp-diag feedback</code> command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you encounter an error, send us feedback with the <code>sudo warp-diag feedback</code> command:</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ sudo warp-diag feedback
 </code></pre>
 	<!--kg-card-end: markdown-->

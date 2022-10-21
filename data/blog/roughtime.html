@@ -42,8 +42,7 @@
 		<figcaption>Chaining multiple Roughtime servers</figcaption>
 	</figure>
 	<hr>
-	<p>Creating a chain of timestamps in this way binds each response to the response that precedes it. Thus, the sequence of blinds and signatures constitute a publicly verifiable, cryptographic proof that the timestamps were requested in order (a “clockchain” if you will 😉). If the servers are roughly synchronized, then we expect that the sequence to monotonically increase, at least roughly. If one of the servers were consistently behind or ahead of the others, then this would be evident in the sequence. Suppose you get the following sequence of timestamps, each from different servers:</p>
-	<!--kg-card-begin: html-->
+	<p>Creating a chain of timestamps in this way binds each response to the response that precedes it. Thus, the sequence of blinds and signatures constitute a publicly verifiable, cryptographic proof that the timestamps were requested in order (a “clockchain” if you will 😉). If the servers are roughly synchronized, then we expect that the sequence to monotonically increase, at least roughly. If one of the servers were consistently behind or ahead of the others, then this would be evident in the sequence. Suppose you get the following sequence of timestamps, each from different servers:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.table-with-last-column-right-aligned tr td:last-child {
 			text-align: left;
@@ -88,8 +87,7 @@
 		<li><em>Server auditing</em>. As the <a href="https://roughtime.googlesource.com/roughtime/+/HEAD/ECOSYSTEM.md" target="_blank">Roughtime ecosystem</a> grows, it will be important to ensure that all of the servers are in sync. Individuals or organizations may take it upon themselves to monitor the ecosystem and ensure that the servers are in sync with one another.</li>
 	</ol>
 	<p>The service is reachable wherever you are via our anycast network. This is important for a service like Roughtime, because minimizing network latency helps improve accuracy. For information about how to configure a client to use Cloudflare-Roughtime, check out the <a href="https://developers.cloudflare.com/roughtime/" target="_blank">developer documentation</a>. Note that our initial release is somewhat experimental. As such, our root public key may change in the future. See the developer docs for information on obtaining the current public key.</p>
-	<p>If you want to see what time our Roughtime server returns, click the button below!</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you want to see what time our Roughtime server returns, click the button below!</p><!--kg-card-begin: markdown-->
 	<script type="text/javascript">
 		function getTime() {
 			document.getElementById("time-txt-box").innerHTML = "Loading..."

@@ -28,8 +28,7 @@
 	<blockquote>We needed to migrate some complex server side code to the edge. We have an API endpoint that accepts POST requests with large bodies, but mostly returns the same data without changing anything on our origin server. With Workers and the Cache API, we were able to cache responses to POST requests that we knew were safe, and reduce significant load on our origin.</blockquote>
 	<p>— Aaron Dearinger, Edge Architect, Garmin International</p>
 	<p>Caching POST requests with the Cache API is simple. Here’s some example code from our <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">documentation</a>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response

@@ -4,10 +4,8 @@
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-21.png" class="kg-image" alt="Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA"></figure>
 	<p>Today, we’re announcing the open beta of Turnstile, an invisible alternative to CAPTCHA. Anyone, anywhere on the Internet, who wants to replace CAPTCHA on their site will be able to call a simple API, without having to be a Cloudflare customer or sending traffic through the Cloudflare global network. <a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">Sign up here for free</a>.</p>
-	<p>There is no point in rehashing the fact that CAPTCHA provides a terrible user experience. It's been discussed in detail before <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">on this blog</a>, and countless times elsewhere. The creator of the CAPTCHA has even publicly lamented that he “unwittingly created a system that was <a href="https://thewalrus.ca/human-resources/" target="_blank">frittering away, in ten-second increments, millions of hours</a> of a most precious resource: human brain cycles.” We hate it, you hate it, everyone hates it. Today we’re giving everyone a better option.</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>There is no point in rehashing the fact that CAPTCHA provides a terrible user experience. It's been discussed in detail before <a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">on this blog</a>, and countless times elsewhere. The creator of the CAPTCHA has even publicly lamented that he “unwittingly created a system that was <a href="https://thewalrus.ca/human-resources/" target="_blank">frittering away, in ten-second increments, millions of hours</a> of a most precious resource: human brain cycles.” We hate it, you hate it, everyone hates it. Today we’re giving everyone a better option.</p><!--kg-card-begin: html-->
+	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Turnstile is our smart CAPTCHA alternative. It automatically chooses from a rotating suite of non-intrusive browser challenges based on telemetry and client behavior exhibited during a session. We talked in an earlier post about how we’ve <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">used our Managed Challenge system to reduce our use of CAPTCHA by 91%</a>. Now anyone can take advantage of this same technology to stop using CAPTCHA on their own site.</p>
 	<h3 id="ux-isn-t-the-only-big-problem-with-captcha-so-is-privacy">UX isn’t the only big problem with CAPTCHA — so is privacy</h3>
 	<p>While having to solve a CAPTCHA is a frustrating user experience, there is also a potential hidden tradeoff a website must make when using CAPTCHA. If you are a small site using CAPTCHA today, you essentially have one option: an 800 pound gorilla with <a href="https://trends.builtwith.com/widgets/captcha" target="_blank">98% of the CAPTCHA</a> market share. This tool is free to use, but in fact it has a privacy cost: you have to give your data to an ad sales company.</p>
@@ -35,16 +33,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-39.png" class="kg-image"></figure>
 	<p>Then, copy and paste our HTML snippet:</p>
 	<p><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></p>
-	<p>Once the script is embedded, you can use implicit rendering. Here, the HTML is scanned for elements that have a <code>cf-turnstile</code> class:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once the script is embedded, you can use implicit rendering. Here, the HTML is scanned for elements that have a <code>cf-turnstile</code> class:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-HTML">&lt;form action="/login" method="POST"&gt;
   &lt;div class="cf-turnstile" data-sitekey="yourSiteKey"&gt;&lt;/div&gt;
   &lt;input type="submit"&gt;
 &lt;/form&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Once a challenge has been solved, a token is injected in your form, with the name <code>cf-turnstile-response</code>. This token can be used with our <code>siteverify</code> endpoint to validate a challenge response. A token can only be validated once, and a token cannot be redeemed twice. The validation can be done on the server side or even in the cloud, for <a href="https://demo.turnstile.workers.dev/" target="_blank">example</a> using a simple Workers fetch (<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">see a demo here</a>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once a challenge has been solved, a token is injected in your form, with the name <code>cf-turnstile-response</code>. This token can be used with our <code>siteverify</code> endpoint to validate a challenge response. A token can only be validated once, and a token cannot be redeemed twice. The validation can be done on the server side or even in the cloud, for <a href="https://demo.turnstile.workers.dev/" target="_blank">example</a> using a simple Workers fetch (<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">see a demo here</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">async function handleRequest() {
     // ... Receive token
     let formData = new FormData();
@@ -60,8 +56,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>For more complex use cases, the challenge can be invoked explicitly via JavaScript:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For more complex use cases, the challenge can be invoked explicitly via JavaScript:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">&lt;script&gt;
     window.turnstileCallbackFunction = function () {
         const turnstileOptions = {

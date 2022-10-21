@@ -22,8 +22,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
 	<h3 id="--2">障害の技術的説明と発生原因について</h3>
 	<p>インフラストラクチャの構成の標準化に向けた継続的な取り組みの一環として、アドバタイズするプレフィックスのサブセットに付加するBGPコミュニティを標準化するための変更を展開しておりました。具体的には、サイトローカルのプレフィックスに情報コミュニティを追加していました。これらのプレフィックスにより、計算ノード同士の通信や、お客様のオリジンへの接続が可能になります。Cloudflareの変更手順の一部として、変更のドライランと段階的なロールアウト手順を含む変更要求（CR）チケットが作成されました。また、公開を許可する前に、複数のエンジニアによるピアレビューも行われました。今回のケースでは、残念なことに当社のスパイン部分にまで到達する前にミスを捉えるステップとして、十分なものではありませんでした。</p>
-	<p>ルータの1つで、次のような変更が見られました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ルータの1つで、次のような変更が見られました。</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -46,8 +45,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>これは無害なものであり、これらのプレフィックスのアドバタイズにいくつかの追加の情報が加えられるだけのものです。スパインの変化は次のようなものでした。</p>
-	<!--kg-card-begin: markdown-->
+	<p>これは無害なものであり、これらのプレフィックスのアドバタイズにいくつかの追加の情報が加えられるだけのものです。スパインの変化は次のようなものでした。</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -74,15 +72,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>この違いを一見したところで、この変更は同一であるかのような印象を受けるかもしれませんが、残念ながらそうではありません。相違の1つに着目すると、その理由が見えてきます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この違いを一見したところで、この変更は同一であるかのような印象を受けるかもしれませんが、残念ながらそうではありません。相違の1つに着目すると、その理由が見えてきます。</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>この差分フォーマットでは、条件の前にある感嘆符は、条件の順序を入れ替えることを示します。このケースでは、複数の条件が上に移動し、2つの条件が下に追加されています。具体的には、4-ADV-SITE-LOCALSの条件が上から下へ移動しています。この条件は、REJECT-THE-RESTの条件の後ろにありましたが、名前からわかるとおり、この条件は明示的な拒否を示すものです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この差分フォーマットでは、条件の前にある感嘆符は、条件の順序を入れ替えることを示します。このケースでは、複数の条件が上に移動し、2つの条件が下に追加されています。具体的には、4-ADV-SITE-LOCALSの条件が上から下へ移動しています。この条件は、REJECT-THE-RESTの条件の後ろにありましたが、名前からわかるとおり、この条件は明示的な拒否を示すものです。</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

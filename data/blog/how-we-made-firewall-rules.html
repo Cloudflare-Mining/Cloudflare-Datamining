@@ -99,8 +99,7 @@ Value = block</code></pre>
 	<pre><code>http.host eq "www.example.com" and (http.request.path ~ "wp-admin/index\.php" or http.request.path ~ "xmlrpc.php")</code></pre>
 	<p>This is human readable, machine parseable, succinct.</p>
 	<p>It also benefits from being highly similar to Wireshark. For security engineers used to working with Wireshark when investigating attacks it offers a degree of portability from an investigation tool to a mitigation engine.</p>
-	<p>To make this work we would need to collect the properties of the request into a simple data structure to match the expressions against. Unlike the packet capture approach we run our firewall within the context of an HTTP server and the web server has already computed the request properties, so we can avoid dissection and populate the fields from the web server knowledge:</p>
-	<!--kg-card-begin: html-->
+	<p>To make this work we would need to collect the properties of the request into a simple data structure to match the expressions against. Unlike the packet capture approach we run our firewall within the context of an HTTP server and the web server has already computed the request properties, so we can avoid dissection and populate the fields from the web server knowledge:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -184,8 +183,7 @@ Value = block</code></pre>
 				</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>With a table of HTTP request properties and an expression language that can provide a <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/fields-and-expressions/" target="_blank">matching expression</a> we were 90% of the way towards a solution! All we needed for the <a href="https://en.wikipedia.org/wiki/Hofstadter%27s_law" target="_blank">last 90%</a> was the matching engine itself that would provide us with an answer to the question: Does this request match one of the expressions?</p>
 	<p>Enter wirefilter.</p>
 	<p>Wirefilter is the name of the Rust library that Cloudflare has created, and it provides:</p>

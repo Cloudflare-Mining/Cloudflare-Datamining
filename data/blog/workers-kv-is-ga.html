@@ -4,8 +4,7 @@
 	<h3 id="what-is-workers-kv">What is Workers KV?</h3>
 	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
 	<h3 id="why-did-we-build-it">Why did we build it?</h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -26,8 +25,7 @@ async function handleOneRedirect(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong><strong>billions</strong></strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong><strong>billions</strong></strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
 // now that's more like it!
 addEventListener("fetch", event =&gt; {
@@ -97,8 +95,7 @@ async function handleBillionsOfRedirects(request) {
 	<h3 id="what-s-new-since-beta">What's new since beta?</h3>
 	<p>By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
 	<h4 id="1-bulk-writes">1. Bulk Writes</h4>
-	<p>If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <em><em>every</em></em> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you want to import your existing data into Workers KV, you don't want to go through the hassle of sending an HTTP request for <em><em>every</em></em> key-value pair. That's why we added a <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">bulk endpoint</a> to the Cloudflare API. Now you can upload up to 10,000 pairs (up to 100 MB of data) in a single PUT request.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
   -X PUT \
@@ -112,8 +109,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Let's walk through an example use case: you want to off-load your website translation to Workers. Since you're reading translation keys frequently and only occasionally updating them, this application works well with the eventual consistency model of Workers KV.</p>
-	<p>In this example, we hook into <a href="https://crowdin.com/" target="_blank">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example, we hook into <a href="https://crowdin.com/" target="_blank">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -161,8 +157,7 @@ async function zipToJson(response) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now, when you want to translate a page, all you have to do is read from Workers KV:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now, when you want to translate a page, all you have to do is read from Workers KV:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function translate(keys, lang) {
   // You bind your translations namespace to the TRANSLATIONS variable.
   return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
@@ -170,16 +165,14 @@ async function zipToJson(response) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h4 id="2-expiring-keys">2. Expiring Keys</h4>
-	<p>By default, key-value pairs stored in Workers KV last forever. However, sometimes you want your data to auto-delete after a certain amount of time. That's why we're introducing the <code>expiration</code> and <code>expirationTtl</code>options for write operations.</p>
-	<!--kg-card-begin: markdown-->
+	<p>By default, key-value pairs stored in Workers KV last forever. However, sometimes you want your data to auto-delete after a certain amount of time. That's why we're introducing the <code>expiration</code> and <code>expirationTtl</code>options for write operations.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Key expires 60 seconds from now.
 NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
 
 // Key expires if the UNIX epoch is in the past.
 NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
 curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
@@ -191,8 +184,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/ \
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Let's say you want to block users that have been flagged as inappropriate from your website, but only for a week. With an expiring key, you can set the expire time and not have to worry about deleting it later.</p>
-	<p>In this example, we assume users and IP addresses are one of the same. If your application has authentication, you could use access tokens as the key identifier.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example, we assume users and IP addresses are one of the same. If your application has authentication, you could use access tokens as the key identifier.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = new URL(event.request.url)
   // An internal API that blocks a new user IP.
@@ -232,8 +224,7 @@ async function handleRequest(request) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-kc-file-size-update@2x.png" class="kg-image"></figure>
 	<p>Consider this scenario: you want to let your users upload their favorite GIF to their profile without having to store these GIFs as binaries in your database or managing <em><em>another</em></em> cloud storage bucket.</p>
 	<p>Workers KV is a great fit for this use case! You can create a Workers KV namespace for your users’ GIFs that is fast and reliable wherever your customers are located.</p>
-	<p>In this example, users upload a link to their favorite GIF, then a Worker downloads it and stores it to Workers KV.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example, users upload a link to their favorite GIF, then a Worker downloads it and stores it to Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = event.request.url
   var arg = request.url.split("/").pop()

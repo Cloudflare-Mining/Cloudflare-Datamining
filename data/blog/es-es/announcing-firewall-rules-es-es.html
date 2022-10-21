@@ -40,8 +40,7 @@
 	<p>Claro. Aquí hay cuatro buenos ejemplos que ya se usan. Las reglas avanzadas o anidadas no son compatibles con el Generador visual de reglas. Se han indicado debajo de cada regla.</p>
 	<p><em><strong>Ejemplo 1: desafiar a todos los países excepto GB</strong></em></p>
 	<p>Compatibles: Generador visual, Editor de expresiones</p>
-	<p>¡Esto puede hacerse usando nuestro Firewall de IP pero requeriría más de 150 reglas!</p>
-	<!--kg-card-begin: markdown-->
+	<p>¡Esto puede hacerse usando nuestro Firewall de IP pero requeriría más de 150 reglas!</p><!--kg-card-begin: markdown-->
 	<pre><code>(ip.geoip.country ne "GB")
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -49,24 +48,21 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image.png" class="kg-image"></figure>
 	<p><em><strong>Ejemplo 2: protección avanzada de enlaces activos</strong></em></p>
 	<p>Compatibles: Generador visual, Editor de expresiones</p>
-	<p>La protección de enlaces activos incorporada de Cloudflare puede ser restrictiva para algunos clientes ya que no permite omitir ciertas rutas. A veces, también puede atrapar rastreadores legítimos.</p>
-	<!--kg-card-begin: markdown-->
+	<p>La protección de enlaces activos incorporada de Cloudflare puede ser restrictiva para algunos clientes ya que no permite omitir ciertas rutas. A veces, también puede atrapar rastreadores legítimos.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-2.png" class="kg-image"></figure>
 	<p><em><strong>Ejemplo 3: bloqueo de clientes con una puntuación de amenazas mayor de 10 o clientes procedentes de una red abusiva según el número del sistema autónomo, en mi página de inicio de sesión</strong></em></p>
 	<p>Compatibles: Editor de expresiones</p>
-	<p>Algo estupendo de las reglas de Firewall es que te hemos dado acceso a cf.threat_score, que es lo que opera actualmente el nivel de seguridad en el panel de control.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Algo estupendo de las reglas de Firewall es que te hemos dado acceso a cf.threat_score, que es lo que opera actualmente el nivel de seguridad en el panel de control.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-3.png" class="kg-image"></figure>
 	<p><em><strong>Ejemplo 4: bloqueo de zona por caso de uso utilizando Expresión regular, CIDR de dirección IP, código de país y números de sistema autónomo para proteger extremos de autenticación a través del sitio web de Wordpress y una API.</strong></em></p>
 	<p>Compatibles: Editor de expresiones</p>
-	<p>El bloqueo de zona es una herramienta estupenda; sin embargo, tiene sus límites para casos de uso críticos. Aquí se demuestra la flexibilidad de una forma un poco alocada:</p>
-	<!--kg-card-begin: markdown-->
+	<p>El bloqueo de zona es una herramienta estupenda; sin embargo, tiene sus límites para casos de uso críticos. Aquí se demuestra la flexibilidad de una forma un poco alocada:</p><!--kg-card-begin: markdown-->
 	<pre><code>((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
 111</code></pre>
 	<!--kg-card-end: markdown-->

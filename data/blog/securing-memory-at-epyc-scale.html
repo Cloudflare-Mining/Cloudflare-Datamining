@@ -39,8 +39,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/bios-tsme2.png" class="kg-image"></figure>
 	<p>2. Enabling kernel support with the following flag:</p>
 	<p><code>CONFIG_AMD_MEM_ENCRYPT=y</code></p>
-	<p>After a reboot you should see the following in <code>dmesg</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After a reboot you should see the following in <code>dmesg</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo dmesg | grep SME
 [    2.537160] AMD Secure Memory Encryption (SME) active
 </code></pre>
@@ -66,8 +65,7 @@
 	<p>The figures above show 2.6% to 4.2% performance variation, with a mean of 3.7%. These were the highest numbers measured, which fell below an expected performance impact of &gt;5%.</p>
 	<h2 id="cryptsetup">Cryptsetup</h2>
 	<p>While cryptsetup is normally used for encrypting disk partitions, it has a benchmarking utility that will report on a host’s cryptographic performance by iterating key derivation functions using memory only:</p>
-	<p>Example:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Example:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo cryptsetup benchmark
 # Tests are approximate using memory only (no storage IO).
 PBKDF2-sha1      1162501 iterations per second for 256-bit key

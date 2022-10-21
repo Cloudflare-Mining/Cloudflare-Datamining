@@ -9,8 +9,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-8.png" class="kg-image" alt="The api-gateway Worker handles routing and authentication checks for all the available endpoints"></figure>
 	<p>Here, the <code>api-gateway</code> Worker calls <code>login</code> and <code>logout</code> Workers for authentication to privileged endpoints like <code>/getuser</code>. The <code>api-gateway</code> Worker also checks each request for authorization via the <code>auth</code> Worker and allows valid requests to call the <code>get-user</code> Worker. The <code>get-user</code> Worker then makes an outbound network request to gather the required user information, and passes that data back to the client via our <code>api-gateway</code> Worker. The <code>api-gateway</code> Worker is therefore bound to four other Worker Services: <code>auth</code>, <code>get-user</code>, <code>login</code>, and <code>logout</code>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-6.png" class="kg-image" alt="The api-gateway Worker is bound to auth, get-user, login, and logout Workers via Service Bindings."></figure>
-	<p>Let’s take a look at the code for the <code>api-gateway</code> Worker. We’ll see the routes <code>/login</code>, <code>/logout</code>, and <code>/getuser</code> are implemented on this API. For the <code>/getuser route</code>, the <code>api-gateway</code> Worker requires authorization via the <code>auth</code> Worker. Requests to any other endpoints will return a 404 HTTP status code.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s take a look at the code for the <code>api-gateway</code> Worker. We’ll see the routes <code>/login</code>, <code>/logout</code>, and <code>/getuser</code> are implemented on this API. For the <code>/getuser route</code>, the <code>api-gateway</code> Worker requires authorization via the <code>auth</code> Worker. Requests to any other endpoints will return a 404 HTTP status code.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
  async fetch(request, environment) {
    const url = new URL(request.url);
@@ -48,10 +47,8 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-7.png" class="kg-image" alt="In a classic compute model, you’re potentially overpaying for resources that are not being used"></figure>
 	<p>Cloudflare is able to squash duration down to a single charge, since Cloudflare can share the compute resources between your services. We pass those cost savings on to our customers, so you can pay only for the work you need done, when you need it done, every time.</p>
 	<h3 id="getting-started">Getting Started</h3>
-	<p>Excited to try our Service Bindings? Head over to the <strong>Settings =&gt; Variables</strong> tab of your Worker, and click ‘<strong>Edit Variables</strong>’ under Service Bindings. You can then reference those bindings within your code and call <code>fetch()</code> on any one of them.</p>
-	<!--kg-card-begin: html-->
+	<p>Excited to try our Service Bindings? Head over to the <strong>Settings =&gt; Variables</strong> tab of your Worker, and click ‘<strong>Edit Variables</strong>’ under Service Bindings. You can then reference those bindings within your code and call <code>fetch()</code> on any one of them.</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 67.23790322580645%;"><iframe src="https://iframe.videodelivery.net/a47f4665cdc20d866c1d5542dc859039?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fa47f4665cdc20d866c1d5542dc859039%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>We can’t wait to see what you build. Check us out on <a href="https://discord.gg/cloudflaredev" target="_blank">Discord</a> to join the conversation.</p>
 </div>

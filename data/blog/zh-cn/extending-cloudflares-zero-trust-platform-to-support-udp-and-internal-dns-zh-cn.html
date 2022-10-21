@@ -30,18 +30,15 @@
 	<h2 id="--2"><strong>我现在如何开始？</strong></h2>
 	<p>您现在可根据我们的开发人员文档中的教程和指南，在 Cloudflare 上构建您的私有网络。以下是关键路径。如果您已是我们的客户且有兴趣加入 UDP 和内部 DNS 访问的等待名单，请跳至本篇文章末尾！</p>
 	<h3 id="-cloudflare"><strong>将您的网络连接到 Cloudflare</strong></h3>
-	<p>首先，您需要在您的网络上<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">安装 cloudflared</a> 并通过以下命令进行认证：</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，您需要在您的网络上<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">安装 cloudflared</a> 并通过以下命令进行认证：</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel login
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>其次，您应使用一个用户友好的名称来创建一个隧道，以识别您的网络或环境。</p>
-	<!--kg-card-begin: markdown-->
+	<p>其次，您应使用一个用户友好的名称来创建一个隧道，以识别您的网络或环境。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create acme-network
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>最后，您将需要使用私有网络的 IP/CIDR 范围来配置隧道。借此，您可使 Cloudflare WARP 代理意识到，对这个 IP 范围的任何请求都要路由到我们的新隧道。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最后，您将需要使用私有网络的 IP/CIDR 范围来配置隧道。借此，您可使 Cloudflare WARP 代理意识到，对这个 IP 范围的任何请求都要路由到我们的新隧道。</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
 </code></pre>
 	<!--kg-card-end: markdown-->

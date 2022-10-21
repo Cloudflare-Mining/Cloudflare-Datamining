@@ -21,8 +21,7 @@
 	<p>Keyless SSL is a great security solution, but depending on where keys are stored it can introduce some latency. Because of this, we worked with the IETF to develop a new standard called <a href="https://blog.cloudflare.com/keyless-delegation/">Delegated Credentials</a>, which allows connections to use short-lived keys that are signed by the certificate instead of the certificate itself in TLS. This eliminates the additional latency introduced by Keyless SSL. We support Delegated Credentials for all Keyless SSL and Geo Key Manager customers; and Firefox 89 (May 2021) will enable Delegated Credential support by default.</p>
 	<h3 id="making-revocation-work">Making revocation work</h3>
 	<p>When Heartbleed happened and hundreds of thousands of certificates were deemed potentially compromised, the logical thing to do was to revoke and reissue these certificates. Doing so caused some unexpected consequences.</p>
-	<p>The first consequence of revocation was a massive surge of network traffic related to the revocation information. In 2014, there were three main mechanisms for certificate revocation:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The first consequence of revocation was a massive surge of network traffic related to the revocation information. In 2014, there were three main mechanisms for certificate revocation:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Certificate Revocation Lists (CRLs)
 			<ul>

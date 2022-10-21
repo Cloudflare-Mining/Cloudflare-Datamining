@@ -49,16 +49,14 @@
 	<p>Given these requirements, there were a number of potential approaches to take to store this data, and make it accessible. Keeping in line with JAMstack, we know that we probably should expose it via an HTTPS API, but from where? In what format?</p>
 	<p>As a full-stack developer who's comfortable with databases, it's easy to envision a world where we spin up a PostgreSQL instance, write a REST API, and write all kinds of <code>fetch('/api/projects')</code> to get the information we need. This method works, but we can do better! In the same way we built Workers Sites to simplify the deployment process, it was worthwhile to explore the JAMstack ecosystem and see what solutions exist for modeling data without being on the hook for more infrastructure.</p>
 	<p>Of the different tools in the ecosystem – databases, whether SQL or NoSQL, key-value stores (such as our own, Workers KV), etc. – the growth of "headless CMS" tools has made the largest impact on my development workflow. </p>
-	<p>On CSS Tricks, Chris Coyier wrote about the rise of headless CMS tools back in March 2016, and <a href="https://css-tricks.com/what-is-a-headless-cms/" target="_blank">summarizes their function</a> well:</p>
-	<!--kg-card-begin: markdown-->
+	<p>On CSS Tricks, Chris Coyier wrote about the rise of headless CMS tools back in March 2016, and <a href="https://css-tricks.com/what-is-a-headless-cms/" target="_blank">summarizes their function</a> well:</p><!--kg-card-begin: markdown-->
 	<p><span style="color:grey"><small><em>[Headless CMSes are] very related to The Big Conversation™ on the web the last many years. How are we going to handle bringing Our Stuff™ all these different devices/screens/inputs.<br>
 					Responsive design says "let's let our design and media accommodate as much variation in screens as possible."<br>
 					Progressive enhancement says "let's make the functionality of this site work no matter what."<br>
 					Designing for accessibility says "let's ensure everyone can use this regardless of their capabilities as a person."<br>
 					A headless CMS says "let's not tie our data to any one way of doing things."</em></small></span></p>
 	<!--kg-card-end: markdown-->
-	<p>Using our headless CMS, Sanity.io, we can get every project inside our dataset, and call Gatsby's <code>createPage</code> function to create a new page for each project, using a pre-defined project template file:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Using our headless CMS, Sanity.io, we can get every project inside our dataset, and call Gatsby's <code>createPage</code> function to create a new page for each project, using a pre-defined project template file:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// gatsby-node.js
 
 exports.createPages = async ({ graphql, actions }) =&gt; {
@@ -109,8 +107,7 @@ exports.createPages = async ({ graphql, actions }) =&gt; {
 	<p>Much of what we've discussed so far can be thought of as features and workflows that have great DX (developer experience), but not specific to Workers. Gatsby and Sanity.io are great, and although Workers Sites is a great platform for deploying JAMstack applications due to the Workers platform's low-latency and performance characteristics, you could deploy the site to a number of different providers with no real differentiating features.</p>
 	<p>As we began building a JAMstack application on top of Built with Workers, we also wanted to explore how the Workers platform could allow developers to combine the simplicity of static site deployments with the dynamism of having a JavaScript runtime immediately available.</p>
 	<p>In particular, our recently-released streaming HTML rewriter seems like a perfect fit for "enhancing" our static sites. Our application is being served by Workers Sites, which itself is a Workers template that can be customized. By passing each HTML page through the HTML rewriter on its way to the client, we had an opportunity to customize the content without any negative performance implications.</p>
-	<p>As I mentioned previously, we landed on a first exploration of this platform advantage via the "bookmark" button. Users of Built with Workers can "bookmark" for a project – this action sends a request back up to the Workers application, storing the bookmark data as JSON in Workers KV.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As I mentioned previously, we landed on a first exploration of this platform advantage via the "bookmark" button. Users of Built with Workers can "bookmark" for a project – this action sends a request back up to the Workers application, storing the bookmark data as JSON in Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// User-specific data stored in Workers KV, representing
 // per-project bookmark information
 
@@ -120,8 +117,7 @@ exports.createPages = async ({ graphql, actions }) =&gt; {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When a user returns to Built with Workers, we can make a request to Workers KV, looking for corresponding data for that user and the project they're currently viewing. If that data exists, we can embed the "edge state" directly into the HTML using the streaming HTML rewriter.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When a user returns to Built with Workers, we can make a request to Workers KV, looking for corresponding data for that user and the project they're currently viewing. If that data exists, we can embed the "edge state" directly into the HTML using the streaming HTML rewriter.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// workers-site/index.js
 
 import { getAssetFromKV } from "@cloudflare/kv-asset-handler"
@@ -162,8 +158,7 @@ async function handleEvent(event) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When the React application is rendered on the client, it can then check for that embedded edge state, which influences how the "bookmark" icon is rendered - either as "bookmarked", or "bookmarked". To support this, we've leaned on React's <code>useContext</code>, which allows any component inside of the application component tree to pull out the edge state and use it inside of the component:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When the React application is rendered on the client, it can then check for that embedded edge state, which influences how the "bookmark" icon is rendered - either as "bookmarked", or "bookmarked". To support this, we've leaned on React's <code>useContext</code>, which allows any component inside of the application component tree to pull out the edge state and use it inside of the component:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// edge_state.js
 
 import React from "react"
@@ -207,8 +202,7 @@ return &lt;BookmarkButton bookmarked={state[project.id]} /&gt;
 	<p>While it doesn't appear in the acronym, an unsung hero of the JAMstack architecture is <strong>deployment</strong>. In my local terminal, when I run <code>gatsby build</code> inside of the Built with Workers project, the result is a folder of static HTML, CSS, and JavaScript. <em>It should be easy to deploy!</em> </p>
 	<p>The recent release of <a href="https://github.com/features/actions" target="_blank">GitHub Actions</a> has proven to be a great companion to building JAMstack applications with Cloudflare Workers – we've open-sourced our own <a href="https://github.com/cloudflare/wrangler-action" target="_blank">wrangler-action</a>, which allows developers to build their Workers applications and deploy directly from GitHub.</p>
 	<p>The standard workflows in the continuous deployment world – deploy every hour, deploy on new changes to the <code>master</code> branch, etc – are possible and already being used by many developers who make use of our <code>wrangler-action</code> workflow in their projects. Particular to JAMstack and to headless CMS tools is the idea of "build-on-change": namely, when someone publishes a change in Sanity.io, we want to do a new deploy of the site to immediately reflect our new content in production.</p>
-	<p>The versatility of Workers as a place to deploy JavaScript code comes to the rescue, again! By telling Sanity.io to make a GET request to a deployed Workers webhook, we can trigger a <code>repository_event</code> on GitHub Actions for our repository, allowing new deploys to happen immediately after a change is detected in the CMS:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The versatility of Workers as a place to deploy JavaScript code comes to the rescue, again! By telling Sanity.io to make a GET request to a deployed Workers webhook, we can trigger a <code>repository_event</code> on GitHub Actions for our repository, allowing new deploys to happen immediately after a change is detected in the CMS:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const headers = {
   Accept: 'application/vnd.github.everest-preview+json',
   Authorization: 'Bearer $token',

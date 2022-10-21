@@ -61,8 +61,7 @@
 </code></pre>
 	<p>这便完成了工作，甚至看起来似乎颇为完美。毕竟，selected.prefix 和 pageRules.suffix 字符串似乎都注定要被重复使用。遗憾的是，在将字符串外部化以进行国际化时，最大的陷阱就在于将句子切碎然后串联翻译后的碎片。</p>
 	<p>问题是翻译之后，组成句子的不同词语可能会根据上下文（单复数形式、词语性别、主语/动词一致等）<a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">以不同的方式改变形态</a>。这在不同语言之间有很大差异，<a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">词序</a>也是如此。例如，英语中的“We like them”采用主语-谓词-宾语顺序，而其他语言则可能使用主语-宾语-谓词（We them like）、谓词-主语-宾语（Like we them），甚至是其他顺序。由于语言之间的细微差别，将翻译的短语串联成句子几乎总会导致本地化错误。</p>
-	<p>上方代码示例包含“You’ve selected”和“Page Rules”的翻译，这是我们将它们作为单独的字符串提供给翻译团队后实际获得的翻译。以下是这个句子在不同语言中呈现的模样：</p>
-	<!--kg-card-begin: markdown-->
+	<p>上方代码示例包含“You’ve selected”和“Page Rules”的翻译，这是我们将它们作为单独的字符串提供给翻译团队后实际获得的翻译。以下是这个句子在不同语言中呈现的模样：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -86,8 +85,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>为了进行比较，我们还使用变量占位符将句子作为单个字符串提供给翻译团队，结果如下：</p>
-	<!--kg-card-begin: markdown-->
+	<p>为了进行比较，我们还使用变量占位符将句子作为单个字符串提供给翻译团队，结果如下：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -243,8 +241,7 @@
 	<p>在上文中，我们在谈论注入数据转换后的字符串时掩盖了一个主要问题：注入的数据可能还需要进行格式化，以符合用户的当地习俗。日期、时间、数字、货币和其他一些类型的数据便是如此。</p>
 	<p>我们继续使用前面的例子：</p>
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;</code></pre>
-	<p>如果没有正确格式化，小数字应该会正常，但一旦数字达到以千为单位时，就会出现本地化问题，因为数字会使用符号来分组和分隔，而符号<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">视文化不同而异</a>。以下是几种不同的区域设置中表示三十万点零三的格式：</p>
-	<!--kg-card-begin: markdown-->
+	<p>如果没有正确格式化，小数字应该会正常，但一旦数字达到以千为单位时，就会出现本地化问题，因为数字会使用符号来分组和分隔，而符号<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">视文化不同而异</a>。以下是几种不同的区域设置中表示三十万点零三的格式：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -322,8 +319,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>日期的格式化方式<a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">在不同国家/地区有很大差异</a>。如果您主要是针对美国受众开发 UI，那么显示日期的方式可能会让世界上几乎所有其他地方的用户感到奇怪，而且可能不直观。除其他方面外，日期格式在分隔符选择、是否为单个数字填充零，以及日、月、年部分排序的方式方面可能会有所不同。如下是今年 3 月 4 日这个日期在几种不同区域设置中格式化后的形式：</p>
-	<!--kg-card-begin: markdown-->
+	<p>日期的格式化方式<a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">在不同国家/地区有很大差异</a>。如果您主要是针对美国受众开发 UI，那么显示日期的方式可能会让世界上几乎所有其他地方的用户感到奇怪，而且可能不直观。除其他方面外，日期格式在分隔符选择、是否为单个数字填充零，以及日、月、年部分排序的方式方面可能会有所不同。如下是今年 3 月 4 日这个日期在几种不同区域设置中格式化后的形式：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -401,8 +397,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>时间格式也有很大差异。如下是在几种不同区域设置中格式化时间的方式：</p>
-	<!--kg-card-begin: markdown-->
+	<p>时间格式也有很大差异。如下是在几种不同区域设置中格式化时间的方式：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -492,8 +487,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>幸运的是，浏览器对 Intl 支持近年来有了长足进步，所有现代浏览器都提供全面支持。</p>
 	<p>诸如 V8 之类的一些现代 JavaScript 引擎甚至已经告别这些库的自托管 JavaScript 实现，转而使用基于 C++ 的内置函数，<a href="https://v8.dev/blog/intl" target="_blank">大大加快了速度</a>。</p>
 	<p>不过，对旧版浏览器的支持可能有所欠缺。这里有一个<a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">简单的演示站点</a>（<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">源代码</a>），它使用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 构建，可以显示日期、时间和数字在若干种区域设置中的呈现。</p>
-	<p>一些旧浏览器和操作系统组合产生的结果或许不尽人意。例如，如下是与上方相同的日期和时间在 Windows 8 加 IE 10 组合中的呈现：</p>
-	<!--kg-card-begin: html-->
+	<p>一些旧浏览器和操作系统组合产生的结果或许不尽人意。例如，如下是与上方相同的日期和时间在 Windows 8 加 IE 10 组合中的呈现：</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -501,8 +495,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 				<td><img style="border-width: 0px; margin: 5px;" src="https://blog.cloudflare.com/content/images/2020/07/image2-7.png" alt="" width="283" height="343"></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>如果您需要支持较旧的浏览器，可以使用某种插件来解决问题。</p>
 	<h3 id="--6"><strong>翻译</strong></h3>
 	<p>当所有字符串完成外部化，所有注入的数据也仔细格式化为特定于区域设置的标准后，大部分工程工作便宣告完成。到这一刻，我们可以声称应用程序已经完成了国际化，因为它经过修改了，已经便于本地化了。</p>

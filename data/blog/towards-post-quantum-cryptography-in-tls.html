@@ -29,8 +29,7 @@
 	<p>To better understand the post-quantum world, Cloudflare began experimenting with these algorithms and used them to provide confidentiality in TLS connections. </p>
 	<p>With Google, we are proposing a wide-scale experiment that combines client- and server-side data collection to evaluate the performance of key-exchange algorithms on actual users’ devices. We hope that this experiment helps choose an algorithm with the best characteristics for the future of the Internet. With Cloudflare’s highly distributed network of access points and Google’s Chrome browser, both companies are in a very good position to perform this experiment.</p>
 	<p>Our goal is to understand how these algorithms act when used by real clients over real networks, particularly candidate algorithms with significant differences in public-key or ciphertext sizes. Our focus is on how different key sizes affect handshake time in the context of Transport Layer Security (TLS) as used on the web over HTTPS. </p>
-	<p>Our primary candidates are an NTRU-based construction called HRSS-SXY (by <strong>H</strong>ülsing - <strong>R</strong>ijneveld - <strong>S</strong>chanck - <strong>S</strong>chwabe, and Tsunekazu <strong>S</strong>aito - Keita <strong>X</strong>agawa - Takashi <strong>Y</strong>amakawa) and an isogeny-based Supersingular Isogeny Key Encapsulation (SIKE). Details of both algorithms are described in more detail below in section "Dive into post-quantum cryptography". This table shows a few characteristics for both algorithms. Performance timings were obtained by running the BoringSSL speed test on an Intel Skylake CPU.</p>
-	<!--kg-card-begin: html-->
+	<p>Our primary candidates are an NTRU-based construction called HRSS-SXY (by <strong>H</strong>ülsing - <strong>R</strong>ijneveld - <strong>S</strong>chanck - <strong>S</strong>chwabe, and Tsunekazu <strong>S</strong>aito - Keita <strong>X</strong>agawa - Takashi <strong>Y</strong>amakawa) and an isogeny-based Supersingular Isogeny Key Encapsulation (SIKE). Details of both algorithms are described in more detail below in section "Dive into post-quantum cryptography". This table shows a few characteristics for both algorithms. Performance timings were obtained by running the BoringSSL speed test on an Intel Skylake CPU.</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -65,8 +64,7 @@
 				<td>1</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Currently the most commonly used key exchange algorithm (according to Cloudflare’s data) is the non-quantum X25519. Its public keys are 32 bytes and BoringSSL can generate 49301.2 key pairs, and is able to perform 19628.6 key agreements every second on my Skylake CPU.</p>
 	<p>Note that HRSS-SXY shows a significant speed advantage, while SIKE has a size advantage. In our experiment, we will deploy these two algorithms on both the server side using Cloudflare’s infrastructure, and the client side using Chrome Canary; both sides will collect telemetry information about TLS handshakes using these two PQ algorithms to see how they perform in practice.</p>
 	<h3 id="what-do-we-expect-to-find">What do we expect to find?</h3>

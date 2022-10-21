@@ -22,16 +22,14 @@
 	<h3 id="hash-difuso"><strong>Hash difuso</strong></h3>
 	<p>Sin embargo, en el caso de CSAM, esta característica del hash tradicional es una responsabilidad. Con el fin de evitar la detección, los delincuentes que producen CSAM cambian el tamaño, añaden ruido, o alteran de otra modo la imagen que se ve igual, pero genera un hash radicalmente diferente.</p>
 	<p>El hash difuso funciona de otra manera. En lugar de determinar si dos fotos son exactamente las mismas, en su lugar intenta llegar a la esencia de una fotografía. Esto permite al software calcular hashes para dos imágenes y luego comparar la "distancia" entre las dos. Mientras que los hashes difusos todavía pueden ser diferentes entre dos fotografías que han sido alteradas, a diferencia de con el hash tradicional, puede comparar las dos imágenes y ver sus similitudes.</p>
-	<p>Por lo tanto, en las dos fotos anteriores, el hash difuso de la primera imagen es</p>
-	<!--kg-card-begin: markdown-->
+	<p>Por lo tanto, en las dos fotos anteriores, el hash difuso de la primera imagen es</p><!--kg-card-begin: markdown-->
 	<pre><code>00e308346a494a188e1042333147267a
 653a16b94c33417c12b433095c318012
 5612442030d1484ce82c613f4e224733
 1dd84436734e4a5c6e25332e507a8218
 6e3b89174e30372d</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>y la segunda imagen es</p>
-	<!--kg-card-begin: markdown-->
+	<p>y la segunda imagen es</p><!--kg-card-begin: markdown-->
 	<pre><code>00e308346a494a188e1042333147267a
 653a16b94c33417c12b433095c318012
 5612442030d1484ce82c613f4e224733
@@ -42,8 +40,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/image6-2.jpg" class="kg-image">
 		<figcaption>La imagen base después de aumentar la saturación, cambiar a sepia, añadir un borde y agregar ruido aleatorio.</figcaption>
 	</figure>
-	<p>El hash difuso está diseñado para ser capaz de identificar imágenes que son sustancialmente similares. Por ejemplo, modificamos la imagen de los perros mejorando primero su color, luego cambiándola a sepia, luego agregando un borde y finalmente agregando ruido aleatorio. &nbsp;El hash difuso de la nueva imagen es</p>
-	<!--kg-card-begin: markdown-->
+	<p>El hash difuso está diseñado para ser capaz de identificar imágenes que son sustancialmente similares. Por ejemplo, modificamos la imagen de los perros mejorando primero su color, luego cambiándola a sepia, luego agregando un borde y finalmente agregando ruido aleatorio. &nbsp;El hash difuso de la nueva imagen es</p><!--kg-card-begin: markdown-->
 	<pre><code>00d9082d6e454a19a20b4e3034493278
 614219b14838447213ad3409672e7d13
 6e0e4a2033de545ce731664646284337
@@ -52,8 +49,7 @@
 	<!--kg-card-end: markdown-->
 	<p>Esto se ve muy diferente del hash de la imagen sin cambios previa, pero los hashes difusos se comparan al ver lo cerca que están el uno del otro.</p>
 	<p>La mayor distancia posible entre dos imágenes es de casi 5 m unidades. Estos dos hashes difusos están a solo 4 913 unidades de distancia (cuanto menor sea el número, más similares son las imágenes) lo que indica que son sustancialmente la misma imagen.</p>
-	<p>Compare eso con dos fotografías no relacionadas. La fotografía de abajo tiene un hash difuso de</p>
-	<!--kg-card-begin: markdown-->
+	<p>Compare eso con dos fotografías no relacionadas. La fotografía de abajo tiene un hash difuso de</p><!--kg-card-begin: markdown-->
 	<pre><code>011a0d0323102d048148c92a4773b60d
 0d343c02120615010d1a47017d108b14
 d36fff4561aebb2f088a891208134202
@@ -61,8 +57,7 @@ d36fff4561aebb2f088a891208134202
 1755ff511d14ff5b</code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image7-2.jpg" class="kg-image"></figure>
-	<p>La fotografía de abajo tiene un hash difuso de</p>
-	<!--kg-card-begin: markdown-->
+	<p>La fotografía de abajo tiene un hash difuso de</p><!--kg-card-begin: markdown-->
 	<pre><code>062715154080356b8a52505955997751
 9d221f4624000209034f1227438a8c6a
 894e8b9d675a513873394a2f3d000722

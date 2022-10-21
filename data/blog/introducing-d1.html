@@ -31,11 +31,9 @@
 	<h3 id="creating-your-first-d1-database">Creating your first D1 database</h3>
 	<p>With D1, you will be able to create a database, in just a few clicks — define the tables, insert or upload some data, no need to memorize any commands unless you need to.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
-	<p>Of course, if the command-line is your jam, earlier this week, we announced <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">the new and improved Wrangler 2</a>, the best tool for wrangling and deploying your Workers, and soon also your tool for deploying D1. Wrangler will also come with native D1 support, so you can create &amp; manage databases with a few simple commands:</p>
-	<!--kg-card-begin: html-->
+	<p>Of course, if the command-line is your jam, earlier this week, we announced <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">the new and improved Wrangler 2</a>, the best tool for wrangling and deploying your Workers, and soon also your tool for deploying D1. Wrangler will also come with native D1 support, so you can create &amp; manage databases with a few simple commands:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="accessing-d1-from-your-worker">Accessing D1 from your Worker</h3>
 	<p>Attaching D1 to your Worker is as easy as creating a new binding. Each D1 database that you attach to your Worker gets attached with its own binding on the <code>env</code> parameter:</p>
 	<pre><code class="language-js">export default {

@@ -28,8 +28,7 @@
 	<h2 id="the-rtr-protocol">The RTR protocol</h2>
 	<p>The protocol's core is all about synchronizing a database between a validator and a router. This is done using serial-numbers and session-ids.</p>
 	<p>It’s kicked off with a router setting up a TCP connection towards a backend RTR server followed by a series of serial-number exchanges and data records exchanges such that a cache on the validator (or RTR server) can be synced fully with a cache on the router. As mentioned, the lightweight protocol is void of all the cryptographic data that RPKI is built upon and simply deals with the validated routing list, which consists of CIDRs, ASNs and maybe a MaxLength parameter.</p>
-	<p>Here’s a simple Cisco configuration for enabling RTR on a router:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s a simple Cisco configuration for enabling RTR on a router:</p><!--kg-card-begin: markdown-->
 	<pre><code>router bgp 65001
  rpki server 192.168.1.100
   transport tcp port 8282
@@ -61,8 +60,7 @@
 	<p>Assuming that these operational issues are handled fully then the RTR protocol is a perfect protocol for operationally implementing RPKI’s final linkage into the routers.</p>
 	<h2 id="testing-the-rtr-protocol-and-open-source-rpki-rtr-client">Testing the RTR protocol and open-source rpki-rtr-client</h2>
 	<p>A modern router software stack can be configured to run RTR against a cache. If you have a test lab (as most modern networks do); then you have all you need to see RPKI route filtering (and the dropping of invalid routes).</p>
-	<p>However, if you are without a router and want to see RTR in action, Cloudflare has just placed <a href="https://github.com/cloudflare/rpki-rtr-client" target="_blank">rpki-rtr-client</a> on GitHub. This software, written in Python, performs the router portion of the RTR protocol and comes with enough debug output that it can also be used to help write new RTR caches, or test existing code bases. The code was written directly from the RFC and then tested against a public RTR cache that Cloudflare operates.</p>
-	<!--kg-card-begin: markdown-->
+	<p>However, if you are without a router and want to see RTR in action, Cloudflare has just placed <a href="https://github.com/cloudflare/rpki-rtr-client" target="_blank">rpki-rtr-client</a> on GitHub. This software, written in Python, performs the router portion of the RTR protocol and comes with enough debug output that it can also be used to help write new RTR caches, or test existing code bases. The code was written directly from the RFC and then tested against a public RTR cache that Cloudflare operates.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pip3 install netaddr
 ...
 $ git clone https://github.com/cloudflare/rpki-rtr-client.git
@@ -71,16 +69,14 @@ $ cd rpki-rtr-client
 $
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Operating the client is easy (and doubly-so if you use the Cloudflare provided cache).</p>
-	<!--kg-card-begin: markdown-->
+	<p>Operating the client is easy (and doubly-so if you use the Cloudflare provided cache).</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ./rtr_client.py -h rtr.rpki.cloudflare.com -p 8282
 ...
 ^C
 $
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>As there is no router (and hence no dropping of invalids) this code simply creates data files for later review. See the README file for more information.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As there is no router (and hence no dropping of invalids) this code simply creates data files for later review. See the README file for more information.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ls -lt data/2020-02
 total 21592
 -rw-r--r--  1 martin martin  5520676 Feb 16 18:22 2020-02-17-022209.routes.00000365.json
@@ -91,8 +87,7 @@ total 21592
 $
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>As the RTR protocol communicates and increments its serial-number, the rpki-rtr-client software writes the routing information is a fresh file for later review.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As the RTR protocol communicates and increments its serial-number, the rpki-rtr-client software writes the routing information is a fresh file for later review.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ for f in data/2020-02/*.json ; do echo "$f `jq -r '.routes.announce[]|.ip' &lt; $f | wc -l` `jq -r '.routes.withdraw[]|.ip' &lt; $f | wc -l`" ; done
 data/2020-02/2020-02-17-022209.routes.00000365.json   128483        0
 data/2020-02/2020-02-17-024242.routes.00000838.json   128483        0
@@ -102,8 +97,7 @@ data/2020-02/2020-02-17-043649.routes.00000843.json        9        5
 $
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Valid ROAs are listed as follows:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Valid ROAs are listed as follows:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ jq -r '.routes.announce[]|.ip,.asn,.maxlen' data/2020-02/*0838.json | paste - - - | sort -V | head
 1.0.0.0/24      13335   null
 1.1.1.0/24      13335   null

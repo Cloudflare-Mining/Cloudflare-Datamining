@@ -11,8 +11,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/BLOG-314-Multi-Service-Support-for-Cloudflared.png" class="kg-image"></figure>
 	<p>You can <a href="https://developers.cloudflare.com/argo-tunnel/create-tunnel" target="_blank">create a tunnel</a> by running $ cloudflared tunnel create my_tunnel_name. Once you’ve got a tunnel, you can use <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/dns" target="_blank">DNS records</a> or <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/lb" target="_blank">Cloudflare Load Balancers</a> to route traffic into the tunnel. Once traffic is routed into the tunnel, you can use our new ingress rules to map traffic to local services.</p>
 	<h3 id="map-traffic-with-ingress-rules">Map traffic with ingress rules</h3>
-	<p>An ingress rule basically says “send traffic for <em>this</em> internet URL to <em>this</em> local service.” When you invoke <em>cloudflared </em>it’ll read these ingress rules from the configuration file. You write ingress rules under the ingress<em> </em>key of your config file, like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An ingress rule basically says “send traffic for <em>this</em> internet URL to <em>this</em> local service.” When you invoke <em>cloudflared </em>it’ll read these ingress rules from the configuration file. You write ingress rules under the ingress<em> </em>key of your config file, like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cat ~/cloudflared_config.yaml
 
 tunnel: my_tunnel_name
@@ -38,8 +37,7 @@ ingress:
 	<p>This example maps traffic to three different local services. But cloudflared<em> </em>can map traffic to more than just addresses: it can respond with a given HTTP status (as in the last rule) or with the built-in Hello World test server (as in the second-last rule). See <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank">the docs</a> for a full list of supported services.</p>
 	<p>You can match traffic using the hostname, a path regex, or both. If you don’t use any filters, the ingress rule will match everything (so if you have DNS records from different zones routing into the tunnel, the rule will match all their URLs). Traffic is matched to rules from top to bottom, so in this example, the last rule will match anything that wasn’t matched by an earlier rule. We actually require the last rule to match everything; otherwise, cloudflared<em> </em>could receive a request and not know what to respond with.</p>
 	<h3 id="testing-your-rules">Testing your rules</h3>
-	<p>To make sure all your rules are valid, you can run</p>
-	<!--kg-card-begin: markdown-->
+	<p>To make sure all your rules are valid, you can run</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cat ~/cloudflared_config_invalid.yaml
 
 ingress:
@@ -51,8 +49,7 @@ Validating rules from /usr/local/etc/cloudflared/config.yml
 Validation failed: The last ingress rule must match all URLs (i.e. it should not have a hostname or path filter)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This will check that all your ingress rules use valid regexes and map to valid services, and it’ll ensure that your last rule (and only your last rule) matches all traffic. To make sure your ingress rules do what you expect them to do, you can run</p>
-	<!--kg-card-begin: markdown-->
+	<p>This will check that all your ingress rules use valid regexes and map to valid services, and it’ll ensure that your last rule (and only your last rule) matches all traffic. To make sure your ingress rules do what you expect them to do, you can run</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel ingress rule https://static.example.com/images/dog.gif
 Using rules from ~/cloudflared_config.yaml
 Matched rule #2
@@ -62,8 +59,7 @@ Matched rule #2
 	<!--kg-card-end: markdown-->
 	<p>This will check which rule matches the given URL, almost like a dry run for the ingress rules (no tunnels are run and no requests are actually sent). It’s helpful for making sure you’re routing the right URLs to the right services!</p>
 	<h3 id="per-rule-configuration">Per-rule configuration</h3>
-	<p>Whenever cloudflared<em> </em>gets a request from the internet, it proxies that request to the matching local service on your origin. Different services might need different configurations for this request; for example, you might want to tweak the timeout or HTTP headers for a certain origin. You can set a default configuration for all your local services, and then override it for specific ones, e.g. </p>
-	<!--kg-card-begin: markdown-->
+	<p>Whenever cloudflared<em> </em>gets a request from the internet, it proxies that request to the matching local service on your origin. Different services might need different configurations for this request; for example, you might want to tweak the timeout or HTTP headers for a certain origin. You can set a default configuration for all your local services, and then override it for specific ones, e.g. </p><!--kg-card-begin: markdown-->
 	<pre><code>ingress:
   # Set configuration for all services
   originRequest:

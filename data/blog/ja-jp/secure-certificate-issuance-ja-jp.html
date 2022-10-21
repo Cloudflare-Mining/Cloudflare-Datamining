@@ -21,8 +21,7 @@
 	<p>例えば、アリスという人がドメイン名aliceswonderland.comを購入し、このドメイン専用の証明書を取得しようとしているとします。アリスは、認証局としてLet's Encryptを使用することを選択します。まず、アリスは独自の秘密鍵を生成し、証明書署名要求（CSR）を作成する必要があります。彼女はCSRをLet's Encryptに送信しますが、CAはアリスがaliceswonderland.comを所有していると確認できるまで、そのCSRの証明書と秘密鍵を発行しません。次にアリスは、HTTP認証を通じて、このドメインを所有していることを証明できます。</p>
 	<p>Let's EncryptがHTTP経由でDCVを実行する場合、アリスは、Webサイトの /.well-known/acme-challengeパスにランダムな名前の付いたファイルを配置する必要があります。CAは、http://aliceswonderland.com/.well-known/acme-challenge/&lt;random_filename&gt;に対してHTTP GET要求を送信して、このファイルを取得する必要があります。このエンドポイントに予期された値が存在すれば、DCVは成立します。</p>
 	<p>HTTP認証の場合、アリスはファイルをhttp://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNzにアップロードします。</p>
-	<p>ファイル本文に以下を含みます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ファイル本文に以下を含みます。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz
 
 GET /.well-known/acme-challenge/YnV0dHNz
@@ -36,8 +35,7 @@ YnV0dHNz.TEST_CLIENT_KEY
 	<!--kg-card-end: markdown-->
 	<p>CAは、Base64トークン <code>YnV0dHNz</code>を使用するように指示します。 <code>TEST_CLIENT_KEY</code>は、アカウントにリンクされたキーにあり、証明書の要求者とCAだけが知っています。CAは、このフィールドの組み合わせを使用して、証明書の要求者が実際に当該ドメインを所有していることを確認します。その後、アリスは自身のWebサイト用の証明書を取得することができます。</p>
 	<h3 id="dns-"><strong>DNS認証</strong></h3>
-	<p>ユーザーがドメインの所有権を検証するもう 1 つの方法は、ドメインのリソースレコードにCAからの確認文字列、<em>トークン</em>を含むDNS TXTレコードを追加する方法です。たとえば、これは、Googleに対して認証を行っている企業のドメインの例です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ユーザーがドメインの所有権を検証するもう 1 つの方法は、ドメインのリソースレコードにCAからの確認文字列、<em>トークン</em>を含むDNS TXTレコードを追加する方法です。たとえば、これは、Googleに対して認証を行っている企業のドメインの例です。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"
 </code></pre>

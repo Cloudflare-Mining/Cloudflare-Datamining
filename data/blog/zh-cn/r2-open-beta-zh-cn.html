@@ -16,8 +16,7 @@
 	<h3 id="-s3-api">兼容 S3 的API</h3>
 	<p>对于兼容 S3 的 API，身份验证方式与在 S3 上相同：针对 R2 URL 的 SigV4。SigV4 使用一个密钥对请求进行签名，完成对 R2 的身份验证。这意味着，目前通过互联网对 R2 进行公开访问的唯一方式是托管一个 Worker，将其连接到 R2，并通过其路由请求。</p>
 	<p>要测试兼容 S3 的 API，最简单的方式是使用 S3 客户端。其中一个最流行的 S3 客户端是 <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> SDK。</p>
-	<p>在 Python 中，复制如下脚本，并填入 R2 帐户凭据的 <code>account_id</code>、 <code>access_key</code> 和 <code>secret_access_key</code> 字段。</p>
-	<!--kg-card-begin: markdown-->
+	<p>在 Python 中，复制如下脚本，并填入 R2 帐户凭据的 <code>account_id</code>、 <code>access_key</code> 和 <code>secret_access_key</code> 字段。</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
 

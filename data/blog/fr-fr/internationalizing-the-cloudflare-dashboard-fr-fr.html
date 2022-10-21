@@ -9,14 +9,12 @@
 		<li>Cela permet aux équipes de traducteurs de travailler sur la traduction de ces contenus textuels sans avoir besoin de visualiser ou de modifier le code de l’application.</li>
 		<li>La plupart des traducteurs utilisent généralement des applications de traduction qui automatisent certaines tâches et leur fournissent des outils très utiles (mémoire de traduction, suivi des modifications et différents outils d’analyse et de mise en forme). Ces applications ne sont compatibles qu’avec des formats de fichiers texte standard (par exemple des fichiers json, xml, md ou csv).</li>
 	</ul>
-	<p>Sur le plan technique, la séparation du code d’application et du contenu à traduire permet d’apporter des modifications aux chaînes sans recompiler et/ou redéployer le code. Dans notre application basée sur React, l’extraction de la plupart des chaînes consistait à modifier des blocs de code tels que le suivant :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Sur le plan technique, la séparation du code d’application et du contenu à traduire permet d’apporter des modifications aux chaînes sans recompiler et/ou redéployer le code. Dans notre application basée sur React, l’extraction de la plupart des chaînes consistait à modifier des blocs de code tels que le suivant :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Button&gt;Cancel&lt;/Button&gt;
 &lt;Button&gt;Next&lt;/Button&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Pour obtenir ce qui suit :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour obtenir ce qui suit :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
 &lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
@@ -32,8 +30,7 @@
 	<p>Au moment de l’exécution, l’élément &lt;Trans&gt; recherche la traduction dans le catalogue correspondant à l’identifiant indiqué et insère ensuite cette traduction dans la page (via le DOM). Tout le texte statique d’une application peut être extrait au moyen de simples transformations telles que celle-ci.</p>
 	<p>Cependant, lorsqu’il faut combiner des données dynamiques avec du texte statique, la solution devient un peu plus compliquée. Prenons l’exemple suivant, simple en apparence, qui est truffé de pièges d’internationalisation :</p>
 	<p><code>&lt;span&gt;Vous avez sélectionné { totalSelected } Page Rules.&lt;/span&gt;</code></p>
-	<p>On pourrait être tenté d’extraire cette phrase en la découpant en plusieurs parties, de cette manière :</p>
-	<!--kg-card-begin: markdown-->
+	<p>On pourrait être tenté d’extraire cette phrase en la découpant en plusieurs parties, de cette manière :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;Button&gt;&lt;Trans id="signup.cancel" /&gt;&lt;/Button&gt;
 &lt;Button&gt;&lt;Trans id="signup.next" /&gt;&lt;/Button&gt;
  
@@ -47,8 +44,7 @@
 	<!--kg-card-end: markdown-->
 	<p>Cela suffit à accomplir cette tâche et peut même sembler être une solution élégante. Après tout, les champs <code>selected.prefix</code> et <code>pageRules.suffix</code> semblent destinés à être réutilisés. Malheureusement, le fait de découper des phrases et de reconstituer des éléments traduits de cette manière s’avère être le plus grand écueil de l’extraction de chaînes pour leur internationalisation.</p>
 	<p>Le problème est qu’une fois traduits, les différents mots qui composent une phrase peuvent être <a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">modifiés de différentes manières</a> en fonction du contexte (singulier ou pluriel, genre, accord sujet/verbe, etc.). Cela varie considérablement d’une langue à l’autre, tout comme <a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">l’ordre des mots</a>. En français, par exemple, la phrase « Je mange une pomme » suit un ordre sujet-verbe-complément, alors que d’autres langues peuvent suivre un ordre sujet-complément-verbe (Je une pomme mange), verbe-sujet-complément (Mange je une pomme), ou même d’autres ordres. En raison de ces subtiles différences entre les langues, le fait de coller ensemble des mots traduits individuellement pour reconstituer une phrase entraînera presque toujours des erreurs.</p>
-	<p>L’exemple de code ci-dessus contient des traductions réelles que nous avons reçues de nos équipes de traduction lorsque nous leur avons demandé de traduire « Vous avez sélectionné » et « Page Rules » séparément. Voici ce que donnerait cette phrase une fois traduite dans les différentes langues :</p>
-	<!--kg-card-begin: markdown-->
+	<p>L’exemple de code ci-dessus contient des traductions réelles que nous avons reçues de nos équipes de traduction lorsque nous leur avons demandé de traduire « Vous avez sélectionné » et « Page Rules » séparément. Voici ce que donnerait cette phrase une fois traduite dans les différentes langues :</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -72,8 +68,7 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>À titre de comparaison, nous leur avons également présenté la phrase en entier en employant un caractère de remplacement pour la variable, et voici le résultat :</p>
-	<!--kg-card-begin: markdown-->
+	<p>À titre de comparaison, nous leur avons également présenté la phrase en entier en employant un caractère de remplacement pour la variable, et voici le résultat :</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -98,8 +93,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>Comme vous pouvez le constater, les traductions sont différentes en japonais et en allemand. Voilà un problème à résoudre absolument.</p>
-	<p>Ainsi, afin de garantir que les traducteurs seront en mesure de restituer fidèlement le sens de votre document, vous devez extraire chaque phrase intacte. Notre élément <code>&lt;Trans&gt;</code> permet d’injecter facilement des valeurs dans des modèles de chaînes, ce qui nous permet de faire exactement cela :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ainsi, afin de garantir que les traducteurs seront en mesure de restituer fidèlement le sens de votre document, vous devez extraire chaque phrase intacte. Notre élément <code>&lt;Trans&gt;</code> permet d’injecter facilement des valeurs dans des modèles de chaînes, ce qui nous permet de faire exactement cela :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -130,8 +124,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Les traducteurs disposent ainsi du contexte complet de la phrase, ce qui garantit que tous les mots seront traduits en conservant leur sens originel.</p>
-	<p>Vous avez peut-être remarqué un autre problème potentiel. Que se passe-t-il dans cet exemple lorsque <code>totalSelected</code> est seulement égal à 1 ? Avec le code ci-dessus, l’utilisateur verrait « Vous avez sélectionné 1 Page Rules à supprimer ». La mise au pluriel de la phrase doit être conditionnelle et basée sur la valeur de nos données dynamiques. Il s’agit d’un cas d’utilisation assez courant, et notre élément <code>&lt;Trans&gt;</code> s’en charge automatiquement via la fonctionnalité smart_count :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous avez peut-être remarqué un autre problème potentiel. Que se passe-t-il dans cet exemple lorsque <code>totalSelected</code> est seulement égal à 1 ? Avec le code ci-dessus, l’utilisateur verrait « Vous avez sélectionné 1 Page Rules à supprimer ». La mise au pluriel de la phrase doit être conditionnelle et basée sur la valeur de nos données dynamiques. Il s’agit d’un cas d’utilisation assez courant, et notre élément <code>&lt;Trans&gt;</code> s’en charge automatiquement via la fonctionnalité smart_count :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -158,15 +151,13 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Ici, les versions au singulier et au pluriel sont délimitées par ||||. &lt;Trans&gt; sélectionnera automatiquement la bonne traduction à utiliser en fonction de la variable <code>totalSelected</code>.</p>
-	<p>Un autre obstacle se présente lorsque le balisage est mélangé à un bloc de texte que nous voudrions extraire sous la forme d’une seule chaîne. Par exemple, que faut-il faire pour qu’une phrase apparaisse comme un lien vers une autre page ?</p>
-	<!--kg-card-begin: markdown-->
+	<p>Un autre obstacle se présente lorsque le balisage est mélangé à un bloc de texte que nous voudrions extraire sous la forme d’une seule chaîne. Par exemple, que faut-il faire pour qu’une phrase apparaisse comme un lien vers une autre page ?</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   Don't forget to &lt;Link&gt;verify your email address.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Pour résoudre ce cas d’utilisation, l’élément &lt;Trans&gt; permet d’injecter des éléments arbitraires dans les caractères de remplissage d’une chaîne traduite, par exemple :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour résoudre ce cas d’utilisation, l’élément &lt;Trans&gt; permet d’injecter des éléments arbitraires dans les caractères de remplissage d’une chaîne traduite, par exemple :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;VerificationReminder&gt;
   &lt;Trans id="notification.email_verification" Components={[Link]} componentProps={[{ to: '/profile' }]} /&gt;
 &lt;/VerificationReminder&gt;
@@ -178,8 +169,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Dans cet exemple, l’élément <code>&lt;Trans&gt;</code> remplacera les caractères génériques (&lt;0&gt;,&lt;1&gt;, etc.) par des instances appartenant au type d’élément qui appartient à cette catégorie dans le tableau <code>Components</code> (Éléments). Il transfère également toutes les données indiquées dans <code>componentProps</code> vers cette instance. L’exemple ci-dessus correspondrait à ce qui suit dans React :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dans cet exemple, l’élément <code>&lt;Trans&gt;</code> remplacera les caractères génériques (&lt;0&gt;,&lt;1&gt;, etc.) par des instances appartenant au type d’élément qui appartient à cette catégorie dans le tableau <code>Components</code> (Éléments). Il transfère également toutes les données indiquées dans <code>componentProps</code> vers cette instance. L’exemple ci-dessus correspondrait à ce qui suit dans React :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">// en-US
 &lt;VerificationReminder&gt;
   Don't forget to &lt;Link to="/profile"&gt;verify your email address.&lt;/Link&gt;
@@ -221,15 +211,13 @@
 	</ul>
 	<p>Si vous débutez votre internationalisation dans une nouvelle application web basée sur React, react-intl et i18n-next sont deux bibliothèques populaires qui fournissent un élément similaire à <code>&lt;Trans&gt;</code> décrit ci-dessus.</p>
 	<p>Comme indiqué ci-dessus, le principal problème de l’élément <code>&lt;Trans&gt;</code> est que les chaînes doivent être enregistrées dans un fichier distinct de votre code source. Passer d’un fichier à l’autre lorsque vous écrivez un nouveau code ou modifiez des fonctionnalités existantes est absolument fastidieux. C’est encore pire si les fichiers de traduction sont placés loin dans la structure des répertoires, ce qui est souvent nécessaire.</p>
-	<p>De nouvelles bibliothèques i18n telles que <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a> permettent d’éviter ce problème en appliquant une stratégie de gestion des catalogues de traduction fondée sur l’extraction. Avec ce système, vous utilisez toujours un élément &lt;Trans&gt;, mais les chaînes sont conservées dans l’élément lui-même, et non dans un catalogue séparé :</p>
-	<!--kg-card-begin: markdown-->
+	<p>De nouvelles bibliothèques i18n telles que <a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a> permettent d’éviter ce problème en appliquant une stratégie de gestion des catalogues de traduction fondée sur l’extraction. Avec ce système, vous utilisez toujours un élément &lt;Trans&gt;, mais les chaînes sont conservées dans l’élément lui-même, et non dans un catalogue séparé :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Un outil que vous exécutez au moment de la compilation se charge ensuite de trouver toutes ces chaînes et de les extraire dans des catalogues pour vous. Par exemple, les catalogues suivants seraient générés à partir de ce qui précède :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Un outil que vous exécutez au moment de la compilation se charge ensuite de trouver toutes ces chaînes et de les extraire dans des catalogues pour vous. Par exemple, les catalogues suivants seraient générés à partir de ce qui précède :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">// locales/en_US.json
 {
   "Hmm... We couldn't find any matching websites.": "Hmm... We couldn't find any matching websites.",
@@ -248,13 +236,11 @@
 	<p>Quelle que soit la pile technique avec laquelle vous travaillez, vous trouverez probablement quelques bibliothèques i18n qui pourront vous aider. Leur choix dépend fortement des contraintes techniques de votre application, ainsi que des objectifs et de la culture de votre équipe.</p>
 	<h3 id="nombres-dates-et-heures">Nombres, dates et heures</h3>
 	<p>Nous avons déjà parlé de l’injection de chaînes dont les données ont été traduites, mais nous avons laissé de côté un problème majeur : il se peut qu’il soit nécessaire de les mettre en forme pour qu’elles soient conformes aux pratiques locales des utilisateurs. C’est le cas des dates, des heures, des chiffres, des devises et de quelques autres types de données.</p>
-	<p>Reprenons notre exemple simple de tout à l’heure :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Reprenons notre exemple simple de tout à l’heure :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>L’absence de mise en forme appropriée ne posera pas de problème pour les petits nombres, mais dès que l’on dépassera le millier, la traduction ne sera plus correcte, car la façon dont les chiffres sont groupés et séparés par des symboles <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">diffère selon les cultures</a>. Voici des exemples de mise en forme du nombre trois cent mille et trois centièmes dans plusieurs langues :</p>
-	<!--kg-card-begin: markdown-->
+	<p>L’absence de mise en forme appropriée ne posera pas de problème pour les petits nombres, mais dès que l’on dépassera le millier, la traduction ne sera plus correcte, car la façon dont les chiffres sont groupés et séparés par des symboles <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">diffère selon les cultures</a>. Voici des exemples de mise en forme du nombre trois cent mille et trois centièmes dans plusieurs langues :</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -331,11 +317,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
-	<p>La mise en forme des dates <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">varie considérablement d’un pays à l’autre</a>. Si votre interface utilisateur s’adresse principalement à un public américain, vous afficherez probablement les dates d’une manière qui semblera bizarre et peut-être peu compréhensible pour des utilisateurs originaires de tout autre pays du monde. La mise en forme de la date peut notamment varier en ce qui concerne les caractères de séparation, la présence ou non de zéros devant les chiffres et l’ordre dans lequel sont classés le jour, le mois et l’année. Voici quelques exemples de mise en forme de la date du 4 mars de l’année en cours :</p>
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
+	<p>La mise en forme des dates <a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">varie considérablement d’un pays à l’autre</a>. Si votre interface utilisateur s’adresse principalement à un public américain, vous afficherez probablement les dates d’une manière qui semblera bizarre et peut-être peu compréhensible pour des utilisateurs originaires de tout autre pays du monde. La mise en forme de la date peut notamment varier en ce qui concerne les caractères de séparation, la présence ou non de zéros devant les chiffres et l’ordre dans lequel sont classés le jour, le mois et l’année. Voici quelques exemples de mise en forme de la date du 4 mars de l’année en cours :</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -412,11 +395,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
-	<p>La mise en forme de l’heure est elle aussi très variable. Voici comment est structurée l’heure dans certains pays :</p>
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
+	<p>La mise en forme de l’heure est elle aussi très variable. Voici comment est structurée l’heure dans certains pays :</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -493,17 +473,14 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html--><br>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
 	<p></p>
 	<h3 id="biblioth-ques-permettant-de-g-rer-les-nombres-les-dates-et-les-heures">Bibliothèques permettant de gérer les nombres, les dates et les heures</h3>
 	<p>Il n’est pas facile de respecter la mise en forme de tous ces types de données dans toutes les langues. Heureusement, vous pouvez utiliser un certain nombre de bibliothèques bien établies et éprouvées.</p>
 	<p>Lorsque nous avons lancé notre projet, nous avions très souvent recours à la bibliothèque <a href="https://momentjs.com/" target="_blank">Moment.js</a> pour la mise en forme de la date et de l’heure. Cette bibliothèque très pratique permet de remplacer les dates par des formats de longueur différente (« Jeudi » au lieu de « 9 juillet 2020 » ou « 9 juil. 2020 ») et d’afficher des dates relatives (« il y a 2 jours »), entre autres choses. Comme presque toutes nos dates étaient déjà mises en forme avec Moment.js pour des raisons de lisibilité, et comme Moment.js prend déjà en charge i18n pour un grand nombre de langues, un petit nombre de manipulations nous ont suffi à adapter les dates sans grandes difficultés.</p>
 	<p>Moment.js fait l’objet de critiques sévères (surtout en raison de son caractère surchargé), mais en fin de compte, le recours à une solution moins lourde par rapport à ce que coûterait la remise en forme de chaque date et de chaque heure ne présenterait pas d’avantages.</p>
 	<p>Il en va tout autrement pour les chiffres. Comme vous pouvez l’imaginer, notre tableau de bord affichait des milliers de chiffres bruts et non formatés. Leur recherche était une opération laborieuse et souvent manuelle.</p>
-	<p>Pour gérer le formatage des chiffres, nous avons utilisé l’<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">API Intl </a>(la bibliothèque d’internationalisation définie par la norme ECMAScript) :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour gérer le formatage des chiffres, nous avons utilisé l’<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">API Intl </a>(la bibliothèque d’internationalisation définie par la norme ECMAScript) :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!
@@ -512,8 +489,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>Heureusement, Intl est devenu assez largement compatible avec les navigateurs ces dernières années, tous les navigateurs modernes étant pleinement compatibles.</p>
 	<p>Certains moteurs JavaScript modernes tels que V8 se sont même éloignés des réalisations JavaScript auto-hébergées de ces bibliothèques en faveur de compilations en C++, <a href="https://v8.dev/blog/intl" target="_blank">ce qui permet d’accélérer considérablement</a>.</p>
 	<p>Toutefois, les anciens navigateurs ne sont pas toujours pris en charge. Voici un <a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">site de démonstration simple</a> (<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">code source</a>) développé avec <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/" target="_blank"> </a>qui montre comment les dates, les heures et les nombres sont affichés dans plusieurs langues.</p>
-	<p>Certaines associations de navigateurs et de systèmes d’exploitation anciens donneront des résultats peu satisfaisants. Par exemple, voici comment les dates et les heures susmentionnées sont affichées sous Windows &nbsp;8 avec Internet Explorer 10 :</p>
-	<!--kg-card-begin: html-->
+	<p>Certaines associations de navigateurs et de systèmes d’exploitation anciens donneront des résultats peu satisfaisants. Par exemple, voici comment les dates et les heures susmentionnées sont affichées sous Windows &nbsp;8 avec Internet Explorer 10 :</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
 			<tr>
@@ -521,8 +497,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 				<td><img style="border-width: 0px; margin: 5px;" src="https://blog.cloudflare.com/content/images/2020/07/image2-7.png" alt="" width="283" height="343"></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Si vous devez prendre en charge des navigateurs plus anciens, ce problème peut être résolu à l’aide d’un polyfill.</p>
 	<h3 id="traduction">Traduction</h3>
 	<p>Toutes les chaînes étant extraites et toutes les données injectées étant soigneusement mises en forme selon des modèles locaux, la majeure partie du travail technique est achevée. À ce stade, nous pouvons maintenant affirmer que nous avons internationalisé notre application, puisque nous l’avons adaptée de manière à la rendre facile à traduire.</p>
@@ -538,8 +513,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		<li>Des chaînes génériques sont ajoutées pour toutes les langues lorsque de nouvelles chaînes sont ajoutées à notre catalogue de base.</li>
 	</ul>
 	<p>Ensuite, les catalogues de traduction sont envoyés au système de gestion des traductions via l’interface utilisateur ou des appels automatiques à l’API. Avant de les confier aux traducteurs, chaque chaîne est comparée à d’anciennes traductions présentes sous forme de chaînes et sous-chaînes dans une mémoire de traduction. Si une correspondance est trouvée, la traduction existante est utilisée. Non seulement cela permet de réduire les coûts en évitant de traduire à nouveau des chaînes déjà traduites auparavant, mais le fait de réutiliser des traductions déjà contrôlées et approuvées dans la mesure du possible contribue à améliorer la qualité.</p>
-	<p>Imaginons que vos fichiers de traduction finissent par ressembler à ceci :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Imaginons que vos fichiers de traduction finissent par ressembler à ceci :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">{
  "verify.button": "Verify Email",
  "other.verify.button": "Verify Email",

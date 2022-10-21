@@ -14,14 +14,12 @@
 	<p>Alarms are more fine-grained than Cron Triggers. While a Workers service can have up to three Cron Triggers configured at once, it can have an unlimited amount of Durable Objects, each of which can have a single alarm active at a time.</p>
 	<p>Alarms are directly scheduled from and invoke a function within your Durable Object. Cron Triggers, on the other hand, are not programmatic — they execute based on their schedules, which have to be configured via the Cloudflare Dashboard or centralized configuration APIs.</p>
 	<h3 id="how-do-i-use-alarms">How do I use Alarms?</h3>
-	<p>First, you’ll need to add the <code>durable_object_alarms</code> compatibility flag to your <code>wrangler.toml</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, you’ll need to add the <code>durable_object_alarms</code> compatibility flag to your <code>wrangler.toml</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-toml">compatibility_flags = ["durable_object_alarms"]
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Next, implement an <code>alarm()</code> handler in your Durable Object that will be called when the alarm executes. From anywhere else in your Durable Object, call <code>state.storage.setAlarm()</code> and pass in a time for the alarm to run at. You can use <code>state.storage.getAlarm()</code> to retrieve the currently set alarm time.</p>
-	<p>In this example, we implemented an alarm handler that wakes the Durable Object up once every 10 seconds to batch requests to a single Durable Object, deferring processing until there is enough work in the queue for it to be worthwhile to process them.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example, we implemented an alarm handler that wakes the Durable Object up once every 10 seconds to batch requests to a single Durable Object, deferring processing until there is enough work in the queue for it to be worthwhile to process them.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
   async fetch(request, env) {
     let id = env.BATCHER.idFromName("foo");

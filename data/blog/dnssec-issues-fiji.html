@@ -7,8 +7,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-2-1.png" class="kg-image"></figure>
 	<p>This observation suggests that the problem was strictly DNS related, rather than connectivity related—Cloudflare Radar does not show any indication of an Internet disruption in Fiji coincident with the start of this problem.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image4.png" class="kg-image"></figure>
-	<p>It was suggested within the <a href="https://news.ycombinator.com/item?id=30597091" target="_blank">Hacker News comments</a> that the problem could be DNSSEC related. Upon further investigation, it appears that may be the cause. In verifying the DNSSEC record for the .fj ccTLD, shown in the <code>dig</code> output below, we see that it states <code>EDE: 9 (DNSKEY Missing): 'no SEP matching the DS found for fj.'</code></p>
-	<!--kg-card-begin: markdown-->
+	<p>It was suggested within the <a href="https://news.ycombinator.com/item?id=30597091" target="_blank">Hacker News comments</a> that the problem could be DNSSEC related. Upon further investigation, it appears that may be the cause. In verifying the DNSSEC record for the .fj ccTLD, shown in the <code>dig</code> output below, we see that it states <code>EDE: 9 (DNSKEY Missing): 'no SEP matching the DS found for fj.'</code></p><!--kg-card-begin: markdown-->
 	<pre><code>kdig fj. soa +dnssec @1.1.1.1 
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY; status: SERVFAIL; id: 12710
 ;; Flags: qr rd ra; QUERY: 1; ANSWER: 0; AUTHORITY: 0; ADDITIONAL: 1
@@ -30,8 +29,7 @@
 	<p>Ultimately, it appears that around midnight UTC, the .fj zone started to be signed with a key that was not in the root zone DS, possibly as the result of a scheduled rollover that happened without checking that the root zone was updated first by IANA, which updates the root zone. (IANA owns contact with the TLD operators, and instructs the Root Zone Publisher on the changes to make in the next version of the root zone.)</p>
 	<p>DNSSEC problems as the root cause of the observed issue align with the observation in the Hacker News comments that some were able to access .fj websites, while others were not. Users behind resolvers doing strict DNSSEC validation would have seen an error in their browser, while users behind less strict resolvers would have been able to access the sites without a problem.</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>Further analysis of Cloudflare resolver metrics indicates that the problem was resolved around 1400 UTC, when the DS was updated. When DNSSEC is improperly configured for a single domain name, it can cause problems accessing websites or applications in that zone. However, when the misconfiguration occurs at a ccTLD level, the impact is much more significant. Unfortunately, this seems to <a href="https://ianix.com/pub/dnssec-outages.html" target="_blank">occur</a> all too often.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Further analysis of Cloudflare resolver metrics indicates that the problem was resolved around 1400 UTC, when the DS was updated. When DNSSEC is improperly configured for a single domain name, it can cause problems accessing websites or applications in that zone. However, when the misconfiguration occurs at a ccTLD level, the impact is much more significant. Unfortunately, this seems to <a href="https://ianix.com/pub/dnssec-outages.html" target="_blank">occur</a> all too often.</p><!--kg-card-begin: markdown-->
 	<p><small>(Thank you to Ólafur Guðmundsson for his DNSSEC expertise.)</small></p>
 	<!--kg-card-end: markdown-->
 </div>

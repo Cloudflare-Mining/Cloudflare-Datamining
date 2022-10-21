@@ -18,15 +18,13 @@
 	<p>MicrosoftのAzure Key Vaultチームは、2020年9月22日に<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">マネージドHSMをパブリックプレビューでリリースし</a>ました。このサービスは、FIPS140-2 レベル3で検証済みで、Azureストレージ、Azure SQL、Azur情報保護などのAzureサービスと統合されています。マネージドHSMのパブリックプレビューは、East Us 2(米国東部）、south Central US(米国中南部)、North Europe(北ヨーロッパ)、West Europe（西ヨーロッパ）の各リージョンでご利用いただけます。</p>
 	<p>以下の手順は、クイックスタートから取得したものです。<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">クイックスタート：Azure CLIを使ってマネージドHSMのプロビジョニングとアクティブ化</a>の後に、CloudflareのマネージドHSMの使用に関する手順が記載されています。コマンドは、HSMと同じリージョン (米国中南部) で作成されたUbuntu VM上で実行されています。同じ場所でCloudflare Keyless SSLデーモンもデプロイする予定です。</p>
 	<h3 id="hsm--1">HSMのプロビジョニングとアクティブ化</h3>
-	<p>まず、CLIを経由してログインし、サポートされているリージョンの1つで、マネージドHSMのリソースグループを作成します。サービスのプレビューステータスに基づいて、さまざまなコマンドから警告が表示される場合があります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>まず、CLIを経由してログインし、サポートされているリージョンの1つで、マネージドHSMのリソースグループを作成します。サービスのプレビューステータスに基づいて、さまざまなコマンドから警告が表示される場合があります。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
 $ az login
 $ az group create --name $GROUPNAME --location $LOCATION
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>次に、HSMリソースをプロビジョニングし、<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">セキュリティードメイン</a>をダウンロードして有効化します。次の例では、ログインしたユーザーに管理者アクセス権を付与しており、別の管理者はそのユーザーがログインしているCLIから同じ oid=$ (...) コマンドを実行することでOIDを取得できます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次に、HSMリソースをプロビジョニングし、<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">セキュリティードメイン</a>をダウンロードして有効化します。次の例では、ログインしたユーザーに管理者アクセス権を付与しており、別の管理者はそのユーザーがログインしているCLIから同じ oid=$ (...) コマンドを実行することでOIDを取得できます。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
 $ OTHERADMIN_OID=...
 
@@ -63,13 +61,11 @@ sHSM",
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>上記のコマンドから返される<strong>hsmUri</strong>プロパティを記録しておきます。これは、仮想マシンでKeyless SSLを設定するときにすぐに必要になります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>上記のコマンドから返される<strong>hsmUri</strong>プロパティを記録しておきます。これは、仮想マシンでKeyless SSLを設定するときにすぐに必要になります。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>HSMがプロビジョニングされたので、少なくとも3つのRSAパブリックキーを指定する必要があります。HSMは、これらのキーを使用してセキュリティードメインを暗号化し、ユーザーに返します。その後、HSMが使用できるようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>HSMがプロビジョニングされたので、少なくとも3つのRSAパブリックキーを指定する必要があります。HSMは、これらのキーを使用してセキュリティードメインを暗号化し、ユーザーに返します。その後、HSMが使用できるようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
@@ -77,15 +73,13 @@ $ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>「MSIへの接続に失敗しました」というエラーが表示され、Azureポータルからクラウドシェルを使用している場合は、既知の問題であるため、azログインを再試行します。</p>
-	<p>HSMをプロビジョニングしたら、keyvaultに<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">プライベートキーを追加</a>します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>HSMをプロビジョニングしたら、keyvaultに<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">プライベートキーを追加</a>します。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ az keyvault key import --KeylessHSM
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>これにより、後でKeyless YAMLファイルに追加するURIが返され、プライベートキーが保存されている場所が示されます。</p>
 	<p>HSMのプロビジョニングとアクティブ化が完了したら、Keylessデーモンをデプロイする仮想マシン（VM）を作成する必要があります。この例では、AzureでUbuntu Xenial仮想マシンを作成します。ポータルで、「仮想マシン」ページに移動し、VMを追加します。そこでは、HSM用に以前に作成したリソースグループを使用できます。最適な結果を得るには、HSM用のリージョンと同じリージョンを選択します。仮想マシンのパブリック IPを書き留めます。これを使用してサーバーにリモート接続します。</p>
-	<p>次に、仮想マシンをキーサーバーに設定します。最初に、<a href="https://pkg.cloudflare.com/" target="_blank">Cloudflareパッケージリポジトリ</a>を追加する必要があります。次に、OSのパッケージリストを更新し、gokeylessサーバーをインストールします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次に、仮想マシンをキーサーバーに設定します。最初に、<a href="https://pkg.cloudflare.com/" target="_blank">Cloudflareパッケージリポジトリ</a>を追加する必要があります。次に、OSのパッケージリストを更新し、gokeylessサーバーをインストールします。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ apt-get update
 $ echo 'deb http://pkg.cloudflare.com/Xenial main' |
 sudo tee /etc/apt/sources.list.d/cloudflare-main.list
@@ -94,13 +88,11 @@ $ apt-get update
 $ apt-get install gokeyless
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>続いて、gokeyless YAMLファイルを更新します。ここでは、キーサーバーのホスト名を追加します。このホスト名には、VM、ゾーンID、オリジンCA APIキーを指すDNSレコードが必要です。ゾーンIDとオリジンCA APIキーは、Cloudflareダッシュボードで見つけられます。さらに、private_key_storesの下にあるプライベートキーのディレクトリを指すURIを指定します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>続いて、gokeyless YAMLファイルを更新します。ここでは、キーサーバーのホスト名を追加します。このホスト名には、VM、ゾーンID、オリジンCA APIキーを指すDNSレコードが必要です。ゾーンIDとオリジンCA APIキーは、Cloudflareダッシュボードで見つけられます。さらに、private_key_storesの下にあるプライベートキーのディレクトリを指すURIを指定します。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ vim /etc/keyless/gokeyless.yaml
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>最後に、keylessサーバーを起動します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最後に、keylessサーバーを起動します。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ service gokeyless start
 
 </code></pre>

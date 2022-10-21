@@ -11,8 +11,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/1-1.png" class="kg-image"></figure>
 	<p>Configuring a Gateway <strong>location</strong>, shown below, is the first step. </p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/2-1.png" class="kg-image"></figure>
-	<p>Conceptually similar to HTTPS traffic, when our edge receives an HTTPS request, we match the incoming SNI header to the correct domain’s configuration (or for plain text HTTP the Host header). And when our edge receives a DNS query, we need a similar mapping to identify the correct configuration. We attempt to match configurations, in this order:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Conceptually similar to HTTPS traffic, when our edge receives an HTTPS request, we match the incoming SNI header to the correct domain’s configuration (or for plain text HTTP the Host header). And when our edge receives a DNS query, we need a similar mapping to identify the correct configuration. We attempt to match configurations, in this order:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>DNS over HTTPS check and lookup based on unique hostname</li>
 		<li>IPv4 check and lookup based on source IPv4 address</li>
@@ -25,8 +24,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/3.png" class="kg-image"></figure>
 	<p>DNS over HTTPS is my favorite method for deploying Gateway and securing DNS queries at the same time. Enabling DoH prevents anyone but the DNS server of your choosing from seeing your <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS queries</a>. </p>
 	<h4 id="enabling-dns-over-https-in-browsers">Enabling DNS over HTTPS in browsers</h4>
-	<p>By enabling it in a browser, only queries issued in that browser are affected. It’s available in most browsers and there are quite a few tutorials online to show you how to turn it on. </p>
-	<!--kg-card-begin: markdown-->
+	<p>By enabling it in a browser, only queries issued in that browser are affected. It’s available in most browsers and there are quite a few tutorials online to show you how to turn it on. </p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -81,8 +79,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>* Chromium based browser. Same support as Chrome<br>
 			** Most recent version of <a href="https://support.microsoft.com/en-us/help/4501095/download-the-new-microsoft-edge-based-on-chromium" target="_blank">Edge is built on Chromium</a><small></small></small></p><small><small>
 			<!--kg-card-end: markdown-->

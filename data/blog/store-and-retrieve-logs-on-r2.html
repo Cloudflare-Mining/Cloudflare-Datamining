@@ -11,8 +11,7 @@
 	<h3 id="storing-logs-on-r2">Storing Logs on R2</h3>
 	<p>To create Logpush jobs pushing to R2, you can use either the dashboard or Cloudflare API. Using the dashboard, you can create a job and select R2 as the destination during configuration:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-26.png" class="kg-image"></figure>
-	<p>To use the Cloudflare API to create the job, do something like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To use the Cloudflare API to create the job, do something like:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -s -X POST 'https://api.cloudflare.com/client/v4/zones/&lt;ZONE_ID&gt;/logpush/jobs' \
 -H "X-Auth-Email: &lt;EMAIL&gt;" \
 -H "X-Auth-Key: &lt;API_KEY&gt;" \
@@ -27,8 +26,7 @@
 	<!--kg-card-end: markdown-->
 	<p>Please see <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/r2/" target="_blank">Logpush over R2</a> docs for more information.</p>
 	<h3 id="log-retrieval-on-r2">Log Retrieval on R2</h3>
-	<p>If you have your logs pushed to R2, you could use the Cloudflare API to retrieve logs in specific time ranges like the following:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you have your logs pushed to R2, you could use the Cloudflare API to retrieve logs in specific time ranges like the following:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -s -g -X GET 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/logs/retrieve?start=2022-09-25T16:00:00Z&amp;end=2022-09-25T16:05:00Z&amp;bucket=&lt;YOUR_BUCKET&gt;&amp;prefix=&lt;YOUR_FILE_PREFIX&gt;/{DATE}' \
 -H "X-Auth-Email: &lt;EMAIL&gt;" \
 -H "X-Auth-Key: &lt;API_KEY&gt;" \ 

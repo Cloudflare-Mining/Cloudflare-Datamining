@@ -6,8 +6,7 @@
 	<h2 id="-r2">Какие возможности дает R2?</h2>
 	<h3 id="-s3">Совместимость с S3</h3>
 	<p>R2 предоставляет разработчикам привычный интерфейс для хранения данных, API S3. Совместимость с S3 позволяет с легкостью осуществить миграцию ваших приложений и немедленно начать пользоваться преимуществами R2.</p>
-	<p>Давайте посмотрим на некоторые базовые операции с данными на JavaScript. Чтобы проделать их самостоятельно, вам нужно будет <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">сгенерировать ключ доступа</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Давайте посмотрим на некоторые базовые операции с данными на JavaScript. Чтобы проделать их самостоятельно, вам нужно будет <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">сгенерировать ключ доступа</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// First we import our bindings as usual
 import {
   S3Client,
@@ -39,8 +38,7 @@ console.log(
 	<p>В будущем R2 будет использовать анализ запросов на доступ для автоматической оптимизации мест хранения данных, чтобы обеспечить наилучшее качество обслуживания пользователей.</p>
 	<h3 id="-cloudflare-workers">Интеграция с Cloudflare Workers</h3>
 	<p>Платформа Workers предоставляет разработчикам мощные вычислительные ресурсы по всей сети Cloudflare. При развертывании на Workers ваш код автоматически размещается в <a href="https://www.cloudflare.com/network/" target="_blank">более чем 275 точках присутствия</a> Cloudflare по всему миру. Workers в сочетании с R2 дает возможность разработчикам добавлять к данным собственную логику, без ущерба для производительности. Workers построена на изолятах, а не на контейнерах, поэтому в ней отсутствует проблема долгих холодных запусков.</p>
-	<p>Давайте попробуем создать простой REST API для корзины R2. Сначала <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">создайте</a> корзину, затем добавьте к своему воркеру <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">связку</a> с R2.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Давайте попробуем создать простой REST API для корзины R2. Сначала <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">создайте</a> корзину, затем добавьте к своему воркеру <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">связку</a> с R2.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,8 +73,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>Таким образом, с помощью Workers API мы можем добавлять к горячему пути запроса R2 самую разнообразную полезную логику.</p>
 	<h3 id="-url">Предварительно подписанные URL</h3>
-	<p>Иногда у вас будет возникать необходимость разрешить пользователям доступ к отдельным объектам в R2, не создавая при этом для них ненужных барьеров. С помощью предварительно подписанного URL можно предоставить пользователю разрешение для любой уникальной комбинации объекта и действия. Можно создать предварительно подписанный URL, чтобы разрешить пользователю выгрузить файл или поделиться файлом, не предоставляя ему при этом доступа ко всей корзине.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Иногда у вас будет возникать необходимость разрешить пользователям доступ к отдельным объектам в R2, не создавая при этом для них ненужных барьеров. С помощью предварительно подписанного URL можно предоставить пользователю разрешение для любой уникальной комбинации объекта и действия. Можно создать предварительно подписанный URL, чтобы разрешить пользователю выгрузить файл или поделиться файлом, не предоставляя ему при этом доступа ко всей корзине.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand

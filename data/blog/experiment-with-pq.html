@@ -26,8 +26,7 @@
 	<p>With that out of the way, it’s…</p>
 	<h2 id="demo-time-">Demo time!</h2>
 	<h3 id="boringssl">BoringSSL</h3>
-	<p>With the following commands build our <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">fork of BoringSSL</a> and create a TLS connection with pq.cloudflareresearch.com using the compiled <code>bssl</code> tool. Note that we do not enable the post-quantum key agreements by default, so you have to pass the <code>-curves</code> flag.</p>
-	<!--kg-card-begin: markdown-->
+	<p>With the following commands build our <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">fork of BoringSSL</a> and create a TLS connection with pq.cloudflareresearch.com using the compiled <code>bssl</code> tool. Note that we do not enable the post-quantum key agreements by default, so you have to pass the <code>-curves</code> flag.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ git clone https://github.com/cloudflare/boringssl-pq
 [snip]
 $ cd boringssl-pq &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. -GNinja &amp;&amp; ninja 
@@ -53,8 +52,7 @@ Connected.
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="go">Go</h3>
-	<p>Our <a href="https://github.com/cloudflare/go" target="_blank">Go fork</a> doesn’t enable the post-quantum key agreement by default. The following simple Go program enables PQ by default for the http package and GETs pq.cloudflareresearch.com.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our <a href="https://github.com/cloudflare/go" target="_blank">Go fork</a> doesn’t enable the post-quantum key agreement by default. The following simple Go program enables PQ by default for the http package and GETs pq.cloudflareresearch.com.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">​​package main
 
 import (
@@ -87,8 +85,7 @@ func main() {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To run we need to compile our <a href="https://github.com/cloudflare/go" target="_blank">Go fork</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To run we need to compile our <a href="https://github.com/cloudflare/go" target="_blank">Go fork</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ git clone https://github.com/cloudflare/go
 [snip]
 $ cd go/src &amp;&amp; ./all.bash

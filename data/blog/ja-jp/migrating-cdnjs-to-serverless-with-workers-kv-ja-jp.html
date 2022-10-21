@@ -5,10 +5,8 @@
 	<p>詳しくない方のためにご説明すると、cdnjsとは「コンテンツ配信ネットワーク（CDN）for JavaScript（JS）」の頭文字語です。<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">CDN</a>は、単にインターネットミームや猫の動画、またはHTMLページなどインターネットコンテンツを提供するサーバーの地理的に分散されたネットワークのことです。当社の場合、CDNはCloudflareのグローバルに分散された200以上のデータセンターの<a href="https://blog.cloudflare.com/cloudflare-network-expands-to-more-than-100-countries/">ネットワークの拡大</a>を指します。</p>
 	<p>では、これとみなさまがどのように関わっていくのかをご説明します。まず、ページ読み込み時間が超高速になります。事実上これを含めて、どのWebサイトでも読み込むためにJSライブラリを取得する必要があります。たとえば、シドニーを拠点にするWebサイトを訪れるとします。このサイトは、<a href="https://w3techs.com/technologies/details/js-jquery" target="_blank">76.2%</a>のWebサイトで見られる人気ライブラリであるjQueryからのローカルファイルを含んでいます。New Yorkからこのサイトにアクセスした場合、遅延に気づくかもしれません。TLSハンドシェイク を含むラウンドトリップにかかる時間はもちろん、ファイルの取得するために300ミリ秒を軽く超えてしまうからです。しかし、このWebサイトがcdnj.cloudflare.comを使ってjQueryを参照すると、バッファローにある直近のCloudflareデータセンターからファイルを取り出すことができて、レイテンシーが驚きの20ミリ秒まで短縮します。</p>
 	<p>cdnjsは水面下で稼働していますが、<a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank">11%以上</a>のWebサイトで使用され、インターネットをはるかに速くし、さらに信頼性の高い場所に変えてくれています。7月、cdnjsはおよそ190億件ものリクエストを処理しました。データの量は3.46PB（ペタバイト）です。</p>
-	<h3 id="-">ファイルの保存場所</h3>
-	<!--kg-card-begin: html-->
-	<p><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
-	<!--kg-card-end: html-->
+	<h3 id="-">ファイルの保存場所</h3><!--kg-card-begin: html-->
+	<p><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p><!--kg-card-end: html-->
 	<p>cdnjsがインターネットのスピードアップさせていますが、もちろん魔法ではありません。</p>
 	<p>これまでは、Cloudflareのコアデータセンター１か所で<a href="https://www.cloudflare.com/load-balancing/" target="_blank">負荷分散された</a>マシンの多くは、cdnjs.cloudflare.comのオリジンとして機能する補助記憶装置から定期的にcdnjsファイルをプルしてきました。新しいファイルがリクエストされると、Cloudflareが<a href="https://www.cloudflare.com/learning/cdn/what-is-caching/" target="_blank">キャッシュ</a>して、どのデータセンターからでも迅速に取得できるようにしました。</p>
 	<p>補助記憶装置は、オープンソースの<a href="https://github.com/" target="_blank">GitHub</a>リポジトリの形式で、JS、CSSや他のWebライブラリのカタログです。ということは、みなさんも含めて、誰でもレビューやその他のプロセスの対象として貢献できるということです。</p>
@@ -34,10 +32,8 @@
 	<p>そして、このアイディアが頭に浮かびました。Workers KVに圧縮されたバージョンのcdnjsファイルを保管することができ、容量の大きいファイル問題を解決するだけでなく、ファイルの処理方法も最適化できます。</p>
 	<p>インターネット料金を支払っている場合、<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world/">帯域幅が高額</a>になってしまうのはお分かりでしょう。そのため、すべての最新ブラウザで、利用可能なときは常に、<a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805/">圧縮されたWebコンテンツ</a>を取得することにします。同様にCloudflare内でも、帯域幅を削減するために、可能な時は常に徹底して圧縮されたコンテンツを処理して<a href="https://blog.cloudflare.com/results-experimenting-brotli/">オンザフライ圧縮を試行</a>してみました。その結果、<a href="https://github.com/google/brotli" target="_blank">Brotli </a>フォームと<a href="https://www.gzip.org/" target="_blank">gzip</a>フォームの両方でWorkers KVに書き込んで、早めにすべてのcdnjsファイルを圧縮することに決めました。そうすることで、レイテンシー要件がなくなり、オンザフライ圧縮よりも圧力レベルを高くすることができました。</p>
 	<p>つまり今、cdnjsファイルは速くてコンパクトに処理できているということです！</p>
-	<h3 id="cdnjs--1">cdnjsの大変身</h3>
-	<!--kg-card-begin: html-->
-	<p><a href="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" target="_blank" rel="noopener"><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" width="800" height="498"></a></p>
-	<!--kg-card-end: html-->
+	<h3 id="cdnjs--1">cdnjsの大変身</h3><!--kg-card-begin: html-->
+	<p><a href="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" target="_blank" rel="noopener"><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" width="800" height="498"></a></p><!--kg-card-end: html-->
 	<p>今日では、cdnjsのJavaScriptライブラリを含めたい場合にまず、GitHub上のPRを当社の新しいリポジトリ<a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/package</a>に作成します。リポジトリは50MBで簡単にクローンでき、何千ものJSONファイルで構成されます。JSONファイルはそれぞれcdnjsパッケージとnpmまたはgitからどのように自動更新されるかを記述します。ファイルが（<a href="https://github.com/cdnjs/tools" target="_blank">新規ボット</a>によって）自動化されたCIに検証されると、メンテナーがマージし、パッケージは自動的に、自動更新サービスでエンロールされます。</p>
 	<p>新システムでは、セキュリティと保守性が優先されます。まず始めとして、cdnjsバージョンファイルは新バージョンとマージする際、当社のボットが作成して人によるエラーを最小限に抑えます。<a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/package</a>のJSONファイルを間違えを起こしやすい人間が追加しますが、メンテナーに承認される前に当社のボットで検査します。各ファイルは、自動的に<a href="https://github.com/cdnjs/tools/blob/master/schema_human.json" target="_blank">JSONスキーマ</a>が検証され、npmまたはGitHubの人気度もチェックされます。</p>
 	<p>ボットは、新しいリリースを検出すると、Brotliとgzipで圧縮されたバージョンのファイルをWorkers KV内のファイルネームスペースへプッシュします。各エントリで、ボットは<a href="https://blog.cloudflare.com/catching-up-with-workers-kv/">Workers KVのメタデータ</a>を<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag" target="_blank">Etag</a>と<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified" target="_blank">Last-Modified</a> HTTPヘッダーのために書きます。以前のように、ボットは圧縮されていないファイルの<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">サブリソース完全性</a>（SRI）ハッシュも算出しますが、今ではWorkers KVのSRIネームスペースの代わりにそれをプッシュします。</p>

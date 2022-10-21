@@ -4,9 +4,7 @@
 	<p>「サーバーレス」アプローチを使用すれば、導入がシンプルになり、<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">分離テクノロジー</a>を使用すれば、サーバーレスをより安価に、他社プロバイダーとは異なり、<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">長いコールドスタートなしで</a>提供できます。当社では使いやすく、最終的には一貫性のあるエッジストレージを、Workers KVと共にプラットフォームに追加しました。</p>
 	<p>しかし、今日まで、一貫性のある状態を管理したり、複数のクライアント間でリアルタイムで調整したりするなど、すべてをエッジで行うことは不可能でした。したがって、アプリケーションのこれらの部分は別の場所でホストされる必要がありました。</p>
 	<p>Durable Objects は、ストレージとステートに対して真にサーバーレスなアプローチを提供します。一貫性、低レイテンシー、分散型でありながら、メンテナンスと拡張が容易です。また、クライアント間の調整も簡単に行えます。たとえば、特定のチャットルームにいるユーザー、特定のドキュメントの編集者、特定のスマートホーム内の IoT デバイスなどです。Workersスタックの欠けている部分を補うことで、アプリケーション全体をエッジ上で完全に実行でき、一元化された「オリジンサーバー」は全く必要なくなります。</p>
-	<p>今日から当社は、Durable Objectsの非公開ベータ版の提供をはじめます。</p>
-	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ベータ版への招待をリクエストする »</a>
-	<!--kg-card-end: html-->
+	<p>今日から当社は、Durable Objectsの非公開ベータ版の提供をはじめます。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ベータ版への招待をリクエストする »</a><!--kg-card-end: html-->
 	<h3 id="-durable-object-">「Durable Object」とは？</h3>
 	<p>正直に言うと、この製品の名前を考えることは困難でした。なぜなら、今日広く使用されている他のクラウドテクノロジーとは異なるものだからです。些細なことに議論は白熱しましたが、最終的には「Unique Durable Objects」または短いバージョンの「Durable Objects」に決まりました。単語の意味を一つずつ、説明したいと思います。</p>
 	<ul>
@@ -34,8 +32,7 @@
 	<p>Durable Ocjectsがこれを簡単にします。Durable Objectsは、簡単に調整ポイントを割り当てるだけでなく、Cloudflareは、それを使用するユーザーの近くにコーディネーターを自動的に作成し、必要に応じて移行し、遅延を最小限に抑えます。ローカルで耐久性のあるストレージを利用できるため、最終的な長期保存までのペースが遅い場合でも、ドキュメントへの変更を瞬時に確実に保存できます。または、ドキュメント全体をエッジに格納して、データベースを完全に放棄することもできます。</p>
 	<p>バリアを少なくなるので、リアルタイムコラボレーションがWeb全体で標準になることが期待されます。ユーザーに更新させる理由はもうありません。</p>
 	<h3 id="--3">例：原子カウンター</h3>
-	<p>ここでは、Durable Objectsのとてもシンプルな例で、その増減をHTTPを介して読み取ることができるものをご紹介します。このカウンターは、複数のクライアントから同時にリクエストを受信する場合でも一貫性があり<em> </em> 、増分や減少は失われません。同時に、読み取りはメモリから完全に処理され、ディスクアクセスは必要ありません。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ここでは、Durable Objectsのとてもシンプルな例で、その増減をHTTPを介して読み取ることができるものをご紹介します。このカウンターは、複数のクライアントから同時にリクエストを受信する場合でも一貫性があり<em> </em> 、増分や減少は失われません。同時に、読み取りはメモリから完全に処理され、ディスクアクセスは必要ありません。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export class Counter {
   // Constructor called by the system when the object is needed to
   // handle requests.
@@ -87,8 +84,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>クラスが一度Durable Objectのネームスペースにつながると、Counterの特定のインスタンスは、次のようなコードを使用して、世界中どこからでもアクセスできます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>クラスが一度Durable Objectのネームスペースにつながると、Counterの特定のインスタンスは、次のようなコードを使用して、世界中どこからでもアクセスできます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Derive the ID for the counter object named "my-counter".
 // This name is associated with exactly one instance in the
 // whole world.
@@ -99,11 +95,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--4">デモ：チャット</h3>
-	<p>チャットは間違いなく最も純粋な形のリアルタイムコラボレーションです。そのため、Durable Objectsを使用してエッジで完全に動作するデモオープンソースチャットアプリを構築しました。</p>
-	<!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ライブデモをお試しください »</a>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">GitHubでソースコードを確認する »</a>
-	<!--kg-card-end: html-->
+	<p>チャットは間違いなく最も純粋な形のリアルタイムコラボレーションです。そのため、Durable Objectsを使用してエッジで完全に動作するデモオープンソースチャットアプリを構築しました。</p><!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ライブデモをお試しください »</a><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">GitHubでソースコードを確認する »</a><!--kg-card-end: html-->
 	<p>このチャットアプリでは、Durable Objectを使用して各チャットルームをコントロールします。ユーザーは WebSocket を使用してオブジェクトに接続します。あるユーザーからのメッセージは、他のすべてのユーザーに配信されます。チャットの履歴も耐久性のあるストレージに保存されますが、これは履歴のみです。リアルタイムメッセージは、ストレージレイヤーを経由することなく、あるユーザーから別のユーザーに直接伝わります。</p>
 	<p>さらに、このデモでは、Durable Objectsを「特定のIPからのメッセージにレート制限を適用する」という2番目の目的のために使用しています。各IPには、最近のリクエスト頻度を追跡するDurble Objectが割り当てられます。これにより、送信するメッセージが多すぎるユーザーは、複数のチャットルームにまたがっている場合でも、一時的にブロックされます。興味深いことに、これらのオブジェクトは実際には耐久性のあるステートをまったく保存しません。なぜなら、大切なのはごく最近の履歴だけだからです。また、レートリミッターが時折ランダムにリセットしても、それは大したことではありません。したがって、これらのレートリミッターオブジェクトは、ストレージのない純粋な調整オブジェクトの例です。</p>
 	<p>このチャットアプリはほんの数百行のコードです。展開設定は、ほんの数行です。しかし、それはCloudflareで利用可能なリソースによってのみ制限され、任意の数のチャットルームにシームレスに拡張されます。もちろん、各オブジェクトはシングルスレッドであるため、個々のチャットルームのスケーラビリティには制限があります。しかし、その限界は、人間の参加者が追いつくことができる数をはるかに超えています。</p>
@@ -124,9 +116,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 	<h3 id="--7">ベータ版に参加する</h3>
 	<p>データの保存には、大きな責任が伴い、当社がこれを軽んじることはありません。正しく行うことの重要性を理解しているので、私たちはデータの保存を慎重に行います。Durable Objects は、今後数か月で徐々に使用できるようにする予定です。</p>
 	<p>他のベータ版と同様に、この製品は進行中であり、この記事に記載されている内容の一部はまだ完全に有効化されていません。ベータ版の制限の詳細については、ドキュメントを参照してください。</p>
-	<p>今すぐDurable Objectsをお試しになりたい場合は、ユースケースについて当社までご連絡ください。早期アクセスについては、もっとも興味深いユースケースを当社で選考する予定です。</p>
-	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ベータ版への招待をリクエストする »</a>
-	<!--kg-card-end: html-->
+	<p>今すぐDurable Objectsをお試しになりたい場合は、ユースケースについて当社までご連絡ください。早期アクセスについては、もっとも興味深いユースケースを当社で選考する予定です。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">ベータ版への招待をリクエストする »</a><!--kg-card-end: html-->
 	<h2 id="qa">Q&amp;A</h2>
 	<h3 id="durable-objects-websocket-">Durable ObjectsはWebSocketでも使えますか？</h3>
 	<p>はい。</p>

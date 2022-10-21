@@ -4,13 +4,10 @@
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/rtr3vWNrtk3X2HSUuSSIHvNud8K6WeNHokdbx231vi9-TIC87GeD6QJ6dMR0vlSJF4qFzv-heJHGXFzhVDygIdHsm3Jh0kGw47QyVx8vtmxPVShb8YsE7CqBRaWJpIivB2kiGX03" class="kg-image" alt="Build your next video application on Cloudflare"></figure>
 	<p>Historically, building video applications has been very difficult. There's a lot of complicated tech behind recording, encoding, and playing videos. Luckily, <a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">Cloudflare Stream</a> abstracts all the difficult parts away, so you can build custom video and streaming applications easily. Let's look at how we can combine Cloudflare Stream, Access, Pages, and Workers to create a high-performance video application with very little code.</p>
-	<p>Today, we’re going to build a video application inspired by <a href="https://cloudflare.tv/live" target="_blank">Cloudflare TV</a>. We’ll have user authentication and the ability for administrators to upload recorded videos or livestream new content. Think about being able to build your own YouTube or Twitch using Cloudflare services!</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 36.09550561797753%;"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>Today, we’re going to build a video application inspired by <a href="https://cloudflare.tv/live" target="_blank">Cloudflare TV</a>. We’ll have user authentication and the ability for administrators to upload recorded videos or livestream new content. Think about being able to build your own YouTube or Twitch using Cloudflare services!</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 36.09550561797753%;"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<h3 id="fetching-a-list-of-videos">Fetching a list of videos</h3>
-	<p>On the main page of our application, we want to display a list of all videos. The videos are uploaded and stored with Cloudflare Stream, but more on that later! This code could be changed to display only the "trending" videos or a selection of videos chosen for each user. For now, we'll use the search API and pass in an empty string to return all.</p>
-	<!--kg-card-begin: markdown-->
+	<p>On the main page of our application, we want to display a list of all videos. The videos are uploaded and stored with Cloudflare Stream, but more on that later! This code could be changed to display only the "trending" videos or a selection of videos chosen for each user. For now, we'll use the search API and pass in an empty string to return all.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { getSignedStreamId } from "../../src/cfStream"
 
 export async function onRequestGet(context) {
@@ -79,8 +76,7 @@ export async function onRequestGet(context) {
 	<p>If you are testing your application locally or expect to have fewer than 10,000 requests per day, you can call the /token endpoint to generate a signed token. If you expect more than 10,000 requests per day, sign your own tokens as we do here using <a href="https://jwt.io/" target="_blank">JSON Web Tokens</a>.</p>
 	<h3 id="allowing-users-to-upload-videos">Allowing users to upload videos</h3>
 	<p>The next step is to build out an admin page where users can upload their videos. You can find documentation on allowing user uploads <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank">here</a>.</p>
-	<p>This process is made easy with the Cloudflare Stream API. You use your <a href="https://developers.cloudflare.com/api/tokens/create" target="_blank">API token </a>and account ID to generate a unique, one-time upload URL. Just make sure your token has the Stream:Edit permission. We hook into all POST requests from our application and return the generated upload URL.</p>
-	<!--kg-card-begin: markdown-->
+	<p>This process is made easy with the Cloudflare Stream API. You use your <a href="https://developers.cloudflare.com/api/tokens/create" target="_blank">API token </a>and account ID to generate a unique, one-time upload URL. Just make sure your token has the Stream:Edit permission. We hook into all POST requests from our application and return the generated upload URL.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
     try {
         const userEmail = request.headers.get("cf-access-authenticated-user-email")
@@ -105,8 +101,7 @@ export const onRequest = [
 ]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The admin page contains a form allowing users to drag and drop or upload videos from their computers. When a logged-in user hits submit on the upload form, the application generates a unique URL and then posts the <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> to it. This code would work well for building a video sharing site or with any application that allows user-generated content.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The admin page contains a form allowing users to drag and drop or upload videos from their computers. When a logged-in user hits submit on the upload form, the application generates a unique URL and then posts the <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a> to it. This code would work well for building a video sharing site or with any application that allows user-generated content.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function getOneTimeUploadUrl() {
     const res = await fetch('/api/admin/videos', {method: 'POST', headers: {'accept': 'application/json'}})
     const upload = await res.json()
@@ -131,8 +126,7 @@ async function uploadVideo() {
 	<h3 id="adding-real-time-video-with-stream-live">Adding real time video with Stream Live</h3>
 	<p>You can add a livestreaming section to your application as well, using <a href="https://blog.cloudflare.com/stream-live/">Stream Live</a> in conjunction with the techniques we've already covered. &nbsp;You could allow logged-in users to start a broadcast and then allow other logged-in users, or even the public, to watch it in real-time! The streams will automatically save to your account, so they can be viewed immediately after the broadcast finishes in the main section of your application.</p>
 	<h3 id="securing-our-app-with-middleware">Securing our app with middleware</h3>
-	<p>We put all authenticated pages behind this middleware function. It checks the request headers to make sure the user is sending a valid authenticated user email.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We put all authenticated pages behind this middleware function. It checks the request headers to make sure the user is sending a valid authenticated user email.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
     try {
         const userEmail = request.headers.get("cf-access-authenticated-user-email")

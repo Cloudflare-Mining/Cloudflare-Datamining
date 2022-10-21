@@ -3,8 +3,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-16.png" class="kg-image"></figure>
 	<h2 id="authoritative-nameservers">Authoritative Nameservers</h2>
 	<p>You can think of an authoritative nameserver as the source of truth for the records of a given DNS zone. When a recursive resolver wants to look up a record, it will eventually need to talk to the authoritative nameserver(s) for the zone in question. If you’d like to read more on the topic, our learning center provides some <a href="https://www.cloudflare.com/learning/dns/dns-server-types/" target="_blank">additional information</a>.</p>
-	<p>Here’s an example of our authoritative nameservers (replacing our actual domain with example.com):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s an example of our authoritative nameservers (replacing our actual domain with example.com):</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ dig NS example.com +short
 ns1.example.com.
 ns2.example.com.
@@ -22,8 +21,7 @@ ns3.example.com.
 	<p>Our solution was to set up our infrastructure zone with multiple primary nameservers. This type of setup is referred to as split authority, multi-primary, or primary/primary. This way, instead of using just one provider for our authoritative nameservers, we use two.</p>
 	<p>We added three nameservers from our additional provider to our zone at our registrar. Using multiple primaries allows changes to our zone at each provider, to be controlled separately and completely by us. Instead of using zone transfers to keep our zone in sync, we use <a href="https://github.com/github/octodns" target="_blank">OctoDNS</a> to independently and simultaneously manage the zone at both providers. We’ll talk more about our use of OctoDNS in a bit.</p>
 	<p>This setup is similar to using a primary and secondary server. The main difference is that the nameservers operate independently from one another, and do not use the usual DNS AXFR/IXFR method to keep the zone up to date. If you’d like to learn more about this type of solution, here is a great <a href="https://blog.cloudflare.com/secondary-dns-a-faster-more-resilient-way-to-serve-your-dns-records">blog post</a> by Dina Kozlov, our Product Manager for DNS, about Secondary DNS.</p>
-	<p>The nameservers in our zone after adding an additional provider would look something like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The nameservers in our zone after adding an additional provider would look something like:</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ dig NS example.com +short
 ns1.example.com.
 ns2.example.com.
@@ -41,8 +39,7 @@ ns3.additional-provider.net.
 	<h2 id="maintaining-our-infrastructure-dns-zone">Maintaining Our Infrastructure DNS Zone</h2>
 	<p>In addition to a more reliable infrastructure zone, we also wanted to further automate the provisioning of DNS records. We had been relying on an older manual tool that became quite slow handling our growing number of DNS records. In a nutshell, this tool queried our provisioning database to gather all of the machine names, and then created, deleted, or updated the required DNS records using the Cloudflare API. We had to run this tool whenever we provisioned or decommissioned &nbsp;machines that serve our customers’ requests.</p>
 	<p>Part of the procedure for running this tool was to first run it in dry-run mode, and then paste the results for review in our team chat room. This review step ensured the changes the tool found were expected and safe to run, and it is something we want to keep as part of our plan to automate the process.</p>
-	<p>Here’s what the old tool looked like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s what the old tool looked like:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cf-provision update-example -l ${USER}@cloudflare.com -u
 Running update-example.sh -t /var/tmp/cf-provision -l user@cloudflare.com -u
 * Loading up possible records …

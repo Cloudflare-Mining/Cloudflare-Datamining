@@ -6,8 +6,7 @@
 	<h2 id="-">이메일 스푸핑과 피싱이란?</h2>
 	<p>스푸핑이란 불법적인 이익을 취하려고 다른 사람처럼 위장하는 과정을 말합니다. 한 가지 예로 <strong>도메인 스푸핑</strong>의 경우에는 누군가가 mycoolwebpaqe.xyz 같은 웹 사이트를 호스팅함으로써 mycoolwebpage.xyz의 사용자가 잘못된 웹 사이트에 도달한 것을 모르고 중요한 정보를 제공하게 만듭니다.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/Screen-Shot-2021-09-25-at-10.05.21-AM.png" class="kg-image"></figure>
-	<p><strong>이메일 스푸핑</strong>도 있습니다. 이메일 스푸핑이 어떻게 작동하는지 이해를 돕기 위해 제가 개인 이메일 주소로 받은 Cloudflare 제품 업데이트 이메일을 살펴보겠습니다. 대부분의 이메일 공급자와 마찬가지로 이메일 전체 소스를 보면 다수의 헤더가 있고 이메일 본문이 있습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>이메일 스푸핑</strong>도 있습니다. 이메일 스푸핑이 어떻게 작동하는지 이해를 돕기 위해 제가 개인 이메일 주소로 받은 Cloudflare 제품 업데이트 이메일을 살펴보겠습니다. 대부분의 이메일 공급자와 마찬가지로 이메일 전체 소스를 보면 다수의 헤더가 있고 이메일 본문이 있습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
 From: Cloudflare &lt;product-updates@cloudflare.com&gt;
 Reply-To: product-updates@cloudflare.com
@@ -33,8 +32,7 @@ To: &lt;my_personal_email_address&gt;
 	</ul>
 	<p>하지만 이를 적절히 구성하기는 쉽지 않습니다. 특히 경험이 부족한 경우에는 더욱 어렵습니다. 구성이 너무 엄격하다면 합법적인 이메일이 전달되지 않거나 스팸으로 표시될 것입니다. 구성이 너무 헐겁다면 해당 도메인이 이메일 스푸핑에 남용될 수 있습니다.</p>
 	<h2 id="-spf-sender-policy-framework-">발신자 정책 프레임워크(SPF: Sender Policy Framework)</h2>
-	<p>SPF는 해당 도메인에서 이메일을 보낼 수 있도록 승인된 IP 주소와 도메인의 목록을 지정합니다. SPF 정책은 도메인의 TXT 레코드로 발표되므로 누구나 DNS를 통해 액세스할 수 있습니다. cloudflare.com의 TXT 레코드를 살펴보겠습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>SPF는 해당 도메인에서 이메일을 보낼 수 있도록 승인된 IP 주소와 도메인의 목록을 지정합니다. SPF 정책은 도메인의 TXT 레코드로 발표되므로 누구나 DNS를 통해 액세스할 수 있습니다. cloudflare.com의 TXT 레코드를 살펴보겠습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -50,8 +48,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>전체 메커니즘의 목록과 SPF에 대한 자세한 내용은 <a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>를 참조하시기 바랍니다.</p>
 	<h3 id="dkim-domainkeys-identified-mail-">DKIM (DomainKeys Identified Mail)</h3>
 	<p>이제 SPF를 이용해 허가된 IP 주소 및 도메인만이 cloudflare.com을 대신해 이메일을 보낼 수 있도록 보장했습니다. 하지만 IP 중 하나의 소유자가 변경되었는데 Cloudflare가 알지 못하고 있거나 SPF 레코드가 업데이트되지 않았다면 어떻게 될까요? 또는 동일한 IP에서 Google의 이메일 서버도 이용하는 사람이 cloudflare.com에서 오는 이메일을 스푸핑하려고 한다면 어떻게 될까요?<br></p>
-	<p>여기에 DKIM의 역할이 있습니다. DKIM은 <a href="https://www.cloudflare.com/ko-kr/learning/ssl/how-does-public-key-encryption-work/" target="_blank">공개 키 암호화</a>를 이용해 이메일의 특정 부분(대개는 본문 및 특정 헤더)에 암호로 서명하는 메커니즘을 제공합니다. 작동 방식을 자세히 살펴보기 전에 cloudflare.com에 사용되는 DKIM 레코드를 살펴보겠습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>여기에 DKIM의 역할이 있습니다. DKIM은 <a href="https://www.cloudflare.com/ko-kr/learning/ssl/how-does-public-key-encryption-work/" target="_blank">공개 키 암호화</a>를 이용해 이메일의 특정 부분(대개는 본문 및 특정 헤더)에 암호로 서명하는 메커니즘을 제공합니다. 작동 방식을 자세히 살펴보기 전에 cloudflare.com에 사용되는 DKIM 레코드를 살펴보겠습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -69,8 +66,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>DKIM 지정에 대한 전체적인 설명은 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank">RFC4871</a>과 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank">RFC5672</a>을 참조하시기 바랍니다.</p>
 	<h3 id="-dmarc-domain-based-message-authentication-reporting-and-conformance-">도메인 기반 메시지 인증 보고 및 일치(DMARC: Domain-based Message Authentication Reporting and Conformance)</h3>
 	<p>도메인 기반 메시지 인증 보고 및 일치라는 말은 길고 복잡합니다. 중요한 것은 <em>보고</em>와 <em>일치</em>이며 DMARC는 바로 이 기능을 제공합니다. 이메일 발신자는 정규 보고서를 통해 얼마나 많은 이메일이 일치하지 않아 스푸핑되었을 가능성이 있는지 알 수 있습니다. 일치는 이메일 수신자에게 일치하는 않는 이메일을 어떻게 처리해야 할지 명확한 신호를 제공합니다. 이메일 수신자는 DMARC 레코드가 없이도 SPF나 DKIM 검사를 통과하지 못한 이메일에 대해 자체적인 정책을 설정할 수 있습니다. 하지만 DMARC 레코드는 이메일 발신자가 보낸 명시적 지침이므로 일치하지 않는 이메일을 어떻게 처리할지에 대해 이메일 수신자의 확신 정도가 높아집니다.</p>
-	<p>다음은 cloudflare.com의 DMARC 레코드입니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>다음은 cloudflare.com의 DMARC 레코드입니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -91,8 +87,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>이제 문제가 무엇이고 SPF, DKIM, DMARC로 이를 해결하는 방법도 알았으니 이들이 얼마나 널리 채택되고 있는지 알아보겠습니다.</p>
 	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a>은 대표적인 데이터 세트에서 도메인들의 DMARC 레코드 채택 통계를 발표합니다. 결과를 보면 2020년 말 현재 아직 DMARC 레코드를 갖고 있는 도메인은 50%에 미치지 못합니다. 다시 말씀드리지만, DMARC 레코드가 없다면 SPF와 DKIM 검사를 강제화하지 못합니다. 또한 연구 결과에 따르면 DMARC 레코드를 갖고 있는 도메인 중 65%가 '모니터링만 시행'하는 정책(p=none)을 사용하고 있어 이 채택률을 높일 가능성이 큽니다. 연구에서는 이러한 도메인이 이메일을 발신하는지 수신하는지 언급하고 있지 않지만, 그렇지 않다고 해도 안전한 구성에는 DMARC 레코드가 포함되어야 합니다(여기에 대해서는 추후 다시 살펴보겠습니다).</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-37.png" class="kg-image"></figure>
-	<p>2021년 8월 1일에 발표된 또 다른 <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">보고서</a>에서도 은행 부문의 조직에 속하는 도메인에 대해 유사한 결과를 제시합니다. 미국 내 2,881개의 은행 조직 중에 44%만이 도메인에 DMARC 레코드를 게시하고 있습니다. DMARC 레코드가 있는 조직 중에는 5개 중 2개가 DMARC 정책을 'None'으로 설정하고 있으며 이외의 8%는 '구성을 잘못'한 것으로 간주됩니다. 덴마크는 은행 부분의 DMARC 채택률이 94%에 이를 정도로 높은 반면, 일본의 경우는 도메인 중 13%만이 DMARC를 이용하고 있습니다. SPF 채택은 평균적으로 DMARC보다 현저하게 높으며 이는 SPF 표준이 2006년에 <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">실험적 RFC</a>로 처음 소개되었고 DMARC는 2015년에야 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">표준이 된</a> 사실과 관계 있는 것으로 보입니다.</p>
-	<!--kg-card-begin: html-->
+	<p>2021년 8월 1일에 발표된 또 다른 <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">보고서</a>에서도 은행 부문의 조직에 속하는 도메인에 대해 유사한 결과를 제시합니다. 미국 내 2,881개의 은행 조직 중에 44%만이 도메인에 DMARC 레코드를 게시하고 있습니다. DMARC 레코드가 있는 조직 중에는 5개 중 2개가 DMARC 정책을 'None'으로 설정하고 있으며 이외의 8%는 '구성을 잘못'한 것으로 간주됩니다. 덴마크는 은행 부분의 DMARC 채택률이 94%에 이를 정도로 높은 반면, 일본의 경우는 도메인 중 13%만이 DMARC를 이용하고 있습니다. SPF 채택은 평균적으로 DMARC보다 현저하게 높으며 이는 SPF 표준이 2006년에 <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">실험적 RFC</a>로 처음 소개되었고 DMARC는 2015년에야 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">표준이 된</a> 사실과 관계 있는 것으로 보입니다.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -193,8 +188,7 @@ To: &lt;my_personal_email_address&gt;
 				<td class="tg-2bn0">13%</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>따라서 개선의 여지가 꽤 있음을 알 수 있습니다.</p>
 	<h2 id="-email-security-dns-wizard">새로 도입: Email Security DNS Wizard</h2>
 	<p>그렇다면 SPF, DKIM, DMARC의 채택을 늘리고 이메일 스푸핑과 피싱에 맞서 싸우려면 무엇을 하고 있을까요? 새로운 Cloudflare <em>Email Security DNS Wizard</em>를 시작합니다.</p>
@@ -205,15 +199,12 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image.png" class="kg-image"></figure>
 	<p><em>Email Security DNS Wizard</em>를 사용하기 시작하려면 경고의 링크를 직접 클릭하여 마법사의 해당 섹션으로 이동하거나 새로운 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">Email Security 섹션</a>에서 <strong>구성</strong>을 클릭하면 됩니다. Email Security 섹션에는 다음의 옵션이 제시됩니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQYxUkch2oVOQI=s0" class="kg-image"></figure>
-	<p>두 가지 시나리오가 있습니다. 즉 귀사의 도메인을 이용해 이메일을 보내거나 보내지 않는 것입니다. 이메일을 보내는 경우라면 간단한 몇 단계를 거쳐 SPF, DKIM, DMARC 레코드를 구성할 수 있습니다. 여기에서 SPF에 대한 절차를 볼 수 있습니다. </p>
-	<!--kg-card-begin: html-->
+	<p>두 가지 시나리오가 있습니다. 즉 귀사의 도메인을 이용해 이메일을 보내거나 보내지 않는 것입니다. 이메일을 보내는 경우라면 간단한 몇 단계를 거쳐 SPF, DKIM, DMARC 레코드를 구성할 수 있습니다. 여기에서 SPF에 대한 절차를 볼 수 있습니다. </p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>귀사의 도메인이 이메일을 보내지 않는 경우라면 한 번의 클릭으로 세 가지 레코드를 모두 구성하는 쉬운 방법이 있습니다.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu4Vz-5IAj1JKK=s0" class="kg-image"></figure>
-	<p><strong>제출</strong>을 클릭하면 모든 이메일이 검사를 통과하지 못하고 수신 이메일 서버에 의해 거부되도록 구성된 세 개의 레코드가 생성됩니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>제출</strong>을 클릭하면 모든 이메일이 검사를 통과하지 못하고 수신 이메일 서버에 의해 거부되도록 구성된 세 개의 레코드가 생성됩니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>example.com			TXT	"v=spf1 -all"
 *._domainkey.example.com.	TXT	"v=DKIM1; p="
 _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"

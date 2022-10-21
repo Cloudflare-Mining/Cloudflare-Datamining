@@ -27,8 +27,7 @@
 	<p>IPFS contents are the most primitive contents being served by the IPFS network and IPFS gateways. By their nature, they are immutable and addressable only by the hash of the content. Users can access the IPFS contents by putting the Content IDentifier (CID) in the URL path of the gateway. For example,<a href="https://cloudflare-ipfs.com/ipfs/bafybeig7hluox6xefqdgmwcntvsguxcziw2oeogg2fbvygex2aj6qcfo64" target="_blank"> ipfs://bafybeig7hluox6xefqdgmwcntvsguxcziw2oeogg2fbvygex2aj6qcfo64</a>. We measure three common scenarios that users will often encounter.</p>
 	<p>The first one is when users fetch popular content which has a high probability of being found in our cache already. During our experiment, we measured a response time for such content is around 116ms.</p>
 	<p>The second one is the case where the users create and upload the content to the IPFS network, such as via the integration between <a href="https://blog.cloudflare.com/cloudflare-pages-on-ipfs/">Cloudflare Pages and IPFS</a>. This scenario is a lot slower than the first because the content is not in our cache yet, and it takes some time to discover the content. The content that we upload during this measurement is a random piece of 32-byte content.</p>
-	<p>The last measurement is when users try to download content that does not exist. This one is the slowest. Because of the nature of content routing of IPFS, there is no indication that tells us that content doesn't exist. So, setting the timeout is the only way to tell if the content exists or not. Currently, the Cloudflare IPFS gateway has a timeout of around five minutes.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The last measurement is when users try to download content that does not exist. This one is the slowest. Because of the nature of content routing of IPFS, there is no indication that tells us that content doesn't exist. So, setting the timeout is the only way to tell if the content exists or not. Currently, the Cloudflare IPFS gateway has a timeout of around five minutes.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -68,8 +67,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-40.png" class="kg-image" alt="IPFS Monitor measuring performance of mutable content, IPNS, retrieval for multiple scenarios: not cached, cached, updated"></figure>
 	<p>Since IPFS contents are immutable, when users want to change the content, the only way to do so is to create new content and distribute the new CID to other users. Sometimes distributing the new CID is hard, and is out of scope of IPFS. The InterPlanetary Naming System (IPNS) tries to solve this. IPNS is a naming system that — instead of locating the content using the CID — allows users to locate the content using the IPNS name instead. This name is a hash of a user's public key. Internally, IPNS maintains a section of the IPFS DHT which maps from a name to a CID. Therefore, when the users want to download the contents using names through the gateway, the gateway has to first resolve the name to get the CID, then use the CID to query the IPFS content as usual.</p>
 	<p>The example for fetching the IPNS named content is at ipns://k51qzi5uqu5diu2krtwp4jbt9u824cid3a4gbdybhgoekmcz4zhd5ivntan5ey</p>
-	<p>We measured many scenarios for IPNS as shown in the table below. Three scenarios are similar to the ones involving IPFS contents. There are two more scenarios added: the first one is measuring the response time when users query the gateway using an existing IPNS name, and the second one is measuring the response time when users query the gateway immediately after new content is published under the name.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We measured many scenarios for IPNS as shown in the table below. Three scenarios are similar to the ones involving IPFS contents. There are two more scenarios added: the first one is measuring the response time when users query the gateway using an existing IPNS name, and the second one is measuring the response time when users query the gateway immediately after new content is published under the name.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -121,8 +119,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="third-scenarios-gateway-to-serve-dnslink-websites">Third scenarios: Gateway to serve DNSLink websites</h3>
 	<p>Even though users can use IPNS to provide others a stable address to fetch the content, the address can still be hard to remember. This is what DNSLink is for. Users can address their content using DNSLink, which is just a normal domain name in the Domain Name System (DNS). As a domain owner, you only have to create a TXT record with the value dnslink=/ipfs/baf…1, and your domain can be fetched from a gateway.</p>
-	<p>There are two ways to access the DNSLink websites using the gateway. The first way is to access the website using the domain name as a URL hostname, for example,<a href="https://ipfs.example.com" target="_blank"> https://ipfs.example.com</a>. The second way is to put the domain name as a URL path, for example,<a href="https://cloudflare-ipfs.com/ipns/ipfs.example.com" target="_blank"> https://cloudflare-ipfs.com/ipns/ipfs.example.com</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>There are two ways to access the DNSLink websites using the gateway. The first way is to access the website using the domain name as a URL hostname, for example,<a href="https://ipfs.example.com" target="_blank"> https://ipfs.example.com</a>. The second way is to put the domain name as a URL path, for example,<a href="https://cloudflare-ipfs.com/ipns/ipfs.example.com" target="_blank"> https://cloudflare-ipfs.com/ipns/ipfs.example.com</a>.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

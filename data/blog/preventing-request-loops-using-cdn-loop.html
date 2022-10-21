@@ -23,8 +23,7 @@
 	<p>Collaborators at Cloudflare, Fastly and Akamai set about defining a unified solution to the loop protection problem for CDNs.</p>
 	<p>The output was the following was <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cdn-loop-02" target="_blank">this draft</a> that has recently been accepted by the HTTPbis working group on the Standards Track. the document has been approved by the IESG, it will join the RFC series.</p>
 	<p>The CDN-Loop header sets out a syntax that allows individual CDNs to mark requests as having been processed by their edge. This header should be added to any request that passes through the CDN architecture towards some separate endpoint. The <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cdn-loop-02" target="_blank">current draft</a> defines the syntax of the header to be the following:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop  = #cdn-info
 cdn-info  = cdn-id *( OWS ";" OWS parameter )
 cdn-id	= ( uri-host [ ":" port ] ) / pseudonym
@@ -36,52 +35,45 @@ pseudonym = token
 	<p>Then, <code>cdn-info</code> contains the <code>cdn-id</code> in addition to some optional parameters. This is denoted by <code>*( OWS ";" OWS parameter )</code> where `OWS` represents optional whitespace, and <code>parameter</code> represents any CDN-specific information that may be informative for the specific request. If different CDN-specific <code>cdn-info</code> parameters are included in the same header, then these are comma-separated. For example, we may have <code>cdn-info = cdn1; param1, cdn2; param2</code> for two different CDNs that have interacted with the request.</p>
 	<p>Concretely, we give some examples to describe how the CDN-Loop header may be used by a CDN to mark requests as being processed.</p>
 	<p>If a request arrives at CDN <code>A</code> that has no current CDN-Loop header. Then <code>A</code> processes the request and adds:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(A)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>to the request headers.</p>
 	<p>If a request arrives at <code>A</code> with the following header:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(B)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>for some different CDN <code>B</code>, then <code>A</code> either modifies the header to be:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(B), cdn-info(A)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>or adds a separate header:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(B)
 CDN-Loop: cdn-info(A)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>If a request arrives at <code>A</code> with:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(A)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>this indicates that the request has already been processed. At this point <code>A</code> detects a loop and may implement loop protection in accordance with its own policies. This is an implementation decision that is not defined in the specification. Options may include dropping the request or simply re-marking it, for example:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(A); cdn-info(A)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>A CDN could also utilise the optional parameters to indicate that a request had been processed:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>CDN-Loop: cdn-info(A); processed=1
 </code></pre>
 	<!--kg-card-end: markdown-->

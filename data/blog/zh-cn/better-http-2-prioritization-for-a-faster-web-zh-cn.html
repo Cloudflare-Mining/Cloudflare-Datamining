@@ -20,8 +20,7 @@
 		<li>相较于其他JavaScript资源，非阻塞的JavaScript应该进行串行下载，这样每次的执行与下载内容就可以形成流水线。JavaScript可能包括面向用户的应用程序逻辑以及分析跟踪和市场指向标，对它们的延迟会导致业务跟踪的指标下降。</li>
 		<li>图像可以从并行下载中获得优势。其文件的前几个字节可能包含浏览器布局所需的图像尺寸，逐行图像并行下载在传输了大约50%的字节后看起来就是完整的了。</li>
 	</ul>
-	<p>权衡利弊之后，在大多数情况下行之有效的一种策略是：</p>
-	<!--kg-card-begin: html-->
+	<p>权衡利弊之后，在大多数情况下行之有效的一种策略是：</p><!--kg-card-begin: html-->
 	<ul>
 		<li>
 			<font style="vertical-align: inherit;">
@@ -51,12 +50,10 @@
 				</li>
 			</ul>
 		</li>
-	</ul>
-	<!--kg-card-end: html-->
+	</ul><!--kg-card-end: html-->
 	<p>通过这种方式，浏览器可以尽可能快地加载对用户可见的内容，尽可能减少应用程序逻辑延迟，并且以最快完成布局的方式加载不可见图像。</p>
 	<h2 id="--2">案例</h2>
-	<p>为了便于说明，我们将使用来自典型电子商务网站的简化产品类别页面。在这个例子中，页面有：</p>
-	<!--kg-card-begin: html-->
+	<p>为了便于说明，我们将使用来自典型电子商务网站的简化产品类别页面。在这个例子中，页面有：</p><!--kg-card-begin: html-->
 	<ul>
 		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/html-1.png">
 			<font style="vertical-align: inherit;">
@@ -87,8 +84,7 @@
 				<font style="vertical-align: inherit;">这5个可见图像均使用较深的紫色阴影框表示。</font>
 			</font>
 		</li>
-	</ul>
-	<!--kg-card-end: html-->
+	</ul><!--kg-card-end: html-->
 	<p>为了简单起见，我们将假定所有资源的大小均相同，并且每个资源都需要1秒钟才能下载到访问者的连接上。加载所有内容总共需要20秒，但是加载的方式会对体验产生巨大影响。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/optimal-1.png" class="kg-image"></figure>
 	<p>这就是资源加载时我们所描述的最佳加载方式在浏览器中的样子：</p>

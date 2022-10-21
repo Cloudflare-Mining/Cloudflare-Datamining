@@ -127,12 +127,10 @@ addEventListener("fetch", event =&gt; {
 	<p>The solution here involves modifying the blog assets block to handle asset requests without using paths. &nbsp;I'll leave it to the reader to solve this, but a more general solution might involve changing <code>myBlog.assetPathnames</code> to <code>myBlog.assetFileExtensions</code>, which is a list of all asset file extensions (like .png and .css). &nbsp;Then, the assets block would handle requests that contain <code>assetFileExtensions</code> instead of <code>assetPathnames</code>.</p>
 	<h4 id="conclusion">Conclusion</h4>
 	<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
-	<hr>
-	<!--kg-card-begin: markdown-->
+	<hr><!--kg-card-begin: markdown-->
 	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="_blank"><em>here</em></a>.</small></p>
 	<p align="center">
 		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
-	</p>
-	<!--kg-card-end: markdown-->
+	</p><!--kg-card-end: markdown-->
 	<hr>
 </div>

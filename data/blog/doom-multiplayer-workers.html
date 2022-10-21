@@ -30,16 +30,14 @@
 	<h3 id="no-main-loop">No main() loop</h3>
 	<p>Unlike many C/C++ graphical apps, like games, you can't have an infinite loop running on a page. The browser environment is <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events" target="_blank">event-driven</a>. When an event is processed, it then needs to return control to the browser so that the next event gets its turn.</p>
 	<p>Emscripten provides a function to solve this problem. With <a href="https://emscripten.org/docs/api_reference/emscripten.h.html#c.emscripten_set_main_loop" target="_blank"><code>emscripten_set_main_loop()</code></a>, you can have your infinite loop running at, say, 60 frames per second, but the other browser functions can still run between iterations without hanging the page.</p>
-	<p>In <a href="https://github.com/chocolate-doom/chocolate-doom/blob/master/src/doom/d_main.c#L499" target="_blank"><code>d_main.c</code></a></p>
-	<!--kg-card-begin: markdown-->
+	<p>In <a href="https://github.com/chocolate-doom/chocolate-doom/blob/master/src/doom/d_main.c#L499" target="_blank"><code>d_main.c</code></a></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">while (1)
 {
 	D_RunFrame();
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Became:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Became:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">emscripten_set_main_loop(D_RunFrame, 0, 0);
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -52,8 +50,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image7-1.png" class="kg-image"></figure>
 	<p>On the left, let’s imagine there are four players in the original LAN topology: the server (the one who starts the game) and the other three players who connect to the server via UDP. If you wanted to play Doom over the Internet, you'd have to make sure all players had public IP addresses and specific firewall and forwarding rules configured. Chocolate Doom even has some <a href="https://en.wikipedia.org/wiki/Hole_punching_(networking)" target="_blank">hole punching</a> code in it. We don't want to deal with any of this.</p>
 	<p>On the right, in our case, we want everything to be Web-based and zero-config, so all of the four players connect to a single WebSockets server that acts as a message router between the group.</p>
-	<p>We won’t have IP addresses anymore, just a WebSocket connection to which we need to tunnel our UDP-based point-to-point protocol through. To emulate the standard behaviour we create a <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/d_loop.c#L438" target="_blank">fake IP at startup</a>, just a random uint32_t number, and we add ourselves and the other clients we discover in the WebSocket protocol and have to talk to, to an internal <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L41" target="_blank">routing</a> table.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We won’t have IP addresses anymore, just a WebSocket connection to which we need to tunnel our UDP-based point-to-point protocol through. To emulate the standard behaviour we create a <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/d_loop.c#L438" target="_blank">fake IP at startup</a>, just a random uint32_t number, and we add ourselves and the other clients we discover in the WebSocket protocol and have to talk to, to an internal <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L41" target="_blank">routing</a> table.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// Generate UID for this instance - it will be used as the websocketsID
 srand((unsigned int)time(NULL));
 instanceUID = rand() % 0xfffe;
@@ -71,8 +68,7 @@ addrs[addrs_index].handle = &amp;ips[addrs_index];
 return (&amp;addrs[addrs_index++]);
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Next, we wanted to avoid blocking Doom at all costs, so we created an intermediate queue between the asynchronous WebSockets layer and the internal Doom routines to act as a buffer and alleviate the fact that, indeed, we'll be using TCP. This worked nicely.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, we wanted to avoid blocking Doom at all costs, so we created an intermediate queue between the asynchronous WebSockets layer and the internal Doom routines to act as a buffer and alleviate the fact that, indeed, we'll be using TCP. This worked nicely.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// WebSockets packet queue
 typedef struct {
     net_packet_t *packets[MAX_QUEUE_SIZE];
@@ -87,8 +83,7 @@ static void WebsocketsQueuePush(packet_queue_t *queue, net_packet_t *packet, uin
 static ws_packet_t *WebsocketsQueuePop(packet_queue_t *queue)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This queue is then fed every time we receive a new WebSockets packet, asynchronously, outside the game main loop and logic.</p>
-	<!--kg-card-begin: markdown-->
+	<p>This queue is then fed every time we receive a new WebSockets packet, asynchronously, outside the game main loop and logic.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">WebSocketMessage(int t, const WebSocketMessageEvent *e, void *data) {
     ...
     packet = NET_NewPacket(e-&gt;numBytes - 4);
@@ -100,8 +95,7 @@ static ws_packet_t *WebsocketsQueuePop(packet_queue_t *queue)
 emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMessage);
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And then, when the main game loop asks for newly received packets as part of its “main loop”, we’re now able to instantly return everything we see in our queue, close to how UDP would behave.</p>
-	<!--kg-card-begin: markdown-->
+	<p>And then, when the main game loop asks for newly received packets as part of its “main loop”, we’re now able to instantly return everything we see in our queue, close to how UDP would behave.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">NET_Websockets_RecvPacket(net_addr_t **addr, net_packet_t **packet)
 {
     ws_packet_t *popped;
@@ -120,8 +114,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally we use <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L200" target="_blank">NET_Websockets_SendPacket()</a> and <a href="http://emscripten_websocket_send_binary" target="_blank">emscripten_websocket_send_binary</a>() to send the traffic out. The messages are sent through the WebSocket using a simple envelope that contains the “From” and the “To” fake IPs, 4 bytes each (UInt32 little-endian), and the original packet from the Doom protocol.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally we use <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L200" target="_blank">NET_Websockets_SendPacket()</a> and <a href="http://emscripten_websocket_send_binary" target="_blank">emscripten_websocket_send_binary</a>() to send the traffic out. The messages are sent through the WebSocket using a simple envelope that contains the “From” and the “To” fake IPs, 4 bytes each (UInt32 little-endian), and the original packet from the Doom protocol.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">NET_Websockets_SendPacket(net_addr_t *addr, net_packet_t *packet)
 {
     char *wspacket = malloc(packet-&gt;len + 8);
@@ -151,8 +144,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 	<p>WebSockets are persistent connections between the client and, in this case, Cloudflare edge. Inside the connection, both ends can exchange data fast, whenever they want, without additional overhead, which make them ideal for real-time interactive applications like chats, sports results, stock information, or gaming.</p>
 	<p>A Durable Object is simply a class in our Worker code that contains data and methods to access and manipulate that data and other logic. You interact with your Durable Object through the well-known <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank">Fetch API</a>, just like any regular Worker.</p>
 	<p>Let's go through some code:</p>
-	<p>This is the default Worker class, all it does to handover things to handleApiRequest()</p>
-	<!--kg-card-begin: markdown-->
+	<p>This is the default Worker class, all it does to handover things to handleApiRequest()</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
     ...
     return handleApiRequest(url.pathname, request, env)
@@ -162,8 +154,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 	<!--kg-card-end: markdown-->
 	<p>Each multiplayer game session creates a unique Id, or "room", which corresponds to its own Durable Object instance. This Id is used in the URL when the user invites friends to his new game.</p>
 	<p><a href="https://github.com/cloudflare/doom-workers/blob/3fc79f1822e4455414fdd6b6a669774c087ae93c/router/index.mjs#L57" target="_blank"><code>handleApiRequest()</code></a>validates the room Id in the URL and forwards the API request or WebSocket connection to the corresponding Durable Object object.</p>
-	<p>There's a small performance trick in here. There are two ways you can ask Workers to generate a unique Durable Object Id. One is by using <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects#generating-ids-randomly" target="_blank"><code>newUniqueId()</code></a>, which is very fast; another one is to use <code>idFromName()</code>, which derives the Id from your arbitrary input string. The latter can be convenient for some use-cases, but it requires our platform to do a global network lookup, which can be expensive time-wise. We're using <code>newUniqueId()</code>, and we construct our room Id with it (Thanks, Kenton Varda).</p>
-	<!--kg-card-begin: markdown-->
+	<p>There's a small performance trick in here. There are two ways you can ask Workers to generate a unique Durable Object Id. One is by using <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects#generating-ids-randomly" target="_blank"><code>newUniqueId()</code></a>, which is very fast; another one is to use <code>idFromName()</code>, which derives the Id from your arbitrary input string. The latter can be convenient for some use-cases, but it requires our platform to do a global network lookup, which can be expensive time-wise. We're using <code>newUniqueId()</code>, and we construct our room Id with it (Thanks, Kenton Varda).</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function handleApiRequest(path, request, env) {
   ...
   switch (parts[1]) {
@@ -182,8 +173,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Here’s how we create a new room Id:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s how we create a new room Id:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function createRoom(env) {
   const room = env.router.newUniqueId().toString()
   const digest = await crypto.subtle.digest({ name: 'SHA-256' },
@@ -198,15 +188,13 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Finally, our Router takes over and handles the WebSockets messages. <code>webSocket.addEventListener('message')</code>runs on every received message and does a few things.</p>
-	<p>First it decodes the packet:</p>
-	<!--kg-card-begin: markdown-->
+	<p>First it decodes the packet:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let data = msg.data
 let from = new Uint32Array(data.slice(4, 8))[0]
 let to = new Uint32Array(data.slice(0, 4))[0]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then, it adds every new client to a routing table, a list of WebSocket objects (open connections), and corresponding "From" Ids (see our Doom protocol packet scheme above).</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, it adds every new client to a routing table, a list of WebSocket objects (open connections), and corresponding "From" Ids (see our Doom protocol packet scheme above).</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// if it's a new client, add it to the table of clients
 if (this.sessions.map(c =&gt; c.from).indexOf(from) == -1) {
     let session = { ws: webSocket, from: from }
@@ -214,8 +202,7 @@ if (this.sessions.map(c =&gt; c.from).indexOf(from) == -1) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And finally, it sends the message to its destination, the "To" client.</p>
-	<!--kg-card-begin: markdown-->
+	<p>And finally, it sends the message to its destination, the "To" client.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// send this packet to the corresponding client
 i = this.sessions.map(c =&gt; c.from).indexOf(to)
 if (i != -1) this.sessions[i].ws.send(data.slice(4))
@@ -234,8 +221,7 @@ if (i != -1) this.sessions[i].ws.send(data.slice(4))
 	<h3 id="running-wasm-doom">Running Wasm Doom</h3>
 	<p>Emscripten Wasm binaries use <a href="https://emscripten.org/docs/api_reference/module.html" target="_blank">Module</a>, a global JavaScript object, as their environment configuration. When the app starts, it looks at the Module's definitions and applies them during the different execution stages.</p>
 	<p>Module allows you to define things like the input arguments (like the ones you'd pass to a command-line app), code to run before the Wasm starts, the function to handle stdout, and many other parameters.</p>
-	<p>For instance, we use <a href="https://emscripten.org/docs/api_reference/module.html#Module.preRun" target="_blank">PreRun</a> to make sure we load two files, <code>doom1.wad</code> and <code>default.cfg</code> into Emscripten’s <a href="https://emscripten.org/docs/api_reference/Filesystem-API.html" target="_blank">virtual file-system</a> before Doom starts. Without them, the app wouldn’t start.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For instance, we use <a href="https://emscripten.org/docs/api_reference/module.html#Module.preRun" target="_blank">PreRun</a> to make sure we load two files, <code>doom1.wad</code> and <code>default.cfg</code> into Emscripten’s <a href="https://emscripten.org/docs/api_reference/Filesystem-API.html" target="_blank">virtual file-system</a> before Doom starts. Without them, the app wouldn’t start.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">preRun: () =&gt; {
     Module.FS.createPreloadedFile("", "doom1.wad", "doom1.wad");
     Module.FS.createPreloadedFile("", "default.cfg", "default.cfg");
@@ -246,15 +232,13 @@ if (i != -1) this.sessions[i].ws.send(data.slice(4))
 	<p>One other neat trick is to show important messages coming from the game while it's running, using a bottom scrolling ticker just below the game canvas. There are other, more sophisticated ways to interface between the web page and the Wasm process, but in this case we’re simply parsing <em>stdout</em> messages using a custom purpose handcrafted text protocol.</p>
 	<p>This is what the user sees:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-4.png" class="kg-image"></figure>
-	<p>This is our <em>stdout</em> based <a href="https://github.com/cloudflare/doom-wasm#stdout-procotol" target="_blank">protocol</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This is our <em>stdout</em> based <a href="https://github.com/cloudflare/doom-wasm#stdout-procotol" target="_blank">protocol</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">doom: 1, failed to connect to websockets server
 doom: 2, connected to %s
 doom: 3, we're out of client addresses
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And this is all we have to do in Doom’s C source code:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And this is all we have to do in Doom’s C source code:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">net_websockets.c: printf("doom: 2, connected to %s\n", attr.url);
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -272,9 +256,7 @@ doom: 3, we're out of client addresses
 	<p>However, as John put it, we wanted to showcase a paradigm shift and the opportunity to build real-time networked applications, now made possible because new and powerful technologies and features are available on our edge computing platform.</p>
 	<p>Having said this, the source code for <a href="https://github.com/cloudflare/doom-wasm" target="_blank">Wasm Doom</a>, <a href="https://github.com/cloudflare/doom-workers" target="_blank">Message Router</a>, and website is all open-sourced and available in our GitHub, and you can start playing with it. Comments, issues, or even PRs are welcome. We tried to package everything together so that you can run things locally or deploy your version in Cloudflare.</p>
 	<p>Edge Doom (or Durable Objects Offer Multiplayer, as we like to call it) was a fun project to put together. We hope you found this tech write-up interesting and inspiring to do other things with our edge computing components, and we can't wait to see what you come up with.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fdd394c53bf9df1d244eefead56c2031?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 </div>

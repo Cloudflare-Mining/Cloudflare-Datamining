@@ -17,13 +17,9 @@
 	<h3 id="--1">走进互联网档案馆</h3>
 	<p>与互联网档案馆的Wayback Machine的合作为下一代Always Online提供了动力，可以实现所有这些目标。互联网档案馆的使命是提供对所有知识的普遍访问。自1996年以来，互联网档案馆的Wayback Machine一直在对大部分公共网络进行存档：保存并提供数以百万计的网站和页面。没有了互联网档案馆，这些网站和页面就会丢失。为了完成这一使命，他们已经存档了4680亿个<a href="https://archive.org/web/" target="_blank">网页</a>，总计超过45PB的信息。</p>
 	<p>Always Online与互联网档案馆的集成有助于档案馆扩充其互联网记录；许多启用Always Online功能的域可能尚未被档案馆的爬虫发现。而对于Cloudflare的客户来说，这些档案将无缝地为访问者提供访问内容的权限，否则这些内容将会是错误的。</p>
-	<p>换句话说，Cloudflare与互联网档案馆的合作可以使互联网变得更好，更强大，并且可被每一个人使用。</p>
-	<!--kg-card-begin: markdown-->
-	<blockquote><em>“通过与Cloudflare合作，我们正在了解并存档我们以前可能不知道的网页。在集成了Cloudflare的Always Online服务以后，如果这些网页无法通过实时网络访问，访问者还可以访问这些网页的存档。”</em><br><em>——互联网档案馆Wayback Machine总监，</em><strong>Mark Graham</strong></blockquote>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
-	<blockquote><em>“我们很高兴能与Cloudflare合作，期待这种合作关系为互联网带来重要的冗余，并使我们能够继续努力，让互联网更加有用和可靠。”</em><br><em>——互联网档案馆创始人兼数字图书馆员，</em><strong>Brewster Kahle</strong></blockquote>
-	<!--kg-card-end: markdown-->
+	<p>换句话说，Cloudflare与互联网档案馆的合作可以使互联网变得更好，更强大，并且可被每一个人使用。</p><!--kg-card-begin: markdown-->
+	<blockquote><em>“通过与Cloudflare合作，我们正在了解并存档我们以前可能不知道的网页。在集成了Cloudflare的Always Online服务以后，如果这些网页无法通过实时网络访问，访问者还可以访问这些网页的存档。”</em><br><em>——互联网档案馆Wayback Machine总监，</em><strong>Mark Graham</strong></blockquote><!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<blockquote><em>“我们很高兴能与Cloudflare合作，期待这种合作关系为互联网带来重要的冗余，并使我们能够继续努力，让互联网更加有用和可靠。”</em><br><em>——互联网档案馆创始人兼数字图书馆员，</em><strong>Brewster Kahle</strong></blockquote><!--kg-card-end: markdown-->
 	<h3 id="-always-online-">新的Always Online在幕后是如何工作的？</h3>
 	<p>升级到Cloudflare控制面板上的新版Always Online可以让我们与互联网档案馆共享一些关于您的网站的基本信息（比如主机名和流行url），这样他们就可以开始定期抓取并存档您的网站。这种信息共享和爬取确保了内容可通过Always Online提供，也加深了可通过档案馆直接访问的内容库。</p>
 	<p>如果你的源主机宕机或无法访问，Cloudflare的边缘将返回一个状态码，在<a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors" target="_blank"> 520到527</a>范围内，表明连接到源的过程出现问题。发生这种情况时，Cloudflare将首先查看本地边缘数据中心，以确认是否存在可提供给网站访问者的内容版本或内容是否过期。如果本地缓存中没有历史版本，Cloudflare就会访问互联网档案馆来获取该站点的最新存档版本，从而提供给您的访问者。此时，Always Online会在存档的内容上加上一个横幅，让您的访问者知道您的源节点出现了问题。您的访问者只需在该横幅通知栏上单击一下，就可以查看您的源节点是否恢复在线。尽管访问者看到的需要与源服务器进行通信的动态内容仍然会显示错误（例如，Web应用程序或购物车），但Always Online通常会提供基本的内容。</p>

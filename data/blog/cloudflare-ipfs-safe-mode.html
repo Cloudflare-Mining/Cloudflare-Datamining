@@ -33,24 +33,20 @@
 	<h3 id="how-to-use-ipfs-secure-filtering">How to use IPFS secure filtering</h3>
 	<p>By now, you should have an understanding of how an IPFS node retrieves and provides content, as well as how we can protect peers and users from shared nodes accessing threats. Using this knowledge, Cloudflare went on to implement IPFS Safemode, a node protection layer on top of <a href="https://github.com/ipfs/go-ipfs" target="_blank">go-ipfs</a>. It is up to every node operator to build their own list of threats to be blocked based on their policy.</p>
 	<p>To use it, we are going to follow the instructions available on <a href="https://github.com/cloudflare/go-ipfs/tree/v0.9.1-safemode#build-from-source" target="_blank">cloudflare/go-ipfs repository</a>.</p>
-	<p>First, you need to clone the git repository</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, you need to clone the git repository</p><!--kg-card-begin: markdown-->
 	<pre><code>git clone https://github.com/cloudflare/go-ipfs.git
 cd go-ipfs/
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then, you have to check out the commit where IPFS safemode is implemented. This version is based on v0.9.1 of go-ipfs.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, you have to check out the commit where IPFS safemode is implemented. This version is based on v0.9.1 of go-ipfs.</p><!--kg-card-begin: markdown-->
 	<pre><code>git checkout v0.9.1-safemode
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now that you have the source code on your machine, we need to <a href="https://github.com/cloudflare/go-ipfs/tree/v0.9.1-safemode#build-from-source" target="_blank">build the IPFS client from source</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now that you have the source code on your machine, we need to <a href="https://github.com/cloudflare/go-ipfs/tree/v0.9.1-safemode#build-from-source" target="_blank">build the IPFS client from source</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code>make build
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><em>Et voilà</em>. You are ready to use your IPFS node, with safemode capabilities.</p>
-	<!--kg-card-begin: markdown-->
+	<p><em>Et voilà</em>. You are ready to use your IPFS node, with safemode capabilities.</p><!--kg-card-begin: markdown-->
 	<pre><code># alias ipfs command to make it easier to use
 alias ipfs=’./cmd/ipfs/ipfs’
 # run an ipfs daemon

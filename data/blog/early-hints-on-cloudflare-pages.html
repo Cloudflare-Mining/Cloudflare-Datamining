@@ -6,20 +6,17 @@
 	<h3 id="how-early-hints-works">How Early Hints works</h3>
 	<p>Cloudflare caches any <code>preload</code> and <code>preconnect</code> type <code>Link</code> headers sent from your 200 OK response, and sends them early for any subsequent requests as a 103 Early Hints response.</p>
 	<p>In practical terms, an HTTP conversation now looks like this:</p>
-	<p><strong>Request</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Request</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt">GET /
 Host: example.com
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Early Hints Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Early Hints Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt">103 Early Hints
 Link: &lt;/styles.css&gt;; rel=preload; as=style
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt">200 OK
 Content-Type: text/html; charset=utf-8
 Link: &lt;/styles.css&gt;; rel=preload; as=style
@@ -45,8 +42,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-10.png" class="kg-image" alt="A network diagnostics waterfall for the page without Early Hints, as described above."></figure>
 	<p>Subsequent requests are where things get interesting! These <code>preload</code> links are cached on Cloudflare's global network, and are sent ahead of the document in a 103 Early Hints response. Now, the waterfall looks much different. The initial request goes out the same, but now, requests for the CSS and images slide much further left since they can be started as soon as the 103 response is delivered. The browser starts fetching those resources while waiting for the original request to finish server-side rendering. The LCP again occurs once the t-shirt image has loaded, but this time, it's brought forward by <strong>530ms</strong> because it started loading <strong>752ms</strong> faster, and the document is fully loaded <strong>562ms</strong> faster, again because the external resources could all start loading faster.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-3.png" class="kg-image" alt="A network diagnostics waterfall with Early Hints, as described above."></figure>
-	<p>The final four requests (highlighted in yellow) come back as 304 Not Modified responses using a <code>If-None-Match</code> header. By default, Cloudflare Pages requires the browser to confirm that all assets are fresh, and so, on the off chance that they were updated between the Early Hints response and when they come to being used, the browser is checking if they have changed. Since they haven't, there's no contentful body to download, and the response completes quickly. This can be avoided by setting a custom <code>Cache-Control</code> header on these assets using <a href="https://developers.cloudflare.com/pages/platform/headers/" target="_blank">a <code>_headers</code> file</a>. For example, you could cache these images for one minute with a rule like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The final four requests (highlighted in yellow) come back as 304 Not Modified responses using a <code>If-None-Match</code> header. By default, Cloudflare Pages requires the browser to confirm that all assets are fresh, and so, on the off chance that they were updated between the Early Hints response and when they come to being used, the browser is checking if they have changed. Since they haven't, there's no contentful body to download, and the response completes quickly. This can be avoided by setting a custom <code>Cache-Control</code> header on these assets using <a href="https://developers.cloudflare.com/pages/platform/headers/" target="_blank">a <code>_headers</code> file</a>. For example, you could cache these images for one minute with a rule like:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt"># _headers
 
 /*.png
@@ -58,8 +54,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 	<h2 id="using-early-hints-and-cloudflare-pages">Using Early Hints and Cloudflare Pages</h2>
 	<p>The Early Hints feature on Cloudflare is currently restricted to caching <code>Link</code> headers in a webpage's response. Typically, this would mean that Cloudflare Pages users would either need to use the <code>_headers</code> file, or Pages Functions to apply these headers. However, for your convenience, we've also added support to transform any <code>&lt;link&gt;</code> HTML elements you include in your body into <code>Link</code> headers. This allows you to directly control the Early Hints you send, straight from the same document where you reference these resources – no need to come out of HTML to take advantage of Early Hints.</p>
 	<p>For example, for the following HTML document, will generate an Early Hints response:</p>
-	<p><strong>HTML Document</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>HTML Document</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -71,14 +66,12 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 &lt;/html&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Early Hints Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Early Hints Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt">103 Early Hints
 Link: &lt;/styles.css&gt;; rel=preload; as=style
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>As previously mentioned, <code>Link</code> headers can also be set with a <a href="https://blog.cloudflare.com/custom-headers-for-pages/"><code>_headers</code> file</a> if you prefer:</p>
-	<!--kg-card-begin: markdown-->
+	<p>As previously mentioned, <code>Link</code> headers can also be set with a <a href="https://blog.cloudflare.com/custom-headers-for-pages/"><code>_headers</code> file</a> if you prefer:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-txt"># _headers
 
 /
@@ -88,8 +81,6 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 	<p>Early Hints (and the automatic HTML <code>&lt;link&gt;</code> parsing) has already been enabled automatically for all <code>pages.dev</code> domains. If you have any custom domains configured on your Pages project, make sure to enable Early Hints on that domain in the Cloudflare dashboard under the "Speed" tab. More information can be found in our <a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">documentation</a>.</p>
 	<p>Additionally, in the future, we hope to support the Smart Early Hints features. Smart Early Hints will enable Cloudflare to automatically generate Early Hints, even when no <code>Link</code> header or <code>&lt;link&gt;</code> elements exist, by analyzing website traffic and inferring which resources are important for a given page. We'll be sharing more about Smart Early Hints soon.</p>
 	<p>In the meantime, try out <a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">Early Hints on Pages</a> today! Let us know how much of a loading improvement you see in <a href="https://discord.com/invite/cloudflaredev" target="_blank">our Discord server</a>.</p>
-	<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

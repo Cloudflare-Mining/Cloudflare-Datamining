@@ -21,8 +21,7 @@
 	<p>Supposons qu'Alice achète le nom de domaine aliceswonderland.com et souhaite obtenir un certificat dédié à ce domaine. Alice choisit d'utiliser Let’s Encrypt comme autorité de certification. Tout d'abord, Alice doit générer sa propre clé privée et créer une demande de signature de certificat (CSR). Elle envoie la CSR à Let’s Encrypt, mais l’AC ne délivrera pas de certificat pour cette CSR et cette clé privée tant qu’elle ne saura pas que Alice est propriétaire de aliceswonderland.com. Alice peut ensuite choisir de prouver qu'elle est propriétaire de ce domaine via la validation HTTP.</p>
 	<p>Lorsque Let’s Encrypt exécute DCV sur HTTP, il demande à Alice de placer un fichier nommé de manière aléatoire dans le chemin /.well-known/acme-challenge pour son site Web. L'autorité de certification doit récupérer le fichier texte en envoyant une demande HTTP GET à http://aliceswonderland.com/.well-known/acme-challenge/ &lt;nom_fichier_aléatoire&gt;. Une valeur attendue doit être présente sur ce point de terminaison pour que DCV réussisse.</p>
 	<p>Pour la validation HTTP, Alice chargerait un fichier sur http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz</p>
-	<p>où le corps contient :</p>
-	<!--kg-card-begin: markdown-->
+	<p>où le corps contient :</p><!--kg-card-begin: markdown-->
 	<pre><code>curl http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz
 
 GET /.well-known/acme-challenge/YnV0dHNz
@@ -36,8 +35,7 @@ YnV0dHNz.TEST_CLIENT_KEY
 	<!--kg-card-end: markdown-->
 	<p>L'AC leur indique d'utiliser le jeton YnV0dHNz Base64. TEST_CLIENT_KEY dans une clé liée au compte que seuls le demandeur du certificat et l'autorité de certification connaissent. L'autorité de certification utilise cette combinaison de champs pour vérifier que le demandeur de certificat est réellement propriétaire du domaine. Ensuite, Alice peut obtenir son certificat pour son site Web !</p>
 	<h3 id="validation-dns"><strong>Validation DNS</strong></h3>
-	<p>Les utilisateurs peuvent également valider la propriété d'un domaine en ajoutant un dossier DNS TXT contenant une chaîne de vérification ou un <em>jeton </em>de l'autorité de certification aux dossiers de ressources de leur domaine. Par exemple, voici un domaine pour une entreprise qui se valide auprès de Google :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Les utilisateurs peuvent également valider la propriété d'un domaine en ajoutant un dossier DNS TXT contenant une chaîne de vérification ou un <em>jeton </em>de l'autorité de certification aux dossiers de ressources de leur domaine. Par exemple, voici un domaine pour une entreprise qui se valide auprès de Google :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"
 </code></pre>

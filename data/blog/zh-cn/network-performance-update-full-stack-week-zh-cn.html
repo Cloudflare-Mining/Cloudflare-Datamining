@@ -9,8 +9,7 @@
 	<p>当时，我们想要了解我们与所有竞争产品比较的情况，但是并非所有产品都广泛可用。因此，我们无法报告 Workers 与另一解决方案——Fastly 的 Compute@Edge 的比较情况。</p>
 	<p>今天，我们很高兴地报告，<strong>我们使用 Catchpoint 在世界各地的数据在 50 个节点上运行了测试，根据这些测试中的接收第一个字节的时间，可以得出 Cloudflare Workers 比 Fastly 的 Compute@Edgeis 快 196%。</strong></p>
 	<p>像过去一样，我们执行了一个函数，仅返回当前时间和所测得的接收第一个字节等待时间（客户端发出 HTTP 请求，到 DNS、连接和 TLS 握手之后，客户端收到请求响应的第一个字节之间的时间长度）。测试在 2021 年 11 月 8 日进行，对 Cloudflare Workers 和 Fastly 的 Compute@Edge 都使用了免费层级帐户。</p>
-	<p>在两个提供商上运行的代码完全相同 — 是一个返回所有请求标头的小型函数：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在两个提供商上运行的代码完全相同 — 是一个返回所有请求标头的小型函数：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
 
 
@@ -50,8 +49,7 @@ async function handleRequest(event) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image"></figure>
 	<p>于是，Cloudflare 现在成为了秘鲁网络性能中的第一名。</p>
 	<h3 id="--3"><strong>在斯里兰卡降低延迟</strong></h3>
-	<p>我们的下一个示例在另一个半球的斯里兰卡，在这里，我们发现网络提供商将用户的请求路由到纽瓦克市。</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们的下一个示例在另一个半球的斯里兰卡，在这里，我们发现网络提供商将用户的请求路由到纽瓦克市。</p><!--kg-card-begin: markdown-->
 	<pre><code>1 * * *
 2 100.85.0.1 3.061ms 2.522ms 2.728ms
 3 198.51.100.146 AS29766 3.651ms 1.855ms 2.715ms

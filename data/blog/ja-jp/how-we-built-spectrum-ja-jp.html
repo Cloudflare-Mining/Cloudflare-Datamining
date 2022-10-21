@@ -18,8 +18,7 @@
 	<p>IPv6を動作させるのは少し難しくなります。</p>
 	<p><code>ip route add local 2001:db8::/64 dev lo</code></p>
 	<p>残念ながら、これらのアタッチされたv6IPアドレスには、v4の例のようにバインドすることはできません。これを機能させるには、さらに上の権限が必要な <code>IP_FREEBIND</code> ソケットオプションを使用する必要があります。完全性を確保するためにsysctl <code>net.ipv6.ip_nonlocal_bind</code>を使う方法もありますが、ここで触れることはお勧めしません。</p>
-	<p>このAnyIPのトリックを使用すると、数百万のIPアドレスを各サーバーにローカルに割り当てることができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>このAnyIPのトリックを使用すると、数百万のIPアドレスを各サーバーにローカルに割り当てることができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip addr show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
     inet 1.1.1.0/24 scope global lo
@@ -56,8 +55,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/04/upload-1.jpg" class="kg-image" alt="upload-1">
 		<figcaption>出典：<a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank">こちらもYouTube</a></figcaption>
 	</figure>
-	<p>ある時点で、TPROXY iptablesモジュールに偶然行き当たりました。<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">公式ドキュメント</a>は見落としてしまいやすいです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ある時点で、TPROXY iptablesモジュールに偶然行き当たりました。<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">公式ドキュメント</a>は見落としてしまいやすいです。</p><!--kg-card-begin: markdown-->
 	<pre><code>TPROXY
 このターゲットは、PREROUTINGチェーンおよび
 ここからしか呼び出せないユーザー定義のチェーン内の
@@ -74,8 +72,7 @@ mangleテーブル内でのみ、有効です。 パケットヘッダーを変�
 	<p>考えるほど、もっと知りたくなりました。</p>
 	<p>つまり...TPROXYは実際に何を<em>する</em>のかということです。</p>
 	<h3 id="--3"><strong>魔法のトリックを明らかにする</strong></h3>
-	<p>TPROXYコードは<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank">驚くほど単純</a>です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>TPROXYコードは<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank">驚くほど単純</a>です。</p><!--kg-card-begin: markdown-->
 	<pre><code>case NFT_LOOKUP_LISTENER:
   sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
 				    ip_hdrlen(skb) +
@@ -94,8 +91,7 @@ mangleテーブル内でのみ、有効です。 パケットヘッダーを変�
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/04/3649474619_3b800400e9_z-1.jpg" class="kg-image" alt="3649474619_3b800400e9_z-1">
 		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">画像</a>作者<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></figcaption>
 	</figure>
-	<p>TPROXYで武装することで、bind-to-all-portsのトリックをきわめて容易に実行することができます。構成を次に示します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>TPROXYで武装することで、bind-to-all-portsのトリックをきわめて容易に実行することができます。構成を次に示します。</p><!--kg-card-begin: markdown-->
 	<pre><code># AnyIPで192.0.2.0/24をローカルにルーティングされるように設定します。
 # このネットワークに使用される送信元IPを明示的に指定し、
 # ローカルでの接続時は127.0.0.0/8の範囲にする必要があります。
@@ -110,8 +106,7 @@ sudo iptables -t mangle -I PREROUTING \
         -j TPROXY --on-port=1234 --on-ip=127.0.0.1
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>この設定に加えて、魔法のIP_TRANSPARENTソケットオプションでTCPサーバーを起動する必要があります。次の例は、tcp://127.0.0.1:1234でリッスンする必要があります。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank">IP_TRANSPARENTのマニュアルページ</a>には、次のように掲載されています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この設定に加えて、魔法のIP_TRANSPARENTソケットオプションでTCPサーバーを起動する必要があります。次の例は、tcp://127.0.0.1:1234でリッスンする必要があります。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank">IP_TRANSPARENTのマニュアルページ</a>には、次のように掲載されています。</p><!--kg-card-begin: markdown-->
 	<pre><code>IP_TRANSPARENT（Linux 2.6.24以降)
 このブール値オプションを設定すると、透過プロキシが
 このソケットで有効になります。 このソケットオプションは、呼び出しているアプリ

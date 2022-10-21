@@ -22,8 +22,7 @@
 	<p>The connector framework is based on Kafka-connectors and allows our engineers to easily spin up a service that can read from a system of record and push it somewhere else (such as Kafka, or even Cloudflare’s own <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>). To make this as easy as possible, we use Cookiecutter templating to allow engineers to enter a few parameters into a CLI and in return receive a ready to deploy service.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2-3.png" class="kg-image"></figure>
 	<p>We provide the ability to configure data pipelines via environment variables. For simple use cases, we provide the functionality out of the box. However, extending the readers, writers and transformations is as simple as satisfying an interface and “registering” the new entry.</p>
-	<p>For example, adding the environment variables:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, adding the environment variables:</p><!--kg-card-begin: markdown-->
 	<pre><code>READER=kafka
 TRANSFORMATIONS=topic_router:topic1,topic2|pf_edge
 WRITER=quicksilver

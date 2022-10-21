@@ -8,8 +8,7 @@
 	<p>Eine einzige Datei, die sämtliche Hosts des Internets enthält, wäre natürlich nicht beliebig skalierbar gewesen. Aber zu diesem Zeitpunkt hatte E-Mail oberste Priorität, weil es in Bezug auf Adressierung die vorrangige Herausforderung darstellte. Letzten Endes wurde beschlossen, eine hierarchische Lösung aufzubauen, bei der man über ein externes System die benötigte Domain oder Gruppe von Domains abfragen konnte– oder in den Worten der Beteiligten: „Man beschloss in dieser Sache, die aktuelle Mailboxkennung, die dem Schema ‚user@host‘ folgte, auf ‚user@host.domain‘ zu erweitern. Dabei konnte ‚domain‘ auch eine Hierarchie von Domains sein.“ Das war die Geburtsstunde der Domain.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet.gif" class="kg-image" alt="ARPANET Map"></figure>
 	<p>Man sollte sich aber auf keinen Fall der Illusion hingeben, diese Entscheidungen seien in weiser Voraussicht getroffen worden, weil man um die zukünftige Bedeutung des Domainnamens wusste. Vielmehr ging es bei der gewählten Lösung vor allem darum, dass sie „den vorhandenen Systemen die wenigsten Probleme bereitete“. Ein <a href="https://www.rfc-editor.org/rfc/rfc799.txt" target="_blank">anderer Vorschlag</a> für das Format von E-Mail-Adressen war beispielsweise <code>&lt;user&gt;.&lt;host&gt;@&lt;domain&gt;</code> gewesen. Aber das musste verworfen werden, weil in den E-Mail-Nutzernamen damals bereits Punkte vorkamen. Sonst würden Sie mich heute vielleicht über die E-Mail-Adresse ‚zack.cloudflare@com‘ erreichen.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet-1987.gif" class="kg-image" alt="ARPANET circa 1987"></figure>
-	<!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet-1987.gif" class="kg-image" alt="ARPANET circa 1987"></figure><!--kg-card-begin: html-->
 	<div class="cta">
 		<h2>Was ist Cloudflare?</h2>
 		<p style="margin-bottom: 1.5em;">Mit Cloudflare können Sie Caching, Lastverteilung, Rate Limiting und sogar Netzwerk-Firewalls und Codeausführung innerhalb von Millisekunden von praktisch jedem Internetbenutzer aus Ihrer Infrastruktur an unsere Points of Presence verschieben.</p>
@@ -56,8 +55,7 @@
 			background-color: #6cc7ff;
 			color: #FFF;
 		}
-	</style>
-	<!--kg-card-end: html-->
+	</style><!--kg-card-end: html-->
 	<h3 id="uucp-und-die-bang-adressierung">UUCP und die Bang-Adressierung</h3>
 	<blockquote>Man sagt, dass die Hauptfunktion eines Betriebssystems darin besteht, für ein und dasselbe Objekt mehrere verschiedene Namen zu definieren, damit sich das System dann damit beschäftigen kann, die Beziehungen zwischen all den verschiedenen Namen nachzuverfolgen. Bei Netzwerkprotokollen scheint es ganz ähnlich zu sein.<br>– David D. Clark, <a href="https://www.rfc-editor.org/rfc/rfc814.txt" target="_blank">1982</a></blockquote>
 	<p>Ein weiterer <a href="https://www.rfc-editor.org/ien/ien116.txt" target="_blank">Vorschlag, der sich nicht durchsetzen konnte,</a> bestand darin, das Ausrufezeichen <code>(!)</code> als Trennzeichen für Domainkomponenten zu verwenden. Der Pfad zum Host <code>ISIA</code> im <code>ARPANET</code> lautete demnach <code>!ARPA!ISIA</code>. Bei dieser Lösung konnte man auch Platzhalterzeichen für die Abfrage von Hosts nutzen: <code>!ARPA!*</code> lieferte jeden Host im <code>ARPANET</code>.</p>
@@ -262,8 +260,7 @@ PR:aftp/xx.yy.edu/pub/doc/README
  
 /aftp/xx.yy.edu/pub/doc/README
 </code></pre>
-	<p>In seinem Dokument wird auch erklärt, warum Leerzeichen in URLs kodiert werden müssen (%20):</p>
-	<!--kg-card-begin: markdown-->
+	<p>In seinem Dokument wird auch erklärt, warum Leerzeichen in URLs kodiert werden müssen (%20):</p><!--kg-card-begin: markdown-->
 	<pre><code>&gt; The use of white space characters has been avoided in UDIs: spaces
 &gt; are not legal characters.  This was done because of the frequent
 &gt; introduction of extraneous white space when lines are wrapped by
@@ -380,8 +377,7 @@ PR:aftp/xx.yy.edu/pub/doc/README
 	<p>Wie bei vielen ähnlich gelagerten Fällen war aber der simple <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0882.html" target="_blank">Basic</a>-Auth-Vorschlag für die Browserhersteller (Mosaic) am einfachsten zu implementieren. Dadurch wurde er zur ersten und schließlich einzigen Lösung, bis die Entwickler die Werkzeuge zum Aufbau eigener Authentifizierungssysteme bekamen.</p>
 	<h3 id="die-webanwendung">Die Webanwendung</h3>
 	<p>In der Welt der Webanwendungen wirkt es vielleicht etwas seltsam, sich vorzustellen, dass der Hyperlink die Grundlage des Web sei. Er ist eine Methode, ein Dokument mit einem anderen zu verknüpfen. Nach und nach wurde er durch stilistische Anpassungen, Codeausführung, Sitzungen und Authentifizierung erweitert, bis schließlich das Computing-Gemeinschaftserlebnis entstand, um das sich so viele Experten der 70er Jahre (vergeblich) bemühten. Letzten Endes bestätigt sich auch hier wieder etwas, das damals wie heute für jedes Projekt oder Startup gilt: Es kommt nur auf die Akzeptanz an. Ganz gleich, wie schlampig Ihre Lösung ist – wenn Sie die Leute dazu bringen können, sie zu benutzen, dann werden sie Ihnen auch helfen, daraus etwas Brauchbares zu machen. Umgekehrt gilt natürlich das Gleiche: Wenn Ihnen die Nutzer fehlen, hilft auch keine technische Perfektion. Es gibt unzählige Werkzeuge, in denen Millionen von Arbeitsstunden stecken und die heute kein Mensch mehr verwendet.</p>
-	<p><em>Dieser Artikel ist die überarbeitete Fassung eines Beitrags, der ursprünglich im Eager-Blog erschienen ist. Aus Eager wurde 2016 </em><a href="https://www.cloudflare.com/apps" target="_blank"><em>Cloudflare Apps</em></a><em>.</em></p>
-	<!--kg-card-begin: html-->
+	<p><em>Dieser Artikel ist die überarbeitete Fassung eines Beitrags, der ursprünglich im Eager-Blog erschienen ist. Aus Eager wurde 2016 </em><a href="https://www.cloudflare.com/apps" target="_blank"><em>Cloudflare Apps</em></a><em>.</em></p><!--kg-card-begin: html-->
 	<div class="cta">
 		<h2>Was ist Cloudflare?</h2>
 		<p style="margin-bottom: 1.5em;">Mit Cloudflare können Sie Caching, Lastverteilung, Rate Limiting und sogar Netzwerk-Firewalls und Codeausführung innerhalb von Millisekunden von praktisch jedem Internetbenutzer aus Ihrer Infrastruktur an unsere Points of Presence verschieben.</p>
@@ -428,6 +424,5 @@ PR:aftp/xx.yy.edu/pub/doc/README
 			background-color: #6cc7ff;
 			color: #FFF;
 		}
-	</style>
-	<!--kg-card-end: html-->
+	</style><!--kg-card-end: html-->
 </div>

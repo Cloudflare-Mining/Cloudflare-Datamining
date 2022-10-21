@@ -29,8 +29,7 @@
 	<h3 id="was-ist-heute-passiert"><strong>Was ist heute passiert?</strong></h3>
 	<p>Cloudflare unterhält eine Reihe von BGP-Sammlern, die BGP-Informationen von Hunderten von Routern auf der ganzen Welt sammeln.</p>
 	<p>Heute zwischen ca. <strong>11:05:00 UTC und 12:55:00 UTC</strong> haben wir die folgenden Bekanntgaben gesehen:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.197.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.195.0/24|10297
@@ -68,8 +67,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
 	<p>Beispielsweise erhalten Sie auf die folgende Abfrage legitime Amazon-IPs:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig +short myetherwallet.com @205.251.195.239
 54.192.146.xx
 </code></pre>
@@ -111,8 +109,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 	<h3 id="k-nnten-wir-dieses-problem-vermeiden"><strong>Könnten wir dieses Problem vermeiden?</strong></h3>
 	<p>Diese Frage ist schwer zu beantworten. Es gibt Vorschläge zur Sicherung von BGP:</p>
 	<p>Einige Begriffe können den RIR-Datenbanken hinzugefügt werden, sodass eine Liste zulässiger Quellen erstellt werden kann:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
 route:      205.251.192.0/23	origin:     AS16509	source:     RADB
 route:      205.251.192.0/23	origin:     AS16509	source:     REACH

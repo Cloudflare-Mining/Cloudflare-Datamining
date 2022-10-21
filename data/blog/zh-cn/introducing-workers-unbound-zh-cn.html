@@ -19,8 +19,7 @@
 	<h3 id="--2">这对我的账单有何影响？</h3>
 	<p>规模化性能是我们的首要考虑因素，因为提高 Edge 的性能意味着我们可以将省下的成本转送给您。只需支付一次 JavaScript 运行时开销的费用，然后就可以运行基本上无限的脚本，几乎没有个体上的开销。</p>
 	<p>相比于 AWS Lambda，Workers Unbound 是真正具有成本效益的平台。对于无服务器，应当只需要为实际使用量付费，不应有任何隐藏费用。Workers 不会向您收取 API 网关费或 DNS 请求费之类的隐藏附加费用。</p>
-	<p>无服务器定价比较*</p>
-	<!--kg-card-begin: markdown-->
+	<p>无服务器定价比较*</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -68,8 +67,7 @@
 	<h3 id="--3">可以省多少钱？</h3>
 	<p>为测试我们的数据，我们将一台 <a href="https://github.com/Electroid/serverless-compare" target="_blank">hello world</a> GraphQL 服务器部署到了 Workers 和 Lambda。Lambda 的执行时间中值为 1.54ms，而相同的工作负载在 Workers 上为 0.90ms。在对数字进行了整理并考虑了 AWS 收取的所有不透明费用（包括用于允许来自互联网的请求的 API 网关）之后，我们发现使用 Workers Unbound 最多可以节省 75％。而这仅仅是 hello world 的情况！想象一下，为数百万个用户运行复杂的工作负载时您能节省多少成本。</p>
 	<p>您可能想知道我们为什么具有如此竞争力。一切都取决于效率。Workers 的轻巧特性使我们能够在执行相同的工作时减少平台开销和资源消耗。下面显示了这个 <a href="https://github.com/Electroid/serverless-compare" target="_blank">GraphQL hello world 测试的执行时间，同时也展示了平台提供商的开销</a>。由于测试是真正的 hello world，其差别可以通过提供商之间的体系结构差异来解释（例如，<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Isolate 与容器的差异</a>）。</p>
-	<p>GraphQL hello world 在不同服务器平台上的执行时间（ms）*</p>
-	<!--kg-card-begin: markdown-->
+	<p>GraphQL hello world 在不同服务器平台上的执行时间（ms）*</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

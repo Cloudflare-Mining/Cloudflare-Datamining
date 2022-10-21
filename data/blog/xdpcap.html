@@ -71,8 +71,7 @@ reading from file -, link-type EN10MB (Ethernet)
 	<p>xdpcap’s hook support is built around eBPF tail-calls. XDP programs can yield control to other programs using the tail-call helper. Control is never handed back to the calling program, the return code of the subsequent program is used. For example, consider two XDP programs, foo and bar, with foo attached to the network interface. Foo can tail-call into bar:</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/5.png" class="kg-image"></figure>
 	<p>Flow of XDP program foo tail-calling into program bar</p>
-	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, foo’s tail-call map holds a single entry:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, foo’s tail-call map holds a single entry:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -102,8 +101,7 @@ reading from file -, link-type EN10MB (Ethernet)
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/6.png" class="kg-image">
 		<figcaption>Flow of XDP program foo tail-calling into an xdpcap filter</figcaption>
 	</figure>
-	<p>The filter must return the original action taken by the instrumented program to ensure the packet is processed correctly. To achieve this, xdpcap generates one filter program per possible XDP action, each one hardcoded to return that specific action. All the programs are set in the map:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The filter must return the original action taken by the instrumented program to ensure the packet is processed correctly. To achieve this, xdpcap generates one filter program per possible XDP action, each one hardcoded to return that specific action. All the programs are set in the map:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

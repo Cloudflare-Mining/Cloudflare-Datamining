@@ -37,10 +37,8 @@
 	</figure>
 	<p>After traffic arrives at an edge data center, it is then load-balanced efficiently using our own Layer 4 load-balancer that we built, <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog</a>, which uses our appliances' health and other metrics to load-balance traffic intelligently within a data center to avoid overwhelming any single server.</p>
 	<p>Besides the use of Anycast for inter-data center load balancing and Unimog for intra-data center load balancing, we also utilize various forms of traffic engineering in order to deal with sudden changes in traffic loads across our network. We utilize both automatic and manual traffic engineering methods that can be employed by our 24/7/365 Site Reliability Engineering (SRE) team. </p>
-	<p>These combined factors significantly reduce the likelihood of a denial of service event due to link saturation or appliances being overwhelmed -- and as seen in this attack, no link saturation occurred.</p>
-	<!--kg-card-begin: html-->
-	<h2 id="ddos-detect-mitigate">Detecting &amp; Mitigating DDoS attacks</h2>
-	<!--kg-card-end: html-->
+	<p>These combined factors significantly reduce the likelihood of a denial of service event due to link saturation or appliances being overwhelmed -- and as seen in this attack, no link saturation occurred.</p><!--kg-card-begin: html-->
+	<h2 id="ddos-detect-mitigate">Detecting &amp; Mitigating DDoS attacks</h2><!--kg-card-end: html-->
 	<p>Once traffic arrives at our edge, it encounters our three software-defined DDoS protection systems:</p>
 	<ol>
 		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> - Cloudflare’s centralized DDoS protection systems for detecting and mitigating globally distributed volumetric DDoS attacks. Gatebot runs in our network’s core data center. It receives samples from every one of our edge data centers, analyzes them, and automatically sends mitigation instructions when attacks are detected. Gatebot is also synchronized to each of our customers’ web servers to identify its health and triggers mitigation accordingly.</li>

@@ -14,21 +14,17 @@
 	<h2 id="matching-stages">Matching Stages</h2>
 	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">watch this old presentation</a>.</p>
 	<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
-	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org/" target="_blank">ModSecurity</a> syntax, this is what a rule might look like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org/" target="_blank">ModSecurity</a> syntax, this is what a rule might look like:</p><!--kg-card-begin: markdown-->
 	<pre><code>SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>It takes the request body stored in the <code>REQUEST_BODY</code> variable, applies the <code>urlDecode()</code> and <code>lowercase()</code> functions to it and then compares the result with the regular expression signature <code>\x00+evil</code>.</p>
 	<!--kg-card-end: markdown-->
-	<p>In pseudo-code, we can represent it as:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In pseudo-code, we can represent it as:</p><!--kg-card-begin: markdown-->
 	<pre><code>rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p><!--kg-card-begin: markdown-->
 	<pre><code>POST /cms/admin?action=post HTTP/1.1
 Host: example.com
 Content-Type: text/plain; charset=utf-8
@@ -38,11 +34,9 @@ thiSis%2F%00eVil
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The WAF contains thousands of these rules and its objective is to execute them as quickly as possible to minimize any added latency to a request. And to make things harder, it needs to run most of the rules on nearly every request. That’s because almost all HTTP requests are non-malicious and no rules are going to match. So we have to optimize for the worst case: execute everything!</p>
-	<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p>
-	<!--kg-card-begin: markdown-->
+	<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p><!--kg-card-begin: markdown-->
 	<p>In the previous example, doing a quick check for the NULL byte (represented by <code>\x00</code> in the regular expression) allows us to completely skip the rule if it isn’t found:</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code>contains( "\x00", REQUEST_BODY )
 and
 rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
@@ -52,15 +46,13 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
 	<p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
 	<h2 id="memoization">Memoization</h2>
 	<p>Which brings us to <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank">memoization</a> - caching the output of a function call to reuse it in future calls.</p>
-	<p>Let’s say we have the following expressions:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s say we have the following expressions:</p><!--kg-card-begin: markdown-->
 	<pre><code>1. rx( "\x00+evil", lowercase( url_decode( body ) ) )
 2. rx( "\x00+EVIL", remove_spaces( url_decode( body ) ) )
 3. rx( "\x00+evil", lowercase( url_decode( headers ) ) )
 4. streq( "\x00evil", lowercase( url_decode( body ) ) )
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>In this case, we can reuse the result of the nested function calls (1) as they’re the same in (4). By saving intermediate results we are also able to take advantage of the result of <code>url_decode( body )</code> from (1) and use it in (2) and (4). Sometimes it is also possible to swap the order functions are applied to improve caching, though in this case we would get different results.</p>
 	<!--kg-card-end: markdown-->
 	<p>A naive implementation of this system can simply be a hash table with each entry having the function(s) name(s) and arguments as the key and its output as the value.</p>
@@ -75,8 +67,7 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/execution-time.png" class="kg-image">
 		<figcaption>Execution time per rule</figcaption>
 	</figure>
-	<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ./parse.py --profile
 Hit Ratio:
 -------------

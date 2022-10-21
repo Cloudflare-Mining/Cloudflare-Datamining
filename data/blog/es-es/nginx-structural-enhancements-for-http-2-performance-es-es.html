@@ -36,8 +36,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Upstream-Read-Event.png" class="kg-image"></figure>
 	<p>Si bien seguimos encuadrando datos de flujo ascendente en tramas de datos HTTP/2 en las diferentes iteraciones para cada conexión de flujo ascendente, ya no asignamos estas tramas a una sola cola de escritura en cada iteración, sino que organizamos las tramas en las colas por secuencia como se describió anteriormente. Luego publicamos un único evento al final de las iteraciones por conexión y hacemos la priorización, la cola y la escritura de las tramas de datos HTTP/2 de todas las secuencias en ese único evento.</p>
 	<p>Este único evento encuentra la cohorte de datos almacenada de manera adecuada en sus respectivas colas por secuencia, todo en estrecha proximidad, lo que aumenta considerablemente el Potencial de los algoritmos de priorización perimetral.</p>
-	<p>Más cercano al código actual, la esencia de esta modificación se ve más o menos de esta manera:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Más cercano al código actual, la esencia de esta modificación se ve más o menos de esta manera:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -55,8 +54,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A esto:</p>
-	<!--kg-card-begin: markdown-->
+	<p>A esto:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -73,8 +71,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><br></p>
-	<!--kg-card-begin: markdown-->
+	<p><br></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_write_streams(ngx_http_v2_connection *h2_conn)
 {
     ngx_http_v2_stream *h2_stream;
