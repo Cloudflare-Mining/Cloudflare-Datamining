@@ -10,8 +10,7 @@
 		<li>How do we use IPv6 addresses, and does this affect other uses of IPv6?</li>
 		<li>Oh, and what careful plan, checks, time, and people do we need for migration?</li>
 	</ul>
-	<p>Having to stop and worry about IP addresses costs time, money, resources. This may sound surprising, given the visionary and resilient <a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank">advent of IP</a>, 40+ years ago. By their very design, IP addresses should be the last thing that any network has to think about. However, if the Internet has laid anything bare, it’s that small or seemingly unimportant weaknesses — often invisible or impossible to see at design time — always show up at sufficient scale.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Having to stop and worry about IP addresses costs time, money, resources. This may sound surprising, given the visionary and resilient <a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank">advent of IP</a>, 40+ years ago. By their very design, IP addresses should be the last thing that any network has to think about. However, if the Internet has laid anything bare, it’s that small or seemingly unimportant weaknesses — often invisible or impossible to see at design time — always show up at sufficient scale.</p><!--kg-card-begin: markdown-->
 	<p>One thing we do know: “more addresses” should never be the answer. In IPv4 that type of thinking only contributes to their scarcity, driving up further their market prices. IPv6 is absolutely necessary, but only one part of the solution. For example, in IPv6, the best practice says that the smallest allocation, just for personal use, is /56 -- that’s 2<sup>72</sup> or about 4,722,000,000,000,000,000,000 addresses. I certainly can’t reason about numbers that large. Can you?</p>
 	<!--kg-card-end: markdown-->
 	<p>In this blog post, we’ll explain why IP addressing is a problem for web services, the underlying causes, and then describe an innovative solution that we’re calling Addressing Agility, alongside the lessons we’ve learned. The best part of all may be the kinds of new systems and architectures enabled by Addressing Agility. The full details are available in our recent <a href="https://research.cloudflare.com/publications/Fayed2021/" target="_blank">paper</a> from ACM SIGCOMM 2021. As a preview, here is a summary of some of the things we learned:</p>
@@ -103,8 +102,7 @@
 		<li><strong>Non-TLS or HTTP-based services</strong> may be affected. One example is ssh, which maintains a hostname-to-IP mapping in its known_hosts. This association, while understandable, is outdated and already broken given that many DNS records presently return more than one IP address.</li>
 		<li><strong>Non-SNI TLS</strong> certificates require a dedicated IP address. Providers are forced to charge a premium because each address can only support a single certificate without SNI. The bigger issue, independent of IP, is the use of TLS without SNI. We have launched efforts to understand non-SNI to hopefully end this unfortunate legacy.</li>
 		<li><strong>DDoS protections</strong> that rely on destination IPs may be hindered, initially. We would argue that addressing agility is beneficial for two reasons. First, IP randomization distributes the attack load across all addresses in use, effectively serving as a layer-3 load-balancer. Second, DoS mitigations often work by changing IP addresses, an ability that is inherent in Addressing Agility.</li>
-	</ul>
-	<!--kg-card-begin: markdown-->
+	</ul><!--kg-card-begin: markdown-->
 	<h2 id="allsforsononeandoneforall">All <s>for</s> on One, and One for All</h2>
 	<!--kg-card-end: markdown-->
 	<p>We started with 20+ million zones bound to addresses across tens of thousands of addresses, and successfully served them from 4096 addresses in a /20 and then 256 addresses in a /24. Surely this trend begs the following question:</p>

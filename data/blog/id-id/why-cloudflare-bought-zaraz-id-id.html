@@ -15,8 +15,7 @@
 	<p>Setiap hari, pengembang front-end, pemasar, dan bahkan tim keamanan menyematkan skrip pihak ketiga langsung di halaman web mereka. Skrip ini melakukan tugas dasar — ibarat kata seperti membuang sampah. Ketika berfungsi dengan benar, skrip ini dapat bermanfaat dalam menghadirkan fungsionalitas tingkat lanjut ke situs, membantu melacak konversi pemasaran, menyediakan analitik, atau menghentikan penipuan. Tetapi, jika tidak berfungsi dengan benar, skrip tersebut dapat menyebabkan masalah besar dan bahkan mencuri data.</p>
 	<p>Biasanya, skrip yang dikonfigurasikan dengan buruk dapat memperlambat halaman rendering. Meskipun ada cara agar skrip tidak memblokir, sayangnya para pengembang tidak selalu melakukan praktik terbaik. Seringkali ketika kita melihat situs web yang lambat, penyebab kelambatan terbesar adalah semua skrip pihak ketiga yang telah disematkan.</p>
 	<p>Tapi itu bisa lebih buruk. Jauh lebih buruk. Di Cloudflare, kami telah melihatnya secara langsung. Pada tahun 2019, seorang peretas menyerang layanan pihak ketiga yang digunakan oleh Cloudflare dan mengubah JavaScript pihak ketiga tersebut yang dimuat pada halaman cloudflare.com. Tujuannya adalah mencuri login cookie, nama pengguna, dan kata sandi. Mereka bahkan secara otomatis membuat kolom nama pengguna dan kata sandi yang terisi otomatis.</p>
-	<p>Berikut cuplikan kode aktual yang dimasukkan:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Berikut cuplikan kode aktual yang dimasukkan:</p><!--kg-card-begin: markdown-->
 	<pre><code>        var cf_form = document.createElement("form");
         cf_form.style.display = "none";
         document.body.appendChild(cf_form);

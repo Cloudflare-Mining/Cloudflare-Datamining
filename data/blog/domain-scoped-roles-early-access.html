@@ -7,8 +7,7 @@
 	<p>One of the most common uses we have seen for Domain Scoped Roles is to limit access to production domains to a small set of team members, while still allowing development and pre-production domains to be open to the rest of the team. That way, someone can’t make changes to a production domain unless they are given access.</p>
 	<h3 id="how-to-use-domain-scoped-roles">How to use Domain Scoped Roles</h3>
 	<p>If you are an enterprise customer please talk with your CSM to get you and your team enrolled. Note that you must have Super Administrator privileges to be able to modify account memberships.</p>
-	<p>Once the beta has been enabled for you, here is how to start using it:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once the beta has been enabled for you, here is how to start using it:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Log in to <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>, select your account, and navigate to the <a href="https://dash.cloudflare.com/?account=members" target="_blank">members page</a>.
 			<ul>
@@ -17,8 +16,7 @@
 		</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<ul>
 		<li>When inviting new members there are three things to provide:
 			<ul>
@@ -33,8 +31,7 @@
 		</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection."></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection."></figure><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Before sending the invite, you will be able to confirm the users, scope, and roles.</li>
 	</ul>
@@ -49,8 +46,7 @@
 	<h3 id="introducing-bach">Introducing Bach</h3>
 	<p>Domain Scoped Roles is possible because of a new permission system called Bach. Bach provides a policy based system for defining authorization to Cloudflare’s control plane. Authorization defines what someone can do in a system. Bach has been powering API Tokens, but going forward all authorization will use Bach. This gives customers the ability to define more granular permissions and resource scoping. Resources can be any object a user interacts with whether that be accounts, zones, worker environments, or DNS records to name a few.. Whereas before Cloudflare’s RBAC system relied on assigning a set of roles in which each role defined broad permissions that applied to an entire account, Bach’s policies allow for deeper permission grants that can be scoped to sets of resources.</p>
 	<p>Let’s take a look at the legacy system and how it compares to what Bach supports. Typically, user’s permissions are defined by the ‘roles’ that they are assigned to. These included: ‘Super Administrator’, ‘Administrator’, ‘Cloudflare for Teams’, and ‘Cloudflare Workers Admin’ to name a few. In the legacy system, each of these maps to an explicit set of simple permissions like ‘workers:read’, ‘workers:edit’ or ‘zones:edit’. When requests get made either via the Cloudflare API or the Cloudflare dashboard, Cloudflare’s API Gateway would check to see if, for the endpoint requested, an actor had the correct permissions to perform the action. In order to change a zone setting, the actor would need to have the ‘zone:edit’ permission – which could be granted from one of many roles. Below is what a user with only ‘DNS’ permissions is granted in the legacy system:</p>
-	<h4 id="legacy-dns-user-role-permissions">Legacy DNS User Role Permissions</h4>
-	<!--kg-card-begin: markdown-->
+	<h4 id="legacy-dns-user-role-permissions">Legacy DNS User Role Permissions</h4><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

@@ -17,8 +17,7 @@
 	<h2 id="--1">エンドツーエンドの例</h2>
 	<h3 id="-1-">ステップ1 - カスタムホスト名の定義</h3>
 	<p>Cloudflare for SaaSのお客様は、カスタムホスト名を作成することで、顧客のドメインを定義します。カスタムホスト名は、どのドメインをSaaSプロバイダーのオリジンにルーティングする必要があるかを示します。カスタムホスト名は、<code>example.com</code>のように特定のドメインを定義することも、<code>*.example.com</code>のようにワイルドカードに拡張して、example.comのサブドメインがSaaSサービスにルーティングされるようにすることもできます。WAF for SaaSは、両タイプのカスタムホスト名をサポートしているため、SaaSプロバイダーは保護範囲を柔軟に選択することができます。</p>
-	<p>最初のステップは、カスタムホスト名を作成して顧客ドメインを定義することです。これはダッシュボードかAPIを通じて行います。 </p>
-	<!--kg-card-begin: markdown-->
+	<p>最初のステップは、カスタムホスト名を作成して顧客ドメインを定義することです。これはダッシュボードかAPIを通じて行います。 </p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
      -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
      -H "Content-Type: application/json" \
@@ -33,8 +32,7 @@
 	<p>次に、カスタムホスト名（顧客ドメイン）と、それに付けるファイアウォールルールセットの関連付けを行います。 </p>
 	<p>これは、JSON blobをカスタムホスト名に関連付けることで行います。当社製品の<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a>であれば、API を介して簡単に関連付けることができます。</p>
 	<p>以下の例では、2つのフィールド（「customer_id」と「security_level」）を持つJSON blobが、<code>*.example.com</code>と<code>example.com</code>の各リクエストに関連付けられます。</p>
-	<p>カスタムメタデータには、あらかじめ決められたスキーマはありません。フィールド名や構造は、お客様のニーズに合わせて自由にカスタマイズすることができます。この例では、「security_level」というタグを選択し、3つの値（低、中、高）を割り当てることを想定しています。これによって、3つの異なるルールセットが起動されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>カスタムメタデータには、あらかじめ決められたスキーマはありません。フィールド名や構造は、お客様のニーズに合わせて自由にカスタマイズすることができます。この例では、「security_level」というタグを選択し、3つの値（低、中、高）を割り当てることを想定しています。これによって、3つの異なるルールセットが起動されます。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\
@@ -48,8 +46,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="-3-">ステップ3 - タグに基づいてセキュリティ製品を起動</h3>
 	<p>最後に、カスタムホスト名に基づいてルールを起動します。カスタムメタデータのフィールド、たとえば「security_level」は、WAFが稼働するルールセットエンジンにあります。この例では、「security_level」を使って、WAF、Firewall Rules、Advanced Rate Limiting、Transform Rulesなどの製品のさまざまな設定を起動することが可能です。</p>
-	<p>ルールは、以下のようにダッシュボードまたはAPIを介して作成できます。ここでは、「security_level」を<em>低</em>に設定し、トラフィックに対するレート制限ルールを起動します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ルールは、以下のようにダッシュボードまたはAPIを介して作成できます。ここでは、「security_level」を<em>低</em>に設定し、トラフィックに対するレート制限ルールを起動します。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\

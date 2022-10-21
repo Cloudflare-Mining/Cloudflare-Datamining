@@ -28,8 +28,7 @@
 		<li>api.example.com/<strong>login/*</strong></li>
 	</ul>
 	<p>Perhatikan bagaimana kami menghapus pengidentifikasi pelanggan. Sistem kami dapat mendeteksi bagian API yang berubah, memungkinkan kami dalam mengenali kedua jalur sebagai jalur yang sama. Kami melakukan ini dengan merekam kardinalitas setiap titik akhir. Sebagai contoh, kami mungkin awalnya menemukan bahwa ada 700 string berbeda yang diamati sebagai pengganti tanda bintang. "237" dan "415" hanyalah dua dari kemungkinan tersebut. Kami kemudian menggunakan pembelajaran tanpa pengawasan untuk memilih ambang (dalam hal ini, katakanlah 30). Karena kami telah melihat lebih dari 30 varian jalur ini, kami mengenali pengidentifikasi pelanggan sebagai <em>variabel</em> dan memperpendek jalur tersebut. Proses ini disebut "normalisasi jalur.”</p>
-	<p>Penemuan API adalah blok bangunan untuk berbagai produk keamanan yang akan datang. Tetapi pada intinya, teknologinya adalah tentang menghasilkan peta API yang sederhana dan dapat dipercaya. Berikut adalah contoh kecil dari apa yang mungkin Anda temukan:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Penemuan API adalah blok bangunan untuk berbagai produk keamanan yang akan datang. Tetapi pada intinya, teknologinya adalah tentang menghasilkan peta API yang sederhana dan dapat dipercaya. Berikut adalah contoh kecil dari apa yang mungkin Anda temukan:</p><!--kg-card-begin: markdown-->
 	<pre><code>login/&lt;customer_identifier&gt;
 auth
 account/&lt;customer_identifier&gt;

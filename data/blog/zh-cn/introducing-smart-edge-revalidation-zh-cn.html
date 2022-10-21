@@ -5,10 +5,8 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Cache-Hit--Miss.png" class="kg-image"></figure>
 	<p>重新验证是关于从中间缓存高效地为源服务器上的对象提供服务的较长过程的一部分。网站的访问者希望网站响应迅速。确保网站对访问者响应迅速的一种基本方法是从缓存中提供对象。通过这种方式，请求和响应不需要将 Internet 的不必要部分传输回源，而是可以从离访问者更近的数据中心提供服务。因此，网站运营商通常只希望在内容发生变化时提供来自源的内容。那么对象如何在缓存中保持所需的时间长度呢？</p>
 	<p>一种方法是使用 HTTP 响应标头。</p>
-	<p>当 Cloudflare 从源获得响应时，该响应中包含许多标头。您可以通过打开任何网页、检查页面、转到网络选项卡并单击任何文件来查看这些标头。在响应标头部分通常会有一个称为 <code>Cache-Control</code> 的标头。此标头是源回答缓存中介问题的一种方式，例如：此对象是否符合缓存条件？此对象应该在缓存中多久？该时间到期后缓存中介应该做什么？</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 50.250178699070766%;"><iframe src="https://iframe.videodelivery.net/0ec6b5865c9f8b287b854a5db67bae61?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>当 Cloudflare 从源获得响应时，该响应中包含许多标头。您可以通过打开任何网页、检查页面、转到网络选项卡并单击任何文件来查看这些标头。在响应标头部分通常会有一个称为 <code>Cache-Control</code> 的标头。此标头是源回答缓存中介问题的一种方式，例如：此对象是否符合缓存条件？此对象应该在缓存中多久？该时间到期后缓存中介应该做什么？</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 50.250178699070766%;"><iframe src="https://iframe.videodelivery.net/0ec6b5865c9f8b287b854a5db67bae61?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>可以通过 <code>max-age</code> 或 <code>s-maxage</code> 指令指定某个内容应该在缓存中多长时间。这些指令以秒为单位指定对象的 TTL 或生存时间。一旦对象已在缓存中达到必需的 TTL，时钟就会达到 0（零），并将其标记为已过期。缓存若不弄清楚对象是否在源上发生了更改或是否相同，就无法再安全地为请求提供过期内容。</p>
 	<p>如果更改了，必须从源重新下载。如果没有更改，则它可以标记为新并继续加以提供。这种检查又称为重新验证。</p>
 	<p>我们很高兴智能边缘重新验证将重新验证的效率延伸到所有人，无论源是否发送必要的响应标头</p>

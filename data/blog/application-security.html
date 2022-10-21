@@ -17,8 +17,7 @@
 		<li><strong>API Traffic</strong>: any HTTP request with a response content type of <code>XML</code>, <code>JSON</code>, <code>gRPC</code>, or similar. Where the response content type is not available, such as for mitigated requests, the equivalent <code>Accept</code> content type (specified by the user agent) is used instead. In this latter case API traffic won’t be fully accounted for, but for insight purposes it still provides a good representation.</li>
 	</ul>
 	<p>Unless otherwise stated, the time frame evaluated in this post is the three-month period from December 1, 2021, to March 1, 2022.</p>
-	<p>Finally, please note that the data is calculated based only on traffic observed across the Cloudflare network and does not necessarily represent overall HTTP traffic patterns across the Internet.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, please note that the data is calculated based only on traffic observed across the Cloudflare network and does not necessarily represent overall HTTP traffic patterns across the Internet.</p><!--kg-card-begin: markdown-->
 	<p><small>*When referring to HTTP traffic we mean both HTTP and HTTPS.</small></p>
 	<!--kg-card-end: markdown-->
 	<h2 id="global-traffic-insights">Global Traffic Insights</h2>
@@ -28,8 +27,7 @@
 	<p>Site owners using Cloudflare gain access to tools to mitigate unwanted or malicious traffic and allow access to their applications only when a request is deemed clean. This can be done both using fully managed features, such as our <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS mitigation</a>, <a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a> managed ruleset or schema validation, as well as custom rules that allow users to define their own filters for blocking traffic.</p>
 	<p>If we look at the top five Cloudflare features (sources) that mitigated traffic, we get a clear picture of how much each Cloudflare feature is contributing towards helping keep customer sites and applications online and secure:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-1.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular format for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular format for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -77,8 +75,7 @@
 	<h3 id="http-anomalies-are-the-most-common-attack-vector">HTTP anomalies are the most common attack vector</h3>
 	<p>If we drill into Managed WAF Rules, we get a clear picture of what type of attack vectors malicious users are attempting against the Internet properties we protect.</p>
 	<p>The vast majority (over 54%) of HTTP requests blocked by our Managed WAF Rules contain HTTP anomalies, such as malformed method names, null byte characters in headers, non-standard ports or content length of zero with a <code>POST</code> request.</p>
-	<p>Common attack types in this category are shown below. These have been grouped when relevant:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Common attack types in this category are shown below. These have been grouped when relevant:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -117,8 +114,7 @@
 	<!--kg-card-end: markdown-->
 	<p>More commonly known and referenced attack vectors such as XSS and SQLi only contribute to about 13% of total mitigated requests. More interestingly, attacks aimed at information disclosure are third most popular (10%) and software-specific CVE-based attacks account for about 12% of mitigated requests (more than SQLi alone) highlighting both the importance of needing to patch software quickly, and the likelihood of CVE proof-of-concepts (PoCs) being used to compromise applications, such as with the recent <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a> vulnerability. The top 10 attack vectors by percentage of mitigated requests are shown below:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-96.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular format for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular format for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -181,8 +177,7 @@
 	<p>The most common field, found in approximately 64% of all custom rules, remains the source IP address or fields easily derived from the IP address, such as the client country location. Note that IP addresses are becoming <a href="https://blog.cloudflare.com/icloud-private-relay/">less useful</a> signals for security policies, but they are often the quickest and simplest type of filter to implement during an attack. Customers are also starting to adopt better approaches such as those offered in our <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Zero Trust portfolio</a> to further reduce reliance on IP address-based fields.</p>
 	<p>The top 10 fields are shown below:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-79.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular format for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular format for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -246,8 +241,7 @@
 	<p>Over the time period analyzed, bot traffic accounted for about 38% of all HTTP requests. This traffic includes bot traffic from hundreds of <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Verified Bots tracked by Cloudflare</a>, as well as any request that received a bot score below 30, indicating a high likelihood that it is automated.</p>
 	<p>Overall, when bot traffic matches a security configuration, customers allow 41% of bot traffic to pass to their origins, blocking only 6.4% of automated requests. Remember that this includes traffic coming from <a href="https://blog.cloudflare.com/friendly-bots/">Verified Bots</a> like GoogleBot, which ultimately benefits site owners and end users. It’s a reminder that automation in and of itself is not necessarily detrimental to a site. &nbsp;This is why we segment Verified Bot traffic, and why we give customers a granular bot score, rather than a binary “bot or not bot” indicator. Website operators want the flexibility to be precise with their response to different types of bot traffic, and we can see that they do in fact use this flexibility. Note that our self-serve customers can also decide how to handle bot traffic using our <a href="https://blog.cloudflare.com/super-bot-fight-mode/">Super Bot Fight Mode</a> feature.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-6.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular data for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular data for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -287,8 +281,7 @@
 	<h3 id="more-than-a-third-of-non-verified-bot-http-traffic-is-mitigated">More than a third of non-verified bot HTTP traffic is mitigated</h3>
 	<p>31% of all bot traffic observed by Cloudflare is not verified, and comes from thousands of custom-built automated tools like scanners, crawlers, and bots built by hackers. As noted above, automation does not necessarily mean these bots are performing malicious actions. If we look at customer responses to identified bot traffic, we find that 38.5% of HTTP requests from non-verified bots are mitigated. This is obviously a much more defensive configuration compared to overall bot traffic actions shown above:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-17.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular data for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular data for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;
@@ -338,8 +331,7 @@
 	<p>If we look at our WAF Managed Rules mitigations on API traffic only, we see notable differences compared to global trends. These differences include much more equal distribution across different types of attacks, but more noticeably, SQL injection attacks in the top spot.</p>
 	<p>Command Injection attacks are also much more prominent (14.3%), and vectors such as Deserialization make an appearance, contributing to more than 1% of the total mitigated requests.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-36.png" class="kg-image" title="Chart"></figure>
-	<p>Tabular data for reference:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Tabular data for reference:</p><!--kg-card-begin: markdown-->
 	<style>
 		table {
 			width: 100%;

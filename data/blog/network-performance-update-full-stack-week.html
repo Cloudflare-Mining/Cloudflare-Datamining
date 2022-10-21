@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This blog was published on November 20, 2021. As we continue to optimize our network we're publishing regular updates, which are available <a href="https://blog.cloudflare.com/tag/network-performance-update/">here</a>.</small></em></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/network-performance-update-full-stack-week-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/network-performance-update-full-stack-week-ja-jp/">日本語</a>, .</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week"></figure>
@@ -14,8 +13,7 @@
 	<p>At the time, we wanted to see how we measured up against all comparable offerings, but not all offerings were generally available. As a result, we weren’t able to report on how Workers compared to another solution: Fastly’s Compute@Edge.</p>
 	<p>Today, we’re excited to report that <strong>Cloudflare Workers is 196% faster than Fastly’s Compute@Edge based on the time to first byte from the tests we ran on 50 nodes using Catchpoint’s data from across the world.</strong></p>
 	<p>As we have done in the past, we executed a function that simply returns the current time and measured wait time to first byte (the length of time between a client making an HTTP request to when the client receives the first byte of the request’s response, after DNS, connection, and TLS handshake). The tests were performed on November 8, 2021, using a free tier account for both Cloudflare Workers and Fastly’s Compute@Edge.</p>
-	<p>The code we ran on both providers was exactly identical — a small function that returns all request headers:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The code we ran on both providers was exactly identical — a small function that returns all request headers:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
 
 
@@ -53,8 +51,7 @@ async function handleRequest(event) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image"></figure>
 	<p>As a result, Cloudflare is now number one in network performance in Peru.</p>
 	<h3 id="slimming-down-latencies-in-sri-lanka">Slimming Down Latencies in Sri Lanka</h3>
-	<p>Our next example takes us halfway around the world to Sri Lanka, where we found a network provider who was routing requests from their users to Newark.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our next example takes us halfway around the world to Sri Lanka, where we found a network provider who was routing requests from their users to Newark.</p><!--kg-card-begin: markdown-->
 	<pre><code>1 * * *
 2 100.85.0.1 3.061ms 2.522ms 2.728ms
 3 198.51.100.146 AS29766 3.651ms 1.855ms 2.715ms

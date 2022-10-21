@@ -18,14 +18,12 @@
 	<p>Seperti banyak produk keamanan, kami menganggap Page Shield sebagai penyedia layanan visibilitas, deteksi, mitigasi, dan pencegahan. Langkah pertama adalah visibilitas.</p>
 	<h3 id="visibilitas"><strong>Visibilitas</strong></h3>
 	<p>Apabila diaktifkan, pengulangan Page Shield saat ini menggunakan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">kebijakan keamanan konten</a> (CSP) yang diberlakukan dengan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">petunjuk laporan saja</a> untuk mengumpulkan informasi dari browser. Ini membuat kami dapat menyediakan daftar semua skrip yang berjalan di aplikasi Anda.</p>
-	<p>Dalam istilah HTTP, ini adalah header respons HTTP yang ditambahkan ke sampel respons halaman dari server asal ke browser. Header CSP terlihat seperti ini:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dalam istilah HTTP, ini adalah header respons HTTP yang ditambahkan ke sampel respons halaman dari server asal ke browser. Header CSP terlihat seperti ini:</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Header di atas memberi tahu browser bahwa skrip tidak boleh dimuat &nbsp;<code>(script-src 'none')</code> dan melaporkan pelanggaran apa pun ke titik akhir yang disediakan <code>(report-uri /cdn-cgi/script_monitor/report)</code>. Perlu diperhatikan juga bahwa titik akhir laporan pelanggaran diarahkan ke <a href="https://www.cloudflare.com/network/" target="_blank">jaringan Cloudflare</a> dan diproses di sana, jadi tidak ada lalu lintas tambahan yang mencapai server asal.</p>
-	<p>Setiap laporan pelanggaran yang dikirim oleh browser dan diterapkan sebagai permintaan HTTP POST memberi kami informasi seputar skrip. Berikut contohnya:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Setiap laporan pelanggaran yang dikirim oleh browser dan diterapkan sebagai permintaan HTTP POST memberi kami informasi seputar skrip. Berikut contohnya:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
       "document-uri":"https://www.example.com/",

@@ -19,8 +19,7 @@
 	<h3 id="-character-durable-object">管理连接：Character Durable Object</h3>
 	<p>在开始这个项目之前，我最大的恐惧是使用 Durable Objects。尽管我从未用 Unity 制作过任何严肃的游戏，而且我甚至无法在没有对基本语法进行 Google 搜索的情况下定义 C# 变量，但有关 Durable Objects 的概念部分的某些内容仍然让我感到害怕，直到我开始编写实际代码的那一刻。</p>
 	<p>想象一下，当编写 Durable Objects 和使用 API 变得非常简单时，我的惊讶。</p>
-	<p>Character 模块是一个使用我们在 Workers 中的新模块支持的 Durable Object，它构建在我们的 <a href="https://github.com/cloudflare/modules-rollup-esm" target="_blank">modules-rollup-esm</a> 模板之上。该模块处理传入的请求，并充当客户端的 WebSocket 提供商程序：</p>
-	<!--kg-card-begin: markdown-->
+	<p>Character 模块是一个使用我们在 Workers 中的新模块支持的 Durable Object，它构建在我们的 <a href="https://github.com/cloudflare/modules-rollup-esm" target="_blank">modules-rollup-esm</a> 模板之上。该模块处理传入的请求，并充当客户端的 WebSocket 提供商程序：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export class Character {
   constructor(state, env) {
     this.state = state;
@@ -71,8 +70,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>其中大部分在概念上与我们的 <a href="https://github.com/cloudflare/websocket-template" target="_blank">websocket 模板</a>相同—我们在传入请求中查找 Upgrade 标头，并设置一个 WebSocketPair，其中包含一个<em>服务器</em>和一个<em>客户端 </em>WebSocket。</p>
-	<p>handleSession 函数是我们大部分游戏特定逻辑发生的地方。在这种情况下，我们的 Durable Objects + WebSocket 代码有两个任务需要管理：第一，处理新玩家—给他们一个随机生成的用户名，并使用有效的 WebSocket 设置他们，第二，接受新的玩家位置，并广播这些位置给目前在游戏中的每个人。‘tick’ 函数用于向我们的客户端广播游戏状态，其余代码解析传入的数据，并确定哪些 WebSocket 客户端应该接收新数据。执行此操作的代码如下所示：</p>
-	<!--kg-card-begin: markdown-->
+	<p>handleSession 函数是我们大部分游戏特定逻辑发生的地方。在这种情况下，我们的 Durable Objects + WebSocket 代码有两个任务需要管理：第一，处理新玩家—给他们一个随机生成的用户名，并使用有效的 WebSocket 设置他们，第二，接受新的玩家位置，并广播这些位置给目前在游戏中的每个人。‘tick’ 函数用于向我们的客户端广播游戏状态，其余代码解析传入的数据，并确定哪些 WebSocket 客户端应该接收新数据。执行此操作的代码如下所示：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async tick(skipKey) {
   const users = this.value.users.filter(user =&gt; user.id !== skipKey)
   this.value.websockets
@@ -167,18 +165,15 @@ async handleSession(websocket, ip) {
 	<h3 id="-unity-durable-objects-">处理玩家位置和移动：在 Unity 中使用 Durable Objects 构建</h3>
 	<p>对于像我这样的人来说，Unity 是一个很棒的游戏引擎：一个<em>没有</em>制作游戏经验的相当有经验的程序员。多年来，我一直断断续续地使用 Unity，但在过去的几个月里，我一直在深入研究它并扩展我对如何实际构建真实游戏的理解。</p>
 	<p>以下是您在构建 Durable World 的上下文中需要了解的有关 Unity 的内容：游戏对象<em>是 </em>Unity 中所有事物的首选，并且使用 C# 脚本，您可以为游戏对象编程不同的行为，无论是联网的还是玩家本地的。</p>
-	<p>在我们的游戏中，存在三种不同类型的游戏对象。首先，是世界本身—静态网格的集合，主要是立方体。这些网格在游戏的网络方面根本没有表现出来。通过一系列<em>对撞机</em>，可以停止在这些网格之上或周围导航的任何其他游戏对象从地板上掉下来和穿过墙壁移动。过去 20 年来，您在每款 3D 游戏中都看到了这种设计，包括像《超级马里奥 64》这样的经典游戏。</p>
-	<!--kg-card-begin: html-->
+	<p>在我们的游戏中，存在三种不同类型的游戏对象。首先，是世界本身—静态网格的集合，主要是立方体。这些网格在游戏的网络方面根本没有表现出来。通过一系列<em>对撞机</em>，可以停止在这些网格之上或周围导航的任何其他游戏对象从地板上掉下来和穿过墙壁移动。过去 20 年来，您在每款 3D 游戏中都看到了这种设计，包括像《超级马里奥 64》这样的经典游戏。</p><!--kg-card-begin: html-->
 	<div style="width:100%;height:0;padding-bottom:70%;position:relative;"><iframe src="https://giphy.com/embed/fTmOPDE3jH9qP9HVuL" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></div>
-	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL" target="_blank">via GIPHY</a></p>
-	<!--kg-card-end: html-->
+	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL" target="_blank">via GIPHY</a></p><!--kg-card-end: html-->
 	<p>在 Durable World 中，您的玩家游戏对象是一个简单的胶囊。此形状内置于 Unity 中，通过附加 C# 脚本，我们可以使用键盘控件进行基本移动（在我的情况下，我使用了<a href="https://www.youtube.com/watch?v=4HpC--2iowE" target="_blank">Brackey 的本教程</a>）。</p>
 	<p>多人游戏角色被表示为同一玩家胶囊的简化版本。与将任何类型的输入逻辑（键盘、鼠标等）附加到这些游戏对象不同，它们在 3D 空间中的位置的关键方面—即位置和旋转—由 WebSocket 客户端管理。</p>
 	<p>游戏开始时，您被置于单人游戏环境中：您的角色可以在静态 3D 世界中移动。一旦游戏连接到 Workers 并接收到一个 WebSocket，它就可以开始在多人游戏环境中运行了。这是在世界启动之前的线框图：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/3.png" class="kg-image"></figure>
 	<p>当谈到项目的实际代码时，连接方面非常简单：在游戏开始时创建一个连接单例，它使用 WebSocket 类连接到 Worker，并在新的 WebSocket 更新上调用各种函数。您可以在<a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs" target="_blank">此处</a>找到完整的代码，但我将在下面总结重要部分。</p>
-	<p>首先，我们需要将玩家的位置发送回 Workers。这发生在一个循环中，每 0.2 秒调用一次。UpdatePosition 函数获取玩家位置和旋转，将它们编码为 JSON，并将数据发送到 WebSocket。请注意，通过每 0.2 秒发送一次位置，我们有效地构建了一个以每秒 5 帧更新的播放器。考虑到大多数游戏<em>至少</em>每秒运行 30 帧，如果不是更高，这将是我们稍后将使用插值解决的问题。</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，我们需要将玩家的位置发送回 Workers。这发生在一个循环中，每 0.2 秒调用一次。UpdatePosition 函数获取玩家位置和旋转，将它们编码为 JSON，并将数据发送到 WebSocket。请注意，通过每 0.2 秒发送一次位置，我们有效地构建了一个以每秒 5 帧更新的播放器。考虑到大多数游戏<em>至少</em>每秒运行 30 帧，如果不是更高，这将是我们稍后将使用插值解决的问题。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -270,8 +265,7 @@ public class Connection : MonoBehaviour
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>接下来，我们需要监听当前在游戏中的其他玩家。为了解决这个问题，我们监听来自 Workers 的传入 WebSocket 消息。每条消息都将包含我们的整个游戏状态（我们将来肯定可以优化），我们可以解析并使用它们来决定我们的本地游戏版本应该如何更新。对于我们的 gameState 负载中的每个用户，我们可以创建一个玩家的新实例，并开始在本地跟踪它。我们还可以在 CreateClient 中更新位置、旋转并设置一个指示玩家姓名的简单 UI 元素：</p>
-	<!--kg-card-begin: markdown-->
+	<p>接下来，我们需要监听当前在游戏中的其他玩家。为了解决这个问题，我们监听来自 Workers 的传入 WebSocket 消息。每条消息都将包含我们的整个游戏状态（我们将来肯定可以优化），我们可以解析并使用它们来决定我们的本地游戏版本应该如何更新。对于我们的 gameState 负载中的每个用户，我们可以创建一个玩家的新实例，并开始在本地跟踪它。我们还可以在 CreateClient 中更新位置、旋转并设置一个指示玩家姓名的简单 UI 元素：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -358,8 +352,7 @@ public class Connection : MonoBehaviour
 	<!--kg-card-end: markdown-->
 	<p>设置所有这些代码后，我们建立了一个简单的系统，用于将我们的本地玩家位置发送给 Workers。当我的玩家位置更新时，游戏中的其他所有人都会收到该位置作为更大游戏状态负载的一部分，并相应地更新每个玩家的本地副本。</p>
 	<p>我提到这些更新<em>每 0.2 秒发生一次。</em>游戏预计每秒<em>至少</em>更新 30 次，甚至更多：现代游戏通常预计以每秒 60 帧的速度运行，并且更新速度极快。</p>
-	<p>正是因为这种期望，我们需要<em>为我们的玩家插入</em>运动。而不是每秒发送玩家更新六十次，这将是对我们的持久对象一个巨大的负荷，我们可以看一下传入的新位置或旋转的对象，并使用一些数学运算来平滑移动，从玩家所在的位置到他们要<em>去的地方 </em>Unity（以及许多其他游戏引擎）通过诸如 SmoothDamp 之类的 API 提供这种行为—一种用于随着时间的推移平滑快速、不和谐的运动—如下面的 InterpolateMovement 脚本所示，该脚本用于管理玩家位置和旋转：</p>
-	<!--kg-card-begin: markdown-->
+	<p>正是因为这种期望，我们需要<em>为我们的玩家插入</em>运动。而不是每秒发送玩家更新六十次，这将是对我们的持久对象一个巨大的负荷，我们可以看一下传入的新位置或旋转的对象，并使用一些数学运算来平滑移动，从玩家所在的位置到他们要<em>去的地方 </em>Unity（以及许多其他游戏引擎）通过诸如 SmoothDamp 之类的 API 提供这种行为—一种用于随着时间的推移平滑快速、不和谐的运动—如下面的 InterpolateMovement 脚本所示，该脚本用于管理玩家位置和旋转：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

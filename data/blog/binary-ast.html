@@ -129,8 +129,7 @@ function g() {
 	<p>Keep in mind that this proposal is in very early stages, and current benchmarks and demos are not representative of the final outcome (which should improve numbers much further).</p>
 	<p>As mentioned earlier, BinaryAST can mark functions that should be parsed lazily ahead of time. By using different levels of lazification in the encoder (<a href="https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43" target="_blank">https://github.com/binast/binjs-ref/blob/b72aff7dac7c692a604e91f166028af957cdcda5/crates/binjs_es6/src/lazy.rs#L43</a>) and running tests against some popular JavaScript libraries, we found following speed-ups.</p>
 	<h4 id="level-0-no-functions-are-lazified-">Level 0 (no functions are lazified)</h4>
-	<p>With lazy parsing disabled in both parsers we got a raw parsing speed improvement of between 3 and 10%.</p>
-	<!--kg-card-begin: markdown-->
+	<p>With lazy parsing disabled in both parsers we got a raw parsing speed improvement of between 3 and 10%.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -195,8 +194,7 @@ function g() {
 	</table>
 	<!--kg-card-end: markdown-->
 	<h4 id="level-3-functions-up-to-3-levels-deep-are-lazified-">Level 3 (functions up to 3 levels deep are lazified)</h4>
-	<p>But with the lazification set to skip nested functions of up to 3 levels we see much more dramatic improvements in parsing time between 90 and 97%. As mentioned earlier in the post, BinaryAST makes lazy parsing essentially free by completely skipping over the marked functions.</p>
-	<!--kg-card-begin: markdown-->
+	<p>But with the lazification set to skip nested functions of up to 3 levels we see much more dramatic improvements in parsing time between 90 and 97%. As mentioned earlier in the post, BinaryAST makes lazy parsing essentially free by completely skipping over the marked functions.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -262,8 +260,7 @@ function g() {
 	<!--kg-card-end: markdown-->
 	<p>All the numbers are from manual tests on a Linux x64 Intel i7 with 16Gb of ram.</p>
 	<p>While these synthetic benchmarks are impressive, they are not representative of real-world scenarios. Normally you will use at least some of the loaded JavaScript during the startup. To check this scenario, we decided to test some realistic pages and demos on desktop and mobile Firefox and found speed-ups in page loads too.</p>
-	<p>For a sample application (<a href="https://github.com/cloudflare/binjs-demo" target="_blank">https://github.com/cloudflare/binjs-demo</a>, <a href="https://serve-binjs.that-test.site/" target="_blank">https://serve-binjs.that-test.site/</a>) which weighed in at around 1.2 MB of JavaScript we got the following numbers for initial script execution:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For a sample application (<a href="https://github.com/cloudflare/binjs-demo" target="_blank">https://github.com/cloudflare/binjs-demo</a>, <a href="https://serve-binjs.that-test.site/" target="_blank">https://serve-binjs.that-test.site/</a>) which weighed in at around 1.2 MB of JavaScript we got the following numbers for initial script execution:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

@@ -24,8 +24,7 @@
 		<li>Analizamos el mensaje para un par clave:valor específico como una métrica.</li>
 		<li>Escribimos esa métrica directamente en Analytics Engine de Workers, nuestro nuevo servicio de análisis de series temporales sin servidor, para que podamos consultarlo directamente con GraphQL.</li>
 	</ol>
-	<p>Esto nos evita tener que montar y mantener un servicio de métricas externo, configurar otro servicio en la nube o pensar en cómo escalará. Podemos hacerlo todo directamente en Cloudflare.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Esto nos evita tener que montar y mantener un servicio de métricas externo, configurar otro servicio en la nube o pensar en cómo escalará. Podemos hacerlo todo directamente en Cloudflare.</p><!--kg-card-begin: markdown-->
 	<pre><code># language: TypeScript
 
 async function pubsub(
@@ -79,8 +78,7 @@ const worker = {
 export default worker;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A continuación, podemos consultar estas métricas directamente utilizando un lenguaje conocido: SQL. Nuestra consulta toma las métricas que hemos escrito y nos da un desglose de las transacciones procesadas por nuestros dispositivos de pago, agrupadas por comerciante (y de nuevo, todo en Cloudflare):</p>
-	<!--kg-card-begin: markdown-->
+	<p>A continuación, podemos consultar estas métricas directamente utilizando un lenguaje conocido: SQL. Nuestra consulta toma las métricas que hemos escrito y nos da un desglose de las transacciones procesadas por nuestros dispositivos de pago, agrupadas por comerciante (y de nuevo, todo en Cloudflare):</p><!--kg-card-begin: markdown-->
 	<pre><code>SELECT
   label_2 as region,
   label_3 as merchantId,

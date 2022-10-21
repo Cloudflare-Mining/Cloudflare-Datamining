@@ -2,8 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Tuesday--twitter@2x.png" class="kg-image"></figure>
 	<p>More than 1 billion unique IP addresses pass through the <a href="https://blog.cloudflare.com/tag/cloudflare-network/">Cloudflare Network</a> each day, serving on average 11 million HTTP requests per second and operating within 100ms of 95% of the Internet-connected population globally. Our network spans 200 cities in more than 90 countries, and our engineering teams have built an extremely <a href="https://blog.cloudflare.com/tag/speed-and-reliability/">fast and reliable infrastructure</a>.</p>
 	<p>We’re extremely proud of our work and are determined to help make the Internet a <a href="https://www.fastcompany.com/most-innovative-companies/2019/sectors/security" target="_blank">better and more secure place</a>. Cloudflare engineers who are involved with hardware get down to servers and their components to understand and select the best hardware to maximize the performance of our stack.</p>
-	<p>Our software stack is compute intensive and is very much CPU bound, driving our engineers to work continuously at optimizing Cloudflare’s performance and reliability at all layers of our stack. With the server, a straightforward solution for increasing computing power is to have more CPU cores. The more cores we can include in a server, the more output we can expect. This is important for us since the diversity of our products and customers has grown over time with increasing demand that requires our servers to do more. To help us drive compute performance, we needed to increase core density and that's what we did. Below is the processor detail for servers we’ve deployed since 2015, including the core counts:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our software stack is compute intensive and is very much CPU bound, driving our engineers to work continuously at optimizing Cloudflare’s performance and reliability at all layers of our stack. With the server, a straightforward solution for increasing computing power is to have more CPU cores. The more cores we can include in a server, the more output we can expect. This is important for us since the diversity of our products and customers has grown over time with increasing demand that requires our servers to do more. To help us drive compute performance, we needed to increase core density and that's what we did. Below is the processor detail for servers we’ve deployed since 2015, including the core counts:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -58,8 +57,7 @@
 	<p>As you might imagine, we look at power consumption carefully in the design stage. From the above you can see that it’s not worth the time for us to deploy more power-hungry CPUs if TDP per Core is higher than our current generation which would hurt our Requests per Watt metric. As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today and we’ve made our decision. We’re moving on from Gen 9's 48-core setup of dual socket<a href="https://ark.intel.com/content/www/us/en/ark/products/136869/intel-xeon-platinum-6162-processor-33m-cache-1-90-ghz.html" target="_blank"> Intel® Xeon® Platinum 6162</a>'s to a 48-core single socket<a href="https://www.amd.com/en/products/cpu/amd-epyc-7642" target="_blank"> AMD EPYC™ 7642</a>.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/1.jpg" class="kg-image">
 		<figcaption>Gen X server setup with single socket 48-core AMD EPYC 7642</figcaption>
-	</figure>
-	<!--kg-card-begin: markdown-->
+	</figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

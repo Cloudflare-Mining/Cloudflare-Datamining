@@ -23,8 +23,7 @@
 	<p>So far I’ve only listed extensions we currently support on Workers, but others exist such as ‘H’ in Jenkins and ‘?’ in some cron implementations for start-up time. Most libraries don’t support said extensions, however ‘?’ is used in some implementations in certain circumstances, but not as start-up time. With all these extensions and a lack of standardization, some libraries aren’t guaranteed to support them all.</p>
 	<h3 id="the-multitude-of-libraries">The Multitude of Libraries</h3>
 	<p>During the development of Cron Triggers, we needed some things to just work, and to do that, we opted to pull some libraries off the shelf from package repositories for different parts of the stack.</p>
-	<p>In the Rust backend, we needed a cron library that supported all the extensions we wanted, while also leaving off other field extensions like seconds and years, and had an API that let us simply check if a given time matched the expression pattern. None of the crates on crates.io offered these, so we had to write it ourselves. Using the <a href="https://github.com/geal/nom" target="_blank">nom</a> crate, it was easy to draft a simple, fast, safe parser, named ‘saffron’. As time went on and we got closer to release, it became clearer which extensions we really wanted to support. It was incredibly easy to add support for the new features without worrying about safety since the compiler checked it for us, so all we had to do was extensive logic testing. Last offset weekdays (“L-XW”) and leap years were difficult to get right the first time, but testing them was easy with Rust.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In the Rust backend, we needed a cron library that supported all the extensions we wanted, while also leaving off other field extensions like seconds and years, and had an API that let us simply check if a given time matched the expression pattern. None of the crates on crates.io offered these, so we had to write it ourselves. Using the <a href="https://github.com/geal/nom" target="_blank">nom</a> crate, it was easy to draft a simple, fast, safe parser, named ‘saffron’. As time went on and we got closer to release, it became clearer which extensions we really wanted to support. It was incredibly easy to add support for the new features without worrying about safety since the compiler checked it for us, so all we had to do was extensive logic testing. Last offset weekdays (“L-XW”) and leap years were difficult to get right the first time, but testing them was easy with Rust.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">#[test]
    fn parse_check_offset_weekend_start_months() {
        let cron = "0 0 L-30W * *";
@@ -84,8 +83,7 @@
 	<p>Fixing the issue turned out to be a bit difficult. While the library we were using for descriptions had the option to simply switch from 0-6 to 1-7 days of the week, our future times library did not have that option. Luckily, development was already halfway through with replacing it in Saffron. However, we couldn’t place it directly on the frontend yet, since web bindings didn’t exist and I didn't have time to write them. We needed something easier to develop quickly.</p>
 	<h3 id="reintroducing-cloudflare-workers-">Reintroducing: Cloudflare Workers!</h3>
 	<p>Workers made it incredibly easy to take the existing code, add some wasm entry points for a makeshift API, and call with JavaScript. No need to build a whole separate API in Go! Just take your existing code and put it directly within 100ms of nearly everyone on the Internet. Why call all the way back home when the nearest PoP works just as well?</p>
-	<p>Plus, we don’t have to worry about building and publishing, wrangler does it for us! For example, our validation code is all written in Rust:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Plus, we don’t have to worry about building and publishing, wrangler does it for us! For example, our validation code is all written in Rust:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">#[wasm_bindgen]
 #[derive(Clone, Debug)]
 pub struct ValidationResult {
@@ -134,8 +132,7 @@ pub fn validate(crons: JsArray) -&gt; ValidationResult {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>and our code to handle processing the request and response is written in JavaScript:</p>
-	<!--kg-card-begin: markdown-->
+	<p>and our code to handle processing the request and response is written in JavaScript:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">  const path = new URL(request.url).pathname;
  switch (path) {
    case "/validate": {

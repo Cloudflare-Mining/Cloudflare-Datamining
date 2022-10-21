@@ -16,13 +16,11 @@
 	</figure>
 	<p><a href="https://www.peeringdb.com/" target="_blank">PeeringDB</a> is a user-maintained public database of networks, exchanges, facilities, and interconnection on the Internet. The <a href="https://peering.rad.workers.dev/" target="_blank">Peer With Cloudflare</a> (PWC) application leverages the <a href="https://www.peeringdb.com/" target="_blank">PeeringDB</a> API to query live information on facilities and exchange points from multiple ASNs, compares the resulting networks, and lists to the user shared exchanges and facilities. In this example, we’ll also explore using templating languages in conjunction with Cloudflare’s HTMLRewriter.</p>
 	<h3 id="generate-a-workers-site">Generate a Workers Site</h3>
-	<p>We’ll start by <a href="https://developers.cloudflare.com/workers/sites/start-from-scratch/" target="_blank">generating a workers site</a> using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/install/" target="_blank">wrangler</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We’ll start by <a href="https://developers.cloudflare.com/workers/sites/start-from-scratch/" target="_blank">generating a workers site</a> using <a href="https://developers.cloudflare.com/workers/tooling/wrangler/install/" target="_blank">wrangler</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&gt; wrangler generate --site peering
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>PWC will be entirely served from <code>index.html</code>, which will be generated in the <code>/public</code> directory. Next, ensure that we only serve <code>index.html</code>, regardless of the path supplied by the user. Modify <code>index.js</code> to serve a single page application, using the <a href="https://github.com/cloudflare/kv-asset-handler#servesinglepageapp" target="_blank">serveSinglePageApp</a> method.</p>
-	<!--kg-card-begin: markdown-->
+	<p>PWC will be entirely served from <code>index.html</code>, which will be generated in the <code>/public</code> directory. Next, ensure that we only serve <code>index.html</code>, regardless of the path supplied by the user. Modify <code>index.js</code> to serve a single page application, using the <a href="https://github.com/cloudflare/kv-asset-handler#servesinglepageapp" target="_blank">serveSinglePageApp</a> method.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { getAssetFromKV, serveSinglePageApp } from '@cloudflare/kv-asset-handler'
 
 addEventListener('fetch', event =&gt; {
@@ -52,8 +50,7 @@ async function handleEvent(event) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Workers Sites will now load up <code>index.html</code> (in the /public directory) regardless of the supplied URL path. This means we can apply the application to any route on the site, and have the same user experience. We define this in our <code>wrangler.toml</code> under the <code>[site]</code> section.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Workers Sites will now load up <code>index.html</code> (in the /public directory) regardless of the supplied URL path. This means we can apply the application to any route on the site, and have the same user experience. We define this in our <code>wrangler.toml</code> under the <code>[site]</code> section.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">[site]
 bucket="./public"
 entry-point="./"
@@ -68,8 +65,7 @@ entry-point="./"
 	<ul>
 		<li>State can be stored in a single search parameter for the purposes of this application, and the null state can be handled easily</li>
 	</ul>
-	<p>Modify <code>index.js</code> to read in the <code>asn</code> search parameter:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Modify <code>index.js</code> to read in the <code>asn</code> search parameter:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleEvent(event) {
   const response = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp })
   const url = new URL(event.request.url) // create a URL object from the request url
@@ -82,8 +78,7 @@ entry-point="./"
 		<li>Null state (no ASN is provided). In this case we can simply return the vanilla <code>index.html</code> page</li>
 		<li>ASN is provided and has an entry on PeeringDB’s API</li>
 		<li>ASN is provided but is malformed or has no PeeringDB entry</li>
-	</ol>
-	<!--kg-card-begin: markdown-->
+	</ol><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">try {
   if (asn) {
     // B) asn is provided
@@ -96,8 +91,7 @@ entry-point="./"
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To provide the initial state and styling of the PWC application, index.html uses a third party framework called <a href="https://milligram.io/" target="_blank">milligram</a>, chosen due to its lightweight nature, which requires <a href="https://necolas.github.io/normalize.css/" target="_blank">normalize.css</a> and the <a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto</a> font family. Also defined is a custom style for basic formatting. For state storage, a form is defined such that upon submission a GET request is sent to #, which is effectively a request to self with supplied parameters. The parameter in this case is named asn and must be a number:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To provide the initial state and styling of the PWC application, index.html uses a third party framework called <a href="https://milligram.io/" target="_blank">milligram</a>, chosen due to its lightweight nature, which requires <a href="https://necolas.github.io/normalize.css/" target="_blank">normalize.css</a> and the <a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto</a> font family. Also defined is a custom style for basic formatting. For state storage, a form is defined such that upon submission a GET request is sent to #, which is effectively a request to self with supplied parameters. The parameter in this case is named asn and must be a number:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -129,15 +123,13 @@ entry-point="./"
 	<p>The <a href="https://peeringdb.com/apidocs/#operation/list%20net" target="_blank">PeeringDB API</a> defines networks primarily with metadata outlining key information about the network and owners, as well as two lists of public peering exchange points and private peering facilities. The PWC application will list any peering points (exchanges and facilities) shared between the user-provided network and Cloudflare’s network in a single table. PWC uses a model-view paradigm to retrieve, store, and display these data from the PeeringDB API. Defined below are the three data models representing a Network, Facility, and Exchange.</p>
 	<p>To define a network, first inspect a sample response from the PeeringDB API (use <a href="https://peeringdb.com/api/net?asn__in=13335&amp;depth=2" target="_blank">https://peeringdb.com/api/net?asn__in=13335&amp;depth=2</a> for a sample from Cloudflare’s network). Some key pieces of information displayed in PWC are the network name, website, notes, exchanges, and facilities.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image7.png" class="kg-image"></figure>
-	<p><code>Network</code> begins with a constructor to initialize itself with an Autonomous System Number. This is used for lookup of the network from the PeeringDB API:</p>
-	<!--kg-card-begin: markdown-->
+	<p><code>Network</code> begins with a constructor to initialize itself with an Autonomous System Number. This is used for lookup of the network from the PeeringDB API:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export class Network {
 	constructor(asn) {
 		this.asn = asn
 	}</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A <code>populate()</code> function is then implemented to fetch information from a third party API and fill in required data. The <code>populate()</code> method additionally creates instances of <code>NetworkFacility</code> and <code>NetworkExchange</code> objects to be stored as attributes of the <code>Network</code> model.</p>
-	<!--kg-card-begin: markdown-->
+	<p>A <code>populate()</code> function is then implemented to fetch information from a third party API and fill in required data. The <code>populate()</code> method additionally creates instances of <code>NetworkFacility</code> and <code>NetworkExchange</code> objects to be stored as attributes of the <code>Network</code> model.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async populate(){
 		const net = await findAsn(this.asn)
 		this.id = net['id']
@@ -159,8 +151,7 @@ entry-point="./"
 		return this
 	}</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Any <code>Network</code> defined in the PWC application can compare itself to another <code>Network</code> object. This generic approach allows PWC to be extended to arbitrary network comparison in the future. To accomplish this, implement a <code>compare()</code> and <code>compareItems()</code> function to compare both <code>NetworkExchanges</code> and <code>NetworkFacilities</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Any <code>Network</code> defined in the PWC application can compare itself to another <code>Network</code> object. This generic approach allows PWC to be extended to arbitrary network comparison in the future. To accomplish this, implement a <code>compare()</code> and <code>compareItems()</code> function to compare both <code>NetworkExchanges</code> and <code>NetworkFacilities</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">compareItems(listA, listB, sharedItems) {
 		for (let key in listA) {
 			if(listB[key]) {
@@ -176,8 +167,7 @@ entry-point="./"
 		return await fetchAdditionalDetails(sharedFacilities, sharedExchanges)
 	}</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Both the <code>NetworkFacility</code> and <code>NetworkExchange</code> models implement a constructor to initialize with supplied data, as well as a populate method to add in extra information. These models also take care of converting PeeringDB API information into more human-readable formats.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Both the <code>NetworkFacility</code> and <code>NetworkExchange</code> models implement a constructor to initialize with supplied data, as well as a populate method to add in extra information. These models also take care of converting PeeringDB API information into more human-readable formats.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export class NetworkFacility {
 	constructor(netfac){
 		this.name = netfac['name']
@@ -208,8 +198,7 @@ export class NetworkExchange {
 	}
 }</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Notice that the <code>compare()</code> and <code>populate()</code> functions call out to <code>fetchAdditionalDetails</code> and <code>findAsn</code> methods; these are implemented to gather additional information for each model. Both methods are implemented in an ‘interface’ under <code>src/utils/</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Notice that the <code>compare()</code> and <code>populate()</code> functions call out to <code>fetchAdditionalDetails</code> and <code>findAsn</code> methods; these are implemented to gather additional information for each model. Both methods are implemented in an ‘interface’ under <code>src/utils/</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {peeringDb} from './constants'
 
 async function fetchPdbData(path) {
@@ -247,8 +236,7 @@ export {findAsn, fetchAdditionalDetails}
 	<!--kg-card-end: markdown-->
 	<h3 id="presenting-results-using-htmlrewriter">Presenting Results using HTMLRewriter</h3>
 	<p>In building a single page application with workers, the PWC application needs the ability to modify HTML responses returned to the user. To accomplish this, PWC uses Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter/" target="_blank">HTMLRewriter interface</a>. HTMLRewriter streams any supplied response through a transformer, applying any supplied transformations to the raw response object. This returns a modified response object that can then be returned to the user.</p>
-	<p>In the case of PWC, three cases need to be handled, and two of them require some form of transformation before returning <code>index.html</code> to the user. Define a generic <code>AsnHandler</code> to provide to the user their supplied ASN. The <code>element()</code> method in this handler will simply set a value attribute on the target element.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In the case of PWC, three cases need to be handled, and two of them require some form of transformation before returning <code>index.html</code> to the user. Define a generic <code>AsnHandler</code> to provide to the user their supplied ASN. The <code>element()</code> method in this handler will simply set a value attribute on the target element.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">class AsnHandler {
 	constructor(asn) {
 		this.asn = asn
@@ -262,8 +250,7 @@ export {findAsn, fetchAdditionalDetails}
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/07/image8.png" class="kg-image" alt="The ASNHandler fills the form field with the user-supplied ASN.">
 		<figcaption>The ASNHandler fills the form field with the user-supplied ASN.</figcaption>
 	</figure>
-	<p>For error cases, PWC needs to provide feedback to the user that the supplied ASN was not found on PeeringDB. In this case a simple header tag is appended to the target element.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For error cases, PWC needs to provide feedback to the user that the supplied ASN was not found on PeeringDB. In this case a simple header tag is appended to the target element.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">class ErrorConditionHandler {
 	constructor(asn) {
 		this.asn = asn
@@ -277,13 +264,11 @@ export {findAsn, fetchAdditionalDetails}
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/07/image6-1.png" class="kg-image" alt="The ErrorConditionHandler provides feedback on invalid user-supplied input.">
 		<figcaption>The ErrorConditionHandler provides feedback on invalid user-supplied input.</figcaption>
 	</figure>
-	<p>For cases where a result needs to be returned, a NetworkComparisonHandler is implemented. Instead of defining raw HTML in a string format, NetworkComparisonHandler uses a templating language (<a href="https://handlebarsjs.com/" target="_blank">Handlebars</a>) to provide a dynamic transformation based on data returned from PeeringDB. First, install both handlebars and handlebars loader with npm:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For cases where a result needs to be returned, a NetworkComparisonHandler is implemented. Instead of defining raw HTML in a string format, NetworkComparisonHandler uses a templating language (<a href="https://handlebarsjs.com/" target="_blank">Handlebars</a>) to provide a dynamic transformation based on data returned from PeeringDB. First, install both handlebars and handlebars loader with npm:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&gt; npm install handlebars handlebars-loader
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now define the <code>NetworkComparisonHandler</code>, including an import of the <code>networkTable</code> template.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now define the <code>NetworkComparisonHandler</code>, including an import of the <code>networkTable</code> template.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import networkTable from '../templates/networktable.hbs'
 
 class NetworkComparisonHandler {
@@ -299,8 +284,7 @@ class NetworkComparisonHandler {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The Handlebars template itself uses conditional logic to handle cases where there is no direct overlap between the two supplied networks, and a custom helper to provide references to each piece of returned data. Handlebars provides an easy-to-read interface for conditional logic, iteration, and custom views.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The Handlebars template itself uses conditional logic to handle cases where there is no direct overlap between the two supplied networks, and a custom helper to provide references to each piece of returned data. Handlebars provides an easy-to-read interface for conditional logic, iteration, and custom views.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">{{#if this.sharedItems.length}}
   &lt;h4&gt;Shared facilities and exchanges between {{this.cfNetwork.name}} and {{this.otherNetwork.name}}&lt;/h4&gt;
   &lt;table&gt;
@@ -328,8 +312,7 @@ class NetworkComparisonHandler {
 {{/if}}
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>A custom link helper is used to display an <code>&lt;a&gt;</code> tag with a reference to each datum.</p>
-	<!--kg-card-begin: markdown-->
+	<p>A custom link helper is used to display an <code>&lt;a&gt;</code> tag with a reference to each datum.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import handlebars from 'handlebars'
 
 export default function(text, url) {
@@ -337,14 +320,12 @@ export default function(text, url) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Great! Handlebars and other templating languages are extremely useful for building complex view logic into Cloudflare’s HTMLRewriter. To tie Handlebars into our build process, and have wrangler understand the currently foreign code, modify <code>wrangler.toml</code> to use a custom webpack configuration:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Great! Handlebars and other templating languages are extremely useful for building complex view logic into Cloudflare’s HTMLRewriter. To tie Handlebars into our build process, and have wrangler understand the currently foreign code, modify <code>wrangler.toml</code> to use a custom webpack configuration:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">type = "webpack"
 webpack_config = "webpack.config.js"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In <code>webpack.config.js</code>, configure any .hbs files to be compiled using the handlebars-loader module. <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack" target="_blank">Custom webpack configurations</a> can be used in conjunction with Wrangler to create more complex build schemes, including environment-specific schemes.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In <code>webpack.config.js</code>, configure any .hbs files to be compiled using the handlebars-loader module. <a href="https://developers.cloudflare.com/workers/tooling/wrangler/webpack" target="_blank">Custom webpack configurations</a> can be used in conjunction with Wrangler to create more complex build schemes, including environment-specific schemes.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">module.exports = {
   target: 'webworker',
   entry: './index.js',
@@ -354,8 +335,7 @@ webpack_config = "webpack.config.js"
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Time to tie it all together in <code>index.js</code>! Handle each case by returning to the user either a raw HTML response or a modified response using HTMLRewriter. The <code>#asnField</code> will be updated, and the <code>#formContainer</code> will be used to present either an error message or a table of results.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Time to tie it all together in <code>index.js</code>! Handle each case by returning to the user either a raw HTML response or a modified response using HTMLRewriter. The <code>#asnField</code> will be updated, and the <code>#formContainer</code> will be used to present either an error message or a table of results.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleEvent(event) {
   const response = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp })
   const url = new URL(event.request.url)
@@ -384,8 +364,7 @@ webpack_config = "webpack.config.js"
 		<figcaption>The NetworkComparisonHandler and associated Handlebars template allows PWC to present PeeringDB information in a user-friendly format.</figcaption>
 	</figure>
 	<h3 id="publish-to-cloudflare">Publish to Cloudflare</h3>
-	<p>You can view the final code <a href="https://github.com/kabirsikand/peering" target="_blank">on Github</a>, or navigate to <a href="https://peering.rad.workers.dev/" target="_blank">peering.rad.workers.dev</a> to see a working example. The final <code>wrangler.toml</code> includes instructions to publish the code up to a workers.dev site, allowing you to easily build, deploy, and test without a domain - simply by setting <code>workers_dev</code> to “true”.</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can view the final code <a href="https://github.com/kabirsikand/peering" target="_blank">on Github</a>, or navigate to <a href="https://peering.rad.workers.dev/" target="_blank">peering.rad.workers.dev</a> to see a working example. The final <code>wrangler.toml</code> includes instructions to publish the code up to a workers.dev site, allowing you to easily build, deploy, and test without a domain - simply by setting <code>workers_dev</code> to “true”.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">name = "peering"
 type = "webpack"
 webpack_config = "webpack.config.js"
@@ -399,14 +378,12 @@ bucket="./public"
 entry-point="./"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally, publish your code using wrangler.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, publish your code using wrangler.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&gt; wrangler publish
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="cache-at-the-edge">Cache At The Edge</h3>
-	<p>Taking advantage of our server-rendered content is as simple as matching the request against any previously cached assets. To accomplish this, add a few simple lines to the top of our <code>handleEvent</code> function using Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/cache/" target="_blank">Cache API</a>. If an asset is found, return the response without going into the application logic.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Taking advantage of our server-rendered content is as simple as matching the request against any previously cached assets. To accomplish this, add a few simple lines to the top of our <code>handleEvent</code> function using Cloudflare’s <a href="https://developers.cloudflare.com/workers/reference/apis/cache/" target="_blank">Cache API</a>. If an asset is found, return the response without going into the application logic.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleEvent(event) {
   let cache = caches.default
   let response = await cache.match(event.request)

@@ -44,20 +44,17 @@
 		<li>Supported elliptic curve groups, and</li>
 		<li>Elliptic curve point formats.</li>
 	</ul>
-	<p>When given a pair of User Agent and observed TLS Client Hello, MITMEngine detects differences between the given Client Hello and the one expected for the presented User Agent. For example, consider the following User Agent:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When given a pair of User Agent and observed TLS Client Hello, MITMEngine detects differences between the given Client Hello and the one expected for the presented User Agent. For example, consider the following User Agent:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)
 Chrome/47.0.2526.111 Safari/537.36
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This User Agent corresponds to Chrome 47 running on Windows 7. The paired TLS Client Hello includes the following cipher suites, displayed below as a hex dump:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This User Agent corresponds to Chrome 47 running on Windows 7. The paired TLS Client Hello includes the following cipher suites, displayed below as a hex dump:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">0000  c0 2b c0 2f 00 9e c0 0a  c0 14 00 39 c0 09 c0 13   .+./.... ...9....
 0010  00 33 00 9c 00 35 00 2f  00 0a                     .3...5./ ..
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>These cipher suites translate to the following list (and order) of 13 ciphers:</p>
-	<!--kg-card-begin: markdown-->
+	<p>These cipher suites translate to the following list (and order) of 13 ciphers:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)
 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)
 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x009e)
@@ -73,14 +70,12 @@ TLS_RSA_WITH_AES_128_CBC_SHA (0x002f)
 TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The reference TLS Client Hello cipher suites for Chrome 47 are the following:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The reference TLS Client Hello cipher suites for Chrome 47 are the following:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">0000  c0 2b c0 2f 00 9e cc 14  cc 13 c0 0a c0 14 00 39   .+./.... .......9
 0010  c0 09 c0 13 00 33 00 9c  00 35 00 2f 00 0a         .....3.. .5./..
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Looking closely, we see that the cipher suite list for the observed traffic is shorter than we expect for Chrome 47; two cipher suites have been removed, though the remaining cipher suites remain in the same order. The two missing cipher suites are</p>
-	<!--kg-card-begin: markdown-->
+	<p>Looking closely, we see that the cipher suite list for the observed traffic is shorter than we expect for Chrome 47; two cipher suites have been removed, though the remaining cipher suites remain in the same order. The two missing cipher suites are</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc14)
 TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)
 </code></pre>

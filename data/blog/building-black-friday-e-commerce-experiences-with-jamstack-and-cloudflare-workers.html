@@ -18,8 +18,7 @@
 	<p>When a potential customer visits a bundle, they'll see a list of products from Sanity.io, and a checkout button provided by Stripe.</p>
 	<h3 id="responding-to-new-checkout-sessions-and-purchases">Responding to new checkout sessions and purchases</h3>
 	<p>Making API requests with Stripe's Node SDK isn't currently supported in Workers (check out the GitHub issue where we're<a href="https://github.com/stripe/stripe-node/issues/997" target="_blank"> discussing a fix</a>), but because it's just REST underneath, we can easily make REST requests using the library.</p>
-	<p>When a user clicks the checkout button on a bundle page, it makes a request to the Cloudflare Workers API, and securely generates a new session for the user to checkout with Stripe.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When a user clicks the checkout button on a bundle page, it makes a request to the Cloudflare Workers API, and securely generates a new session for the user to checkout with Stripe.</p><!--kg-card-begin: markdown-->
 	<pre><code>import { json, stripe } from '../helpers'
 
 export default async (request) =&gt; {

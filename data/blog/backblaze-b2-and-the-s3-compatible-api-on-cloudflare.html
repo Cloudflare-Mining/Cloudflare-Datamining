@@ -22,13 +22,11 @@
 	<p>We’ve tested Backblaze B2’s S3 Compatible API in Cloudflare Workers using the same code tested for Amazon S3 buckets and it works perfectly by changing the target endpoint.</p>
 	<h3 id="creating-a-s3-compatible-worker-script">Creating a S3 Compatible Worker script</h3>
 	<p>Here’s how it is done using Cloudflare Worker’s CLI tool <a href="https://developers.cloudflare.com/workers/quickstart#installing-the-cli" target="_blank">Wrangler</a>:</p>
-	<p>Generate a new project in Wrangler using a template intended for use with Amazon S3:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Generate a new project in Wrangler using a template intended for use with Amazon S3:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">wrangler generate &lt;projectname&gt; https://github.com/obezuk/worker-signed-s3-template</code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This template uses <a href="https://github.com/mhart/aws4fetch" target="_blank">aws4fetch</a>. A fast, lightweight implementation of an S3 Compatible signing library that is commonly used in Service Worker environments like Cloudflare Workers.</p>
-	<p>The template creates an index.js file with a standard request signing implementation:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The template creates an index.js file with a standard request signing implementation:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { AwsClient } from 'aws4fetch'
 
 const aws = new AwsClient({
@@ -49,8 +47,7 @@ async function handleRequest(request) {
 }</code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="environment-variables">Environment Variables</h3>
-	<p>Modify your wrangler.toml file to use your Backblaze B2 API Key ID and Secret:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Modify your wrangler.toml file to use your Backblaze B2 API Key ID and Secret:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">[env.dev]
 vars = { AWS_ACCESS_KEY_ID = "&lt;BACKBLAZE B2 keyId&gt;", 
 AWS_SECRET_ACCESS_KEY = "&lt;BACKBLAZE B2 secret&gt;", 

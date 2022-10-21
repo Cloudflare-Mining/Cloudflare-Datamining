@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-49.png" class="kg-image" alt="Introducing workerd: the Open Source Workers runtime"></figure>
 	<p>Today I'm proud to introduce the first beta release of workerd, the JavaScript/Wasm runtime based on the same code that powers Cloudflare Workers. workerd is Open Source under the Apache License version 2.0.</p>
-	<p>workerd shares most of its code with the runtime that powers Cloudflare Workers, but with some changes designed to make it more portable to other environments. The name "workerd" (pronounced "worker dee") comes from the Unix tradition of naming servers with a "-d" suffix standing for "daemon". The name is not capitalized because it is a program name, which are traditionally lower-case in Unix-like environments.</p>
-	<!--kg-card-begin: html-->
+	<p>workerd shares most of its code with the runtime that powers Cloudflare Workers, but with some changes designed to make it more portable to other environments. The name "workerd" (pronounced "worker dee") comes from the Unix tradition of naming servers with a "-d" suffix standing for "daemon". The name is not capitalized because it is a program name, which are traditionally lower-case in Unix-like environments.</p><!--kg-card-begin: html-->
 	<p>
 		<style>
 			button {
@@ -20,8 +19,7 @@
 			}
 		</style>
 		<a href="https://github.com/cloudflare/workerd" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the code on GitHub</button></a>
-	</p>
-	<!--kg-card-end: html-->
+	</p><!--kg-card-end: html-->
 	<h2 id="what-it-s-for">What it's for</h2>
 	<h3 id="self-hosting-workers">Self-hosting Workers</h3>
 	<p>workerd can be used to self-host applications that you'd otherwise run on Cloudflare Workers. It is intended to be a production-ready web server for this purpose. workerd has been designed to be unopinionated about hosting environments, so that it should fit nicely into whatever server/VM/container hosting and orchestration system you prefer. It's just a web server.</p>
@@ -53,8 +51,7 @@
 	<p>Cloudflare itself has used the homogeneous model on our network since the beginning. Every one of Cloudflare's edge servers runs our entire software stack, so any server can answer any kind of request on its own. We've found it works incredibly well. This is why services on Cloudflare – including ones that use Workers – are able to go from no traffic at all to millions of requests per second instantly without trouble.</p>
 	<h3 id="capability-bindings-cleaner-configuration-and-ssrf-safety">Capability bindings: cleaner configuration and SSRF safety</h3>
 	<p>workerd takes a different approach to most runtimes – indeed, to most software development platforms – in how an application accesses external resources.</p>
-	<p>Most development platforms start from assuming that the application can talk to the whole world. It is up to the application to figure out exactly what it wants to talk to, and name it in some global namespace, such as using a URL. So, an application server that wants to talk to the authentication microservice might use code like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Most development platforms start from assuming that the application can talk to the whole world. It is up to the application to figure out exactly what it wants to talk to, and name it in some global namespace, such as using a URL. So, an application server that wants to talk to the authentication microservice might use code like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Traditional approach without capability bindings.
 fetch("https://auth-service.internal-network.example.com/api", {
   method: "POST",
@@ -63,8 +60,7 @@ fetch("https://auth-service.internal-network.example.com/api", {
 });
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In workerd, we do things differently. An application starts out with no ability to talk to the rest of the world, and must be configured with specific <em>capability bindings</em> that provide it access to <em>specific</em> external resources. So, an application which needs to be able to talk to the authentication service would be configured with a binding called authService, and the code would look something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In workerd, we do things differently. An application starts out with no ability to talk to the rest of the world, and must be configured with specific <em>capability bindings</em> that provide it access to <em>specific</em> external resources. So, an application which needs to be able to talk to the authentication service would be configured with a binding called authService, and the code would look something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Capability-based approach. Hostname doesn't matter; all
 // requests to AUTH_SERVICE.fetch() go to the auth service.
 env.AUTH_SERVICE.fetch("https://auth/api", {
@@ -102,8 +98,7 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
 	<p>As hinted above, the full Cloudflare Workers service involves a lot of technology beyond workerd itself, including additional security, deployment mechanisms, orchestration, and so much more. workerd itself is a portion of our runtime codebase, which is itself a small (albeit critical) piece of the overall Cloudflare Workers service.</p>
 	<p>We are pleased, though, that this means it is possible for us to release this code under a permissive Open Source license.</p>
 	<h2 id="try-the-beta">Try the Beta</h2>
-	<p>As of this blog post, workerd is in beta. If you want to try it out, </p>
-	<!--kg-card-begin: html-->
+	<p>As of this blog post, workerd is in beta. If you want to try it out, </p><!--kg-card-begin: html-->
 	<p>
 		<style>
 			button {
@@ -121,6 +116,5 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
 			}
 		</style>
 		<a href="https://github.com/cloudflare/workerd" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the readme on GitHub</button></a>
-	</p>
-	<!--kg-card-end: html-->
+	</p><!--kg-card-end: html-->
 </div>

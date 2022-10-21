@@ -5,8 +5,7 @@
 	<p><a href="https://cert-manager.io/" target="_blank">cert-manager</a> is a project to fill this operational gap, providing Kubernetes resources that manage the lifecycle of a certificate. Today we're releasing <a href="https://github.com/cloudflare/origin-ca-issuer" target="_blank">origin-ca-issuer</a>, an extension to cert-manager integrating with Cloudflare Origin CA to easily create and renew certificates for your account's domains.</p>
 	<h2 id="origin-ca-integration">Origin CA Integration</h2>
 	<h3 id="creating-an-issuer">Creating an Issuer</h3>
-	<p>After installing cert-manager and origin-ca-issuer, you can create an OriginIssuer resource. This resource creates a binding between cert-manager and the Cloudflare API for an account. Different issuers may be connected to different Cloudflare accounts in the same Kubernetes cluster.</p>
-	<!--kg-card-begin: markdown-->
+	<p>After installing cert-manager and origin-ca-issuer, you can create an OriginIssuer resource. This resource creates a binding between cert-manager and the Cloudflare API for an account. Different issuers may be connected to different Cloudflare accounts in the same Kubernetes cluster.</p><!--kg-card-begin: markdown-->
 	<pre><code>apiVersion: cert-manager.k8s.cloudflare.com/v1
 kind: OriginIssuer
 metadata:
@@ -22,8 +21,7 @@ spec:
 	<!--kg-card-end: markdown-->
 	<p>This creates a new OriginIssuer named "prod-issuer" that issues certificates using ECDSA signatures, and the secret "service-key" in the same namespace is used to authenticate to the Cloudflare API.</p>
 	<h3 id="signing-an-origin-ca-certificate">Signing an Origin CA Certificate</h3>
-	<p>After creating an OriginIssuer, we can now create a Certificate with cert-manager. This defines the domains, including wildcards, that the certificate should be issued for, how long the certificate should be valid, and when cert-manager should renew the certificate.</p>
-	<!--kg-card-begin: markdown-->
+	<p>After creating an OriginIssuer, we can now create a Certificate with cert-manager. This defines the domains, including wildcards, that the certificate should be issued for, how long the certificate should be valid, and when cert-manager should renew the certificate.</p><!--kg-card-begin: markdown-->
 	<pre><code>apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -51,8 +49,7 @@ spec:
 	<p>Once created, cert-manager begins managing the lifecycle of this certificate, including creating the key material, crafting a certificate signature request (CSR), and constructing a certificate request that will be processed by the origin-ca-issuer.</p>
 	<p>When signed by the Cloudflare API, the certificate will be made available, along with the private key, in the Kubernetes secret specified within the secretName field. You'll be able to use this certificate on servers proxied behind Cloudflare.</p>
 	<h3 id="extra-ingress-support">Extra: Ingress Support</h3>
-	<p>If you're using an Ingress controller, you can use cert-manager's <a href="https://cert-manager.io/docs/usage/ingress/" target="_blank">Ingress support</a> to automatically manage Certificate resources based on your Ingress resource.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you're using an Ingress controller, you can use cert-manager's <a href="https://cert-manager.io/docs/usage/ingress/" target="_blank">Ingress support</a> to automatically manage Certificate resources based on your Ingress resource.</p><!--kg-card-begin: markdown-->
 	<pre><code>apiVersion: networking/v1
 kind: Ingress
 metadata:

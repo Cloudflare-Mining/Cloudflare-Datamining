@@ -36,27 +36,23 @@
 	<p>There is one new addition to the standard mitigation list, which is the <code>allow</code> action, which provides a customer the ability to create Rule to say “if this criteria is matched, stop processing further rules”.</p>
 	<h3 id="give-me-some-examples-">Give me some examples!</h3>
 	<p>Sure, here’s four cool examples that we see being used today. Advanced or nested rules are not supported in the Visual Rule Builder today. These are noted below each rule. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
-	<p><strong><em>Example 1 - Challenge all countries except GB</em></strong><br><u>Supported: Visual Builder, Expression Editor</u><br>This can be done using our IP Firewall but would require 150+ rules!</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong><em>Example 1 - Challenge all countries except GB</em></strong><br><u>Supported: Visual Builder, Expression Editor</u><br>This can be done using our IP Firewall but would require 150+ rules!</p><!--kg-card-begin: markdown-->
 	<pre><code>(ip.geoip.country ne "GB")
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image.png" class="kg-image"></figure>
-	<p><em><strong>Example 2 - Advanced Hotlink Protection</strong></em><br><u>Supported: Visual Builder, Expression Editor</u><br>Cloudflare’s built-in hotlink protection can be restrictive for some customers as it does not provide abilities to bypass certain paths. This also can sometimes catch legitimate crawlers.</p>
-	<!--kg-card-begin: markdown-->
+	<p><em><strong>Example 2 - Advanced Hotlink Protection</strong></em><br><u>Supported: Visual Builder, Expression Editor</u><br>Cloudflare’s built-in hotlink protection can be restrictive for some customers as it does not provide abilities to bypass certain paths. This also can sometimes catch legitimate crawlers.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-2.png" class="kg-image"></figure>
 	<p></p>
-	<p><em><strong>Example 3 - Blocking Clients with a Threat Score greater than 10 or Clients originating from an abusive network by AS Number, to my Login page</strong></em><br><u>Supported: Expression Editor</u><br>One of the great things about Firewall Rules is that we have provided you access to cf.threat_score, which is what powers the Security Level within the dashboard today.</p>
-	<!--kg-card-begin: markdown-->
+	<p><em><strong>Example 3 - Blocking Clients with a Threat Score greater than 10 or Clients originating from an abusive network by AS Number, to my Login page</strong></em><br><u>Supported: Expression Editor</u><br>One of the great things about Firewall Rules is that we have provided you access to cf.threat_score, which is what powers the Security Level within the dashboard today.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-3.png" class="kg-image"></figure>
-	<p><em><strong>Example 4 - Zone Lockdown-like-Use case utilising Regular Expression, IP address CIDRs, Country Code and AS Numbers to protect authentication endpoints via both Wordpress website, and an API.</strong></em><br><u>Supported: Expression Editor</u><br>Zone Lockdown is a great tool; however, it is limited for some critical use cases. Here’s something quite crazy to demonstrate the flexibility: </p>
-	<!--kg-card-begin: markdown-->
+	<p><em><strong>Example 4 - Zone Lockdown-like-Use case utilising Regular Expression, IP address CIDRs, Country Code and AS Numbers to protect authentication endpoints via both Wordpress website, and an API.</strong></em><br><u>Supported: Expression Editor</u><br>Zone Lockdown is a great tool; however, it is limited for some critical use cases. Here’s something quite crazy to demonstrate the flexibility: </p><!--kg-card-begin: markdown-->
 	<pre><code>((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
 111</code></pre>
 	<!--kg-card-end: markdown-->

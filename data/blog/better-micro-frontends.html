@@ -62,18 +62,15 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image8-2.png" class="kg-image">
 		<figcaption>A screenshot of the self-hosted “header” fragment</figcaption>
 	</figure>
-	<p>The header fragment is defined as a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><code>Header</code></a> component using Qwik.<strong> </strong>This component is rendered in a Cloudflare Worker via a <code>fetch()</code> handler:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The header fragment is defined as a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><code>Header</code></a> component using Qwik.<strong> </strong>This component is rendered in a Cloudflare Worker via a <code>fetch()</code> handler:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-tsx">export default {
   fetch(request: Request, env: Record&lt;string, unknown&gt;): Promise&lt;Response&gt; {
     return renderResponse(request, env, &lt;Header /&gt;, manifest, "header");
   },
 };
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/header/src/entry.ssr.tsx" target="_blank"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/header/src/entry.ssr.tsx" target="_blank"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank">renderResponse</a>()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
 	<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank">Wrangler</a> to upload these assets to Cloudflare and serve them from our network.</p>
 	<h2 id="implementing-fragment-composition">Implementing fragment composition</h2>
@@ -83,22 +80,18 @@
 		<li>Proxy requests for child fragment assets through to the appropriate fragment.</li>
 	</ul>
 	<h3 id="injecting-child-fragments">Injecting child fragments</h3>
-	<p>The position of a child fragment inside its parent can be specified by a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank"><code>FragmentPlaceholder</code></a> helper component that we have developed. For example, the “body” fragment has the “filter” and “gallery” fragments.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The position of a child fragment inside its parent can be specified by a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank"><code>FragmentPlaceholder</code></a> helper component that we have developed. For example, the “body” fragment has the “filter” and “gallery” fragments.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-tsx">&lt;div class="content"&gt;
   &lt;FragmentPlaceholder name="filter" /&gt;
   &lt;FragmentPlaceholder name="gallery" /&gt;
 &lt;/div&gt;
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/body/src/root.tsx" target="_blank"><b>cloud-gallery/body/src/root.tsx</b></a></small></center>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/body/src/root.tsx" target="_blank"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
 	<h3 id="proxying-asset-requests">Proxying asset requests</h3>
 	<p>As mentioned earlier, fragments can host their own assets, especially client-side JavaScript files. When a request for an asset arrives at the parent fragment, it needs to know which child fragment should receive the request.</p>
-	<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28" target="_blank">tryGetFragmentAsset</a>()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In our demo we use a convention that such asset paths will be prefixed with <code>/_fragment/&lt;fragment-name&gt;</code>. For example, the header logo image path is <code>/_fragment/header/cf-logo.png</code>. We developed a <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28" target="_blank">tryGetFragmentAsset</a>()</code> helper which can be added to the parent fragment’s <code>fetch()</code> handler to deal with this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-tsx">export default {
   async fetch(
     request: Request,
@@ -114,15 +107,12 @@
   },
 };
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx" target="_blank"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx" target="_blank"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html-->
 	<h3 id="fragment-asset-paths">Fragment asset paths</h3>
 	<p>If a fragment hosts its own assets, then we need to ensure that any HTML it renders uses the special <code>_fragment/&lt;fragment-name&gt;</code> path prefix mentioned above when referring to these assets. We have implemented a strategy for this in the helpers we developed.</p>
 	<p>The <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank"><code>FragmentPlaceholder</code></a> component adds a <code>base</code> searchParam to the fragment request to tell it what this prefix should be. The <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank">renderResponse</a>()</code> helper extracts this prefix and provides it to the Qwik server-side renderer. This ensures that any request for client-side JavaScript has the correct prefix. Fragments can apply a hook that we developed called <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22" target="_blank">useFragmentRoot</a>()</code>. This allows components to gather the prefix from a <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12" target="_blank"><code>FragmentContext</code></a> context.</p>
-	<p>For example, since the “header” fragment hosts the Cloudflare and GitHub logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, since the “header” fragment hosts the Cloudflare and GitHub logos as assets, it must call the <code>useFragmentRoot()</code> hook:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-tsx">export const Header = component$(() =&gt; {
   useStylesScoped$(HeaderCSS);
   useFragmentRoot();
@@ -130,21 +120,16 @@
   return (...);
 });
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></center>
-	<!--kg-card-end: html-->
-	<p>The <code>FragmentContext</code> value can then be accessed in components that need to apply the prefix. For example, the <code>Image</code> component:</p>
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<p>The <code>FragmentContext</code> value can then be accessed in components that need to apply the prefix. For example, the <code>Image</code> component:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-tsx">export const Image = component$((props: Record&lt;string, string | number&gt;) =&gt; {
   const { base } = useContext(FragmentContext);
   return &lt;img {...props} src={base + props.src} /&gt;;
 });
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx" target="_blank"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></center>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx" target="_blank"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></center><!--kg-card-end: html-->
 	<h3 id="service-binding-fragments">Service-binding fragments</h3>
 	<p>Cloudflare Workers provide a mechanism called <a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings/" target="_blank">service bindings</a> to make requests between Cloudflare Workers efficiently that avoids network requests. In the demo we use this mechanism to make the requests from parent fragments to their child fragments with almost no performance overhead, while still allowing the fragments to be independently deployed.</p>
 	<h2 id="comparison-to-current-solutions">Comparison to current solutions</h2>

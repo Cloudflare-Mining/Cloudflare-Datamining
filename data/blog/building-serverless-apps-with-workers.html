@@ -32,8 +32,7 @@
 	<h3 id="walkthrough">Walkthrough</h3>
 	<p>Everything for the project happens in a YAML file called serverless.yml. Let’s go through the features of the configuration file.</p>
 	<p>To get started, we need to install serverless from npm and generate a new project.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>npm install serverless -g
 serverless create --template cloudflare-workers --path myproject
 cd myproject
@@ -43,8 +42,7 @@ npm install
 	<p></p>
 	<p>If you are an enterprise client, you want to use the cloudflare-workers-enterprise template as it will set up more than one worker (but don’t worry, you can add more to any template). Also, I’ll touch on this later, but if you want to write your workers in Rust, use the cloudflare-workers-rust template.</p>
 	<p>You should now have a project that feels familiar, ready to be added to your favorite source control. In the project should be a serverless.yml file like the following.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">service:
     name: hello-world
 
@@ -78,8 +76,7 @@ functions:
 	<p><strong>name</strong>: (optional) If left blank it will be STAGE-service.name-script.identifier. If I removed name from this file and deployed in production stage, the script would be named production-hello-world-hello.</p>
 	<p><strong>script</strong>: the relative path to the javascript file with the worker script. I like to organize mine in a folder called handlers.</p>
 	<p><strong>events</strong>: Currently Workers only support http events. We call these routes. The example provided says that GET https://example.com/hello/&lt;anything here&gt; will &nbsp;cause this worker to execute. The headers block is for testing invocations.</p>
-	<p>At this point you can deploy your worker!<br></p>
-	<!--kg-card-begin: markdown-->
+	<p>At this point you can deploy your worker!<br></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">CLOUDFLARE_AUTH_EMAIL=you@yourdomain.com CLOUDFLARE_AUTH_KEY=XXXXXXXX serverless deploy
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -87,8 +84,7 @@ functions:
 	<p>This is very easy to deploy, but it doesn’t address our requirements. Luckily, there’s just a few simple modifications to make.</p>
 	<h3 id="maturing-our-yaml-file">Maturing our YAML File</h3>
 	<p>Here’s a more complex YAML file.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">service:
   name: hello-world
 
@@ -137,8 +133,7 @@ functions:
 	<p></p>
 	<p>We can add a custom section where we can put custom variables to use later in the file.</p>
 	<p><strong>defaultStage</strong>: We set this to development so that forgetting to pass a stage doesn’t trigger a production deploy. Combined with the <strong>stage</strong> option under provider we can set the stage for deployment.</p>
-	<p><strong>deployVars</strong>: We use this custom variable to load another YAML file dependent on the stage. This lets us have different values for different stages. In development, this line loads the file <code>./config/deploy.development.yml</code>. Here’s an example file:</p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>deployVars</strong>: We use this custom variable to load another YAML file dependent on the stage. This lets us have different values for different stages. In development, this line loads the file <code>./config/deploy.development.yml</code>. Here’s an example file:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">env_var_value: true
 sentry_key: XXXXX
 SUBDOMAIN: dev
@@ -146,16 +141,14 @@ SUBDOMAIN: dev
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p><strong>kv</strong>:<strong> </strong>Here we are showing off a feature of YAML. If you assign a name to a block using the ‘&amp;’, you can use it later as a YAML variable. This is very handy in a multi script account. We could have named this variable anything, but we are naming it kv since it holds our Workers Key Value storage settings to be used in our function below.</p>
-	<p>Inside of the <strong>kv</strong> block we're creating a namespace and binding it to a variable available in your Worker. It will ensure that the namespace “users” exists and is bound to MYUSERS.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Inside of the <strong>kv</strong> block we're creating a namespace and binding it to a variable available in your Worker. It will ensure that the namespace “users” exists and is bound to MYUSERS.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">kv: &amp;kv
   - variable: MYUSERS
     namespace: users
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p><strong>provider</strong>: The only new part of the provider block is <strong>stage</strong>. </p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>provider</strong>: The only new part of the provider block is <strong>stage</strong>. </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-YAML">stage: ${opt:stage, self:custom.defaultStage}
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -164,8 +157,7 @@ SUBDOMAIN: dev
 	<p>Now under our function we have added webpack, resources, and environment. </p>
 	<p><strong>webpack</strong>: If set to true, will simply bundle each handler into a single file for deployment. It will also take a string representing a path to a webpack config file so you can customize it. This is how we add Typescript support to our projects.</p>
 	<p><strong>resources</strong>: This block is used to automate resource creation. In resources we're linking back to the kv block we created earlier.<br><br><em>Side note: If you would like to include WASM bindings in your project, it can be done in a very similar way to how we included Workers KV. For more information on WASM, see the <a href="https://serverless.com/plugins/serverless-cloudflare-workers/" target="_blank">documentation</a>.</em></p>
-	<p><strong>environment</strong>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.<br></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>environment</strong>: This is the butter for the bread that is managing configuration for different stages. Here we can specify values to bind to variables to use in worker scripts. Combined with YAML magic, we can store our values in the aforementioned config files so that we deploy different values in different stages. With environments, we can easily tie into our CI tool. The CI tool has our deploy.production.yml. We simply run the following command from within our CI.<br></p><!--kg-card-begin: markdown-->
 	<pre><code>sls deploy --stage=production
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -173,8 +165,7 @@ SUBDOMAIN: dev
 	<p>Finally, I added a route to demonstrate that a script can be executed on multiple routes.</p>
 	<p>At this point I’ve covered (or hinted) at everything on our original list except Unit Testing. There are a few ways to do this.</p>
 	<p>We have a previous blog post about <a href="https://blog.cloudflare.com/unit-testing-worker-functions/">Unit Testing</a> that covers using <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank">cloud worker</a>, a great tool built by <a href="https://www.dollarshaveclub.com/" target="_blank">Dollar Shave Club</a>.</p>
-	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html" target="_blank">experimental feature that adds import/export support to node</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>My team opted to use the classic node frameworks mocha and sinon. Because we are using Typescript, we can build for node or build for v8. You can also make mocha work for non-typescript projects if you use an <a href="https://nodejs.org/api/esm.html" target="_blank">experimental feature that adds import/export support to node</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code>--experimental-modules
 </code></pre>
 	<!--kg-card-end: markdown-->

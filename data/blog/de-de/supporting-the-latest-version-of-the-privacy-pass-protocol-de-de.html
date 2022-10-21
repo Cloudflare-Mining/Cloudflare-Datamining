@@ -37,8 +37,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--4-.png" class="kg-image"></figure>
 	<p>Cloudflare unterstützt zwar einen bestimmten Typ von Anfrageabläufen, man kann jedoch unmöglich erwarten, dass sich verschiedene Dienstanbieter genau an die gleichen Interaktionsmerkmale halten. Eine der wichtigsten Änderungen in der Erweiterungsversion 2.0 war eine technische Änderung dahingehend, dass nun eine zentrale Konfigurationsdatei verwendet wird. Die Konfiguration ist im <a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">Quellcode</a> der Erweiterung spezifiziert. Mit ihr können Browsereigenschaften, die Privacy-Pass-Aktionen auslösen, einfacher modifiziert werden. So können neue, völlig unterschiedliche Anfrageabläufe aufgenommen werden. Dazu wird die Konfiguration für einen neuen Anbieter einfach geklont und angepasst.</p>
 	<p>Um zu zeigen, dass solche Integrationen jetzt auch mit anderen Diensten als Cloudflare möglich sind, wird bald eine neue Erweiterungsversion ausgeliefert, die vom CAPTCHA-Anbieter <a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a> unterstützt wird. Nutzer, die von hCaptcha bereitgestellte Aufgaben lösen, bekommen private Token, die auf Websites anderer hCaptcha-Kunden eingelöst werden können.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><span style="color:grey"><small><em>„Schwerpunkt bei hCaptcha ist die Privatsphäre der Nutzer. Dass wir Privacy Pass unterstützen, ist für uns in diesem Bereich eine natürliche Ergänzung. Wir freuen uns darauf, es in Zusammenarbeit mit Cloudflare und anderen auf breiter Basis als Standard zu etablieren, und prüfen derzeit weitere Anwendungsmöglichkeiten. Es war relativ einfach, Privacy Pass in unserem weltweit verteilten Dienst zu implementieren. Die gemeinsame Arbeit mit dem Cloudflare-Team an der Verbesserung der Open-Source-Browsererweiterung für Chrome hat uns Freude gemacht, und unsere Nutzer werden davon profitieren.“</em></small></span></p><small>
 	</small>
 	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, Gründer von hCaptcha</small></p>
@@ -112,8 +111,7 @@
 	<h1 id="anhang"><strong>Anhang</strong></h1>
 	<p>Hier einige zusätzliche Details zu den oben behandelten Themen.</p>
 	<h2 id="a-commitment-format-f-r-schl-sselrotationen"><strong>A. Commitment-Format für Schlüsselrotationen</strong></h2>
-	<p>Schlüssel-Commitments sind notwendig, damit der Server im Rahmen des Privacy-Pass-Protokolls beweisen kann, dass er ehrlich handelt. Die von Privacy Pass in der Version 2.0 verwendeten Commitments haben ein etwas anderes Format als in der vorherigen Version.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Schlüssel-Commitments sind notwendig, damit der Server im Rahmen des Privacy-Pass-Protokolls beweisen kann, dass er ehrlich handelt. Die von Privacy Pass in der Version 2.0 verwendeten Commitments haben ein etwas anderes Format als in der vorherigen Version.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">"2.00": {
   "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
   "expiry": "2020-01-11T10:29:10.658286752Z",
@@ -126,8 +124,7 @@
 	<p>Wenn ein Client das Commitment abruft, überprüft er, ob es nicht abgelaufen ist und ob die Signatur mithilfe des entsprechenden Überprüfungsschlüssels bestätigt werden kann, der in die Konfiguration der Erweiterung eingebettet ist. Wenn diese Prüfungen erfolgreich sind, ruft er H ab und überprüft die vom Server gesendete Antwort mit der Ausstellung. Frühere Versionen dieser Commitments enthielten keine Signaturen, aber ab Version 2.0 werden diese Signaturen validiert.</p>
 	<p>Wenn ein Server den Schlüssel rotieren möchte, generiert er einfach einen neuen Schlüssel k2 und fügt ein neues Commitment für k2 mit einem neuen Bezeichner wie 2.01 an. Er kann k2 dann als geheimen Schlüssel für die VOPRF-Operationen verwenden, die er berechnen muss.</p>
 	<h2 id="b-beispiel-f-r-eine-anfrage-an-die-einl-se-api"><strong>B. Beispiel für eine Anfrage an die Einlöse-API</strong></h2>
-	<p>Die Einlöse-API ist über HTTPS verfügbar. Man sendet dazu POST-Anfragen an <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Bei Anfragen an diesen Endpunkt müssen die Privacy-Pass-Daten mithilfe der JSON-RPC-2.0-Syntax im Hauptteil angegeben werden. Beispiel für eine solche Anfrage:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Die Einlöse-API ist über HTTPS verfügbar. Man sendet dazu POST-Anfragen an <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Bei Anfragen an diesen Endpunkt müssen die Privacy-Pass-Daten mithilfe der JSON-RPC-2.0-Syntax im Hauptteil angegeben werden. Beispiel für eine solche Anfrage:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "method": "redeem",
@@ -147,8 +144,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Erläuterung: params.data[0] sind die Client-Eingabedaten, die in der Ausstellungsphase zum Generieren eines Tokens verwendet werden; params.data[1] ist das HMAC-Tag, mit dem der Server eine Einlösung überprüft; params.data[2] ist ein JSON-Objekt, als Zeichenfolge codiert im base64-Format, das die vom Client verwendeten Hash-to-Curve-Parameter angibt. Das letzte Element des Arrays entspricht beispielsweise folgendem Objekt:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Erläuterung: params.data[0] sind die Client-Eingabedaten, die in der Ausstellungsphase zum Generieren eines Tokens verwendet werden; params.data[1] ist das HMAC-Tag, mit dem der Server eine Einlösung überprüft; params.data[2] ist ein JSON-Objekt, als Zeichenfolge codiert im base64-Format, das die vom Client verwendeten Hash-to-Curve-Parameter angibt. Das letzte Element des Arrays entspricht beispielsweise folgendem Objekt:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     curve: "p256",
     hash: "sha256",
@@ -159,8 +155,7 @@
 	<p>Dieses Objekt gibt an, dass der Client die Kurve P-256 mit der Hashfunktion SHA-256 und die SSWU-Methode zum Hashing auf der Kurve verwendet hat. Dadurch kann der Server die Transaktion mit der richtigen Chiffriersuite überprüfen. Der Client muss die Einlöseanfrage an einige feste Informationen binden, die als mehrere Zeichenfolgen im Array params.bindings gespeichert werden. Beispielsweise könnte der Host-Header der HTTP-Anfrage und der verwendete HTTP-Pfad gesendet werden (dies wird in der Browsererweiterung für den Privacy Pass verwendet). params.compressed schließlich ist ein optionaler boolescher Wert (Standardeinstellung „false“), der angibt, ob das HMAC-Tag über komprimierte oder unkomprimierte Punktcodierungen berechnet wurde.</p>
 	<p>Die einzigen unterstützten Chiffriersuiten sind derzeit das obige Beispiel sowie das gleiche mit „method“ gleich „increment“ für die Hash-and-Increment-Methode des Hashings auf einer Kurve. Dies ist die ursprüngliche Methode, die in Version 1.0 des Privacy Pass verwendet wird; sie wird nur zur Abwärtskompatibilität unterstützt. Weitere Informationen finden Sie in der <a href="https://privacypass.github.io/api-redeem" target="_blank">bereitgestellten Dokumentation</a>.</p>
 	<h3 id="beispielantwort"><strong>Beispielantwort</strong></h3>
-	<p>Wenn eine Anfrage an die Einlöse-API gesendet und erfolgreich überprüft wurde, wird folgende Antwort zurückgegeben.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wenn eine Anfrage an die Einlöse-API gesendet und erfolgreich überprüft wurde, wird folgende Antwort zurückgegeben.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "result": "success",
@@ -168,8 +163,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Wenn ein Fehler auftritt, sieht die Rückgabe ungefähr so aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wenn ein Fehler auftritt, sieht die Rückgabe ungefähr so aus:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "error": {

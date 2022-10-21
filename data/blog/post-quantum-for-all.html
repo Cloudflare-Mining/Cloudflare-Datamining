@@ -4,8 +4,7 @@
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-2.png" class="kg-image" alt="Defending against future threats: Cloudflare goes post-quantum"></figure>
 	<p>There is an expiration date on the cryptography we use every day. It’s not easy to read, but somewhere <a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report/" target="_blank">between 15 or 40 years</a>, a sufficiently powerful quantum computer is expected to be built that will be <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">able to decrypt</a> essentially any encrypted data on the Internet today.</p>
-	<p>Luckily, there is a solution: <strong>post-quantum</strong> (PQ) cryptography has been designed to be secure against the threat of quantum computers. Just three months ago, in July 2022, after a six-year worldwide competition, the US National Institute of Standards and Technology (NIST), known for AES and SHA2, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">announced</a> which post-quantum cryptography they will standardize. NIST plans to publish the final standards in 2024, but we want to help drive early adoption of post-quantum cryptography.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Luckily, there is a solution: <strong>post-quantum</strong> (PQ) cryptography has been designed to be secure against the threat of quantum computers. Just three months ago, in July 2022, after a six-year worldwide competition, the US National Institute of Standards and Technology (NIST), known for AES and SHA2, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">announced</a> which post-quantum cryptography they will standardize. NIST plans to publish the final standards in 2024, but we want to help drive early adoption of post-quantum cryptography.</p><!--kg-card-begin: markdown-->
 	<p>Starting today, as a beta service, <strong>all</strong> websites and APIs served through Cloudflare support post-quantum hybrid key agreement. This is on by default<sup>1</sup>; no need for an opt-in. This means that if your browser/app supports it, the connection to our network is also secure against any future quantum computer.</p>
 	<!--kg-card-end: markdown-->
 	<p>We offer this post-quantum cryptography free of charge: we believe that post-quantum security should be the new baseline for the Internet.</p>
@@ -34,10 +33,8 @@
 	<ul>
 		<li>With a <strong>digital</strong> <strong>signature </strong>algorithm, such as <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">RSA</a> or <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">ECDSA</a>, there are two keys: a <em>public</em> and a <em>private key</em>. Only with the private key, one can create a <em>signature</em> for a message. Anyone with the corresponding public key can check whether a signature is indeed valid for a given message. These digital signatures are at the heart of <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>TLS certificates</em></a> that are used to authenticate websites.<br>Both RSA and ECDSA are vulnerable to quantum attacks. We haven’t replaced those with post-quantum signatures, yet. The reason is that authentication is less urgent: we only need to have them replaced by the time a sufficiently large quantum computer is built, whereas any data secured by a vulnerable key agreement today can be stored and decrypted in the future. Even though we have more time, deploying post-quantum authentication will be <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">quite challenging</a>.</li>
 	</ul>
-	<p>So, how do these building blocks come together to create TLS?</p>
-	<!--kg-card-begin: html-->
-	<h2 id="tls-anchor">High-level overview of TLS 1.3</h2>
-	<!--kg-card-end: html-->
+	<p>So, how do these building blocks come together to create TLS?</p><!--kg-card-begin: html-->
+	<h2 id="tls-anchor">High-level overview of TLS 1.3</h2><!--kg-card-end: html-->
 	<p>A TLS connection starts with a <strong>handshake</strong> which is used to authenticate the server and derive a shared key. The browser (client) starts by sending a <em>ClientHello</em> message that contains a list of the AEADs, signature algorithms, and key agreement methods it supports. To remove a roundtrip, the client is allowed to make a guess of what the server supports and start the key agreement by sending one or more <em>client keyshares</em>. That guess might be correct (on the left in the diagram below) or the client has to retry (on the right).</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4.png" class="kg-image" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.">
 		<figcaption>Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.</figcaption>
@@ -61,10 +58,8 @@
 	<p>With the chosen AEAD and server keyshare, the client can compute the shared key and decrypt and verify the certificate chain, handshake signature and handshake MAC. We did not mention it before, but the shared key is not used directly for encryption. Instead, for good measure, <a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93" target="_blank">it’s mixed together</a> with communication transcripts, to derive several specific keys for use during the handshake and the main connection afterwards.</p>
 	<p>To wrap up the handshake, the client sends its own handshake MAC, and can then proceed to send application-specific data encrypted with the keys derived during the handshake.</p>
 	<h4 id="hello-retry-request"><strong>Hello! Retry Request?</strong></h4>
-	<p>What we just sketched is the desirable flow where the client sends a keyshare that is supported by the server. That might not be the case. If the server doesn’t accept any key agreements advertised by the client, then it will tell the client and abort the connection.</p>
-	<!--kg-card-begin: html-->If there is a key agreement that both support, but for which the client did not send a keyshare, then the server will respond with a HelloRetryRequest (HRR) message requesting a keyshare of a specific key agreement that the client supports as shown <a href="#tls-anchor">on the diagram on the right</a>. In turn, the client responds with a new ClientHello with the selected keyshare.
-	<p></p>
-	<!--kg-card-end: html-->
+	<p>What we just sketched is the desirable flow where the client sends a keyshare that is supported by the server. That might not be the case. If the server doesn’t accept any key agreements advertised by the client, then it will tell the client and abort the connection.</p><!--kg-card-begin: html-->If there is a key agreement that both support, but for which the client did not send a keyshare, then the server will respond with a HelloRetryRequest (HRR) message requesting a keyshare of a specific key agreement that the client supports as shown <a href="#tls-anchor">on the diagram on the right</a>. In turn, the client responds with a new ClientHello with the selected keyshare.
+	<p></p><!--kg-card-end: html-->
 	<p>This is not the whole story: a server is also allowed to send a <em>HelloRetryRequest</em> to request a different key agreement that it prefers over those for which the client sent shares. For instance, a server can send a <em>HelloRetryRequest</em> to a post-quantum key agreement if the client supports it, but didn’t send a keyshare for it.</p>
 	<p><em>HelloRetryRequest</em>s are rare today. Almost every server supports the X25519 key-agreement and almost every client (98% today) sends a X25519 keyshare. Earlier P-256 was the de facto standard and for a long time many browsers would send both a P-256 and X25519 keyshare to prevent a HelloRetryRequest. As we will discuss later, we might not have the luxury to send two post-quantum keyshares.</p>
 	<h4 id="that-s-the-theory"><strong>That’s the theory</strong></h4>
@@ -72,8 +67,7 @@
 	<h3 id="what-we-deployed">What we deployed</h3>
 	<p>Today we have enabled support for the <strong>X25519Kyber512Draft00</strong> and <strong>X25519Kyber768Draft00</strong> key agreements using TLS identifiers 0xfe30 and 0xfe31 respectively. These are exactly the same key agreements <a href="https://blog.cloudflare.com/experiment-with-pq/">we enabled</a> on a limited number of zones this July.</p>
 	<p>These two key agreements are a combination, a <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank"><strong>hybrid</strong></a>, of the classical <a href="https://www.rfc-editor.org/rfc/rfc8410" target="_blank">X25519</a> and the new post-quantum Kyber512 and Kyber768 respectively and in that order. That means that even if Kyber turns out to be insecure, the connection remains as secure as X25519.</p>
-	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>, for now, is the only key agreement that NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">has selected</a> for standardization. Kyber is very light on the CPU: it is faster than X25519 which is already known for its speed. On the other hand, its keyshares are much bigger:</p>
-	<!--kg-card-begin: html-->
+	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>, for now, is the only key agreement that NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">has selected</a> for standardization. Kyber is very light on the CPU: it is faster than X25519 which is already known for its speed. On the other hand, its keyshares are much bigger:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -182,9 +176,7 @@
 				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17,000</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p><em><small>Size and CPU performance compared between X25519 and Kyber. Performance varies considerably by hardware platform and implementation constraints and should be taken as a rough indication only.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<p>Kyber is expected to change in minor, but backwards incompatible ways, before final standardization by NIST in 2024. Also, the integration with TLS, including the choice and details of the hybrid key agreement, are not yet finalized by the TLS working group. Once they are, we will adopt them promptly.</p>
@@ -214,8 +206,7 @@
 	<p>The Internet is a very heterogeneous system. To find all issues, we need sufficient numbers of diverse testers. We are working with browsers to add support for these key agreements, but there may not be one of these browsers in every network.</p>
 	<p>So, to help the Internet out, try and switch a small part of your traffic to Cloudflare domains to use these new key agreement methods. We have open-sourced forks for <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>, <a href="https://github.com/cloudflare/go" target="_blank">Go</a> and <a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a>. For BoringSSL and Go, check out <a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">the sample code here</a>. If you have any issues, please let us know at <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a>. We will be discussing any issues and workarounds at the IETF <a href="https://datatracker.ietf.org/group/tls/about/" target="_blank">TLS working group</a>.</p>
 	<h2 id="outlook">Outlook</h2>
-	<p>The transition to a post-quantum secure Internet is urgent, but not without challenges. Today we have deployed a preliminary post-quantum key agreement on all our servers — a sizable portion of the Internet — so that we can all start testing the big migration today. We hope that come 2024, when NIST puts a bow on Kyber, we will all have laid the groundwork for a smooth transition to a Post-Quantum Internet.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The transition to a post-quantum secure Internet is urgent, but not without challenges. Today we have deployed a preliminary post-quantum key agreement on all our servers — a sizable portion of the Internet — so that we can all start testing the big migration today. We hope that come 2024, when NIST puts a bow on Kyber, we will all have laid the groundwork for a smooth transition to a Post-Quantum Internet.</p><!--kg-card-begin: markdown-->
 	<p>.....<br>
 		<small><sup>1</sup>We only support these post-quantum key agreements in protocols based on TLS 1.3 including HTTP/3. There is one exception: for the moment we disable these hybrid key exchanges for websites in FIPS-mode.</small>
 	</p>

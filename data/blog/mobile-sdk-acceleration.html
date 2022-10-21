@@ -1,11 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<p>We’re excited to announce early access for Traffic Acceleration with Cloudflare Mobile SDK. Acceleration uses novel transport algorithms built into the SDK to accelerate apps beyond the performance they would see with TCP. Enabling Acceleration through the SDK reduces latency, drives down network timeouts, and improves app user experiences.</p>
-	<p>A year ago, we launched Cloudflare Mobile SDK with a set of free features focused on measuring mobile app networking performance. Apps are dependent on network connectivity to deliver their app’s user experiences, but developers have limited visibility into how network connectivity is impacting app performance. Integrating the Mobile SDK allows developers to measure and improve the speed of their app’s network interactions.</p>
-	<!--kg-card-begin: html--><video width="640" poster="https://www.cloudflare.com/img/products/mobile-sdk/mobile-sdk-video-thumb.png" muted="" autoplay="" loop="" class="responsive-image" id="cloudflare-mobile-sdk-video">
+	<p>A year ago, we launched Cloudflare Mobile SDK with a set of free features focused on measuring mobile app networking performance. Apps are dependent on network connectivity to deliver their app’s user experiences, but developers have limited visibility into how network connectivity is impacting app performance. Integrating the Mobile SDK allows developers to measure and improve the speed of their app’s network interactions.</p><!--kg-card-begin: html--><video width="640" poster="https://www.cloudflare.com/img/products/mobile-sdk/mobile-sdk-video-thumb.png" muted="" autoplay="" loop="" class="responsive-image" id="cloudflare-mobile-sdk-video">
 		<source src="https://www.cloudflare.com/video/mobile-sdk.mp4" type="video/mp4">
 		<source src="https://www.cloudflare.com/video/mobile-sdk.webm" type="video/webm">
-	</video>
-	<!--kg-card-end: html-->
+	</video><!--kg-card-end: html-->
 	<h2 id="how-it-works">How it works</h2>
 	<p>Mobile applications interact with the Internet to do everything — to fetch the weather, your email, to step through a checkout flow. Everything that makes a smartphone magical is powered by a service on the Internet. How quickly those network interactions happen is dictated by two things: how large the payloads are for the given request/response, and what the available link bandwidth is.</p>
 	<p>Payload size is mostly application specific: a shopping app is going to request product images and similar medium sized assets, while a stock quotes app could be expected to have smaller payloads in the API responses powering it.</p>
@@ -19,8 +17,7 @@
 	<p>How TCP opens connections and how it responds to packet loss are critical factors in determining how much data actually gets to flow over the connection. Tuning TCP connection parameters allows more data to flow over the link without actually touching the actual physical layer (i.e. boosting your cell signal).</p>
 	<h2 id="moving-beyond-tcp">Moving beyond TCP</h2>
 	<p>Unfortunately, TCP parameters governing a connection’s data rate are hidden in the kernel, out of reach of user space and the optimizing, enterprising app developer. Cloudflare Mobile SDK aims to solve this problem by shipping a replacement transport protocol implemented on top of UDP, which the SDK can speak with the Cloudflare edge.</p>
-	<p>There are three advantages to replacing TCP with a custom UDP transport protocol:</p>
-	<!--kg-card-begin: markdown-->
+	<p>There are three advantages to replacing TCP with a custom UDP transport protocol:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Performance tuning, bug fixes, and incremental updates to the protocol itself can be done without any downtime or coordination with the kernel. This is not the case with TCP.</li>
 		<li>Middle-boxes' (eg. corporate proxies, etc) assumptions on how TCP works have made improving TCP very difficult. UDP based protocols don't suffer from the same middle-box ossification.</li>

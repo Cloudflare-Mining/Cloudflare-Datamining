@@ -14,8 +14,7 @@
 	<h3 id="cloudflare-">Cloudflare 全球网络提供的按需数据包捕获</h3>
 	<p>在 Cloudflare 的帮助下，您可以重新获得这种可见性。借助 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 和 <a href="https://www.cloudflare.com/zh-cn/magic-wan/" target="_blank">Magic WAN</a>，客户通过 Cloudflare 的网络路由其所有公共和私有 IP 流量，以使其更安全、更快速、更可靠，同时也提高了可见性。您可以把 Cloudflare 想象成我们旧类比中一个遍布全球的巨大吊桥版本：因为我们在您所有的流量中充当一个单一的基于云的路由器和防火墙，所以我们可以在您的整个网络中捕获数据包，并在一个地方将它们返回给您。</p>
 	<h3 id="--2">工作原理</h3>
-	<p>客户可以使用我们的 <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a> 请求数据包捕获。要获取您要寻找的数据包，您可以提供一个过滤器，其中包含您想要的数据包的 IP 地址、端口和协议。</p>
-	<!--kg-card-begin: markdown-->
+	<p>客户可以使用我们的 <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a> 请求数据包捕获。要获取您要寻找的数据包，您可以提供一个过滤器，其中包含您想要的数据包的 IP 地址、端口和协议。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
 -H 'Content-Type: application/json' \
 -H 'X-Auth-Email: user@example.com' \
@@ -32,28 +31,23 @@
         "system": "magic-transit"
 }'
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>使用我们的 API 请求数据包捕获的示例。</small></p>
 	<!--kg-card-end: markdown-->
-	<p>我们利用 <a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a> 将过滤器应用于客户的传入数据包，并使用 <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a> 来记录这些数据包：</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们利用 <a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a> 将过滤器应用于客户的传入数据包，并使用 <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a> 来记录这些数据包：</p><!--kg-card-begin: markdown-->
 	<pre><code>table inet pcaps_1 {
     chain pcap_1 {
         ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
     }
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>用于过滤客户数据包日志的示例 nftables 配置</small></p>
 	<!--kg-card-end: markdown-->
-	<p>nflog 创建一个 netfilter 套接字，通过它将数据包的日志从 Linux 内核发送到用户空间。在用户空间中，我们使用 tcpdump 从 netfilter 套接字读取数据包，并生成数据包捕获文件：</p>
-	<!--kg-card-begin: markdown-->
+	<p>nflog 创建一个 netfilter 套接字，通过它将数据包的日志从 Linux 内核发送到用户空间。在用户空间中，我们使用 tcpdump 从 netfilter 套接字读取数据包，并生成数据包捕获文件：</p><!--kg-card-begin: markdown-->
 	<pre><code>tcpdump -i nflog:1 -w pcap_1.pcap
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>用于创建数据包捕获文件的示例 tcpdump 命令。</small></p>
 	<!--kg-card-end: markdown-->
 	<p>tcpdump 通常用于侦听网络接口上的传入数据包，但在我们的例子中，我们将它配置为从 nflog 组读取数据包日志。tcpdump 将数据包日志转换为数据包捕获文件。</p>

@@ -13,8 +13,7 @@
 	<p>J'ai été particulièrement intéressé par l'une des conséquences du fonctionnement de la mémoire vive dynamique. En fait, chaque bit de données est stocké par la charge (ou l'absence de charge) sur un minuscule condensateur dans la puce RAM. Mais ces condensateurs perdent progressivement leur charge au fil du temps. Pour éviter de perdre les données stockées, elles doivent être régulièrement rafraîchies pour rétablir la charge ( si elle est présente) à son niveau initial. Ce <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">procédé de rafraîchissement</a> nécessite la lecture de la valeur de chaque bit et sa réécriture . Lors de cette opération de « rafraîchissement », la mémoire est occupée et ne peut effectuer des opérations normales comme le chargement ou le stockage de bits.</p>
 	<p>J'y pense depuis un bon moment et je me suis demandé... est-il possible de ressentir ce délai de rafraîchissement dans les logiciels ?</p>
 	<h2 id="principe-de-rafra-chissement-de-la-m-moire-vive-dynamique"><strong>Principe de rafraîchissement de la mémoire vive dynamique</strong></h2>
-	<p>Chaque unité de DIMM est composée de « cellules » et de « lignes», de « colonnes », de « côtés » et/ou de « rangées ». Cette présentation de <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">l’Université de l’Utah, explique la nomenclature</a>. Vous pouvez vérifier la configuration de la mémoire dans votre ordinateur avec la commande decode-dimms. Voici un exemple :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Chaque unité de DIMM est composée de « cellules » et de « lignes», de « colonnes », de « côtés » et/ou de « rangées ». Cette présentation de <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">l’Université de l’Utah, explique la nomenclature</a>. Vous pouvez vérifier la configuration de la mémoire dans votre ordinateur avec la commande decode-dimms. Voici un exemple :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ decode-dimms
 Size                                       4096 MB
 Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
@@ -36,8 +35,7 @@ Ranks                                      2
 	<p>Une puce de mémoire standard est occupée par des rafraîchissements pendant une fraction significative de son temps de fonctionnement (entre 0,4 % et 5 %). De plus, les puces de mémoire représentent une part non négligeable de la consommation d'énergie d'un ordinateur, et une grande partie de cette énergie sert à effectuer les rafraîchissements.</p>
 	<p>Pendant la durée du rafraîchissement, toute la puce de mémoire est bloquée. Cela signifie que toutes les 7812 ns, chaque bit en mémoire est bloqué pendant plus de 75 ns. Effectuons cette mesure.</p>
 	<h2 id="pr-parons-notre-exp-rience"><strong>Préparons notre expérience</strong></h2>
-	<p>Pour mesurer les opérations avec une granularité de l'ordre de la nanoseconde, nous devons écrire une boucle serrée, par exemple en C. Elle se présente comme suit :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour mesurer les opérations avec une granularité de l'ordre de la nanoseconde, nous devons écrire une boucle serrée, par exemple en C. Elle se présente comme suit :</p><!--kg-card-begin: markdown-->
 	<pre><code>  for (i = 0; i &lt; ...; i++) {
 		// Perform memory load. Any load instruction will do
 		*(volatile int *) one_global_var;
@@ -58,8 +56,7 @@ Ranks                                      2
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank">Le code complet est disponible sur Github</a>.</p>
 	<p>Le code est vraiment simple. Effectuer une lecture de mémoire. Vider les données des caches CPU. Mesurer la durée.</p>
 	<p>(Remarque : Lors d’une <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank"> deuxième expérience, j'ai essayé d'utiliser MOVNTDQA </a> pour effectuer la charge de données, mais cela nécessite une page spéciale de mémoire qui ne peut être mise en cache, qui nécessite un accès root.)</p>
-	<p>Sur mon ordinateur, les données sont générées comme suit :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Sur mon ordinateur, les données sont générées comme suit :</p><!--kg-card-begin: markdown-->
 	<pre><code># timestamp, loop duration
 3101895733,     134
 3101895865,     132
@@ -84,8 +81,7 @@ Ranks                                      2
 		<li>J'ai choisi un intervalle d'échantillonnage de 100 ns, mais n'importe quel nombre jusqu'à <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">une valeur de Nyquist (double de la fréquence prévue) fonctionne également bien</a>.</li>
 		<li>Les données doivent être échantillonnées à des intervalles fixes avant d'être introduites dans la FFT. Toutes les méthodes d'échantillonnage raisonnables fonctionnent bien, j'ai fini par effectuer une interpolation linéaire de base.</li>
 	</ul>
-	<p>L’algorithme est d’environ :</p>
-	<!--kg-card-begin: markdown-->
+	<p>L’algorithme est d’environ :</p><!--kg-card-begin: markdown-->
 	<pre><code>UNIT=100ns
 A = [(timestamp, loop_duration),...] 
 p = 1
@@ -98,16 +94,14 @@ for curr_ts in frange(fist_ts, last_ts, UNIT):
     B.append( v )
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Ce qui, d'après mes données, produit un vecteur de ce type :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ce qui, d'après mes données, produit un vecteur de ce type :</p><!--kg-card-begin: markdown-->
 	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
  0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Cependant, le vecteur est assez long, environ 200 000 points de données. Les données ainsi préparées sont prêtes à être introduites dans la FFT !</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cependant, le vecteur est assez long, environ 200 000 points de données. Les données ainsi préparées sont prêtes à être introduites dans la FFT !</p><!--kg-card-begin: markdown-->
 	<pre><code>C = numpy.fft.fft(B)
 C = numpy.abs(C)
 F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
@@ -122,8 +116,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/4.png" class="kg-image"></figure>
 	<p>L'axe Y ne comporte pas d'unité puisque nous avons normalisé les temps de retard. Toutefois, il indique clairement des pics à certains intervalles de fréquence fixes. Effectuons un zoom avant :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/5.png" class="kg-image"></figure>
-	<p>Nous pouvons clairement voir les trois premiers pics. Après un peu de calculs arithmétiques approximatifs qui impliquent de filtrer la valeur au moins 10 fois plus que la moyenne, nous pouvons extraire les fréquences sous-jacentes :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Nous pouvons clairement voir les trois premiers pics. Après un peu de calculs arithmétiques approximatifs qui impliquent de filtrer la valeur au moins 10 fois plus que la moyenne, nous pouvons extraire les fréquences sous-jacentes :</p><!--kg-card-begin: markdown-->
 	<pre><code>127850.0
 127900.0
 127950.0
@@ -140,8 +133,7 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 	<p>Soit : 1000000000 (ns/s) / 127900 (Hz) = 7818,6 ns</p>
 	<p>Youpi ! Le premier pic de fréquence correspond bien à ce que nous recherchions, et il correspond bien aux durées de rafraîchissement.</p>
 	<p>Les autres pics à 256 kHz, 384 kHz, 512 kHz et ainsi de suite sont des multiples de notre fréquence de base de 128 kHz appelés harmoniques. Il s'agit d'un effet secondaire obtenu <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">en effectuant une FFT sur une sorte d'onde carrée</a> et il est tout à fait normal.</p>
-	<p>Pour faciliter l'expérimentation, nous <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">avons préparé une version en ligne de commande de cet outil </a>. Vous pouvez exécuter le code vous-même. Voici un exemple d’exécution sur mon serveur :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour faciliter l'expérimentation, nous <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">avons préparé une version en ligne de commande de cet outil </a>. Vous pouvez exécuter le code vous-même. Voici un exemple d’exécution sur mon serveur :</p><!--kg-card-begin: markdown-->
 	<pre><code>~/2018-11-memory-refresh$ make
 gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 ./measure-dram | python3 ./analyze-dram.py

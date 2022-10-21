@@ -49,8 +49,7 @@
 	<p>In this experiment we used a combination (a <em>hybrid</em>) of the post-quantum KEM and X25519. Thus NTRU-HRSS couldn’t benefit from its speed compared to X25519. Even with this disadvantage, the difference in performance is very small. Thus we expect that switching to a hybrid of Kyber and X25519 will have little performance impact.</p>
 	<p>So can we switch to post-quantum TLS today? We would love to. However, we have to be a bit careful: some TLS implementations are brittle and crash on the larger <em>KeyShare</em> message that contains the bigger post-quantum keys. We will work hard to find ways to mitigate these issues, as was done <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet/">to deploy TLS 1.3</a>. Stay tuned!</p>
 	<h5 id="the-other-finalists">The other finalists</h5>
-	<p>It’s interesting to have a look at the KEMs that didn’t make the cut. NIST intends to standardize some of these in a fourth round. One reason is to increase the diversity in security assumptions in case there is a breakthrough in attacks on structured lattices on which Kyber is based. Another reason is that some of these schemes have specialized, but very useful applications. Finally, some of these schemes might be standardized outside of NIST.</p>
-	<!--kg-card-begin: markdown-->
+	<p>It’s interesting to have a look at the KEMs that didn’t make the cut. NIST intends to standardize some of these in a fourth round. One reason is to increase the diversity in security assumptions in case there is a breakthrough in attacks on structured lattices on which Kyber is based. Another reason is that some of these schemes have specialized, but very useful applications. Finally, some of these schemes might be standardized outside of NIST.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -90,8 +89,7 @@
 	<p>Finally, there is <strong>SIKE,</strong> which is based on supersingular isogenies. It has very small key and ciphertext sizes. Unfortunately, it is computationally more expensive than the other contenders.</p>
 	<h3 id="digital-signatures">Digital signatures</h3>
 	<p>As we just saw, the situation for post-quantum key agreement isn’t too bad: Kyber, the chosen scheme is somewhat larger, but it offers computational efficiency in return. The situation for post-quantum signatures is worse: none of the schemes fit the bill on their own for different reasons. We discussed these issues at length for ten of them <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">in a deep-dive last year</a>. Let’s restrict ourselves for the moment to the schemes that were most likely to be standardized and compare them against Ed25519 and RSA-2048, the schemes that are in common use today.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Screenshot-2022-07-09-at-08.45.51.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Screenshot-2022-07-09-at-08.45.51.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small>Performance characteristics of NIST’s chosen signature schemes compared to Ed25519 and RSA-2048. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only. SPHINCS<sup>+</sup> was timed with simple haraka as the underlying hash function. (*) Falcon requires a suitable double-precision floating-point unit for fast signing.</small></p>
 	<!--kg-card-end: markdown-->
 	<h4 id="floating-points-falcon-s-achilles">Floating points: Falcon’s achilles </h4>
@@ -140,8 +138,7 @@
 	<p>The <a href="https://github.com/pq-crystals/kyber" target="_blank">reference implementation</a> in C is excellent. The Open Quantum Safe project <a href="https://openquantumsafe.org/applications/tls.html" target="_blank">integrates</a> it with various TLS libraries, but beware: the algorithm identifiers and scheme might still change, so be ready to migrate.</p>
 	<p>Our <a href="https://github.com/cloudflare/circl" target="_blank">CIRCL</a> library has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/main/kem" target="_blank">Kyber in Go</a>. We implemented Kyber ourselves so that we could help tease out any implementation bugs or subtle underspecification.</p>
 	<h4 id="experimenting-with-post-quantum-signatures">Experimenting with post-quantum signatures</h4>
-	<p>Post-quantum signatures are not as urgent, but might require more engineering to get right. First off, which signature scheme to pick?</p>
-	<!--kg-card-begin: markdown-->
+	<p>Post-quantum signatures are not as urgent, but might require more engineering to get right. First off, which signature scheme to pick?</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Are large signatures and slow operations acceptable? Go for SPHINCS+.</li>
 		<li>Do you need more performance?
@@ -157,8 +154,7 @@
 	<h3 id="hybrids">Hybrids</h3>
 	<p>A <strong>hybrid</strong> is a combination of a classical and a post-quantum scheme. For instance, we can combine Kyber512 with X25519 to create a single <strong>Kyber512X</strong> key agreement. The advantage of a hybrid is that the data remains secure against non-quantum attackers even if Kyber512 turns out broken. It is important to note that it’s not just about the algorithm, but also the implementation: Kyber512 might be perfectly secure, but an implementation might leak via side-channels. The downside is that two key-exchanges are performed, which takes more CPU cycles and bytes on the wire. For the moment, we prefer sticking with hybrids, but we will revisit this soon.</p>
 	<h3 id="post-quantum-security-levels">Post-quantum security levels</h3>
-	<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till &nbsp;now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till &nbsp;now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -247,8 +243,6 @@ Errors: &lt;nil&gt;
 	<p>Together with the cryptography community, we have our work cut out for us: we aim to make the Internet post-quantum secure as fast as possible.</p>
 	<p>Want to follow along? Keep an eye on <a href="https://blog.cloudflare.com/tag/post-quantum/">this blog</a> or have a look at <a href="https://research.cloudflare.com" target="_blank">research.cloudflare.com</a>.</p>
 	<p>Want to help out? We’re <a href="https://www.cloudflare.com/en-gb/careers/jobs/?title=research+engineer" target="_blank">hiring</a> and open to <a href="https://research.cloudflare.com/outreach/academic-programs/researchers/" target="_blank">research visits</a>.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/2386e5712753504c4306cf41de1633fb?poster=https%3A%2F%2Fcloudflarestream.com%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D19s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/2386e5712753504c4306cf41de1633fb?poster=https%3A%2F%2Fcloudflarestream.com%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D19s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

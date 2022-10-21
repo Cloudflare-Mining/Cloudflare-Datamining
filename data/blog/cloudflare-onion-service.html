@@ -47,15 +47,13 @@
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/tor-resquest@2x.png" class="kg-image"></figure>
 	<p></p>
-	<p>In the same sense that Cloudflare owns the IP addresses that serve our customers’ websites, we run 10 .onion addresses. Think of them as 10 Cloudflare points of presence (or PoPs) within the Tor network. The exact header looks something like this, except with all 10 .onion addresses included, each starting with the prefix “cflare”:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In the same sense that Cloudflare owns the IP addresses that serve our customers’ websites, we run 10 .onion addresses. Think of them as 10 Cloudflare points of presence (or PoPs) within the Tor network. The exact header looks something like this, except with all 10 .onion addresses included, each starting with the prefix “cflare”:</p><!--kg-card-begin: markdown-->
 	<pre><code>alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This simply indicates that the “cloudflare.com” can be authoritatively accessed using HTTP/2 (“h2”) via the onion service “cflare2n[...].onion”, over virtual port 443. The field “ma” (max-age) indicates how long in seconds the client should remember the existence of the alternative service and “persist” indicates whether alternative service cache should be cleared when the network is interrupted.</p>
 	<p>Once the browser receives this header, it attempts to make a new Tor circuit to the onion service advertised in the alt-svc header and confirm that the server listening on virtual port 443 can present a valid certificate for “cloudflare.com” — that is, the original hostname, not the .onion address.</p>
-	<p>The onion service then relays the Client Hello packet to a local server which can serve a certificate for “cloudflare.com.” This way the Tor daemon itself can be very minimal. Here is a sample configuration file:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The onion service then relays the Client Hello packet to a local server which can serve a certificate for “cloudflare.com.” This way the Tor daemon itself can be very minimal. Here is a sample configuration file:</p><!--kg-card-begin: markdown-->
 	<pre><code>SocksPort 0
 HiddenServiceNonAnonymousMode 1
 HiddenServiceSingleHopMode 1
@@ -84,8 +82,7 @@ Log notice stdout
 	<h3 id="distinguishing-the-circuits">Distinguishing the Circuits</h3>
 	<p>Remember that while one exit node can serve many many different clients, from Cloudflare’s point of view all of that traffic comes from one IP address. This pooling helps cover the malicious traffic among legitimate traffic, but isn’t essential in the security or privacy of Tor. In fact, it can potentially hurt users by exposing their traffic to <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">bad exit nodes</a>.</p>
 	<p>Remember that Tor circuits to onion services carry a circuit number which we can use to rate-limit the circuit. Now, the question is how to inform a server such as nginx of this number with minimal effort. As it turns out, with only a <a href="https://github.com/torproject/tor/pull/343/" target="_blank">small tweak</a> in the Tor binary, we can insert a <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">Proxy Protocol</a> header in the beginning of each packet that is forwarded to the server. This protocol is designed to help TCP proxies pass on parameters that can be lost in translation, such as source and destination IP addresses, and is already supported by nginx, Apache, Caddy, etc.</p>
-	<p>Luckily for us, the IPv6 space is so vast that we can encode the Tor circuit number as an IP address in an unused range and use the Proxy Protocol to send it to the server. Here is an example of the header that our Tor daemon would insert in the connection:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Luckily for us, the IPv6 space is so vast that we can encode the Tor circuit number as an IP address in an unused range and use the Proxy Protocol to send it to the server. Here is an example of the header that our Tor daemon would insert in the connection:</p><!--kg-card-begin: markdown-->
 	<pre><code>PROXY TCP6 2405:8100:8000:6366:1234:ABCD ::1 43981 443\r\n
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -124,8 +121,7 @@ Log notice stdout
 	<p>As we maintain and <a href="https://trac.torproject.org/projects/tor/ticket/27502" target="_blank">improve</a> this service we will share what we learn. In the meanwhile, feel free to try out this idea on <a href="https://github.com/mahrud/caddy-altonions" target="_blank">Caddy</a> and reach out to us with any comments or suggestions that you might have.</p>
 	<h3 id="acknowledgments">Acknowledgments</h3>
 	<p>Patrick McManus of Mozilla for enabling support for .onion alternative services in Firefox; Arthur Edelstein of the Tor Project for reviewing and enabling HTTP/2 and HTTP Alternative Services in Tor Browser 8.0; Alexander Færøy and George Kadianakis of the Tor Project for adding support for Proxy Protocol in onion services; the entire Tor Project team for their invaluable assistance and discussions; and last, but not least, many folks at Cloudflare who helped with this project.</p>
-	<h4 id="addresses-used-by-the-cloudflare-onion-service">Addresses used by the Cloudflare Onion Service</h4>
-	<!--kg-card-begin: markdown-->
+	<h4 id="addresses-used-by-the-cloudflare-onion-service">Addresses used by the Cloudflare Onion Service</h4><!--kg-card-begin: markdown-->
 	<pre><code>cflarexljc3rw355ysrkrzwapozws6nre6xsy3n4yrj7taye3uiby3ad.onion
 cflarenuttlfuyn7imozr4atzvfbiw3ezgbdjdldmdx7srterayaozid.onion
 cflares35lvdlczhy3r6qbza5jjxbcplzvdveabhf7bsp7y4nzmn67yd.onion

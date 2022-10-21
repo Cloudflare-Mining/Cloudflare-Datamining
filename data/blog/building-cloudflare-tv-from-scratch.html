@@ -19,8 +19,7 @@
 	<p>“RTMP” stands for Real-Time Messaging Protocol and was originally developed to facilitate low-latency communication using TCP via Macromedia Flash. RTMP has outlived Flash and is widely used by platforms, including YouTube, to enable live video streaming. RTMP is a push protocol and platforms like YouTube provide RTMP endpoints which are simply URLs. Most video broadcast apps will let you configure multiple RTMP endpoints, which tells the app “<em>hey send my live video feed from my phone or computer to these services</em>.” If you find yourself watching a live video that is being broadcasted on multiple services, it is very likely made possible by RTMP.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image3.png" class="kg-image"></figure>
 	<p>Zoom lets you provide RTMP endpoints and instruct it to send the live video feed of Zoom calls to, in our case, Cloudflare TV’s RTMP. Before we could use this feature, we needed to be able to ingest RTMP video feeds. </p>
-	<p>First, we set up an NGINX server with the RTMP module:</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, we set up an NGINX server with the RTMP module:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-code">apt-get install build-essential libpcre3 libpcre3-dev libssl-dev git zlib1g-dev -y
 mkdir ~/build &amp;&amp; cd ~/build
 git clone git://github.com/arut/nginx-rtmp-module.git
@@ -33,8 +32,7 @@ sudo make install
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Next, we configured<strong> </strong><code>nginx.conf</code> so NGINX can not only ingest the RTMP feed, but also make it streamable to the end user. A browser typically can’t stream from an RTMP source. We need NGINX to take the RTMP feed and create HLS/DASH segments.</p>
-	<p>We defined an application called <code>live</code> inside <code>nginx.conf.</code> Within the live application, we can add directives to ingest RTMP and output HLS:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We defined an application called <code>live</code> inside <code>nginx.conf.</code> Within the live application, we can add directives to ingest RTMP and output HLS:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">...
 rtmp {
     server {
@@ -78,8 +76,7 @@ rtmp {
 	<h3 id="contentful">Contentful</h3>
 	<p><a href="https://contentful.com/" target="_blank">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
 	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule" target="_blank">cloudflare.tv/schedule</a>.</p>
-	<p>We are able to use Workers to fetch events from Contentful:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We are able to use Workers to fetch events from Contentful:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">export async function fetchEventRaw(id: string) {
   let r = await fetch(`${CONTENTFUL_API}/entries/${id}`, {
     headers: {
@@ -92,8 +89,7 @@ rtmp {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The more complex piece was integrating this with Zoom. Each segment needs its own Zoom meeting, and it’d be pretty arduous to create these manually. So when we publish in Contentful, Contentful makes a call to a Worker endpoint. The Worker endpoint automatically generates a Zoom meeting — and provides the Programming Team with the customized invite to send to the guest.</p>
-	<p>For example, when a new event is added to Contentful, Contentful notifies our Worker endpoint which creates a new meeting and configures it so it is being pushed to Cloudflare TV:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, when a new event is added to Contentful, Contentful notifies our Worker endpoint which creates a new meeting and configures it so it is being pushed to Cloudflare TV:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">export async function createMeeting(ev: TVEvent) {
   const headers = await zoomHeaders()
 

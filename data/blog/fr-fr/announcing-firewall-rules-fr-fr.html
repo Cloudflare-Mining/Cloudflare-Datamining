@@ -39,32 +39,28 @@
 	<p>Bien sûr. Voici quatre bons exemples de ce qui est utilisé aujourd'hui. Les règles avancées ou intégrées ne sont pas prises en charge dans Visual Rule Builder actuellement. Ces dernières sont notées sous chaque règle.</p>
 	<p><em><strong>Exemple 1 : Imposer un questionnaire à tous les pays sauf la Grande-Bretagne</strong></em></p>
 	<p>Prise en charge : Visual Builder, Expression Editor</p>
-	<p>Vous pouvez le faire à l'aide de notre pare-feu IP, mais cela nécessiterait plus de 150 règles !</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous pouvez le faire à l'aide de notre pare-feu IP, mais cela nécessiterait plus de 150 règles !</p><!--kg-card-begin: markdown-->
 	<pre><code>(ip.geoip.country ne "GB")
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image.png" class="kg-image"></figure>
 	<p><em><strong>Exemple 2 : Protection anti-hotlink avancée</strong></em></p>
 	<p>Prise en charge : Visual Builder, Expression Editor</p>
-	<p>La protection anti-hotlink intégrée de Cloudflare peut être contraignante pour certains clients, car elle ne permet pas de contourner certaines connexions. Certains robots d'indexation légitimes peuvent également être interceptés.</p>
-	<!--kg-card-begin: markdown-->
+	<p>La protection anti-hotlink intégrée de Cloudflare peut être contraignante pour certains clients, car elle ne permet pas de contourner certaines connexions. Certains robots d'indexation légitimes peuvent également être interceptés.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-2.png" class="kg-image"></figure>
 	<p><em><strong>Exemple 3 : Blocage des clients dont le score de menace est supérieur à 10 ou de ceux provenant d'un réseau malveillant par numéro AS, vers ma page de connexion</strong></em></p>
 	<p>Prise en charge : Expression Editor</p>
-	<p>L'un des avantages de Firewall Rules est que nous vous avons donné accès à cf.threat_score, qui détermine le niveau de sécurité du tableau de bord actuel.</p>
-	<!--kg-card-begin: markdown-->
+	<p>L'un des avantages de Firewall Rules est que nous vous avons donné accès à cf.threat_score, qui détermine le niveau de sécurité du tableau de bord actuel.</p><!--kg-card-begin: markdown-->
 	<pre><code>(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-3.png" class="kg-image"></figure>
 	<p><em><strong>Exemple 4 : Cas d'utilisation de type Zone Lockdown utilisant l'expression régulière, les CIDR d'adresse IP, le code pays et les numéros AS pour protéger les terminaux d'authentification via le site Web Wordpress et une API</strong></em></p>
 	<p>Prise en charge : Expression Editor</p>
-	<p>Zone Lockdown est un excellent outil, mais il a ses limites pour certains cas d'utilisation critiques. Voici une idée un peu folle pour démontrer la flexibilité :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Zone Lockdown est un excellent outil, mais il a ses limites pour certains cas d'utilisation critiques. Voici une idée un peu folle pour démontrer la flexibilité :</p><!--kg-card-begin: markdown-->
 	<pre><code>((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
 111</code></pre>
 	<!--kg-card-end: markdown-->

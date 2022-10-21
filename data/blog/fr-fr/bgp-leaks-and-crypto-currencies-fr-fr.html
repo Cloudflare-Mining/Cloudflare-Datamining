@@ -24,8 +24,7 @@
 	<p>Mais il arrive parfois que cela provienne d'une <strong>intention malveillante</strong>. Le préfixe peut être réacheminé afin d'analyser passivement les données. Ou encore, quelqu'un peut mettre en place un service pour répondre de manière illégitime. Cela s’est <a href="https://blog.cloudflare.com/why-google-went-offline-today-and-a-bit-about/">déjà produit</a>.</p>
 	<h3 id="que-s-est-il-pass-aujourd-hui"><strong>Que s'est-il passé aujourd'hui ?</strong></h3>
 	<p>Cloudflare dispose d'une gamme de collecteurs BGP recueillant des informations BGP à partir de centaines de routeurs à travers le monde.</p>
-	<p>Entre <strong>11:05:00 UTC et 12:55:00 UTC aujourd'hui</strong>, nous avons vu les annonces suivantes :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Entre <strong>11:05:00 UTC et 12:55:00 UTC aujourd'hui</strong>, nous avons vu les annonces suivantes :</p><!--kg-card-begin: markdown-->
 	<pre><code>BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.197.0/24|10297
 BGP4MP|04/24/18 11:05:42|A|205.251.195.0/24|10297
@@ -59,8 +58,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 		</blockquote>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
-	<p>Par exemple, la requête suivante vous renverra les adresses IP légitimes d'Amazon :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Par exemple, la requête suivante vous renverra les adresses IP légitimes d'Amazon :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig +short myetherwallet.com @205.251.195.239
 54.192.146.xx
 </code></pre>
@@ -95,8 +93,7 @@ BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
 	<p>Tout comme une <strong>blockchain</strong>, un changement de réseau est généralement visible et archivé. RIPE dispose d’une <a href="https://ripe.net/ris/" target="_blank">base de données à cette fin</a>.</p>
 	<h3 id="pouvons-nous-rem-dier-la-situation"><strong>Pouvons-nous remédier à la situation ?</strong></h3>
 	<p>Il s’agit d’une question difficile. Il existe des propositions pour sécuriser le protocole BGP :</p>
-	<p>Il est possible d'ajouter certains termes aux bases de données RIR, ce qui permet de générer une liste des sources autorisées :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Il est possible d'ajouter certains termes aux bases de données RIR, ce qui permet de générer une liste des sources autorisées :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
 route:      205.251.192.0/23	origin:     AS16509	source:     RADB
 route:      205.251.192.0/23	origin:     AS16509	source:     REACH

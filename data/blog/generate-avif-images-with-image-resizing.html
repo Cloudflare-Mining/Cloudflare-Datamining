@@ -5,8 +5,7 @@
 	<p>More than a half of an average website's bandwidth is spent on images. Improved image compression can save bandwidth and improve overall performance of the web. The compression in AVIF is so good that images can reduce to half the size of JPEG and WebP</p>
 	<h3 id="what-is-avif">What is AVIF?</h3>
 	<p>AVIF is a combination of the HEIF ISO standard, and a royalty-free AV1 codec by <a href="https://aomedia.org/" target="_blank">Mozilla, Xiph, Google, Cisco, and many others</a>.</p>
-	<p>Currently, JPEG is the most popular image format on the Web. It's doing remarkably well for its age, and it will likely remain popular for years to come thanks to its excellent compatibility. There have been many previous attempts at replacing JPEG, such as JPEG 2000, JPEG XR and WebP. However, these formats offered only modest compression improvements, and didn't always beat JPEG on image quality. Compression and image quality in <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank">AVIF is better than in all of them, and by a wide margin</a>.</p>
-	<!--kg-card-begin: html-->
+	<p>Currently, JPEG is the most popular image format on the Web. It's doing remarkably well for its age, and it will likely remain popular for years to come thanks to its excellent compatibility. There have been many previous attempts at replacing JPEG, such as JPEG 2000, JPEG XR and WebP. However, these formats offered only modest compression improvements, and didn't always beat JPEG on image quality. Compression and image quality in <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank">AVIF is better than in all of them, and by a wide margin</a>.</p><!--kg-card-begin: html-->
 	<table style="border-collapse: collapse; border: 0; margin: 1em auto;">
 		<tbody>
 			<tr>
@@ -32,12 +31,10 @@
 				<td style="border: none">AVIF (17KB)</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<h3 id="why-a-new-image-format">Why a new image format?</h3>
 	<p>One of the big things AVIF does is it fixes WebP's biggest flaws. WebP is over 10 years old, and AVIF is a major upgrade over the WebP format. These two formats are technically related: they're both based on a video codec from the VPx family. WebP uses the old VP8 version, while AVIF is based on AV1, which is the next generation after <a href="https://en.wikipedia.org/wiki/VP10" target="_blank">VP10</a>.</p>
-	<p>WebP is limited to 8-bit color depth, and in its best-compressing mode of operation, it can only store color at half of the image's resolution (known as chroma subsampling). This causes edges of saturated colors to be smudged or pixelated in WebP. AVIF supports 10- and 12-bit color at full resolution, and high dynamic range (HDR).</p>
-	<!--kg-card-begin: html-->
+	<p>WebP is limited to 8-bit color depth, and in its best-compressing mode of operation, it can only store color at half of the image's resolution (known as chroma subsampling). This causes edges of saturated colors to be smudged or pixelated in WebP. AVIF supports 10- and 12-bit color at full resolution, and high dynamic range (HDR).</p><!--kg-card-begin: html-->
 	<table style="border-collapse: collapse; border: 0; margin: 1em auto;">
 		<tbody>
 			<tr>
@@ -57,8 +54,7 @@
 				<td>AVIF</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>AV1 also uses a new compression technique: chroma-from-luma. Most image formats store brightness separately from color hue. AVIF uses the brightness channel to guess what the color channel may look like. They are usually correlated, so a good guess gives smaller file sizes and sharper edges.</p>
 	<h3 id="adoption-of-av1-and-avif">Adoption of AV1 and AVIF</h3>
 	<p>VP8 and WebP suffered from reluctant industry adoption. Safari only added WebP support very recently, 10 years after Chrome.</p>
@@ -78,8 +74,7 @@
 	<h3 id="how-and-when-to-enable-avif-today">How and when to enable AVIF today?</h3>
 	<p>We recommend AVIF for websites that need to deliver high-quality images with as little bandwidth as possible. This is important for users of slow networks and in <a href="https://whatdoesmysitecost.com/" target="_blank">countries where the bandwidth is expensive</a>.</p>
 	<p>Browsers that support the AVIF format announce it by adding <code>image/avif</code> to their <code>Accept</code> request header. To request the AVIF format from <a href="https://developers.cloudflare.com/images/" target="_blank">Image Resizing</a>, set the <code>format</code> option to <code>avif</code>.</p>
-	<p>The best method to detect and enable support for AVIF is to use <a href="https://developers.cloudflare.com/images/worker" target="_blank">image resizing in Workers</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The best method to detect and enable support for AVIF is to use <a href="https://developers.cloudflare.com/images/worker" target="_blank">image resizing in Workers</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
   const imageURL = "https://jpeg.speedcf.com/cat/4.jpg";
 

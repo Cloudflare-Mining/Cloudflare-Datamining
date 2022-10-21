@@ -20,8 +20,7 @@
 	<h2 id="end-to-end-example">End-to-end example</h2>
 	<h3 id="step-1-define-custom-hostname">Step 1 - Define custom hostname</h3>
 	<p>Cloudflare for SaaS customers define their customer’s domains by creating custom hostnames. Custom hostnames indicate which domains need to be routed to the SaaS provider’s origin. Custom hostnames can define specific domains, like <code>example.com</code>, or they can extend to wildcards like <code>*.example.com</code> which allows subdomains under example.com to get routed to the SaaS service. WAF for SaaS supports both types of custom hostnames, so that SaaS providers have flexibility in choosing the scope of their protection.</p>
-	<p>The first step is to create a custom hostname to define your customer’s domain. This can be done through the dashboard or the API.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The first step is to create a custom hostname to define your customer’s domain. This can be done through the dashboard or the API.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
      -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
      -H "Content-Type: application/json" \
@@ -36,8 +35,7 @@
 	<p>Next, create an association between the custom hostnames — your customer’s domain — and the firewall ruleset that you’d like to attach to it.</p>
 	<p>This is done by associating a JSON blob to a custom hostname. Our product, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a> allows customers to easily do this via API.</p>
 	<p>In the example below, a JSON blob with two fields (“customer_id” and “security_level”) will be associated to each request for <code>*.example.com</code> and <code>example.com</code>.</p>
-	<p>There is no predetermined schema for custom metadata. Field names and structure are fully customisable based on our customer’s needs. In this example, we have chosen the tag “security_level” to which we expect to assign three values (low, medium or high). These will, in turn, trigger three different sets of rules.</p>
-	<!--kg-card-begin: markdown-->
+	<p>There is no predetermined schema for custom metadata. Field names and structure are fully customisable based on our customer’s needs. In this example, we have chosen the tag “security_level” to which we expect to assign three values (low, medium or high). These will, in turn, trigger three different sets of rules.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\
@@ -51,8 +49,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="step-3-trigger-security-products-based-on-tags">Step 3 - Trigger security products based on tags</h3>
 	<p>Finally, you can trigger a rule based on the custom hostname. The custom metadata field e.g. “security_level” is available in the Ruleset Engine where the WAF runs. In this example, “security_level” can be used to trigger different configurations of products such as WAF, Firewall Rules, Advanced Rate Limiting and Transform Rules.</p>
-	<p>Rules can be built through the dashboard or via the API, as shown below. Here, a rate limiting rule is triggered on traffic with “security_level” set to <em>low</em>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Rules can be built through the dashboard or via the API, as shown below. Here, a rate limiting rule is triggered on traffic with “security_level” set to <em>low</em>.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\

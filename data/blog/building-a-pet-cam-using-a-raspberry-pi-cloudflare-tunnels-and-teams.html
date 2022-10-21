@@ -18,8 +18,7 @@
 	<p>The first thing we need to do is connect the camera module to the Raspberry Pi. For more detailed instructions, follow the <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/1" target="_blank">official guide</a>, steps 1 to 3.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image2.jpg" class="kg-image"></figure>
 	<p>After setting up the camera and testing that it works, we need to set it up as a camera with a web server. This is so we can access it at a URL such as <a href="https://192.168.0.2:8080" target="_blank">https://192.168.0.2:8080</a> within the local network, to which the Raspberry Pi is also connected. To do that, we will use <a href="https://motion-project.github.io/" target="_blank">Motion</a>, a program for setting up the camera module v2 as a web server.</p>
-	<p>To install Motion, input these commands:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To install Motion, input these commands:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo apt-get update &amp;&amp; sudo apt-get upgrade
 $ sudo apt install autoconf automake build-essential pkgconf libtool git libzip-dev libjpeg-dev gettext libmicrohttpd-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libavdevice-dev default-libmysqlclient-dev libpq-dev libsqlite3-dev libwebp-dev
 $ sudo wget https://github.com/Motion-Project/motion/releases/download/release-4.3.1/pi_buster_motion_4.3.1-1_armhf.deb
@@ -27,8 +26,7 @@ $ sudo dpkg -i pi_buster_motion_4.3.1-1_armhf.deb
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above commands will update the local packages with new versions from the repositories and then install that version of Motion from Motion’s GitHub project.</p>
-	<p>Next, we need to configure Motion using:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, we need to configure Motion using:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo vim /etc/motion/motion.conf
 # Find the following lines and update them to following:
 # daemon on
@@ -36,8 +34,7 @@ $ sudo dpkg -i pi_buster_motion_4.3.1-1_armhf.deb
 # save and exit
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>After that, we need to set Motion up as a daemon, so it runs whenever the system is restarted:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After that, we need to set Motion up as a daemon, so it runs whenever the system is restarted:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo vim /etc/default/motion
 # and change the following line 
 # start_motion_daemon=yes
@@ -47,24 +44,21 @@ $ sudo service motion start
 	<!--kg-card-end: markdown-->
 	<p>Great. Now that we have Motion set up, we can see the live feed from our camera in a browser on Raspberry Pi module at the default URL: <a href="http://0.0.0.0:8081" target="_blank"><strong>http://localhost:8081</strong></a> (the port can be changed in the config edit step above). Alternatively, we can open it on another machine within the same network by replacing 0.0.0.0 with the IP of the Raspberry Pi in the network.</p>
 	<p>For now, the camera web server is available only within our local network. However, I wanted to keep an eye on Ziggy no matter where I am, as long as I have Internet access and a browser. This is perfect for <a href="https://www.cloudflare.com/en-gb/products/tunnel/" target="_blank">Cloudflare Tunnel</a>. An alternative would be to open a port in the firewall on the router in my home network, but I hate that idea of having to mess with the router configuration. I am not really an expert at that, and if I leave a backdoor open to my internal network, it can get scary quickly!</p>
-	<p>The Cloudflare Tunnel documentation takes us through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">its installation</a>. The only issue is that the architecture of the Raspberry Pi is based on armv7l (32-bit)<em> </em>and there is no package for it in the remote repositories<em>.</em> We could build cloudflared from source if we wanted as it’s an <a href="https://github.com/cloudflare/cloudflared" target="_blank">open source project</a>, but an easier route is to <code>wget</code> it.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The Cloudflare Tunnel documentation takes us through <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">its installation</a>. The only issue is that the architecture of the Raspberry Pi is based on armv7l (32-bit)<em> </em>and there is no package for it in the remote repositories<em>.</em> We could build cloudflared from source if we wanted as it’s an <a href="https://github.com/cloudflare/cloudflared" target="_blank">open source project</a>, but an easier route is to <code>wget</code> it.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 # a quick check of version shall confirm if it installed correctly
 $ cloudflared -v 
 cloudflared version 2021.5.10 (built 2021-05-26-1355 UTC)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Let’s set up our Tunnel now:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s set up our Tunnel now:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel create camera
 Tunnel credentials written to /home/pi/.cloudflared/5f8182ba-906c-4910-98c3-7d042bda0594.json. cloudflared chose this file based on where your origin certificate was found. Keep this file secret. To revoke these credentials, delete the tunnel.
 
 Created tunnel camera with id 5f8182ba-906c-4910-98c3-7d042bda0594
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now we need to configure the Tunnel to forward the traffic to the Motion webcam server:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now we need to configure the Tunnel to forward the traffic to the Motion webcam server:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ vim /home/pi/.cloudflared/config.yaml 
 # And add the following.
 tunnel: 5f8182ba-906c-4910-98c3-7d042bda0594
@@ -77,15 +71,13 @@ ingress:
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The Tunnel uuid should be the one created with the command above and so should the path of the credential file. The ingress should have the domain we want to use. In my case I have set up camera.imohak.com as my domain and 404 as the fallback rule.</p>
-	<p>Next, we need to route the DNS to this Tunnel:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, we need to route the DNS to this Tunnel:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel route dns 5f8182ba-906c-4910-98c3-7d042bda0594 camera.imohak.com
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This adds a DNS CNAME record, which can be verified from the Cloudflare dashboard as shown here:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image9.png" class="kg-image"></figure>
-	<p>Let’s test the Tunnel!</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s test the Tunnel!</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run camera
 2021-06-15T21:44:41Z INF Starting tunnel tunnelID=5f8182ba-906c-4910-98c3-7d042bda0594
 2021-06-15T21:44:41Z INF Version 2021.5.10

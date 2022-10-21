@@ -28,11 +28,9 @@
 	<h3 id="cr-ation-de-votre-premi-re-base-de-donn-es-d1">Création de votre première base de données D1</h3>
 	<p>Avec D1, vous pourrez créer une base de données en quelques clics seulement : définir les tables, insérer ou transférer les données, sans devoir mémoriser de commandes, sauf si vous en avez besoin.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
-	<p>Bien sûr, si vous préférez la ligne de commande, nous avons annoncé en début de semaine<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/"> la nouvelle version améliorée de Wrangler 2</a>, le meilleur outil pour la gestion et le déploiement de vos instances Workers, et bientôt aussi pour le déploiement de D1. Wrangler proposera également la prise en charge native de D1, afin que vous puissiez créer et gérer des bases de données avec quelques commandes simples :</p>
-	<!--kg-card-begin: html-->
+	<p>Bien sûr, si vous préférez la ligne de commande, nous avons annoncé en début de semaine<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/"> la nouvelle version améliorée de Wrangler 2</a>, le meilleur outil pour la gestion et le déploiement de vos instances Workers, et bientôt aussi pour le déploiement de D1. Wrangler proposera également la prise en charge native de D1, afin que vous puissiez créer et gérer des bases de données avec quelques commandes simples :</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<h4 id="acc-s-d1-depuis-votre-instance-workers">Accès à D1 depuis votre instance Workers</h4>
 	<p>Il est aussi simple d'attacher D1 à votre instance Workers que de créer une nouvelle liaison. Chaque base de données D1 que vous attachez à votre instance Workers est attachée avec sa propre liaison sur le paramètre <code>env</code> &nbsp;:</p>
 	<pre><code class="language-js">export default {

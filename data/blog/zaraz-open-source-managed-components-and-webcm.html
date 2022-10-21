@@ -13,8 +13,7 @@
 	<p>Managed Components is how we imagine the future of third-party tools online. It provides vendors with an API that allows them to do much more than a normal script can, including keeping code execution outside the browser. We designed this format together with vendors, for vendors, while having in mind that users’ best interest is everyone's best interest long-term.</p>
 	<p>From the get-go, we built Managed Components to use a permission-based system. We want to provide even more transparency than Zaraz does today. As the new API allows tools to set cookies, change the DOM or collect IP addresses, all those abilities require being granted a permission. Installing a third-party tool on your site is similar to installing an app on your phone – you get an explanation of what the tool can and can’t do, and you can allow or disallow features to a granular level. We previously wrote about <a href="https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz/">how you can use Zaraz to not send IP addresses to Google Analytics</a>, and now we’re doubling down in this direction. It’s your website, and it’s your decision to make.</p>
 	<p>Every Managed Component is a JavaScript module at its core. Unlike today, this JavaScript code isn’t sent to the browser. Instead, it is executed by a Components Manager. This manager implements the APIs that are then used by the component. It dispatches server-side events that originate in the browser, providing the components with access to information while keeping them sandboxed and performant. It handles caching, storage and more — all so that the Managed Components can implement their logic without worrying so much about the surrounding.</p>
-	<p>An example analytics Managed Component can look something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example analytics Managed Component can look something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>export default function (manager) {
   manager.addEventListener("pageview", ({ context, client }) =&gt; {
     fetch("https://example.com/collect", {
@@ -29,8 +28,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above component gets notified whenever a page view occurs, and it then creates some payload with the visitor user-agent and page URL and sends that as a POST request to the vendor’s server. This is very similar to how things are done today, except this doesn’t require running any code at all in the browser.</p>
-	<p>But Managed Components aren’t just doing what was previously possible but better, they also provide dramatic new functionality. See for example how we’re exposing server-side endpoints:</p>
-	<!--kg-card-begin: markdown-->
+	<p>But Managed Components aren’t just doing what was previously possible but better, they also provide dramatic new functionality. See for example how we’re exposing server-side endpoints:</p><!--kg-card-begin: markdown-->
 	<pre><code>export default function (manager) {
   const api = manager.proxy("/api", "https://api.example.com");
   const assets = manager.serve("/assets", "assets");

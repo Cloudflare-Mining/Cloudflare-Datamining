@@ -16,8 +16,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/2-16.png" class="kg-image" alt="The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule">
 		<figcaption>新しいオープンプロキシ管理リストは、アカウントホーム → 設定 → リストまたはカスタムルールで直接使用、の下にあります。<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
-	<p>カスタムファイアウォールルールを記述する際に、IPリストを追加のフィルターと組み合わせることで、認証エンドポイントへの悪意のあるログイン試行のリスクを減らすことができます。Wirefilter構文を使用して、新しいリストを活用したルールを記述すると、次のようになります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>カスタムファイアウォールルールを記述する際に、IPリストを追加のフィルターと組み合わせることで、認証エンドポイントへの悪意のあるログイン試行のリスクを減らすことができます。Wirefilter構文を使用して、新しいリストを活用したルールを記述すると、次のようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -45,8 +44,7 @@
 	<p>ただし、ユーザーが使用しているデバイスはいまだに安全でない可能性があります。侵害されたデバイスとの有効な認証セッションは、データ漏えいにつながる上に、エンドユーザーアカウントまたはアプリケーションが完全に侵害されてしまうこともあります。企業は、モバイル端末管理（MDM）ソリューションを介してセキュリティポリシーを適用できる企業のデバイスを管理および提供することで、このリスクを軽減しようとします。</p>
 	<p>この問題を解決するために、Cloudflare Accessを改善し、企業デバイスだけが機密アプリケーションにアクセスするようにしています。アクセスルールを使用して、アクセスを許可する前に、管理対象デバイスのリストに対してデバイスのシリアル番号を確認できるようになりました。ユーザーの資格情報が流出している場合でも、管理対象デバイスのリスト以外のシリアル番号を持つデバイスを不許可にすることで、不正アクセスはブロックされます。詳細については、当社の<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">最近の発表</a>をご覧ください。</p>
 	<h3 id="--1">ログインに失敗した場合のレート制限</h3>
-	<p>ブルートフォース攻撃は流出した資格情報のデータベースを繰り返し攻撃する場合に、特に驚くほど効果的になります。これらの攻撃を阻止するには、多くの場合、実行するには費用が高すぎるポイントまで攻撃の速度を落とすだけで十分です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ブルートフォース攻撃は流出した資格情報のデータベースを繰り返し攻撃する場合に、特に驚くほど効果的になります。これらの攻撃を阻止するには、多くの場合、実行するには費用が高すぎるポイントまで攻撃の速度を落とすだけで十分です。</p><!--kg-card-begin: markdown-->
 	<p>ログインに失敗すると、多くのユーザー名/パスワードフォームが HTTP 403 Forbidden ステータスコードまたはその他の認識可能なエラーメッセージを発します<sup>2</sup>。これは、レート制限応答を発するための非常に効果的な信号として使用できるため、正当なユーザーへの潜在的な副作用を回避することができます。</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/5-7.png" class="kg-image" alt="The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.">
@@ -57,8 +55,7 @@
 	<h3 id="--2">今後の計画</h3>
 	<p>Cloudflareでは多くの時間をかけて、簡単なワンクリックソリューションでエンドユーザーアカウントを最高のセキュリティで保護する方法について考えてきました。</p>
 	<p>当社のネットワークの可視性を活用することで、Cloudflareのスケールだからこそ実現可能な貴重な洞察を得られ始めています。マネージドオープンプロキシリストはその一例ですが、シンプルなデバイスポスチャーやレート制限をはるかに超えた異常ベースの検出についてすでに実験を開始しています。さらに、当社ではユースケースとシナリオを通じて、検証された異常を顧客ベース全体でより広く共有する方法について考えており、これは、もともとCloudflareが構築したオリジナルなコミュニティ保護ベースのアプローチに戻るものです。</p>
-	<p>.....</p>
-	<!--kg-card-begin: markdown-->
+	<p>.....</p><!--kg-card-begin: markdown-->
 	<p><sup>1</sup><a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">暗号化されたWAFペイロードロギングなど</a>のCloudflareの他の機能は、リクエストコンポーネントを記録できますが、お客様が提供されたパブリックキーで暗号化されます。<br>
 		<sup>2</sup>多くの侵入テストレポートでは、ログイン試行が失敗した場合の応答の違いが、情報漏えいの脆弱性として強調されています。
 	</p>

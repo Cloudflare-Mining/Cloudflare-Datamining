@@ -15,8 +15,7 @@
 	<p>Nous nous appuyons sur nos propres produits pour isoler les appareils sans les déployer sur un réseau distinct. Cette approche permet de bénéficier de garanties de sécurité, sans recourir à l'installation d'équipements physiques supplémentaires. Il s'agit donc d'un moyen sans serveur et sans infrastructure d'isoler un réseau.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
 	<p>Comment y parvenons-nous ? L'appareil physique (pour notre démonstration de faisabilité, il s'agira d'une caméra Verkada) est connecté à un switch Power over Ethernet (alimentation par Ethernet), lui-même configuré pour transmettre, via un tunnel Anycast GRE, son trafic au réseau mondial de Cloudflare. Nous pouvons alors configurer des règles sur le tableau de bord Cloudflare afin de régir le trafic sortant et de nous assurer que ce dernier ne soit acheminé qu'à l'endroit où il est censé l'être. Les mouvements latéraux sont ainsi rendus impossibles.</p>
-	<p>Cette architecture permet à un administrateur réseau de contrôler le trafic de la couche 3 (et supérieures) depuis un tableau de bord unique, en appliquant instantanément des politiques au trafic entrant et sortant. Elle constitue ainsi une solution simple de type « set-and-forget » (définir et oublier), capable de s'adapter à un environnement évolutif. En effet, la protection est agnostique vis-à-vis des fournisseurs, s'appuie sur des normes courantes et la collecte des journaux s'effectue automatiquement. Comparativement à d'autres méthodes de prévention des mouvements latéraux, Cloudflare propose la simplicité d'utilisation, l'adaptabilité et les garanties de sécurité nécessaires à la gestion sécurisée de n'importe quel environnement doté d'appareils IdO.</p>
-	<!--kg-card-begin: html-->
+	<p>Cette architecture permet à un administrateur réseau de contrôler le trafic de la couche 3 (et supérieures) depuis un tableau de bord unique, en appliquant instantanément des politiques au trafic entrant et sortant. Elle constitue ainsi une solution simple de type « set-and-forget » (définir et oublier), capable de s'adapter à un environnement évolutif. En effet, la protection est agnostique vis-à-vis des fournisseurs, s'appuie sur des normes courantes et la collecte des journaux s'effectue automatiquement. Comparativement à d'autres méthodes de prévention des mouvements latéraux, Cloudflare propose la simplicité d'utilisation, l'adaptabilité et les garanties de sécurité nécessaires à la gestion sécurisée de n'importe quel environnement doté d'appareils IdO.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -153,8 +152,7 @@
 				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<h3 id="et-ensuite">Et ensuite ?</h3>
 	<p>Au quatrième trimestre 2021, nous avons conclu un accord avec un partenaire spécialisé dans les tests de pénétration afin qu'il teste cette configuration en répliquant la tentative par un appareil compromis de passer sur des réseaux de production situés derrière l'architecture Cloudflare One. Notre partenaire s'est trouvé dans l'incapacité de procéder à des mouvements latéraux. Ce résultat prouve ainsi l'efficacité de notre architecture.</p>
 	<p>Compte tenu des tests réalisés sur cette dernière, nous allons donc commencer à formaliser le déploiement de Cloudflare One en interne dans nos datacenters, dans le cadre d'une initiative de sécurité physique, afin de préserver la sécurité de nos ressources les plus fiables.</p>

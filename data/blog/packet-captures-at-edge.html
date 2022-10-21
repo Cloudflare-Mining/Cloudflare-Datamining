@@ -17,8 +17,7 @@
 	<h3 id="on-demand-packet-captures-from-the-cloudflare-global-network">On-demand packet captures from the Cloudflare global network</h3>
 	<p>With Cloudflare, you can regain this visibility. With <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> and <a href="https://www.cloudflare.com/magic-wan/" target="_blank">Magic WAN</a>, customers route all their public and private IP traffic through Cloudflare’s network to make it more secure, faster, and more reliable, but also to increase visibility. You can think of Cloudflare like a giant, globally distributed version of the drawbridge in our old analogy: because we act as a single cloud-based router and firewall across all your traffic, we can capture packets across your entire network and deliver them back to you in one place.</p>
 	<h3 id="how-does-it-work">How does it work?</h3>
-	<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
 -H 'Content-Type: application/json' \
 -H 'X-Auth-Email: user@example.com' \
@@ -35,28 +34,23 @@
         "system": "magic-transit"
 }'
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>Example of a request for packet capture using our API.</small></p>
 	<!--kg-card-end: markdown-->
-	<p>We leverage <a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We leverage <a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>table inet pcaps_1 {
     chain pcap_1 {
         ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
     }
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>Example nftables configuration used to filter log customer packets</small></p>
 	<!--kg-card-end: markdown-->
-	<p>nflog creates a netfilter socket through which logs of a packet are sent from the Linux kernel to user space. In user space, we use tcpdump to read packets off the netfilter socket and generate a packet capture file:</p>
-	<!--kg-card-begin: markdown-->
+	<p>nflog creates a netfilter socket through which logs of a packet are sent from the Linux kernel to user space. In user space, we use tcpdump to read packets off the netfilter socket and generate a packet capture file:</p><!--kg-card-begin: markdown-->
 	<pre><code>tcpdump -i nflog:1 -w pcap_1.pcap
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>Example tcpdump command to create a packet capture file. </small></p>
 	<!--kg-card-end: markdown-->
 	<p>Usually tcpdump is used by listening to incoming packets on a network interface, but in our case we configure it to read packet logs from an nflog group. tcpdump will convert the packet logs into a packet capture file.</p>

@@ -22,8 +22,7 @@
 	<p>Initially we had some sync issues. A package repository is a mix of static data (binary and source packages) and dynamic data (package lists are updated every 6 hours). To make things worse, the cryptographic sealing of the metadata means that we need atomic updates of all the metadata (the signed top-level ‘<a href="http://kali.download/kali/dists/kali-rolling/Release" target="_blank">Release</a>’ file contains checksums of all the binary and source package lists).</p>
 	<p>The default behavior of a CDN is not appropriate for this purpose as it caches all files for a certain amount of time after they have been fetched for the first time. This means that you could have different versions of various metadata files in the cache, resulting in invalid checksums errors returned by apt-get. So we had to implement a few tweaks to make it work and reap the full benefits of Cloudflare’s CDN network.</p>
 	<p>First we added an “Expires” HTTP header to disable <a href="https://support.cloudflare.com/hc/en-us/articles/115003206852" target="_blank">expiration</a> of all files that will never change. Then we added another HTTP header to <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only" target="_blank">tag</a> all metadata files so that we could manually purge those files from the CDN cache through <a href="https://api.cloudflare.com/#zone-purge-files-by-cache-tags-or-host" target="_blank">an API call</a> that we integrated at the end of the repository update procedure on our backend server.</p>
-	<p>With nginx in our backend, the configuration looks like this:<br></p>
-	<!--kg-card-begin: markdown-->
+	<p>With nginx in our backend, the configuration looks like this:<br></p><!--kg-card-begin: markdown-->
 	<pre><code>location /kali/dists/ {
     add_header Cache-Tag metadata,dists;
 }
@@ -40,8 +39,7 @@ location /kali/pool/ {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>The API call is a simple shell script launched by a hook of the repository mirroring script:<br></p>
-	<!--kg-card-begin: markdown-->
+	<p>The API call is a simple shell script launched by a hook of the repository mirroring script:<br></p><!--kg-card-begin: markdown-->
 	<pre><code>#!/bin/sh
 curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/xxxxxxxxxxx/purge_cache" \
     -H "Content-Type:application/json" \

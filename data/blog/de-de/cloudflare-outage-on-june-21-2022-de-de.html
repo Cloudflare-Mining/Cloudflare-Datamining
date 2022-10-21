@@ -22,8 +22,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
 	<h3 id="technische-beschreibung-des-fehlers-und-wie-er-passiert-ist">Technische Beschreibung des Fehlers und wie er passiert ist</h3>
 	<p>Im Rahmen unserer laufenden Bemühungen, unsere Infrastrukturkonfiguration zu standardisieren, haben wir eine Änderung eingeführt, um die BGP-Communities zu standardisieren, die wir einer Untergruppe der von uns angekündigten Präfixe zuordnen. Genauer gesagt, haben wir unseren site-local-Präfixen Informations-Communities hinzugefügt. Diese Präfixe ermöglichen es unseren Rechenknoten, miteinander zu kommunizieren und eine Verbindung zu den Ursprüngen der Kunden herzustellen. Im Rahmen des Änderungsverfahrens bei Cloudflare wurde ein Change Request (CR)-Ticket erstellt, das einen Probelauf der Änderung sowie ein schrittweises Rollout-Verfahren beinhaltet. Bevor es veröffentlicht wurde, wurde es außerdem von mehreren Technikern begutachtet. Leider waren in diesem Fall die Schritte nicht klein genug, um den Fehler abzufangen, bevor er alle unsere Spines traf.</p>
-	<p>Auf einem der Router sah die Änderung folgendermaßen aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Auf einem der Router sah die Änderung folgendermaßen aus:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -46,8 +45,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Dies war harmlos und fügte diesen Präfix-Ankündigungen lediglich einige zusätzliche Informationen hinzu. An den Spines wurden folgende Änderungen vorgenommen:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dies war harmlos und fügte diesen Präfix-Ankündigungen lediglich einige zusätzliche Informationen hinzu. An den Spines wurden folgende Änderungen vorgenommen:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -74,15 +72,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Ein erster Blick auf dieses diff könnte den Eindruck erwecken, dass diese Änderung identisch ist, aber das ist leider nicht der Fall. Wenn wir uns auf 1 Teil des diffs konzentrieren, wird vielleicht klar, warum:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ein erster Blick auf dieses diff könnte den Eindruck erwecken, dass diese Änderung identisch ist, aber das ist leider nicht der Fall. Wenn wir uns auf 1 Teil des diffs konzentrieren, wird vielleicht klar, warum:</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In diesem diff-Format zeigen die Ausrufezeichen vor den Begriffen eine Neuordnung der Begriffe an. In diesem Fall sind mehrere Begriffe nach oben gerückt und zwei Begriffe wurden nach unten hinzugefügt. Insbesondere wurde der Begriff 4-ADV-SITE-LOCALS von oben nach unten verschoben. Dieser Begriff stand nun hinter dem Begriff REJECT-THE-REST, und wie aus dem Namen ersichtlich sein dürfte, ist dieser Begriff ein explizites Reject:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In diesem diff-Format zeigen die Ausrufezeichen vor den Begriffen eine Neuordnung der Begriffe an. In diesem Fall sind mehrere Begriffe nach oben gerückt und zwei Begriffe wurden nach unten hinzugefügt. Insbesondere wurde der Begriff 4-ADV-SITE-LOCALS von oben nach unten verschoben. Dieser Begriff stand nun hinter dem Begriff REJECT-THE-REST, und wie aus dem Namen ersichtlich sein dürfte, ist dieser Begriff ein explizites Reject:</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

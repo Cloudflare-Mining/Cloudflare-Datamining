@@ -16,8 +16,7 @@
 	<p>我们<a href="https://www.cloudflare.com/zh-cn/learning/" target="_blank">学习中心</a>很好地概述了 <a href="https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 和 <a href="https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a> 的定义及其工作原理。</p>
 	<p>在这个简化的图中，可以看到互联网上的 6 个自治系统和两个可能的路由（数据包的传输途径）。AS1 → AS2 → AS3 速度最快，AS1 → AS6 → AS5 → AS4 → AS3 速度最慢，但可在第一个路由失败时使用。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10-1.png" class="kg-image"></figure>
-	<p>在 UTC 15:58，我们注意到 Facebook 已停止公告对其路由的前缀。那意味着，至少 Facebook 的 DNS 服务器是不可用的。因此，Cloudflare 的 1.1.1.1 DNS 解析器不再响应查询 facebook.com IP 地址的请求。</p>
-	<!--kg-card-begin: markdown-->
+	<p>在 UTC 15:58，我们注意到 Facebook 已停止公告对其路由的前缀。那意味着，至少 Facebook 的 DNS 服务器是不可用的。因此，Cloudflare 的 1.1.1.1 DNS 解析器不再响应查询 facebook.com IP 地址的请求。</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -27,8 +26,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>同时，其他 Facebook IP 地址依然被路由，但并不是特别有用，因为在没有 DNS 的情况下，Facebook 及相关服务实际上是无法访问的：</p>
-	<!--kg-card-begin: markdown-->
+	<p>同时，其他 Facebook IP 地址依然被路由，但并不是特别有用，因为在没有 DNS 的情况下，Facebook 及相关服务实际上是无法访问的：</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -52,8 +50,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9-1.png" class="kg-image"></figure>
 	<p>受路由撤销影响，Facebook 及其网站实际上已经切断了自己与互联网的连接。</p>
 	<h3 id="dns-">DNS 受到影响</h3>
-	<p>作为直接后果，世界各地的所有 DNS 解析器都停止解析它们的域名。</p>
-	<!--kg-card-begin: markdown-->
+	<p>作为直接后果，世界各地的所有 DNS 解析器都停止解析它们的域名。</p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

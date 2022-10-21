@@ -21,15 +21,13 @@
 	<p>Microsoft’s Azure Key Vault team <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">released Managed HSM</a>. The offering is FIPS 140-2 Level 3 validated and is integrated with Azure services such as Azure Storage, Azure SQL, and Azure Information Protection. Managed HSM is available in the following regions: East US 2, South Central US, North Europe, and West Europe.</p>
 	<p>The instructions below are taken from the <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">Quickstart: Provision and activate a managed HSM using Azure CLI</a> guide, followed by instructions for using the Managed HSM with Cloudflare. The commands were run on a Ubuntu VM created in the same region (South Central US) as the HSM; this is also where we will deploy the Cloudflare Keyless SSL daemon.</p>
 	<h3 id="provision-and-activate-the-hsm">Provision and activate the HSM</h3>
-	<p>First we log in via the CLI and create a resource group for the Managed HSM in one of the supported regions. Note that you may get warnings from various commands based on the preview status of the offering.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First we log in via the CLI and create a resource group for the Managed HSM in one of the supported regions. Note that you may get warnings from various commands based on the preview status of the offering.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
 $ az login
 $ az group create --name $GROUPNAME --location $LOCATION
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Next, we provision the HSM resource and activate it by downloading the <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">security domain</a>. The example below grants administrative access to the signed-in user, along with another administrator whose OID can be retrieved by executing the same oid=$(...) command from the CLI where that user is logged in.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, we provision the HSM resource and activate it by downloading the <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">security domain</a>. The example below grants administrative access to the signed-in user, along with another administrator whose OID can be retrieved by executing the same oid=$(...) command from the CLI where that user is logged in.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
 $ OTHERADMIN_OID=...
 
@@ -66,13 +64,11 @@ sHSM",
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Record the <strong>hsmUri</strong> property that is returned from the command above. You will need this shortly when configuring Keyless SSL on your VM.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Record the <strong>hsmUri</strong> property that is returned from the command above. You will need this shortly when configuring Keyless SSL on your VM.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now that the HSM is provisioned, you must provide it with at least 3 RSA public keys. The HSM will encrypt the security domain with these keys and send it back to you, after which the HSM is ready to use.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now that the HSM is provisioned, you must provide it with at least 3 RSA public keys. The HSM will encrypt the security domain with these keys and send it back to you, after which the HSM is ready to use.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
@@ -81,15 +77,13 @@ $ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>If you get a “Failed to connect to MSI” error, and you are using a cloud shell from the Azure Portal, run az login again as this is a known issue.</p>
-	<p>Once you have your HSM provisioned, <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">add your private key</a> to the keyvault</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once you have your HSM provisioned, <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">add your private key</a> to the keyvault</p><!--kg-card-begin: markdown-->
 	<pre><code>$ az keyvault key import --KeylessHSM
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This will return a URI that you will later add to the Keyless YAML file to indicate where your private key is stored.</p>
 	<p>Now that you have your HSM provisioned and activated, you need to create a VM where you will deploy the Keyless daemon. For this example, we will create an Ubuntu Xenial VM in Azure. In the portal, go to the <strong>Virtual machines </strong>page and <strong>Add </strong>a VM. There, you can use the resource group that you created earlier for the HSM. For best results, choose the same region as the one for the HSM. Note the public IP of the VM, you will use this to remotely connect to the server.</p>
-	<p>Next, configure your VM as a key server. First, you need to add the <a href="https://pkg.cloudflare.com/" target="_blank">Cloudflare Package Repository</a>. Then, you will update your OS’ package listings and install the gokeyless server.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, configure your VM as a key server. First, you need to add the <a href="https://pkg.cloudflare.com/" target="_blank">Cloudflare Package Repository</a>. Then, you will update your OS’ package listings and install the gokeyless server.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ apt-get update
 $ echo 'deb http://pkg.cloudflare.com/ Xenial main' |
 sudo tee /etc/apt/sources.list.d/cloudflare-main.list
@@ -98,13 +92,11 @@ $ apt-get update
 $ apt-get install gokeyless
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then, update the gokeyless YAML file. There, you will add the hostname of your keyserver — this hostname should have a DNS record that points to your VM, the zoneID, and Origin CA API key. The zoneID and Origin CA API key can be found in the Cloudflare dashboard. In addition to that, indicate the URI that to points to your private key’s directory under private_key_stores.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, update the gokeyless YAML file. There, you will add the hostname of your keyserver — this hostname should have a DNS record that points to your VM, the zoneID, and Origin CA API key. The zoneID and Origin CA API key can be found in the Cloudflare dashboard. In addition to that, indicate the URI that to points to your private key’s directory under private_key_stores.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ vim /etc/keyless/gokeyless.yaml
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Lastly, start the keyless server.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Lastly, start the keyless server.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ service gokeyless start
 </code></pre>
 	<!--kg-card-end: markdown-->

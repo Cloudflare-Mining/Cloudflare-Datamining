@@ -36,12 +36,10 @@
 	<p>Cloudflare Stream with WebRTC lets you build live streaming into your app as a front-end developer, without any special knowledge of video protocols. And our approach, using the WHIP and WHEP open standards, means you can do this with zero dependencies, with 100% your code that you control.</p>
 	<h3 id="go-live-from-a-web-browser-with-just-a-few-lines-of-code">Go live from a web browser with just a few lines of code</h3>
 	<p>You can go live right now, from your web browser, by creating a live input in the <a href="https://dash.cloudflare.com/?to=/:account/stream/inputs" target="_blank">Cloudflare Stream dashboard</a>, and pasting a URL into the example linked below.</p>
-	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta/" target="_blank">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank">run the example code below in your browser using Stackblitz</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta/" target="_blank">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank">run the example code below in your browser using Stackblitz</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;video id="input-video" autoplay autoplay muted&gt;&lt;/video&gt;
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import WHIPClient from "./WHIPClient.js";
 
 const url = "&lt;WEBRTC_URL_FROM_YOUR_LIVE_INPUT&gt;";
@@ -52,12 +50,10 @@ const client = new WHIPClient(url, videoElement);
 	<p>This example uses an example WHIP client, written in just 100 lines of Javascript, using APIs that are native to web browsers, with zero dependencies. But because WHIP is an open standard, you can use any WHIP client you choose. Support for WHIP is growing across the video streaming industry — it has recently been added to <a href="https://gstreamer.freedesktop.org/" target="_blank">Gstreamer</a>, and one of the authors of the WHIP specification has written a <a href="https://github.com/medooze/whip-js" target="_blank">Javascript client implementation</a>. We intend to support the full <a href="https://www.ietf.org/archive/id/draft-ietf-wish-whip-03.html" target="_blank">WHIP specification</a>, including supporting <a href="https://www.rfc-editor.org/rfc/rfc8838" target="_blank">Trickle ICE</a> for fast NAT traversal.</p>
 	<h3 id="play-a-live-stream-in-a-browser-with-sub-second-latency-no-sdk-required">Play a live stream in a browser, with sub-second latency, no SDK required</h3>
 	<p>Once you’ve started streaming, copy the playback URL from the live input you just created, and paste it into the example linked below.</p>
-	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta/" target="_blank">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank">run the example code below in your browser using Stackbltiz</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Read the <a href="https://developers.cloudflare.com/stream/webrtc-beta/" target="_blank">docs</a> or <a href="https://workers.new/stream/webrtc" target="_blank">run the example code below in your browser using Stackbltiz</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;video id="playback" controls autoplay muted&gt;&lt;/video&gt;
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import WHEPClient from './WHEPClient.js';
 const url = "&lt;WEBRTC_PLAYBACK_URL_FROM_YOUR_LIVE_INPUT&gt;";
 const videoElement = document.getElementById("playback");

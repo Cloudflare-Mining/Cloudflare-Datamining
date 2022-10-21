@@ -7,8 +7,7 @@
 	<h2 id="-cloudflare-pages-"><strong>使用 Cloudflare Pages 构建无服务器函数</strong></h2>
 	<h3 id="-"><strong>基于文件的路由</strong></h3>
 	<p>如果您尚不熟悉，Cloudflare Pages <a href="https://developers.cloudflare.com/pages/get-started" target="_blank">可以连接您的 git 提供商</a>（GitHub 和 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-partners-with-gitlab-zh-cn/">GitLab</a>），并自动将您的静态站点部署到 Cloudflare 的网络。Functions 可让您通过添加动态数据来增强这些应用程序。如果您尚未注册，<a href="https://dash.cloudflare.com/sign-up/pages" target="_blank">可在此处注册</a>。</p>
-	<p>让我们在项目中创建一个新函数：</p>
-	<!--kg-card-begin: markdown-->
+	<p>让我们在项目中创建一个新函数：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// ./functions/time.js
 
 
@@ -25,8 +24,7 @@ export const onRequest = () =&gt; {
 	</ul>
 	<p>我们在 <a href="https://github.com/cloudflare/workers-types" target="_blank">@cloudflare/workers-types</a> 库中声明 PagesFunction 类型，您可以用来对您的 Functions 进行类型检查。</p>
 	<h3 id="--1"><strong>动态数据</strong></h3>
-	<p>回到我们的图像分享应用程序，我们假设已经上传一些图像，且想要在主页上展示这些图像。我们需要一个返回图像列表的端点，前端可以调用该端点：</p>
-	<!--kg-card-begin: markdown-->
+	<p>回到我们的图像分享应用程序，我们假设已经上传一些图像，且想要在主页上展示这些图像。我们需要一个返回图像列表的端点，前端可以调用该端点：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/images.ts
 
 export const jsonResponse = (value: any, init: ResponseInit = {}) =&gt;
@@ -94,8 +92,7 @@ export const onRequestGet: PagesFunction&lt;{
 	<p>我们还使用 KV 命名空间（通过 env.IMAGES 访问）来存储有关已上传图像的信息。要在您的 Pages 项目中创建绑定，请导航至“设置”选项卡。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png" class="kg-image" title="Screenshot of the &quot;Functions&quot; page on the Pages project &quot;Settings&quot; tab in the Cloudflare dashboard"></figure>
 	<h3 id="-api-"><strong>与其他 API 配合</strong></h3>
-	<p>Cloudflare Images 是一项实惠、高性能且功能丰富的服务，用于托管和转换图像。您可以创建多个变体来以不同的方式呈现您的图像，以及使用带签名的 URL 控制访问。我们将添加一个函数与该服务的 API 配合并将传入文件上传至 Cloudflare Images：</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cloudflare Images 是一项实惠、高性能且功能丰富的服务，用于托管和转换图像。您可以创建多个变体来以不同的方式呈现您的图像，以及使用带签名的 URL 控制访问。我们将添加一个函数与该服务的 API 配合并将传入文件上传至 Cloudflare Images：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/admin/upload.ts
 
 export const onRequestPost: PagesFunction&lt;{
@@ -167,8 +164,7 @@ export const onRequestPost: PagesFunction&lt;{
 	<h3 id="--2"><strong>持久保存数据</strong></h3>
 	<p>我们已使用 KV 来存储经常读取但鲜少写入的信息。但那些需要更多同步性的功能怎么办呢？</p>
 	<p>让我们向每张图像添加一个下载计数器。我们可以在 Cloudflare Images 中创建一个 highres 变量，每当用户请求链接时就增加计数。这需要更多一点设置，但是值得我们去做，因为可以解锁项目中 Durable Objects 的强大功能。</p>
-	<p>我们需要创建并发布能够维持此下载计数的 Durable Object 类：</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们需要创建并发布能够维持此下载计数的 Durable Object 类：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// ./durable_objects/downloadCounter.js
 ts#example---counter
 
@@ -198,8 +194,7 @@ export class DownloadCounter {
 	<!--kg-card-end: markdown-->
 	<h3 id="--3"><strong>中间件</strong></h3>
 	<p>如果您在运行函数前需要执行一些代码（例如身份验证或日志记录），Pages 提供易于使用的中间件，可以应用至基于文件的路由的任何层级。通过在目录中创建一个 _middleware.ts 文件，我们就能知道先运行这个文件，然后在调用 next() 时再执行您的函数。</p>
-	<p>在我们的应用程序中，我们想要阻止未经授权的用户上传图像 (/api/admin/upload) 或删除图像 (/api/admin/delete)。Cloudflare Access 让我们能够向全部或部分应用程序应用基于角色的访问控制，您只需要一个文件就可以将其集成到我们的无服务器功能。我们创建 ./functions/api/admin/_middleware.ts，它将应用于 /api/admin/* 处的所有传入请求：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在我们的应用程序中，我们想要阻止未经授权的用户上传图像 (/api/admin/upload) 或删除图像 (/api/admin/delete)。Cloudflare Access 让我们能够向全部或部分应用程序应用基于角色的访问控制，您只需要一个文件就可以将其集成到我们的无服务器功能。我们创建 ./functions/api/admin/_middleware.ts，它将应用于 /api/admin/* 处的所有传入请求：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/admin/_middleware.ts
 
 const validateJWT = async (jwtAssertion: string | null, aud: string) =&gt; {
@@ -235,8 +230,7 @@ export const onRequest = [cloudflareAccessMiddleware];
 	<h2 id="-jamstack"><strong>集成为 Jamstack</strong></h2>
 	<p>“Jamstack”中的“Jam”表示 JavaScript、API 和 Markup。Cloudflare Pages 之前提供了“J”和“M”，将 Workers 放在中间，即可真正实现全栈 Jamstack。</p>
 	<p>我们已使用 <a href="https://create-react-app.dev/" target="_blank">Create React App</a> 作为一个易于使用的示例构建了这个图像分享平台的前端，但是 <a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets" target="_blank">Cloudflare Pages 本身集成了不断增长的框架数</a>（当前为 23 个），您始终能够<a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories" target="_blank">配置您自己的整个自定义构建命令</a>。</p>
-	<p>您的前端仅需调用我们已配置的 Functions 并呈现该数据。我们使用 <a href="https://swr.vercel.app/" target="_blank">SWR</a> 来简化此过程，但您可以依据自身偏好使用整个 vanilla JavaScript fetch-es 来执行此操作。</p>
-	<!--kg-card-begin: markdown-->
+	<p>您的前端仅需调用我们已配置的 Functions 并呈现该数据。我们使用 <a href="https://swr.vercel.app/" target="_blank">SWR</a> 来简化此过程，但您可以依据自身偏好使用整个 vanilla JavaScript fetch-es 来执行此操作。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./src/components/ImageGrid.tsx
 
 export const ImageGrid = () =&gt; {
@@ -260,13 +254,11 @@ export const ImageGrid = () =&gt; {
 	<!--kg-card-end: markdown-->
 	<h2 id="--4"><strong>本地开发</strong></h2>
 	<p>无论速度多快，如果您需要推送每一个更改来测试其效果，那么像这样的项目迭代可能会令人十分痛苦。我们发布了一个与 wrangler 的一流集成，用于 Pages 项目的本地开发，包括对 Functions、Workers、密码、环境变量和 KV 的全面支持。Durable Objects 支持即将推出。</p>
-	<p>从 npm 安装：</p>
-	<!--kg-card-begin: markdown-->
+	<p>从 npm 安装：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">npm install wrangler@beta
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>并服务静态资产文件夹或代理您的现有工具：</p>
-	<!--kg-card-begin: markdown-->
+	<p>并服务静态资产文件夹或代理您的现有工具：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># Serve a directory
 npx wrangler pages dev ./public
 
@@ -277,8 +269,6 @@ npx wrangler pages dev -- npx react-scripts start
 	<h2 id="--5"><strong>一路向前，继续构建！</strong></h2>
 	<p>如果您喜欢小狗，<a href="https://images.pages.dev/" target="_blank">我们在这里部署了图像分享应用程序</a>，如果您喜欢代码，<a href="https://github.com/cloudflare/images.pages.dev" target="_blank">则位于 GitHub 上</a>。您可以自己进行挖掘并进行部署！这里有一个五分钟的安装向导，您需要用到 Cloudflare Images、Access、Workers 和 Durable Objects。</p>
 	<p>我们对于 Pages 平台的未来寄予希望，对于大家构建的产品也十分期待！可前往 <a href="https://discord.com/channels/595317990191398933/783765338692386886" target="_blank">#what-i-built channel</a> 炫耀您的全栈应用程序，或前往 <a href="https://discord.gg/cloudflaredev" target="_blank">Discord 服务器</a>上的 <a href="https://discord.com/channels/595317990191398933/789155108529111069" target="_blank">#pages-help channel</a> 获取帮助。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image"></figure>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

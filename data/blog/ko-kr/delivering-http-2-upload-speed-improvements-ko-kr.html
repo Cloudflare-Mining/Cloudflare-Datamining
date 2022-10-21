@@ -27,8 +27,7 @@
 	</ul>
 	<p>Cloudflare는 <code>proxy_request_buffering</code> 을 사용하지 않으므로 이 상황은 고려하지 않도록 하겠습니다. <code>client_body_buffer_size</code> 는 프로토콜에 공통으로 사용되는 요청 본문 버퍼의 크기이며 HTTP/1.1 과 HTTP/2 에 모두 적용 됩니다.</p>
 	<p>코드를 살펴보게 되면 다음과 같이 동작 합니다:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/download.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/download.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<ul>
 		<li>HTTP/1.1: <code>client_body_buffer_size</code> 크기의 버퍼를 클라이언트와 업스트림 사이에서 사용하고 이 버퍼를 이용하여 읽기와 쓰기를 반복 합니다.</li>
 		<li>HTTP/2: HTTP/2 DATA 프레임의 흐름 제어 업데이트를 해야 하기 때문에 다음의 두 설정값이 관련 됩니다.

@@ -47,12 +47,10 @@
 		<figcaption><a href="https://www.flickr.com/photos/wwarby/2499825928 " target="_blank">Attribution 2.0 Generic (CC BY 2.0)</a></figcaption>
 	</figure>
 	<p>The two main tools that cryptography provides to help solve this problem are cryptographic hashes and digital signatures.</p>
-	<p>A hash function is a way to take any piece of data and transform it into a fixed-length string of data, called a digest or hash. A hash function is considered cryptographically strong if it is computationally infeasible (read: very hard) to find two inputs that result in the same digest, and that changing even one bit of the input results in a completely different digest. The most popular hash function that is considered secure is SHA-256, which has 256-bit outputs. For example, the SHA-256 hash of the word “crypto” is</p>
-	<!--kg-card-begin: markdown-->
+	<p>A hash function is a way to take any piece of data and transform it into a fixed-length string of data, called a digest or hash. A hash function is considered cryptographically strong if it is computationally infeasible (read: very hard) to find two inputs that result in the same digest, and that changing even one bit of the input results in a completely different digest. The most popular hash function that is considered secure is SHA-256, which has 256-bit outputs. For example, the SHA-256 hash of the word “crypto” is</p><!--kg-card-begin: markdown-->
 	<p><code>DA2F073E06F78938166F247273729DFE465BF7E46105C13CE7CC651047BF0CA4</code></p>
 	<!--kg-card-end: markdown-->
-	<p>And the SHA-256 hash of “crypt0” is</p>
-	<!--kg-card-begin: markdown-->
+	<p>And the SHA-256 hash of “crypt0” is</p><!--kg-card-begin: markdown-->
 	<p><code>7BA359D3742595F38347A0409331FF3C8F3C91FF855CA277CB8F1A3A0C0829C4</code></p>
 	<!--kg-card-end: markdown-->
 	<p>The other main tool is digital signatures. A digital signature is a value that can only be computed by someone with a private key, but can be verified by anyone with the corresponding public key. Digital signatures are way for a private key holder to “sign,” or attest to the authenticity of a specific message in a way that anyone can validate it.</p>
@@ -79,17 +77,14 @@
 	<p>Let’s revisit the issue of malleability: the fact that you can’t always trust the other side of a connection to send you the content you expect. There are technologies that allow users to insure the integrity of content without trusting the server. One such technology is a feature of HTML called <a href="https://www.w3.org/TR/SRI/" target="_blank">Subresource Integrity (SRI)</a>. SRI allows a webpage with sub-resources (like a script or stylesheet) to embed a unique cryptographic hash into the page so that when the sub-resource is loaded, it is checked to see that is matches the expected value. This protects the site from loading unexpected scripts from third parties, <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos/">a known attack vector</a>.</p>
 	<p>Another idea is to flip this on its head: what if instead of fetching a piece of content from a specific location on the network, you asked the network to find piece of content that matches a given hash? By assigning resources based on their actual content rather than by location it’s possible to create a network in which you can fetch content from anywhere on the network and still know it’s authentic. This idea is called <em>content addressing</em> and there are networks built on top of the Internet that use it. These content addressed networks, based on protocols such <a href="https://ipfs.io/" target="_blank">IPFS</a> and <a href="https://datproject.org/" target="_blank">DAT</a>, are blazing a trail new trend in Internet applications called the Distributed Web. With the Distributed Web applications, malleability is no longer an issue, opening up a new set of possibilities.</p>
 	<h3 id="combining-strengths">Combining strengths</h3>
-	<p>Networks based on cryptographic principles, like Tor and IPFS, have one major downside compared to networks based on names: usability. Humans are exceptionally bad at remembering or distinguishing between cryptographically-relevant numbers. Take, for instance, the New York Times’ onion address:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Networks based on cryptographic principles, like Tor and IPFS, have one major downside compared to networks based on names: usability. Humans are exceptionally bad at remembering or distinguishing between cryptographically-relevant numbers. Take, for instance, the New York Times’ onion address:</p><!--kg-card-begin: markdown-->
 	<p><code>https://www.nytimes3xbfgragh.onion/</code></p>
 	<!--kg-card-end: markdown-->
-	<p>This is would easily confused with similar-looking onion addresses, such as</p>
-	<!--kg-card-begin: markdown-->
+	<p>This is would easily confused with similar-looking onion addresses, such as</p><!--kg-card-begin: markdown-->
 	<p><code>https://www.nytimes3xfkdbgfg.onion/</code></p>
 	<!--kg-card-end: markdown-->
 	<p>which may be controlled by a malicious actor.</p>
-	<p>Content addressed networks are even worse from the perspective of regular people. For example, there is a snapshot of the Turkish version of Wikipedia on IPFS with the hash:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Content addressed networks are even worse from the perspective of regular people. For example, there is a snapshot of the Turkish version of Wikipedia on IPFS with the hash:</p><!--kg-card-begin: markdown-->
 	<p><code>QmT5NvUtoM5nWFfrQdVrFtvGfKFmG7AHE8P34isapyhCxX</code></p>
 	<!--kg-card-end: markdown-->
 	<p>Try typing this hash into your browser without making a mistake.</p>

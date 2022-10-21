@@ -75,8 +75,7 @@
 		<li>关闭：DNS将不会被加密。</li>
 		<li>机会模式：尝试为DNS使用安全传输，但如果前者不可用，则退回到未加密的DNS。这种模式容易受到降级攻击，攻击者可以迫使设备使用未加密的DNS。机会模式的目的是在没有活跃的攻击者时提供隐私性。</li>
 		<li>严格模式：尝试通过安全传输使用DNS。如果不可用，则出现严重故障并向用户显示错误。</li>
-	</ul>
-	<!--kg-card-begin: markdown-->
+	</ul><!--kg-card-begin: markdown-->
 	<p>通过安全传输进行DNS的系统范围配置的当前状态：</p>
 	<ul>
 		<li>Android 9：通过其“私有DNS”功能<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">支持</a> DoT。模式：
@@ -96,8 +95,7 @@
 		</li>
 		<li>linux、macOS和Windows可以在严格模式下<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">使用</a>DoH客户端。cloudflared proxy-dns命令默认情况下使用Cloudflare DNS解析器，但用户可以通过proxy-dns-upstream选项覆盖它。</li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>Web浏览器支持DoH而非DoT：</p>
 	<ul>
 		<li>Firefox 62 <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https" target="_blank">支持</a> DoH，并提供了几种<a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver" target="_blank">可信递归解析器（TRR）</a>设置。默认情况下，DoH处于禁用状态，但是Mozilla正在进行一项<a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default/" target="_blank">实验</a>，为美国的一些用户启用DoH。这个实验目前使用的是Cloudflare的1.1.1.1解析器，因为我们是目前唯一满足Mozilla所要求的<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">严格解析器策略</a>的提供商。由于许多DNS解析器仍然不支持加密的DNS传输，Mozilla的方法将确保使用DoH保护更多用户。

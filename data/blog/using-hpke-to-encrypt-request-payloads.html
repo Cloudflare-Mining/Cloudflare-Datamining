@@ -32,8 +32,7 @@
 	<h3 id="how-payload-extraction-works">How Payload Extraction Works</h3>
 	<p>After deciding how to encrypt the data, we just had to figure out the rest of the feature: what data to encrypt, how to store and transmit it, and how to allow users to decrypt it.</p>
 	<p>When an HTTP request reaches the L7 Firewall, it is evaluated against a set of rulesets. Each of these rulesets contain several rules written in the <a href="https://github.com/cloudflare/wirefilter" target="_blank">wirefilter</a> syntax.</p>
-	<p>An example of one such rule would be:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example of one such rule would be:</p><!--kg-card-begin: markdown-->
 	<pre><code>http.request.version eq "HTTP/1.1"
 and
 (
@@ -44,15 +43,13 @@ and
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This expression evaluates to a boolean “true” for HTTP/1.1 requests that either contain one or more newlines followed by a character in the request path or one or more NULL bytes followed by a character in the query string.</p>
-	<p>Say we had the following request that would match the rule above:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Say we had the following request that would match the rule above:</p><!--kg-card-begin: markdown-->
 	<pre><code>GET /cms/%0Aadmin?action=%00post HTTP/1.1
 Host: example.com
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>If matched data logging is enabled, the rules that match would be executed again in a special context that tags all fields that are accessed during execution. We do this second execution because this tagging adds a noticeable computational overhead, and since the vast majority of requests don't trigger a rule at all we would be unnecessarily adding overhead to each request. Requests that do match any rules will only match a few rules as well, so we don't need to re-execute a large portion of the ruleset.</p>
-	<p>You may notice that although <code>http.request.uri.query matches "\x00+."</code> evaluates to <code>true</code> for this request, it won’t be executed, because the expression short-circuits with the first <code>or</code> condition that also matches. This results in only <code>http.request.version</code> and <code>http.request.uri.path</code> being tagged as accessed:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You may notice that although <code>http.request.uri.query matches "\x00+."</code> evaluates to <code>true</code> for this request, it won’t be executed, because the expression short-circuits with the first <code>or</code> condition that also matches. This results in only <code>http.request.version</code> and <code>http.request.uri.path</code> being tagged as accessed:</p><!--kg-card-begin: markdown-->
 	<pre><code>http.request.version -&gt; HTTP/1.1
 http.request.uri.path -&gt; /cms/%0Aadmin
 </code></pre>
@@ -60,8 +57,7 @@ http.request.uri.path -&gt; /cms/%0Aadmin
 	<p>Having gathered the fields that were accessed, the Firewall engine does some post-processing; removing fields that are a subset of others (e.g., the query string and the full URI), or truncating fields that are beyond a certain character length.</p>
 	<p>Finally, these get serialized as JSON, encrypted with the customer's public key, serialized again as a set of bytes, and prefixed with a version number should we need to change/update it in the future. To simplify consumption of these blobs, our APIs display a base64 encoded version of the bytes:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image3-8.png" class="kg-image"></figure>
-	<p>Now that we have encrypted the data at the edge and persisted it in <a href="https://blog.cloudflare.com/tag/clickhouse/">ClickHouse</a>, we need to allow users to decrypt it. As part of the setup of turning this feature on, users generated a key-pair: the public key which was used to encrypt the payloads and a private key which is used to decrypt them. Decryption is done completely offline via either the command line using <a href="https://github.com/cloudflare/matched-data-cli" target="_blank">cloudflare/matched-data-cli</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now that we have encrypted the data at the edge and persisted it in <a href="https://blog.cloudflare.com/tag/clickhouse/">ClickHouse</a>, we need to allow users to decrypt it. As part of the setup of turning this feature on, users generated a key-pair: the public key which was used to encrypt the payloads and a private key which is used to decrypt them. Decryption is done completely offline via either the command line using <a href="https://github.com/cloudflare/matched-data-cli" target="_blank">cloudflare/matched-data-cli</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ MATCHED_DATA=AkjQDktMX4FudxeQhwa0UPNezhkgLAUbkglNQ8XVCHYqPgAAAAAAAACox6cEwqWQpFVE2gCFyOFsSdm2hCoE0/oWKXZJGa5UPd5mWSRxNctuXNtU32hcYNR/azLjsGO668Jwk+qCdFvmKjEqEMJgI+fvhwLQmm4=
 $ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
 {"http.request.version": "HTTP/1.1", "http.request.uri.path": "/cms/%0Aadmin"}
@@ -73,9 +69,7 @@ $ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
 	<h3 id="conclusion">Conclusion</h3>
 	<p>This was a team effort with help from our Research and Security teams throughout the process. We relied on them for recommendations on how best to evaluate the algorithms as well as vetting the libraries we wanted to use.</p>
 	<p>We're very pleased with how HPKE has worked out for us from an ease-of-implementation and performance standpoint. It was also an easy choice for us to make due to its impending standardization and best-of-both-worlds approach to security.</p>
-	<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
+	<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/75ac807907ae6afaede67c7014559bfe?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 </div>

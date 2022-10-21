@@ -4,8 +4,7 @@
 	<p>Cloudflare Workers has long supported the building blocks to run many languages using &nbsp;WebAssembly. However, there has always been a challenging “trampoline” step required to allow languages like Rust to talk to JavaScript APIs such as <em><code>fetch()</code></em>.</p>
 	<p>In addition to the sizable amount of boilerplate needed, lots of “off the shelf” bindings between languages don’t include support for Cloudflare APIs such as KV and Durable Objects. What we wanted was a way to write a Worker in idiomatic Rust, quickly, and without needing knowledge of the host JavaScript environment. While we had a nice “starter” template that made it easy enough to pull in some Rust libraries and use them from JavaScript, the barrier was still too high if your goal was to write a full program in Rust and ship it to our edge.</p>
 	<p>Not anymore!</p>
-	<p>Introducing the <code><strong>worker</strong></code> crate, available on <a href="https://github.com/cloudflare/workers-rs" target="_blank">GitHub</a> and <a href="https://crates.io/crates/worker" target="_blank">crates.io</a>, which makes Rust developers feel right at home on the Workers platform by running code inside the V8 WebAssembly engine. In the snippet below, you can see how the worker crate does all the heavy lifting by providing Rustacean-friendly Workers APIs.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Introducing the <code><strong>worker</strong></code> crate, available on <a href="https://github.com/cloudflare/workers-rs" target="_blank">GitHub</a> and <a href="https://crates.io/crates/worker" target="_blank">crates.io</a>, which makes Rust developers feel right at home on the Workers platform by running code inside the V8 WebAssembly engine. In the snippet below, you can see how the worker crate does all the heavy lifting by providing Rustacean-friendly Workers APIs.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">use worker::*;
 
 #[event(fetch)]
@@ -35,8 +34,7 @@ pub async fn main(req: Request, env: Env) -&gt; Result&lt;Response&gt; {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Get your own Worker in Rust started with a single command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Get your own Worker in Rust started with a single command:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash"># see installation instructions for our `wrangler` CLI at https://github.com/cloudflare/wrangler
 # (requires v1.19.2 or higher)
 $ wrangler generate --type=rust my-project

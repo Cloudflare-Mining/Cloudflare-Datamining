@@ -7,8 +7,7 @@
 	<h2 id="cloudflare-pages-"><strong>Cloudflare Pagesを使用したサーバーレス関数の構築</strong></h2>
 	<h3 id="-"><strong>ファイル-ベースのルーティング</strong></h3>
 	<p>まだ慣れていない場合、Cloudflare Pagesは<a href="https://developers.cloudflare.com/pages/get-started" target="_blank">gitプロバイダーと接続</a>(GitHubおよび<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-partners-with-gitlab-ja-jp/">GitLab</a>)して、Cloudflareのネットワークに対する静的サイトのデプロイを自動化します。関数を使用するとこれらのアプリを動的データに散りばめて拡張することができます。まだお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/pages" target="_blank">こちらから加入することができます</a>。</p>
-	<p>私たちのプロジェクトで、新しい関数を作成してみましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>私たちのプロジェクトで、新しい関数を作成してみましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// ./functions/time.js
 
 
@@ -25,8 +24,7 @@ export const onRequest = () =&gt; {
 	</ul>
 	<p>PagesFunctionの型は<a href="https://github.com/cloudflare/workers-types" target="_blank">@cloudflare/workers-types</a>ライブラリで宣言しますが、これは関数の型のチェックのために使用することができます。</p>
 	<h3 id="--1"><strong>動的データ</strong></h3>
-	<p>では、私たちの画像共有アプリに戻り、いくつかの画像をアップロード済みであると仮定し、それらをホームページ上に表示したいと思います。そのフロントエンドが呼び出すことができる、これらの画像のリストを返すエンドポイントが必要です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>では、私たちの画像共有アプリに戻り、いくつかの画像をアップロード済みであると仮定し、それらをホームページ上に表示したいと思います。そのフロントエンドが呼び出すことができる、これらの画像のリストを返すエンドポイントが必要です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/images.ts
 
 export const jsonResponse = (value: any, init: ResponseInit = {}) =&gt;
@@ -94,8 +92,7 @@ export const onRequestGet: PagesFunction&lt;{
 	<p>また、KV名前空間(env.IMAGESでアクセス)を使用して、アップロード済みの画像に関する情報を格納します。Pagesプロジェクト内にバインディングを作成するには、[Settings(設定)] タブに移動します。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png" class="kg-image" title="Screenshot of the &quot;Functions&quot; page on the Pages project &quot;Settings&quot; tab in the Cloudflare dashboard"></figure>
 	<h3 id="-api-"><strong>他のAPIとのインターフェース</strong></h3>
-	<p>Cloudflare Imagesは画像のホスティングおよび変換のための、低価格で、ハイパフォーマンス、高機能のサービスです。複数のバリアントを作成して、様々な方法で画像をレンダリングして署名付きURLでアクセスを制御することができます。このサービスのAPIを使用するインターフェースに以下の関数を追加して、受信ファイルをCloudflare Imagesにアップロードします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cloudflare Imagesは画像のホスティングおよび変換のための、低価格で、ハイパフォーマンス、高機能のサービスです。複数のバリアントを作成して、様々な方法で画像をレンダリングして署名付きURLでアクセスを制御することができます。このサービスのAPIを使用するインターフェースに以下の関数を追加して、受信ファイルをCloudflare Imagesにアップロードします。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/admin/upload.ts
 
 export const onRequestPost: PagesFunction&lt;{
@@ -167,8 +164,7 @@ export const onRequestPost: PagesFunction&lt;{
 	<h3 id="--2"><strong>永続性データ</strong></h3>
 	<p>頻繁に読み取られてもまれにしか書き込まれない情報を格納するため、既にKVを使用しています。もう少し同機が必要な機能の場合はどうでしょうか。</p>
 	<p>各画像にダウンロードカウンターを追加しましょう。highresバリアントをCloudflare Images内に作成すると、ユーザーがリンクをリクエストするたびにカウンターをインクリメントすることができます。これにはもう少しセットアップが必要ですが、プロジェクト内のDurable Objectsの機能を解き放つだけの価値が絶対にあります。</p>
-	<p>このダウンロードカウントを保持できる、以下のDurable Objectクラスを作成して公開する必要があります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>このダウンロードカウントを保持できる、以下のDurable Objectクラスを作成して公開する必要があります。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// ./durable_objects/downloadCounter.js
 ts#example---counter
 
@@ -198,8 +194,7 @@ export class DownloadCounter {
 	<!--kg-card-end: markdown-->
 	<h3 id="--3"><strong>ミドルウェア</strong></h3>
 	<p>関数を実行する前に一部のコード(認証またはロギングなど)を実行する必要がある場合のために、Pagesには使いやすいミドルウェアが用意されており、これはファイルベースのルーティングの任意のレベルで適用することができます。ディレクトリに_middleware.tsファイルを作成することで、このファイルが最初に実行され、next()が呼び出されるときにユーザーの関数を実行することがわかります。</p>
-	<p>私たちのアプリケーションでは、未認証ユーザーが画像をアップロード(/api/admin/upload)または画像を削除(/api/admin/delete)できないようにしたいと思います。Cloudflare Accessではすべてまたは一部のアプリケーションに対するロールベースのアクセス制御を適用することができ、ユーザーが必要なのはサーバーレス関数に統合する単一ファイルだけです。私たちは./functions/api/admin/_middleware.tsを作成し、これは/api/admin/*の受信リクエストすべてに適用されます:</p>
-	<!--kg-card-begin: markdown-->
+	<p>私たちのアプリケーションでは、未認証ユーザーが画像をアップロード(/api/admin/upload)または画像を削除(/api/admin/delete)できないようにしたいと思います。Cloudflare Accessではすべてまたは一部のアプリケーションに対するロールベースのアクセス制御を適用することができ、ユーザーが必要なのはサーバーレス関数に統合する単一ファイルだけです。私たちは./functions/api/admin/_middleware.tsを作成し、これは/api/admin/*の受信リクエストすべてに適用されます:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./functions/api/admin/_middleware.ts
 
 const validateJWT = async (jwtAssertion: string | null, aud: string) =&gt; {
@@ -235,8 +230,7 @@ export const onRequest = [cloudflareAccessMiddleware];
 	<h2 id="jamstack-"><strong>Jamstackとしての統合</strong></h2>
 	<p>"Jamstack"の"Jam"はJavaScript、API、Markupを表します。Cloudflare Pagesは以前からこの「J」と「M」を提供していましたが、中間にWorkersがあると、本当にフルスタックのJamstackを使用することができます。</p>
 	<p>取り組みやすい例として、<a href="https://create-react-app.dev/" target="_blank">Create Reactアプリ</a>でこの画像共有プラットフォームのフロントエンドを構築しましたが、<a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets" target="_blank">Cloudflare Pagesは増加の一途をたどるフレームワークと自然に統合し</a>(現在は23)、いつでも<a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories" target="_blank">独自の完全なカスタムビルドコマンドを構成することができます</a>。</p>
-	<p>ユーザーのフロントエンドは私たちが構成済みの関数を呼び出して、そのデータをレンダリングするだけです。私たちは<a href="https://swr.vercel.app/" target="_blank">SWR</a>を使用して物事を単純化しますが、ユーザーが望めば、全くありきたりなJavaScriptの fetchを使用してこれを実行することができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ユーザーのフロントエンドは私たちが構成済みの関数を呼び出して、そのデータをレンダリングするだけです。私たちは<a href="https://swr.vercel.app/" target="_blank">SWR</a>を使用して物事を単純化しますが、ユーザーが望めば、全くありきたりなJavaScriptの fetchを使用してこれを実行することができます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">// ./src/components/ImageGrid.tsx
 
 export const ImageGrid = () =&gt; {
@@ -260,13 +254,11 @@ export const ImageGrid = () =&gt; {
 	<!--kg-card-end: markdown-->
 	<h2 id="--4"><strong>ローカルデプロイ</strong></h2>
 	<p>動作状況をテストするためにすべての変更をプッシュする必要がある場合、それが高速であるとしても、このようなプロジェクト上の反復は手間がかかります。関数、Workers、機密情報、環境変数、KVに対する完全なサポートを含む、Pagesプロジェクトのローカルデプロイのための、Wranglerとの素晴らしい統合がリリースされました。Durable Objectsのサポートは間もなく開始されます。</p>
-	<p>npmからのインストール:</p>
-	<!--kg-card-begin: markdown-->
+	<p>npmからのインストール:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">npm install wrangler@beta
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>静的アセットのフォルダの提供をするか、既存のツールをプロキシします:</p>
-	<!--kg-card-begin: markdown-->
+	<p>静的アセットのフォルダの提供をするか、既存のツールをプロキシします:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh"># Serve a directory
 npx wrangler pages dev ./public
 
@@ -277,8 +269,6 @@ npx wrangler pages dev -- npx react-scripts start
 	<h2 id="--5"><strong>前進、そして作成！</strong></h2>
 	<p>子犬がお好きでしたら、<a href="https://images.pages.dev/" target="_blank">こちらに画像共有アプリケーションを展開してあります</a>。コードがお好きでしたら、<a href="https://github.com/cloudflare/images.pages.dev" target="_blank">GitHub上に用意されています</a>。ご自分で自由にフォークしてデプロイしてください！ 5分間のセットアップウィザードがありますが、Cloudflare Images、Access、Workers、Durable Objectsが必要になります。</p>
 	<p>私たちはPagesプラットフォームの将来に胸を高鳴らせており、あなたが構築しているものについて聞きたいです！当社のDiscordサーバー上の<a href="https://discord.com/channels/595317990191398933/783765338692386886" target="_blank">#what-i-builtチャンネル</a>であなたのフルスタックアプリケーションを公開するか、<a href="https://discord.com/channels/595317990191398933/789155108529111069" target="_blank">#pages-helpチャンネル</a>でサポートを受けてください。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image"></figure>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

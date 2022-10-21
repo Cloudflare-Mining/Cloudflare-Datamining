@@ -20,8 +20,7 @@
 	<h3 id="logpush-job-health-api">Logpush Job Health API</h3>
 	<p>We have also added the ability to query for stats related to the health of your Logpush jobs to our graphql API. Customers can now use our GraphQL API to query for things like the number of bytes pushed, number of compressed bytes pushed, number of records pushed, the status of each push, and much more. Using these stats, customers can have greater visibility into a core part of infrastructure. The GraphQL API is self documenting so full details about the new <code>logpushHealthAdaptiveGroups</code> node can be found using any GraphQL client, but head to <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL docs</a> for more information.</p>
 	<p>Below are a couple example queries of how you can use the GraphQL to find stats related to your Logpush jobs.</p>
-	<p>Query for number of pushes to S3 that resulted in status code != 200</p>
-	<!--kg-card-begin: markdown-->
+	<p>Query for number of pushes to S3 that resulted in status code != 200</p><!--kg-card-begin: markdown-->
 	<pre><code>query
 {
   viewer
@@ -47,8 +46,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Getting the number of bytes, compressed bytes and records that were pushed</p>
-	<!--kg-card-begin: markdown-->
+	<p>Getting the number of bytes, compressed bytes and records that were pushed</p><!--kg-card-begin: markdown-->
 	<pre><code>query
 {
   viewer

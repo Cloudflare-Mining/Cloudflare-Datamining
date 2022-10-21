@@ -20,8 +20,7 @@
 	<p>Building automatic HTML edge caching is more nuanced than caching traditional static content like images, styles or scripts. It requires defining rules on what to cache and when to update the content. To help with that task we introduced a custom header to communicate caching rules between Cloudflare edge and origin servers.</p>
 	<p>The Cloudflare Worker runs from every edge data center, the serverless platform will take care of scaling to our needs. Based on the request type it will return HTML content from Cloudflare Cache using <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank">Worker’s Cache API</a> or serve a response directly from the origin. Specifically designed custom header provides information from the origin on how the script should handle the response. For example worker script will never cache responses for authenticated users.</p>
 	<h3 id="html-caching-rules">HTML Caching rules</h3>
-	<p>With or without Cloudflare for WordPress plugin, HTML edge caching requires all of the following conditions to be met:</p>
-	<!--kg-card-begin: markdown-->
+	<p>With or without Cloudflare for WordPress plugin, HTML edge caching requires all of the following conditions to be met:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Origin responds with 200 status</li>
 		<li>Origin responds with "text/html" content type</li>
@@ -84,13 +83,11 @@
 	<p>After an update has been made to the WordPress website the plugin makes a request to Cloudflare’s API which both purges cache and marks content as stale in KV. The next request for the asset will trigger revalidation of the content. If the plugin is not enabled cache revalidation logic is triggered as detailed previously.</p>
 	<p>We serve the stale copy of the content still present in KV and asynchronously fetch new content from the origin, apply possible optimizations and then cache it (both regular local CDN cache and globally in KV).</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-2.png" class="kg-image"></figure>
-	<p>To store the content in KV we use a single namespace. It’s keyed with a combination of a zone identifier and the URL. For instance:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To store the content in KV we use a single namespace. It’s keyed with a combination of a zone identifier and the URL. For instance:</p><!--kg-card-begin: markdown-->
 	<pre><code>1:example.com/blog-post-1.html =&gt; "transformed &amp; cached content"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>For marking content as stale in KV we write a new key which will be read from the edge. If the key is present we will revalidate the content.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For marking content as stale in KV we write a new key which will be read from the edge. If the key is present we will revalidate the content.</p><!--kg-card-begin: markdown-->
 	<pre><code>stale:1:example.com/blog-post-1.html =&gt; ""
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -98,8 +95,7 @@
 	<h3 id="moving-optimizations-to-the-edge">Moving optimizations to the edge</h3>
 	<p>On top of caching HTML at the edge, we can pre-process and transform the HTML to make the loading of websites even faster for the user. Moving the development of this feature to our Cloudflare Workers environment makes it easy to add performance features such as improving <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers/">Google Font loading</a>. Using Google Fonts can cause significant performance issues as to load a font requires loading the HTML page; then loading a CSS file and finally loading the font. All of these steps are using different domains.</p>
 	<p>The solution is for the worker to inline the CSS and serve the font directly from the edge minimizing the number of connections required.</p>
-	<p>If you read through the previous blog post’s implementation it required a lot of manual work to provide streaming HTML processing support and character encodings. As the set of worker APIs have improved over time it is now much simpler to implement. Specifically the addition of a streaming <a href="https://blog.cloudflare.com/html-parsing-2/">HTML rewriter/parser with CSS-selector based API</a> and the ability to suspend the parsing to <a href="https://blog.cloudflare.com/asynchronous-htmlrewriter-for-cloudflare-workers/">asynchronously fetch a resource</a> has reduced the code required to implement this from ~600 lines of source code to under 200.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you read through the previous blog post’s implementation it required a lot of manual work to provide streaming HTML processing support and character encodings. As the set of worker APIs have improved over time it is now much simpler to implement. Specifically the addition of a streaming <a href="https://blog.cloudflare.com/html-parsing-2/">HTML rewriter/parser with CSS-selector based API</a> and the ability to suspend the parsing to <a href="https://blog.cloudflare.com/asynchronous-htmlrewriter-for-cloudflare-workers/">asynchronously fetch a resource</a> has reduced the code required to implement this from ~600 lines of source code to under 200.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export function transform(request, res) {
   return new HTMLRewriter()
     .on("link", {

@@ -22,8 +22,7 @@
 	<p>Our <a href="https://www.cloudflare.com/learning/" target="_blank">learning center</a> has a good overview of what <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> and <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASNs</a> are and how they work.</p>
 	<p>In this simplified diagram, you can see six autonomous systems on the Internet and two possible routes that one packet can use to go from Start to End. AS1 → AS2 → AS3 being the fastest, and AS1 → AS6 → AS5 → AS4 → AS3 being the slowest, but that can be used if the first fails.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10.png" class="kg-image"></figure>
-	<p>At 15:58 UTC we noticed that Facebook had stopped announcing the routes to their DNS prefixes. That meant that, at least, Facebook’s DNS servers were unavailable. Because of this Cloudflare’s 1.1.1.1 DNS resolver could no longer respond to queries asking for the IP address of facebook.com.</p>
-	<!--kg-card-begin: markdown-->
+	<p>At 15:58 UTC we noticed that Facebook had stopped announcing the routes to their DNS prefixes. That meant that, at least, Facebook’s DNS servers were unavailable. Because of this Cloudflare’s 1.1.1.1 DNS resolver could no longer respond to queries asking for the IP address of facebook.com.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -33,8 +32,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Meanwhile, other Facebook IP addresses remained routed but weren’t particularly useful since without DNS Facebook and related services were effectively unavailable:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Meanwhile, other Facebook IP addresses remained routed but weren’t particularly useful since without DNS Facebook and related services were effectively unavailable:</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -58,8 +56,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9.png" class="kg-image"></figure>
 	<p>With those withdrawals, Facebook and its sites had effectively disconnected themselves from the Internet. </p>
 	<h3 id="dns-gets-affected">DNS gets affected</h3>
-	<p>As a direct consequence of this, DNS resolvers all over the world stopped resolving their domain names. </p>
-	<!--kg-card-begin: markdown-->
+	<p>As a direct consequence of this, DNS resolvers all over the world stopped resolving their domain names. </p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

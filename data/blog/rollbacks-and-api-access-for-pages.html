@@ -9,15 +9,13 @@
 	<h3 id="api-access">API Access</h3>
 	<p>The Pages API exposes endpoints for you to easily create automations and to integrate Pages within your development workflow. Refer to the <a href="https://api.cloudflare.com/#pages-project-properties" target="_blank">API documentation</a> for a full breakdown of the object types and endpoints. To get started, navigate to the <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare API Tokens</a> page and copy your "Global API Key". Now, you can authenticate and make requests to the API using your email and auth key in the request headers.</p>
 	<p>For example, here is an API request to get all projects on an account.</p>
-	<p>Request (example)</p>
-	<!--kg-card-begin: markdown-->
+	<p>Request (example)</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects" \
      -H "X-Auth-Email: {email}" \
      -H "X-Auth-Key: {auth_key}"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Response (example)</p>
-	<!--kg-card-begin: markdown-->
+	<p>Response (example)</p><!--kg-card-begin: markdown-->
 	<pre><code>{
   "success": true,
   "errors": [],
@@ -243,15 +241,13 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Here’s another quick example using the API to rollback to a previous deployment:</p>
-	<p>Request (example)</p>
-	<!--kg-card-begin: markdown-->
+	<p>Request (example)</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback" \
      -H "X-Auth-Email: {email}" \
      -H "X-Auth-Key: {auth_key"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Response (example)</p>
-	<!--kg-card-begin: markdown-->
+	<p>Response (example)</p><!--kg-card-begin: markdown-->
 	<pre><code>{
   "success": true,
   "errors": [],
@@ -348,8 +344,7 @@
 	<h3 id="using-the-pages-api-on-workers">Using the Pages API on Workers</h3>
 	<p>The Pages API is even more powerful and simple to use with <a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9003761&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=CjwKCAjwiLGGBhAqEiwAgq3q_glwMF_1OxraB8Ot18vFR78uKF9rCAWNALrvlHmfQRPcKSWiKYwTPBoCwgMQAvD_BwE&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>: the easiest way to deploy serverless functions globally. Below are three ways you can use the Pages API on Workers.</p>
 	<p><strong>1. Triggering a new build every hour:</strong> Suppose you have a CMS that pulls data from live sources to compile a static output. You can keep the static content as fresh as possible by triggering new builds periodically using the API. This is easy to do on Workers using Cron Triggers, so let’s walk through an example.</p>
-	<p>First, let’s create a new Worker by navigating to <a href="https://workers.new/" target="_blank">workers.new</a>. If you haven’t used Workers before, feel free to go through the <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank">getting started guide</a> to learn more. However, you’ll need to have set up a Pages project to follow along. Next, you can copy and paste this template for the new worker. Then, customize the values such as {account_id}, {project_name}, {auth_key}, and {your_email}.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, let’s create a new Worker by navigating to <a href="https://workers.new/" target="_blank">workers.new</a>. If you haven’t used Workers before, feel free to go through the <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank">getting started guide</a> to learn more. However, you’ll need to have set up a Pages project to follow along. Next, you can copy and paste this template for the new worker. Then, customize the values such as {account_id}, {project_name}, {auth_key}, and {your_email}.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const endpoint = "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
 const email = "{your_email}";
 addEventListener("scheduled", (event) =&gt; {

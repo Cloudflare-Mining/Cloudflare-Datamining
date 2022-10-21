@@ -62,8 +62,7 @@
 	</ul>
 	<p>Each of these services is built with resilience, performance, observability and security in mind.</p>
 	<h3 id="edge-bot-management-module">Edge Bot Management module</h3>
-	<p>All bot detection mechanisms are applied on every request in real-time during the request processing stage in the Bot Management module running on every machine at Cloudflare’s edge locations. When a request comes in we extract and transform the required request attributes and feed them to our detection mechanisms. The Bot Management module produces the following output:</p>
-	<!--kg-card-begin: markdown-->
+	<p>All bot detection mechanisms are applied on every request in real-time during the request processing stage in the Bot Management module running on every machine at Cloudflare’s edge locations. When a request comes in we extract and transform the required request attributes and feed them to our detection mechanisms. The Bot Management module produces the following output:</p><!--kg-card-begin: markdown-->
 	<p><strong>Firewall fields</strong> - <a href="https://support.cloudflare.com/hc/en-us/articles/360027519452-Understanding-Cloudflare-Bot-Management" target="_blank">Bot Management fields</a><br>
 		- <strong>cf.bot_management.score</strong> - an integer indicating the likelihood between 0 and 100 whether a request originated from an automated program (low score) to a human (high score).<br>
 		- <strong>cf.bot_management.verified_bot</strong> - a boolean indicating whether such request comes from a Cloudflare allowlisted bot.<br>
@@ -87,8 +86,7 @@
 	</ul>
 	<p>Our <a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">Firewall Analytics</a> tool, powered by ClickHouse and <a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place/">GraphQL API</a>, enables customers to quickly identify and investigate security threats using an intuitive interface. In addition to analytics, we provide detailed logs on all bots-related activity using either the <a href="https://developers.cloudflare.com/logs/logpull-api/" target="_blank">Logpull API</a> and/or <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">LogPush</a>, which provides the easy way to get your logs to your cloud storage.</p>
 	<h3 id="cloudflare-workers-integration">Cloudflare Workers integration</h3>
-	<p>In case a customer wants more flexibility on what to do with the requests based on the score, e.g. they might want to inject new, or change existing, HTML page content, or serve incorrect data to the bots, or stall certain requests, Cloudflare Workers provide an option to do that. For example, using this small code-snippet, we can pass the score back to the origin server for more advanced real-time analysis or mitigation:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In case a customer wants more flexibility on what to do with the requests based on the score, e.g. they might want to inject new, or change existing, HTML page content, or serve incorrect data to the bots, or stall certain requests, Cloudflare Workers provide an option to do that. For example, using this small code-snippet, we can pass the score back to the origin server for more advanced real-time analysis or mitigation:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })

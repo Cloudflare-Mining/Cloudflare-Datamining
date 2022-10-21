@@ -21,15 +21,13 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-27.png" class="kg-image" alt="Workers for Platforms architecture diagram"></figure>
 	<h3 id="dispatch-workers">Dispatch Workers</h3>
 	<p>Dispatch Workers are the entry point for requests to Workers in a Dispatch Namespace. The Dispatch Worker can be used to run any functions ahead of User Workers. They can make a request to any User Workers in the Dispatch Namespace, and they ultimately handle the routing to User Workers.</p>
-	<p>Dispatch Workers are created the same way as a regular Worker, except they need a Dispatch Namespace binding in the project’s <a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration/" target="_blank"><code>wrangler.toml</code></a> configuration file.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dispatch Workers are created the same way as a regular Worker, except they need a Dispatch Namespace binding in the project’s <a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration/" target="_blank"><code>wrangler.toml</code></a> configuration file.</p><!--kg-card-begin: markdown-->
 	<pre><code>[[dispatch_namespaces]]
 binding = "dispatcher"
 namespace = "api-prod"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In the example below, this Dispatch Worker reads the subdomain from the path and calls the appropriate User Worker. Alternatively you can use KV, D1 or your data store of choice to map identifying parameters from an incoming request to a User Worker.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In the example below, this Dispatch Worker reads the subdomain from the path and calls the appropriate User Worker. Alternatively you can use KV, D1 or your data store of choice to map identifying parameters from an incoming request to a User Worker.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export default {
  async fetch(request, env) {
    try {
@@ -53,8 +51,7 @@ namespace = "api-prod"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="uploading-user-workers">Uploading User Workers</h3>
-	<p>User Workers must be uploaded to a Dispatch Namespace through the Cloudflare API (wrangler support coming soon!). This code snippet below uses a simple HTML form to take in a script and customer id and then uploads it to the Dispatch Namespace.</p>
-	<!--kg-card-begin: markdown-->
+	<p>User Workers must be uploaded to a Dispatch Namespace through the Cloudflare API (wrangler support coming soon!). This code snippet below uses a simple HTML form to take in a script and customer id and then uploads it to the Dispatch Namespace.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export default {
  async fetch(request: Request) {
    try {

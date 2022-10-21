@@ -19,8 +19,7 @@
 	<h3 id="how-does-this-affect-my-bill">How does this affect my bill?</h3>
 	<p>Performance at scale is top of mind for us because improving performance on our Edge means we can pass those cost savings down to you. We pay the overhead of a JavaScript runtime once, and then are able to run essentially limitless scripts with almost no individual overhead.</p>
 	<p>Workers Unbound is a truly cost effective platform when compared to AWS Lambda. With serverless, you should only pay for what you use with no hidden fees. Workers will not charge you for hidden extras like API gateway or DNS request fees.</p>
-	<p>Serverless Pricing Comparison*</p>
-	<!--kg-card-begin: markdown-->
+	<p>Serverless Pricing Comparison*</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -63,15 +62,13 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><sup>* Based on pricing disclosed on aws.amazon.com/lambda/pricing as of July 24, 2020. AWS’ published duration pricing is based on 1 GB-sec, which has been multiplied by one million on this table for readability. AWS price ranges reflect different regional pricing. All prices rounded to the nearest two decimal places. Data Transfer for AWS is based on Data Transfer OUT From Amazon EC2 to Internet above 1 GB / month, for up to 9.999 TB / month. API Gateway for AWS is based on Rest APIs above 1MM/month, for up to 333MM/month. Both the Workers Unbound and AWS Lambda services provide 1MM free requests per month and 400,000 GB-seconds of compute time per month. DNS Queries rate for AWS is based on the listed price for up to 1 Billion queries / month.<sup></sup></sup></p>
 	<!--kg-card-end: markdown-->
 	<h3 id="how-much-can-i-save">How much can I save?</h3>
 	<p>To put our numbers to the test, we deployed a <a href="https://github.com/Electroid/serverless-compare" target="_blank">hello world</a> GraphQL server to both Workers and Lambda. The median execution time on Lambda was 1.54ms, whereas the same workload took 0.90ms on Workers. After crunching the numbers and factoring in all the opaque fees that AWS charges (including API Gateway to allow for requests from the Internet), we found that using Workers Unbound can save you up to 75% -- and that’s just for a hello world! Imagine the cost savings when you’re running complex workloads for millions of users.</p>
 	<p>You might be wondering how we’re able to be so competitive. It all comes down to efficiency. The lightweight nature of Workers allows us to do the same work, but with less platform overhead and resource consumption. The execution times from this <a href="https://github.com/Electroid/serverless-compare" target="_blank">GraphQL hello world test are shown below and put platform providers’ overhead on display</a>. Since the test is truly a hello world, the variation is explained by architectural differences between providers (e.g. <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">isolates v. containers</a>).</p>
-	<p>GraphQL hello world Execution Time (ms) across Serverless Platforms*</p>
-	<!--kg-card-begin: markdown-->
+	<p>GraphQL hello world Execution Time (ms) across Serverless Platforms*</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

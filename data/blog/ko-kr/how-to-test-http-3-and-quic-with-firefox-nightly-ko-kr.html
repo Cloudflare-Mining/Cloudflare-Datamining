@@ -14,8 +14,7 @@
 	<p>HTTP/3 설정이 되었으면 여러분의 웹 사이트에 방문하여 테스트해 보도록 합시다. HTTP/3으로 통신하고 있는지 검사하는 쉬운 방법은 Developer Tools 를 실행하여 “Network” 탭의 “Protocol” 열을 보는 것입니다 (윈도와 리눅스의 Developer Tools 는 Ctrl+Shift+I 키보드 입력으로 바로 부를 수 있고, macOS에서는 Command+Option+I 입니다). 이 “Protocol” 열은 기본적으로 표시되고 있지 않을 수 있으므로 열 이름에서 오른쪽 클릭을 해서 다음과 같이 “Protocol” 이 체크되어 있는지 확인하기 바랍니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/firefox-h3-protocol-column.png" class="kg-image" alt="The menu revealed by right-clicking a Network tab column header."></figure>
 	<p>그리고 나서 페이지를 다시 읽어 “HTTP/3”이 표시되고 있는지 확인 합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/firefox-h3-success.png" class="kg-image" alt="Protocol column contains the entry &quot;HTTP/3&quot; on success"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/firefox-h3-success.png" class="kg-image" alt="Protocol column contains the entry &quot;HTTP/3&quot; on success"></figure><!--kg-card-begin: markdown-->
 	<p>혹시 기술적인 문제가 있다면 HTTP/3 이 바로 보이지 않을 수도 있습니다. HTTP/3 을 사이트에 설정하는 경우 우리는 <code>alt-svc: h3-27=":443"; ma=86400, h3-28=":443"; ma=86400, h3-29=":443"; ma=86400</code> 헤더를 해당 도메인의 모든 응답에 추가 합니다. 클라이언트는 이 내용을 보고 난 뒤 <em>그 다음</em> 요청시에 HTTP/3을 시도할 지 결정합니다. 따라서 페이지를 다시 읽어들여야 할 필요가 있으며 로컬 브라우저 캐시 (“Disable cache” 체크박스를 체크 하거나 Shift+F5를 눌러서)를 건너 뛰고 있는지도 확인해야 합니다. 그렇지 않으면 처음에 읽어들인 리소스에 사용된 프로토콜을 그대로 보게 될 수 있습니다. 마지막으로 Firefox는 “about:networking” 페이지에서 방문한 사이트 목록과 읽어들인 데 사용한 HTTP 버전을 볼 수 있습니다. 예를 들이 이 블로그의 경우는 다음과 같습니다.</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/firefox-h3-about-networking.png" class="kg-image" alt="about:networking contains a table of visited zones and the connection properties.">

@@ -19,8 +19,7 @@
 	<p>Through Argo Tunnel and Access we now have the ability to connect to our new development instances, but that isn’t enough to allow our engineers to work. They need to be able to write and execute code on that remote machine in a seamless way. To solve that problem we turned to the <a href="https://code.visualstudio.com/docs/remote/ssh" target="_blank">Remote SSH extension</a> for VS Code. In the words of the documentation for that project:</p>
 	<p>The Visual Studio Code Remote SSH extension allows you to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem.</p>
 	<p>With Remote SSH, VS Code seamlessly reads and writes files to the developer’s remote server. When a developer opens a project, it feels local and seamless, but everything is authenticated by Access and proxied through Argo over SSH. Our developers can travel anywhere in the world, and trust their development environment will be accessible and fast.</p>
-	<p>Locally, a developer has a .ssh/config file to define local ports to forward through the SSH connection to a port that’s only available on the remote server. For example, my .ssh/config file contains:‌‌</p>
-	<!--kg-card-begin: markdown-->
+	<p>Locally, a developer has a .ssh/config file to define local ports to forward through the SSH connection to a port that’s only available on the remote server. For example, my .ssh/config file contains:‌‌</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">Host marc.repl.dev
 HostName marc.repl.dev
 User marc
@@ -46,20 +45,17 @@ LocalForward 8005 127.0.0.1:30015
 	<p>Beyond just telling you what we did, we’d like to show you how to replicate it for yourself! This assumes you have a domain which is already configured to use Cloudflare.</p>
 	<ol>
 		<li>Create an instance to represent your development environment in the cloud of your choice.</li>
-	</ol>
-	<!--kg-card-begin: markdown-->
+	</ol><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">gcloud compute instances create my-dev-universe`</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2. &nbsp; Configure your instance to run cloudflared when it starts up, and give it a helpful hostname like dev.mysite.com.‌‌</p>
-	<!--kg-card-begin: markdown-->
+	<p>2. &nbsp; Configure your instance to run cloudflared when it starts up, and give it a helpful hostname like dev.mysite.com.‌‌</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rustsudo">cat “hostname: dev.mysite.com\n” &gt; ~/.cloudflared/config.yml
 cloudflared login
 sudo cloudflared service install</code></pre>
 	<!--kg-card-end: markdown-->
 	<p>3. &nbsp;Write an Access policy to allow only you to access your machine‌‌</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/AccessPolicy.png" class="kg-image"></figure>
-	<p>‌4. Configure your local machine to SSH via Cloudflare:‌‌</p>
-	<!--kg-card-begin: markdown-->
+	<p>‌4. Configure your local machine to SSH via Cloudflare:‌‌</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">sudo apt-get install cloudflare/cloudflare/cloudflared
 cloudflared access ssh-config --hostname dev.mysite.com --short-lived-cert
 &gt;&gt; ~/.ssh/config</code></pre>

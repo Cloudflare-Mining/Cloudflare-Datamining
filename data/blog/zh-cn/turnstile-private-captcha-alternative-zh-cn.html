@@ -1,10 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-21.png" class="kg-image" alt="Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA"></figure>
 	<p>今天，我们公布了 Turnstile 的公开测试版，即 CAPTCHA 的隐形替代方案。互联网中任何想在网站上替换 CAPTCHA 的用户都可以调用一个简单的 API，无需成为 Cloudflare 客户或通过 Cloudflate 全局网络发送流量。<a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">点击此处免费注册</a>。</p>
-	<p>没有必要再重复 CAPTCHA，这样会提供糟糕的用户体验。之前<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">在这篇博文中</a>以及其他地方也多次讨论过详细情况。CAPTCHA 的创建者甚至公开哀叹，他“无意中创建了一个系统，<a href="https://thewalrus.ca/human-resources/" target="_blank">以 10 秒的增量浪费了数百万小时</a>最宝贵的资源：人类大脑周期”。我们讨厌它，您也讨厌它，每个人都讨厌它。今天，我们提供了一个更好的选择。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>没有必要再重复 CAPTCHA，这样会提供糟糕的用户体验。之前<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">在这篇博文中</a>以及其他地方也多次讨论过详细情况。CAPTCHA 的创建者甚至公开哀叹，他“无意中创建了一个系统，<a href="https://thewalrus.ca/human-resources/" target="_blank">以 10 秒的增量浪费了数百万小时</a>最宝贵的资源：人类大脑周期”。我们讨厌它，您也讨厌它，每个人都讨厌它。今天，我们提供了一个更好的选择。</p><!--kg-card-begin: html-->
+	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>Turnstile 是我们的智能 CAPTCHA 替代方案。它可以根据会话期间显示的遥测和客户端行为，自动选择回应一系列轮换的非侵入性浏览器质询。早些时候，我们在一篇帖子中谈到了<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">如何使用 Managed Challenge 系统将 CAPTCHA 的使用减少 91%</a>。现在，任何用户都可以利用这项技术在自己的网站上停止使用 CAPTCHA。</p>
 	<h3 id="captcha-">CAPTCHA 不仅存在用户体验问题，还存在隐私问题</h3>
 	<p>尽管必须解决 CAPTCHA 是一种令人沮丧的用户体验，但网站在使用 CAPTCHA 时还必须进行潜在的隐藏权衡。如今，使用 CAPTCHA 的小型网站基本上还有一个选择：一个重 800 磅的大块头，占 <a href="https://trends.builtwith.com/widgets/captcha" target="_blank">98% 的 CAPTCHA</a> 市场份额。这款工具是免费使用的，但实际上有隐私成本：您必须将数据提供给广告销售公司。</p>
@@ -32,16 +30,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-39.png" class="kg-image"></figure>
 	<p>然后，复制并粘贴 HTML 片段：</p>
 	<p><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></p>
-	<p>嵌入脚本后，可以使用隐式渲染。在此处扫描 HTML 查找包含 cf-turnstile 分类的元素：</p>
-	<!--kg-card-begin: markdown-->
+	<p>嵌入脚本后，可以使用隐式渲染。在此处扫描 HTML 查找包含 cf-turnstile 分类的元素：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-HTML">&lt;form action="/login" method="POST"&gt;
   &lt;div class="cf-turnstile" data-sitekey="yourSiteKey"&gt;&lt;/div&gt;
   &lt;input type="submit"&gt;
 &lt;/form&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>回应质询后，cf-turnstile-response 令牌将注入您的表单。此令牌可用于我们的站点验证端点，以验证质询响应。令牌只能验证一次，不能兑换两次。可以在服务器端完成验证，甚至还可以在云端完成验证，<a href="https://demo.turnstile.workers.dev/" target="_blank">例如</a>使用简单的 Workers 获取（<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">点击此处观看演示</a>）：</p>
-	<!--kg-card-begin: markdown-->
+	<p>回应质询后，cf-turnstile-response 令牌将注入您的表单。此令牌可用于我们的站点验证端点，以验证质询响应。令牌只能验证一次，不能兑换两次。可以在服务器端完成验证，甚至还可以在云端完成验证，<a href="https://demo.turnstile.workers.dev/" target="_blank">例如</a>使用简单的 Workers 获取（<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">点击此处观看演示</a>）：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">async function handleRequest() {
     // ... Receive token
     let formData = new FormData();
@@ -57,8 +53,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>对于更复杂的用例，可以通过 JavaScript 显式调用质询：</p>
-	<!--kg-card-begin: markdown-->
+	<p>对于更复杂的用例，可以通过 JavaScript 显式调用质询：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">&lt;script&gt;
     window.turnstileCallbackFunction = function () {
         const turnstileOptions = {

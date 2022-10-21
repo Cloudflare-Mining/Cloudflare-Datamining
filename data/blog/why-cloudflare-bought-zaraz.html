@@ -18,8 +18,7 @@
 	<p>Every day, front end developers, marketers, and even security teams embed third-party scripts directly on their web pages. These scripts perform basic tasks — the metaphorical equivalent of taking out the trash. When performing correctly, they can be valuable at bringing advanced functionality to sites, helping track marketing conversions, providing analytics, or stopping fraud. But, if they ever go bad, they can cause significant problems and even steal data.</p>
 	<p>At the most mundane, poorly configured scripts can slow down the rendering pages. While there are ways to make scripts non-blocking, the unfortunate reality is that their developers don't always follow the best practices. Often when we see slow websites, the biggest cause of slowness is all the third-party scripts that have been embedded.</p>
 	<p>But it can be worse. Much worse. At Cloudflare, we've seen this first hand. Back in 2019 a hacker compromised a third-party service that Cloudflare used and modified the third-party JavaScript that was loaded into a page on cloudflare.com. Their aim was to steal login cookies, usernames and passwords. They went so far as to automatically create username and password fields that would autocomplete.</p>
-	<p>Here’s a snippet of the actual code injected:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here’s a snippet of the actual code injected:</p><!--kg-card-begin: markdown-->
 	<pre><code>        var cf_form = document.createElement("form");
         cf_form.style.display = "none";
         document.body.appendChild(cf_form);

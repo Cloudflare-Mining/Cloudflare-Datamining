@@ -18,14 +18,12 @@
 	<p>เราสามารถนึกถึง Page Shield ว่าคือบริการที่ให้การมองเห็น การตรวจจับ การบรรเทาผลกระทบ และการป้องกัน เช่นเดียวกับผลิตภัณฑ์รักษาความปลอดภัยอื่น ๆ ขั้นตอนแรกคือความสามารถในการมองเห็นได้</p>
 	<h3 id="--1"><strong>ความสามารถในการมองเห็นได้</strong></h3>
 	<p>เมื่อเปิดใช้งาน การวนซ้ำปัจจุบันของ Page Shield จะใช้<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">นโยบายความปลอดภัยของเนื้อหา</a> (CSP) ที่นำมาใช้ร่วมกับ<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">report-only directive</a> เพื่อรวบรวมข้อมูลจากเบราว์เซอร์ ซึ่งช่วยให้เราสามารถจัดเตรียมรายการสคริปต์ทั้งหมดที่ทำงานอยู่ในแอปพลิเคชันของคุณได้</p>
-	<p>ในแง่ HTTP นี่คือส่วนหัวการตอบสนอง HTTP ที่เพิ่มไปยังตัวอย่างการตอบกลับของหน้าจากเซิร์ฟเวอร์ต้นทางกลับไปที่เบราว์เซอร์ ส่วนหัว CSP มีลักษณะดังนี้:</p>
-	<!--kg-card-begin: markdown-->
+	<p>ในแง่ HTTP นี่คือส่วนหัวการตอบสนอง HTTP ที่เพิ่มไปยังตัวอย่างการตอบกลับของหน้าจากเซิร์ฟเวอร์ต้นทางกลับไปที่เบราว์เซอร์ ส่วนหัว CSP มีลักษณะดังนี้:</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>ส่วนหัวด้านบนแนะนำเบราว์เซอร์ว่าไม่ควรโหลดสคริปต์ใด ๆ <code>(script-src 'none')</code> และเพื่อรายงานการละเมิดไปยังปลายทางที่ให้มา <code>(report-uri /cdn-cgi/script_monitor/report)</code> นอกจากนี้ โปรดทราบด้วยว่าปลายทางรายงานการละเมิดจะแก้ไขไปยัง<a href="https://www.cloudflare.com/network/" target="_blank">เครือข่าย Cloudflare</a> ที่มีการประมวลผล ดังนั้นจึงไม่มีการรับส่งข้อมูลเพิ่มเติมไปยังเซิร์ฟเวอร์ต้นทาง</p>
-	<p>รายงานการละเมิดแต่ละฉบับที่ส่งโดยเบราว์เซอร์ เป็นการดำเนินการตามคำขอ HTTP POST จะให้ข้อมูลเกี่ยวกับสคริปต์กับเรา ต่อไปนี้คือตัวอย่าง:</p>
-	<!--kg-card-begin: markdown-->
+	<p>รายงานการละเมิดแต่ละฉบับที่ส่งโดยเบราว์เซอร์ เป็นการดำเนินการตามคำขอ HTTP POST จะให้ข้อมูลเกี่ยวกับสคริปต์กับเรา ต่อไปนี้คือตัวอย่าง:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
       "document-uri":"https://www.example.com/",

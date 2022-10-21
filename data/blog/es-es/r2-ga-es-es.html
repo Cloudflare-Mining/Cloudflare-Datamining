@@ -6,8 +6,7 @@
 	<h2 id="-qu-puedes-esperar-de-r2">¿Qué puedes esperar de R2?</h2>
 	<h3 id="compatibilidad-con-s3">Compatibilidad con S3</h3>
 	<p>R2 brinda a los desarrolladores una interfaz conocida para el almacenamiento de objetos, la API de S3. Con la compatibilidad con S3, puedes migrar fácilmente tus aplicaciones y empezar a aprovechar lo que te ofrece R2 desde el principio.</p>
-	<p>Veamos algunas operaciones básicas de datos en javascript. Para probarlas por tu cuenta, necesitarás <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generar una clave de acceso</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Veamos algunas operaciones básicas de datos en javascript. Para probarlas por tu cuenta, necesitarás <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generar una clave de acceso</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Primero, importamos nuestros enlaces de la forma habitual.
 import {
   S3Client,
@@ -39,8 +38,7 @@ console.log(
 	<p>En el futuro, R2 utilizará patrones de acceso a datos para optimizar automáticamente dónde se almacenarán los datos para lograr la mejor experiencia del usuario.</p>
 	<h3 id="integraci-n-de-cloudflare-workers">Integración de Cloudflare Workers</h3>
 	<p>La plataforma Workers brinda a los desarrolladores una capacidad de computación eficaz en la red de Cloudflare. Cuando realizas la implementación en Workers, tu código se implementa de forma automática en <a href="https://www.cloudflare.com/network/" target="_blank">más de 275 ubicaciones</a> de Cloudflare de todo el mundo. Cuando se empareja con R2, Workers permite a los desarrolladores añadir lógica personalizada en sus datos sin sobrecarga en el rendimiento. Workers se basa en aislamientos y no en contenedores y, como resultado, no tienes que esperar interminables arranques en frío.</p>
-	<p>Intentemos crear una API REST sencilla para un bucket R2. Primero, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">crea</a> tu bucket y luego añade un <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">enlace</a> R2 a tu Worker.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Intentemos crear una API REST sencilla para un bucket R2. Primero, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">crea</a> tu bucket y luego añade un <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">enlace</a> R2 a tu Worker.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,8 +73,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>Mediante esta API de Workers, podemos añadir todo tipo de lógica útil a la ruta en caliente de una solicitud R2.</p>
 	<h3 id="url-preasignadas">URL preasignadas</h3>
-	<p>A veces querrás dar a tus usuarios permisos a objetos específicos en R2 sin que deban pasar por todo el proceso. Mediante las URL preasignadas, puedes delegar tus permisos a tus usuarios para una combinación única de objeto y acción. Crea una URL preasignada para permitir que un usuario cargue o comparta un archivo sin darle acceso a todo el bucket.</p>
-	<!--kg-card-begin: markdown-->
+	<p>A veces querrás dar a tus usuarios permisos a objetos específicos en R2 sin que deban pasar por todo el proceso. Mediante las URL preasignadas, puedes delegar tus permisos a tus usuarios para una combinación única de objeto y acción. Crea una URL preasignada para permitir que un usuario cargue o comparta un archivo sin darle acceso a todo el bucket.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand
@@ -125,8 +122,6 @@ console.log(
 	<h3 id="migraci-n-activa-sin-tiempo-de-inactividad">Migración activa sin tiempo de inactividad</h3>
 	<p>Para los conjuntos de datos grandes, las migraciones están activas y en curso, ya que lleva tiempo transferir los datos. Cache Reserve es una forma sencilla de migrar rápidamente tus activos a una instancia de R2 gestionada para reducir tus costes de salida, con solo un clic. En el futuro, ampliaremos este mecanismo para que puedas migrar cualquiera de tus buckets de almacenamiento de objetos S3 existentes a R2.</p>
 	<p>Invitamos a todos a registrarse y a empezar a utilizar R2 hoy mismo. Únete a la creciente comunidad de desarrolladores que están creando en Cloudflare. Si tienes algún comentario o pregunta, contacta con nosotros en nuestro servidor Discord <a href="https://discord.gg/c2eACA4qXA" target="_blank">aquí</a>. Estamos deseando ver lo que creas.</p>
-	<h3 id="ver-en-cloudflare-tv">Ver en Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="ver-en-cloudflare-tv">Ver en Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

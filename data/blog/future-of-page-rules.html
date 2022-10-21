@@ -41,8 +41,7 @@
 	<h3 id="i-need-more-than-125-page-rules">I need more than 125 Page Rules</h3>
 	<p>One of the limitations of Page Rules was how each Page Rule was stored and executed on our backend architecture. We are unable to offer more than 125 Page Rules per zone before we begin to see a performance hit - latency on HTTP requests begins to increase as evaluating them vs the Page Rules takes longer and longer. To combat this limitation users moved simple workloads to Workers, or split the zone into multiple sub domains, each with a 125 Page Rules quota. Neither of these are ideal for the customer.</p>
 	<p>To combat this limitation we have built <em>all</em> of the replacement products atop our lightning-fast <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank">Rulesets Engine</a>, which also runs products such as Transform Rules, Custom Rules (WAF), Bulk Redirects and API Shield.</p>
-	<p>This allows us to offer much more quota to customers, as this engine is built to scale well beyond 125 rules per product. The table below summarizes the before and after impact of these new products, showing the default rules quota per plan:</p>
-	<!--kg-card-begin: html-->
+	<p>This allows us to offer much more quota to customers, as this engine is built to scale well beyond 125 rules per product. The table below summarizes the before and after impact of these new products, showing the default rules quota per plan:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -88,8 +87,7 @@
 				<td>10</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p><em>Additional rules cannot be purchased for these new products.</em></p>
 	<p>This means zone’s on the Enterprise plan now have a minimum of <strong>500</strong> rules to use where before they had 125 via Page Rules. For Enterprises the quota for the new products is negotiable. Pro plan zones go from 20 Page Rules to 100. &nbsp;Combined with the fine-grained control that the ruleset engine offers, these changes allow customers to customize their zone’s traffic to the finest of margins.</p>
 	<p>The other benefit from building all of these products on the Rulesets Engine is extensibility. Currently there are over 30 products that are built and running on the Rulesets Engine. Each of these products is essentially a logical bucket called a ‘phase’ which contains a single ruleset scoped to that product. Each phase is restricted to specific actions and fields, for example the field cf.bot_management.score is unavailable in http_request_transform as we have not calculated the bot score at the time we perform URL rewrites. Also, only the <code>rewrite</code> action is permitted. Whereas in Origin Rules (http_request_origin) we only allow the action <code>route</code></p>

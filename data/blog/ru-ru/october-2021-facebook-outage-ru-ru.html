@@ -17,8 +17,7 @@
 	<p>В нашем <a href="https://www.cloudflare.com/learning/" target="_blank">учебном центре</a> имеется подробный обзор <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> и <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a> и принципа их работы.</p>
 	<p>На этой упрощенной схеме изображены шесть автономных систем в Интернете и два возможных маршрута, по которым пакет может пройти от начала до конца. AS1 → AS2 → AS3 – наиболее быстрый маршрут, а AS1 → AS6 → AS5 → AS4 → AS3 – наиболее медленный, но его можно использовать, если первый не сработает.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10.png" class="kg-image"></figure>
-	<p>В 15:58 UTC мы заметили, что Facebook перестал анонсировать маршруты к своим префиксам DNS. Это означало, что, как минимум, DNS-серверы Facebook недоступны. Поэтому DNS-резолвер Cloudflare 1.1.1.1 больше не мог отвечать на запросы, требующие сообщить IP-адрес домена facebook.com.</p>
-	<!--kg-card-begin: markdown-->
+	<p>В 15:58 UTC мы заметили, что Facebook перестал анонсировать маршруты к своим префиксам DNS. Это означало, что, как минимум, DNS-серверы Facebook недоступны. Поэтому DNS-резолвер Cloudflare 1.1.1.1 больше не мог отвечать на запросы, требующие сообщить IP-адрес домена facebook.com.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -28,8 +27,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Тем временем другие IP-адреса Facebook по-прежнему маршрутизировались, но от них не было особой пользы, поскольку без DNS Facebook и связанные с ним сервисы были фактически недоступны:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Тем временем другие IP-адреса Facebook по-прежнему маршрутизировались, но от них не было особой пользы, поскольку без DNS Facebook и связанные с ним сервисы были фактически недоступны:</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -53,8 +51,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9.png" class="kg-image"></figure>
 	<p>В результате отзыва маршрутов Facebook и его сайты фактически отключились от Интернета.</p>
 	<h3 id="dns-">DNS тоже пострадал</h3>
-	<p>Прямым следствием произошедшего стало то, что DNS-резолверы по всему миру перестали выдавать IP-адреса этих доменных имен.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Прямым следствием произошедшего стало то, что DNS-резолверы по всему миру перестали выдавать IP-адреса этих доменных имен.</p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

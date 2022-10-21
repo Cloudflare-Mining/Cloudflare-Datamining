@@ -46,8 +46,7 @@
 	<p>Restano delle domande aperte, naturalmente. Questa prima serie di misurazioni è stata eseguita in gran parte in Nord America. Le prestazioni cambiano a livello globale? In che modo questo influisce sulle prestazioni del client, nella pratica? Stiamo lavorando per scoprirlo e questo rilascio ci aiuterà a farlo.</p>
 	<h3 id="interessante-posso-fare-esperimenti-con-odoh-esiste-un-servizio-odoh-open">Interessante! Posso fare esperimenti con ODoH? Esiste un servizio ODoH open?</h3>
 	<p>Sì e sì! Abbiamo aperto le nostre implementazioni interoperabili ODoH in Rust, <a href="https://github.com/cloudflare/odoh-rs/" target="_blank">odoh-rs</a>, e Go, <a href="https://github.com/cloudflare/odoh-go/" target="_blank">odoh-go</a>, e abbiamo integrato il target sul resolver DNS di Cloudflare. Proprio così, 1.1.1.1 è pronto per ricevere query tramite ODoH.</p>
-	<p>Abbiamo anche aperto client di prova in Rust, <a href="https://github.com/cloudflare/odoh-client-rs/" target="_blank">odoh-client-rs </a>, e Go, <a href="https://github.com/cloudflare/odoh-client-go/" target="_blank">odoh-client-go</a>, per provare le query ODoH. È inoltre possibile verificare la configurazione HPKE utilizzata da ODoH per la crittografia dei messaggi su 1.1.1.1, interrogando direttamente il servizio:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Abbiamo anche aperto client di prova in Rust, <a href="https://github.com/cloudflare/odoh-client-rs/" target="_blank">odoh-client-rs </a>, e Go, <a href="https://github.com/cloudflare/odoh-client-go/" target="_blank">odoh-client-go</a>, per provare le query ODoH. È inoltre possibile verificare la configurazione HPKE utilizzata da ODoH per la crittografia dei messaggi su 1.1.1.1, interrogando direttamente il servizio:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig -t type65 +dnssec @ns1.cloudflare.com odoh.cloudflare-dns.com 
 
 ; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; -t type65 +dnssec @ns1.cloudflare.com odoh.cloudflare-dns.com

@@ -15,18 +15,15 @@
 	<p>Cloudflare 意识到，类似上述医疗保健咨询公司这样的组织将寻求在其分散的用户中增强安全性和可见性。我们的设备客户端 WARP 有助于实现这一点，方法是在端点启用能感知身份和设备状态的策略实施。</p>
 	<p>我们优化了客户端，以支持各种部署方法，这样组织可以根据需要灵活地轻松应用 Cloudflare for Teams 的 Zero Trust 功能。例如，WARP 适用于所有主流操作系统（Windows、MacOS、Linux、Chrome OS、iOS 和 Android）。而且无论部署机制如何，WARP 都使用<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">一组通用的参数</a>，这样您的管理员可获得一致的体验。</p>
 	<p>为了展示运行中的这一简化部署，下面列出了一些关于如何在 Windows 上部署我们客户端的常见场景，只通过命令行进行了一些细微调整：</p>
-	<p>1.如果您想使用 HTTP 过滤规则、浏览器隔离，或对设备状态执行任何操作，最重要的事情是让您的用户向 Teams 组织进行身份验证，并通过 WARP 发送其流量：</p>
-	<!--kg-card-begin: markdown-->
+	<p>1.如果您想使用 HTTP 过滤规则、浏览器隔离，或对设备状态执行任何操作，最重要的事情是让您的用户向 Teams 组织进行身份验证，并通过 WARP 发送其流量：</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2. 如果您不关心身份，只想使用上述相同场景进行静默安装，请使用<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">服务令牌</a>并禁用初始客户端 UI：</p>
-	<!--kg-card-begin: markdown-->
+	<p>2. 如果您不关心身份，只想使用上述相同场景进行静默安装，请使用<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">服务令牌</a>并禁用初始客户端 UI：</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3. 您的员工是否有时会出差到不允许加密隧道中流量的国家/地区或位置？您可以让他们关闭 WARP，同时仍遵守您公司的 DNS 规则：</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. 您的员工是否有时会出差到不允许加密隧道中流量的国家/地区或位置？您可以让他们关闭 WARP，同时仍遵守您公司的 DNS 规则：</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
 </code></pre>
 	<!--kg-card-end: markdown-->

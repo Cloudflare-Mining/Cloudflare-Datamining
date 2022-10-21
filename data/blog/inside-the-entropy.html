@@ -1,6 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image8-3.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image8-3.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<blockquote>
 		<p>Randomness, randomness everywhere;<br>
 			Nor any verifiable entropy.</p>
@@ -12,21 +11,16 @@
 	<p></p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image9-2.png" class="kg-image"></figure>
-	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com" target="_blank">League of Entropy</a>. The League of Entropy is a network of beacons that produces <em>distributed</em>, <em>publicly verifiable</em> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand" target="_blank">drand project</a>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com" target="_blank">League of Entropy</a>. The League of Entropy is a network of beacons that produces <em>distributed</em>, <em>publicly verifiable</em> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand" target="_blank">drand project</a>.</p><!--kg-card-begin: markdown-->
 	<p>Verifiable randomness is essential for ensuring trust in various institutional decision-making processes such as <a href="https://blog.cloudflare.com/league-of-entropy">elections and lotteries</a>. There are also cryptographic applications that require verifiable randomness. In the land of decentralized consensus mechanisms, the <a href="https://dfinity.org/static/dfinity-consensus-0325c35128c72b42df7dd30c22c41208.pdf" target="_blank">DFINITY approach</a> uses random seeds to decide the outcome of leadership elections. In this setting, it is essential that the randomness is publicly verifiable so that the outcome of the leadership election is trustworthy. Such a situation arises more generally in <a href="https://en.wikipedia.org/wiki/Sortition" target="_blank">Sortitions</a>: an election where leaders are selected as a random individual (or subset of individuals) from a larger set.</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>In this blog post, we will give a technical overview behind the cryptography used in the distributed randomness beacon, and how it can be used to generate publicly verifiable randomness. We believe that distributed randomness beacons have a huge amount of utility in realizing the <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">Internet of the Future</a>; where we will be able to rely on distributed, decentralized solutions to problems of a global-scale.</p>
 	<!--kg-card-end: markdown-->
-	<h2 id="randomness-entropy">Randomness &amp; entropy</h2>
-	<!--kg-card-begin: markdown-->
+	<h2 id="randomness-entropy">Randomness &amp; entropy</h2><!--kg-card-begin: markdown-->
 	<p>A source of randomness is measured in terms of the amount of <em>entropy</em> it provides. Think about the entropy provided by a random output as a score to indicate how “random” the output actually is. The notion of information entropy was concretised by the famous scientist Claude Shannon in his paper <a href="https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication" target="_blank">A Mathematical Theory of Communication</a>, and is sometimes known as <em><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)" target="_blank">Shannon Entropy</a></em>.</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>A common way to think about random outputs is: a sequence of bits derived from some random outcome. For the sake of an argument, consider a fair 8-sided dice roll with sides marked 0-7. The outputs of the dice can be written as the bit-strings <code>000,001,010,...,111</code>. Since the dice is fair, any of these outputs is equally likely. This is means that each of the bits is equally likely to be <code>0</code> or <code>1</code>. Consequently, interpreting the output of the dice roll as a random output then derives randomness with <code>3</code> bits of entropy.</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>More generally, if a perfect source of randomness guarantees strings with <code>n</code> bits of entropy, then it generates bit-strings where each bit is equally likely to be <code>0</code> or <code>1</code>. This allows us to predict the value of any bit with maximum probability <code>1/2</code>. If the outputs are sampled from such a perfect source, we consider them <em>uniformly distributed</em>. If we sample the outputs from a source where one bit is predictable with higher probability, then the string has <code>n-1</code> bits of entropy. To go back to the dice analogy, rolling a 6-sided dice provides less than <code>3</code> bits of entropy because the possible outputs are <code>000,001,010,011,100,101</code> and so the 2nd and 3rd bits are more likely to be to set to <code>0</code> than to <code>1</code>.</p>
 	<p>It is possible to mix entropy sources using specifically designed mixing functions to retrieve something with even greater entropy. The maximum resulting entropy is the sum of the entropy taken from the number of entropic sources used as input.</p>
 	<!--kg-card-end: markdown-->
@@ -104,13 +98,11 @@
 	<p>The Cloudflare beacon uses <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/">LavaRand</a> as its internal source of randomness for the DKG. Other League of Entropy drand beacons have their own sources of randomness.</p>
 	<h3 id="give-me-randomness-">Give me randomness!</h3>
 	<blockquote>The below API endpoints are obsolete. Please see <a href="https://drand.love" target="_blank">https://drand.love</a> for the most up-to-date documentation.</blockquote>
-	<p>The drand beacon allows you to retrieve the latest random value from the League of Entropy using a simple HTTP request:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The drand beacon allows you to retrieve the latest random value from the League of Entropy using a simple HTTP request:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl https://drand.cloudflare.com/api/public
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The response is a JSON blob of the form:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The response is a JSON blob of the form:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     "round": 7,
     "previous": &lt;hex-encoded-previous-signature&gt;,
@@ -122,8 +114,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>where, <code>randomness.point</code> is the signature <code>u</code> aggregated among the entire set of beacons.</p>
-	<p>The signature is computed as an evaluation of the message, and is comprised of the signature of the previous round, <code>previous</code>, the current round number, <code>round</code>, and the aggregated secret key of the system. This signature can be verified using the entire public key <code>vk</code> of the Cloudflare beacon, learned using another HTTP request:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The signature is computed as an evaluation of the message, and is comprised of the signature of the previous round, <code>previous</code>, the current round number, <code>round</code>, and the aggregated secret key of the system. This signature can be verified using the entire public key <code>vk</code> of the Cloudflare beacon, learned using another HTTP request:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl https://drand.cloudflare.com/api/public
 </code></pre>
 	<!--kg-card-end: markdown-->

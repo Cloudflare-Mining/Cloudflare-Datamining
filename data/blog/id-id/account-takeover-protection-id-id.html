@@ -17,8 +17,7 @@
 		<figcaption>The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule</figcaption>
 	</figure>
 	<p>Daftar terkelola Proxy Terbuka baru - dapat ditemukan di Account Home → Configurations → Lists atau digunakan langsung dalam aturan kustom</p>
-	<p>Dengan menggabungkan daftar IP dengan filter tambahan saat menulis Aturan Firewall khusus, Anda dapat mengurangi risiko upaya login berbahaya ke titik akhir autentikasi Anda. Dalam menulis aturan yang memanfaatkan daftar baru dengan menggunakan sintaks wirefilter akan terlihat seperti ini:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dengan menggabungkan daftar IP dengan filter tambahan saat menulis Aturan Firewall khusus, Anda dapat mengurangi risiko upaya login berbahaya ke titik akhir autentikasi Anda. Dalam menulis aturan yang memanfaatkan daftar baru dengan menggunakan sintaks wirefilter akan terlihat seperti ini:</p><!--kg-card-begin: markdown-->
 	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -58,8 +57,7 @@
 	<p>Pembatasan tingkat tersedia untuk semua pelanggan layanan mandiri sebagai add on berbayar.</p>
 	<h3 id="rencana-masa-depan"><strong>Rencana masa depan</strong></h3>
 	<p>Kami menghabiskan banyak waktu untuk memikirkan cara terbaik dalam mengamankan akun pengguna akhir dengan solusi satu klik yang mudah.</p>
-	<p>Dengan memanfaatkan visibilitas jaringan kami, kami mulai mendapatkan wawasan berharga yang hanya didapatkan dengan skala Cloudflare. Daftar proxy terbuka terkelola kami adalah salah satu contohnya, tetapi kami telah bereksperimen dengan deteksi berbasis anomali yang jauh melampaui postur perangkat sederhana atau batas tingkat. Selain itu, kami sedang memikirkan kasus penggunaan dan skenario tentang cara membagikan anomali terverifikasi secara lebih luas di seluruh basis pelanggan kami, membawa kami kembali ke pendekatan berbasis perlindungan komunitas asli yang dibangun di atas Cloudflare.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Dengan memanfaatkan visibilitas jaringan kami, kami mulai mendapatkan wawasan berharga yang hanya didapatkan dengan skala Cloudflare. Daftar proxy terbuka terkelola kami adalah salah satu contohnya, tetapi kami telah bereksperimen dengan deteksi berbasis anomali yang jauh melampaui postur perangkat sederhana atau batas tingkat. Selain itu, kami sedang memikirkan kasus penggunaan dan skenario tentang cara membagikan anomali terverifikasi secara lebih luas di seluruh basis pelanggan kami, membawa kami kembali ke pendekatan berbasis perlindungan komunitas asli yang dibangun di atas Cloudflare.</p><!--kg-card-begin: markdown-->
 	<p>.....<br>
 		<sup>1</sup>Fitur Cloudflare lainnya, seperti Pencatatan Log Payload WAF Terenkripsi, dapat mencatat log komponen permintaan, tetapi akan dienkripsi dengan kunci publik yang disediakan pelanggan<br>
 		<sup>2</sup>Banyak laporan pengujian penetrasi akan menyoroti semua perbedaan dalam menanggapi upaya login yang gagal sebagai kerentanan pengungkapan informasi.

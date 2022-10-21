@@ -15,13 +15,11 @@
 	<p>Many organizations use HTTP request headers to ensure visitor requests are served correctly. They are used to route requests to different clusters, serve mobile-friendly content, and legacy-browser friendly content.</p>
 	<p>HTTP request headers are also used for security purposes, namely authentication and authorization. Simple examples include adding a static, pre-shared key as a custom header which adds an additional security check to all inbound HTTP requests.</p>
 	<p>Ensuring these headers are present on the HTTP request is often the job of the reverse proxy — a server which sits between the client and the server whose job is, amongst many others, to enrich the HTTP request data sent to the server.</p>
-	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server used as a reverse proxy, the administrator would have a line in the config similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>proxy_set_header X-Header-Name "custom";
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When using &nbsp;<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When using &nbsp;<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>request.headers.set("X-Header-Name", "custom")
 </code></pre>
 	<!--kg-card-end: markdown-->

@@ -10,8 +10,7 @@
 	<p></p>
 	<p>Instead, we built a single integration template. Then, we wrote a few lines of code to automatically generate 12 apps in about as long as it takes to enjoy a sumptuous sip of California Cab. Ready for a quick overview? Begin swirling... </p>
 	<p>First we defined a “replacements” object with the important attributes of each app (which is already available in our database in an AppDetail model):</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ruby">replacements = {
     APP_COMMON_NAME: app_detail.common_name, #eg “Form Builder”
     APP_SLUG: app_detail.slug, #e.g. “form-builder”
@@ -22,16 +21,14 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Using these replacements, we then duplicated and renamed each file of our Cloudflare App accordingly:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ruby">replacements.each do |key, val|
   `find #{parent_dir} -name "*#{key}*" -exec rename 's/#{key}/#{val}/' * -v {} +`
 end
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>And finally, we moved into each file and made the corresponding replacements: <br></p>
-	<!--kg-card-begin: markdown-->
+	<p>And finally, we moved into each file and made the corresponding replacements: <br></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ruby">Dir.glob("lib/cloudflare/powr-#{replacements[:APP_SLUG]}/**/*").reject{|fn| File.directory?(fn)}.each do |file_name|
   text = File.read(file_name)
   replacements.each do |key, val|

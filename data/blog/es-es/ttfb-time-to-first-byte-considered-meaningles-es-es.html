@@ -11,8 +11,7 @@
 	<p></p>
 	<p>El TTFB del que se informa no es el momento del primer byte de datos de la página, sino el primer byte de la respuesta HTTP. Son cosas muy diferentes, porque los encabezados de respuesta se pueden generar rápidamente, pero los datos son los que afectarán a la medida más importante de todas: la rapidez con que el usuario verá la página.</p>
 	<p>En Cloudflare hacemos un amplio uso de NGINX. Al investigar el TTFB encontramos una diferencia significativa en TTFB de NGINX según se utilice compresión o no. La compresión gzip de las páginas web reduce en gran medida el tiempo que tarda una página web en descargarse, pero la compresión en sí tiene un coste. Ese coste hace que el TTFB aumente a pesar de que la descarga completa es más rápida.</p>
-	<p>Para ilustrarlo, tomamos la mayor página de Wikipedia (<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">List of Advanced Dungeons and Dragons 2nd Edition Monsters</a>) y la alojamos usando NGINX, con y sin compresión gzip habilitada. La tabla a continuación muestra el TTFB y el tiempo de descarga total con la compresión activada y desactivada.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Para ilustrarlo, tomamos la mayor página de Wikipedia (<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">List of Advanced Dungeons and Dragons 2nd Edition Monsters</a>) y la alojamos usando NGINX, con y sin compresión gzip habilitada. La tabla a continuación muestra el TTFB y el tiempo de descarga total con la compresión activada y desactivada.</p><!--kg-card-begin: markdown-->
 	<pre><code>                                 |  TTFB   |  Página cargada
 -------------------------------- | ------- | -------------
 Sin comprimir (gzip desactivada) | 213 us  | 43 ms

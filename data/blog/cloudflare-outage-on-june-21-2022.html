@@ -26,8 +26,7 @@
 	<h3 id="technical-description-of-the-error-and-how-it-happened">Technical description of the error and how it happened</h3>
 	<p>As part of our continued effort to standardize our infrastructure configuration, we were rolling out a change to standardize the BGP communities we attach to a subset of the prefixes we advertise. Specifically, we were adding informational communities to our site-local prefixes. </p>
 	<p>These prefixes allow our metals to communicate with each other, as well as connect to customer origins. As part of the change procedure at Cloudflare, a Change Request ticket was created, which includes a dry-run of the change, as well as a stepped rollout procedure. Before it was allowed to go out, it was also peer reviewed by multiple engineers. Unfortunately, in this case, the steps weren’t small enough to catch the error before it hit all of our spines.</p>
-	<p>The change looked like this on one of the routers:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The change looked like this on one of the routers:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -50,8 +49,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This was harmless, and just added some additional information to these prefix advertisements. The change on the spines was the following:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This was harmless, and just added some additional information to these prefix advertisements. The change on the spines was the following:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -78,15 +76,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>An initial glance at this diff might give the impression that this change is identical, but unfortunately, that’s not the case. If we focus on one part of the diff, it might become clear why:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An initial glance at this diff might give the impression that this change is identical, but unfortunately, that’s not the case. If we focus on one part of the diff, it might become clear why:</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In this diff format, the exclamation marks in front of the terms indicate a re-ordering of the terms. In this case, multiple terms moved up, and two terms were added to the bottom. Specifically, the 4-ADV-SITE-LOCALS and 6-ADV-SITE-LOCALS terms moved from the top to the bottom. These terms were now behind the REJECT-THE-REST term, and as might be clear from the name, this term is an explicit reject:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this diff format, the exclamation marks in front of the terms indicate a re-ordering of the terms. In this case, multiple terms moved up, and two terms were added to the bottom. Specifically, the 4-ADV-SITE-LOCALS and 6-ADV-SITE-LOCALS terms moved from the top to the bottom. These terms were now behind the REJECT-THE-REST term, and as might be clear from the name, this term is an explicit reject:</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

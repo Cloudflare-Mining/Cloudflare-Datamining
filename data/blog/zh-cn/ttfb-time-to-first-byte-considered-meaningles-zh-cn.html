@@ -10,8 +10,7 @@
 	<p><a href="http://www.gomeznetworks.com/custom/instant_test.html" target="_blank">gomez</a>也报告了完全相同的数字。</p>
 	<p>报告的TTFB不是接收到页面的第一个数据字节的时间，而是HTTP响应的第一个字节到达的时间。这两者是很不一样的，因为响应请求头可以非常快速地生成，但其实是页面数据影响着这一最重要的指标：用户查看页面的速度。</p>
 	<p>在CloudFlare，我们大量地使用着nginx，而在调查TTFB时，使用或不使用压缩的情况下来自nginx的TTFB存在显着差异。网页的Gzip压缩大大减少了网页下载所需的时间，但压缩本身需要付出代价。尽管网页的完整下载更快了，但压缩的成本也导致TTFB更大。</p>
-	<p>为了说明此情况，我们采用了最大的维基百科页面（<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">高级龙与地下城第二版怪物列表</a>）并分别使用开启和不开启gzip压缩的nginx服务。下表显示了打开和关闭压缩情况下的TTFB和总下载时间。</p>
-	<!--kg-card-begin: markdown-->
+	<p>为了说明此情况，我们采用了最大的维基百科页面（<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">高级龙与地下城第二版怪物列表</a>）并分别使用开启和不开启gzip压缩的nginx服务。下表显示了打开和关闭压缩情况下的TTFB和总下载时间。</p><!--kg-card-begin: markdown-->
 	<pre><code>                          |  TTFB   |  Page loaded
 ------------------------- | ------- | -------------
 No compression (gzip off) | 213us   | 43ms

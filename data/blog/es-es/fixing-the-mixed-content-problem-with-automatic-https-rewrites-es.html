@@ -41,8 +41,7 @@
 	</figure>
 	<p>Tuvimos en cuenta diferentes enfoques:</p>
 	<p><em>Insertar automáticamente la actualización de solicitudes inseguras (upgrade-insecure-requests) de la directiva de la Política de seguridad de contenido</em></p>
-	<p>La directiva de <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">actualización de funciones inseguras</a> puede agregarse en un encabezado de <a href="https://www.w3.org/TR/CSP/" target="_blank">Política de seguridad de contenido</a> así:</p>
-	<!--kg-card-begin: markdown-->
+	<p>La directiva de <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">actualización de funciones inseguras</a> puede agregarse en un encabezado de <a href="https://www.w3.org/TR/CSP/" target="_blank">Política de seguridad de contenido</a> así:</p><!--kg-card-begin: markdown-->
 	<pre><code>Content-Security-Policy: upgrade-insecure-requests
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -57,8 +56,7 @@
 	<p><em>Crear un sistema que reescribe los URI que se sabe que funcionarán con HTTPS</em></p>
 	<p>Finalmente, nos decidimos a hacer algo inteligente: actualizar los URI de http:// a https:// si sabemos que pueden servirse usando HTTPS. Para averiguar qué enlaces son actualizables, recurrimos a la estupenda extensión <a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a> de la EFF y a la lista<a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">HSTS preload</a> de Google Chrome para aumentar nuestro conocimiento de sitios de Cloudflare que tienen SSL habilitado.</p>
 	<p>Agradecemos que la EFF haya aceptado gentilmente ayudarnos con este proyecto.</p>
-	<p>El conjunto de reglas de HTTPS Everywhere va mucho más allá de simplemente cambiar de http:// a https://. Contiene las reglas y exclusiones que le permiten (y a nosotros también) apuntar a URI específicos. Por ejemplo, esta es una regla real de HTTP Everywhere para gstatic.com:</p>
-	<!--kg-card-begin: markdown-->
+	<p>El conjunto de reglas de HTTPS Everywhere va mucho más allá de simplemente cambiar de http:// a https://. Contiene las reglas y exclusiones que le permiten (y a nosotros también) apuntar a URI específicos. Por ejemplo, esta es una regla real de HTTP Everywhere para gstatic.com:</p><!--kg-card-begin: markdown-->
 	<pre><code>&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
 gstatic\.com/" to="https://$1.gstatic.com/"/&gt;
 </code></pre>

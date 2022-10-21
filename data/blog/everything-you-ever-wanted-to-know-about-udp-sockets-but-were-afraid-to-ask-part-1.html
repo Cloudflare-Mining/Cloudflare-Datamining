@@ -30,8 +30,7 @@
 	<p>— What about inbound ICMP errors?</p>
 	<p>These problems are specific to UDP, they don't happen in the TCP world. TCP can transparently deal with MTU / fragmentation and ICMP errors. Depending on the specific protocol, a UDP service might need to be more complex and pay extra care to such corner cases.</p>
 	<h3 id="sourcing-packets-from-a-wildcard-socket">Sourcing packets from a wildcard socket</h3>
-	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>marek@mrprec:~$ sudo tcpdump -ni lo port 1234 -t
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
@@ -61,8 +60,7 @@ IP6 ::1.1234 &gt; ::1.41879: UDP, length 2
 	<p>— We start a UDP unconnected socket.</p>
 	<p>— We wait for a client to come in.</p>
 	<p>— As soon as we receive the first packet from the client, we immediately create a new fully connected socket, *over* the unconnected socket! It shares the same local port and local IP.</p>
-	<p>This is how it might look in ss:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This is how it might look in ss:</p><!--kg-card-begin: markdown-->
 	<pre><code>marek@mrprec:~$ ss -panu sport = :1234 or dport = :1234 | cat
 State     Recv-Q    Send-Q       Local Address:Port        Peer Address:Port    Process                                                                         
 ESTAB     0         0                    [::1]:1234               [::1]:44592    python3
@@ -76,8 +74,7 @@ ESTAB     0         0                    [::1]:44592              [::1]:1234    
 	<p>Is this approach worth the extra complexity? It depends on the use case. For a relatively small number of long-lived flows, it might be ok. For a high number of short-lived flows (especially DNS or NTP) it's an overkill.</p>
 	<p>Keeping old flows stable during service restarts is particularly hard in UDP. The established-over-unconnected technique is just one of the simpler ways of handling it. We'll leave another technique, based on SO_REUSEPORT ebpf, for a future blog post.</p>
 	<h3 id="summary">Summary</h3>
-	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique. </p>
-	<!--kg-card-begin: markdown-->
+	<p>In this blog post we started by highlighting connected and unconnected UDP sockets. Then we discussed why binding UDP servers to a wildcard is hard, and how IP_PKTINFO CMSG can help to solve it. We discussed the UDP graceful restart problem, and hinted on an established-over-unconnected technique. </p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

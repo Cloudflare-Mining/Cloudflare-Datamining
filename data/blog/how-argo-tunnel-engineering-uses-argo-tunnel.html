@@ -30,8 +30,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image3-7.png" class="kg-image"></figure>
 	<p>2. Enable dashboard service:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image2-8.png" class="kg-image"></figure>
-	<p>3. Create a reverse proxy that will inject the service token of the kubernetes-dashboard service account in the Authorization header before forwarding requests to kubernetes dashboard service</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. Create a reverse proxy that will inject the service token of the kubernetes-dashboard service account in the Authorization header before forwarding requests to kubernetes dashboard service</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-go">package main
  
 import (
@@ -111,8 +110,7 @@ func requireEnv(key string) (string, error) {
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>4. Create an Argo Tunnel sidecar to expose this reverse proxy</p>
-	<!--kg-card-begin: markdown-->
+	<p>4. Create an Argo Tunnel sidecar to expose this reverse proxy</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
 metadata:

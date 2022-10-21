@@ -28,8 +28,7 @@
 	<blockquote>Había que migrar código complejo del lado del servidor al perímetro. Tenemos un punto de conexión API que acepta solicitudes POST con cuerpos grandes, pero sobre todo devuelve los mismos datos sin cambiar nada en nuestro servidor de origen. Con Workers y la API de caché, logramos almacenar en caché las respuestas a las solicitudes POST, que sabíamos que estaban seguras, y reducir la carga sobre nuestro origen de manera significativa.</blockquote>
 	<p>— Aaron Dearinger, arquitecto de informática perimetral, Garmin International</p>
 	<p>Almacenar las solicitudes POST con la API de caché es sencillo. Estos son ejemplos de código de nuestra <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">documentación</a>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response

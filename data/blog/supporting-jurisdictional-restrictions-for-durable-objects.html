@@ -5,8 +5,7 @@
 	<p>Durable Objects, currently in limited beta, already make it easy for customers to manage state on Cloudflare Workers without worrying about provisioning infrastructure. Today, we’re announcing Jurisdictional Restrictions for Durable Objects, which ensure that a Durable Object only stores and processes data in a given geographical region. Jurisdictional Restrictions make it easy for developers to build serverless, stateful applications that not only comply with today’s regulations, but can handle new and updated policies as new regulations are added.</p>
 	<h3 id="how-jurisdictional-restrictions-work">How Jurisdictional Restrictions Work</h3>
 	<p>When creating a Durable Object, developers generate a unique ID that lets a Cloudflare Worker communicate with the Object.</p>
-	<p>Let’s say I want to create a Durable Object that represents a specific user of my application:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s say I want to create a Durable Object that represents a specific user of my application:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function handle(request) {
     let objectId = USERS.newUniqueId();
     let user = await USERS.get(objectId);
@@ -14,8 +13,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The unique ID encodes metadata for the Workers runtime, including a mapping to a specific Cloudflare data center. That data center is responsible for handling the creation of the Object and maintaining a routing table entry, so that a Worker can communicate with the Object if the Object migrates to another Cloudflare data center.</p>
-	<p>If the user is an EU data subject, I may want to ensure that the Durable Object that handles their data only stores and processes data inside of the EU. I can do that when I generate their Object ID, which encodes a restriction that this Durable Object can only be handled by a data center in the EU.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If the user is an EU data subject, I may want to ensure that the Durable Object that handles their data only stores and processes data inside of the EU. I can do that when I generate their Object ID, which encodes a restriction that this Durable Object can only be handled by a data center in the EU.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function handle(request) {
     let objectId = USERS.newUniqueId({jurisdiction: "eu"});
     let user = await USERS.get(objectId);

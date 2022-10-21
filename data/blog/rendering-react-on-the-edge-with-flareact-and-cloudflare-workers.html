@@ -19,8 +19,7 @@
 	<p>Flareact allows you to <strong>render your React apps at the edge</strong> rather than on the server. It is modeled after Next.js, which means it supports file-based page routing, dynamic page paths and edge-side data fetching APIs. </p>
 	<p>Not only are Flareact pages rendered at the edge — they’re also cached at the edge using the <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank">Cache API</a>. This allows you to provide a dynamic content source for your app without worrying about traffic spikes or response times.</p>
 	<p>With no servers or origins to deal with, your site is <em>instantly available</em> to your audience. <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> gives you a 0ms cold start and responses from the edge within milliseconds.</p>
-	<p>You can <a href="https://flareact.com/" target="_blank">check out the docs</a> and get started now by clicking the button below:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can <a href="https://flareact.com/" target="_blank">check out the docs</a> and get started now by clicking the button below:</p><!--kg-card-begin: markdown-->
 	<p><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/flareact/flareact-template&amp;paid=true" target="_blank"><img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers"></a></p>
 	<!--kg-card-end: markdown-->
 	<p>To get started manually, install the latest wrangler, and use the handy <code>wrangler generate</code> command below to create your first project:</p>
@@ -90,11 +89,9 @@ export default function Index() {
 }
 </code></pre>
 	<h3 id="local-development">Local Development</h3>
-	<p>The local developer experience of Flareact leverages the new <code>wrangler dev</code> command, sending server requests through a local tunnel to the Cloudflare edge and back to your machine. </p>
-	<!--kg-card-begin: html-->
+	<p>The local developer experience of Flareact leverages the new <code>wrangler dev</code> command, sending server requests through a local tunnel to the Cloudflare edge and back to your machine. </p><!--kg-card-begin: html-->
 	<stream src="f93e42e0ffd5e4cd7c17f08f2ab0226b" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=f93e42e0ffd5e4cd7c17f08f2ab0226b"></script>
-	<!--kg-card-end: html-->
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=f93e42e0ffd5e4cd7c17f08f2ab0226b"></script><!--kg-card-end: html-->
 	<p>This is a huge win for productivity, since you don’t need to manually build and deploy your application to see how it will perform in a production environment.</p>
 	<p>It’s also a really exciting update to the serverless toolchain. Running a robust development environment in a serverless world has always been a challenge, since your code is executing in a non-traditional context. Tunneling local code to the edge and back is <em>such a great addition</em> to Cloudflare’s developer experience.</p>
 	<h2 id="use-cases">Use cases</h2>

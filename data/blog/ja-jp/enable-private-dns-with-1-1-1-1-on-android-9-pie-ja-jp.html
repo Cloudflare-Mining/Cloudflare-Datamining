@@ -20,8 +20,7 @@
 	<h3 id="ipv6-dns">IPv6の世界におけるDNS</h3>
 	<p>プライベートDNSフィールドは 1.1.1.1 のような IPアドレスを受け付けず、代わりに 1dot1dot1dot1.cloudflare-dns.com のようなホスト名が必要なことにすでにお気づきかもしれません。これは発音しやすいとは言えないので、リゾルバーにとって覚えやすいものをデプロイするために、現在取り組み中ですが、1.1.1.1、1.0.0.1、1dot1dot1dot1.cloudflare-dns.comについては引き続きサポートを続けていく予定です。</p>
 	<p>Googleではこのフィールドにホスト名が必要です。モバイルキャリアはIPv4とIpv6が共存するデュアルスタックの世界に適応しようとしているからです。企業によるIpv6の採用は、一般に予測されていたよりも<a href="https://www.internetsociety.org/resources/doc/2017/state-of-ipv6-deployment-2017/" target="_blank">かなり迅速に</a>行われており、<a href="https://www.internetsociety.org/resources/deploy360/2014/case-study-t-mobile-us-goes-ipv6-only-using-464xlat/" target="_blank">IPv6に完全移行した</a>T-Mobileを含めて、米国の主要なモバイルキャリアは<a href="http://www.worldipv6launch.org/major-mobile-us-networks-pass-50-ipv6-threshold/" target="_blank">IPv6をサポート</a>しています。<a href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/" target="_blank">約260億</a>のインターネットに接続したデバイスが、43億のIPv4アドレスを上回る世界において、これは朗報です。さらに、前向きな動きの中で、Appleでは、すべての新しいiOSアプリでシングルスタックのIPv6ネットワークを<a href="https://blog.cloudflare.com/supporting-the-transition-to-ipv6-only-networking-services-for-ios/">サポートすることが必須</a>となっています。</p>
-	<p>しかし、私たちはまだIPv4アドレスを持つ世界に住んでいるので、電話メーカーや通信事業者は、下位互換性を念頭に置いてシステムを設計する必要があります。現在、iOSとAndroidは<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a>および AAAA DNS レコードの両方をリクエストしています。これには、バージョン4およびバージョン6形式のドメインに対応する IP アドレスがそれぞれ含まれています。ご自分で試してみてください。</p>
-	<!--kg-card-begin: markdown-->
+	<p>しかし、私たちはまだIPv4アドレスを持つ世界に住んでいるので、電話メーカーや通信事業者は、下位互換性を念頭に置いてシステムを設計する必要があります。現在、iOSとAndroidは<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a>および AAAA DNS レコードの両方をリクエストしています。これには、バージョン4およびバージョン6形式のドメインに対応する IP アドレスがそれぞれ含まれています。ご自分で試してみてください。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig A +short 1dot1dot1dot1.cloudflare-dns.com
 1.0.0.1
 1.1.1.1

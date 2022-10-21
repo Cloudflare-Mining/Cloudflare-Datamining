@@ -14,8 +14,7 @@
 	<h3 id="cloudflare-">Cloudflareグローバルネットワークからオンデマンドのパケットキャプチャを提供</h3>
 	<p>Cloudflareを使えば可視性を取り戻せます。お客様は<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>と<a href="https://www.cloudflare.com/ja-jp/magic-wan/" target="_blank">Magic WAN</a>を使い、パブリックIPとプライベートIPのトラフィックをすべてCloudlareネットワーク経由でルーティングすることで、高速化を実現し、安全性と信頼性だけでなく可視性も高めることができます。古い例えを使えば、Cloudflareはグローバルに分散した巨大な跳ね橋だとお考えください。Cloudflareが、お客様のトラフィック全体をカバーする単一のクラウドベースのルーター兼ファイアウォールのような働きをし、お客様のトラフィック全体でパケットをキャプチャして一か所にお届けします。</p>
 	<h3 id="--2">その仕組みは？</h3>
-	<p>お客様は、<a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a>を使ってパケットキャプチャをリクエストすることができます。ご希望のパケットを取得するには、フィルター設定時に欲しいパケットのIPアドレス、ポート、プロトコルをご指定ください。</p>
-	<!--kg-card-begin: markdown-->
+	<p>お客様は、<a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a>を使ってパケットキャプチャをリクエストすることができます。ご希望のパケットを取得するには、フィルター設定時に欲しいパケットのIPアドレス、ポート、プロトコルをご指定ください。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
 -H 'Content-Type: application/json' \
 -H 'X-Auth-Email: user@example.com' \
@@ -32,28 +31,23 @@
         "system": "magic-transit"
 }'
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>APIを使ったパケットキャプチャリクエストの例</small></p>
 	<!--kg-card-end: markdown-->
-	<p>当社は<a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a>を使ってお客様の着信パケットにフィルターを適用し、<a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a>で記録します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>当社は<a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a>を使ってお客様の着信パケットにフィルターを適用し、<a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a>で記録します。</p><!--kg-card-begin: markdown-->
 	<pre><code>table inet pcaps_1 {
     chain pcap_1 {
         ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
     }
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>お客様のパケットをフィルターしてログに記録するnftables設定の例</small></p>
 	<!--kg-card-end: markdown-->
-	<p>nflogはnetfilterソケットを作成し、パケットのログはそのソケットを通ってLinuxカーネルからユーザー空間へ送られます。ユーザー空間では、tcpdumpを使ってnetfilterソケットからパケットを読み取り、PCAPファイルを作成します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>nflogはnetfilterソケットを作成し、パケットのログはそのソケットを通ってLinuxカーネルからユーザー空間へ送られます。ユーザー空間では、tcpdumpを使ってnetfilterソケットからパケットを読み取り、PCAPファイルを作成します。</p><!--kg-card-begin: markdown-->
 	<pre><code>tcpdump -i nflog:1 -w pcap_1.pcap
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small>PCAPファイルを作成するtcpdumpコマンドの例</small></p>
 	<!--kg-card-end: markdown-->
 	<p>tcpdumpは通常、ネットワークインターフェイス上で着信パケットを聞いて使いますが、当社の場合はnflogグループからのパケットログを読み込むために設定します。tcpdumpは、パケットログをPCAPファイルに変換します。</p>

@@ -2,8 +2,7 @@
 	<h2 id="how-does-secondary-dns-work">How Does Secondary DNS Work?</h2>
 	<p>If you already understand how Secondary DNS works, please feel free to skip this section. It does not provide any Cloudflare-specific information.</p>
 	<p>Secondary DNS has many use cases across the Internet; however, traditionally, it was used as a synchronized backup for when the primary DNS server was unable to respond to queries. A more modern approach involves focusing on redundancy across many different nameservers, which in many cases broadcast the same anycasted IP address.</p>
-	<p>Secondary DNS involves the unidirectional transfer of DNS zones from the primary to the Secondary DNS server(s). One primary can have any number of Secondary DNS servers that it must communicate with in order to keep track of any zone updates. A zone update is considered a change in the contents of a &nbsp;zone, which ultimately leads to a Start of Authority (SOA) serial number increase. The zone’s SOA serial is one of the key elements of Secondary DNS; it is how primary and secondary servers synchronize zones. Below is an example of what an SOA record might look like during a dig query.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Secondary DNS involves the unidirectional transfer of DNS zones from the primary to the Secondary DNS server(s). One primary can have any number of Secondary DNS servers that it must communicate with in order to keep track of any zone updates. A zone update is considered a change in the contents of a &nbsp;zone, which ultimately leads to a Start of Authority (SOA) serial number increase. The zone’s SOA serial is one of the key elements of Secondary DNS; it is how primary and secondary servers synchronize zones. Below is an example of what an SOA record might look like during a dig query.</p><!--kg-card-begin: markdown-->
 	<pre><code>example.com	3600	IN	SOA	ashley.ns.cloudflare.com. dns.cloudflare.com. 
 2034097105  // Serial
 10000 // Refresh

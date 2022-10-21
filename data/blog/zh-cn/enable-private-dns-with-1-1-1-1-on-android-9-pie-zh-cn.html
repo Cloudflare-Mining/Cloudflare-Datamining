@@ -20,8 +20,7 @@
 	<h3 id="ipv6-dns">IPv6 世界中的 DNS</h3>
 	<p>您或许已发现，私人 DNS 字段不接受 IP 地址（例如 1.1.1.1），必须在其中输入主机名（例如 1dot1dot1dot1.cloudflare-dns.com）。所以我们正在研究为解析器部署一个方便记忆的地址，同时也将继续支持 1.1.1.1、1.0.0.1 和 1dot1dot1dot1.cloudflare-dns.com。</p>
 	<p>Google 之所以要求在这个字段中提供主机名，是因为移动运营商正在适应 IPv4 与 IPv6 共存的双栈世界。公司采用 IPv6 的速度<a href="https://www.internetsociety.org/resources/doc/2017/state-of-ipv6-deployment-2017/" target="_blank">远比普遍预期的快</a>，美国的所有主要移动运营商都已<a href="http://www.worldipv6launch.org/major-mobile-us-networks-pass-50-ipv6-threshold/" target="_blank">支持</a>，包括已经<a href="https://www.internetsociety.org/resources/deploy360/2014/case-study-t-mobile-us-goes-ipv6-only-using-464xlat/" target="_blank">彻底采用 IPv6</a> 的 T-Mobile。对于拥有 <a href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/" target="_blank">大约 260 亿</a>台连入互联网的设备（远超 43 亿个 IPv4 地址）的世界来说，这算是一个好消息。而且，高瞻远瞩的 Apple 已采取行动，要求所有新 iOS 应用<a href="https://blog.cloudflare.com/supporting-the-transition-to-ipv6-only-networking-services-for-ios/">必须支持</a>单堆栈 IPv6 网络。</p>
-	<p>不过，我们生活的世界中仍然存在 IPv4 地址，因此手机制造商和运营商必须在架构其系统时考虑向后兼容性。目前，iOS 和 Android 都同时请求 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a> 和 AAAA DNS 记录，这两种记录分别包含与版本 4 和版本 6 格式的域名相对应的 IP 地址。自己试一下：</p>
-	<!--kg-card-begin: markdown-->
+	<p>不过，我们生活的世界中仍然存在 IPv4 地址，因此手机制造商和运营商必须在架构其系统时考虑向后兼容性。目前，iOS 和 Android 都同时请求 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a> 和 AAAA DNS 记录，这两种记录分别包含与版本 4 和版本 6 格式的域名相对应的 IP 地址。自己试一下：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig A +short 1dot1dot1dot1.cloudflare-dns.com
 1.0.0.1
 1.1.1.1

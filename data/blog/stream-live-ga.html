@@ -25,8 +25,7 @@
 	<h2 id="free-your-live-video-from-the-business-models-of-big-platforms">Free your live video from the business models of big platforms</h2>
 	<p>Nearly every business uses live video, whether to engage with customers, broadcast events or monetize live content. But few have the specialized engineering resources to deliver live video at scale on their own, and wire together multiple low level cloud services. To date, many of the largest content creators have been forced to depend on a shortlist of social media apps and streaming services to deliver live content at scale.</p>
 	<p>Unlike the status quo, who force you to put your live video in <em>their</em> apps and services and fit <em>their</em> business models, Stream gives you full control of your live video, on <em>your</em> website or app, on any device, at scale, without pushing your users to someone else’s service.</p>
-	<h2 id="free-encoding-free-ingestion-free-analytics-simple-per-minute-pricing-">Free encoding. Free ingestion. Free analytics. Simple per-minute pricing.</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="free-encoding-free-ingestion-free-analytics-simple-per-minute-pricing-">Free encoding. Free ingestion. Free analytics. Simple per-minute pricing.</h2><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -124,8 +123,7 @@
 				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">per minute delivered</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Other platforms charge for ingestion and encoding. Many even force you to consider where you’re streaming to and from, the bitrate and frames per second of your video, and even which of their datacenters you’re using.</p>
 	<p><strong>With Stream, encoding and ingestion are free. </strong>Other platforms charge for delivery based on bandwidth, penalizing you for delivering high quality video to your viewers. If you stream at a high resolution, you pay more.</p>
 	<p><strong>With Stream, you don’t pay a penalty for delivering high resolution video.</strong> Stream’s pricing is simple — minutes of video delivered and stored. Because you pay per minute, not per gigabyte, you can stream at the ideal resolution for your viewers without worrying about bandwidth costs.</p>
@@ -138,16 +136,14 @@
 	<p>Cloudflare Stream enables you or your users to go live using the same protocols and tools that broadcasters big and small use to go live to YouTube or Twitch, but gives you full control over access and presentation of live streams.</p>
 	<h3 id="step-1-create-a-live-input">Step 1: Create a live input</h3>
 	<p><a href="https://dash.cloudflare.com/?to=/:account/stream/inputs/create" target="_blank">Create a new live input from the Stream Dashboard</a> or use use the Stream API:</p>
-	<p><strong>Request</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Request</strong></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
 -H "Authorization: Bearer &lt;YOUR_API_TOKEN&gt;" \
 -d "{"recording": { "mode": "automatic" } }" \
 https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code>{
 "result": {
 "uid": "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",

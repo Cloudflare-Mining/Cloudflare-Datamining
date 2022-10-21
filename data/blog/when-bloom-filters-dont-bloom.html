@@ -1,9 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2020/02/bloom-filter@2x.png" alt="bloom-filter@2x"></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>I've known about <a href="https://en.wikipedia.org/wiki/Bloom_filter" target="_blank">Bloom filters</a> (named after Burton Bloom) since university, but I haven't had an opportunity to use them in anger. Last month this changed - I became fascinated with the promise of this data structure, but I quickly realized it had some drawbacks. This blog post is the tale of my brief love affair with Bloom filters.</p>
 	<p>While doing research about <a href="https://blog.cloudflare.com/the-root-cause-of-large-ddos-ip-spoofing/">IP spoofing</a>, I needed to examine whether the source IP addresses extracted from packets reaching our servers were legitimate, depending on the geographical location of our data centers. For example, source IPs belonging to a legitimate Italian ISP should not arrive in a Brazilian datacenter. This problem might sound simple, but in the ever-evolving landscape of the internet this is far from easy. Suffice it to say I ended up with many large text files with data like this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-57-10.png" alt="Screenshot-from-2020-03-01-23-57-10"></p>
@@ -11,8 +9,7 @@
 	<p>I ended up with a gigantic collection of data of this kind. At some point I counted 1 billion lines across all the harvested sources. I usually write bash scripts to pre-process the inputs, but at this scale this approach wasn't working. For example, removing duplicates from this tiny file of a meager 600MiB and 40M lines, took... about an eternity:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-25-19a.png" alt="Screenshot-from-2020-03-01-23-25-19a"></p>
 	<p>Enough to say that deduplicating lines using the usual bash commands like 'sort' in various configurations (see '--parallel', '--buffer-size' and '--unique') was not optimal for such a large data set.</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="bloomfilterstotherescue">Bloom filters to the rescue</h2>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Bloom_filter.png" alt="Bloom_filter"></p>
 	<center><small><a href="https://en.wikipedia.org/wiki/Bloom_filter#/media/File:Bloom_filter.svg" target="_blank">Image</a> by <a href="https://commons.wikimedia.org/wiki/User:David_Eppstein" target="_blank">David Eppstein</a> Public Domain</small></center>
@@ -32,8 +29,7 @@
 	<ul>
 		<li><a href="https://hur.st/bloomfilter/" target="_blank">https://hur.st/bloomfilter/</a></li>
 	</ul>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="mmuniqbloom">mmuniq-bloom</h2>
 	<p>Guided by this intuition, I set out on a journey to add a new tool to my toolbox - 'mmuniq-bloom', a probabilistic tool that, given input on STDIN, returns only unique lines on STDOUT, hopefully much faster than 'sort' + 'uniq' combo!</p>
 	<p>Here it is:</p>
@@ -49,8 +45,7 @@
 	<p>It must be my hash function. 'wc' doesn't need to spend all this CPU performing all this strange math for each of the 40M lines on input. I'm using a pretty non-trivial 'siphash24' hash function, so it surely burns the CPU, right? Let's check by running the code computing hash function but <em>not</em> doing any Bloom filter operations:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image2.png" alt="image2"></p>
 	<p>This is strange. Counting the hash function indeed costs about 2s, but the program took 12s in the previous run. The Bloom filter alone takes 10 seconds? How is that possible? It's such a simple data structure...</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="asecretweaponaprofiler">A secret weapon - a profiler</h2>
 	<p>It was time to use a proper tool for the task - let's fire up a profiler and see where the CPU goes. First, let's fire an 'strace' to confirm we are not running any unexpected syscalls:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image14.png" alt="image14"></p>
@@ -80,14 +75,12 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image12.png" alt="image12"></p>
 	<p>Ouch! That really hurt! The Bloom filter required 64 GiB of memory to get our desired false positive probability ratio of 1-error-per-10k-lines. This is terrible!</p>
 	<p>Also, it doesn't seem like we improved much. It took the OS 22 seconds to prepare memory for us, but we still burned 11 seconds in userspace. I guess this time any benefits from hitting memory less often were offset by lower cache-hit probability due to drastically increased memory size. In previous runs we required only 128MiB for the Bloom filter!</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="dumpingbloomfiltersaltogether">Dumping Bloom filters altogether</h2>
 	<p>This is getting ridiculous. To get the same false positive guarantees we either must use many hashes in Bloom filter (like 8) and therefore many memory operations, or we can have 1 hash function, but enormous memory requirements.</p>
 	<p>We aren't really constrained by available memory, instead we want to optimize for reduced memory accesses. All we need is a data structure that requires at most 1 memory miss per item, and use less than 64 Gigs of RAM...</p>
 	<p>While we could think of more sophisticated data structures like <a href="https://en.wikipedia.org/wiki/Cuckoo_filter" target="_blank">Cuckoo filter</a>, maybe we can be simpler. How about a good old simple hash table with linear probing?</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/linear-probing.png" alt="linear-probing"><br>
 		<small><a href="https://www.sysadmins.lv/blog-en/array-search-hash-tables-behind-the-scenes.aspx" target="_blank">Image</a> by <a href="https://www.sysadmins.lv/about.aspx" target="_blank">Vadims Podāns</a></small>
 	</p>
@@ -102,8 +95,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image7.png" alt="image7"></p>
 	<p>Don't be scared about the "hash conflicts" line, it just indicates how full the hash table was. We are using linear probing, so when a bucket is already used, we just pick up the next empty bucket. In our case we had to skip over 0.7 buckets on average to find an empty slot in the table. This is fine and, since we iterate over the buckets in linear order, we can expect the memory to be nicely prefetched.</p>
 	<p>From the previous exercise we know our hash function takes about 2 seconds of this. Therefore, it's fair to say 40M memory hits take around 4 seconds.</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="lessonslearned">Lessons learned</h2>
 	<p>Modern CPUs are really good at sequential memory access when it's possible to predict memory fetch patterns (see <a href="https://en.wikipedia.org/wiki/Cache_prefetching#Methods_of_hardware_prefetching" target="_blank">Cache prefetching</a>). Random memory access on the other hand is very costly.</p>
 	<p>Advanced data structures are very interesting, but beware. Modern computers require cache-optimized algorithms. When working with large datasets, not fitting L3, prefer optimizing for reduced number loads, over optimizing the amount of memory used.</p>
@@ -111,8 +103,7 @@
 	<p>Another thing is the ever-lasting discussion about hash functions. Frankly - in most cases it doesn't matter. The cost of counting even complex hash functions like 'siphash24' is small compared to the cost of random memory access. In our case simplifying the hash function will bring only small benefits. The CPU time is simply spent somewhere else - waiting for memory!</p>
 	<p>One colleague often says: "You can assume modern CPUs are infinitely fast. They run at infinite speed until they <a href="http://www.di-srv.unisa.it/~vitsca/SC-2011/DesignPrinciplesMulticoreProcessors/Wulf1995.pdf" target="_blank">hit the memory wall</a>".</p>
 	<p>Finally, don't follow my mistakes - everyone should start profiling with 'perf stat -d' and look at the "Instructions per cycle" (IPC) counter. If it's below 1, it generally means the program is stuck on waiting for memory. Values above 2 would be great, it would mean the workload is mostly CPU-bound. Sadly, I'm yet to see high values in the workloads I'm dealing with...</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="improvedmmuniq">Improved mmuniq</h2>
 	<p>With the help of my colleagues I've prepared a further improved version of the 'mmuniq' hash table based tool. See the code:</p>
 	<ul>
@@ -120,8 +111,7 @@
 	</ul>
 	<p>It is able to dynamically resize the hash table, to support inputs of unknown cardinality. Then, by using batching, it can effectively use the 'prefetch' CPU hint, speeding up the program by 35-40%. Beware, sprinkling the code with 'prefetch' rarely works. Instead, I specifically changed the flow of algorithms to take advantage of this instruction. With all the improvements I got the run time down to 2.1 seconds:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-52-18.png" alt="Screenshot-from-2020-03-01-23-52-18"></p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="theend">The end</h2>
 	<p>Writing this basic tool which tries to be faster than 'sort | uniq' combo revealed some hidden gems of modern computing. With a bit of work we were able to speed it up from more than two minutes to 2 seconds. During this journey we learned about random memory access latency, and the power of cache friendly data structures. Fancy data structures are exciting, but in practice reducing random memory loads often brings better results.</p>
 	<!--kg-card-end: markdown-->

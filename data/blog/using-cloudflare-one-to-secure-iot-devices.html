@@ -18,8 +18,7 @@
 	<p>We use our own products to isolate devices without deploying on a separate network. This provides security guarantees without requiring additional hardware. It's a severless, infrastructure-less solution to isolating a network.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
 	<p>How is this done? The hardware device (for our proof of concept, a Verkada camera) is connected to a Power over Ethernet switch, which is configured to tunnel its traffic via Anycast GRE to the Cloudflare Global network. There, we can configure rules from the Cloudflare dash to write egress rules, ensuring that outbound traffic only goes where it is supposed to. Thus, lateral movement is prevented.</p>
-	<p>This architecture allows a network administrator to control traffic from Layer 3 and up from a single dashboard by applying policies to ingress and egress traffic instantly. This architecture provides a simple set-it-and-forget-it solution that can adapt to a changing environment: protection is vendor agnostic, uses common standards, and log collection is automatic. Compared to other methods of lateral movement protection, Cloudflare provides superior ease, adaptability, and security guarantees necessary to securely manage any environment with IoT devices.</p>
-	<!--kg-card-begin: html-->
+	<p>This architecture allows a network administrator to control traffic from Layer 3 and up from a single dashboard by applying policies to ingress and egress traffic instantly. This architecture provides a simple set-it-and-forget-it solution that can adapt to a changing environment: protection is vendor agnostic, uses common standards, and log collection is automatic. Compared to other methods of lateral movement protection, Cloudflare provides superior ease, adaptability, and security guarantees necessary to securely manage any environment with IoT devices.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -156,8 +155,7 @@
 				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<h3 id="what-s-next">What's next?</h3>
 	<p>In Q4 2021, we hired a trusted pen test partner, to test this setup by replicating a rogue device attempting to pivot to production networks from behind the Cloudflare One architecture. They were unable to move laterally — as in, this architecture works.</p>
 	<p>Given that this architecture has been tested, we will begin to formalize the rollout of Cloudflare One internally at our data center sites as part of a Physical Security initiative to keep our most trusted assets secure.</p>

@@ -13,8 +13,7 @@
 	<p>Signed URLs give you the flexibility to validate if someone is a paying member using your custom logic and only give them access to the set of images they have paid for.</p>
 	<h2 id="eliminate-egress-costs">Eliminate egress costs</h2>
 	<p>Egress cost is the cost of getting your data out of a storage provider. The most common case being when you serve an image from storage you pay for the bits transmitted. And you end up paying every, single time that same image is displayed. It is easy to not account for this cost when you are doing cost-benefit analysis between different solutions. But egress costs add up rapidly, and it is not uncommon for customers to pay their storage provider a <em>very large multiple</em> of their total storage cost in egress.</p>
-	<p>When you use a multi-vendor solution for your image pipeline, you might use vendor A for storage, vendor B for resizing the images and vendor C for delivering the images. At face value, this solution might appear cheaper because you think “<em>we’ve picked the most affordable option for each piece of our image pipeline</em>.” But in this setup, the resizing service (vendor B) and the CDN (vendor C) still need to request images from vendor A.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When you use a multi-vendor solution for your image pipeline, you might use vendor A for storage, vendor B for resizing the images and vendor C for delivering the images. At face value, this solution might appear cheaper because you think “<em>we’ve picked the most affordable option for each piece of our image pipeline</em>.” But in this setup, the resizing service (vendor B) and the CDN (vendor C) still need to request images from vendor A.</p><!--kg-card-begin: markdown-->
 	<p>With Cloudflare Images, you never have to worry about egress costs because the images are stored, optimized and delivered by a single product. And you will see only two line items on your bill for Cloudflare Images. You pay \$5/month for every 100,000 stored images and \$1 per 100,000 delivered images. There are no additional resizing, compute or egress costs.</p>
 	<!--kg-card-end: markdown-->
 	<h2 id="uploading-images">Uploading Images</h2>
@@ -24,16 +23,14 @@
 		<figcaption><em>Cloudflare Images Dashboard</em></figcaption>
 	</figure>
 	<p>If you have an app that lets your users upload images, you can use the Direct Creator Uploads feature of Cloudflare Images.</p>
-	<p>The Direct Creator Uploads API lets you request single-use tokens. These one-time upload URLs can be used by your app to upload your user’s submissions without exposing your API Key or Token. Here is an example cURL that returns a one-use upload url:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The Direct Creator Uploads API lets you request single-use tokens. These one-time upload URLs can be used by your app to upload your user’s submissions without exposing your API Key or Token. Here is an example cURL that returns a one-use upload url:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --request POST \
   --url https://api.cloudflare.com/client/v4/accounts/:account_id/images/v1/direct_upload \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer :token'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If the call is successful, you’ll receive a response that looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If the call is successful, you’ll receive a response that looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
   "result": {
     "id": "2cdc28f0-017a-49c4-9ed7-87056c839c2",
@@ -52,8 +49,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-11.png" class="kg-image" alt="Configure variants in Cloudflare Images">
 		<figcaption><em>Configure variants in Cloudflare Images</em></figcaption>
 	</figure>
-	<p>You can also configure the fit property to describe how the width and height dimensions should be interpreted.</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can also configure the fit property to describe how the width and height dimensions should be interpreted.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -107,8 +103,6 @@
 		<li>Variants that add a blur effect to your images.</li>
 		<li>Analytics to better understand your use of Images.</li>
 	</ul>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

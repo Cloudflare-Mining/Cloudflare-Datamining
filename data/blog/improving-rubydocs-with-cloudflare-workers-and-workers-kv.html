@@ -13,8 +13,7 @@
 	<h3 id="enter-cloudflare-again">Enter Cloudflare, again</h3>
 	<p>And as if someone at Cloudflare had been waiting for me to ponder this problem, they <a href="https://blog.cloudflare.com/introducing-workers-kv/">launched Cloudflare KV</a>, a key-value store that can be written to via the Cloudflare API and read from within a Worker. I was dumbfounded by the coincidence. It was very obviously the best way to solve my problem — store the latest version of each project from the RubyDocs Rails app every time a new version is detected, and read it from the Worker script when a ‘latest’ request comes in.</p>
 	<p>Long story short: here is the resulting Worker script (also on <a href="https://github.com/krautcomputing/rubydocs/blob/master/lib/cloudflare_worker.js" target="_blank">GitHub</a>) and after a bit of fiddling (mostly due to my inexperience with JavaScript), everything is working smoothly. </p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -52,8 +51,7 @@ async function handleRequest(request) {
   return response;
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><small><em>NOTE: <code>LATEST</code> is the name of the author's KV namespace and is not a default for Workers KV</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p>I have submitted a request to DuckDuckGo to use the new ‘latest’ URLs for the <a href="https://duckduckgo.com/bang?q=rubydocs" target="_blank">!rubydocs and !rb bangs</a>, but so far they still forward to an older version.</p>

@@ -21,8 +21,7 @@
 	<p>Bien que le nombre de paquets par seconde ne soit pas si impressionnant, la bande passante générée l'est :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-gpb.png" class="kg-image"></figure>
 	<p></p>
-	<p>Au plus fort, nous avons vu 260 Gbits/s de trafic memcached UDP entrant. C’est énorme pour un nouveau vecteur d’amplification. Mais les chiffres ne mentent pas. Cela est rendu possible par le fait que tous les paquets réfléchis sont très volumineux. Voici à quoi cela ressemble dans tcpdump :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Au plus fort, nous avons vu 260 Gbits/s de trafic memcached UDP entrant. C’est énorme pour un nouveau vecteur d’amplification. Mais les chiffres ne mentent pas. Cela est rendu possible par le fait que tous les paquets réfléchis sont très volumineux. Voici à quoi cela ressemble dans tcpdump :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
 IP 87.98.205.10.11211 &gt; 104.28.1.1.1635: UDP, length 13
 IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
@@ -40,8 +39,7 @@ IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13
 	<h3 id="memcached-utilise-le-protocole-udp"><strong>Memcached utilise le protocole UDP ?</strong></h3>
 	<p>J'ai été surpris d'apprendre que memcached utilise le protocole UDP, mais c'est le cas. Les <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">spécifications du protocole</a> montrent qu’il est l’un des <em>meilleurs protocoles pour l'amplification</em> ! Il n'y a absolument aucun contrôle, et les données &nbsp;<em>seront</em> transmises au client, à une vitesse fulgurante ! De plus, la requête peut être minuscule et la réponse énorme (jusqu'à 1 Mo).</p>
 	<p>Ce type d'attaque est facile à lancer. Tout d'abord, l'assaillant impose une charge utile importante à un serveur memcached vulnérable. Ensuite, l'attaquant falsifie le message de requête GET avec l'IP source cible.</p>
-	<p>L'exécution synthétique avec Tcpdump montre le trafic :</p>
-	<!--kg-card-begin: markdown-->
+	<p>L'exécution synthétique avec Tcpdump montre le trafic :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo tcpdump -ni eth0 port 11211 -t
 IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
 IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
@@ -53,8 +51,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<h3 id="adresses-ip-sources"><strong>Adresses IP sources</strong></h3>
 	<p>Les serveurs memcached vulnérables sont répartis dans le monde entier, avec une plus forte concentration en Amérique du Nord et en Europe. Voici une carte des adresses IP sources que nous avons repérées dans chacun de nos quelques 120 points de présence :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-map2.png" class="kg-image"></figure>
-	<p>Il est intéressant de noter que nos centres de traitement de données de Newark, Hambourg et Hong-Kong enregistrent un nombre anormalement élevé d'adresses IP corrompues. Cela s'explique par le fait que la plupart des serveurs vulnérables sont situés dans de grands fournisseurs d'hébergement. Numéros AS des adresses IP que nous avons vues.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Il est intéressant de noter que nos centres de traitement de données de Newark, Hambourg et Hong-Kong enregistrent un nombre anormalement élevé d'adresses IP corrompues. Cela s'explique par le fait que la plupart des serveurs vulnérables sont situés dans de grands fournisseurs d'hébergement. Numéros AS des adresses IP que nous avons vues.</p><!--kg-card-begin: markdown-->
 	<pre><code>┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
 │ 578 │ AS16276 │ OVH                                          │
 │ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
@@ -92,8 +89,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<ul>
 		<li><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp" target="_blank">https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></li>
 	</ul>
-	<p>Vous pouvez facilement tester si votre serveur est vulnérable en exécutant la commande :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous pouvez facilement tester si votre serveur est vulnérable en exécutant la commande :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
 STAT pid 21357
 STAT uptime 41557034
@@ -103,8 +99,7 @@ STAT time 1519734962
 	<!--kg-card-end: markdown-->
 	<p>Si vous obtenez une réponse non vide (comme celle ci-dessus), votre serveur est vulnérable.</p>
 	<h4 id="administrateurs-syst-me"><strong>Administrateurs système</strong></h4>
-	<p>Assurez-vous que vos serveurs memcached sont protégés par un pare-feu ! Pour vérifier s'il est possible d'y accéder par le protocole UDP, je recommande l'exemple ncci-dessus, pour vérifier si le protocole TCP est fermé, exécutez nmap :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Assurez-vous que vos serveurs memcached sont protégés par un pare-feu ! Pour vérifier s'il est possible d'y accéder par le protocole UDP, je recommande l'exemple ncci-dessus, pour vérifier si le protocole TCP est fermé, exécutez nmap :</p><!--kg-card-begin: markdown-->
 	<pre><code>$ nmap TARGET -p 11211 -sU -sS --script memcached-info
 Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
 Nmap scan report for xxxx

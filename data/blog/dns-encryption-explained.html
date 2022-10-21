@@ -70,8 +70,7 @@
 		<li>Off: DNS will not be encrypted.</li>
 		<li>Opportunistic mode: try to use a secure transport for DNS, but fallback to unencrypted DNS if the former is unavailable. This mode is vulnerable to downgrade attacks where an attacker can force a device to use unencrypted DNS. It aims to offer privacy when there are no on-path active attackers.</li>
 		<li>Strict mode: try to use DNS over a secure transport. If unavailable, fail hard and show an error to the user.</li>
-	</ul>
-	<!--kg-card-begin: html-->
+	</ul><!--kg-card-begin: html-->
 	<p>The current state for system-wide configuration of DNS over a secure transport:</p>
 	<ul>
 		<li style="padding-bottom:0">Android 9: <a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">supports</a> DoT through its “Private DNS” feature. Modes:
@@ -93,9 +92,7 @@
 		<li>
 			Linux, macOS, and Windows can <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">use</a> a DoH client in strict mode. The <code>cloudflared proxy-dns</code> command uses the Cloudflare DNS resolver by default, but users can override it through the proxy-dns-upstream option.
 		</li>
-	</ul>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: markdown-->
+	</ul><!--kg-card-end: html--><!--kg-card-begin: markdown-->
 	<p>Web browsers support DoH instead of DoT:</p>
 	<ul>
 		<li>Firefox 62 <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https" target="_blank">supports</a> DoH and provides several <a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver" target="_blank">Trusted Recursive Resolver (TRR)</a> settings. By default DoH is disabled, but Mozilla is running an <a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default/" target="_blank">experiment</a> to enable DoH for some users in the USA. This experiment currently uses Cloudflare's 1.1.1.1 resolver, since we are the only provider that currently satisfies the <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">strict resolver policy</a> required by Mozilla. Since many DNS resolvers still do not support an encrypted DNS transport, Mozilla's approach will ensure that more users are protected using DoH.

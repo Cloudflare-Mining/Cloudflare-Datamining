@@ -27,8 +27,7 @@
 	</ul>
 	<p>Cloudflare does not use the <code>proxy_request_buffering</code> directive, so it can be immediately discounted. &nbsp;<code>client_body_buffer_size</code> is the size of the request body buffer which is used regardless of the protocol, so this one applies to HTTP/1.1 and HTTP/2 as well.</p>
 	<p>When looking into the code, here is how it works:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Screen-Shot-2020-08-10-at-3.51.05-PM.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Screen-Shot-2020-08-10-at-3.51.05-PM.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<ul>
 		<li>HTTP/1.1: use <code>client_body_buffer_size</code> buffer as a buffer between upstream and the client, simply repeating reading and writing using this buffer.</li>
 		<li>HTTP/2: since we need a flow control window update for the HTTP/2 DATA frame, there are two parameters:

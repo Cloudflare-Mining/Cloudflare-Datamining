@@ -48,11 +48,9 @@ Host cfpipe-vm.example.com
     IdentityFile ~/.cloudflared/vm.example.com-cf_key
     CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</code></pre>
 	<p>Les utilisateurs doivent ajouter ces données à leur fichier de configuration SSH. Une fois celui-ci enregistré, ils peuvent se connecter à la ressource protégée via SSH. Access leur demandera de se connecter avec leurs identifiants SSO dans le navigateur, de la même manière qu'ils se connectent à tout autre outil du navigateur. S'ils ont déjà une session de navigation active avec leurs identifiants, ils verront simplement une page de confirmation.</p>
-	<p>Dans leur appareil, <code>cloudflared</code> créera la session et délivrera le certificat client correspondant à leur identité.</p>
-	<!--kg-card-begin: html-->
+	<p>Dans leur appareil, <code>cloudflared</code> créera la session et délivrera le certificat client correspondant à leur identité.</p><!--kg-card-begin: html-->
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script>
-	<!--kg-card-end: html-->
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
 	<h2 id="et-ensuite"><strong>Et ensuite ?</strong></h2>
 	<p>Avec des certificats de courte durée, Access peut devenir une passerelle unique intégrant le SSO pour votre équipe et votre infrastructure dans n’importe quel environnement. Les utilisateurs peuvent utiliser SSH directement sur une machine donnée et les administrateurs peuvent remplacer complètement leurs serveurs intermédiaires (jumphosts), en supprimant cette surcharge. La fonctionnalité est disponible aujourd'hui pour tous les clients d’Access. Vous pouvez débuter en vous référant au manuel disponible <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">ici</a>.</p>
 </div>

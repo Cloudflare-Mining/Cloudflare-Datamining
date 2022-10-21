@@ -18,13 +18,11 @@
 	<p>Outside of basic HTTP traffic handling there are many other uses for these response headers. One such example is to improve <em>security</em>. Security mechanisms such as Content Security Policy (CSP), Cross Origin Resource Sharing (CORS) and HTTP Strict Transport Security (HSTS) are all implemented as response headers to improve and harden security for website visitors.</p>
 	<p>For example, the primary goal of CSP is to mitigate and report Cross-Site Scripting (XSS) attacks. XSS attacks occur when a malicious script is injected into a trusted website, allowing an attacker to use an application to send malicious code such as a browser-side script to a different end user. This script can then be used to compromise the end user’s interactions with the website or application, siphoning sensitive information such as passwords to a third party.</p>
 	<p>To prevent this, CSP is added by the website administrator as a HTTP response header. The CSP response header specifies the domains that the browser should consider to be valid sources of executable scripts. A <a href="https://content-security-policy.com/" target="_blank">CSP compatible browser</a> will then only execute scripts loaded in files received from those permitted domains, ignoring all other scripts.</p>
-	<p>CSP is added to the HTTP response by setting the ‘Content-Security-Policy’ header along with the policy which is contained in the value. For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server, the administrator would have a line in the config similar to:</p>
-	<!--kg-card-begin: markdown-->
+	<p>CSP is added to the HTTP response by setting the ‘Content-Security-Policy’ header along with the policy which is contained in the value. For example, when using NGINX, a <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">popular</a> web server, the administrator would have a line in the config similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>add_header Content-Security-Policy "default-src 'self';" always;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When using <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When using <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>response.headers.set("Content-Security-Policy": "default-src 'self' example.com *.example.com",)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -58,10 +56,8 @@
 	<p>This allows administrators the ability to implement setups such as having a stricter Content Security Policy for <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription#verified-bots" target="_blank">verified</a> bots vs unverified bots/low bot score traffic.</p>
 	<h2 id="try-it-now">Try it now</h2>
 	<p>HTTP Response Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com/" target="_blank">Transform Rule</a> yourself today.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

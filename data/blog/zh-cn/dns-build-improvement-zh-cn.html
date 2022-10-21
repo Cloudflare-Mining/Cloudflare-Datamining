@@ -52,8 +52,7 @@
 	<p>当我们比较如下所示的两种构建类型时，我们可以看到按记录构建平均比完整构建快 <strong>150 倍</strong>。下面的构建时间包括数据库查询时间和 Quicksilver 写入时间。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-51.png" class="kg-image"></figure>
 	<p>从那里，我们的记录通过 Quicksilver 传播到我们的全球网络。 </p>
-	<p>上面 150 倍的提升是相对于平均值而言的，但是我一开始提到的 4000 倍呢？可以想象，随着区域大小的增加，完整构建时间和按记录构建时间之间的差异也会增加。我使用了一个包含一百万条记录的测试区，并运行了几次按记录构建，然后运行了几次完整构建。结果如下表所示：</p>
-	<!--kg-card-begin: markdown-->
+	<p>上面 150 倍的提升是相对于平均值而言的，但是我一开始提到的 4000 倍呢？可以想象，随着区域大小的增加，完整构建时间和按记录构建时间之间的差异也会增加。我使用了一个包含一百万条记录的测试区，并运行了几次按记录构建，然后运行了几次完整构建。结果如下表所示：</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

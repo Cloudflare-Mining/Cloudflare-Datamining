@@ -16,8 +16,7 @@
 	<h3 id="s3-api">S3互換性API</h3>
 	<p>S3互換APIの場合、認証はS3と同じ方法で行われます。すなわち、署名バージョン4（SigV4）とR2のURLを照合する形です。SigV4は秘密鍵を使ってリクエストに署名し、R2に対して認証します。つまり、インターネットを介したR2へのパブリックアクセスは現在、WorkerをホストしてR2へ接続し、R2経由でリクエストをルーティングする方法でのみ可能になっています。</p>
 	<p>S3互換APIの最も簡単なテスト方法は、S3クライアントを使うことです。最もよく使われるS3クライアントの1つが<a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> SDKです。</p>
-	<p>Pythonで次のスクリプトをコピーし、<code>account_id</code>、<code>access_key</code>、<code>secret_access_key</code>のフィールドにR2アカウントの資格情報を入力します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pythonで次のスクリプトをコピーし、<code>account_id</code>、<code>access_key</code>、<code>secret_access_key</code>のフィールドにR2アカウントの資格情報を入力します。</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
 

@@ -7,8 +7,7 @@
 	<h2 id="how-apt-get-works">How apt-get works</h2>
 	<p>Let’s see what happens when you run something like this on your terminal.</p>
 	<pre><code>$ apt-get install cloudflared</code></pre>
-	<p>Let’s also assume that apt sources were already added like so:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s also assume that apt sources were already added like so:</p><!--kg-card-begin: markdown-->
 	<pre><code>  $ echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared buster main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
 
 
@@ -16,8 +15,7 @@ $ apt-get update
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>From the source.list above, apt first looks up the <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/Release" target="_blank">Release</a> file (or <a href="https://pkg.cloudflare.com/cloudflared/dists/buster/InRelease" target="_blank">InRelease</a> if it’s a signed package like cloudflared, but we will ignore this for the sake of simplicity). </p>
-	<p>A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>A Release file contains a list of supported architectures and their md5, sha1 and sha256 checksums. It looks something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ curl https://pkg.cloudflare.com/cloudflared/dists/buster/Release
 Origin: cloudflared
 Label: cloudflared

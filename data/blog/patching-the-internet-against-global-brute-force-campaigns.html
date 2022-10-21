@@ -24,8 +24,7 @@
 		<li>Plone</li>
 		<li>Microsoft Exchange</li>
 	</ul>
-	<p>When turned on, whenever a compromised credential is detected the following header will be added to the request to the origin server:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When turned on, whenever a compromised credential is detected the following header will be added to the request to the origin server:</p><!--kg-card-begin: markdown-->
 	<pre><code>Exposed-Credential-Check: 1
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -42,8 +41,7 @@
 		<li>Improved rule <code>100197</code></li>
 		<li>Added a new rule <code>100197B</code> (default disabled)</li>
 	</ul>
-	<p>These rules will match against request payloads that contain the reGeorg shell variant mentioned in the report. The rule improvements were based on, but not limited to, the Yara rule found in the security advisory. In summary the rule will block payloads which contain the following signatures and similar variations:</p>
-	<!--kg-card-begin: markdown-->
+	<p>These rules will match against request payloads that contain the reGeorg shell variant mentioned in the report. The rule improvements were based on, but not limited to, the Yara rule found in the security advisory. In summary the rule will block payloads which contain the following signatures and similar variations:</p><!--kg-card-begin: markdown-->
 	<pre><code>%@ Page Language=C#
 StrTr
 System.Net.IPEndPoint

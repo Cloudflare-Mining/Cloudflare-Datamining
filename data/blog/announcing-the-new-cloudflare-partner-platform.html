@@ -6,8 +6,7 @@
 	<p>As the team started to develop a new solution, we needed to find a partner who could keep us on the right path. The number of hypotheticals were infinite and we needed a first customer to ground ourselves. Lo and behold, not long after I had begun putting pen to paper, we found the perfect partner for the new platform.</p>
 	<h3 id="the-ibm-partnership">The IBM Partnership</h3>
 	<p>IBM was looking for a partner to bring various edge services to market quickly, and our suite of capabilities was what they were looking for. If you are not familiar with our partnership with IBM, you can learn a bit more about it in our <a href="https://blog.cloudflare.com/ibm-cloud-and-cloudflare/">blog post</a> and on the <a href="https://www.ibm.com/cloud/cloud-internet-services" target="_blank">IBM Cloud Internet Services landing page</a>. We signed the contract in November 2017, and we had to be ready to launch by IBM Think the following February. Given that IBM’s engineering team needed time to integrate with us, we were on a tight timeline to deliver.</p>
-	<p>A number of team members and I jumped on a plane and flew to Austin, Texas (Hook ‘em!) to work with IBM and determine the minimum viable product (MVP). Over kolaches (for the Czech readers at home: <a href="https://en.wikipedia.org/wiki/Klob%C3%A1sn%C3%ADk" target="_blank">Klobásník</a>), IBM and Cloudflare nailed down the MVP requirements. Briefly, they were as follows:</p>
-	<!--kg-card-begin: html-->
+	<p>A number of team members and I jumped on a plane and flew to Austin, Texas (Hook ‘em!) to work with IBM and determine the minimum viable product (MVP). Over kolaches (for the Czech readers at home: <a href="https://en.wikipedia.org/wiki/Klob%C3%A1sn%C3%ADk" target="_blank">Klobásník</a>), IBM and Cloudflare nailed down the MVP requirements. Briefly, they were as follows:</p><!--kg-card-begin: html-->
 	<p>
 		<font size="+1">
 		</font>
@@ -44,20 +43,17 @@
 	</ol>
 	<font size="+1">
 	</font>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>Over the next couple of months, many teams at Cloudflare came together to deliver this solution at breakneck speed. Given that the midpoint of this effort happened over the holiday season, I’m personally proud of our company not sacrificing employee’s time with their friends and families in order to deliver. Even when it feels like a sprint, it is still a marathon.</p>
 	<p>During this time, the engineering team we were working with at IBM felt like another team at Cloudflare. Their ability to move quickly, integrate, and validate our work was critical to the success of the project. At THINK in February 2018, we were able to announce the Beta of IBM CIS (Cloud Internet Services) powered by Cloudflare!</p>
 	<p>Following the initial release, we continued to add functionality to further enrich the IBM CIS offering, while behind the scenes we continued our work to redefine Cloudflare’s partner platform.</p>
 	<h3 id="the-new-partner-platform">The New Partner Platform</h3>
 	<p>Over the past year we have expanded the capabilities and completed the necessary work to enable more partners to be able to use what we initially built for the IBM partnership. Out of that comes our new partner platform we are announcing today. The new partner platform allows partners of Cloudflare to sell and provision Cloudflare for their customers in a scalable fashion.</p>
-	<p>Our new partner platform is the combination of two systems designed to fulfill specific needs:</p>
-	<!--kg-card-begin: html-->
+	<p>Our new partner platform is the combination of two systems designed to fulfill specific needs:</p><!--kg-card-begin: html-->
 	<p>
 		1. Tenants: an abstraction on top of our existing accounts and users for easier management<br>
 		2. Subscriptions: a new way of packaging and provisioning services<br>
-	</p>
-	<!--kg-card-end: html-->
+	</p><!--kg-card-end: html-->
 	<h4 id="tenants">Tenants</h4>
 	<p>An absolute necessity for partners is the ability to provision accounts for each of their customers. Normally the only way to get a Cloudflare account is to sign up on the dashboard. We needed a way for partners to be able to create end customer accounts at their discretion to support their specific onboarding needs. This also ensures proper separation of ownership between customers and allows end customers to access the Cloudflare dashboard directly.</p>
 	<p>With the introduction of tenants, our data model now looks like the following:</p>
@@ -83,8 +79,7 @@
 	<h4 id="1-provisioning-customer-accounts">1) Provisioning Customer Accounts</h4>
 	<p>When onboarding customers, you want each to have their own Cloudflare account. This ensures one customer can not affect any resources belonging to another. By making a `POST /accounts` request, you can create an account for an individual customer.</p>
 	<p>Request:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
     https://api.cloudflare.com/client/v4/accounts \
     -H 'Content-Type: application/json' \
@@ -97,8 +92,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Response:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>{
     "result": {
         "id": "2bab6ace8c72ed3f09b9eca6db1396bb",
@@ -119,8 +113,7 @@
 	<h4 id="2-granting-customer-access">2) Granting Customer Access</h4>
 	<p>Now that the customer’s account is created, let’s give them access to it. This step uses existing APIs and if you have shared access to a Cloudflare account before, then you have already done this.</p>
 	<p>Request:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
     'https://api.cloudflare.com/client/v4/accounts/2bab6ace8c72ed3f09b9eca6db1396bb/members' \
     -H 'Content-Type: application/json' \
@@ -134,8 +127,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Response:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>{
     "result": {
         "id": "47bd8083af8516a20c410090d2f53655",
@@ -178,8 +170,7 @@
 	<p>Now the fun part! With the ability to provision subscriptions, you can enable paid services for your customers. Before we do that though, we will create a zone so we can attach a zone subscription to it.</p>
 	<p>Adding a zone as a partner is no different than adding a zone as a regular customer. It can also be done by the customer.</p>
 	<p>Request:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
     https://api.cloudflare.com/client/v4/zones \
     -H 'Content-Type: application/json' \
@@ -192,8 +183,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Response:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>{
     "result": {
         "id": "cae181e41197e2eb875d9bcb9396abe7",
@@ -256,8 +246,7 @@
 	<p></p>
 	<p>For this customer we will provision a Pro plan for the newly created zone. If you are not familiar with our zone plans, then you can read about them <a href="https://www.cloudflare.com/plans/" target="_blank">here</a>. For this, we make a call to the subscriptions service.</p>
 	<p>Request:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
     https://api.cloudflare.com/client/v4/zones/cae181e41197e2eb875d9bcb9396abe7/subscription \
   -H 'Content-Type: application/json' \
@@ -270,8 +259,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Response:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>{
     "success": true,
     "result": {

@@ -14,8 +14,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/Screen-Shot-2020-03-19-at-12.22.55.png" class="kg-image"></figure>
 	<h3 id="keepalives">Keepalives</h3>
 	<p>Requests come over connections that are reused for performance reasons, which is sometimes referred to as “keepalive”. It's generally expensive for a client to open a new TCP connection and our servers keep some memory pools associated with connections that need to be recycled. In fact, one of the range of mitigations we use for attack traffic is disabling keepalives for abusive clients, forcing them to reopen connections, which slows them down considerably.</p>
-	<p>To illustrate the usefulness of keepalives, here's me requesting <a href="http://example.com/" target="_blank">http://example.com/</a> from curl over the same connection:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To illustrate the usefulness of keepalives, here's me requesting <a href="http://example.com/" target="_blank">http://example.com/</a> from curl over the same connection:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">$ curl -s -w "Time to connect: %{time_connect} Time to first byte: %{time_starttransfer}\n" -o /dev/null http://example.com/ -o /dev/null http://example.com/
 
 Time to connect: 0.012108 Time to first byte: 0.018724
@@ -25,8 +24,7 @@ Time to connect: 0.000019 Time to first byte: 0.007391</code></pre>
 	<p>Keepalives tend to be used extensively, because they seem beneficial. Generally keepalives are enabled by default for this exact reason.</p>
 	<h3 id="taking-all-the-load">Taking all the load</h3>
 	<p>Due to how Linux works (see the first link in this blog post), most of the load goes to a few workers out of the pool. When that worker is not able to accept() a pending connection because it's busy processing requests, that connection spills to another worker. The process cascades until some worker is ready to pick up.</p>
-	<p>This leaves us with a ladder of load spread between workers:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This leaves us with a ladder of load spread between workers:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">               CPU%                                       Runtime
 nobody    4254 51.2  0.8 5655600 1093848 ?     R    Aug23 3938:34 nginx: worker process
 nobody    4257 47.9  0.8 5615848 1071612 ?     S    Aug23 3682:05 nginx: worker process
@@ -46,8 +44,7 @@ nobody    4243 16.6  0.7 5529232 1024268 ?     S    Aug23 1281:55 nginx: worker 
 nobody    4242 16.6  0.7 5537956 1038408 ?     R    Aug23 1278:40 nginx: worker process
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The third column is instant CPU%, the time after the date is total on-CPU time. If you look at the the same processes and count their open sockets, you'll see this (using the same order of processes as above):</p>
-	<!--kg-card-begin: markdown-->
+	<p>The third column is instant CPU%, the time after the date is total on-CPU time. If you look at the the same processes and count their open sockets, you'll see this (using the same order of processes as above):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">4254 2357
 4257 1833
 4253 2180
@@ -82,8 +79,7 @@ nobody    4242 16.6  0.7 5537956 1038408 ?     R    Aug23 1278:40 nginx: worker 
 	</ul>
 	<p>The former is the most important part.</p>
 	<h3 id="validating-the-hypothesis">Validating the hypothesis</h3>
-	<p>To validate this assumption, I wrote the following program:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To validate this assumption, I wrote the following program:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">package main
  
 import (
@@ -146,8 +142,7 @@ func main() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The program connects to a requested URL and recycles the connection after X requests have completed. We also pause for a short time between requests.</p>
-	<p>If we close a connection after every request:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If we close a connection after every request:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">$ go run /tmp/main.go -url http://test.domain/cdn-cgi/trace -count 10000 -pause 5ms -threshold 20ms -close 1
 2018/08/24 23:42:34 Request 453 took 32ms
 2018/08/24 23:42:38 Request 1044 took 24ms
@@ -160,8 +155,7 @@ func main() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We request an endpoint that's served in FL by Lua, so seeing any slow requests is unfortunate. There's an element of luck in this game and our program sees no cooperation from eyeballs or SSL, so it's somewhat expected.</p>
-	<p>Now, if we start closing the connection only after every other request, the situation immediately gets a lot worse:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now, if we start closing the connection only after every other request, the situation immediately gets a lot worse:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">$ go run /tmp/main.go -url http://teste1.cfperf.net/cdn-cgi/trace -count 10000 -pause 5ms -threshold 20ms -close 2
 2018/08/24 23:43:51 Request 162 took 22ms
 2018/08/24 23:43:51 Request 220 took 21ms

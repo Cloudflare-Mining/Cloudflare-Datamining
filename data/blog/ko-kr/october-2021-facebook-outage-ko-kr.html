@@ -17,8 +17,7 @@
 	<p>Cloudflare의 <a href="https://www.cloudflare.com/learning/" target="_blank">학습 센터</a>에는 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 및 <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a>에 대한 개요와 이들의 작동 방식에 대한 좋은 자료가 있습니다.</p>
 	<p>아래의 단순화된 다이어그램에는 인터넷상의 6개의 자율 시스템이 표시되어 있으며, 하나의 패킷이 시작에서 끝으로 이동하는 데 사용하고 있는 두 개의 경로가 나타나 있습니다. AS1 → AS2 → AS3 경로가 가장 빠르고 AS1 → AS6 → AS5 → AS4 → AS3 경로는 가장 느리지만, 첫 번째 경로에서 실패할 경우 이 경로를 이용할 수도 있습니다.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image11-3.png" class="kg-image"></figure>
-	<p>협정 세계시(UTC) 기준 15시 58분경에 Cloudflare는 Facebook이 Facebook의 DNS 접두사에 대한 경로 발표를 중단했음을 알게 됐습니다. 즉, Facebook의 DNS 서버가 가용 상태에 있지 않다는 의미입니다. 따라서 Cloudflare의 1.1.1.1 DNS 확인자가 facebook.com의 IP 주소를 묻는 쿼리에 응답할 수 없었던 것입니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>협정 세계시(UTC) 기준 15시 58분경에 Cloudflare는 Facebook이 Facebook의 DNS 접두사에 대한 경로 발표를 중단했음을 알게 됐습니다. 즉, Facebook의 DNS 서버가 가용 상태에 있지 않다는 의미입니다. 따라서 Cloudflare의 1.1.1.1 DNS 확인자가 facebook.com의 IP 주소를 묻는 쿼리에 응답할 수 없었던 것입니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -28,8 +27,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>한편 Facebook의 다른 IP 주소들은 경로가 유지됐지만, DNS가 없이는 Facebook 및 관련 서비스를 결과적으로 이용할 수 없었기 때문에 이는 도움이 되지 않았습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>한편 Facebook의 다른 IP 주소들은 경로가 유지됐지만, DNS가 없이는 Facebook 및 관련 서비스를 결과적으로 이용할 수 없었기 때문에 이는 도움이 되지 않았습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -53,8 +51,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9-4.png" class="kg-image"></figure>
 	<p>경로를 철회함으로써 Facebook을 비롯한 관련 사이트들은 인터넷으로부터 스스로 자신들을 끊어버린 결과에 이르게 된 것입니다.</p>
 	<h3 id="dns-">DNS에 미친 영향</h3>
-	<p>이번 사고로 인하여 전 세계의 DNS 확인자들이 Facebook 및 관련 서비스의 도메인 이름을 확인하지 못하게 되었습니다.</p>
-	<!--kg-card-begin: markdown-->
+	<p>이번 사고로 인하여 전 세계의 DNS 확인자들이 Facebook 및 관련 서비스의 도메인 이름을 확인하지 못하게 되었습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

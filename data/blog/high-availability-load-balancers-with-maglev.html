@@ -39,8 +39,7 @@
 	<p>Our load balancer and application servers are spread across multiple racks and subnets. To route traffic from the load balancer we opted to use Foo-Over-UDP encapsulation.</p>
 	<p>In Foo-Over-UDP encapsulation a new IP and UDP header are added around the original packet. When these packets arrive on the destination server, the Linux kernel removes the outer IP and UDP headers and inserts the inner payload back into the networking stack for processing as if the packet had originally been received on that server.</p>
 	<p>Compared to other encapsulation methods—such as IPIP, GUE, and GENEVE—we felt Foo-Over-UDP struck a nice balance between features and flexibility. Direct Server Return, where application servers reply directly to clients and bypass the load balancers, was implemented as a byproduct of the encapsulation. There was no state associated with the encapsulation, each server only required one encapsulation interface to receive traffic from all load balancers.</p>
-	<p><strong>Example Load Balancer Configuration</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Example Load Balancer Configuration</strong></p><!--kg-card-begin: markdown-->
 	<pre><code># Load in the kernel modules required for IPVS and FOU.
 $ modprobe ip_vs &amp;&amp; modprobe ip_vs_mh &amp;&amp; modprobe fou
 
@@ -68,8 +67,7 @@ $ ipvsadm -A -t 198.51.100.1:80 -s mh
 $ ipvsadm -a -t 198.51.100.1:80 -r 203.0.113.1:80
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Example Application Server Configuration</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Example Application Server Configuration</strong></p><!--kg-card-begin: markdown-->
 	<pre><code># The kernel module may need to be loaded.
 $ modprobe fou
 
@@ -94,8 +92,7 @@ $ sysctl -w net.ipv4.conf.all.rp_filter=0
 	<p>We've written a Go agent running on each load balancer that synchronizes with a control plane layer that's tracking the location of services. The agent then configures the system based on active services and available backend servers.</p>
 	<p>To configure IPVS and the routing table we're using packages built upon the <a href="https://github.com/mdlayher/netlink" target="_blank">netlink</a> Go package. We're <a href="https://github.com/cloudflare/ipvs" target="_blank">open sourcing</a> the IPVS netlink package we built today, which supports querying, creating and updating IPVS virtual servers, destinations, and statistics.</p>
 	<p>Unfortunately, there is no official programming interface for iptables, so we must instead execute the iptables binary. The agent computes an ideal set of iptables chains and rules, which is then reconciled with the live rules.</p>
-	<p><strong>Subset of iptables for a service</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Subset of iptables for a service</strong></p><!--kg-card-begin: markdown-->
 	<pre><code>*filter
 -A INPUT -d 198.51.100.0/24 -m comment --comment \
 "leif:nhAi5v93jwQYcJuK" -j LEIFUR-LB

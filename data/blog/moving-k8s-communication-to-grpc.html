@@ -15,8 +15,7 @@
 	<p>Often overlooked from a developer’s perspective, HTTP client libraries are clunky and require code that defines paths, handles parameters, and deals with responses in bytes. gRPC abstracts all of this away and makes network calls feel like any other function calls defined for a struct.</p>
 	<p>The example below shows a very basic schema to set up a GRPC client/server system. As a result of gRPC using <a href="https://developers.google.com/protocol-buffers" target="_blank">protobuf</a> for serialization, it is largely language agnostic. Once a schema is defined, the <em>protoc</em> command can be used to generate code for <a href="https://grpc.io/docs/languages/" target="_blank">many languages</a>.</p>
 	<p>Protocol Buffer data is structured as <em>messages, </em>with each <em>message</em> containing information stored in the form of fields. The fields are strongly typed, providing type safety unlike JSON or XML. Two messages have been defined, <em>Hello </em>and <em>HelloResponse</em>. Next we define a service called <em>HelloWorldHandler</em> which contains one RPC function called <em>SayHello</em> that must be implemented if any object wants to call themselves a <em>HelloWorldHandler</em>.</p>
-	<p>Simple Proto:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Simple Proto:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">message Hello{
    string Name = 1;
 }
@@ -30,8 +29,7 @@ service HelloWorldHandler {
 	<!--kg-card-end: markdown-->
 	<p>Once we run our <em>protoc</em> command, we are ready to write the server-side code. In order to implement the <em>HelloWorldHandler</em>, we must define a struct that implements all of the RPC functions specified in the protobuf schema above<em>. </em>In this case, the struct <em>Server</em> defines a function <em>SayHello </em>that takes in two parameters, context and <em>*pb.Hello</em>. <em>*pb.Hello </em>was previously specified in the schema and contains one field, <em>Name. SayHello</em> must also return the <em>*pbHelloResponse</em> which has been defined without fields for simplicity.</p>
 	<p>Inside the main function, we create a TCP listener, create a new gRPC server, and then register our handler as a <em>HelloWorldHandlerServer</em>. After calling <em>Serve</em> on our gRPC server, clients will be able to communicate with the server through the function <em>SayHello</em>.</p>
-	<p>Simple Server:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Simple Server:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">type Server struct{}
 
 func (s *Server) SayHello(ctx context.Context, in *pb.Hello) (*pb.HelloResponse, error) {
@@ -54,8 +52,7 @@ func main() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Finally, we need to implement the gRPC Client. First, we establish a TCP connection with the server. Then, we create a new <em>pb.HandlerClient</em>. The client is able to call the server's <em>SayHello</em> function by passing in a *<em>pb.Hello</em> object.</p>
-	<p>Simple Client:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Simple Client:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">conn, err := gRPC.Dial("127.0.0.1:8080", gRPC.WithInsecure())
 if err != nil {
     panic(err)
@@ -81,8 +78,7 @@ client.SayHello(context.Background(), &amp;pb.Hello{Name: "alex"})
 	<p>Combining the benefits of HTTP/2 and protobuf showed almost no performance change from our application’s point of view. This is likely due to the fact that our pods were already so close together that our connection times were already very low. In addition, most of our gRPC calls are done with small amounts of data where the difference is negligible. One thing that we did notice <strong>— </strong>likely related to the multiplexing of HTTP/2 <strong>— </strong>was greater efficiency when writing newly created/edited/deleted records to the edge. Our latency spikes dropped in both amplitude and frequency.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-19.png" class="kg-image" alt="Our latency spikes dropped in both amplitude and frequency."></figure>
 	<h3 id="grpc-security">gRPC Security</h3>
-	<p>One of the best features in Kubernetes is the NetworkPolicy. This allows developers to control what goes in and what goes out.</p>
-	<!--kg-card-begin: markdown-->
+	<p>One of the best features in Kubernetes is the NetworkPolicy. This allows developers to control what goes in and what goes out.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -130,8 +126,7 @@ spec:
 	<ul>
 		<li>Any dest IP address in 10.0.0.0/24</li>
 	</ul>
-	<p>NetworkPolicies do a fantastic job of protecting APIs at the network level, however, they do nothing to protect APIs at the application level. If you wanted to control which endpoints can be accessed within the API, you would need k8s to be able to not only distinguish between pods, but also endpoints within those pods. These concerns led us to <a href="https://grpc.io/docs/guides/auth/" target="_blank">per RPC credentials</a>. Per RPC credentials are easy to set up on top of the pre-existing gRPC code. All you need to do is add interceptors to both your stream and unary handlers.</p>
-	<!--kg-card-begin: markdown-->
+	<p>NetworkPolicies do a fantastic job of protecting APIs at the network level, however, they do nothing to protect APIs at the application level. If you wanted to control which endpoints can be accessed within the API, you would need k8s to be able to not only distinguish between pods, but also endpoints within those pods. These concerns led us to <a href="https://grpc.io/docs/guides/auth/" target="_blank">per RPC credentials</a>. Per RPC credentials are easy to set up on top of the pre-existing gRPC code. All you need to do is add interceptors to both your stream and unary handlers.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">func (s *Server) UnaryAuthInterceptor(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
     // Get the targeted function
     functionInfo := strings.Split(info.FullMethod, "/")
@@ -149,8 +144,7 @@ spec:
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In this example code snippet, we are grabbing the username, password, and requested function from the info object. We then authenticate against the client to make sure that it has correct rights to call that function. This interceptor will run before any of the other functions get called, which means one implementation protects all functions. The client would initialize its secure connection and send credentials like so:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this example code snippet, we are grabbing the username, password, and requested function from the info object. We then authenticate against the client to make sure that it has correct rights to call that function. This interceptor will run before any of the other functions get called, which means one implementation protects all functions. The client would initialize its secure connection and send credentials like so:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">transportCreds, err := credentials.NewClientTLSFromFile(certFile, "")
 if err != nil {
     return nil, err

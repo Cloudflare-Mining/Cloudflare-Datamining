@@ -1,7 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/Image_20200512_095234.jpeg" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/Image_20200512_095234.jpeg" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>Another long night. I was working on my perfect, bug-free program in C, when the predictable thing happened:</p>
 	<pre><code>$ clang skynet.c -o skynet
 $ ./skynet.out 
@@ -13,8 +12,7 @@ Segmentation fault (core dumped)
 	<p>Or is it?</p>
 	<p><a href="https://twitter.com/mahtin" target="_blank">Martin Levy</a> pointed me to an ancient <a href="http://man.cat-v.org/unix-6th/2/signal" target="_blank">Version 6th UNIX documentation on "signal"</a>. This is from around 1978:</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/IMG_5177.jpg" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/06/IMG_5177.jpg" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>Look carefully. There is no SIGSEGV signal! Signal number 11 is called SIGSEG!</p>
 	<p>It seems that userspace parts of the UNIX tree (i.e. /usr/include/signal.h) switched to SIGSEGV fairly early on. But the kernel internals continued to use the name SIGSEG for much longer.</p>
 	<p>Looking deeper David found that PDP11 trap vector used wording <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/low.s#L59" target="_blank">"segmentation violation"</a>. This shows up in Research V4 Edition in the UNIX history repo, but it doesn't mean it was introduced in V4 - it's just because V4 is the first version with code still available.</p>

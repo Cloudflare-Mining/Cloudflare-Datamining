@@ -109,8 +109,7 @@
 	<h3 id="transaction-logs">Transaction Logs</h3>
 	<p>LMDB does a great job of allowing us to query Quicksilver from each of our edge servers, but it alone doesn’t give us a distributed database. We also needed to develop a way to distribute the changes made to customer configurations into the thousands of instances of LMDB we now have around the world. We quickly settled on a fan-out type distribution where nodes would query main-nodes, who would in turn query top-mains, for the latest updates.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/top-masters.png" class="kg-image"></figure>
-	<p>Unfortunately there is no such thing as a perfectly reliable network or system. It is easy for a network to become disconnected or a machine to go down just long enough to miss critical replication updates. Conversely though, when users make changes to their Cloudflare configuration it is critical that they propagate accurately whatever the condition of the network. To ensure this, we used one of the oldest tricks in the book and included a monotonically increasing sequence number in our Quicksilver protocol:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Unfortunately there is no such thing as a perfectly reliable network or system. It is easy for a network to become disconnected or a machine to go down just long enough to miss critical replication updates. Conversely though, when users make changes to their Cloudflare configuration it is critical that they propagate accurately whatever the condition of the network. To ensure this, we used one of the oldest tricks in the book and included a monotonically increasing sequence number in our Quicksilver protocol:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">…
 &lt; 0023 SET “hello” “world”
 &lt; 0024 SET “lorem” “ipsum”
@@ -128,8 +127,7 @@
 	<h3 id="optimizations">Optimizations</h3>
 	<p>Transaction logs are a critical part of our replication system, but each log entry ends up being significantly larger than the size of the values it represents. To prevent our disk space from being overwhelmed we use <a href="https://en.wikipedia.org/wiki/Snappy_(compression)" target="_blank">Snappy</a> to compress entries. We also periodically garbage collect entries, only keeping the most recent required for replication.</p>
 	<p>For safety purposes we also added an incremental hash within our transaction logs. The hash helps us to ensure that messages have not been lost or incorrectly ordered in the log.</p>
-	<p>One other potential misconfiguration which scares us is the possibility of a Quicksilver node connecting to, and attempting to replicate from, itself. To prevent this we added a randomly generated process ID which is also exchanged in the handshake:</p>
-	<!--kg-card-begin: markdown-->
+	<p>One other potential misconfiguration which scares us is the possibility of a Quicksilver node connecting to, and attempting to replicate from, itself. To prevent this we added a randomly generated process ID which is also exchanged in the handshake:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">type ClientHandshake struct {
 	// Unique ID of the client. Verifies that client and main have distinct IDs. Defaults to a per-process unique ID.
 	ID uuid.ID

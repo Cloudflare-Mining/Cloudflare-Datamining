@@ -6,12 +6,9 @@
 	<p>When we launched Stream, one of our goals was to provide the most performant video player. We focused on building a player that loads fast, works across different browsers and frameworks, and intelligently switches video quality levels depending on your end user’s connectivity.</p>
 	<p>We are expanding the Stream Player vision, so you can control the look and feel of the viewing experience. Today, we are announcing a series of new customization options to help you deliver the best video playback experience.</p>
 	<h3 id="add-your-own-color">Add Your Own Color</h3>
-	<p>One thing we kept hearing from customers is that they would like to be able to customize the Stream Player to better reflect their brand. Stream Player now supports setting a primary color to match your company’s color. Here is an example of us using the primaryColor property to set the primary color to the Cloudflare Orange.</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
-	<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p>
-	<!--kg-card-begin: markdown-->
+	<p>One thing we kept hearing from customers is that they would like to be able to customize the Stream Player to better reflect their brand. Stream Player now supports setting a primary color to match your company’s color. Here is an example of us using the primaryColor property to set the primary color to the Cloudflare Orange.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p><!--kg-card-begin: markdown-->
 	<pre><code>https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -19,10 +16,8 @@
 	<p>Currently, setting the primary color property will change the colors of the play button and the seekbar to the primary color you specify. We plan to offer more ways to brand the Stream Player in the future.</p>
 	<h3 id="deep-link-within-videos">Deep link within videos</h3>
 	<p>Previously, if you wanted the video to start at a certain point in time, you would need to write custom code that uses the Stream Player SDK to fast-forward the viewer to the precise start time. Stream Player now supports a startTime property, which eliminates the need to load the SDK and write custom code if you simply want to deep link the view to a point-in-time in the video.</p>
-	<p>Let’s say you run an e-learning platform and would like the instructors to be able to answer questions by deep linking to a specific part of an hour-long video. If you set the new startTime querystring parameter or prop, video playback in the Stream Player will begin at the specified timestamp.</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>Let’s say you run an e-learning platform and would like the instructors to be able to answer questions by deep linking to a specific part of an hour-long video. If you set the new startTime querystring parameter or prop, video playback in the Stream Player will begin at the specified timestamp.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<h3 id="enable-localized-captions-by-default">Enable localized captions by default</h3>
 	<p>Cloudflare Stream has long supported video captions for multiple languages. But we heard from customers that they would like to be able to turn on captions by default <em>and</em> specify the default language. This is now natively supported and makes it significantly easier to make your video accessible for a global audience.</p>
 	<p>If you have a website with localization support, you likely want captions to be turned on with a preset language. Auto-enabling captions can also improve the viewer experience in instances where the video is auto-played while also muted. This is a growing trend and, in fact, Facebook reports that over 85% of videos watched on the platform are played with sound off.</p>

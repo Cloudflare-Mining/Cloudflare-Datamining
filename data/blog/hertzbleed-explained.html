@@ -7,8 +7,7 @@
 	<blockquote><em>“If you are an ordinary user and not a cryptography engineer, probably not: you don’t need to apply a patch or change any configurations right now. If you are a cryptography engineer, read on. Also, if you are running a SIKE decapsulation server, make sure to deploy the mitigation described below.”</em></blockquote>
 	<p><strong>Notice:</strong> As of today, there is no known attack that uses Hertzbleed to target conventional and standardized cryptography, such as the encryption used in Cloudflare products and services. Having said that, let’s get into the details of processor frequency scaling to understand the core of this vulnerability.</p>
 	<p>In short, the Hertzbleed attack shows that, under certain circumstances, dynamic voltage and frequency scaling (<a href="https://en.wikipedia.org/wiki/Dynamic_frequency_scaling" target="_blank">DVFS</a>), a power management scheme of modern x86 processors, depends on the data being processed. This means that on modern processors, the same program can run at different CPU frequencies (and therefore take different wall-clock times). For example, we expect that a CPU takes the same amount of time to perform the following two operations because it uses the same algorithm for both. However, there is an observable time difference between them:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-15.png" class="kg-image" alt="Bit operations that perform integer additions."></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-15.png" class="kg-image" alt="Bit operations that perform integer additions."></figure><!--kg-card-begin: markdown-->
 	<pre><code>Trivia: Could you guess which operation runs faster?
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -55,8 +54,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/06/image8-10.png" class="kg-image" alt="Different frequency resulting in different running time with constant-cycle program">
 		<figcaption>CPU frequency directly translate to running time</figcaption>
 	</figure>
-	<p>As illustrated in the table below, if the program with input 1 runs at 4.0 GHz (red) then it takes 1.25 nanoseconds to finish. If the program consumes more power with input 2, under DVFS, it will run at a lower frequency, 3.5 GHz (blue). It takes more time, 1.43 nanoseconds, to finish. If the program consumes even more power with input 3, under DVFS, it will run at an even lower frequency of 3.0 GHz (purple). Now it takes 1.67 nanoseconds to finish. This program always takes five cycles to finish, but the amount of power it consumes depends on the input. The power influences the CPU frequency, and CPU frequency directly translates to execution time. In the end, the program's execution time becomes data-dependent.</p>
-	<!--kg-card-begin: html-->
+	<p>As illustrated in the table below, if the program with input 1 runs at 4.0 GHz (red) then it takes 1.25 nanoseconds to finish. If the program consumes more power with input 2, under DVFS, it will run at a lower frequency, 3.5 GHz (blue). It takes more time, 1.43 nanoseconds, to finish. If the program consumes even more power with input 3, under DVFS, it will run at an even lower frequency of 3.0 GHz (purple). Now it takes 1.67 nanoseconds to finish. This program always takes five cycles to finish, but the amount of power it consumes depends on the input. The power influences the CPU frequency, and CPU frequency directly translates to execution time. In the end, the program's execution time becomes data-dependent.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -120,8 +118,7 @@
 				<td class="tg-3dm3">1.67 ns</td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>To give you another concrete example: Suppose we have a sustained workload <em><code>Foo</code></em>. We know that <em><code>Foo</code></em> consumes more power with input <em><code>data 1</code>, </em>and less power with input <em><code>data 2</code></em>. As shown on the left in the figure below, if the power consumption of <em>Foo</em> is below the TDP, CPU frequency as well as running time stays the same regardless of the choice of input data. However, as shown in the middle, if we add a background stressor to the CPU, the combined power consumption will exceed TDP. Now we are in trouble. CPU overall performance is monitored by DVFS and capped by TDP. To prevent itself from overheating, it dynamically adjusts its P-state distribution when running workload with various power consumption. P-state distribution of <em><code>Foo(data 1)</code></em> will have a slight right shift compared to that of <em><code>Foo(data 2)</code></em>. As shown on the right, CPU running <em><code>Foo(data 1)</code></em> results in a lower overall frequency and longer running time. The observation here is that, if <em><code>data</code> </em>is a binary secret, an attacker can infer <em><code>data</code> </em>by simply measuring the running time of <em><code>Foo</code></em>!</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/06/image11-2.png" class="kg-image" alt="Detailed explanation of Hertzbleed">
 		<figcaption>Complete recap of Hertzbleed. Figure taken from Intel’s <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/software-security-guidance/technical-documentation/frequency-throttling-side-channel-guidance.html" target="_blank">documentation</a>.</figcaption>
@@ -170,8 +167,6 @@
 	<p>Although SIKE was the victim this time, it is possible that other cryptographic algorithms may expose similar symptoms that can be leveraged by Hertzbleed. An investigation of other targets with this brand-new tool in the attacker’s portfolio remains an open problem.</p>
 	<p>Hertzbleed allowed us to learn more about how the machines we have in front of us work and how the processor constantly monitors itself, optimizing the performance of the system. Hardware manufacturers have focused on performance of processors by providing many optimizations, however, further study of the security of computations is also needed.</p>
 	<p>If you are excited about this project, at Cloudflare we are working on raising the bar on the production of code for cryptography. <a href="https://research.cloudflare.com/contact/" target="_blank">Reach out to us</a> if you are interested in high-assurance tools for developers, and don’t forget our <a href="https://research.cloudflare.com/outreach/academic-programs/" target="_blank">outreach programs</a> whether you are a student, a faculty member, or an independent researcher.</p>
-	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/803802d76afc258a95cbfe75146e8155?preload=true&amp;poster=https%3A%2F%2Fcloudflarestream.com%2F803802d76afc258a95cbfe75146e8155%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1m15s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/803802d76afc258a95cbfe75146e8155?preload=true&amp;poster=https%3A%2F%2Fcloudflarestream.com%2F803802d76afc258a95cbfe75146e8155%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1m15s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

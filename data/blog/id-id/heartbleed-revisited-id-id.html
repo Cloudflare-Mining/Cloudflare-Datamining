@@ -18,8 +18,7 @@
 	<p>Keyless SSL adalah solusi keamanan yang hebat, tetapi tergantung di mana kunci disimpan, Keyless SSL dapat menimbulkan beberapa latensi. Karena itu, kami bekerja dengan IETF untuk mengembangkan standar baru yang disebut <a href="https://blog.cloudflare.com/keyless-delegation/">Kredensial yang Didelegasikan</a>, yang memungkinkan koneksi menggunakan kunci berumur pendek yang ditandatangani oleh sertifikat alih-alih sertifikat itu sendiri di TLS. Ini menghilangkan latensi tambahan yang diakibatkan oleh Keyless SSL. Kami mendukung Kredensial yang Didelegasikan untuk semua pelanggan Keyless SSL dan Geo Key Manager; dan Firefox 89 (Mei 2021) akan mengaktifkan dukungan Delegated Credential secara default.</p>
 	<h3 id="membuat-pencabutan-berfungsi"><strong>Membuat pencabutan berfungsi</strong></h3>
 	<p>Ketika Heartbleed terjadi dan ratusan ribu sertifikat dianggap berpotensi disusupi, hal logis yang harus dilakukan adalah mencabut dan menerbitkan kembali sertifikat tersebut. Melakukan hal tersebut dapat menyebabkan beberapa konsekuensi yang tidak terduga.</p>
-	<p>Konsekuensi pertama dari pencabutan adalah lonjakan lalu lintas jaringan yang besar terkait dengan informasi pencabutan. Pada tahun 2014, ada tiga mekanisme utama pencabutan sertifikat:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Konsekuensi pertama dari pencabutan adalah lonjakan lalu lintas jaringan yang besar terkait dengan informasi pencabutan. Pada tahun 2014, ada tiga mekanisme utama pencabutan sertifikat:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Daftar Pencabutan Sertifikat (CRL)
 			<ul>

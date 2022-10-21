@@ -15,18 +15,15 @@
 	<p>Cloudflare menyadari bahwa organisasi seperti konsultan kesehatan di atas akan berupaya meningkatkan keamanan dan visibilitas di seluruh pengguna mereka yang tersebar di banyak lokasi. Klien perangkat kami, WARP, membantu hal ini dengan mengaktifkan penegakan kebijakan yang sadar postur dan identitas perangkat di titik akhir.</p>
 	<p>Kami telah mengoptimalkan klien kami untuk memungkinkan pendekatan penerapan yang beragam, sehingga organisasi memiliki fleksibilitas yang mereka butuhkan untuk menggulirkan kemampuan Zero Trust Cloudflare for Teams dengan mudah. Misalnya, WARP bekerja di semua sistem operasi utama (mis., Windows, MacOS, Linux, chrome OS, iOS, dan Android). Dan terlepas dari mekanisme penerapannya, WARP menggunakan <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">seperangkat parameter yang sama</a>, sehingga admin Anda memiliki pengalaman yang konsisten.</p>
 	<p>Untuk menunjukkan penerapan yang disederhanakan ini, berikut adalah beberapa skenario umum tentang cara menerapkan klien kami di Windows hanya dengan beberapa penyesuaian kecil melalui baris perintah:</p>
-	<p>1. Jika Anda ingin menggunakan aturan pemfilteran HTTP, Browser Isolation, atau melakukan apa pun dengan postur perangkat, hal terpenting adalah membuat pengguna Anda diautentikasi ke Teams Organization dan mengirimkan traffic mereka melalui WARP:</p>
-	<!--kg-card-begin: markdown-->
+	<p>1. Jika Anda ingin menggunakan aturan pemfilteran HTTP, Browser Isolation, atau melakukan apa pun dengan postur perangkat, hal terpenting adalah membuat pengguna Anda diautentikasi ke Teams Organization dan mengirimkan traffic mereka melalui WARP:</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2. Jika Anda tidak peduli dengan identitas dan hanya ingin menginstal tanpa interaksi pengguna dengan skenario yang sama di atas, gunakan <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">token layanan</a> dan nonaktifkan UI klien awal:</p>
-	<!--kg-card-begin: markdown-->
+	<p>2. Jika Anda tidak peduli dengan identitas dan hanya ingin menginstal tanpa interaksi pengguna dengan skenario yang sama di atas, gunakan <a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">token layanan</a> dan nonaktifkan UI klien awal:</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3. Apakah karyawan Anda terkadang bepergian ke negara atau lokasi tempat enkripsi traffic di tunnel tidak diperbolehkan? Anda dapat membiarkan mereka mematikan WARP saat masih tunduk pada aturan DNS perusahaan Anda:</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. Apakah karyawan Anda terkadang bepergian ke negara atau lokasi tempat enkripsi traffic di tunnel tidak diperbolehkan? Anda dapat membiarkan mereka mematikan WARP saat masih tunduk pada aturan DNS perusahaan Anda:</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
 </code></pre>
 	<!--kg-card-end: markdown-->

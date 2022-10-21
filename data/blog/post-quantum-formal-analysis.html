@@ -14,8 +14,7 @@
 	</figure>
 	<p>Whilst it’s fairly easy to intuit how such geometry proofs work, it’s not immediately clear how one could prove something as abstract as the security of a cryptographic protocol. Proofs of protocols operate in a similar way. We build a logical argument starting from a set of assumptions. Security proofs, however, can be much, much bigger than anything in <em>The Elements</em> (for example, our proof of the security properties of <a href="https://thomwiggers.nl/publication/kemtls/kemtls.pdf" target="_blank">KEMTLS</a>, which we will talk about later, is nearly 500,000 lines long) and the only reason we are able to do such complex proofs is that we have something of an advantage over Euclid. We have computers. Using a mix of human-guided theorem proving and automated algorithms we can prove incredibly complex things, such as the security of protocols as the one we will discuss.</p>
 	<p>Now we know that a proof is a set of logical steps built from a set of assumptions, let’s talk a bit about how security proofs work. First, we need to work out how to describe the protocol in terms that we can reason about. Over the years researchers have come up with many ways for describing computer processes mathematically, most famously <a href="https://www.wolframscience.com/prizes/tm23/images/Turing.pdf" target="_blank">Alan Turing defined a-machines, which we now know as Turing Machines</a>, which describe a <em>computer program</em> in an <em>algebraic form</em>. A protocol is slightly more complex than a single program. A protocol can be seen as a number of computers running a set of computer programs that interact with each other. </p>
-	<p>We’re going to use a class of techniques called <a href="https://en.wikipedia.org/wiki/Process_calculus" target="_blank"><em>process algebras</em></a> to describe the interacting processes of a protocol. At its most basic level, algebra is the art of generalizing a statement by replacing specific values with general symbols. In standard algebra, these specific values are numbers, so for example we can write <code>(cos 37)² + (sin 37)² = 1</code>, which is true, but we can generalize it to <code>(cos θ)² + (sin θ)² = 1</code>, replacing the specific value, 37, with the symbol θ.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We’re going to use a class of techniques called <a href="https://en.wikipedia.org/wiki/Process_calculus" target="_blank"><em>process algebras</em></a> to describe the interacting processes of a protocol. At its most basic level, algebra is the art of generalizing a statement by replacing specific values with general symbols. In standard algebra, these specific values are numbers, so for example we can write <code>(cos 37)² + (sin 37)² = 1</code>, which is true, but we can generalize it to <code>(cos θ)² + (sin θ)² = 1</code>, replacing the specific value, 37, with the symbol θ.</p><!--kg-card-begin: markdown-->
 	<p>Now you might be wondering why it’s useful to replace things with symbols. The answer is it lets us solve entire classes of problems instead of solving each individual instance. When it comes to security protocols, this is especially important. We can’t possibly try every possible set of inputs to a protocol and check nothing weird happens to one of them. In fact, one of the assumptions we’re going to make when we prove KEMTLS secure is that trying every possible value for some inputs is impossible<sup>1</sup>. By representing the protocol symbolically, we can write a proof that applies to all possible inputs of the protocol.</p>
 	<!--kg-card-end: markdown-->
 	<p>Let’s go back to algebra. A <em>process algebra</em> is similar to the kind of algebra you might have learnt in high school: we represent a computer program with symbols for the specific values. We also treat functions symbolically. Rather than try and compute what happens when we apply a function <code>f</code> to a value <code>x</code>, we just create a new symbol <code>f(x)</code>. An algebra also provides rules for manipulating expressions. For example, in standard algebra we can <em>transform</em> <code>y + 5 = x² - x</code> into <code>y = x² - x - 5</code>. A process algebra is the same: it not only defines a language to describe interacting processes, it also defines rules for how we can manipulate those expressions. </p>
@@ -26,8 +25,7 @@
 --[ GenLtk($A, ~ltkA)]-&gt;
   [ !Ltk($A, ~ltkA), !Pk($A, pk(~ltkA)), Out(pk(~ltkA)) ]
 </code></pre>
-	<p>This rule is used to represent that a protocol participant has acquired a new public/private key pair. The rule has three parts:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This rule is used to represent that a protocol participant has acquired a new public/private key pair. The rule has three parts:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>The first part lists the preconditions. In this case, there is only one: we take a <code>Fr</code>esh value called <code>~ltkA</code>, the “long-term key of A”. This precondition is always met, because Tamarin always allows us to generate fresh values.</li>
 		<li>The third part lists the postconditions (what we get back when we apply the rule). Rather than operating on an initial statement, as in high-school algebra, Tamarin instead operates on what we call a model of “bag of facts”. Instead of starting with <code>y + 5 = x² - x</code>, we start with an empty “bag”, and from there, apply rules. These rules take facts out of the bag and put new ones in. In this case, we put in:
@@ -39,8 +37,7 @@
 		</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<p>We can only apply a rule if the preconditions are met: the facts we need appear in the bag. By having rules for each step of the protocol, we can apply the rules in order and simulate a run of the protocol. But, as I’m sure you’ve noticed, we skipped the second part of the rule. The second part of the rule is where we list what we call <em>actions</em>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can only apply a rule if the preconditions are met: the facts we need appear in the bag. By having rules for each step of the protocol, we can apply the rules in order and simulate a run of the protocol. But, as I’m sure you’ve noticed, we skipped the second part of the rule. The second part of the rule is where we list what we call <em>actions</em>.</p><!--kg-card-begin: markdown-->
 	<p>We use actions to record what happened in a protocol run. In our example, we have the action <code>GenLtk($A, ~ltkA)</code>. <code>GenLtk</code> means that a new Long-Term Key (LTK) has been <code>Gen</code>erated. Whenever we trigger the <code>Register_pk</code> rule, we note this with the two parameters:, <code>$A</code>, the party to whom the new key pair belongs; and <code>~ltkA</code>, the private part of the generated key<sup>2</sup>.</p>
 	<!--kg-card-end: markdown-->
 	<p>If we simulate a single run of the protocol, we can record a list of all the actions executed and put them in a list. However, at any point in the protocol, there may be multiple rules that can be triggered. A list only captures a single run of a protocol, but we want to reason about all possible runs of the protocol. We can arrange our rules into a tree: every time we have multiple rules that could be executed, we give each one of them its own branch.</p>
@@ -130,8 +127,7 @@ in
 		<li>Second and third, we record that the client was running the protocol with various intermediate values. We use the phrase “running with” to indicate that although the client believes these values to be the correct, it can’t yet be certain that they haven’t been tampered with, so the client hasn’t committed yet to them.</li>
 		<li>Finally, we record the parameters we put into the KEM with the <code>KemEncap</code> action. </li>
 	</ul>
-	<p>We modify and add such rules to the TLS 1.3 model, so we can run KEMTLS instead of TLS 1.3. For a sanity check, we need to make sure that the protocol can actually be executed: a protocol that can not run, can not leak your secrets. We use a <em>reachability lemma</em> to do that: </p>
-	<!--kg-card-begin: markdown-->
+	<p>We modify and add such rules to the TLS 1.3 model, so we can run KEMTLS instead of TLS 1.3. For a sanity check, we need to make sure that the protocol can actually be executed: a protocol that can not run, can not leak your secrets. We use a <em>reachability lemma</em> to do that: </p><!--kg-card-begin: markdown-->
 	<pre><code>lemma exists_C2d:
     exists-trace
     "Ex tid #j. C2d(tid)@#j"
@@ -207,12 +203,10 @@ in
 		<li><a href="https://londmathsoc.onlinelibrary.wiley.com/doi/10.1112/plms/s2-42.1.230" target="_blank">"On computable numbers, with an application to the Entscheidungsproblem."</a> by Alan Turing</li>
 		<li><a href="https://dl.acm.org/doi/pdf/10.1145/3133956.3134063" target="_blank">"A comprehensive symbolic analysis of TLS 1.3."</a> by Cas Cremers, Marko Horvat, Jonathan Hoyland, Sam Scott, and Thyla van der Merwe (*)</li>
 		<li><a href="https://www.cs.cmu.edu/afs/cs/academic/class/17654-f01/www/refs/BAN.pdf" target="_blank">"A Logic of Authentication"</a> by Michael Burrows, Martin Abadi, and Roger Michael Needham</li>
-	</ul>
-	<!--kg-card-begin: markdown-->
+	</ul><!--kg-card-begin: markdown-->
 	<p><small>* The authors of this blog post were authors on these papers</small></p>
 	<!--kg-card-end: markdown-->
-	<p>.....</p>
-	<!--kg-card-begin: markdown-->
+	<p>.....</p><!--kg-card-begin: markdown-->
 	<p><small><sup>1</sup>Of course, trying every value isn’t technically impossible, it’s just infeasible, so we make the simplifying assumption that it’s impossible, and just say our proof only applies if the attacker can’t just try every value. Other styles of proof that don’t make that assumption are possible, but we’re not going to go into them.<br><sup>2</sup>For simplicity, this representation assumes that the public portion of a key pair can be derived from the private part, which may not be true in practice. Usually this simplification won’t affect the analysis.</small></p>
 	<!--kg-card-end: markdown-->
 </div>

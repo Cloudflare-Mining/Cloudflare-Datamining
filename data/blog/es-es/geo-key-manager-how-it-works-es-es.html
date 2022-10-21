@@ -103,8 +103,7 @@
 	<p>Para solucionarlo, hemos creado una red superpuesta entre todos nuestros centros de datos para medir la latencia. Cada centro de datos tiene una conexión de salida con todos los demás centros de datos. Cada pocos segundos, enviamos un "ping" (un <a href="https://github.com/cloudflare/gokeyless/blob/d129f600f7c60cc36d9da9ef99eefe430b05a3c4/protocol/protocol.go#L95" target="_blank">mensaje en el protocolo de SSL sin clave</a>, no un <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)" target="_blank">mensaje ICMP</a>) y medimos cuánto tiempo tarda el servidor en enviar un "pong" correspondiente.</p>
 	<p>Cuando un cliente se conecta a un sitio detrás de Cloudflare en un centro de datos que no puede descifrar la clave privada de ese sitio, utilizamos metadatos para averiguar qué centros de datos tienen acceso a la clave. A continuación, elegimos el centro de datos que tiene la menor latencia según nuestras mediciones y utilizamos el servidor de claves de ese centro de datos para SSL sin clave. Si la ubicación con menor latencia está sobrecargada, podemos elegir otra ubicación con mayor latencia pero más capacidad.</p>
 	<p>Los datos de estas mediciones se utilizaron para construir el siguiente mapa, en el que se destaca la latencia adicional añadida para los visitantes de todo el mundo para la configuración exclusiva de EE. UU.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/11.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/11.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small>La latencia se añade cuando las llaves están en EE.UU. únicamente. Verde: sin coste de latencia,<br>
 			Amarillo: &lt; 50ms,<br>
 			Rojo: &gt; 100ms</small></p>

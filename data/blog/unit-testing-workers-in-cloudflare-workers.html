@@ -17,8 +17,7 @@
 	<p><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
 	<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
 	<h3 id="example-script"><strong>Example Script</strong></h3>
-	<p>Create your Worker script in <code>./src/worker.js</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Create your Worker script in <code>./src/worker.js</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
 })
@@ -34,8 +33,7 @@ async function handleRequest(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="add-tests">Add Tests</h3>
-	<p>Create your unit tests in <code>./test/test.test.js</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Create your unit tests in <code>./test/test.test.js</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const assert = require('assert')
 
 describe('Worker Test', function() {
@@ -58,8 +56,7 @@ describe('Worker Test', function() {
 	<!--kg-card-end: markdown-->
 	<h2 id="mocha-in-worker-test-harness">Mocha in Worker Test Harness</h2>
 	<p>In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
-	<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import 'mocha';
 
 import 'mocha-loader!../test.test.js';
@@ -107,8 +104,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="mocha-webpack-configuration">Mocha Webpack Configuration</h3>
-	<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">module.exports = {
   target: 'webworker',
   entry: "./test/lib/serviceworker-mocha-harness.js",
@@ -134,8 +130,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Your file structure should look like (excluding node_modules):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Your file structure should look like (excluding node_modules):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">.
 ./dist
 ./src/worker.js
@@ -147,20 +142,17 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="customising-the-test-harness-"><strong>Customising the test harness.</strong></h3>
-	<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import 'mocha-loader!/* TEST FILE NAME HERE */'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">Object.assign(global, require('exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'));
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h1 id="running-the-test-harness"><strong>Running the test harness</strong></h1>
 	<p>Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
-	<p>Modify the scripts section of package.json to include the build-harness command.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Modify the scripts section of package.json to include the build-harness command.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">"scripts": {
   "build-harness": "webpack --config webpack.mocha.config.js -p --progress --colors"
 }
@@ -171,8 +163,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 	<h2 id="integrating-into-an-existing-ci-cd-pipeline"><strong>Integrating into an existing CI/CD pipeline</strong></h2>
 	<p>You can integrate Cloudflare Workers and the test harness into your existing CI/CD pipeline by using our API: <a href="https://developers.cloudflare.com/workers/api/" target="_blank">https://developers.cloudflare.com/workers/api/</a>.</p>
 	<p>The test harness returns detailed test reports in JSON format:</p>
-	<p><strong>Example Success Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Example Success Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "stats": {
     "suites": 1,
@@ -222,8 +213,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Example Failure Response</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Example Failure Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "stats": {
     "suites": 1,

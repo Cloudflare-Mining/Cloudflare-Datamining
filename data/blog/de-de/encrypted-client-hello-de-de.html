@@ -29,8 +29,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image9-6.png" class="kg-image">
 		<figcaption><strong>Abbildung 2:</strong> Der TLS 1.3-Handshake mit der ESNI-Erweiterung. Er ist identisch mit dem TLS 1.3-Handshake, nur wurde die SNI-Erweiterung durch ESNI ersetzt.</figcaption>
 	</figure>
-	<p>Für die Schlüsselverteilung verließ sich ESNI auf ein anderes kritisches Protokoll: <em>Domain Name Service</em> (DNS). Um ESNI für die Verbindung mit einer Website zu verwenden, nutzte der Client seine Standard-A/AAAA-Abfragen für die Anfrage eines TXT Record mit dem öffentlichen ESNI-Schlüssel. Um beispielsweise den Schlüssel für crypto.dance zu erhalten, forderte der Client den TXT Record von _esni.crypto.dance an:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Für die Schlüsselverteilung verließ sich ESNI auf ein anderes kritisches Protokoll: <em>Domain Name Service</em> (DNS). Um ESNI für die Verbindung mit einer Website zu verwenden, nutzte der Client seine Standard-A/AAAA-Abfragen für die Anfrage eines TXT Record mit dem öffentlichen ESNI-Schlüssel. Um beispielsweise den Schlüssel für crypto.dance zu erhalten, forderte der Client den TXT Record von _esni.crypto.dance an:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-base64">$ dig _esni.crypto.dance TXT +short
 "/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="
 </code></pre>

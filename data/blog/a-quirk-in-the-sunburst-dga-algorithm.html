@@ -7,8 +7,7 @@
 	<p><strong><code>&lt;encoded_guid&gt; + &lt;byte&gt; + &lt;encoded_hostname&gt;</code></strong></p>
 	<p>An example malicious domain is:</p>
 	<p><strong><code>7cbtailjomqle1pjvr2d32i2voe60ce2.appsync-api.us-east-1.avsvmcloud.com</code></strong></p>
-	<p>Where the domain is split into the three parts as</p>
-	<!--kg-card-begin: html-->
+	<p>Where the domain is split into the three parts as</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -90,8 +89,7 @@
 				<td class="tg-z6tn"><span style="font-weight:700;font-style:normal;text-decoration:none">vr2d32i2voe60ce2</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>The work from the RedDrip Team focused on the encoded hostname portion of the string, we have made additional insights related to the encoded hostname and encoded guid portions.</p>
 	<p>At a high level the encoded hostnames take one of two encoding schemes. If all of the characters in the hostname are contained in the set of domain name-safe characters <code>"0123456789abcdefghijklmnopqrstuvwxyz-_."</code> then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Decode</code> algorithm, explained in the article, is used. If there are characters outside of that set in the hostname, then the <code>OrionImprovementBusinessLayer.CryptoHelper.Base64Encode</code> is used instead and ‘00’ is prepended to the encoding. This allows us to simply check if the first two characters of the encoded hostname are ‘00’ and know how the hostname is encoded.</p>
 	<p>These function names within the compromised DLL are meant to resemble the names of legitimate functions, but in fact perform the message encoding for the malware. The DLL function Base64Decode is meant to resemble the legitimate function name base64decode, but its purpose is actually to perform the encoding of the query (which is a variant of base32 encoding).</p>
@@ -111,8 +109,7 @@
 	<p><code><em>Base32Decode(message1) XOR KEY = Base32Decode(message2)</em></code></p>
 	<p>The KEY is a single character. That character is xor’d with each byte of the Base32Decoded first header to produce the Base32Decoded second header. We do not currently know how to infer what character is used as the key, but we can still match messages together without that information. Since A XOR B = C where we know A and C but not B, we can instead use A XOR C = B. This means that in order to pair messages together we simply need to look for messages where XOR’ing them together results in a repeating character (the key).</p>
 	<p><em><code>Base32Decode(message1) XOR Base32Decode(message2) = KEY</code></em></p>
-	<p>Looking at the examples above this becomes</p>
-	<!--kg-card-begin: html-->
+	<p>Looking at the examples above this becomes</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -173,8 +170,7 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">110110010010000011010010000</span><br><span style="font-weight:400;font-style:normal;text-decoration:none">001000110110110100111100100</span><br><span style="font-weight:400;font-style:normal;text-decoration:none">00100011111111000000000100</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>We’ve truncated the results slightly, but below shows the two binary representations and the third line shows the result of the XOR.<br></p>
 	<p>101101000100110110111111011010010000000011001010111111011110001010011101<br>110110010010000011010010000001000110110110100111100100001000111111110000<br>011011010110110101101101011011010110110101101101011011010110110101101101<br></p>
 	<p>We can see the XOR result is the repeating sequence ‘01101101’meaning the original key was 0x6D or ‘m’.<br></p>
@@ -192,8 +188,7 @@ def is_match(string1, string2):
     return True, "0x{:02X}".format(ord(match_char))
 </code></pre>
 	<p>The following are additional headers which based on the payload content Cloudflare is confident are pairs (the payload has been redacted because it contains hostname information that is not yet publicly available):</p>
-	<p><strong>Example 1:</strong></p>
-	<!--kg-card-begin: html-->
+	<p><strong>Example 1:</strong></p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -240,11 +235,9 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">aob0ceh5l8cr6mco</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>xorkey: 0x4E</p>
-	<p><strong>Example 2:</strong></p>
-	<!--kg-card-begin: html-->
+	<p><strong>Example 2:</strong></p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -291,11 +284,9 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">aob0ceh5l8cr6mco</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>xorkey: 0x54</p>
-	<p><strong>Example 3:</strong></p>
-	<!--kg-card-begin: html-->
+	<p><strong>Example 3:</strong></p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -342,8 +333,7 @@ def is_match(string1, string2):
 				<td class="tg-60hs"><span style="font-weight:400;font-style:normal;text-decoration:none">6gpt7s654cfn4h6h</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>xorkey: 0x2B</p>
 	<p>We hypothesize that the xorkey can be derived from the header bytes and/or padding byte of the two messages, though we have not yet determined the relationship.</p>
 	<hr>
@@ -355,8 +345,7 @@ def is_match(string1, string2):
     decrypted = ["{0:02x}".format(ord(b) ^ xor_key) for b in decoded]
     return ''.join(decrypted[1:9])
 </code></pre>
-	<p>Updated example:</p>
-	<!--kg-card-begin: html-->
+	<p>Updated example:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -428,7 +417,6 @@ def is_match(string1, string2):
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none">00f90bddb47e495629</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p><br></p>
 </div>

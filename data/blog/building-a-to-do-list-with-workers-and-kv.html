@@ -27,8 +27,7 @@
 	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
 	<p>I also considered using <a href="https://todomvc.com/" target="_blank">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#/" target="_blank">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs" target="_blank">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
 	<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -51,8 +50,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image4-2.png" class="kg-image"></figure>
 	<p></p>
 	<p>The process of writing a Worker should be familiar to anyone who’s used the fetch library before. In short, the default code for a Worker hooks into the <code>fetch</code> event, passing the request of that event into a custom function, <code>handleRequest</code>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -60,8 +58,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Within <code>handleRequest</code>, we make the actual request, using <code>fetch</code>, and return the response to the client. In short, we have a place to intercept the response body, but by default, we let it pass-through:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(request) {
   console.log('Got request', request)
   const response = await fetch(request)
@@ -73,8 +70,7 @@
 	<p></p>
 	<p>So, given this, where do we begin actually <em>doing stuff</em> with our worker?</p>
 	<p>Unlike the default code given to you in the Workers interface, we want to skip fetching the incoming request: instead, we’ll construct a new <code>Response</code>, and serve it directly from the edge:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(request) {
   const response = new Response("Hello!")
   return response
@@ -99,8 +95,7 @@
 	<p></p>
 	<p>Given the presence of <code>KRISTIAN_TODOS</code> in my script, it’s time to understand the KV API. At time of writing, a KV namespace has three primary methods you can use to interface with your cache: <code>get</code>, <code>put</code>, and <code>delete</code>. Pretty straightforward!</p>
 	<p>Let’s start storing data by defining an initial set of data, which we’ll put inside of the cache using the put method. I’ve opted to define an object, <code>defaultData</code>, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use <code>JSON.stringify</code> to put a simple string into the cache:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(request) {
   // ...previous code
   
@@ -121,8 +116,7 @@
 	<p></p>
 	<p>The Worker KV data store is <em>eventually</em> consistent: writing to the cache means that it will become available <em>eventually</em>, but it’s possible to attempt to read a value back from the cache immediately after writing it, only to find that the cache hasn’t been updated yet.</p>
 	<p>Given the presence of data in the cache, and the assumption that our cache is eventually consistent, we should adjust this code slightly: first, we should actually read from the cache, parsing the value back out, and using it as the data source if exists. If it doesn’t, we’ll refer to <code>defaultData</code>, setting it as the data source <em>for now</em> (remember, it should be set in the future… <em>eventually</em>), while also setting it in the cache for future use. After breaking out the code into a few functions for simplicity, the result looks like this:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const defaultData = { 
   todos: [
     {
@@ -154,8 +148,7 @@ async function getTodos(request) {
 	<h3 id="rendering-data-from-kv">Rendering data from KV</h3>
 	<p>Given the presence of data in our code, which is the cached data object for our application, we should actually take this data and make it available on screen.</p>
 	<p>In our Workers script, we’ll make a new variable, <code>html</code>, and use it to build up a static HTML template that we can serve to the client. In <code>handleRequest</code>, we can construct a new <code>Response</code> (with a <code>Content-Type</code> header of <code>text/html</code>), and serve it to the client:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const html = `
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -183,8 +176,7 @@ async function handleRequest(request) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-15-at-10.06.57-AM.png" class="kg-image"></figure>
 	<p></p>
 	<p>We have a static HTML site being rendered, and now we can begin populating it with data! In the body, we’ll add a <code>ul</code> tag with an id of <code>todos</code>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;body&gt;
   &lt;h1&gt;Todos&lt;/h1&gt;
   &lt;ul id="todos"&gt;&lt;/ul&gt;
@@ -193,8 +185,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Given that body, we can also add a script <em>after</em> the body that takes a todos array, loops through it, and for each todo in the array, creates a <code>li</code> element and appends it to the todos list:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;script&gt;
   window.todos = [];
   var todoContainer = document.querySelector("#todos");
@@ -210,8 +201,7 @@ async function handleRequest(request) {
 	<p></p>
 	<p>Our static page can take in <code>window.todos</code>, and render HTML based on it, but we haven’t actually passed in any data from KV. To do this, we’ll need to make a couple changes.</p>
 	<p>First, our <code>html</code> <em>variable</em> will change to a <em>function</em>. The function will take in an argument, <code>todos</code>, which will populate the <code>window.todos</code> variable in the above code sample:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const html = todos =&gt; `
 &lt;!doctype html&gt;
 &lt;html&gt;
@@ -227,8 +217,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>In <code>handleRequest</code>, we can use the retrieved KV data to call the <code>html</code> function, and generate a <code>Response</code> based on it:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(request) {
   let data;
   
@@ -250,8 +239,7 @@ async function handleRequest(request) {
 	<h3 id="adding-todos-from-the-ui">Adding todos from the UI</h3>
 	<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <em>creating</em> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
 	<p>It’s worth noting here that Cloudflare’s Workers documentation suggests that any writes to your KV namespace happen via their API - that is, at its simplest form, a cURL statement:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">curl "&lt;https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/first-key&gt;" \
   -X PUT \
   -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
@@ -262,8 +250,7 @@ async function handleRequest(request) {
 	<p></p>
 	<p>We’ll implement something similar by handling a second route in our worker, designed to watch for <code>PUT</code> requests to <code>/</code>. When a body is received at that URL, the worker will send the new todo data to our KV store.</p>
 	<p>I’ll add this new functionality to my worker, and in <code>handleRequest</code>, if the request method is a <code>PUT</code>, it will take the request body and update the cache:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -297,8 +284,7 @@ async function handleRequest(request) {
 	<p>The script is pretty straightforward - we check that the request is a <code>PUT</code>, and wrap the remainder of the code in a <code>try/catch</code> block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method <em>other</em> than <code>PUT</code> - that is, <code>GET</code>, <code>DELETE</code>, or anything else - we return a 404.</p>
 	<p>With this script, we can now add some “dynamic” functionality to our HTML page to actually hit this route.</p>
 	<p>First, we’ll create an input for our todo “name”, and a button for “submitting” the todo.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;div&gt;
   &lt;input type="text" name="name" placeholder="A new todo"&gt;&lt;/input&gt;
   &lt;button id="create"&gt;Create&lt;/button&gt;
@@ -307,8 +293,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button - once the button is clicked, the browser will <code>PUT</code> to <code>/</code> and submit the todo.</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var createTodo = function() {
   var input = document.querySelector("input[name=name]");
   if (input.value.length) {
@@ -325,8 +310,7 @@ document.querySelector("#create")
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>This code updates the cache, but what about our local UI? Remember that the KV cache is <em>eventually consistent</em> - even if we were to update our worker to read from the cache and return it, we have no guarantees it’ll actually be up-to-date. Instead, let’s just update the list of todos locally, by taking our original code for rendering the todo list, making it a re-usable function called <code>populateTodos</code>, and calling it when the page loads <em>and</em> when the cache request has finished:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var populateTodos = function() {
   var todoContainer = document.querySelector("#todos");
   todoContainer.innerHTML = null;
@@ -369,16 +353,14 @@ document.querySelector("#create")
 	<p>For the final piece of our (very) basic todo list, we need to be able to update todos - specifically, marking them as completed.</p>
 	<p>Luckily, a great deal of the infrastructure for this work is already in place. We can currently update the todo list data in our cache, as evidenced by our <code>createTodo</code> function. Performing updates on a todo, in fact, is much more of a client-side task than a Worker-side one!</p>
 	<p>To start, let’s update the client-side code for generating a todo. Instead of a <code>ul</code>-based list, we’ll migrate the todo container <em>and</em> the todos themselves into using <code>div</code>s:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!-- &lt;ul id="todos"&gt;&lt;/ul&gt; becomes... --&gt;
 &lt;div id="todos"&gt;&lt;/div&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>The <code>populateTodos</code> function can be updated to generate a <code>div</code> for each todo. In addition, we’ll move the name of the todo into a child element of that <code>div</code>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var populateTodos = function() {
   var todoContainer = document.querySelector("#todos");
   todoContainer.innerHTML = null;
@@ -395,8 +377,7 @@ document.querySelector("#create")
 	<p></p>
 	<p>So far, we’ve designed the client-side part of this code to take an array of todos in, and given that array, render out a list of simple HTML elements. There’s a number of things that we’ve been doing that we haven’t quite had a use for, yet: specifically, the inclusion of IDs, and updating the completed value on a todo. Luckily, these things work well together, in order to support actually updating todos in the UI.</p>
 	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank"><em>Data attributes</em></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">window.todos.forEach(todo =&gt; {
   var el = document.createElement("div");
   el.dataset.todo = todo.id
@@ -408,16 +389,14 @@ document.querySelector("#create")
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Inside our HTML, each <code>div</code> for a todo now has an attached data attribute, which looks like:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;div data-todo="1"&gt;&lt;/div&gt;
 &lt;div data-todo="2"&gt;&lt;/div&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Now we can generate a checkbox for each todo element. This checkbox will default to unchecked for new todos, of course, but we can mark it as checked as the element is rendered in the window:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">window.todos.forEach(todo =&gt; {
   var el = document.createElement("div");
   el.dataset.todo = todo.id
@@ -437,8 +416,7 @@ document.querySelector("#create")
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>The checkbox is set up to correctly reflect the value of completed on each todo, but it doesn’t yet update when we actually check the box! To do this, we’ll add an event listener on the <code>click</code> event, calling <code>completeTodo</code>. Inside the function, we’ll inspect the checkbox element, finding its parent (the todo <code>div</code>), and using the <code>todo</code> data attribute on it to find the corresponding todo in our data. Given that todo, we can toggle the value of completed, update our data, and re-render the UI:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var completeTodo = function(evt) {
   var checkbox = evt.target;
   var todoElement = checkbox.parentNode;
@@ -464,8 +442,7 @@ document.querySelector("#create")
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image2-1.png" class="kg-image"></figure>
 	<p></p>
 	<p>One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const ip = request.headers.get("CF-Connecting-IP")
 const cacheKey = `data-${ip}`;
 const getCache = key =&gt; KRISTIAN_TODOS.get(key)
@@ -475,8 +452,7 @@ getCache(cacheKey)
 	<p></p>
 	<p>One more deploy of our Workers project, and we have a full todo list application, with per-user functionality, served at the edge!</p>
 	<p>The final version of our Workers script looks like this:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const html = todos =&gt; `
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;

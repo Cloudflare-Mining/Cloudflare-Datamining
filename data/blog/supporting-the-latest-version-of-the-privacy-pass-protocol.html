@@ -6,8 +6,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--1-.png" class="kg-image"></figure>
 	<p>To use Privacy Pass, clients can install an <a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">open-source</a> browser extension available in <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a> &amp; <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>. There have been over 150,000 individual downloads of Privacy Pass worldwide; approximately 130,000 in Chrome and more than 20,000 in Firefox. The extension is supported by Cloudflare to make websites more accessible for users. This complements previous work, including the launch of <a href="https://blog.cloudflare.com/cloudflare-onion-service/">Cloudflare onion services</a> to help improve accessibility for users of the Tor Browser.</p>
 	<p>The initial release was almost two years ago, and it was followed up with a <a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf" target="_blank">research publication</a> that was presented at the <a href="https://www.youtube.com/watch?v=9DsUi-UF2pM&amp;list=PLWSQygNuIsPd6YJmGV9kn1mP2A6-IBCoU&amp;index=10" target="_blank">Privacy Enhancing Technologies Symposium 2018</a> (winning a Best Student Paper award). Since then, Cloudflare has been working with the wider community to build on the initial design and improve Privacy Pass. We’ll be talking about the work that we have done to develop the existing implementations, alongside the protocol itself.</p>
-	<h1 id="what-s-new">What’s new?</h1>
-	<!--kg-card-begin: markdown-->
+	<h1 id="what-s-new">What’s new?</h1><!--kg-card-begin: markdown-->
 	<p><strong>Support for Privacy Pass v2.0 browser extension:</strong></p>
 	<ul>
 		<li>Easier configuration of workflow.</li>
@@ -39,8 +38,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--4-.png" class="kg-image"></figure>
 	<p>While Cloudflare supports a particular type of request flow, it would be impossible to expect different service providers to all abide by the same exact interaction characteristics. One of the major changes in the v2.0 extension has been a technical rewrite to instead use a central configuration file. The config is specified in the <a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">source code</a> of the extension and allows easier modification of the browsing characteristics that initiate Privacy Pass actions. This makes adding new, completely different request flows possible by simply cloning and adapting the configuration for new providers.</p>
 	<p>To demonstrate that such integrations are now possible with other services beyond Cloudflare, a new version of the extension will soon be rolling out that is supported by the CAPTCHA provider <a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>. Users that solve ephemeral challenges provided by hCaptcha will receive privacy-preserving tokens that will be redeemable at other hCaptcha customer sites.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><span style="color:grey"><small><em>“hCaptcha is focused on user privacy, and supporting Privacy Pass is a natural extension of our work in this area. We look forward to working with Cloudflare and others to make this a common and widely adopted standard, and are currently exploring other applications. Implementing Privacy Pass into our globally distributed service was relatively straightforward, and we have enjoyed working with the Cloudflare team to improve the open source Chrome browser extension in order to deliver the best experience for our users.”</em></small></span></p><small>
 	</small>
 	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, founder of hCaptcha</small></p>
@@ -65,8 +63,7 @@
 	<p>Firstly, you may be asking, how do we manage to implement cryptographic operations in Cloudflare Workers? Currently, support for performing cryptographic operations is provided in the Workers platform via the <a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto/" target="_blank">WebCrypto API</a>. This API allows users to compute functionality such as cryptographic hashing, alongside more complicated operations like ECDSA signatures.</p>
 	<p>In the Privacy Pass protocol, as we’ll discuss a bit later, the main cryptographic operations are performed by a protocol known as a verifiable oblivious pseudorandom function (VOPRF). Such a protocol allows a client to learn function outputs computed by a server, without revealing to the server what their actual input was. The verifiable aspect means that the server must also prove (in a publicly verifiable way) that the evaluation they pass to the user is correct. Such a function is pseudorandom because the server output is indistinguishable from a random sequence of bytes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--8-.png" class="kg-image"></figure>
-	<p>The VOPRF functionality requires a server to perform low-level ECC operations that are not currently exposed in the WebCrypto API. We balanced out the possible ways of getting around this requirement. First we trialled trying to use the WebCrypto API in a non-standard manner, using EC Diffie-Hellman key exchange as a method for performing the scalar multiplication that we needed. We also tried to implement all operations using pure JavaScript. Unfortunately both methods were unsatisfactory in the sense that they would either mean integrating with large external cryptographic libraries, or they would be far too slow to be used in a performant Internet setting.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The VOPRF functionality requires a server to perform low-level ECC operations that are not currently exposed in the WebCrypto API. We balanced out the possible ways of getting around this requirement. First we trialled trying to use the WebCrypto API in a non-standard manner, using EC Diffie-Hellman key exchange as a method for performing the scalar multiplication that we needed. We also tried to implement all operations using pure JavaScript. Unfortunately both methods were unsatisfactory in the sense that they would either mean integrating with large external cryptographic libraries, or they would be far too slow to be used in a performant Internet setting.</p><!--kg-card-begin: markdown-->
 	<p>In the end, we settled on a solution that adds functions necessary for Privacy Pass to the internal WebCrypto interface in the Cloudflare V8 Javascript engine. This algorithm mimics the sign/verify interface provided by signature algorithms like ECDSA. In short, we use the <code>sign()</code> function to issue Privacy Pass tokens to the client. While <code>verify()</code> can be used by the server to verify data that is redeemed by the client. These functions are implemented directly in the V8 layer and so they are much more performant and secure (running in constant-time, for example) than pure JS alternatives.</p>
 	<!--kg-card-end: markdown-->
 	<p>The Privacy Pass WebCrypto interface is not currently available for public usage. If it turns out there is enough interest in using this additional algorithm in the Workers platform, then we will consider making it public.</p>
@@ -101,8 +98,7 @@
 	<p>The only constructions of VOPRFs exist in pre-quantum settings, usually based on the hardness of well-known problems in group settings such as the <a href="https://en.wikipedia.org/wiki/Decisional_Diffie%E2%80%93Hellman_assumption" target="_blank">discrete-log assumption</a>. No constructions of VOPRFs are known to provide security against adversaries that can run <a href="https://blog.cloudflare.com/the-quantum-menace/">quantum computational algorithms</a>. This means that the Privacy Pass protocol is only believed to be secure against adversaries running &nbsp;on classical hardware.</p>
 	<p>Recent developments suggest that quantum computing may arrive <a href="https://www.nature.com/articles/s41586-019-1666-5" target="_blank">sooner than previously thought</a>. As such, we believe that investigating the possibility of <a href="https://blog.cloudflare.com/introducing-circl/">constructing practical post-quantum alternatives</a> for our current cryptographic toolkit is a task of great importance for ourselves and the wider community. In this case, devising performant post-quantum alternatives for VOPRF constructions would be an important theoretical advancement. Eventually this would lead to a Privacy Pass protocol that still provides privacy-preserving authorization in a post-quantum world.</p>
 	<h2 id="voprf-security-and-larger-ciphersuites">VOPRF security and larger ciphersuites</h2>
-	<p>We mentioned previously that VOPRFs (or simply OPRFs) are susceptible to small amounts of possible leakage in the key. Here we will give a brief description of the actual attacks themselves, along with further details on our plans for implementing higher security ciphersuites to mitigate the leakage.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We mentioned previously that VOPRFs (or simply OPRFs) are susceptible to small amounts of possible leakage in the key. Here we will give a brief description of the actual attacks themselves, along with further details on our plans for implementing higher security ciphersuites to mitigate the leakage.</p><!--kg-card-begin: markdown-->
 	<p>Specifically, malicious clients can interact with a VOPRF for creating something known as a <a href="https://eprint.iacr.org/2010/215.pdf" target="_blank">q-Strong-Diffie-Hellman</a> (q-sDH) sample. Such samples are created in mathematical groups (usually in the elliptic curve setting). For any group there is a public element <code>g</code> that is central to all <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank">Diffie-Hellman</a> type operations, along with the server key <code>K</code>, which is usually just interpreted as a randomly generated number from this group. A q-sDH sample takes the form:</p>
 	<pre><code>( g, g^K, g^(K^2), … , g^(K^q) )
 </code></pre>
@@ -115,30 +111,26 @@
 	<p>You can now install v2.0 of the Privacy Pass extension in <a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>.</p>
 	<p>If you would like to help contribute to the development of this extension then you can do so on <a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">GitHub</a>. Are you a service provider that would like to integrate server-side support for the extension? Then we would be very interested in <a href="mailto:privacy-pass-support@cloudflare.com" target="_blank">hearing from you!</a></p>
 	<p>We will continue to work with the wider community in developing the standardization of the protocol; taking our motivation from the available applications that have been developed. We are always looking for new applications that can help to expand the Privacy Pass ecosystem beyond its current boundaries.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x--1-.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x--1-.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<h1 id="appendix">Appendix</h1>
 	<!--kg-card-end: markdown-->
 	<p>Here are some extra details related to the topics that we covered above.</p>
 	<h2 id="a-commitment-format-for-key-rotations">A. Commitment format for key rotations</h2>
-	<p>Key commitments are necessary for the server to prove that they’re acting honestly during the Privacy Pass protocol. The commitments that Privacy Pass uses for the v2.0 release have a slightly different format from the previous release.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Key commitments are necessary for the server to prove that they’re acting honestly during the Privacy Pass protocol. The commitments that Privacy Pass uses for the v2.0 release have a slightly different format from the previous release.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">"2.00": {
   "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
   "expiry": "2020-01-11T10:29:10.658286752Z",
   "sig": "MEUCIQDu9xeF1q89bQuIMtGm0g8KS2srOPv+4hHjMWNVzJ92kAIgYrDKNkg3GRs9Jq5bkE/4mM7/QZInAVvwmIyg6lQZGE0="
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>First, the version of the server key is <code>2.00</code>, the server must inform the client which version it intends to use in the response to a client containing issued tokens. This is so that the client can always use the correct commitments when verifying the zero-knowledge proof that the server sends.</p>
 	<p>The value of the member <code>H</code> is the public key commitment to the secret key used by the server. This is base64-encoded elliptic curve point of the form <code>H=kG</code> where <code>G</code> is the fixed generator of the curve, and <code>k</code> is the secret key of the server. Since the discrete-log problem is believed to be hard to solve, deriving k from H is believed to be difficult. The value of the member <code>expiry</code> is an expiry date for the commitment that is used. The value of the member <code>sig</code> is an ECDSA signature evaluated using a long-term signing key associated with the server, and over the values of <code>H</code> and <code>expiry</code>.</p>
 	<p>When a client retrieves the commitment, it checks that it hasn’t expired and that the signature verifies using the corresponding verification key that is embedded into the configuration of the extension. If these checks pass, it retrieves <code>H</code> and verifies the issuance response sent by the server. Previous versions of these commitments did not include signatures, but these signatures will be validated from v2.0 onwards.</p>
 	<p>When a server wants to rotate the key, it simply generates a new key <code>k2</code> and appends a new commitment to <code>k2</code> with a new identifier such as <code>2.01</code>. It can then use <code>k2</code> as the secret for the VOPRF operations that it needs to compute.</p>
 	<!--kg-card-end: markdown-->
 	<h2 id="b-example-redemption-api-request">B. Example Redemption API request</h2>
-	<p>The redemption API at is available over HTTPS by sending POST requests to <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Requests to this endpoint must specify Privacy Pass data using JSON-RPC 2.0 syntax in the body of the request. Let’s look at an example request:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The redemption API at is available over HTTPS by sending POST requests to <a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>. Requests to this endpoint must specify Privacy Pass data using JSON-RPC 2.0 syntax in the body of the request. Let’s look at an example request:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "method": "redeem",
@@ -157,25 +149,21 @@
   "id": 1
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>In the above: <code>params.data[0]</code> is the client input data used to generate a token in the issuance phase; <code>params.data[1]</code> is the HMAC tag that the server uses to verify a redemption; and <code>params.data[2]</code> is a stringified, base64-encoded JSON object that specifies the hash-to-curve parameters used by the client. For example, the last element in the array corresponds to the object:</p>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     curve: "p256",
     hash: "sha256",
     method: "swu",
 }
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>Which specifies that the client has used the curve P-256, with hash function SHA-256, and the SSWU method for hashing to curve. This allows the server to verify the transaction with the correct ciphersuite. The client must bind the redemption request to some fixed information, which it stores as multiple strings in the array <code>params.bindings</code>. For example, it could send the Host header of the HTTP request, and the HTTP path that was used (this is what is used in the Privacy Pass browser extension). Finally, <code>params.compressed</code> is an optional boolean value (defaulting to false) that indicates whether the HMAC tag was computed over compressed or uncompressed point encodings.</p>
 	<p>Currently the only supported ciphersuites are the example above, or the same except with <code>method</code> equal to <code>increment</code> for the hash-and-increment method of hashing to a curve. This is the original method used in v1.0 of Privacy Pass, and is supported for backwards-compatibility only. See the <a href="https://privacypass.github.io/api-redeem" target="_blank">provided documentation</a> for more details.</p>
 	<!--kg-card-end: markdown-->
 	<h3 id="example-response">Example response</h3>
-	<p>If a request is sent to the redemption API and it is successfully verified, then the following response will be returned.</p>
-	<!--kg-card-begin: markdown-->
+	<p>If a request is sent to the redemption API and it is successfully verified, then the following response will be returned.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "result": "success",
@@ -183,8 +171,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When an error occurs something similar to the following will be returned.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When an error occurs something similar to the following will be returned.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "jsonrpc": "2.0",
   "error": {

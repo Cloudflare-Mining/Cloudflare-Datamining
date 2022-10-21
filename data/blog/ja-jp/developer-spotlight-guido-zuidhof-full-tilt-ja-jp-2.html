@@ -4,10 +4,8 @@
 	<p><a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/">Durable ObjectsのGA化</a>を記念して、このシリーズのキックオフには、Full Tiltと呼ばれるDurable Objectsのとても素晴らしい技術デモ以上に相応しいものはないでしょう。</p>
 	<p><a href="https://github.com/gzuidhof" target="_blank">Guido Zuidhof</a>氏によるFull Tiltは、彼が革新部門の最優秀賞に輝いた、最大級かつ最古のゲームジャムであるLudum Dareのためのゲームジャムエントリー作品です。ゲームジャムは非常に短い時間(通常48時間から72時間)で、一からゲームを制作するハッカソンのようなものです。</p>
 	<p>私たちはFull Tiltを大変気に入っています。それはコンピューター上のゲームのコントロールに自分の携帯電話を使用する素晴らしいゲームを構築するのに、GuidoがWorkersとDurable Objectsを使用したからというだけでなく、特にDurable Objectsがいかに強力であるのかが分かるからです。Guidoは、世界のどこでも、できるだけそのプレイヤーに近いところでパーソナルゲーミングサーバーを瞬時に立ち上げるためのすべてのロジックを48時間足らずで書き込むことができました。そしてそれは、まるで自分がコンピューターを直接コントロールしているかのようにとても速いのです。</p>
-	<p>しかし、ここではFull Tiltの開発体験について、Guido氏に語ってもらいます。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 76.28865979381443%;"><iframe src="https://iframe.videodelivery.net/9443c301ad57eb58d2068b3db7bb9bec?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>しかし、ここではFull Tiltの開発体験について、Guido氏に語ってもらいます。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 76.28865979381443%;"><iframe src="https://iframe.videodelivery.net/9443c301ad57eb58d2068b3db7bb9bec?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>先月の10月、私はLudum Dare 49ゲームジャムに参加しました。ゲームジャムの時間的制約によって迅速な作業、頻繁な反復、そして何より範囲を切り捨てることを余儀なくさせられるところが気に入っています。</p>
 	<p>ゲームジャムで私は<a href="https://ldjam.com/events/ludum-dare/49/full-tilt" target="_blank">Full Tilt</a>を制作したのですが、このゲームでは、ノートパソコン上のWebブラウザで実行するゲームに、Wiiリモコンのようなモーションコントローラーとして自分の携帯電話をシームレスに使用します。こんなにもスムーズに作ることができた秘密は、ゲームジャムをJamstackに結び付け、一部のDurable Objectsに組み合わせたことです。</p>
 	<p>ゲームのお試しは <a href="https://ld49.pages.dev/" target="_blank">こちらから</a>。</p>
@@ -24,8 +22,7 @@
 	<p>まずゲームルームを設定する必要がありました。このゲームルームでは、携帯電話とコンピューターの両方のブラウザが接続できるようにすることで、両者間でのメッセージのやり取りを可能にします。</p>
 	<p>Durable Objectsによって、複数のクライアントがWebSocketを通じて同時に接続できる小さなステートフルな「ミニサーバー」や「ルーム」を大量に作成することができ、完璧な小型のオンデマンドゲームサーバーを提供します。Durable Objectsを、ユーザーが最初に作成を要求した場所に近いデータセンターで実行されるJavascriptのシングルスレッドとしてお考えください。</p>
 	<p>コンピューターのブラウザでゲームが開始されると、Cloudflare Worker APIに現在のゲームセッションのためにルームを作成するようリクエストします。このAPIリクエストはシンプルなPOSTリクエストで、サーバーは作成されたルームを一意に識別する4文字のルームコードで応答します。私たちがルームコードを短くする理由は、ユーザーがQRコードをスキャンできない場合、このコードをコピーしてスマートフォンに入力する必要があるかもしれないからです。</p>
-	<p>周知のように、人は異なる文字が似ていて紛らわしいものがあるような、ランダムな文字列のコピーが苦手なので、最も一般的に区別が付かない文字を除外した次のような制限された文字セットを使用します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>周知のように、人は異なる文字が似ていて紛らわしいものがあるような、ランダムな文字列のコピーが苦手なので、最も一般的に区別が付かない文字を除外した次のような制限された文字セットを使用します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const DICTIONARY = "2345679ADEFGHJKLMNPQRSTUVWXYZ"; // 29 chars (no 0, O, I, 1, B, 8)
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -36,8 +33,7 @@
 	<p>問題は1週間後、そのルームコードがロサンゼルスにいる他のプレイヤーのために再利用された時に生じます。ゲームルームDurable Objectはムンバイで復活し、ロサンゼルスにいるプレイヤーの遅延はひどいものになります。将来的に、Durable Objectsはデータセンター間で移行される可能性がありますが、まだ保証されていません。</p>
 	<p>代わりにできるのは、新しいゲームセッションすべてにランダムIDで新しいDurable Objectを作成し、4文字のルームコードからこのランダムIDまでマッピングを維持することです。私たちはシステムにステートをいくつか取り入れています。Durable Objectsが再び救いの手を差し伸べることのできる、信頼できる中心的な情報源が必要となるでしょう。</p>
 	<p>ルームコードからDurable Object IDまでこのマッピングを追跡する単一の「ルームハブ」Durable Objectを作成することで、これを解決します。このDurable Objectには2つのエンドポイントがあり、1つは新しいルームをリクエストするもので、もう1つはルームの情報を検索するものです。</p>
-	<p>ルームリクエストのエンドポイント用のリクエストハンドラーを以下に示します。(引数は <a href="https://sunderjs.com/docs/context" target="_blank">Sunder Context</a>で、 Sunderは私がこのプロジェクトで使用したWebフレームワークです)</p>
-	<!--kg-card-begin: markdown-->
+	<p>ルームリクエストのエンドポイント用のリクエストハンドラーを以下に示します。(引数は <a href="https://sunderjs.com/docs/context" target="_blank">Sunder Context</a>で、 Sunderは私がこのプロジェクトで使用したWebフレームワークです)</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export async function handleRoomRequest(ctx: Context&lt;Env&gt;) {
     const now = Date.now();    
     const reqBody = await ctx.request.json();
@@ -80,8 +76,7 @@
 	<!--kg-card-end: markdown-->
 	<p>簡単に言うと、一度も使用されたことがないか、または十分な期間使用されていないものが見つかるまで、いくつかルームコードを生成します。</p>
 	<p>このコードには、微妙ですが重要な違いがあります。Durable Objectは、ルームハブそのものではなく、ルームハブと通信するCloudflare Workersに作成されます。ルームハブは、Cloudflareのネットワーク上のどこかにある単一データセンターで動作します。そこからゲームルームを作成する場合、エンドユーザーからまだ遠く離れているかもしれません！</p>
-	<p>ルーム情報を検索する方がシンプルで、私たちはルームデータかステータス404のどちらかを返します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>ルーム情報を検索する方がシンプルで、私たちはルームデータかステータス404のどちらかを返します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">export async function handleRoomLookup(ctx: Context&lt;Env, {roomCode: string}&gt;) {
     const now = Date.now();
 

@@ -27,8 +27,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image"></figure>
 	<p>L'API Resource Timing est prise en charge par <a href="https://caniuse.com/resource-timing" target="_blank">pratiquement tous les navigateurs</a>. Elle permet d'effectuer des mesures dans chacun d'eux, des anciennes versions d'Internet Explorer aux navigateurs mobiles sur iOS et Android, jusqu'à la toute dernière version de Chrome. L'utilisation de cette API nous donne un aperçu des cas d'utilisation réelle sur de véritables navigateurs.</p>
 	<p>En outre, nous ne demandons pas uniquement au navigateur de télécharger une image. Afin de nous assurer d'être équitables et de reproduire l'expérience réelle de l'utilisateur final, nous veillons à ce qu'aucune mise en cache locale ne soit impliquée dans la requête et vérifions si l'objet a été compressé ou non par le serveur. Nous tenons également compte de la taille des en-têtes HTTP, et enregistrons-le fait que la connexion a fait l'objet d'une initialisation préalable ou non, pour ne citer que quelques détails techniques.</p>
-	<p>Vous trouverez ci-dessous un exemple de haut niveau de la manière dont se déroule la procédure :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Vous trouverez ci-dessous un exemple de haut niveau de la manière dont se déroule la procédure :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">await fetch("https://example.com/100KB.png?r=7562574954", {
               mode: "cors",
               cache: "no-cache",
@@ -90,8 +89,7 @@ performance.getEntriesByType("resource");
 	<p>Nous disposons donc de 18 graphiques couvrant toutes les combinaisons de valeurs suivantes : (temps de connexion TCP, TTFB, TTLB), (moyenne, p95) et (tous les réseaux, 1 000 premiers réseaux par nombre d'adresses IP, 1 000 premiers réseaux par nombre d'observations).</p>
 	<p>Vous constaterez que Cloudflare n'arrive pas en première place dans deux graphiques (sur 18, nous ne sommes qu'en seconde place). Au cours des prochaines semaines, nous allons nous efforcer de nous hisser à la première place pour chaque mesure. Il s'agit, dans les deux cas, de temps moyens. Les mesures au p95 nous intéressent davantage, cependant, car elles présentent le « cas raisonnable le plus défavorable » pour un utilisateur d'Internet. Toutefois, l'objectif avoué de l'optimisation de nos performances consiste à occuper la première place sur l'ensemble des graphiques, quelle que soit la façon dont les performances sont mesurées.</p>
 	<h3 id="temps-de-connexion-tcp">Temps de connexion TCP</h3>
-	<p>Commençons par le temps de connexion TCP, afin de nous faire une idée de la qualité de la connexion des cinq entreprises que nous avons évaluées. Souvenez-vous qu'ici, plus les barres sont longues, meilleurs sont les résultats. Les valeurs indiquent que le réseau CDN concerné a obtenu les meilleures performances sur un nombre de réseaux donné : plus ce nombre de réseaux est élevé, mieux c'est.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Commençons par le temps de connexion TCP, afin de nous faire une idée de la qualité de la connexion des cinq entreprises que nous avons évaluées. Souvenez-vous qu'ici, plus les barres sont longues, meilleurs sont les résultats. Les valeurs indiquent que le réseau CDN concerné a obtenu les meilleures performances sur un nombre de réseaux donné : plus ce nombre de réseaux est élevé, mieux c'est.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -112,8 +110,7 @@ performance.getEntriesByType("resource");
 	</table>
 	<!--kg-card-end: markdown-->
 	<h3 id="temps-jusqu-au-premier-octet-ttfb-"><strong>Temps jusqu'au premier octet (TTFB)</strong></h3>
-	<p>Intéressons-nous ensuite au TTFB pour les cinq entreprises. Ici encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTFB le plus bas sur un plus grand nombre de réseaux.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Intéressons-nous ensuite au TTFB pour les cinq entreprises. Ici encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTFB le plus bas sur un plus grand nombre de réseaux.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -134,8 +131,7 @@ performance.getEntriesByType("resource");
 	</table>
 	<!--kg-card-end: markdown-->
 	<h3 id="temps-jusqu-au-dernier-octet-ttlb-"><strong>Temps jusqu'au dernier octet (TTLB)</strong></h3>
-	<p>Enfin vient le moment d'examiner le TTLB. Là encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTLB le plus bas sur un plus grand nombre de réseaux.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Enfin vient le moment d'examiner le TTLB. Là encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTLB le plus bas sur un plus grand nombre de réseaux.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

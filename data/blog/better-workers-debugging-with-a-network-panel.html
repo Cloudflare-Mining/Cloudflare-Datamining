@@ -51,8 +51,7 @@
 	<p>Communication between the inspector and the debugger backend is happening over WebSockets. So far we've been just receiving messages and passing them pretty much directly to V8 as-is. However, if we want to handle Network messages ourselves, that's not going to work anymore and we need to actually parse the messages.</p>
 	<p>To do that in a standard way, V8 provides some build scripts to generate protocol handlers for any given list of domains. While these are used by Chromium, they require quite a bit of configuration and custom glue for different levels of message serialisation, deserialisation and error handling.</p>
 	<p>On the other hand, the protocol used for communication is essentially just <a href="https://www.jsonrpc.org/" target="_blank">JSON-RPC</a>, and <a href="https://capnproto.org/" target="_blank">capnproto</a>, which we're already using in other places behind the scenes, provides JSON (de)serialisation support, so it's easier to reuse it rather than build a separate glue layer for V8.</p>
-	<p>For example, to provide bindings for <code><a href="https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallFrame" target="_blank">Runtime.callFrame</a></code> we need to just define a capnp structure like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, to provide bindings for <code><a href="https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallFrame" target="_blank">Runtime.callFrame</a></code> we need to just define a capnp structure like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">struct CallFrame {
   # Stack entry for runtime errors and assertions.
   functionName @0 :Text; # JavaScript function name.

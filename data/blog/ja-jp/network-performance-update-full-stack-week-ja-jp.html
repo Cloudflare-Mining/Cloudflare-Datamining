@@ -9,8 +9,7 @@
 	<p>当時、比較可能なすべての製品に対して、私たちがどのような評価を受けているかを確認したかったのですが、すべての製品が一般的に提供されているわけではありませんでした。そのため、Workersが別のソリューションであるFastlyのCompute@Edgeと比較した結果について報告することができませんでした。</p>
 	<p><strong>世界中のCatchpointのデータを使用して50のノードで実施したテストから最初の1バイトを受信するまでの時間（TTFB）を基に算出し、Cloudflare WorkersがFastlyのCompute@Edgeよりも196％高速でした。</strong>本日、このような報告ができることを嬉しく思います。</p>
 	<p>過去に行ったように、現在の時刻と測定された最初の1バイトを受信するまでの待ち時間（DNS、接続、およびTLSハンドシェイク後に、クライアントがHTTPリクエストを行ってからクライアントがリクエストの応答の最初のバイトを受信するまでの時間の長さ）を単純に返す関数を実行しました。テストは2021年11月8日に、Cloudflare WorkersとFastlyのCompute@Edgeの両方の無料利用枠アカウントを使用して実行されました。</p>
-	<p>双方のプロバイダーで実行したコードはまったく同じ（すべてのリクエストヘッダーを返す小さな関数）でした：</p>
-	<!--kg-card-begin: markdown-->
+	<p>双方のプロバイダーで実行したコードはまったく同じ（すべてのリクエストヘッダーを返す小さな関数）でした：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
 
 
@@ -50,8 +49,7 @@ async function handleRequest(event) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image"></figure>
 	<p>その結果、Cloudflareは現在ペルーのネットワークパフォーマンスにおいて1位を獲得しました。</p>
 	<h3 id="--3"><strong>スリランカでの遅延の削減</strong></h3>
-	<p>次の例は、地球の反対側にあるスリランカです。そこで、ユーザーからのリクエストをニューアークにルーティングしているネットワークプロバイダーを見つけました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>次の例は、地球の反対側にあるスリランカです。そこで、ユーザーからのリクエストをニューアークにルーティングしているネットワークプロバイダーを見つけました。</p><!--kg-card-begin: markdown-->
 	<pre><code>1 * * *
 2 100.85.0.1 3.061ms 2.522ms 2.728ms
 3 198.51.100.146 AS29766 3.651ms 1.855ms 2.715ms

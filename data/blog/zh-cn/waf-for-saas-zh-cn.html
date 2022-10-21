@@ -17,8 +17,7 @@
 	<h2 id="--1">端到端示例</h2>
 	<h3 id="-1-">第 1 步 - 定义自定义主机名</h3>
 	<p>Cloudflare for SaaS 客户通过创建自定义主机名来定义客户的域。自定义主机名指示哪些域需要路由到 SaaS 提供商的源站。自定义主机名可以定义特定域，例如 example.com，也可以扩展到通配符，例如 <code>*.example.com</code>，这允许 <code>example.com</code>, 下的子域路由到 SaaS 服务。WAF for SaaS 支持两种类型的自定义主机名，使 SaaS 提供商可以灵活选择保护范围。</p>
-	<p>第一步是创建自定义主机名来定义客户的域。这可以通过仪表板或 API 完成。</p>
-	<!--kg-card-begin: markdown-->
+	<p>第一步是创建自定义主机名来定义客户的域。这可以通过仪表板或 API 完成。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
      -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
      -H "Content-Type: application/json" \
@@ -33,8 +32,7 @@
 	<p>接下来，在自定义主机名（客户的域）与您想连接的防火墙规则集之间创建关联。</p>
 	<p>方法为将 JSON blob 关联到自定义主机名。我们的产品<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">自定义元数据</a>允许客户通过 API 轻松执行此操作。</p>
 	<p>在下面的示例中，具有两个字段（“customer_id” 和 “security_level”）的 JSON blob 将关联到 <code>*.example.com</code> 和 <code>example.com</code> 的每个请求。</p>
-	<p>自定义元数据没有预先确定的模式。字段名称和结构完全可根据客户的需求进行自定义。在此示例中，我们选择了 Tag 标记 “security_level”，预计会向其分配三个值（low、medium 或 high）。这些值进而会触发三组不同的规则。</p>
-	<!--kg-card-begin: markdown-->
+	<p>自定义元数据没有预先确定的模式。字段名称和结构完全可根据客户的需求进行自定义。在此示例中，我们选择了 Tag 标记 “security_level”，预计会向其分配三个值（low、medium 或 high）。这些值进而会触发三组不同的规则。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\
@@ -48,8 +46,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="-3-tag-">第 3 步 - 根据 Tag 标记触发安全产品</h3>
 	<p>最后，您可以根据自定义主机名触发规则。自定义元数据字段，例如 “security_level”，在 WAF 运行所在的规则集引擎中可用。在此示例中，“security_level” 可用于触发产品的不同配置，例如 WAF、防火墙规则、高级速率限制和转换规则。</p>
-	<p>可以通过仪表板或 API 构建规则，如下所示。当 “security_level” 设置为 <em>low</em> 时，将触发速率限制规则。</p>
-	<!--kg-card-begin: markdown-->
+	<p>可以通过仪表板或 API 构建规则，如下所示。当 “security_level” 设置为 <em>low</em> 时，将触发速率限制规则。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
     -H "Content-Type: application/json"\

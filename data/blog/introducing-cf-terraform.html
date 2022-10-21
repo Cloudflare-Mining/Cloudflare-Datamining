@@ -6,8 +6,7 @@
 	<h2 id="what-is-terraform">What is Terraform?</h2>
 	<p><a href="https://www.terraform.io/" target="_blank">Terraform</a> is an open-source tool that allows you to describe your infrastructure and cloud services (think virtual machines, servers, databases, network configurations, Cloudflare API resources, and more) as human-readable configurations. </p>
 	<p>Once you’ve done this, you can run the Terraform command-line tool and it will figure out the difference between your desired<strong> </strong>state and your current state, and make the API calls in the background necessary to reconcile the two. </p>
-	<p>Unlike other solutions, Terraform does not require you to run software on your hosts, and instead of spending time manually configuring machines, creating DNS records, and specifying Page Rules, you can simply run:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Unlike other solutions, Terraform does not require you to run software on your hosts, and instead of spending time manually configuring machines, creating DNS records, and specifying Page Rules, you can simply run:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ terraform apply
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -18,27 +17,23 @@
 	<p>It’s called <a href="https://github.com/cloudflare/cf-terraforming" target="_blank">cf-terraforming</a> and it downloads your Cloudflare setup, meaning everything you’ve defined via the Cloudflare dashboard and API, into Terraform-compliant configuration files in a few commands.</p>
 	<h2 id="getting-up-and-running-quickly">Getting up and running quickly</h2>
 	<p>Cf-terraforming is open-source and <a href="https://github.com/cloudflare/cf-terraforming" target="_blank">available on Github now</a>. You need a working <a href="https://golang.org/doc/install" target="_blank">Golang installation</a> and a <a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflare account</a> with some resources defined. That’s it!</p>
-	<p>Let’s first install cf-terraforming, while also pulling down all dependencies and updating them as necessary: </p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s first install cf-terraforming, while also pulling down all dependencies and updating them as necessary: </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ go get -u github.com/cloudflare/cf-terraforming/...
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Cf-terraforming is a command line tool that you invoke with your Cloudflare credentials, some zone information and the resource type that you want to export. The output is a valid Terraform configuration file describing your resources. </p>
-	<p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-" target="_blank">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool: </p>
-	<!--kg-card-begin: markdown-->
+	<p>To use cf-terraforming, first <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-" target="_blank">get your API key</a> and Account ID from the Cloudflare dashboard. You can find your account id at the bottom right of the overview page for any zone in your account. It also has a quick link to get your API key as well. You can store your key and account ID in environment variables to make it easier to work with the tool: </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">export CLOUDFLARE_TOKEN=”&lt;your-key&gt;” 
 export CLOUDFLARE_EMAIL=”&lt;your-email&gt;”
 export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;” 
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Cf-terraforming can create configuration files for any of the resources currently available in <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank">the official Cloudflare Terraform provider</a>, but sometimes it’s also handy to export individual resources as needed.</p>
-	<p>Let’s say you’re migrating your Cloudflare configuration to Terraform and you want to describe your Spectrum applications. You simply call cf-terraforming with your credentials, zone, and the spectrum_application command, like so: </p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s say you’re migrating your Cloudflare configuration to Terraform and you want to describe your Spectrum applications. You simply call cf-terraforming with your credentials, zone, and the spectrum_application command, like so: </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">go run cmd/cf-terraforming/main.go --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_TOKEN --account $CLOUDFLARE_ACCT_ID spectrum_application
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Cf-terraforming will contact the Cloudflare API on your behalf and define your resources in a format that Terraform understands: </p>
-	<!--kg-card-begin: markdown-->
+	<p>Cf-terraforming will contact the Cloudflare API on your behalf and define your resources in a format that Terraform understands: </p><!--kg-card-begin: markdown-->
 	<pre><code>resource"cloudflare_spectrum_application""1150bed3f45247b99f7db9696fffa17cbx9" {    
     protocol = "tcp/8000"    
     dns = {        
@@ -51,15 +46,13 @@ export CLOUDFLARE_ACCT_ID=”&lt;your-id&gt;”
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>You can redirect the output to a file and then start working with Terraform. First, ensure you are in the cf-terraforming directory, then run: </p>
-	<!--kg-card-begin: markdown-->
+	<p>You can redirect the output to a file and then start working with Terraform. First, ensure you are in the cf-terraforming directory, then run: </p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">go run cmd/cf-terraforming/main.go --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_TOKEN --account $CLOUDFLARE_ACCT_ID spectrum_application &gt; my_spectrum_applications.tf 
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The same goes for Zones, DNS records, Workers scripts and routes, security policies and more. </p>
 	<h2 id="download-all-cloudflare-resources">Download all Cloudflare resources</h2>
-	<p>Use the <strong>all</strong> command to download everything and convert it into Terraform config.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Use the <strong>all</strong> command to download everything and convert it into Terraform config.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">go run cmd/cf-terraforming/main.go --email $CLOUDFLARE_EMAIL --key $CLOUDFLARE_TOKEN --account $CLOUDFLARE_ACCT_ID all
 </code></pre>
 	<!--kg-card-end: markdown-->

@@ -8,8 +8,7 @@
 		<li>Advanced TCP Protection</li>
 		<li>Magic Firewall</li>
 	</ol>
-	<p>Note that not all mitigation systems are applicable to all Cloudflare services. Below is a table describing which mitigation service is applicable to which Cloudflare service:</p>
-	<!--kg-card-begin: html-->
+	<p>Note that not all mitigation systems are applicable to all Cloudflare services. Below is a table describing which mitigation service is applicable to which Cloudflare service:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -93,11 +92,9 @@
 				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Packets are processed by the mitigation systems in the order outlined above. Therefore, a packet that passed all three systems may produce three packet samples, one from each system. This can be very insightful when troubleshooting and wanting to understand where in the stack a packet was dropped. To avoid overcounting the total passed traffic, Magic Transit users should only take into consideration the passed packets from the last mitigation system, Magic Firewall.</p>
-	<p>An example of a packet sample log:</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example of a packet sample log:</p><!--kg-card-begin: markdown-->
 	<pre><code>{"AttackCampaignID":"","AttackID":"","ColoName":"bkk06","Datetime":1652295571783000000,"DestinationASN":13335,"Direction":"ingress","IPDestinationAddress":"(redacted)","IPDestinationSubnet":"/24","IPProtocol":17,"IPSourceAddress":"(redacted)","IPSourceSubnet":"/24","MitigationReason":"","MitigationScope":"","MitigationSystem":"magic-firewall","Outcome":"pass","ProtocolState":"","RuleID":"(redacted)","RulesetID":"(redacted)","RulesetOverrideID":"","SampleInterval":100,"SourceASN":38794,"Verdict":"drop"}
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -150,8 +147,7 @@
 	<p><strong><u>URL</u></strong>:</p>
 	<p><code>https://api.cloudflare.com/client/v4/accounts/<strong>{account-id}</strong>/logpush/jobs</code></p>
 	<p><strong>Authorization</strong>: Define a Bearer authorization in the <strong>Authorization</strong> tab, or add it to the header, and add your Cloudflare API token.</p>
-	<p><strong>Body</strong>: Select a <strong>Raw</strong> &gt; <strong>JSON</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Body</strong>: Select a <strong>Raw</strong> &gt; <strong>JSON</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
 "destination_conf": "{your-unique-splunk-configuration}",
 "dataset": "network_analytics_logs",
@@ -167,8 +163,7 @@
 	<p><strong><code>{channel-id}</code> </strong>= A unique ID that you choose to assign for.<strong>`{your-splunk–hec-token}` </strong>= The token that you generated for your Splunk HEC.</p>
 	<p>An important note is that customers should have a valid SSL/TLS certificate on their Splunk instance to support an encrypted connection.</p>
 	<p>After you’ve done that, you can create a GET request to the same URL (no request body needed) to verify that the job was created and is enabled.</p>
-	<p>The response should be similar to the following:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The response should be similar to the following:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
     "errors": [],
     "messages": [],

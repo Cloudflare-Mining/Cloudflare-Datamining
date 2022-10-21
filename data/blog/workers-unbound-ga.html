@@ -8,8 +8,7 @@
 	<p>The feedback has been fantastic and we’re excited to see that our work to extend compute limits to unlock new use cases is resonating with our community (please join our Discord server <a href="https://discord.gg/c2eACA4qXA" target="_blank">here</a>)! &nbsp;We want Workers Unbound to be the choice that developers turn to for any workload that might otherwise be run on traditional serverless platforms like AWS Lambda &nbsp;— and we’re thrilled to see that the message is resonating.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image6-3.png" class="kg-image"></figure>
 	<h3 id="slashing-egress-pricing">Slashing egress pricing</h3>
-	<p>Workers Unbound aims to be the cheapest general purpose computing platform, and we’ve made changes to our pricing plan to solidify that position. As <a href="https://blog.cloudflare.com/introducing-workers-unbound/">announced</a> during the beta, the Workers Unbound pricing model includes charges for duration and egress as well as requests, but we will not include any additional charges as other providers do, such as API Gateway or CloudFront.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Workers Unbound aims to be the cheapest general purpose computing platform, and we’ve made changes to our pricing plan to solidify that position. As <a href="https://blog.cloudflare.com/introducing-workers-unbound/">announced</a> during the beta, the Workers Unbound pricing model includes charges for duration and egress as well as requests, but we will not include any additional charges as other providers do, such as API Gateway or CloudFront.</p><!--kg-card-begin: markdown-->
 	<p>Over the course of development, we also heard your feedback on the cost of egress. We know that these costs are top of mind for developers who need to do intensive storage and transfer operations. In response to that, we have cut our egress in half from \$0.09 per GB to \$0.045 per GB.</p>
 	<!--kg-card-end: markdown-->
 	<p>Furthermore, we increased the usage that is included in our $5 a month cost, detailed below. Now, as a part of the Workers Paid plan, we will give you more usage for the same rate.</p>
@@ -28,8 +27,7 @@
 	<p>Starting today, Workers Unbound is available to anyone with a Cloudflare Workers Paid subscription. Navigate to the Workers <a href="https://dash.cloudflare.com/?account=workers/plans" target="_blank">dashboard</a>, click "Change" under the Default Usage Model section, and follow the prompts to enable Unbound on your account. You can also change the Usage Model for individual Workers under the Settings tab of each Worker.</p>
 	<p>Once enabled, Unbound can also be used through wrangler, the command-line tool for deploying Workers. First, make sure to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank">update</a> wrangler to release 1.15.1 or later. Then, configure the usage model of your Worker by setting the usage_model field in your wrangler.toml to either "bundled" or "unbound".</p>
 	<p>As a reminder, the “bundled” usage model gives you access to our original Workers model with up to 50ms of compute time. The model “unbound” opts you into the higher execution limits with the pricing listed above. If you don't specify a usage model, new Workers scripts will use the default usage model set through the dashboard.</p>
-	<p>If you want to try Workers Unbound today, please take a look at this template, licensed under the MIT license, and give it a whirl!</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you want to try Workers Unbound today, please take a look at this template, licensed under the MIT license, and give it a whirl!</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">// Try running this script first with Usage Model: Bundled
 // see how far it can count.
 //

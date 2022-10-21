@@ -17,8 +17,7 @@
 	<p>To evaluate the user on other custom criteria, you can add an external evaluation rule to the Access policy. The external evaluation rule requires two values: an API endpoint to call and a key to verify that any request response is coming from a trusted source.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image"></figure>
 	<p>After the user authenticates with your identity provider, all information about the user, device and location is passed to your external API. The API returns a pass or fail response to Access which will then either allow or deny access to the user.</p>
-	<p>Example logic for the API would look like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Example logic for the API would look like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>/**
  * Where your business logic should go
  * @param {*} claims

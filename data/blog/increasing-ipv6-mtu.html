@@ -15,8 +15,7 @@
 	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud" target="_blank">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly. </p>
 	<h3 id="hardcoding-ipv6-mtu">Hardcoding IPv6 MTU</h3>
 	<p>During that initial ECMP rollout things were broken. To keep services running until <code>pmtud</code> was done, we deployed a quick hack. We reduced the MTU of &nbsp;IPv6 traffic to the minimal possible value: 1280 bytes.</p>
-	<p>This was done as a tag on a default route. This is how our routing table used to look:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This was done as a tag on a default route. This is how our routing table used to look:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip -6 route show
 ...
 default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280

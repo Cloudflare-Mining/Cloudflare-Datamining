@@ -36,8 +36,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Upstream-Read-Reordered.png" class="kg-image"></figure>
 	<p>Although we continue to frame upstream data into HTTP/2 data frames in the separate iterations for each upstream connection, we no longer commit these frames to a single write queue within each iteration, instead we arrange the frames into the per-stream queues described earlier. We then post a single event to the end of the per-connection iterations, and perform the prioritization, queuing and writing of the HTTP/2 data frames of all streams in that single event.</p>
 	<p>This single event finds the cohort of data conveniently stored in their respective per-stream queues, all in close proximity, which greatly increases the Potential of the Edge Prioritization algorithms.</p>
-	<p>In a form closer to actual code, the core of this modification looks a bit like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In a form closer to actual code, the core of this modification looks a bit like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -55,8 +54,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
                          ngx_http_v2_stream *h2_stream,
                          ngx_buffer *buffer)
@@ -73,8 +71,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">ngx_http_v2_write_streams(ngx_http_v2_connection *h2_conn)
 {
     ngx_http_v2_stream *h2_stream;

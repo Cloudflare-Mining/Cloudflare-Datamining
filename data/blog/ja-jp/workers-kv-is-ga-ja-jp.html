@@ -4,8 +4,7 @@
 	<h3 id="workers-kv-"><strong>Workers KVとは？</strong></h3>
 	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
 	<h3 id="workers-kv--1"><strong>Workers KVを構築した理由は？</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -26,8 +25,7 @@ async function handleOneRedirect(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
 // now that's more like it!
 addEventListener("fetch", event =&gt; {
@@ -96,8 +94,7 @@ async function handleBillionsOfRedirects(request) {
 	<h3 id="--2"><strong>ベータ版以降の新機能は何ですか？</strong></h3>
 	<p>これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
 	<h4 id="1-"><strong>1.一括書き込み</strong></h4>
-	<p>既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ<em>て</em>に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ<em>て</em>に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
   -X PUT \
@@ -111,8 +108,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
-	<p>この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com/" target="_blank">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com/" target="_blank">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -160,8 +156,7 @@ async function zipToJson(response) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function translate(keys, lang) {
   // You bind your translations namespace to the TRANSLATIONS variable.
   return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
@@ -169,8 +164,7 @@ async function zipToJson(response) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h4 id="2-"><strong>2.期限付きのキー</strong></h4>
-	<p>デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
-	<!--kg-card-begin: markdown-->
+	<p>デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Key expires 60 seconds from now.
 NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
 
@@ -178,8 +172,7 @@ NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
 NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><br></p>
-	<!--kg-card-begin: markdown-->
+	<p><br></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
 curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
@@ -191,8 +184,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/ \
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
-	<p>この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = new URL(event.request.url)
   // An internal API that blocks a new user IP.
@@ -232,8 +224,7 @@ async function handleRequest(request) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-kc-file-size-update@2x.png" class="kg-image"></figure>
 	<p>こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別<em>の</em>ストレージバケットを管理することは避けたい。</p>
 	<p>Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
-	<p>この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = event.request.url
   var arg = request.url.split("/").pop()

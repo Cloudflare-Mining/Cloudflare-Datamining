@@ -28,11 +28,9 @@
 	<h3 id="erstellen-ihrer-ersten-d1-datenbank">Erstellen Ihrer ersten D1-Datenbank</h3>
 	<p>Mit D1 können Sie mit wenigen Klicks eine Datenbank erstellen: Definieren Sie Tabellen, fügen Sie Daten ein oder laden Sie diese hoch, ohne dass Sie sich irgendwelche Befehle merken müssen, es sei denn, Sie brauchen sie.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
-	<p>Sie bevorzugen stattdessen die Kommandozeile? Kein Problem. Wir haben Anfang dieser Woche <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/"> den neuen und verbesserten Wrangler 2</a> angekündigt, das beste Tool für die Verwaltung und Bereitstellung Ihrer Workers und bald auch Ihr Tool für die Bereitstellung von D1. Wrangler wird auch eine native Unterstützung für D1 bieten, so dass Sie Datenbanken mit ein paar einfachen Befehlen erstellen und verwalten können:</p>
-	<!--kg-card-begin: html-->
+	<p>Sie bevorzugen stattdessen die Kommandozeile? Kein Problem. Wir haben Anfang dieser Woche <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/"> den neuen und verbesserten Wrangler 2</a> angekündigt, das beste Tool für die Verwaltung und Bereitstellung Ihrer Workers und bald auch Ihr Tool für die Bereitstellung von D1. Wrangler wird auch eine native Unterstützung für D1 bieten, so dass Sie Datenbanken mit ein paar einfachen Befehlen erstellen und verwalten können:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="zugriff-auf-d1-von-ihrem-worker-aus">Zugriff auf D1 von Ihrem Worker aus</h3>
 	<p>Das Anhängen von D1 an Ihren Worker ist so einfach wie das Erstellen einer neuen Bindung. Jede D1-Datenbank, die Sie an Ihren Worker anhängen, wird mit ihrer eigenen Bindung an den Parameter <code>env</code> angehängt:</p>
 	<pre><code class="language-js">export default {

@@ -27,8 +27,7 @@
 	<p>Coordination within a data center is faster and more reliable than coordination between many different data centers. So we decided to divide the user slots available on the web application to individual limits for each data center. The advantage of doing this is that only the data center limits will get exceeded if there is a delay in traffic information getting propagated. This ensures we don’t overshoot by much even if there is a delay in getting the latest information.</p>
 	<p>The next step was to figure out how to divide this information between data centers. For this we decided to use the historical traffic data on the web application. More specifically, we track how many different users tried to access the application across every data center in the preceding few minutes. The great thing about historical traffic data is that it's historical and cannot change anymore. So even with a delay in propagation, historical traffic data will be accurate even when the current traffic data is not.</p>
 	<p>Let's see an actual example: the current time is <code>Thu, 27 May 2021 16:33:20 GMT</code>. For the minute <code>Thu, 27 May 2021 16:31:00 GMT</code> there were <code>50</code> users in Nairobi and <code>50</code> in Dublin. For the minute <code>Thu, 27 May 2021 16:32:00 GMT</code> there were <code>45</code> users in Nairobi and <code>55</code> in Dublin. This was the only traffic on the application during that time.</p>
-	<p>Every data center looks at what the share of traffic to each data center was two minutes in the past. For <code>Thu, 27 May 2021 16:33:20 GMT</code> that value is <code>Thu, 27 May 2021 16:31:00 GMT</code><em><strong>.</strong></em></p>
-	<!--kg-card-begin: markdown-->
+	<p>Every data center looks at what the share of traffic to each data center was two minutes in the past. For <code>Thu, 27 May 2021 16:33:20 GMT</code> that value is <code>Thu, 27 May 2021 16:31:00 GMT</code><em><strong>.</strong></em></p><!--kg-card-begin: markdown-->
 	<pre><code>Thu, 27 May 2021 16:31:00 GMT: 
 {
   Nairobi: 0.5, //50/100(total) users
@@ -48,8 +47,7 @@ Thu, 27 May 2021 16:32:00 GMT:
 	<h3 id="clustering">Clustering</h3>
 	<p>In order to let people access the application fairly we need a way to keep track of their position in the queue. A bucket has an identifier (bucketId) calculated based on the time the user tried to visit the waiting room for the first time. &nbsp;All the users who visited the waiting room between 19:51:00 and 19:51:59 are assigned to the bucketId 19:51:00. It's not practical to track every end user in the waiting room individually. When end users visit the application around the same time, they are given the same bucketId. So we cluster users who came around the same time as one time bucket.</p>
 	<h3 id="what-is-in-the-cookie-returned-to-an-end-user">What is in the cookie returned to an end user?</h3>
-	<p>We mentioned an encrypted cookie that is assigned to the user when they first visit the waiting room. Every time the user comes back, they bring this cookie with them. The cookie is a ticket for the user to get into the web application. The content below is the typical information the cookie contains when visiting the web application. This user first visited around <code>Wed, 26 May 2021 19:51:00 GMT</code>, waited for around 10 minutes and got accepted on <code>Wed, 26 May 2021 20:01:13 GMT</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We mentioned an encrypted cookie that is assigned to the user when they first visit the waiting room. Every time the user comes back, they bring this cookie with them. The cookie is a ticket for the user to get into the web application. The content below is the typical information the cookie contains when visiting the web application. This user first visited around <code>Wed, 26 May 2021 19:51:00 GMT</code>, waited for around 10 minutes and got accepted on <code>Wed, 26 May 2021 20:01:13 GMT</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code>{
   "bucketId": "Wed, 26 May 2021 19:51:00 GMT",
   "lastCheckInTime": "Wed, 26 May 2021 20:01:13 GMT",
@@ -65,8 +63,7 @@ Thu, 27 May 2021 16:32:00 GMT:
 	<h3 id="waiting-room-state">Waiting Room State</h3>
 	<p>Previously we talked about the concept of user slots and how we can function even when there is a delay in communication between data centers. The waiting room state helps to accomplish this. It is formed by historical data of events happening in different data centers. So when a waiting room is first created, there is no waiting room state as there is no recorded traffic. The only information available is the customer’s configured limits. Based on that we start letting users in. In the background the service (introduced later in this post as Data Center Durable Object) running in the data center periodically reports about the tickets it has issued to a co-ordinating service and periodically gets a response back about things happening around the world.</p>
 	<p>As time progresses more and more users with different bucketIds show up in different parts of the globe. Aggregating this information from the different data centers gives the waiting room state.</p>
-	<p>Let's look at an example: there are two data centers, one in Nairobi and the other in Dublin. When there are no user slots available for a data center, users start getting queued. Different users who were assigned different bucketIds get queued. The data center state from Dublin looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let's look at an example: there are two data centers, one in Nairobi and the other in Dublin. When there are no user slots available for a data center, users start getting queued. Different users who were assigned different bucketIds get queued. The data center state from Dublin looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">activeUsers: 50,
 buckets: 
 [  
@@ -87,8 +84,7 @@ buckets:
 ]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The same thing is happening in Nairobi and the data from there looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The same thing is happening in Nairobi and the data from there looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">activeUsers: 151,
 buckets: 
 [ 
@@ -116,8 +112,7 @@ buckets:
 ]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This information from data centers are reported in the background and aggregated to form a data structure similar to the one below:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This information from data centers are reported in the background and aggregated to form a data structure similar to the one below:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">activeUsers: 201, // 151(Nairobi) + 50(Dublin)
 buckets: 
 [  
@@ -150,8 +145,7 @@ buckets:
 	<p><em>Total Active Users</em> - 200<br><em>New Users Per Minute</em> - 200</p>
 	<p>As per their configuration only 200 customers can be at the web application at any time. So users slots available for the waiting room state above are 200 - 201(activeUsers) = -1. So no one can go in and users get queued.</p>
 	<p>Now imagine that some users have finished their session and activeUsers is now 148.</p>
-	<p>Now userSlotsAvailable = 200 - 148 = 52 users. We should let 52 of the users who have been waiting the longest into the application. We achieve this by giving the eligible slots to the oldest buckets in the queue. In the example below 2 users are waiting from bucket <code>Thu, 27 May 2021 15:54:00 GMT</code> and 50 users are waiting from bucket <code>Thu, 27 May 2021 15:55:00 GMT</code>. These are the oldest buckets in the queue who get the eligible slots.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now userSlotsAvailable = 200 - 148 = 52 users. We should let 52 of the users who have been waiting the longest into the application. We achieve this by giving the eligible slots to the oldest buckets in the queue. In the example below 2 users are waiting from bucket <code>Thu, 27 May 2021 15:54:00 GMT</code> and 50 users are waiting from bucket <code>Thu, 27 May 2021 15:55:00 GMT</code>. These are the oldest buckets in the queue who get the eligible slots.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">activeUsers: 148,
 buckets: 
 [  
@@ -183,8 +177,7 @@ buckets:
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>If there are eligible slots available for all the users in their bucket, then they can be sent to the web application from any data center. This ensures the fairness of the waiting room.</p>
-	<p>There is another case that can happen where we do not have enough eligible slots for a whole bucket. When this happens things get a little more complicated as we cannot send everyone from that bucket to the web application. Instead, we allocate a share of eligible slots to each data center.</p>
-	<!--kg-card-begin: markdown-->
+	<p>There is another case that can happen where we do not have enough eligible slots for a whole bucket. When this happens things get a little more complicated as we cannot send everyone from that bucket to the web application. Instead, we allocate a share of eligible slots to each data center.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">key: "Thu, 27 May 2021 15:56:00 GMT",
 data: 
 {
@@ -193,8 +186,7 @@ data:
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>As we did before, we use the ratio of past traffic from each data center to decide how many users it can let through. So if the current time is <code>Thu, 27 May 2021 16:34:10 GMT</code> both data centers look at the traffic ratio in the past at <code>Thu, 27 May 2021 16:32:00 GMT</code> and send a subset of users from those data centers to the web application.</p>
-	<!--kg-card-begin: markdown-->
+	<p>As we did before, we use the ratio of past traffic from each data center to decide how many users it can let through. So if the current time is <code>Thu, 27 May 2021 16:34:10 GMT</code> both data centers look at the traffic ratio in the past at <code>Thu, 27 May 2021 16:32:00 GMT</code> and send a subset of users from those data centers to the web application.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">Thu, 27 May 2021 16:32:00 GMT: 
 {
   Nairobi: 0.25, // 0.25 * 20 = 5 eligibleSlots
@@ -203,8 +195,7 @@ data:
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="estimated-wait-time">Estimated wait time</h3>
-	<p>When a request comes from a user we look at their bucketId. Based on the bucketId it is possible to know how many people are in front of the user's bucketId from the sorted list. Similar to how we track the activeUsers we also calculate the average number of users going to the web application per minute. Dividing the number of people who are in front of the user by the average number of users going to the web application gives us the estimated time. This is what is shown to the user who visits the waiting room.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When a request comes from a user we look at their bucketId. Based on the bucketId it is possible to know how many people are in front of the user's bucketId from the sorted list. Similar to how we track the activeUsers we also calculate the average number of users going to the web application per minute. Dividing the number of people who are in front of the user by the average number of users going to the web application gives us the estimated time. This is what is shown to the user who visits the waiting room.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">avgUsersToWebApplication:  30,
 activeUsers: 148,
 buckets: 

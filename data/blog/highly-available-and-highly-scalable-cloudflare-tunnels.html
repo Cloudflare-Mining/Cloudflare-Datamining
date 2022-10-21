@@ -3,8 +3,7 @@
 	<p>Starting today, we’re thrilled to announce you can run the same tunnel from multiple instances of cloudflared simultaneously. This enables graceful restarts, elastic auto-scaling, easier Kubernetes integration, and more reliable tunnels.</p>
 	<h2 id="what-is-cloudflare-tunnel">What is Cloudflare Tunnel?</h2>
 	<p>I work on Cloudflare Tunnel, a product our customers use to connect their services and private networks to Cloudflare without poking holes in their firewall. Tunnel connections are managed by <code>cloudflared</code>, a tool that runs in your environment and connects your services to the Internet while ensuring that all its traffic goes through Cloudflare.</p>
-	<p>Say you have some local service (a website, an API, or a TCP server), and you want to securely expose it to the Internet using a Cloudflare Tunnel. First, download cloudflared, which is a “connector” that connects your local service to the Internet through Cloudflare. You can then connect that service to Cloudflare and generate a DNS entry with a single command:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Say you have some local service (a website, an API, or a TCP server), and you want to securely expose it to the Internet using a Cloudflare Tunnel. First, download cloudflared, which is a “connector” that connects your local service to the Internet through Cloudflare. You can then connect that service to Cloudflare and generate a DNS entry with a single command:</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create --name mytunnel --url http://localhost:8080 --hostname example.com
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -22,16 +21,14 @@
 	<p>Starting today, you can now create and configure an instance of <code>cloudflared</code> once and run it as multiple different processes in a replica model.</p>
 	<p>You can still point a DNS record or Cloudflare Load Balancer to a tunnel using its unique ID, but that tunnel is now represented by one or more identical instances of <code>cloudflared</code> - each with a unique connector ID.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3.png" class="kg-image"></figure>
-	<p>When you run your tunnel, cloudflared will log its <em>connector ID</em>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>When you run your tunnel, cloudflared will log its <em>connector ID</em>.</p><!--kg-card-begin: markdown-->
 	<pre><code>2021-03-29T18:40:17Z INF Starting tunnel tunnelID=610a53bd-ed0c-4afe-92b5-ca0238153410
 2021-03-29T18:40:17Z INF Version 2021.3.5
 2021-03-29T18:40:17Z INF GOOS: darwin, GOVersion: go1.16.2, GoArch: amd64
 2021-03-29T18:40:17Z INF Generated Connector ID: 14e2e624-0d32-4a21-a88c-64acf9484dac
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>There’s a new command, <em>cloudflared tunnel info &lt;tunnel name&gt;</em>, to show you each cloudflared running your tunnel.</p>
-	<!--kg-card-begin: markdown-->
+	<p>There’s a new command, <em>cloudflared tunnel info &lt;tunnel name&gt;</em>, to show you each cloudflared running your tunnel.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel info mytunnel
 NAME:     mytunnel
 ID:       610a53bd-ed0c-4afe-92b5-ca0238153410

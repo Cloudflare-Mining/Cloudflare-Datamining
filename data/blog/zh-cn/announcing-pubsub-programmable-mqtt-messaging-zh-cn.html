@@ -24,8 +24,7 @@
 		<li>将特定键值对的消息解析为指标</li>
 		<li>将该指标直接写入我们新的无服务器时间序列分析服务 Workers Analytics Engine，以便我们可以直接使用 GraphQL 查询它。<br></li>
 	</ol>
-	<p>这让我们不必维护外部指标服务、配置另一个云服务或考虑如何扩展：我们可以直接在 Cloudflare 上完成所有这些工作。</p>
-	<!--kg-card-begin: markdown-->
+	<p>这让我们不必维护外部指标服务、配置另一个云服务或考虑如何扩展：我们可以直接在 Cloudflare 上完成所有这些工作。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-TypeScript">
 async function pubsub(
   messages: Array&lt;PubSubMessage&gt;,
@@ -78,8 +77,7 @@ const worker = {
 export default worker;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>然后，我们可以使用熟悉的语言——SQL，直接查询这些指标。我们的查询采用了我们编写的指标，并提供了由我们的支付设备处理的交易明细，按商户分组（同样，都在 Cloudflare 上）：</p>
-	<!--kg-card-begin: markdown-->
+	<p>然后，我们可以使用熟悉的语言——SQL，直接查询这些指标。我们的查询采用了我们编写的指标，并提供了由我们的支付设备处理的交易明细，按商户分组（同样，都在 Cloudflare 上）：</p><!--kg-card-begin: markdown-->
 	<pre><code>SELECT
   label_2 as region,
   label_3 as merchantId,

@@ -15,8 +15,7 @@
 	<p>Utilizamos nuestros propios productos para aislar los dispositivos sin necesidad de implementación en una red independiente. De este modo, ofrecemos garantías de seguridad sin hardware adicional. Se trata de una solución sin servidor y sin infraestructura para aislar una red.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
 	<p>¿Cómo se hace? El dispositivo de hardware (para nuestra prueba de concepto, una cámara Verkada) se conecta a un conmutador PoE (Power over Ethernet), que se configura para crear un túnel que dirija tu tráfico hasta la red global de Cloudflare a través de Anycast GRE. Allí, podemos configurar reglas desde el panel de control de Cloudflare para escribir reglas de salida que garanticen que el tráfico saliente solo va a donde se supone que debe ir. De esta manera, se evita el movimiento lateral.</p>
-	<p>Esta arquitectura permite a un administrador de red controlar el tráfico de la capa 3 y superiores desde un único panel de control, aplicando políticas al tráfico de entrada y salida de forma instantánea. Además, ofrece una solución sencilla "sin supervisión" que se puede adaptar a un entorno cambiante. La protección es independiente del proveedor, utiliza estándares comunes y la recopilación de registros es automática. En comparación con otros métodos de protección contra el movimiento lateral, Cloudflare ofrece mayor facilidad, adaptabilidad y garantías de seguridad de primer nivel necesarias para gestionar de forma segura cualquier entorno con dispositivos IoT.</p>
-	<!--kg-card-begin: html-->
+	<p>Esta arquitectura permite a un administrador de red controlar el tráfico de la capa 3 y superiores desde un único panel de control, aplicando políticas al tráfico de entrada y salida de forma instantánea. Además, ofrece una solución sencilla "sin supervisión" que se puede adaptar a un entorno cambiante. La protección es independiente del proveedor, utiliza estándares comunes y la recopilación de registros es automática. En comparación con otros métodos de protección contra el movimiento lateral, Cloudflare ofrece mayor facilidad, adaptabilidad y garantías de seguridad de primer nivel necesarias para gestionar de forma segura cualquier entorno con dispositivos IoT.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -153,8 +152,7 @@
 				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<h3 id="-y-ahora-qu-">¿Y ahora qué?</h3>
 	<p>En el cuarto trimestre de 2021, contratamos a un socio de pruebas de penetración de confianza, para probar esta configuración replicando un dispositivo no autorizado que intentaba desplazarse a las redes de producción desde detrás de la arquitectura de Cloudflare One. No pudieron moverse lateralmente, lo que demuestra que nuestra arquitectura funciona.</p>
 	<p>Ahora que la hemos probado, comenzaremos a formalizar la implementación de Cloudflare One internamente en los sitios de nuestros centros de datos como parte de una iniciativa de seguridad física para garantizar la seguridad de nuestros activos más fiables.</p>

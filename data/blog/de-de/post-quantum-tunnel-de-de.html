@@ -18,8 +18,7 @@
 	<p>Ein Angreifer braucht nur Zugang zu einer verwundbaren Verbindung zu haben, aber Angreifer haben nicht überall Zugang: mit jeder Verbindung, die wir post-quanten-sicher herstellen, beseitigen wir eine Möglichkeit zur Kompromittierung.</p>
 	<p>Wir sind bestrebt, Post-Quanten-Tunnel zum Standard zu machen, aber im Moment ist es eine Beta-Funktion. Der Grund dafür ist, dass die verwendete Kryptographie und ihre Integration in das Netzwerkprotokoll noch nicht endgültig sind. Wenn wir Post-Quantum jetzt zum Standard machen würden, müssten die Nutzer <code>cloudflared</code> häufiger aktualisieren, als wir es ihnen zumuten können.</p>
 	<h2 id="erste-schritte">Erste Schritte</h2>
-	<p>Häufige Updates von <code>cloudflared</code> sind kein Problem für Sie? Dann probieren Sie bitte Post-Quantum Cloudflare Tunnel aus. Stellen Sie sicher, dass Sie mindestens <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> installiert haben und führen Sie <code>cloudflared</code> einfach mit dem the --post-quantum-Flag aus:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Häufige Updates von <code>cloudflared</code> sind kein Problem für Sie? Dann probieren Sie bitte Post-Quantum Cloudflare Tunnel aus. Stellen Sie sicher, dass Sie mindestens <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> installiert haben und führen Sie <code>cloudflared</code> einfach mit dem the --post-quantum-Flag aus:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -37,8 +36,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Wenn Sie <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">als Dienst ausführen</a>, können Sie post-quantum einschalten, indem Sie <code>post-quantum: true</code> zur Konfigurationsdatei für den Tunnel hinzufügen. Praktischerweise wird sich der <code>cloudflared</code>-Dienst <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">automatisch selbst aktualisieren</a>, wenn er nicht von einem Paketmanager installiert wird.</p>
-	<p>Wenn die Erstellung eines Post-Quanten-Tunnels aus irgendeinem Grund fehlschlägt, erhalten Sie eine Fehlermeldung wie</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wenn die Erstellung eines Post-Quanten-Tunnels aus irgendeinem Grund fehlschlägt, erhalten Sie eine Fehlermeldung wie</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

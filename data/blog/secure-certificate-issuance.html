@@ -21,8 +21,7 @@
 	<p>Suppose Alice buys the domain name aliceswonderland.com and wants to get a dedicated certificate for this domain. Alice chooses to use Let’s Encrypt as their certificate authority. First, Alice must generate their own private key and create a certificate signing request (CSR). She sends the CSR to Let’s Encrypt, but the CA won’t issue a certificate for that CSR and private key until they know Alice owns aliceswonderland.com. Alice can then choose to prove that she owns this domain through HTTP validation.</p>
 	<p>When Let’s Encrypt performs DCV over HTTP, they require Alice to place a randomly named file in the <code>/.well-known/acme-challenge</code> path for her website. The CA must retrieve the text file by sending an HTTP <code>GET</code> request to <code>http://aliceswonderland.com/.well-known/acme-challenge/&lt;random_filename&gt;</code>. An expected value must be present on this endpoint for DCV to succeed.</p>
 	<p>For HTTP validation, Alice would upload a file to <code>http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz</code> </p>
-	<p>where the body contains: </p>
-	<!--kg-card-begin: markdown-->
+	<p>where the body contains: </p><!--kg-card-begin: markdown-->
 	<pre><code>curl http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz
 
 GET /.well-known/acme-challenge/YnV0dHNz
@@ -36,8 +35,7 @@ YnV0dHNz.TEST_CLIENT_KEY
 	<!--kg-card-end: markdown-->
 	<p>The CA instructs them to use the Base64 token <code>YnV0dHNz</code>. <code>TEST_CLIENT_KEY</code> in an account-linked key that only the certificate requestor and the CA know. The CA uses this field combination to verify that the certificate requestor actually owns the domain. Afterwards, Alice can get her certificate for her website!</p>
 	<h3 id="dns-validation">DNS Validation</h3>
-	<p>Another way users can validate domain ownership is to add a DNS TXT record containing a verification string or <em>token</em> from the CA to their domain’s resource records. For example, here’s a domain for an enterprise validating itself towards Google:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Another way users can validate domain ownership is to add a DNS TXT record containing a verification string or <em>token</em> from the CA to their domain’s resource records. For example, here’s a domain for an enterprise validating itself towards Google:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"
 </code></pre>

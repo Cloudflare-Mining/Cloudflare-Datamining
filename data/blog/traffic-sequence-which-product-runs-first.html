@@ -7,19 +7,15 @@
 	<p>Traffic Sequence is now enabled for all zones by default, appearing on ten product pages within the dashboard. Traffic Sequence highlights in blue the product area you are currently configuring, showing where within the HTTP request lifecycle the specific product sits. This provides context and allows users to understand which products will see the impact of changes here, and which products will not.</p>
 	<p>Traffic Sequence is designed to make Cloudflare’s edge clearer to our customers, allowing users to understand how products fit together and understand how HTTP requests flow between each.</p>
 	<h3 id="dear-cloudflare-which-runs-first">Dear Cloudflare, which runs first?</h3>
-	<p>Understanding how traffic is routed through Cloudflare has been one of the most common questions from both Cloudflare staff and customers alike.</p>
-	<!--kg-card-begin: html-->
+	<p>Understanding how traffic is routed through Cloudflare has been one of the most common questions from both Cloudflare staff and customers alike.</p><!--kg-card-begin: html-->
 	<blockquote class="twitter-tweet" data-conversation="none" data-theme="light">
 		<p lang="en" dir="ltr">Love Cloudflare, but still can’t my head around workers. do they come before the cache? After? Page Rules? I’ve asked in the forums and chat , but a single reference doc would be so goood! (specific page rules &amp; cache settings ex: interaction with Cache Everything)</p>— “Metaverse” Grynn (@Grynn) <a href="https://twitter.com/Grynn/status/1333793494083637249?ref_src=twsrc%5Etfw" target="_blank">December 1, 2020</a>
 	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: html-->
+	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: html--><!--kg-card-begin: html-->
 	<blockquote class="twitter-tweet" data-conversation="none">
 		<p lang="en" dir="ltr">Is there any blog/documentation which could tell us how a request flows across different Cloudflare Products?<br><br>e.g, I know page rules are performed first and then it goes to workers.<br><br>But a complete flow is appreciated.</p>— Ashutosh Kumar (@ashutoshpw) <a href="https://twitter.com/ashutoshpw/status/1402866956571615234?ref_src=twsrc%5Etfw" target="_blank">June 10, 2021</a>
 	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	<!--kg-card-end: html-->
+	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: html-->
 	<p>But why does it matter? Let's go through a simple example. </p>
 	<p>Released in April 2021, “<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">Transform Rules</a>” lets users rewrite URLs of HTTP requests as they proxy through their zone — for example, rewriting <code>/login.php</code> to <code>/super/secret/login-page.php</code>, all invisible to the end user.</p>
 	<p>In this scenario, the administrator also has a Firewall Rule blocking requests to the URI Path <code>/login.php</code> when the visitor is coming from a country other than the United States. What they would see, however, is that visitors from these other countries are still reaching the <code>/login.php</code> page on their servers. Why is this?</p>

@@ -30,18 +30,15 @@
 	<h2 id="--2"><strong>ฉันจะเริ่มต้นใช้งานวันนี้เลยได้อย่างไร</strong></h2>
 	<p>คุณสามารถเริ่มต้นสร้างเครือข่ายส่วนตัวบน Cloudflare ด้วยการสอนใช้งานและคำแนะนำของเราในเอกสารของผู้พัฒนา ด้านล่างนี้คือเส้นทางที่สำคัญ และหากคุณเป็นลูกค้าอยู่แล้ว และสนใจร่วมเข้าชื่อรอเพื่อการเข้าถึง UDP และ DNS ภายใน กรุณาข้ามไปที่ช่วงสุดท้ายของโพสต์นี้!</p>
 	<h3 id="-cloudflare-1"><strong>เชื่อมต่อเครือข่ายของคุณกับ Cloudflare</strong></h3>
-	<p>อันดับแรก คุณต้อง <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">ติดตั้ง cloudflared</a> บนเครือข่ายของคุณและยืนยันการติดตั้งด้วยคำสั่งด้านล่างนี้</p>
-	<!--kg-card-begin: markdown-->
+	<p>อันดับแรก คุณต้อง <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">ติดตั้ง cloudflared</a> บนเครือข่ายของคุณและยืนยันการติดตั้งด้วยคำสั่งด้านล่างนี้</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel login
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>ต่อไป คุณต้องสร้าง tunnel ด้วยชื่อผู้ใช้ที่เป็นมิตรเพื่อยืนยันเครือข่ายหรือสภาพแวดล้อมของคุณ</p>
-	<!--kg-card-begin: markdown-->
+	<p>ต่อไป คุณต้องสร้าง tunnel ด้วยชื่อผู้ใช้ที่เป็นมิตรเพื่อยืนยันเครือข่ายหรือสภาพแวดล้อมของคุณ</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create acme-network
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>สุดท้าย คุณต้องกำหนดค่า tunnel ของคุณด้วย IP/CIDR ของเครือข่ายคุณ การดำเนินการนี้คุณได้ทำให้ agent ของ Cloudflare WARP รู้ว่าการร้องขอใดๆ จาก IP นี้จะต้องนำทางมาที่ tunnel ใหม่ของเรา</p>
-	<!--kg-card-begin: markdown-->
+	<p>สุดท้าย คุณต้องกำหนดค่า tunnel ของคุณด้วย IP/CIDR ของเครือข่ายคุณ การดำเนินการนี้คุณได้ทำให้ agent ของ Cloudflare WARP รู้ว่าการร้องขอใดๆ จาก IP นี้จะต้องนำทางมาที่ tunnel ใหม่ของเรา</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
 </code></pre>
 	<!--kg-card-end: markdown-->

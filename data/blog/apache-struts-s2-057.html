@@ -3,13 +3,11 @@
 	<p>As security researcher Man Yue Mo <a href="https://lgtm.com/blog/apache_struts_CVE-2018-11776" target="_blank">explained</a>, the vulnerability has similarities with previous Apache Struts vulnerabilities. The Cloudflare WAF already mitigated these so adjusting our rules to handle the new vulnerability was simple. Within hours of the disclosure we deployed a mitigation with no customer action required.</p>
 	<h3 id="ognl-again">OGNL, again</h3>
 	<p>Apache Struts RCE payloads often come in the form of Object-Graph Navigation Library (OGNL) expressions. OGNL is a language for interacting with the properties and functions of Java classes and Apache Struts supports it in many contexts.</p>
-	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, the snippet below uses OGNL to dynamically insert the value "5" into a webpage by calling a function.</p><!--kg-card-begin: markdown-->
 	<pre><code>&lt;s:property value="%{getSum(2,3)}" /&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>OGNL expressions can also be used for more general code execution:</p>
-	<!--kg-card-begin: markdown-->
+	<p>OGNL expressions can also be used for more general code execution:</p><!--kg-card-begin: markdown-->
 	<pre><code>${
     #_memberAccess["allowStaticMethodAccess"]=true,
     @java.lang.Runtime@getRuntime().exec('calc')
@@ -21,8 +19,7 @@
 	<p>The major difference between the various OGNL related Struts vulnerabilities is where the payload can be supplied.</p>
 	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003" target="_blank">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005" target="_blank">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009" target="_blank">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045" target="_blank">S2-045</a>, expressions could be supplied via the ‘Content-Type’ header. &nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048" target="_blank">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
 	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057" target="_blank">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure<a href="https://semmle.com/news/apache-struts-CVE-2018-11776" target="_blank"> post</a>.</p>
-	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p>
-	<!--kg-card-begin: markdown-->
+	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;package name="public" extends="struts-default"&gt;
     &lt;action name="login" class="..."&gt;
         &lt;!-- Redirect to another namespace --&gt;

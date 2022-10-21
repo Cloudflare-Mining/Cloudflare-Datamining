@@ -4,8 +4,7 @@
 		<figcaption>(image from: https://www.pxfuel.com/en/free-photo-expka)</figcaption>
 	</figure>
 	<h3 id="a-tight-lipped-agent">A tight-lipped agent</h3>
-	<p>The DNS protocol was designed to map domain names to IP addresses. To inform the client about the result of the lookup, the protocol has a 4 bit field, called response code/RCODE. The logic to serve a response might look something like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The DNS protocol was designed to map domain names to IP addresses. To inform the client about the result of the lookup, the protocol has a 4 bit field, called response code/RCODE. The logic to serve a response might look something like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>function lookup(domain) {
     ...
     switch result {
@@ -44,8 +43,7 @@ try {
 	<h3 id="keep-backward-compatibility">Keep backward compatibility</h3>
 	<p>It seems we need to return more information, but (there's always a but) we also need to keep the behavior of existing clients unchanged.</p>
 	<p>One way is to extend the RCODE space, which came out with the <a href="https://www.ietf.org/rfc/rfc6891.txt" target="_blank">Extension mechanisms for DNS</a> or EDNS. It defines a 8 bit EXTENDED-RCODE, as high-order bits to current 4 bit RCODE. Together they make up a 12 bit integer. This changes the processing of RCODE, requires both client and server to fully support the logic unfortunately.</p>
-	<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a<a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11" target="_blank"> new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a<a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11" target="_blank"> new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p><!--kg-card-begin: markdown-->
 	<pre><code>;; OPT PSEUDOSECTION:
 ; ...
 ; EDE: 14 (Not Ready)
@@ -56,8 +54,7 @@ try {
 	<p>Google has something similar in their<a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank"> DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
 	<h3 id="let-s-dig-into-it">Let's dig into it</h3>
 	<p>Our 1.1.1.1 service has an initial support of the draft version of Extended DNS Errors, while we are still trying to find the best practice. As we mentioned above, this is not a breaking change, and existing clients will not be affected. The additional options can be safely ignored without any problem, since the RCODE stays the same.</p>
-	<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features" target="_blank">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features" target="_blank">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig @1.1.1.1 dnssec-failed.org
 
 ; &lt;&lt;&gt;&gt; DiG 9.16.4-Debian &lt;&lt;&gt;&gt; @1.1.1.1 dnssec-failed.org

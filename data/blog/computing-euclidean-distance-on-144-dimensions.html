@@ -2,8 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-62.png" class="kg-image" alt="Computing Euclidean distance on 144 dimensions"></figure>
 	<p>Late last year I read a blog post about <a href="https://blog.cloudflare.com/the-csam-scanning-tool/">our CSAM image scanning tool</a>. I remember thinking: this is so cool! Image processing is always hard, and deploying a real image identification system at Cloudflare is no small achievement!</p>
 	<p>Some time later, I was chatting with Kornel: "We have all the pieces in the image processing pipeline, but we are struggling with the performance of one component." Scaling to Cloudflare needs ain't easy!</p>
-	<p>The problem was in the speed of the matching algorithm itself. Let me elaborate. As <a href="https://blog.cloudflare.com/the-csam-scanning-tool">John explained in his blog post</a>, the image matching algorithm creates a fuzzy hash from a processed image. The hash is exactly 144 bytes long. For example, it might look like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The problem was in the speed of the matching algorithm itself. Let me elaborate. As <a href="https://blog.cloudflare.com/the-csam-scanning-tool">John explained in his blog post</a>, the image matching algorithm creates a fuzzy hash from a processed image. The hash is exactly 144 bytes long. For example, it might look like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>00e308346a494a188e1043333147267a 653a16b94c33417c12b433095c318012
 5612442030d14a4ce82c623f4e224733 1dd84436734e4a5d6e25332e507a8218
 6e3b89174e30372d
@@ -28,8 +27,7 @@
 		<li>144 * 1M multiplications</li>
 		<li>144 * 1M additions</li>
 	</ol>
-	<p>And more. This alone adds up to 432 million operations! How does it look in practice? To illustrate this blog post <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2020-12-mmdist" target="_blank">we prepared a full test suite</a>. The large database of known hashes can be <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/generate.c" target="_blank">well emulated by random data</a>. The query hashes can't be random and must be slightly more sophisticated, otherwise the exercise wouldn't be that interesting. We generated the test smartly by byte-swaps of the actual data from the database — this allows us to precisely control the distance between test hashes and database hashes. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/gentest.py" target="_blank">Take a look at the scripts for details</a>. Here's our first run of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive.c" target="_blank">the first, naive, algorithm</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And more. This alone adds up to 432 million operations! How does it look in practice? To illustrate this blog post <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2020-12-mmdist" target="_blank">we prepared a full test suite</a>. The large database of known hashes can be <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/generate.c" target="_blank">well emulated by random data</a>. The query hashes can't be random and must be slightly more sophisticated, otherwise the exercise wouldn't be that interesting. We generated the test smartly by byte-swaps of the actual data from the database — this allows us to precisely control the distance between test hashes and database hashes. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/gentest.py" target="_blank">Take a look at the scripts for details</a>. Here's our first run of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive.c" target="_blank">the first, naive, algorithm</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ make naive
 &lt; test-vector.txt ./mmdist-naive &gt; test-vector.tmp
 Total: 85261.833ms, 1536 items, avg 55.509ms per query, 18.015 qps
@@ -41,8 +39,7 @@ Total: 85261.833ms, 1536 items, avg 55.509ms per query, 18.015 qps
 	<p>We settled on using AVX2, with 256 bit vectors. We did this for a simple reason — newer AVX versions are not supported by our AMD CPUs. Additionally, in the past, we were <a href="https://blog.cloudflare.com/on-the-dangers-of-intels-frequency-scaling/">not thrilled by the AVX-512 frequency scaling</a>.</p>
 	<p>Using AVX2 is easier said than done. There is no single instruction to count Euclidean distance between two uint8 vectors! The fastest way of counting the full distance of two 144-byte vectors <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c#L13-L36" target="_blank">with AVX2 we could find is authored</a> by <a href="https://twitter.com/thecomp1ler" target="_blank">Vlad</a>:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image2-39.png" class="kg-image"></figure>
-	<p>It’s actually simpler than it looks: load 16 bytes, convert vector from uint8 to int16, subtract the vector, store intermediate sums as int32, repeat. At the end, we need to do complex 4 instructions to extract the partial sums into the final sum. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c" target="_blank">This AVX2 code</a> improves the performance around 3x:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It’s actually simpler than it looks: load 16 bytes, convert vector from uint8 to int16, subtract the vector, store intermediate sums as int32, repeat. At the end, we need to do complex 4 instructions to extract the partial sums into the final sum. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-naive-avx2.c" target="_blank">This AVX2 code</a> improves the performance around 3x:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ make naive-avx2 
 Total: 25911.126ms, 1536 items, avg 16.869ms per query, 59.280 qps
 </code></pre>
@@ -65,8 +62,7 @@ Total: 25911.126ms, 1536 items, avg 16.869ms per query, 59.280 qps
 	<p>4. Otherwise, investigate the hash thoroughly and compute the full distance.</p>
 	<p>Even though this algorithm needs to do less arithmetic and memory work, it's not faster than the previous naive one. See <code>make short-avx2</code>. The problem is: we still need to compute a full distance for hashes that are promising, and there are quite a lot of them. Computing the full distance for promising hashes adds enough work, both in ALU and memory latency, to offset the gains of this algorithm.</p>
 	<p>There is one detail of our particular application of the image matching problem that will help us a lot moving forward. As we described earlier, the problem is less about finding the closest neighbour and more about proving that the neighbour with a reasonable distance doesn't exist. Remember — in practice, we don't expect to find many matches! We expect almost every image we feed into the algorithm to be unrelated to image hashes stored in the database.</p>
-	<p>It's sufficient for our algorithm to prove that no neighbour exists within a predefined distance threshold. Let's assume we are not interested in hashes more distant than, say, 220, which squared is 48,400. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-avx2.c" target="_blank">This makes our short-distance algorithm variation</a> work much better:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It's sufficient for our algorithm to prove that no neighbour exists within a predefined distance threshold. Let's assume we are not interested in hashes more distant than, say, 220, which squared is 48,400. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-avx2.c" target="_blank">This makes our short-distance algorithm variation</a> work much better:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ make short-avx2-threshold
 Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps
 </code></pre>
@@ -104,8 +100,7 @@ Total: 4994.435ms, 1536 items, avg 3.252ms per query, 307.542 qps
 	<p>Now we can load 16 first bytes of hashes using one memory operation. In the next step, we can subtract the first byte of the querying hash using a single instruction, and so on. The algorithm stays exactly the same as defined above; we just make the data easier to load and easier to process for AVX.</p>
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-inv-avx2.c#L138-L147" target="_blank">The hot loop code</a> even looks relatively pretty:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image5-26.png" class="kg-image"></figure>
-	<p>With the well-tuned batch size and short distance size parameters we can <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-inv-avx2.c" target="_blank">see the performance of this algorithm</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>With the well-tuned batch size and short distance size parameters we can <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-12-mmdist/mmdist-short-inv-avx2.c" target="_blank">see the performance of this algorithm</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ make short-inv-avx2
 Total: 1118.669ms, 1536 items, avg 0.728ms per query, 1373.062 qps
 </code></pre>

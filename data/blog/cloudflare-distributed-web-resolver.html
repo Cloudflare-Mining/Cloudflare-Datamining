@@ -10,8 +10,7 @@
 	<p>This addressing system relies on the use of <a href="https://github.com/multiformats/cid" target="_blank">Content IDentifiers</a> (CID). CIDs are self-describing identifiers, because the identifier is derived from the content itself. For example, QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco is the CID version 0 (CIDv0) of the <a href="https://en.wikipedia-on-ipfs.org" target="_blank">wikipedia-on ipfs homepage</a>.</p>
 	<p>To understand why a CID is defined as self-describing, we can look at its binary representation. For QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco, the CID looks like the following:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image2-1.png" class="kg-image"></figure>
-	<p>The first is the algorithm used to generate the CID (sha2-256 in this case); then comes the length of the encoded content (32 for a sha2-256 hash), and finally the content itself. When referring to the <a href="https://github.com/multiformats/multicodec/blob/master/table.csv" target="_blank">multicodec table</a>, it is possible to understand how the content is encoded.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The first is the algorithm used to generate the CID (sha2-256 in this case); then comes the length of the encoded content (32 for a sha2-256 hash), and finally the content itself. When referring to the <a href="https://github.com/multiformats/multicodec/blob/master/table.csv" target="_blank">multicodec table</a>, it is possible to understand how the content is encoded.</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>

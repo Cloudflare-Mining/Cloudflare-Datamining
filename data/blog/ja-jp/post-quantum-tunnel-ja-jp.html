@@ -18,8 +18,7 @@
 	<p>攻撃者は脆弱な接続を1か所だけアクセスできるようになればよいですが、攻撃者はすべてにアクセスできるわけではありません。ポスト量子セキュアにするごとに、侵害の機会を1つ減らすことができるのです。</p>
 	<p>私たちはポスト量子トンネルをデフォルトにしたいと強く願っていますが、現時点ではベータ機能です。その理由は、使用する暗号とネットワークプロトコルへの統合がまだ最終的なものになっていないためです。今すぐpost-quantumをデフォルトにしてしまうと、ユーザーは<code>cloudflared</code>を、私たちが合理的に予想するよりも頻繁に更新しなければならなくなってしまいます。</p>
 	<h2 id="--1">利用開始</h2>
-	<p><code>cloudflared</code>の頻繁な更新は問題ではないでしょうか？それでは、ポスト量子Cloudflareトンネルを試してみてください。<a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>以上を実行していることを確認し、<code>cloudflared</code>に--post-quantumフラグを付けてを実行するだけです。</p>
-	<!--kg-card-begin: markdown-->
+	<p><code>cloudflared</code>の頻繁な更新は問題ではないでしょうか？それでは、ポスト量子Cloudflareトンネルを試してみてください。<a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>以上を実行していることを確認し、<code>cloudflared</code>に--post-quantumフラグを付けてを実行するだけです。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -37,8 +36,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p><code>cloudflared</code>を<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">サービスとして</a>実行する場合、トンネル構成ファイルに<code>post-quantum: true</code>を追加することでポスト量子をオンにすることができます。便利なことに、<code>cloudflared</code>サービスは、パッケージマネージャによってインストールされていない場合、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">自動的に自身を更新</a>します。</p>
-	<p>何らかの理由でポスト量子トンネルの作成に失敗した場合、次のようなエラーメッセージが表示されます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>何らかの理由でポスト量子トンネルの作成に失敗した場合、次のようなエラーメッセージが表示されます。</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

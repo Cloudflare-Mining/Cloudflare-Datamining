@@ -17,8 +17,7 @@
 	<p>Nuestro <a href="https://www.cloudflare.com/learning/" target="_blank">Centro de aprendizaje</a> ofrece una visión global de lo que son <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> y <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN,</a> y cómo funcionan.</p>
 	<p>En este sencillo diagrama, puedes ver seis sistemas autónomos en Internet y dos posibles rutas que un paquete puede utilizar para ir desde el inicio hasta el final. AS1 → AS2 → AS3 es la más rápida, y AS1 → AS6 → AS5 → AS4 → AS3 es la más lenta, pero se puede usar si la primera falla.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10.png" class="kg-image"></figure>
-	<p>A las 15:58 UTC nos dimos cuenta de que Facebook había dejado de anunciar las rutas a sus prefijos DNS. Eso significaba que, al menos, los servidores DNS de Facebook no estaban disponibles. Como consecuencia, el solucionador de DNS 1.1.1.1 de Cloudflare ya no podía responder a las consultas que solicitaban la dirección IP de facebook.com.</p>
-	<!--kg-card-begin: markdown-->
+	<p>A las 15:58 UTC nos dimos cuenta de que Facebook había dejado de anunciar las rutas a sus prefijos DNS. Eso significaba que, al menos, los servidores DNS de Facebook no estaban disponibles. Como consecuencia, el solucionador de DNS 1.1.1.1 de Cloudflare ya no podía responder a las consultas que solicitaban la dirección IP de facebook.com.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
 % Network not in table
 route-views&gt;
@@ -28,8 +27,7 @@ route-views&gt;show ip bgp 129.134.30.0/23
 route-views&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Mientras tanto, otras direcciones IP de Facebook seguían enrutándose, pero no eran particularmente útiles, ya que sin el DNS, Facebook y los servicios relacionados eran inaccesibles.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Mientras tanto, otras direcciones IP de Facebook seguían enrutándose, pero no eran particularmente útiles, ya que sin el DNS, Facebook y los servicios relacionados eran inaccesibles.</p><!--kg-card-begin: markdown-->
 	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
 BGP routing table entry for 129.134.0.0/17, version 1025798334
 Paths: (24 available, best #14, table default)
@@ -53,8 +51,7 @@ route-views&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9.png" class="kg-image"></figure>
 	<p>Al retirar sus rutas, Facebook y sus sitios se desconectaron de Internet.</p>
 	<h3 id="impacto-en-el-dns">Impacto en el DNS</h3>
-	<p>Como consecuencia directa, los solucionadores de DNS de todo el mundo dejaron de resolver sus nombres de dominio.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Como consecuencia directa, los solucionadores de DNS de todo el mundo dejaron de resolver sus nombres de dominio.</p><!--kg-card-begin: markdown-->
 	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
 ;facebook.com.			IN	A

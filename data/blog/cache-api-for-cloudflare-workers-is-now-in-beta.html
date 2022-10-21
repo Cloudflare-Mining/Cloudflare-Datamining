@@ -8,8 +8,7 @@
 	<h2 id="so-what-can-you-do-with-the-cache-api">So what can you do with the Cache API?</h2>
 	<p></p>
 	<h4 id="cache-worker-output">Cache Worker output</h4>
-	<p>Workers allow you to fully customize and manipulate a response before it is sent back to the user. Whether you are modifying the response from your origin, or assembling a response based on calls to multiple APIs, you can use the Cache API to cache the output and serve it directly on future similar requests.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Workers allow you to fully customize and manipulate a response before it is sent back to the user. Whether you are modifying the response from your origin, or assembling a response based on calls to multiple APIs, you can use the Cache API to cache the output and serve it directly on future similar requests.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
     let cache = caches.default
     let response = await cache.match(event.request)
@@ -25,8 +24,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h4 id="cache-post-requests">Cache POST requests</h4>
-	<p>Cloudflare ordinarily doesn’t cache POST requests because they can change state on a customer’s origin. However, some APIs and frameworks like GraphQL make every call a POST request, including those that do not change state. For these APIs it’s important to enable caching to speed things up.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cloudflare ordinarily doesn’t cache POST requests because they can change state on a customer’s origin. However, some APIs and frameworks like GraphQL make every call a POST request, including those that do not change state. For these APIs it’s important to enable caching to speed things up.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
     let cache = caches.default
     let response = await cache.match(event.request)
@@ -44,8 +42,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h4 id="set-cache-tag-headers-from-a-worker-enterprise-only-">Set Cache-Tag headers from a Worker (Enterprise only)</h4>
-	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p>
-	<!--kg-card-begin: markdown-->
+	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event))
 })

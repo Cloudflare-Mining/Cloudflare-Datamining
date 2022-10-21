@@ -22,8 +22,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
 	<h3 id="descripci-n-t-cnica-del-error-y-c-mo-ocurri-">Descripción técnica del error y cómo ocurrió</h3>
 	<p>Como parte de nuestro esfuerzo continuo por estandarizar la configuración de nuestra infraestructura, hemos introducido un cambio para estandarizar las comunidades BGP que adjuntamos a un subconjunto de los prefijos que anunciamos. Específicamente, añadimos comunidades informativas a nuestros prefijos locales de ubicación. Estos prefijos permiten que nuestros nodos de cálculo se comuniquen entre sí y se conecten a los orígenes de los clientes. Como parte del procedimiento de cambio en Cloudflare, se creó un ticket de solicitud de cambio, que incluye una prueba del cambio, así como un procedimiento de implementación por etapas. Múltiples ingenieros revisaron el cambio antes de realizarlo. Desafortunadamente, en este caso las etapas no fueron lo suficientemente pequeñas para detectar el error antes de que afectase a todas nuestras espinas.</p>
-	<p>El cambio tenía este aspecto en uno de los enrutadores:</p>
-	<!--kg-card-begin: markdown-->
+	<p>El cambio tenía este aspecto en uno de los enrutadores:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -46,8 +45,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Era inofensivo y solo añadía algo de información adicional a estos anuncios de prefijos. El cambio en las espinas fue el siguiente:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Era inofensivo y solo añadía algo de información adicional a estos anuncios de prefijos. El cambio en las espinas fue el siguiente:</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -74,15 +72,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Un primer vistazo a este formato diff podría dar la impresión de que el cambio es idéntico, pero lamentablemente no es así. Si nos centramos en una parte de del diff, puede quedar claro el motivo:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Un primer vistazo a este formato diff podría dar la impresión de que el cambio es idéntico, pero lamentablemente no es así. Si nos centramos en una parte de del diff, puede quedar claro el motivo:</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>En este formato diff, los signos de exclamación delante de los términos indican la reordenación de los términos. En este caso, varios términos se desplazaron hacia arriba, y dos términos se añadieron a la parte inferior. En concreto, el término 4-ADV-SITE-LOCALS se desplazó de la parte superior a la inferior. Por tanto, este término quedó detrás del término REJECT-THE-REST, que en inglés significa “Rechazar el resto”. Tomando en cuenta esto, queda claro que este término es un rechazo explícito:</p>
-	<!--kg-card-begin: markdown-->
+	<p>En este formato diff, los signos de exclamación delante de los términos indican la reordenación de los términos. En este caso, varios términos se desplazaron hacia arriba, y dos términos se añadieron a la parte inferior. En concreto, el término 4-ADV-SITE-LOCALS se desplazó de la parte superior a la inferior. Por tanto, este término quedó detrás del término REJECT-THE-REST, que en inglés significa “Rechazar el resto”. Tomando en cuenta esto, queda claro que este término es un rechazo explícito:</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

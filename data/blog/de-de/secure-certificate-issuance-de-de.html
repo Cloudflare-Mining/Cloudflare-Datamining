@@ -21,8 +21,7 @@
 	<p>Angenommen, Alice kauft den Domainnamen aliceswonderland.com und möchte ein dediziertes Zertifikat für diese Domain erhalten. Alice entscheidet sich für Let‘s Encrypt als Zertifizierungsstelle. Zunächst muss Alice einen eigenen privaten Schlüssel generieren und eine Zertifikatsignierungsanforderung (Certificate Signing Request – CSR) erstellen. Sie sendet das CSR an Let‘s Encrypt, aber die Zertifizierungsstelle stellt kein Zertifikat für dieses CSR und den privaten Schlüssel aus, bevor sie weiß, dass Alice aliceswonderland.com besitzt. Alice kann dann durch HTTP-Validierung beweisen, dass sie Inhaberin der Domain ist.</p>
 	<p>Wenn Let‘s Encrypt die DCV über HTTP durchführt, muss Alice eine zufällig benannte Datei auf dem Pfad <code>/.well-known/acme-challenge</code> für ihre Webseite platzieren. Die Zertifizierungsstelle muss die Textdatei abrufen, indem sie eine HTTP- <code>GET</code> -Anfrage an <code>http://aliceswonderland.com/.well-known/acme-challenge/&lt;random_filename&gt;</code> sendet. Damit die DCV erfolgreich ist, muss an diesem Endpunkt ein erwarteter Wert vorhanden sein.</p>
 	<p>Für die HTTP-Validierung würde Alice eine Datei in <code>http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz</code> hochladen,</p>
-	<p>deren Text Folgendes enthält:</p>
-	<!--kg-card-begin: markdown-->
+	<p>deren Text Folgendes enthält:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl http://aliceswonderland.com/.well-known/acme-challenge/YnV0dHNz
 
 GET /.well-known/acme-challenge/YnV0dHNz
@@ -36,8 +35,7 @@ YnV0dHNz.TEST_CLIENT_KEY
 	<!--kg-card-end: markdown-->
 	<p>Die Zertifizierungsstelle weist sie an, das Base64-Token YnV0dHNz. TEST_CLIENT_KEY in einem mit dem Konto verknüpften Schlüssel zu verwenden, den nur der Antragsteller für das Zertifikat und die Zertifizierungsstelle kennen. Die Zertifizierungsstelle verwendet diese Feldkombination, um zu überprüfen, ob der Antragsteller tatsächlich Inhaber der Domain ist. Danach kann Alice das Zertifikat für ihre Webseite erhalten!</p>
 	<h3 id="dns-validierung"><strong>DNS-Validierung</strong></h3>
-	<p>Eine weitere Möglichkeit, das Eigentum an einer Domain nachzuweisen, besteht darin, den Ressourceneinträgen der Domain einen DNS-TXT-Eintrag hinzuzufügen, der eine Verifizierungszeichenfolge oder ein<em> Token</em> von der Zertifizierungsstelle enthält. Hier ist z. B. eine Domain für ein Unternehmen, das sich gegenüber Google validiert:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Eine weitere Möglichkeit, das Eigentum an einer Domain nachzuweisen, besteht darin, den Ressourceneinträgen der Domain einen DNS-TXT-Eintrag hinzuzufügen, der eine Verifizierungszeichenfolge oder ein<em> Token</em> von der Zertifizierungsstelle enthält. Hier ist z. B. eine Domain für ein Unternehmen, das sich gegenüber Google validiert:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig TXT aliceswonderland.com
 aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0jGMUt2zogbE_lC6YBsfvV-U"
 </code></pre>

@@ -22,8 +22,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
 	<h3 id="--2">这次事件技术描述及其发生过程</h3>
 	<p>作为标准化 Cloudflare 基础设施的一部分，我们开始标准化 Cloudflare 宣告的前缀BGP community 属性。具体来说，我们为 site-local 前缀添加了信息 community 属性。这些前缀允许我们的计算节点彼此通信，并连接到客户源站。作为 Cloudflare 配置变更的一部分，一个更改请求（CR）工单被生成，其中包括更改的试运行，以及一个分步骤部署过程。在被允许发布之前，它也经过了多位同级工程师的互相评估。不幸的是，在这种情况下，这些配置变更检查步骤没有能够在配置更改我们的骨干网络之前发现错误。</p>
-	<p>在其中一个路由器上的配置变更类似这样：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在其中一个路由器上的配置变更类似这样：</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -46,8 +45,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>这是没有配置错误的，仅仅向这些前缀广播添加了一些额外的信息。对骨干网络连接的更改如下：</p>
-	<!--kg-card-begin: markdown-->
+	<p>这是没有配置错误的，仅仅向这些前缀广播添加了一些额外的信息。对骨干网络连接的更改如下：</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -74,15 +72,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>乍一看，这个配置好像完全相同，但不幸的是，实际并非如此。如果我们重点关注 以下部分，原因就很清楚了：</p>
-	<!--kg-card-begin: markdown-->
+	<p>乍一看，这个配置好像完全相同，但不幸的是，实际并非如此。如果我们重点关注 以下部分，原因就很清楚了：</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在这部分配置中，term 前的感叹号表示 term 的重新排序。在这种情况下，多个 term 上移，两个术语被添加到底部。具体而言，4-ADV-SITE-LOCALS term 被从顶部移到底部。这个 term 现在处于 REJECT-THE-REST term 之后。顾名思义，这个 term 是一种显式拒绝：</p>
-	<!--kg-card-begin: markdown-->
+	<p>在这部分配置中，term 前的感叹号表示 term 的重新排序。在这种情况下，多个 term 上移，两个术语被添加到底部。具体而言，4-ADV-SITE-LOCALS term 被从顶部移到底部。这个 term 现在处于 REJECT-THE-REST term 之后。顾名思义，这个 term 是一种显式拒绝：</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

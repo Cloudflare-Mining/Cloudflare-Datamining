@@ -4,9 +4,7 @@
 	<p>Using a "serverless" approach has allowed us to make deploys dead simple, and using <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">isolate technology</a> has allowed us to deliver serverless more cheaply and <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">without the lengthy cold starts</a> that hold back other providers. We added easy-to-use eventually-consistent edge storage to the platform with <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a>.</p>
 	<p>But up until today, it hasn't been possible to manage state with strong consistency, or to coordinate in real time between multiple clients, entirely on the edge. Thus, these parts of your application still had to be hosted elsewhere.</p>
 	<p>Durable Objects provide a truly serverless approach to storage and state: consistent, low-latency, distributed, yet effortless to maintain and scale. They also provide an easy way to coordinate between clients, whether it be users in a particular chat room, editors of a particular document, or IoT devices in a particular smart home. Durable Objects are the missing piece in the Workers stack that makes it possible for whole applications to run entirely on the edge, with no centralized "origin" server at all.</p>
-	<p>Today we are beginning a closed beta of Durable Objects.</p>
-	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Request a beta invite »</a>
-	<!--kg-card-end: html-->
+	<p>Today we are beginning a closed beta of Durable Objects.</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Request a beta invite »</a><!--kg-card-end: html-->
 	<h2 id="what-is-a-durable-object">What is a "Durable Object"?</h2>
 	<p>I'm going to be honest: naming this product was hard, because it's not quite like any other cloud technology that is widely-used today. This proverbial bike shed has many layers of paint, but ultimately we settled on "Unique Durable Objects", or "Durable Objects" for short. Let me explain what they are by breaking that down:</p>
 	<ul>
@@ -34,8 +32,7 @@
 	<p>Durable Objects make this easy. Not only do they make it easy to assign a coordination point, but Cloudflare will automatically create the coordinator close to the users using it and migrate it as needed, minimizing latency. The availability of local, durable storage means that changes to the document can be saved reliably in an instant, even if the eventual long-term storage is slower. Or, you can even store the entire document on the edge and abandon your database altogether.</p>
 	<p>With Durable Objects lowering the barrier, we hope to see real-time collaboration become the norm across the web. There's no longer any reason to make users refresh for updates.</p>
 	<h2 id="example-an-atomic-counter">Example: An atomic counter</h2>
-	<p>Here's a very simple example of a Durable Object which can be incremented, decremented, and read over HTTP. This counter is <em>consistent</em> even when receiving simultaneous requests from multiple clients -- none of the increments or decrements will be lost. At the same time, reads are served entirely from memory, no disk access needed.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here's a very simple example of a Durable Object which can be incremented, decremented, and read over HTTP. This counter is <em>consistent</em> even when receiving simultaneous requests from multiple clients -- none of the increments or decrements will be lost. At the same time, reads are served entirely from memory, no disk access needed.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export class Counter {
   // Constructor called by the system when the object is needed to
   // handle requests.
@@ -87,8 +84,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Once the class has been bound to a Durable Object namespace, a particular instance of <code>Counter</code> can be accessed from anywhere in the world using code like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once the class has been bound to a Durable Object namespace, a particular instance of <code>Counter</code> can be accessed from anywhere in the world using code like:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Derive the ID for the counter object named "my-counter".
 // This name is associated with exactly one instance in the
 // whole world.
@@ -99,11 +95,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="demo-chat">Demo: Chat</h2>
-	<p>Chat is arguably real-time collaboration in its purest form. And to that end, we have built a demo open source chat app that runs entirely at the edge using Durable Objects.</p>
-	<!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Try the live demo »</a>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">See the source code on GitHub »</a>
-	<!--kg-card-end: html-->
+	<p>Chat is arguably real-time collaboration in its purest form. And to that end, we have built a demo open source chat app that runs entirely at the edge using Durable Objects.</p><!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Try the live demo »</a><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">See the source code on GitHub »</a><!--kg-card-end: html-->
 	<p>This chat app uses a Durable Object to control each chat room. Users connect to the object using WebSockets. Messages from one user are broadcast to all the other users. The chat history is also stored in durable storage, but this is only for history. Real-time messages are relayed directly from one user to others without going through the storage layer.</p>
 	<p>Additionally, this demo uses Durable Objects for a second purpose: Applying a rate limit to messages from any particular IP. Each IP is assigned a Durable Object that tracks recent request frequency, so that users who send too many messages can be temporarily blocked -- even across multiple chat rooms. Interestingly, these objects don't actually store any durable state at all, because they only care about very recent history, and it's not a big deal if a rate limiter randomly resets on occasion. So, these rate limiter objects are an example of a pure coordination object with no storage.</p>
 	<p>This chat app is only a few hundred lines of code. The deployment configuration is only a few lines. Yet, it will scale seamlessly to any number of chat rooms, limited only by Cloudflare's available resources. Of course, any <em>individual</em> chat room's scalability has a limit, since each object is single-threaded. But, that limit is far beyond what a human participant could keep up with anyway.</p>
@@ -124,9 +116,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 	<h2 id="join-the-beta">Join the Beta</h2>
 	<p>Storing data is a big responsibility which we do not take lightly. Because of the critical importance of getting it right, we are being careful. We will be making Durable Objects available gradually over the next several months.</p>
 	<p>As with any beta, this product is a work in progress, and some of what is described in this post is not fully enabled yet. Full details of beta limitations can be found in <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">the documentation</a>.</p>
-	<p>If you'd like to try out Durable Objects now, tell us about your use case. We'll be selecting the most interesting use cases for early access.</p>
-	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Request a beta invite »</a>
-	<!--kg-card-end: html-->
+	<p>If you'd like to try out Durable Objects now, tell us about your use case. We'll be selecting the most interesting use cases for early access.</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Request a beta invite »</a><!--kg-card-end: html-->
 	<h2 id="qa">Q&amp;A</h2>
 	<h3 id="can-durable-objects-serve-websockets">Can Durable Objects serve WebSockets?</h3>
 	<p>Yes.</p>

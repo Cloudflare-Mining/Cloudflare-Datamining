@@ -28,8 +28,7 @@
 	<blockquote>Nous avions besoin de transférer du code complexe du serveur vers la périphérie. Notre interface API accepte les requêtes POST volumineuses, mais retourne surtout les mêmes données sans rien modifier sur notre serveur d'origine. Grâce à Workers et à l'API Cache, nous avons pu mettre en cache les réponses aux requêtes POST que nous savions sécurisées et réduire considérablement la charge sur notre origine.</blockquote>
 	<p>— Aaron Dearinger, architecte Edge, Garmin International</p>
 	<p>Il est très simple de mettre en cache les requêtes POST avec l'API Cache. Voici des exemples de code tirés de nos <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">documents</a> :</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response

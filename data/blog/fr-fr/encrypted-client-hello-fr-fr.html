@@ -29,8 +29,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image9-7.png" class="kg-image">
 		<figcaption><strong>Figure 2 :</strong> la négociation TLS 1.3 avec l’extension ESNI. Elle est identique à la négociation TLS 1.3, si ce n’est que l’extension SNI a été remplacée par ESNI.</figcaption>
 	</figure>
-	<p>Pour la diffusion des clés, ESNI s’est appuyée sur un autre protocole vital : <em>Domain Name Service</em> (DNS). Pour utiliser ESNI pour se connecter à un site web, le client ajoutait à ses requêtes standard A/AAAA une requête d'enregistrement TXT contenant la clé publique ESNI. Par exemple, pour obtenir la clé pour crypto.dance, le client demanderait l'enregistrement TXT d'_esni.crypto.dance:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pour la diffusion des clés, ESNI s’est appuyée sur un autre protocole vital : <em>Domain Name Service</em> (DNS). Pour utiliser ESNI pour se connecter à un site web, le client ajoutait à ses requêtes standard A/AAAA une requête d'enregistrement TXT contenant la clé publique ESNI. Par exemple, pour obtenir la clé pour crypto.dance, le client demanderait l'enregistrement TXT d'_esni.crypto.dance:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-base64">$ dig _esni.crypto.dance TXT +short
 "/wGuNThxACQAHQAgXzyda0XSJRQWzDG7lk/r01r1ZQy+MdNxKg/mAqSnt0EAAhMBAQQAAAAAX67XsAAAAABftsCwAAA="
 </code></pre>

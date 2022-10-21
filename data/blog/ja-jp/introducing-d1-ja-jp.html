@@ -28,11 +28,9 @@
 	<h3 id="-d1-"><strong>最初のD1データベースを作成する</strong></h3>
 	<p>D1では、わずか数回のクリックでデータベースを作成することができ、その内容はテーブルの定義、データの挿入やアップロードを行うのみです。必要な場合以外はコマンドを覚える必要はありません。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
-	<p>もちろん、コマンドラインがお好きな方向けに、今週初めに<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新しく改良されたWrangler 2</a>を発表しています。これは、Workersのラングリングとデプロイのための最高のツールで、また、すぐにD1のデプロイするためのツールになります。WranglerにはD1のネイティブサポートも含まれ、いくつかの簡単なコマンドでデータベースを作成、管理することができます。</p>
-	<!--kg-card-begin: html-->
+	<p>もちろん、コマンドラインがお好きな方向けに、今週初めに<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新しく改良されたWrangler 2</a>を発表しています。これは、Workersのラングリングとデプロイのための最高のツールで、また、すぐにD1のデプロイするためのツールになります。WranglerにはD1のネイティブサポートも含まれ、いくつかの簡単なコマンドでデータベースを作成、管理することができます。</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<!--kg-card-end: html-->
+	<p></p><!--kg-card-end: html-->
 	<h3 id="worker-d1-">WorkerからD1にアクセスする</h3>
 	<p>WorkerへのD1の接続は、新しいバインディングを作成するのと同じくらい簡単です。Workerに接続する各D1データベースは、envパラメータに独自のバインディングで接続されます。</p>
 	<pre><code class="language-js">export default {

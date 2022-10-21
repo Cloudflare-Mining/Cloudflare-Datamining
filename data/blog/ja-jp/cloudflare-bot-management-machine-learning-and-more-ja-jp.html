@@ -82,8 +82,7 @@
 	</ul>
 	<p>当社の<a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">ファイアウォール Analytics</a>ツールはClickHouseと<a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place/">GraphQL API</a>を基盤とし、お客様は直感的インターフェースを利用してセキュリティ脅威を特定し、調べることができます。Analyticsのほか、当社ではすべてのボット関連アクティビティについての詳細なログを<a href="https://developers.cloudflare.com/logs/logpull-api/" target="_blank">Logpull API</a>および/または<a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">LogPush</a>のどちらかを使って提供しており、お客様が自社のログを自社のクラウドストレージに簡単に入れることが可能です。</p>
 	<h3 id="cloudflare-workers-">Cloudflare Workersの統合</h3>
-	<p>お客様がスコアに基づくリクエストの処理にさらに柔軟性をご希望の場合、例えば新規のHTMLページコンテンツを挿入したり既存のHTMLページコンテンツを変更する、またはボットに誤ったデータを提供する、特定のリクエストを妨害するなどの希望があれば、Cloudflare Workersはそれを実現します。たとえば、この小さなコードスニペットを使うと、配信元サーバーにスコアを返して、さらに高度なリアルタイム分析、または緩和ができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>お客様がスコアに基づくリクエストの処理にさらに柔軟性をご希望の場合、例えば新規のHTMLページコンテンツを挿入したり既存のHTMLページコンテンツを変更する、またはボットに誤ったデータを提供する、特定のリクエストを妨害するなどの希望があれば、Cloudflare Workersはそれを実現します。たとえば、この小さなコードスニペットを使うと、配信元サーバーにスコアを返して、さらに高度なリアルタイム分析、または緩和ができます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })

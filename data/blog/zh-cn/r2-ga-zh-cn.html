@@ -6,8 +6,7 @@
 	<h2 id="r2-">R2 有何值得期待之处？</h2>
 	<h3 id="s3-">S3 兼容性</h3>
 	<p>R2 为开发人员提供了熟悉的对象存储接口，S3 API。借助 S3 兼容性，客户可轻松地迁移应用程序，并立即开始利用 R2 的优势。</p>
-	<p>我们来看一下 JavaScript 中的一些基本数据操作。如果要亲自尝试，您将需要<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">生成一个 Access Key</a>。</p>
-	<!--kg-card-begin: markdown-->
+	<p>我们来看一下 JavaScript 中的一些基本数据操作。如果要亲自尝试，您将需要<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">生成一个 Access Key</a>。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// 首先如常导入绑定
 import {
   S3Client,
@@ -39,8 +38,7 @@ console.log(
 	<p>日后，R2 将使用数据访问模式来自动优化数据存储的位置，以提供最佳用户体验。</p>
 	<h3 id="cloudflare-workers-">Cloudflare Workers 集成</h3>
 	<p>Workers 平台为开发人员提供了跨 Cloudflare 网络的强大计算能力。当您在 Workers 上部署时，您的代码会自动部署到 Cloudflare <a href="https://www.cloudflare.com/network/" target="_blank">全球 275 多个数据中心</a>。当与 R2 配合使用时，Workers 允许开发人员围绕数据添加自定义逻辑，而没有任何性能开销。Workers 基于隔离而非容器构建，因此无需漫长的冷启动。</p>
-	<p>让我们尝试为 R2 存储桶创建一个简单的 REST API 吧。首先<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">创建</a>存储桶，然后 Worker 中添加一个 R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">绑定</a>。</p>
-	<!--kg-card-begin: markdown-->
+	<p>让我们尝试为 R2 存储桶创建一个简单的 REST API 吧。首先<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">创建</a>存储桶，然后 Worker 中添加一个 R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">绑定</a>。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,8 +73,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>通过这个 Workers API，我们可以将各种有用的逻辑添加到 R2 请求的热路径中。</p>
 	<h3 id="-url">预签名 URL</h3>
-	<p>有时，您需要向您的用户授予 R2 中特定对象的权限，而不需要他们通过重重障碍。通过预签名 URL，您可以将任何对象和动作的独特组合的权限委托给用户。创建一个预签名 URL，让用户上传文件或共享文件，而无需访问整个存储桶。</p>
-	<!--kg-card-begin: markdown-->
+	<p>有时，您需要向您的用户授予 R2 中特定对象的权限，而不需要他们通过重重障碍。通过预签名 URL，您可以将任何对象和动作的独特组合的权限委托给用户。创建一个预签名 URL，让用户上传文件或共享文件，而无需访问整个存储桶。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand
@@ -125,8 +122,6 @@ console.log(
 	<h3 id="--6">不停机实时迁移</h3>
 	<p>对于大型数据集而言，迁移是实时和持续进行的，因为移动数据需要时间。缓存储备是一键将资产迁移到托管 R2 示例以减少出口费用的简单方法。日后，我们将扩展这一机制，以便您能将任何现有 S3 对象存储桶迁移到 R2。</p>
 	<p>我们欢迎所有人立即注册并开始使用 R2。加入 Cloudflare 上不断扩大的开发人员社区。如有任何反馈或疑问，请点击<a href="https://discord.gg/c2eACA4qXA" target="_blank">这里</a>通过我们的 Discord 服务器联系我们。我们迫不及待要看到您构建的应用！</p>
-	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看<br></h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看<br></h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

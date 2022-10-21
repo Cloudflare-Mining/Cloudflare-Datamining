@@ -18,14 +18,12 @@
 	<p>他のセキュリティ製品と同様に、Page Shieldは、可視化、検出、緩和および予防を提供すると考えることができます。最初のステップは可視化です。</p>
 	<h3 id="--1"><strong>可視性</strong></h3>
 	<p>オンにすると、Page Shieldの現在のイテレーションでは、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">コンテンツセキュリティポリシー</a>（CSP）が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">レポート専用ディレクティブ</a>で展開されて、ブラウザから情報を収集するようになっています。これにより、アプリケーション上で実行されているすべてのスクリプトのリストを提供することができます。</p>
-	<p>HTTPの用語で、オリジンサーバーからブラウザに戻るページレスポンスのサンプルに追加されるHTTP応答ヘッダーのことです。CSPヘッダーは次のようなものです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>HTTPの用語で、オリジンサーバーからブラウザに戻るページレスポンスのサンプルに追加されるHTTP応答ヘッダーのことです。CSPヘッダーは次のようなものです。</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>上記のヘッダーは、スクリプトを読み込まないこと <code>（script-src 'none'）</code>と、違反した場合は指定されたエンドポイントに報告することv &nbsp;<code>（report-uri /cdn-cgi/script_monitor/report)</code> &nbsp;をブラウザに指示しています。また、違反レポートのエンドポイントは<a href="https://www.cloudflare.com/ja-jp/network/" target="_blank">Cloudflareネットワーク</a>に解決し、そこで処理されるため、オリジンサーバーに追加のトラフィックが到達しないことにご注意ください。</p>
-	<p>HTTP POSTリクエストとして実装されたブラウザから送信される各違反レポートは、スクリプトに関する情報を提供してくれます。以下はその例です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>HTTP POSTリクエストとして実装されたブラウザから送信される各違反レポートは、スクリプトに関する情報を提供してくれます。以下はその例です。</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
       "document-uri":"https://www.example.com/",

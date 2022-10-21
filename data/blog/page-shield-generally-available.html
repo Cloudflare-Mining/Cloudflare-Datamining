@@ -21,14 +21,12 @@
 	<p>As with any security product, we can think of Page Shield as providing visibility, detection, mitigation, and prevention. The first step is visibility.</p>
 	<h3 id="visibility">Visibility</h3>
 	<p>When turned on, the current iteration of Page Shield uses a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">content security policy</a> (CSP) deployed with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">report-only directive</a> to collect information from the browser. This allows us to provide you with a list of all scripts running on your application.</p>
-	<p>In HTTP terms, this is an HTTP response header added to a sample of page responses from the origin server back to the browser. The CSP header looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In HTTP terms, this is an HTTP response header added to a sample of page responses from the origin server back to the browser. The CSP header looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above header instructs the browser that no scripts should be loaded &nbsp;(<code>script-src 'none'</code>) and to report any violation to the endpoint provided (<code>report-uri /cdn-cgi/script_monitor/report</code>). Also note that the violation report endpoint resolves to the <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare network</a> where it is processed, so no additional traffic reaches the origin server.</p>
-	<p>Each violation report sent by the browser, implemented as an HTTP POST request, provides us with information on the script. Here is an example:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Each violation report sent by the browser, implemented as an HTTP POST request, provides us with information on the script. Here is an example:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
       "document-uri":"https://www.example.com/",

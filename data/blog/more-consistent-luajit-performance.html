@@ -10,8 +10,7 @@ Running fannkuch_redux: ..............................
   Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</code></pre>
 	<p>Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <em>in-process iterations</em>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
 	<p>The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/" target="_blank">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT: </p>
-	<h2 id="results-for-luajit">Results for luaJIT</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="results-for-luajit">Results for luaJIT</h2><!--kg-card-begin: html-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 		google.charts.load('current', {
@@ -122,9 +121,7 @@ Running fannkuch_redux: ..............................
 		#lightgreen {
 			background-color: #8ae89c;
 		}
-	</style>
-	<!--kg-card-end: html-->
-	<!--kg-card-begin: html-->
+	</style><!--kg-card-end: html--><!--kg-card-begin: html-->
 	<figure class="lua-jit-figure" style="width: 800px">
 		<strong>Symbol key:</strong>
 		<canvas class="badinconsistent" width="10" height="10">bad inconsistent</canvas> bad inconsistent,
@@ -5529,12 +5526,10 @@ Running fannkuch_redux: ..............................
 			}
 		</script>
 		<figcaption>Results for luaJIT</figcaption>
-	</figure>
-	<!--kg-card-end: html-->
+	</figure><!--kg-card-end: html-->
 	<p>There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C" target="_blank">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
 	<p>Here are the benchmark results for for RaptorJIT: </p>
-	<h2 id="results-for-raptorjit">Results for RaptorJIT</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="results-for-raptorjit">Results for RaptorJIT</h2><!--kg-card-begin: html-->
 	<figure class="lua-jit-figure" style="width=800px">
 		<strong>Symbol key:</strong>
 		<canvas class="badinconsistent" width="10" height="10">bad inconsistent</canvas> bad inconsistent,
@@ -10577,11 +10572,9 @@ Running fannkuch_redux: ..............................
 			}
 		</script>
 		<figcaption>Results for RaptorJIT</figcaption>
-	</figure>
-	<!--kg-card-end: html-->
+	</figure><!--kg-card-end: html-->
 	<p>We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
-	<h2 id="results-for-normal-vs-raptorjit">Results for Normal vs. RaptorJIT </h2>
-	<!--kg-card-begin: html-->
+	<h2 id="results-for-normal-vs-raptorjit">Results for Normal vs. RaptorJIT </h2><!--kg-card-begin: html-->
 	<figure class="lua-jit-figure" style="width=800px">
 		<strong>Symbol key:</strong>
 		<canvas class="badinconsistent" width="10" height="10">bad inconsistent</canvas> bad inconsistent,
@@ -15841,15 +15834,13 @@ Running fannkuch_redux: ..............................
 			}
 		</script>
 		<figcaption>Results for Normal vs. RaptorJIT</figcaption>
-	</figure>
-	<!--kg-card-end: html-->
+	</figure><!--kg-card-end: html-->
 	<p>In essence, green cells mean that RaptorJIT is better than LuaJIT; red cells mean that LuaJIT is better than RaptorJIT; yellow means they're different in a way that can't be compared; and white/grey means they're statistically equivalent. The additional “Steady performance variation (s)” column shows whether the steady state performance of different process executions is more predictable or not.</p>
 	<p>The simple conclusion to draw from this is that there isn't a simple conclusion to draw from it: the two VMs are sometimes better than each other with no clear pattern. Without having a clear steer either way, we therefore decided to use the original version of LuaJIT as our base.</p>
 	<p>One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
 	<p>The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
 	<p>We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows: </p>
-	<h2 id="results-for-normal-vs-counters">Results for Normal vs. Counters</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="results-for-normal-vs-counters">Results for Normal vs. Counters</h2><!--kg-card-begin: html-->
 	<figure class="lua-jit-figure" style="width=800px">
 
 		<strong>Symbol key:</strong>
@@ -21012,8 +21003,7 @@ Running fannkuch_redux: ..............................
 			}
 		</script>
 		<figcaption>Results for Normal vs. Counters</figcaption>
-	</figure>
-	<!--kg-card-end: html-->
+	</figure><!--kg-card-end: html-->
 	<p>In this case we’re particularly interested in the “steady performance variation (s)” column, which shows whether benchmarks have predictable steady state performance. The results are fairly clear: steady counters are, overall, a clear improvement. As you might expect, this is not a pure win, because it changes the order in which traces are made. This has several effects, including delaying some loops to be traced later than was previously the case, because counters do not hit the required threshold as quickly. This disadvantages some programs, particularly small deterministic benchmarks where loops are highly stable. In such cases, the earlier you trace the better. However, in my opinion, such programs are given undue weight when performance is considered. It’s no secret that some of the benchmarks regularly used to benchmark LuaJIT are <em>highly</em> optimised for LuaJIT as it stands; any changes to LuaJIT stand a good chance of degrading their performance. However, overall we feel that the overall gain in consistency, particularly for larger programs, is worth it. There's a <a href="https://github.com/lua-users-foundation/LuaJIT/pull/6" target="_blank">pull request against the Lua Foundation's fork of LuaJIT</a> which applies this idea to a mainstream fork of LuaJIT.</p>
 	<p>We then started looking at various programs that showed odd performance. One problem in particular showed up in more than one benchmark. Here's a standard example:</p>
 	<p></p>

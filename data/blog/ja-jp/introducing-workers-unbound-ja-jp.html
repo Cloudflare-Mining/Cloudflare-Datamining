@@ -19,8 +19,7 @@
 	<h3 id="--2">経費への影響は？</h3>
 	<p>当社のEdgeにおけるパフォーマンスの向上がお客様のコスト削減につながるため、大規模なパフォーマンスは、当社にとって最優先事項です。当社がJavaScriptランタイムのオーバーヘッドを一度支払うと、個々のオーバーヘッドがほとんどなく、本質的に無制限なスクリプトが実行できるようになります。</p>
 	<p>AWS Lambdaと比較すると、Workers Unboundは実に費用対効果が高いプラットフォームです。サーバーレスなら、ご利用分の支払いだけで十分です。訳のわからない追加料金はありません。Workersは、APIゲートウェイ手数料やDNSリクエスト料金のような隠れた追加料金を支払う必要がなくなります。</p>
-	<p>サーバーレス価格設定の比較*</p>
-	<!--kg-card-begin: html-->
+	<p>サーバーレス価格設定の比較*</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -115,14 +114,12 @@
 			<tr>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p><em>*2020</em>年<em>7</em>月<em>4</em>日現在、<em>aws.amazon.com/lambda/pricing</em>で公開されている価格設定に基づきます。<em>AWS</em>で公開されている稼働時間価格設定は<em>1GB-</em>秒に基づきます。この表では、理解しやすくするために<em>100</em>万を掛けた値で表示されています。<em>AWS</em>の価格帯は地域の価格設定によって異なります。全ての価格は、小数点第<em>2</em>位で四捨五入しています。<em>AWS</em>へのデータ転送は、<em>Amazon EC2</em>からインターネット（<em>1 GB/</em>月以上、最大<em>9.999 TB/</em>月まで）へのデータ送信転送に基づきます。<em>AWS</em>の<em>API</em>ゲートウェイは、<em>Rest API</em>（<em>1MM/</em>月、最大<em>333 MM/</em>月まで）に基づきます。<em>Workers Unbound</em>サービスと<em>AWS Lambda</em>サービスの両方で、毎月<em>1MM</em>の無料リクエストと<em>400,000 GB-</em>秒のコンピューティングタイムをご提供しています。<em>AWS</em>への<em>DNS</em>クエリ率は、月当たり最大<em>10</em>億件のクエリまでの記載価格に基づいています。</p>
 	<h3 id="--3">どのくらいの節約が見込めるか</h3>
 	<p>数字を試験するために、<a href="https://github.com/Electroid/serverless-compare" target="_blank">hello world</a>GraphQLサーバーをWorkersとLambdaの両方にデプロイしました。Lambdaでの実行時間の中央値は、1.54ミリ秒でした。同じ処理負荷でWorkersでも行ったところ、0.90ミリ秒しかかかりませんでした。計算し、AWSが請求する（インターネットからリクエストを許可するAPIゲートウェイを含めて）不透明な料金すべてを考慮した結果、Workers Unboundを利用すると、最大75%の節約が見込めることがわかりました。しかもこれは、「hello world!」だけで出た結果です。何百万ものユーザーのために複雑な処理負荷を実行した場合のコスト削減を想像してみてください。</p>
 	<p>当社がどのように他社と競合できているのかと疑問に思っていらっしゃるかもしれません。その答えは、効率性という一言に尽きます。Workersの軽量性によって、同じ作業が可能となります。しかし、プラットフォームオーバーヘッドとリソース消費を低くすることができます。下の<a href="https://github.com/Electroid/serverless-compare" target="_blank">GraphQL hello worldテストの結果は、実行時間とプラットフォームプロバイダーのオーバーヘッドを示しています</a>。このテストは「hello world」だけですが、プロバイダー間（<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Isorate vs コンテナ</a>など）のばらつきは、アーキテクチャ上の違いであると説明できます。</p>
-	<p>サーバーレスプラットフォームでのGaphQL hello world の実行時間（ミリ秒）*</p>
-	<!--kg-card-begin: html-->
+	<p>サーバーレスプラットフォームでのGaphQL hello world の実行時間（ミリ秒）*</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -255,8 +252,7 @@
 			<tr>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p><em>*128MB</em>メモリ層が、各プラットフォームで使用されました。本テストが行われたのは、<em>AWS</em>が米国東部、<em>Google</em>が米国中央部、<em>Azure</em>が米国西部です。各プラットフォームテストは、<em>1</em>時間にわたり、<em>1</em>秒あたり<em>1</em>リクエストのスループットで実行されました。実行時間は、各プロバイダーのログインシステムから取得しています。</p>
 	<p>こうした数字が物語り、Workersのアーキテクチャの効率性を明らかにしていると言えるでしょう。Workersでは、迅速な結果だけではなく、当社がお客様に提供するコスト削減のメリットも受けられます。</p>
 	<h3 id="--4">いつから利用できるか</h3>

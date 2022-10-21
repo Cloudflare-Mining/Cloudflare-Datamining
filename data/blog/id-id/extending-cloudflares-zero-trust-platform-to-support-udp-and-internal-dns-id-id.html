@@ -30,18 +30,15 @@
 	<h2 id="bagaimana-saya-dapat-memulainya-hari-ini"><strong>Bagaimana saya dapat memulainya hari ini?</strong></h2>
 	<p>Anda sudah dapat mulai membangun jaringan pribadi di Cloudflare dengan tutorial dan panduan kami di dokumentasi pengembang kami. Di bawah ini adalah jalur kritisnya. Dan jika Anda sudah menjadi pelanggan, dan Anda tertarik untuk bergabung dengan daftar tunggu untuk akses UDP dan DNS Internal, silakan lewati ke akhir postingan ini!</p>
 	<h3 id="menghubungkan-jaringan-anda-ke-cloudflare"><strong>Menghubungkan jaringan Anda ke Cloudflare</strong></h3>
-	<p>Pertama, Anda perlu <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">menginstal cloudflared</a> di jaringan Anda dan mengautentikasinya dengan perintah di bawah ini:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pertama, Anda perlu <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">menginstal cloudflared</a> di jaringan Anda dan mengautentikasinya dengan perintah di bawah ini:</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel login
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Selanjutnya, Anda akan membuat tunnel dengan nama yang mudah digunakan untuk mengidentifikasi jaringan atau lingkungan Anda.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Selanjutnya, Anda akan membuat tunnel dengan nama yang mudah digunakan untuk mengidentifikasi jaringan atau lingkungan Anda.</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel create acme-network
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Terakhir, Anda ingin mengonfigurasi tunnel Anda dengan rentang IP/CIDR dari jaringan pribadi Anda. Dengan melakukan ini, Anda membuat agen WARP Cloudflare menyadari bahwa setiap permintaan ke rentang IP ini perlu dirutekan ke tunnel baru kami.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Terakhir, Anda ingin mengonfigurasi tunnel Anda dengan rentang IP/CIDR dari jaringan pribadi Anda. Dengan melakukan ini, Anda membuat agen WARP Cloudflare menyadari bahwa setiap permintaan ke rentang IP ini perlu dirutekan ke tunnel baru kami.</p><!--kg-card-begin: markdown-->
 	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
 </code></pre>
 	<!--kg-card-end: markdown-->

@@ -8,8 +8,7 @@
 	<p>WebSockets allow clients to open a connection back to a server (or in our case, Cloudflare Workers) that can receive and send messages. Instead of polling a server continuously for new information, a single WebSocket connection can constantly receive data and unlock the kind of live use-cases that we're used to in modern applications: things like live scores for sports events, real-time chat, and more.</p>
 	<p>Let's dig into how to use WebSockets in Workers so you can understand how easy they are to pick up and start using in your application.</p>
 	<h3 id="instantiating-websocketpairs-in-cloudflare-workers">Instantiating WebSocketPairs in Cloudflare Workers</h3>
-	<p>Workers respond to HTTP requests sent from clients. A Request comes in, and a Response comes back. You can begin using WebSockets in your Workers code by looking for an Upgrade header in any incoming requests: this is an indication from the client that it's looking to set up a new WebSocket:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Workers respond to HTTP requests sent from clients. A Request comes in, and a Response comes back. You can begin using WebSockets in your Workers code by looking for an Upgrade header in any incoming requests: this is an indication from the client that it's looking to set up a new WebSocket:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -24,8 +23,7 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If the Upgrade header is present, we set up a new instance of WebSocketPair — a set of two WebSockets, one for the client, and one for the server. In our code, we'll use the server WebSocket to set up our server-side logic, and return the client socket back to the client. Note the usage of the 101 status code (<a href="https://httpstatuses.com/101" target="_blank">"Switching Protocols"</a>) and the new webSocket property on Response:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If the Upgrade header is present, we set up a new instance of WebSocketPair — a set of two WebSockets, one for the client, and one for the server. In our code, we'll use the server WebSocket to set up our server-side logic, and return the client socket back to the client. Note the usage of the 101 status code (<a href="https://httpstatuses.com/101" target="_blank">"Switching Protocols"</a>) and the new webSocket property on Response:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -46,8 +44,7 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In our handleSession function, we call the accept function on our WebSocket. This tells the Workers runtime that it will be responsible for this server WebSocket from the WebSocketPair. We can then handle events on the WebSocket, by using addEventListener and providing callback functions, particularly for message events (when new data comes in), and close events, when the WebSocket connection closes:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In our handleSession function, we call the accept function on our WebSocket. This tells the Workers runtime that it will be responsible for this server WebSocket from the WebSocketPair. We can then handle events on the WebSocket, by using addEventListener and providing callback functions, particularly for message events (when new data comes in), and close events, when the WebSocket connection closes:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function handleSession(websocket) {
   websocket.accept()
   websocket.addEventListener("message", async message =&gt; {
@@ -63,8 +60,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<h3 id="connecting-to-websockets-in-a-browser-client">Connecting to WebSockets in a Browser Client</h3>
 	<p>With WebSockets support added in the Workers function, we can now connect to it from a client. Workers' WebSocket support works directly with the browser-default WebSocket class, meaning that you can connect to it directly in vanilla JavaScript without any additional libraries.</p>
-	<p>In fact, this connection process is so simple that it almost explains itself by just looking at the code. Just pass the WebSocket URL to a new instance of WebSocket, and then watch for new events on the WebSocket itself, like open (when the WebSocket connection opens), message (when new data comes in), and close (when the WebSocket connection closes):</p>
-	<!--kg-card-begin: markdown-->
+	<p>In fact, this connection process is so simple that it almost explains itself by just looking at the code. Just pass the WebSocket URL to a new instance of WebSocket, and then watch for new events on the WebSocket itself, like open (when the WebSocket connection opens), message (when new data comes in), and close (when the WebSocket connection closes):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let websocket = new WebSocket(url)
 if (!websocket) {
   throw new Error("Server didn't accept WebSocket")

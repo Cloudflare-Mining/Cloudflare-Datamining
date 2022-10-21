@@ -22,8 +22,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
 	<h3 id="description-technique-de-l-erreur-et-de-son-d-roulement">Description technique de l'erreur et de son déroulement</h3>
 	<p>Dans le cadre de nos efforts continus d'homogénéisation de la configuration de notre infrastructure, nous avons déployé une modification permettant de normaliser les communautés BGP que nous attachons à un sous-ensemble des préfixes que nous annonçons. Plus spécifiquement, nous avons ajouté des communautés informelles à nos préfixes « site-local ». Ces préfixes permettent à nos nœuds de communiquer les uns avec les autres, ainsi que de se connecter aux serveurs d'origine des clients. Dans le cadre de la procédure de modification en vigueur chez Cloudflare, un ticket de demande de modification (Change Request, CR) a été créé. Ce dernier comprend une version en « marche à blanc » de la modification, ainsi qu'une procédure de déploiement par étapes de cette dernière. Avant l'autorisation de la modification, la demande fait également l'objet d'un examen collégial conduit par plusieurs techniciens. Malheureusement, dans ce cas précis, les étapes ne se sont pas révélées suffisamment petites pour que l'erreur puisse être détectée avant d'atteindre nos troncs.</p>
-	<p>La modification se présentait sous la forme suivante sur l'un des routeurs :</p>
-	<!--kg-card-begin: markdown-->
+	<p>La modification se présentait sous la forme suivante sur l'un des routeurs :</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
 +      community add STATIC-ROUTE;
 +      community add SITE-LOCAL-ROUTE;
@@ -46,8 +45,7 @@
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Cette dernière se montrait inoffensive et se contentait d'ajouter des informations supplémentaires aux annonces de ces préfixes. La modification déployée sur les troncs était la suivante :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Cette dernière se montrait inoffensive et se contentait d'ajouter des informations supplémentaires aux annonces de ces préfixes. La modification déployée sur les troncs était la suivante :</p><!--kg-card-begin: markdown-->
 	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
 term 6-DISABLED_PREFIXES { ... }
 !    term 6-ADV-TRAFFIC-PREDICTOR { ... }
@@ -74,15 +72,13 @@ community delete NO-EXPORT { ... }
 +      community add EUROPE;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Un premier coup d'œil à ce diff pourrait donner l'impression que la modification se révèle identique, mais malheureusement, ce n'était pas le cas. Si nous nous concentrons sur la première partie du diff, la raison apparaît comme évidente :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Un premier coup d'œil à ce diff pourrait donner l'impression que la modification se révèle identique, mais malheureusement, ce n'était pas le cas. Si nous nous concentrons sur la première partie du diff, la raison apparaît comme évidente :</p><!--kg-card-begin: markdown-->
 	<pre><code>!    term REJECT-THE-REST { ... }
 !    term 4-ADV-SITE-LOCALS { ... }
 !    term 6-ADV-SITE-LOCALS { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Sous ce format de diff, les points d'exclamation situés devant les termes indiquent une réorganisation de ces derniers. Dans ce cas précis, plusieurs termes sont montés dans la liste et deux termes ont été ajoutés en bas. De manière plus spécifique, le terme 4-ADV-SITE-LOCALS s'est retrouvé plus bas. Ce terme se situait alors derrière le terme REJECT-THE-REST qui, comme son nom l'indique, constitue un rejet explicite :</p>
-	<!--kg-card-begin: markdown-->
+	<p>Sous ce format de diff, les points d'exclamation situés devant les termes indiquent une réorganisation de ces derniers. Dans ce cas précis, plusieurs termes sont montés dans la liste et deux termes ont été ajoutés en bas. De manière plus spécifique, le terme 4-ADV-SITE-LOCALS s'est retrouvé plus bas. Ce terme se situait alors derrière le terme REJECT-THE-REST qui, comme son nom l'indique, constitue un rejet explicite :</p><!--kg-card-begin: markdown-->
 	<pre><code>term REJECT-THE-REST {
     then reject;
 } 

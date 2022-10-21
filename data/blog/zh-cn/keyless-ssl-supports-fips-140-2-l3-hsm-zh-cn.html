@@ -18,15 +18,13 @@
 	<p>Microsoft 的 Azure Key Vault 团队于 2020 年 9 月 22 日<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">发布了托管 HSM公共预览版 </a>。该产品已通过 FIPS 140-2 级别 3 验证，并与 Azure 服务（例如 Azure 存储，Azure SQL 和 Azure 信息保护）集成。托管 HSM 的公共预览目前可以在以下地区提供：美国东部 2，美国中南部，北欧和西欧。</p>
 	<p>以下说明来自<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">快速入门：使用 Azure CLI指南来预配和激活托管 HSM</a>，其后是有关将托管 HSM 与 Cloudflare 结合使用的说明。这些命令在与 HSM 所在同一地区（美国中南部）创建的 Ubuntu VM 上运行；这也是我们将部署 Cloudflare 无密钥 SSL 后台程序的地方。</p>
 	<h3 id="-hsm">预配和激活 HSM</h3>
-	<p>首先，我们通过 CLI 登录，并在其中一个受支持的区域为托管 HSM 创建一个资源组。请注意，根据产品的预览状态，您可能会收到来自各种命令的警告。</p>
-	<!--kg-card-begin: markdown-->
+	<p>首先，我们通过 CLI 登录，并在其中一个受支持的区域为托管 HSM 创建一个资源组。请注意，根据产品的预览状态，您可能会收到来自各种命令的警告。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
 $ az login
 $ az group create --name $GROUPNAME --location $LOCATION
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>接下来，我们预配 HSM 资源并通过下载<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">安全域</a>来激活它。如下示例将管理访问权授予已登录用户以及另一个管理员，其 OID 可以通过在该用户登录的 CLI 中执行相同的 odi=$(…) 命令来获取。</p>
-	<!--kg-card-begin: markdown-->
+	<p>接下来，我们预配 HSM 资源并通过下载<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">安全域</a>来激活它。如下示例将管理访问权授予已登录用户以及另一个管理员，其 OID 可以通过在该用户登录的 CLI 中执行相同的 odi=$(…) 命令来获取。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
 $ OTHERADMIN_OID=...
 
@@ -63,13 +61,11 @@ sHSM",
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>记录上面的命令返回的 <strong>hsmUri</strong> 属性。稍后在 VM 上配置无密钥 SSL 时将需要这个属性。</p>
-	<!--kg-card-begin: markdown-->
+	<p>记录上面的命令返回的 <strong>hsmUri</strong> 属性。稍后在 VM 上配置无密钥 SSL 时将需要这个属性。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>预配 HSM 后，您必须向其提供至少 3 个 RSA 公钥。HSM 将使用这些公钥加密安全域并将其发回给您，其后 HSM 即可使用。</p>
-	<!--kg-card-begin: markdown-->
+	<p>预配 HSM 后，您必须向其提供至少 3 个 RSA 公钥。HSM 将使用这些公钥加密安全域并将其发回给您，其后 HSM 即可使用。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
@@ -78,15 +74,13 @@ $ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>如果收到“无法连接到 MSI” 错误，并且您在使用 Azure 门户的一个 cloud shell，这是一个已知问题，请再次运行 az 登录。</p>
-	<p>在您的 HSM 完成预配后，<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">将您的私钥添加</a>到密钥库中。</p>
-	<!--kg-card-begin: markdown-->
+	<p>在您的 HSM 完成预配后，<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">将您的私钥添加</a>到密钥库中。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ az keyvault key import --KeylessHSM
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>本命令将返回一个 URI，供您稍后添加到无密钥 YAML 文件中，用于指明私钥的存储位置。</p>
 	<p>HSM 现已预配并激活，您需要创建一个 VM 来部署无密钥后台程序。在本例中，我们将在 Azure 中创建一个 Ubuntu Xenial VM。在门户中，前往<strong>虚拟机</strong>页面并<strong>添加</strong>一个 VM。在那里，您可以使用较早前为 HSM 创建的资源组。为获得最佳效果，请选择与 HSM 相同的地区。请注意 VM 的公共 IP，您将使用它来远程连接到服务器。</p>
-	<p>接下来，将您的 VM 配置为密钥服务器。首先，您需要添加 <a href="https://pkg.cloudflare.com/" target="_blank">Cloudflare 包存储库</a>。然后，您将更新操作系统的包清单并安装gokeyless 服务器。</p>
-	<!--kg-card-begin: markdown-->
+	<p>接下来，将您的 VM 配置为密钥服务器。首先，您需要添加 <a href="https://pkg.cloudflare.com/" target="_blank">Cloudflare 包存储库</a>。然后，您将更新操作系统的包清单并安装gokeyless 服务器。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ apt-get update
 $ echo 'deb http://pkg.cloudflare.com/ Xenial main' |
 sudo tee /etc/apt/sources.list.d/cloudflare-main.list
@@ -95,13 +89,11 @@ $ apt-get update
 $ apt-get install gokeyless
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>然后，更新 gokeyless YAML 文件。在这里添加密钥服务器的主机名——这个主机名应有一个指向 VM、zoneID 和 Origin CA API 密钥的 DNS 记录。可在 Cloudflare 仪表板中找到 zoneID 和 Origin CA API 密钥。此外，在 private_key_stores 下指定指向私钥目录的 URI。</p>
-	<!--kg-card-begin: markdown-->
+	<p>然后，更新 gokeyless YAML 文件。在这里添加密钥服务器的主机名——这个主机名应有一个指向 VM、zoneID 和 Origin CA API 密钥的 DNS 记录。可在 Cloudflare 仪表板中找到 zoneID 和 Origin CA API 密钥。此外，在 private_key_stores 下指定指向私钥目录的 URI。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ vim /etc/keyless/gokeyless.yaml
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>最后，启动无密钥服务器。</p>
-	<!--kg-card-begin: markdown-->
+	<p>最后，启动无密钥服务器。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ service gokeyless start
 </code></pre>
 	<!--kg-card-end: markdown-->

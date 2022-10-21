@@ -18,8 +18,7 @@
 		<li>The server doesn't <code>recv()</code> any data. We expect all the data to stay and wait in the receive queue.</li>
 		<li>We fix the SO_RCVBUF for better illustration.</li>
 	</ul>
-	<p>Simplified pseudocode might look like (<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py" target="_blank">full code if you dare</a>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Simplified pseudocode might look like (<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py" target="_blank">full code if you dare</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code>sd = socket.socket(AF_INET, SOCK_STREAM, 0)
 sd.bind(('127.0.0.3', 1234))
 sd.listen(32)
@@ -41,14 +40,12 @@ while true:
 	</ul>
 	<h3 id="a-bit-of-theory">A bit of theory</h3>
 	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>
-	<p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> manpage</a> calls it <strong>skmem_rb</strong>, in the kernel it's named <strong>sk_rcvbuf</strong>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> manpage</a> calls it <strong>skmem_rb</strong>, in the kernel it's named <strong>sk_rcvbuf</strong>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sysctl net.ipv4.tcp_rmem
 net.ipv4.tcp_rmem = 4096 131072 6291456
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Alternatively it can be manually set with <code>setsockopt(SO_RCVBUF)</code> on a socket. Note that the kernel doubles the value given to this setsockopt. For example SO_RCVBUF=16384 will result in skmem_rb=32768. The max value allowed to this setsockopt is limited to meager 208KiB by default:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Alternatively it can be manually set with <code>setsockopt(SO_RCVBUF)</code> on a socket. Note that the kernel doubles the value given to this setsockopt. For example SO_RCVBUF=16384 will result in skmem_rb=32768. The max value allowed to this setsockopt is limited to meager 208KiB by default:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sysctl net.core.rmem_max net.core.wmem_max
 net.core.rmem_max = 212992
 net.core.wmem_max = 212992
@@ -87,16 +84,14 @@ net.core.wmem_max = 212992
 		<li>Finally, the dotted line shows <strong>rcv_ssthresh</strong>, which is not important yet, we'll get there.</li>
 	</ul>
 	<h3 id="running-over-the-budget-is-bad">Running over the budget is bad</h3>
-	<p>It's super important to notice that we finished with <strong>skmem_r </strong>higher than <strong>skmem_rb</strong>! This is rather unexpected, and undesired. The whole point of the <strong>skmem_rb</strong> memory budget is, well, not to exceed it. Here's how <code>ss</code> shows it:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It's super important to notice that we finished with <strong>skmem_r </strong>higher than <strong>skmem_rb</strong>! This is rather unexpected, and undesired. The whole point of the <strong>skmem_rb</strong> memory budget is, well, not to exceed it. Here's how <code>ss</code> shows it:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ss -m
 Netid  State  Recv-Q  Send-Q  Local Address:Port  Peer Address:Port   
 tcp    ESTAB  62464   0       127.0.0.3:1234      127.0.0.2:1235
      skmem:(r73984,rb65536,...)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>As you can see, skmem_rb is 65536 and skmem_r is 73984, which is 8448 bytes over! When this happens we have an even bigger issue on our hands. At around the 62nd packet we have an advertised window of 3072 bytes, but while packets are being sent, the receiver is unable to process them! This is easily verifiable by inspecting an nstat TcpExtTCPRcvQDrop counter:</p>
-	<!--kg-card-begin: markdown-->
+	<p>As you can see, skmem_rb is 65536 and skmem_r is 73984, which is 8448 bytes over! When this happens we have an even bigger issue on our hands. At around the 62nd packet we have an advertised window of 3072 bytes, but while packets are being sent, the receiver is unable to process them! This is easily verifiable by inspecting an nstat TcpExtTCPRcvQDrop counter:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ nstat -az TcpExtTCPRcvQDrop
 TcpExtTCPRcvQDrop    13    0.0
 </code></pre>
@@ -132,8 +127,7 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>The first two factors are the most important. Here's a run when the sender was specially configured to make the metadata cost bad and the coalesce ineffective (the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py#L90" target="_blank">details of the setup are messy</a>):</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-10.png" class="kg-image"></figure>
 	<p>You can see the kernel hitting TCP collapse multiple times, which is totally undesired. Each time a collapse kernel is likely to rewrite the full receive buffer. This whole kernel machinery, from reserving some space for metadata with tcp_adv_win_scale, via using coalesce to reduce the memory cost of each packet, up to the rcv_ssthresh limit, exists to avoid this very case of hitting collapse too often.</p>
-	<p>The kernel machinery most often works fine, and TCP collapse is rare in practice. However, we noticed that's not the case for certain types of traffic. One example is <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/" target="_blank">websocket traffic with loads of tiny packets</a> and a slow reader. One <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c#L452" target="_blank">kernel comment talks about</a> such a case:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The kernel machinery most often works fine, and TCP collapse is rare in practice. However, we noticed that's not the case for certain types of traffic. One example is <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/" target="_blank">websocket traffic with loads of tiny packets</a> and a slow reader. One <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c#L452" target="_blank">kernel comment talks about</a> such a case:</p><!--kg-card-begin: markdown-->
 	<pre><code>* The scheme does not work when sender sends good segments opening
 * window and then starts to feed us spaghetti. But it should work
 * in common situations. Otherwise, we have to rely on queue collapsing.
@@ -152,8 +146,7 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>In this run, the <strong>skmem_rb</strong> is set to 2MiB. As opposed to previous runs, the buffer budget is large and the receive window doesn't start with 50% of the skmem_rb! Instead it starts from 64KiB and grows linearly. It takes a while for Linux to ramp up the receive window to full size - ~800KiB in this case. The window is clamped by <strong>rcv_ssthresh</strong>. This variable starts at 64KiB and then grows at a rate of two full-MSS packets per each packet which has a "good" ratio of total size (truesize) to payload size.</p>
 	<p><a href="https://lore.kernel.org/lkml/CANn89i+mhqGaM2tuhgEmEPbbNu_59GGMhBMha4jnnzFE=UBNYg@mail.gmail.com/" target="_blank">Eric Dumazet writes</a> about this behavior:</p>
 	<blockquote>Stack is conservative about RWIN increase, it wants to receive packets to have an idea of the skb-&gt;len/skb-&gt;truesize ratio to convert a memory budget to &nbsp;RWIN.<br>Some drivers have to allocate 16K buffers (or even 32K buffers) just to hold one segment (of less than 1500 bytes of payload), while others are able to pack memory more efficiently.</blockquote>
-	<p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel.<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank"> We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel.<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank"> We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip route change local 127.0.0.0/8 dev lo initrwnd 1000
 </code></pre>
 	<!--kg-card-end: markdown-->

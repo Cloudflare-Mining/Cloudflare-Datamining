@@ -5,8 +5,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-6.png" class="kg-image" alt="Building and using Managed Components with WebCM"></figure>
 	<p>Managed Components are here to shake up the way third-party tools integrate with websites. Two months ago we announced that <a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm/">we’re open sourcing parts of the most innovative technologies behind Cloudflare Zaraz</a>, making them accessible and usable to everyone online. Since then, we’ve been working hard to make sure that the code is well documented and all pieces are fun and easy to use. In this article, I want to show you how Managed Components can be useful for you right now, if you manage a website or if you’re building third-party tools. But before we dive in, let’s talk about the past.</p>
 	<h3 id="third-party-scripts-are-a-threat-to-your-website">Third-party scripts are a threat to your website</h3>
-	<p>For decades, if you wanted to add an analytics tool to your site, a chat widget, a conversion pixel or any other kind of tool – you needed to include an external script. That usually meant adding some code like this to your website:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For decades, if you wanted to add an analytics tool to your site, a chat widget, a conversion pixel or any other kind of tool – you needed to include an external script. That usually meant adding some code like this to your website:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;script src=”https://example.com/script.js”&gt;&lt;/script&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -19,8 +18,7 @@
 	<p><a href="https://webcm.dev/" target="_blank">WebCM, Web-based Component Manager</a>, is our open source reference implementation of a Component Manager. If you run a website, you can use WebCM today to run Managed Components on your website, even if you’re not a Cloudflare user. If you want to create a Managed Component, you can use it like an SDK.</p>
 	<p>Over the last few months, we’ve been helping vendors to write their own Managed Components, and we will continue to do so. We open sourced WebCM to ensure that Managed Components are a technology of the Web as a whole. Everyone should be able to use WebCM to load and create Managed Components. Let’s see how to use it!</p>
 	<h3 id="getting-started-with-webcm-in-5-minutes">Getting started with WebCM in 5 minutes</h3>
-	<p>Getting started with WebCM is easier than you think. Because WebCM works like a proxy, you can use it regardless of how your website is built. In a new folder, create a simple HTML file and call it <code>index.html</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Getting started with WebCM is easier than you think. Because WebCM works like a proxy, you can use it regardless of how your website is built. In a new folder, create a simple HTML file and call it <code>index.html</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=”en”&gt;
   &lt;head&gt;
@@ -34,19 +32,16 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Let’s serve this file by launching an HTTP serve in the same folder:</p>
-	<p>You can use Node.js:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can use Node.js:</p><!--kg-card-begin: markdown-->
 	<pre><code>npx http-server -p 8000
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>You can use Python:</p>
-	<!--kg-card-begin: markdown-->
+	<p>You can use Python:</p><!--kg-card-begin: markdown-->
 	<pre><code>python3 -m http.server
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Or anything else that would serve our HTML file on <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a>.</p>
-	<p>Next, create a configuration file for WebCM. In a new directory, create a file called <code>webcm.config.ts</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, create a configuration file for WebCM. In a new directory, create a file called <code>webcm.config.ts</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
   components: [
     {
@@ -80,8 +75,7 @@
 	<p>! Note: Node version 17 or higher is needed for the next section</p>
 	<p>While keeping your HTTP server running, and in the same directory as <code>webcm.config.ts</code>, run <code>npx webcm</code>. Node will fetch WebCM and start it for you, and WebCM will read the configuration. First, it will fetch the required components to a <code>components</code> folder. When done, it will start another server that proxies your origin.</p>
 	<p>If you open<a href="http://localhost:8080/index.html" target="_blank"> http://localhost:8080/index.html</a> in your browser now, you’d see the same page you saw at <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a>. While the pages might look similar, the one running on port <code>8080</code> has our demo Managed Component running. Moving your mouse and clicking around the page should result in messages being printed in your WebCM terminal, showing that the component was loaded and that it is receiving data. You will also notice that the page now displays a simple weather widget - this a <a href="https://managedcomponents.dev/specs/embed-and-widgets/widgets" target="_blank">Managed Component Widget</a> that got appended to your page. The weather information was fetched without the browser needing to contact any additional server, and WebCM can cache that information to make sure it is served fast. Lastly, if you go to <a href="http://localhost:8080/webcm/demo/cheese" target="_blank">http://localhost:8080/webcm/demo/cheese</a>, you’ll see that the component is serving a static image of a cheese. This is an example of how Managed Components can expose new endpoints on your servers, if you allow them.</p>
-	<p>The Demo Component, like its name suggests, is just a demo. We use it to showcase and test the Managed Components APIs. What if we want to add a real Managed Component to our site? Google Analytics is <a href="https://w3techs.com/technologies/details/ta-googleanalytics" target="_blank">used by more than half of the websites on the internet</a>, so let’s see how we edit our <code>webcm.config.ts</code> file to load it.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The Demo Component, like its name suggests, is just a demo. We use it to showcase and test the Managed Components APIs. What if we want to add a real Managed Component to our site? Google Analytics is <a href="https://w3techs.com/technologies/details/ta-googleanalytics" target="_blank">used by more than half of the websites on the internet</a>, so let’s see how we edit our <code>webcm.config.ts</code> file to load it.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
   components: [
     {
@@ -118,8 +112,7 @@
 	<p>Managed Components isn’t a closed library of tools you can use. As mentioned before – we are gradually open sourcing more tools from our library on GitHub. If you think our components are doing something weird – please let us know with an issue, or even make a PR. Managed Components are for the benefit of everyone. Over the past few months, the Cloudflare Zaraz community on Discord and on the Cloudflare Community Forum was extremely helpful in actively reporting issues, and so we’re excited to give them the option to take one step closer to the internals behind Cloudflare Zaraz.</p>
 	<p>While improving existing Managed Components is great, the thing we’re most thrilled about is that you can now build your own Managed Components too. If you’re a third-party tool vendor – this is a way for you to create a version of your tool that is safe and performant, so customers can discover and adopt your tool easily. If you’re a website developer, you might want to tinker with Managed Components to see what kind of things you can easily move away from the browser, for performance gains.</p>
 	<p>Let’s see how easy it is to create a Managed Component that listens to every page view on our website. Run <code>npm init managed-component</code> in the <code>components</code> directory that WebCM created, and <a href="https://github.com/managed-components/create-managed-component" target="_blank">create-managed-component</a> will take you through the process of scaffolding your component files. To start with, our component will not use any special permissions, so you can select none.</p>
-	<p>Once we’re done with the wizard, we can open our <code>src/index.ts</code> file. By default, our component will add a listener to all page views:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Once we’re done with the wizard, we can open our <code>src/index.ts</code> file. By default, our component will add a listener to all page views:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
 
 export default async function (manager: Manager, settings: ComponentSettings) {
@@ -129,8 +122,7 @@ export default async function (manager: Manager, settings: ComponentSettings) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Let’s edit the comment line so that we can see whenever a page view happens. Note we also prefixed <code>settings</code> with a <code>_</code> because we’re not using it now:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s edit the comment line so that we can see whenever a page view happens. Note we also prefixed <code>settings</code> with a <code>_</code> because we’re not using it now:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
 
 export default async function (manager: Manager, _settings: ComponentSettings) {
@@ -140,8 +132,7 @@ export default async function (manager: Manager, _settings: ComponentSettings) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>With these changes, the component will print the current URL whenever a page is viewed on the website. Before trying it out, we need to build our component. In the folder of your component run <code>npm i &amp;&amp; npm run build</code>. Then, use the namespace of your component to add it to your webcm.config.ts file and restart WebCM:</p>
-	<!--kg-card-begin: markdown-->
+	<p>With these changes, the component will print the current URL whenever a page is viewed on the website. Before trying it out, we need to build our component. In the folder of your component run <code>npm i &amp;&amp; npm run build</code>. Then, use the namespace of your component to add it to your webcm.config.ts file and restart WebCM:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export default {
   components: [
     {

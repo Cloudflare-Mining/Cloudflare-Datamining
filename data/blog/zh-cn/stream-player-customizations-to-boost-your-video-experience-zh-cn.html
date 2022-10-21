@@ -3,20 +3,16 @@
 	<p>当我们推出 Stream 时，我们的目标之一就是提供性能最好的视频播放器。我们致力于构建一个能够快速加载、跨不同浏览器和框架工作、并根据最终用户的连接智能切换视频质量级别的播放器。</p>
 	<p>我们正在扩展 Stream 播放器的视野，因此您可以控制观看体验的外观和感觉。今天，我们宣布了一系列新的自定义选项，以帮助您提供最佳的视频播放体验。</p>
 	<h3 id="-">添加您自己的色彩</h3>
-	<p>我们不断从客户那里听到的一件事是，他们希望能够定制 Stream 播放器以更好地反映他们的品牌。Stream 播放器现在支持设置与公司颜色匹配的原色。下面是我们使用 primaryColor 属性将首选颜色设置为 Cloudflare 橙色的示例。</p>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<p>我们不断从客户那里听到的一件事是，他们希望能够定制 Stream 播放器以更好地反映他们的品牌。Stream 播放器现在支持设置与公司颜色匹配的原色。下面是我们使用 primaryColor 属性将首选颜色设置为 Cloudflare 橙色的示例。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<p>要使用 primaryColor 属性，只需将其添加到 iframe URL。在此示例中，十六进制代码为 #F48120，uri 编码值为 %23F48120。</p>
 	<p><code>https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120</code></p>
 	<p>如果您使用 React 或 Angular 包装，则可以使用 primaryColor 属性自定义播放器颜色。</p>
 	<p>目前，设置首选颜色属性会将播放按钮和搜索栏的颜色更改为您指定的首选颜色。我们计划在未来为 Stream 播放器提供更多的品牌推广方式。</p>
 	<h3 id="--1">视频中的深层链接</h3>
 	<p>以前，如果希望视频在某个时间点开始，则需要编写自定义代码，使用 Stream 播放器 SDK 将查看器快进到精确的开始时间。Stream 播放器现在支持 startTime 属性，如果您只是想将视图深度链接到视频中的某个时间点，则无需加载 SDK 和编写自定义代码。</p>
-	<p>假设您运行一个电子学习平台，并希望讲师能够通过深度链接到一小时视频的特定部分来回答问题。如果您设置新的 startTime 查询字符串参数或道具，则 Stream 播放器中的视频播放将从指定的时间戳开始。</p>
-	<!--kg-card-begin: markdown-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: markdown-->
+	<p>假设您运行一个电子学习平台，并希望讲师能够通过深度链接到一小时视频的特定部分来回答问题。如果您设置新的 startTime 查询字符串参数或道具，则 Stream 播放器中的视频播放将从指定的时间戳开始。</p><!--kg-card-begin: markdown-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: markdown-->
 	<h3 id="--2">默认启用本地化字幕</h3>
 	<p>Cloudflare Stream 长期以来一直支持多种语言的视频字幕。但是我们从客户那里听说，他们希望能够默认打开字幕<em>并</em>指定默认语言。这现已得到原生支持，使您的视频更轻松触及全球受众。</p>
 	<p>如果您有一个支持本地化的网站，您可能希望使用预设语言打开字幕。在视频自动播放同时静音的情况下，自动启用字幕还可以改善观看者体验。这是一个不断增长的趋势，事实上，Facebook 报告称，在该平台上观看的视频中，超过 85% 的视频都是在静音的情况下播放的。</p>

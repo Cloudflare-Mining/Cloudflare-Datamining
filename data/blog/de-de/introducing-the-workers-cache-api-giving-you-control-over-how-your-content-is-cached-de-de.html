@@ -28,8 +28,7 @@
 	<blockquote>Wir mussten einige komplexe serverseitige Codes an die Edge migrieren. Wir haben einen API-Endpunkt, der POST-Anfragen mit großen Bodys akzeptiert, aber hauptsächlich die gleichen Daten zurückgibt, ohne etwas auf unserem Ursprungsserver zu ändern. Mit Workers und der Cache-API konnten wir Antworten auf POST-Anfragen zwischenspeichern, von denen wir wussten, dass sie sicher sind, und so die Belastung unseres Ursprungsservers erheblich reduzieren.</blockquote>
 	<p>– Aaron Dearinger, Edge Architect, Garmin International</p>
 	<p>Das Zwischenspeichern von POST-Anfragen mit der Cache-API ist einfach. Hier etwas Beispielcode aus unserer <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">Dokumentation</a>:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">async function handleRequest(event) {
   let request = event.request
   let response

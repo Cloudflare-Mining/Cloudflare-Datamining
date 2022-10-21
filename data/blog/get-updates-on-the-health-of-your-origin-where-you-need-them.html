@@ -34,22 +34,19 @@
 	<h3 id="create-an-origin-health-status-page">Create an Origin Health Status Page</h3>
 	<p>Let’s walk through another powerful webhooks implementation with Health Checks. Using the Health Check we configured in our last example, let’s create a simple status page using Cloudflare Workers and Durable Objects that stores an origin’s health, updates it upon receiving a webhook request, and displays a status page to visitors.</p>
 	<p><strong>Writing our worker</strong><br>You can find the code for this example <a href="https://github.com/georgethomas111/status-page" target="_blank">in this GitHub repository</a>, if you want to clone it and try it out.</p>
-	<p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ wrangler -V
 wrangler 1.19.8
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The examples in this blog were tested in this wrangler version.</p>
-	<p>Then, to speed up writing our worker, we will use a template to generate a project:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, to speed up writing our worker, we will use a template to generate a project:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ wrangler generate status-page [https://github.com/cloudflare/durable-objects-template](https://github.com/cloudflare/durable-objects-template)
 $ cd status-page
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The template has a Durable Object with the name <code>Counter</code>. We’ll rename that to <code>Status</code>, as it will store and update the current state of the page.</p>
-	<p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code>name = "status-page"
 # type = "javascript" is required to use the `[build]` section
 type = "javascript"
@@ -71,8 +68,7 @@ bindings = [{name = "status", class_name = "Status"}]
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Now, we’re ready to fill in our logic. We want to serve two different kinds of requests: one at <code>/webhook</code> that we will pass to the Notification system for updating the status, and another at <code>/</code> for a rendered status page.</p>
-	<p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p><!--kg-card-begin: markdown-->
 	<pre><code>time - The time when the Health Check status changed.
 status - The status of the Health Check.
 reason - The reason why the Health Check failed.
@@ -82,8 +78,7 @@ actual_code - The actual code received from the origin.
 health_check_id - The id of the Health Check pushing the webhook notification. 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p>
-	<!--kg-card-begin: markdown-->
+	<p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p><!--kg-card-begin: markdown-->
 	<pre><code> async handleWebhook(request) {
   const json = await request.json();
  
@@ -99,8 +94,7 @@ health_check_id - The id of the Health Check pushing the webhook notification.
  }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now that we can store status changes, we can use our state to render a status page:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now that we can store status changes, we can use our state to render a status page:</p><!--kg-card-begin: markdown-->
 	<pre><code> async statusHTML() {
   const statuses = await this.state.storage.list()
   let statHTML = ""
@@ -148,8 +142,7 @@ health_check_id - The id of the Health Check pushing the webhook notification.
  }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p><!--kg-card-begin: markdown-->
 	<pre><code>async fetch(request) {
   const url = new URL(request.url)
   switch (url.pathname) {
@@ -164,8 +157,7 @@ health_check_id - The id of the Health Check pushing the webhook notification.
  }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p><!--kg-card-begin: markdown-->
 	<pre><code>export default {
  async fetch(request, env) {
   return await handleRequest(request, env);
@@ -204,8 +196,7 @@ async function handleRequest(request, env) {
 	</figure>
 	<p>If you add more Health Checks and tie them to the webhook durable object, you will see the data being added to your account.</p>
 	<h3 id="authenticating-webhook-requests">Authenticating webhook requests</h3>
-	<p>We already have a working status page! However, anyone possessing the webhook URL would be able to forge a request, pushing arbitrary data to an externally-visible dashboard. Obviously, that’s not ideal. Thankfully, webhooks provide the ability to authenticate these requests by supplying a secret. Let’s create a new webhook that will provide a secret on every request. We can generate a secret by generating a pseudo-random UUID with Python:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We already have a working status page! However, anyone possessing the webhook URL would be able to forge a request, pushing arbitrary data to an externally-visible dashboard. Obviously, that’s not ideal. Thankfully, webhooks provide the ability to authenticate these requests by supplying a secret. Let’s create a new webhook that will provide a secret on every request. We can generate a secret by generating a pseudo-random UUID with Python:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">$ python3
 &gt;&gt;&gt; import uuid
 &gt;&gt;&gt; uuid.uuid4()
@@ -216,8 +207,7 @@ UUID('4de28cf2-4a1f-4abd-b62e-c8d69569a4d2')
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-42.png" class="kg-image" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.">
 		<figcaption><em>Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.</em></figcaption>
 	</figure>
-	<p>We also want to provide this secret to our worker. Wrangler has a command that lets us save the secret.</p>
-	<!--kg-card-begin: markdown-->
+	<p>We also want to provide this secret to our worker. Wrangler has a command that lets us save the secret.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ wrangler secret put WEBHOOK_SECRET
 Enter the secret text you'd like assigned to the variable WEBHOOK_SECRET on the script named status-page:
 4de28cf2-4a1f-4abd-b62e-c8d69569a4d2
@@ -225,8 +215,7 @@ Enter the secret text you'd like assigned to the variable WEBHOOK_SECRET on the 
 ✨ Success! Uploaded secret WEBHOOK_SECRET.
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code> async handleWebhook(request) {
   // ensure the request we receive is from the Webhook destination we created
   // by examining its secret value, and rejecting it if it's incorrect

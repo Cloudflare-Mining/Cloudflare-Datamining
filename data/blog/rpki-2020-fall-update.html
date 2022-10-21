@@ -13,8 +13,7 @@
 	<p>The launch of the website <a href="https://isbgpsafeyet.com/" target="_blank">isbgpsafeyet.com</a> to test if your ISP correctly performs BGP Origin Validation was a success. Since launch, it has been visited more than five million times from over 223 countries and 13,000 unique networks (20% of the entire Internet), generating half a million BGP Origin Validation tests.</p>
 	<p>Many providers subsequently indicated on social media (for example, <a href="https://twitter.com/Aussie_BB/status/1252046032214450176" target="_blank">here</a> or <a href="https://twitter.com/swisscom_csirt/status/1300666695959244800" target="_blank">here</a>) that they had an RPKI deployment in the works. This increase in Origin Validation by networks is increasing the security of the Internet globally.</p>
 	<p>The site’s test for Origin Validation consists of queries toward two addresses, one of which is behind an RPKI invalid prefix and the other behind an RPKI valid prefix. If the query towards the invalid succeeds, the test fails as the ISP does not implement Origin Validation. We counted the number of queries that failed to reach invalid.cloudflare.com. This also included a few thousand <a href="https://atlas.ripe.net/measurements/?page=1&amp;search=target:invalid.rpki.cloudflare.com#tab-http" target="_blank">RIPE Atlas tests</a> that were started by Cloudflare and various contributors, providing coverage for smaller networks.</p>
-	<p>Every month since launch we’ve seen that around 10 to 20 networks are deploying RPKI Origin Validation. Among the major providers we can build the following table:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Every month since launch we’ve seen that around 10 to 20 networks are deploying RPKI Origin Validation. Among the major providers we can build the following table:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -41,10 +40,8 @@
 			</tr>
 		</tbody>
 	</table>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: html-->
-	<p></p>
-	<!--kg-card-end: html-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
 	<p>With the help of many <a href="https://github.com/cloudflare/isbgpsafeyet.com/blob/master/CONTRIBUTING.md" target="_blank">contributors</a>, we have compiled a list of network operators and public statements at the top of the isbgpsafeyet.com page.</p>
 	<p>We excluded providers that manually blocked the traffic towards the prefix instead of using RPKI. Among the techniques we see are firewall filtering and manual prefix rejection. The filtering is often propagated to other customer ISPs. In a unique case, an ISP generated a “more-specific” blackhole route that leaked to multiple peers over the Internet.</p>
 	<p>The deployment of RPKI by major transit providers, also known as Tier 1, such as Cogent, GTT, Hurricane Electric, NTT and Telia made many downstream networks more secure without them having them deploying validation software.</p>

@@ -55,8 +55,7 @@
 	<p>Nous avons envisagé diverses approches :</p>
 	<p><em>Insérer automatiquement la directive CSP « upgrade-insecure-requests »</em></p>
 	<p>La directive <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">upgrade-insecure-requests</a> peut être ajoutée dans un en-tête de <a href="https://www.w3.org/TR/CSP/" target="_blank">politique de protection du contenu</a> comme suit :</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>Content-Security-Policy: upgrade-insecure-requests
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -73,8 +72,7 @@
 	<p>Finalement, nous avons décidé de faire quelque chose d'intelligent : migrer une URL de http:// à https:// si nous savons que la ressource peut être diffusée en HTTPS. Pour déterminer les liens pouvant être mis à niveau, nous nous sommes tournés vers l'excellente extension <a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a> de l'EFF et la liste de <a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">préchargement HSTS</a> de Google Chrome, afin d’avoir une meilleure connaissance des sites Cloudflare avec SSL activé.</p>
 	<p>Nous sommes très reconnaissants à l'EFF d'avoir gracieusement accepté de nous aider dans ce projet.</p>
 	<p>Le jeu de règles de HTTPS Everywhere va bien au-delà de la simple conversion de http:// à https:// : il contient des règles (et des exclusions) qui lui permettent (et nous permettent) de cibler des URL très spécifiques. Par exemple, voici une règle HTTP Everywhere pour gstatic.com :</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
 gstatic\.com/" to="https://$1.gstatic.com/"/&gt;
 </code></pre>

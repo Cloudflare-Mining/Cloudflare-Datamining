@@ -24,12 +24,8 @@
 	<p>负责确保 HTTP 响应中存在这些标头的通常是反向代理， 这是位于客户端和服务器之间的一种服务器，其职责之一是扩充返回给客户端的 HTTP 响应数据。</p>
 	<p>“HTTP 响应标头修改”现在可在所有 Cloudflare 服务套餐的转换规则中使用。它可用于修改 HTTP 响应标头，然后将其返回给访问者，这一切都在 Cloudflare 中进行。当响应来自管理员没有完全控制的源（例如 SaaS 提供商或其他第三方服务）时，这尤其重要。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-16.png" class="kg-image" alt="Screenshot of &quot;Transform Rules&quot;"></figure>
-	<p>转换规则允许用户使用以下三个选项之一，针对每个规则修改最多 10 个 HTTP 响应标头：</p>
-	<!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image5-8.png">
-	<!--kg-card-end: html-->
-	<p>当需要对每个 HTTP 响应动态填充 HTTP 响应标头的值时，应该使用“Set dynamic”。示例包括将 Cloudflare Bot Management“bot score”添加到每个 HTTP 响应，或访问者的国家/地区：</p>
-	<!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image3-26.png">
-	<!--kg-card-end: html-->
+	<p>转换规则允许用户使用以下三个选项之一，针对每个规则修改最多 10 个 HTTP 响应标头：</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image5-8.png"><!--kg-card-end: html-->
+	<p>当需要对每个 HTTP 响应动态填充 HTTP 响应标头的值时，应该使用“Set dynamic”。示例包括将 Cloudflare Bot Management“bot score”添加到每个 HTTP 响应，或访问者的国家/地区：</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image3-26.png"><!--kg-card-end: html-->
 	<p>注意：这些值是使用相应 HTTP 请求计算的，意味着响应标头中返回的机器人分数将基于 HTTP 请求来计算。类似地，ip.src.country 值将为网站访问者的国家/地区，而不是从中发送响应的源。</p>
 	<p>“Set static”应该用于使用静态文本字符串填充标头的值。该选项应该用于简单的标头创建，例如设置 CORS 或 CSP 策略：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-107.png" class="kg-image" alt="Screenshot showing Transform Rules actions being used to statically set HTTP response headers."></figure>

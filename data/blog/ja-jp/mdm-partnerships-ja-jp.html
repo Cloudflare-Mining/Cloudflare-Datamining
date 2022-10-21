@@ -15,18 +15,15 @@
 	<p>Cloudflareは、上記の医療コンサルタント会社のような組織が、分散するユーザー全体のセキュリティと可視性を強化することを求めていることを認識しています。当社のデバイスクライアントであるWARPは、エンドポイントでIDとデバイスポスチャーを考慮したポリシーの施行を可能にすることで、これを支援します。</p>
 	<p>当社は、多様なデプロイメントアプローチを可能にするためにクライアントを最適化しました。そのため、組織はCloudflare for TeamsのZero Trust機能を簡単に展開するために必要な柔軟性を備えています。たとえば、WARPはすべての主要なオペレーティングシステム（Windows、MacOS、Linux、chrome OS、iOS、Androidなど）で動作します。また、デプロイメントのメカニズムに関係なく、WARPは <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">共通のパラメータ</a>を使用するので、管理者は一貫した作業をすることができます。</p>
 	<p>この合理化されたデプロイメントを実際に行うために、ここでは、コマンドラインを微調整するだけで、Windows上に当社のクライアントをデプロイできる一般的なシナリオをいくつか紹介します。</p>
-	<p>1. HTTPフィルタリングルール、ブラウザ分離、デバイスポスチャーを使用する場合、最も重要なことは、ユーザーをTeams Organizationに認証し、そのトラフィックをWARP経由で送信することです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>1. HTTPフィルタリングルール、ブラウザ分離、デバイスポスチャーを使用する場合、最も重要なことは、ユーザーをTeams Organizationに認証し、そのトラフィックをWARP経由で送信することです。</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2. IDを気にせず、上記と同じシナリオでサイレントインストールしたい場合は、<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">サービストークン</a>を使い、初期クライアントUIを無効にします。</p>
-	<!--kg-card-begin: markdown-->
+	<p>2. IDを気にせず、上記と同じシナリオでサイレントインストールしたい場合は、<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">サービストークン</a>を使い、初期クライアントUIを無効にします。</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3. 従業員は、トンネルでのトラフィックの暗号化が許可されていない国や場所に出張することがありますか？会社のDNSルールに引き続き従いながら、WARPをオフにさせることができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>3. 従業員は、トンネルでのトラフィックの暗号化が許可されていない国や場所に出張することがありますか？会社のDNSルールに引き続き従いながら、WARPをオフにさせることができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
 </code></pre>
 	<!--kg-card-end: markdown-->

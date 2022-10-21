@@ -22,8 +22,7 @@
 	<h2 id="libera-tu-v-deo-en-directo-de-los-modelos-comerciales-de-las-grandes-plataformas">Libera tu vídeo en directo de los modelos comerciales de las grandes plataformas</h2>
 	<p>Casi todas las empresas utilizan vídeo en directo, ya sea para interactuar con los clientes, para transmitir eventos o para monetizar contenido en directo. Pero pocos tienen los recursos de ingeniería especializados internos para entregar vídeo en directo a escala, y conectan varios servicios de nube de bajo nivel. Hasta la fecha, muchos de los mayores creadores de contenido se han visto obligados a depender de un número reducido de aplicaciones de redes sociales y servicios de transmisión de vídeo para entregar contenido en directo a escala.</p>
 	<p>A diferencia de la situación vigente, en la que te ves obligado a poner tu vídeo en directo en <em>sus</em> aplicaciones y servicios y adaptarte a <em>sus</em> modelos de negocio, Stream te proporciona el control total de tu vídeo en directo, en <em>tu</em> sitio web o aplicación, en cualquier dispositivo, a escala, sin enviar a tus usuarios al servicio de un tercero.</p>
-	<h2 id="codificaci-n-ingesta-y-an-lisis-sin-coste-sencilla-estructura-de-precios-por-minuto">Codificación, ingesta y análisis sin coste. Sencilla estructura de precios por minuto</h2>
-	<!--kg-card-begin: html-->
+	<h2 id="codificaci-n-ingesta-y-an-lisis-sin-coste-sencilla-estructura-de-precios-por-minuto">Codificación, ingesta y análisis sin coste. Sencilla estructura de precios por minuto</h2><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -121,8 +120,7 @@
 				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">por minuto entregado</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>Otras plataformas cargan por la ingesta o la codificación. Muchos incluso te obligan a tener en cuenta a/desde dónde estás transmitiendo, la velocidad de bits y los fotogramas por segundo del vídeo, e incluso cuál de sus centros de datos utilizas.</p>
 	<p><strong>Con Stream, la codificación y la ingesta son gratuitos</strong>. Otras plataformas cargan por la entrega en función del ancho de banda, y te penalizan por entregar vídeo de alta calidad a tus espectadores. Si transmites a una resolución alta, pagas más.</p>
 	<p><strong>Con Stream, no pagas una penalización por entregar vídeo de alta resolución.</strong> El precio de Stream es sencillo: minutos de vídeo entregado o almacenado. Puesto que pagas por minuto, no por gigabyte, puedes transmitir a la resolución idónea para tus espectadores, sin preocuparte por los costes del ancho de banda.</p>
@@ -135,16 +133,14 @@
 	<p>Cloudflare Stream te permite a ti o tus usuarios transmitir en directo utilizando los mismos protocolos y herramientas que utilizan organismos de radiodifusión de cualquier tamaño para transmitir en directo en YouTube o Twitch, pero te proporciona el control total del acceso y la presentación de las transmisiones en directo.</p>
 	<h3 id="paso-1-crea-una-entrada-en-directo">Paso 1: crea una entrada en directo</h3>
 	<p><a href="https://dash.cloudflare.com/?to=/:account/stream/inputs/create" target="_blank">Crea una nueva entrada en directo desde el panel de control de Stream</a> o utiliza la API de Stream:</p>
-	<p><strong>Solicitud</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Solicitud</strong></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
 -H "Authorization: Bearer &lt;YOUR_API_TOKEN&gt;" \
 -d "{"recording": { "mode": "automatic" } }" \
 https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>Respuesta</strong></p>
-	<!--kg-card-begin: markdown-->
+	<p><strong>Respuesta</strong></p><!--kg-card-begin: markdown-->
 	<pre><code>{
 "result": {
 "uid": "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",

@@ -22,8 +22,7 @@
 	<p>DNSエコシステムのセキュリティも重要です。Cloudflareは常に<a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a>を支持してきました。DNSSECを通じてDNSの応答に署名・検証することで、オンパス攻撃者は<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/"> 応答をハイジャックしてトラフィックをリダイレクトできなくなります</a> 。Cloudflareは、これまでもすべてのプランレベルでDNSSECを無料で提供しており、今後もFoundation DNSの無料オプションとして提供されます。Cloudflareをレジストラとしてもお使いのお客様は、<a href="https://blog.cloudflare.com/one-click-dnssec-with-cloudflare-registrar/">DNSSECをワンクリックで簡単にデプロイできます。</a>お客様のドメインがハイジャックされず、ユーザーが保護されることを保証するもう一つの重要機能です。当社は、<a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">外部レジストラへのワンクリックデプロイメント</a> に関する<a href="https://datatracker.ietf.org/doc/html/rfc8078" target="_blank">RFC 8078</a>もサポートしています。</p>
 	<p>しかし、インターネットの一部を停止させてしまう問題は他にもあり、これらはほとんど制御不能です。<a href="https://blog.cloudflare.com/ja-jp/route-leak-detection-ja-jp/">ルートリーク</a>や、さらに質の悪い<a href="https://isbgpsafeyet.com/#whats-a-bgp-hijack" target="_blank">ルートハイジャック</a>です。DNSSECはルートハイジャックの軽減には役立ちますが、残念ながらすべての再帰リゾルバーが<a href="https://stats.labs.apnic.net/dnssec" target="_blank">DNSSECを検証するわけではありません</a> 。また、リゾルバーが検証したとしても、ネームサーバーへのルートリークやハイジャックは、やはりダウンタイムの原因となります。すべてのネームサーバーのIPがこのようなイベントの影響を受けると、ドメインは解決できなくなります。</p>
 	<p>多くのプロバイダーでは、各ネームサーバーは通常、1つのIPv4アドレスと1つのIPv6アドレスにしか解決しません。ネットワークの輻輳やさらに深刻なルートリークなどの理由で、そのIPアドレスに到達できない場合、ネームサーバー全体が利用できなくなり、ドメインが解決できなくなります。さらに悪いことに、プロバイダーによっては、すべてのネームサーバーに同じIPサブネットを使用している場合もあります。そのため、そのサブネットに問題があると、すべてのネームサーバーがダウンしてしまいます。</p>
-	<p>一例を見てみましょう。</p>
-	<!--kg-card-begin: markdown-->
+	<p>一例を見てみましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig aws.com ns +short              
 ns-1500.awsdns-59.org.
 ns-164.awsdns-20.com.
@@ -42,15 +41,13 @@ $ dig ns-917.awsdns-50.net. +short
 	<!--kg-card-end: markdown-->
 	<p>ネームサーバーのIPアドレスはすべて、205.251.192.0/21の一部です。ありがたいことに、<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">AWSは現在、</a><a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank">RPKI</a>を介してそのアドレス範囲に署名しています。おかげでリークの可能性は低くなりますが、これはリゾルバーのISPがRPKIを検証している場合に限ります。しかし、もしリゾルバーのISPがRPKIを検証しておらず、万一このサブネットがリークやハイジャックに遭った場合、リゾルバーはどのネームサーバーにも到達できず、aws.com は解決不能になってしまいます。</p>
 	<p>Cloudflareがすべてのルートに署名を付し、<a href="https://isbgpsafeyet.com/" target="_blank">ルートリークの影響を最小限に抑えるためにインターネットの他の部分に働きかけていることは言うまでもありません。</a>しかし、RPKIがユビキタスに展開されるのを待つ間に、ルートリークがあっても耐障害性が保たれるようにするために、他にできることは何でしょうか？</p>
-	<p>現在、Free、Pro、Business、またはEnterpriseプランでCloudflare DNSを使用している場合、ドメインには<code>&lt;name&gt; .ns.cloudflare.com</code>の構造を持つ2つのネームサーバーが割り当てられます。&lt;name&gt; はランダムな名前です。</p>
-	<!--kg-card-begin: markdown-->
+	<p>現在、Free、Pro、Business、またはEnterpriseプランでCloudflare DNSを使用している場合、ドメインには<code>&lt;name&gt; .ns.cloudflare.com</code>の構造を持つ2つのネームサーバーが割り当てられます。&lt;name&gt; はランダムな名前です。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig isbgpsafeyet.com ns +short
 tom.ns.cloudflare.com.
 kami.ns.cloudflare.com.
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>さて、前に学んだように、ドメインが利用可能であるためには、そのネームサーバーが利用可能でなければなりません。そのため、これらのネームサーバーはそれぞれ3つのエニーキャストIPv4アドレスと3つのエニーキャストIPv6アドレスに解決します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>さて、前に学んだように、ドメインが利用可能であるためには、そのネームサーバーが利用可能でなければなりません。そのため、これらのネームサーバーはそれぞれ3つのエニーキャストIPv4アドレスと3つのエニーキャストIPv6アドレスに解決します。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig tom.ns.cloudflare.com a +short
 173.245.59.147
 108.162.193.147

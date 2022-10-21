@@ -6,8 +6,7 @@
 	<h2 id="r2-">R2に期待できることは？</h2>
 	<h3 id="s3-">S3との互換性</h3>
 	<p>R2は開発者に、オブジェクトストレージのための使い慣れたインターフェースであるS3 APIを提供します。S3との互換性により、アプリケーションの移行が容易で、R2が提供する機能をすぐに利用することができます。</p>
-	<p>JavaScriptでの基本的なデータ操作を見てみましょう。これをお客様自身で試すには、<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">アクセスキーを生成</a>する必要があります。</p>
-	<!--kg-card-begin: markdown-->
+	<p>JavaScriptでの基本的なデータ操作を見てみましょう。これをお客様自身で試すには、<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">アクセスキーを生成</a>する必要があります。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// まず、通常通りにバインドをインポートします
 import {
   S3Client,
@@ -39,8 +38,7 @@ console.log(
 	<p>将来的に、R2はデータアクセスのパターンを使用してデータの保存場所を自動的に最適化し、最適なユーザーエクスペリエンスを実現する予定です。</p>
 	<h3 id="cloudflare-workers-">Cloudflare Workersの統合</h3>
 	<p>Workersプラットホームは、Cloudflareのネットワーク全体で強力な計算能力を開発者に提供します。Workersにデプロイすると、コー<a href="https://www.cloudflare.com/network/" target="_blank">ドはCloudflareの世界275以</a>上の拠点に自動的にデプロイされます。WorkersとR2の組み合わせによって、開発者はパフォーマンスのオーバーヘッドなしで、データに関するカスタムロジックを追加することができます。Workersはコンテナではなく独立した環境で構築されるため、長時間のコールドスタートに悩まされることはありません。</p>
-	<p>R2バケット用の簡単なREST APIを作成してみましょう。まず、バケットを<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">作成</a>し、次にR2の<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">バインド</a>をワーカーに追加します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>R2バケット用の簡単なREST APIを作成してみましょう。まず、バケットを<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">作成</a>し、次にR2の<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">バインド</a>をワーカーに追加します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -75,8 +73,7 @@ console.log(
 	<!--kg-card-end: markdown-->
 	<p>このWorkers APIを使用すると、R2要求のホットパスにあらゆる種類の便利なロジックを追加することができます。</p>
 	<h3 id="presigned-url-url-">Presigned URL（署名付きURL）</h3>
-	<p>R2内の特定のオブジェクトに対する権限を、ユーザーに煩雑な操作をさせることなく付与したい場合があります。署名付きURLを使用して、あらゆるオブジェクトと操作の一意の組み合わせに対するお客様の権限をユーザーに委任することができます。バケット全体へのアクセスを許可することなく、ユーザーがファイルをアップロードまたは共有できるように、署名付きURLを作成します。</p>
-	<!--kg-card-begin: markdown-->
+	<p>R2内の特定のオブジェクトに対する権限を、ユーザーに煩雑な操作をさせることなく付与したい場合があります。署名付きURLを使用して、あらゆるオブジェクトと操作の一意の組み合わせに対するお客様の権限をユーザーに委任することができます。バケット全体へのアクセスを許可することなく、ユーザーがファイルをアップロードまたは共有できるように、署名付きURLを作成します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import {
   S3Client,
   PutObjectCommand
@@ -124,8 +121,6 @@ console.log(
 	<p>リージョンを明示的にサポートする計画はありませんが、多くのコンプライアンスのユースケースにおいて、データの局所性が重要であることは認識しています。法域の制限により、開発者が「EU」のような法域を設定することで、データが法域を離れることを防ぐことができます。</p>
 	<h3 id="--6">ダウンタイムのないライブマイグレーション</h3>
 	<p>大規模なデータセットの場合、データの移動に時間がかかるため、移行はライブで継続的に行われます。キャッシュリザーブは、ボタン1つでお客様のアセットをマネージドR2インスタンスに素早く移行してエグレスコストを削減する簡単な方法です。今後、既存のS3オブジェクトストレージバケットをすべてR2に移行できるように、このメカニズムを拡張する予定です。<br>今すぐR2にサインアップして、使用を開始してください。Cloudflareを基盤とする成長を続ける開発者コミュニティに参加してください。ご意見やご質問がございましたら<a href="https://discord.gg/c2eACA4qXA" target="_blank">こちら</a>からDiscord serverをご覧ください。あなたが構築なさるものを見ることを楽しみにしています。</p>
-	<h3 id="cloudflare-tv-">Cloudflare TVで視聴する</h3>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<!--kg-card-end: html-->
+	<h3 id="cloudflare-tv-">Cloudflare TVで視聴する</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

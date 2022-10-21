@@ -46,8 +46,7 @@
 	<p>We could still use one of the more sophisticated ones (like LALRPOP) that allow replacing the default regex-based lexer with your own custom code, but at that point we’re so close to having a full parser for our DSL that the complexity outweighs any benefits of using a black-box parser generator.</p>
 	<p>Instead, we went with a manual parsing approach. While (for a good reason) this might sound scary in unsafe languages like C / C++, in Rust all strings are bounds checked by default. Rust also provides a rich string manipulation API, which we can use to build more complex helpers, eventually ending up with a full parser.</p>
 	<p>This approach is, in fact, pretty similar to parser combinators in that the parser doesn’t have to keep state and only passes the unprocessed part of the input down to smaller, narrower scoped functions. Just as in parser combinators, the absence of mutable state also allows to easily test and maintain each of the parsers for different parts of the syntax independently of the others.</p>
-	<p>Compared with popular parser combinator libraries in Rust, one of the differences is that our parsers are not standalone functions but rather types that implement common traits:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Compared with popular parser combinator libraries in Rust, one of the differences is that our parsers are not standalone functions but rather types that implement common traits:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">pub trait Lex&lt;'i&gt;: Sized {
    fn lex(input: &amp;'i str) -&gt; LexResult&lt;'i, Self&gt;;
 }
@@ -59,16 +58,14 @@ pub trait LexWith&lt;'i, E&gt;: Sized {
 	<p>The <code>lex</code> method or its contextual variant <code>lex_with</code> can either return a successful pair of <code>(instance of the type, rest of input)</code> or a pair of <code>(error kind, relevant input span)</code>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/parse.png" class="kg-image"></figure>
 	<p>The <code>Lex</code> trait is used for target types that can be parsed independently of the context (like field names or literals), while <code>LexWith</code> is used for types that need a <code>Scheme</code> or a part of it to be parsed unambiguously.</p>
-	<p>A bigger difference is that, instead of relying on higher-level functions for parser combinators, we use the usual imperative function call syntax. For example, when we want to perform sequential parsing, all we do is call several parsers in a row, using tuple destructuring for intermediate results:</p>
-	<!--kg-card-begin: markdown-->
+	<p>A bigger difference is that, instead of relying on higher-level functions for parser combinators, we use the usual imperative function call syntax. For example, when we want to perform sequential parsing, all we do is call several parsers in a row, using tuple destructuring for intermediate results:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">let input = skip_space(input);
 let (op, input) = CombinedExpr::lex_with(input, scheme)?;
 let input = skip_space(input);
 let input = expect(input, ")")?;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And, when we want to try different alternatives, we can use native pattern matching and ignore the errors:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And, when we want to try different alternatives, we can use native pattern matching and ignore the errors:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">if let Ok(input) = expect(input, "(") {
    ...
    (SimpleExpr::Parenthesized(Box::new(op)), input)
@@ -79,8 +76,7 @@ let input = expect(input, ")")?;
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally, when we want to automate parsing of some more complicated common cases - say, enums - Rust provides a powerful macro syntax:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, when we want to automate parsing of some more complicated common cases - say, enums - Rust provides a powerful macro syntax:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">lex_enum!(#[repr(u8)] OrderingOp {
    "eq" | "==" =&gt; Equal = EQUAL,
    "ne" | "!=" =&gt; NotEqual = LESS | GREATER,
@@ -93,8 +89,7 @@ let input = expect(input, ")")?;
 	<!--kg-card-end: markdown-->
 	<p>This gives an experience similar to parser generators, while still using native language syntax and keeping us in control of all the implementation details.</p>
 	<h3 id="execution-engine">Execution engine</h3>
-	<p>Because our grammar and operations are fairly simple, initially we used direct AST interpretation by requiring all nodes to implement a trait that includes an <code>execute</code> method.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Because our grammar and operations are fairly simple, initially we used direct AST interpretation by requiring all nodes to implement a trait that includes an <code>execute</code> method.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">trait Expr&lt;'s&gt; {
     fn execute(&amp;self, ctx: &amp;ExecutionContext&lt;'s&gt;) -&gt; bool;
 }
@@ -107,8 +102,7 @@ let input = expect(input, ")")?;
 	<p>If we look at the data structures involved, we can see that the scheme is always well-defined in advance, and all our runtime values in the execution engine are expected to eventually match it, even if the order or a precise set of fields is not guaranteed:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/fieldaccess.png" class="kg-image"></figure>
 	<p>So what if we ditch the second map altogether and instead use a fixed-size array of values? Array indexing should be much cheaper than looking up in a map, so it might be well worth the effort.</p>
-	<p>How can we do it? We already know the number of items (thanks to the predefined scheme) so we can use that for the size of the backing storage, and, in order to simulate <code>HashMap</code> “holes” for unset values, we can wrap each item an <code>Option&lt;...&gt;</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>How can we do it? We already know the number of items (thanks to the predefined scheme) so we can use that for the size of the backing storage, and, in order to simulate <code>HashMap</code> “holes” for unset values, we can wrap each item an <code>Option&lt;...&gt;</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">pub struct ExecutionContext&lt;'e&gt; {
     scheme: &amp;'e Scheme,
     values: Box&lt;[Option&lt;LhsValue&lt;'e&gt;&gt;]&gt;,
@@ -117,8 +111,7 @@ let input = expect(input, ")")?;
 	<!--kg-card-end: markdown-->
 	<p>The only missing piece is an index that could map both structures to each other. As you might remember, <code>Scheme</code> still uses a <code>HashMap</code> for field registration, and a <code>HashMap</code> is normally expected to be randomised and indexed only by the predefined key.</p>
 	<p>While we could wrap a value and an auto-incrementing index together into a custom struct, there is already a better solution: <code><a href="https://github.com/bluss/indexmap" target="_blank">IndexMap</a></code>. <code>IndexMap</code> is a drop-in replacement for a <code>HashMap</code> that preserves ordering and provides a way to get an index of any element and vice versa - exactly what we needed.</p>
-	<p>After replacing a <code>HashMap</code> in the Scheme with <code>IndexMap</code>, we can change parsing to resolve all the parsed field names to their indices in-place and store that in the AST:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After replacing a <code>HashMap</code> in the Scheme with <code>IndexMap</code>, we can change parsing to resolve all the parsed field names to their indices in-place and store that in the AST:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">impl&lt;'i, 's&gt; LexWith&lt;'i, &amp;'s Scheme&gt; for Field&lt;'s&gt; {
    fn lex_with(mut input: &amp;'i str, scheme: &amp;'s Scheme) -&gt; LexResult&lt;'i, Self&gt; {
        ...
@@ -130,8 +123,7 @@ let input = expect(input, ")")?;
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>After that, in the <code>ExecutionContext</code> we allocate a fixed-size array and use these indices for resolving values during runtime:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After that, in the <code>ExecutionContext</code> we allocate a fixed-size array and use these indices for resolving values during runtime:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">impl&lt;'e&gt; ExecutionContext&lt;'e&gt; {
    /// Creates an execution context associated with a given scheme.
    ///
@@ -175,8 +167,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 	<h4 id="dynamic-dispatch-and-closures-to-the-rescue">Dynamic dispatch and closures to the rescue </h4>
 	<p>Introducing <code>Fn</code> trait!</p>
 	<p>In Rust, the <code>Fn</code> trait and friends (<code>FnMut</code>, <code>FnOnce</code>) are automatically implemented on eligible functions and closures. In case of a simple <code>Fn</code> case the restriction is that they must not modify their captured environment and can only borrow from it.</p>
-	<p>Normally, you would want to use it in generic contexts to support arbitrary callbacks with given argument and return types. This is important because in Rust, each function and closure implements a unique type and any generic usage would compile down to a specific call just to that function.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Normally, you would want to use it in generic contexts to support arbitrary callbacks with given argument and return types. This is important because in Rust, each function and closure implements a unique type and any generic usage would compile down to a specific call just to that function.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn just_call(me: impl Fn(), maybe: bool) {
   if maybe {
     me()
@@ -185,8 +176,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Such behaviour (called static dispatch) is the default in Rust and is preferable for performance reasons.</p>
-	<p>However, if we don’t know all the possible types at compile-time, Rust allows us to opt-in for a dynamic dispatch instead:</p>
-	<!--kg-card-begin: markdown-->
+	<p>However, if we don’t know all the possible types at compile-time, Rust allows us to opt-in for a dynamic dispatch instead:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn just_call(me: &amp;dyn Fn(), maybe: bool) {
   if maybe {
     me()
@@ -195,8 +185,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Dynamically dispatched objects don't have a statically known size, because it depends on the implementation details of particular type being passed. They need to be passed as a reference or stored in a heap-allocated <code>Box</code>, and then used just like in a generic implementation.</p>
-	<p>In our case, this allows to create, return and store arbitrary closures, and later call them as regular functions:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In our case, this allows to create, return and store arbitrary closures, and later call them as regular functions:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">trait Expr&lt;'s&gt; {
     fn compile(self) -&gt; CompiledExpr&lt;'s&gt;;
 }
@@ -218,8 +207,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 	<!--kg-card-end: markdown-->
 	<p>The closure (an <code>Fn</code> box) will also automatically include the environment data it needs for the execution.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/box.png" class="kg-image"></figure>
-	<p>This means that we can optimise the runtime data representation as part of the “compile” process without changing the AST or the parser. For example, when we wanted to optimise IP range checks by splitting them for different IP types, we could do that without having to modify any existing structures:</p>
-	<!--kg-card-begin: markdown-->
+	<p>This means that we can optimise the runtime data representation as part of the “compile” process without changing the AST or the parser. For example, when we wanted to optimise IP range checks by splitting them for different IP types, we could do that without having to modify any existing structures:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">RhsValues::Ip(ranges) =&gt; {
    let mut v4 = Vec::new();
    let mut v6 = Vec::new();
@@ -241,8 +229,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Moreover, boxed closures can be part of that captured environment, too. This means that we can convert each simple comparison into a closure, and then combine it with other closures, and keep going until we end up with a single top-level closure that can be invoked as a regular function to evaluate the entire filter expression.</p>
-	<p>It’s <s>turtles</s> closures all the way down:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It’s <s>turtles</s> closures all the way down:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">let items = items
    .into_iter()
    .map(|item| item.compile())
@@ -280,8 +267,7 @@ match op {
 	<p>We thought it would be great to expose the parser - the same one as we use on the backend - to the frontend JavaScript for a consistent real-time editing experience. And, honestly, we were just looking for an excuse to play with WASM support in Rust.</p>
 	<p>WebAssembly could be targeted via regular C FFI, but in that case you would need to manually provide all the glue for the JavaScript side to hold and convert strings, arrays and objects forth and back.</p>
 	<p>In Rust, this is all handled by <a href="https://github.com/rustwasm/wasm-bindgen" target="_blank">wasm-bindgen</a>. While it provides various attributes and methods for direct conversions, the simplest way to get started is to activate the “serde” feature which will automatically convert types using <code>JSON.parse</code>, <code>JSON.stringify</code> and <code><a href="https://docs.serde.rs/serde_json/" target="_blank">serde_json</a></code> under the hood.</p>
-	<p>In our case, creating a wrapper for the parser with only 20 lines of code was enough to get started and have all the WASM code + JavaScript glue required:</p>
-	<!--kg-card-begin: markdown-->
+	<p>In our case, creating a wrapper for the parser with only 20 lines of code was enough to get started and have all the WASM code + JavaScript glue required:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">#[wasm_bindgen]
 pub struct Scheme(wirefilter::Scheme);
 

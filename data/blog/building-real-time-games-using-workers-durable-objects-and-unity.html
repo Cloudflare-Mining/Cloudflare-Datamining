@@ -19,8 +19,7 @@
 	<h3 id="managing-connections-the-character-durable-object">Managing connections: the Character Durable Object</h3>
 	<p>My biggest fear before embarking on this project was working with Durable Objects. Even though I've never made any sort of serious game with Unity, and I couldn't even define C# variables without doing Google searches on basic syntax, something about the conceptual pieces of Durable Objects has continued to be intimidating to me, down to the moment I started writing actual code.</p>
 	<p>Imagine my surprise when writing Durable Objects and working with the API turned out to be incredibly easy.</p>
-	<p>The Character module, a Durable Object using our new module support in Workers, is built on top of our <a href="https://github.com/cloudflare/modules-rollup-esm" target="_blank">modules-rollup-esm</a> template. The module handles incoming requests, and acts as a WebSocket provider for clients:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The Character module, a Durable Object using our new module support in Workers, is built on top of our <a href="https://github.com/cloudflare/modules-rollup-esm" target="_blank">modules-rollup-esm</a> template. The module handles incoming requests, and acts as a WebSocket provider for clients:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">export class Character {
   constructor(state, env) {
     this.state = state;
@@ -71,8 +70,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Much of this is conceptually identical to our <a href="https://github.com/cloudflare/websocket-template" target="_blank">websocket-template</a> — we look for an Upgrade header in the incoming request, and set up a WebSocketPair, which contains a <em>server</em> and a <em>client</em> WebSocket.</p>
-	<p>The handleSession function is where the bulk of our game-specific logic takes place. In this case, our Durable Objects + WebSocket code has two tasks to manage: first, handling new players — giving them a randomly generated username, and setting them up with a valid WebSocket, and second, accepting new player positions, and broadcasting those positions to everyone currently in the game. The `tick` function is used to broadcast game state to our clients, and the remainder of the code parses incoming data, and determines which WebSocket clients should be receiving new data. The code to do this is seen below:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The handleSession function is where the bulk of our game-specific logic takes place. In this case, our Durable Objects + WebSocket code has two tasks to manage: first, handling new players — giving them a randomly generated username, and setting them up with a valid WebSocket, and second, accepting new player positions, and broadcasting those positions to everyone currently in the game. The `tick` function is used to broadcast game state to our clients, and the remainder of the code parses incoming data, and determines which WebSocket clients should be receiving new data. The code to do this is seen below:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async tick(skipKey) {
   const users = this.value.users.filter(user =&gt; user.id !== skipKey)
   this.value.websockets
@@ -167,18 +165,15 @@ async handleSession(websocket, ip) {
 	<h3 id="handling-player-position-and-movement-building-with-durable-objects-in-unity">Handling player position and movement: building with Durable Objects in Unity</h3>
 	<p>Unity is a great game engine for someone like me: a fairly experienced programmer who has <em>no</em> experience in making games. I've been working with Unity on and off for years, but in the last few months I've been diving deep into it and expanding my understanding of how to actually build real games.</p>
 	<p>Here's what you need to know about Unity in the context of building Durable World: Game Objects are the primary <em>class</em> of everything in Unity, and using C# scripts you can program different behaviors for your Game Objects, whether networked or local to the player.</p>
-	<p>In our game, there are three distinct types of Game Objects. First, there's the world itself — a collection of static meshes, mostly cubes. These meshes aren't represented inside the networked aspects of the game at all. Via a series of <em>colliders</em>, any other Game Objects that navigate on top of or around these meshes are stopped from falling through floors and moving through walls. This same sort of design is what you've seen in every 3D game over the last twenty years, including classics like Super Mario 64.</p>
-	<!--kg-card-begin: html-->
+	<p>In our game, there are three distinct types of Game Objects. First, there's the world itself — a collection of static meshes, mostly cubes. These meshes aren't represented inside the networked aspects of the game at all. Via a series of <em>colliders</em>, any other Game Objects that navigate on top of or around these meshes are stopped from falling through floors and moving through walls. This same sort of design is what you've seen in every 3D game over the last twenty years, including classics like Super Mario 64.</p><!--kg-card-begin: html-->
 	<div style="width:100%;height:0;padding-bottom:70%;position:relative;"><iframe src="https://giphy.com/embed/fTmOPDE3jH9qP9HVuL" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></div>
-	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL" target="_blank">via GIPHY</a></p>
-	<!--kg-card-end: html-->
+	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL" target="_blank">via GIPHY</a></p><!--kg-card-end: html-->
 	<p>In Durable World, your player Game Object is a simple capsule. This shape is built into Unity, and by attaching a C# script we can have basic movement using keyboard controls (in my case, I used<a href="https://www.youtube.com/watch?v=4HpC--2iowE" target="_blank"> this tutorial from Brackey</a>).</p>
 	<p>Multiplayer characters are represented as a simplified version of the same player capsule. Instead of attaching any sort of input logic (keyboard, mouse, etc.) to these Game Objects, the crucial aspects of their location in the 3D space — namely, position and rotation — are managed by the WebSocket client.</p>
 	<p>When the game starts, you're placed in a single-player environment: your character can move around the static 3D world. Once the game connects to Workers and receives a WebSocket, it can begin to act in a multiplayer context. Here's a wireframe look at the world before it starts up:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-11.png" class="kg-image"></figure>
 	<p>When it comes to the actual code for the project, the connection aspects are quite simple: a Connection singleton is created when the game starts, which uses a WebSocket class to connect to Workers and call a variety of functions on new WebSocket updates. You can find the complete code<a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs" target="_blank"> here</a>, but I'll summarize the important parts below.</p>
-	<p>First, we need to <em>send </em>the position of your player back up to Workers. This happens in a loop, called every 0.2 seconds. The UpdatePosition function takes the player position and rotation, encodes them into JSON, and sends the data up to the WebSocket. Note that by sending the position every 0.2 seconds, we're effectively building a player that updates at five frames per second. Considering that most games run at <em>at least</em> 30 frames per second, if not higher, this will be a problem we'll solve later using interpolation.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, we need to <em>send </em>the position of your player back up to Workers. This happens in a loop, called every 0.2 seconds. The UpdatePosition function takes the player position and rotation, encodes them into JSON, and sends the data up to the WebSocket. Note that by sending the position every 0.2 seconds, we're effectively building a player that updates at five frames per second. Considering that most games run at <em>at least</em> 30 frames per second, if not higher, this will be a problem we'll solve later using interpolation.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -270,8 +265,7 @@ public class Connection : MonoBehaviour
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Next, we need to listen for other players currently in the game. To handle this, we listen to incoming WebSocket messages <em>from</em> Workers. Each message will contain the entirety of our game state (something we could definitely optimize in the future), which we can parse and use to make decisions about how our local version of the game should update. For each user in our gameState payload, we can create a new instance of a player, and begin tracking it locally. We can also update position, rotation, and set a simple UI element indicating the player's name, inside of CreateClient:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next, we need to listen for other players currently in the game. To handle this, we listen to incoming WebSocket messages <em>from</em> Workers. Each message will contain the entirety of our game state (something we could definitely optimize in the future), which we can parse and use to make decisions about how our local version of the game should update. For each user in our gameState payload, we can create a new instance of a player, and begin tracking it locally. We can also update position, rotation, and set a simple UI element indicating the player's name, inside of CreateClient:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -358,8 +352,7 @@ public class Connection : MonoBehaviour
 	<!--kg-card-end: markdown-->
 	<p>With all of this code set up, we've established a simple system for sending our local player position to Workers. When my player position updates, everyone else in the game receives the position as part of the larger game state payload, and updates the local copy of each player accordingly.</p>
 	<p>I mentioned that these updates happen <em>every 0.2 seconds</em>. Games are expected to update <em>at least</em> thirty times a second, if not more: modern games are generally expected to run at 60 frames per second, and update extremely quickly.</p>
-	<p>It's because of that expectation that we need to <em>interpolate</em> movement for our players. Instead of sending player updates sixty times a second, which would be a huge load on our Durable Object, we can look at the incoming new position or rotation for an object, and use some math to smooth the movement from where a player <em>is</em> to where they are <em>going</em>. Unity (and many other game engines) provide this behavior via APIs like SmoothDamp — a function for smoothing rapid, jarring movement over time — as seen below in the InterpolateMovement script, which is used to manage player position and rotation:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It's because of that expectation that we need to <em>interpolate</em> movement for our players. Instead of sending player updates sixty times a second, which would be a huge load on our Durable Object, we can look at the incoming new position or rotation for an object, and use some math to smooth the movement from where a player <em>is</em> to where they are <em>going</em>. Unity (and many other game engines) provide this behavior via APIs like SmoothDamp — a function for smoothing rapid, jarring movement over time — as seen below in the InterpolateMovement script, which is used to manage player position and rotation:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cs">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

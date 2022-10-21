@@ -31,8 +31,7 @@
 		<li>api.example.com/<strong>login/*</strong></li>
 	</ul>
 	<p>Notice how we removed the customer identifiers. Our systems can detect the changing parts of an API, allowing us to recognize both paths as the same one. We do this by recording the cardinality of each endpoint. For example, we might have originally found that there were 700 different strings observed in place of the asterisk. “237” and “415” were just two of those possibilities. We then used unsupervised learning to choose a threshold (in this case, let’s say 30). Since we’ve noticed far more than 30 variants of this path, we recognize the customer identifier as a <em>variable</em> and collapse the path. This process is called “path normalization.”</p>
-	<p>API Discovery is a building block for many security products to come. But at its core, the technology is about producing a simple, trustworthy map of APIs. Here is a small sample of what you might find:</p>
-	<!--kg-card-begin: markdown-->
+	<p>API Discovery is a building block for many security products to come. But at its core, the technology is about producing a simple, trustworthy map of APIs. Here is a small sample of what you might find:</p><!--kg-card-begin: markdown-->
 	<pre><code>login/&lt;customer_identifier&gt;
 auth
 account/&lt;customer_identifier&gt;

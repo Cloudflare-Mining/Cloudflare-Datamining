@@ -42,8 +42,7 @@
 	<h3 id="workers-de-rastreo"><strong>Workers de rastreo</strong></h3>
 	<p>Cuando el río suena agua lleva, y donde hay código, pues también hay errores. Cuando das a los desarrolladores las herramientas para escribir e implementar el código, también debes darles los medios para depurarlo.</p>
 	<p>Workers de rastreo es una herramienta que te permite recabar cualquier información sobre una solicitud que haya sido gestionada por un Worker, incluido cualquier registro o excepción, y pasarla a tu cliente. Un Worker de rastreo es un Worker que recibirá información sobre la ejecución de otros Workers, y puede reenviarla a un destino de tu elección, permitiendo casos de uso como el registro en directo o el almacenamiento a largo plazo.</p>
-	<p>A continuación, puedes ver un Worker de rastreo sencillo que envía sus datos de rastreo a un punto final HTTP:</p>
-	<!--kg-card-begin: markdown-->
+	<p>A continuación, puedes ver un Worker de rastreo sencillo que envía sus datos de rastreo a un punto final HTTP:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("trace", event =&gt; {
   event.waitUntil(fetch("http://example.com/trace", {
     method: "POST",
@@ -52,8 +51,7 @@
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Te mostramos un ejemplo de cómo podrían ser los datos de event.traces:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Te mostramos un ejemplo de cómo podrían ser los datos de event.traces:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">[
   {
     "scriptName": "Example script",
@@ -93,8 +91,7 @@
 	<h3 id="encadenamiento-de-varios-workers-mediante-el-env-o-din-mico"><strong>Encadenamiento de varios Workers mediante el envío dinámico</strong></h3>
 	<p>De nuestra experiencia con algunos de nuestros primeros clientes, otra necesidad de la que fuimos conscientes con frecuencia era la posibilidad de ejecutar tu propio código, antes de ejecutar el código de tu cliente. Tal vez quieras ejecutar una capa de autenticación, corregir la entrada o la salida, o incluso proporcionar información útil a posteriori (como los Id. de usuario o de cuenta).</p>
 	<p>Para ello puedes querer mantener tu propio Worker. Sin embargo, cuando termine de ejecutarse, querrás poder llamar al siguiente Worker, con el código de tu <em>cliente</em>.</p>
-	<p>Ejemplo:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Ejemplo:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
 let response = await user_worker.fetch(request);
 </code></pre>

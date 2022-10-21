@@ -18,8 +18,7 @@
 	<p>Un atacante solo necesita tener acceso a una conexión vulnerable, pero no pueden acceder a todo. Con cada conexión que protejamos contra ordenadores cuánticos, eliminamos un riesgo potencial.</p>
 	<p>Nos entusiasma la idea de hacer que los túneles poscuánticos sean predeterminados, pero por ahora es una función en fase beta. La razón es que la criptografía utilizada y su integración en el protocolo de red aún no son definitivas. Hacer que los túneles poscuánticos sean predeterminados ahora, requeriría que los usuarios actualizaran <code>cloudflared</code> más a menudo de lo que razonablemente podemos esperar que lo hagan.</p>
 	<h2 id="primeros-pasos">Primeros pasos</h2>
-	<p>¿Actualizas frecuentemente <code>cloudflared</code>? Entonces, prueba Cloudflare Tunnel poscuántico. Asegúrate de que estás usando al menos la versión <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> y simplemente ejecuta <code>cloudflared</code> con la marca <code>--post-quantum</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>¿Actualizas frecuentemente <code>cloudflared</code>? Entonces, prueba Cloudflare Tunnel poscuántico. Asegúrate de que estás usando al menos la versión <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> y simplemente ejecuta <code>cloudflared</code> con la marca <code>--post-quantum</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
 2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
 2022-09-23T11:44:42Z INF Version 2022.9.1
@@ -37,8 +36,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Si ejecutas <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">como un servicio</a>, puedes activar los túneles poscuánticos añadiendo post-quantum: true al archivo de configuración del túnel. Convenientemente, el servicio de <code>cloudflared</code> se <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">actualizará automáticamente</a> si un gestor de paquetes no lo ha instalado.</p>
-	<p>Si, por alguna razón, la creación de un túnel poscuántico falla, verás un mensaje de error como:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Si, por alguna razón, la creación de un túnel poscuántico falla, verás un mensaje de error como:</p><!--kg-card-begin: markdown-->
 	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
 2022-09-22T17:30:39Z INF Version 2022.9.1
 2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64

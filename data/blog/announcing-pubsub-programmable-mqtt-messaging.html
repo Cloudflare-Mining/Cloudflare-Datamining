@@ -27,8 +27,7 @@
 		<li>Parse the message for a specific key:value pair as a metric</li>
 		<li>Write that metric directly into <a href="https://blog.cloudflare.com/workers-analytics-engine">Workers Analytics Engine</a>, our new serverless time-series analytics service, so we can directly query it with GraphQL.</li>
 	</ol>
-	<p>This saves us having to stand up and maintain an external metrics service, configure another cloud service, or think about how it will scale: we can do it all directly on Cloudflare.</p>
-	<!--kg-card-begin: markdown-->
+	<p>This saves us having to stand up and maintain an external metrics service, configure another cloud service, or think about how it will scale: we can do it all directly on Cloudflare.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-TypeScript">
 async function pubsub(
   messages: Array&lt;PubSubMessage&gt;,
@@ -81,8 +80,7 @@ const worker = {
 export default worker;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We can then query these metrics directly using a familiar language: SQL. Our query takes the metrics we’ve written and gives us a breakdown of transactions processed by our payment devices, grouped by merchant (and again, all on Cloudflare):</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can then query these metrics directly using a familiar language: SQL. Our query takes the metrics we’ve written and gives us a breakdown of transactions processed by our payment devices, grouped by merchant (and again, all on Cloudflare):</p><!--kg-card-begin: markdown-->
 	<pre><code>SELECT
   label_2 as region,
   label_3 as merchantId,

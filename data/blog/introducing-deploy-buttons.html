@@ -5,18 +5,15 @@
 	<p>Another reason is that it makes learning the new platform much faster. Building off of an experienced developer’s work shows me which classes and functions are most useful to learn. There’s more nuance to building out full applications than is usually explained in the documentation. I can see how the pieces fit together and get a deeper understanding.</p>
 	<p>When I started my internship on the Workers team, I realized I could help create the magical experience of trying out a new platform quickly for the Workers dev experience. The team and I have spent the last few months working hard with the Workers team to make this possible. Today, I’m happy to share with you: Deploy Buttons.</p>
 	<p>Deploy Buttons let you deploy a project to the Workers Platform without even needing to set up a local development environment. Before Deploy Buttons, new developers had to jump between multiple places like the signup pages, the docs, the dashboard, and Wrangler to deploy a project. Now, it’s as easy as clicking a Deploy Button and three short steps to deploy using our new web-based deploy tool. This is the fastest way for beginners to get something live in less than five minutes, and for developers to share their projects with others by creating their own deploy buttons.</p>
-	<p>Try this button to deploy a GraphQL db:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Try this button to deploy a GraphQL db:</p><!--kg-card-begin: markdown-->
 	<p><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/signalnerve/workers-graphql-server" target="_blank"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Workers"></a></p>
 	<!--kg-card-end: markdown-->
 	<p>We’ve also curated a <a href="https://deploy.workers.cloudflare.com/" target="_blank">few awesome projects </a>to try deploying now with this new deploy flow.</p>
 	<p>Before Deploy Buttons, things were a bit more complicated. When you found a project you like on GitHub or an example on our template gallery, you had to go to cloudflare.com to create an account, go to the docs to set up a local development environment, clone the project, and finally, learn how to use wrangler to deploy it. Now, you can just click on the deploy button to quickly get a project up and running with Workers to experience the magic of serverless.<br></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/08/deploytool.png" class="kg-image"></figure>
-	<p>Here’s how it works. For example, if you find an interesting Workers project on GitHub and want to deploy it, you would click the “Deploy to Workers Button” on the <a href="https://github.com/bytesizedxyz/cloudflare-worker-cra" target="_blank">repo README</a>. This would take you to our new web-based deploy tool where you can deploy that project in just three steps. First, connect your Github account. Second, connect your Cloudflare account. Third, click “Deploy” and the project will be forked to your Github account and deployed to Workers with our Github action.</p>
-	<!--kg-card-begin: html-->
+	<p>Here’s how it works. For example, if you find an interesting Workers project on GitHub and want to deploy it, you would click the “Deploy to Workers Button” on the <a href="https://github.com/bytesizedxyz/cloudflare-worker-cra" target="_blank">repo README</a>. This would take you to our new web-based deploy tool where you can deploy that project in just three steps. First, connect your Github account. Second, connect your Cloudflare account. Third, click “Deploy” and the project will be forked to your Github account and deployed to Workers with our Github action.</p><!--kg-card-begin: html-->
 	<stream src="39da2fae496af93951c63c0a374d50e1" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=39da2fae496af93951c63c0a374d50e1"></script>
-	<!--kg-card-end: html-->
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=39da2fae496af93951c63c0a374d50e1"></script><!--kg-card-end: html-->
 	<p></p>
 	<h3 id="want-to-create-your-own-deploy-button-for-your-projects">Want to create your own Deploy Button for your projects?</h3>
 	<p>1) Add a GitHub Actions workflow to your project.</p>
@@ -44,13 +41,11 @@ deploy:
   env:
     CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 </code></pre>
-	<p>3) Add the Markdown code for your button to your project's README, replacing the example url parameter with your repository URL.</p>
-	<!--kg-card-begin: markdown-->
+	<p>3) Add the Markdown code for your button to your project's README, replacing the example url parameter with your repository URL.</p><!--kg-card-begin: markdown-->
 	<p><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO" target="_blank"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Workers"></a></p>
 	<!--kg-card-end: markdown-->
 	<pre><code>[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO)</code></pre>
-	<p>Does your project use features only available in a paid Workers plan like Workers KV? Providing the paid=true query parameter to the /button and the deploy application paths will render a "Deploy to Workers Bundled" button, as seen below -- it will also render a notice in the UI that the project requires Workers Bundled:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Does your project use features only available in a paid Workers plan like Workers KV? Providing the paid=true query parameter to the /button and the deploy application paths will render a "Deploy to Workers Bundled" button, as seen below -- it will also render a notice in the UI that the project requires Workers Bundled:</p><!--kg-card-begin: markdown-->
 	<p><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&amp;paid=true" target="_blank"><img src="https://deploy.workers.cloudflare.com/button?paid=true" alt="Deploy to Cloudflare Workers"></a></p>
 	<!--kg-card-end: markdown-->
 	<pre><code>[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&amp;paid=true)</code></pre>

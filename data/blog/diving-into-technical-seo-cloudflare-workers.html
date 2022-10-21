@@ -29,8 +29,7 @@
 		<li>Implementations must be able to be verified through existing processes and practices (BAU)</li>
 	</ul>
 	<p>Before we dive into actual filters, here are partial TypeScript interfaces to illustrate filter APIs:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">interface FilterExecutor&lt;Type, Context, ReturnType extends Type | void&gt; {
     apply(filterChain: { next: (c: Context, obj: Type) =&gt; ReturnType | Promise&lt;ReturnType&gt; }&gt;, context: Context, obj: Type): ReturnType | Promise&lt;ReturnType&gt;;
 }
@@ -69,8 +68,7 @@ interface BodyFilter extends MutableFilterExecutor&lt;ChunkChain | null, BodyFil
 	<!--kg-card-end: markdown-->
 	<h2 id="request-filter-simple-redirects">Request filter — Simple Redirects<br></h2>
 	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your hosting or platform. For example, Github Pages only support redirects via HTML refresh meta tag. <br><br>The most basic redirect filter, would look like this:</p>
-	<p></p>
-	<!--kg-card-begin: markdown-->
+	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">class RedirectRequestFilter {
     constructor(redirects) {
         this.redirects = redirects;

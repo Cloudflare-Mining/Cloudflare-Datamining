@@ -18,15 +18,13 @@
 	<p>Tim Microsoft Azure Key Vault <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">merilis Managed HSM</a>. Penawaran ini divalidasi FIPS 140-2 Level 3 dan terintegrasi dengan layanan Azure seperti Azure Storage, Azure SQL, dan Azure Information Protection. Managed HSM tersedia di wilayah berikut: AS Timur 2, AS Tengah Selatan, Eropa Utara, dan Eropa Barat.</p>
 	<p>Petunjuk di bawah ini diambil dari <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">Panduan mulai cepat: Menyediakan dan mengaktifkan HSM terkelola menggunakan Azure CLI</a>, dilanjutkan dengan petunjuk penggunaan Managed HSM dengan Cloudflare. Perintah dijalankan pada VM Ubuntu yang dibuat di wilayah yang sama (AS Tengah Selatan) dengan wilayah HSM; di tempat ini kami juga akan menerapkan daemon Cloudflare Keyless SSL.</p>
 	<h3 id="menyediakan-dan-mengaktifkan-hsm">Menyediakan dan mengaktifkan HSM</h3>
-	<p>Pertama kita login melalui CLI dan membuat grup sumber daya untuk Managed HSM di salah satu wilayah yang didukung. Perhatikan bahwa Anda mungkin mendapatkan peringatan dari berbagai perintah berdasarkan status pratinjau penawaran.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Pertama kita login melalui CLI dan membuat grup sumber daya untuk Managed HSM di salah satu wilayah yang didukung. Perhatikan bahwa Anda mungkin mendapatkan peringatan dari berbagai perintah berdasarkan status pratinjau penawaran.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
 $ az login
 $ az group create --name $GROUPNAME --location $LOCATION
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Berikutnya, kita menyiapkan sumber daya HSM dan mengaktifkannya dengan mengunduh <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">domain keamanan</a>. Contoh di bawah ini memberikan akses administratif ke pengguna yang login, bersama dengan administrator lain yang OID-nya dapat diambil dengan menjalankan perintah oid=$(...) yang sama dari CLI di tempat pengguna tersebut login.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Berikutnya, kita menyiapkan sumber daya HSM dan mengaktifkannya dengan mengunduh <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">domain keamanan</a>. Contoh di bawah ini memberikan akses administratif ke pengguna yang login, bersama dengan administrator lain yang OID-nya dapat diambil dengan menjalankan perintah oid=$(...) yang sama dari CLI di tempat pengguna tersebut login.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
 $ OTHERADMIN_OID=...
 
@@ -63,13 +61,11 @@ sHSM",
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Catat properti <strong>hsmUri </strong>yang dihasilkan dari perintah di atas. Anda akan membutuhkannya segera saat membuat konfigurasi Keyless SSL pada VM Anda.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Catat properti <strong>hsmUri </strong>yang dihasilkan dari perintah di atas. Anda akan membutuhkannya segera saat membuat konfigurasi Keyless SSL pada VM Anda.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Sekarang setelah HSM tersedia, Anda harus memberikannya paling sedikit 3 kunci publik RSA. HSM akan mengenkripsi domain keamanan dengan beberapa kunci ini dan mengirimkannya kembali pada Anda; setelah itu, HSM siap digunakan.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Sekarang setelah HSM tersedia, Anda harus memberikannya paling sedikit 3 kunci publik RSA. HSM akan mengenkripsi domain keamanan dengan beberapa kunci ini dan mengirimkannya kembali pada Anda; setelah itu, HSM siap digunakan.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
 $ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
@@ -78,15 +74,13 @@ $ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Jika Anda menerima pesan kesalahan "Gagal terhubung ke MSI" dan Anda menggunakan cloud shell dari Portal Azure, jalankan login az lagi karena ini adalah masalah yang sudah diketahui.</p>
-	<p>Setelah HSM Anda tersedia, <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">tambahkan kunci privat Anda</a> ke keyvault</p>
-	<!--kg-card-begin: markdown-->
+	<p>Setelah HSM Anda tersedia, <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">tambahkan kunci privat Anda</a> ke keyvault</p><!--kg-card-begin: markdown-->
 	<pre><code>$ az keyvault key import --KeylessHSM
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Perintah itu akan menghasilkan URI yang nantinya akan Anda tambahkan ke file Keyless YAML untuk menunjukkan lokasi penyimpanan kunci privat Anda.</p>
 	<p>Sekarang setelah HSM Anda tersedia dan diaktifkan, Anda perlu membuat sebuah VM yang akan menjadi tempat Anda menerapkan daemon Keyless. Untuk contoh ini, kami akan membuat sebuah VM Ubuntu Xenial di Azure. Pada portal, buka <strong>halaman Mesin virtual</strong> dan <strong>Tambahkan</strong> VM. Di sana Anda dapat menggunakan grup sumber daya yang Anda buat sebelumnya untuk HSM. Untuk hasil terbaik, pilih wilayah yang sama dengan wilayah untuk HSM. Perhatikan IP publik dari VM, Anda akan menggunakannya untuk menyambung ke server dari jarak jauh.</p>
-	<p>Berikutnya, buat konfigurasi pada VM Anda sebagai server kunci. Pertama, Anda perlu menambahkan <a href="https://pkg.cloudflare.com/" target="_blank">Repositori Paket Cloudflare</a>. Kemudian, Anda akan memperbarui daftar paket OS Anda dan menginstal server gokeyless.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Berikutnya, buat konfigurasi pada VM Anda sebagai server kunci. Pertama, Anda perlu menambahkan <a href="https://pkg.cloudflare.com/" target="_blank">Repositori Paket Cloudflare</a>. Kemudian, Anda akan memperbarui daftar paket OS Anda dan menginstal server gokeyless.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ apt-get update
 $ echo 'deb http://pkg.cloudflare.com/ Xenial main' |
 sudo tee /etc/apt/sources.list.d/cloudflare-main.list
@@ -95,13 +89,11 @@ $ apt-get update
 $ apt-get install gokeyless
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Kemudian perbarui file YAML gokeyless. Di sana Anda akan menambahkan nama host server kunci Anda — nama host ini harus memiliki catatan DNS yang mengarah ke VM, zoneID, dan kunci API Origin CA Anda. Tentang zoneID dan kunci API Origin CA dapat ditemukan di dasbor Cloudflare. Selain itu, tunjukkan URI yang mengarah ke direktori dari kunci privat Anda di bawah private_key_stores.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Kemudian perbarui file YAML gokeyless. Di sana Anda akan menambahkan nama host server kunci Anda — nama host ini harus memiliki catatan DNS yang mengarah ke VM, zoneID, dan kunci API Origin CA Anda. Tentang zoneID dan kunci API Origin CA dapat ditemukan di dasbor Cloudflare. Selain itu, tunjukkan URI yang mengarah ke direktori dari kunci privat Anda di bawah private_key_stores.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ vim /etc/keyless/gokeyless.yaml
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Terakhir, mulai server keyless.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Terakhir, mulai server keyless.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ service gokeyless start
 </code></pre>
 	<!--kg-card-end: markdown-->

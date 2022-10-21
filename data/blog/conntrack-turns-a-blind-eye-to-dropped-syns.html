@@ -8,8 +8,7 @@
 		<figcaption><a href="https://pixabay.com/photos/female-diver-sea-scuba-diving-4829158/" target="_blank"><em>Image</em></a><em> by </em><a href="https://pixabay.com/users/chulmin1700-15022416/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4829158" target="_blank"><em>chulmin park</em></a><em> from </em><a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4829158" target="_blank"><em>Pixabay</em></a></figcaption>
 	</figure>
 	<p>We already know from <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows/">last time</a> that conntrack is in charge of tracking incoming and outgoing network traffic. By running conntrack -L we can inspect existing network flows, or as conntrack calls them, connections.</p>
-	<p>So if we spin up a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/Vagrantfile" target="_blank">toy VM</a>, <em>connect</em> to it over SSH, and inspect the contents of the conntrack table, we will see…</p>
-	<!--kg-card-begin: markdown-->
+	<p>So if we spin up a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/Vagrantfile" target="_blank">toy VM</a>, <em>connect</em> to it over SSH, and inspect the contents of the conntrack table, we will see…</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">$ vagrant init fedora/33-cloud-base
 $ vagrant up
 …
@@ -20,8 +19,7 @@ conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>… nothing!</p>
-	<p>Even though the conntrack kernel module is loaded:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Even though the conntrack kernel module is loaded:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ lsmod | grep '^nf_conntrack\b'
 nf_conntrack          163840  1 nf_conntrack_netlink
 </code></pre>
@@ -35,8 +33,7 @@ nf_conntrack          163840  1 nf_conntrack_netlink
 	<h2 id="calling-into-conntrack">Calling into conntrack</h2>
 	<p>Our little experiment with SSH’ing into a VM begs the question — how does conntrack actually get notified about network packets passing through the stack?</p>
 	<p>We can walk <a href="https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/" target="_blank">the receive path step by step</a> and we won’t find any direct calls into the conntrack code in either the IPv4 or IPv6 stack. Conntrack does not interface with the network stack directly.</p>
-	<p>Instead, it relies on the Netfilter framework, and its set of hooks baked into in the stack:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Instead, it relies on the Netfilter framework, and its set of hooks baked into in the stack:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">int ip_rcv(struct sk_buff *skb, struct net_device *dev, …)
 {
     …
@@ -54,15 +51,13 @@ nf_conntrack          163840  1 nf_conntrack_netlink
 	<p>Which ones does conntrack use? We will get to that in a moment.</p>
 	<p>First, let’s focus on the trigger. What makes conntrack register its callbacks with Netfilter?</p>
 	<p>The SSH connection doesn’t show up in the conntrack table just because the module is loaded. We already saw that. This means that conntrack doesn’t register its callbacks with Netfilter at module load time.</p>
-	<p>Or at least, it doesn't do it by <em>default</em>. Since Linux v5.1 (May 2019) the conntrack module has the <a href="https://github.com/torvalds/linux/commit/ba3fbe663635ae7b33a2d972c5d2def036258e42" target="_blank">enable_hooks parameter</a>, which causes conntrack to register its callbacks on load:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Or at least, it doesn't do it by <em>default</em>. Since Linux v5.1 (May 2019) the conntrack module has the <a href="https://github.com/torvalds/linux/commit/ba3fbe663635ae7b33a2d972c5d2def036258e42" target="_blank">enable_hooks parameter</a>, which causes conntrack to register its callbacks on load:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ modinfo nf_conntrack
 …
 parm:           enable_hooks:Always enable conntrack hooks (bool)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Going back to our toy VM, let’s try to reload the conntrack module with enable_hooks set:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Going back to our toy VM, let’s try to reload the conntrack module with enable_hooks set:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo rmmod nf_conntrack_netlink nf_conntrack
 [vagrant@ct-vm ~]$ sudo modprobe nf_conntrack enable_hooks=1
 [vagrant@ct-vm ~]$ sudo conntrack -L
@@ -75,23 +70,19 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<p>The Netfilter hook notified conntrack about SSH session packets passing through the stack.</p>
 	<p>Now that we know how conntrack gets called, we can go back to our question — can we observe a TCP SYN packet dropped by the firewall with conntrack?</p>
 	<h2 id="listing-netfilter-hooks">Listing Netfilter hooks</h2>
-	<p>That is easy to check:</p>
-	<!--kg-card-begin: markdown-->
+	<p>That is easy to check:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Add a rule to drop anything coming to port tcp/2570<sup>2</sup></li>
 	</ol>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo iptables -t filter -A INPUT -p tcp --dport 2570 -j DROP
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>2) Connect to the VM on port tcp/2570 from the outside</p>
-	<!--kg-card-begin: markdown-->
+	<p>2) Connect to the VM on port tcp/2570 from the outside</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">host $ nc -w 1 -z 192.168.122.204 2570
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>3) List conntrack table entries</p>
-	<!--kg-card-begin: markdown-->
+	<p>3) List conntrack table entries</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo conntrack -L
 tcp      6 431999 ESTABLISHED src=192.168.122.204 dst=192.168.122.1 sport=22 dport=34858 src=192.168.122.1 dst=192.168.122.204 sport=34858 dport=22 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1
 conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
@@ -99,8 +90,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<!--kg-card-end: markdown-->
 	<p>No new entries. Conntrack didn’t record a new flow for the dropped SYN.</p>
 	<p>But did it process the SYN packet? To answer that we have to find out which callbacks conntrack registered with Netfilter.</p>
-	<p>Netfilter keeps track of callbacks registered for each hook in instances of <code>struct nf_hook_entries</code>. We can reach these objects through the Netfilter state (<code>struct netns_nf</code>), which lives inside network namespace (<code>struct net</code>).</p>
-	<!--kg-card-begin: markdown-->
+	<p>Netfilter keeps track of callbacks registered for each hook in instances of <code>struct nf_hook_entries</code>. We can reach these objects through the Netfilter state (<code>struct netns_nf</code>), which lives inside network namespace (<code>struct net</code>).</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">struct netns_nf {
     …
     struct nf_hook_entries __rcu *hooks_ipv4[NF_INET_NUMHOOKS];
@@ -109,8 +99,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><code>struct nf_hook_entries</code>, if you look at its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/linux/netfilter.h#L101" target="_blank">definition</a>, is a bit of an exotic construct. A glance at how the object size is calculated during its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/core.c#L50" target="_blank">allocation</a> gives a hint about its memory layout:</p>
-	<!--kg-card-begin: markdown-->
+	<p><code>struct nf_hook_entries</code>, if you look at its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/linux/netfilter.h#L101" target="_blank">definition</a>, is a bit of an exotic construct. A glance at how the object size is calculated during its <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/core.c#L50" target="_blank">allocation</a> gives a hint about its memory layout:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">    struct nf_hook_entries *e;
     size_t alloc = sizeof(*e) +
                sizeof(struct nf_hook_entry) * num +
@@ -121,8 +110,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<p>It’s an element count, followed by two arrays glued together, and some <a href="https://en.wikipedia.org/wiki/Read-copy-update" target="_blank">RCU</a>-related state which we’re going to ignore. The two arrays have the same size, but hold different kinds of values.</p>
 	<p>We can walk the second array, holding pointers to struct nf_hook_ops, to discover the registered callbacks and their priority. Priority determines the invocation order.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-3.png" class="kg-image"></figure>
-	<p>With <a href="https://github.com/osandov/drgn" target="_blank">drgn</a>, a programmable C debugger tailored for the Linux kernel, we can locate the Netfilter state in kernel memory, and walk its contents relatively easily. Given we know what we are looking for.</p>
-	<!--kg-card-begin: markdown-->
+	<p>With <a href="https://github.com/osandov/drgn" target="_blank">drgn</a>, a programmable C debugger tailored for the Linux kernel, we can locate the Netfilter state in kernel memory, and walk its contents relatively easily. Given we know what we are looking for.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo drgn
 drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 …
@@ -136,8 +124,7 @@ drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Neat! We have a way to access Netfilter state.</p>
-	<p>Let’s take it to the next level and list all registered callbacks for each Netfilter hook (using <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/list-nf-hooks" target="_blank">less than 100 lines of Python</a>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s take it to the next level and list all registered callbacks for each Netfilter hook (using <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/list-nf-hooks" target="_blank">less than 100 lines of Python</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo /vagrant/tools/list-nf-hooks
 🪝 ipv4 PRE_ROUTING
        -400 → ipv4_conntrack_defrag     ☜ conntrack callback
@@ -162,8 +149,7 @@ drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 	<h2 id="tracing-conntrack-callbacks">Tracing conntrack callbacks</h2>
 	<p>We expect that when the Netfilter <code>PRE_ROUTING</code> hook processes a TCP SYN packet, it will invoke <code>ipv4_conntrack_defrag</code> and then <code>ipv4_conntrack_in</code> callbacks.</p>
 	<p>To confirm it we will put to use the tracing powers of <a href="https://ebpf.io/" target="_blank">BPF 🐝</a>. BPF programs can run on entry to functions. These kinds of programs are known as BPF kprobes. In our case we will attach BPF kprobes to conntrack callbacks.</p>
-	<p>Usually, when working with BPF, we would write the BPF program in C and use <code>clang -target bpf</code> to compile it. However, for tracing it will be much easier to use <a href="https://bpftrace.org/" target="_blank">bpftrace</a>. With bpftrace we can write <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/trace-conntrack-prerouting.bt" target="_blank">our BPF kprobe program</a> in a <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md" target="_blank">high-level language</a> inspired by <a href="https://en.wikipedia.org/wiki/AWK" target="_blank">AWK</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Usually, when working with BPF, we would write the BPF program in C and use <code>clang -target bpf</code> to compile it. However, for tracing it will be much easier to use <a href="https://bpftrace.org/" target="_blank">bpftrace</a>. With bpftrace we can write <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/trace-conntrack-prerouting.bt" target="_blank">our BPF kprobe program</a> in a <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md" target="_blank">high-level language</a> inspired by <a href="https://en.wikipedia.org/wiki/AWK" target="_blank">AWK</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">kprobe:ipv4_conntrack_defrag,
 kprobe:ipv4_conntrack_in
 {
@@ -185,15 +171,13 @@ kprobe:ipv4_conntrack_in
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>What does this program do? It is roughly an equivalent of a tcpdump filter:</p>
-	<!--kg-card-begin: markdown-->
+	<p>What does this program do? It is roughly an equivalent of a tcpdump filter:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">dst port 2570 and tcp[tcpflags] &amp; tcp-syn != 0
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>But only for packets passing through conntrack <code>PRE_ROUTING</code> callbacks.</p>
 	<p>(If you haven’t used bpftrace, it comes with an excellent <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md" target="_blank">reference guide</a> and gives you the ability to explore kernel data types on the fly with <code>bpftrace -lv 'struct iphdr'</code>.)</p>
-	<p>Let’s run the tracing program while we connect to the VM from the outside (<code>nc -z 192.168.122.204 2570</code>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s run the tracing program while we connect to the VM from the outside (<code>nc -z 192.168.122.204 2570</code>):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo bpftrace /vagrant/tools/trace-conntrack-prerouting.bt
 Attaching 3 probes...
 Tracing conntrack prerouting callbacks... Hit Ctrl-C to quit
@@ -210,8 +194,7 @@ Tracing conntrack prerouting callbacks... Hit Ctrl-C to quit
 	<p>What actually happens inside the conntrack <code>PRE_ROUTING</code> callbacks?</p>
 	<p>To find out, we can trace the call chain that starts on entry to the conntrack callback. The <code>function_graph</code> tracer built into the <a href="https://lwn.net/Articles/365835/" target="_blank">Ftrace</a> framework is perfect for this task.</p>
 	<p>But because all incoming traffic goes through the <code>PRE_ROUTING</code> hook, including our SSH connection, our trace will be polluted with events from SSH traffic. To avoid that, let’s switch from SSH access to a serial console.</p>
-	<p>When using <a href="https://github.com/vagrant-libvirt/vagrant-libvirt" target="_blank">libvirt</a> as the Vagrant provider, you can connect to the serial console with <code>virsh</code>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>When using <a href="https://github.com/vagrant-libvirt/vagrant-libvirt" target="_blank">libvirt</a> as the Vagrant provider, you can connect to the serial console with <code>virsh</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">host $ virsh -c qemu:///session list
  Id   Name                State
 -----------------------------------
@@ -252,13 +235,11 @@ Once connected to the console and logged into the VM, we can record the call cha
 [vagrant@ct-vm ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>What catches our attention here is the allocation, <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1471" target="_blank">__nf_conntrack_alloc()</a> (❶), inside <code>init_conntrack() (❷). __nf_conntrack_alloc()</code> creates a <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/net/netfilter/nf_conntrack.h#L58" target="_blank">struct nf_conn</a> object which represents a tracked connection.</p>
-	<!--kg-card-begin: markdown-->
+	<p>What catches our attention here is the allocation, <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1471" target="_blank">__nf_conntrack_alloc()</a> (❶), inside <code>init_conntrack() (❷). __nf_conntrack_alloc()</code> creates a <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/net/netfilter/nf_conntrack.h#L58" target="_blank">struct nf_conn</a> object which represents a tracked connection.</p><!--kg-card-begin: markdown-->
 	<p>This object is not created in vain. <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1633" target="_blank">A glance</a> at <code>init_conntrack()</code> <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1633" target="_blank">source</a> shows that it is pushed onto a list of unconfirmed connections<sup>3</sup>.</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-1.png" class="kg-image"></figure>
-	<p>What does it mean that a connection is unconfirmed? As <a href="https://manpages.debian.org/buster/conntrack/conntrack.8.en.html" target="_blank">conntrack(8) man page</a> explains:</p>
-	<!--kg-card-begin: markdown-->
+	<p>What does it mean that a connection is unconfirmed? As <a href="https://manpages.debian.org/buster/conntrack/conntrack.8.en.html" target="_blank">conntrack(8) man page</a> explains:</p><!--kg-card-begin: markdown-->
 	<pre><code>unconfirmed:
        This table shows new entries, that are not yet inserted into the
        conntrack table. These entries are attached to packets that  are
@@ -268,8 +249,7 @@ Once connected to the console and logged into the VM, we can record the call cha
 	<!--kg-card-end: markdown-->
 	<p>Perhaps we have been looking for our flow in the wrong table? Does the unconfirmed table have a record for our dropped TCP SYN?</p>
 	<h2 id="pulling-the-rabbit-out-of-the-hat">Pulling the rabbit out of the hat</h2>
-	<p>I have bad news…</p>
-	<!--kg-card-begin: markdown-->
+	<p>I have bad news…</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo conntrack -L unconfirmed
 conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
 [vagrant@ct-vm ~]$
@@ -279,13 +259,11 @@ conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
 	<p>Let’s for a moment assume that a <code>struct nf_conn</code> object was added to the <code>unconfirmed</code> list. If the list is now empty, then the object must have been removed from the list before we inspected its contents.</p>
 	<p>Has an entry been removed from the <code>unconfirmed</code> table? What function removes entries from the <code>unconfirmed</code> table?</p>
 	<p>It turns out that <code>nf_ct_add_to_unconfirmed_list()</code> which <code>init_conntrack()</code> invokes, has its opposite defined just right beneath it - <code>nf_ct_del_from_dying_or_unconfirmed_list()</code>.</p>
-	<p>It is worth a shot to check if this function is being called, and if so, from where. For that we can again use a BPF tracing program, attached to function entry. However, this time our program will record a kernel stack trace:</p>
-	<!--kg-card-begin: markdown-->
+	<p>It is worth a shot to check if this function is being called, and if so, from where. For that we can again use a BPF tracing program, attached to function entry. However, this time our program will record a kernel stack trace:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>With <code>bpftrace</code> running our one-liner, we connect to the VM from the host with <code>nc</code> as before:</p>
-	<!--kg-card-begin: markdown-->
+	<p>With <code>bpftrace</code> running our one-liner, we connect to the VM from the host with <code>nc</code> as before:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo bpftrace -e 'kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }'
 Attaching 1 probe...
 
@@ -314,8 +292,7 @@ Attaching 1 probe...
 	<p>This explains why we can’t observe the flow in the <code>unconfirmed</code> table. It lives for only a very short period of time.</p>
 	<p>Not convinced? You don’t have to take my word for it. I will prove it with a dirty trick!</p>
 	<h2 id="making-the-rabbit-disappear-or-actually-appear">Making the rabbit disappear, or actually appear</h2>
-	<p>If you recall the output from <code>list-nf-hooks</code> that we’ve seen earlier, there is another conntrack callback there - <code>ipv4_confirm</code>, which I have ignored:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If you recall the output from <code>list-nf-hooks</code> that we’ve seen earlier, there is another conntrack callback there - <code>ipv4_confirm</code>, which I have ignored:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">[vagrant@ct-vm ~]$ sudo /vagrant/tools/list-nf-hooks
 …
 🪝 ipv4 LOCAL_IN
@@ -333,14 +310,12 @@ Attaching 1 probe...
 	<p>Luckily for us, it is possible to have more than one callback registered with the same priority. In such cases, the order of registration matters. We can put that to use. Just for educational purposes.</p>
 	<p>Good old <code>iptables</code> won’t be of much help here. Its Netfilter callbacks have hard-coded priorities which we can’t change. But <code>nftables</code>, the <code>iptables</code> <a href="https://developers.redhat.com/blog/2016/10/28/what-comes-after-iptables-its-successor-of-course-nftables/" target="_blank">successor</a>, is much more flexible in this regard. With <code>nftables</code> we can create a rule chain with arbitrary priority.</p>
 	<p>So this time, let’s use nftables to install a filter rule to drop traffic to port tcp/2570. The trick, though, is to register our chain before conntrack registers itself. This way our filter will run <em>last</em>.</p>
-	<p>First, delete the tcp/2570 drop rule in iptables and unregister conntrack.</p>
-	<!--kg-card-begin: markdown-->
+	<p>First, delete the tcp/2570 drop rule in iptables and unregister conntrack.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">vm # iptables -t filter -F
 vm # rmmod nf_conntrack_netlink nf_conntrack
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then add tcp/2570 drop rule in <code>nftables</code>, with lowest possible priority.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Then add tcp/2570 drop rule in <code>nftables</code>, with lowest possible priority.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">vm # nft add table ip my_table
 vm # nft add chain ip my_table my_input { type filter hook input priority 2147483647 \; }
 vm # nft add rule ip my_table my_input tcp dport 2570 counter drop
@@ -353,13 +328,11 @@ table ip my_table { # handle 1
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally, re-register conntrack hooks.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Finally, re-register conntrack hooks.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">vm # modprobe nf_conntrack enable_hooks=1
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The registered callbacks for the <code>LOCAL_IN</code> hook now look like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>The registered callbacks for the <code>LOCAL_IN</code> hook now look like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">vm # /vagrant/tools/list-nf-hooks
 …
 🪝 ipv4 LOCAL_IN
@@ -371,8 +344,7 @@ table ip my_table { # handle 1
 …
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>What happens if we connect to port tcp/2570 now?</p>
-	<!--kg-card-begin: markdown-->
+	<p>What happens if we connect to port tcp/2570 now?</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ssh">vm # conntrack -L
 tcp      6 115 SYN_SENT src=192.168.122.1 dst=192.168.122.204 sport=54868 dport=2570 [UNREPLIED] src=192.168.122.204 dst=192.168.122.1 sport=2570 dport=54868 mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1
 conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
@@ -380,15 +352,13 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<!--kg-card-end: markdown-->
 	<p>We have fooled conntrack 💥</p>
 	<p>Conntrack promoted the flow from the <code>unconfirmed</code> to the main <code>conntrack</code> table despite the fact that the firewall dropped the packet. We can observe it.</p>
-	<h2 id="outro">Outro</h2>
-	<!--kg-card-begin: markdown-->
+	<h2 id="outro">Outro</h2><!--kg-card-begin: markdown-->
 	<p>Conntrack processes every received packet<sup>4</sup> and creates a flow for it. A flow entry is always created even if the packet is dropped shortly after. The flow might never be promoted to the main conntrack table and can be short lived.</p>
 	<!--kg-card-end: markdown-->
 	<p>However, this blog post is not really about conntrack. Its internals have been covered by <a href="https://www.usenix.org/publications/login/june-2006-volume-31-number-3/netfilters-connection-tracking-system" target="_blank">magazines</a>, <a href="https://www.semanticscholar.org/paper/Netfilter-Connection-Tracking-and-NAT-Boye/3f3c09dbc2a13c4840bb4a148753bb528493b607" target="_blank">papers</a>, <a href="https://books.google.pl/books?id=RpsQAwAAQBAJ&amp;lpg=PP1&amp;pg=PA253#v=onepage&amp;q&amp;f=false" target="_blank">books</a>, and on other blogs long before. We probably could have learned elsewhere all that has been shown here.</p>
 	<p>For us, conntrack was really just an excuse to demonstrate various ways to discover the inner workings of the Linux network stack. As good as any other.</p>
 	<p>Today we have powerful introspection tools like <a href="https://github.com/osandov/drgn" target="_blank">drgn</a>, <a href="https://bpftrace.org/" target="_blank">bpftrace</a>, or <a href="https://lwn.net/Articles/365835/" target="_blank">Ftrace</a>, and a <a href="https://elixir.bootlin.com/" target="_blank">cross referencer</a> to plow through the source code, at our fingertips. They help us look under the hood of a live operating system and gradually deepen our understanding of its workings.</p>
-	<p>I have to warn you, though. Once you start digging into the kernel, it is hard to stop…</p>
-	<!--kg-card-begin: markdown-->
+	<p>I have to warn you, though. Once you start digging into the kernel, it is hard to stop…</p><!--kg-card-begin: markdown-->
 	<p>...........<br>
 		<sup>1</sup>Actually since <a href="https://kernelnewbies.org/Linux_5.10#Networking" target="_blank">Linux v5.10</a> (Dec 2020) there is an additional Netfilter hook for the INET family named <code>NF_INET_INGRESS</code>. The new hook type allows users to attach nftables chains to the Traffic Control ingress hook.<br>
 		<sup>2</sup>Why did I pick this port number? Because 2570 = 0x0a0a. As we will see later, this saves us the trouble of converting between the network byte order and the host byte order.<br>

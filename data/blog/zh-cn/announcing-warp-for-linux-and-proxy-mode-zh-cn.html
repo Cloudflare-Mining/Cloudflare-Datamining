@@ -22,13 +22,11 @@
 	<p>经验丰富的 Linux 开发人员可以直接跳转到<a href="https://pkg.cloudflareclient.com/install" target="_blank">https://pkg.cloudflareclient.com/install</a>。链接我们的存储库后，根据您的发行版，使用 <code>sudo apt install cloudflare-warp</code> 或开始 <code>sudo yum install cloudflare-warp</code>。</p>
 	<p>有关更详细的安装说明，请访问我们的 <a href="https://developers.cloudflare.com/warp-client/setting-up/linux/" target="_blank">WARP 客户端文档</a>。</p>
 	<h3 id="-">使用命令行界面</h3>
-	<p>一旦您安装 WARP 后，您可以通过一个命令开始使用 CLI：</p>
-	<!--kg-card-begin: markdown-->
+	<p>一旦您安装 WARP 后，您可以通过一个命令开始使用 CLI：</p><!--kg-card-begin: markdown-->
 	<pre><code>warp-cli --help
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>CLI 将显示以下输出。</p>
-	<!--kg-card-begin: markdown-->
+	<p>CLI 将显示以下输出。</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli --help
 WARP 0.2.0
 Cloudflare
@@ -90,26 +88,22 @@ SUBCOMMANDS:
     help                        Prints this message or the help of the given subcommand(s)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><br>您只需使用两个命令即可开始连接到 Cloudflare 的网络。第一个命令 ，register 将提示您进行身份验证。第二个命令 ，connect 将启用客户端，创建从您的设备到 Cloudflare 网络的 WireGuard 隧道。</p>
-	<!--kg-card-begin: markdown-->
+	<p><br>您只需使用两个命令即可开始连接到 Cloudflare 的网络。第一个命令 ，register 将提示您进行身份验证。第二个命令 ，connect 将启用客户端，创建从您的设备到 Cloudflare 网络的 WireGuard 隧道。</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli register
 Success
 ~$ warp-cli connect
 Success
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>连接客户端后，验证它是否正常工作的最佳方法是运行我们的 trace 命令：</p>
-	<!--kg-card-begin: markdown-->
+	<p>连接客户端后，验证它是否正常工作的最佳方法是运行我们的 trace 命令：</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ curl https://www.cloudflare.com/cdn-cgi/trace/
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>并寻找以下输出：</p>
-	<!--kg-card-begin: markdown-->
+	<p>并寻找以下输出：</p><!--kg-card-begin: markdown-->
 	<pre><code>warp=on
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>想要从加密 WARP 中的所有流量切换到只使用我们的 <a href="https://developers.cloudflare.com/1.1.1.1/" target="_blank">1.1.1.1 DNS 解析器吗</a>？使用 warp-cli set-mode 命令：</p>
-	<!--kg-card-begin: markdown-->
+	<p>想要从加密 WARP 中的所有流量切换到只使用我们的 <a href="https://developers.cloudflare.com/1.1.1.1/" target="_blank">1.1.1.1 DNS 解析器吗</a>？使用 warp-cli set-mode 命令：</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli help set-mode
 warp-cli-set-mode 
  
@@ -126,8 +120,7 @@ ARGS:
 Success
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>使用 <a href="https://blog.cloudflare.com/zh-cn/introducing-1-1-1-1-for-families-zh-cn/">1.1.1.1 for Families 保护自己免受恶意软件的侵害</a>同样简单，它可以在启用 WARP 或直接 DNS 模式下使用：</p>
-	<!--kg-card-begin: markdown-->
+	<p>使用 <a href="https://blog.cloudflare.com/zh-cn/introducing-1-1-1-1-for-families-zh-cn/">1.1.1.1 for Families 保护自己免受恶意软件的侵害</a>同样简单，它可以在启用 WARP 或直接 DNS 模式下使用：</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ warp-cli set-families-mode --help
 warp-cli-set-families-mode 
  
@@ -147,8 +140,7 @@ Success
 	<h3 id="-cloudflare-for-teams-">关于 Cloudflare for Teams 支持的说明</h3>
 	<p>Cloudflare for Teams 支持正在进行中，就像我们的其他客户一样，它将在相同的包裹中提供。请继续关注应用内更新，或联系您的客户经理以在测试版可用时收到通知。</p>
 	<h3 id="--1">我们需要反馈</h3>
-	<p>如果您遇到错误，请使用以下 sudo warp-diag feedback 命令向我们发送反馈：</p>
-	<!--kg-card-begin: markdown-->
+	<p>如果您遇到错误，请使用以下 sudo warp-diag feedback 命令向我们发送反馈：</p><!--kg-card-begin: markdown-->
 	<pre><code>~$ sudo warp-diag feedback
 </code></pre>
 	<!--kg-card-end: markdown-->

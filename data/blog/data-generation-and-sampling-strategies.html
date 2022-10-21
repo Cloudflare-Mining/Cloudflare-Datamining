@@ -69,8 +69,7 @@
 	<p><strong>False Positives (FP):</strong> benign content that the model classified as malicious</p>
 	<p><strong>True Negatives (TN):</strong> benign content classified correctly by the model</p>
 	<p><strong>False Negatives (FN):</strong> malicious content that the model classified as benign</p>
-	<p>Since this formula takes false positives and false negatives into consideration, this score is more reliable than other metrics. There are a few methods to calculate this for <a href="https://en.wikipedia.org/wiki/Multiclass_classification" target="_blank">multi-class</a> problems, like <a href="https://towardsdatascience.com/multi-class-metrics-made-simple-part-ii-the-f1-score-ebe8b2c2ca1" target="_blank">Macro F1 Score, Micro F1 Score and Weighted F1 Score</a>. Although each method has advantages and disadvantages, we obtained nearly identical results with all three methods. Below are the numbers:</p>
-	<!--kg-card-begin: html-->
+	<p>Since this formula takes false positives and false negatives into consideration, this score is more reliable than other metrics. There are a few methods to calculate this for <a href="https://en.wikipedia.org/wiki/Multiclass_classification" target="_blank">multi-class</a> problems, like <a href="https://towardsdatascience.com/multi-class-metrics-made-simple-part-ii-the-f1-score-ebe8b2c2ca1" target="_blank">Macro F1 Score, Micro F1 Score and Weighted F1 Score</a>. Although each method has advantages and disadvantages, we obtained nearly identical results with all three methods. Below are the numbers:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -214,8 +213,7 @@
 				<td class="tg-7yig"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.99</span></td>
 			</tr>
 		</tbody>
-	</table>
-	<!--kg-card-end: html-->
+	</table><!--kg-card-end: html-->
 	<p>The important takeaway is that the range of this F1 score is best at 1 and worst at 0.</p>
 	<p>The model after augmentation appears to have similar precision and recall with good overall performance, as indicated by a value of 0.99 after augmentation, compared to 0.61 for Macro F1.</p>
 	<p>So far in the results summary, we've only discussed F1 Score; however, there are other improvements in characteristics that we've observed in the model that are listed below:</p>

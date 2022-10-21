@@ -8,8 +8,7 @@
 	<p>Magic Firewallは、様々なパケットパラメータにマッチする非常に強力な構文を提供しますが、nftablesが提供するマッチにも制限されます。多くのユースケースではこれで十分すぎるほどなのですが、私たちが望む高度なパケット解析やコンテンツマッチングを実装するには十分な柔軟性を備えているとは言えません。私たちはもっと大きな力を必要としていました。</p>
 	<h3 id="ebpf-nftables-"><strong>eBPFの皆さん、こんにちは！Nftablesです。</strong></h3>
 	<p>Linux のネットワークにさらなるパワーを求める場合、Extended Berkeley Packet Filter (<a href="https://ebpf.io/" target="_blank"> eBPF</a> &nbsp;) は当然の選択と言えます。eBPFでは、カーネル内で実行されるパケット処理プログラム <em>を挿入でき、</em>カーネル内実行の速度と、使い慣れたプログラミングパラダイムによる柔軟性を提供します。Cloudflareは<a href="https://blog.cloudflare.com/tag/ebpf/">eBPF が大好きで</a>、このテクノロジーは当社の多くの製品を実現する上で大きな変革をもたらしています。私たちがeBPFを使ってMagic Firewallのnftablesの使い方を拡張する方法を見つけたのも当然のことと言えます。つまり、テーブルの中でeBPFプログラムを使ってマッチングし、ルールとして連鎖させることができるようになるのです。こうすることで、既存のインフラとコードを維持したまま、さらに拡張することができます。私たちはケーキを持ちながら、さらにそれを食べることができるのです。</p>
-	<p>もしnftablesがeBPFをネイティブに活用できれば、この話はもっと短くなるはずですが、残念ながら、私たちは探求を続けなければなりませんでした。探索を始めるにあたって、iptablesがeBPFと統合されていることは知っています。例えば、次のコマンドでパケットをドロップするためにiptablesと固定されたeBPFプログラムを使用することができます。</p>
-	<!--kg-card-begin: markdown-->
+	<p>もしnftablesがeBPFをネイティブに活用できれば、この話はもっと短くなるはずですが、残念ながら、私たちは探求を続けなければなりませんでした。探索を始めるにあたって、iptablesがeBPFと統合されていることは知っています。例えば、次のコマンドでパケットをドロップするためにiptablesと固定されたeBPFプログラムを使用することができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -17,8 +16,7 @@
 	<p>iptablesがeBPFを使えることが分かっているのだから、それを使えばいいのでは？Magic Firewallは現在 nftablesを利用していますが、これは構文の柔軟性とプログラム可能なインターフェイスのため、私たちのユースケースには最適な選択です。したがって、xt_bpf拡張をnftablesで使用する方法を見つける必要があります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
 	<p>この<a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank">図</a>は、iptables、nftables、カーネル間の関係を説明するのに役立ちます。nftables APIはiptablesとnftの両方のユーザー空間プログラムで使用でき、 xtablesのマッチ（xt_bpf を含む）と通常のnftablesのマッチの両方を設定できます。</p>
-	<p>つまり、正しいAPIコール（netlink/netfilterメッセージ）があれば、nftablesルール内にxt_bpfマッチを埋め込むことができるのです。これを行うには、どのnetfilterメッセージを送信する必要があるかを理解する必要があります。straceやWiresharkなどのツールを使い、特に<a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">ソース</a>を使って、テーブルとチェーンを指定してeBPFルールを追加できるメッセージを作成することができました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>つまり、正しいAPIコール（netlink/netfilterメッセージ）があれば、nftablesルール内にxt_bpfマッチを埋め込むことができるのです。これを行うには、どのnetfilterメッセージを送信する必要があるかを理解する必要があります。straceやWiresharkなどのツールを使い、特に<a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">ソース</a>を使って、テーブルとチェーンを指定してeBPFルールを追加できるメッセージを作成することができました。</p><!--kg-card-begin: markdown-->
 	<pre><code>NFTA_RULE_TABLE table
 NFTA_RULE_CHAIN chain
 NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
@@ -30,8 +28,7 @@ NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
 		NFTA_MATCH_INFO ebpf_bytes	
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>eBPFマッチを追加するためのnetlink/netfilterメッセージの構造は、上記の例のようになるはずです。もちろん、このメッセージは適切に埋め込まれ、一致したときの評決などの条件付きステップを含む必要があります。次のステップは、下の例のように `ebpf_bytes` の形式をデコードすることでした。</p>
-	<!--kg-card-begin: markdown-->
+	<p>eBPFマッチを追加するためのnetlink/netfilterメッセージの構造は、上記の例のようになるはずです。もちろん、このメッセージは適切に埋め込まれ、一致したときの評決などの条件付きステップを含む必要があります。次のステップは、下の例のように `ebpf_bytes` の形式をデコードすることでした。</p><!--kg-card-begin: markdown-->
 	<pre><code> struct xt_bpf_info_v1 {
 	__u16 mode;
 	__u16 bpf_program_num_elem;
@@ -48,8 +45,7 @@ NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
 	<p>この情報をもとに、ネットリンクメッセージを作成し、関連するデータフィールドを適切にシリアライズするコードを作成することができました。このアプローチは最初のステップに過ぎません。私たちは、カスタムのネットフィルタメッセージを送る代わりに、これを適切なツールに取り入れることも検討しています。</p>
 	<h3 id="ebpf-"><strong>eBPFを追加するだけ</strong></h3>
 	<p>あとは、eBPFのプログラムを組み立てて、既存のnftablesのテーブルとチェーンにロードする必要がありました。eBPFを使い始めるのは少し難しいかもしれません。どのプログラムタイプを使えばいいのか？eBPFのプログラムをどのようにコンパイルし、ロードすればよいのか？私たちは、このプロセスを、いくつかの調査と研究によって開始しました。</p>
-	<p>まず、試しにサンプルプログラムを構築してみました。</p>
-	<!--kg-card-begin: markdown-->
+	<p>まず、試しにサンプルプログラムを構築してみました。</p><!--kg-card-begin: markdown-->
 	<pre><code>SEC("socket")
 int filter(struct __sk_buff *skb) {
   /* get header */
@@ -78,8 +74,7 @@ int filter(struct __sk_buff *skb) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>ご紹介したのは、ペイロードの末尾にマジック文字列を持つパケットのみを受け付けるeBPFプログラムの一例です。これは、検索を開始する場所を見つけるために、パケットの全長をチェックする必要があります。わかりやすくするために、この例ではエラーチェックとヘッダーを省略しています。</p>
-	<p>プログラムができたら、次はそれを我々のツールに統合することでした。プログラムをロードするために、BCCやlibbpfなどいくつかの技術を試し、カスタムのローダーも作りました。最終的には、<a href="https://github.com/cilium/ebpf/" target="_blank"> ciliumのebpfライブラリ</a>を使うことにしました。私たちは制御プレーンのプログラムにGolangを使っており、このライブラリによってeBPFプログラムの生成、埋め込み、読み込みが簡単にできるからです。</p>
-	<!--kg-card-begin: markdown-->
+	<p>プログラムができたら、次はそれを我々のツールに統合することでした。プログラムをロードするために、BCCやlibbpfなどいくつかの技術を試し、カスタムのローダーも作りました。最終的には、<a href="https://github.com/cilium/ebpf/" target="_blank"> ciliumのebpfライブラリ</a>を使うことにしました。私たちは制御プレーンのプログラムにGolangを使っており、このライブラリによってeBPFプログラムの生成、埋め込み、読み込みが簡単にできるからです。</p><!--kg-card-begin: markdown-->
 	<pre><code># nft list ruleset
 table ip mfw {
 	chain input {

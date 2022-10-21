@@ -18,8 +18,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7.png" class="kg-image"></figure>
 	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767" target="_blank">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
 	<h3 id="previous-dealings-with-unbound-s-stale-cache">Previous dealings with Unbound's stale cache</h3>
-	<p>Stale cache had been tried before at Cloudflare in 2017, and at that time, we encountered two problems:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Stale cache had been tried before at Cloudflare in 2017, and at that time, we encountered two problems:</p><!--kg-card-begin: markdown-->
 	<p><strong>1. Unbound could serve stale records from cache indefinitely</strong><br>
 		We could solve this through configuration that did not exist in 2017, but we had to test it.</p>
 	<p><strong>2. Unbound serves negative/incomplete information from the expired cache</strong><br>
@@ -35,8 +34,7 @@
 	</ul>
 	<p>The option <em>serve-expired-ttl-reset</em> was considered, which would cause the records to never expire, even with the upstream down indefinitely as long as there are regular requests for them, but it was deemed too dangerous since it could potentially last forever and applies to all entries.</p>
 	<p>Example consul zone: <strong>service1.sd</strong>.</p>
-	<p>While resolving this name we end up with:</p>
-	<!--kg-card-begin: markdown-->
+	<p>While resolving this name we end up with:</p><!--kg-card-begin: markdown-->
 	<pre><code>;; ANSWER SECTION:
 service1.sd. 120 IN CNAME service1.query.consul.
 service1.query.consul. 30 IN A 192.0.2.1
@@ -44,20 +42,17 @@ service1.query.consul. 30 IN A 192.0.2.1
 ;; Query time: 230 msec
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If we dump Unbound's cache (unbound-control dump_cache), we can find the entries there:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If we dump Unbound's cache (unbound-control dump_cache), we can find the entries there:</p><!--kg-card-begin: markdown-->
 	<pre><code>service1.query.consul. 23  IN  A   192.0.2.1
 service1.sd.   113 IN  CNAME   service1.query.consul.
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If we wait for the TTL of these entries to expire and dump the cache again, we notice that they don't show up anymore:</p>
-	<!--kg-card-begin: markdown-->
+	<p>If we wait for the TTL of these entries to expire and dump the cache again, we notice that they don't show up anymore:</p><!--kg-card-begin: markdown-->
 	<pre><code>➜ unbound-control dump_cache | grep -e query.consul -e service1
 ➜
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>But if we block access to the Consul resolver, we can see that still the entries are returned:</p>
-	<!--kg-card-begin: markdown-->
+	<p>But if we block access to the Consul resolver, we can see that still the entries are returned:</p><!--kg-card-begin: markdown-->
 	<pre><code>;; ANSWER SECTION:
 service1.sd. 119 IN CNAME service1.query.consul.
 service1.query.consul. 30 IN A 192.0.2.1
@@ -67,8 +62,7 @@ service1.query.consul. 30 IN A 192.0.2.1
 	<!--kg-card-end: markdown-->
 	<p>Notice that Unbound waited 500ms before returning a response, which was the value we configured. This also shows that the dump cache method does not return expired entries even though they are present. So far so good.</p>
 	<h5 id="test-unbound-could-serve-stale-records-from-cache-indefinitely"><strong>Test - Unbound could serve stale records from cache indefinitely</strong></h5>
-	<p>After 3600 seconds pass we again try to resolve the same name:</p>
-	<!--kg-card-begin: markdown-->
+	<p>After 3600 seconds pass we again try to resolve the same name:</p><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig  service1.sd. @127.0.0.1
  
 ; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; service1.sd. @127.0.0.1
@@ -79,14 +73,12 @@ service1.query.consul. 30 IN A 192.0.2.1
 	<p>Dig gave up on waiting for a response from Unbound. So we see that after the configured time, Unbound will indeed stop serving the stale record, even if it has been requested recently. This is due to <em>serve-expired-ttl: 3600</em> and <em>serve-expired-ttl-reset </em>being set to "no" by default. These options were not available when we first tried Unbound’s stale cache.</p>
 	<h5 id="test-unbound-serves-negative-incomplete-information-from-the-expired-cache"><strong>Test - Unbound serves negative/incomplete information from the expired cache</strong></h5>
 	<p>Since the record we are resolving includes a CNAME and an A record with different TTLs, we will try to see if Unbound can be made to return an incomplete chain (CNAME with no A record).</p>
-	<p>We start by having both entries in cache, and block connections to the Consul resolver. We then remove from the cache the A entry:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We start by having both entries in cache, and block connections to the Consul resolver. We then remove from the cache the A entry:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ /usr/sbin/unbound-control flush_type service1.query.consul. A
 ok
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now we attempt to query:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now we attempt to query:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig  service1.sd. @127.0.0.1
 ...
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 9532
@@ -94,8 +86,7 @@ ok
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Nothing was returned which is the result we were expecting.</p>
-	<p>Another scenario we wanted to test was to see if when <em>serve-expired-ttl</em> + A's TTL had passed, the CNAME would be returned on its own.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Another scenario we wanted to test was to see if when <em>serve-expired-ttl</em> + A's TTL had passed, the CNAME would be returned on its own.</p><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig  service1.sd. @127.0.0.1
 ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48918
 ;; ANSWER SECTION:
@@ -112,8 +103,7 @@ service1.query.consul. 30 IN A 192.0.2.1
 	<!--kg-card-end: markdown-->
 	<p>We lowered <em>serve-expired-ttl</em> to 40 to help testing the issue and we were able to see that as soon as the A entry was deemed not serve-able, the CNAME was also not returned, which is the behaviour that we want.</p>
 	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional%20Tools" target="_blank">Network Link Conditioner</a> was used to simulate high latency:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image16.png" class="kg-image"></figure>
-	<!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image16.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig service1.service.consul @CONSUL_ADDRESS
  
 ;; ANSWER SECTION:
@@ -123,8 +113,7 @@ service1.service.consul. 60 IN A 192.0.2.12
 ;; Query time: 3053 msec
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We can see that the artificial latency is working. We can now test if changes to the address are actually reflected on the consul record even though a stale record is served at first:</p>
-	<!--kg-card-begin: markdown-->
+	<p>We can see that the artificial latency is working. We can now test if changes to the address are actually reflected on the consul record even though a stale record is served at first:</p><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig service2.service.consul @127.0.0.1
 ...
 ;; ANSWER SECTION:

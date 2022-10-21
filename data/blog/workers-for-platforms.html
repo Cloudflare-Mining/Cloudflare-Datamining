@@ -45,8 +45,7 @@
 	<h3 id="trace-workers">Trace Workers</h3>
 	<p>Where there’s smoke, there’s fire, and where there’s code, well, bugs are also bound to be. When giving developers the tools to write and deploy code, you must also give them the means to debug it.</p>
 	<p>Trace Workers allow you to collect any information about a request that was handled by a Worker, including any logs or exceptions, and pass them onto your customer. A Trace Worker is a Worker that will receive information about the execution of other Workers, and can forward it to a destination of your choosing, enabling use cases such as live logging or long term storage.</p>
-	<p>Here is a simple trace Worker that sends its trace data to an HTTP endpoint:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here is a simple trace Worker that sends its trace data to an HTTP endpoint:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("trace", event =&gt; {
   event.waitUntil(fetch("http://example.com/trace", {
     method: "POST",
@@ -55,8 +54,7 @@
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Here is an example of what the data in <code>event.traces</code> might look like:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Here is an example of what the data in <code>event.traces</code> might look like:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">[
   {
     "scriptName": "Example script",
@@ -96,8 +94,7 @@
 	<h3 id="chaining-multiple-workers-together-using-dynamic-dispatch">Chaining multiple Workers together using Dynamic Dispatch</h3>
 	<p>From working with a few of our early customers, another need we were hearing about often was the ability to run your own code, before running your customer’s code. Perhaps you want to run a layer of authentication, sanitize input or output, or even provide useful information downstream (like user or account IDs).</p>
 	<p>For this you may want to maintain your own Worker. However, when it’s done executing, you want to be able to call the next Worker, with your <em>customer’s</em> code.</p>
-	<p>Example:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Example:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
 let response = await user_worker.fetch(request);
 </code></pre>

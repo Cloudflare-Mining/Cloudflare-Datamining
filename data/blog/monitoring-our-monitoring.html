@@ -6,8 +6,7 @@
 	<p>Prometheus works by collecting metrics from our services and storing those metrics inside its database, called TSDB. We can then <a href="https://prometheus.io/docs/prometheus/latest/querying/basics/" target="_blank">query these metrics</a> using Prometheus query language called PromQL using ad-hoc queries (for example to power <a href="https://grafana.com/grafana/" target="_blank">Grafana dashboards</a>) or via <a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/" target="_blank">alerting</a> or <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/" target="_blank">recording</a> rules. A rule is basically a query that Prometheus will run for us in a loop, and when that query returns any results it will either be recorded as new metrics (with recording rules) or trigger alerts (with alerting rules).</p>
 	<h3 id="prometheus-alerts">Prometheus alerts</h3>
 	<p>Since we’re talking about improving our alerting we’ll be focusing on alerting rules.</p>
-	<p>To create alerts we first need to have some metrics collected. For the purposes of this blog post let’s assume we’re working with http_requests_total metric, which is used on the examples<a href="https://prometheus.io/docs/prometheus/latest/querying/examples/" target="_blank"> page</a>. Here are some examples of how our metrics will look:</p>
-	<!--kg-card-begin: markdown-->
+	<p>To create alerts we first need to have some metrics collected. For the purposes of this blog post let’s assume we’re working with http_requests_total metric, which is used on the examples<a href="https://prometheus.io/docs/prometheus/latest/querying/examples/" target="_blank"> page</a>. Here are some examples of how our metrics will look:</p><!--kg-card-begin: markdown-->
 	<pre><code>http_requests_total{job="myserver", handler="/", method=”get”, status=”200”}
 http_requests_total{job="myserver", handler="/", method=”get”, status=”500”}
 http_requests_total{job="myserver", handler="/posts", method=”get”, status=”200”}
@@ -17,8 +16,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Let’s say we want to alert if our HTTP server is returning errors to customers.</p>
-	<p>Since, all we need to do is check our metric that tracks how many responses with HTTP status code 500 there were, a simple alerting rule could like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Since, all we need to do is check our metric that tracks how many responses with HTTP status code 500 there were, a simple alerting rule could like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>- alert: Serving HTTP 500 errors
   expr: http_requests_total{status=”500”} &gt; 0
 </code></pre>
@@ -33,8 +31,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	<p>After all, our http_requests_total is a counter, so it gets incremented every time there’s a new request, which means that it will keep growing as we receive more requests. What this means for us is that our alert is really telling us “was there ever a 500 error?” and even if we fix the problem causing 500 errors we’ll keep getting this alert.</p>
 	<p>A better alert would be one that tells us if we’re serving errors <strong>right now</strong>.</p>
 	<p>For that we can use the <a href="https://prometheus.io/docs/prometheus/latest/querying/functions/#rate" target="_blank">rate()</a> function to calculate the per second rate of errors.</p>
-	<p>Our modified alert would be:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our modified alert would be:</p><!--kg-card-begin: markdown-->
 	<pre><code>- alert: Serving HTTP 500 errors
   expr: rate(http_requests_total{status=”500”}[2m]) &gt; 0
 </code></pre>
@@ -78,8 +75,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	<p>It’s worth noting that Prometheus does have a way of <a href="https://prometheus.io/docs/prometheus/latest/configuration/unit_testing_rules/" target="_blank">unit testing rules</a>, but since it works on mocked data it’s mostly useful to validate the logic of a query. Unit testing won’t tell us if, for example, a metric we rely on suddenly disappeared from Prometheus.</p>
 	<h3 id="chaining-rules">Chaining rules</h3>
 	<p>When writing alerting rules we try to limit <a href="https://en.wikipedia.org/wiki/Alarm_fatigue" target="_blank">alert fatigue</a> by ensuring that, among many things, alerts are only generated when there’s an action needed, they clearly describe the problem that needs addressing, they have a link to a runbook and a dashboard, and finally that we aggregate them as much as possible. This means that a lot of the alerts we have won’t trigger for each individual instance of a service that’s affected, but rather once per data center or even globally.</p>
-	<p>For example, we might alert if the rate of HTTP errors in a datacenter is above 1% of all requests. To do that we first need to calculate the overall rate of errors across all instances of our server. For that we would use a <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/" target="_blank">recording rule</a>:</p>
-	<!--kg-card-begin: markdown-->
+	<p>For example, we might alert if the rate of HTTP errors in a datacenter is above 1% of all requests. To do that we first need to calculate the overall rate of errors across all instances of our server. For that we would use a <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/" target="_blank">recording rule</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>- record: job:http_requests_total:rate2m
   expr: sum(rate(http_requests_total[2m])) without(method, status, instance)
 
@@ -88,8 +84,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>First rule will tell Prometheus to calculate per second rate of all requests and sum it across all instances of our server. Second rule does the same but only sums time series with status labels equal to “500”. Both rules will produce new metrics named after the value of the <strong>record</strong> field.</p>
-	<p>Now we can modify our alert rule to use those new metrics we’re generating with our recording rules:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now we can modify our alert rule to use those new metrics we’re generating with our recording rules:</p><!--kg-card-begin: markdown-->
 	<pre><code>- alert: Serving HTTP 500 errors
   expr: job:http_requests_status500:rate2m / job:http_requests_total:rate2m &gt; 0.01
 </code></pre>
@@ -127,8 +122,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
 	<h3 id="putting-it-all-together">Putting it all together</h3>
 	<p>Let’s see how we can use pint to validate our rules as we work on them.</p>
 	<p>We can begin by creating a file called “rules.yml” and adding both recording rules there.</p>
-	<p>The goal is to write new rules that we want to add to Prometheus, but before we actually add those, we want pint to validate it all for us.</p>
-	<!--kg-card-begin: markdown-->
+	<p>The goal is to write new rules that we want to add to Prometheus, but before we actually add those, we want pint to validate it all for us.</p><!--kg-card-begin: markdown-->
 	<pre><code>groups:
 - name: Demo recording rules
   rules:
@@ -139,8 +133,7 @@ http_requests_total{job="myserver", handler="/posts/new", method=”post”, sta
     expr: sum(rate(http_requests_total{status="500"}[2m]) without(method, status, instance)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Next we’ll download the latest version of pint from <a href="https://github.com/cloudflare/pint/releases" target="_blank">GitHub</a> and run check our rules.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Next we’ll download the latest version of pint from <a href="https://github.com/cloudflare/pint/releases" target="_blank">GitHub</a> and run check our rules.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pint lint rules.yml 
 level=info msg="File parsed" path=rules.yml rules=2
 rules.yml:8: syntax error: unclosed left parenthesis (promql/syntax)
@@ -150,8 +143,7 @@ level=info msg="Problems found" Fatal=1
 level=fatal msg="Execution completed with error(s)" error="problems found"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Whoops, we have “sum(rate(...)” and so we’re missing one of the closing brackets. Let’s fix that and try again.</p>
-	<!--kg-card-begin: markdown-->
+	<p>Whoops, we have “sum(rate(...)” and so we’re missing one of the closing brackets. Let’s fix that and try again.</p><!--kg-card-begin: markdown-->
 	<pre><code>groups:
 - name: Demo recording rules
   rules:
@@ -161,22 +153,19 @@ level=fatal msg="Execution completed with error(s)" error="problems found"
   - record: job:http_requests_status500:rate2m
     expr: sum(rate(http_requests_total{status="500"}[2m])) without(method, status, instance)
 </code></pre>
-	<!--kg-card-end: markdown-->
-	<!--kg-card-begin: markdown-->
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<pre><code>$ pint lint rules.yml 
 level=info msg="File parsed" path=rules.yml rules=2
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Our rule now passes the most basic checks, so we know it’s valid. But to know if it works with a real Prometheus server we need to tell pint how to talk to Prometheus. For that we’ll need a config file that defines a Prometheus server we test our rule against, it should be the same server we’re planning to deploy our rule to. Here we’ll be using a test instance running on localhost. Let’s create a “pint.hcl” file and define our Prometheus server there:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Our rule now passes the most basic checks, so we know it’s valid. But to know if it works with a real Prometheus server we need to tell pint how to talk to Prometheus. For that we’ll need a config file that defines a Prometheus server we test our rule against, it should be the same server we’re planning to deploy our rule to. Here we’ll be using a test instance running on localhost. Let’s create a “pint.hcl” file and define our Prometheus server there:</p><!--kg-card-begin: markdown-->
 	<pre><code>prometheus "prom1" {
   uri     = "http://localhost:9090"
   timeout = "1m"
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Now we can re-run our check using this configuration file:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now we can re-run our check using this configuration file:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pint -c pint.hcl lint rules.yml 
 level=info msg="Loading configuration file" path=pint.hcl
 level=info msg="File parsed" path=rules.yml rules=2
@@ -191,24 +180,21 @@ level=fatal msg="Execution completed with error(s)" error="problems found"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Yikes! It’s a test Prometheus instance, and we forgot to collect any metrics from it.</p>
-	<p>Let’s fix that by starting our server locally on port 8080 and configuring Prometheus to collect metrics from it:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’s fix that by starting our server locally on port 8080 and configuring Prometheus to collect metrics from it:</p><!--kg-card-begin: markdown-->
 	<pre><code>scrape_configs:
   - job_name: webserver
     static_configs:
       - targets: ['localhost:8080’]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Let’ re-run our checks once more:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Let’ re-run our checks once more:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pint -c pint.hcl lint rules.yml 
 level=info msg="Loading configuration file" path=pint.hcl
 level=info msg="File parsed" path=rules.yml rules=2
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This time everything works!</p>
-	<p>Now let’s add our alerting rule to our file, so it now looks like this:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now let’s add our alerting rule to our file, so it now looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>groups:
 - name: Demo recording rules
   rules:
@@ -224,8 +210,7 @@ level=info msg="File parsed" path=rules.yml rules=2
     expr: job:http_requests_status500:rate2m / job:http_requests_total:rate2m &gt; 0.01
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And let’s re-run pint once again:</p>
-	<!--kg-card-begin: markdown-->
+	<p>And let’s re-run pint once again:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pint -c pint.hcl lint rules.yml 
 level=info msg="Loading configuration file" path=pint.hcl
 level=info msg="File parsed" path=rules.yml rules=3
@@ -240,8 +225,7 @@ level=info msg="Problems found" Information=2
 	<!--kg-card-end: markdown-->
 	<p>It all works according to pint, and so we now can safely deploy our new rules file to Prometheus.</p>
 	<p>Notice that pint recognised that both metrics used in our alert come from recording rules, which aren’t yet added to Prometheus, so there’s no point querying Prometheus to verify if they exist there.</p>
-	<p>Now what happens if we deploy a new version of our server that renames the “status” label to something else, like “code”?</p>
-	<!--kg-card-begin: markdown-->
+	<p>Now what happens if we deploy a new version of our server that renames the “status” label to something else, like “code”?</p><!--kg-card-begin: markdown-->
 	<pre><code>$ pint -c pint.hcl lint rules.yml 
 level=info msg="Loading configuration file" path=pint.hcl
 level=info msg="File parsed" path=rules.yml rules=3

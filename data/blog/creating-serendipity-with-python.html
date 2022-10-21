@@ -1,8 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>We've been experimenting with breaking up employees into random groups (of size 4) and setting up video hangouts between them. We're doing this to replace the serendipitous meetings that sometimes occur around coffee machines, in lunch lines or while waiting for the printer. And also, we just want people to get to know each other.</p>
 	<p>Which lead to me writing some code. The core of which is <em>divide n elements into groups of at least size g minimizing the size of each group</em>. So, suppose an office has 15 employees in it then it would be divided into three groups of sizes 5, 5, 5; if an office had 16 employees it would be 4, 4, 4, 4; if it had 17 employees it would be 4, 4, 4, 5 and so on.</p>
-	<p>I initially wrote the following code (in Python):</p>
-	<!--kg-card-begin: markdown-->
+	<p>I initially wrote the following code (in Python):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">    groups = [g] * (n//g)
 
     for e in range(0, n % g):
@@ -11,8 +10,7 @@
 	<!--kg-card-end: markdown-->
 	<p>The first line creates <code>n//g</code> (<code>//</code> is integer division) entries of size <code>g</code> (for example, if <code>g == 4</code> and <code>n == 17</code> then <code>groups == [4, 4, 4, 4]</code>). The <code>for</code> loop deals with the 'left over' parts that don't divide exactly into groups of size <code>g</code>. If <code>g == 4</code> and <code>n == 17</code> then there will be one left over element to add to one of the existing <code>[4, 4, 4, 4]</code> groups resulting in <code>[5, 4, 4, 4]</code>.</p>
 	<p>The <code>e % len(groups)</code> is needed because it's possible that there are more elements left over after dividing into equal sized groups than there are entries in <code>groups</code>. For example, if <code>g == 4</code> and <code>n == 11</code> then <code>groups</code> is initially set to <code>[4, 4]</code> with three left over elements that have to be distributed into just two entries in <code>groups</code>.</p>
-	<p>So, that code works and here's the output for various sizes of <code>n</code> (and <code>g == 4</code>):</p>
-	<!--kg-card-begin: markdown-->
+	<p>So, that code works and here's the output for various sizes of <code>n</code> (and <code>g == 4</code>):</p><!--kg-card-begin: markdown-->
 	<pre><code>    4 [4]
     5 [5]
     6 [6]
@@ -29,8 +27,7 @@
     17 [5, 4, 4, 4]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>But the code irritated me because I felt there must be a simple formula to work out how many elements should be in each group. After noodling on this problem I decided to do something that's often helpful... make the problem simple and naive, or, at least, the solution simple and naive, and so I wrote this code:</p>
-	<!--kg-card-begin: markdown-->
+	<p>But the code irritated me because I felt there must be a simple formula to work out how many elements should be in each group. After noodling on this problem I decided to do something that's often helpful... make the problem simple and naive, or, at least, the solution simple and naive, and so I wrote this code:</p><!--kg-card-begin: markdown-->
 	<pre><code>    groups = [0] * (n//g)
 
     for i in range(n):
@@ -40,8 +37,7 @@
 	<p>This is a really simple implementation. I don't like it because it loops <code>n</code> times but it helps visualize something. Imagine that <code>g == 4</code> and <code>n == 17</code>. This loop 'fills up' each entry in <code>groups</code> like this (each square is an entry in <code>groups</code> and numbers in the squares are values of <code>i</code> for which that entry was incremented by the loop).</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/N-elements-G-sized-groups.png" class="kg-image"></figure>
 	<p>So groups ends up being <code>[5, 4, 4, 4]</code>. &nbsp;What this helps see is that the number of times <code>groups[i]</code> is incremented depends on the number of times the <code>for</code> loop 'loops around' on the <code>i</code>th element. And that's something that's easy to calculate without looping.</p>
-	<p>So this means that the code is now simply:</p>
-	<!--kg-card-begin: markdown-->
+	<p>So this means that the code is now simply:</p><!--kg-card-begin: markdown-->
 	<pre><code>    groups = [1+max(0,n-(i+1))//(n//g) for i in range(n//g)]
 </code></pre>
 	<!--kg-card-end: markdown-->

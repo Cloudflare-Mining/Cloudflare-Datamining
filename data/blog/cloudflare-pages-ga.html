@@ -25,12 +25,10 @@
 	<p><strong>_redirects file support</strong><br>Websites are living projects. As you make updates to your product names, blog post titles, and site layouts, your URLs are bound to change as well. The challenge is not letting those changes leave dead URLs behind for your users to stumble over.</p>
 	<p>To avoid leaving behind a trail of dead URLs, you should create redirects that automatically lead the user to your content’s new home. The challenge with creating redirects is coordinating the code change that changes the URL in tandem with the creation of the redirect.</p>
 	<p>You can now do both with one swift commit.</p>
-	<p>By adding a <code>_redirects</code> file to the <a href="https://developers.cloudflare.com/pages/platform/build-configuration" target="_blank">build output directory</a> for your project, you can easily redirect users to the right URL. Just add the redirects into the file in the following format:</p>
-	<!--kg-card-begin: markdown-->
+	<p>By adding a <code>_redirects</code> file to the <a href="https://developers.cloudflare.com/pages/platform/build-configuration" target="_blank">build output directory</a> for your project, you can easily redirect users to the right URL. Just add the redirects into the file in the following format:</p><!--kg-card-begin: markdown-->
 	<p><code>[source] [destination] [http code]</code></p>
 	<!--kg-card-end: markdown-->
-	<p>Example:</p>
-	<!--kg-card-begin: markdown-->
+	<p>Example:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-filename:_redirects">/home / 301
 /contact-me /contact 301
 /blog https://www.ghost.org 301
