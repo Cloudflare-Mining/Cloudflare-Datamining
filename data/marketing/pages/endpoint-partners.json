@@ -7197,11 +7197,21 @@
 						"textColor": null,
 						"linkText": null,
 						"linkUrl": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"title": "Our Partners",
 						"copy": null,
 						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_crowdstrike.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/microsoft_intune.png"
+								}
+							},
 							{
 								"file": {
 									"publicURL": "[path]/SentinelOne_logo_high_res.png"
@@ -7214,7 +7224,7 @@
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_crowdstrike.svg"
+									"publicURL": "[path]/Uptycs_logo.png"
 								}
 							},
 							{
@@ -7225,9 +7235,11 @@
 						],
 						"logoListAssetFile": null,
 						"logoUrlList": [
+							"https://www.cloudflare.com/partners/technology-partners/crowdstrike/endpoint-partners/",
+							"https://www.cloudflare.com/partners/technology-partners/microsoft/intune/",
 							"https://www.cloudflare.com/partners/technology-partners/sentinelone/",
 							"https://www.cloudflare.com/partners/technology-partners/tanium/",
-							"https://www.cloudflare.com/partners/technology-partners/crowdstrike/endpoint-partners/",
+							"https://www.cloudflare.com/partners/technology-partners/uptycs/",
 							"https://www.cloudflare.com/partners/technology-partners/vmware/endpoint-partners/"
 						]
 					},
