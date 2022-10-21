@@ -684,13 +684,19 @@ This feature requires additional configuration at your web server. Refer to our 
 		card_title: "Total TLS",
 		card_description: "Cloudflare will issue individual certificates for every proxied hostname. These certificates will protect proxied hostnames that are not covered by the Universal certificate.",
 		card_switch_ca_note: "Select your Certificate Authority preference to enable Total TLS. Once this feature is enabled, the Certificate Authority cannot be changed without disabling the feature.",
+		card_enabling_note: "Please allow some time for certificates to be provisioned for each of your DNS records. You can monitor the progress via the Edge Certificates table.",
 		disable_modal_title: "Disable Total TLS",
 		disable_modal_description: "Immediately after confirming the downgrade, your certificates will be deleted and no longer served to visitors.",
 		disable_modal_confirmation: "I understand that any hostnames not covered by my Universal SSL or uploaded certificates will no longer be reachable over HTTPS once I disable this feature.",
 		purchase_acm_link: "To enable Total TLS, purchase Advanced Certificate Manager.",
 		certificate_authority_label: "Select a Certificate Authority",
 		success_enabled: "Total TLS enabled",
-		success_disabled: "Total TLS disabled"
+		success_disabled: "Total TLS disabled",
+		status: {
+			enabled: "Enabled",
+			disabled: "Disabled",
+			on_hold: "On Hold"
+		}
 	},
 	general_checkbox_confirmation: "I understand",
 	general_acknowledgement_modal_title: "Acknowledgement",
