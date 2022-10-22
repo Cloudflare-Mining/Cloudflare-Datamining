@@ -112,6 +112,14 @@ const htmlCssUrls = [
 		name: 'prod',
 		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
 	},
+	{
+		name: 'staging-compact',
+		url: `https://challenges-staging.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
+	},
+	{
+		name: 'prod-compact',
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
+	},
 ];
 for(const htmlCss of htmlCssUrls){
 	const htmlFile = path.resolve(dir, `widget-${htmlCss.name}.html`);
