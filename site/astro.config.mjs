@@ -16,4 +16,15 @@ export default defineConfig({
 			}],
 		}),
 	],
+	vite: {
+		build: {
+			rollupOptions: {
+				output: {
+					entryFileNames: "assets/[name].[hash].js",
+				},
+			},
+			assetsInlineLimit: '0',
+			cssCodeSplit: false,
+		},
+	},
 });
