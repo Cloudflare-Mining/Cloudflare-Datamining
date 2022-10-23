@@ -70,7 +70,7 @@
 };
 </code></pre>
 	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/header/src/entry.ssr.tsx" target="_blank"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx" target="_blank"><b>cloud-gallery/header/src/entry.ssr.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank">renderResponse</a>()</code> function is a helper we wrote that server-side renders the fragment and streams it into the body of a <code>Response</code> that we return from the <code>fetch()</code> handler.</p>
 	<p>The header fragment serves its own JavaScript and image assets from its Cloudflare Worker. We configure <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank">Wrangler</a> to upload these assets to Cloudflare and serve them from our network.</p>
 	<h2 id="implementing-fragment-composition">Implementing fragment composition</h2>
@@ -87,7 +87,7 @@
 &lt;/div&gt;
 </code></pre>
 	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
-	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/cloud-gallery/cloud-gallery/body/src/root.tsx" target="_blank"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx" target="_blank"><b>cloud-gallery/body/src/root.tsx</b></a></small></center><!--kg-card-end: html-->
 	<p>The <code>FragmentPlaceholder</code> component is responsible for making a request for the fragment and piping the fragment stream into the output stream.</p>
 	<h3 id="proxying-asset-requests">Proxying asset requests</h3>
 	<p>As mentioned earlier, fragments can host their own assets, especially client-side JavaScript files. When a request for an asset arrives at the parent fragment, it needs to know which child fragment should receive the request.</p>
