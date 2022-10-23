@@ -192,7 +192,7 @@
 		}
 		return {
 			render: function(t, n) {
-				var R, M, le, P, N, W;
+				var R, M, P, N, W;
 				let o;
 				if (typeof t == "string") try {
 						if (o = document.querySelector(t), !o) {
