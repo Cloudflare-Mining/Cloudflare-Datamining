@@ -1,0 +1,47 @@
+{
+	"name": "@cloudflare/next-on-pages",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.1.0",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"astring": "^1.8.3",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.1",
+				"@types/cookie": "^0.5.1",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4",
+				"vitest": "^0.24.3"
+			},
+			"peerDependencies": {
+				"vercel": "^28.0.2"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-kU4p+FMHCfTHeKK4Z+cagRKaoWLcNM4RpsTgxBqKxKfC3meRZ0d0L9A2MCkuzhx7ev0tPF+ODgFEQnTRN1CgcQ==",
+				"shasum": "ab93f17927f19f79fa851db68251e862997b69b3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.1.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 237977,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFWm5r2IC2B+5JWrWUbhF7cRyUJqfWfphNj5l9d1LmBLAiEA9AkLwMdQJvO4SEiqGLy6Zb+pxS/drp6fIkypW5Zwd6Q="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjVoEgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqapBAAjfzeJsmCvyILtzbK6jrzJofzsFvX5Ko0odCSS6sJWNuD8zw5\r\n8TYT3FKhaeYSSC6ttMUuduaA3v3YtBcd1MA6hezq3D05LscTfrHX4YV9LNpy\r\nEPedaxQCQOCEUdATDmIIrFScl+mbgaAia7wkZFYHysHbs44PzfdinjQg6y+e\r\nN5YCgpHYBaAdzHZMtVWTVY/ZC7Dhuz6/XK3b1u1hNSF/BSTwmoSDBIveaar1\r\nm3npIls3NB9bPXph2B5mqx6pgJ3CyIHJTqMEJNFE0qUxrx+wKDVpgzOXbS4w\r\nYnVewqQEEpO4KCACDAG8CB5oYVkznO/5Ojr3jPtlPTXgrtP2kxK/Ep1agE8j\r\ns7H+N48buJdur+ituOgtt1fb8bdvJ0isFjDh/TKpL+fMNbDth9ikpFYScs2k\r\nOdKVhsFV+bnPoL8E/Ud3t1GsL9+oM0w9JTWi85tFxrVTqLILhjKGrNXql1Hp\r\n08dUBzhTxeHpWPj7Kk9ze3Lud1Rq2yllsJzcrIH+x73JsnksYGIY5cdQBQSc\r\nYO3fyuH+zKpk/oKaghgADTxPYm16OeGMZY0GUl8vVQPQyW4Q4LAfeuFEuj0o\r\n48FYwmrwdvuplr1sqq0Ime5wYVn6OtDV4gizyO4jkh7nanPJTrmLt5EYutCL\r\nkODX/OJopUhc7+dR27chyeS3Vtcvte85xvw=\r\n=eSfN\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}
