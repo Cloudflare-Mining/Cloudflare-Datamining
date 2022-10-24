@@ -1019,7 +1019,7 @@
 	"traffic.waiting_rooms.bypass_rules.preview.title": "Bypass Waiting Room Rules",
 	"traffic.waiting_rooms.bypass_rules.preview.empty": "You currently have no Bypass Waiting Room rules running for this waiting room.",
 	"traffic.waiting_rooms.bypass_rules.preview.summary": "You currently have %{smart_count} bypass rule running for this waiting room. |||| You currently have %{smart_count} bypass rules running for this waiting room.",
-	"traffic.waiting_rooms.bypass_rules.preview.warning": "Please be advised that the waiting room will not apply to all traffic that matches the expressions written for bypass rules. No waiting room features, including but not limited to, Event pre-queuing, Reject queueing method, or Queue-all will apply to this traffic.",
+	"traffic.waiting_rooms.bypass_rules.preview.warning": "Please be advised that the waiting room will not apply to all traffic that matches the expressions written for bypass rules and will not be counted as active users. No waiting room features, including but not limited to, Event pre-queuing, Reject queueing method, or Queue-all will apply to this traffic.",
 	"traffic.waiting_rooms.bypass_rules.preview.validation": "Rules are running",
 	"traffic.waiting_rooms.bypass_rules.preview.link": "Manage rules",
 	"traffic.waiting_rooms.bypass_rules.page.title": "%{waitingRoomName} Waiting Room",
@@ -1035,7 +1035,7 @@
 	"traffic.waiting_rooms.bypass_rules.delete.description": "This cannot be undone",
 	"traffic.waiting_rooms.bypass_rules.edit.title": "Edit Bypass Waiting Room Rule for %{waitingRoomName}",
 	"traffic.waiting_rooms.bypass_rules.form.title": "Waiting room details",
-	"traffic.waiting_rooms.bypass_rules.form.warning": "Please be aware that the waiting room will not be applied to the traffic that matches the expression written for this rule. Please be advised that the waiting room will not apply to all traffic that matches the expressions written for bypass rules. No waiting room features, including but not limited to, Event pre-queuing, Reject queueing method, or Queue-all will apply to this traffic. For more information, refer to our documentation about the <0>Waiting Room.</0>",
+	"traffic.waiting_rooms.bypass_rules.form.warning": "Please be advised that the waiting room will not apply to all traffic that matches the expressions written for this rule and will not be counted as active users. No waiting room features, including but not limited to, Event pre-queuing, Reject queueing method, or Queue-all will apply to this traffic. For more information, refer to our documentation about the <0>Waiting Room.</0>",
 	"traffic.waiting_rooms.bypass_rules.form.bypass.title": "Bypass Waiting Room",
 	"traffic.waiting_rooms.bypass_rules.form.bypass.subtitle": "Allow this traffic to bypass the waiting room completely."
 }
