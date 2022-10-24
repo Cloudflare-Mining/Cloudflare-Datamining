@@ -92846,7 +92846,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -92870,30 +92870,136 @@
 																"type": "object",
 																"properties": {
 																	"id": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/id"
+																		"type": "string",
+																		"description": "The ID for the packet capture.",
+																		"example": "66802ca5668e47a2b82c2e6746e45037",
+																		"minLength": 32,
+																		"maxLength": 32
 																	},
 																	"submitted": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/submitted"
+																		"type": "string",
+																		"description": "The RFC 3339 timestamp when the packet capture was created.",
+																		"example": "2020-01-01T08:00:00+00:00"
 																	},
 																	"filter_v1": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/filter_v1"
+																		"type": "object",
+																		"description": "The packet capture filter. When this field is empty, all packets are captured.",
+																		"properties": {
+																			"destination_address": {
+																				"type": "string",
+																				"description": "The destination IP address of the packet.",
+																				"example": "1.2.3.4"
+																			},
+																			"source_address": {
+																				"type": "string",
+																				"description": "The source IP address of the packet.",
+																				"example": "1.2.3.4"
+																			},
+																			"source_port": {
+																				"type": "number",
+																				"description": "The source port of the packet.",
+																				"example": 123
+																			},
+																			"destination_port": {
+																				"type": "number",
+																				"description": "The destination port of the packet.",
+																				"example": 80
+																			},
+																			"protocol": {
+																				"type": "number",
+																				"description": "The protocol number of the packet.",
+																				"example": 6
+																			}
+																		}
 																	},
 																	"time_limit": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/time_limit"
+																		"type": "number",
+																		"example": 300,
+																		"description": "The packet capture duration in seconds.",
+																		"minimum": 1,
+																		"maximum": 300
 																	},
 																	"status": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/status"
+																		"type": "string",
+																		"description": "The status of the packet capture request.",
+																		"example": "success",
+																		"enum": [
+																			"unknown",
+																			"success",
+																			"pending",
+																			"running",
+																			"conversion_pending",
+																			"conversion_running",
+																			"complete",
+																			"failed"
+																		]
 																	},
 																	"type": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/type"
+																		"type": "string",
+																		"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+																		"example": "simple",
+																		"enum": [
+																			"simple",
+																			"full"
+																		]
 																	},
 																	"system": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/system"
+																		"type": "string",
+																		"description": "The system used to collect packet captures.",
+																		"example": "magic-transit",
+																		"enum": [
+																			"magic-transit"
+																		]
 																	}
 																}
 															},
 															{
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema"
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/id"
+																	},
+																	"submitted": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/submitted"
+																	},
+																	"filter_v1": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/filter_v1"
+																	},
+																	"time_limit": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/time_limit"
+																	},
+																	"status": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/status"
+																	},
+																	"error_message": {
+																		"type": "string",
+																		"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
+																		"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
+																	},
+																	"type": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/type"
+																	},
+																	"system": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/system"
+																	},
+																	"byte_limit": {
+																		"type": "number",
+																		"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+																		"minimum": 1,
+																		"maximum": 1000000000,
+																		"example": 500000
+																	},
+																	"colo_name": {
+																		"type": "string",
+																		"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
+																		"example": "ord02"
+																	},
+																	"destination_conf": {
+																		"type": "string",
+																		"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+																		"example": "s3://pcaps-bucket?region=us-east-1"
+																	}
+																}
 															}
 														]
 													}
@@ -92920,7 +93026,7 @@
 				}
 			},
 			"post": {
-				"summary": "Create Full PCAP request",
+				"summary": "Create PCAP request",
 				"description": "Create new PCAP request for account.",
 				"parameters": [
 					{
@@ -92934,117 +93040,29 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Full PCAP request response",
+						"description": "Create PCAP request response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "string",
-											"description": "The ID for the packet capture.",
-											"example": "66802ca5668e47a2b82c2e6746e45037",
-											"minLength": 32,
-											"maxLength": 32
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
 										},
-										"submitted": {
-											"type": "string",
-											"description": "The RFC 3339 timestamp when the packet capture was created.",
-											"example": "2020-01-01T08:00:00+00:00"
-										},
-										"filter_v1": {
-											"type": "object",
-											"description": "The packet capture filter. When this field is empty, all packets are captured.",
+										{
 											"properties": {
-												"destination_address": {
-													"type": "string",
-													"description": "The destination IP address of the packet.",
-													"example": "1.2.3.4"
-												},
-												"source_address": {
-													"type": "string",
-													"description": "The source IP address of the packet.",
-													"example": "1.2.3.4"
-												},
-												"source_port": {
-													"type": "number",
-													"description": "The source port of the packet.",
-													"example": 123
-												},
-												"destination_port": {
-													"type": "number",
-													"description": "The destination port of the packet.",
-													"example": 80
-												},
-												"protocol": {
-													"type": "number",
-													"description": "The protocol number of the packet.",
-													"example": 6
+												"result": {
+													"anyOf": [
+														{
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0"
+														},
+														{
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/1"
+														}
+													]
 												}
 											}
-										},
-										"time_limit": {
-											"type": "number",
-											"example": 300,
-											"description": "The packet capture duration in seconds.",
-											"minimum": 1,
-											"maximum": 300
-										},
-										"status": {
-											"type": "string",
-											"description": "The status of the packet capture request.",
-											"example": "success",
-											"enum": [
-												"unknown",
-												"success",
-												"pending",
-												"running",
-												"conversion_pending",
-												"conversion_running",
-												"complete",
-												"failed"
-											]
-										},
-										"error_message": {
-											"type": "string",
-											"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures.",
-											"example": "No packets matched the filter in the time limit given. Please modify the filter or try again."
-										},
-										"type": {
-											"type": "string",
-											"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
-											"example": "simple",
-											"enum": [
-												"simple",
-												"full"
-											]
-										},
-										"system": {
-											"type": "string",
-											"description": "The system used to collect packet captures.",
-											"example": "magic-transit",
-											"enum": [
-												"magic-transit"
-											]
-										},
-										"byte_limit": {
-											"type": "number",
-											"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
-											"minimum": 1,
-											"maximum": 1000000000,
-											"example": 500000
-										},
-										"colo_name": {
-											"type": "string",
-											"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
-											"example": "ord02"
-										},
-										"destination_conf": {
-											"type": "string",
-											"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-											"example": "s3://pcaps-bucket?region=us-east-1"
 										}
-									}
+									]
 								}
 							}
 						}
@@ -93067,44 +93085,74 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"type": "object",
-								"required": [
-									"time_limit",
-									"type",
-									"system",
-									"colo_name",
-									"destination_conf"
-								],
-								"properties": {
-									"filter_v1": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/filter_v1"
+								"anyOf": [
+									{
+										"type": "object",
+										"required": [
+											"time_limit",
+											"packet_limit",
+											"type",
+											"system"
+										],
+										"properties": {
+											"filter_v1": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/filter_v1"
+											},
+											"time_limit": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/time_limit"
+											},
+											"packet_limit": {
+												"type": "number",
+												"example": 10000,
+												"description": "The limit of packets contained in a packet capture.",
+												"minimum": 1,
+												"maximum": 10000
+											},
+											"type": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/type"
+											},
+											"system": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/system"
+											}
+										}
 									},
-									"time_limit": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/time_limit"
-									},
-									"packet_limit": {
-										"type": "number",
-										"example": 10000,
-										"description": "The limit of packets contained in a packet capture.",
-										"minimum": 1,
-										"maximum": 10000
-									},
-									"type": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/type"
-									},
-									"system": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/system"
-									},
-									"byte_limit": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/byte_limit"
-									},
-									"colo_name": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/colo_name"
-									},
-									"destination_conf": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/responses/200/content/application~1json/schema/properties/destination_conf"
+									{
+										"type": "object",
+										"required": [
+											"time_limit",
+											"type",
+											"system",
+											"colo_name",
+											"destination_conf"
+										],
+										"properties": {
+											"filter_v1": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/filter_v1"
+											},
+											"time_limit": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/time_limit"
+											},
+											"packet_limit": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/post/requestBody/content/application~1json/schema/anyOf/0/properties/packet_limit"
+											},
+											"type": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/type"
+											},
+											"system": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/system"
+											},
+											"byte_limit": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/1/properties/byte_limit"
+											},
+											"colo_name": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/1/properties/colo_name"
+											},
+											"destination_conf": {
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/1/properties/destination_conf"
+											}
+										}
 									}
-								}
+								]
 							}
 						}
 					}
@@ -93121,7 +93169,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "69cd1e104af3e6ed3cb344f263fd0d5a"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					},
 					{
@@ -93129,7 +93177,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -93316,7 +93364,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "69cd1e104af3e6ed3cb344f263fd0d5a"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					},
 					{
@@ -93324,7 +93372,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -93360,7 +93408,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -93380,6 +93428,13 @@
 													"type": "array",
 													"items": {
 														"type": "object",
+														"required": [
+															"id",
+															"status",
+															"submitted",
+															"destination_conf",
+															"filename"
+														],
 														"properties": {
 															"id": {
 																"type": "string",
@@ -93387,6 +93442,16 @@
 																"example": "9883874ecac311ec8475433579a6bf5f",
 																"minLength": 32,
 																"maxLength": 32
+															},
+															"status": {
+																"type": "string",
+																"description": "The status of the ownership challenge. Can be pending, success or failed.",
+																"example": "success",
+																"enum": [
+																	"pending",
+																	"success",
+																	"failed"
+																]
 															},
 															"submitted": {
 																"type": "string",
@@ -93399,7 +93464,7 @@
 																"example": "2020-01-01T08:00:00+00:00"
 															},
 															"destination_conf": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps~1ownership/post/responses/200/content/application~1json/schema/properties/destination_conf"
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps~1ownership/post/requestBody/content/application~1json/schema/properties/destination_conf"
 															},
 															"filename": {
 																"type": "string",
@@ -93450,14 +93515,18 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "object",
-									"properties": {
-										"destination_conf": {
-											"type": "string",
-											"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-											"example": "s3://pcaps-bucket?region=us-east-1"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps~1ownership/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items"
+												}
+											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -93478,7 +93547,21 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"destination_conf"
+								],
+								"properties": {
+									"destination_conf": {
+										"type": "string",
+										"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+										"example": "s3://pcaps-bucket?region=us-east-1"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -93493,7 +93576,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -93503,19 +93586,60 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "object",
-									"properties": {
-										"destination_conf": {
-											"type": "string",
-											"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
-											"example": "s3://pcaps-bucket?region=us-east-1"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 										},
-										"ownership_challenge": {
-											"type": "string",
-											"description": "The ownership challenge filename stored in the bucket.",
-											"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"required": [
+														"id",
+														"status",
+														"submitted",
+														"destination_conf",
+														"filename"
+													],
+													"properties": {
+														"id": {
+															"type": "string",
+															"description": "The bucket ID associated with the packet captures API.",
+															"example": "9883874ecac311ec8475433579a6bf5f",
+															"minLength": 32,
+															"maxLength": 32
+														},
+														"status": {
+															"type": "string",
+															"description": "The status of the ownership challenge. Can be pending, success or failed.",
+															"example": "success",
+															"enum": [
+																"pending",
+																"success",
+																"failed"
+															]
+														},
+														"submitted": {
+															"type": "string",
+															"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+															"example": "2020-01-01T08:00:00+00:00"
+														},
+														"validated": {
+															"type": "string",
+															"description": "The RFC 3339 timestamp when the bucket was validated.",
+															"example": "2020-01-01T08:00:00+00:00"
+														},
+														"destination_conf": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps~1ownership~1validate/post/requestBody/content/application~1json/schema/properties/destination_conf"
+														},
+														"filename": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pcaps~1ownership~1validate/post/requestBody/content/application~1json/schema/properties/ownership_challenge"
+														}
+													}
+												}
+											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -93536,22 +93660,42 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"destination_conf",
+									"ownership_challenge"
+								],
+								"properties": {
+									"destination_conf": {
+										"type": "string",
+										"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+										"example": "s3://pcaps-bucket?region=us-east-1"
+									},
+									"ownership_challenge": {
+										"type": "string",
+										"description": "The ownership challenge filename stored in the bucket.",
+										"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		},
-		"/accounts/{account_identifier}/pcaps/ownership/{ownership_identifier}": {
+		"/accounts/{account_identifier}/pcaps/ownership/{identifier}": {
 			"delete": {
 				"summary": "Delete buckets for full packet captures",
 				"description": "Deletes buckets added to the packet captures API.",
 				"parameters": [
 					{
-						"name": "ownership_identifier",
+						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "b2df3c4fcfc84ea49a28df6d55ce16cb"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					},
 					{
@@ -93559,7 +93703,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "01a7362d577a6c3019a474fd6f485823"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
