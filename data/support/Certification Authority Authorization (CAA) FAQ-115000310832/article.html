@@ -33,17 +33,11 @@
 </div>
 <hr>
 <h2 id="h_645975761191543365946939">What records are added to keep Universal SSL enabled?</h2>
-<p>The following DNS records are automatically set if you continue to use Cloudflare’s free Universal SSL certificates:</p>
+<p>If you use Cloudflare’s free Universal SSL certificates, you will see <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/caa-records#caa-records-added-by-cloudflare">several CAA records added by Cloudflare</a>.</p>
 <p></p>
-<pre>example.com. IN CAA 0 issue "comodoca.com"
-example.com. IN CAA 0 issue "digicert.com"
-example.com. IN CAA 0 issue "letsencrypt.org"
-example.com. IN CAA 0 issuewild "comodoca.com"
-example.com. IN CAA 0 issuewild "digicert.com"
-example.com. IN CAA 0 issuewild "letsencrypt.org"</pre>
 <div class="cf-sidebar-2 cf-warning">Do not use the <em>Only allow wildcards</em> option for the root record (which returns only <em>issuewild</em> records) for any domain that will use Cloudflare's Universal SSL.
 </div>
-<p>Used alone, <i>issuewild</i> only permits wildcard issuance.  Therefore, Cloudflare cannot add your root domain to the certificate unless you specify the <i>Allow wildcards and specific hostnames</i> option in the <b>Tag</b> dropdown:</p><img src="https://images.ctfassets.net/slt3lc6tev37/30YTDLuQvb4hGRxDKbXZVn/eb6378cc614b118ac4980749edec924f/dns_ui_updates_caa_records.png" alt="screenshot of the CAA records for comodoca.com in the Cloudflare dashboard tagged to only allow specific hostnames">
+<p>Used alone, <i>issuewild</i> only permits wildcard issuance.  Therefore, Cloudflare cannot add your root domain to the certificate unless you specify the <i>Allow wildcards and specific hostnames</i> option in the <b>Tag</b> dropdown:</p><img src="https://images.ctfassets.net/slt3lc6tev37/30YTDLuQvb4hGRxDKbXZVn/eb6378cc614b118ac4980749edec924f/dns_ui_updates_caa_records.png" alt="To add your root domain to the certificate, make sure the Tag dropdown specifies to allow wildcards and specific hostnames.">
 <p></p>
 <hr>
 <h2 id="h_217748692231543365960592">What happens when Universal SSL is disabled?</h2>
