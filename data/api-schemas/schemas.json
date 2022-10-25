@@ -67965,6 +67965,9 @@
 														},
 														"login_design": {
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/login_design"
+														},
+														"is_ui_read_only": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/is_ui_read_only"
 														}
 													}
 												}
@@ -68062,6 +68065,11 @@
 												"example": "This is an example description."
 											}
 										}
+									},
+									"is_ui_read_only": {
+										"type": "boolean",
+										"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+										"example": "false"
 									}
 								}
 							}
@@ -68114,6 +68122,9 @@
 									},
 									"login_design": {
 										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/login_design"
+									},
+									"is_ui_read_only": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/is_ui_read_only"
 									}
 								}
 							}
@@ -73073,6 +73084,9 @@
 														},
 														"login_design": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/login_design"
+														},
+														"is_ui_read_only": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/is_ui_read_only"
 														}
 													}
 												}
@@ -73170,6 +73184,11 @@
 												"example": "This is an example description."
 											}
 										}
+									},
+									"is_ui_read_only": {
+										"type": "boolean",
+										"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
+										"example": "false"
 									}
 								}
 							}
@@ -73222,6 +73241,9 @@
 									},
 									"login_design": {
 										"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/login_design"
+									},
+									"is_ui_read_only": {
+										"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1organizations/post/requestBody/content/application~1json/schema/properties/is_ui_read_only"
 									}
 								}
 							}
