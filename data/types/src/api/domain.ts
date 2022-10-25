@@ -83,6 +83,19 @@ export const DomainFees = eg.object({
 
 export type DomainFees = TypeFromCodec<typeof DomainFees>;
 
+export enum DomainProtectionStatus {
+  ONBOARDING_INITIATED = 'Onboarding initiated',
+  ONBOARDED = 'Onboarded',
+  PENDING_REGISTRY_LOCK = 'Pending registry lock',
+  PENDING_REGISTRY_UNLOCK = 'Pending registry unlock',
+  REGISTRY_UNLOCKED = 'Registry unlocked',
+  LOCKED = 'Locked',
+  FAILED_TO_LOCK = 'Failed to lock',
+  PENDING_UNLOCK_APPROVAL = 'Pending unlock approval',
+  UNLOCKED = 'Unlocked',
+  OFFBOARDED = 'Offboarded'
+}
+
 export const Domain = eg.object({
   administrator_contact: eg.unknown.optional,
   auto_renew: eg.boolean.optional,
@@ -95,6 +108,9 @@ export const Domain = eg.object({
   created_at: eg.string.optional,
   created_registrar: eg.string.optional,
   current_registrar: eg.string.optional,
+  domain_protection_services: eg.object({
+    status: eg.enum(DomainProtectionStatus).optional
+  }).optional,
   dns: eg.array(eg.any).optional,
   ds_records: eg.array(eg.any).optional,
   expires_at: eg.string.optional,
@@ -132,6 +148,19 @@ export const DomainExists = eg.object({
 });
 
 export type DomainExists = TypeFromCodec<typeof DomainExists>;
+
+export const GetDomainsResult = eg.object({
+  result: eg.array(Domain),
+  result_info: eg.object({
+    count: eg.number,
+    page: eg.number,
+    per_page: eg.number,
+    total_count: eg.number
+  }),
+  errors: eg.array(eg.string),
+  messages: eg.array(eg.string),
+  success: eg.boolean
+});
 
 export const DomainSearchResult = eg.object({
   check_result: eg.union([
