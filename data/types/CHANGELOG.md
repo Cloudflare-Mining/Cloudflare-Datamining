@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.17.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.16.11...@cloudflare/types@6.17.0) (2022-10-25)
+
+
+### Features
+
+* **stratus:** BILL-16147 EnablementCard enhancements, Image Resizing En ([8bf2033](http://stash.cfops.it:7999/fe/stratus/commits/8bf2033))
+* **stratus:** BILL-16208 Add Ent Self Serve to Waiting Room ([ebbd836](http://stash.cfops.it:7999/fe/stratus/commits/ebbd836))
+
+
+
+
+
 ## [6.16.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.16.10...@cloudflare/types@6.16.11) (2022-10-25)
 
 **Note:** Version bump only for package @cloudflare/types
