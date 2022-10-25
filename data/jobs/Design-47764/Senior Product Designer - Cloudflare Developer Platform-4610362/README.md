@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong><em>This role is US Remote except for the following states: CA, NY, CT, MA, NJ, WA, DE and DC.</em></strong></p>
+<p><strong><em>This role is US Remote.</em></strong></p>
 <p><strong>About our team:</strong></p>
 <p><span style="font-weight: 400;">We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</span></p>
 <p><span style="font-weight: 400;">Your work will impact and influence the developer experience of a growing platform of developer products including Cloudflare Pages, Workers, KV, R2, Durable Objects, and more. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</span></p>
