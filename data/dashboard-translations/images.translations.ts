@@ -99,7 +99,7 @@ You will only be billed for number of images served.`
 		}
 	},
 	curl_command: "cURL command",
-	edit_image_custom_id_error: "Images with a custom ID can not be private",
+	edit_image_custom_id_error: "Images with a custom IDs cannot be set to private",
 	drop_here_or_browse: "Drop images here or click to browse",
 	image_url: "Image URL",
 	video_url: "Video URL",
