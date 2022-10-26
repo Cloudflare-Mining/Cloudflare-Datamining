@@ -183,7 +183,11 @@ export const ProductPlanId = eg.union([
   eg.literal('ssl_for_saas_advanced_tryout'),
   eg.literal('SSL_FOR_SAAS_ADVANCED_TRYOUT'),
   eg.literal('WAITING_ROOMS_ADV_TRYOUT'),
-  eg.literal('waiting_rooms_adv_tryout')
+  eg.literal('waiting_rooms_adv_tryout'),
+  eg.literal('web3_ethereum_ent_tryout'),
+  eg.literal('WEB3_ETHEREUM_ENT_TRYOUT'),
+  eg.literal('web3_ipfs_ent_tryout'),
+  eg.literal('WEB3_IPFS_ENT_TRYOUT')
 ]);
 export type ProductPlanId = TypeFromCodec<typeof ProductPlanId>;
 
