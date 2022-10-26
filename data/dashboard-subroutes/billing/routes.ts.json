@@ -6,17 +6,22 @@
 	"/[id]/ssl-tls/custom-hostnames",
 	"/[id]/traffic",
 	"/accounts/[id]/bulk/subscriptions",
+	"/billing",
+	"/billing/billable-usage",
 	"/billing/checkout",
 	"/billing/checkout/complete-purchase",
 	"/billing/checkout/confirmation",
 	"/billing/enterprise-ss",
 	"/billing/enterprise-ss/agreement",
 	"/billing/enterprise-ss/select-payment",
+	"/billing/invoices",
 	"/billing/pay-outstanding-balance",
 	"/billing/pay-outstanding-balance/confirm",
 	"/billing/payment-info",
 	"/billing/payment-info/manage",
 	"/billing/purchase",
 	"/billing/purchase/[id]/*",
-	"/billing/purchase/[id]/[id]/*"
+	"/billing/purchase/[id]/[id]/*",
+	"/billing/subscriptions",
+	"/billing/subscriptions/cancel"
 ]
