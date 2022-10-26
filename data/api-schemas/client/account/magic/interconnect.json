@@ -20,7 +20,7 @@
 			"html_id": "magic-interconnects-list-interconnects",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnects\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"pni_ord\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for Interconnect to ORD\",\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"gre\": {\n          \"cloudflare_endpoint\": \"203.0.113.1\",\n          \"customer_endpoint\": \"203.0.113.1\",\n          \"is_colo_cast\": true\n        },\n        \"mtu\": 1476,\n        \"colo_name\": \"pni_ord\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnects\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"pni_ord\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for Interconnect to ORD\",\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"gre\": {\n          \"cloudflare_endpoint\": \"203.0.113.1\",\n          \"customer_endpoint\": \"203.0.113.1\"\n        },\n        \"mtu\": 1476,\n        \"colo_name\": \"pni_ord\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "List interconnect Details",
@@ -38,7 +38,7 @@
 			"html_id": "magic-interconnects-list-interconnect-details",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects/:tunnel_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"is_colo_cast\": true\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\"\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Update interconnect",
@@ -55,7 +55,7 @@
 			},
 			"html_id": "magic-interconnects-update-interconnect",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects/:tunnel_identifier?validate_only=:validate_only",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects/01a7362d577a6c3019a474fd6f485823?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mtu\":1476,\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for Interconnect to ORD\",\"gre\":{\"cloudflare_endpoint\":\"203.0.113.1\",\"customer_endpoint\":\"203.0.113.1\",\"is_colo_cast\":true}}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects/01a7362d577a6c3019a474fd6f485823?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mtu\":1476,\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for Interconnect to ORD\",\"gre\":{\"cloudflare_endpoint\":\"203.0.113.1\",\"customer_endpoint\":\"203.0.113.1\"}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -79,7 +79,7 @@
 					},
 					"gre": {
 						"type": "object",
-						"example": "{\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"customer_endpoint\": \"203.0.113.1\",\n  \"is_colo_cast\": true\n}",
+						"example": "{\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"customer_endpoint\": \"203.0.113.1\"\n}",
 						"properties": {
 							"cloudflare_endpoint": {
 								"type": "string",
@@ -90,12 +90,6 @@
 								"type": "string",
 								"example": "\"203.0.113.1\"",
 								"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect."
-							},
-							"is_colo_cast": {
-								"type": "boolean",
-								"example": "true",
-								"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
-								"default": true
 							}
 						},
 						"description": "The configuration specific to GRE interconnects."
@@ -109,9 +103,9 @@
 					"gre"
 				],
 				"objects": [],
-				"example": "{\n  \"mtu\": 1476,\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for Interconnect to ORD\",\n  \"gre\": {\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"customer_endpoint\": \"203.0.113.1\",\n    \"is_colo_cast\": true\n  }\n}"
+				"example": "{\n  \"mtu\": 1476,\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for Interconnect to ORD\",\n  \"gre\": {\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"customer_endpoint\": \"203.0.113.1\"\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"is_colo_cast\": true\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\"\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Update multiple interconnects",
@@ -128,7 +122,7 @@
 			},
 			"html_id": "magic-interconnects-update-multiple-interconnects",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects?validate_only=:validate_only",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"interconnects\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"mtu\":1476,\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for Interconnect to ORD\",\"gre\":{\"cloudflare_endpoint\":\"203.0.113.1\",\"customer_endpoint\":\"203.0.113.1\",\"is_colo_cast\":true}}]}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"interconnects\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"mtu\":1476,\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for Interconnect to ORD\",\"gre\":{\"cloudflare_endpoint\":\"203.0.113.1\",\"customer_endpoint\":\"203.0.113.1\"}}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -136,7 +130,7 @@
 				"all_props": {
 					"interconnects": {
 						"type": "array",
-						"example": "[\n  {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"mtu\": 1476,\n    \"interface_address\": \"192.0.2.0/31\",\n    \"description\": \"Tunnel for Interconnect to ORD\",\n    \"gre\": {\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"is_colo_cast\": true\n    }\n  }\n]",
+						"example": "[\n  {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"mtu\": 1476,\n    \"interface_address\": \"192.0.2.0/31\",\n    \"description\": \"Tunnel for Interconnect to ORD\",\n    \"gre\": {\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"customer_endpoint\": \"203.0.113.1\"\n    }\n  }\n]",
 						"items": {
 							"allOf": [
 								{
@@ -183,11 +177,6 @@
 													"type": "string",
 													"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect.",
 													"example": "203.0.113.1"
-												},
-												"is_colo_cast": {
-													"type": "boolean",
-													"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
-													"default": true
 												}
 											}
 										}
@@ -204,9 +193,9 @@
 					"interconnects"
 				],
 				"objects": [],
-				"example": "{\n  \"interconnects\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"mtu\": 1476,\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"is_colo_cast\": true\n      }\n    }\n  ]\n}"
+				"example": "{\n  \"interconnects\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"mtu\": 1476,\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\"\n      }\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_interconnects\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"pni_ord\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for Interconnect to ORD\",\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"gre\": {\n          \"cloudflare_endpoint\": \"203.0.113.1\",\n          \"customer_endpoint\": \"203.0.113.1\",\n          \"is_colo_cast\": true\n        },\n        \"mtu\": 1476,\n        \"colo_name\": \"pni_ord\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_interconnects\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"pni_ord\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for Interconnect to ORD\",\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"gre\": {\n          \"cloudflare_endpoint\": \"203.0.113.1\",\n          \"customer_endpoint\": \"203.0.113.1\"\n        },\n        \"mtu\": 1476,\n        \"colo_name\": \"pni_ord\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfLinkErrors": {},
@@ -281,7 +270,7 @@
 			},
 			"gre": {
 				"type": "object",
-				"example": "{\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"customer_endpoint\": \"203.0.113.1\",\n  \"is_colo_cast\": true\n}",
+				"example": "{\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"customer_endpoint\": \"203.0.113.1\"\n}",
 				"properties": {
 					"cloudflare_endpoint": {
 						"type": "string",
@@ -292,12 +281,6 @@
 						"type": "string",
 						"example": "\"203.0.113.1\"",
 						"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect."
-					},
-					"is_colo_cast": {
-						"type": "boolean",
-						"example": "true",
-						"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
-						"default": true
 					}
 				},
 				"description": "The configuration specific to GRE interconnects."
@@ -328,7 +311,7 @@
 			"colo_name"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"pni_ord\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for Interconnect to ORD\",\n  \"health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  },\n  \"gre\": {\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"customer_endpoint\": \"203.0.113.1\",\n    \"is_colo_cast\": true\n  },\n  \"mtu\": 1476,\n  \"colo_name\": \"pni_ord\"\n}",
+		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"pni_ord\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for Interconnect to ORD\",\n  \"health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  },\n  \"gre\": {\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"customer_endpoint\": \"203.0.113.1\"\n  },\n  \"mtu\": 1476,\n  \"colo_name\": \"pni_ord\"\n}",
 		"title": "Magic Interconnects",
 		"description": "Interconnects used with Cloudflare CNI."
 	}
