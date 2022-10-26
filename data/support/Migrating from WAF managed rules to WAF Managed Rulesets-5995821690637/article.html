@@ -332,6 +332,17 @@
 				</ul>
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<p>Get WAF status</p>
+			</td>
+			<td>
+				<p><code>GET /zones/&lt;ZONE_ID&gt;/waf_migration/status</code></p>
+			</td>
+			<td>
+				<p>Obtains the old and new WAF status for a zone (enabled/disabled). The response also includes the current migration state (or mode).</p>
+			</td>
+		</tr>
 	</tbody>
 </table>
 <p>You must prepend the Cloudflare API base URL to the endpoints listed above to obtain the full endpoint:
