@@ -67,7 +67,8 @@ export const SubscriptionComponentName = eg.union([
   eg.literal('zones'),
   eg.literal('r2_class_a_operations'),
   eg.literal('r2_class_b_operations'),
-  eg.literal('r2_storage')
+  eg.literal('r2_storage'),
+  eg.literal('queues_standard_operations')
 ]);
 
 export type SubscriptionComponentName = TypeFromCodec<
@@ -98,7 +99,8 @@ export const SubscriptionProductName = eg.union([
   eg.literal('prod_web3_ipfs'),
   eg.literal('msp_zone'),
   eg.literal('jdc_cloudflare_zones'),
-  eg.literal('bots')
+  eg.literal('bots'),
+  eg.literal('prod_queues')
 ]);
 
 export type SubscriptionProductName = TypeFromCodec<
