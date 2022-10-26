@@ -106,12 +106,11 @@
 									case "compact":
 										r.style.width = "130px", r.style.height = "120px";
 										break;
+									case "invisible":
+										u(`Invalid value for parameter "size", expected "${"compact"}" or "${"normal"}", got "${g}"`);
 									case "normal":
 										r.style.width = "300px", r.style.height = "65px";
-										break;
-									default:
-										u(`Invalid value for parameter "size", expected "${"compact"}" or "${"normal"}", got "${g}"`);
-										return
+										break
 								}
 								break;
 							case "invisible":
