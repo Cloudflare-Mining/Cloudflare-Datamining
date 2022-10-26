@@ -69266,7 +69266,7 @@
 			},
 			"post": {
 				"summary": "Create a service token",
-				"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to create a new service token.",
+				"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to rotate the Client Secret or create a new service token.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69539,6 +69539,90 @@
 															"type": "string",
 															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{identifier}/access/service_tokens/{uuid}/rotate": {
+			"post": {
+				"summary": "Rotate a service token",
+				"description": "Generates a new Client Secret for a service token and revokes the old one.",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Rotate a service token response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_at": {
+															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+														},
+														"updated_at": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+														},
+														"id": {
+															"description": "The ID of the service token."
+														},
+														"name": {
+															"type": "string",
+															"description": "The name of the service token.",
+															"example": "CI/CD token"
+														},
+														"client_id": {
+															"type": "string",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
+															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+														},
+														"client_secret": {
+															"type": "string",
+															"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
+															"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
 														}
 													}
 												}
