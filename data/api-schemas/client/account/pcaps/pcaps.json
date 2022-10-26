@@ -23,7 +23,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n      \"submitted\": \"2020-01-01T08:00:00Z\",\n      \"filter_v1\": {\n        \"destination_address\": \"1.2.3.4\",\n        \"source_address\": \"1.2.3.4\",\n        \"source_port\": 123,\n        \"destination_port\": 80,\n        \"protocol\": 6\n      },\n      \"time_limit\": 300,\n      \"status\": \"success\",\n      \"type\": \"simple\",\n      \"system\": \"magic-transit\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Simple PCAP request",
+			"title": "Create PCAP request",
 			"description": "Create new PCAP request for account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pcaps",
@@ -35,210 +35,198 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-pcap-collection-create-simple-pcap-request",
+			"html_id": "magic-pcap-collection-create-pcap-request",
 			"uri": "accounts/:account_identifier/pcaps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"filter_v1\":{\"destination_address\":\"1.2.3.4\",\"source_address\":\"1.2.3.4\",\"source_port\":123,\"destination_port\":80,\"protocol\":6},\"time_limit\":300,\"packet_limit\":10000,\"type\":\"simple\",\"system\":\"magic-transit\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
-				"all_props": {
-					"filter_v1": {
-						"type": "object",
-						"example": "{\n  \"destination_address\": \"1.2.3.4\",\n  \"source_address\": \"1.2.3.4\",\n  \"source_port\": 123,\n  \"destination_port\": 80,\n  \"protocol\": 6\n}",
-						"properties": {
-							"destination_address": {
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [
+					{
+						"all_props": {
+							"filter_v1": {
+								"type": "object",
+								"example": "{\n  \"destination_address\": \"1.2.3.4\",\n  \"source_address\": \"1.2.3.4\",\n  \"source_port\": 123,\n  \"destination_port\": 80,\n  \"protocol\": 6\n}",
+								"properties": {
+									"destination_address": {
+										"type": "string",
+										"example": "\"1.2.3.4\"",
+										"description": "The destination IP address of the packet."
+									},
+									"source_address": {
+										"type": "string",
+										"example": "\"1.2.3.4\"",
+										"description": "The source IP address of the packet."
+									},
+									"source_port": {
+										"type": "number",
+										"example": "123",
+										"description": "The source port of the packet."
+									},
+									"destination_port": {
+										"type": "number",
+										"example": "80",
+										"description": "The destination port of the packet."
+									},
+									"protocol": {
+										"type": "number",
+										"example": "6",
+										"description": "The protocol number of the packet."
+									}
+								},
+								"description": "The packet capture filter. When this field is empty, all packets are captured."
+							},
+							"time_limit": {
+								"type": "number",
+								"example": "300",
+								"description": "The packet capture duration in seconds.",
+								"minimum": 1,
+								"maximum": 300
+							},
+							"packet_limit": {
+								"type": "number",
+								"example": "10000",
+								"description": "The limit of packets contained in a packet capture.",
+								"minimum": 1,
+								"maximum": 10000
+							},
+							"type": {
 								"type": "string",
-								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"example": "\"simple\"",
+								"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+								"enum": [
+									"simple",
+									"full"
+								]
 							},
-							"source_address": {
+							"system": {
 								"type": "string",
-								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
-							},
-							"source_port": {
-								"type": "number",
-								"example": "123",
-								"description": "The source port of the packet."
-							},
-							"destination_port": {
-								"type": "number",
-								"example": "80",
-								"description": "The destination port of the packet."
-							},
-							"protocol": {
-								"type": "number",
-								"example": "6",
-								"description": "The protocol number of the packet."
+								"example": "\"magic-transit\"",
+								"description": "The system used to collect packet captures.",
+								"enum": [
+									"magic-transit"
+								]
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"required_props": [
+							"time_limit",
+							"packet_limit",
+							"type",
+							"system"
+						],
+						"optional_props": [
+							"filter_v1"
+						],
+						"objects": [],
+						"example": "{\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"packet_limit\": 10000,\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\"\n}"
 					},
-					"time_limit": {
-						"type": "number",
-						"example": "300",
-						"description": "The packet capture duration in seconds.",
-						"minimum": 1,
-						"maximum": 300
-					},
-					"packet_limit": {
-						"type": "number",
-						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
-						"minimum": 1,
-						"maximum": 10000
-					},
-					"type": {
-						"type": "string",
-						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
-						"enum": [
-							"simple",
-							"full"
-						]
-					},
-					"system": {
-						"type": "string",
-						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
-						"enum": [
-							"magic-transit"
-						]
-					}
-				},
-				"required_props": [
-					"time_limit",
-					"packet_limit",
-					"type",
-					"system"
-				],
-				"optional_props": [
-					"filter_v1"
-				],
-				"objects": [],
-				"example": "{\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"packet_limit\": 10000,\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\"\n}"
-			},
-			"response": "{\n  \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n  \"submitted\": \"2020-01-01T08:00:00Z\",\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"status\": \"success\",\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\"\n}"
-		},
-		{
-			"title": "Create Full PCAP request",
-			"description": "Create new PCAP request for account.",
-			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/pcaps",
-			"method": "POST",
-			"cfOwnership": "magic-firewall",
-			"cfPlanAvailability": {
-				"free": false,
-				"pro": false,
-				"business": false,
-				"enterprise": true
-			},
-			"html_id": "magic-pcap-collection-create-full-pcap-request",
-			"uri": "accounts/:account_identifier/pcaps",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"filter_v1\":{\"destination_address\":\"1.2.3.4\",\"source_address\":\"1.2.3.4\",\"source_port\":123,\"destination_port\":80,\"protocol\":6},\"time_limit\":300,\"packet_limit\":10000,\"type\":\"simple\",\"system\":\"magic-transit\",\"byte_limit\":500000,\"colo_name\":\"ord02\",\"destination_conf\":\"s3://pcaps-bucket?region=us-east-1\"}'",
-			"parameters": {
-				"_formatter": {
-					"jsonMediaType": {}
-				},
-				"all_props": {
-					"filter_v1": {
-						"type": "object",
-						"example": "{\n  \"destination_address\": \"1.2.3.4\",\n  \"source_address\": \"1.2.3.4\",\n  \"source_port\": 123,\n  \"destination_port\": 80,\n  \"protocol\": 6\n}",
-						"properties": {
-							"destination_address": {
+					{
+						"all_props": {
+							"filter_v1": {
+								"type": "object",
+								"example": "{\n  \"destination_address\": \"1.2.3.4\",\n  \"source_address\": \"1.2.3.4\",\n  \"source_port\": 123,\n  \"destination_port\": 80,\n  \"protocol\": 6\n}",
+								"properties": {
+									"destination_address": {
+										"type": "string",
+										"example": "\"1.2.3.4\"",
+										"description": "The destination IP address of the packet."
+									},
+									"source_address": {
+										"type": "string",
+										"example": "\"1.2.3.4\"",
+										"description": "The source IP address of the packet."
+									},
+									"source_port": {
+										"type": "number",
+										"example": "123",
+										"description": "The source port of the packet."
+									},
+									"destination_port": {
+										"type": "number",
+										"example": "80",
+										"description": "The destination port of the packet."
+									},
+									"protocol": {
+										"type": "number",
+										"example": "6",
+										"description": "The protocol number of the packet."
+									}
+								},
+								"description": "The packet capture filter. When this field is empty, all packets are captured."
+							},
+							"time_limit": {
+								"type": "number",
+								"example": "300",
+								"description": "The packet capture duration in seconds.",
+								"minimum": 1,
+								"maximum": 300
+							},
+							"packet_limit": {
+								"type": "number",
+								"example": "10000",
+								"description": "The limit of packets contained in a packet capture.",
+								"minimum": 1,
+								"maximum": 10000
+							},
+							"type": {
 								"type": "string",
-								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"example": "\"simple\"",
+								"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+								"enum": [
+									"simple",
+									"full"
+								]
 							},
-							"source_address": {
+							"system": {
 								"type": "string",
-								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"example": "\"magic-transit\"",
+								"description": "The system used to collect packet captures.",
+								"enum": [
+									"magic-transit"
+								]
 							},
-							"source_port": {
+							"byte_limit": {
 								"type": "number",
-								"example": "123",
-								"description": "The source port of the packet."
+								"example": "500000",
+								"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+								"minimum": 1,
+								"maximum": 1000000000
 							},
-							"destination_port": {
-								"type": "number",
-								"example": "80",
-								"description": "The destination port of the packet."
+							"colo_name": {
+								"type": "string",
+								"example": "\"ord02\"",
+								"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
 							},
-							"protocol": {
-								"type": "number",
-								"example": "6",
-								"description": "The protocol number of the packet."
+							"destination_conf": {
+								"type": "string",
+								"example": "\"s3://pcaps-bucket?region=us-east-1\"",
+								"description": "The full URI for the bucket. This field only applies to `full` packet captures."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
-					},
-					"time_limit": {
-						"type": "number",
-						"example": "300",
-						"description": "The packet capture duration in seconds.",
-						"minimum": 1,
-						"maximum": 300
-					},
-					"packet_limit": {
-						"type": "number",
-						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
-						"minimum": 1,
-						"maximum": 10000
-					},
-					"type": {
-						"type": "string",
-						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
-						"enum": [
-							"simple",
-							"full"
-						]
-					},
-					"system": {
-						"type": "string",
-						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
-						"enum": [
-							"magic-transit"
-						]
-					},
-					"byte_limit": {
-						"type": "number",
-						"example": "500000",
-						"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
-						"minimum": 1,
-						"maximum": 1000000000
-					},
-					"colo_name": {
-						"type": "string",
-						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
-					},
-					"destination_conf": {
-						"type": "string",
-						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
-						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+						"required_props": [
+							"time_limit",
+							"type",
+							"system",
+							"colo_name",
+							"destination_conf"
+						],
+						"optional_props": [
+							"filter_v1",
+							"packet_limit",
+							"byte_limit"
+						],
+						"objects": [],
+						"example": "{\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"packet_limit\": 10000,\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\",\n  \"byte_limit\": 500000,\n  \"colo_name\": \"ord02\",\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
 					}
-				},
-				"required_props": [
-					"time_limit",
-					"type",
-					"system",
-					"colo_name",
-					"destination_conf"
 				],
-				"optional_props": [
-					"filter_v1",
-					"packet_limit",
-					"byte_limit"
-				],
-				"objects": [],
-				"example": "{\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"packet_limit\": 10000,\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\",\n  \"byte_limit\": 500000,\n  \"colo_name\": \"ord02\",\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
+				"example": "{\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"packet_limit\": 10000,\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\"\n}",
+				"which_of": "anyOf"
 			},
-			"response": "{\n  \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n  \"submitted\": \"2020-01-01T08:00:00Z\",\n  \"filter_v1\": {\n    \"destination_address\": \"1.2.3.4\",\n    \"source_address\": \"1.2.3.4\",\n    \"source_port\": 123,\n    \"destination_port\": 80,\n    \"protocol\": 6\n  },\n  \"time_limit\": 300,\n  \"status\": \"success\",\n  \"error_message\": \"No packets matched the filter in the time limit given. Please modify the filter or try again.\",\n  \"type\": \"simple\",\n  \"system\": \"magic-transit\",\n  \"byte_limit\": 500000,\n  \"colo_name\": \"ord02\",\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  }\n}"
 		},
 		{
 			"title": "Get PCAP request",
@@ -255,7 +243,7 @@
 			},
 			"html_id": "magic-pcap-collection-get-pcap-request",
 			"uri": "accounts/:account_identifier/pcaps/:identifier",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/69cd1e104af3e6ed3cb344f263fd0d5a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  }\n}"
 		},
 		{
@@ -282,17 +270,9 @@
 						"minLength": 45,
 						"maxLength": 45,
 						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
-					},
-					"Content-Type": {
-						"type": "string",
-						"enum": [
-							"application/vnd.tcpdump.pcap"
-						],
-						"example": "application/vnd.tcpdump.pcap"
 					}
 				}
 			},
-			"encType": "application/vnd.tcpdump.pcap",
 			"cfOwnership": "magic-firewall",
 			"cfPlanAvailability": {
 				"free": false,
@@ -302,7 +282,7 @@
 			},
 			"html_id": "magic-pcap-collection-download-simple-pcap",
 			"uri": "accounts/:account_identifier/pcaps/:identifier/download",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/69cd1e104af3e6ed3cb344f263fd0d5a/download\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/vnd.tcpdump.pcap\""
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/01a7362d577a6c3019a474fd6f485823/download\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\""
 		},
 		{
 			"title": "List PCAPs Bucket Ownership",
@@ -337,8 +317,26 @@
 			},
 			"html_id": "magic-pcap-collection-add-buckets-for-full-packet-captures",
 			"uri": "accounts/:account_identifier/pcaps/ownership",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"destination_conf\":\"s3://pcaps-bucket?region=us-east-1\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
+						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+					}
+				},
+				"required_props": [
+					"destination_conf"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9883874ecac311ec8475433579a6bf5f\",\n    \"status\": \"success\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"validated\": \"2020-01-01T08:00:00Z\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n    \"filename\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n  }\n}"
 		},
 		{
 			"title": "Validate buckets for full packet captures",
@@ -355,14 +353,38 @@
 			},
 			"html_id": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
 			"uri": "accounts/:account_identifier/pcaps/ownership/validate",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n  \"ownership_challenge\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n}"
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"destination_conf\":\"s3://pcaps-bucket?region=us-east-1\",\"ownership_challenge\":\"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
+						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+					},
+					"ownership_challenge": {
+						"type": "string",
+						"example": "\"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"",
+						"description": "The ownership challenge filename stored in the bucket."
+					}
+				},
+				"required_props": [
+					"destination_conf",
+					"ownership_challenge"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n  \"ownership_challenge\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9883874ecac311ec8475433579a6bf5f\",\n    \"status\": \"success\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"validated\": \"2020-01-01T08:00:00Z\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n    \"filename\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n  }\n}"
 		},
 		{
 			"title": "Delete buckets for full packet captures",
 			"description": "Deletes buckets added to the packet captures API.",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership/{#/definitions/ownership_identifier}",
+			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership/{#/definitions/identifier}",
 			"method": "DELETE",
 			"cfOwnership": "magic-firewall",
 			"cfPlanAvailability": {
@@ -372,8 +394,8 @@
 				"enterprise": true
 			},
 			"html_id": "magic-pcap-collection-delete-buckets-for-full-packet-captures",
-			"uri": "accounts/:account_identifier/pcaps/ownership/:ownership_identifier",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/b2df3c4fcfc84ea49a28df6d55ce16cb\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+			"uri": "accounts/:account_identifier/pcaps/ownership/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
 		}
 	],
 	"html_id": "magic-pcap-collection",
@@ -384,19 +406,17 @@
 		"all_props": {
 			"identifier": {
 				"type": "string",
-				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
-				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
-				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag.",
+				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+				"$comment": "Must be present as a definition for URI Templating",
+				"description": "Account identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"account_identifier": {
 				"type": "string",
 				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
-				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
-				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
-				"description": "API item identifier tag.",
+				"$comment": "Must be present as a definition for URI Templating",
+				"description": "Account identifier tag.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -779,7 +799,7 @@
 			"pcaps_response_full"
 		],
 		"objects": [],
-		"example": "{\n  \"identifier\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"account_identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"pcaps_request_simple\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_response_simple\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_request_full\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  },\n  \"pcaps_response_full\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"error_message\": \"No packets matched the filter in the time limit given. Please modify the filter or try again.\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  }\n}",
+		"example": "{\n  \"identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"account_identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"pcaps_request_simple\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_response_simple\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\"\n  },\n  \"pcaps_request_full\": {\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"packet_limit\": 10000,\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  },\n  \"pcaps_response_full\": {\n    \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n    \"submitted\": \"2020-01-01T08:00:00Z\",\n    \"filter_v1\": {\n      \"destination_address\": \"1.2.3.4\",\n      \"source_address\": \"1.2.3.4\",\n      \"source_port\": 123,\n      \"destination_port\": 80,\n      \"protocol\": 6\n    },\n    \"time_limit\": 300,\n    \"status\": \"success\",\n    \"error_message\": \"No packets matched the filter in the time limit given. Please modify the filter or try again.\",\n    \"type\": \"simple\",\n    \"system\": \"magic-transit\",\n    \"byte_limit\": 500000,\n    \"colo_name\": \"ord02\",\n    \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n  }\n}",
 		"title": "Magic PCAP collection",
 		"description": "APIs for collecting account PCAPs inside Magic Transit."
 	}
