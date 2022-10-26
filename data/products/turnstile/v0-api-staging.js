@@ -191,7 +191,7 @@
 			return t || e.size === 0 ? null : e.keys().next().value
 		}
 		return {
-			render: function(t, n) {
+			render(t, n) {
 				var R, M, P, N, W;
 				let o;
 				if (typeof t == "string") try {
@@ -199,7 +199,7 @@
 							u(`Unable to find a container for "${t}"`);
 							return
 						}
-					} catch (f) {
+					} catch (p) {
 						u(`Invalid type for  "container", expected "selector" or an implementation of "HTMLElement", got "${t}"`);
 						return
 					} else if (t instanceof HTMLElement) o = t;
@@ -213,7 +213,7 @@
 						cData: c
 					} = a,
 					g = a.sitekey,
-					p = (R = a.theme) != null ? R : "auto",
+					f = (R = a.theme) != null ? R : "auto",
 					h = (M = a.size) != null ? M : "normal",
 					A = a.callback,
 					v = a["expired-callback"],
@@ -231,8 +231,8 @@
 					u(`Invalid type for parameter "size", expected normal|compact, got "${h}" ${typeof h}`);
 					return
 				}
-				if (!$(p)) {
-					u(`Invalid type for parameter "theme", expected dark|light|auto, got "${p}" ${typeof p}`);
+				if (!$(f)) {
+					u(`Invalid type for parameter "theme", expected dark|light|auto, got "${f}" ${typeof f}`);
 					return
 				}
 				let m = document.createElement("iframe");
@@ -264,20 +264,20 @@
 						cbExpired: v,
 						cbTimeout: V,
 						params: a
-					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${k}/${g}/${p}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
-					let f = document.createElement("input");
-					if (f.type = "hidden", f.name = (W = a["response-field-name"]) != null ? W : Q, f.id = `${I}_response`, o.appendChild(f), typeof a["response-field-name"] != "string" && ne(g)) {
+					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${k}/${g}/${f}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
+					let p = document.createElement("input");
+					if (p.type = "hidden", p.name = (W = a["response-field-name"]) != null ? W : Q, p.id = `${I}_response`, o.appendChild(p), typeof a["response-field-name"] != "string" && ne(g)) {
 						let T = document.createElement("input");
 						T.type = "hidden", T.name = Z, T.id = `${I}_legacy_response`, o.appendChild(T)
 					}
 				}
 				if (C) {
-					let f = document.createElement("input");
-					f.type = "hidden", f.name = ee, f.id = `${I}_g_response`, o.appendChild(f)
+					let p = document.createElement("input");
+					p.type = "hidden", p.name = ee, p.id = `${I}_g_response`, o.appendChild(p)
 				}
 				return I
 			},
-			reset: function(t) {
+			reset(t) {
 				let n = d(t);
 				if (!n) {
 					u(`Nothing to reset found for ${t}`);
@@ -287,7 +287,7 @@
 					l = document.querySelector(`#${o}`);
 				l.src += "", L(o)
 			},
-			remove: function(t) {
+			remove(t) {
 				let n = d(t);
 				if (!n || !e.has(n)) {
 					E(`Nothing to remove found for ${t}`);
@@ -299,7 +299,7 @@
 				for (let r = 0; r < a.length; ++r) a[r].remove();
 				e.delete(n)
 			},
-			getResponse: function(t) {
+			getResponse(t) {
 				let n = d(t);
 				if (!n) {
 					u(`Could not find widget for getResponse(${t})`);
@@ -339,8 +339,8 @@
 		c && window[c] && (i.callback = window[c]);
 		let g = e.getAttribute("data-expired-callback");
 		g && window[g] && (i["expired-callback"] = window[g]);
-		let p = e.getAttribute("data-timeout-callback");
-		p && window[p] && (i["timeout-callback"] = window[p]);
+		let f = e.getAttribute("data-timeout-callback");
+		f && window[f] && (i["timeout-callback"] = window[f]);
 		let h = (v = e.getAttribute("data-response-field")) != null ? v : "true";
 		i["response-field"] = h === "true";
 		let A = e.getAttribute("data-response-field-name");
