@@ -18,7 +18,7 @@
 		<li>Client identifying information, including the IP address, TLS fingerprint, and so on. As a proxy protocol, this is a fundamental requirement.</li>
 		<li>Future requests from the same client. This is necessary for applications that do not carry state across requests.</li>
 	</ol>
-	<p>These two properties make OHTTP a perfect fit for applications that wish to provide privacy to their users without compromising basic functionality. It’s served as the foundation for a widespread deployment of Oblivious DoH for over a year now, and as of recently, serves as the foundation for <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">Flo Health’s Anonymous Mode feature</a>.</p>
+	<p>These two properties make OHTTP a perfect fit for applications that wish to provide privacy to their users without compromising basic functionality. It’s served as the foundation for a widespread deployment of Oblivious DoH for over a year now, and as of recently, serves as the foundation for <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">Flo Health Inc.’s Anonymous Mode feature</a>.</p>
 	<p>It’s worth noting that both of these properties could be achieved with a connection-oriented protocol, but at the cost of a new end-to-end TLS connection for each message that clients wish to transmit. This can be prohibitively expensive for all entities that participate in the protocol.</p>
 	<p>So how exactly does OHTTP achieve these goals? Let’s dig deeper into OHTTP to find out.</p>
 	<h3 id="oblivious-http-protocol-design">Oblivious HTTP protocol design</h3>
