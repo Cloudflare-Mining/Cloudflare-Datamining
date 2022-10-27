@@ -188,12 +188,6 @@
 					]
 				}
 			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 0.63,
-				"upvotes": 5,
-				"downvotes": 3
-			},
 			"releaseNotes": "",
 			"source": "",
 			"creatorUserId": "",
@@ -282,12 +276,6 @@
 						}
 					]
 				}
-			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 0.73,
-				"upvotes": 8,
-				"downvotes": 3
 			},
 			"releaseNotes": "Remove default value of GTM container ID. The default value was being concatenated with the input value. By clearing the input's initial value I remove the chance of this happening to users.\n\nhttps://github.com/omrilotan/cloudflare-google-tagmanager/blob/master/CHANGELOG.md",
 			"source": "",
@@ -478,12 +466,6 @@
 						}
 					]
 				}
-			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 0.9,
-				"upvotes": 90,
-				"downvotes": 10
 			},
 			"releaseNotes": "## [FIX] document.body is undefined (sometimes)\n\nCGI apps (cdn-cgi/apps) are loaded in the document's head. In large documents this may mean the document body is not yet accessible when this script runs. This retry system will exit only after the body is accessible.",
 			"source": "",

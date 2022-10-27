@@ -100,12 +100,6 @@
 					}
 				]
 			},
-			"ratingSummary": {
-				"valid": false,
-				"rating": 0,
-				"upvotes": 0,
-				"downvotes": 0
-			},
 			"releaseNotes": "V0.0.1 with support for credit card info removal as well as session / user identification.",
 			"source": "",
 			"creatorUserId": "",
@@ -490,12 +484,6 @@
 					}
 				]
 			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 1,
-				"upvotes": 1,
-				"downvotes": 0
-			},
 			"releaseNotes": "",
 			"source": "",
 			"creatorUserId": "",
@@ -768,12 +756,6 @@
 					}
 				]
 			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 0.75,
-				"upvotes": 3,
-				"downvotes": 1
-			},
 			"releaseNotes": "- adds option to turn off transaction ID tracking\n- forwards transaction ID to client\n- adds option to specify company ID header",
 			"source": "",
 			"creatorUserId": "",
@@ -919,12 +901,6 @@
 						"src": "./MoesifWorker.js"
 					}
 				]
-			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 1,
-				"upvotes": 1,
-				"downvotes": 0
 			},
 			"releaseNotes": "Tracking improvements for internal use.",
 			"source": "",
@@ -1230,12 +1206,6 @@
 						"src": "./MoesifWorker.js"
 					}
 				]
-			},
-			"ratingSummary": {
-				"valid": true,
-				"rating": 1,
-				"upvotes": 1,
-				"downvotes": 0
 			},
 			"releaseNotes": "- Renamed appId to applicationId\n- Fixed issue when respondWith is used and wranger build flow wouldn't log requests.\n- Integration now logs both incoming API calls hitting CloudFlare Worker and outgoing to origin server.\n- Ensure empty response is still logged.",
 			"source": "",

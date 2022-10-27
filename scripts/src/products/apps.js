@@ -25,6 +25,9 @@ for(const app of appsJson){
 	const file = path.resolve(appDir, 'info.json');
 	// delete some fields we don't care for
 	const json = appsJson;
+	for(const version of json.versions){
+		delete version.ratingSummary;
+	}
 	delete json.ratingSummary;
 	await fs.writeJson(file, json, {spaces: '\t'});
 }
