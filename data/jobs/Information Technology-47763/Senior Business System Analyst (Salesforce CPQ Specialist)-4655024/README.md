@@ -5,38 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Why you should join us</strong></p>
-<p>As a Security Platform Engineer at Cloudflare you will help us provide a secure infrastructure for one of the biggest online platforms in the world, handling extensive amounts of traffic at very low latency. You will be instrumental at defining the vision to help secure Cloudflare going forward.</p>
-<p>Cloudflare firmly believes that security is an integral part of our product offerings, and the qualified candidate will directly contribute to delivering on that promise.</p>
 <h4>About the department</h4>
-<p>We’re an engineering team focused on building scalable and paradigm-shifting security platforms for production systems.&nbsp; We are still a small team, well-funded, growing quickly and focused on building an extraordinary company. This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.</p>
+<p><span style="font-weight: 400;">Cloudflare is looking for a Senior Business System Analyst (Salesforce CPQ Specialist) to join our fast growing GTM Applications team. In this role, you will work closely with our Business stakeholders in Sales,Pricing,Packaging &amp; Finance to deliver a world class Configure,Price &amp; quote management experience for our internal users. T</span><span style="font-weight: 400;">his role works closely with other Business SMEs, Developers, and Production Support through each stage of the software development lifecycle and also demonstrates both existing and new functionality to the customer stakeholders.</span></p>
+<p><span style="font-weight: 400;">Based on a deep understanding of the business, best practices in Salesforce CPQ you will be responsible for designing, developing, and managing our Salesforce CPQ processes and configuration.</span></p>
 <p><strong>What you'll do</strong></p>
-<p>The team is working on a number of large projects in 2022. Below is a sample of initiatives:</p>
 <ul>
-	<li>
-		<p>Secrets Management -- We’re currently using Vault as trusted execution environment, and we’re continuing to our work integrating it with other platforms</p>
-	</li>
-	<li>
-		<p>PKI Infrastructure -- We’re upgrading and improving our current PKI Infrastructure by layering it on top of Vault.</p>
-	</li>
-	<li>
-		<p>Production Access Control -- Access to production systems are backed by exceptional requirements, minimally-permissive and time-limited</p>
-	</li>
-	<li>
-		<p>Authenticated Service Mesh -- We’re building a consistent way to manage and enforce mutual authentication and access policies on service-to-service communication</p>
-	</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design, prototype, build, document, and support solutions for the Salesforce CPQ application. Collaborating with business partners to help shape functional requirements of the CPQ</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands on experience to create and manage Price Rules, Product Rules, Discounting, Product Setup and Configuration, Product Options, Quote Templates, and Advanced Approval Rules with ability to design for complex business use cases</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Administrator of Salesforce CPQ declarative configuration,settings,configurations to onboard new products/bundles/SKU and ownership of NPI in Salesforce CPQ</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Make recommendations for improvements to systems and processes to make processes and workflows more efficient and automated</span></li>
+	<li style="font-weight: 400;">Demonstrate leadership and technical expertise by presenting custom solutions based on the Salesforce platform and ecosystem</li>
+	<li style="font-weight: 400;">Performing hands-on technical design, solution architecture, prototyping, proof-of-concepts, and CPQ configuration tasks</li>
+	<li style="font-weight: 400;">Work closely with business partners in the Sales Ops and Commissions teams to define requirements and ensure that solutions deliver best-in-class results and efficient business processes</li>
+	<li style="font-weight: 400;">Manage Sales technology projects and related CPQ impacts: developing requirements, designing functional solutions and prototypes, &amp; testing. Ensure projects are completed with agreed upon scope, on time, within budget</li>
+	<li style="font-weight: 400;">Create and maintain detailed technical documentation based on design specifications.</li>
+	<li style="font-weight: 400;">Own functional tasks and deliverables, including: testing, training, reporting, support, and continuous improvement for the Salesforce CPQ application</li>
+	<li style="font-weight: 400;">Use and recommend best practices while delivering scalable high quality solutions</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;">This is not an entry level role. We expect candidates to have experience identifying and mitigating security issues in production services and in pre-production planning.</li>
-	<li style="font-weight: 400;">You have knowledge of basic cryptography primitives and standard protocols.</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working on highly distributed and scalable systems.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You will design, deploy, and manage tools that automate security functions and improve efficiencies throughout Cloudflare’s infrastructure.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Driving communication and consensus across teams.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree (technical degree preferred)</span></li>
+	<li style="font-weight: 400;">7+ years of experience implementing, configuring and administering SaaS business systems for a software company, with at least 2&nbsp; years of Salesforce CPQ experience(Steelbrick)</li>
+	<li style="font-weight: 400;">Proficient in the use of Salesforce Data Loader, Workbench and Excel to support data analysis &amp; quality initiatives</li>
+	<li style="font-weight: 400;">Outstanding testing skills with ability to identify &amp; execute appropriate depth of testing, including negative tests and integrated test scenarios</li>
+	<li style="font-weight: 400;">Detail-oriented, organized, self-motivated, hard working, and a great team player with excellent interpersonal skills</li>
+	<li style="font-weight: 400;">Excellent written and verbal communication skills required, including experience meeting with and presenting information to senior leadership</li>
+	<li style="font-weight: 400;">Salesforce.com certifications (Administrator, Advanced Administrator, Salesforce CPQ Specialist)</li>
+	<li style="font-weight: 400;">Passion for creating a frictionless end user experience</li>
+	<li style="font-weight: 400;">Proven ability to work creatively and analytically in a problem-solving scenario</li>
+	<li style="font-weight: 400;">Strong knowledge and understanding of the Salesforce.com platform, ecosystem and best-practices</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $137,000 - $167,000.</span></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:140000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">140,000</span>- $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:171000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">171,000</span>.</span></p>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
