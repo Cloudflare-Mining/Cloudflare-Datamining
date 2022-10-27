@@ -72,7 +72,7 @@ const navigation = {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			hasPermission: function(m) {
-				return k(m)
+				return z(m)
 			}
 		}]
 	}, {
@@ -155,6 +155,13 @@ const navigation = {
 			title: "navigation.account.workers.kv",
 			url: "/workers/kv/namespaces"
 		}, {
+			title: "navigation.account.workers.queues",
+			url: "/workers/queues",
+			labels: ["beta"],
+			hasPermission: function(m) {
+				return !!(0, n.z1)("queues-ui")(m)
+			}
+		}, {
 			title: "navigation.account.workers.d1",
 			url: "/workers/d1",
 			labels: ["alpha"],
@@ -165,7 +172,7 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(m) {
-				var K = (0, Z.getSubscriptions)(m);
+				var K = (0, B.getSubscriptions)(m);
 				return !(0, Y.ky)(K, [J.uD.UnboundEnterpriseTrial])
 			}
 		}]
@@ -295,13 +302,13 @@ const navigation = {
 		url: "/application-security",
 		iconType: "cloudflare-security-application",
 		hasPermission: function(m) {
-			return f(m) && !!ie(m)
+			return f(m) && !!re(m)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.application_firewall",
 			url: "/application-security/waf",
 			hasPermission: function(m) {
-				return !!ie(m)
+				return !!re(m)
 			}
 		}]
 	}, {
@@ -309,13 +316,13 @@ const navigation = {
 		url: "/network-security",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(m) {
-			return f(m) && !!L(m)
+			return f(m) && !!k(m)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(m) {
-				var K = !!U(m) && !!Q(m);
+				var K = !!U(m) && !!W(m);
 				return !!c(m) || K
 			}
 		}, {
@@ -323,7 +330,7 @@ const navigation = {
 			url: "/network-security/magic_firewall",
 			testId: "account-magic-firewall-rules",
 			hasPermission: function(m) {
-				return !!L(m)
+				return !!k(m)
 			}
 		}]
 	}, {
@@ -514,7 +521,7 @@ const navigation = {
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(m) {
 			var K = (0, l.getZone)(m);
-			if ((0, b.zoneIsDNSOnly)(m) || !w(m, "zone_settings", "spectrum.app") || !K) return !1;
+			if ((0, b.zoneIsDNSOnly)(m) || !R(m, "zone_settings", "spectrum.app") || !K) return !1;
 			var H = !!((0, u.userHasEntZones)(m) || (0, l.userHasDelegatedEntZones)(m)),
 				q = !!(0, l.getZoneFlipperFlag)(m, "spectrum", "enabled"),
 				ee = !!(0, l.isFree)(K);
@@ -609,7 +616,7 @@ const navigation = {
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
 		hasPermission: function(m) {
-			return !(0, b.zoneIsDNSOnly)(m) && (w(m, "access", "access.app") || w(m, "access", "access.zone.app"))
+			return !(0, b.zoneIsDNSOnly)(m) && (R(m, "access", "access.app") || R(m, "access", "access.zone.app"))
 		}
 	}, {
 		title: "navigation.zone.speed",
@@ -676,7 +683,7 @@ const navigation = {
 		iconType: "edgeworker",
 		testId: "zone-navigation-link-workers",
 		hasPermission: function(m) {
-			return !(0, b.zoneIsDNSOnly)(m) && w(m, "worker", "worker.route")
+			return !(0, b.zoneIsDNSOnly)(m) && R(m, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",
