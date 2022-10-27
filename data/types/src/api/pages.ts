@@ -7,7 +7,6 @@ export const PagesUploadFileResult = eg.object({
 export type PagesUploadFileResult = TypeFromCodec<typeof PagesUploadFileResult>;
 
 export const Environment = eg.union([
-  eg.literal('draft'),
   eg.literal('preview'),
   eg.literal('production')
 ]);
@@ -29,8 +28,8 @@ export const DeploymentStage = eg.object({
     eg.literal('failure'),
     eg.literal('skipped')
   ]),
-  started_on: eg.string.optional,
-  ended_on: eg.string.optional
+  started_on: eg.union([eg.string, eg.null]),
+  ended_on: eg.union([eg.string, eg.null])
 });
 
 export type DeploymentStage = TypeFromCodec<typeof DeploymentStage>;
@@ -45,6 +44,31 @@ export const BuildConfig = eg.object({
 });
 
 export type BuildConfig = TypeFromCodec<typeof BuildConfig>;
+
+export const ProjectSourceConfig = eg.object({
+  owner: eg.string,
+  repo_name: eg.string,
+  production_branch: eg.string.optional,
+  pr_comments_enabled: eg.boolean.optional,
+  deployments_enabled: eg.boolean.optional,
+  production_deployments_enabled: eg.boolean.optional,
+  preview_deployment_setting: eg.union([
+    eg.literal('all'),
+    eg.literal('none'),
+    eg.literal('custom')
+  ]).optional,
+  preview_branch_includes: eg.array(eg.string).optional,
+  preview_branch_excludes: eg.array(eg.string).optional
+});
+
+export type ProjectSourceConfig = TypeFromCodec<typeof ProjectSourceConfig>;
+
+export const ProjectSource = eg.object({
+  type: eg.union([eg.literal('github'), eg.literal('gitlab')]),
+  config: ProjectSourceConfig
+});
+
+export type ProjectSource = TypeFromCodec<typeof ProjectSource>;
 
 export const Deployment = eg.object({
   id: eg.string,
@@ -71,27 +95,81 @@ export const Deployment = eg.object({
   durable_object_namespaces: eg.any.optional,
   short_id: eg.string,
   production_branch: eg.string,
-  source: eg.object({
-    type: eg.union([eg.literal('github'), eg.literal('gitlab')]),
-    config: eg.object({
-      owner: eg.string,
-      owner_display_name: eg.string,
-      repo_name: eg.string,
-      repo_display_name: eg.string,
-      production_branch: eg.string,
-      pr_comments_enabled: eg.boolean.optional,
-      deployments_enabled: eg.boolean.optional,
-      production_deployments_enabled: eg.boolean.optional,
-      preview_deployment_setting: eg.string.optional,
-      preview_branch_includes: eg.array(eg.string).optional,
-      preview_branch_excludes: eg.array(eg.string).optional
-    })
-  }),
+  build_image_major_version: eg.number,
+  source: ProjectSource.optional,
   is_skipped: eg.boolean.optional,
   files: eg.record(eg.string, eg.string.optional).optional
 });
 
 export type Deployment = TypeFromCodec<typeof Deployment>;
+
+export const EnvironmentVariableBindingValue = eg.object({
+  value: eg.string,
+  type: eg.union([eg.literal('plain_text'), eg.literal('secret_text')]).optional
+});
+
+export const EnvironmentVariableBindingMap = eg.record(
+  eg.string,
+  EnvironmentVariableBindingValue
+);
+
+export type EnvironmentVariableBindingMap = TypeFromCodec<
+  typeof EnvironmentVariableBindingMap
+>;
+
+export const NamespaceBindingValue = eg.object({
+  namespace_id: eg.string
+});
+
+export const DatabaseBindingValue = eg.object({
+  id: eg.string
+});
+
+export const BucketBindingValue = eg.object({
+  name: eg.string
+});
+
+export const DeploymentConfigEnv = eg.object({
+  env_vars: EnvironmentVariableBindingMap.optional,
+  kv_namespaces: eg.record(eg.string, NamespaceBindingValue).optional,
+  durable_object_namespaces: eg.record(eg.string, NamespaceBindingValue)
+    .optional,
+  d1_databases: eg.record(eg.string, DatabaseBindingValue).optional,
+  r2_buckets: eg.record(eg.string, BucketBindingValue).optional,
+
+  compatibility_date: eg.string.optional,
+  compatibility_flags: eg.array(eg.string).optional,
+  always_use_latest_compatibility_date: eg.boolean.optional,
+  build_image_major_version: eg.number.optional,
+  usage_model: eg.union([eg.literal('bundled'), eg.literal('unbound')]).optional
+});
+
+export type DeploymentConfigEnv = TypeFromCodec<typeof DeploymentConfigEnv>;
+
+export const DeploymentConfigs = eg.record(
+  eg.union([eg.literal('production'), eg.literal('preview')]),
+  DeploymentConfigEnv
+);
+
+export type DeploymentConfigs = TypeFromCodec<typeof DeploymentConfigs>;
+
+export const Project = eg.object({
+  id: eg.string,
+  name: eg.string,
+  subdomain: eg.string,
+  domains: eg.array(eg.string),
+  source: ProjectSource.optional,
+  build_config: BuildConfig,
+  deployment_configs: DeploymentConfigs,
+  latest_deployment: Deployment,
+  canonical_deployment: Deployment,
+  created_on: eg.string,
+  production_branch: eg.string,
+  production_script_name: eg.string,
+  preview_script_name: eg.string
+});
+
+export type Project = TypeFromCodec<typeof Project>;
 
 /** Log message for Pages logs */
 export const LogMessage = eg.object({
