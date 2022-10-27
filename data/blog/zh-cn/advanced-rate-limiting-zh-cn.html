@@ -24,7 +24,7 @@
 	<h3 id="-api">用例 —— 将速率限制与应用程序集成来保护 API</h3>
 	<p><strong>基于会话 ID 来计数请求。</strong> API 流量往往经过验证，会话可以通过 cookie、标头（例如 x-api-key）或查询值来跟踪。高级速率限制允许您定义包含该 ID 的请求 ，并跟踪请求相对同一会话的数量，而无论 IP 地址是什么。对于抓取敏感数据（如产品价格或航班乘客数据）的分布式机器人攻击而言，这是一个有效的防御手段。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-5.png" class="kg-image" alt="You can group requests based on cookie, header, query and other characteristics."></figure>
-	<p><strong>根据请求正文内容触发规则。</strong> 规则过滤器允许访问原始正文和 JSON 解析后的正文。您可以使用使用规则过滤器中的函数 lookup_json_field() ，计数正文 JSON 字段具备特定值的请求。这对于 GraphQL API 可能非常有用，其中不同的调用（变体）可通过相同的端点执行，但在请求正文中指定不同的操作。</p>
+	<p><strong>根据请求正文内容触发规则。</strong> 规则过滤器允许访问原始正文和 JSON 解析后的正文。您可以使用使用规则过滤器中的函数 <code>llookup_json_string</code> ，计数正文 JSON 字段具备特定值的请求。这对于 GraphQL API 可能非常有用，其中不同的调用（变体）可通过相同的端点执行，但在请求正文中指定不同的操作。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-1.png" class="kg-image" alt="You can trigger rules based on request body content."></figure>
 	<p><strong>基于复杂性的速率限制（即将推出测试版）。</strong> 一些 API 调用的服务比其他要复杂得多，因此计算请求的数量并不能真正反映实际的服务成本。GraphQL API 就是一个例子：每个调用的复杂性可能会相差巨大，取决于服务器需要进行多少处理才能服务该请求。您的源服务器可以估计每个请求的复杂性并随响应一起返回，速率限制可根据源服务器提供的复杂性估计累加计数。然后您可以在规则中设定一个复杂性阈值，在超过时会触发一个操作，例如阻止。</p>
 	<h2 id="--2">提供方式</h2>
