@@ -10016,6 +10016,12 @@ components:
       description: Indicates whether you are currently subscribed to this plan.
       example: false
       type: boolean
+    is_ui_read_only:
+      description: Lock all settings as Read-Only in the Dashboard, regardless of
+        user permission. Updates may only be made via the API or Terraform for this
+        account when enabled.
+      example: "false"
+      type: boolean
     issued_on:
       description: The time on which the token was created.
       example: "2018-07-01T05:20:00Z"
@@ -12591,6 +12597,8 @@ components:
           $ref: '#/components/schemas/auth_domain'
         created_at:
           $ref: '#/components/schemas/timestamp'
+        is_ui_read_only:
+          $ref: '#/components/schemas/is_ui_read_only'
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
@@ -38467,6 +38475,8 @@ paths:
               properties:
                 auth_domain:
                   $ref: '#/components/schemas/auth_domain'
+                is_ui_read_only:
+                  $ref: '#/components/schemas/is_ui_read_only'
                 login_design:
                   $ref: '#/components/schemas/login_design'
                 name:
@@ -38512,6 +38522,8 @@ paths:
               properties:
                 auth_domain:
                   $ref: '#/components/schemas/auth_domain'
+                is_ui_read_only:
+                  $ref: '#/components/schemas/is_ui_read_only'
                 login_design:
                   $ref: '#/components/schemas/login_design'
                 name:
@@ -38653,7 +38665,7 @@ paths:
     post:
       description: Generates a new service token. **Note:** This is the only time
         you can get the Client Secret. If you lose the Client Secret, you will have
-        to create a new service token.
+        to rotate the Client Secret or create a new service token.
       operationId: access-service-tokens-create-a-service-token
       parameters:
       - in: path
@@ -38813,6 +38825,47 @@ paths:
       - api_email: []
         api_key: []
       summary: Refresh a service token
+      tags:
+      - Access service tokens
+  /accounts/{identifier}/access/service_tokens/{uuid}/rotate:
+    post:
+      description: Generates a new Client Secret for a service token and revokes the
+        old one.
+      operationId: access-service-tokens-rotate-a-service-token
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/create_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Rotate a service token response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/create_response'
+          description: Rotate a service token response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Rotate a service token
       tags:
       - Access service tokens
   /accounts/{identifier}/access/users:
@@ -55930,6 +55983,8 @@ paths:
               properties:
                 auth_domain:
                   $ref: '#/components/schemas/auth_domain'
+                is_ui_read_only:
+                  $ref: '#/components/schemas/is_ui_read_only'
                 login_design:
                   $ref: '#/components/schemas/login_design'
                 name:
@@ -55975,6 +56030,8 @@ paths:
               properties:
                 auth_domain:
                   $ref: '#/components/schemas/auth_domain'
+                is_ui_read_only:
+                  $ref: '#/components/schemas/is_ui_read_only'
                 login_design:
                   $ref: '#/components/schemas/login_design'
                 name:
