@@ -1,0 +1,508 @@
+{
+	"id": "aFxUIfXk8IEu",
+	"title": "AdBlockBanner",
+	"shortDescription": "Detect AdBlockers and display a custom message in ad region",
+	"longDescription": "A tiny app to detect AdBlockers and place a custom message in the blocked ad regions instead\n![](https://yeleha.co/2u3UPs6)",
+	"instructions": "",
+	"alias": "adblockbanner",
+	"orgId": "b624c7be6cf22773af717acffd690fad",
+	"icon": "",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Haylee Schäfer",
+	"tagline": "",
+	"website": "https://github.com/InventivetalentDev/AdBlockBanner",
+	"sourceURL": "https://github.com/InventivetalentDev/AdBlockBanner",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.2",
+	"infoVersion": "1.2.2",
+	"points": 0,
+	"supportEmail": "mail@inventivetalent.org",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "b624c7be6cf22773af717acffd690fad",
+			"created": "2020-02-22T23:03:05.861014241Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "zxr_BDb7fDdj"
+	},
+	"created": "2020-02-22T22:47:23.822682Z",
+	"org": {
+		"id": "b624c7be6cf22773af717acffd690fad",
+		"title": "",
+		"username": "b624c7be6cf22773af717acffd690fad",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.2.0",
+			"appId": "aFxUIfXk8IEu",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "abb.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#e10000",
+							"description": "Background Color of the Element",
+							"format": "color",
+							"order": 2,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"delay": {
+							"default": 2000,
+							"description": "Delay in milliseconds until the AdBlock checks are run",
+							"order": 6,
+							"title": "Activation Delay",
+							"type": "integer"
+						},
+						"enableAnalytics": {
+							"default": false,
+							"description": "Toggle Google Analytics Event Reporting",
+							"order": 8,
+							"title": "Enable Analytics?",
+							"type": "boolean"
+						},
+						"enableReporting": {
+							"default": true,
+							"description": "Toggle Reporting of AdBlocker State to the Dashboard",
+							"order": 9,
+							"title": "Enable Reporting?",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "before",
+							"description": "Where the Replacement Element is Placed in Relation to the Original Ad",
+							"enum": [
+								"before",
+								"after",
+								"inside"
+							],
+							"order": 4,
+							"title": "Insert Position",
+							"type": "string"
+						},
+						"previewAdblock": {
+							"default": true,
+							"description": "Preview the Site with AdBlock enabled",
+							"order": 7,
+							"title": "Preview AdBlock",
+							"type": "boolean"
+						},
+						"selectors": {
+							"default": [
+								".adsbygoogle"
+							],
+							"items": {
+								"title": "Selector",
+								"type": "string"
+							},
+							"order": 5,
+							"title": "Ad Selectors",
+							"type": "array"
+						},
+						"text": {
+							"default": "Hi! Please disable your AdBlocker for this site to keep it running, thanks :)",
+							"description": "Text Displayed to Users with AdBlock Enabled",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"description": "Color of the Displayed Text",
+							"format": "color",
+							"order": 3,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qN8s59Fch2oh",
+			"metadata": {
+				"code": {
+					"sourceTag": "qN8s59Fch2oh",
+					"uploadedOn": "2020-02-22T23:03:04.682839791Z"
+				}
+			},
+			"created": "2020-02-22T22:47:24.8844Z",
+			"proposedApp": {
+				"id": "aFxUIfXk8IEu",
+				"title": "AdBlockBanner",
+				"shortDescription": "Detect ad blockers and display a custom message in ad region",
+				"longDescription": "A tiny app to detect AdBlockers and place a custom message in the blocked ad regions instead\n![](https://yeleha.co/2u3UPs6)",
+				"instructions": "",
+				"alias": "adblockbanner",
+				"orgId": "b624c7be6cf22773af717acffd690fad",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Haylee Schäfer",
+				"tagline": "",
+				"website": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"sourceURL": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@inventivetalent.org",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zxr_BDb7fDdj"
+				},
+				"created": "2020-02-22T22:47:23.822682Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b624c7be6cf22773af717acffd690fad",
+				"requestedAt": "2020-02-22T23:03:05.832301879Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-24T16:53:33.693328228Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "aFxUIfXk8IEu",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "abb.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#e10000",
+							"description": "Background Color of the Element",
+							"format": "color",
+							"order": 2,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"delay": {
+							"default": 2000,
+							"description": "Delay in milliseconds until the AdBlock checks are run",
+							"order": 6,
+							"title": "Activation Delay",
+							"type": "integer"
+						},
+						"enableAnalytics": {
+							"default": false,
+							"description": "Toggle Google Analytics Event Reporting",
+							"order": 8,
+							"title": "Enable Analytics?",
+							"type": "boolean"
+						},
+						"enableReporting": {
+							"default": true,
+							"description": "Toggle Reporting of AdBlocker State to the Dashboard",
+							"order": 9,
+							"title": "Enable Reporting?",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "before",
+							"description": "Where the Replacement Element is Placed in Relation to the Original Ad",
+							"enum": [
+								"before",
+								"after",
+								"inside"
+							],
+							"order": 4,
+							"title": "Insert Position",
+							"type": "string"
+						},
+						"previewAdblock": {
+							"default": true,
+							"description": "Preview the Site with AdBlock enabled",
+							"order": 7,
+							"title": "Preview AdBlock",
+							"type": "boolean"
+						},
+						"selectors": {
+							"default": [
+								".adsbygoogle"
+							],
+							"items": {
+								"title": "Selector",
+								"type": "string"
+							},
+							"order": 5,
+							"title": "Ad Selectors",
+							"type": "array"
+						},
+						"text": {
+							"default": "Hi! Please disable your AdBlocker for this site to keep it running, thanks :)",
+							"description": "Text Displayed to Users with AdBlock Enabled",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"description": "Color of the Displayed Text",
+							"format": "color",
+							"order": 3,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "* No longer logs disabled adblocker events when there are no ads on the page at all",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lxY-SwVFvMaj",
+			"metadata": {
+				"code": {
+					"sourceTag": "lxY-SwVFvMaj",
+					"uploadedOn": "2020-02-24T21:57:21.001635026Z"
+				}
+			},
+			"created": "2020-02-24T21:57:19.964131Z",
+			"proposedApp": {
+				"id": "aFxUIfXk8IEu",
+				"title": "AdBlockBanner",
+				"shortDescription": "Detect AdBlockers and display a custom message in ad region",
+				"longDescription": "A tiny app to detect AdBlockers and place a custom message in the blocked ad regions instead\n![](https://yeleha.co/2u3UPs6)",
+				"instructions": "",
+				"alias": "adblockbanner",
+				"orgId": "b624c7be6cf22773af717acffd690fad",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Haylee Schäfer",
+				"tagline": "",
+				"website": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"sourceURL": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@inventivetalent.org",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zxr_BDb7fDdj"
+				},
+				"created": "2020-02-22T22:47:23.822682Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b624c7be6cf22773af717acffd690fad",
+				"requestedAt": "2020-02-24T21:57:22.012903351Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-25T18:01:41.927066991Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "aFxUIfXk8IEu",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "abb.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#e10000",
+							"description": "Background Color of the Element",
+							"format": "color",
+							"order": 2,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"delay": {
+							"default": 2000,
+							"description": "Delay in milliseconds until the AdBlock checks are run",
+							"order": 6,
+							"title": "Activation Delay",
+							"type": "integer"
+						},
+						"enableAnalytics": {
+							"default": false,
+							"description": "Toggle Google Analytics Event Reporting",
+							"order": 8,
+							"title": "Enable Analytics?",
+							"type": "boolean"
+						},
+						"enableReporting": {
+							"default": true,
+							"description": "Toggle Reporting of AdBlocker State to the Dashboard",
+							"order": 9,
+							"title": "Enable Reporting?",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "before",
+							"description": "Where the Replacement Element is Placed in Relation to the Original Ad",
+							"enum": [
+								"before",
+								"after",
+								"inside"
+							],
+							"order": 4,
+							"title": "Insert Position",
+							"type": "string"
+						},
+						"previewAdblock": {
+							"default": true,
+							"description": "Preview the Site with AdBlock enabled",
+							"order": 7,
+							"title": "Preview AdBlock",
+							"type": "boolean"
+						},
+						"selectors": {
+							"default": [
+								".adsbygoogle"
+							],
+							"items": {
+								"title": "Selector",
+								"type": "string"
+							},
+							"order": 5,
+							"title": "Ad Selectors",
+							"type": "array"
+						},
+						"text": {
+							"default": "Hi! Please disable your AdBlocker for this site to keep it running, thanks :)",
+							"description": "Text Displayed to Users with AdBlock Enabled",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"description": "Color of the Displayed Text",
+							"format": "color",
+							"order": 3,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.11,
+				"upvotes": 2,
+				"downvotes": 16
+			},
+			"releaseNotes": "fixed issue with non-cloudflare version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/x7df_CA1FrtG",
+			"metadata": {
+				"code": {
+					"sourceTag": "x7df_CA1FrtG",
+					"uploadedOn": "2020-03-01T22:24:30.693626376Z"
+				}
+			},
+			"created": "2020-03-01T22:24:30.203688Z",
+			"proposedApp": {
+				"id": "aFxUIfXk8IEu",
+				"title": "AdBlockBanner",
+				"shortDescription": "Detect AdBlockers and display a custom message in ad region",
+				"longDescription": "A tiny app to detect AdBlockers and place a custom message in the blocked ad regions instead\n![](https://yeleha.co/2u3UPs6)",
+				"instructions": "",
+				"alias": "adblockbanner",
+				"orgId": "b624c7be6cf22773af717acffd690fad",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Haylee Schäfer",
+				"tagline": "",
+				"website": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"sourceURL": "https://github.com/InventivetalentDev/AdBlockBanner",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@inventivetalent.org",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zxr_BDb7fDdj"
+				},
+				"created": "2020-02-22T22:47:23.822682Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b624c7be6cf22773af717acffd690fad",
+				"requestedAt": "2020-03-01T22:24:31.707279868Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-02T17:50:33.016899129Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,695 @@
+{
+	"id": "uTHHwV_8M2eU",
+	"title": "Doorbell",
+	"shortDescription": "Gather in-app user feedback.",
+	"longDescription": "Doorbell embeds a widget on your site to allow your customers to easily send you feedback.\n\nYour customers can optionally **attach files**, have an **automatically generated screenshot** added to their message so you can see exactly what they saw when they sent the message.\n\nDoorbell also has a wide range of integrations, from chat platforms like **Slack** and **Hipchat**, to Project Management tools like **Trello, Asana, Github, Jira, Pivotal Tracker**, and many more.\n\nAll messages are run through sentiment analysis algorithms, so you can quickly establish how the customer is feeling.",
+	"instructions": "Once Doorbell is installed, you'll have to visit [Doorbell's dashboard](https://doorbell.io/home) to see your incoming messages and reply to them. You will of course get email notifications as well, but you might want to see all your conversations in once place!",
+	"alias": "doorbell",
+	"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+	"icon": "//images.cloudflareapps.com/zAl2GWyQSqfUMoFdXlBz_logo-1024px.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/5hmjfDFCStS0CTlOeFjr_doorbell-popup.png",
+		"//images.cloudflareapps.com/tYz7DNS1R0e1mDFdHFcA_doorbell-interface.png",
+		"//images.cloudflareapps.com/9AlCwsQSXGWfZSa1wUWP_doorbell-interface-thread.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Doorbell.io",
+	"tagline": "",
+	"website": "https://doorbell.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 220,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "7192fb26f3b8b02f68f8f605f10f55aa",
+			"created": "2017-06-02T01:49:27.183859468Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ASWpAYg2C3iU"
+	},
+	"created": "2017-05-18T12:48:37.180733Z",
+	"org": {
+		"id": "7192fb26f3b8b02f68f8f605f10f55aa",
+		"title": "",
+		"username": "7192fb26f3b8b02f68f8f605f10f55aa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "uTHHwV_8M2eU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 10,
+							"services": [
+								"doorbell"
+							],
+							"title": "Doorbell.io Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://doorbell.io/webhooks/cloudflare-apps",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Doorbell.io."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CEGlXCUYpOsP",
+			"metadata": {
+				"code": {
+					"sourceTag": "CEGlXCUYpOsP",
+					"uploadedOn": "2017-05-23T17:45:47.163097651Z"
+				}
+			},
+			"created": "2017-05-18T12:48:38.298701Z",
+			"proposedApp": {
+				"id": "uTHHwV_8M2eU",
+				"title": "Doorbell",
+				"shortDescription": "Add a feedback widget to your site for free",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "doorbell",
+				"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"icon": "//images.cloudflareapps.com/wGHq0HDQS1UhqFzwR9Zs_logo-1024px.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Doorbell.io",
+				"tagline": "",
+				"website": "https://doorbell.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"for-developers",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ASWpAYg2C3iU"
+				},
+				"created": "2017-05-18T12:48:37.180733Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"requestedAt": "2017-05-23T17:45:48.178833484Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-26T02:48:24.712654572Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "uTHHwV_8M2eU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 10,
+							"services": [
+								"doorbell"
+							],
+							"title": "Doorbell.io Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://doorbell.io/webhooks/cloudflare-apps",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Doorbell.io."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JNcdyTv2sO-Z",
+			"metadata": {
+				"code": {
+					"sourceTag": "JNcdyTv2sO-Z",
+					"uploadedOn": "2017-06-02T01:31:09.2804922Z"
+				}
+			},
+			"created": "2017-06-02T00:04:02.268887Z",
+			"proposedApp": {
+				"id": "uTHHwV_8M2eU",
+				"title": "Doorbell",
+				"shortDescription": "Gather in-app user feedback, for free!",
+				"longDescription": "Doorbell embeds a widget on your site to allow your customers to easily send you feedback.\n\nYour customers can optionally **attach files**, have an **automatically generated screenshot** added to their message so you can see exactly what they saw when they sent the message.\n\nDoorbell also has a wide range of integrations, from chat platforms like **Slack** and **Hipchat**, to Project Management tools like **Trello, Asana, Github, Jira, Pivotal Tracker**, and many more.\n\nAll messages are run through sentiment analysis algorithms, so you can quickly establish how the customer is feeling.\n\nThere is a free plan you can use forever, but some features are restricted to paid plans. Paid plans range from $9 to $49 per month.",
+				"instructions": "Once Doorbell is installed, you'll have to visit [Doorbell's dashboard](https://doorbell.io/home) to see your incoming messages and reply to them. You will of course get email notifications as well, but you might want to see all your conversations in once place!",
+				"alias": "doorbell",
+				"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"icon": "//images.cloudflareapps.com/zAl2GWyQSqfUMoFdXlBz_logo-1024px.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5hmjfDFCStS0CTlOeFjr_doorbell-popup.png",
+					"//images.cloudflareapps.com/tYz7DNS1R0e1mDFdHFcA_doorbell-interface.png",
+					"//images.cloudflareapps.com/9AlCwsQSXGWfZSa1wUWP_doorbell-interface-thread.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Doorbell.io",
+				"tagline": "",
+				"website": "https://doorbell.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"for-developers",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ASWpAYg2C3iU"
+				},
+				"created": "2017-05-18T12:48:37.180733Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"requestedAt": "2017-06-02T01:49:27.143734459Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-05T19:06:45.971672327Z"
+			}
+		},
+		{
+			"tag": "v1.0.3",
+			"appId": "uTHHwV_8M2eU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 10,
+							"services": [
+								"doorbell"
+							],
+							"title": "Doorbell.io Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://doorbell.io/webhooks/cloudflare-apps",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install",
+							"preview",
+							"option-change:account",
+							"option-change:application"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Doorbell.io."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VpNZMhIlMGJh",
+			"metadata": {
+				"code": {
+					"sourceTag": "VpNZMhIlMGJh",
+					"uploadedOn": "2017-06-07T18:14:45.781930623Z"
+				}
+			},
+			"created": "2017-06-05T19:13:03.808295Z",
+			"proposedApp": {
+				"id": "uTHHwV_8M2eU",
+				"title": "Doorbell",
+				"shortDescription": "Gather in-app user feedback",
+				"longDescription": "Doorbell embeds a widget on your site to allow your customers to easily send you feedback.\n\nYour customers can optionally **attach files**, have an **automatically generated screenshot** added to their message so you can see exactly what they saw when they sent the message.\n\nDoorbell also has a wide range of integrations, from chat platforms like **Slack** and **Hipchat**, to Project Management tools like **Trello, Asana, Github, Jira, Pivotal Tracker**, and many more.\n\nAll messages are run through sentiment analysis algorithms, so you can quickly establish how the customer is feeling.",
+				"instructions": "Once Doorbell is installed, you'll have to visit [Doorbell's dashboard](https://doorbell.io/home) to see your incoming messages and reply to them. You will of course get email notifications as well, but you might want to see all your conversations in once place!",
+				"alias": "doorbell",
+				"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"icon": "//images.cloudflareapps.com/zAl2GWyQSqfUMoFdXlBz_logo-1024px.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5hmjfDFCStS0CTlOeFjr_doorbell-popup.png",
+					"//images.cloudflareapps.com/tYz7DNS1R0e1mDFdHFcA_doorbell-interface.png",
+					"//images.cloudflareapps.com/9AlCwsQSXGWfZSa1wUWP_doorbell-interface-thread.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Doorbell.io",
+				"tagline": "",
+				"website": "https://doorbell.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"for-developers",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ASWpAYg2C3iU"
+				},
+				"created": "2017-05-18T12:48:37.180733Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"requestedAt": "2017-06-07T18:15:01.281567573Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-07T20:52:56.484962215Z"
+			}
+		},
+		{
+			"tag": "v1.0.4",
+			"appId": "uTHHwV_8M2eU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 10,
+							"services": [
+								"doorbell"
+							],
+							"title": "Doorbell.io Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://doorbell.io/webhooks/cloudflare-apps",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install",
+							"preview",
+							"option-change:account",
+							"option-change:application"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Doorbell.io."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VpNZMhIlMGJh",
+			"created": "2017-06-07T20:53:15.745201Z",
+			"proposedApp": {
+				"id": "uTHHwV_8M2eU",
+				"title": "Doorbell",
+				"shortDescription": "Gather in-app user feedback.",
+				"longDescription": "Doorbell embeds a widget on your site to allow your customers to easily send you feedback.\n\nYour customers can optionally **attach files**, have an **automatically generated screenshot** added to their message so you can see exactly what they saw when they sent the message.\n\nDoorbell also has a wide range of integrations, from chat platforms like **Slack** and **Hipchat**, to Project Management tools like **Trello, Asana, Github, Jira, Pivotal Tracker**, and many more.\n\nAll messages are run through sentiment analysis algorithms, so you can quickly establish how the customer is feeling.",
+				"instructions": "Once Doorbell is installed, you'll have to visit [Doorbell's dashboard](https://doorbell.io/home) to see your incoming messages and reply to them. You will of course get email notifications as well, but you might want to see all your conversations in once place!",
+				"alias": "doorbell",
+				"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"icon": "//images.cloudflareapps.com/zAl2GWyQSqfUMoFdXlBz_logo-1024px.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5hmjfDFCStS0CTlOeFjr_doorbell-popup.png",
+					"//images.cloudflareapps.com/tYz7DNS1R0e1mDFdHFcA_doorbell-interface.png",
+					"//images.cloudflareapps.com/9AlCwsQSXGWfZSa1wUWP_doorbell-interface-thread.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Doorbell.io",
+				"tagline": "",
+				"website": "https://doorbell.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"for-developers",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ASWpAYg2C3iU"
+				},
+				"created": "2017-05-18T12:48:37.180733Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-07T23:22:40.743224441Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-07T23:35:26.259672918Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "uTHHwV_8M2eU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 10,
+							"services": [
+								"doorbell"
+							],
+							"title": "Doorbell.io Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://doorbell.io/webhooks/cloudflare-apps",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install",
+							"preview",
+							"option-change:account",
+							"option-change:application"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Doorbell.io."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VpNZMhIlMGJh",
+			"created": "2018-11-13T20:44:35.431737Z",
+			"proposedApp": {
+				"id": "uTHHwV_8M2eU",
+				"title": "Doorbell",
+				"shortDescription": "Gather in-app user feedback.",
+				"longDescription": "Doorbell embeds a widget on your site to allow your customers to easily send you feedback.\n\nYour customers can optionally **attach files**, have an **automatically generated screenshot** added to their message so you can see exactly what they saw when they sent the message.\n\nDoorbell also has a wide range of integrations, from chat platforms like **Slack** and **Hipchat**, to Project Management tools like **Trello, Asana, Github, Jira, Pivotal Tracker**, and many more.\n\nAll messages are run through sentiment analysis algorithms, so you can quickly establish how the customer is feeling.",
+				"instructions": "Once Doorbell is installed, you'll have to visit [Doorbell's dashboard](https://doorbell.io/home) to see your incoming messages and reply to them. You will of course get email notifications as well, but you might want to see all your conversations in once place!",
+				"alias": "doorbell",
+				"orgId": "7192fb26f3b8b02f68f8f605f10f55aa",
+				"icon": "//images.cloudflareapps.com/zAl2GWyQSqfUMoFdXlBz_logo-1024px.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5hmjfDFCStS0CTlOeFjr_doorbell-popup.png",
+					"//images.cloudflareapps.com/tYz7DNS1R0e1mDFdHFcA_doorbell-interface.png",
+					"//images.cloudflareapps.com/9AlCwsQSXGWfZSa1wUWP_doorbell-interface-thread.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Doorbell.io",
+				"tagline": "",
+				"website": "https://doorbell.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ASWpAYg2C3iU"
+				},
+				"created": "2017-05-18T12:48:37.180733Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:44:36.283310105Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:42:24.473384703Z"
+			}
+		}
+	]
+}

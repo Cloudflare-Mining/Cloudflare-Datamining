@@ -1,0 +1,994 @@
+{
+	"id": "VxeL-5aqNd7K",
+	"title": "To The Moon+ Holidays",
+	"shortDescription": "Make Your Website Holiday Friendly in Seconds",
+	"longDescription": "Simply make your website holiday friendly by adding animations and style to your website. Share with your visitors the holiday season energy. \n<ul><li>Setup in Seconds</li>\n<li>Supports Major Holidays<ul>\n<li>4th of July</li>\n<li>Chinese New Year</li>\n<li>Christmas</li>\n<li>Diwali</li>\n<li>Easter</li>\n<li>Fathers Day</li>\n<li>Halloween</li>\n<li>Hanukkah</li>\n<li>Mothers Day</li>\n<li>New Year</li>\n<li>Passover</li>\n<li>Thanksgiving</li>\n<li>Valentines Day</li>\n</ul></li></ul>",
+	"instructions": "Simply select your holiday theme and options to fit your website to the holidays.",
+	"alias": "",
+	"orgId": "679f42840d2d91297fe94eab8249a441",
+	"icon": "https://images.cloudflareapps.com/jHBYEvbaRnz-/Screen%20Shot%202020-10-16%20at%206.43.34%20PM.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_01%20%281%29.png",
+		"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_02%20%281%29.png",
+		"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_03%20%281%29.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/zNPg6lEffzJo/Tier-images.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/NMGmjzSuazOj/Featured-App-image.png",
+	"author": "To The Moon+",
+	"tagline": "",
+	"website": "https://tothemoonplus.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.1",
+	"infoVersion": "1.1.1",
+	"points": 0,
+	"supportEmail": "info@tothemoonplus.com",
+	"products": [
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Fit Your Website For The Holidays",
+			"longDescription": "- It Simply Works!\n- Fits All Websites Out Of The Box\n- Custom Made Layout Designs For The Holidays\n- We're Adding Holidays Regularly",
+			"visible": true,
+			"price": 800,
+			"order": 0,
+			"plan": "APPS_TO_THE_MOON_HOLIDAY_PRO",
+			"feature": "apps.tothemoon_holiday_pro.enabled",
+			"created": null
+		},
+		{
+			"id": "Free",
+			"title": "Free",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "679f42840d2d91297fe94eab8249a441",
+			"created": "2021-02-25T10:29:12.085974161Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "owXg7iMqUhb2"
+	},
+	"created": "2020-12-30T10:22:47.054624Z",
+	"org": {
+		"id": "679f42840d2d91297fe94eab8249a441",
+		"title": "",
+		"username": "679f42840d2d91297fe94eab8249a441",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "VxeL-5aqNd7K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customCss": {
+							"description": "For Developers Only - Paste here any css code without 'script' tag and refresh the preview window by clicking on 'Go' or 'Preview in a separate window'",
+							"maxLength": 200,
+							"order": 6,
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Holiday Animation or Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"elements": {
+							"order": 5,
+							"properties": {
+								"animationVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two"
+									],
+									"enumNames": {
+										"one": "Standard",
+										"two": "Fade Out"
+									},
+									"order": 1,
+									"showIf": {
+										"elements.showAnimation": true
+									},
+									"title": "Animation Style",
+									"type": "string"
+								},
+								"bottomPushUp": {
+									"default": false,
+									"description": "Push Layout Up",
+									"order": 9,
+									"showIf": {
+										"elements.showFooter": true
+									},
+									"title": "Push Website Up",
+									"type": "boolean"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 2,
+									"type": "help"
+								},
+								"showAnimation": {
+									"default": true,
+									"description": "Display a holiday animation on screen",
+									"order": 0,
+									"title": "<b>Animation</b>",
+									"type": "boolean"
+								},
+								"showFooter": {
+									"default": true,
+									"description": "Bottom holiday banner at the bottom of the screen",
+									"order": 8,
+									"title": "<b>Bottom of Screen</b>",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"holidays": {
+							"order": 4,
+							"properties": {
+								"holiday": {
+									"default": "4_july",
+									"enum": [
+										"4_july",
+										"chinese_new_year",
+										"cristmas",
+										"diwali",
+										"easter",
+										"fathers_day",
+										"halloween",
+										"hanukkah",
+										"mothers_day",
+										"new_year",
+										"passover",
+										"thanksgiving",
+										"valentine"
+									],
+									"enumNames": {
+										"4_july": "4th of July",
+										"chinese_new_year": "Chinese New Year",
+										"cristmas": "Christmas",
+										"diwali": "Diwali",
+										"easter": "Easter",
+										"fathers_day": "Fathers Day",
+										"halloween": "Halloween",
+										"hanukkah": "Hanukkah",
+										"mothers_day": "Mothers Day",
+										"new_year": "New Year",
+										"passover": "Passover",
+										"thanksgiving": "Thanksgiving",
+										"valentine": "Valentines Day"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Theme",
+									"type": "string"
+								},
+								"holidayVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two"
+									],
+									"enumNames": {
+										"one": "Main",
+										"two": "V2"
+									},
+									"order": 1,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Template",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Holidays",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 2,
+							"title": "APP Status",
+							"type": "string"
+						},
+						"top": {
+							"order": 0,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Simply make your website holiday friendly and share with your visitors the holiday season. </b><ul><li>Setup in Seconds</li><li>Decorate Your Website for Almost Any Holiday</li></ul>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"walkthrough": {
+							"order": 1,
+							"properties": {
+								"description": {
+									"helpvalue": "Watch Our <b><a href = 'https://www.youtube.com/watch?v=C6lstbefSjY' target='_blank'>Quick YouTube Walkthrough.</a></b>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "New to App?",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NAzwyATmybFG",
+			"metadata": {
+				"code": {
+					"sourceTag": "NAzwyATmybFG",
+					"uploadedOn": "2021-02-25T06:32:30.4839608Z"
+				}
+			},
+			"created": "2020-12-30T10:22:48.023173Z",
+			"proposedApp": {
+				"id": "VxeL-5aqNd7K",
+				"title": "To The Moon+ Holidays",
+				"shortDescription": "Make Your Website Holiday Friendly in Seconds",
+				"longDescription": "Simply make your website holiday friendly by adding animations and style to your website. Share with your visitors the holiday season energy. \n<ul><li>Setup in Seconds</li>\n<li>Supports Major Holidays<ul>\n<li>4th of July</li>\n<li>Chinese New Year</li>\n<li>Christmas</li>\n<li>Diwali</li>\n<li>Easter</li>\n<li>Fathers Day</li>\n<li>Halloween</li>\n<li>Hanukkah</li>\n<li>Mothers Day</li>\n<li>New Year</li>\n<li>Passover</li>\n<li>Thanksgiving</li>\n<li>Valentines Day</li>\n</ul></li></ul>",
+				"instructions": "Simply select your holiday theme and options to fit your website to the holidays.",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/jHBYEvbaRnz-/Screen%20Shot%202020-10-16%20at%206.43.34%20PM.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_03%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_05%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_01%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_02.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_04.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zNPg6lEffzJo/Tier-images.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/NMGmjzSuazOj/Featured-App-image.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Fit Your Website For The Holidays",
+						"longDescription": "- It Simply Works!\n- Fits All Websites Out Of The Box\n- Custom Made Layout Designs For The Holidays\n- We're Adding Holidays Regularly",
+						"visible": true,
+						"price": 800,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "owXg7iMqUhb2"
+				},
+				"created": "2020-12-30T10:22:47.054624Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "679f42840d2d91297fe94eab8249a441",
+				"requestedAt": "2021-02-25T10:29:12.079153119Z",
+				"canceledByUserId": "679f42840d2d91297fe94eab8249a441",
+				"canceledAt": "2021-02-26T10:33:22.948343562Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "VxeL-5aqNd7K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customCss": {
+							"description": "For Developers Only - Paste here any css code without 'script' tag and refresh the preview window by clicking on 'Go' or 'Preview in a separate window'",
+							"maxLength": 200,
+							"order": 6,
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Holiday Animation or Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"elements": {
+							"order": 5,
+							"properties": {
+								"animationVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two",
+										"three",
+										"four"
+									],
+									"enumNames": {
+										"four": "Relax",
+										"one": "Alive",
+										"three": "Sway",
+										"two": "Casual"
+									},
+									"order": 1,
+									"showIf": {
+										"elements.showAnimation": true
+									},
+									"title": "Animation Style",
+									"type": "string"
+								},
+								"bottomPushUp": {
+									"default": false,
+									"description": "(* USE ONLY if “Bottom of Screen” image is not displaying footer correctly)",
+									"order": 9,
+									"showIf": {
+										"elements.showFooter": true
+									},
+									"title": "Push Website Up",
+									"type": "boolean"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 2,
+									"type": "help"
+								},
+								"showAnimation": {
+									"default": true,
+									"description": "Display a holiday animation on screen",
+									"order": 0,
+									"title": "<b>Animation</b>",
+									"type": "boolean"
+								},
+								"showFooter": {
+									"default": true,
+									"description": "Bottom holiday banner at the bottom of the screen",
+									"order": 8,
+									"title": "<b>Bottom of Screen</b>",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"holidays": {
+							"order": 4,
+							"properties": {
+								"holiday": {
+									"default": "4_july",
+									"enum": [
+										"4_july",
+										"chinese_new_year",
+										"cristmas",
+										"diwali",
+										"easter",
+										"fathers_day",
+										"halloween",
+										"hanukkah",
+										"mothers_day",
+										"new_year",
+										"passover",
+										"thanksgiving",
+										"valentine"
+									],
+									"enumNames": {
+										"4_july": "4th of July",
+										"chinese_new_year": "Chinese New Year",
+										"cristmas": "Christmas",
+										"diwali": "Diwali",
+										"easter": "Easter",
+										"fathers_day": "Fathers Day",
+										"halloween": "Halloween",
+										"hanukkah": "Hanukkah",
+										"mothers_day": "Mothers Day",
+										"new_year": "New Year",
+										"passover": "Passover",
+										"thanksgiving": "Thanksgiving",
+										"valentine": "Valentines Day"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Theme",
+									"type": "string"
+								},
+								"holidayVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two"
+									],
+									"enumNames": {
+										"one": "Main",
+										"two": "V2"
+									},
+									"order": 1,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Template",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Holidays",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 2,
+							"title": "APP Status",
+							"type": "string"
+						},
+						"top": {
+							"order": 0,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Simply make your website holiday friendly and share with your visitors the holiday season. </b><ul><li>Setup in Seconds</li><li>Decorate Your Website for Almost Any Holiday</li></ul>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"walkthrough": {
+							"order": 1,
+							"properties": {
+								"description": {
+									"helpvalue": "Watch Our <b><a href = 'https://www.youtube.com/watch?v=C6lstbefSjY' target='_blank'>Quick YouTube Walkthrough.</a></b>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "New to App?",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "improved animations and added 2 animations",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QMzXgJjUuIKB",
+			"metadata": {
+				"code": {
+					"sourceTag": "QMzXgJjUuIKB",
+					"uploadedOn": "2021-02-26T10:32:49.328149617Z"
+				}
+			},
+			"created": "2021-02-26T10:32:48.938865Z",
+			"proposedApp": {
+				"id": "VxeL-5aqNd7K",
+				"title": "To The Moon+ Holidays",
+				"shortDescription": "Make Your Website Holiday Friendly in Seconds",
+				"longDescription": "Simply make your website holiday friendly by adding animations and style to your website. Share with your visitors the holiday season energy. \n<ul><li>Setup in Seconds</li>\n<li>Supports Major Holidays<ul>\n<li>4th of July</li>\n<li>Chinese New Year</li>\n<li>Christmas</li>\n<li>Diwali</li>\n<li>Easter</li>\n<li>Fathers Day</li>\n<li>Halloween</li>\n<li>Hanukkah</li>\n<li>Mothers Day</li>\n<li>New Year</li>\n<li>Passover</li>\n<li>Thanksgiving</li>\n<li>Valentines Day</li>\n</ul></li></ul>",
+				"instructions": "Simply select your holiday theme and options to fit your website to the holidays.",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/jHBYEvbaRnz-/Screen%20Shot%202020-10-16%20at%206.43.34%20PM.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_03%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_05%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_01%20%281%29.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_02.png",
+					"https://images.cloudflareapps.com/dFLbs5Uj6mC7/Gallery-images_04.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zNPg6lEffzJo/Tier-images.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/NMGmjzSuazOj/Featured-App-image.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Fit Your Website For The Holidays",
+						"longDescription": "- It Simply Works!\n- Fits All Websites Out Of The Box\n- Custom Made Layout Designs For The Holidays\n- We're Adding Holidays Regularly",
+						"visible": true,
+						"price": 800,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "owXg7iMqUhb2"
+				},
+				"created": "2020-12-30T10:22:47.054624Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "679f42840d2d91297fe94eab8249a441",
+				"requestedAt": "2021-02-26T10:33:22.960307195Z",
+				"canceledByUserId": "b663b9a80366828a836e01c93e76da96",
+				"canceledAt": "2021-05-27T21:24:07.454298182Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "VxeL-5aqNd7K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/alive.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/casual.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/sway.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/windy.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/run.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customCss": {
+							"description": "For Developers Only - Paste here any css code without 'script' tag and refresh the preview window by clicking on 'Go' or 'Preview in a separate window'",
+							"maxLength": 200,
+							"order": 6,
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Holiday Animation or Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"elements": {
+							"order": 5,
+							"properties": {
+								"animationVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two",
+										"three",
+										"four",
+										"five",
+										"six"
+									],
+									"enumNames": {
+										"five": "Touch & Play",
+										"four": "Windy",
+										"one": "Alive",
+										"six": "Relax",
+										"three": "Sway",
+										"two": "Casual"
+									},
+									"order": 1,
+									"showIf": {
+										"elements.showAnimation": true
+									},
+									"title": "Animation Style",
+									"type": "string"
+								},
+								"bottomPushUp": {
+									"default": false,
+									"description": "(* USE ONLY if “Bottom of Screen” image is not displaying footer correctly)",
+									"order": 9,
+									"showIf": {
+										"elements.showFooter": true
+									},
+									"title": "Push Website Up",
+									"type": "boolean"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 2,
+									"type": "help"
+								},
+								"showAnimation": {
+									"default": true,
+									"description": "Display a holiday animation on screen",
+									"order": 0,
+									"title": "<b>Animation</b>",
+									"type": "boolean"
+								},
+								"showFooter": {
+									"default": true,
+									"description": "Bottom holiday banner at the bottom of the screen",
+									"order": 8,
+									"title": "<b>Bottom of Screen</b>",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"holidays": {
+							"order": 4,
+							"properties": {
+								"holiday": {
+									"default": "4_july",
+									"enum": [
+										"4_july",
+										"chinese_new_year",
+										"cristmas",
+										"diwali",
+										"easter",
+										"fathers_day",
+										"halloween",
+										"hanukkah",
+										"mothers_day",
+										"new_year",
+										"passover",
+										"thanksgiving",
+										"valentine"
+									],
+									"enumNames": {
+										"4_july": "4th of July",
+										"chinese_new_year": "Chinese New Year",
+										"cristmas": "Christmas",
+										"diwali": "Diwali",
+										"easter": "Easter",
+										"fathers_day": "Fathers Day",
+										"halloween": "Halloween",
+										"hanukkah": "Hanukkah",
+										"mothers_day": "Mothers Day",
+										"new_year": "New Year",
+										"passover": "Passover",
+										"thanksgiving": "Thanksgiving",
+										"valentine": "Valentines Day"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Theme",
+									"type": "string"
+								},
+								"holidayVersion": {
+									"default": "one",
+									"enum": [
+										"one",
+										"two"
+									],
+									"enumNames": {
+										"one": "Main",
+										"two": "V2"
+									},
+									"order": 1,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Template",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Holidays",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 2,
+							"title": "APP Status",
+							"type": "string"
+						},
+						"top": {
+							"order": 0,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Simply make your website holiday friendly and share with your visitors the holiday season. </b><ul><li>Setup in Seconds</li><li>Decorate Your Website for Almost Any Holiday</li></ul>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"walkthrough": {
+							"order": 1,
+							"properties": {
+								"description": {
+									"helpvalue": "Watch Our <b><a href = 'https://www.youtube.com/watch?v=C6lstbefSjY' target='_blank'>Quick YouTube Walkthrough.</a></b>",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "New to App?",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "improved animations and added 2 animations",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YUTJ_wqZGwt1",
+			"metadata": {
+				"code": {
+					"sourceTag": "YUTJ_wqZGwt1",
+					"uploadedOn": "2021-03-29T11:59:22.252401352Z"
+				}
+			},
+			"created": "2021-03-29T11:59:21.859912Z",
+			"proposedApp": {
+				"id": "VxeL-5aqNd7K",
+				"title": "To The Moon+ Holidays",
+				"shortDescription": "Make Your Website Holiday Friendly in Seconds",
+				"longDescription": "Simply make your website holiday friendly by adding animations and style to your website. Share with your visitors the holiday season energy. \n<ul><li>Setup in Seconds</li>\n<li>Supports Major Holidays<ul>\n<li>4th of July</li>\n<li>Chinese New Year</li>\n<li>Christmas</li>\n<li>Diwali</li>\n<li>Easter</li>\n<li>Fathers Day</li>\n<li>Halloween</li>\n<li>Hanukkah</li>\n<li>Mothers Day</li>\n<li>New Year</li>\n<li>Passover</li>\n<li>Thanksgiving</li>\n<li>Valentines Day</li>\n</ul></li></ul>",
+				"instructions": "Simply select your holiday theme and options to fit your website to the holidays.",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/jHBYEvbaRnz-/Screen%20Shot%202020-10-16%20at%206.43.34%20PM.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_01%20%281%29.png",
+					"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_02%20%281%29.png",
+					"https://images.cloudflareapps.com/k-2neJX0LUBx/Cloudflare_03%20%281%29.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zNPg6lEffzJo/Tier-images.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/NMGmjzSuazOj/Featured-App-image.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Fit Your Website For The Holidays",
+						"longDescription": "- It Simply Works!\n- Fits All Websites Out Of The Box\n- Custom Made Layout Designs For The Holidays\n- We're Adding Holidays Regularly",
+						"visible": true,
+						"price": 800,
+						"order": 0,
+						"plan": "APPS_TO_THE_MOON_HOLIDAY_PRO",
+						"feature": "apps.tothemoon_holiday_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "Free",
+						"title": "Free",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "owXg7iMqUhb2"
+				},
+				"created": "2020-12-30T10:22:47.054624Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"requestedAt": "2021-05-27T21:24:07.462728749Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-05-27T21:26:19.964669957Z"
+			}
+		}
+	]
+}

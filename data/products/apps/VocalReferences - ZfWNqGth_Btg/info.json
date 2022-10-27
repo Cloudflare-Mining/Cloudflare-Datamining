@@ -1,0 +1,5669 @@
+{
+	"id": "ZfWNqGth_Btg",
+	"title": "VocalReferences",
+	"shortDescription": "Testimonials and reviews displayed on your website.",
+	"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+	"instructions": "",
+	"alias": "vocal-references",
+	"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+	"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+		"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+		"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+		"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+		"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+	"featuredAppImage": "",
+	"author": "Local Hits Media LLC",
+	"tagline": "",
+	"website": "https://www.vocalreferences.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+	"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+	"color": "#9ec536",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.20",
+	"infoVersion": "1.1.20",
+	"points": 800,
+	"supportEmail": "support@vocalreferences.com",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Basic features and limited testimonials",
+			"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "premium",
+			"title": "Premium",
+			"shortDescription": "Professional features + support",
+			"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+			"visible": true,
+			"price": 1000,
+			"order": 0,
+			"plan": "testimonials_premium",
+			"feature": "apps.testimonials.premium.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+			"created": "2017-12-18T15:40:31.624440594Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "QkV-VIBHszUC"
+	},
+	"created": "2017-12-11T10:57:10.319676Z",
+	"org": {
+		"id": "a9ca513545cd3c91aa7bb0a76e1fb707",
+		"title": "",
+		"username": "a9ca513545cd3c91aa7bb0a76e1fb707",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.1.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jqnative.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences account",
+							"type": "object"
+						},
+						"help": {
+							"properties": {
+								"help": {
+									"helpvalue": "<b>To add, edit or delete testimonials login to your <br/><a target=\"_blank\" href=\"https://www.vocalreferences.com/login\">Merchant Center</a></b>",
+									"type": "help"
+								}
+							},
+							"title": "Adding & editing your own testimonials",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "slider",
+									"maximum": 10,
+									"minimum": 0,
+									"step": 1,
+									"title": "After",
+									"type": "number"
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"description": "Used only for custom theme",
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"description": "Select the size of widget",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"description": "Select the standard dark/light theme or select custom to specify your own colors.",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/w9-CjSjCwF5T",
+			"metadata": {
+				"code": {
+					"sourceTag": "w9-CjSjCwF5T",
+					"uploadedOn": "2018-01-16T02:35:31.494050161Z"
+				}
+			},
+			"created": "2018-01-16T02:35:31.021946Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews App",
+				"shortDescription": "by VocalReferences",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/hmLHZbpOSFaVMGL1sl4W_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "VocalReferences by Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-01-16T02:35:32.273860149Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-24T11:12:00.406246151Z"
+			}
+		},
+		{
+			"tag": "0.2.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jqnative.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"showIf": {
+										"flyout_autoopen": true
+									},
+									"title": "After",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2xEtiO0XV01e",
+			"metadata": {
+				"code": {
+					"sourceTag": "2xEtiO0XV01e",
+					"uploadedOn": "2018-01-25T15:06:11.645253187Z"
+				}
+			},
+			"created": "2018-01-25T15:06:10.727737Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews App",
+				"shortDescription": "by VocalReferences",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/hmLHZbpOSFaVMGL1sl4W_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "VocalReferences by Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-01-25T15:06:13.273396629Z",
+				"canceledByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"canceledAt": "2018-01-25T15:32:23.007392671Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.3.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jqnative.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"showIf": {
+										"flyout_autoopen": true
+									},
+									"title": "After",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2xEtiO0XV01e",
+			"created": "2018-01-25T15:32:22.240991Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews",
+				"shortDescription": "by VocalReferences",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "VocalReferences by Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-01-25T15:32:23.027297132Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-25T22:24:25.716592683Z"
+			}
+		},
+		{
+			"tag": "0.3.1",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jqnative.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"showIf": {
+										"flyout_autoopen": true
+									},
+									"title": "After",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2xEtiO0XV01e",
+			"created": "2018-02-02T12:49:08.116621Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews",
+				"shortDescription": "by VocalReferences",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "VocalReferences by Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T12:54:07.513022095Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-02T13:34:49.560456848Z"
+			}
+		},
+		{
+			"tag": "0.4.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jqnative.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"showIf": {
+										"flyout_autoopen": true
+									},
+									"title": "After",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2xEtiO0XV01e",
+			"created": "2018-02-02T13:34:45.37549Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews",
+				"shortDescription": "",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-02-05T18:47:36.61077762Z",
+				"canceledByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"canceledAt": "2018-02-05T18:50:36.324733624Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.4.1",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"order": 7,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"order": 5,
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"order": 2,
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"order": 3,
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "Seconds",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 6,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "After",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"order": 4,
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 2,
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 3,
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/04xpP2qgaNfv",
+			"metadata": {
+				"code": {
+					"sourceTag": "04xpP2qgaNfv",
+					"uploadedOn": "2018-02-05T18:50:35.108924058Z"
+				}
+			},
+			"created": "2018-02-05T18:50:34.457404Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews",
+				"shortDescription": "",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-02-05T18:50:36.333669255Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-02-06T01:50:45.221179402Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/jquery.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/flyout.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences account to display your testimonials.",
+							"format": "account",
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences account",
+							"type": "object"
+						},
+						"help": {
+							"properties": {
+								"help": {
+									"helpvalue": "<b>To add, edit or delete testimonials login to your <br/><a target=\"_blank\" href=\"https://www.vocalreferences.com/login\">Merchant Center</a></b>",
+									"type": "help"
+								}
+							},
+							"title": "Adding & editing your own testimonials",
+							"type": "object"
+						},
+						"personalize": {
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.  You can use up to 12 characters",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "If checked, the widget will remain stationary as the user scrolls down the page.",
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"description": "If checked, the widget will automatically open to a visitor after the specified number of seconds.",
+									"title": "Display on page load",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": "2",
+									"description": "The number of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number to display",
+									"type": "string"
+								},
+								"flyout_count_rows": {
+									"default": "1",
+									"description": "The number rows of testimonials that will be displayed at once.  The visitor has the ability to page through the testimonials via the built-in arrow keys.  On a mobile device the flyout will automatically display one testimonial at a time.",
+									"enum": [
+										"1",
+										"2",
+										"3"
+									],
+									"enumNames": {
+										"1": "One",
+										"2": "Two",
+										"3": "Three"
+									},
+									"title": "Number rows to display",
+									"type": "string"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "The flyout can be displayed on the right or left hand side of the screen.",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": 5,
+									"description": "Seconds",
+									"format": "slider",
+									"maximum": 10,
+									"minimum": 0,
+									"step": 1,
+									"title": "After",
+									"type": "number"
+								},
+								"flyout_top": {
+									"default": "250",
+									"description": "pixels",
+									"title": "Position from top",
+									"type": "string"
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"properties": {
+								"color": {
+									"description": "Used only for custom theme",
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Tab",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#000000",
+											"format": "color",
+											"title": "Title text",
+											"type": "string"
+										}
+									},
+									"title": "Colors of element",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "No Icon",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"description": "Select the size of widget",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"description": "Select the standard dark/light theme or select custom to specify your own colors.",
+									"enum": [
+										"custom",
+										"light",
+										"dark"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"title": "Color Theme",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hLZbnJj_efn6",
+			"metadata": {
+				"code": {
+					"sourceTag": "hLZbnJj_efn6",
+					"uploadedOn": "2017-12-18T15:38:07.338801323Z"
+				}
+			},
+			"created": "2017-12-11T10:57:11.431316Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Testimonials & Reviews App",
+				"shortDescription": "by VocalReferences",
+				"longDescription": "VocalReferences is an easy-to-use testimonial & review app with all these great features:\n1. Stunning display of your testimonials and reviews on any webpage\n2. Customize display to meet your unique needs\n3. Easy testimonial capture tool built in - video & text\n4. SEO - your testimonials submitted to Google for indexing \n5. 5 star SERP for every upgraded account\n6. You are in control.  You decide what to display.",
+				"instructions": "",
+				"alias": "vr",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/hmLHZbpOSFaVMGL1sl4W_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "VocalReferences by Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"getting-started-apps",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2017-12-18T15:40:31.614896276Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-12-22T16:04:04.619636749Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/soStHWO4iY2u",
+			"metadata": {
+				"code": {
+					"sourceTag": "soStHWO4iY2u",
+					"uploadedOn": "2018-02-06T01:43:32.891390863Z"
+				}
+			},
+			"created": "2018-02-06T01:43:32.732022Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "vr-pro",
+						"title": "VocalReferences Pro",
+						"shortDescription": "Unlimited Testimonials - Google SERP - Premium Support",
+						"longDescription": "Upgrade to VocalReferences Pro and you receive:\n\n1.  Unlimited testimonials - text & video.  VocalReferences Basic comes with 2 testimonials.\n2.  Google 5 Star Review SERP.\n3.  Premium Support.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-06T01:50:45.232022664Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-02-06T22:43:40.220219202Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/soStHWO4iY2u",
+			"created": "2018-02-06T22:43:40.001104Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-06T22:43:40.235526779Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-06T22:47:49.397504173Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/soStHWO4iY2u",
+			"created": "2018-03-08T22:34:05.528051Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-03-08T22:34:05.762430024Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-08T22:40:47.053574276Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- The professional tier has been disabled temporarily for maintenance.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/soStHWO4iY2u",
+			"created": "2018-03-12T23:27:29.873707Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-03-12T23:27:30.051706516Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-12T23:33:08.095533867Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "### Added Premium features\n\n- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/soStHWO4iY2u",
+			"created": "2018-03-20T20:42:40.820168Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-03-20T20:44:47.120614102Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-20T20:45:02.28862546Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.vocalreferences.com/v3/cloudflare-hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Vocalrefences API."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added several improvements to application.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TLgHSZISPonh",
+			"metadata": {
+				"code": {
+					"sourceTag": "TLgHSZISPonh",
+					"uploadedOn": "2018-04-24T10:19:10.236037064Z"
+				}
+			},
+			"created": "2018-04-24T10:19:09.533663Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "Vocal References",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2018-04-24T10:20:29.191610647Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-01T20:50:10.263480744Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.vocalreferences.com/v3/cloudflare-hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Vocalrefences API."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Change space in title",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TLgHSZISPonh",
+			"created": "2018-07-20T17:46:01.114447Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "VocalReferences",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-07-20T17:46:01.282749902Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-20T20:10:25.949698452Z"
+			}
+		},
+		{
+			"tag": "1.1.7",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.vocalreferences.com/v3/cloudflare-hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Vocalrefences API."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TLgHSZISPonh",
+			"created": "2018-11-13T20:50:48.591059Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "VocalReferences",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:50:50.58125929Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:41:53.063088448Z"
+			}
+		},
+		{
+			"tag": "1.1.19",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.vocalreferences.com/v3/cloudflare-hook",
+						"events": [
+							"option-change",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Vocalrefences API."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IPN_Bl-TiFVK",
+			"metadata": {
+				"code": {
+					"sourceTag": "IPN_Bl-TiFVK",
+					"uploadedOn": "2020-04-19T16:07:29.257735943Z"
+				}
+			},
+			"created": "2020-04-19T16:07:28.711732Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "VocalReferences",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2020-04-19T16:07:31.682442155Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-20T20:01:36.031648417Z"
+			}
+		},
+		{
+			"tag": "1.1.20",
+			"appId": "ZfWNqGth_Btg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./vendor/flyout.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"auth": {
+							"description": "Login or create a new VocalReferences Account to display your testimonials.",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"vocalrefoauth2"
+							],
+							"title": "Vocalreferences Account",
+							"type": "object"
+						},
+						"personalize": {
+							"order": 2,
+							"properties": {
+								"flyout_title": {
+									"default": "Reviews",
+									"description": "The title will appear on the tab of the flyout.",
+									"maxLength": 12,
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"title": "Personalize",
+							"type": "object"
+						},
+						"settings": {
+							"order": 3,
+							"properties": {
+								"fixed": {
+									"default": false,
+									"description": "Remain stationary when the page is scrolled.",
+									"order": 5,
+									"title": "Fixed position",
+									"type": "boolean"
+								},
+								"flyout_autoopen": {
+									"default": false,
+									"order": 6,
+									"title": "Automatically open widget",
+									"type": "boolean"
+								},
+								"flyout_count": {
+									"default": 2,
+									"description": "The visitor has the ability to page through the testimonials via the built-in arrow keys. On a mobile device the flyout will automatically display one testimonial at a time.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 2,
+									"title": "Number of columns to display",
+									"type": "number"
+								},
+								"flyout_count_rows": {
+									"default": 2,
+									"description": "The number rows of testimonials that will be displayed at once.",
+									"maximum": 3,
+									"minimum": 1,
+									"order": 3,
+									"title": "Number of rows to display",
+									"type": "number"
+								},
+								"flyout_position": {
+									"default": "right",
+									"description": "Which side of the screen should the widget appear on?",
+									"enum": [
+										"left",
+										"right"
+									],
+									"enumNames": {
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Position",
+									"type": "string"
+								},
+								"flyout_timer": {
+									"default": {
+										"unit": "sec(s)",
+										"value": 5
+									},
+									"description": "How long before the widget appears?",
+									"format": "number",
+									"maximum": 10,
+									"minimum": 0,
+									"order": 7,
+									"showIf": {
+										"settings.flyout_autoopen": {
+											"op": "==",
+											"value": true
+										}
+									},
+									"title": "Delay",
+									"type": "object",
+									"units": [
+										"sec(s)"
+									]
+								},
+								"flyout_top": {
+									"default": {
+										"unit": "px",
+										"value": 250
+									},
+									"format": "number",
+									"order": 4,
+									"title": "Vertical padding",
+									"type": "object",
+									"units": [
+										"px"
+									]
+								}
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"color": {
+									"order": 2,
+									"properties": {
+										"color_head": {
+											"default": "#000000",
+											"format": "color",
+											"order": 1,
+											"title": "Tab Background",
+											"type": "string"
+										},
+										"color_main": {
+											"default": "#363636",
+											"format": "color",
+											"order": 3,
+											"title": "Widget Background",
+											"type": "string"
+										},
+										"color_text_head": {
+											"default": "#898989",
+											"format": "color",
+											"order": 2,
+											"title": "Tab Text",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"theme.flyout_theme": {
+											"op": "==",
+											"value": "custom"
+										}
+									},
+									"title": "Colors",
+									"type": "object"
+								},
+								"flyout_icon": {
+									"default": "wr-icona-start",
+									"enum": [
+										"wr-icona-start",
+										"wr-icona-start wr-animation_star",
+										"wr-icona-start wr-animation_star2",
+										"wr-icona-heart",
+										"wr-icona-heart wr-animation_heart",
+										""
+									],
+									"enumNames": {
+										"": "None",
+										"wr-icona-heart": "Heart",
+										"wr-icona-heart wr-animation_heart": "Heart pulse",
+										"wr-icona-start": "Star",
+										"wr-icona-start wr-animation_star": "Star rotated",
+										"wr-icona-start wr-animation_star2": "Star blink"
+									},
+									"order": 4,
+									"title": "Icon",
+									"type": "string"
+								},
+								"flyout_size": {
+									"default": "square",
+									"enum": [
+										"square",
+										"small",
+										"medium",
+										"large"
+									],
+									"enumNames": {
+										"large": "Large",
+										"medium": "Medium",
+										"small": "Small",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 3,
+									"title": "Size",
+									"type": "string"
+								},
+								"flyout_theme": {
+									"default": "dark",
+									"enum": [
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Theme",
+									"type": "string"
+								}
+							},
+							"title": "Appearance",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.vocalreferences.com/v3/cloudflare-hook",
+						"events": [
+							"option-change",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Vocalrefences API."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4xavwZn5Qg4S",
+			"metadata": {
+				"code": {
+					"sourceTag": "4xavwZn5Qg4S",
+					"uploadedOn": "2021-08-19T10:37:40.992790536Z"
+				}
+			},
+			"created": "2021-08-19T10:37:39.997602Z",
+			"proposedApp": {
+				"id": "ZfWNqGth_Btg",
+				"title": "VocalReferences",
+				"shortDescription": "Testimonials and reviews displayed on your website.",
+				"longDescription": "Supercharge your Testimonials!\nWe make it easy to generate testimonials that increase website traffic and boost sales.\n\n## Google optimize your testimonials\nWe index your testimonials to boost your search results and provide you with a unique Review SERP\n\n## Step up to video testimonials\nWe are the only product that makes it easy to incorporate video into your testimonials\n\n## Stunning testimonial displays\nUpgrade your testimonials with our array of popular layouts. Personalize them to meet every need\n\n## Capture more testimonials\nWe make it easy for your customers to submit testimonials with our buttons, links and mobile apps",
+				"instructions": "",
+				"alias": "vocal-references",
+				"orgId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"icon": "//images.cloudflareapps.com/D5UV5mSR2KHM9tTq5ycw_288px × 288px logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5q76FN5JQBKcolJavy5X_ProsperLaw_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/8t408dO1SRKWV4GRbpMF_FairyBlackMother_StunningLayout_Cloudflare.png",
+					"//images.cloudflareapps.com/G5refVngSQm4m4ueApFl_Solarus_SERP_Cloudflare.png",
+					"//images.cloudflareapps.com/t0oSIbntS26MopID4qtm_testimonial_form_cloudflare.png",
+					"//images.cloudflareapps.com/WDUjLTTgCWB9gT9HbDOw_Easy_Video_Testimonials_Cloudflare.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/LXB9RndPSeGgPoF6IbTL_VocalReferences logo with stars 420x268 2.png",
+				"featuredAppImage": "",
+				"author": "Local Hits Media LLC",
+				"tagline": "",
+				"website": "https://www.vocalreferences.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.vocalreferences.com/terms-and-conditions",
+				"privacyPolicyURL": "https://www.vocalreferences.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@vocalreferences.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic features and limited testimonials",
+						"longDescription": "- Record customers from your website\n- Stunning display widgets\n- Free Showcase Page\n- Capture Buttons and Links\n- Auto import your Facebook reviews\n- Mobile Apps\n- Facebook App\n- Lead Generator\n- Multi-Language\n- Merchant Center\n- Share to Social Media",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Professional features + support",
+						"longDescription": "- Unlimited Testimonials\n- Premium Support\n- Auto import of your Facebook reviews\n- Google Search optimization\n- Google 5 Star Review support",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "testimonials_premium",
+						"feature": "apps.testimonials.premium.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QkV-VIBHszUC"
+				},
+				"created": "2017-12-11T10:57:10.319676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9ca513545cd3c91aa7bb0a76e1fb707",
+				"requestedAt": "2021-08-19T10:37:42.254243309Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-10-12T15:35:25.479146971Z"
+			}
+		}
+	]
+}

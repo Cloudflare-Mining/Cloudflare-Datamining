@@ -1,0 +1,1623 @@
+{
+	"id": "qdbruf8Ud6a8",
+	"title": "Add Content",
+	"shortDescription": "Add content to your site in seconds.",
+	"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+	"instructions": "",
+	"alias": "add-content",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F17D6A",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.5.2",
+	"infoVersion": "1.5.2",
+	"points": 50,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:51:55.737356343Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "9RkNheKe_1xT"
+	},
+	"created": "2017-06-04T07:33:30.298401Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"position": "left"
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"position": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 3,
+										"title": "Horizontal alignment",
+										"type": "string"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Rich Text Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9RkNheKe_1xT",
+			"metadata": {
+				"code": {
+					"sourceTag": "9RkNheKe_1xT",
+					"uploadedOn": "2017-06-04T07:33:31.092735476Z"
+				}
+			},
+			"created": "2017-06-04T07:33:30.736168Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Rich Text",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Rich Text!\n\nAdd Rich Text is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-rich-text",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-04T07:33:32.442716356Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-04T08:15:57.248450993Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"position": "left"
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"position": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 3,
+										"title": "Horizontal alignment",
+										"type": "string"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Rich Text Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9RkNheKe_1xT",
+			"created": "2017-06-06T03:15:12.219265Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Rich Text",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Rich Text!\n\nAdd Rich Text is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-rich-text",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-06T03:15:23.774546806Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-06T03:15:40.437522099Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"position": "left"
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"position": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 3,
+										"title": "Horizontal alignment",
+										"type": "string"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Rich Text Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9RkNheKe_1xT",
+			"created": "2017-06-28T06:31:59.469022Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-28T06:31:59.879167147Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-28T06:32:10.733683082Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"position": "left"
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"position": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 3,
+										"title": "Horizontal alignment",
+										"type": "string"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Rich Text Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9RkNheKe_1xT",
+			"created": "2017-07-06T08:51:55.544228Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:51:55.735297773Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:13.330591311Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"textAlignment": "left"
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"horizontalAlignment": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"format": "radios",
+										"order": 3,
+										"title": "Horizontal Alignment",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"textAlignment": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"format": "radios",
+										"order": 3,
+										"title": "Text Alignment",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MRi29pNHzW9m",
+			"metadata": {
+				"code": {
+					"sourceTag": "MRi29pNHzW9m",
+					"uploadedOn": "2017-08-04T02:52:22.367426684Z"
+				}
+			},
+			"created": "2017-08-04T02:52:22.095987Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T02:52:23.402821371Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T02:53:07.619131438Z"
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"horizontalAlignment": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"format": "radios",
+										"order": 3,
+										"title": "Horizontal Alignment",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hQ0PPganBc_T",
+			"metadata": {
+				"code": {
+					"sourceTag": "hQ0PPganBc_T",
+					"uploadedOn": "2017-08-04T03:22:42.980954244Z"
+				}
+			},
+			"created": "2017-08-04T03:22:42.801812Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T03:22:43.626740062Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-04T03:25:35.117035093Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.1",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"horizontalAlignment": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"format": "radios",
+										"order": 3,
+										"title": "Horizontal Alignment",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/u99x4kItD0WM",
+			"metadata": {
+				"code": {
+					"sourceTag": "u99x4kItD0WM",
+					"uploadedOn": "2017-08-04T03:25:34.518957503Z"
+				}
+			},
+			"created": "2017-08-04T03:25:34.317289Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T03:25:35.125037688Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T03:25:45.25791662Z"
+			}
+		},
+		{
+			"tag": "1.4.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/n4Bc7pTR7va3",
+			"metadata": {
+				"code": {
+					"sourceTag": "n4Bc7pTR7va3",
+					"uploadedOn": "2017-08-04T04:02:21.030442061Z"
+				}
+			},
+			"created": "2017-08-04T04:02:20.840371Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T04:02:21.691493039Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T04:02:58.241720566Z"
+			}
+		},
+		{
+			"tag": "1.5.0",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Zo5ckhyqT8vM",
+			"metadata": {
+				"code": {
+					"sourceTag": "Zo5ckhyqT8vM",
+					"uploadedOn": "2017-08-04T04:04:20.191389557Z"
+				}
+			},
+			"created": "2017-08-04T04:04:19.998866Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T04:04:21.241082412Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T04:04:28.822699404Z"
+			}
+		},
+		{
+			"tag": "1.5.1",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.46,
+				"upvotes": 6,
+				"downvotes": 7
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Zo5ckhyqT8vM",
+			"created": "2018-01-23T18:57:26.556376Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"marketing",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:57:26.888289957Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:57:33.36663694Z"
+			}
+		},
+		{
+			"tag": "1.5.2",
+			"appId": "qdbruf8Ud6a8",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"content": "<h1>Live rich text</h1><p>...Embedded directly on your site.</p>",
+									"horizontalAlignment": "left",
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"content": {
+										"format": "richtext",
+										"order": 2,
+										"title": "Content",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where on the page would you like to add your content?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Content Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.63,
+				"upvotes": 30,
+				"downvotes": 18
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Zo5ckhyqT8vM",
+			"created": "2018-11-13T20:49:15.338703Z",
+			"proposedApp": {
+				"id": "qdbruf8Ud6a8",
+				"title": "Add Content",
+				"shortDescription": "Add content to your site in seconds.",
+				"longDescription": "Skip the long development cycle and update your site's content with Add Content!\n\nAdd Content is perfect for site owners who want to update their site content quickly.\nThis app is perfect for annoucements, marketing copy, or any content that changes frequently.",
+				"instructions": "",
+				"alias": "add-content",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NbGhF32vTcK9ujRNooP0_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9RkNheKe_1xT"
+				},
+				"created": "2017-06-04T07:33:30.298401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:49:20.878019627Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:41:58.074428065Z"
+			}
+		}
+	]
+}

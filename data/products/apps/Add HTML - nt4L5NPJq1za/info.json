@@ -1,0 +1,1112 @@
+{
+	"id": "nt4L5NPJq1za",
+	"title": "Add HTML",
+	"shortDescription": "Add custom HTML to any part of your site.",
+	"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+	"instructions": "",
+	"alias": "add-html",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F17D6A",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.6",
+	"infoVersion": "2.1.6",
+	"points": 49,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:52:11.52746906Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "VlzWl62gsES_"
+	},
+	"created": "2017-06-04T06:13:11.059215Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VlzWl62gsES_",
+			"metadata": {
+				"code": {
+					"sourceTag": "VlzWl62gsES_",
+					"uploadedOn": "2017-06-04T06:13:12.374858722Z"
+				}
+			},
+			"created": "2017-06-04T06:13:11.856159Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your website.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/O1eooKNgR9K1yerugHRF_add-html-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-04T06:13:13.526761597Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-04T08:16:20.340689458Z"
+			}
+		},
+		{
+			"tag": "v2.1.0",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VlzWl62gsES_",
+			"created": "2017-06-06T03:18:40.607002Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your website.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-06T03:18:40.967082258Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-06T03:18:51.88480326Z"
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VlzWl62gsES_",
+			"created": "2017-07-06T08:52:11.337663Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your website.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:52:11.521482741Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:09.941079176Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 6,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VlzWl62gsES_",
+			"created": "2017-07-07T20:59:55.877999Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your site.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T20:59:56.014850825Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T21:05:03.852423534Z"
+			}
+		},
+		{
+			"tag": "2.1.3",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 7,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Improved IE compatibility",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-TLhx09T2XRa",
+			"metadata": {
+				"code": {
+					"sourceTag": "-TLhx09T2XRa",
+					"uploadedOn": "2017-11-28T19:42:44.877329491Z"
+				}
+			},
+			"created": "2017-11-28T19:42:44.44279Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your site.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-28T19:42:45.860987059Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-28T19:43:28.572130332Z"
+			}
+		},
+		{
+			"tag": "2.1.4",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.71,
+				"upvotes": 17,
+				"downvotes": 7
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-TLhx09T2XRa",
+			"created": "2018-01-23T18:58:29.145832Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your site.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:58:29.429278857Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:58:38.620174821Z"
+			}
+		},
+		{
+			"tag": "2.1.5",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 6,
+				"downvotes": 1
+			},
+			"releaseNotes": "Fixed rendering issue",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1nkLZDJaRmia",
+			"metadata": {
+				"code": {
+					"sourceTag": "1nkLZDJaRmia",
+					"uploadedOn": "2018-09-20T22:18:08.37312223Z"
+				}
+			},
+			"created": "2018-09-20T22:18:07.795592Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your site.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"for-developers",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-09-20T22:18:09.573499353Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-09-20T22:20:00.517741906Z"
+			}
+		},
+		{
+			"tag": "2.1.6",
+			"appId": "nt4L5NPJq1za",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"blocks": {
+							"default": [
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "head"
+									}
+								},
+								{
+									"code": "",
+									"location": {
+										"method": "append",
+										"selector": "body"
+									}
+								}
+							],
+							"items": {
+								"properties": {
+									"code": {
+										"format": "code",
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"title": "HTML Code",
+										"type": "string"
+									},
+									"location": {
+										"description": "Where on the page would you like to add your elements?",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									}
+								},
+								"title": "HTML Block",
+								"type": "object"
+							},
+							"order": 1,
+							"title": "HTML Blocks",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 178,
+				"downvotes": 28
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1nkLZDJaRmia",
+			"created": "2018-11-13T22:30:28.671407Z",
+			"proposedApp": {
+				"id": "nt4L5NPJq1za",
+				"title": "Add HTML",
+				"shortDescription": "Add custom HTML to any part of your site.",
+				"longDescription": "Sometimes you just can’t find the perfect app for your needs. If you know HTML, or you have a snippet, the Add HTML app is exactly what you need. \n\nPlace your HTML anywhere you need on your site, without having to dive into the code. Even better, you can replace a part of your site with your new HTML, giving you complete control.",
+				"instructions": "",
+				"alias": "add-html",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/c9jLxKMRQSU4enLPP3wG_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VlzWl62gsES_"
+				},
+				"created": "2017-06-04T06:13:11.059215Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:30:29.049755779Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:30:58.455755813Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1363 @@
+{
+	"id": "fNyZF92yN7oV",
+	"title": "Dark Mode",
+	"shortDescription": "Add Dark Mode to your website",
+	"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+	"instructions": "",
+	"alias": "dark-mode",
+	"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+	"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+		"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Hassan Akaou",
+	"tagline": "",
+	"website": "https://github.com/Hassancxpm/Dark-Mode",
+	"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.5.0",
+	"infoVersion": "1.5.0",
+	"points": 0,
+	"supportEmail": "hassan.akaou@comexposium.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+			"created": "2020-12-15T22:28:34.698239672Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "95Zif1jnk0AU"
+	},
+	"created": "2020-12-15T22:28:31.907571Z",
+	"org": {
+		"id": "a0fa35ecb4ed4782cd977a3bd546fefc",
+		"title": "",
+		"username": "a0fa35ecb4ed4782cd977a3bd546fefc",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 0,
+							"order": 3,
+							"showIf": {
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/95Zif1jnk0AU",
+			"metadata": {
+				"code": {
+					"sourceTag": "95Zif1jnk0AU",
+					"uploadedOn": "2020-12-15T22:28:33.214388591Z"
+				}
+			},
+			"created": "2020-12-15T22:28:32.401025Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-15T22:28:34.693768954Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-16T21:20:57.912127532Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 0,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Remove advanced options when disabling widget",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wJUGQNuxqu5K",
+			"metadata": {
+				"code": {
+					"sourceTag": "wJUGQNuxqu5K",
+					"uploadedOn": "2020-12-17T14:45:15.850382245Z"
+				}
+			},
+			"created": "2020-12-17T14:45:15.200244Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-17T14:45:16.926529851Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-21T17:37:05.767059855Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- New UI improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0FhcojW1uVm1",
+			"metadata": {
+				"code": {
+					"sourceTag": "0FhcojW1uVm1",
+					"uploadedOn": "2020-12-22T15:45:04.790120637Z"
+				}
+			},
+			"created": "2020-12-22T15:45:04.031817Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-22T15:45:05.968453763Z",
+				"canceledByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"canceledAt": "2020-12-22T20:01:16.012592184Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- New UI improvements\n- Fix Icons size issue",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0FhcojW1uVm1",
+			"created": "2020-12-22T20:01:15.477586Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-22T20:01:16.024223028Z",
+				"canceledByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"canceledAt": "2020-12-22T20:02:51.715537321Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.1",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- New UI improvements\n- Fix Icons size issue",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vyOjKPe2vFWl",
+			"metadata": {
+				"code": {
+					"sourceTag": "vyOjKPe2vFWl",
+					"uploadedOn": "2020-12-22T20:02:50.586079069Z"
+				}
+			},
+			"created": "2020-12-22T20:02:49.910013Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-22T20:02:51.726134621Z",
+				"canceledByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"canceledAt": "2020-12-22T20:15:07.560433055Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.2",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"hideWidget": {
+							"default": false,
+							"description": "Enable Dark Mode but hide the widget",
+							"order": 4,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Hide Widget",
+							"type": "boolean"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- New UI improvements\n- Fix Icons size issue\n- Fix multitabs feature",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/eYA9P8E0mRzZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "eYA9P8E0mRzZ",
+					"uploadedOn": "2020-12-22T20:15:06.22826574Z"
+				}
+			},
+			"created": "2020-12-22T20:15:05.734555Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-22T20:15:07.57037069Z",
+				"canceledByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"canceledAt": "2020-12-23T17:52:01.21680241Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.4.0",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- New UI improvements\n- Fix Icons size issue\n- Fix multitabs feature\n- Fix hide widget option",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JB-9VtumJVpD",
+			"metadata": {
+				"code": {
+					"sourceTag": "JB-9VtumJVpD",
+					"uploadedOn": "2020-12-23T17:51:59.624953998Z"
+				}
+			},
+			"created": "2020-12-23T17:51:58.920381Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-23T17:52:01.2370745Z",
+				"canceledByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"canceledAt": "2020-12-24T18:28:42.622504592Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.5.0",
+			"appId": "fNyZF92yN7oV",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"EnableDarkMode": {
+							"default": "false",
+							"enum": [
+								"true",
+								"false"
+							],
+							"enumNames": {
+								"false": "Disable Dark Mode Widget",
+								"true": "Enable Dark Mode Widget"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Enable Dark Mode Widget?",
+							"type": "string"
+						},
+						"positionWidget": {
+							"default": "cornerRightBottom",
+							"enum": [
+								"cornerLeftBottom",
+								"cornerRightBottom",
+								"cornerLeftTop",
+								"cornerRightTop"
+							],
+							"enumNames": {
+								"cornerLeftBottom": "Bottom corner left",
+								"cornerLeftTop": "Top corner left",
+								"cornerRightBottom": "Bottom corner right",
+								"cornerRightTop": "Top corner right"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"scaleTransform": {
+							"default": 1.5,
+							"format": "slider",
+							"maximum": 2.5,
+							"minimum": 1,
+							"order": 3,
+							"showIf": {
+								"EnableDarkMode": "true",
+								"showAdvanced": true
+							},
+							"step": 0.1,
+							"title": "Widget size",
+							"type": "number"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 1,
+							"showIf": {
+								"EnableDarkMode": "true"
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 16,
+				"downvotes": 7
+			},
+			"releaseNotes": "- New UI improvements\n- Fix Icons size issue\n- Fix multitabs feature\n- Fix hide widget option\n- Fix darkmode icon on multiple navigations",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U2YxDnUN77Qr",
+			"metadata": {
+				"code": {
+					"sourceTag": "U2YxDnUN77Qr",
+					"uploadedOn": "2020-12-24T18:28:41.63213012Z"
+				}
+			},
+			"created": "2020-12-24T18:28:41.064566Z",
+			"proposedApp": {
+				"id": "fNyZF92yN7oV",
+				"title": "Dark Mode",
+				"shortDescription": "Add Dark Mode to your website",
+				"longDescription": "Add Dark Mode to your website. Change options to fit with your needs.",
+				"instructions": "",
+				"alias": "dark-mode",
+				"orgId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"icon": "https://images.cloudflareapps.com/CeG5S1uwhr96/night.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img1.png",
+					"https://images.cloudflareapps.com/9DIODheGZ2qI/img2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Hassan Akaou",
+				"tagline": "",
+				"website": "https://github.com/Hassancxpm/Dark-Mode",
+				"sourceURL": "https://github.com/Hassancxpm/Dark-Mode",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hassan.akaou@comexposium.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "95Zif1jnk0AU"
+				},
+				"created": "2020-12-15T22:28:31.907571Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a0fa35ecb4ed4782cd977a3bd546fefc",
+				"requestedAt": "2020-12-24T18:28:42.636578765Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-11T17:38:29.513582345Z"
+			}
+		}
+	]
+}

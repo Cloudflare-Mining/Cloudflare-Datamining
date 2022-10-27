@@ -1,0 +1,256 @@
+{
+	"id": "jubd8_KdFoQk",
+	"title": "statuspage.io",
+	"shortDescription": "Integrate the statuspage.io popup",
+	"longDescription": "This app allows you to integrate the statuspage.io popup on your site, without touching any code. Please note that this app is not official and Desica LLC has no connection with Atlassian.",
+	"instructions": "To install this app, you will need to get the script embed tag from statuspage. See this helpful article: https://support.atlassian.com/statuspage/docs/what-is-status-embed/",
+	"alias": "statuspage",
+	"orgId": "1143e6a9fd941219a87eaee882f87436",
+	"icon": "https://images.cloudflareapps.com/bZp49-bqzDMj/707a80a88f92d5039c9c3a80e0702697_bounty-logo-statuspage.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/5C0i0HvEyeGo/Statuspage___Screenshot___Status_embed_on_a_page.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Desica LLC.",
+	"tagline": "",
+	"website": "https://statuspage.io",
+	"sourceURL": "https://bitbucket.org/desica-dev/statuspage.io/src/master/",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.0",
+	"infoVersion": "2.1.0",
+	"points": 0,
+	"supportEmail": "support@desica.atlassian.net",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "1143e6a9fd941219a87eaee882f87436",
+			"created": "2020-06-04T09:19:14.138906906Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "u1vQDtmWE9eS"
+	},
+	"created": "2020-06-04T09:14:00.503775Z",
+	"org": {
+		"id": "1143e6a9fd941219a87eaee882f87436",
+		"title": "",
+		"username": "1143e6a9fd941219a87eaee882f87436",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.2.0",
+			"appId": "jubd8_KdFoQk",
+			"definition": {
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Statuspage usually wants this at the bottom of the body.",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "",
+							"description": "Paste your script tag",
+							"format": "code",
+							"order": 1,
+							"title": "Statuspage script tag",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/u1vQDtmWE9eS",
+			"metadata": {
+				"code": {
+					"sourceTag": "u1vQDtmWE9eS",
+					"uploadedOn": "2020-06-04T09:14:03.355849484Z"
+				}
+			},
+			"created": "2020-06-04T09:14:02.310718Z",
+			"proposedApp": {
+				"id": "jubd8_KdFoQk",
+				"title": "statuspage.io",
+				"shortDescription": "Integrate the statuspage.io popup",
+				"longDescription": "This app allows you to integrate the statuspage.io popup on your site, without touching any code. Please note that this app is not official and Desica LLC has no connection with Atlassian.",
+				"instructions": "To install this app, you will need to get the script embed tag from statuspage. See this helpful article: https://support.atlassian.com/statuspage/docs/what-is-status-embed/",
+				"alias": "statuspage",
+				"orgId": "1143e6a9fd941219a87eaee882f87436",
+				"icon": "https://images.cloudflareapps.com/bZp49-bqzDMj/707a80a88f92d5039c9c3a80e0702697_bounty-logo-statuspage.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/5C0i0HvEyeGo/Statuspage___Screenshot___Status_embed_on_a_page.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Desica LLC.",
+				"tagline": "",
+				"website": "https://statuspage.io",
+				"sourceURL": "https://bitbucket.org/desica-dev/statuspage.io/src/master/",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@desica.atlassian.net",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "u1vQDtmWE9eS"
+				},
+				"created": "2020-06-04T09:14:00.503775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1143e6a9fd941219a87eaee882f87436",
+				"requestedAt": "2020-06-04T09:19:14.124825972Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-05T15:33:33.51977435Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "jubd8_KdFoQk",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"description": "Statuspage usually wants this at the bottom of the body",
+							"format": "element",
+							"title": "Location",
+							"type": "object"
+						},
+						"tag": {
+							"default": "",
+							"description": "Paste your Statuspage script tag",
+							"format": "code",
+							"order": 1,
+							"title": "Script tag",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 6,
+				"downvotes": 3
+			},
+			"releaseNotes": "Bugfixes and ease of use updates",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7Sv970h4tAse",
+			"metadata": {
+				"code": {
+					"sourceTag": "7Sv970h4tAse",
+					"uploadedOn": "2020-06-09T15:09:40.398387388Z"
+				}
+			},
+			"created": "2020-06-04T09:22:21.174111Z",
+			"proposedApp": {
+				"id": "jubd8_KdFoQk",
+				"title": "statuspage.io",
+				"shortDescription": "Integrate the statuspage.io popup",
+				"longDescription": "This app allows you to integrate the statuspage.io popup on your site, without touching any code. Please note that this app is not official and Desica LLC has no connection with Atlassian.",
+				"instructions": "To install this app, you will need to get the script embed tag from statuspage. See this helpful article: https://support.atlassian.com/statuspage/docs/what-is-status-embed/",
+				"alias": "statuspage",
+				"orgId": "1143e6a9fd941219a87eaee882f87436",
+				"icon": "https://images.cloudflareapps.com/bZp49-bqzDMj/707a80a88f92d5039c9c3a80e0702697_bounty-logo-statuspage.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/5C0i0HvEyeGo/Statuspage___Screenshot___Status_embed_on_a_page.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Desica LLC.",
+				"tagline": "",
+				"website": "https://statuspage.io",
+				"sourceURL": "https://bitbucket.org/desica-dev/statuspage.io/src/master/",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@desica.atlassian.net",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "u1vQDtmWE9eS"
+				},
+				"created": "2020-06-04T09:14:00.503775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1143e6a9fd941219a87eaee882f87436",
+				"requestedAt": "2020-06-09T15:09:41.344399237Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-10T14:57:36.099969689Z"
+			}
+		}
+	]
+}

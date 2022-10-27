@@ -1,0 +1,7316 @@
+{
+	"id": "ZCDIXCYkgZ6P",
+	"title": "Welcome Bar",
+	"shortDescription": "Display a message bar at the top of your page.",
+	"longDescription": "Display a message at the top of any page that links anywhere.",
+	"instructions": "",
+	"alias": "welcome-bar",
+	"orgId": "1e57d294e97e29816d5d04c78ed67257",
+	"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/LU06mp4eyF94/app-banner1%20%281%29.png",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "https://www.cloudflare.com/apps/welcome-bar",
+	"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#1a9bfc",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "3.1.7",
+	"infoVersion": "3.1.7",
+	"points": 841,
+	"supportEmail": "support@cloudflare.com",
+	"products": [
+		{
+			"id": "basic",
+			"title": "Basic",
+			"shortDescription": "Simple notifications with limited options.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "More options and customization",
+			"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+			"visible": true,
+			"price": 300,
+			"order": 0,
+			"plan": "welcome_bar_pro",
+			"feature": "apps.welcome_bar.pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:49:20.789733832Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "waXaLxBdopRQ"
+	},
+	"created": "2017-06-06T17:34:44.898732Z",
+	"org": {
+		"id": "1e57d294e97e29816d5d04c78ed67257",
+		"title": "",
+		"username": "1e57d294e97e29816d5d04c78ed67257",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 14,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/waXaLxBdopRQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "waXaLxBdopRQ",
+					"uploadedOn": "2017-06-06T17:34:48.789504004Z"
+				}
+			},
+			"created": "2017-06-06T17:34:45.421864Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message at the top of any page that links anywhere",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/P6WYmCDQUegQ5dBAk7Dq_Icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-06T17:34:49.484752843Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-06T17:34:59.35582428Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 5,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"showLink": {
+							"default": true,
+							"order": 2,
+							"title": "Show a button link",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UAabckayhXT2",
+			"metadata": {
+				"code": {
+					"sourceTag": "UAabckayhXT2",
+					"uploadedOn": "2017-06-06T18:27:17.108704901Z"
+				}
+			},
+			"created": "2017-06-06T17:43:23.906036Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/P6WYmCDQUegQ5dBAk7Dq_Icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-06T18:27:21.687716793Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-06T18:27:28.387960044Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 5,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"showLink": {
+							"default": true,
+							"order": 2,
+							"title": "Show a button link",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UAabckayhXT2",
+			"created": "2017-06-14T21:08:39.515846Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/P6WYmCDQUegQ5dBAk7Dq_Icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-06-14T21:08:39.674473295Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-06-14T23:12:01.272738539Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 5,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"showLink": {
+							"default": true,
+							"order": 2,
+							"title": "Show a button link",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UAabckayhXT2",
+			"created": "2017-06-27T01:44:43.788742Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/zJoI2YUR4iPjEiYD4kEM_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/T1imL4AHRUGJ1raGzZ0W_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-27T01:44:50.888362775Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-27T01:44:58.193380847Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 5,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"showLink": {
+							"default": true,
+							"order": 2,
+							"title": "Show a button link",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UAabckayhXT2",
+			"created": "2017-06-27T02:03:35.661654Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-27T02:03:40.643666163Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-27T02:03:53.365245754Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "index.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttonText": {
+							"default": "Take me there",
+							"order": 3,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 5,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"linkAddress": {
+							"default": "https://cloudflare.com/apps",
+							"order": 4,
+							"showIf": {
+								"showLink": true
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"showLink": {
+							"default": true,
+							"order": 2,
+							"title": "Show a button link",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message text",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "CloudflareWelcomeBar.setOptions(INSTALL_OPTIONS); CloudflareWelcomeBar.show();",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UAabckayhXT2",
+			"created": "2017-07-06T08:49:20.546864Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:49:20.76839299Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:37.343373306Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": true,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"default": "We just launched an amazing new product!",
+							"order": 0,
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button Background Color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<span class='subtle-text'><strong>Note:</strong> Button colors are disabled on mobile screens.</span>",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "auto",
+									"description": "Set to “auto” to match the Welcome Bar background.",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button Text Color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Ox4isQsyO-59",
+			"metadata": {
+				"code": {
+					"sourceTag": "Ox4isQsyO-59",
+					"uploadedOn": "2017-08-03T22:27:23.709658956Z"
+				}
+			},
+			"created": "2017-08-03T22:27:23.507981Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-03T22:27:24.316791639Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-03T22:50:34.729971284Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<small class='subtle-text'><strong>Note:</strong> Button colors are disabled on mobile screens.</small>",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 5,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hoperROLQprU",
+			"metadata": {
+				"code": {
+					"sourceTag": "hoperROLQprU",
+					"uploadedOn": "2017-08-03T22:50:34.131398433Z"
+				}
+			},
+			"created": "2017-08-03T22:50:33.968543Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-03T22:50:34.736748142Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-03T23:12:24.811028676Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<small class='subtle-text'><strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.</small>",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fTMYP4-Go-He",
+			"metadata": {
+				"code": {
+					"sourceTag": "fTMYP4-Go-He",
+					"uploadedOn": "2017-08-03T23:12:24.270393896Z"
+				}
+			},
+			"created": "2017-08-03T23:12:24.112705Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-03T23:12:24.82433172Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-03T23:20:12.885664978Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<small class='subtle-text'><strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.</small>",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uV4-siwWGhV0",
+			"metadata": {
+				"code": {
+					"sourceTag": "uV4-siwWGhV0",
+					"uploadedOn": "2017-08-03T23:20:12.394539048Z"
+				}
+			},
+			"created": "2017-08-03T23:20:12.236289Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-03T23:20:12.893953556Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-03T23:41:01.809865218Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.5",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rTgnEJgIoY3O",
+			"metadata": {
+				"code": {
+					"sourceTag": "rTgnEJgIoY3O",
+					"uploadedOn": "2017-08-03T23:40:59.406876725Z"
+				}
+			},
+			"created": "2017-08-03T23:40:59.202792Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-03T23:41:02.539990543Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T01:20:38.985213341Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6V9KPgU1waKb",
+			"metadata": {
+				"code": {
+					"sourceTag": "6V9KPgU1waKb",
+					"uploadedOn": "2017-08-08T23:05:24.243950232Z"
+				}
+			},
+			"created": "2017-08-08T23:05:24.050782Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T23:07:23.37447214Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-08T23:32:00.148589001Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/82DYCOu9U2wA",
+			"metadata": {
+				"code": {
+					"sourceTag": "82DYCOu9U2wA",
+					"uploadedOn": "2017-08-08T23:31:59.347512028Z"
+				}
+			},
+			"created": "2017-08-08T23:31:59.141181Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T23:32:00.158145251Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-08T23:34:04.861722297Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6rEBtlRK7es5",
+			"metadata": {
+				"code": {
+					"sourceTag": "6rEBtlRK7es5",
+					"uploadedOn": "2017-08-08T23:34:04.213713837Z"
+				}
+			},
+			"created": "2017-08-08T23:34:03.984095Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T23:34:04.867396513Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T23:34:39.108661297Z"
+			}
+		},
+		{
+			"tag": "2.1.3",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bjkEeWzB6eKH",
+			"metadata": {
+				"code": {
+					"sourceTag": "bjkEeWzB6eKH",
+					"uploadedOn": "2017-08-09T10:42:34.597243105Z"
+				}
+			},
+			"created": "2017-08-09T10:42:34.420935Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-09T10:42:35.764094016Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-09T10:42:45.652652272Z"
+			}
+		},
+		{
+			"tag": "2.1.4",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 1,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "We just launched an amazing new product!",
+							"title": "Message",
+							"type": "string"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"slim",
+										"prominent"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.setTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8orWvCrEeM31",
+			"metadata": {
+				"code": {
+					"sourceTag": "8orWvCrEeM31",
+					"uploadedOn": "2017-09-01T02:32:40.475778333Z"
+				}
+			},
+			"created": "2017-09-01T02:32:40.214417Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-01T02:32:41.723672854Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-01T02:33:04.984215956Z"
+			}
+		},
+		{
+			"tag": "3.0.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "A random message from a set",
+								"single": "A single message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages should your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- Added support for multiple messages\n- Added \"Hide by this date\" option\n- Added 1 week expiration when visitor hides message.\n- Fixed issue where message newlines were not inserted\n- **Moved slim theme to \"Pro\" plan.**",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HxZ7kJoCqTdy",
+			"metadata": {
+				"code": {
+					"sourceTag": "HxZ7kJoCqTdy",
+					"uploadedOn": "2017-11-08T19:56:32.944549833Z"
+				}
+			},
+			"created": "2017-11-06T17:11:57.210438Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-08T20:01:52.933059849Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-08T20:08:39.738200017Z"
+			}
+		},
+		{
+			"tag": "3.0.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "- Added support for multiple messages\n- Added \"Hide by this date\" option\n- Added 1 week expiration when visitor hides message\n- Fixed issue where message newlines were not inserted\n- Fixed issue where preview does show closed message update for color changes\n\nThe following features have been moved to the \"Pro\" plan. \n- Slim theme\n- Automatically dismiss after a few seconds",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gJH061kNvN_M",
+			"metadata": {
+				"code": {
+					"sourceTag": "gJH061kNvN_M",
+					"uploadedOn": "2017-11-08T20:20:03.814088209Z"
+				}
+			},
+			"created": "2017-11-08T20:20:01.954155Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-08T20:21:47.433122484Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-08T20:22:10.246647782Z"
+			}
+		},
+		{
+			"tag": "3.1.0",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "- Fix issue that prevented 2.x installs from updating.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/tQc4oguh0sC3",
+			"metadata": {
+				"code": {
+					"sourceTag": "tQc4oguh0sC3",
+					"uploadedOn": "2017-11-10T20:42:32.115967327Z"
+				}
+			},
+			"created": "2017-11-10T20:42:31.607445Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-10T20:42:33.319295649Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-10T20:44:50.122488838Z"
+			}
+		},
+		{
+			"tag": "3.1.1",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.74,
+				"upvotes": 14,
+				"downvotes": 5
+			},
+			"releaseNotes": "- Fix issue that prevented 2.x installs from updating.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YczNgOB_vaKJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "YczNgOB_vaKJ",
+					"uploadedOn": "2017-11-10T22:33:51.59192817Z"
+				}
+			},
+			"created": "2017-11-10T22:33:51.137628Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-10T22:33:52.583138649Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-10T22:34:23.488040515Z"
+			}
+		},
+		{
+			"tag": "3.1.2",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.71,
+				"upvotes": 5,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YczNgOB_vaKJ",
+			"created": "2018-01-22T21:03:36.898404Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:03:37.17850423Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:05:59.737889118Z"
+			}
+		},
+		{
+			"tag": "3.1.3",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 54,
+				"downvotes": 23
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YczNgOB_vaKJ",
+			"created": "2018-02-06T21:00:00.080209Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"grow-your-email-list",
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:00:00.34450471Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:05:07.385325872Z"
+			}
+		},
+		{
+			"tag": "3.1.4",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 10,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YczNgOB_vaKJ",
+			"created": "2018-10-18T16:00:53.053451Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "WELCOME_BAR_PRO",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:57:51.224372155Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-15T20:07:53.552602166Z"
+			}
+		},
+		{
+			"tag": "3.1.5",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Y0S-vHx2M1y",
+			"metadata": {
+				"code": {
+					"sourceTag": "8Y0S-vHx2M1y",
+					"uploadedOn": "2018-12-04T16:41:07.744305421Z"
+				}
+			},
+			"created": "2018-12-04T16:41:07.49172Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-12-04T16:41:08.608552017Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-12-04T16:43:29.963990112Z"
+			}
+		},
+		{
+			"tag": "3.1.6",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added Featured Banner image",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Y0S-vHx2M1y",
+			"created": "2018-12-21T22:53:32.247727Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_737HJ-zVi26/welcome-bar-banner.png",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-12-21T22:53:32.539421285Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-12-21T22:53:43.225188836Z"
+			}
+		},
+		{
+			"tag": "3.1.7",
+			"appId": "ZCDIXCYkgZ6P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"order": 3,
+							"properties": {
+								"automaticallyHide": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Automatically dismiss after a few seconds",
+									"type": "boolean"
+								},
+								"showCloseButton": {
+									"default": true,
+									"description": "Closed messages will stay hidden for 1 week.",
+									"order": 0,
+									"title": "Show close button",
+									"type": "boolean"
+								}
+							},
+							"title": "Dismissal Behavior",
+							"type": "object"
+						},
+						"cta": {
+							"order": 2,
+							"properties": {
+								"label": {
+									"order": 1,
+									"placeholder": "More info",
+									"showIf": "cta.show",
+									"title": "Label",
+									"type": "string"
+								},
+								"newWindow": {
+									"order": 3,
+									"showIf": "cta.show",
+									"title": "Open URL in new window",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"format": "url",
+									"order": 2,
+									"showIf": "cta.show",
+									"title": "URL to drive traffic to",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"message": {
+							"format": "textarea",
+							"order": 1,
+							"placeholder": "We just launched an amazing new product!",
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "single"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"messagePlan": {
+							"enum": [
+								"single",
+								"multiple"
+							],
+							"enumNames": {
+								"multiple": "Show visitors a random message from a collection",
+								"single": "Just one message"
+							},
+							"format": "radios",
+							"order": 0,
+							"products": {
+								"multiple": [
+									"pro"
+								]
+							},
+							"title": "How many messages will your vistors see?",
+							"type": "string"
+						},
+						"messages": {
+							"description": "Add multiple messages to show one to vistors at random. The previewer will show your last edited message.",
+							"items": {
+								"properties": {
+									"cta": {
+										"order": 1,
+										"properties": {
+											"label": {
+												"order": 1,
+												"placeholder": "More info",
+												"showIf": "cta.show",
+												"title": "Label",
+												"type": "string"
+											},
+											"newWindow": {
+												"order": 3,
+												"showIf": "cta.show",
+												"title": "Open URL in new window",
+												"type": "boolean"
+											},
+											"show": {
+												"default": true,
+												"order": 0,
+												"title": "Show action button",
+												"type": "boolean"
+											},
+											"url": {
+												"format": "url",
+												"order": 2,
+												"showIf": "cta.show",
+												"title": "URL to drive traffic to",
+												"type": "string"
+											}
+										},
+										"title": "Action Button",
+										"type": "object"
+									},
+									"endDate": {
+										"default": "January 1 2020 1:30 PM EST",
+										"description": "When should this message stop appearing?",
+										"format": "date-time",
+										"order": 3,
+										"showIf": "messages[].useEndDate",
+										"title": "End Date",
+										"type": "string"
+									},
+									"message": {
+										"format": "textarea",
+										"order": 0,
+										"placeholder": "We just launched an amazing new product!",
+										"title": "Message",
+										"type": "string"
+									},
+									"useEndDate": {
+										"default": false,
+										"order": 2,
+										"products": [
+											"pro"
+										],
+										"title": "Hide after a specific date",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"showIf": {
+								"messagePlan": {
+									"op": "==",
+									"value": "multiple"
+								}
+							},
+							"title": "Messages",
+							"type": "array"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"order": 1,
+									"title": "Welcome Bar background color",
+									"type": "string"
+								},
+								"buttonBackgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 4,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button background color",
+									"type": "string"
+								},
+								"buttonColorHelp": {
+									"helpvalue": "<strong>Note:</strong> Buttons will appear as text in the <strong>Message text color</strong> on mobile devices.",
+									"order": 3,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"type": "help"
+								},
+								"buttonTextColor": {
+									"default": "#0099ff",
+									"format": "color",
+									"notitle": true,
+									"order": 6,
+									"showIf": {
+										"theme.buttonTextColorStrategy": "custom",
+										"theme.style": "prominent"
+									},
+									"type": "string"
+								},
+								"buttonTextColorStrategy": {
+									"default": "auto",
+									"enum": [
+										"auto",
+										"custom"
+									],
+									"enumNames": {
+										"auto": "Match the Welcome Bar background",
+										"custom": "Custom"
+									},
+									"format": "radios",
+									"order": 5,
+									"showIf": {
+										"theme.style": "prominent"
+									},
+									"title": "Button text color",
+									"type": "string"
+								},
+								"style": {
+									"default": "prominent",
+									"enum": [
+										"prominent",
+										"slim"
+									],
+									"enumNames": {
+										"prominent": "Prominent",
+										"slim": "Slim"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"slim": [
+											"pro"
+										]
+									},
+									"title": "Style",
+									"type": "string"
+								},
+								"textColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Message text color",
+									"type": "string"
+								}
+							},
+							"title": "Theme",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 207,
+				"downvotes": 22
+			},
+			"releaseNotes": "Updated Featured App Banner",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Y0S-vHx2M1y",
+			"created": "2019-01-11T16:32:38.11544Z",
+			"proposedApp": {
+				"id": "ZCDIXCYkgZ6P",
+				"title": "Welcome Bar",
+				"shortDescription": "Display a message bar at the top of your page.",
+				"longDescription": "Display a message at the top of any page that links anywhere.",
+				"instructions": "",
+				"alias": "welcome-bar",
+				"orgId": "1e57d294e97e29816d5d04c78ed67257",
+				"icon": "//images.cloudflareapps.com/mGy0bs5EQ2uqBQlIDMZj_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/7sIU9kmT6OYjKtZ9pkOg_gallery.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/2aLKxgZSTW2Cm8BMB6xh_tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LU06mp4eyF94/app-banner1%20%281%29.png",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/welcome-bar",
+				"sourceURL": "https://github.com/cloudflare-apps/welcome-bar",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Simple notifications with limited options.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More options and customization",
+						"longDescription": "- Multiple messages\n- Hide the Welcome Bar after a specific date\n- More themes",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "welcome_bar_pro",
+						"feature": "apps.welcome_bar.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "waXaLxBdopRQ"
+				},
+				"created": "2017-06-06T17:34:44.898732Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-01-11T16:32:38.372209274Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-01-11T16:33:37.461568672Z"
+			}
+		}
+	]
+}

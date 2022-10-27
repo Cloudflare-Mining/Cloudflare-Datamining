@@ -1,0 +1,159 @@
+{
+	"id": "DSyaK28eRsqg",
+	"title": "Email Forwarding",
+	"shortDescription": "Forward emails from your domain to your main inbox.",
+	"longDescription": "ForwardMX makes it easy to collect all of your email in a central inbox, such as your existing Gmail account. \n\nWe forward [anything]@yourdomain.com to one or more email addresses of your choice. \n\nCreate unique email forwarding addresses for all of your team.",
+	"instructions": "After installing this app on your Cloudflare account, you will need to configure your email forwarding settings in your ForwardMX account at https://forwardmx.io",
+	"alias": "e-mail-forwarding",
+	"orgId": "4f031aac98d1772550e4f4ab0caac463",
+	"icon": "https://images.cloudflareapps.com/QA-AsiDUdhqF/Screen%20Shot%202021-02-09%20at%203.57.05%20PM.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/gByoPkGQsOi5/Screen%20Shot%202021-02-09%20at%204.05.02%20PM.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "https://images.cloudflareapps.com/I9Xj-f2H-Pf9/Screen%20Shot%202021-02-09%20at%204.07.42%20PM.png",
+	"author": "ForwardMX",
+	"tagline": "",
+	"website": "https://forwardmx.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://forwardmx.io/terms-and-conditions/",
+	"privacyPolicyURL": "https://forwardmx.io/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "support@forwardmx.io",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "4f031aac98d1772550e4f4ab0caac463",
+			"created": "2021-02-09T09:19:04.605155706Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "SmCzElsnOJ0V"
+	},
+	"created": "2021-02-09T09:19:01.229292Z",
+	"org": {
+		"id": "4f031aac98d1772550e4f4ab0caac463",
+		"title": "",
+		"username": "4f031aac98d1772550e4f4ab0caac463",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "DSyaK28eRsqg",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"preview": {},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:_spf.forwardmx.net -all",
+						"ttl": 120
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forwardmx.net",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.forwardmx.net",
+						"priority": 20
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.19,
+				"upvotes": 7,
+				"downvotes": 29
+			},
+			"releaseNotes": "Contains current DNS records for ForwardMX.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SmCzElsnOJ0V",
+			"metadata": {
+				"code": {
+					"sourceTag": "SmCzElsnOJ0V",
+					"uploadedOn": "2021-02-09T09:19:02.561717439Z"
+				}
+			},
+			"created": "2021-02-09T09:19:01.873747Z",
+			"proposedApp": {
+				"id": "DSyaK28eRsqg",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward emails from your domain to your main inbox.",
+				"longDescription": "ForwardMX makes it easy to collect all of your email in a central inbox, such as your existing Gmail account. \n\nWe forward [anything]@yourdomain.com to one or more email addresses of your choice. \n\nCreate unique email forwarding addresses for all of your team.",
+				"instructions": "After installing this app on your Cloudflare account, you will need to configure your email forwarding settings in your ForwardMX account at https://forwardmx.io",
+				"alias": "e-mail-forwarding",
+				"orgId": "4f031aac98d1772550e4f4ab0caac463",
+				"icon": "https://images.cloudflareapps.com/QA-AsiDUdhqF/Screen%20Shot%202021-02-09%20at%203.57.05%20PM.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/gByoPkGQsOi5/Screen%20Shot%202021-02-09%20at%204.05.02%20PM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/I9Xj-f2H-Pf9/Screen%20Shot%202021-02-09%20at%204.07.42%20PM.png",
+				"author": "ForwardMX",
+				"tagline": "",
+				"website": "https://forwardmx.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forwardmx.io/terms-and-conditions/",
+				"privacyPolicyURL": "https://forwardmx.io/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@forwardmx.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SmCzElsnOJ0V"
+				},
+				"created": "2021-02-09T09:19:01.229292Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4f031aac98d1772550e4f4ab0caac463",
+				"requestedAt": "2021-02-09T09:19:04.594628371Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-10T16:15:32.796815321Z"
+			}
+		}
+	]
+}

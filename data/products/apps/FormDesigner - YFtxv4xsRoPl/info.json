@@ -1,0 +1,691 @@
+{
+	"id": "YFtxv4xsRoPl",
+	"title": "FormDesigner",
+	"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+	"longDescription": "FormDesigner.pro is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+	"instructions": "",
+	"alias": "formdesigner",
+	"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+	"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+		"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+		"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+		"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+		"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Ivan Shamshur",
+	"tagline": "",
+	"website": "https://formdesigner.pro",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://formdesigner.pro/oferta",
+	"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@formdesigner.pro",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "08b65e6232e08c8bba7dd851a4db0360",
+			"created": "2022-05-11T11:11:19.759126532Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Bm7_JfGh2jvR"
+	},
+	"created": "2022-05-10T16:34:01.888339Z",
+	"org": {
+		"id": "08b65e6232e08c8bba7dd851a4db0360",
+		"title": "",
+		"username": "08b65e6232e08c8bba7dd851a4db0360",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "YFtxv4xsRoPl",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"form": {
+							"description": "Login to see your forms.",
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "integer"
+						},
+						"host": {
+							"description": "Login to see your forms.",
+							"enum": [
+								"formdesigner.pro",
+								"formdesigner.ru",
+								"formdesigner.com.ua"
+							],
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should this form appear on your site?",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "Created by create-cloudflare-app",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mmLQ1wpzVHh-",
+			"metadata": {
+				"code": {
+					"sourceTag": "mmLQ1wpzVHh-",
+					"uploadedOn": "2022-05-11T11:11:17.650050351Z"
+				}
+			},
+			"created": "2022-05-10T16:34:03.167976Z",
+			"proposedApp": {
+				"id": "YFtxv4xsRoPl",
+				"title": "FormDesigner",
+				"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+				"longDescription": "FormDesigner.pro is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+				"instructions": "",
+				"alias": "formdesigner",
+				"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+				"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ivan Shamshur",
+				"tagline": "",
+				"website": "https://formdesigner.pro",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://formdesigner.pro/oferta",
+				"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@formdesigner.pro",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Bm7_JfGh2jvR"
+				},
+				"created": "2022-05-10T16:34:01.888339Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"requestedAt": "2022-05-11T11:11:19.754266288Z",
+				"canceledByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"canceledAt": "2022-05-11T13:14:28.341655598Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "YFtxv4xsRoPl",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"form": {
+							"description": "Login to see your forms.",
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "integer"
+						},
+						"host": {
+							"description": "Login to see your forms.",
+							"enum": [
+								"formdesigner.pro",
+								"formdesigner.ru",
+								"formdesigner.com.ua"
+							],
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should this form appear on your site?",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zDHiXQ_Hy17h",
+			"metadata": {
+				"code": {
+					"sourceTag": "zDHiXQ_Hy17h",
+					"uploadedOn": "2022-05-11T13:14:27.200007077Z"
+				}
+			},
+			"created": "2022-05-11T13:14:26.011843Z",
+			"proposedApp": {
+				"id": "YFtxv4xsRoPl",
+				"title": "FormDesigner",
+				"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+				"longDescription": "FormDesigner.pro is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+				"instructions": "",
+				"alias": "formdesigner",
+				"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+				"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ivan Shamshur",
+				"tagline": "",
+				"website": "https://formdesigner.pro",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://formdesigner.pro/oferta",
+				"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@formdesigner.pro",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Bm7_JfGh2jvR"
+				},
+				"created": "2022-05-10T16:34:01.888339Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"requestedAt": "2022-05-11T13:14:28.349000161Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-07-11T18:24:01.706010214Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "YFtxv4xsRoPl",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"form": {
+							"description": "Enter the form ID.",
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "integer"
+						},
+						"host": {
+							"description": "Choose a value from the list below.",
+							"enum": [
+								"formdesigner.pro",
+								"formdesigner.ru",
+								"formdesigner.com.ua"
+							],
+							"order": 1,
+							"required": true,
+							"title": "Which domain should be used?",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should this form appear on your site?",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"slug": {
+							"description": "Leave this field blank if you do not use URL settings.",
+							"order": 1,
+							"required": true,
+							"title": "Enter the URL settings for your form",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/csndZtKQXEwK",
+			"metadata": {
+				"code": {
+					"sourceTag": "csndZtKQXEwK",
+					"uploadedOn": "2022-07-30T11:26:50.385938268Z"
+				}
+			},
+			"created": "2022-07-30T11:26:49.86378Z",
+			"proposedApp": {
+				"id": "YFtxv4xsRoPl",
+				"title": "FormDesigner",
+				"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+				"longDescription": "FormDesigner.pro is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+				"instructions": "",
+				"alias": "formdesigner",
+				"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+				"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ivan Shamshur",
+				"tagline": "",
+				"website": "https://formdesigner.pro",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://formdesigner.pro/oferta",
+				"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@formdesigner.pro",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Bm7_JfGh2jvR"
+				},
+				"created": "2022-05-10T16:34:01.888339Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"requestedAt": "2022-07-30T11:27:37.61808861Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-08-17T20:22:35.691932809Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "YFtxv4xsRoPl",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"form": {
+							"description": "Enter the form ID.",
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "integer"
+						},
+						"host": {
+							"description": "Choose a value from the list below.",
+							"enum": [
+								"formdesigner.pro",
+								"formdesigner.ru",
+								"formdesigner.com.ua"
+							],
+							"order": 1,
+							"required": true,
+							"title": "Which domain should be used?",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should this form appear on your site?",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"slug": {
+							"description": "Leave this field blank if you do not use URL settings.",
+							"order": 1,
+							"required": true,
+							"title": "Enter the URL settings for your form",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added link",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/csndZtKQXEwK",
+			"created": "2022-08-18T14:41:50.618839Z",
+			"proposedApp": {
+				"id": "YFtxv4xsRoPl",
+				"title": "FormDesigner",
+				"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+				"longDescription": "[FormDesigner.pro](https://formdesigner.pro) is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+				"instructions": "",
+				"alias": "formdesigner",
+				"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+				"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ivan Shamshur",
+				"tagline": "",
+				"website": "https://formdesigner.pro",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://formdesigner.pro/oferta",
+				"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@formdesigner.pro",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Bm7_JfGh2jvR"
+				},
+				"created": "2022-05-10T16:34:01.888339Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"requestedAt": "2022-08-18T14:42:41.317478089Z",
+				"canceledByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"canceledAt": "2022-08-18T18:54:55.88911069Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "YFtxv4xsRoPl",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"form": {
+							"description": "Enter the form ID.",
+							"order": 1,
+							"required": true,
+							"title": "Which form should your visitor see?",
+							"type": "integer"
+						},
+						"host": {
+							"description": "Choose a value from the list below.",
+							"enum": [
+								"formdesigner.pro",
+								"formdesigner.ru",
+								"formdesigner.com.ua"
+							],
+							"order": 2,
+							"required": true,
+							"title": "Which domain should be used?",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should this form appear on your site?",
+							"format": "element",
+							"order": 4,
+							"title": "Location",
+							"type": "object"
+						},
+						"slug": {
+							"description": "Leave this field blank if you do not use URL settings.",
+							"order": 3,
+							"title": "Enter the URL settings for your form",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fix install.json",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X3uQLpll_Hmb",
+			"metadata": {
+				"code": {
+					"sourceTag": "X3uQLpll_Hmb",
+					"uploadedOn": "2022-08-18T18:54:54.694235785Z"
+				}
+			},
+			"created": "2022-08-18T18:54:54.143267Z",
+			"proposedApp": {
+				"id": "YFtxv4xsRoPl",
+				"title": "FormDesigner",
+				"shortDescription": "Online designer of web forms, surveys, quizzes and calculato",
+				"longDescription": "[FormDesigner.pro](https://formdesigner.pro) is a builder which allows you to create surveys, quizzes, tests, calculators, online record forms and any other web forms, without the help of a designer or programmer.\n\nFormDesigner.pro is a great solution for creating both simple and very complex forms. Its unlimited possibilities allow you to create almost any form and customize it the way you want.\n\n**Why use FormDesigner:**\n\n* 90 ready-made templates on various themes\n* Flexible settings\n* Drag&Drop interface\n* Advanced design settings\n* Over 30 different question types\n* Multiple questions on one page\n* Auto save form data  \n* Online recording feature with date and time locking in the calendar\n* Ability to create reactive and personalized forms\n* Logical rules and branching of questions and pages\n* Smart redirects\n* Print templates with form results\n* Protection against bots and spoofing\n* Integration with Analytics Systems\n* Binding your domain\n* Forms CNC Setting\n* Suitable for any website\n* There is a plugin for Wordpress\n* Adaptability. Forms work great on both PCs and mobile devices\n* Different ways to place the form: by direct link, in the body of the page, as a popup window, etc.\n* 71k satisfied customers worldwide\n* And more\n\nTo get acquainted with the service there is a free rate and a test period of 7 days.",
+				"instructions": "",
+				"alias": "formdesigner",
+				"orgId": "08b65e6232e08c8bba7dd851a4db0360",
+				"icon": "https://images.cloudflareapps.com/jcSQdoW_jUAk/logo_cut_en.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/4.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/2.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/5.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/1.png",
+					"https://images.cloudflareapps.com/leTZm6b-0qn5/3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ivan Shamshur",
+				"tagline": "",
+				"website": "https://formdesigner.pro",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://formdesigner.pro/oferta",
+				"privacyPolicyURL": "https://formdesigner.pro/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@formdesigner.pro",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Bm7_JfGh2jvR"
+				},
+				"created": "2022-05-10T16:34:01.888339Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "08b65e6232e08c8bba7dd851a4db0360",
+				"requestedAt": "2022-08-18T18:54:55.896188166Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		}
+	]
+}

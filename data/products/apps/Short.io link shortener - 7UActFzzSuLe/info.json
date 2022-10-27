@@ -1,0 +1,537 @@
+{
+	"id": "7UActFzzSuLe",
+	"title": "Short.io link shortener",
+	"shortDescription": "Create short links on your domain",
+	"longDescription": "Short.io allows you to create short links using your own domain (e.g www.longlonglonglong.com/morecharacters becomes www.yourdomain.com/euh4F)\n\nTo make link shortener work you need to have an account in short.io with any domain. After installing this app your domain will be automatically configured for Short.io\n\nShort.cm is free for accounts with less than 1000 links and 50 000 requests per month, which is enough for most of the projects. For $20 per month you can have unlimited links and redirects",
+	"instructions": "1. Create an account in https://short.io\n2. Add a domain you want to manage",
+	"alias": "short-io",
+	"orgId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+	"icon": "https://images.cloudflareapps.com/dtrj1d2X3VRX/favicon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Short.io",
+	"tagline": "",
+	"website": "https://short.io/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://short.io/terms",
+	"privacyPolicyURL": "https://short.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "support@short.io",
+	"products": [],
+	"categoryIds": [
+		"marketing",
+		"analytics",
+		"social-media",
+		"add-on"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+			"created": "2021-09-16T10:52:08.252222371Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "EMowrsS3VXec"
+	},
+	"created": "2017-07-23T07:30:40.520248Z",
+	"org": {
+		"id": "bf497ac0477bdf4b9e6821bb72a3f77b",
+		"title": "",
+		"username": "bf497ac0477bdf4b9e6821bb72a3f77b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-media",
+			"title": "Social Media",
+			"description": "Integrate your website with Twitter, Facebook, and other networks.",
+			"icon": "//eager-app-images.imgix.net/4g1U96yUSIGAvmGAHnUH_social-media.png",
+			"points": 60,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "social-media.png",
+					"isWriteable": false,
+					"key": "4g1U96yUSIGAvmGAHnUH_social-media.png",
+					"mimetype": "image/png",
+					"size": 3951,
+					"url": "https://www.filepicker.io/api/file/Zoyj89qVTdGgOJpNQTKK"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "analytics",
+			"title": "Analytics",
+			"description": "Collect and analyze data from your site visitors.",
+			"icon": "//eager-app-images.imgix.net/HWEJmubQgGa7SyyXxJuO_analytics.png",
+			"points": 50,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "analytics.png",
+					"isWriteable": false,
+					"key": "HWEJmubQgGa7SyyXxJuO_analytics.png",
+					"mimetype": "image/png",
+					"size": 3712,
+					"url": "https://www.filepicker.io/api/file/I2eyeKptRq6IpwZ9zuuI"
+				},
+				"promoted": false
+			},
+			"created": "2016-01-21T18:06:42.485409Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "7UActFzzSuLe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EMowrsS3VXec",
+			"metadata": {
+				"code": {
+					"sourceTag": "EMowrsS3VXec",
+					"uploadedOn": "2017-07-23T07:30:41.546739717Z"
+				}
+			},
+			"created": "2017-07-23T07:30:41.054106Z",
+			"proposedApp": {
+				"id": "7UActFzzSuLe",
+				"title": "Short.io link shortener",
+				"shortDescription": "Create short links on your domain",
+				"longDescription": "Short.io allows you to create short links using your own domain (e.g www.longlonglonglong.com/morecharacters becomes www.yourdomain.com/euh4F)\n\nTo make link shortener work you need to have an account in short.io with any domain. After installing this app your domain will be automatically configured for Short.io\n\nShort.cm is free for accounts with less than 1000 links and 50 000 requests per month, which is enough for most of the projects. For $20 per month you can have unlimited links and redirects",
+				"instructions": "1. Create an account in https://short.io\n2. Add a domain you want to manage",
+				"alias": "short-io",
+				"orgId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"icon": "https://images.cloudflareapps.com/dtrj1d2X3VRX/favicon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Short.io",
+				"tagline": "",
+				"website": "https://short.io/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://short.io/terms",
+				"privacyPolicyURL": "https://short.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@short.io",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"analytics",
+					"social-media",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EMowrsS3VXec"
+				},
+				"created": "2017-07-23T07:30:40.520248Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"requestedAt": "2021-09-16T10:52:08.247894446Z",
+				"canceledByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"canceledAt": "2021-09-16T11:08:08.04820643Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "7UActFzzSuLe",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "@",
+						"content": "cname.short.io",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "Correctly set DNS CNAME record",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EP7iwKRs68Rk",
+			"metadata": {
+				"code": {
+					"sourceTag": "EP7iwKRs68Rk",
+					"uploadedOn": "2021-09-16T11:07:37.144418608Z"
+				}
+			},
+			"created": "2021-09-16T11:05:30.279925Z",
+			"proposedApp": {
+				"id": "7UActFzzSuLe",
+				"title": "Short.io link shortener",
+				"shortDescription": "Create short links on your domain",
+				"longDescription": "Short.io allows you to create short links using your own domain (e.g www.longlonglonglong.com/morecharacters becomes www.yourdomain.com/euh4F)\n\nTo make link shortener work you need to have an account in short.io with any domain. After installing this app your domain will be automatically configured for Short.io\n\nShort.cm is free for accounts with less than 1000 links and 50 000 requests per month, which is enough for most of the projects. For $20 per month you can have unlimited links and redirects",
+				"instructions": "1. Create an account in https://short.io\n2. Add a domain you want to manage",
+				"alias": "short-io",
+				"orgId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"icon": "https://images.cloudflareapps.com/dtrj1d2X3VRX/favicon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Short.io",
+				"tagline": "",
+				"website": "https://short.io/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://short.io/terms",
+				"privacyPolicyURL": "https://short.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@short.io",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"analytics",
+					"social-media",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EMowrsS3VXec"
+				},
+				"created": "2017-07-23T07:30:40.520248Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"requestedAt": "2021-09-16T11:08:08.054018964Z",
+				"canceledByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"canceledAt": "2021-09-18T19:05:11.24712124Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "7UActFzzSuLe",
+			"definition": {
+				"options": {
+					"properties": {
+						"subdomain": {
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "cname.short.io",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "Correctly set DNS CNAME record for both apex domain and subdomain, remove preview step",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4cqD2tasbD4",
+			"metadata": {
+				"code": {
+					"sourceTag": "F4cqD2tasbD4",
+					"uploadedOn": "2021-09-18T19:04:02.369016195Z"
+				}
+			},
+			"created": "2021-09-18T19:04:00.986223Z",
+			"proposedApp": {
+				"id": "7UActFzzSuLe",
+				"title": "Short.io link shortener",
+				"shortDescription": "Create short links on your domain",
+				"longDescription": "Short.io allows you to create short links using your own domain (e.g www.longlonglonglong.com/morecharacters becomes www.yourdomain.com/euh4F)\n\nTo make link shortener work you need to have an account in short.io with any domain. After installing this app your domain will be automatically configured for Short.io\n\nShort.cm is free for accounts with less than 1000 links and 50 000 requests per month, which is enough for most of the projects. For $20 per month you can have unlimited links and redirects",
+				"instructions": "1. Create an account in https://short.io\n2. Add a domain you want to manage",
+				"alias": "short-io",
+				"orgId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"icon": "https://images.cloudflareapps.com/dtrj1d2X3VRX/favicon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Short.io",
+				"tagline": "",
+				"website": "https://short.io/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://short.io/terms",
+				"privacyPolicyURL": "https://short.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@short.io",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"analytics",
+					"social-media",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EMowrsS3VXec"
+				},
+				"created": "2017-07-23T07:30:40.520248Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"requestedAt": "2021-09-18T19:05:20.378848558Z",
+				"canceledByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"canceledAt": "2021-09-18T19:18:02.159004879Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "7UActFzzSuLe",
+			"definition": {
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "@",
+							"description": "Subdomain of your domain for your short links. If you want to use root domain - please enter @ here",
+							"order": 0,
+							"required": true,
+							"title": "Subdomain",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "cname.short.io",
+						"ttl": 120
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Correctly set DNS CNAME record for both apex domain and subdomain, remove preview step, add description of subdomain field",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/L0qXu-awBxl3",
+			"metadata": {
+				"code": {
+					"sourceTag": "L0qXu-awBxl3",
+					"uploadedOn": "2021-09-18T19:17:22.108306004Z"
+				}
+			},
+			"created": "2021-09-18T19:17:21.630264Z",
+			"proposedApp": {
+				"id": "7UActFzzSuLe",
+				"title": "Short.io link shortener",
+				"shortDescription": "Create short links on your domain",
+				"longDescription": "Short.io allows you to create short links using your own domain (e.g www.longlonglonglong.com/morecharacters becomes www.yourdomain.com/euh4F)\n\nTo make link shortener work you need to have an account in short.io with any domain. After installing this app your domain will be automatically configured for Short.io\n\nShort.cm is free for accounts with less than 1000 links and 50 000 requests per month, which is enough for most of the projects. For $20 per month you can have unlimited links and redirects",
+				"instructions": "1. Create an account in https://short.io\n2. Add a domain you want to manage",
+				"alias": "short-io",
+				"orgId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"icon": "https://images.cloudflareapps.com/dtrj1d2X3VRX/favicon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Short.io",
+				"tagline": "",
+				"website": "https://short.io/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://short.io/terms",
+				"privacyPolicyURL": "https://short.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@short.io",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"analytics",
+					"social-media",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EMowrsS3VXec"
+				},
+				"created": "2017-07-23T07:30:40.520248Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bf497ac0477bdf4b9e6821bb72a3f77b",
+				"requestedAt": "2021-09-18T19:18:02.164905012Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2022-01-10T18:47:29.071986214Z"
+			}
+		}
+	]
+}

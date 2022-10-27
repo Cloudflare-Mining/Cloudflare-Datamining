@@ -1,0 +1,918 @@
+{
+	"id": "u8u8MqPQFlat",
+	"title": "Skype Live Chat",
+	"shortDescription": "Add Skype Live Chat to your site.",
+	"longDescription": "Install Skype Live Chat to your website easily. Just add your skype username or bot ID to start talking to your customers.",
+	"instructions": "",
+	"alias": "skype-live-chat",
+	"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+	"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+	"featuredAppImage": "",
+	"author": "Surjith S M",
+	"tagline": "",
+	"website": "https://surjithctly.in",
+	"sourceURL": "",
+	"termsOfServiceURL": "http://go.microsoft.com/fwlink/?LinkID=530144",
+	"privacyPolicyURL": "https://privacy.microsoft.com/en-us/privacystatement/",
+	"color": "#00AFF0",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.2",
+	"infoVersion": "1.1.2",
+	"points": 900,
+	"supportEmail": "support@surjithctly.in",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"get-more-customers",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "a5a2042e2172cfe2c252e4e71791f978",
+			"created": "2017-08-16T06:38:09.844003093Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ECYEo8AYVFml"
+	},
+	"created": "2017-08-16T06:35:35.386491Z",
+	"org": {
+		"id": "a5a2042e2172cfe2c252e4e71791f978",
+		"title": "",
+		"username": "a5a2042e2172cfe2c252e4e71791f978",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "u8u8MqPQFlat",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"animation": {
+							"default": true,
+							"description": "Enables the opening animation",
+							"order": 11,
+							"title": "Enable Animation?",
+							"type": "boolean"
+						},
+						"botid": {
+							"default": "",
+							"description": "Enter your Microsoft Bot ID  / App ID. See https://dev.botframework.com/bots",
+							"order": 3,
+							"showIf": {
+								"receiver": "bot"
+							},
+							"title": "Microsoft App ID",
+							"type": "string"
+						},
+						"buttoncolor": {
+							"default": "#00AFF0",
+							"format": "color",
+							"order": 4,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"closable": {
+							"default": true,
+							"description": "Enables the close button",
+							"order": 7,
+							"title": "Enable Close?",
+							"type": "boolean"
+						},
+						"collapse": {
+							"default": false,
+							"description": "Enables minimization functionality",
+							"order": 6,
+							"title": "Enable Collapse?",
+							"type": "boolean"
+						},
+						"customcss": {
+							"default": ".skype-button .lwc-chat-button { \n /* your styles */ \n }",
+							"description": "If you need to add custom css styles, add here *without* <style> tags",
+							"format": "code",
+							"order": 12,
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where we should place the script? Tip: You do not need to change this usually.",
+							"format": "element",
+							"order": 0,
+							"title": "Script Location",
+							"type": "object"
+						},
+						"messagecolor": {
+							"default": "#F1F1F4",
+							"description": "Background Color for Message bubbles",
+							"format": "color",
+							"order": 5,
+							"title": "Message BG Color",
+							"type": "string"
+						},
+						"receiver": {
+							"default": "user",
+							"enum": [
+								"user",
+								"bot"
+							],
+							"enumNames": {
+								"bot": "Bot",
+								"user": "Skype User"
+							},
+							"order": 1,
+							"title": "Set receiver",
+							"type": "string"
+						},
+						"showheader": {
+							"default": true,
+							"description": "Enables the conversation header",
+							"order": 10,
+							"title": "Show Header?",
+							"type": "boolean"
+						},
+						"skypeid": {
+							"default": "",
+							"description": "Enter your Skype Username",
+							"order": 2,
+							"showIf": {
+								"receiver": "user"
+							},
+							"title": "Skype ID",
+							"type": "string"
+						},
+						"uploadfile": {
+							"default": true,
+							"description": "Enables the upload file button",
+							"order": 8,
+							"title": "Enable File Upload?",
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ECYEo8AYVFml",
+			"metadata": {
+				"code": {
+					"sourceTag": "ECYEo8AYVFml",
+					"uploadedOn": "2017-08-16T06:35:37.338853174Z"
+				}
+			},
+			"created": "2017-08-16T06:35:36.332874Z",
+			"proposedApp": {
+				"id": "u8u8MqPQFlat",
+				"title": "Skype Live Chat",
+				"shortDescription": "Integrate Skype Live Chat to your Website",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+				"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+				"featuredAppImage": "",
+				"author": "Surjith S M",
+				"tagline": "",
+				"website": "https://surjithctly.in/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@surjithctly.in",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ECYEo8AYVFml"
+				},
+				"created": "2017-08-16T06:35:35.386491Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a5a2042e2172cfe2c252e4e71791f978",
+				"requestedAt": "2017-08-16T06:38:09.836280393Z",
+				"canceledByUserId": "a5a2042e2172cfe2c252e4e71791f978",
+				"canceledAt": "2017-08-16T07:37:15.414740575Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "u8u8MqPQFlat",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"animation": {
+							"default": true,
+							"description": "Enables the opening animation",
+							"order": 11,
+							"title": "Enable Animation?",
+							"type": "boolean"
+						},
+						"botid": {
+							"default": "",
+							"description": "Enter your Microsoft Bot ID  / App ID. See https://dev.botframework.com/bots",
+							"order": 3,
+							"showIf": {
+								"receiver": "bot"
+							},
+							"title": "Microsoft App ID",
+							"type": "string"
+						},
+						"buttoncolor": {
+							"default": "#00AFF0",
+							"format": "color",
+							"order": 4,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"closable": {
+							"default": true,
+							"description": "Enables the close button",
+							"order": 7,
+							"title": "Enable Close?",
+							"type": "boolean"
+						},
+						"collapse": {
+							"default": false,
+							"description": "Enables minimization functionality",
+							"order": 6,
+							"title": "Enable Collapse?",
+							"type": "boolean"
+						},
+						"customcss": {
+							"default": ".skype-button .lwc-chat-button { \n /* your styles */ \n }",
+							"description": "If you need to add custom css styles, add here *without* <style> tags",
+							"format": "code",
+							"order": 12,
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where we should place the script? Tip: You do not need to change this usually.",
+							"format": "element",
+							"order": 0,
+							"title": "Script Location",
+							"type": "object"
+						},
+						"messagecolor": {
+							"default": "#F1F1F4",
+							"description": "Background Color for Message bubbles",
+							"format": "color",
+							"order": 5,
+							"title": "Message BG Color",
+							"type": "string"
+						},
+						"receiver": {
+							"default": "user",
+							"enum": [
+								"user",
+								"bot"
+							],
+							"enumNames": {
+								"bot": "Bot",
+								"user": "Skype User"
+							},
+							"order": 1,
+							"title": "Set receiver",
+							"type": "string"
+						},
+						"showheader": {
+							"default": true,
+							"description": "Enables the conversation header",
+							"order": 10,
+							"title": "Show Header?",
+							"type": "boolean"
+						},
+						"skypeid": {
+							"default": "",
+							"description": "Enter your Skype Username",
+							"order": 2,
+							"showIf": {
+								"receiver": "user"
+							},
+							"title": "Skype ID",
+							"type": "string"
+						},
+						"uploadfile": {
+							"default": true,
+							"description": "Enables the upload file button",
+							"order": 8,
+							"title": "Enable File Upload?",
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ECYEo8AYVFml",
+			"created": "2017-08-16T06:41:04.49696Z",
+			"proposedApp": {
+				"id": "u8u8MqPQFlat",
+				"title": "Skype Live Chat",
+				"shortDescription": "Integrate Skype Live Chat to your Website",
+				"longDescription": "Install Skype Live Chat to your website easily. Just add your skype username or bot id to start talking to your customers.",
+				"instructions": "Add your Skype Username or Bot ID and then configure the other available options.",
+				"alias": "skype-live-chat",
+				"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+				"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+				"featuredAppImage": "",
+				"author": "Surjith S M",
+				"tagline": "",
+				"website": "https://surjithctly.in/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@surjithctly.in",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ECYEo8AYVFml"
+				},
+				"created": "2017-08-16T06:35:35.386491Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "a5a2042e2172cfe2c252e4e71791f978",
+				"requestedAt": "2017-08-16T07:37:15.426707678Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-18T11:59:46.492247845Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "u8u8MqPQFlat",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"colors": {
+							"order": 1,
+							"properties": {
+								"button": {
+									"default": "#00aff0",
+									"format": "color",
+									"order": 2,
+									"title": "Chat Button",
+									"type": "string"
+								},
+								"message": {
+									"default": "#f1f1f4",
+									"format": "color",
+									"order": 3,
+									"title": "Message Bubble",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"receiver": {
+							"order": 0,
+							"properties": {
+								"botname": {
+									"description": "More details at <a href=\"https://dev.botframework.com/bots\" class=\"more\" target=\"_blank\">Bot Framework Portal</a>",
+									"order": 0,
+									"placeholder": "chat_bot123",
+									"showIf": {
+										"receiver.type": "bot"
+									},
+									"title": "Microsoft Bot or App ID",
+									"type": "string"
+								},
+								"type": {
+									"default": "user",
+									"enum": [
+										"user",
+										"bot"
+									],
+									"enumNames": {
+										"bot": "A Microsoft bot",
+										"user": "A Skype user"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Who should receive the call?",
+									"type": "string"
+								},
+								"username": {
+									"order": 0,
+									"placeholder": "JessieLorem",
+									"showIf": {
+										"receiver.type": "user"
+									},
+									"title": "Skype Username",
+									"type": "string"
+								}
+							},
+							"title": "Receiver",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WEckDbA0t1wr",
+			"metadata": {
+				"code": {
+					"sourceTag": "WEckDbA0t1wr",
+					"uploadedOn": "2017-08-25T12:23:15.571691509Z"
+				}
+			},
+			"created": "2017-08-25T12:23:15.348966Z",
+			"proposedApp": {
+				"id": "u8u8MqPQFlat",
+				"title": "Skype Live Chat",
+				"shortDescription": "Add Skype Live Chat to your site.",
+				"longDescription": "Install Skype Live Chat to your website easily. Just add your skype username or bot ID to start talking to your customers.",
+				"instructions": "",
+				"alias": "skype-live-chat",
+				"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+				"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+				"featuredAppImage": "",
+				"author": "Surjith S M",
+				"tagline": "",
+				"website": "https://surjithctly.in",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://go.microsoft.com/fwlink/?LinkID=530144",
+				"privacyPolicyURL": "https://privacy.microsoft.com/en-us/privacystatement/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@surjithctly.in",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ECYEo8AYVFml"
+				},
+				"created": "2017-08-16T06:35:35.386491Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-25T12:23:16.303831682Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-25T12:26:38.022918812Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "u8u8MqPQFlat",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"colors": {
+							"order": 1,
+							"properties": {
+								"button": {
+									"default": "#00aff0",
+									"format": "color",
+									"order": 2,
+									"title": "Chat Button",
+									"type": "string"
+								},
+								"message": {
+									"default": "#f1f1f4",
+									"format": "color",
+									"order": 3,
+									"title": "Message Bubble",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"receiver": {
+							"order": 0,
+							"properties": {
+								"botname": {
+									"description": "More details at <a href=\"https://dev.botframework.com/bots\" class=\"more\" target=\"_blank\">Bot Framework Portal</a>",
+									"order": 1,
+									"placeholder": "chat_bot123",
+									"showIf": {
+										"receiver.type": "bot"
+									},
+									"title": "Microsoft Bot or App ID",
+									"type": "string"
+								},
+								"type": {
+									"default": "user",
+									"enum": [
+										"user",
+										"bot"
+									],
+									"enumNames": {
+										"bot": "A Microsoft bot",
+										"user": "A Skype user"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Who should receive the call?",
+									"type": "string"
+								},
+								"username": {
+									"order": 1,
+									"placeholder": "JessieLorem",
+									"showIf": {
+										"receiver.type": "user"
+									},
+									"title": "Skype Username",
+									"type": "string"
+								}
+							},
+							"title": "Receiver",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 8,
+				"downvotes": 6
+			},
+			"releaseNotes": "Fixed issue where install fields appear in random order.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c0QhcEk8ZOWS",
+			"metadata": {
+				"code": {
+					"sourceTag": "c0QhcEk8ZOWS",
+					"uploadedOn": "2017-10-31T10:41:39.664654051Z"
+				}
+			},
+			"created": "2017-10-31T10:41:39.208853Z",
+			"proposedApp": {
+				"id": "u8u8MqPQFlat",
+				"title": "Skype Live Chat",
+				"shortDescription": "Add Skype Live Chat to your site.",
+				"longDescription": "Install Skype Live Chat to your website easily. Just add your skype username or bot ID to start talking to your customers.",
+				"instructions": "",
+				"alias": "skype-live-chat",
+				"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+				"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+				"featuredAppImage": "",
+				"author": "Surjith S M",
+				"tagline": "",
+				"website": "https://surjithctly.in",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://go.microsoft.com/fwlink/?LinkID=530144",
+				"privacyPolicyURL": "https://privacy.microsoft.com/en-us/privacystatement/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@surjithctly.in",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"add-on",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ECYEo8AYVFml"
+				},
+				"created": "2017-08-16T06:35:35.386491Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-10-31T10:41:40.566433258Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-31T10:42:33.227856292Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "u8u8MqPQFlat",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"colors": {
+							"order": 1,
+							"properties": {
+								"button": {
+									"default": "#00aff0",
+									"format": "color",
+									"order": 2,
+									"title": "Chat Button",
+									"type": "string"
+								},
+								"message": {
+									"default": "#f1f1f4",
+									"format": "color",
+									"order": 3,
+									"title": "Message Bubble",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"receiver": {
+							"order": 0,
+							"properties": {
+								"botname": {
+									"description": "More details at <a href=\"https://dev.botframework.com/bots\" class=\"more\" target=\"_blank\">Bot Framework Portal</a>",
+									"order": 1,
+									"placeholder": "chat_bot123",
+									"showIf": {
+										"receiver.type": "bot"
+									},
+									"title": "Microsoft Bot or App ID",
+									"type": "string"
+								},
+								"type": {
+									"default": "user",
+									"enum": [
+										"user",
+										"bot"
+									],
+									"enumNames": {
+										"bot": "A Microsoft bot",
+										"user": "A Skype user"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Who should receive the call?",
+									"type": "string"
+								},
+								"username": {
+									"order": 1,
+									"placeholder": "JessieLorem",
+									"showIf": {
+										"receiver.type": "user"
+									},
+									"title": "Skype Username",
+									"type": "string"
+								}
+							},
+							"title": "Receiver",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.62,
+				"upvotes": 29,
+				"downvotes": 18
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c0QhcEk8ZOWS",
+			"created": "2018-01-22T20:39:33.367993Z",
+			"proposedApp": {
+				"id": "u8u8MqPQFlat",
+				"title": "Skype Live Chat",
+				"shortDescription": "Add Skype Live Chat to your site.",
+				"longDescription": "Install Skype Live Chat to your website easily. Just add your skype username or bot ID to start talking to your customers.",
+				"instructions": "",
+				"alias": "skype-live-chat",
+				"orgId": "a5a2042e2172cfe2c252e4e71791f978",
+				"icon": "//images.cloudflareapps.com/kJO81dTHQKDe9KgeXwXO_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HV0PG33QRqqCTLCQBT22_tile.png",
+				"featuredAppImage": "",
+				"author": "Surjith S M",
+				"tagline": "",
+				"website": "https://surjithctly.in",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://go.microsoft.com/fwlink/?LinkID=530144",
+				"privacyPolicyURL": "https://privacy.microsoft.com/en-us/privacystatement/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@surjithctly.in",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"get-more-customers",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ECYEo8AYVFml"
+				},
+				"created": "2017-08-16T06:35:35.386491Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:39:33.617811995Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:39:43.743565382Z"
+			}
+		}
+	]
+}

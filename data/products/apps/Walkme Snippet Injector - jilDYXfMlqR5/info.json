@@ -1,0 +1,154 @@
+{
+	"id": "jilDYXfMlqR5",
+	"title": "Walkme Snippet Injector",
+	"shortDescription": "Inject Walkme snippet to your site - the easy way!",
+	"longDescription": "",
+	"instructions": "",
+	"alias": "walkme-snippet-injector",
+	"orgId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+	"icon": "https://images.cloudflareapps.com/eDkTFx2f4SDH/needle-surgical.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Pavel Shklovsky",
+	"tagline": "",
+	"website": "https://github.com/pasha1986/walkme-snippet-injector",
+	"sourceURL": "https://github.com/pasha1986/walkme-snippet-injector",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.1",
+	"infoVersion": "0.0.1",
+	"points": 0,
+	"supportEmail": "pavel@cloud-wars.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+			"created": "2019-09-23T14:16:39.195273672Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "b1O_IV1-nnnn"
+	},
+	"created": "2019-09-23T14:16:35.939802Z",
+	"org": {
+		"id": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+		"title": "",
+		"username": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "jilDYXfMlqR5",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"walkmeUserGuid": {
+							"description": "The User ID associated with your WalkMe account.",
+							"placeholder": "Insert your WalkMe User ID here",
+							"title": "WalkMe User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/b1O_IV1-nnnn",
+			"metadata": {
+				"code": {
+					"sourceTag": "b1O_IV1-nnnn",
+					"uploadedOn": "2019-09-23T14:16:37.403716446Z"
+				}
+			},
+			"created": "2019-09-23T14:16:36.54056Z",
+			"proposedApp": {
+				"id": "jilDYXfMlqR5",
+				"title": "Walkme Snippet Injector",
+				"shortDescription": "Inject Walkme snippet to your site - the easy way!",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "walkme-snippet-injector",
+				"orgId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+				"icon": "https://images.cloudflareapps.com/eDkTFx2f4SDH/needle-surgical.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Pavel Shklovsky",
+				"tagline": "",
+				"website": "https://github.com/pasha1986/walkme-snippet-injector",
+				"sourceURL": "https://github.com/pasha1986/walkme-snippet-injector",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "pavel@cloud-wars.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "b1O_IV1-nnnn"
+				},
+				"created": "2019-09-23T14:16:35.939802Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+				"requestedAt": "2019-09-23T14:16:39.181010687Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-26T15:35:34.057205554Z"
+			}
+		}
+	]
+}

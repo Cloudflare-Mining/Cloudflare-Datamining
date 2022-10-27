@@ -1,0 +1,510 @@
+{
+	"id": "mPmfMJWC0r33",
+	"title": "Cookie Consent Banner",
+	"shortDescription": "Cookie consent box - choose color, text, and placement!",
+	"longDescription": "An easy to use, customizable cookie consent banner. Select your own colors and placement of the pop-up to match existing branding. Mobile-responsive.",
+	"instructions": "",
+	"alias": "",
+	"orgId": "16529e28a9af0a2122d243349e7fca0d",
+	"icon": "https://images.cloudflareapps.com/RsN29w6o4kF5/569%20-%20Cookies.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Bitmapped Designs LLC",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@happycontent.io",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "16529e28a9af0a2122d243349e7fca0d",
+			"created": "2020-01-17T01:45:53.783418195Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "WO8jd-KfPOqw"
+	},
+	"created": "2020-01-17T01:45:51.54Z",
+	"org": {
+		"id": "16529e28a9af0a2122d243349e7fca0d",
+		"title": "",
+		"username": "16529e28a9af0a2122d243349e7fca0d",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "mPmfMJWC0r33",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./acceptCookie.css"
+						},
+						{
+							"type": "script",
+							"src": "./acceptCookie.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#232323",
+							"format": "color",
+							"title": "Banner Background Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#0000FF",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"position": {
+							"default": "bottom",
+							"description": "Where should the cookie banner appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"title": "Position",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_any"
+							],
+							"execute": "INSTALL_SCOPE.clearCookiePreview()",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WO8jd-KfPOqw",
+			"metadata": {
+				"code": {
+					"sourceTag": "WO8jd-KfPOqw",
+					"uploadedOn": "2020-01-17T01:45:52.70066946Z"
+				}
+			},
+			"created": "2020-01-17T01:45:52.380745Z",
+			"proposedApp": {
+				"id": "mPmfMJWC0r33",
+				"title": "Cookie Consent Banner",
+				"shortDescription": "Customizable cookie consent box - choose color and placement",
+				"longDescription": "An easy to use, customizable cookie consent banner. Select your own colors and placement of the pop-up to match existing branding. Mobile-responsive.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "16529e28a9af0a2122d243349e7fca0d",
+				"icon": "https://images.cloudflareapps.com/RsN29w6o4kF5/569%20-%20Cookies.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Bitmapped Designs LLC",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happycontent.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "WO8jd-KfPOqw"
+				},
+				"created": "2020-01-17T01:45:51.54Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "16529e28a9af0a2122d243349e7fca0d",
+				"requestedAt": "2020-01-17T01:45:53.769364243Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-17T17:19:22.974751583Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "mPmfMJWC0r33",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./acceptCookie.css"
+						},
+						{
+							"type": "script",
+							"src": "./acceptCookie.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#232323",
+							"format": "color",
+							"title": "Banner Background Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#0000FF",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"message": {
+							"default": "We use cookies on this site to enhance your user experience.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"position": {
+							"default": "bottom",
+							"description": "Where should the cookie banner appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"title": "Position",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_any"
+							],
+							"execute": "INSTALL_SCOPE.clearCookiePreview()",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Adds ability to change button text color, allows custom cookie consent message, improves z axis for use with WP sites.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UyvL9OO0--Gj",
+			"metadata": {
+				"code": {
+					"sourceTag": "UyvL9OO0--Gj",
+					"uploadedOn": "2020-01-30T20:06:28.427392678Z"
+				}
+			},
+			"created": "2020-01-30T20:06:27.813708Z",
+			"proposedApp": {
+				"id": "mPmfMJWC0r33",
+				"title": "Cookie Consent Banner",
+				"shortDescription": "Cookie consent box - choose color, text, and placement!",
+				"longDescription": "An easy to use, customizable cookie consent banner. Select your own colors and placement of the pop-up to match existing branding. Mobile-responsive.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "16529e28a9af0a2122d243349e7fca0d",
+				"icon": "https://images.cloudflareapps.com/RsN29w6o4kF5/569%20-%20Cookies.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Bitmapped Designs LLC",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happycontent.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "WO8jd-KfPOqw"
+				},
+				"created": "2020-01-17T01:45:51.54Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "16529e28a9af0a2122d243349e7fca0d",
+				"requestedAt": "2020-01-30T20:06:29.695561807Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-31T17:11:30.243959658Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "mPmfMJWC0r33",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./acceptCookie.css"
+						},
+						{
+							"type": "script",
+							"src": "./acceptCookie.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#232323",
+							"format": "color",
+							"title": "Banner Background Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#0000FF",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"message": {
+							"default": "We use cookies on this site to enhance your user experience.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"position": {
+							"default": "bottom",
+							"description": "Where should the cookie banner appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"title": "Position",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_any"
+							],
+							"execute": "INSTALL_SCOPE.clearCookiePreview()",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.17,
+				"upvotes": 2,
+				"downvotes": 10
+			},
+			"releaseNotes": "Fixed cookie banner fade out bug",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HgeNBlv0oBnY",
+			"metadata": {
+				"code": {
+					"sourceTag": "HgeNBlv0oBnY",
+					"uploadedOn": "2020-02-18T15:04:53.888758245Z"
+				}
+			},
+			"created": "2020-02-18T15:04:53.586193Z",
+			"proposedApp": {
+				"id": "mPmfMJWC0r33",
+				"title": "Cookie Consent Banner",
+				"shortDescription": "Cookie consent box - choose color, text, and placement!",
+				"longDescription": "An easy to use, customizable cookie consent banner. Select your own colors and placement of the pop-up to match existing branding. Mobile-responsive.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "16529e28a9af0a2122d243349e7fca0d",
+				"icon": "https://images.cloudflareapps.com/RsN29w6o4kF5/569%20-%20Cookies.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Bitmapped Designs LLC",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happycontent.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "WO8jd-KfPOqw"
+				},
+				"created": "2020-01-17T01:45:51.54Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "16529e28a9af0a2122d243349e7fca0d",
+				"requestedAt": "2020-02-18T15:04:54.610419793Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-18T16:27:44.403385869Z"
+			}
+		}
+	]
+}

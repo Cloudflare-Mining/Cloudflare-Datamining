@@ -1,0 +1,1244 @@
+{
+	"id": "fIDj42lQZ__w",
+	"title": "Smartarget Viber - Contact Us",
+	"shortDescription": "Allow customers to contact you using Viber",
+	"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using Viber, so its time to give them the option to contact you by using Viber.\n\nWith 'Viber - Contact Us' you can add a small icon on the bottom-right corner with you phone number and short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will be pop with Viber and chat window with you.",
+	"instructions": "",
+	"alias": "smartarget-viber-contact-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/seQhu6IW98Ck/Viber%20Contact%20Us.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/h7aPlIrfenqY/viber_1-desktop.png",
+		"https://images.cloudflareapps.com/h7aPlIrfenqY/viber_2-desktop.png",
+		"https://images.cloudflareapps.com/h7aPlIrfenqY/viber-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/2q7wBhGx3ehW/Viber%20Contact%20Us.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/AvEROzkBFa2H/Viber%20Contact%20Us.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-10-29T16:54:52.783421601Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "f_G0yneb6DDX"
+	},
+	"created": "2020-10-29T16:46:45.684383Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "fIDj42lQZ__w",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"phoneNumber": {
+							"default": "",
+							"description": "Your Phone number",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone number",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Viber - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/f_G0yneb6DDX",
+			"metadata": {
+				"code": {
+					"sourceTag": "f_G0yneb6DDX",
+					"uploadedOn": "2020-10-29T16:46:46.886207811Z"
+				}
+			},
+			"created": "2020-10-29T16:46:46.313599Z",
+			"proposedApp": {
+				"id": "fIDj42lQZ__w",
+				"title": "Smartarget Viber - Contact Us",
+				"shortDescription": "Allow customers to contact you using Viber",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using Viber, so its time to give them the option to contact you by using Viber.\n\nWith 'Viber - Contact Us' you can add a small icon on the bottom-right corner with you phone number and short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will be pop with Viber and chat window with you.",
+				"instructions": "",
+				"alias": "smartarget-viber-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/seQhu6IW98Ck/Viber%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/L-SMyMTG8ndz/Viber%20Contact%20Us%20-%20placeholder.png",
+					"https://images.cloudflareapps.com/8mXKTZDefTK7/Viber%20Contact%20Us%20-%20site.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2q7wBhGx3ehW/Viber%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AvEROzkBFa2H/Viber%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "f_G0yneb6DDX"
+				},
+				"created": "2020-10-29T16:46:45.684383Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-29T16:54:52.776825526Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:42:40.87170208Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "fIDj42lQZ__w",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"phoneNumber": {
+							"default": "",
+							"description": "Your Phone number",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone number",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Viber - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"manual": true,
+			"releaseNotes": "Updated category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/f_G0yneb6DDX",
+			"created": "2020-11-02T21:43:10.553966Z",
+			"proposedApp": {
+				"id": "fIDj42lQZ__w",
+				"title": "Smartarget Viber - Contact Us",
+				"shortDescription": "Allow customers to contact you using Viber",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using Viber, so its time to give them the option to contact you by using Viber.\n\nWith 'Viber - Contact Us' you can add a small icon on the bottom-right corner with you phone number and short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will be pop with Viber and chat window with you.",
+				"instructions": "",
+				"alias": "smartarget-viber-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/seQhu6IW98Ck/Viber%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/L-SMyMTG8ndz/Viber%20Contact%20Us%20-%20placeholder.png",
+					"https://images.cloudflareapps.com/8mXKTZDefTK7/Viber%20Contact%20Us%20-%20site.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2q7wBhGx3ehW/Viber%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AvEROzkBFa2H/Viber%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "f_G0yneb6DDX"
+				},
+				"created": "2020-10-29T16:46:45.684383Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-02T21:43:10.832995325Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:43:37.465066657Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "fIDj42lQZ__w",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_viber'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"phoneNumber": {
+							"default": "",
+							"description": "Your Phone number",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone number",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Viber - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/f_G0yneb6DDX",
+			"created": "2021-11-09T15:04:23.921417Z",
+			"proposedApp": {
+				"id": "fIDj42lQZ__w",
+				"title": "Smartarget Viber - Contact Us",
+				"shortDescription": "Allow customers to contact you using Viber",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using Viber, so its time to give them the option to contact you by using Viber.\n\nWith 'Viber - Contact Us' you can add a small icon on the bottom-right corner with you phone number and short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will be pop with Viber and chat window with you.",
+				"instructions": "",
+				"alias": "smartarget-viber-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/seQhu6IW98Ck/Viber%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/h7aPlIrfenqY/viber_1-desktop.png",
+					"https://images.cloudflareapps.com/h7aPlIrfenqY/viber_2-desktop.png",
+					"https://images.cloudflareapps.com/h7aPlIrfenqY/viber-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2q7wBhGx3ehW/Viber%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AvEROzkBFa2H/Viber%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "f_G0yneb6DDX"
+				},
+				"created": "2020-10-29T16:46:45.684383Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:04:24.858029218Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:32.883575329Z"
+			}
+		}
+	]
+}

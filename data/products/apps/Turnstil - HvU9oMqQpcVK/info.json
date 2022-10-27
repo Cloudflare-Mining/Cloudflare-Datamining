@@ -1,0 +1,1239 @@
+{
+	"id": "HvU9oMqQpcVK",
+	"title": "Turnstil",
+	"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+	"longDescription": "Turnstil.Cloud (a Canadian Company headquartered in Vancouver, BC) is specifically engineered for Cloudflare users. Employing Artificial Intelligence (AI) coupled with powerful Machine Learning (ML) Systems, Turnstil.Cloud acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\n*If you’re already a Cloudflare user, it takes less than a minute to install Turnstil and begin controlling the bot traffic on your website(s). The process is quick, simple, can be done by the business owner or a non-technical manager (even after hours when the techs are in bed), and works even if your website is down due to an ongoing attack – Turnstil is your first line of defence for spotting and banning bad bots attacking your website!*\n\nDo you have a problem with Content Scrappers that harvest product information (like pricing, descriptions and availability) and/or catalog your back-links and other information to sell to your competitors? Turnstil is a valuable tool to help you spot and mitigate these problems by banning predatory commercial bots with just a click of a button.\n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\n+ Login brute force attacks\n+ Credential Stuffing attacks\n+ DDoS attacks\n+ Content scrapers \n+ Site scanners \n+ SQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turnstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! \n\n**Get more information at <https://turnstil.cloud/>**",
+	"instructions": "",
+	"alias": "turnstil",
+	"orgId": "bc592a96093410da043e60877733fba7",
+	"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+		"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+		"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+		"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+	"author": "Turnstil Inc.",
+	"tagline": "",
+	"website": "https://turnstil.cloud",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+	"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.0",
+	"infoVersion": "1.1.0",
+	"points": 0,
+	"supportEmail": "support@turnstil.cloud",
+	"products": [],
+	"categoryIds": [
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "bc592a96093410da043e60877733fba7",
+			"created": "2020-10-30T18:12:58.667542076Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "qMunPWsM5SBX"
+	},
+	"created": "2020-10-21T17:56:28.505863Z",
+	"org": {
+		"id": "bc592a96093410da043e60877733fba7",
+		"title": "",
+		"username": "bc592a96093410da043e60877733fba7",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4rxFiE3Ue3Cv",
+			"metadata": {
+				"code": {
+					"sourceTag": "4rxFiE3Ue3Cv",
+					"uploadedOn": "2020-10-30T18:12:39.138358692Z"
+				}
+			},
+			"created": "2020-10-21T17:56:28.731693Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brut force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud!",
+				"instructions": "",
+				"alias": "",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-10-30T18:12:58.660736586Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:42:16.284016376Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jWoh1Tol9VGa",
+			"metadata": {
+				"code": {
+					"sourceTag": "jWoh1Tol9VGa",
+					"uploadedOn": "2020-11-04T05:05:29.138623267Z"
+				}
+			},
+			"created": "2020-11-04T01:14:51.296467Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brut force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud!",
+				"instructions": "",
+				"alias": "",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-11-04T05:05:52.620288299Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-06T14:37:56.201419592Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"manual": true,
+			"releaseNotes": "Prevent caching of request\nAdd version and requestId to body",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JmPFa19jjr5V",
+			"metadata": {
+				"code": {
+					"sourceTag": "JmPFa19jjr5V",
+					"uploadedOn": "2020-11-10T00:58:00.573780514Z"
+				}
+			},
+			"created": "2020-11-10T00:58:00.388369Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brut force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud!",
+				"instructions": "",
+				"alias": "",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-11-10T00:58:23.65965024Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-13T15:21:38.68928343Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Added to Insights category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JmPFa19jjr5V",
+			"created": "2020-11-16T16:36:13.235886Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brut force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud!",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-16T16:36:13.550364749Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-16T16:37:40.35241147Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Security category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JmPFa19jjr5V",
+			"created": "2020-11-16T18:50:15.848151Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brut force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud!",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-16T18:50:16.16487975Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-16T18:50:34.992344551Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"releaseNotes": "Fix typos in description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JmPFa19jjr5V",
+			"created": "2020-11-24T00:53:32.689072Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\nLogin brute force attacks\nCredential Stuffing attacks\nDDoS attacks\nContent scrapers \nSite scanners \nSQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! Get more information at https://turnstil.cloud",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-11-24T00:55:13.708938606Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-24T16:33:09.990526824Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/33SzTYW42w1Q",
+			"metadata": {
+				"code": {
+					"sourceTag": "33SzTYW42w1Q",
+					"uploadedOn": "2020-12-04T22:21:18.157219501Z"
+				}
+			},
+			"created": "2020-12-04T22:21:17.714568Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\n*If you’re already a Cloudflare user, it takes less than a minute to install Turnstil and begin controlling the bot traffic on your website(s). The process is quick, simple, can be done by the business owner or a non-technical manager (even after hours when the techs are in bed), and works even if your website is down due to an ongoing attack – Turnstil is your first line of defence for spotting and banning bad bots attacking your website!*\n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\n+ Login brute force attacks\n+ Credential Stuffing attacks\n+ DDoS attacks\n+ Content scrapers \n+ Site scanners \n+ SQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! \n\n**Get more information at https://turnstil.cloud**",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-12-04T22:23:57.951978428Z",
+				"canceledByUserId": "bc592a96093410da043e60877733fba7",
+				"canceledAt": "2020-12-04T22:25:19.557217141Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/33SzTYW42w1Q",
+			"created": "2020-12-04T22:25:03.027492Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (specifically engineered for Cloudflare users) is Artificial Intelligence (AI) coupled with Machine Learning that acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\n*If you’re already a Cloudflare user, it takes less than a minute to install Turnstil and begin controlling the bot traffic on your website(s). The process is quick, simple, can be done by the business owner or a non-technical manager (even after hours when the techs are in bed), and works even if your website is down due to an ongoing attack – Turnstil is your first line of defence for spotting and banning bad bots attacking your website!*\n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\n+ Login brute force attacks\n+ Credential Stuffing attacks\n+ DDoS attacks\n+ Content scrapers \n+ Site scanners \n+ SQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! \n\n**Get more information at <https://turnstil.cloud/>**",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2020-12-04T22:25:19.571053665Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-09T18:30:36.06834304Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 6,
+				"downvotes": 1
+			},
+			"releaseNotes": "Copy Update",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/33SzTYW42w1Q",
+			"created": "2021-01-27T21:42:51.570648Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (a Canadian Company headquartered in Vancouver, BC) is specifically engineered for Cloudflare users. Employing Artificial Intelligence (AI) coupled with powerful Machine Learning (ML) Systems, Turnstil.Cloud acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\n*If you’re already a Cloudflare user, it takes less than a minute to install Turnstil and begin controlling the bot traffic on your website(s). The process is quick, simple, can be done by the business owner or a non-technical manager (even after hours when the techs are in bed), and works even if your website is down due to an ongoing attack – Turnstil is your first line of defence for spotting and banning bad bots attacking your website!*\n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\n+ Login brute force attacks\n+ Credential Stuffing attacks\n+ DDoS attacks\n+ Content scrapers \n+ Site scanners \n+ SQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! \n\n**Get more information at <https://turnstil.cloud/>**",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2021-01-27T21:42:51.958567152Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-04T16:46:42.508234855Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "HvU9oMqQpcVK",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"turnstil-auth"
+							],
+							"title": "Turnstil Account",
+							"type": "object"
+						},
+						"apiKey": {
+							"description": "You can find this under 'My Profile' > 'API Tokens' -> 'Global API Key'",
+							"order": 1,
+							"placeholder": "Your Cloudflare API key here...",
+							"required": true,
+							"title": "Cloudflare API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.turnstil.cloud/cloudflare/app",
+						"events": [
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "We were unable to complete your installation."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 16,
+				"downvotes": 4
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BxrrOI6uv4ML",
+			"metadata": {
+				"code": {
+					"sourceTag": "BxrrOI6uv4ML",
+					"uploadedOn": "2021-06-02T16:06:07.295132708Z"
+				}
+			},
+			"created": "2021-06-01T21:43:19.127802Z",
+			"proposedApp": {
+				"id": "HvU9oMqQpcVK",
+				"title": "Turnstil",
+				"shortDescription": "Bot Analytics & Management for Cloudflare Users",
+				"longDescription": "Turnstil.Cloud (a Canadian Company headquartered in Vancouver, BC) is specifically engineered for Cloudflare users. Employing Artificial Intelligence (AI) coupled with powerful Machine Learning (ML) Systems, Turnstil.Cloud acts as an intelligent interface to control the Cloudflare Firewall while also providing comprehensive analytics and deep insight into the bot traffic on your website. \n\n*If you’re already a Cloudflare user, it takes less than a minute to install Turnstil and begin controlling the bot traffic on your website(s). The process is quick, simple, can be done by the business owner or a non-technical manager (even after hours when the techs are in bed), and works even if your website is down due to an ongoing attack – Turnstil is your first line of defence for spotting and banning bad bots attacking your website!*\n\nDo you have a problem with Content Scrappers that harvest product information (like pricing, descriptions and availability) and/or catalog your back-links and other information to sell to your competitors? Turnstil is a valuable tool to help you spot and mitigate these problems by banning predatory commercial bots with just a click of a button.\n\nSee what’s happening at any time in the hidden areas of your website that Google Analytics doesn’t show you. Watch search bots index your site, and see how feed generators are exploiting your content. Get valuable information about bad bots including:\n\n+ Login brute force attacks\n+ Credential Stuffing attacks\n+ DDoS attacks\n+ Content scrapers \n+ Site scanners \n+ SQL Injectors\n\nMost websites have a huge problem with bots. If you’re at the point where bots concern you, then you probably already have serious issues with bots on your website. Turnstil will show you how bad the problem really is, and give you the cyber-intelligence you need to control it.\n\nBut Turnstil.Cloud is not just about bots – we give you deep insight into ALL of your website traffic, human and bot alike. Watch in realtime as human users navigate your website. See what path they take, and learn how much time they stay on each page. Watch all of their activity until they complete a transaction, or gain insight into why they went away. There’s a lot to learn by watching actual humans navigate your website.\n\nGreen-up Your Website: You could leave your lights on all the time. There’s a reason why you don’t. Similarly, you shouldn’t let bots ramp up and waste the resources of your server. Turnstil is a switch that turns off all that wasted energy spent serving useless website traffic. The bots behind site scrappers and DDoS attacks aren’t just bad for your business, they are bad for the environment. Stop them in their tracks with Turnstil.Cloud! \n\n**Get more information at <https://turnstil.cloud/>**",
+				"instructions": "",
+				"alias": "turnstil",
+				"orgId": "bc592a96093410da043e60877733fba7",
+				"icon": "https://images.cloudflareapps.com/8m2FsquB_wI0/Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%203.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%202.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%201.png",
+					"https://images.cloudflareapps.com/kGA0Jzeq8N1s/Gallery%204.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/n5wqDrtrOMUG/Tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1oz_wKneLafg/Feature.png",
+				"author": "Turnstil Inc.",
+				"tagline": "",
+				"website": "https://turnstil.cloud",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://turnstil.cloud/terms-of-service",
+				"privacyPolicyURL": "https://turnstil.cloud/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@turnstil.cloud",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qMunPWsM5SBX"
+				},
+				"created": "2020-10-21T17:56:28.505863Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc592a96093410da043e60877733fba7",
+				"requestedAt": "2021-06-03T17:34:38.223254705Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-06-04T19:12:13.149018574Z"
+			}
+		}
+	]
+}

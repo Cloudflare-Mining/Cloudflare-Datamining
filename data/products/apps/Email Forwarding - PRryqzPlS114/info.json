@@ -1,0 +1,1989 @@
+{
+	"id": "PRryqzPlS114",
+	"title": "Email Forwarding",
+	"shortDescription": "Forward mail for your domain to your current email address",
+	"longDescription": "**📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.**\n\n**You do not need email hosting for your domain, you will receive emails to your main address.**\n\n**Example: mail@yourdomain.com ⏩ yourmail@gmail.com**\n\n**🔒 We don't save your emails.**",
+	"instructions": "",
+	"alias": "email-forwarding",
+	"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+	"icon": "https://images.cloudflareapps.com/xNhUph1TcAnh/eforw.com%20email%20forwarding.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/s-wRlItmgMx5/Gallery.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/u31Nbwpo2xLG/eforw.com%20email%20forwarding%20logo.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/MBjd2qgpCKYM/eforw.com%20email%20forwarding%20banner.png",
+	"author": "EForw.com",
+	"tagline": "",
+	"website": "https://www.eforw.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.eforw.com/terms",
+	"privacyPolicyURL": "https://www.eforw.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.4.1",
+	"infoVersion": "1.4.1",
+	"points": 0,
+	"supportEmail": "mail@eforw.com",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "One free alias",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": "2020-12-21T21:18:27.935008756Z"
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Custom aliases, multiple recipients",
+			"longDescription": "",
+			"visible": false,
+			"price": 100,
+			"order": 1,
+			"plan": "APPS_EMAIL_FORWARDING_PRO",
+			"feature": "apps.email_forwarding_pro.enabled",
+			"created": "2020-12-21T21:18:27.935008884Z"
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1db6a3d1208550b8a6ef4a21413f2816",
+			"created": "2020-03-25T21:45:30.704059408Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "A7lQ8CjWRmPo"
+	},
+	"created": "2020-03-22T23:00:58.339399Z",
+	"org": {
+		"id": "1db6a3d1208550b8a6ef4a21413f2816",
+		"title": "",
+		"username": "1db6a3d1208550b8a6ef4a21413f2816",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to your domain (to any addess) will be forwarded to the email you use for Cloudflare.<br/><br/>info@yoursite.com ⏩ yourmail@gmail.com<br/>help@yoursite.com ⏩ yourmail@gmail.com<br/>mail@yoursite.com ⏩ yourmail@gmail.com<br/>... and any other.<br/><br/>🔒 We don't save your emails.</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom mail addresses, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forwardemail.net"
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.forwardemail.net",
+						"priority": 1
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 a mx include:spf.forwardemail.net -all"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.44,
+				"upvotes": 4,
+				"downvotes": 5
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NUKH3t_etTKJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "NUKH3t_etTKJ",
+					"uploadedOn": "2020-03-25T20:06:38.334252973Z"
+				}
+			},
+			"created": "2020-03-22T23:00:58.845022Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom mail addresses, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-03-25T21:45:30.684011974Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-01T18:42:27.293571958Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to your domain (to any addess) will be forwarded to the email you use for Cloudflare.<br/><br/>info@yoursite.com ⏩ yourmail@gmail.com<br/>help@yoursite.com ⏩ yourmail@gmail.com<br/>mail@yoursite.com ⏩ yourmail@gmail.com<br/>... and any other.<br/><br/>🔒 We don't save your emails.</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.improvmx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.improvmx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.improvmx.com ~all"
+					}
+				]
+			},
+			"releaseNotes": "DNS updates",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NfxU8Lfwg4Fi",
+			"metadata": {
+				"code": {
+					"sourceTag": "NfxU8Lfwg4Fi",
+					"uploadedOn": "2020-06-16T15:27:19.83220517Z"
+				}
+			},
+			"created": "2020-06-16T15:27:19.127901Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom mail addresses, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-06-16T15:27:55.861127875Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-06-16T21:41:50.672469257Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to your domain (to any addess) will be forwarded to the email you use for Cloudflare.<br/><br/>info@yoursite.com ⏩ yourmail@gmail.com<br/>help@yoursite.com ⏩ yourmail@gmail.com<br/>mail@yoursite.com ⏩ yourmail@gmail.com<br/>... and any other.<br/><br/>🔒 We don't save your emails.</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.improvmx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.improvmx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.improvmx.com ~all"
+					}
+				]
+			},
+			"releaseNotes": "Small fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NfxU8Lfwg4Fi",
+			"created": "2020-06-16T21:41:49.49411Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom mail addresses, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-06-16T21:41:50.70121384Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-17T16:29:18.926078335Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to your domain (to any addess) will be forwarded to the email you use for Cloudflare.<br/><br/>info@yoursite.com ⏩ yourmail@gmail.com<br/>help@yoursite.com ⏩ yourmail@gmail.com<br/>mail@yoursite.com ⏩ yourmail@gmail.com<br/>... and any other.<br/><br/>🔒 We don't save your emails.</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.improvmx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.improvmx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.improvmx.com ~all"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.69,
+				"upvotes": 33,
+				"downvotes": 15
+			},
+			"releaseNotes": "DNS updates",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NfxU8Lfwg4Fi",
+			"created": "2020-06-17T21:22:17.700191Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom mail addresses, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-06-17T21:22:18.093630951Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-17T21:22:30.892454534Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"emails": {
+							"items": {
+								"properties": {
+									"size": {
+										"format": "email",
+										"order": 2,
+										"title": "Forward to",
+										"type": "string"
+									},
+									"text": {
+										"order": 1,
+										"placeholder": "mail, info, etc",
+										"title": "Alias (or * for catch-all)",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Email aliases",
+							"type": "array"
+						},
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to your domain (to any addess) will be forwarded to the email you use for Cloudflare.<br/><br/>info@example.com ⏩ yourmail@gmail.com<br/>help@example.com ⏩ yourmail@gmail.com<br/>mail@example.com ⏩ yourmail@gmail.com<br/>... and any other.</strong>",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"type": "help"
+						},
+						"mx": {
+							"helpvalue": "<strong>⚠️ Don't forget to delete previous MX records.</strong>",
+							"order": 3,
+							"type": "help"
+						},
+						"privacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 4,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.forward-mx.com ~all"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Custom aliases",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/LjV9l9eCVivm",
+			"metadata": {
+				"code": {
+					"sourceTag": "LjV9l9eCVivm",
+					"uploadedOn": "2020-09-22T20:53:53.896321352Z"
+				}
+			},
+			"created": "2020-09-22T20:22:12.235139Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Catch-all mail address, one recipient",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-09-22T20:56:04.727847269Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-10-28T18:19:01.674529943Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"emails": {
+							"items": {
+								"properties": {
+									"size": {
+										"format": "email",
+										"order": 2,
+										"title": "Forward to",
+										"type": "string"
+									},
+									"text": {
+										"order": 1,
+										"placeholder": "mail, info, etc",
+										"title": "Alias (or * for catch-all)",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Email aliases",
+							"type": "array"
+						},
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 4,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 5,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.forward-mx.com ~all"
+					}
+				]
+			},
+			"releaseNotes": "Custom aliases",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cAHCTZkBRMFA",
+			"metadata": {
+				"code": {
+					"sourceTag": "cAHCTZkBRMFA",
+					"uploadedOn": "2020-10-28T18:18:32.680970385Z"
+				}
+			},
+			"created": "2020-10-28T18:18:31.414179Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-10-28T18:19:01.688880843Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:44:03.631343246Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"emails": {
+							"items": {
+								"properties": {
+									"size": {
+										"format": "email",
+										"order": 2,
+										"title": "Forward to",
+										"type": "string"
+									},
+									"text": {
+										"order": 1,
+										"placeholder": "mail, info, etc",
+										"title": "Alias (or * for catch-all)",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Email aliases",
+							"type": "array"
+						},
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 4,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 5,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.forward-mx.com ~all"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added pro plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cAHCTZkBRMFA",
+			"created": "2020-11-03T18:00:03.873935Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_EMAIL_FORWARDING_PRO",
+						"feature": "apps.email_forwarding_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-03T18:00:04.864052776Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-03T18:02:26.825875991Z"
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 4,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 5,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.forward-mx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.forward-mx.com ~all"
+					}
+				]
+			},
+			"releaseNotes": "Updated DNS records",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FBjOXMFgigqi",
+			"metadata": {
+				"code": {
+					"sourceTag": "FBjOXMFgigqi",
+					"uploadedOn": "2020-11-05T20:00:24.072981299Z"
+				}
+			},
+			"created": "2020-11-05T18:40:49.511927Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/s-wRlItmgMx5/Gallery.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_EMAIL_FORWARDING_PRO",
+						"feature": "apps.email_forwarding_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-11-05T20:06:23.081699625Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-11-05T21:41:40.549278652Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.1",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 4,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 5,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://forward-mx.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx1.forward-mx.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx2.forward-mx.com",
+						"priority": 20
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.forward-mx.com ~all"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.48,
+				"upvotes": 10,
+				"downvotes": 11
+			},
+			"manual": true,
+			"releaseNotes": "Updated DNS records",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FBjOXMFgigqi",
+			"created": "2020-11-05T21:41:39.94997Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "Forward mail for your domain to your current email address",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/0k5qFCUdqzTE/Component%205.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/s-wRlItmgMx5/Gallery.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "Forward-MX",
+				"tagline": "",
+				"website": "https://forward-mx.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://forward-mx.com/terms",
+				"privacyPolicyURL": "https://forward-mx.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@forward-mx.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_EMAIL_FORWARDING_PRO",
+						"feature": "apps.email_forwarding_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-11-05T21:41:40.562268Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-13T15:23:33.995829818Z"
+			}
+		},
+		{
+			"tag": "1.4.0",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 3,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 4,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 2,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflare.eforw.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx.eforw.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.eforw.com ~all"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Rebranding, current users don't need to update.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SiJudbpRoCYc",
+			"metadata": {
+				"code": {
+					"sourceTag": "SiJudbpRoCYc",
+					"uploadedOn": "2020-12-16T21:03:14.296360423Z"
+				}
+			},
+			"created": "2020-12-04T21:41:26.589814Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "**📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.**\n\n**Example: mail@yourdomain.com ⏩ yourmail@gmail.com**\n**🔒 We don't save your emails.**",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/zivtyxZ__zhO/android-chrome-512x512.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/s-wRlItmgMx5/Gallery.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ZHldSHjJ-ATZ/Component%207.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/LhsNqaYyQBCw/Component%208.png",
+				"author": "EForw",
+				"tagline": "",
+				"website": "https://www.eforw.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.eforw.com/terms",
+				"privacyPolicyURL": "https://www.eforw.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@eforw.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_EMAIL_FORWARDING_PRO",
+						"feature": "apps.email_forwarding_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-12-16T21:48:36.969324052Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-12-16T21:54:43.500150815Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.4.1",
+			"appId": "PRryqzPlS114",
+			"definition": {
+				"options": {
+					"properties": {
+						"help": {
+							"helpvalue": "<strong>📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.<br/><br/>Example: mail@yourdomain.com ⏩ yourmail@gmail.com</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"helpDashboard": {
+							"helpvalue": "<strong>⚙️ You can configure more aliases on our dashboard after installation.</strong>",
+							"order": 3,
+							"type": "help"
+						},
+						"helpError": {
+							"helpvalue": "",
+							"order": 4,
+							"type": "help"
+						},
+						"helpPrivacy": {
+							"helpvalue": "<strong>🔒 We don't save your emails.</strong>",
+							"order": 2,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflare.eforw.com/hook/",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Email Forwarding."
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "MX",
+						"name": "@",
+						"content": "mx.eforw.com",
+						"priority": 10
+					},
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "v=spf1 include:spf.eforw.com ~all"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.43,
+				"upvotes": 60,
+				"downvotes": 78
+			},
+			"manual": true,
+			"releaseNotes": "Rebranding, current users don't need to update.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SiJudbpRoCYc",
+			"created": "2020-12-16T21:50:29.618638Z",
+			"proposedApp": {
+				"id": "PRryqzPlS114",
+				"title": "Email Forwarding",
+				"shortDescription": "Forward mail for your domain to your current email address",
+				"longDescription": "**📥 All emails sent to mail@yourdomain.com will be forwarded to the email you use for Cloudflare.**\n\n**You do not need email hosting for your domain, you will receive emails to your main address.**\n\n**Example: mail@yourdomain.com ⏩ yourmail@gmail.com**\n\n**🔒 We don't save your emails.**",
+				"instructions": "",
+				"alias": "email-forwarding",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/xNhUph1TcAnh/eforw.com%20email%20forwarding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/s-wRlItmgMx5/Gallery.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/u31Nbwpo2xLG/eforw.com%20email%20forwarding%20logo.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/MBjd2qgpCKYM/eforw.com%20email%20forwarding%20banner.png",
+				"author": "EForw.com",
+				"tagline": "",
+				"website": "https://www.eforw.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.eforw.com/terms",
+				"privacyPolicyURL": "https://www.eforw.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@eforw.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One free alias",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom aliases, multiple recipients",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_EMAIL_FORWARDING_PRO",
+						"feature": "apps.email_forwarding_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "A7lQ8CjWRmPo"
+				},
+				"created": "2020-03-22T23:00:58.339399Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-12-16T21:54:43.51160676Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-21T17:39:07.462985804Z"
+			}
+		}
+	]
+}

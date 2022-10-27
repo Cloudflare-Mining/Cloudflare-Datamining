@@ -1,0 +1,773 @@
+{
+	"id": "g6ipUmJ1MLE9",
+	"title": "Justuno",
+	"shortDescription": "Convert more visitors from website traffic.",
+	"longDescription": "## The most powerful free conversion marketing app in the market! \n\n\nJustuno is used by over 50,000 businesses around the world. The platform is trusted by startups, industry experts, enterprise businesses, full service agencies, professional designers, and career marketers for all conversion marketing needs. \n\nGo live with your first Justuno campaign on your online store in minutes!\n\n###One Platform for All Your Conversion Marketing Needs\n\n* Email Pop Ups - The simplest and most effective way to build your email list and generate sales opportunities. Use a theme or take complete control of your design!\n\n* Exit Pop Ups - Add exit intent pop ups to your site to capture emails before your visitor leaves.\n\n* Mobile Optimized Pop Ups (SEO Friendly) - Engage and convert mobile traffic with mobile-specific pop ups. In compliance with Google’s recent mobile SEO policies. \n\n* Cart and Checkout Abandonment Offers - Prevent cart abandonment with targeted offers proven to convert shoppers into customers.\n\n* Banners, Bars and Slide-Ins - use for email capture, sale notifications and effective website messaging.\n\n* Contests - Run enticing contests to convert high-intent traffic into leads.\n\n* Form Integrations - Add the emails you capture to any list from MailChimp, Bronto, Klaviyo, Hubspot, Constant Contact, Rejoiner and more. Plus, add any HTML form to your pop ups, banners, and slide-ins. \n\n* Conversion Focused Themes - Full screen, countdown timer, spin-to-win, age verification, holiday specific, mobile, social media, and many more! No need for single use apps when you have access to every theme you’ll ever need! \n\n###Platform Highlights \n\n* Versatile Targeting and Segmentation - Target visitors based on exit, page views, referral site, time on site, visit frequency, geo-location, device type, scroll, cart value, order history, local date & time, previous engagement activity, and much more! \n\n* Drag-and-Drop Design Canvas - Bring your pop up and promotion designs to life with the most customizable design canvas in the app store. Start with a theme and make it your own or design from scratch. \n\n* A/B Testing - Test your designs, offers, and marketing copy to better understand shoppers and optimize your conversion funnel. \n\n* Single use and bulk coupon codes - Upload bulk and single-use coupon codes. Add coupon codes to pop ups, banners, slide-ins, and follow up emails. \n\n* Email Auto-responses for newly acquired leads - In addition to providing visitors with an incentive on-site, you can reach new leads with a relevant marketing message, coupon code, or content download immediately after they opt in. No 3rd party app required! \n\n* Real Time Dashboard and Analytics - Receive a real-time snapshot of your conversion marketing success and overall website performance. Measure the impact of your marketing campaigns, identify optimization opportunities and implement campaigns backed by data.\n\n* Features Added Monthly - Our team adds new features to the platform based on user feedback, Shopify updates, and industry trends. We are constantly adding/updating integrations, designing new themes, adding requested targeting rules, and more! With Justuno, you can expect the latest and greatest functionality to help you grow your business.",
+	"instructions": "",
+	"alias": "justuno-conversion-marketing",
+	"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+	"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_001.png",
+		"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_002.png",
+		"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_006.png",
+		"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_003.png",
+		"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_007.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+	"featuredAppImage": "",
+	"author": "Justuno",
+	"tagline": "",
+	"website": "https://www.justuno.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+	"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.2",
+	"infoVersion": "1.1.2",
+	"points": 0,
+	"supportEmail": "support@justuno.com",
+	"products": [
+		{
+			"id": "pro",
+			"title": "FREE TRIAL",
+			"shortDescription": "FREE 2 week Justuno Trial",
+			"longDescription": "For 2 weeks you can use Justuno for free. After that pricing is based on traffic",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "pro",
+			"feature": "apps.free",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "574381c6cc9b33f9732c8dd5af70b67f",
+			"created": "2018-05-02T16:56:58.328388221Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "p-BahEy8nhD9"
+	},
+	"created": "2018-05-01T22:02:46.550038Z",
+	"org": {
+		"id": "574381c6cc9b33f9732c8dd5af70b67f",
+		"title": "",
+		"username": "574381c6cc9b33f9732c8dd5af70b67f",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justunotest"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p-BahEy8nhD9",
+			"metadata": {
+				"code": {
+					"sourceTag": "p-BahEy8nhD9",
+					"uploadedOn": "2018-05-01T22:02:47.210502281Z"
+				}
+			},
+			"created": "2018-05-01T22:02:46.839421Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"requestedAt": "2018-05-02T16:56:58.309053877Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-03T18:51:48.338245076Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justunotest"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Initial app release.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p-BahEy8nhD9",
+			"created": "2018-05-07T17:57:20.293559Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"requestedAt": "2018-05-07T18:17:16.795439194Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-15T16:39:10.47715725Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justunotest"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial app release.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HQFXsQqkz5ea",
+			"metadata": {
+				"code": {
+					"sourceTag": "HQFXsQqkz5ea",
+					"uploadedOn": "2018-05-15T18:54:04.136455149Z"
+				}
+			},
+			"created": "2018-05-15T18:54:03.72918Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "## The most powerful free conversion marketing app in the market! \n\n\nJustuno is used by over 50,000 businesses around the world. The platform is trusted by startups, industry experts, enterprise businesses, full service agencies, professional designers, and career marketers for all conversion marketing needs. \n\nGo live with your first Justuno campaign on your online store in minutes!\n\n###One Platform for All Your Conversion Marketing Needs\n\n* Email Pop Ups - The simplest and most effective way to build your email list and generate sales opportunities. Use a theme or take complete control of your design!\n\n* Exit Pop Ups - Add exit intent pop ups to your site to capture emails before your visitor leaves.\n\n* Mobile Optimized Pop Ups (SEO Friendly) - Engage and convert mobile traffic with mobile-specific pop ups. In compliance with Google’s recent mobile SEO policies. \n\n* Cart and Checkout Abandonment Offers - Prevent cart abandonment with targeted offers proven to convert shoppers into customers.\n\n* Banners, Bars and Slide-Ins - use for email capture, sale notifications and effective website messaging.\n\n* Contests - Run enticing contests to convert high-intent traffic into leads.\n\n* Form Integrations - Add the emails you capture to any list from MailChimp, Bronto, Klaviyo, Hubspot, Constant Contact, Rejoiner and more. Plus, add any HTML form to your pop ups, banners, and slide-ins. \n\n* Conversion Focused Themes - Full screen, countdown timer, spin-to-win, age verification, holiday specific, mobile, social media, and many more! No need for single use apps when you have access to every theme you’ll ever need! \n\n###Platform Highlights \n\n* Versatile Targeting and Segmentation - Target visitors based on exit, page views, referral site, time on site, visit frequency, geo-location, device type, scroll, cart value, order history, local date & time, previous engagement activity, and much more! \n\n* Drag-and-Drop Design Canvas - Bring your pop up and promotion designs to life with the most customizable design canvas in the app store. Start with a theme and make it your own or design from scratch. \n\n* A/B Testing - Test your designs, offers, and marketing copy to better understand shoppers and optimize your conversion funnel. \n\n* Single use and bulk coupon codes - Upload bulk and single-use coupon codes. Add coupon codes to pop ups, banners, slide-ins, and follow up emails. \n\n* Email Auto-responses for newly acquired leads - In addition to providing visitors with an incentive on-site, you can reach new leads with a relevant marketing message, coupon code, or content download immediately after they opt in. No 3rd party app required! \n\n* Real Time Dashboard and Analytics - Receive a real-time snapshot of your conversion marketing success and overall website performance. Measure the impact of your marketing campaigns, identify optimization opportunities and implement campaigns backed by data.\n\n* Features Added Monthly - Our team adds new features to the platform based on user feedback, Shopify updates, and industry trends. We are constantly adding/updating integrations, designing new themes, adding requested targeting rules, and more! With Justuno, you can expect the latest and greatest functionality to help you grow your business.",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_001.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_002.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_006.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_003.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_007.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"requestedAt": "2018-05-15T21:19:08.39739486Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-18T22:11:21.340100433Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justuno-service"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial app release.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7pgZPOnzHXt4",
+			"metadata": {
+				"code": {
+					"sourceTag": "7pgZPOnzHXt4",
+					"uploadedOn": "2018-09-18T19:46:34.39069052Z"
+				}
+			},
+			"created": "2018-09-18T19:46:34.06417Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "## The most powerful free conversion marketing app in the market! \n\n\nJustuno is used by over 50,000 businesses around the world. The platform is trusted by startups, industry experts, enterprise businesses, full service agencies, professional designers, and career marketers for all conversion marketing needs. \n\nGo live with your first Justuno campaign on your online store in minutes!\n\n###One Platform for All Your Conversion Marketing Needs\n\n* Email Pop Ups - The simplest and most effective way to build your email list and generate sales opportunities. Use a theme or take complete control of your design!\n\n* Exit Pop Ups - Add exit intent pop ups to your site to capture emails before your visitor leaves.\n\n* Mobile Optimized Pop Ups (SEO Friendly) - Engage and convert mobile traffic with mobile-specific pop ups. In compliance with Google’s recent mobile SEO policies. \n\n* Cart and Checkout Abandonment Offers - Prevent cart abandonment with targeted offers proven to convert shoppers into customers.\n\n* Banners, Bars and Slide-Ins - use for email capture, sale notifications and effective website messaging.\n\n* Contests - Run enticing contests to convert high-intent traffic into leads.\n\n* Form Integrations - Add the emails you capture to any list from MailChimp, Bronto, Klaviyo, Hubspot, Constant Contact, Rejoiner and more. Plus, add any HTML form to your pop ups, banners, and slide-ins. \n\n* Conversion Focused Themes - Full screen, countdown timer, spin-to-win, age verification, holiday specific, mobile, social media, and many more! No need for single use apps when you have access to every theme you’ll ever need! \n\n###Platform Highlights \n\n* Versatile Targeting and Segmentation - Target visitors based on exit, page views, referral site, time on site, visit frequency, geo-location, device type, scroll, cart value, order history, local date & time, previous engagement activity, and much more! \n\n* Drag-and-Drop Design Canvas - Bring your pop up and promotion designs to life with the most customizable design canvas in the app store. Start with a theme and make it your own or design from scratch. \n\n* A/B Testing - Test your designs, offers, and marketing copy to better understand shoppers and optimize your conversion funnel. \n\n* Single use and bulk coupon codes - Upload bulk and single-use coupon codes. Add coupon codes to pop ups, banners, slide-ins, and follow up emails. \n\n* Email Auto-responses for newly acquired leads - In addition to providing visitors with an incentive on-site, you can reach new leads with a relevant marketing message, coupon code, or content download immediately after they opt in. No 3rd party app required! \n\n* Real Time Dashboard and Analytics - Receive a real-time snapshot of your conversion marketing success and overall website performance. Measure the impact of your marketing campaigns, identify optimization opportunities and implement campaigns backed by data.\n\n* Features Added Monthly - Our team adds new features to the platform based on user feedback, Shopify updates, and industry trends. We are constantly adding/updating integrations, designing new themes, adding requested targeting rules, and more! With Justuno, you can expect the latest and greatest functionality to help you grow your business.",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_001.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_002.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_006.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_003.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_007.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"requestedAt": "2018-09-18T19:59:34.254838765Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:45:28.244065583Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justuno-service"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial app release.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vuCfO204SDQf",
+			"metadata": {
+				"code": {
+					"sourceTag": "vuCfO204SDQf",
+					"uploadedOn": "2018-09-28T15:49:25.133879058Z"
+				}
+			},
+			"created": "2018-09-28T15:49:24.85849Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "## The most powerful free conversion marketing app in the market! \n\n\nJustuno is used by over 50,000 businesses around the world. The platform is trusted by startups, industry experts, enterprise businesses, full service agencies, professional designers, and career marketers for all conversion marketing needs. \n\nGo live with your first Justuno campaign on your online store in minutes!\n\n###One Platform for All Your Conversion Marketing Needs\n\n* Email Pop Ups - The simplest and most effective way to build your email list and generate sales opportunities. Use a theme or take complete control of your design!\n\n* Exit Pop Ups - Add exit intent pop ups to your site to capture emails before your visitor leaves.\n\n* Mobile Optimized Pop Ups (SEO Friendly) - Engage and convert mobile traffic with mobile-specific pop ups. In compliance with Google’s recent mobile SEO policies. \n\n* Cart and Checkout Abandonment Offers - Prevent cart abandonment with targeted offers proven to convert shoppers into customers.\n\n* Banners, Bars and Slide-Ins - use for email capture, sale notifications and effective website messaging.\n\n* Contests - Run enticing contests to convert high-intent traffic into leads.\n\n* Form Integrations - Add the emails you capture to any list from MailChimp, Bronto, Klaviyo, Hubspot, Constant Contact, Rejoiner and more. Plus, add any HTML form to your pop ups, banners, and slide-ins. \n\n* Conversion Focused Themes - Full screen, countdown timer, spin-to-win, age verification, holiday specific, mobile, social media, and many more! No need for single use apps when you have access to every theme you’ll ever need! \n\n###Platform Highlights \n\n* Versatile Targeting and Segmentation - Target visitors based on exit, page views, referral site, time on site, visit frequency, geo-location, device type, scroll, cart value, order history, local date & time, previous engagement activity, and much more! \n\n* Drag-and-Drop Design Canvas - Bring your pop up and promotion designs to life with the most customizable design canvas in the app store. Start with a theme and make it your own or design from scratch. \n\n* A/B Testing - Test your designs, offers, and marketing copy to better understand shoppers and optimize your conversion funnel. \n\n* Single use and bulk coupon codes - Upload bulk and single-use coupon codes. Add coupon codes to pop ups, banners, slide-ins, and follow up emails. \n\n* Email Auto-responses for newly acquired leads - In addition to providing visitors with an incentive on-site, you can reach new leads with a relevant marketing message, coupon code, or content download immediately after they opt in. No 3rd party app required! \n\n* Real Time Dashboard and Analytics - Receive a real-time snapshot of your conversion marketing success and overall website performance. Measure the impact of your marketing campaigns, identify optimization opportunities and implement campaigns backed by data.\n\n* Features Added Monthly - Our team adds new features to the platform based on user feedback, Shopify updates, and industry trends. We are constantly adding/updating integrations, designing new themes, adding requested targeting rules, and more! With Justuno, you can expect the latest and greatest functionality to help you grow your business.",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_001.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_002.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_006.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_003.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_007.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "FREE TRIAL",
+						"shortDescription": "FREE 2 week Justuno Trial",
+						"longDescription": "For 2 weeks you can use Justuno for free. After that pricing is based on traffic",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"requestedAt": "2018-09-28T15:49:26.083129386Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-28T16:09:58.289869419Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "g6ipUmJ1MLE9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"justuno-service"
+							],
+							"title": "JustUno Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://integ.justuno.com/cloudflare/embed",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.2,
+				"upvotes": 6,
+				"downvotes": 24
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vuCfO204SDQf",
+			"created": "2018-11-13T18:45:26.13429Z",
+			"proposedApp": {
+				"id": "g6ipUmJ1MLE9",
+				"title": "Justuno",
+				"shortDescription": "Convert more visitors from website traffic.",
+				"longDescription": "## The most powerful free conversion marketing app in the market! \n\n\nJustuno is used by over 50,000 businesses around the world. The platform is trusted by startups, industry experts, enterprise businesses, full service agencies, professional designers, and career marketers for all conversion marketing needs. \n\nGo live with your first Justuno campaign on your online store in minutes!\n\n###One Platform for All Your Conversion Marketing Needs\n\n* Email Pop Ups - The simplest and most effective way to build your email list and generate sales opportunities. Use a theme or take complete control of your design!\n\n* Exit Pop Ups - Add exit intent pop ups to your site to capture emails before your visitor leaves.\n\n* Mobile Optimized Pop Ups (SEO Friendly) - Engage and convert mobile traffic with mobile-specific pop ups. In compliance with Google’s recent mobile SEO policies. \n\n* Cart and Checkout Abandonment Offers - Prevent cart abandonment with targeted offers proven to convert shoppers into customers.\n\n* Banners, Bars and Slide-Ins - use for email capture, sale notifications and effective website messaging.\n\n* Contests - Run enticing contests to convert high-intent traffic into leads.\n\n* Form Integrations - Add the emails you capture to any list from MailChimp, Bronto, Klaviyo, Hubspot, Constant Contact, Rejoiner and more. Plus, add any HTML form to your pop ups, banners, and slide-ins. \n\n* Conversion Focused Themes - Full screen, countdown timer, spin-to-win, age verification, holiday specific, mobile, social media, and many more! No need for single use apps when you have access to every theme you’ll ever need! \n\n###Platform Highlights \n\n* Versatile Targeting and Segmentation - Target visitors based on exit, page views, referral site, time on site, visit frequency, geo-location, device type, scroll, cart value, order history, local date & time, previous engagement activity, and much more! \n\n* Drag-and-Drop Design Canvas - Bring your pop up and promotion designs to life with the most customizable design canvas in the app store. Start with a theme and make it your own or design from scratch. \n\n* A/B Testing - Test your designs, offers, and marketing copy to better understand shoppers and optimize your conversion funnel. \n\n* Single use and bulk coupon codes - Upload bulk and single-use coupon codes. Add coupon codes to pop ups, banners, slide-ins, and follow up emails. \n\n* Email Auto-responses for newly acquired leads - In addition to providing visitors with an incentive on-site, you can reach new leads with a relevant marketing message, coupon code, or content download immediately after they opt in. No 3rd party app required! \n\n* Real Time Dashboard and Analytics - Receive a real-time snapshot of your conversion marketing success and overall website performance. Measure the impact of your marketing campaigns, identify optimization opportunities and implement campaigns backed by data.\n\n* Features Added Monthly - Our team adds new features to the platform based on user feedback, Shopify updates, and industry trends. We are constantly adding/updating integrations, designing new themes, adding requested targeting rules, and more! With Justuno, you can expect the latest and greatest functionality to help you grow your business.",
+				"instructions": "",
+				"alias": "justuno-conversion-marketing",
+				"orgId": "574381c6cc9b33f9732c8dd5af70b67f",
+				"icon": "https://images.cloudflareapps.com/TQjQEAVjef1D/ju-logo-288x288-t.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_001.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_002.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_006.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_003.png",
+					"https://images.cloudflareapps.com/DQV3oLpUi3ue/Image_007.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nPKfpMgldIjS/ju-logo-420x268-w.png",
+				"featuredAppImage": "",
+				"author": "Justuno",
+				"tagline": "",
+				"website": "https://www.justuno.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.justuno.com/terms-of-use.html",
+				"privacyPolicyURL": "https://www.justuno.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@justuno.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "FREE TRIAL",
+						"shortDescription": "FREE 2 week Justuno Trial",
+						"longDescription": "For 2 weeks you can use Justuno for free. After that pricing is based on traffic",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p-BahEy8nhD9"
+				},
+				"created": "2018-05-01T22:02:46.550038Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:45:27.539221551Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-13T19:45:42.991652865Z"
+			}
+		}
+	]
+}

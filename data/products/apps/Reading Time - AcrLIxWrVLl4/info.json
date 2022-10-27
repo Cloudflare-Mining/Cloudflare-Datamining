@@ -1,0 +1,1795 @@
+{
+	"id": "AcrLIxWrVLl4",
+	"title": "Reading Time",
+	"shortDescription": "Break down the wall of text.",
+	"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+	"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+	"alias": "reading-time",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Cloudflare Apps",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#444444",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.2.3",
+	"infoVersion": "2.2.3",
+	"points": 0,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:56:05.919585738Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Mb-qBLrQDH78"
+	},
+	"created": "2017-05-22T23:14:56.115654Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Mb-qBLrQDH78",
+			"metadata": {
+				"code": {
+					"sourceTag": "Mb-qBLrQDH78",
+					"uploadedOn": "2017-05-22T23:14:56.58981484Z"
+				}
+			},
+			"created": "2017-05-22T23:14:56.350268Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Teffen Ellis",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-22T23:14:57.340454512Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-23T02:06:28.471213454Z"
+			}
+		},
+		{
+			"tag": "v2.0.1",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Mb-qBLrQDH78",
+			"created": "2017-05-31T22:44:17.861643Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-31T22:44:18.093665297Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-01T03:06:42.000147947Z"
+			}
+		},
+		{
+			"tag": "v2.1.0",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Mb-qBLrQDH78",
+			"created": "2017-06-01T03:07:23.952461Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-01T03:07:27.751736969Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-01T03:07:57.362332982Z"
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Mb-qBLrQDH78",
+			"created": "2017-07-06T08:56:05.684715Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:56:05.901579456Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:32.21248933Z"
+			}
+		},
+		{
+			"tag": "2.2.0",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								},
+								"wordsPerMinute": {
+									"default": 250,
+									"description": "Adjust this if your site's language can be read at a different pace.",
+									"minimum": 1,
+									"order": 1,
+									"title": "Words per minute",
+									"type": "number"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JMUdqsfhvQz3",
+			"metadata": {
+				"code": {
+					"sourceTag": "JMUdqsfhvQz3",
+					"uploadedOn": "2017-07-13T09:43:10.624395088Z"
+				}
+			},
+			"created": "2017-07-13T09:43:10.335158Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-13T09:43:11.234459627Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-13T09:46:39.711383143Z"
+			}
+		},
+		{
+			"tag": "2.2.1",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								},
+								"wordsPerMinute": {
+									"default": 250,
+									"description": "Adjust this if your site's language can be read at a different pace.",
+									"minimum": 1,
+									"order": 1,
+									"title": "Words per minute",
+									"type": "number"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JMUdqsfhvQz3",
+			"created": "2018-01-23T19:52:51.960808Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:52:52.231184898Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:53:02.731222849Z"
+			}
+		},
+		{
+			"tag": "2.2.2",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								},
+								"wordsPerMinute": {
+									"default": 250,
+									"description": "Adjust this if your site's language can be read at a different pace.",
+									"minimum": 1,
+									"order": 1,
+									"title": "Words per minute",
+									"type": "number"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.56,
+				"upvotes": 5,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JMUdqsfhvQz3",
+			"created": "2018-02-06T21:54:34.653081Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:54:34.911651432Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:36.155306605Z"
+			}
+		},
+		{
+			"tag": "2.2.3",
+			"appId": "AcrLIxWrVLl4",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"element": {
+									"default": "body",
+									"description": "An alternative scrollable area for which to track the reading time.",
+									"format": "selector",
+									"order": 1,
+									"title": "Location",
+									"type": "string"
+								},
+								"wordsPerMinute": {
+									"default": 250,
+									"description": "Adjust this if your site's language can be read at a different pace.",
+									"minimum": 1,
+									"order": 1,
+									"title": "Words per minute",
+									"type": "number"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"backgroundColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 3,
+							"showIf": "showBackground",
+							"title": "Background color",
+							"type": "string"
+						},
+						"localize": {
+							"description": "Particularly useful if you’d like to localize Reading Time.",
+							"order": 4,
+							"title": "Set custom text",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "center bottom",
+							"description": "On which part of the screen should the reading time appear?",
+							"enum": [
+								"left top",
+								"left bottom",
+								"center top",
+								"center bottom",
+								"right top",
+								"right bottom"
+							],
+							"enumNames": {
+								"center bottom": "Center Bottom",
+								"center top": "Center Top",
+								"left bottom": "Left Bottom",
+								"left top": "Left Top",
+								"right bottom": "Right Bottom",
+								"right top": "Right Top"
+							},
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"showBackground": {
+							"default": true,
+							"order": 2,
+							"title": "Show a background color behind the reading time?",
+							"type": "boolean"
+						},
+						"strings": {
+							"description": "Clear any phrase to not have that message appear.",
+							"order": 5,
+							"properties": {
+								"finished": {
+									"default": "",
+									"order": 1,
+									"title": "Finished text",
+									"type": "string"
+								},
+								"lessThanAMinute": {
+									"default": "A few seconds left",
+									"order": 2,
+									"title": "Less than a minute remaining text",
+									"type": "string"
+								},
+								"manyMinutes": {
+									"default": "$MINUTES minutes left",
+									"description": "‘$MINUTES’ will be replaced with the number of minutes remaining.",
+									"order": 4,
+									"title": "Many minutes remaining text",
+									"type": "string"
+								},
+								"oneMinute": {
+									"default": "1 minute left",
+									"order": 3,
+									"title": "One minute remaining text",
+									"type": "string"
+								}
+							},
+							"showIf": "localize",
+							"title": "Text",
+							"type": "object"
+						},
+						"visibleDuration": {
+							"default": "500",
+							"description": "How quickly should the reading time be hidden when the user stops scrolling?",
+							"enum": [
+								"200",
+								"500",
+								"1000",
+								"2000",
+								"-1"
+							],
+							"enumNames": {
+								"200": "Very Fast",
+								"500": "Fast",
+								"1000": "Slow",
+								"2000": "Very Slow",
+								"-1": "Never Hide"
+							},
+							"order": 1,
+							"title": "Hide Speed",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 14,
+				"downvotes": 6
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JMUdqsfhvQz3",
+			"created": "2018-11-13T22:22:11.673481Z",
+			"proposedApp": {
+				"id": "AcrLIxWrVLl4",
+				"title": "Reading Time",
+				"shortDescription": "Break down the wall of text.",
+				"longDescription": "When confronted with a long page of content, some users will dive in, but others will bounce.  \nA reading estimate shows users how much time it will take for them to finish reading your content, \nmaking longform text more approachable and less intimidating.",
+				"instructions": "A reading estimate will appear in the preview when the page is scrolled.",
+				"alias": "reading-time",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/DUKor3BkSIKcxKJVWwD7_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Mb-qBLrQDH78"
+				},
+				"created": "2017-05-22T23:14:56.115654Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:22:12.08303983Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:31:49.673695752Z"
+			}
+		}
+	]
+}

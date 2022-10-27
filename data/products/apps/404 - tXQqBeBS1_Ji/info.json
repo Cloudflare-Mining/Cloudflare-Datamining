@@ -1,0 +1,152 @@
+{
+	"id": "tXQqBeBS1_Ji",
+	"title": "404",
+	"shortDescription": "Will display a 404 not found page for your subdomain.",
+	"longDescription": "Will display a 404 not found page with random images or videos along with your domain name. The subdomain will resolve to the 404.al service automatically and display a 404 not found page. \n\nFree bandwidth, accessible design and optimized for any screen.\n\nIn addition it will automatically be translated based on the domain extension that is using the CNAME or the country of the visiting user of your domain as well as you may add the parameter ?lang=EN with any ISO 639-2 language codes for a custom language to the 404 url. By default if no language is available it will default to English.",
+	"instructions": "Simply install to add a CNAME for your subdomain of choice where you expect to send all your 404 not found requests.",
+	"alias": "404",
+	"orgId": "520632431c9cf0eb61078aeae2d73714",
+	"icon": "https://images.cloudflareapps.com/R8iHn0J20a66/Artboard%202.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%207.png",
+		"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%205.png",
+		"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%206.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/-RvY5Mx0iWLn/Artboard%203.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/MyTxTGrVyz--/Artboard%207.png",
+	"author": "VineBeat Inc.",
+	"tagline": "",
+	"website": "https://404.al",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://404.al#terms",
+	"privacyPolicyURL": "https://404.al#privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "200@404.al",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "520632431c9cf0eb61078aeae2d73714",
+			"created": "2021-01-23T02:33:05.077525192Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "gOX6oXLV2eue"
+	},
+	"created": "2021-01-23T01:51:40.136927Z",
+	"org": {
+		"id": "520632431c9cf0eb61078aeae2d73714",
+		"title": "",
+		"username": "520632431c9cf0eb61078aeae2d73714",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "tXQqBeBS1_Ji",
+			"definition": {
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "404",
+							"description": "The CNAME record 404 will be added automatically. You may customize it to be any CNAME of your choosing.",
+							"format": "text",
+							"order": 1,
+							"title": "Subdomain",
+							"type": "string"
+						}
+					}
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "404.al",
+						"ttl": 3600,
+						"proxied": true
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "first cloudflare app release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/LVoZHbOM4ULJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "LVoZHbOM4ULJ",
+					"uploadedOn": "2021-01-23T02:25:17.083041082Z"
+				}
+			},
+			"created": "2021-01-23T01:51:40.638758Z",
+			"proposedApp": {
+				"id": "tXQqBeBS1_Ji",
+				"title": "404",
+				"shortDescription": "Will display a 404 not found page for your subdomain.",
+				"longDescription": "Will display a 404 not found page with random images or videos along with your domain name. The subdomain will resolve to the 404.al service automatically and display a 404 not found page. \n\nFree bandwidth, accessible design and optimized for any screen.\n\nIn addition it will automatically be translated based on the domain extension that is using the CNAME or the country of the visiting user of your domain as well as you may add the parameter ?lang=EN with any ISO 639-2 language codes for a custom language to the 404 url. By default if no language is available it will default to English.",
+				"instructions": "Simply install to add a CNAME for your subdomain of choice where you expect to send all your 404 not found requests.",
+				"alias": "404",
+				"orgId": "520632431c9cf0eb61078aeae2d73714",
+				"icon": "https://images.cloudflareapps.com/R8iHn0J20a66/Artboard%202.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%207.png",
+					"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%205.png",
+					"https://images.cloudflareapps.com/djvxdy72HshN/Artboard%206.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-RvY5Mx0iWLn/Artboard%203.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/MyTxTGrVyz--/Artboard%207.png",
+				"author": "VineBeat Inc.",
+				"tagline": "",
+				"website": "https://404.al",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://404.al#terms",
+				"privacyPolicyURL": "https://404.al#privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "200@404.al",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "gOX6oXLV2eue"
+				},
+				"created": "2021-01-23T01:51:40.136927Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "520632431c9cf0eb61078aeae2d73714",
+				"requestedAt": "2021-01-23T02:33:05.065544006Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-25T17:49:43.733512918Z"
+			}
+		}
+	]
+}

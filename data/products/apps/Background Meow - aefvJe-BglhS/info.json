@@ -1,0 +1,1791 @@
+{
+	"id": "aefvJe-BglhS",
+	"title": "Background Meow",
+	"shortDescription": "Show beautiful photos from Unsplash on your site.",
+	"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and\nmore. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.",
+	"instructions": "",
+	"alias": "meow-bg",
+	"orgId": "915664bec289befd899d5230ac2f096f",
+	"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+		"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+		"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+	"featuredAppImage": "",
+	"author": "Robert C. Bant",
+	"tagline": "",
+	"website": "https://source.unsplash.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#3a509a",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.3",
+	"infoVersion": "1.1.3",
+	"points": 0,
+	"supportEmail": "hi@robertbant.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "915664bec289befd899d5230ac2f096f",
+			"created": "2017-06-23T16:28:47.698303533Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "KB7i108_efsn"
+	},
+	"created": "2017-06-09T19:15:54.110135Z",
+	"org": {
+		"id": "915664bec289befd899d5230ac2f096f",
+		"title": "",
+		"username": "915664bec289befd899d5230ac2f096f",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "aefvJe-BglhS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"description": "If no options are showing you haven't selected anything that has advanced options.",
+							"order": 9,
+							"properties": {
+								"bgAttach": {
+									"default": "fixed",
+									"description": "Sets whether a background image is fixed or scrolls with the rest of the page",
+									"enum": [
+										"fixed",
+										"scroll",
+										"local"
+									],
+									"enumNames": {
+										"fixed": "Fixed",
+										"local": "Local",
+										"scroll": "Scroll"
+									},
+									"order": 3,
+									"showIf": {
+										"source": "upload"
+									},
+									"title": "Attachment settings",
+									"type": "string"
+								},
+								"bgPos": {
+									"default": "center center",
+									"description": "Sets the starting position of a background image",
+									"enum": [
+										"center center",
+										"left top",
+										"left center",
+										"left bottom",
+										"right top",
+										"right center",
+										"right bottom",
+										"center top",
+										"center bottom"
+									],
+									"enumNames": {
+										"center bottom": "Center Bottom",
+										"center center": "Center Center",
+										"center top": "Center Top",
+										"left bottom": "Left Bottom",
+										"left center": "Left Center",
+										"left top": "Left Top",
+										"right bottom": "Right Bottom",
+										"right center": "Right Center",
+										"right top": "Right Top"
+									},
+									"order": 2,
+									"showIf": {
+										"source": "upload"
+									},
+									"title": "Position settings",
+									"type": "string"
+								},
+								"bgRepeat": {
+									"default": "no-repeat",
+									"description": "Sets how a background image will be repeated",
+									"enum": [
+										"no-repeat",
+										"repeat",
+										"repeat-x",
+										"repeat-y"
+									],
+									"enumNames": {
+										"no-repeat": "The background will not repeat",
+										"repeat": "The background will repeat on both axis",
+										"repeat-x": "The background will repeat only on the x-axis",
+										"repeat-y": "The background will repeat only on the y-axis"
+									},
+									"order": 1,
+									"showIf": {
+										"source": "upload"
+									},
+									"title": "Repeat settings",
+									"type": "string"
+								},
+								"easeSlider": {
+									"default": 3,
+									"format": "slider",
+									"maximum": 9,
+									"minimum": 1,
+									"order": 0,
+									"showIf": {
+										"hideBg": true
+									},
+									"step": 1,
+									"title": "Transition time after the background has loaded",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"categoryName": {
+							"description": "Type the <strong>category name</strong>",
+							"order": 1,
+							"placeholder": "buildings",
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Category",
+							"type": "string"
+						},
+						"collectionId": {
+							"description": "Type the <strong>collection ID</strong>",
+							"order": 1,
+							"placeholder": "190727",
+							"showIf": {
+								"source": "collection"
+							},
+							"title": "Collection ID",
+							"type": "string"
+						},
+						"featuredOnly": {
+							"order": 6,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"keyword"
+									]
+								}
+							},
+							"title": "Show only images featured by Unsplash",
+							"type": "boolean"
+						},
+						"hideBg": {
+							"default": false,
+							"order": 7,
+							"title": "Hide the page while the background image is loading",
+							"type": "boolean"
+						},
+						"keywordSearch": {
+							"order": 3,
+							"properties": {
+								"categoryKeyword": {
+									"order": 0,
+									"placeholder": "montreal",
+									"title": "Separate keywords using comma",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showKeywordSearch": true,
+								"source": "category"
+							},
+							"title": "Keyword",
+							"type": "object"
+						},
+						"photoId": {
+							"description": "Type the <strong>photo ID</strong>",
+							"order": 1,
+							"placeholder": "WLUHO9A_xik",
+							"showIf": {
+								"source": "photoid"
+							},
+							"title": "Photo ID",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 8,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"showKeywordSearch": {
+							"default": false,
+							"order": 2,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "I want to search the category using a keyword/keywords",
+							"type": "boolean"
+						},
+						"showUpdateOptions": {
+							"default": false,
+							"description": "Keep this option uncheck in order to see a new background image every time the page is reloaded.",
+							"order": 4,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "I prefer to have the background change daily or weekly instead",
+							"type": "boolean"
+						},
+						"simpleKeyword": {
+							"description": "Separate keywords using comma",
+							"order": 1,
+							"placeholder": "nature,water",
+							"showIf": {
+								"source": "keyword"
+							},
+							"title": "Keyword",
+							"type": "string"
+						},
+						"source": {
+							"default": "random",
+							"description": "From where should we get the background image?",
+							"enum": [
+								"random",
+								"user",
+								"collection",
+								"category",
+								"keyword",
+								"photoid",
+								"upload"
+							],
+							"enumNames": {
+								"category": "Display random images from a specific Unsplash category",
+								"collection": "Display random images from a specific Unsplash collection",
+								"keyword": "Display random images from Unsplash matching a specific keyword/keywords",
+								"photoid": "Choose a specific image from Unsplash to display",
+								"random": "Display a random image from Unsplash",
+								"upload": "Upload a image from your computer",
+								"user": "Display random images from a specific Unsplash user"
+							},
+							"order": 0,
+							"title": "Source",
+							"type": "string"
+						},
+						"updateOptions": {
+							"order": 5,
+							"properties": {
+								"dailyWeekly": {
+									"default": "daily",
+									"enum": [
+										"daily",
+										"weekly"
+									],
+									"enumNames": {
+										"daily": "Change the background image once a day",
+										"weekly": "Change the background image once a week"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Choose between daily or weekly updates",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showUpdateOptions": true,
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "Background update frequency",
+							"type": "object"
+						},
+						"uploadImg": {
+							"format": "image",
+							"order": 1,
+							"showIf": {
+								"source": "upload"
+							},
+							"title": "Upload image",
+							"type": "string"
+						},
+						"username": {
+							"description": "Type the user's <strong>username</strong>",
+							"order": 1,
+							"placeholder": "erondu",
+							"showIf": {
+								"source": "user"
+							},
+							"title": "Username",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"reload": true
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KB7i108_efsn",
+			"metadata": {
+				"code": {
+					"sourceTag": "KB7i108_efsn",
+					"uploadedOn": "2017-06-09T19:15:56.357692055Z"
+				}
+			},
+			"created": "2017-06-09T19:15:54.646575Z",
+			"proposedApp": {
+				"id": "aefvJe-BglhS",
+				"title": "Background Meow",
+				"shortDescription": "Show beautiful photos from Unsplash on your website.",
+				"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and many more. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.\n\nAdditionally, you have the option to upload your own background image and change how it should behave.",
+				"instructions": "",
+				"alias": "meow-bg",
+				"orgId": "915664bec289befd899d5230ac2f096f",
+				"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+					"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+					"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+				"featuredAppImage": "",
+				"author": "Robert C. Bant",
+				"tagline": "",
+				"website": "https://source.unsplash.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@robertbant.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KB7i108_efsn"
+				},
+				"created": "2017-06-09T19:15:54.110135Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "915664bec289befd899d5230ac2f096f",
+				"requestedAt": "2017-06-09T19:19:06.270331989Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T21:24:22.253744099Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "aefvJe-BglhS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 8,
+							"properties": {
+								"easeSlider": {
+									"default": 3,
+									"format": "slider",
+									"maximum": 9,
+									"minimum": 1,
+									"order": 0,
+									"showIf": {
+										"hideBg": true
+									},
+									"step": 1,
+									"title": "Transition time after the background has loaded",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"categoryName": {
+							"default": "buildings",
+							"description": "Type the <strong>category name</strong>",
+							"order": 1,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Category",
+							"type": "string"
+						},
+						"collectionId": {
+							"default": "190727",
+							"description": "Type the <strong>collection ID</strong>",
+							"order": 1,
+							"showIf": {
+								"source": "collection"
+							},
+							"title": "Collection ID",
+							"type": "string"
+						},
+						"featuredOnly": {
+							"order": 5,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"keyword"
+									]
+								}
+							},
+							"title": "Show only images featured by Unsplash",
+							"type": "boolean"
+						},
+						"hideBg": {
+							"default": false,
+							"order": 6,
+							"title": "Hide the page while the background image is loading",
+							"type": "boolean"
+						},
+						"keywordSearch": {
+							"order": 3,
+							"properties": {
+								"categoryKeyword": {
+									"default": "montreal",
+									"order": 0,
+									"title": "Separate keywords using comma",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showKeywordSearch": true,
+								"source": "category"
+							},
+							"title": "Keyword",
+							"type": "object"
+						},
+						"photoId": {
+							"default": "WLUHO9A_xik",
+							"description": "Type the <strong>photo ID</strong>",
+							"order": 1,
+							"showIf": {
+								"source": "photoid"
+							},
+							"title": "Photo ID",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"hideBg": true
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"showKeywordSearch": {
+							"default": false,
+							"order": 2,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "I want to search the category using a keyword/keywords",
+							"type": "boolean"
+						},
+						"simpleKeyword": {
+							"default": "nature,water",
+							"description": "Separate keywords using comma",
+							"order": 1,
+							"showIf": {
+								"source": "keyword"
+							},
+							"title": "Keyword",
+							"type": "string"
+						},
+						"source": {
+							"default": "random",
+							"description": "Search Unsplash for the perfect background to match your website",
+							"enum": [
+								"random",
+								"user",
+								"collection",
+								"category",
+								"keyword",
+								"photoid"
+							],
+							"enumNames": {
+								"category": "Show random images from a category",
+								"collection": "Show random images from a collection",
+								"keyword": "Show random images matching a keyword/keywords",
+								"photoid": "Choose a specific image to show",
+								"random": "Show a random image",
+								"user": "Show random images from a user"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Unsplash Options",
+							"type": "string"
+						},
+						"updateOptions": {
+							"order": 4,
+							"properties": {
+								"frequency": {
+									"default": "everytime",
+									"enum": [
+										"everytime",
+										"daily",
+										"weekly"
+									],
+									"enumNames": {
+										"daily": "Once a day",
+										"everytime": "Every time the page is shown",
+										"weekly": "Once a week"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "How often should the background change?",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "Background Update Frequency",
+							"type": "object"
+						},
+						"username": {
+							"default": "erondu",
+							"description": "Type the user's <strong>username</strong>",
+							"order": 1,
+							"showIf": {
+								"source": "user"
+							},
+							"title": "Username",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"source",
+								"hideBg",
+								"easeSlider"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"updateOptions",
+								"featuredOnly",
+								"username",
+								"collectionId",
+								"categoryName",
+								"simpleKeyword",
+								"showKeywordSearch",
+								"keywordSearch",
+								"categoryKeyword",
+								"photoId"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XLUsZ62tmauR",
+			"metadata": {
+				"code": {
+					"sourceTag": "XLUsZ62tmauR",
+					"uploadedOn": "2017-06-22T18:25:41.648826094Z"
+				}
+			},
+			"created": "2017-06-22T18:21:35.436098Z",
+			"proposedApp": {
+				"id": "aefvJe-BglhS",
+				"title": "Background Meow",
+				"shortDescription": "Show beautiful photos from Unsplash on your website.",
+				"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and\nmore. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.",
+				"instructions": "",
+				"alias": "meow-bg",
+				"orgId": "915664bec289befd899d5230ac2f096f",
+				"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+					"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+					"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+				"featuredAppImage": "",
+				"author": "Robert C. Bant",
+				"tagline": "",
+				"website": "https://source.unsplash.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@robertbant.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KB7i108_efsn"
+				},
+				"created": "2017-06-09T19:15:54.110135Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "915664bec289befd899d5230ac2f096f",
+				"requestedAt": "2017-06-22T18:28:29.261205481Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-23T02:29:20.599691203Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "aefvJe-BglhS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 8,
+							"properties": {
+								"easeSlider": {
+									"default": 3,
+									"format": "slider",
+									"maximum": 9,
+									"minimum": 1,
+									"order": 0,
+									"showIf": {
+										"hideBg": true
+									},
+									"step": 1,
+									"title": "Transition time after the background has loaded",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"categoryName": {
+							"default": "buildings",
+							"order": 1,
+							"placeholder": "buildings",
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Category",
+							"type": "string"
+						},
+						"collectionId": {
+							"default": "190727",
+							"order": 1,
+							"placeholder": "190727",
+							"showIf": {
+								"source": "collection"
+							},
+							"title": "Collection ID",
+							"type": "string"
+						},
+						"featuredOnly": {
+							"order": 5,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"keyword"
+									]
+								}
+							},
+							"title": "Show only images featured by Unsplash",
+							"type": "boolean"
+						},
+						"hideBg": {
+							"default": false,
+							"order": 6,
+							"title": "Hide the page while the background image is loading",
+							"type": "boolean"
+						},
+						"keywordSearch": {
+							"order": 3,
+							"properties": {
+								"categoryKeyword": {
+									"default": "montreal",
+									"order": 0,
+									"title": "Separate keywords using comma.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showKeywordSearch": true,
+								"source": "category"
+							},
+							"title": "Keywords",
+							"type": "object"
+						},
+						"photoId": {
+							"default": "WLUHO9A_xik",
+							"order": 1,
+							"showIf": {
+								"source": "photoid"
+							},
+							"title": "Photo ID",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"hideBg": true
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"showKeywordSearch": {
+							"default": false,
+							"order": 2,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Search the category using keywords",
+							"type": "boolean"
+						},
+						"simpleKeyword": {
+							"default": "nature,water",
+							"description": "Separate keywords using comma.",
+							"order": 1,
+							"placeholder": "nature,water",
+							"showIf": {
+								"source": "keyword"
+							},
+							"title": "Keywords",
+							"type": "string"
+						},
+						"source": {
+							"default": "random",
+							"description": "Choose images that...",
+							"enum": [
+								"random",
+								"user",
+								"collection",
+								"category",
+								"keyword",
+								"photoid"
+							],
+							"enumNames": {
+								"category": "...are in a specific category.",
+								"collection": "...are in a specific collection.",
+								"keyword": "...match a set of keywords.",
+								"photoid": "...match a specific image ID.",
+								"random": "...are completely random.",
+								"user": "...are posted by a specific user."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Image Source",
+							"type": "string"
+						},
+						"updateOptions": {
+							"order": 4,
+							"properties": {
+								"frequency": {
+									"default": "everytime",
+									"enum": [
+										"everytime",
+										"daily",
+										"weekly"
+									],
+									"enumNames": {
+										"daily": "Once a day.",
+										"everytime": "Every time the page is shown.",
+										"weekly": "Once a week."
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "How often should the background change?",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "Update Frequency",
+							"type": "object"
+						},
+						"username": {
+							"default": "erondu",
+							"order": 1,
+							"placeholder": "erondu",
+							"showIf": {
+								"source": "user"
+							},
+							"title": "Username",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"source",
+								"hideBg",
+								"easeSlider"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"updateOptions",
+								"featuredOnly",
+								"username",
+								"collectionId",
+								"categoryName",
+								"simpleKeyword",
+								"showKeywordSearch",
+								"keywordSearch",
+								"categoryKeyword",
+								"photoId"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ToTa4pP8Iukt",
+			"metadata": {
+				"code": {
+					"sourceTag": "ToTa4pP8Iukt",
+					"uploadedOn": "2017-06-23T16:27:00.007676977Z"
+				}
+			},
+			"created": "2017-06-23T15:49:03.169536Z",
+			"proposedApp": {
+				"id": "aefvJe-BglhS",
+				"title": "Background Meow",
+				"shortDescription": "Show beautiful photos from Unsplash on your website.",
+				"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and\nmore. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.",
+				"instructions": "",
+				"alias": "meow-bg",
+				"orgId": "915664bec289befd899d5230ac2f096f",
+				"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+					"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+					"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+				"featuredAppImage": "",
+				"author": "Robert C. Bant",
+				"tagline": "",
+				"website": "https://source.unsplash.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@robertbant.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KB7i108_efsn"
+				},
+				"created": "2017-06-09T19:15:54.110135Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "915664bec289befd899d5230ac2f096f",
+				"requestedAt": "2017-06-23T16:28:47.694102018Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-27T19:28:01.899798093Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "aefvJe-BglhS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 8,
+							"properties": {
+								"easeSlider": {
+									"default": 3,
+									"format": "slider",
+									"maximum": 9,
+									"minimum": 1,
+									"order": 0,
+									"showIf": {
+										"hideBg": true
+									},
+									"step": 1,
+									"title": "Transition time after the background has loaded",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"categoryName": {
+							"default": "buildings",
+							"order": 1,
+							"placeholder": "buildings",
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Category",
+							"type": "string"
+						},
+						"collectionId": {
+							"default": "190727",
+							"order": 1,
+							"placeholder": "190727",
+							"showIf": {
+								"source": "collection"
+							},
+							"title": "Collection ID",
+							"type": "string"
+						},
+						"featuredOnly": {
+							"order": 5,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"keyword"
+									]
+								}
+							},
+							"title": "Show only images featured by Unsplash",
+							"type": "boolean"
+						},
+						"hideBg": {
+							"default": false,
+							"order": 6,
+							"title": "Hide the page while the background image is loading",
+							"type": "boolean"
+						},
+						"keywordSearch": {
+							"order": 3,
+							"properties": {
+								"categoryKeyword": {
+									"default": "montreal",
+									"order": 0,
+									"title": "Separate keywords using comma.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showKeywordSearch": true,
+								"source": "category"
+							},
+							"title": "Keywords",
+							"type": "object"
+						},
+						"photoId": {
+							"default": "WLUHO9A_xik",
+							"order": 1,
+							"showIf": {
+								"source": "photoid"
+							},
+							"title": "Photo ID",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"hideBg": true
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"showKeywordSearch": {
+							"default": false,
+							"order": 2,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Search the category using keywords",
+							"type": "boolean"
+						},
+						"simpleKeyword": {
+							"default": "nature,water",
+							"description": "Separate keywords using comma.",
+							"order": 1,
+							"placeholder": "nature,water",
+							"showIf": {
+								"source": "keyword"
+							},
+							"title": "Keywords",
+							"type": "string"
+						},
+						"source": {
+							"default": "random",
+							"description": "Choose images that...",
+							"enum": [
+								"random",
+								"user",
+								"collection",
+								"category",
+								"keyword",
+								"photoid"
+							],
+							"enumNames": {
+								"category": "...are in a specific category.",
+								"collection": "...are in a specific collection.",
+								"keyword": "...match a set of keywords.",
+								"photoid": "...match a specific image ID.",
+								"random": "...are completely random.",
+								"user": "...are posted by a specific user."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Image Source",
+							"type": "string"
+						},
+						"updateOptions": {
+							"order": 4,
+							"properties": {
+								"frequency": {
+									"default": "everytime",
+									"enum": [
+										"everytime",
+										"daily",
+										"weekly"
+									],
+									"enumNames": {
+										"daily": "Once a day.",
+										"everytime": "Every time the page is shown.",
+										"weekly": "Once a week."
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "How often should the background change?",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "Update Frequency",
+							"type": "object"
+						},
+						"username": {
+							"default": "erondu",
+							"order": 1,
+							"placeholder": "erondu",
+							"showIf": {
+								"source": "user"
+							},
+							"title": "Username",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"source",
+								"hideBg",
+								"easeSlider"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"updateOptions",
+								"featuredOnly",
+								"username",
+								"collectionId",
+								"categoryName",
+								"simpleKeyword",
+								"showKeywordSearch",
+								"keywordSearch",
+								"categoryKeyword",
+								"photoId"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ToTa4pP8Iukt",
+			"created": "2017-07-07T21:00:58.194342Z",
+			"proposedApp": {
+				"id": "aefvJe-BglhS",
+				"title": "Background Meow",
+				"shortDescription": "Show beautiful photos from Unsplash on your site.",
+				"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and\nmore. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.",
+				"instructions": "",
+				"alias": "meow-bg",
+				"orgId": "915664bec289befd899d5230ac2f096f",
+				"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+					"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+					"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+				"featuredAppImage": "",
+				"author": "Robert C. Bant",
+				"tagline": "",
+				"website": "https://source.unsplash.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@robertbant.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KB7i108_efsn"
+				},
+				"created": "2017-06-09T19:15:54.110135Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T21:00:58.32300095Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T21:04:57.305365671Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "aefvJe-BglhS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/{{ options.source }}-app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 8,
+							"properties": {
+								"easeSlider": {
+									"default": 3,
+									"format": "slider",
+									"maximum": 9,
+									"minimum": 1,
+									"order": 0,
+									"showIf": {
+										"hideBg": true
+									},
+									"step": 1,
+									"title": "Transition time after the background has loaded",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"categoryName": {
+							"default": "buildings",
+							"order": 1,
+							"placeholder": "buildings",
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Category",
+							"type": "string"
+						},
+						"collectionId": {
+							"default": "190727",
+							"order": 1,
+							"placeholder": "190727",
+							"showIf": {
+								"source": "collection"
+							},
+							"title": "Collection ID",
+							"type": "string"
+						},
+						"featuredOnly": {
+							"order": 5,
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"keyword"
+									]
+								}
+							},
+							"title": "Show only images featured by Unsplash",
+							"type": "boolean"
+						},
+						"hideBg": {
+							"default": false,
+							"order": 6,
+							"title": "Hide the page while the background image is loading",
+							"type": "boolean"
+						},
+						"keywordSearch": {
+							"order": 3,
+							"properties": {
+								"categoryKeyword": {
+									"default": "montreal",
+									"order": 0,
+									"title": "Separate keywords using comma.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showKeywordSearch": true,
+								"source": "category"
+							},
+							"title": "Keywords",
+							"type": "object"
+						},
+						"photoId": {
+							"default": "WLUHO9A_xik",
+							"order": 1,
+							"showIf": {
+								"source": "photoid"
+							},
+							"title": "Photo ID",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"hideBg": true
+							},
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"showKeywordSearch": {
+							"default": false,
+							"order": 2,
+							"showIf": {
+								"source": "category"
+							},
+							"title": "Search the category using keywords",
+							"type": "boolean"
+						},
+						"simpleKeyword": {
+							"default": "nature,water",
+							"description": "Separate keywords using comma.",
+							"order": 1,
+							"placeholder": "nature,water",
+							"showIf": {
+								"source": "keyword"
+							},
+							"title": "Keywords",
+							"type": "string"
+						},
+						"source": {
+							"default": "random",
+							"description": "Choose images that...",
+							"enum": [
+								"random",
+								"user",
+								"collection",
+								"category",
+								"keyword",
+								"photoid"
+							],
+							"enumNames": {
+								"category": "...are in a specific category.",
+								"collection": "...are in a specific collection.",
+								"keyword": "...match a set of keywords.",
+								"photoid": "...match a specific image ID.",
+								"random": "...are completely random.",
+								"user": "...are posted by a specific user."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Image Source",
+							"type": "string"
+						},
+						"updateOptions": {
+							"order": 4,
+							"properties": {
+								"frequency": {
+									"default": "everytime",
+									"enum": [
+										"everytime",
+										"daily",
+										"weekly"
+									],
+									"enumNames": {
+										"daily": "Once a day.",
+										"everytime": "Every time the page is shown.",
+										"weekly": "Once a week."
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "How often should the background change?",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"source": {
+									"method": "any",
+									"op": "==",
+									"value": [
+										"random",
+										"user",
+										"collection",
+										"category",
+										"keyword"
+									]
+								}
+							},
+							"title": "Update Frequency",
+							"type": "object"
+						},
+						"username": {
+							"default": "erondu",
+							"order": 1,
+							"placeholder": "erondu",
+							"showIf": {
+								"source": "user"
+							},
+							"title": "Username",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"source",
+								"hideBg",
+								"easeSlider"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"updateOptions",
+								"featuredOnly",
+								"username",
+								"collectionId",
+								"categoryName",
+								"simpleKeyword",
+								"showKeywordSearch",
+								"keywordSearch",
+								"categoryKeyword",
+								"photoId"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.88,
+				"upvotes": 7,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ToTa4pP8Iukt",
+			"created": "2018-01-23T19:36:18.321269Z",
+			"proposedApp": {
+				"id": "aefvJe-BglhS",
+				"title": "Background Meow",
+				"shortDescription": "Show beautiful photos from Unsplash on your site.",
+				"longDescription": "Background Meow is a beautiful and easy way to add background images on your website. Show a random image from [Unsplash](https://source.unsplash.com/) or search by keyword, category, collection, user and\nmore. \n\nChoose how often to change the image, decide if you want to wait for the background to load before showing the page or dive into advanced options for even more customization.",
+				"instructions": "",
+				"alias": "meow-bg",
+				"orgId": "915664bec289befd899d5230ac2f096f",
+				"icon": "//images.cloudflareapps.com/Pr8jHqewRd23j1mcSgaI_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZfyIFSH6TvqxjaYgdIae_media3.png",
+					"//images.cloudflareapps.com/74mL7zjT6ceBYGVGh5tA_media1.png",
+					"//images.cloudflareapps.com/VyAn6feUR0Kx5o287Z88_media2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/dCz4avKYRtqjO3vhQazC_tile.png",
+				"featuredAppImage": "",
+				"author": "Robert C. Bant",
+				"tagline": "",
+				"website": "https://source.unsplash.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@robertbant.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KB7i108_efsn"
+				},
+				"created": "2017-06-09T19:15:54.110135Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:36:18.611117078Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:36:30.401096391Z"
+			}
+		}
+	]
+}

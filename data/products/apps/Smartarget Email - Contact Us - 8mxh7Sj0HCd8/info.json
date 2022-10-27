@@ -1,0 +1,1775 @@
+{
+	"id": "8mxh7Sj0HCd8",
+	"title": "Smartarget Email - Contact Us",
+	"shortDescription": "Allow customers to contact you using Email",
+	"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+	"instructions": "",
+	"alias": "smartarget-email-contact-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/TTCtInQS2I31/Email%20Contact%20Us.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/8u5ydEQHanHi/email-1-desktop.png",
+		"https://images.cloudflareapps.com/8u5ydEQHanHi/email-2-desktop.png",
+		"https://images.cloudflareapps.com/8u5ydEQHanHi/email-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/4KIst0QqYSfQ/Email%20Contact%20Us.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/BYBS0SdD3YQb/Email%20Contact%20Us.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2019-10-27T20:52:09.153886801Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "81FSEvvX1VWi"
+	},
+	"created": "2019-10-27T20:45:37.361016Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles2.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "For example: Have a question? Contact us now",
+							"format": "text",
+							"order": 1,
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"color": {
+							"default": "#000000",
+							"description": "Icon background color",
+							"format": "color",
+							"order": 5,
+							"title": "Color",
+							"type": "string"
+						},
+						"email": {
+							"default": "example@yourdomain.com",
+							"description": "For example: example@yourdomain.com",
+							"format": "email",
+							"order": 3,
+							"title": "Email",
+							"type": "string"
+						},
+						"hideCallText": {
+							"default": "For example: Have a question? Contact us now",
+							"description": "Hide call message after few seconds",
+							"order": 1,
+							"products": [
+								"pro"
+							],
+							"title": "Hide message",
+							"type": "boolean"
+						},
+						"iconColor": {
+							"default": "#ffffff",
+							"description": "Icon color",
+							"format": "color",
+							"order": 6,
+							"title": "Icon color",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the email icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Email icon position",
+							"type": "string"
+						},
+						"iconType": {
+							"default": "1",
+							"description": "Email icon type",
+							"enum": [
+								"1",
+								"2"
+							],
+							"enumNames": {
+								"1": "First variant",
+								"2": "Second variant"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Icon type",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/81FSEvvX1VWi",
+			"metadata": {
+				"code": {
+					"sourceTag": "81FSEvvX1VWi",
+					"uploadedOn": "2019-10-27T20:45:39.860491573Z"
+				}
+			},
+			"created": "2019-10-27T20:45:39.164875Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Email - Contact Us",
+				"shortDescription": "Make it easier for users to contact you",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/rMCAC_OX3TmF/email-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.41.47.png",
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.40.20.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-fz4fIoJwcex/email%20contact%20us.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "http://www.topsoft.co.il",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@toptab.net",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": false,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2019-10-27T20:52:09.13454968Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-04T16:37:19.059582031Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles2.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "For example: Have a question? Contact us now",
+							"format": "text",
+							"order": 1,
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"color": {
+							"default": "#000000",
+							"description": "Icon background color",
+							"format": "color",
+							"order": 5,
+							"title": "Color",
+							"type": "string"
+						},
+						"email": {
+							"default": "example@yourdomain.com",
+							"description": "For example: example@yourdomain.com",
+							"format": "email",
+							"order": 3,
+							"title": "Email",
+							"type": "string"
+						},
+						"hideCallText": {
+							"default": "For example: Have a question? Contact us now",
+							"description": "Hide call message after few seconds",
+							"order": 1,
+							"products": [
+								"pro"
+							],
+							"title": "Hide message",
+							"type": "boolean"
+						},
+						"iconColor": {
+							"default": "#ffffff",
+							"description": "Icon color",
+							"format": "color",
+							"order": 6,
+							"title": "Icon color",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the email icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Email icon position",
+							"type": "string"
+						},
+						"iconType": {
+							"default": "1",
+							"description": "Email icon type",
+							"enum": [
+								"1",
+								"2"
+							],
+							"enumNames": {
+								"1": "First variant",
+								"2": "Second variant"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Icon type",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social & Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/81FSEvvX1VWi",
+			"created": "2019-11-05T16:47:07.183354Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Email - Contact Us",
+				"shortDescription": "Make it easier for users to contact you",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/rMCAC_OX3TmF/email-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.41.47.png",
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.40.20.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-fz4fIoJwcex/email%20contact%20us.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "http://www.topsoft.co.il",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@toptab.net",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": false,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-11-05T16:47:07.455401238Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-05T16:47:22.186359874Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles2.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "For example: Have a question? Contact us now",
+							"description": "It it message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"color": {
+							"default": "#000000",
+							"description": "Icon background color",
+							"format": "color",
+							"order": 5,
+							"title": "Color",
+							"type": "string"
+						},
+						"email": {
+							"default": "example@yourdomain.com",
+							"description": "For example: example@yourdomain.com",
+							"format": "email",
+							"order": 3,
+							"title": "Email",
+							"type": "string"
+						},
+						"hideCallText": {
+							"default": false,
+							"description": "Hide call message after few seconds",
+							"order": 1,
+							"products": [
+								"pro"
+							],
+							"title": "Hide message",
+							"type": "boolean"
+						},
+						"iconColor": {
+							"default": "#ffffff",
+							"description": "Icon color",
+							"format": "color",
+							"order": 6,
+							"title": "Icon color",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the email icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Email icon position",
+							"type": "string"
+						},
+						"iconType": {
+							"default": "1",
+							"description": "Email icon type",
+							"enum": [
+								"1",
+								"2"
+							],
+							"enumNames": {
+								"1": "First variant",
+								"2": "Second variant"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Icon type",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BIOJerKLMjlW",
+			"metadata": {
+				"code": {
+					"sourceTag": "BIOJerKLMjlW",
+					"uploadedOn": "2019-12-09T20:13:45.225550652Z"
+				}
+			},
+			"created": "2019-12-09T20:13:44.237251Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Email - Contact Us",
+				"shortDescription": "Make it easier for users to contact you",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/rMCAC_OX3TmF/email-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.41.47.png",
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.40.20.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-fz4fIoJwcex/email%20contact%20us.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "http://www.topsoft.co.il",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@toptab.net",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": false,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2019-12-09T20:13:46.340177415Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-13T16:36:29.362653518Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles2.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "For example: Have a question? Contact us now",
+							"description": "It it message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"color": {
+							"default": "#000000",
+							"description": "Icon background color",
+							"format": "color",
+							"order": 5,
+							"title": "Color",
+							"type": "string"
+						},
+						"email": {
+							"default": "example@yourdomain.com",
+							"description": "For example: example@yourdomain.com",
+							"format": "email",
+							"order": 3,
+							"title": "Email",
+							"type": "string"
+						},
+						"hideCallText": {
+							"default": false,
+							"description": "Hide call message after few seconds",
+							"order": 1,
+							"products": [
+								"pro"
+							],
+							"title": "Hide message",
+							"type": "boolean"
+						},
+						"iconColor": {
+							"default": "#ffffff",
+							"description": "Icon color",
+							"format": "color",
+							"order": 6,
+							"title": "Icon color",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the email icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Email icon position",
+							"type": "string"
+						},
+						"iconType": {
+							"default": "1",
+							"description": "Email icon type",
+							"enum": [
+								"1",
+								"2"
+							],
+							"enumNames": {
+								"1": "First variant",
+								"2": "Second variant"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Icon type",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.25,
+				"upvotes": 2,
+				"downvotes": 6
+			},
+			"releaseNotes": "Added Pro plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BIOJerKLMjlW",
+			"created": "2020-01-17T17:03:37.838251Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Email - Contact Us",
+				"shortDescription": "Make it easier for users to contact you",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/rMCAC_OX3TmF/email-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.41.47.png",
+					"https://images.cloudflareapps.com/mrTyqofUffrO/Screen%20Shot%202019-10-27%20at%2021.40.20.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-fz4fIoJwcex/email%20contact%20us.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "http://www.topsoft.co.il",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@toptab.net",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Email icon on your HOMEPAGE only!",
+						"longDescription": "Show the Email icon on your HOMEPAGE only!",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Show the Email icon on ALL PAGES!",
+						"longDescription": "Show the Email icon on ALL PAGES!",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "EMAIL_CONTACT_US_PRO",
+						"feature": "apps.email_contact_us_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-17T17:03:38.130494547Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-17T17:05:20.654278039Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"email": {
+							"default": "",
+							"description": "Your email",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Email - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 7,
+				"downvotes": 3
+			},
+			"releaseNotes": "New images and screenshots",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BzYayRkh9nmz",
+			"metadata": {
+				"code": {
+					"sourceTag": "BzYayRkh9nmz",
+					"uploadedOn": "2020-10-22T14:35:27.508485001Z"
+				}
+			},
+			"created": "2020-10-22T14:34:50.779903Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Smartarget Email - Contact Us",
+				"shortDescription": "Allow customers to contact you using Email",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "smartarget-email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/TTCtInQS2I31/Email%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dR45A-W1JI23/Email%20Contact%20Us.png",
+					"https://images.cloudflareapps.com/qYkHdmyo7NuX/Email%20Contact%20Us.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/4KIst0QqYSfQ/Email%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BYBS0SdD3YQb/Email%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-26T14:31:24.292271022Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T15:55:29.929973327Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "8mxh7Sj0HCd8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_email'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"email": {
+							"default": "",
+							"description": "Your email",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Email - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BzYayRkh9nmz",
+			"created": "2021-11-09T15:09:56.0897Z",
+			"proposedApp": {
+				"id": "8mxh7Sj0HCd8",
+				"title": "Smartarget Email - Contact Us",
+				"shortDescription": "Allow customers to contact you using Email",
+				"longDescription": "Don't miss any potential customer!\n\nMake it easier for your customers to contact you!  Make your email contact much more accessible for your users, so they can easily contact you.\n\nWith 'Email - Contact Us' you can add a small icon at the corner with you email address and short message as \"Contact us\" or \"message us\" etc. When user click on the icon - it will open his default email client.",
+				"instructions": "",
+				"alias": "smartarget-email-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/TTCtInQS2I31/Email%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8u5ydEQHanHi/email-1-desktop.png",
+					"https://images.cloudflareapps.com/8u5ydEQHanHi/email-2-desktop.png",
+					"https://images.cloudflareapps.com/8u5ydEQHanHi/email-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/4KIst0QqYSfQ/Email%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BYBS0SdD3YQb/Email%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "81FSEvvX1VWi"
+				},
+				"created": "2019-10-27T20:45:37.361016Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:09:56.688231903Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:17:44.713149122Z"
+			}
+		}
+	]
+}

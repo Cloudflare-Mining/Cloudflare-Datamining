@@ -1,0 +1,536 @@
+{
+	"id": "37D_SlOigYcc",
+	"title": "Unless",
+	"shortDescription": "Personalized website experiences for each visitor.",
+	"longDescription": "Unless is an experience orchestration platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+	"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+	"alias": "unless",
+	"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+	"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/jX1KrP_gFQcg/audiences.png",
+		"https://images.cloudflareapps.com/kKztLzXBzR0X/editor.png",
+		"https://images.cloudflareapps.com/jX1KrP_gFQcg/integrations.png",
+		"https://images.cloudflareapps.com/jX1KrP_gFQcg/add-ons.png",
+		"https://images.cloudflareapps.com/jX1KrP_gFQcg/contacts.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+	"featuredAppImage": "",
+	"author": "Unless.com",
+	"tagline": "",
+	"website": "https://unless.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+	"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.1",
+	"infoVersion": "2.0.1",
+	"points": 0,
+	"supportEmail": "support@unless.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "133a8dbfb71aa0c69ed234692c3998af",
+			"created": "2018-10-25T15:11:25.722405846Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "EXTJVQecISBw"
+	},
+	"created": "2018-10-25T14:46:09.330414Z",
+	"org": {
+		"id": "133a8dbfb71aa0c69ed234692c3998af",
+		"title": "",
+		"username": "133a8dbfb71aa0c69ed234692c3998af",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "37D_SlOigYcc",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id": {
+							"description": "To install Unless on your website, you need an Unless account ID. Get it by clicking the Cloudflare install button in <a target='_blank' href='https://unless.com/'>the Unless dashboard</a>.",
+							"order": 1,
+							"placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"title": "Unless account ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EXTJVQecISBw",
+			"metadata": {
+				"code": {
+					"sourceTag": "EXTJVQecISBw",
+					"uploadedOn": "2018-10-25T14:46:10.733682263Z"
+				}
+			},
+			"created": "2018-10-25T14:46:09.803557Z",
+			"proposedApp": {
+				"id": "37D_SlOigYcc",
+				"title": "Unless",
+				"shortDescription": "Personalize your website for each visitor.",
+				"longDescription": "Unless is a personalization platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+				"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+				"alias": "unless",
+				"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+				"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_Personalization.png",
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_WYSIWYG.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+				"featuredAppImage": "",
+				"author": "Sander Nagtegaal",
+				"tagline": "",
+				"website": "https://unless.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+				"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@unless.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EXTJVQecISBw"
+				},
+				"created": "2018-10-25T14:46:09.330414Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "133a8dbfb71aa0c69ed234692c3998af",
+				"requestedAt": "2018-10-25T15:11:25.712453565Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-30T17:27:35.653054194Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "37D_SlOigYcc",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id": {
+							"description": "To install Unless on your website, you need an Unless account ID. Get it by clicking the Cloudflare install button in <a target='_blank' href='https://unless.com/'>the Unless dashboard</a>.",
+							"order": 1,
+							"placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"title": "Unless account ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Removed some explanatory lines of comments, at the request of Cloudflare itself.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dvYFyzSL9Ye9",
+			"metadata": {
+				"code": {
+					"sourceTag": "dvYFyzSL9Ye9",
+					"uploadedOn": "2018-10-31T10:14:56.325752561Z"
+				}
+			},
+			"created": "2018-10-31T10:14:55.403573Z",
+			"proposedApp": {
+				"id": "37D_SlOigYcc",
+				"title": "Unless",
+				"shortDescription": "Personalize your website for each visitor.",
+				"longDescription": "Unless is a personalization platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+				"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+				"alias": "unless",
+				"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+				"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_Personalization.png",
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_WYSIWYG.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+				"featuredAppImage": "",
+				"author": "Sander Nagtegaal",
+				"tagline": "",
+				"website": "https://unless.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+				"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@unless.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EXTJVQecISBw"
+				},
+				"created": "2018-10-25T14:46:09.330414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "133a8dbfb71aa0c69ed234692c3998af",
+				"requestedAt": "2018-10-31T10:14:57.496794607Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-06T19:08:56.866436632Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "37D_SlOigYcc",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id": {
+							"description": "To install Unless on your website, you need an Unless account ID. Get it by clicking the Cloudflare install button in <a target='_blank' href='https://unless.com/'>the Unless dashboard</a>.",
+							"order": 1,
+							"placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"title": "Unless account ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.72,
+				"upvotes": 13,
+				"downvotes": 5
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dvYFyzSL9Ye9",
+			"created": "2018-11-07T14:00:34.231271Z",
+			"proposedApp": {
+				"id": "37D_SlOigYcc",
+				"title": "Unless",
+				"shortDescription": "Personalize your website for each visitor.",
+				"longDescription": "Unless is a personalization platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+				"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+				"alias": "unless",
+				"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+				"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_Personalization.png",
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_WYSIWYG.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+				"featuredAppImage": "",
+				"author": "Unless.com",
+				"tagline": "",
+				"website": "https://unless.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+				"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@unless.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EXTJVQecISBw"
+				},
+				"created": "2018-10-25T14:46:09.330414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:24:44.766621189Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:31:14.299718285Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "37D_SlOigYcc",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id": {
+							"description": "To install Unless on your website, you need an Unless account ID. Get it by clicking the Cloudflare install button in <a target='_blank' href='https://unless.com/'>the Unless dashboard</a>.",
+							"order": 1,
+							"placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"title": "Unless account ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "New snippet.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_pc6qpjazzD4",
+			"metadata": {
+				"code": {
+					"sourceTag": "_pc6qpjazzD4",
+					"uploadedOn": "2021-02-22T12:59:40.719320166Z"
+				}
+			},
+			"created": "2021-02-22T12:59:39.764982Z",
+			"proposedApp": {
+				"id": "37D_SlOigYcc",
+				"title": "Unless",
+				"shortDescription": "Personalize your website for each visitor.",
+				"longDescription": "Unless is a personalization platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+				"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+				"alias": "unless",
+				"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+				"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_Personalization.png",
+					"https://images.cloudflareapps.com/oeUBJ037ru1J/Unless_WYSIWYG.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+				"featuredAppImage": "",
+				"author": "Unless.com",
+				"tagline": "",
+				"website": "https://unless.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+				"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@unless.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EXTJVQecISBw"
+				},
+				"created": "2018-10-25T14:46:09.330414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "133a8dbfb71aa0c69ed234692c3998af",
+				"requestedAt": "2021-02-22T12:59:42.212318308Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-26T16:34:19.699081389Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "37D_SlOigYcc",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id": {
+							"description": "To install Unless on your website, you need an Unless account ID. Get it by clicking the Cloudflare install button in <a target='_blank' href='https://unless.com/'>the Unless dashboard</a>.",
+							"order": 1,
+							"placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+							"title": "Unless account ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added a version number to the inserted script tag, so we can validate if there is an outdated version or not. Also, we included an installer id (\"cloudflare\"), so we will know where hits came from.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y29_RdxZhz44",
+			"metadata": {
+				"code": {
+					"sourceTag": "y29_RdxZhz44",
+					"uploadedOn": "2021-03-22T11:39:31.73975114Z"
+				}
+			},
+			"created": "2021-03-22T11:39:30.226771Z",
+			"proposedApp": {
+				"id": "37D_SlOigYcc",
+				"title": "Unless",
+				"shortDescription": "Personalized website experiences for each visitor.",
+				"longDescription": "Unless is an experience orchestration platform for websites. It allows you to make your website respond more specifically to each visitor's personal context - to increase their attention span, reduce bounce rates, improve user experience and skyrocket your conversion.\n\nUnless lets you define audiences using many conditions, apply personalized changes for each across your web pages with a WYSIWYG editor, and measure success based on your business objectives. \n\nThis Cloudflare App simply connects your website to the underlying Unless platform.",
+				"instructions": "Simply paste your Unless Account ID in the set-up and it's done.",
+				"alias": "unless",
+				"orgId": "133a8dbfb71aa0c69ed234692c3998af",
+				"icon": "https://images.cloudflareapps.com/jWqviaeTQXdm/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jX1KrP_gFQcg/audiences.png",
+					"https://images.cloudflareapps.com/kKztLzXBzR0X/editor.png",
+					"https://images.cloudflareapps.com/jX1KrP_gFQcg/integrations.png",
+					"https://images.cloudflareapps.com/jX1KrP_gFQcg/add-ons.png",
+					"https://images.cloudflareapps.com/jX1KrP_gFQcg/contacts.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-KmaZgfUCgRu/tile.png",
+				"featuredAppImage": "",
+				"author": "Unless.com",
+				"tagline": "",
+				"website": "https://unless.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://unless.com/en/legal/terms/",
+				"privacyPolicyURL": "https://unless.com/en/legal/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@unless.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EXTJVQecISBw"
+				},
+				"created": "2018-10-25T14:46:09.330414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "133a8dbfb71aa0c69ed234692c3998af",
+				"requestedAt": "2021-03-22T11:50:32.945298283Z",
+				"canceledAt": null,
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2021-03-24T15:19:53.319346663Z"
+			}
+		}
+	]
+}

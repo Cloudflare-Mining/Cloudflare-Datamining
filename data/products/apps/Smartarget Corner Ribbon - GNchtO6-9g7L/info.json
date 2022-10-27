@@ -1,0 +1,1570 @@
+{
+	"id": "GNchtO6-9g7L",
+	"title": "Smartarget Corner Ribbon",
+	"shortDescription": "Promote special offers with corner ribbon",
+	"longDescription": "Corner Ribbon - Promote special offers with Corner Ribbon\n\nDo you have special deals sometimes? Like Black Friday? Special weekend? holidays?\n\nThe Corner Ribbon will be shown to users on all pages, both on desktop and mobile, and will allow you to communicate with them with relevant promotion.\n\nCheck the Demo page to see how it work: https://smartarget.online/demo.html",
+	"instructions": "",
+	"alias": "smartarget-corner-ribbon",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/V0teVEduRNv7/Corner%20Ribbon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/Z4r6F5138emh/corner_ribbon-1-desktop.png",
+		"https://images.cloudflareapps.com/Z4r6F5138emh/corner_ribbon-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/_pA5z4RFlYMo/Corner%20Ribbon.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/7RjMY5aJgLhe/Corner%20Ribbon.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-10-28T16:39:21.476206105Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "NmXQAeTzgcFQ"
+	},
+	"created": "2020-10-22T14:42:50.00451Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "GNchtO6-9g7L",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 9,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another font size",
+								"default": "Normal"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Font size",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"position": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top Left"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Corner Ribbon position",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Corner Ribbon app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"ribbonColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"text": {
+							"default": "Check this out!",
+							"description": "Text on corner ribbon",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 4,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://example.com",
+							"description": "Link on corner ribbon",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link",
+							"type": "string"
+						},
+						"width": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Default value (180px)"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon width",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NmXQAeTzgcFQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "NmXQAeTzgcFQ",
+					"uploadedOn": "2020-10-22T14:42:51.411866528Z"
+				}
+			},
+			"created": "2020-10-22T14:42:50.699242Z",
+			"proposedApp": {
+				"id": "GNchtO6-9g7L",
+				"title": "Smartarget Corner Ribbon",
+				"shortDescription": "Promote special offers with corner ribbon",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "smartarget-corner-ribbon",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/V0teVEduRNv7/Corner%20Ribbon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/pTnlleqoVqJQ/Corner%20Ribbon.png",
+					"https://images.cloudflareapps.com/eEUBYlIsdjM5/Corner%20Ribbon.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/_pA5z4RFlYMo/Corner%20Ribbon.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7RjMY5aJgLhe/Corner%20Ribbon.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "NmXQAeTzgcFQ"
+				},
+				"created": "2020-10-22T14:42:50.00451Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-28T16:39:21.470793584Z",
+				"canceledByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"canceledAt": "2020-10-28T18:51:32.336855775Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "GNchtO6-9g7L",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 9,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another font size",
+								"default": "Normal"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Font size",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"position": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top Left"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Corner Ribbon position",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Corner Ribbon app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"ribbonColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"text": {
+							"default": "Check this out!",
+							"description": "Text on corner ribbon",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 4,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://example.com",
+							"description": "Link on corner ribbon",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link",
+							"type": "string"
+						},
+						"width": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Default value (180px)"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon width",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NmXQAeTzgcFQ",
+			"created": "2020-10-28T18:51:32.011449Z",
+			"proposedApp": {
+				"id": "GNchtO6-9g7L",
+				"title": "Smartarget Corner Ribbon",
+				"shortDescription": "Promote special offers with corner ribbon",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "smartarget-corner-ribbon",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/V0teVEduRNv7/Corner%20Ribbon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/pTnlleqoVqJQ/Corner%20Ribbon.png",
+					"https://images.cloudflareapps.com/eEUBYlIsdjM5/Corner%20Ribbon.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/_pA5z4RFlYMo/Corner%20Ribbon.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7RjMY5aJgLhe/Corner%20Ribbon.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "NmXQAeTzgcFQ"
+				},
+				"created": "2020-10-22T14:42:50.00451Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-10-28T18:51:32.34806556Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-28T19:03:17.100525101Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "GNchtO6-9g7L",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 9,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another font size",
+								"default": "Normal"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Font size",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"position": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top Left"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Corner Ribbon position",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Corner Ribbon app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"ribbonColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"text": {
+							"default": "Check this out!",
+							"description": "Text on corner ribbon",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 4,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://example.com",
+							"description": "Link on corner ribbon",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link",
+							"type": "string"
+						},
+						"width": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Default value (180px)"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon width",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NmXQAeTzgcFQ",
+			"created": "2020-10-29T08:39:56.253482Z",
+			"proposedApp": {
+				"id": "GNchtO6-9g7L",
+				"title": "Smartarget Corner Ribbon",
+				"shortDescription": "Promote special offers with corner ribbon",
+				"longDescription": "Corner Ribbon - Promote special offers with Corner Ribbon\n\nDo you have special deals sometimes? Like Black Friday? Special weekend? holidays?\n\nThe Corner Ribbon will be shown to users on all pages, both on desktop and mobile, and will allow you to communicate with them with relevant promotion.\n\nCheck the Demo page to see how it work: https://smartarget.online/demo.html",
+				"instructions": "",
+				"alias": "smartarget-corner-ribbon",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/V0teVEduRNv7/Corner%20Ribbon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/pTnlleqoVqJQ/Corner%20Ribbon.png",
+					"https://images.cloudflareapps.com/eEUBYlIsdjM5/Corner%20Ribbon.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/_pA5z4RFlYMo/Corner%20Ribbon.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7RjMY5aJgLhe/Corner%20Ribbon.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "NmXQAeTzgcFQ"
+				},
+				"created": "2020-10-22T14:42:50.00451Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-29T08:39:56.786530646Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:39:46.778031263Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "GNchtO6-9g7L",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 9,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_corner_ribbon'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another font size",
+								"default": "Normal"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Font size",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"position": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top Left"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Corner Ribbon position",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Corner Ribbon app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"ribbonColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"text": {
+							"default": "Check this out!",
+							"description": "Text on corner ribbon",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 4,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://example.com",
+							"description": "Link on corner ribbon",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link",
+							"type": "string"
+						},
+						"width": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Default value (180px)"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Ribbon width",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NmXQAeTzgcFQ",
+			"created": "2021-11-09T15:06:24.139582Z",
+			"proposedApp": {
+				"id": "GNchtO6-9g7L",
+				"title": "Smartarget Corner Ribbon",
+				"shortDescription": "Promote special offers with corner ribbon",
+				"longDescription": "Corner Ribbon - Promote special offers with Corner Ribbon\n\nDo you have special deals sometimes? Like Black Friday? Special weekend? holidays?\n\nThe Corner Ribbon will be shown to users on all pages, both on desktop and mobile, and will allow you to communicate with them with relevant promotion.\n\nCheck the Demo page to see how it work: https://smartarget.online/demo.html",
+				"instructions": "",
+				"alias": "smartarget-corner-ribbon",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/V0teVEduRNv7/Corner%20Ribbon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Z4r6F5138emh/corner_ribbon-1-desktop.png",
+					"https://images.cloudflareapps.com/Z4r6F5138emh/corner_ribbon-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/_pA5z4RFlYMo/Corner%20Ribbon.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7RjMY5aJgLhe/Corner%20Ribbon.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "NmXQAeTzgcFQ"
+				},
+				"created": "2020-10-22T14:42:50.00451Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:06:24.803988833Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:16.457585958Z"
+			}
+		}
+	]
+}

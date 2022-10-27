@@ -1,0 +1,3065 @@
+{
+	"id": "iRaXuPIFyAf7",
+	"title": "Self Summary",
+	"shortDescription": "Attract users with a short biography, photo, and social media links!",
+	"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+	"instructions": "",
+	"alias": "self-summary",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#f0786e",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.3.5",
+	"infoVersion": "1.3.5",
+	"points": 3,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:53:42.23941468Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "7weHcl7xlzHg"
+	},
+	"created": "2017-04-11T07:10:36.710403Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's John Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"description": "A short message about yourself written with <a target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Markdown#Example\" class=\"more with-inherited-color\"><strong>Markdown</strong></a>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Self summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7weHcl7xlzHg",
+			"metadata": {
+				"code": {
+					"sourceTag": "7weHcl7xlzHg",
+					"uploadedOn": "2017-04-11T07:10:38.133166251Z"
+				}
+			},
+			"created": "2017-04-11T07:10:37.497047Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "# Self Summary\n\n*Get summarized!*\n\nTell your visitors a thing or two about you with this personalized biography and summary!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Y5LKhQOT0GZybuBgbYyG_Screen Shot 2017-04-10 at 11.33.02 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/GGAmUUTF2FNBvpK9fNwR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-11T07:10:39.663026523Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-11T07:12:51.824107505Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's John Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"description": "A short message about yourself written with <a target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Markdown#Example\" class=\"more with-inherited-color\"><strong>Markdown</strong></a>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Self summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7weHcl7xlzHg",
+			"created": "2017-04-11T07:15:18.135819Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "# Self Summary\n\n*Get summarized!*\n\nTell your visitors a thing or two about you with this personalized biography and summary!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/GGAmUUTF2FNBvpK9fNwR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-11T07:15:18.675705533Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-11T07:15:29.45531222Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's John Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"description": "A short message about yourself written with <a target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Markdown#Example\" class=\"more with-inherited-color\"><strong>Markdown</strong></a>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Self summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7weHcl7xlzHg",
+			"created": "2017-04-11T07:18:50.110514Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/GGAmUUTF2FNBvpK9fNwR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-11T07:18:50.754298068Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-11T07:19:00.946038365Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's John Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"description": "A short message about yourself written with <a target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Markdown#Example\" class=\"more with-inherited-color\"><strong>Markdown</strong></a>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Self summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7weHcl7xlzHg",
+			"created": "2017-04-13T02:43:34.259748Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-13T02:46:08.938506274Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-13T02:46:33.521187324Z"
+			}
+		},
+		{
+			"tag": "v1.2.0",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fT3-sXnAj_w6",
+			"metadata": {
+				"code": {
+					"sourceTag": "fT3-sXnAj_w6",
+					"uploadedOn": "2017-06-05T08:37:39.747313758Z"
+				}
+			},
+			"created": "2017-06-05T08:37:39.405341Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-05T08:37:40.798168699Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-05T08:38:14.632255641Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"order": 2,
+									"placeholder": "your@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fT3-sXnAj_w6",
+			"created": "2017-07-06T08:53:41.990473Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:53:42.226993831Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:57.023228462Z"
+			}
+		},
+		{
+			"tag": "1.3.1",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"description": "<strong>Note:</strong> This will be public.",
+									"order": 2,
+									"placeholder": "you@email.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/swWRsS-1ZZ_R",
+			"metadata": {
+				"code": {
+					"sourceTag": "swWRsS-1ZZ_R",
+					"uploadedOn": "2017-07-11T08:42:58.191805323Z"
+				}
+			},
+			"created": "2017-07-11T08:42:57.695539Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-11T08:42:59.177662027Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-11T08:43:17.50058779Z"
+			}
+		},
+		{
+			"tag": "1.3.2",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"description": "<strong>Note:</strong> This will be public.",
+									"order": 2,
+									"placeholder": "jessie@example.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EfE70Wz7Eroo",
+			"metadata": {
+				"code": {
+					"sourceTag": "EfE70Wz7Eroo",
+					"uploadedOn": "2017-07-14T05:09:49.861672175Z"
+				}
+			},
+			"created": "2017-07-14T05:09:49.66417Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T05:09:50.435231545Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-07-14T05:52:56.571368499Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.3",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"description": "<strong>Note:</strong> This will be public.",
+									"format": "email",
+									"order": 2,
+									"placeholder": "jessie@example.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5V6Hf50fzplZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "5V6Hf50fzplZ",
+					"uploadedOn": "2017-07-14T05:52:55.785330436Z"
+				}
+			},
+			"created": "2017-07-14T05:52:55.597957Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T05:52:56.586203404Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-14T06:52:49.30007342Z"
+			}
+		},
+		{
+			"tag": "1.3.4",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"description": "<strong>Note:</strong> This will be public.",
+									"format": "email",
+									"order": 2,
+									"placeholder": "jessie@example.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5V6Hf50fzplZ",
+			"created": "2018-01-23T19:32:50.823255Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:32:51.109070336Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:32:58.558657102Z"
+			}
+		},
+		{
+			"tag": "1.3.5",
+			"appId": "iRaXuPIFyAf7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Background color",
+							"type": "string"
+						},
+						"icons": {
+							"description": "Check the icons you’d like to add.",
+							"order": 4,
+							"properties": {
+								"facebook": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"showIf": {
+												"icons.facebook.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"github": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in github.com/<strong>username</strong>",
+											"showIf": {
+												"icons.github.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in linkedin.com/in/<strong>username</strong>",
+											"showIf": {
+												"icons.linkedin.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "LinkedIn",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"default": false,
+											"title": "Show",
+											"type": "boolean"
+										},
+										"username": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"showIf": {
+												"icons.twitter.enabled": true
+											},
+											"title": "Username",
+											"type": "string"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								}
+							},
+							"title": "Social icons",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the summary appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Summary location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<h1>Author, musician, designer.</h1><p>Hi there! My name's Jessie Smith and this is my creative blog. I live in the bay area with my two dogs and write about the future of web design.</p><p>Need a freelance writer? Let's get in touch!</p>",
+							"format": "richtext",
+							"order": 2,
+							"title": "Summary",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 5,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"profilePicture": {
+							"description": "An image that represents you online.",
+							"order": 3,
+							"properties": {
+								"gravatarEmail": {
+									"description": "<strong>Note:</strong> This will be public.",
+									"format": "email",
+									"order": 2,
+									"placeholder": "jessie@example.com",
+									"showIf": {
+										"profilePicture.type": "gravatar"
+									},
+									"title": "Gravatar email",
+									"type": "string"
+								},
+								"type": {
+									"default": "gravatar",
+									"enum": [
+										"gravatar",
+										"upload",
+										"none"
+									],
+									"enumNames": {
+										"gravatar": "Use my Gravatar email. <a target=\"_blank\" href=\"https://en.gravatar.com/support/what-is-gravatar/\" class=\"more with-inherited-color\"><strong>Learn more</strong></a>",
+										"none": "Don't show an image.",
+										"upload": "Upload my own image."
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "What image should we use?",
+									"type": "string"
+								},
+								"url": {
+									"format": "image",
+									"order": 2,
+									"showIf": {
+										"profilePicture.type": "upload"
+									},
+									"title": "Select your image",
+									"type": "string"
+								}
+							},
+							"title": "Profile picture",
+							"type": "object"
+						},
+						"textColor": {
+							"format": "color",
+							"order": 7,
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.54,
+				"upvotes": 7,
+				"downvotes": 6
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5V6Hf50fzplZ",
+			"created": "2018-11-13T22:31:08.40347Z",
+			"proposedApp": {
+				"id": "iRaXuPIFyAf7",
+				"title": "Self Summary",
+				"shortDescription": "Attract users with a short biography, photo, and social media links!",
+				"longDescription": "*Get summarized!*\n\nBuild your brand with this personalized biography and social media contact box!\n\n## Features\n\n- Profile photo uploading and Gravatar support.\n- Social media links.",
+				"instructions": "",
+				"alias": "self-summary",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/9Z871O9SpKzrbz7HS6Zl_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GmfyicBwT86wcXYZPmER_Screen Shot 2017-04-10 at 11.22.53 PM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/duUEhPPXSrq2YwP1NoHj_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7weHcl7xlzHg"
+				},
+				"created": "2017-04-11T07:10:36.710403Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:31:21.537413235Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:30:52.480942595Z"
+			}
+		}
+	]
+}

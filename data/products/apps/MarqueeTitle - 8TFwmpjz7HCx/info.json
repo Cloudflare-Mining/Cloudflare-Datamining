@@ -1,0 +1,887 @@
+{
+	"id": "8TFwmpjz7HCx",
+	"title": "MarqueeTitle",
+	"shortDescription": "Stand out to your customers & extend visibility.",
+	"longDescription": "MarqueeTitle makes your website's tab title into scrolling text.\n---\n\n- Stand out to your customers\n- Extend visibility of long titles\n- Install the app in 10 seconds\n- Customizeable options\n- Light-weight performance (just 6 core lines of code)",
+	"instructions": "To view the preview with the scrolling title, click \"preview in a separate window\"",
+	"alias": "marqueetitle",
+	"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+	"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+	"featuredAppImage": "",
+	"author": "Cameron Samuels",
+	"tagline": "",
+	"website": "https://git.io/vhWOB",
+	"sourceURL": "https://git.io/vhWOB",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "me@cameronsamuels.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "14c8b067b78d9395fcb4e28222e3b16a",
+			"created": "2018-06-01T21:42:10.711138878Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "BXs-Sj5rBCJA"
+	},
+	"created": "2018-06-01T21:40:31.512982Z",
+	"org": {
+		"id": "14c8b067b78d9395fcb4e28222e3b16a",
+		"title": "",
+		"username": "14c8b067b78d9395fcb4e28222e3b16a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BXs-Sj5rBCJA",
+			"metadata": {
+				"code": {
+					"sourceTag": "BXs-Sj5rBCJA",
+					"uploadedOn": "2018-06-01T21:40:32.265443253Z"
+				}
+			},
+			"created": "2018-06-01T21:40:31.902675Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Scrolling tab title text",
+				"longDescription": "MarqueeTitle lets you easily make your website's tab title into scrolling text.\n\nThis lets users be able to read the entire web page's tab title, while also catching their eye and amazement. Your website will stand out to your customers.\n\nMarqueeTitle is very easy to use and only takes a few clicks to set up. Plus, it won't affect your website's performance as it's very light-weight.\n\nYou can intuitively customize your setup with chosen repeat division text, scrolling speeds and directions.",
+				"instructions": "",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vAPs3",
+				"sourceURL": "https://git.io/vQZbs",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "biz@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2018-06-01T21:42:10.694264472Z",
+				"canceledByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"canceledAt": "2018-06-01T21:49:02.259787556Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 3,
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 5,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"order": 6,
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"order": 2,
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"order": 4,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"order": 1,
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fixed order of configuration form elements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Okw6Vw2iTowM",
+			"metadata": {
+				"code": {
+					"sourceTag": "Okw6Vw2iTowM",
+					"uploadedOn": "2018-06-01T21:47:49.643912851Z"
+				}
+			},
+			"created": "2018-06-01T21:47:49.392174Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Scrolling tab title text",
+				"longDescription": "MarqueeTitle lets you easily make your website's tab title into scrolling text.\n\nThis lets users be able to read the entire web page's tab title, while also catching their eye and amazement. Your website will stand out to your customers.\n\nMarqueeTitle is very easy to use and only takes a few clicks to set up. Plus, it won't affect your website's performance as it's very light-weight.\n\nYou can intuitively customize your setup with chosen repeat division text, scrolling speeds and directions.",
+				"instructions": "",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vAPs3",
+				"sourceURL": "https://git.io/vQZbs",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "biz@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2018-06-01T21:49:03.210216618Z",
+				"canceledByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"canceledAt": "2018-06-01T21:55:04.740562201Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 3,
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 5,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Click \"Preview in a separate window\" to view the changes to the site.<br>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"order": 6,
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"order": 2,
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"order": 4,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"order": 1,
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added more information to the help section on the install page",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p2Mgah-ozQKT",
+			"metadata": {
+				"code": {
+					"sourceTag": "p2Mgah-ozQKT",
+					"uploadedOn": "2018-06-01T21:53:25.685892097Z"
+				}
+			},
+			"created": "2018-06-01T21:53:25.37106Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Scrolling tab title text",
+				"longDescription": "MarqueeTitle lets you easily make your website's tab title into scrolling text.\n\nThis lets users be able to read the entire web page's tab title, while also catching their eye and amazement. Your website will stand out to your customers.\n\nMarqueeTitle is very easy to use and only takes a few clicks to set up. Plus, it won't affect your website's performance as it's very light-weight.\n\nYou can intuitively customize your setup with chosen repeat division text, scrolling speeds and directions.",
+				"instructions": "",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vAPs3",
+				"sourceURL": "https://git.io/vQZbs",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "biz@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2018-06-01T21:55:04.752798937Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-13T21:24:46.76952701Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 3,
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 5,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Click \"Preview in a separate window\" to view the changes to the site.<br>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"order": 6,
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"order": 2,
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"order": 4,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"order": 1,
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "The installation is now more user-friendly",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p2Mgah-ozQKT",
+			"created": "2019-10-19T04:02:07.83596Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Scrolling tab title text",
+				"longDescription": "MarqueeTitle lets you easily make your website's tab title into scrolling text.\n\nThis lets users be able to read the entire web page's tab title, while also catching their eye and amazement. Your website will stand out to your customers.\n\nMarqueeTitle is very easy to use and only takes a few clicks to set up. Plus, it won't affect your website's performance as it's light as a feather.\n\nYou can intuitively customize your setup with chosen repeat division text, scrolling speeds and directions.",
+				"instructions": "",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vhWOB",
+				"sourceURL": "https://git.io/vhWOB",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2019-10-19T04:05:32.20961853Z",
+				"canceledByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"canceledAt": "2019-10-19T04:07:35.777810324Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 3,
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 5,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Click \"Preview in a separate window\" to view the changes to the site.<br>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"order": 6,
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"order": 2,
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"order": 4,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"order": 1,
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "The installation is now more user-friendly",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p2Mgah-ozQKT",
+			"created": "2019-10-19T04:07:12.995023Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Scrolling tab title text",
+				"longDescription": "MarqueeTitle lets you easily make your website's tab title into scrolling text.\n\nThis lets users be able to read the entire web page's tab title, while also catching their eye and amazement. Your website will stand out to your customers.\n\nMarqueeTitle is very easy to use and only takes a few clicks to set up. Plus, it won't affect your website's performance as it's light as a feather.\n\nYou can intuitively customize your setup with chosen repeat division text, scrolling speeds and directions.",
+				"instructions": "To view the preview with the scrolling title, click \"preview in a separate window\"",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vhWOB",
+				"sourceURL": "https://git.io/vhWOB",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2019-10-19T04:07:35.791097307Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-21T15:28:03.329690872Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "8TFwmpjz7HCx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./script.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"direction": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 3,
+							"title": "Scroll Direction",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 5,
+							"title": "Enabled",
+							"type": "boolean"
+						},
+						"help": {
+							"helpvalue": "<hr>Click \"Preview in a separate window\" to view the changes to the site.<br>Learn more about MarqueeTitle with the <a href='https://git.io/vAPs3'>documentation</a>.",
+							"order": 6,
+							"type": "help"
+						},
+						"separator": {
+							"default": "-",
+							"order": 2,
+							"placeholder": "Separation text between the end and the beginning of the title",
+							"title": "Title Repeat Separator",
+							"type": "string"
+						},
+						"speed": {
+							"default": 300,
+							"maximum": 5000,
+							"minimum": 200,
+							"order": 4,
+							"placeholder": "300",
+							"title": "Scroll Speed (in milleseconds)",
+							"type": "integer"
+						},
+						"title": {
+							"default": "This page has a scrolling tab title",
+							"order": 1,
+							"placeholder": "Text on the web browser's page tab",
+							"title": "Page Title (leave blank for existing title)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 6,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated product listing descriptions",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p2Mgah-ozQKT",
+			"created": "2020-06-25T05:15:29.977597Z",
+			"proposedApp": {
+				"id": "8TFwmpjz7HCx",
+				"title": "MarqueeTitle",
+				"shortDescription": "Stand out to your customers & extend visibility.",
+				"longDescription": "MarqueeTitle makes your website's tab title into scrolling text.\n---\n\n- Stand out to your customers\n- Extend visibility of long titles\n- Install the app in 10 seconds\n- Customizeable options\n- Light-weight performance (just 6 core lines of code)",
+				"instructions": "To view the preview with the scrolling title, click \"preview in a separate window\"",
+				"alias": "marqueetitle",
+				"orgId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"icon": "https://images.cloudflareapps.com/2jItabNc9Zko/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/zLoeo3bUF65q/logo.png",
+				"featuredAppImage": "",
+				"author": "Cameron Samuels",
+				"tagline": "",
+				"website": "https://git.io/vhWOB",
+				"sourceURL": "https://git.io/vhWOB",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@cameronsamuels.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BXs-Sj5rBCJA"
+				},
+				"created": "2018-06-01T21:40:31.512982Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "14c8b067b78d9395fcb4e28222e3b16a",
+				"requestedAt": "2020-06-25T05:32:46.540886303Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-25T16:59:13.773720959Z"
+			}
+		}
+	]
+}

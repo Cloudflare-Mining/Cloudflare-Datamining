@@ -1,0 +1,267 @@
+{
+	"id": "-Ub77N5Sm2bT",
+	"title": "GuardianKey Auth Security",
+	"shortDescription": "Protect your site against authentication attacks using AI",
+	"longDescription": "# Overview\n\nProtect authentication against attacks using a state-of-the-art approach.\n\nGuardianKey Auth Security protects your site against authentication attacks, including:\n\n- **Account takeover**\n- **Brute force**\n- **Automated attacks**\n- **Anonymization**\n- **Credential stuffing**\n- **Password guessing**\n\nMain advantages:\n\n- **No Hardware** - No token, mobile or other device is required.\n- **Easy deployment** - Only a couple of steps is needed to deploy it in Cloudflare.\n- **Real time** - The authentication attempts are treated and available for visualization in real time.\n- **Transparent** - Less friction! The user is not required to use 2nd factors or extra actions.\n- **High security** - The state-of-the-art approach based on Machine Learning and risk assessment to protect the authentication process.\n\nGuardianKey is a solution to protect systems against authentication attacks. It uses Artificial Intelligence to detect if access attempts are from legitimate users. **Attackers can be blocked even using the right password.** GuardianKey provides an attack risk in real-time based on the user's behavior, threat intelligence, and psychometrics (or behavioral biometrics). Users can be notified by email and authentication attack attempts can be blocked.\n\nThis App intercepts authentication attempts to your system, and submit them to GuardianKey's engine (in cloud or on premise), in real-time.\n\nGuardianKey has an administration panel that you can use to view the authentication attempts, and attacks, to your site.\n\n# Main Features\n\n**Protect your site against authentication attacks using Artificial Intelligence**\n\nThe detection engine uses Artificial Intelligence and a secret mathematical risk formula to combine Threat Intelligence, Behavioral Profiling, and Psychometric Profiling (or Behavioral Biometrics Profiling). The engine computes a risk for each event sent by Cloudflare.\n\nIn real time, the online attempt can be blocked or notifications can be triggered, depending on the thresholds defined in the GuardianKey's administration panel.\n\n**Analytics in real-time**\n\nGuardianKey also provides useful analytics for authentication attempts. \nIncluding dashboards, geographic view, user timelines and behavioral details.\n\nEvents can also be sent to an external log system, such as ELK, Graylog, etc.",
+	"instructions": "1. Open the login page of your site in the preview area at the right.\n2. Insert the input username field, by clicking on \"Pick a location\" and selecting it.\n3. Click \"Install in all pages\".\n4. Create an account at GuardianKey: https://panel.guardiankey.io/auth/register\n5. Install the worker in Cloudflare, following the instructions at \n  https://github.com/pauloangelo/guardiankey-cloudflare-worker#deploy-the-worker-in-cloudflare\n6. Contact us if you need any kind of assistance.",
+	"alias": "guardiankey",
+	"orgId": "bb3756d6b718728b1218519206308784",
+	"icon": "https://images.cloudflareapps.com/VDbTcV-bpbAZ/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/IY4To_dXC6zt/user_details.png",
+		"https://images.cloudflareapps.com/IY4To_dXC6zt/geo_dashboard.png",
+		"https://images.cloudflareapps.com/IY4To_dXC6zt/risk_dashboard.png",
+		"https://images.cloudflareapps.com/IY4To_dXC6zt/home2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/KErNc1YO004T/tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/nJSG0Ks_OO0w/cloudflare.png",
+	"author": "GuardianKey Corp",
+	"tagline": "",
+	"website": "https://guardiankey.io",
+	"sourceURL": "https://github.com/pauloangelo/guardiankey-cloudflare-app",
+	"termsOfServiceURL": "https://guardiankey.io/services/use-terms-conditions/",
+	"privacyPolicyURL": "https://guardiankey.io/services/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@guardiankey.io",
+	"products": [],
+	"categoryIds": [
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "bb3756d6b718728b1218519206308784",
+			"created": "2019-09-26T13:29:58.23090149Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ksiodgkRLSVS"
+	},
+	"created": "2019-09-26T13:27:22.214577Z",
+	"org": {
+		"id": "bb3756d6b718728b1218519206308784",
+		"title": "",
+		"username": "bb3756d6b718728b1218519206308784",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "-Ub77N5Sm2bT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"userinput": {
+							"description": "The username input field, used for login",
+							"format": "selector",
+							"order": 1,
+							"title": "Username input field",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ksiodgkRLSVS",
+			"metadata": {
+				"code": {
+					"sourceTag": "ksiodgkRLSVS",
+					"uploadedOn": "2019-09-26T13:27:24.241400934Z"
+				}
+			},
+			"created": "2019-09-26T13:27:22.927227Z",
+			"proposedApp": {
+				"id": "-Ub77N5Sm2bT",
+				"title": "GuardianKey Auth Security",
+				"shortDescription": "Protect your site against authentication attacks using AI",
+				"longDescription": "# Overview\n\nProtect authentication against attacks using a state-of-the-art approach.\n\nGuardianKey Auth Security protects your site against authentication attacks, including:\n\n- **Account takeover**\n- **Brute force**\n- **Automated attacks**\n- **Anonymization**\n- **Credential stuffing**\n- **Password guessing**\n\nMain advantages:\n\n- **No Hardware** - No token, mobile or other device is required.\n- **Easy deployment** - Only a couple of steps is needed to deploy it in Cloudflare.\n- **Real time** - The authentication attempts are treated and available for visualization in real time.\n- **Transparent** - Less friction! The user is not required to use 2nd factors or extra actions.\n- **High security** - The state-of-the-art approach based on Machine Learning and risk assessment to protect the authentication process.\n\nGuardianKey is a solution to protect systems against authentication attacks. It uses Artificial Intelligence to detect if access attempts are from legitimate users. **Attackers can be blocked even using the right password.** GuardianKey provides an attack risk in real-time based on the user's behavior, threat intelligence, and psychometrics (or behavioral biometrics). Users can be notified by email and authentication attack attempts can be blocked.\n\nThis App intercepts authentication attempts to your system, and submit them to GuardianKey's engine (in cloud or on premise), in real-time.\n\nGuardianKey has an administration panel that you can use to view the authentication attempts, and attacks, to your site.\n\n# Main Features\n\n**Protect your site against authentication attacks using Artificial Intelligence**\n\nThe detection engine uses Artificial Intelligence and a secret mathematical risk formula to combine Threat Intelligence, Behavioral Profiling, and Psychometric Profiling (or Behavioral Biometrics Profiling). The engine computes a risk for each event sent by Cloudflare.\n\nIn real time, the online attempt can be blocked or notifications can be triggered, depending on the thresholds defined in the GuardianKey's administration panel.\n\n**Analytics in real-time**\n\nGuardianKey also provides useful analytics for authentication attempts. \nIncluding dashboards, geographic view, user timelines and behavioral details.\n\nEvents can also be sent to an external log system, such as ELK, Graylog, etc.",
+				"instructions": "1. Open the login page of your site in the preview area at the right.\n2. Insert the input username field, by clicking on \"Pick a location\" and selecting it.\n3. Click \"Install in all pages\".\n4. Create an account at GuardianKey: https://panel.guardiankey.io/auth/register\n5. Install the worker in Cloudflare, following the instructions at \n  https://github.com/pauloangelo/guardiankey-cloudflare-worker#deploy-the-worker-in-cloudflare\n6. Contact us if you need any kind of assistance.",
+				"alias": "guardiankey",
+				"orgId": "bb3756d6b718728b1218519206308784",
+				"icon": "https://images.cloudflareapps.com/VDbTcV-bpbAZ/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/user_details.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/geo_dashboard.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/risk_dashboard.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/home2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/KErNc1YO004T/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/nJSG0Ks_OO0w/cloudflare.png",
+				"author": "GuardianKey Corp",
+				"tagline": "",
+				"website": "https://guardiankey.io",
+				"sourceURL": "https://github.com/pauloangelo/guardiankey-cloudflare-app",
+				"termsOfServiceURL": "https://guardiankey.io/services/use-terms-conditions/",
+				"privacyPolicyURL": "https://guardiankey.io/services/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@guardiankey.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ksiodgkRLSVS"
+				},
+				"created": "2019-09-26T13:27:22.214577Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bb3756d6b718728b1218519206308784",
+				"requestedAt": "2019-09-26T13:29:58.206264674Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-01T19:26:11.944153128Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "-Ub77N5Sm2bT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"userinput": {
+							"description": "The username input field, used for login",
+							"format": "selector",
+							"order": 1,
+							"title": "Username input field",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.79,
+				"upvotes": 22,
+				"downvotes": 6
+			},
+			"releaseNotes": "Added GuardianKey to Security category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ksiodgkRLSVS",
+			"created": "2019-10-14T15:58:39.926664Z",
+			"proposedApp": {
+				"id": "-Ub77N5Sm2bT",
+				"title": "GuardianKey Auth Security",
+				"shortDescription": "Protect your site against authentication attacks using AI",
+				"longDescription": "# Overview\n\nProtect authentication against attacks using a state-of-the-art approach.\n\nGuardianKey Auth Security protects your site against authentication attacks, including:\n\n- **Account takeover**\n- **Brute force**\n- **Automated attacks**\n- **Anonymization**\n- **Credential stuffing**\n- **Password guessing**\n\nMain advantages:\n\n- **No Hardware** - No token, mobile or other device is required.\n- **Easy deployment** - Only a couple of steps is needed to deploy it in Cloudflare.\n- **Real time** - The authentication attempts are treated and available for visualization in real time.\n- **Transparent** - Less friction! The user is not required to use 2nd factors or extra actions.\n- **High security** - The state-of-the-art approach based on Machine Learning and risk assessment to protect the authentication process.\n\nGuardianKey is a solution to protect systems against authentication attacks. It uses Artificial Intelligence to detect if access attempts are from legitimate users. **Attackers can be blocked even using the right password.** GuardianKey provides an attack risk in real-time based on the user's behavior, threat intelligence, and psychometrics (or behavioral biometrics). Users can be notified by email and authentication attack attempts can be blocked.\n\nThis App intercepts authentication attempts to your system, and submit them to GuardianKey's engine (in cloud or on premise), in real-time.\n\nGuardianKey has an administration panel that you can use to view the authentication attempts, and attacks, to your site.\n\n# Main Features\n\n**Protect your site against authentication attacks using Artificial Intelligence**\n\nThe detection engine uses Artificial Intelligence and a secret mathematical risk formula to combine Threat Intelligence, Behavioral Profiling, and Psychometric Profiling (or Behavioral Biometrics Profiling). The engine computes a risk for each event sent by Cloudflare.\n\nIn real time, the online attempt can be blocked or notifications can be triggered, depending on the thresholds defined in the GuardianKey's administration panel.\n\n**Analytics in real-time**\n\nGuardianKey also provides useful analytics for authentication attempts. \nIncluding dashboards, geographic view, user timelines and behavioral details.\n\nEvents can also be sent to an external log system, such as ELK, Graylog, etc.",
+				"instructions": "1. Open the login page of your site in the preview area at the right.\n2. Insert the input username field, by clicking on \"Pick a location\" and selecting it.\n3. Click \"Install in all pages\".\n4. Create an account at GuardianKey: https://panel.guardiankey.io/auth/register\n5. Install the worker in Cloudflare, following the instructions at \n  https://github.com/pauloangelo/guardiankey-cloudflare-worker#deploy-the-worker-in-cloudflare\n6. Contact us if you need any kind of assistance.",
+				"alias": "guardiankey",
+				"orgId": "bb3756d6b718728b1218519206308784",
+				"icon": "https://images.cloudflareapps.com/VDbTcV-bpbAZ/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/user_details.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/geo_dashboard.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/risk_dashboard.png",
+					"https://images.cloudflareapps.com/IY4To_dXC6zt/home2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/KErNc1YO004T/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/nJSG0Ks_OO0w/cloudflare.png",
+				"author": "GuardianKey Corp",
+				"tagline": "",
+				"website": "https://guardiankey.io",
+				"sourceURL": "https://github.com/pauloangelo/guardiankey-cloudflare-app",
+				"termsOfServiceURL": "https://guardiankey.io/services/use-terms-conditions/",
+				"privacyPolicyURL": "https://guardiankey.io/services/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@guardiankey.io",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ksiodgkRLSVS"
+				},
+				"created": "2019-09-26T13:27:22.214577Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-10-14T15:58:40.248628689Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-14T15:58:50.111299114Z"
+			}
+		}
+	]
+}

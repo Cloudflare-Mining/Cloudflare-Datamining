@@ -1,0 +1,1022 @@
+{
+	"id": "i0SmEnLctoBJ",
+	"title": "SatisMeter",
+	"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+	"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+	"instructions": "",
+	"alias": "satismeter",
+	"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+	"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+		"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+	"featuredAppImage": "",
+	"author": "SatisMeter s.r.o.",
+	"tagline": "",
+	"website": "https://www.satismeter.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#e74b79",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 840,
+	"supportEmail": "support@satismeter.com",
+	"products": [],
+	"categoryIds": [
+		"recommended-for-marketing-sites",
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "4ab3e9449a64a5949326a81e6639d4fa",
+			"created": "2018-01-23T19:46:34.878413247Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Na6I-3UNk8Lj"
+	},
+	"created": "2017-05-05T19:40:42.928512Z",
+	"org": {
+		"id": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+		"title": "",
+		"username": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		},
+		{
+			"id": "recommended-for-marketing-sites",
+			"title": "Recommended for Marketing Sites",
+			"description": "Apps for marketing sites in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:00.378148Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xtsOMV_BavNJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "xtsOMV_BavNJ",
+					"uploadedOn": "2017-05-17T09:12:57.591023001Z"
+				}
+			},
+			"created": "2017-05-05T19:40:44.979578Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback using Net Promoter Score (NPS)",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web\n- Analyze feedback and satisfaction trends on SatisMeter dashboards\n- Customize SatisMeter survey to comply with your design\n- Ask every user in their own language\n- Automatically share the feedback with your team via email, Slack and other channels",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing",
+					"design",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedAt": "2017-05-17T09:13:16.198208595Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-26T03:51:22.041811248Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"metadata": {
+				"code": {
+					"sourceTag": "keckQlgmW5aA",
+					"uploadedOn": "2017-06-15T09:07:44.91366376Z"
+				}
+			},
+			"created": "2017-05-26T10:46:46.915552Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web\n- Analyze feedback and satisfaction trends on SatisMeter dashboards\n- Customize SatisMeter survey to comply with your design\n- Ask every user in their own language\n- Automatically share the feedback with your team via email, Slack and other channels",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing",
+					"design",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"requestedAt": "2017-06-15T09:08:29.138082672Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-06-15T23:37:31.943696269Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"created": "2017-06-15T23:37:30.590938Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter s.r.o.",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@satismeter.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"communication",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-15T23:37:32.156415496Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-15T23:39:33.368025379Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Added to “Analytics” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"created": "2018-01-23T19:46:32.321185Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter s.r.o.",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@satismeter.com",
+				"products": [
+					{
+						"id": "satismeter-free",
+						"title": "Free",
+						"shortDescription": "Up to 50 responses",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": "2017-07-06T09:50:37.354693735Z"
+					},
+					{
+						"id": "satismeter-startup",
+						"title": "Startup",
+						"shortDescription": "Up to 300 responses",
+						"longDescription": "",
+						"visible": true,
+						"price": 4900,
+						"order": 1,
+						"plan": "satismeter_plan_2",
+						"feature": "apps.satismeter.plan_2.enabled",
+						"created": "2017-07-06T09:50:37.354693933Z"
+					},
+					{
+						"id": "satismeter-growth",
+						"title": "Growth",
+						"shortDescription": "Up to 1,000 responses",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "satismeter_plan_3",
+						"feature": "apps.satismeter.plan_3.enabled",
+						"created": "2017-07-06T09:50:37.354693974Z"
+					},
+					{
+						"id": "satismeter-business",
+						"title": "Business",
+						"shortDescription": "Up to 10,000 responses",
+						"longDescription": "",
+						"visible": true,
+						"price": 29900,
+						"order": 3,
+						"plan": "satismeter_plan_4",
+						"feature": "apps.satismeter.plan_4.enabled",
+						"created": "2017-07-06T09:50:37.354694032Z"
+					}
+				],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:46:34.875953696Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-01-23T20:48:21.94005581Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Analytics” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"created": "2018-01-23T20:48:21.73806Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter s.r.o.",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@satismeter.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-01-23T20:48:21.945408917Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-26T00:53:14.403752194Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.92,
+				"upvotes": 11,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"created": "2018-02-06T21:39:01.229234Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter s.r.o.",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@satismeter.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing",
+					"recommended-for-marketing-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:39:01.49594769Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:40:15.190696175Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "i0SmEnLctoBJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"satismeter"
+							],
+							"title": "SatisMeter Account",
+							"type": "object"
+						},
+						"primaryColor": {
+							"default": "#ff4981",
+							"format": "color",
+							"order": 4,
+							"title": "Primary Color",
+							"type": "string"
+						},
+						"serviceName": {
+							"order": 3,
+							"title": "Name of Your Service or Product",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"serviceName",
+								"primaryColor"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.satismeter.com/oauth/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with SatisMeter."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.68,
+				"upvotes": 15,
+				"downvotes": 7
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/keckQlgmW5aA",
+			"created": "2018-11-13T20:38:10.461353Z",
+			"proposedApp": {
+				"id": "i0SmEnLctoBJ",
+				"title": "SatisMeter",
+				"shortDescription": "Collect user feedback, reduce churn and accelerate growth.",
+				"longDescription": "With SatisMeter you can:\n\n- Gather Net Promoter Score (NPS) and customer feedback straight from your web.\n- Analyze feedback and satisfaction trends on SatisMeter dashboards.\n- Customize SatisMeter survey to comply with your design.\n- Ask every user in their own language.\n- Automatically share the feedback with your team via email, Slack and other channels.",
+				"instructions": "",
+				"alias": "satismeter",
+				"orgId": "7bf6e3e109bfd53b2a51bdaf73e7502d",
+				"icon": "//images.cloudflareapps.com/SQdixLdGQVODfKaykY8G_satismeter-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tkixOKPSXCTRlU9Vna8r_satismeter-widget-mobile-and-computer.png",
+					"//images.cloudflareapps.com/gjTbDtGITneu3opyZY8t_satismeter-dashboard-imac.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/awbcglXQRcqSejTGXVi4_satismeter-logo-cf.png",
+				"featuredAppImage": "",
+				"author": "SatisMeter s.r.o.",
+				"tagline": "",
+				"website": "https://www.satismeter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@satismeter.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-marketing-sites",
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Na6I-3UNk8Lj"
+				},
+				"created": "2017-05-05T19:40:42.928512Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:38:12.345540962Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:43:17.801270107Z"
+			}
+		}
+	]
+}

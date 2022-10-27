@@ -1,0 +1,368 @@
+{
+	"id": "EPdho5V4A3lv",
+	"title": "Better Uptime",
+	"shortDescription": "We call you when your website goes down",
+	"longDescription": "Better Uptime calls your phone when your website goes down. 💥→ 📞\n\nWe send you a detailed timeline of what happened and a screenshot of the error.\n\n- 📅 Schedule on-call duty rotations for your team directly from Google Calendar. No need for Pager Duty!\n- 📈 Connect Datadog, New Relic, Grafana, Google Cloud or AWS and notify the right person on your team at the right time.\n- 📧 Works great with Slack, SMS, and email, and integrates with 100+ services.\n- 🚨 Imagine that your website is up, but there's a critical issue that can't wait: payments not working. Have non-technical members on your team report urgent incidents to the on-call person directly from Slack.",
+	"instructions": "1. Connect your Better Uptime account (you can sign up via Cloudflare)\n2. Enter your phone number (optional)\n2. Done! We call you when your website goes down",
+	"alias": "betteruptime",
+	"orgId": "197c5d51cd3b38a165784c8dfe45435b",
+	"icon": "https://images.cloudflareapps.com/Xhz4V4C1Ba_Q/betteruptime.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Better Uptime",
+	"tagline": "",
+	"website": "https://betteruptime.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://betteruptime.com/terms",
+	"privacyPolicyURL": "https://betteruptime.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "hello@betteruptime.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "197c5d51cd3b38a165784c8dfe45435b",
+			"created": "2020-06-26T14:03:44.996923302Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "RSGD90KdpnA-"
+	},
+	"created": "2020-06-25T12:57:56.833476Z",
+	"org": {
+		"id": "197c5d51cd3b38a165784c8dfe45435b",
+		"title": "",
+		"username": "197c5d51cd3b38a165784c8dfe45435b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "EPdho5V4A3lv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"betteruptime"
+							],
+							"title": "Connect Better Uptime Account",
+							"type": "object"
+						},
+						"endpoint": {
+							"order": 1,
+							"placeholder": "https://yourwebsite.com",
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Website to monitor",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://uptime.ngrok.io/integrations/cloudflare/update",
+						"events": [
+							"new-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error occurred. It's not your fault. We'll fix it soon."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/RSGD90KdpnA-",
+			"metadata": {
+				"code": {
+					"sourceTag": "RSGD90KdpnA-",
+					"uploadedOn": "2020-06-25T12:57:58.691447734Z"
+				}
+			},
+			"created": "2020-06-25T12:57:57.767351Z",
+			"proposedApp": {
+				"id": "EPdho5V4A3lv",
+				"title": "Better Uptime",
+				"shortDescription": "We call you when your website goes down",
+				"longDescription": "Better Uptime calls your phone when your website goes down. 💥→ 📞\n\nWe send you a detailed timeline of what happened and a screenshot of the error.\n\n- 📅 Schedule on-call duty rotations for your team directly from Google Calendar. No need for Pager Duty!\n- 📈 Connect Datadog, New Relic, Grafana, Google Cloud or AWS and notify the right person on your team at the right time.\n- 📧 Works great with Slack, SMS, and email, and integrates with 100+ services.\n- 🚨 Imagine that your website is up, but there's a critical issue that can't wait: payments not working. Have non-technical members on your team report urgent incidents to the on-call person directly from Slack.",
+				"instructions": "1. Connect your Better Uptime account (you can sign up via Cloudflare)\n2. Enter your phone number (optional)\n2. Done! We call you when your website goes down",
+				"alias": "betteruptime",
+				"orgId": "197c5d51cd3b38a165784c8dfe45435b",
+				"icon": "https://images.cloudflareapps.com/Xhz4V4C1Ba_Q/betteruptime.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Better Uptime",
+				"tagline": "",
+				"website": "https://betteruptime.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://betteruptime.com/terms",
+				"privacyPolicyURL": "https://betteruptime.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@betteruptime.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "RSGD90KdpnA-"
+				},
+				"created": "2020-06-25T12:57:56.833476Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "197c5d51cd3b38a165784c8dfe45435b",
+				"requestedAt": "2020-06-26T14:03:44.980520989Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-29T16:15:41.73318027Z"
+			}
+		},
+		{
+			"tag": "1.0.1-meta-h7Gq0G",
+			"appId": "EPdho5V4A3lv",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"betteruptime"
+							],
+							"title": "Connect Better Uptime Account",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<b>Hey! Please, navigate to <a href='https://betteruptime.com' target='_blank'>https://betteruptime.com</a> and fill out your contact details.</b> We'll alert you by email or phone call when your website goes down.",
+							"order": 1,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dsGYhPy_1jXF",
+			"created": "2020-12-22T13:39:54.287287Z",
+			"proposedApp": {
+				"id": "EPdho5V4A3lv",
+				"title": "Better Uptime",
+				"shortDescription": "We call you when your website goes down",
+				"longDescription": "[Better Uptime](www.betteruptime.com) calls your phone when your website goes down. 💥→ 📞\n\nWe send you a detailed timeline of what happened and a screenshot of the error.\n\n- 📅 Schedule on-call duty rotations for your team directly from Google Calendar. No need for Pager Duty!\n- 📈 Connect Datadog, New Relic, Grafana, Google Cloud or AWS and notify the right person on your team at the right time.\n- 📧 Works great with Slack, SMS, and email, and integrates with 100+ services.\n- 🚨 Imagine that your website is up, but there's a critical issue that can't wait: payments not working. Have non-technical members on your team report urgent incidents to the on-call person directly from Slack.",
+				"instructions": "1. Connect your Better Uptime account (you can sign up via Cloudflare)\n2. Enter your phone number (optional)\n2. Done! We call you when your website goes down",
+				"alias": "betteruptime",
+				"orgId": "197c5d51cd3b38a165784c8dfe45435b",
+				"icon": "https://images.cloudflareapps.com/Xhz4V4C1Ba_Q/betteruptime.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Better Uptime",
+				"tagline": "",
+				"website": "https://betteruptime.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://betteruptime.com/terms",
+				"privacyPolicyURL": "https://betteruptime.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@betteruptime.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "RSGD90KdpnA-"
+				},
+				"created": "2020-06-25T12:57:56.833476Z"
+			},
+			"moderationStatus": "draft",
+			"moderationMetadata": {
+				"requestedAt": null,
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "EPdho5V4A3lv",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"betteruptime"
+							],
+							"title": "Connect Better Uptime Account",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<b>Hey! Please, navigate to <a href='https://betteruptime.com' target='_blank'>https://betteruptime.com</a> and fill out your contact details.</b> We'll alert you by email or phone call when your website goes down.",
+							"order": 1,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 8,
+				"downvotes": 0
+			},
+			"releaseNotes": "Bugfixes, Improved login flow",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dsGYhPy_1jXF",
+			"metadata": {
+				"code": {
+					"sourceTag": "dsGYhPy_1jXF",
+					"uploadedOn": "2020-07-27T12:04:37.603313068Z"
+				}
+			},
+			"created": "2020-07-27T12:04:37.117419Z",
+			"proposedApp": {
+				"id": "EPdho5V4A3lv",
+				"title": "Better Uptime",
+				"shortDescription": "We call you when your website goes down",
+				"longDescription": "Better Uptime calls your phone when your website goes down. 💥→ 📞\n\nWe send you a detailed timeline of what happened and a screenshot of the error.\n\n- 📅 Schedule on-call duty rotations for your team directly from Google Calendar. No need for Pager Duty!\n- 📈 Connect Datadog, New Relic, Grafana, Google Cloud or AWS and notify the right person on your team at the right time.\n- 📧 Works great with Slack, SMS, and email, and integrates with 100+ services.\n- 🚨 Imagine that your website is up, but there's a critical issue that can't wait: payments not working. Have non-technical members on your team report urgent incidents to the on-call person directly from Slack.",
+				"instructions": "1. Connect your Better Uptime account (you can sign up via Cloudflare)\n2. Enter your phone number (optional)\n2. Done! We call you when your website goes down",
+				"alias": "betteruptime",
+				"orgId": "197c5d51cd3b38a165784c8dfe45435b",
+				"icon": "https://images.cloudflareapps.com/Xhz4V4C1Ba_Q/betteruptime.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Better Uptime",
+				"tagline": "",
+				"website": "https://betteruptime.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://betteruptime.com/terms",
+				"privacyPolicyURL": "https://betteruptime.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@betteruptime.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "RSGD90KdpnA-"
+				},
+				"created": "2020-06-25T12:57:56.833476Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "197c5d51cd3b38a165784c8dfe45435b",
+				"requestedAt": "2020-07-27T12:04:38.634809507Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-27T21:45:54.436602824Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,783 @@
+{
+	"id": "5WU-5JC_CQYe",
+	"title": "image4io - Image Optimization",
+	"shortDescription": "Optimize your images and make faster websites.",
+	"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **[image4io](https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up free [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+	"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Then rename '**src**'  attribute in img tag to '**data-src**' on your website. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+	"alias": "image4io",
+	"orgId": "fc701ccdef99e473593821f3847283ae",
+	"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/SWtef_4esY7i/Featured.png",
+	"author": "4AI Information Technologies Inc.",
+	"tagline": "",
+	"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+	"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "info@image4.io",
+	"products": [
+		{
+			"id": "image4io",
+			"title": "image4io",
+			"shortDescription": "Optimize your images and make faster websites",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "fc701ccdef99e473593821f3847283ae",
+			"created": "2020-03-13T14:39:45.134506155Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "dBYpJX9j3ExM"
+	},
+	"created": "2020-03-12T14:04:52.455117Z",
+	"org": {
+		"id": "fc701ccdef99e473593821f3847283ae",
+		"title": "",
+		"username": "fc701ccdef99e473593821f3847283ae",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CMo9yoPl2fAy",
+			"metadata": {
+				"code": {
+					"sourceTag": "CMo9yoPl2fAy",
+					"uploadedOn": "2020-03-13T14:08:54.737180909Z"
+				}
+			},
+			"created": "2020-03-12T14:04:52.990123Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **image4io**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Only thing you need to change '**src**' in image tag to '**data-src**'. \n\nFrom\n\n    <img src=\"https://example.com/image.jpg\">\n   \nTo\n\n    <img data-src=\"https://example.com/image.jpg\">\n\nWe will handle the rest.",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-03-13T14:39:45.106645606Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-13T15:26:14.373774907Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"cloudname"
+							],
+							"execute": "INSTALL_SCOPE.updateElements",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Bug fix.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Cf_VNbo35lyH",
+			"metadata": {
+				"code": {
+					"sourceTag": "Cf_VNbo35lyH",
+					"uploadedOn": "2020-03-13T18:36:20.019772068Z"
+				}
+			},
+			"created": "2020-03-13T17:39:41.833134Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **image4io**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Only rename '**src**'  attribute in img tag to '**data-src**'. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/S-kVh43X1kRd/Featured.png",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-03-13T18:36:40.512936605Z",
+				"canceledByUserId": "fc701ccdef99e473593821f3847283ae",
+				"canceledAt": "2020-03-13T20:29:34.211514746Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"cloudname"
+							],
+							"execute": "INSTALL_SCOPE.updateElements",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Code improvement",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Ni8kO0J-mFAe",
+			"metadata": {
+				"code": {
+					"sourceTag": "Ni8kO0J-mFAe",
+					"uploadedOn": "2020-03-13T20:29:00.924066475Z"
+				}
+			},
+			"created": "2020-03-13T20:29:00.610205Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **[image4io](https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up free [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Only rename '**src**'  attribute in img tag to '**data-src**'. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/S-kVh43X1kRd/Featured.png",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-03-13T20:29:34.229180934Z",
+				"canceledByUserId": "fc701ccdef99e473593821f3847283ae",
+				"canceledAt": "2020-03-13T22:20:45.477478032Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"cloudname"
+							],
+							"execute": "INSTALL_SCOPE.updateElements",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Code improvement, bug fix",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DNdgU2qC-s_U",
+			"metadata": {
+				"code": {
+					"sourceTag": "DNdgU2qC-s_U",
+					"uploadedOn": "2020-03-13T22:20:43.925858709Z"
+				}
+			},
+			"created": "2020-03-13T22:20:43.386629Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **[image4io](https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up free [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Only rename '**src**'  attribute in img tag to '**data-src**'. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/S-kVh43X1kRd/Featured.png",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-03-13T22:20:45.503741244Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-15T17:56:20.749091755Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"cloudname"
+							],
+							"execute": "INSTALL_SCOPE.updateElements",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://console.image4.io/integrations/cloudflare/webhook",
+						"events": [
+							"preview",
+							"option-change",
+							"account-logout",
+							"item-add",
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Performance improvements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NS2Wm8fCeKSM",
+			"metadata": {
+				"code": {
+					"sourceTag": "NS2Wm8fCeKSM",
+					"uploadedOn": "2020-03-17T12:46:03.850567086Z"
+				}
+			},
+			"created": "2020-03-17T10:39:33.62832Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **[image4io](https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up free [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Then rename '**src**'  attribute in img tag to '**data-src**' on your website. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/SWtef_4esY7i/Featured.png",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-03-17T12:46:49.107114329Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-23T15:15:51.170939511Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "5WU-5JC_CQYe",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cloudname": {
+							"description": "Enter your cloudname from image4io Dashboard",
+							"maxLength": 20,
+							"placeholder": "Cloudname",
+							"title": "Cloudname",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"cloudname"
+							],
+							"execute": "INSTALL_SCOPE.updateElements",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://console.image4.io/integrations/cloudflare/webhook",
+						"events": [
+							"preview",
+							"account-logout",
+							"item-add",
+							"new-install",
+							"update-install",
+							"before-new-install",
+							"before-update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.64,
+				"upvotes": 16,
+				"downvotes": 9
+			},
+			"releaseNotes": "Code improvement",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/80ljxQ8SDH5d",
+			"metadata": {
+				"code": {
+					"sourceTag": "80ljxQ8SDH5d",
+					"uploadedOn": "2020-04-01T09:20:26.570503798Z"
+				}
+			},
+			"created": "2020-04-01T09:20:26.064669Z",
+			"proposedApp": {
+				"id": "5WU-5JC_CQYe",
+				"title": "image4io - Image Optimization",
+				"shortDescription": "Optimize your images and make faster websites.",
+				"longDescription": "Those images on your website that are taking forever to load?\n\nYeah, they're causing you to miss out on site visitors and, in turn, money.\n\nNow, if your images are **optimized**, your pages will load faster, **boosting SEO** rankings and **conversion rates**. \n\nWith **[image4io](https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**, you can automatically optimize all the images on your site and get them delivered via image4io's global content delivery network (CDN).\n\nSign up free [here](https://console.image4.io/Auth/SignUp?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website).",
+				"instructions": "Go to '**[image4io Console](https://console.image4.io?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website)**' and get your **cloudname**. Then rename '**src**'  attribute in img tag to '**data-src**' on your website. \n\nFrom\n    `<img src=\"https://example.com/image.jpg\">`\nTo\n    `<img data-src=\"https://example.com/image.jpg\">`",
+				"alias": "image4io",
+				"orgId": "fc701ccdef99e473593821f3847283ae",
+				"icon": "https://images.cloudflareapps.com/FrJaGfcu6JhU/logo2_3000x3000.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/M0J9ib3CuG8W/side-by-side-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/SWtef_4esY7i/Featured.png",
+				"author": "4AI Information Technologies Inc.",
+				"tagline": "",
+				"website": "https://image4.io/en?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://image4.io/en/terms-of-service?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"privacyPolicyURL": "https://image4.io/en/privacy-policy?utm_source=cloudflare&utm_medium=website&utm_campaign=app&utm_term=website",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@image4.io",
+				"products": [
+					{
+						"id": "image4io",
+						"title": "image4io",
+						"shortDescription": "Optimize your images and make faster websites",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dBYpJX9j3ExM"
+				},
+				"created": "2020-03-12T14:04:52.455117Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "fc701ccdef99e473593821f3847283ae",
+				"requestedAt": "2020-04-01T09:20:27.494271184Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-01T18:41:11.580808417Z"
+			}
+		}
+	]
+}

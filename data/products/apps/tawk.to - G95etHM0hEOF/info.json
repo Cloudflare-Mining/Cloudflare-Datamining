@@ -1,0 +1,1837 @@
+{
+	"id": "G95etHM0hEOF",
+	"title": "tawk.to",
+	"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+	"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.",
+	"instructions": "",
+	"alias": "tawk-to",
+	"orgId": "5be03e1798d41e09afde06e24e0aa003",
+	"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+		"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+		"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+		"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "tawk.to Inc.",
+	"tagline": "",
+	"website": "https://www.tawk.to",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+	"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.3",
+	"infoVersion": "2.1.3",
+	"points": 300,
+	"supportEmail": "support@tawk.to",
+	"products": [],
+	"categoryIds": [
+		"get-more-customers",
+		"grow-your-email-list",
+		"social-and-communication",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "5be03e1798d41e09afde06e24e0aa003",
+			"created": "2017-07-06T14:30:30.43920764Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "VhUyt7IzTzFK"
+	},
+	"created": "2017-07-04T06:09:55.699313Z",
+	"org": {
+		"id": "5be03e1798d41e09afde06e24e0aa003",
+		"title": "",
+		"username": "5be03e1798d41e09afde06e24e0aa003",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "grow-your-email-list",
+			"title": "Grow Your Email List",
+			"description": "Apps to help you grow your email subscribers.",
+			"icon": "",
+			"points": 1060,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:53:47.275921Z"
+		},
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		},
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./embed.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"widgetId": {
+							"description": "You can find your Widget Code on the “ADMIN” tab of your <a href='https://dashboard.tawk.to/#/admin' target=_blank>tawk.to Dashboard</a>. If you don't have a widget code, sign up for a 100% Free tawk.to account <a href='https://www.tawk.to/?utm_source=cloudflare&utm_medium=app-store&utm_campaign=cloudflare_app&utm_term=Identify%20signups' target=_blank>here</a>.",
+							"format": "code",
+							"order": 100,
+							"placeholder": "Paste your widget code here..",
+							"title": "Widget ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ipxc1Tyw_WIr",
+			"metadata": {
+				"code": {
+					"sourceTag": "ipxc1Tyw_WIr",
+					"uploadedOn": "2017-07-04T08:35:30.727519392Z"
+				}
+			},
+			"created": "2017-07-04T06:09:57.016551Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.\n\n## How much does this cost?\n\nThis tawk.to app is completely free, though you're welcome to (completely optional, no obligation) remove the \"powered by tawk.to\" branding for $9/month.\n\nSupport\n\ntawk.to offers 24×7-365 live support, visit <https://www.tawk.to> and initiate a chat or send us an email at <support@tawk.to>.\n\nDon’t have a tawk.to account ? [Create one for Free here!](https://www.tawk.to).",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5be03e1798d41e09afde06e24e0aa003",
+				"requestedAt": "2017-07-04T08:36:13.072500641Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T07:02:03.71783488Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./embed.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"widgetId": {
+							"description": "You can find your Widget Code on the “ADMIN” tab of your <a href='https://dashboard.tawk.to/#/admin' target=_blank>tawk.to Dashboard</a>. If you don't have a widget code, sign up for a 100% Free tawk.to account <a href='https://www.tawk.to/?utm_source=cloudflare&utm_medium=app-store&utm_campaign=cloudflare_app&utm_term=Identify%20signups' target=_blank>here</a>.",
+							"format": "code",
+							"order": 100,
+							"placeholder": "Paste your widget code here..",
+							"title": "Widget ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ipxc1Tyw_WIr",
+			"created": "2017-07-06T14:30:29.833471Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.\n\n## How much does this cost?\n\nThis tawk.to app is completely free, though you're welcome to (completely optional, no obligation) remove the \"powered by tawk.to\" branding for $9/month.\n\nSupport\n\ntawk.to offers 24×7-365 live support, visit <https://www.tawk.to> and initiate a chat or send us an email at <support@tawk.to>.\n\nDon’t have a tawk.to account ? [Create one for Free here!](https://www.tawk.to).",
+				"instructions": "You will beed a free tawk.to account to get your widget code : [Create one for Free here!](https://www.tawk.to).",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"marketing",
+					"communication",
+					"grow-your-email-list",
+					"make-money-on-your-site",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5be03e1798d41e09afde06e24e0aa003",
+				"requestedAt": "2017-07-06T14:30:30.434190809Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-11T06:47:00.626858669Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"description": "Please select property",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"description": "Please select a widget to embed",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QoI8z1446hTm",
+			"metadata": {
+				"code": {
+					"sourceTag": "QoI8z1446hTm",
+					"uploadedOn": "2017-08-22T17:54:47.876111912Z"
+				}
+			},
+			"created": "2017-08-22T17:35:19.028143Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.\n\n## How much does this cost?\n\nThis tawk.to app is completely free, though you're welcome to (completely optional, no obligation) remove the \"powered by tawk.to\" branding for $9/month.\n\nSupport\n\ntawk.to offers 24×7-365 live support, visit <https://www.tawk.to> and initiate a chat or send us an email at <support@tawk.to>.\n\nDon’t have a tawk.to account ? [Create one for Free here!](https://www.tawk.to).",
+				"instructions": "You will beed a free tawk.to account to get your widget code : [Create one for Free here!](https://www.tawk.to).",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"marketing",
+					"communication",
+					"grow-your-email-list",
+					"make-money-on-your-site",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5be03e1798d41e09afde06e24e0aa003",
+				"requestedAt": "2017-08-22T17:55:18.950765158Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-29T01:50:52.47180472Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P-0ZiZE08phm",
+			"metadata": {
+				"code": {
+					"sourceTag": "P-0ZiZE08phm",
+					"uploadedOn": "2017-08-31T14:07:47.294612426Z"
+				}
+			},
+			"created": "2017-08-29T01:17:36.569628Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.\n\n## How much does this cost?\n\nThis tawk.to app is completely free, though you're welcome to (completely optional, no obligation) remove the \"powered by tawk.to\" branding for $9/month.",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+					"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+					"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to Inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+				"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"communication",
+					"grow-your-email-list"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "5be03e1798d41e09afde06e24e0aa003",
+				"requestedAt": "2017-08-31T14:08:09.817768764Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-06T23:14:36.449282255Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P-0ZiZE08phm",
+			"created": "2017-09-06T23:14:36.270727Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+					"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+					"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to Inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+				"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"communication",
+					"grow-your-email-list"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-06T23:14:36.463897655Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-06T23:15:39.438864071Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P-0ZiZE08phm",
+			"created": "2018-01-22T20:31:02.16933Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+					"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+					"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to Inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+				"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"grow-your-email-list",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:31:03.423808247Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:31:11.268204022Z"
+			}
+		},
+		{
+			"tag": "2.1.3",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 122,
+				"downvotes": 30
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P-0ZiZE08phm",
+			"created": "2018-02-06T20:51:52.839392Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+					"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+					"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to Inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+				"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"grow-your-email-list",
+					"social-and-communication",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:51:53.114622775Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:05:51.852796145Z"
+			}
+		},
+		{
+			"tag": "2.1.4",
+			"appId": "G95etHM0hEOF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Tawk.to account to list your availble properties and widgets.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"tawk-to"
+							],
+							"title": "Tawk.to account",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Choose location where embedded widget will be placed",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"widget": {
+									"method": "any",
+									"op": "==",
+									"value": []
+								}
+							},
+							"title": "Embed location",
+							"type": "object"
+						},
+						"property": {
+							"add": {
+								"properties": {
+									"domain": {
+										"description": "Domain of the property (optional, must be a valid domain)",
+										"order": 1,
+										"title": "Domain",
+										"type": "string"
+									},
+									"name": {
+										"description": "Give Your new property a name (maximum 75 characters)",
+										"order": 0,
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"default": null,
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Property",
+							"type": "string"
+						},
+						"widget": {
+							"default": "inline:default",
+							"enum": [],
+							"enumNames": {},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account.accountId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Widget",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"options.widget",
+								"options.property",
+								"options.location"
+							],
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/property-change",
+						"events": [
+							"option-change:property"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/item-add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/preview",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/before-save",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Tawk.to."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://cfhooks.tawk.to/v1/hook/log",
+						"events": [
+							"delete-install",
+							"update-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Bugfix for authentication issue",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-i_zPqvT8NBw",
+			"metadata": {
+				"code": {
+					"sourceTag": "-i_zPqvT8NBw",
+					"uploadedOn": "2018-08-06T12:08:59.083703774Z"
+				}
+			},
+			"created": "2018-08-06T12:08:58.580784Z",
+			"proposedApp": {
+				"id": "G95etHM0hEOF",
+				"title": "tawk.to",
+				"shortDescription": "A 100% FREE Chat app to monitor & chat with your visitors.",
+				"longDescription": "tawk.to is a 100% FREE live chat app that lets you monitor and chat with visitors on your WordPress site. No catch. No spam. No wares. It’s truly free and always will be.\n\n* Gain valuable insight when you monitor your website visitors in real time.\n* Stay connected anywhere, be in touch with your customers from your computer, or your mobile.\n* Live Chat is convenient for your customers, helping them through pain points and as a result helping you generate better customer support and higher conversions.\n\ntawk.to is designed to increase the effectiveness in managing the online customer engagement experience, enabling multiple websites and agents in a single dashboard interface to chat with the visitors on your website.\n\nCompatible with all modern browsers, tawk.to is free live chat software created out of the growing need for businesses to respond in real time, with real people.\n\nTawk.to offers free iOS, Android, Windows and Mac OSX apps to stay connected, or you can log in via any modern browser.\n\n## Why use tawk.to?\n\ntawk.to is a free live chat app which integrates seamlessly with WordPress! More than 250000 companies use tawk.to to provide real time support and service to their customers. Never lose another lead or sale again, with tawk.to you can monitor and chat with your website visitors when they need it most.",
+				"instructions": "",
+				"alias": "tawk-to",
+				"orgId": "5be03e1798d41e09afde06e24e0aa003",
+				"icon": "//images.cloudflareapps.com/H1yrKItcSGf5rh83zJNQ_tawky_288_288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5sCl1Fv5RPSH0NssHs5U_gallery-2.png",
+					"//images.cloudflareapps.com/OoPmH0AEQlKCmGM9UQ5x_gallery-1.png",
+					"//images.cloudflareapps.com/1MjECW3JQ0yTWso52Mup_screenshot-2.png",
+					"//images.cloudflareapps.com/QCBJDIoRzSaC5sGjIL8Y_Screen Shot 2017-08-31 at 17.06.43.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "tawk.to Inc.",
+				"tagline": "",
+				"website": "https://www.tawk.to",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.tawk.to/terms-of-service/",
+				"privacyPolicyURL": "https://www.tawk.to/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@tawk.to",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"grow-your-email-list",
+					"social-and-communication",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VhUyt7IzTzFK"
+				},
+				"created": "2017-07-04T06:09:55.699313Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "5be03e1798d41e09afde06e24e0aa003",
+				"requestedAt": "2018-08-06T12:09:00.133908387Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		}
+	]
+}

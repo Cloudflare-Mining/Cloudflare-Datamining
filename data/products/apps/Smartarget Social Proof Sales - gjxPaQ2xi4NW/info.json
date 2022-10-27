@@ -1,0 +1,1763 @@
+{
+	"id": "gjxPaQ2xi4NW",
+	"title": "Smartarget Social Proof Sales",
+	"shortDescription": "Make users think that there are currently on going sales",
+	"longDescription": "Make users think that there are currently on going sales\nCreate a pool of names and pool of items you want to promote and our Social Sales app will show it to users so they think there are currently sales being done on your website.\nThis app can help your users to gain more trust and for you to have more sales!",
+	"instructions": "",
+	"alias": "smartarget-social-proof-sales",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/ZZKHmTd0KdQQ/Social%20Proof%20Sales.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/LLhw4yeU6ttQ/social_proof_sales-1-desktop.png",
+		"https://images.cloudflareapps.com/LLhw4yeU6ttQ/social_proof_sales-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/ftQV5sG9hEa5/Social%20Proof%20Sales.png",
+	"featuredAppImage": "",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-11-22T13:45:06.194414547Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "k4pMxlrE3gcG"
+	},
+	"created": "2020-11-19T06:55:24.303921Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "gjxPaQ2xi4NW",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appearance": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Load the message after 1 second on page load"
+							},
+							"format": "radios",
+							"order": 9,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Appearance",
+							"type": "string"
+						},
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"content": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own wording",
+								"default": "<name> just bought <product>"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wording between name and product",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"dismiss": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Hide message after 3 seconds"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 6,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"linksBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Links behavior",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"names": {
+							"default": [
+								{
+									"name": "Emma"
+								},
+								{
+									"name": "Olivia"
+								},
+								{
+									"name": "Ava"
+								},
+								{
+									"name": "Isabella"
+								},
+								{
+									"name": "Sophia"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "John",
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"title": "Name",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Customers Names",
+							"type": "array"
+						},
+						"products": {
+							"default": [
+								{
+									"name": "Example product",
+									"url": "http://example.com"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "iPhone",
+										"title": "Product name",
+										"type": "string"
+									},
+									"url": {
+										"format": "url",
+										"order": 2,
+										"placeholder": "http://example.com",
+										"title": "Product URL",
+										"type": "string"
+									}
+								},
+								"title": "Product",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your site products",
+							"type": "array"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Facebook Messenger - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 12,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left (Arabic/Hebrew)",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 7,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1c0A0CmWBVLl",
+			"metadata": {
+				"code": {
+					"sourceTag": "1c0A0CmWBVLl",
+					"uploadedOn": "2020-11-19T06:56:59.90947976Z"
+				}
+			},
+			"created": "2020-11-19T06:55:25.587442Z",
+			"proposedApp": {
+				"id": "gjxPaQ2xi4NW",
+				"title": "Smartarget Social Proof Sales",
+				"shortDescription": "Make users think that there are currently on going sales",
+				"longDescription": "Make users think that there are currently on going sales\nCreate a pool of names and pool of items you want to promote and our Social Sales app will show it to users so they think there are currently sales being done on your website.\nThis app can help your users to gain more trust and for you to have more sales!",
+				"instructions": "",
+				"alias": "smartarget-social-proof-sales",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/ZZKHmTd0KdQQ/Social%20Proof%20Sales.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/bMuaBJ-uo4Gn/Social%20Proof%20Sales%20-%20placeholder.png",
+					"https://images.cloudflareapps.com/zyfpc_beRzGm/Social%20Proof%20Sales%20-%20site.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ftQV5sG9hEa5/Social%20Proof%20Sales.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "k4pMxlrE3gcG"
+				},
+				"created": "2020-11-19T06:55:24.303921Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-11-22T13:45:06.186361662Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-23T19:32:06.065208283Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "gjxPaQ2xi4NW",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appearance": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Load the message after 1 second on page load"
+							},
+							"format": "radios",
+							"order": 9,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Appearance",
+							"type": "string"
+						},
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"content": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own wording",
+								"default": "<name> just bought <product>"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wording between name and product",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"dismiss": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Hide message after 3 seconds"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 6,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"linksBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Links behavior",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"names": {
+							"default": [
+								{
+									"name": "Emma"
+								},
+								{
+									"name": "Olivia"
+								},
+								{
+									"name": "Ava"
+								},
+								{
+									"name": "Isabella"
+								},
+								{
+									"name": "Sophia"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "John",
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"title": "Name",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Customers Names",
+							"type": "array"
+						},
+						"products": {
+							"default": [
+								{
+									"name": "Example product",
+									"url": "http://example.com"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "iPhone",
+										"title": "Product name",
+										"type": "string"
+									},
+									"url": {
+										"format": "url",
+										"order": 2,
+										"placeholder": "http://example.com",
+										"title": "Product URL",
+										"type": "string"
+									}
+								},
+								"title": "Product",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your site products",
+							"type": "array"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Facebook Messenger - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 12,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left (Arabic/Hebrew)",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 7,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 4,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to UI category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1c0A0CmWBVLl",
+			"created": "2020-11-24T17:21:18.011796Z",
+			"proposedApp": {
+				"id": "gjxPaQ2xi4NW",
+				"title": "Smartarget Social Proof Sales",
+				"shortDescription": "Make users think that there are currently on going sales",
+				"longDescription": "Make users think that there are currently on going sales\nCreate a pool of names and pool of items you want to promote and our Social Sales app will show it to users so they think there are currently sales being done on your website.\nThis app can help your users to gain more trust and for you to have more sales!",
+				"instructions": "",
+				"alias": "smartarget-social-proof-sales",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/ZZKHmTd0KdQQ/Social%20Proof%20Sales.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/bMuaBJ-uo4Gn/Social%20Proof%20Sales%20-%20placeholder.png",
+					"https://images.cloudflareapps.com/zyfpc_beRzGm/Social%20Proof%20Sales%20-%20site.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ftQV5sG9hEa5/Social%20Proof%20Sales.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "k4pMxlrE3gcG"
+				},
+				"created": "2020-11-19T06:55:24.303921Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-24T17:21:18.328892423Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-24T17:22:46.326832973Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "gjxPaQ2xi4NW",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appearance": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Load the message after 1 second on page load"
+							},
+							"format": "radios",
+							"order": 9,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Appearance",
+							"type": "string"
+						},
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						},
+						"content": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own wording",
+								"default": "<name> just bought <product>"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wording between name and product",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_social_proof_sales'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"dismiss": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another variant",
+								"default": "Hide message after 3 seconds"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 6,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"linksBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Links behavior",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"names": {
+							"default": [
+								{
+									"name": "Emma"
+								},
+								{
+									"name": "Olivia"
+								},
+								{
+									"name": "Ava"
+								},
+								{
+									"name": "Isabella"
+								},
+								{
+									"name": "Sophia"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "John",
+										"title": "Name",
+										"type": "string"
+									}
+								},
+								"title": "Name",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Customers Names",
+							"type": "array"
+						},
+						"products": {
+							"default": [
+								{
+									"name": "Example product",
+									"url": "http://example.com"
+								}
+							],
+							"items": {
+								"properties": {
+									"name": {
+										"order": 1,
+										"placeholder": "iPhone",
+										"title": "Product name",
+										"type": "string"
+									},
+									"url": {
+										"format": "url",
+										"order": 2,
+										"placeholder": "http://example.com",
+										"title": "Product URL",
+										"type": "string"
+									}
+								},
+								"title": "Product",
+								"type": "object"
+							},
+							"maxItems": 10,
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your site products",
+							"type": "array"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Facebook Messenger - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 12,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left (Arabic/Hebrew)",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 7,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1c0A0CmWBVLl",
+			"created": "2021-11-09T15:03:22.535294Z",
+			"proposedApp": {
+				"id": "gjxPaQ2xi4NW",
+				"title": "Smartarget Social Proof Sales",
+				"shortDescription": "Make users think that there are currently on going sales",
+				"longDescription": "Make users think that there are currently on going sales\nCreate a pool of names and pool of items you want to promote and our Social Sales app will show it to users so they think there are currently sales being done on your website.\nThis app can help your users to gain more trust and for you to have more sales!",
+				"instructions": "",
+				"alias": "smartarget-social-proof-sales",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/ZZKHmTd0KdQQ/Social%20Proof%20Sales.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/LLhw4yeU6ttQ/social_proof_sales-1-desktop.png",
+					"https://images.cloudflareapps.com/LLhw4yeU6ttQ/social_proof_sales-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ftQV5sG9hEa5/Social%20Proof%20Sales.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "k4pMxlrE3gcG"
+				},
+				"created": "2020-11-19T06:55:24.303921Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:03:23.247894914Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:47.000257125Z"
+			}
+		}
+	]
+}

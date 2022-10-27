@@ -1,0 +1,3114 @@
+{
+	"id": "K4MXdgCp7956",
+	"title": "Logflare",
+	"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+	"longDescription": "Consolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n### FREE\n* Logflare is free for up to 5,200,000 event logs per month. One request to your site is one event log.\n\n### NEW\n* Setup the Logflare Slack app to get alerts in your Slack channels!\n\n### Realtime\n* Stream logs to your browser in realtime\n\n### Alerts\n* Slack alerts with the Slack app\n* Email & SMS alerts to you and other team members\n* Trigger alerts as quickly as every 60 seconds\n\n### Search\n* Quickly search your Cloudflare logs\n* A simple Logflare Query Language lets you easily query structured data\n* Chart search results data to understand patterns easily \n* Save searches for quick analysis\n\n### Storage\n* 7 days of free log storage\n* Backed by Google BigQuery\n* Configure your own Google Cloud Platform account\n* Unlimited log storage when you bring your own BigQuery account\n\n### Dashboards\n* Build dashboards in Google Data Studio\n* Share Data Studio dashboards with your whole team\n\n### And more\n* Send custom logs via API request\n* Log routing\n* Display timestamps in local time or UTC\n* Share logs with public urls",
+	"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+	"alias": "logflare",
+	"orgId": "15bb3b1204d40e15413d371825e57ee6",
+	"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+		"https://images.cloudflareapps.com/i4D8Nzpocr42/logflare-query-language.png",
+		"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+		"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+		"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+	"author": "Logflare",
+	"tagline": "",
+	"website": "https://logflare.app",
+	"sourceURL": "https://github.com/logflare",
+	"termsOfServiceURL": "https://logflare.app/terms",
+	"privacyPolicyURL": "https://logflare.app/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "support@logflare.app",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "15bb3b1204d40e15413d371825e57ee6",
+			"created": "2019-02-15T22:38:13.803271345Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "-u0OYfUpUgfE"
+	},
+	"created": "2019-02-15T01:23:01.676239Z",
+	"org": {
+		"id": "15bb3b1204d40e15413d371825e57ee6",
+		"title": "",
+		"username": "15bb3b1204d40e15413d371825e57ee6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "First!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-u0OYfUpUgfE",
+			"metadata": {
+				"code": {
+					"sourceTag": "-u0OYfUpUgfE",
+					"uploadedOn": "2019-02-15T01:23:02.658010421Z"
+				}
+			},
+			"created": "2019-02-15T01:23:02.288896Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 1,000 log entries per source\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/sources-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-02-15T22:38:13.785217964Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-20T23:20:52.853626455Z"
+			}
+		},
+		{
+			"tag": "0.1.0",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added ability to configure log message with lots of request metadata field. \n\nCan sort metadata fields which sets the order of the fields in the log message.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wwUvYITLyq7x",
+			"metadata": {
+				"code": {
+					"sourceTag": "wwUvYITLyq7x",
+					"uploadedOn": "2019-03-06T21:01:21.577738168Z"
+				}
+			},
+			"created": "2019-03-04T14:40:51.34862Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 1,000 log entries per source\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/WYug7LgmKU8Y/Screen%20Shot%202019-03-06%20at%201.59.33%20PM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-03-06T21:06:39.129413405Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-03-06T21:31:05.019480551Z"
+			}
+		},
+		{
+			"tag": "0.1.1",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixes rate limiting some customers are seeing.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BnzNycDYoOzO",
+			"metadata": {
+				"code": {
+					"sourceTag": "BnzNycDYoOzO",
+					"uploadedOn": "2019-03-27T15:58:23.218827949Z"
+				}
+			},
+			"created": "2019-03-27T15:58:22.95937Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 1,000 log entries per source\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/e4bzbh1izqxC/cloudflare-featured-app-image.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-03-27T16:00:17.351490207Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-03-29T16:17:49.016868295Z"
+			}
+		},
+		{
+			"tag": "0.2.0",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Sending all request and response headers as metadata to Logflare\n* Added origin response time to metadata\n* Saving 7 days of logs in Google Big Query with metadata\n* Make dashboards from logs and metadata with Google Data Studio\n* If you logged in with your Google account the Big Query table is automatically available to query in your Google Cloud account, and also automatically available in your Google Data Studio\n* Easily inspect metadata from the log console in Logflare",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3OhzFOcZ8osV",
+			"metadata": {
+				"code": {
+					"sourceTag": "3OhzFOcZ8osV",
+					"uploadedOn": "2019-04-16T16:59:59.639476611Z"
+				}
+			},
+			"created": "2019-04-02T17:02:16.992776Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-16T17:00:00.195835111Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-04-16T18:28:48.538009229Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.1",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Sending all request and response headers as metadata to Logflare\n* Added origin response time to metadata\n* Saving 7 days of logs in Google Big Query with metadata\n* Make dashboards from logs and metadata with Google Data Studio\n* If you logged in with your Google account the Big Query table is automatically available to query in your Google Cloud account, and also automatically available in your Google Data Studio\n* Easily inspect metadata from the log console in Logflare",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rn9MMDezFBnr",
+			"metadata": {
+				"code": {
+					"sourceTag": "rn9MMDezFBnr",
+					"uploadedOn": "2019-04-16T18:28:47.898732672Z"
+				}
+			},
+			"created": "2019-04-16T18:28:47.653221Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-16T18:28:48.566571389Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:34:10.262490264Z"
+			}
+		},
+		{
+			"tag": "0.2.2",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "* Backoff if an API key changes or bad request to Logflare",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZZsca9Wjvi7l",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZZsca9Wjvi7l",
+					"uploadedOn": "2019-04-22T14:19:02.342438977Z"
+				}
+			},
+			"created": "2019-04-22T14:19:02.081999Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-22T14:19:02.901130081Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-22T15:51:19.507864083Z"
+			}
+		},
+		{
+			"tag": "0.2.3",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Adds request.cf data to metadata.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/A-tabc7mAZN3",
+			"metadata": {
+				"code": {
+					"sourceTag": "A-tabc7mAZN3",
+					"uploadedOn": "2019-04-23T20:40:29.693083458Z"
+				}
+			},
+			"created": "2019-04-23T20:40:29.445923Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-23T20:40:30.517383748Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-24T16:17:13.304501512Z"
+			}
+		},
+		{
+			"tag": "0.2.4",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Remove resources from install.json as we don't inject anything into your html",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/milR1tRHshct",
+			"metadata": {
+				"code": {
+					"sourceTag": "milR1tRHshct",
+					"uploadedOn": "2019-04-25T17:33:37.413347161Z"
+				}
+			},
+			"created": "2019-04-25T17:33:37.173007Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-25T17:33:38.12771989Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-04-25T17:39:34.285753431Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.5",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Remove resources from install.json as we don't inject anything into your html",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_IfW9L56T3Mq",
+			"metadata": {
+				"code": {
+					"sourceTag": "_IfW9L56T3Mq",
+					"uploadedOn": "2019-04-25T17:39:33.768759463Z"
+				}
+			},
+			"created": "2019-04-25T17:39:33.60686Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-25T17:39:34.309146529Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-04-25T18:05:20.648715403Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.6",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Remove resources from install.json as we don't inject anything into your html",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/js2VeWG0kdDq",
+			"metadata": {
+				"code": {
+					"sourceTag": "js2VeWG0kdDq",
+					"uploadedOn": "2019-04-25T18:04:53.069469748Z"
+				}
+			},
+			"created": "2019-04-25T18:04:52.830422Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-04-25T18:05:20.675534253Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-25T18:37:42.048572868Z"
+			}
+		},
+		{
+			"tag": "0.2.7",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Updated category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/js2VeWG0kdDq",
+			"created": "2019-04-30T15:08:35.197495Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Tail -f your Cloudflare logs.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zxkaIQ_FN-gf/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-04-30T15:08:35.564001328Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-30T15:08:58.728833188Z"
+			}
+		},
+		{
+			"tag": "0.2.8",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/api/v1/cloudflare/event",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "* added gallery image\n* added featured app image\n* update tile tagline",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/js2VeWG0kdDq",
+			"created": "2019-05-02T16:34:40.706867Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png",
+					"https://images.cloudflareapps.com/4khXZ41Axe9Q/google-data-studio-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BvlJ9Kv8DjVS/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-05-02T16:37:59.978562055Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-02T19:42:56.356507357Z"
+			}
+		},
+		{
+			"tag": "0.2.9",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Better rate limiting handling\n* Use passThroughOnException just in case",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XQ3hrkhW9B9J",
+			"metadata": {
+				"code": {
+					"sourceTag": "XQ3hrkhW9B9J",
+					"uploadedOn": "2019-05-13T22:10:41.480552505Z"
+				}
+			},
+			"created": "2019-05-13T22:10:41.24064Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png",
+					"https://images.cloudflareapps.com/4khXZ41Axe9Q/google-data-studio-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BvlJ9Kv8DjVS/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-05-13T22:12:09.301864764Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-05-13T22:23:56.488493159Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.10",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.83,
+				"upvotes": 5,
+				"downvotes": 1
+			},
+			"releaseNotes": "* Better rate limiting handling\n* Use passThroughOnException just in case",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uwkhATCHmPmk",
+			"metadata": {
+				"code": {
+					"sourceTag": "uwkhATCHmPmk",
+					"uploadedOn": "2019-05-13T22:23:35.466703217Z"
+				}
+			},
+			"created": "2019-05-13T22:23:35.25933Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png",
+					"https://images.cloudflareapps.com/4khXZ41Axe9Q/google-data-studio-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BvlJ9Kv8DjVS/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-05-13T22:23:56.508474394Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-14T15:39:51.867169051Z"
+			}
+		},
+		{
+			"tag": "0.3.0",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 10,
+				"downvotes": 0
+			},
+			"releaseNotes": "* IP address data enrichment option with IPInfo.io API key!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X32gLRoptlJQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "X32gLRoptlJQ",
+					"uploadedOn": "2019-05-22T19:09:07.986763252Z"
+				}
+			},
+			"created": "2019-05-22T19:09:07.779613Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/2RqhWzLmzHdL/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1TmywEhxbgen/Screen%20Shot%202019-03-27%20at%208.52.40%20AM.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/full-screenshot.png",
+					"https://images.cloudflareapps.com/rYPotAMh0TYd/options-screenshot.png",
+					"https://images.cloudflareapps.com/4khXZ41Axe9Q/google-data-studio-screenshot.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2WT-pxungMt2/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BvlJ9Kv8DjVS/cloudflare-featured-app.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-05-22T19:09:08.815197378Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-24T21:45:07.691965876Z"
+			}
+		},
+		{
+			"tag": "0.3.1",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Updated colors (new homepage too)\n* Check out our ipinfo.io integration",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X32gLRoptlJQ",
+			"created": "2019-06-25T20:52:07.431531Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-06-25T21:05:15.788475942Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-06-26T19:23:28.985613458Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.3.2",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "* Updated colors (new homepage too)\n* Fixed response content-length option to include in log message\n* Check out our ipinfo.io integration",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kt6eYglT-9Z9",
+			"metadata": {
+				"code": {
+					"sourceTag": "kt6eYglT-9Z9",
+					"uploadedOn": "2019-06-26T19:22:27.662255453Z"
+				}
+			},
+			"created": "2019-06-26T19:22:27.364965Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-06-26T19:23:29.013869744Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-27T15:39:52.417384058Z"
+			}
+		},
+		{
+			"tag": "0.3.3",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.92,
+				"upvotes": 23,
+				"downvotes": 2
+			},
+			"releaseNotes": "* Updated colors (new homepage too)\n* Check out our ipinfo.io integration",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kt6eYglT-9Z9",
+			"created": "2019-08-02T16:18:53.400161Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n* Free\n* Open source\n* Stream logs to your browser\n* Send custom logs via API request\n* Watch log files with the agent\n* 7 days of logs per source\n* Backed by Google Big Query\n* Available in your Google Data Studio\n* Up to 100 sources per account\n* Logs older than 30 days are deleted\n* Log routing\n* Local time & UTC\n* Share logs with public urls\n* Email & SMS alerts",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Chase Granberry",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://github.com/Logflare/logflare/blob/master/legal/terms.md",
+				"privacyPolicyURL": "https://github.com/Logflare/logflare/blob/master/legal/privacy.md",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-08-02T16:18:53.939164258Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-02T16:19:13.645157801Z"
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "* Notifications in Slack with the new Logflare Slack app\n* Going 1.0 as our Cloudflare worker and platform are stable\n* Batching in workers to fix occasional 429 status codes for sites with lots of programmatic API traffic",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g6NRktZUheu2",
+			"metadata": {
+				"code": {
+					"sourceTag": "g6NRktZUheu2",
+					"uploadedOn": "2019-12-26T18:13:30.512526382Z"
+				}
+			},
+			"created": "2019-12-06T16:54:29.017873Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n### NEW\n* Setup the Logflare Slack app to get alerts in your Slack channels!\n\n### Realtime\n* Stream logs to your browser in realtime\n\n### Alerts\n* Slack alerts with the Slack app\n* Email & SMS alerts to you and other team members\n* Trigger alerts as quickly as every 60 seconds\n\n### Search\n* Quickly search your Cloudflare logs\n* A simple Logflare Query Language lets you easily query structured data\n* Chart search results data to understand patterns easily \n* Save searches for quick analysis\n\n### Storage\n* 7 days of free log storage\n* Backed by Google BigQuery\n* Configure your own Google Cloud Platform account\n* Unlimited log storage when you bring your own BigQuery account\n\n### Dashboards\n* Build dashboards in Google Data Studio\n* Share Data Studio dashboards with your whole team\n\n### And more\n* Send custom logs via API request\n* Log routing\n* Display timestamps in local time or UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/i4D8Nzpocr42/logflare-query-language.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Logflare LLC",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://logflare.app/terms",
+				"privacyPolicyURL": "https://logflare.app/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-12-26T18:18:30.934434237Z",
+				"canceledByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"canceledAt": "2019-12-26T18:32:18.512502968Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Notifications in Slack with the new Logflare Slack app\n- Going 1.0 as our Cloudflare worker and platform are stable\n- Batching in workers to fix occasional 429 status codes for sites with lots of programmatic API traffic",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g6NRktZUheu2",
+			"created": "2019-12-26T18:32:18.327032Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n### NEW\n* Setup the Logflare Slack app to get alerts in your Slack channels!\n\n### Realtime\n* Stream logs to your browser in realtime\n\n### Alerts\n* Slack alerts with the Slack app\n* Email & SMS alerts to you and other team members\n* Trigger alerts as quickly as every 60 seconds\n\n### Search\n* Quickly search your Cloudflare logs\n* A simple Logflare Query Language lets you easily query structured data\n* Chart search results data to understand patterns easily \n* Save searches for quick analysis\n\n### Storage\n* 7 days of free log storage\n* Backed by Google BigQuery\n* Configure your own Google Cloud Platform account\n* Unlimited log storage when you bring your own BigQuery account\n\n### Dashboards\n* Build dashboards in Google Data Studio\n* Share Data Studio dashboards with your whole team\n\n### And more\n* Send custom logs via API request\n* Log routing\n* Display timestamps in local time or UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/i4D8Nzpocr42/logflare-query-language.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Logflare",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://logflare.app/terms",
+				"privacyPolicyURL": "https://logflare.app/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2019-12-26T18:32:18.53679034Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T17:01:31.989919369Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "* Notifications in Slack with the new Logflare Slack app\n* Going 1.0 as our Cloudflare worker and platform are stable\n* Batching in workers to fix occasional 429 status codes for sites with lots of programmatic API traffic",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VdGHjI3oYqG7",
+			"metadata": {
+				"code": {
+					"sourceTag": "VdGHjI3oYqG7",
+					"uploadedOn": "2020-01-20T16:41:21.94768456Z"
+				}
+			},
+			"created": "2020-01-20T16:41:21.723105Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Cosolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n### FREE\n* Logflare is free for up to 5,200,000 event logs per month. One request to your site is one event log.\n\n### NEW\n* Setup the Logflare Slack app to get alerts in your Slack channels!\n\n### Realtime\n* Stream logs to your browser in realtime\n\n### Alerts\n* Slack alerts with the Slack app\n* Email & SMS alerts to you and other team members\n* Trigger alerts as quickly as every 60 seconds\n\n### Search\n* Quickly search your Cloudflare logs\n* A simple Logflare Query Language lets you easily query structured data\n* Chart search results data to understand patterns easily \n* Save searches for quick analysis\n\n### Storage\n* 7 days of free log storage\n* Backed by Google BigQuery\n* Configure your own Google Cloud Platform account\n* Unlimited log storage when you bring your own BigQuery account\n\n### Dashboards\n* Build dashboards in Google Data Studio\n* Share Data Studio dashboards with your whole team\n\n### And more\n* Send custom logs via API request\n* Log routing\n* Display timestamps in local time or UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/i4D8Nzpocr42/logflare-query-language.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Logflare",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://logflare.app/terms",
+				"privacyPolicyURL": "https://logflare.app/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2020-01-20T16:41:48.503447053Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-21T17:12:09.880645837Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "K4MXdgCp7956",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"logflare"
+							],
+							"title": "Logflare Account",
+							"type": "object"
+						},
+						"ipInfoApiKey": {
+							"description": "Include your IPInfo.io API key and get enriched data on IP addresses.",
+							"format": "code",
+							"order": 6,
+							"required": false,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "IP Address Data Enrichment (optional)",
+							"type": "string"
+						},
+						"source": {
+							"description": "Which source should we send logs to?",
+							"enum": [
+								"signin"
+							],
+							"enumNames": {
+								"signin": "Sign in to select a source"
+							},
+							"order": 2,
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Source",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://logflare.app/webhooks/cloudflare/v1",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Logflare."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.87,
+				"upvotes": 55,
+				"downvotes": 8
+			},
+			"releaseNotes": "* Notifications in Slack with the new Logflare Slack app\n* Going 1.0 as our Cloudflare worker and platform are stable\n* Batching in workers to fix occasional 429 status codes for sites with lots of programmatic API traffic",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VdGHjI3oYqG7",
+			"created": "2020-01-31T21:32:28.514526Z",
+			"proposedApp": {
+				"id": "K4MXdgCp7956",
+				"title": "Logflare",
+				"shortDescription": "Inspect your Cloudflare logs. Analyze in Google Data Studio.",
+				"longDescription": "Consolidate all your logs with Logflare. From the edge to servers, bring all your logs to one place with Logflare.\n\n### FREE\n* Logflare is free for up to 5,200,000 event logs per month. One request to your site is one event log.\n\n### NEW\n* Setup the Logflare Slack app to get alerts in your Slack channels!\n\n### Realtime\n* Stream logs to your browser in realtime\n\n### Alerts\n* Slack alerts with the Slack app\n* Email & SMS alerts to you and other team members\n* Trigger alerts as quickly as every 60 seconds\n\n### Search\n* Quickly search your Cloudflare logs\n* A simple Logflare Query Language lets you easily query structured data\n* Chart search results data to understand patterns easily \n* Save searches for quick analysis\n\n### Storage\n* 7 days of free log storage\n* Backed by Google BigQuery\n* Configure your own Google Cloud Platform account\n* Unlimited log storage when you bring your own BigQuery account\n\n### Dashboards\n* Build dashboards in Google Data Studio\n* Share Data Studio dashboards with your whole team\n\n### And more\n* Send custom logs via API request\n* Log routing\n* Display timestamps in local time or UTC\n* Share logs with public urls",
+				"instructions": "When you sign up for Logflare you'll create a source. Sources are where your logs go. Simply add a source and complete the install process. The app will install a worker in your Cloudflare account that logs all request data to your Logflare source. The worker does this asynchronously so as to not slow down your website at all.",
+				"alias": "logflare",
+				"orgId": "15bb3b1204d40e15413d371825e57ee6",
+				"icon": "https://images.cloudflareapps.com/DpYi3Nbdiysu/logflare-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-management-dashboard.png",
+					"https://images.cloudflareapps.com/i4D8Nzpocr42/logflare-query-language.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-data-studio-dashboard-example.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-realtime.png",
+					"https://images.cloudflareapps.com/xNb5Nb2xPH_2/logflare-log-trace-zoomed.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Z-67-TpHFCng/cloudflare-logflare-tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/1bHtimXGIi7t/cloudflare-featured-app-image.png",
+				"author": "Logflare",
+				"tagline": "",
+				"website": "https://logflare.app",
+				"sourceURL": "https://github.com/logflare",
+				"termsOfServiceURL": "https://logflare.app/terms",
+				"privacyPolicyURL": "https://logflare.app/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@logflare.app",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-u0OYfUpUgfE"
+				},
+				"created": "2019-02-15T01:23:01.676239Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "15bb3b1204d40e15413d371825e57ee6",
+				"requestedAt": "2020-01-31T21:33:03.946130166Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-31T23:49:08.635625533Z"
+			}
+		}
+	]
+}

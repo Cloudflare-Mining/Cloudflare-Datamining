@@ -1,0 +1,922 @@
+{
+	"id": "ftSYTOLuWZbg",
+	"title": "cookiless",
+	"shortDescription": "Show a EU Cookie Acceptance Banner",
+	"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text and transparency of the banner.",
+	"instructions": "",
+	"alias": "",
+	"orgId": "29400b3d27174497b0d9bd8f09914af9",
+	"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+	],
+	"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+	"featuredAppImage": "",
+	"author": "Whevo",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": -1,
+	"supportEmail": "support@whevo.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "29400b3d27174497b0d9bd8f09914af9",
+			"created": "2017-07-30T10:47:42.674503334Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "7a6CsSRXVh7k"
+	},
+	"created": "2017-07-30T09:14:27.003997Z",
+	"org": {
+		"id": "29400b3d27174497b0d9bd8f09914af9",
+		"title": "",
+		"username": "29400b3d27174497b0d9bd8f09914af9",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7a6CsSRXVh7k",
+			"metadata": {
+				"code": {
+					"sourceTag": "7a6CsSRXVh7k",
+					"uploadedOn": "2017-07-30T09:14:28.987671669Z"
+				}
+			},
+			"created": "2017-07-30T09:14:28.027477Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text of the banner and its transparency.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2017-07-30T10:47:42.661456672Z",
+				"canceledByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"canceledAt": "2017-07-30T12:32:22.356218134Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gCX7hB2sjt7k",
+			"metadata": {
+				"code": {
+					"sourceTag": "gCX7hB2sjt7k",
+					"uploadedOn": "2017-07-30T12:31:56.608006834Z"
+				}
+			},
+			"created": "2017-07-30T12:31:55.316195Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text of the banner and its transparency.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2017-07-30T12:32:22.364324186Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-02T13:45:58.868827572Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"order": 2,
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.82,
+				"upvotes": 9,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ryrDhUOKo9Rk",
+			"metadata": {
+				"code": {
+					"sourceTag": "ryrDhUOKo9Rk",
+					"uploadedOn": "2017-08-02T14:10:59.038936109Z"
+				}
+			},
+			"created": "2017-08-02T14:10:24.547547Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text of the banner and its transparency.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2017-08-02T18:10:32.134008722Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-08-02T19:35:16.588640699Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"order": 2,
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Spelling/Formatting Fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VEqUcnfMIDRI",
+			"metadata": {
+				"code": {
+					"sourceTag": "VEqUcnfMIDRI",
+					"uploadedOn": "2018-09-05T18:01:46.554624028Z"
+				}
+			},
+			"created": "2017-09-06T23:30:05.938222Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text and transparency of the banner.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2018-09-05T18:01:47.851942478Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T17:10:22.697938506Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"order": 2,
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hdJVoo1RzDlN",
+			"metadata": {
+				"code": {
+					"sourceTag": "hdJVoo1RzDlN",
+					"uploadedOn": "2018-10-16T07:10:04.32357794Z"
+				}
+			},
+			"created": "2018-10-16T07:10:03.305206Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text and transparency of the banner.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2018-10-16T07:10:06.078879276Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-30T17:24:55.235433494Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"order": 2,
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hdJVoo1RzDlN",
+			"created": "2018-11-13T20:42:09.549211Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text and transparency of the banner.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:42:23.760612885Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:42:43.645248476Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "ftSYTOLuWZbg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "I Understand",
+							"order": 2,
+							"title": "Agree Button Text",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "By using this website, you agree that we and our partners may set cookies for purposes such as customising content and advertising.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for the policy",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.78,
+				"upvotes": 76,
+				"downvotes": 22
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HoMUCn6yXriP",
+			"metadata": {
+				"code": {
+					"sourceTag": "HoMUCn6yXriP",
+					"uploadedOn": "2019-01-03T08:50:14.209558772Z"
+				}
+			},
+			"created": "2019-01-03T08:50:13.625413Z",
+			"proposedApp": {
+				"id": "ftSYTOLuWZbg",
+				"title": "cookiless",
+				"shortDescription": "Show a EU Cookie Acceptance Banner",
+				"longDescription": "The app will add a bottom screen banner witch will inform the user about the cookie policy on your site. \n\nThe configuration screen  gives you the option to change the text and transparency of the banner.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "29400b3d27174497b0d9bd8f09914af9",
+				"icon": "//images.cloudflareapps.com/ozQ0DL5FSDONsQBYRaBm_file.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/HeMAEEgSHSGSfweSXt1G_Screenshot-2017-07-30-13.37.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rZHRs9bRWAxpko5jozeg_Untitled-1.png",
+				"featuredAppImage": "",
+				"author": "Whevo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@whevo.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7a6CsSRXVh7k"
+				},
+				"created": "2017-07-30T09:14:27.003997Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "29400b3d27174497b0d9bd8f09914af9",
+				"requestedAt": "2019-01-03T08:50:15.28571712Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-03T22:01:29.218744432Z"
+			}
+		}
+	]
+}

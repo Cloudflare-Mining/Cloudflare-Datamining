@@ -1,0 +1,1249 @@
+{
+	"id": "f615l8FwK2o9",
+	"title": "Bitcoin Price",
+	"shortDescription": "Keep your visitors updated on the latest Bitcoin prices.",
+	"longDescription": "Bitcoin Price shows the price of Bitcoin over the last 4 days.  You can show prices in USD, CAD, GBP, INR, CNY,  JPY and EUR.",
+	"instructions": "",
+	"alias": "coindesk-bitcoin-price",
+	"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+	"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/MOUF8JPTPCE7fI0b1LO4_screenshot-pale.png",
+		"//images.cloudflareapps.com/OAqLE1ZWQBKRRYieKLmK_screenshot-red.png",
+		"//images.cloudflareapps.com/Hl7GHh4SW6CtCjMLmtkQ_screenshot-black.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/uSYj4H3hQCy87nFKpKr4_tile.png",
+	"featuredAppImage": "",
+	"author": "Mohd Irtefa, Coindesk Inc",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "https://github.com/cloudflare-apps/coindesk-bitcoin-price",
+	"termsOfServiceURL": "https://www.coindesk.com/terms-conditions/",
+	"privacyPolicyURL": "https://www.coindesk.com/privacy-policy/",
+	"color": "#FDC117",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.1",
+	"infoVersion": "2.0.1",
+	"points": 500,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"e-commerce",
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+			"created": "2017-06-02T03:26:12.051746993Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "3oTfTJYtHJtO"
+	},
+	"created": "2017-06-02T03:25:47.019288Z",
+	"org": {
+		"id": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+		"title": "",
+		"username": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "e-commerce",
+			"title": "E-Commerce",
+			"description": "Tools to help your online business.",
+			"icon": "//eager-app-images.imgix.net/BM8DnzVSRaayB7T6mQ7i_e-commerce.png",
+			"points": 80,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "e-commerce.png",
+					"isWriteable": false,
+					"key": "BM8DnzVSRaayB7T6mQ7i_e-commerce.png",
+					"mimetype": "image/png",
+					"size": 3995,
+					"url": "https://www.filepicker.io/api/file/wi5zZPnnQUykdnIYXznC"
+				}
+			},
+			"created": "2016-01-21T18:06:06.038208Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v0.0.1",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"gbp",
+								"eur",
+								"inr",
+								"cny"
+							],
+							"enumNames": {
+								"cny": "CNY",
+								"eur": "EUR",
+								"gbp": "GBP",
+								"inr": "INR",
+								"usd": "USD"
+							},
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uVIRTZYCxg5O",
+			"metadata": {
+				"code": {
+					"sourceTag": "uVIRTZYCxg5O",
+					"uploadedOn": "2017-06-02T19:39:12.537450859Z"
+				}
+			},
+			"created": "2017-06-02T19:39:12.275184Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price Widget",
+				"shortDescription": "Bitcoin Price Widget shows the price of Bitcoin.",
+				"longDescription": "Bitcoin Price Widget shows the price of Bitcoin over the last 4 days.  You can show pick among USD, GBP, INR, CNY and EUR.",
+				"instructions": "Just drag and drop!",
+				"alias": "bitcoin-price-widget",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uAox38i6SZWTo2LcvUrh_Screen Shot 2017-06-01 at 10.52.26 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa",
+				"tagline": "",
+				"website": "https://gitlab.com/irtefa/bitcoin-price-widget",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"requestedAt": "2017-06-02T19:39:16.954920783Z",
+				"canceledByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"canceledAt": "2017-06-02T19:41:15.221121541Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.0",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"gbp",
+								"eur",
+								"inr",
+								"cny"
+							],
+							"enumNames": {
+								"cny": "CNY",
+								"eur": "EUR",
+								"gbp": "GBP",
+								"inr": "INR",
+								"usd": "USD"
+							},
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3oTfTJYtHJtO",
+			"metadata": {
+				"code": {
+					"sourceTag": "3oTfTJYtHJtO",
+					"uploadedOn": "2017-06-02T03:25:47.990184568Z"
+				}
+			},
+			"created": "2017-06-02T03:25:47.479174Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price Widget",
+				"shortDescription": "Bitcoin Price Widget shows the price of Bitcoin.",
+				"longDescription": "Bitcoin Price Widget shows the price of Bitcoin over the last 4 days.  You can show pick among USD, GBP, INR, CNY and EUR.",
+				"instructions": "Just drag and drop!",
+				"alias": "bitcoin-price-widget",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uAox38i6SZWTo2LcvUrh_Screen Shot 2017-06-01 at 10.52.26 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa",
+				"tagline": "",
+				"website": "https://gitlab.com/irtefa/bitcoin-price-widget",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"requestedAt": "2017-06-02T03:26:11.986564045Z",
+				"canceledByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"canceledAt": "2017-06-02T19:39:16.946639901Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"gbp",
+								"eur",
+								"inr",
+								"cny"
+							],
+							"enumNames": {
+								"cny": "CNY",
+								"eur": "EUR",
+								"gbp": "GBP",
+								"inr": "INR",
+								"usd": "USD"
+							},
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_8oZZOmuS6dj",
+			"metadata": {
+				"code": {
+					"sourceTag": "_8oZZOmuS6dj",
+					"uploadedOn": "2017-06-02T19:41:14.570601068Z"
+				}
+			},
+			"created": "2017-06-02T19:41:14.438966Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price Widget",
+				"shortDescription": "Bitcoin Price Widget shows the price of Bitcoin.",
+				"longDescription": "Bitcoin Price Widget shows the price of Bitcoin over the last 4 days.  You can show pick among USD, GBP, INR, CNY and EUR.",
+				"instructions": "Just drag and drop!",
+				"alias": "bitcoin-price-widget",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uAox38i6SZWTo2LcvUrh_Screen Shot 2017-06-01 at 10.52.26 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa",
+				"tagline": "",
+				"website": "https://gitlab.com/irtefa/bitcoin-price-widget",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"requestedAt": "2017-06-02T19:41:15.224118736Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-02T21:20:17.45500739Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"order": 3,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"cad",
+								"gbp",
+								"eur",
+								"inr",
+								"cny",
+								"jpy"
+							],
+							"enumNames": {
+								"cad": "CAD ($)",
+								"cny": "CNY (¥)",
+								"eur": "EUR (€)",
+								"gbp": "GBP (£)",
+								"inr": "INR (₹)",
+								"jpy": "JPY (¥)",
+								"usd": "USD ($)"
+							},
+							"order": 1,
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"order": 4,
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setLocation(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"textColor",
+								"backgroundColor",
+								"graphColor"
+							],
+							"execute": "INSTALL_SCOPE.setColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"currency"
+							],
+							"execute": "INSTALL_SCOPE.setCurrency(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7tjT5J6uIS5D",
+			"metadata": {
+				"code": {
+					"sourceTag": "7tjT5J6uIS5D",
+					"uploadedOn": "2017-06-02T21:42:03.427305324Z"
+				}
+			},
+			"created": "2017-06-02T21:41:31.68652Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price Widget",
+				"shortDescription": "Bitcoin Price shows the price of Bitcoin in a widget.",
+				"longDescription": "Bitcoin Price shows the price of Bitcoin over the last 4 days.  You can show pick among USD, CAD, GBP, INR, CNY,  JPY and EUR.",
+				"instructions": "Just drag and drop!",
+				"alias": "bitcoin-price",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uAox38i6SZWTo2LcvUrh_Screen Shot 2017-06-01 at 10.52.26 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa",
+				"tagline": "",
+				"website": "https://gitlab.com/irtefa/bitcoin-price-widget",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"requestedAt": "2017-06-02T21:42:09.061443643Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-06-02T21:48:46.585714346Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"order": 3,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"cad",
+								"gbp",
+								"eur",
+								"inr",
+								"cny",
+								"jpy"
+							],
+							"enumNames": {
+								"cad": "CAD ($)",
+								"cny": "CNY (¥)",
+								"eur": "EUR (€)",
+								"gbp": "GBP (£)",
+								"inr": "INR (₹)",
+								"jpy": "JPY (¥)",
+								"usd": "USD ($)"
+							},
+							"order": 1,
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"order": 4,
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setLocation(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"textColor",
+								"backgroundColor",
+								"graphColor"
+							],
+							"execute": "INSTALL_SCOPE.setColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"currency"
+							],
+							"execute": "INSTALL_SCOPE.setCurrency(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7tjT5J6uIS5D",
+			"created": "2017-06-02T21:48:46.361976Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price",
+				"shortDescription": "Keep your visitors updated on the latest Bitcoin prices.",
+				"longDescription": "Bitcoin Price shows the price of Bitcoin over the last 4 days.  You can show prices in USD, CAD, GBP, INR, CNY,  JPY and EUR.",
+				"instructions": "",
+				"alias": "bitcoin-price",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/8C4XBgAtTOW6J7Hq5Gm7_btc.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-02T21:48:46.609279012Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-02T21:49:29.082059457Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"order": 3,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"cad",
+								"gbp",
+								"eur",
+								"inr",
+								"cny",
+								"jpy"
+							],
+							"enumNames": {
+								"cad": "CAD ($)",
+								"cny": "CNY (¥)",
+								"eur": "EUR (€)",
+								"gbp": "GBP (£)",
+								"inr": "INR (₹)",
+								"jpy": "JPY (¥)",
+								"usd": "USD ($)"
+							},
+							"order": 1,
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"order": 4,
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setLocation(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"textColor",
+								"backgroundColor",
+								"graphColor"
+							],
+							"execute": "INSTALL_SCOPE.setColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"currency"
+							],
+							"execute": "INSTALL_SCOPE.setCurrency(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "- Fixed issues surrounding HTTPS.\n- Added new screenshots.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/x51NX2nBSzcj",
+			"metadata": {
+				"code": {
+					"sourceTag": "x51NX2nBSzcj",
+					"uploadedOn": "2017-11-07T12:44:35.779397778Z"
+				}
+			},
+			"created": "2017-11-07T12:44:35.337805Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price",
+				"shortDescription": "Keep your visitors updated on the latest Bitcoin prices.",
+				"longDescription": "Bitcoin Price shows the price of Bitcoin over the last 4 days.  You can show prices in USD, CAD, GBP, INR, CNY,  JPY and EUR.",
+				"instructions": "",
+				"alias": "coindesk-bitcoin-price",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MOUF8JPTPCE7fI0b1LO4_screenshot-pale.png",
+					"//images.cloudflareapps.com/OAqLE1ZWQBKRRYieKLmK_screenshot-red.png",
+					"//images.cloudflareapps.com/Hl7GHh4SW6CtCjMLmtkQ_screenshot-black.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/uSYj4H3hQCy87nFKpKr4_tile.png",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa, Coindesk Inc",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/coindesk-bitcoin-price",
+				"termsOfServiceURL": "https://www.coindesk.com/terms-conditions/",
+				"privacyPolicyURL": "https://www.coindesk.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-07T13:07:11.827960812Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-07T13:10:57.289706643Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "f615l8FwK2o9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/Chart.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#2B3035",
+							"format": "color",
+							"order": 3,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"currency": {
+							"default": "usd",
+							"enum": [
+								"usd",
+								"cad",
+								"gbp",
+								"eur",
+								"inr",
+								"cny",
+								"jpy"
+							],
+							"enumNames": {
+								"cad": "CAD ($)",
+								"cny": "CNY (¥)",
+								"eur": "EUR (€)",
+								"gbp": "GBP (£)",
+								"inr": "INR (₹)",
+								"jpy": "JPY (¥)",
+								"usd": "USD ($)"
+							},
+							"order": 1,
+							"title": "Currency",
+							"type": "string"
+						},
+						"graphColor": {
+							"default": "#F1C40F",
+							"format": "color",
+							"order": 4,
+							"title": "Graph Color",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setLocation(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"textColor",
+								"backgroundColor",
+								"graphColor"
+							],
+							"execute": "INSTALL_SCOPE.setColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"currency"
+							],
+							"execute": "INSTALL_SCOPE.setCurrency(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.28,
+				"upvotes": 15,
+				"downvotes": 38
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/x51NX2nBSzcj",
+			"created": "2018-01-23T20:17:50.45623Z",
+			"proposedApp": {
+				"id": "f615l8FwK2o9",
+				"title": "Bitcoin Price",
+				"shortDescription": "Keep your visitors updated on the latest Bitcoin prices.",
+				"longDescription": "Bitcoin Price shows the price of Bitcoin over the last 4 days.  You can show prices in USD, CAD, GBP, INR, CNY,  JPY and EUR.",
+				"instructions": "",
+				"alias": "coindesk-bitcoin-price",
+				"orgId": "4b2c4c9c0b10ad5270211d08a0ab3dc6",
+				"icon": "//images.cloudflareapps.com/fIhIcIrqQR6FP3p0Bizs_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MOUF8JPTPCE7fI0b1LO4_screenshot-pale.png",
+					"//images.cloudflareapps.com/OAqLE1ZWQBKRRYieKLmK_screenshot-red.png",
+					"//images.cloudflareapps.com/Hl7GHh4SW6CtCjMLmtkQ_screenshot-black.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/uSYj4H3hQCy87nFKpKr4_tile.png",
+				"featuredAppImage": "",
+				"author": "Mohd Irtefa, Coindesk Inc",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/coindesk-bitcoin-price",
+				"termsOfServiceURL": "https://www.coindesk.com/terms-conditions/",
+				"privacyPolicyURL": "https://www.coindesk.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"e-commerce",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3oTfTJYtHJtO"
+				},
+				"created": "2017-06-02T03:25:47.019288Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:17:50.731584257Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:18:06.962708501Z"
+			}
+		}
+	]
+}

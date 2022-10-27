@@ -1,0 +1,788 @@
+{
+	"id": "eY9BkS4qWc6b",
+	"title": "Hidden redirect (iFrame redirect)",
+	"shortDescription": "Seamlessly redirect to another URL",
+	"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+	"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+	"alias": "hidden-redirect",
+	"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+	"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Thomas Taschauer",
+	"tagline": "",
+	"website": "https://blog.tomtasche.at/2018/12/custom-domain-for-google-mybusiness.html",
+	"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+	"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+	"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 0,
+	"supportEmail": "tomtasche+cloudflare@gmail.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "733361072f2f2ea8268b7efde84b7b6a",
+			"created": "2018-11-24T21:37:42.733930914Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "j80TvHgx7KwP"
+	},
+	"created": "2018-11-24T21:26:14.771638Z",
+	"org": {
+		"id": "733361072f2f2ea8268b7efde84b7b6a",
+		"title": "",
+		"username": "733361072f2f2ea8268b7efde84b7b6a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"domain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.tomtasche.at",
+						"ttl": 120
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/j80TvHgx7KwP",
+			"metadata": {
+				"code": {
+					"sourceTag": "j80TvHgx7KwP",
+					"uploadedOn": "2018-11-24T21:26:16.378878006Z"
+				}
+			},
+			"created": "2018-11-24T21:26:15.883001Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2018-11-24T21:37:42.724791214Z",
+				"canceledByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"canceledAt": "2018-12-18T19:06:37.131243965Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"domain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.tomtasche.at",
+						"ttl": 120
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/j80TvHgx7KwP",
+			"created": "2018-12-18T19:04:10.977612Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/",
+				"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+				"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+				"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2018-12-18T19:06:37.160646973Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-20T23:58:48.587083609Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.tomtasche.at",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "fix \"DNS validation error\" during setup",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-Wh3nQsVuC3g",
+			"metadata": {
+				"code": {
+					"sourceTag": "-Wh3nQsVuC3g",
+					"uploadedOn": "2019-03-30T14:47:56.172900578Z"
+				}
+			},
+			"created": "2019-03-30T14:47:24.154814Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/2018/12/custom-domain-for-google-mybusiness.html",
+				"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+				"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+				"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2019-03-30T14:49:11.432139727Z",
+				"canceledByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"canceledAt": "2019-03-30T15:00:56.092385008Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.tomtasche.at",
+						"ttl": 120,
+						"proxied": true
+					}
+				]
+			},
+			"releaseNotes": "fix \"DNS validation error\" during setup",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/03Ju9D1XmJWx",
+			"metadata": {
+				"code": {
+					"sourceTag": "03Ju9D1XmJWx",
+					"uploadedOn": "2019-03-30T15:00:18.913915257Z"
+				}
+			},
+			"created": "2019-03-30T15:00:18.279348Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/2018/12/custom-domain-for-google-mybusiness.html",
+				"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+				"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+				"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2019-03-30T15:00:56.114295901Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-05T16:29:32.634251964Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.tomtasche.at",
+						"ttl": 120,
+						"proxied": true
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.29,
+				"upvotes": 2,
+				"downvotes": 5
+			},
+			"releaseNotes": "fix \"DNS validation error\" during setup",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Xaofvs5YMz9I",
+			"metadata": {
+				"code": {
+					"sourceTag": "Xaofvs5YMz9I",
+					"uploadedOn": "2019-04-05T18:13:25.603506036Z"
+				}
+			},
+			"created": "2019-04-05T18:13:24.417187Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/2018/12/custom-domain-for-google-mybusiness.html",
+				"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+				"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+				"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2019-04-05T18:13:27.373532932Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:48:15.468278781Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "eY9BkS4qWc6b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain": {
+							"default": "www",
+							"description": "Which subdomain to redirect from?",
+							"format": "text",
+							"order": 0,
+							"title": "Subdomain",
+							"type": "string"
+						},
+						"target": {
+							"default": "https://blog.tomtasche.at/",
+							"description": "Where to redirect to?",
+							"format": "url",
+							"order": 1,
+							"title": "Target",
+							"type": "string"
+						},
+						"title": {
+							"default": "Best Website Ever!",
+							"description": "What title to show on the page?",
+							"format": "text",
+							"order": 0,
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "{{options.subdomain}}",
+						"content": "redirect-hole.web.app",
+						"ttl": 120,
+						"proxied": true
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.08,
+				"upvotes": 6,
+				"downvotes": 72
+			},
+			"releaseNotes": "workaround 1014 Cloudflare error",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4faoCMdZBT4u",
+			"metadata": {
+				"code": {
+					"sourceTag": "4faoCMdZBT4u",
+					"uploadedOn": "2019-11-21T23:12:18.737643352Z"
+				}
+			},
+			"created": "2019-11-21T23:12:18.494234Z",
+			"proposedApp": {
+				"id": "eY9BkS4qWc6b",
+				"title": "Hidden redirect (iFrame redirect)",
+				"shortDescription": "Seamlessly redirect to another URL",
+				"longDescription": "Hidden redirect allows you to quickly create subdomains that seamlessly redirect users to another URL - without changing the URL shown in the address bar. This is done using an iFrame redirect (full-screen iFrame).\n\nA hidden redirect is useful for assigning a custom domain to another website which does not support custom domains otherwise. For example, you can use this to make your Google MyBusiness website reachable via your own domain rather than the \".business.site\"-domain assigned by Google.",
+				"instructions": "Specify which subdomain should be created on your domain, then specify what page title to show on that subdomain and where to redirect the user to.",
+				"alias": "hidden-redirect",
+				"orgId": "733361072f2f2ea8268b7efde84b7b6a",
+				"icon": "https://images.cloudflareapps.com/qGHx4Rs5P5mo/iconfinder_Arrow_doodle_05_3847906.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Thomas Taschauer",
+				"tagline": "",
+				"website": "https://blog.tomtasche.at/2018/12/custom-domain-for-google-mybusiness.html",
+				"sourceURL": "https://github.com/TomTasche/cloudflare-hidden-redirect",
+				"termsOfServiceURL": "https://blog.tomtasche.at/p/terms-and-conditions.html",
+				"privacyPolicyURL": "https://blog.tomtasche.at/p/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "tomtasche+cloudflare@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "j80TvHgx7KwP"
+				},
+				"created": "2018-11-24T21:26:14.771638Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "733361072f2f2ea8268b7efde84b7b6a",
+				"requestedAt": "2019-11-21T23:12:19.428745909Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-25T19:07:00.734088603Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1875 @@
+{
+	"id": "Y3q71SbDiyfO",
+	"title": "Smartarget Telegram - Contact Us",
+	"shortDescription": "Allow customers to contact you using Telegram",
+	"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+	"instructions": "",
+	"alias": "smartarget-telegram-contact-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/eK_nLKuAt2ks/Telegram%20Contact%20Us.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-1-desktop.png",
+		"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-2-desktop.png",
+		"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/2M2NaDSbOAyL/Telegram%20Contact%20Us.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/HzUe8fmDaAJw/Telegram%20Contact%20Us.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online/demo.html",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-04-17T16:55:25.888692817Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "8kb5cVdw0SUk"
+	},
+	"created": "2020-04-15T08:22:56.099247Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the telegram icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram  position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your telegram account",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version of Telegram Contact Us!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8kb5cVdw0SUk",
+			"metadata": {
+				"code": {
+					"sourceTag": "8kb5cVdw0SUk",
+					"uploadedOn": "2020-04-15T08:22:59.016190678Z"
+				}
+			},
+			"created": "2020-04-15T08:22:57.261469Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Telegram - Contact Us",
+				"shortDescription": "Add Telegram chat to your site",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/RqOENmPYVaYy/600px-Telegram_2019_Logo.svg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.21.05.png",
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.22.26.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ou_P5rhG3sDr/telegram420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-04-17T16:55:25.880561912Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T17:49:44.063616623Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the telegram icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram  position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your telegram account",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social & Communication",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8kb5cVdw0SUk",
+			"created": "2020-04-17T17:51:39.173189Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Telegram - Contact Us",
+				"shortDescription": "Add Telegram chat to your site",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/RqOENmPYVaYy/600px-Telegram_2019_Logo.svg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.21.05.png",
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.22.26.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ou_P5rhG3sDr/telegram420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-04-17T17:51:39.504681206Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T17:51:51.996847091Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the telegram icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram  position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your telegram account",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Trckoz43oRsr",
+			"metadata": {
+				"code": {
+					"sourceTag": "Trckoz43oRsr",
+					"uploadedOn": "2020-06-07T18:53:04.783886261Z"
+				}
+			},
+			"created": "2020-06-07T18:53:04.292427Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Telegram - Contact Us",
+				"shortDescription": "Add Telegram chat to your site",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/RqOENmPYVaYy/600px-Telegram_2019_Logo.svg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.21.05.png",
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.22.26.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ou_P5rhG3sDr/telegram420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_TELEGRAM_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_TELEGRAM_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-06-07T20:28:48.984827725Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-08T15:53:30.957880156Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the telegram icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram  position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your telegram account",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.71,
+				"upvotes": 5,
+				"downvotes": 2
+			},
+			"releaseNotes": "We fixed some bugs to make the product better :)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YJSfu_Mjo8WC",
+			"metadata": {
+				"code": {
+					"sourceTag": "YJSfu_Mjo8WC",
+					"uploadedOn": "2020-06-11T10:33:48.575438455Z"
+				}
+			},
+			"created": "2020-06-11T10:33:48.129613Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Telegram - Contact Us",
+				"shortDescription": "Add Telegram chat to your site",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/RqOENmPYVaYy/600px-Telegram_2019_Logo.svg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.21.05.png",
+					"https://images.cloudflareapps.com/7vz5okSEhtDa/Screen%20Shot%202020-04-15%20at%2010.22.26.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/ou_P5rhG3sDr/telegram420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Telegram  icon on Homepage only",
+						"longDescription": "Show the Telegram icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"longDescription": "Get Telegram and free more apps (include telegram) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-06-11T10:33:49.754311142Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-11T22:43:36.131315634Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Telegram - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your Telegram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "New images and screenshots",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XHSZCnoKEIU6",
+			"metadata": {
+				"code": {
+					"sourceTag": "XHSZCnoKEIU6",
+					"uploadedOn": "2020-10-22T14:32:47.78162202Z"
+				}
+			},
+			"created": "2020-10-22T14:31:52.620337Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Smartarget Telegram - Contact Us",
+				"shortDescription": "Allow customers to contact you using Telegram",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "smartarget-telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/eK_nLKuAt2ks/Telegram%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/mQnLKB71QAGd/Telegram%20Contact%20Us.png",
+					"https://images.cloudflareapps.com/jRPWQJOTVuOq/Telegram%20Contact%20Us.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2M2NaDSbOAyL/Telegram%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/HzUe8fmDaAJw/Telegram%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-26T14:32:41.34530669Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T15:46:27.126199933Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "Y3q71SbDiyfO",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_telegram'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Telegram - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"telegram": {
+							"default": "",
+							"description": "Your Telegram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Telegram account",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XHSZCnoKEIU6",
+			"created": "2021-11-09T15:08:41.281214Z",
+			"proposedApp": {
+				"id": "Y3q71SbDiyfO",
+				"title": "Smartarget Telegram - Contact Us",
+				"shortDescription": "Allow customers to contact you using Telegram",
+				"longDescription": "If you use Telegram - you can allow your visitors to  approach you via Telegram in one click.\n\nWith 'Telegram - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Telegram chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "smartarget-telegram-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/eK_nLKuAt2ks/Telegram%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-1-desktop.png",
+					"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-2-desktop.png",
+					"https://images.cloudflareapps.com/N7QveTLdnZph/telegram-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/2M2NaDSbOAyL/Telegram%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/HzUe8fmDaAJw/Telegram%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8kb5cVdw0SUk"
+				},
+				"created": "2020-04-15T08:22:56.099247Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:08:41.907234312Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:17:57.248597053Z"
+			}
+		}
+	]
+}

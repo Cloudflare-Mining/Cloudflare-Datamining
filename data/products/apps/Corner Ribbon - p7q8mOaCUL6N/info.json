@@ -1,0 +1,1141 @@
+{
+	"id": "p7q8mOaCUL6N",
+	"title": "Corner Ribbon",
+	"shortDescription": "Add a ribbon to the corner of your site.",
+	"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+	"instructions": "",
+	"alias": "corner-ribbon",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+		"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/TKXIUIfSwqTM7bgAMfeA_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F17D6A",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.3",
+	"infoVersion": "1.1.3",
+	"points": 2,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:54:10.2789016Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "XgPH7tiuzqGE"
+	},
+	"created": "2017-06-06T13:05:37.644486Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"metadata": {
+				"code": {
+					"sourceTag": "XgPH7tiuzqGE",
+					"uploadedOn": "2017-06-06T13:05:39.330842421Z"
+				}
+			},
+			"created": "2017-06-06T13:05:38.607418Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your website.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DnNFHKMmSzGrXPmfBDQA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-06T13:12:36.538161531Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-06T13:13:14.857584279Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"created": "2017-06-14T03:52:10.964988Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your site.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DnNFHKMmSzGrXPmfBDQA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-14T03:52:16.774494272Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T04:15:00.468868134Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"created": "2017-06-14T08:15:33.93895Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your site.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/TKXIUIfSwqTM7bgAMfeA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-14T08:15:41.11779976Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-14T08:16:01.084315913Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"created": "2017-07-06T08:54:10.068045Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your site.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/TKXIUIfSwqTM7bgAMfeA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:54:10.27535273Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:53.723886289Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 10,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"created": "2018-01-23T19:34:53.069197Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your site.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/TKXIUIfSwqTM7bgAMfeA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:34:53.469416723Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:34:59.945752648Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "p7q8mOaCUL6N",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 6,
+							"title": "Ribbon color",
+							"type": "string"
+						},
+						"color": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 5,
+							"placeholder": "#ffffff",
+							"title": "Text color",
+							"type": "string"
+						},
+						"fontSize": {
+							"default": "normal",
+							"enum": [
+								"small",
+								"normal",
+								"large",
+								"huge"
+							],
+							"enumNames": {
+								"huge": "Huge",
+								"large": "Large",
+								"normal": "Normal",
+								"small": "Small"
+							},
+							"order": 9,
+							"title": "Font size",
+							"type": "string"
+						},
+						"href": {
+							"description": "Optionally make the ribbon a clickable link.",
+							"order": 2,
+							"placeholder": "https://...",
+							"title": "URL",
+							"type": "string"
+						},
+						"position": {
+							"default": "top-right",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left corner",
+								"bottom-right": "Bottom right corner",
+								"top-left": "Top left corner",
+								"top-right": "Top right corner"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Position",
+							"type": "string"
+						},
+						"targetBlank": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"href": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Open link in new tab",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Check this out!",
+							"order": 1,
+							"title": "Text",
+							"type": "string"
+						},
+						"width": {
+							"default": 180,
+							"description": "Enter a value between <code class=\"inline\">100</code> and <code class=\"inline\">500</code>. (Unit is <code class=\"inline\">px</code>.)",
+							"order": 8,
+							"placeholder": 180,
+							"title": "Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.91,
+				"upvotes": 20,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XgPH7tiuzqGE",
+			"created": "2018-11-13T20:36:20.076608Z",
+			"proposedApp": {
+				"id": "p7q8mOaCUL6N",
+				"title": "Corner Ribbon",
+				"shortDescription": "Add a ribbon to the corner of your site.",
+				"longDescription": "Add a ribbon to the corner of your website.\n\n# Features\n\n- Linking to different sites.\n- Custom text and background colors.\n- Different sizes.",
+				"instructions": "",
+				"alias": "corner-ribbon",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/UpoUkxdzQB6Dpj3wpn3Z_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/k31w0PQUWI5ERED0Mdeg_screenshot-2.png",
+					"//images.cloudflareapps.com/kTvvlkH2RiWs1tqJFxlx_screenshot-1.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/TKXIUIfSwqTM7bgAMfeA_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XgPH7tiuzqGE"
+				},
+				"created": "2017-06-06T13:05:37.644486Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:36:24.000564095Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:43:36.686302241Z"
+			}
+		}
+	]
+}

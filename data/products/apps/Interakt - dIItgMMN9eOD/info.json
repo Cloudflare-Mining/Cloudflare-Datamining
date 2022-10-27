@@ -1,0 +1,784 @@
+{
+	"id": "dIItgMMN9eOD",
+	"title": "Interakt",
+	"shortDescription": "Convert your visitors into loyal customers with live chat, notifications, and more.",
+	"longDescription": "# Customer analysis, marketing, and support. Simplified.\nOur integrated CRM, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\n## Capture. Engage. Retain.\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n## Features\n\n### 360° Lead Capture\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\n### Consolidate User Data\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\n### Powerful Email Automation\n\nCustomize and track your automated marketing & transactional emails.\n\n### Engage With Live Chat\n\nEngage with your visitors and provide live support to existing users with the Interakt chat widget.\n\n### Keep Users Informed\n\nAnnounce new features or target segments with special offers and web notifications.\n\n### Gather Feedback & Retain\n\nCreate feedback forms to gather suggestions, ideas, & issues.",
+	"instructions": "<p class=\"message info\">\nThis app account requires a free Interakt account.\n<br>\n<a href=\"https://interakt.co\" target=\"blank\" class=\"more\">Sign up now</a>\n</p>",
+	"alias": "interakt",
+	"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+	"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+		"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+		"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+		"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+		"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+	"featuredAppImage": "",
+	"author": "Fizzy Software Pvt. Ltd.",
+	"tagline": "",
+	"website": "https://interakt.co/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://interakt.co/terms",
+	"privacyPolicyURL": "https://interakt.co/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 200,
+	"supportEmail": "support@interakt.co",
+	"products": [],
+	"categoryIds": [
+		"marketing",
+		"social-and-communication",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "c3f9786b291aed7b9c91972a4b107e83",
+			"created": "2017-08-21T05:40:11.021428914Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "qDd3s7_HxzMF"
+	},
+	"created": "2017-08-17T13:23:37.812484Z",
+	"org": {
+		"id": "c3f9786b291aed7b9c91972a4b107e83",
+		"title": "",
+		"username": "c3f9786b291aed7b9c91972a4b107e83",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"configuration": {
+							"order": 0,
+							"properties": {
+								"appid": {
+									"description": "Enter your Interakt app-id",
+									"format": "element",
+									"maxLength": 32,
+									"order": 1,
+									"placeholder": "24abd137ef9bhg5da5e5d601d4dcf61d",
+									"required": true,
+									"title": "App Id",
+									"type": "string"
+								}
+							},
+							"title": "Configuration",
+							"type": "object"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pwbKCtdsQVI3",
+			"metadata": {
+				"code": {
+					"sourceTag": "pwbKCtdsQVI3",
+					"uploadedOn": "2017-08-18T12:09:56.768904287Z"
+				}
+			},
+			"created": "2017-08-17T13:23:39.332856Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Simple All-in-One Customer Engagement platform",
+				"longDescription": "INTERAKT\n\nInterakt.co simplifies customer data analysis, marketing and support. Our integrated crm, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\nCAPTURE.ENGAGE.RETAIN\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n360° LEAD CAPTURE\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\nCONSOLIDATE USER DATA\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\nPOWERFUL EMAIL AUTOMATION\n\nCustomize templates to send automated marketing & transactional emails. Engage users and view email stats.\n\nENGAGE WITH LIVE CHAT\n\nEngage visitors & provide live support to existing users. Use a customizable chat window or the offline mode.\n\nKEEP USERS INFORMED\n\nAnnounce new features or target segments with special offers. Use customizable & trackable web notifications.\n\nGATHER FEEDBACK & RETAIN\n\nCreate feedback forms to gather suggestions, ideas, & issues. Analyze all this in one place to improve.",
+				"instructions": "Install and Configure Interakt-\n\nStep 1\nCreate an Interakt account and login\nCreate a new project for your website hosted on CloudFlare\nNavigate to Settings->API->click \"copy code\" for App Id\n\nStep 2\nAfter successfully creating an account and a project on interakt.co, login to your CloudFlare account\nIn 'Apps' section, search for the Interakt app \nClick on the app, click preview\nPaste the app-Id copied from Interakt account on install page \nClick on install button",
+				"alias": "simple-all-in-one-customer-engagement-platform",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/4UiSnM9tSVu9SrZmFHAF_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-05-45.png",
+					"//images.cloudflareapps.com/KI9FykZFSpqR8J0TZPUY_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-08-59.png",
+					"//images.cloudflareapps.com/LC6Ft9nwQ3cnofKCaAxh_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-18-02.png",
+					"//images.cloudflareapps.com/aqyzXH6jQrPyl8G9MJX6_screenshot-www.cloudflare.com-2017-08-18-14-56-45.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "http://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "c3f9786b291aed7b9c91972a4b107e83",
+				"requestedAt": "2017-08-21T05:40:11.002589517Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-23T06:00:08.049873977Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"configuration": {
+							"order": 0,
+							"properties": {
+								"appid": {
+									"description": "Enter your Interakt app-id",
+									"format": "element",
+									"maxLength": 32,
+									"order": 1,
+									"required": true,
+									"title": "App Id",
+									"type": "string"
+								}
+							},
+							"title": "Configuration",
+							"type": "object"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/td5V9eNFZxsW",
+			"metadata": {
+				"code": {
+					"sourceTag": "td5V9eNFZxsW",
+					"uploadedOn": "2017-08-23T07:40:01.199509396Z"
+				}
+			},
+			"created": "2017-08-21T05:58:28.703855Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Simple All-in-One Customer Engagement platform",
+				"longDescription": "INTERAKT\n\nInterakt.co simplifies customer data analysis, marketing and support. Our integrated crm, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\nCAPTURE.ENGAGE.RETAIN\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n360° LEAD CAPTURE\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\nCONSOLIDATE USER DATA\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\nPOWERFUL EMAIL AUTOMATION\n\nCustomize templates to send automated marketing & transactional emails. Engage users and view email stats.\n\nENGAGE WITH LIVE CHAT\n\nEngage visitors & provide live support to existing users. Use a customizable chat window or the offline mode.\n\nKEEP USERS INFORMED\n\nAnnounce new features or target segments with special offers. Use customizable & trackable web notifications.\n\nGATHER FEEDBACK & RETAIN\n\nCreate feedback forms to gather suggestions, ideas, & issues. Analyze all this in one place to improve.",
+				"instructions": "Install and Configure Interakt-\n\nPrerequisite:\n\nAn account on Interakt (You can start for free).\n\nSTEP 1-\n\nLogin to your Interakt account.\nCreate a new project for your website hosted on CloudFlare.\nNavigate to Settings->API->click \"copy code\" for App Id.\n\nSTEP 2-\n\nAfter successfully creating an account and a project on interakt.co, login to your CloudFlare account.\nIn 'Apps' section, search for the Interakt app.\nClick on the app, click Preview.\nPaste the app-Id copied from Interakt account on the install page.\nClick on install button.",
+				"alias": "simple-all-in-one-customer-engagement-platform",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/4UiSnM9tSVu9SrZmFHAF_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-05-45.png",
+					"//images.cloudflareapps.com/KI9FykZFSpqR8J0TZPUY_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-08-59.png",
+					"//images.cloudflareapps.com/LC6Ft9nwQ3cnofKCaAxh_screenshot-cyjvp6scvn_h_typical_design.p.cloudflare.works-2017-08-18-16-18-02.png",
+					"//images.cloudflareapps.com/aqyzXH6jQrPyl8G9MJX6_screenshot-www.cloudflare.com-2017-08-18-14-56-45.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "http://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "c3f9786b291aed7b9c91972a4b107e83",
+				"requestedAt": "2017-08-23T07:51:56.905339141Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-29T05:34:13.943304811Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"configuration": {
+							"order": 2,
+							"properties": {
+								"appid": {
+									"description": "<br>Get App-ID from your <a href='https://www.interakt.co/login' target='blank'>Interakt</a> Account.",
+									"format": "element",
+									"maxLength": 32,
+									"order": 1,
+									"required": true,
+									"title": "App Id",
+									"type": "string"
+								}
+							},
+							"title": "Configuration",
+							"type": "object"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3sFdwuXc9azw",
+			"metadata": {
+				"code": {
+					"sourceTag": "3sFdwuXc9azw",
+					"uploadedOn": "2017-09-06T09:32:32.218054902Z"
+				}
+			},
+			"created": "2017-08-29T09:53:39.650766Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Live Chat, Helpdesk, Emails, Notifications, Leads, Users",
+				"longDescription": "INTERAKT\n\nInterakt.co simplifies customer data analysis, marketing and support. Our integrated crm, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\nCAPTURE.ENGAGE.RETAIN\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n360° LEAD CAPTURE\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\nCONSOLIDATE USER DATA\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\nPOWERFUL EMAIL AUTOMATION\n\nCustomize templates to send automated marketing & transactional emails. Engage users and view email stats.\n\nENGAGE WITH LIVE CHAT\n\nEngage visitors & provide live support to existing users. Use a customizable chat window or the offline mode.\n\nKEEP USERS INFORMED\n\nAnnounce new features or target segments with special offers. Use customizable & trackable web notifications.\n\nGATHER FEEDBACK & RETAIN\n\nCreate feedback forms to gather suggestions, ideas, & issues. Analyze all this in one place to improve.",
+				"instructions": "<h4>Install and Configure Interakt-<br><br>\nPrerequisite:</h4> An account on <a href=\"https://interakt.co\" target=\"blank\">Interakt</a> (You can start for <a href=\"http://interakt.co/pricing\" target=\"blank\">free</a>).<h4>Steps -</h4>\nSign up or log in on Interakt.<br>Select a project or create a new one.<br>Navigate to Settings->API->click \"copy code\" for App Id.<br>Paste it down here, preview and click install.",
+				"alias": "simple-all-in-one-customer-engagement-platform",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+					"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+					"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+					"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "https://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "c3f9786b291aed7b9c91972a4b107e83",
+				"requestedAt": "2017-09-06T09:43:20.074925945Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-06T22:25:40.838447493Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"appID": {
+							"description": "Your App ID can found by viewing your <a href='https://app.interakt.co/login' target='blank' class='more'>Interakt project</a> <br> <strong>Settings</strong> › <strong>API</strong> › <strong>“Copy Code”</strong>",
+							"format": "element",
+							"order": 1,
+							"placeholder": "aaaabbbbcccc11112222333300000000",
+							"required": true,
+							"title": "App ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qMKzBZioPvQ0",
+			"metadata": {
+				"code": {
+					"sourceTag": "qMKzBZioPvQ0",
+					"uploadedOn": "2017-09-06T22:07:40.375573678Z"
+				}
+			},
+			"created": "2017-09-06T21:45:06.439975Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Convert your visitors into loyal customers with live chat, notifications, and more.",
+				"longDescription": "# Customer analysis, marketing, and support. Simplified.\nOur integrated CRM, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\n## Capture. Engage. Retain.\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n## Features\n\n### 360° Lead Capture\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\n### Consolidate User Data\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\n### Powerful Email Automation\n\nCustomize and track your automated marketing & transactional emails.\n\n### Engage With Live Chat\n\nEngage with your visitors and provide live support to existing users with the Interakt chat widget.\n\n### Keep Users Informed\n\nAnnounce new features or target segments with special offers and web notifications.\n\n### Gather Feedback & Retain\n\nCreate feedback forms to gather suggestions, ideas, & issues.",
+				"instructions": "<p class=\"message info\">\nThis app account requires a free Interakt account.\n<br>\n<a href=\"https://interakt.co\" target=\"blank\" class=\"more\">Sign up now</a>\n</p>",
+				"alias": "interakt",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+					"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+					"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+					"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "https://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://interakt.co/terms",
+				"privacyPolicyURL": "https://interakt.co/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-06T22:25:40.850987479Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-06T22:29:15.318702812Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"appID": {
+							"description": "Your App ID can found by viewing your <a href='https://app.interakt.co/login' target='blank' class='more'>Interakt project</a> <br> <strong>Settings</strong> › <strong>API</strong> › <strong>“Copy Code”</strong>",
+							"format": "element",
+							"order": 1,
+							"placeholder": "aaaabbbbcccc11112222333300000000",
+							"required": true,
+							"title": "App ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qMKzBZioPvQ0",
+			"created": "2017-09-06T22:29:15.160468Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Convert your visitors into loyal customers with live chat, notifications, and more.",
+				"longDescription": "# Customer analysis, marketing, and support. Simplified.\nOur integrated CRM, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\n## Capture. Engage. Retain.\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n## Features\n\n### 360° Lead Capture\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\n### Consolidate User Data\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\n### Powerful Email Automation\n\nCustomize and track your automated marketing & transactional emails.\n\n### Engage With Live Chat\n\nEngage with your visitors and provide live support to existing users with the Interakt chat widget.\n\n### Keep Users Informed\n\nAnnounce new features or target segments with special offers and web notifications.\n\n### Gather Feedback & Retain\n\nCreate feedback forms to gather suggestions, ideas, & issues.",
+				"instructions": "<p class=\"message info\">\nThis app account requires a free Interakt account.\n<br>\n<a href=\"https://interakt.co\" target=\"blank\" class=\"more\">Sign up now</a>\n</p>",
+				"alias": "interakt",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+					"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+					"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+					"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "https://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://interakt.co/terms",
+				"privacyPolicyURL": "https://interakt.co/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-06T22:29:15.323558093Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-06T22:29:41.851155053Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"appID": {
+							"description": "Your App ID can found by viewing your <a href='https://app.interakt.co/login' target='blank' class='more'>Interakt project</a> <br> <strong>Settings</strong> › <strong>API</strong> › <strong>“Copy Code”</strong>",
+							"format": "element",
+							"order": 1,
+							"placeholder": "aaaabbbbcccc11112222333300000000",
+							"required": true,
+							"title": "App ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qMKzBZioPvQ0",
+			"created": "2018-01-22T20:34:24.242463Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Convert your visitors into loyal customers with live chat, notifications, and more.",
+				"longDescription": "# Customer analysis, marketing, and support. Simplified.\nOur integrated CRM, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\n## Capture. Engage. Retain.\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n## Features\n\n### 360° Lead Capture\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\n### Consolidate User Data\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\n### Powerful Email Automation\n\nCustomize and track your automated marketing & transactional emails.\n\n### Engage With Live Chat\n\nEngage with your visitors and provide live support to existing users with the Interakt chat widget.\n\n### Keep Users Informed\n\nAnnounce new features or target segments with special offers and web notifications.\n\n### Gather Feedback & Retain\n\nCreate feedback forms to gather suggestions, ideas, & issues.",
+				"instructions": "<p class=\"message info\">\nThis app account requires a free Interakt account.\n<br>\n<a href=\"https://interakt.co\" target=\"blank\" class=\"more\">Sign up now</a>\n</p>",
+				"alias": "interakt",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+					"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+					"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+					"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "https://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://interakt.co/terms",
+				"privacyPolicyURL": "https://interakt.co/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:34:24.506645016Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:34:59.401562253Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "dIItgMMN9eOD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"appID": {
+							"description": "Your App ID can found by viewing your <a href='https://app.interakt.co/login' target='blank' class='more'>Interakt project</a> <br> <strong>Settings</strong> › <strong>API</strong> › <strong>“Copy Code”</strong>",
+							"format": "element",
+							"order": 1,
+							"placeholder": "aaaabbbbcccc11112222333300000000",
+							"required": true,
+							"title": "App ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qMKzBZioPvQ0",
+			"created": "2018-02-06T20:53:59.025459Z",
+			"proposedApp": {
+				"id": "dIItgMMN9eOD",
+				"title": "Interakt",
+				"shortDescription": "Convert your visitors into loyal customers with live chat, notifications, and more.",
+				"longDescription": "# Customer analysis, marketing, and support. Simplified.\nOur integrated CRM, email marketing and live chat allow you to engage, retain and support your customers from one single dashboard.\n\n## Capture. Engage. Retain.\n\nInterakt is a simple All-in-One Customer Engagement platform. With Interakt you can import and manage all your Leads & Users, send Emails campaigns, create powerful web & push notifications, resolve helpdesk tickets, help site visitors through Live-Chat and provide the ease of a FAQ page to all your customers.\n\n## Features\n\n### 360° Lead Capture\n\nCapture Leads in every possible way. Import existing leads, divide them into segments and nurture them in real-time.\n\n### Consolidate User Data\n\nCapture user sessions, activities & dynamics with rich profiling for every user. Create segments and track their progress.\n\n### Powerful Email Automation\n\nCustomize and track your automated marketing & transactional emails.\n\n### Engage With Live Chat\n\nEngage with your visitors and provide live support to existing users with the Interakt chat widget.\n\n### Keep Users Informed\n\nAnnounce new features or target segments with special offers and web notifications.\n\n### Gather Feedback & Retain\n\nCreate feedback forms to gather suggestions, ideas, & issues.",
+				"instructions": "<p class=\"message info\">\nThis app account requires a free Interakt account.\n<br>\n<a href=\"https://interakt.co\" target=\"blank\" class=\"more\">Sign up now</a>\n</p>",
+				"alias": "interakt",
+				"orgId": "c3f9786b291aed7b9c91972a4b107e83",
+				"icon": "//images.cloudflareapps.com/aPIwxXVOR929de3AHkF3_interakt.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/6wrQrDYXR1mVmv2GLjLg_screenshot-vib6inl7a7_h_typical_design.p.cloudflare.works-2017-09-01-16-07-44.png",
+					"//images.cloudflareapps.com/jtW7Hru1TAq7Hk2UvmRy_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-21-42.png",
+					"//images.cloudflareapps.com/yHXTmTFOQ6EGvHyjnvjh_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-24-30.png",
+					"//images.cloudflareapps.com/sYt1cXY3QoWhjHlqANQl_screenshot-fgwwdpry49_h_typical_design.p.cloudflare.works-2017-09-01-15-22-38.png",
+					"//images.cloudflareapps.com/EkNDPBeSmK9zsIAsggAp_dashboard-b1434f3d122e312d82130f322caef422.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Dj3yPVGQqCp1NRlu7fYQ_imageedit_420_268.png",
+				"featuredAppImage": "",
+				"author": "Fizzy Software Pvt. Ltd.",
+				"tagline": "",
+				"website": "https://interakt.co/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://interakt.co/terms",
+				"privacyPolicyURL": "https://interakt.co/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@interakt.co",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"social-and-communication",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qDd3s7_HxzMF"
+				},
+				"created": "2017-08-17T13:23:37.812484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:53:59.266297856Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:05:37.284052286Z"
+			}
+		}
+	]
+}

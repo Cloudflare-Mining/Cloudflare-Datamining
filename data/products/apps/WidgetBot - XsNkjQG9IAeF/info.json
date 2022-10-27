@@ -1,0 +1,4169 @@
+{
+	"id": "XsNkjQG9IAeF",
+	"title": "WidgetBot",
+	"shortDescription": "Pixel perfect discord embed for your website!",
+	"longDescription": "**Welcome to WidgetBot.io**\nWidgetBot is an open-source javascript widget and Discord bot designed to make it easy to embed your Discord server into your website. It allows your website guests to see and reply to messages in real-time, directly on your site - even if they don't have a Discord account.\n\n**Guest messaging**\nBy utilizing Discord's webhook functionality, guests on your website can send messages to channels on your server and they'll be relayed instantaneously to appear inside Discord! This can be disabled on a per-channel basis.\n\n**Features**\nWidgetBot makes most the functionality you've come to expect from Discord available on your website. This includes:\n```asciidoc\n- Markdown support, embeds and emojis\n- Switchable channels & user mentions\n- Emoji completion\n```\n\n**I want to test it out!**\nSure thing! Simply head to #live-demo over at https://widgetbot.io/ to give it a whirl.\n\nConsider becoming a [Patron](https://www.patreon.com/widgetbot), we really appreciate it!",
+	"instructions": "## Inviting the bot\nMake sure you invite the bot at this link:\nhttps://add.widgetbot.io/\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server",
+	"alias": "widgetbot-crate",
+	"orgId": "e67300449793c5f0f002e10890d3d28b",
+	"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+	"featuredAppImage": "",
+	"author": "WidgetBot",
+	"tagline": "",
+	"website": "https://widgetbot.io",
+	"sourceURL": "https://github.com/widgetbot-io/crate",
+	"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+	"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+	"color": "#7289DA",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "4.0.0",
+	"infoVersion": "4.0.0",
+	"points": 700,
+	"supportEmail": "support@widgetbot.io",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Unlimited widgets, live-chat and basic configuration!",
+			"longDescription": "If you want more amazing features and customizability, check out our [Patreon](https://patreon.com/widgetbot)!",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "a6d3f2c1b98618a4286d73d2b2bad165",
+			"created": "2018-01-23T16:23:40.852523291Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "mMUUxjmHMeov"
+	},
+	"created": "2018-01-23T16:23:36.394596Z",
+	"org": {
+		"id": "e67300449793c5f0f002e10890d3d28b",
+		"title": "",
+		"username": "e67300449793c5f0f002e10890d3d28b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "2.0.0",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "See https://beta.widgetbot.io",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"default": "355719584830980096",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottomRight",
+										"enum": [
+											"topLeft",
+											"topRight",
+											"bottomLeft",
+											"bottomRight"
+										],
+										"enumNames": {
+											"bottomLeft": "Bottom left",
+											"bottomRight": "Bottom right",
+											"topLeft": "Top left",
+											"topRight": "Top right"
+										},
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"default": "299881420891881473",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"title": "WidgetBot tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mMUUxjmHMeov",
+			"metadata": {
+				"code": {
+					"sourceTag": "mMUUxjmHMeov",
+					"uploadedOn": "2018-01-23T16:23:38.71123828Z"
+				}
+			},
+			"created": "2018-01-23T16:23:37.761731Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"requestedAt": "2018-01-23T16:23:40.842104274Z",
+				"canceledByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"canceledAt": "2018-01-23T16:42:04.747378074Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "See https://beta.widgetbot.io",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"default": "355719584830980096",
+										"order": 2,
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottomRight",
+										"enum": [
+											"topLeft",
+											"topRight",
+											"bottomLeft",
+											"bottomRight"
+										],
+										"enumNames": {
+											"bottomLeft": "Bottom left",
+											"bottomRight": "Bottom right",
+											"topLeft": "Top left",
+											"topRight": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"default": "299881420891881473",
+										"order": 1,
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SsHwxcjkceEa",
+			"metadata": {
+				"code": {
+					"sourceTag": "SsHwxcjkceEa",
+					"uploadedOn": "2018-01-23T16:42:03.214645029Z"
+				}
+			},
+			"created": "2018-01-23T16:42:02.11433Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"requestedAt": "2018-01-23T16:42:04.759144963Z",
+				"canceledByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"canceledAt": "2018-01-26T12:47:48.008907801Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "See https://beta.widgetbot.io",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"default": "355719584830980096",
+										"order": 2,
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"default": "299881420891881473",
+										"order": 1,
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Performance enhancements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_K500zzHIpcb",
+			"metadata": {
+				"code": {
+					"sourceTag": "_K500zzHIpcb",
+					"uploadedOn": "2018-01-26T12:47:46.815868838Z"
+				}
+			},
+			"created": "2018-01-26T12:47:46.309972Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"requestedAt": "2018-01-26T12:47:48.023071236Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-30T01:52:17.416935845Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Feedback",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"metadata": {
+				"code": {
+					"sourceTag": "jecAtiJjwSbV",
+					"uploadedOn": "2018-02-01T20:01:21.94266075Z"
+				}
+			},
+			"created": "2018-02-01T20:01:20.844872Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot - Discord Chat widgets",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "1. Head over to [WidgetBot.io](https://widgetbot.io)\n2. Click on create widget\n3. Sign in with discord\n4. Invite the bot to your server\n5. In the widgetbot configurator, toggle the channel you want to use to on\n\n## To enable live-chatting\n6. Click on `Configure`\n7. Make sure WidgetBot has the \"manage webhooks\" permission on your discord server\n8. Toggle the `2-way Chat` button to on.",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"requestedAt": "2018-02-01T20:01:24.555620194Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-02-02T00:14:39.433732593Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"created": "2018-02-02T00:14:39.25531Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "## Setup\n\n1. Head over to <a href=\"https://widgetbot.io\" class=\"more\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the widgetbot configurator, toggle the channel you want to use to on\n\n## Enabling live-chat\n\n1. Click on **“Configure”**\n2. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T00:14:55.454588351Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-02-02T00:24:12.711292397Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.5",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"created": "2018-02-02T00:24:12.537983Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "## WidgetBot setup\n\n1. Head over to <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Click on **“Configure”**\n2. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T00:24:12.715487466Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2018-02-02T07:22:52.85477885Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.6",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"created": "2018-02-02T07:22:52.670669Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "Popup Discord chat widgets for your website.",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T07:22:52.867363775Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-02T07:24:06.524797777Z"
+			}
+		},
+		{
+			"tag": "2.0.7",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"created": "2018-02-02T07:30:22.376691Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord chats (meaning channels) in the browser, on your website. \n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a Website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\nThe database is used to save the register state of channels as well as patrons, that get extra benefits. None of your private info is stored in the database, other than your user ID.\n\n# Usage statistics\n\nCurrently, the Widget has about **4000 hits per day**, steadily increasing. The Server is in **1167 Guilds**. The server has a monthly cost of 12$, wich I am not able to pay for all by myself. If you want to support the WidgetBot and get extra benefits, you can become a patron below.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T07:30:22.581666971Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-02T07:30:30.393277173Z"
+			}
+		},
+		{
+			"tag": "2.0.8",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable message toasts",
+												"type": "boolean"
+											},
+											"style": {
+												"default": "default",
+												"enum": [
+													"default",
+													"material"
+												],
+												"enumNames": {
+													"default": "Default",
+													"material": "Material design"
+												},
+												"title": "Toggle style",
+												"type": "string"
+											},
+											"toasts": {
+												"properties": {
+													"maxMessages": {
+														"default": 5,
+														"title": "Max. messages to display",
+														"type": "number"
+													},
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Toast options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 6,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jecAtiJjwSbV",
+			"created": "2018-02-02T07:31:20.084583Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord channels on your website.\n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a Website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\nThe database is used to save the register state of channels as well as patrons, that get extra benefits. None of your private info is stored in the database, other than your user ID.\n\n# Usage statistics\n\nCurrently, the Widget has about **4000 hits per day**, steadily increasing. The Server is in **1167 Guilds**. The server has a monthly cost of 12$, wich I am not able to pay for all by myself. If you want to support the WidgetBot and get extra benefits, you can become a patron below.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate-cloudflare",
+				"termsOfServiceURL": "https://widgetbot.io/terms",
+				"privacyPolicyURL": "https://widgetbot.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-02T07:31:20.286859474Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-02T07:31:26.130648307Z"
+			}
+		},
+		{
+			"tag": "2.0.9",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Moderator added products",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DgVzpw-6ZnTS",
+			"metadata": {
+				"code": {
+					"sourceTag": "DgVzpw-6ZnTS",
+					"uploadedOn": "2018-07-05T21:16:27.641078513Z"
+				}
+			},
+			"created": "2018-07-05T21:16:27.228711Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord channels on your website.\n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\n# Usage statistics\n\nCurrently, the Widget has an average of **8,000 concurrent visitors per day**, steadily increasing. The Server is in **2163 Guilds**.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate",
+				"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+				"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Unlimited widgets, live-chat and basic configuration",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Advanced two-way chat configuration, custom colors and restricted domains",
+						"longDescription": "",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "widgetbot_pro",
+						"feature": "apps.widgetbot_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "ultimate",
+						"title": "Ultimate",
+						"shortDescription": "All the features from pro + custom CSS",
+						"longDescription": "",
+						"visible": true,
+						"price": 700,
+						"order": 0,
+						"plan": "widgetbot_ultimate",
+						"feature": "apps.widgetbot_ultimate.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-07-05T21:16:28.519901791Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2018-07-05T21:19:46.314664285Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "3.0.0",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "This update features integration with the latest version of WidgetBot (rewritten from scratch). Aside from massive performance and stability improvements, you can now switch Discord channels",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Y1HSQ4Xc0a0X",
+			"metadata": {
+				"code": {
+					"sourceTag": "Y1HSQ4Xc0a0X",
+					"uploadedOn": "2018-06-07T23:49:45.188130308Z"
+				}
+			},
+			"created": "2018-02-02T14:31:31.09289Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord channels on your website.\n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\n# Usage statistics\n\nCurrently, the Widget has an average of **8,000 concurrent visitors per day**, steadily increasing. The Server is in **2163 Guilds**.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate",
+				"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+				"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Unlimited widgets, live-chat and basic configuration",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Advanced two-way chat configuration, custom colors and restricted domains",
+						"longDescription": "",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "ultimate",
+						"title": "Ultimate",
+						"shortDescription": "All the features from pro + custom CSS",
+						"longDescription": "",
+						"visible": true,
+						"price": 700,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"requestedAt": "2018-06-07T23:49:46.192823559Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-05T21:16:09.15471362Z"
+			}
+		},
+		{
+			"tag": "3.0.1",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "Moderator added products",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DgVzpw-6ZnTS",
+			"created": "2018-07-05T21:19:45.886228Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord channels on your website.\n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\n# Usage statistics\n\nCurrently, the Widget has an average of **8,000 concurrent visitors per day**, steadily increasing. The Server is in **2163 Guilds**.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate",
+				"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+				"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Unlimited widgets, live-chat and basic configuration",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Advanced two-way chat configuration, custom colors and restricted domains",
+						"longDescription": "",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "widgetbot_pro",
+						"feature": "apps.widgetbot_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "ultimate",
+						"title": "Ultimate",
+						"shortDescription": "All the features from pro + custom CSS",
+						"longDescription": "",
+						"visible": true,
+						"price": 700,
+						"order": 0,
+						"plan": "widgetbot_ultimate",
+						"feature": "apps.widgetbot_ultimate.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"communication",
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-07-05T21:19:46.330707143Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-05T21:20:52.15199633Z"
+			}
+		},
+		{
+			"tag": "3.0.2",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 6,
+				"downvotes": 9
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DgVzpw-6ZnTS",
+			"created": "2018-11-13T20:14:24.716154Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Popup Discord chat widgets for your website.",
+				"longDescription": "WidgetBot gives you the power to embed Discord channels on your website.\n\n## Features\n\n- Live view of the chat. Just select the channels you want a Widget for and you're all set!\n- New messages get displayed instantly, as well as who's typing, message edits and deletions! \n- Allow people to chat from the widget directly to your channel!\n\n# How it works\n\nThe WidgetBot is split up into 2 halves: Widget and Server. The Widget is running in the browser, it's what will actually display your Discord channel. Basically a website that executes in your browser, and connects to the Server. The Server does most of the magic. It hosts the Discord bot, manages the database, and collects&forwards messages to the Widget.\n\n# Usage statistics\n\nCurrently, the Widget has an average of **8,000 concurrent visitors per day**, steadily increasing. The Server is in **2163 Guilds**.\n\nBecome a [Patron](https://www.patreon.com/bePatron?u=5594164)!",
+				"instructions": "## WidgetBot setup\n\n1. Visit <a href=\"https://widgetbot.io\" class=\"more\" target=\"blank\">WidgetBot.io</a>\n2. Press **“Create Widget”**\n3. Sign-in with your Discord account\n4. Invite the bot to your Discord server\n5. In the WidgetBot configurator, add your channel\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server\n2. Visit your WidgetBot <a href=\"https://widgetbot.io/?p=configurator\" class=\"more\" target=\"blank\">configuration page</a>\n3. Set the **“2-way Chat”** toggle to **on**",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate",
+				"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+				"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Unlimited widgets, live-chat and basic configuration",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Advanced two-way chat configuration, custom colors and restricted domains",
+						"longDescription": "",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "widgetbot_pro",
+						"feature": "apps.widgetbot_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "ultimate",
+						"title": "Ultimate",
+						"shortDescription": "All the features from pro + custom CSS",
+						"longDescription": "",
+						"visible": true,
+						"price": 700,
+						"order": 0,
+						"plan": "widgetbot_ultimate",
+						"feature": "apps.widgetbot_ultimate.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:14:25.098544051Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:47:20.742002297Z"
+			}
+		},
+		{
+			"tag": "4.0.0",
+			"appId": "XsNkjQG9IAeF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"delay": {
+												"default": true,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "355719584830980096",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "299881420891881473",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://patreon.com/widgetbot\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"red",
+								"gold",
+								"emerald"
+							],
+							"enumNames": {
+								"emerald": "WidgetBot Emerald ($15)",
+								"free": "Free",
+								"gold": "WidgetBot Gold ($7.50)",
+								"red": "WidgetBot Red ($2.50)"
+							},
+							"order": 1,
+							"title": "WidgetBot Patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.74,
+				"upvotes": 20,
+				"downvotes": 7
+			},
+			"releaseNotes": "Updated cloudflare to be retrospective of the new version of WidgetBot!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_nR2_qHZG1Aw",
+			"metadata": {
+				"code": {
+					"sourceTag": "_nR2_qHZG1Aw",
+					"uploadedOn": "2020-05-21T14:46:49.875006588Z"
+				}
+			},
+			"created": "2020-05-21T14:46:49.388108Z",
+			"proposedApp": {
+				"id": "XsNkjQG9IAeF",
+				"title": "WidgetBot",
+				"shortDescription": "Pixel perfect discord embed for your website!",
+				"longDescription": "**Welcome to WidgetBot.io**\nWidgetBot is an open-source javascript widget and Discord bot designed to make it easy to embed your Discord server into your website. It allows your website guests to see and reply to messages in real-time, directly on your site - even if they don't have a Discord account.\n\n**Guest messaging**\nBy utilizing Discord's webhook functionality, guests on your website can send messages to channels on your server and they'll be relayed instantaneously to appear inside Discord! This can be disabled on a per-channel basis.\n\n**Features**\nWidgetBot makes most the functionality you've come to expect from Discord available on your website. This includes:\n```asciidoc\n- Markdown support, embeds and emojis\n- Switchable channels & user mentions\n- Emoji completion\n```\n\n**I want to test it out!**\nSure thing! Simply head to #live-demo over at https://widgetbot.io/ to give it a whirl.\n\nConsider becoming a [Patron](https://www.patreon.com/widgetbot), we really appreciate it!",
+				"instructions": "## Inviting the bot\nMake sure you invite the bot at this link:\nhttps://add.widgetbot.io/\n\n## Enabling live-chat\n\n1. Make sure WidgetBot has the **“Manage WebHooks”** permission on your Discord server",
+				"alias": "widgetbot-crate",
+				"orgId": "a6d3f2c1b98618a4286d73d2b2bad165",
+				"icon": "//images.cloudflareapps.com/YAKMXYyQom9Rb5XjvJJA_crate.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/eh_J3SI8P1ve/asd.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DqiXy15QsfkG/asdasddsaasd.png",
+				"featuredAppImage": "",
+				"author": "WidgetBot",
+				"tagline": "",
+				"website": "https://widgetbot.io",
+				"sourceURL": "https://github.com/widgetbot-io/crate",
+				"termsOfServiceURL": "https://widgetbot.io/legal/terms-and-conditions/",
+				"privacyPolicyURL": "https://widgetbot.io/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@widgetbot.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Unlimited widgets, live-chat and basic configuration!",
+						"longDescription": "If you want more amazing features and customizability, check out our [Patreon](https://patreon.com/widgetbot)!",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mMUUxjmHMeov"
+				},
+				"created": "2018-01-23T16:23:36.394596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0f206ab6c0a05899ef2470e2787457c8",
+				"requestedAt": "2020-05-21T14:48:55.442149497Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-21T17:29:17.026684375Z"
+			}
+		}
+	]
+}

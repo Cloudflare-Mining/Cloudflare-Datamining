@@ -1,0 +1,1539 @@
+{
+	"id": "NSNxwgSQIL9H",
+	"title": "Save To Pinterest",
+	"shortDescription": "Let your visitors share your content on Pinterest!",
+	"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+	"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+	"alias": "save-to-pinterest",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+		"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+		"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+		"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+		"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/CPM5iREwSUyaP1tleQYR_tile.png",
+	"featuredAppImage": "",
+	"author": "Pinterest Inc.",
+	"tagline": "",
+	"website": "https://pinterest.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://policy.pinterest.com/terms-of-service",
+	"privacyPolicyURL": "https://policy.pinterest.com/privacy-policy",
+	"color": "#bd081c",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.4",
+	"infoVersion": "1.1.4",
+	"points": 900,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"get-more-customers",
+		"getting-started-apps",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "afea9104888a3eeb972eaf2135becc7b",
+			"created": "2017-06-30T04:53:18.907601001Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "LJvjKlAwEOJ4"
+	},
+	"created": "2017-06-14T01:15:52.860427Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "getting-started-apps",
+			"title": "Getting Started Apps",
+			"description": "",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2017-03-16T17:27:00.472258Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2y-TTqep0NiJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "2y-TTqep0NiJ",
+					"uploadedOn": "2017-06-21T04:23:05.066807378Z"
+				}
+			},
+			"created": "2017-06-14T01:15:53.552214Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest in the preview do not reflect your live share counts.",
+				"alias": "pinterest-save-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/8PWtSzQ2QXiB1gtyWpiO_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-21T04:31:38.931979478Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T04:32:03.911266041Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2y-TTqep0NiJ",
+			"created": "2017-06-21T21:40:55.121801Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/8PWtSzQ2QXiB1gtyWpiO_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-21T21:40:55.37848801Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T21:41:08.473559752Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2y-TTqep0NiJ",
+			"created": "2017-06-27T03:56:50.377506Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/8PWtSzQ2QXiB1gtyWpiO_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-27T03:57:27.178204837Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-27T03:57:58.178865413Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"location",
+								"shape",
+								"countPosition"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cTFNlhjiYPXM",
+			"metadata": {
+				"code": {
+					"sourceTag": "cTFNlhjiYPXM",
+					"uploadedOn": "2017-06-30T04:53:18.175491028Z"
+				}
+			},
+			"created": "2017-06-30T04:53:17.879655Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/8PWtSzQ2QXiB1gtyWpiO_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "afea9104888a3eeb972eaf2135becc7b",
+				"requestedAt": "2017-06-30T04:53:18.903929677Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-30T04:53:36.403864821Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"location",
+								"shape",
+								"countPosition"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cTFNlhjiYPXM",
+			"created": "2017-07-13T07:58:30.958201Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/8PWtSzQ2QXiB1gtyWpiO_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://policy.pinterest.com/terms-of-service",
+				"privacyPolicyURL": "https://policy.pinterest.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-13T08:00:44.328676342Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-13T08:15:37.329434971Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"location",
+								"shape",
+								"countPosition"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cTFNlhjiYPXM",
+			"created": "2017-07-18T22:30:51.285081Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://policy.pinterest.com/terms-of-service",
+				"privacyPolicyURL": "https://policy.pinterest.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-07-18T22:30:51.636845977Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-07-18T22:30:59.864462624Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"location",
+								"shape",
+								"countPosition"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cTFNlhjiYPXM",
+			"created": "2017-07-19T01:09:48.209995Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CPM5iREwSUyaP1tleQYR_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://policy.pinterest.com/terms-of-service",
+				"privacyPolicyURL": "https://policy.pinterest.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-19T01:09:48.433768656Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-19T03:12:50.656169198Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "NSNxwgSQIL9H",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"countPosition": {
+							"default": "none",
+							"enum": [
+								"none",
+								"above",
+								"beside"
+							],
+							"enumNames": {
+								"above": "Above",
+								"beside": "Beside",
+								"none": "None"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"shape": {
+									"op": "!=",
+									"value": "round"
+								},
+								"type": "once"
+							},
+							"title": "Share Count Position",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the button appear?",
+							"format": "element",
+							"order": 1,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"shape": {
+							"default": "small",
+							"enum": [
+								"small",
+								"tall",
+								"round"
+							],
+							"enumNames": {
+								"round": "Round",
+								"small": "Small",
+								"tall": "Large"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"type": "once"
+							},
+							"title": "Button Shape",
+							"type": "string"
+						},
+						"type": {
+							"default": "hover",
+							"enum": [
+								"hover",
+								"once"
+							],
+							"enumNames": {
+								"hover": "When the user hovers over any image.",
+								"once": "As a single button on the page."
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Where should the Pinterest button appear?",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"type"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"location",
+								"shape",
+								"countPosition"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 6,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cTFNlhjiYPXM",
+			"created": "2018-01-22T21:01:33.996597Z",
+			"proposedApp": {
+				"id": "NSNxwgSQIL9H",
+				"title": "Save To Pinterest",
+				"shortDescription": "Let your visitors share your content on Pinterest!",
+				"longDescription": "Let your visitors share your content and increase your social presence with Pinterest buttons!\n\nThe Save To Pinterest app allows you to add share buttons to all of your site's images, or in a few select places.",
+				"instructions": "Note that Pinterest counts in the preview do not reflect your live share counts.\n\nBy using Pinterest's save button, you agree to Pinterest's [Developer Terms of Service](https://developers.pinterest.com/terms/) and [Developer Guidelines](https://policy.pinterest.com/developer-guidelines).",
+				"alias": "save-to-pinterest",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/TpaEX3ecR2Gb7HLbVCKn_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TKgiQTWS66xINylhH70o_screenshot-1.png",
+					"//images.cloudflareapps.com/RKmBaGATAaFyHJ2oE1DZ_screenshot-4.png",
+					"//images.cloudflareapps.com/CnPpHX5ZR0GxRggRoCxz_screenshot-3.png",
+					"//images.cloudflareapps.com/bm8HOJgjTkmnkGTm6EW9_screenshot-5.png",
+					"//images.cloudflareapps.com/9lCi0nNqQwS5QWvP7RSV_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CPM5iREwSUyaP1tleQYR_tile.png",
+				"featuredAppImage": "",
+				"author": "Pinterest Inc.",
+				"tagline": "",
+				"website": "https://pinterest.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://policy.pinterest.com/terms-of-service",
+				"privacyPolicyURL": "https://policy.pinterest.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"get-more-customers",
+					"getting-started-apps",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "LJvjKlAwEOJ4"
+				},
+				"created": "2017-06-14T01:15:52.860427Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:01:34.280351351Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:01:45.739809645Z"
+			}
+		}
+	]
+}

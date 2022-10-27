@@ -1,0 +1,405 @@
+{
+	"id": "7Emeq-owblEj",
+	"title": "Variti’s Bot analytics",
+	"shortDescription": "Providing real time bot analytics for Cloudflare customers",
+	"longDescription": "Variti’s Bot Analytics for Cloudflare provides real time insight into all bot activity on your websites. \n\nWith a seamless integration powered by Variti’s Active Bot Protection solution based on machine learning and algorithms, let Variti highlight your current bot landscape.\n\nUse Variti’s real time dashboard to understand in detail how bots are currently affecting your websites, including what operating systems and NAT usage.",
+	"instructions": "Once you have decided to install Variti’s bot analytics you will receive an email with a dedicated link to your dashboard and insights.",
+	"alias": "variti-bot-analytics",
+	"orgId": "6ce45c5150bd904e32559d927dba3409",
+	"icon": "https://images.cloudflareapps.com/Y62SOaC6DLkS/variti%20logo%20v3.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/oKb56NKm_cpt/s1.png",
+		"https://images.cloudflareapps.com/oKb56NKm_cpt/s2.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Variti",
+	"tagline": "",
+	"website": "https://variti.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@variti.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "6ce45c5150bd904e32559d927dba3409",
+			"created": "2019-07-10T08:04:56.343311621Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "FF7P6ysXjNX8"
+	},
+	"created": "2019-07-09T13:09:11.157594Z",
+	"org": {
+		"id": "6ce45c5150bd904e32559d927dba3409",
+		"title": "",
+		"username": "6ce45c5150bd904e32559d927dba3409",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "7Emeq-owblEj",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"Id": {
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Your pixel ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FF7P6ysXjNX8",
+			"metadata": {
+				"code": {
+					"sourceTag": "FF7P6ysXjNX8",
+					"uploadedOn": "2019-07-09T13:09:13.082780318Z"
+				}
+			},
+			"created": "2019-07-09T13:09:12.174867Z",
+			"proposedApp": {
+				"id": "7Emeq-owblEj",
+				"title": "Variti’s Bot analytics",
+				"shortDescription": "Providing real time bot analytics for Cloudflare customers",
+				"longDescription": "Variti’s Bot Analytics for Cloudflare provides real time insight into all bot activity on your websites. \n\nWith a seamless integration powered by Variti’s Active Bot Protection solution based on machine learning and algorithms, let Variti highlight your current bot landscape.",
+				"instructions": "Use Variti’s real time dashboard to understand in detail how bots are currently affecting your websites, including what operating systems and NAT usage.",
+				"alias": "variti-bot-analytics",
+				"orgId": "6ce45c5150bd904e32559d927dba3409",
+				"icon": "https://images.cloudflareapps.com/Y62SOaC6DLkS/variti%20logo%20v3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s1.png",
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Variti",
+				"tagline": "",
+				"website": "https://variti.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@variti.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FF7P6ysXjNX8"
+				},
+				"created": "2019-07-09T13:09:11.157594Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "6ce45c5150bd904e32559d927dba3409",
+				"requestedAt": "2019-07-10T08:04:56.324506558Z",
+				"canceledByUserId": "6ce45c5150bd904e32559d927dba3409",
+				"canceledAt": "2019-07-10T08:51:15.288966322Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "7Emeq-owblEj",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"Id": {
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Your pixel ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "changed \"install instructions\"",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FF7P6ysXjNX8",
+			"created": "2019-07-10T08:50:03.654021Z",
+			"proposedApp": {
+				"id": "7Emeq-owblEj",
+				"title": "Variti’s Bot analytics",
+				"shortDescription": "Providing real time bot analytics for Cloudflare customers",
+				"longDescription": "Variti’s Bot Analytics for Cloudflare provides real time insight into all bot activity on your websites. \n\nWith a seamless integration powered by Variti’s Active Bot Protection solution based on machine learning and algorithms, let Variti highlight your current bot landscape.\n\nUse Variti’s real time dashboard to understand in detail how bots are currently affecting your websites, including what operating systems and NAT usage.",
+				"instructions": "Once you have decided to install Variti’s bot analytics you will receive an email with a dedicated link to your dashboard and insights.",
+				"alias": "variti-bot-analytics",
+				"orgId": "6ce45c5150bd904e32559d927dba3409",
+				"icon": "https://images.cloudflareapps.com/Y62SOaC6DLkS/variti%20logo%20v3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s1.png",
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Variti",
+				"tagline": "",
+				"website": "https://variti.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@variti.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FF7P6ysXjNX8"
+				},
+				"created": "2019-07-09T13:09:11.157594Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "6ce45c5150bd904e32559d927dba3409",
+				"requestedAt": "2019-07-10T08:51:55.077279567Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-10T15:22:51.694898003Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "7Emeq-owblEj",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"Id": {
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Your pixel ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://rams1.variti.net/cf/new_install",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 5
+			},
+			"releaseNotes": "removed preview",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3K5rq9j6GXIE",
+			"metadata": {
+				"code": {
+					"sourceTag": "3K5rq9j6GXIE",
+					"uploadedOn": "2019-07-12T08:23:14.157462024Z"
+				}
+			},
+			"created": "2019-07-12T08:23:13.45478Z",
+			"proposedApp": {
+				"id": "7Emeq-owblEj",
+				"title": "Variti’s Bot analytics",
+				"shortDescription": "Providing real time bot analytics for Cloudflare customers",
+				"longDescription": "Variti’s Bot Analytics for Cloudflare provides real time insight into all bot activity on your websites. \n\nWith a seamless integration powered by Variti’s Active Bot Protection solution based on machine learning and algorithms, let Variti highlight your current bot landscape.\n\nUse Variti’s real time dashboard to understand in detail how bots are currently affecting your websites, including what operating systems and NAT usage.",
+				"instructions": "Once you have decided to install Variti’s bot analytics you will receive an email with a dedicated link to your dashboard and insights.",
+				"alias": "variti-bot-analytics",
+				"orgId": "6ce45c5150bd904e32559d927dba3409",
+				"icon": "https://images.cloudflareapps.com/Y62SOaC6DLkS/variti%20logo%20v3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s1.png",
+					"https://images.cloudflareapps.com/oKb56NKm_cpt/s2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Variti",
+				"tagline": "",
+				"website": "https://variti.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@variti.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FF7P6ysXjNX8"
+				},
+				"created": "2019-07-09T13:09:11.157594Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "6ce45c5150bd904e32559d927dba3409",
+				"requestedAt": "2019-07-12T08:24:35.150035752Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-15T17:53:32.602252981Z"
+			}
+		}
+	]
+}

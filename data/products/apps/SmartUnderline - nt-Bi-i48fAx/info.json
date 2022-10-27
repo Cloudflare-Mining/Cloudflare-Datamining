@@ -1,0 +1,787 @@
+{
+	"id": "nt-Bi-i48fAx",
+	"title": "SmartUnderline",
+	"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+	"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+	"instructions": "",
+	"alias": "smart-underline",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#333333",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.4",
+	"infoVersion": "1.1.4",
+	"points": 925,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:50:15.069177318Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "R9p0MecFWXld"
+	},
+	"created": "2017-03-29T22:06:28.960004Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"metadata": {
+				"code": {
+					"sourceTag": "R9p0MecFWXld",
+					"uploadedOn": "2017-03-29T22:06:30.16262548Z"
+				}
+			},
+			"created": "2017-03-29T22:06:29.467829Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Fk7wsjR8iZQGzLh2xccg_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/2r23lCgGSXGjwJ5doTOp_screenshot-1.png",
+					"//images.cloudflareapps.com/jQcxyePFRLCwzGlxioIq_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/TzQ509IaQpJheqslrsmn_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-29T22:06:31.79627966Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-03-29T22:08:14.565024615Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2017-05-19T22:55:44.90354Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [
+					"//images.cloudflareapps.com/mnCuVtiITEiKpGryfpad_smart-underline-b-and-a.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-19T22:56:00.176550688Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-19T22:56:12.495404303Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2017-05-19T22:58:45.492944Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-19T22:58:48.807702552Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-19T22:58:58.650340926Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2017-05-31T21:16:08.802947Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-31T21:16:11.801621145Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-31T21:16:23.715219718Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2017-07-06T08:50:14.816198Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:50:15.060431645Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:29.634421221Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2018-01-22T21:00:18.679006Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:00:18.957917871Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:00:24.272641651Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2018-02-06T21:47:07.297785Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"ui-and-design",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:47:07.576651769Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:09.43292744Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "nt-Bi-i48fAx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/smart-underline.js"
+						},
+						{
+							"type": "script",
+							"contents": "SmartUnderline.init(INSTALL_OPTIONS)"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": "",
+							"description": "You may optionally specify a part of the page to apply SmartUnderline. Leave this blank to apply SmartUnderline to the entire page.",
+							"format": "selector",
+							"title": "Location",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 7,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R9p0MecFWXld",
+			"created": "2018-11-13T18:08:31.440832Z",
+			"proposedApp": {
+				"id": "nt-Bi-i48fAx",
+				"title": "SmartUnderline",
+				"shortDescription": "Instantly add beautiful underline styles to links on your site.",
+				"longDescription": "The typography of underlines on the web has lagged behind for a decade, but no longer! SmartUnderline is an [open source](https://github.com/CloudflareApps/SmartUnderline) library developed right here at Cloudflare Labs to give links the beautiful underline style used by some of the most respected sites on the web.\n\nSmartUnderline works on most sites, but it does not support links which are on top of images or complex backgrounds. Try SmartUnderline to see how it looks on your site instantly.",
+				"instructions": "",
+				"alias": "smart-underline",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/EGgCefKFQn0OJYGOaytP_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VIhdmwBVT5eGUGKz8Vk4_smart-underline-b-and-a.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/lccbGBsKSmUHuMvomHxg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "https://cloudflareapps.com/showcase/SmartUnderline/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "R9p0MecFWXld"
+				},
+				"created": "2017-03-29T22:06:28.960004Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:08:33.383696261Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:49:37.6687634Z"
+			}
+		}
+	]
+}

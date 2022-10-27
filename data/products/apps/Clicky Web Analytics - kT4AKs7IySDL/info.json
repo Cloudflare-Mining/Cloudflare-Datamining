@@ -1,0 +1,1509 @@
+{
+	"id": "kT4AKs7IySDL",
+	"title": "Clicky Web Analytics",
+	"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+	"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+	"instructions": "",
+	"alias": "clicky-web-analytics",
+	"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+	"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Roxr Software Ltd.",
+	"tagline": "",
+	"website": "https://clicky.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://clicky.com/terms",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 0,
+	"supportEmail": "support@getclicky.com",
+	"products": [
+		{
+			"id": "free-legacy",
+			"title": "",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "paid-legacy",
+			"title": "",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Tracking for just 1 website and up to 3,000 daily pageviews.",
+			"longDescription": "Tracking for just 1 website and up to 3,000 daily pageviews. Does not include premium features.\nDoes not include premium features, heatmaps, or uptime monitoring.",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+			"longDescription": "Includes our extensive premium features, but not heatmaps or uptime monitoring.",
+			"visible": true,
+			"price": 1000,
+			"order": 0,
+			"plan": "clicky_analytics_pro",
+			"feature": "apps.clicky_analytics.pro.enabled",
+			"created": null
+		},
+		{
+			"id": "pro-plus",
+			"title": "Pro Plus",
+			"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+			"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+			"visible": true,
+			"price": 1500,
+			"order": 0,
+			"plan": "clicky_analytics_pro_plus",
+			"feature": "apps.clicky_analytics.pro_plus.enabled",
+			"created": null
+		},
+		{
+			"id": "pro-platinum",
+			"title": "Pro Platinum",
+			"shortDescription": "Tracking for up to 30 websites and up to 100,000 daily pageviews.",
+			"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+			"visible": true,
+			"price": 2000,
+			"order": 0,
+			"plan": "clicky_analytics_pro_platinum",
+			"feature": "apps.clicky_analytics.pro_platinum.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"analytics"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+			"created": "2017-07-11T17:14:40.672628116Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "w0O_Qe091xh7"
+	},
+	"created": "2017-07-11T17:14:39.844327Z",
+	"org": {
+		"id": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+		"title": "",
+		"username": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "analytics",
+			"title": "Analytics",
+			"description": "Collect and analyze data from your site visitors.",
+			"icon": "//eager-app-images.imgix.net/HWEJmubQgGa7SyyXxJuO_analytics.png",
+			"points": 50,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "analytics.png",
+					"isWriteable": false,
+					"key": "HWEJmubQgGa7SyyXxJuO_analytics.png",
+					"mimetype": "image/png",
+					"size": 3712,
+					"url": "https://www.filepicker.io/api/file/I2eyeKptRq6IpwZ9zuuI"
+				},
+				"promoted": false
+			},
+			"created": "2016-01-21T18:06:42.485409Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/w0O_Qe091xh7",
+			"metadata": {
+				"code": {
+					"sourceTag": "w0O_Qe091xh7",
+					"uploadedOn": "2017-07-11T17:14:40.111449978Z"
+				}
+			},
+			"created": "2017-07-11T17:14:39.992592Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"requestedAt": "2017-07-11T17:14:40.669680272Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-12T03:25:08.797316868Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"metadata": {
+				"code": {
+					"sourceTag": "M-4xyterLCE1",
+					"uploadedOn": "2017-07-12T17:31:45.008314381Z"
+				}
+			},
+			"created": "2017-07-12T17:31:44.84063Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"requestedAt": "2017-07-12T17:34:37.570018029Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-15T05:24:33.10310545Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-07-20T20:12:46.445161Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"requestedAt": "2017-07-20T20:12:46.626848141Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-21T20:52:27.66639733Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-07-21T20:54:37.852835Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky-web-analytics",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Roxr Software Ltd.",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://clicky.com/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-21T20:54:38.015188732Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-21T20:54:47.547426125Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-07-24T21:29:27.566295Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky-web-analytics",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Roxr Software Ltd.",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://clicky.com/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [
+					{
+						"id": "free-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "paid-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-07-24T21:29:32.177995974Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-07-24T21:29:46.972169077Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-08-10T17:30:09.401865Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky-web-analytics",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Roxr Software Ltd.",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://clicky.com/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [
+					{
+						"id": "free-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "paid-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Tracking for just 1 website and up to 3,000 daily pageviews.",
+						"longDescription": "Tracking for just 1 website and up to 3,000 daily pageviews. Does not include premium features.\nDoes not include premium features, heatmaps, or uptime monitoring.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features, but not heatmaps or uptime monitoring.",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "clicky_web_analytics_plan_2",
+						"feature": "apps.clicky_web_analytics.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-plus",
+						"title": "Pro Plus",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 1500,
+						"order": 0,
+						"plan": "clicky_web_analytics_plan_3",
+						"feature": "apps.clicky_web_analytics.plan_3.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-platinum",
+						"title": "Pro Platinum",
+						"shortDescription": "Tracking for up to 30 websites and up to 100,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 2000,
+						"order": 0,
+						"plan": "clicky_web_analytics_plan_4",
+						"feature": "apps.clicky_web_analytics.plan_4.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-07T23:41:16.762361061Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-07T23:41:51.177333238Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 3,
+				"downvotes": 6
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-09-07T23:59:06.087222Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky-web-analytics",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Roxr Software Ltd.",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://clicky.com/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [
+					{
+						"id": "free-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "paid-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Tracking for just 1 website and up to 3,000 daily pageviews.",
+						"longDescription": "Tracking for just 1 website and up to 3,000 daily pageviews. Does not include premium features.\nDoes not include premium features, heatmaps, or uptime monitoring.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features, but not heatmaps or uptime monitoring.",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "clicky_analytics_pro",
+						"feature": "apps.clicky_analytics.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-plus",
+						"title": "Pro Plus",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 1500,
+						"order": 0,
+						"plan": "clicky_analytics_pro_plus",
+						"feature": "apps.clicky_analytics.pro_plus.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-platinum",
+						"title": "Pro Platinum",
+						"shortDescription": "Tracking for up to 30 websites and up to 100,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 2000,
+						"order": 0,
+						"plan": "clicky_analytics_pro_platinum",
+						"feature": "apps.clicky_analytics.pro_platinum.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-07T23:59:06.235997141Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-07T23:59:25.966564197Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "kT4AKs7IySDL",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"clicky"
+							],
+							"title": "Clicky Web Analytics Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://clicky.com/oauth2/hook",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M-4xyterLCE1",
+			"created": "2017-09-21T16:44:36.815202Z",
+			"proposedApp": {
+				"id": "kT4AKs7IySDL",
+				"title": "Clicky Web Analytics",
+				"shortDescription": "Monitor, analyze, and react to your traffic in real time.",
+				"longDescription": "Clicky Web Analytics is simply the best way to monitor, analyze, and react to your blog or web site's traffic in real time.",
+				"instructions": "",
+				"alias": "clicky-web-analytics",
+				"orgId": "779b4ed0ded9cc6d0b9bcc6a12826dc9",
+				"icon": "//images.cloudflareapps.com/Kdp8Eo9STnKEOjr9IngI_clicky.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Roxr Software Ltd.",
+				"tagline": "",
+				"website": "https://clicky.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://clicky.com/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getclicky.com",
+				"products": [
+					{
+						"id": "free-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "paid-legacy",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Tracking for just 1 website and up to 3,000 daily pageviews.",
+						"longDescription": "Tracking for just 1 website and up to 3,000 daily pageviews. Does not include premium features.\nDoes not include premium features, heatmaps, or uptime monitoring.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features, but not heatmaps or uptime monitoring.",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "clicky_analytics_pro",
+						"feature": "apps.clicky_analytics.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-plus",
+						"title": "Pro Plus",
+						"shortDescription": "Tracking for up to 10 websites and up to 30,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 1500,
+						"order": 0,
+						"plan": "clicky_analytics_pro_plus",
+						"feature": "apps.clicky_analytics.pro_plus.enabled",
+						"created": null
+					},
+					{
+						"id": "pro-platinum",
+						"title": "Pro Platinum",
+						"shortDescription": "Tracking for up to 30 websites and up to 100,000 daily pageviews.",
+						"longDescription": "Includes our extensive premium features as well as heatmaps and uptime monitoring.",
+						"visible": true,
+						"price": 2000,
+						"order": 0,
+						"plan": "clicky_analytics_pro_platinum",
+						"feature": "apps.clicky_analytics.pro_platinum.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "w0O_Qe091xh7"
+				},
+				"created": "2017-07-11T17:14:39.844327Z"
+			},
+			"moderationStatus": "draft",
+			"moderationMetadata": {
+				"requestedAt": null,
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		}
+	]
+}

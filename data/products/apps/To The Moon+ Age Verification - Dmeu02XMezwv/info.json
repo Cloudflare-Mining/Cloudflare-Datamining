@@ -1,0 +1,1551 @@
+{
+	"id": "Dmeu02XMezwv",
+	"title": "To The Moon+ Age Verification",
+	"shortDescription": "Simply Verify The Age Of Your Visitors On Your Website",
+	"longDescription": "Simply add an age verification popup to your website in seconds for businesses/websites that require age compliance.\n\nSupports for businesses that showcase and sell adult products including alcohol, tobacco, vape and other age restrictions\n\nAge Verification App is:\n- Fully Customizable\n- Easy to Setup\n- Optimized for Mobile",
+	"instructions": "",
+	"alias": "",
+	"orgId": "679f42840d2d91297fe94eab8249a441",
+	"icon": "https://images.cloudflareapps.com/UgxJMTUgGvM-/tplu%20%281%29.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_01.png",
+		"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_04.png",
+		"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_03.png",
+		"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_02.png",
+		"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_05.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/0xws_692hAH_/Tier-images%20%282%29.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/hUgl4XhlhWg_/Featured-App-image%20%281%29.png",
+	"author": "To The Moon+",
+	"tagline": "",
+	"website": "https://tothemoonplus.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "info@tothemoonplus.com",
+	"products": [
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "All functionality included",
+			"longDescription": "",
+			"visible": true,
+			"price": 500,
+			"order": 0,
+			"plan": "APPS_TO_THE_MOON_AGE_VERIFICATION_PRO",
+			"feature": "apps.tothemoon_ageverification_pro.enabled",
+			"created": null
+		},
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "679f42840d2d91297fe94eab8249a441",
+			"created": "2021-04-08T05:54:03.055982364Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "DyKsdfssqiWm"
+	},
+	"created": "2021-03-16T01:53:31.876366Z",
+	"org": {
+		"id": "679f42840d2d91297fe94eab8249a441",
+		"title": "",
+		"username": "679f42840d2d91297fe94eab8249a441",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Dmeu02XMezwv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/pop.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"settings": {
+							"order": 4,
+							"properties": {
+								"boxBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select a color of the background of verification box.",
+									"format": "color",
+									"order": 23,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"confirmationBackgroundColor": {
+									"default": "#000000",
+									"description": "Select the color of the background of the confirmation box.",
+									"format": "color",
+									"order": 29,
+									"title": "Confirmation Button Background Color",
+									"type": "string"
+								},
+								"confirmationButtonText": {
+									"default": "Enter",
+									"description": "Specify the wording you want to display as the main description inside the age verification box.",
+									"order": 25,
+									"placeholder": "Enter",
+									"title": "Confirmation Button Text",
+									"type": "string"
+								},
+								"confirmationTextColor": {
+									"default": "#ffffff",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 27,
+									"title": "Confirmation Button Text Color",
+									"type": "string"
+								},
+								"dateFormat": {
+									"default": "MM/DD/YYYY",
+									"enum": [
+										"MM/DD/YYYY",
+										"DD/MM/YYYY",
+										"YYYY/MM/DD",
+										"YYYY/DD/MM",
+										"MM/YYYY",
+										"YYYY/MM",
+										"YYYY"
+									],
+									"enumNames": {
+										"DD/MM/YYYY": "DD/MM/YYYY",
+										"MM/DD/YYYY": "MM/DD/YYYY",
+										"MM/YYYY": "MM/YYYY",
+										"YYYY": "YYYY",
+										"YYYY/DD/MM": "YYYY/DD/MM",
+										"YYYY/MM": "YYYY/MM",
+										"YYYY/MM/DD": "YYYY/MM/DD"
+									},
+									"order": 3,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Date Format",
+									"type": "string"
+								},
+								"denialDate": {
+									"default": "Please Enter a Valid Date.",
+									"description": "Specify the wording you want to display if a visitor enters an invalid date",
+									"order": 7,
+									"placeholder": "Please Enter a Valid Date.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Wrong Date Text",
+									"type": "string"
+								},
+								"denialText": {
+									"default": "Sorry. You're Not Permitted To Enter Website.",
+									"description": "Specify the wording you want to display when visitor is younger than the allowed age.",
+									"order": 5,
+									"placeholder": "Sorry. You're Not Permitted To Enter Website.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Not Permitted to Enter Text",
+									"type": "string"
+								},
+								"denialTextColor": {
+									"default": "#FF0000",
+									"description": "Select the color display for 'Not Permitted to Enter Text' and 'Wrong Date Text'.",
+									"format": "color",
+									"order": 9,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Error Message Text Color",
+									"type": "string"
+								},
+								"descriptionText": {
+									"default": "Please verify your age to continue",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 19,
+									"placeholder": "Please verify your age to continue",
+									"title": "Description Text",
+									"type": "string"
+								},
+								"disclaimer": {
+									"default": "By confirming your age, you acknowledge that you are 18 or older.",
+									"description": "Specify the wording you want to display as the disclaimer.",
+									"order": 39,
+									"placeholder": "By confirming your age, you acknowledge that you are 18 or older.",
+									"title": "Desclaimer Text",
+									"type": "string"
+								},
+								"disclaimerTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display for the disclaimer.",
+									"format": "color",
+									"order": 41,
+									"title": "Disclaimer Text Color",
+									"type": "string"
+								},
+								"divider_01": {
+									"helpvalue": "<br/>",
+									"order": 4,
+									"type": "help"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 8,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_10": {
+									"helpvalue": "<br/>",
+									"order": 30,
+									"type": "help"
+								},
+								"divider_11": {
+									"helpvalue": "<br/>",
+									"order": 32,
+									"type": "help"
+								},
+								"divider_111": {
+									"helpvalue": "<br/>",
+									"order": 10,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_12": {
+									"helpvalue": "<br/>",
+									"order": 34,
+									"type": "help"
+								},
+								"divider_13": {
+									"helpvalue": "<br/>",
+									"order": 36,
+									"type": "help"
+								},
+								"divider_14": {
+									"helpvalue": "<br/>",
+									"order": 38,
+									"type": "help"
+								},
+								"divider_15": {
+									"helpvalue": "<br/>",
+									"order": 40,
+									"type": "help"
+								},
+								"divider_1_1": {
+									"helpvalue": "<br/>",
+									"order": 6,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_2": {
+									"helpvalue": "<br/>",
+									"order": 12,
+									"type": "help"
+								},
+								"divider_3": {
+									"helpvalue": "<br/>",
+									"order": 14,
+									"type": "help"
+								},
+								"divider_4": {
+									"helpvalue": "<br/>",
+									"order": 16,
+									"type": "help"
+								},
+								"divider_4_1": {
+									"helpvalue": "<br/>",
+									"order": 18,
+									"type": "help"
+								},
+								"divider_5": {
+									"helpvalue": "<br/>",
+									"order": 20,
+									"type": "help"
+								},
+								"divider_6": {
+									"helpvalue": "<br/>",
+									"order": 22,
+									"type": "help"
+								},
+								"divider_7": {
+									"helpvalue": "<br/>",
+									"order": 24,
+									"type": "help"
+								},
+								"divider_8": {
+									"helpvalue": "<br/>",
+									"order": 26,
+									"type": "help"
+								},
+								"divider_9": {
+									"helpvalue": "<br/>",
+									"order": 28,
+									"type": "help"
+								},
+								"exitBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select the color of the background of the exit button.",
+									"format": "color",
+									"order": 35,
+									"title": "Exit Button Background Color",
+									"type": "string"
+								},
+								"exitButtonText": {
+									"default": "Exit",
+									"description": "Specify the wording you want to display to customer that don't want to enter the website. NOTE that leaving this field blank will hide the button.",
+									"order": 31,
+									"placeholder": "Exit",
+									"title": "Exit Button Text",
+									"type": "string"
+								},
+								"exitButtonUrl": {
+									"default": "https://www.google.com/",
+									"description": "Specify the URL where you want to send customers if they don't want to enter the website.",
+									"order": 37,
+									"placeholder": "https://google.com/",
+									"title": "Exit Button URL",
+									"type": "string"
+								},
+								"exitTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 33,
+									"title": "Exit Button Text Color",
+									"type": "string"
+								},
+								"fontColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 21,
+									"title": "Font Color",
+									"type": "string"
+								},
+								"frequency": {
+									"default": "eachVisit",
+									"enum": [
+										"eachVisit"
+									],
+									"enumNames": {
+										"eachVisit": "Each visit to website (session)"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Verification Frequency",
+									"type": "string"
+								},
+								"headerColor": {
+									"default": "#000000",
+									"description": "Select a color of the title you would like to display.",
+									"format": "color",
+									"order": 17,
+									"title": "Title Color",
+									"type": "string"
+								},
+								"headerText": {
+									"default": "Are You 18 or Older?",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 15,
+									"placeholder": "Are you 18 or Older?",
+									"title": "Header Text",
+									"type": "string"
+								},
+								"layout": {
+									"default": "black",
+									"enum": [
+										"black",
+										"blurredSiteBackground",
+										"transparent"
+									],
+									"enumNames": {
+										"black": "Black",
+										"blurredSiteBackground": "Blurred Site Background",
+										"transparent": "Transparent"
+									},
+									"format": "radios",
+									"order": 11,
+									"title": "Layout",
+									"type": "string"
+								},
+								"logo": {
+									"description": "Upload the logo you want to showcase on the age verification box. (RECOMMENDED SIZE: W: 300px X H:180px)",
+									"format": "image",
+									"order": 13,
+									"title": "Logo",
+									"type": "string"
+								},
+								"minimumAgeSelect": {
+									"default": "yes",
+									"enum": [
+										"yes",
+										"no"
+									],
+									"enumNames": {
+										"no": "No",
+										"yes": "Yes"
+									},
+									"order": 1,
+									"title": "Require Minimum Age",
+									"type": "string"
+								},
+								"minimumAgeText": {
+									"default": 18,
+									"maximum": 80,
+									"minimum": 15,
+									"order": 2,
+									"placeholder": "18",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Minimum Age",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 1,
+							"title": "APP Status",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "General Availability",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Lb-ausCxynm6",
+			"metadata": {
+				"code": {
+					"sourceTag": "Lb-ausCxynm6",
+					"uploadedOn": "2021-04-06T05:38:11.454489845Z"
+				}
+			},
+			"created": "2021-03-16T01:53:32.385343Z",
+			"proposedApp": {
+				"id": "Dmeu02XMezwv",
+				"title": "To The Moon+ Age Verification",
+				"shortDescription": "Simply Verify The Age Of Your Visitors On Your Website",
+				"longDescription": "Simply add an age verification popup to your website in seconds for businesses/websites that require age compliance.\n\nSupports for businesses that showcase and sell adult products including alcohol, tobacco, vape and other age restrictions\n\nAge Verification App is:\n- Fully Customizable\n- Easy to Setup\n- Optimized for Mobile",
+				"instructions": "",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/UgxJMTUgGvM-/tplu%20%281%29.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZgYcW6kRDLCV/Screen%20Shot%202021-03-31%20at%201.55.01%20PM.png",
+					"https://images.cloudflareapps.com/yMWQ92MRNybn/Screen%20Shot%202021-03-31%20at%201.59.00%20PM.png",
+					"https://images.cloudflareapps.com/Z6eGY8HaCITq/Screen%20Shot%202021-03-31%20at%201.57.49%20PM.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/0xws_692hAH_/Tier-images%20%282%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hUgl4XhlhWg_/Featured-App-image%20%281%29.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "All functionality included",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "DyKsdfssqiWm"
+				},
+				"created": "2021-03-16T01:53:31.876366Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "679f42840d2d91297fe94eab8249a441",
+				"requestedAt": "2021-04-08T05:54:03.047204749Z",
+				"canceledByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"canceledAt": "2021-05-26T15:32:54.952655974Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Dmeu02XMezwv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/pop.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"settings": {
+							"order": 4,
+							"properties": {
+								"boxBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select a color of the background of verification box.",
+									"format": "color",
+									"order": 23,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"confirmationBackgroundColor": {
+									"default": "#000000",
+									"description": "Select the color of the background of the confirmation box.",
+									"format": "color",
+									"order": 29,
+									"title": "Confirmation Button Background Color",
+									"type": "string"
+								},
+								"confirmationButtonText": {
+									"default": "Enter",
+									"description": "Specify the wording you want to display as the main description inside the age verification box.",
+									"order": 25,
+									"placeholder": "Enter",
+									"title": "Confirmation Button Text",
+									"type": "string"
+								},
+								"confirmationTextColor": {
+									"default": "#ffffff",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 27,
+									"title": "Confirmation Button Text Color",
+									"type": "string"
+								},
+								"dateFormat": {
+									"default": "MM/DD/YYYY",
+									"enum": [
+										"MM/DD/YYYY",
+										"DD/MM/YYYY",
+										"YYYY/MM/DD",
+										"YYYY/DD/MM",
+										"MM/YYYY",
+										"YYYY/MM",
+										"YYYY"
+									],
+									"enumNames": {
+										"DD/MM/YYYY": "DD/MM/YYYY",
+										"MM/DD/YYYY": "MM/DD/YYYY",
+										"MM/YYYY": "MM/YYYY",
+										"YYYY": "YYYY",
+										"YYYY/DD/MM": "YYYY/DD/MM",
+										"YYYY/MM": "YYYY/MM",
+										"YYYY/MM/DD": "YYYY/MM/DD"
+									},
+									"order": 3,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Date Format",
+									"type": "string"
+								},
+								"denialDate": {
+									"default": "Please Enter a Valid Date.",
+									"description": "Specify the wording you want to display if a visitor enters an invalid date",
+									"order": 7,
+									"placeholder": "Please Enter a Valid Date.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Wrong Date Text",
+									"type": "string"
+								},
+								"denialText": {
+									"default": "Sorry. You're Not Permitted To Enter Website.",
+									"description": "Specify the wording you want to display when visitor is younger than the allowed age.",
+									"order": 5,
+									"placeholder": "Sorry. You're Not Permitted To Enter Website.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Not Permitted to Enter Text",
+									"type": "string"
+								},
+								"denialTextColor": {
+									"default": "#FF0000",
+									"description": "Select the color display for 'Not Permitted to Enter Text' and 'Wrong Date Text'.",
+									"format": "color",
+									"order": 9,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Error Message Text Color",
+									"type": "string"
+								},
+								"descriptionText": {
+									"default": "Please verify your age to continue",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 19,
+									"placeholder": "Please verify your age to continue",
+									"title": "Description Text",
+									"type": "string"
+								},
+								"disclaimer": {
+									"default": "By confirming your age, you acknowledge that you are 18 or older.",
+									"description": "Specify the wording you want to display as the disclaimer.",
+									"order": 39,
+									"placeholder": "By confirming your age, you acknowledge that you are 18 or older.",
+									"title": "Desclaimer Text",
+									"type": "string"
+								},
+								"disclaimerTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display for the disclaimer.",
+									"format": "color",
+									"order": 41,
+									"title": "Disclaimer Text Color",
+									"type": "string"
+								},
+								"divider_01": {
+									"helpvalue": "<br/>",
+									"order": 4,
+									"type": "help"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 8,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_10": {
+									"helpvalue": "<br/>",
+									"order": 30,
+									"type": "help"
+								},
+								"divider_11": {
+									"helpvalue": "<br/>",
+									"order": 32,
+									"type": "help"
+								},
+								"divider_111": {
+									"helpvalue": "<br/>",
+									"order": 10,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_12": {
+									"helpvalue": "<br/>",
+									"order": 34,
+									"type": "help"
+								},
+								"divider_13": {
+									"helpvalue": "<br/>",
+									"order": 36,
+									"type": "help"
+								},
+								"divider_14": {
+									"helpvalue": "<br/>",
+									"order": 38,
+									"type": "help"
+								},
+								"divider_15": {
+									"helpvalue": "<br/>",
+									"order": 40,
+									"type": "help"
+								},
+								"divider_1_1": {
+									"helpvalue": "<br/>",
+									"order": 6,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_2": {
+									"helpvalue": "<br/>",
+									"order": 12,
+									"type": "help"
+								},
+								"divider_3": {
+									"helpvalue": "<br/>",
+									"order": 14,
+									"type": "help"
+								},
+								"divider_4": {
+									"helpvalue": "<br/>",
+									"order": 16,
+									"type": "help"
+								},
+								"divider_4_1": {
+									"helpvalue": "<br/>",
+									"order": 18,
+									"type": "help"
+								},
+								"divider_5": {
+									"helpvalue": "<br/>",
+									"order": 20,
+									"type": "help"
+								},
+								"divider_6": {
+									"helpvalue": "<br/>",
+									"order": 22,
+									"type": "help"
+								},
+								"divider_7": {
+									"helpvalue": "<br/>",
+									"order": 24,
+									"type": "help"
+								},
+								"divider_8": {
+									"helpvalue": "<br/>",
+									"order": 26,
+									"type": "help"
+								},
+								"divider_9": {
+									"helpvalue": "<br/>",
+									"order": 28,
+									"type": "help"
+								},
+								"exitBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select the color of the background of the exit button.",
+									"format": "color",
+									"order": 35,
+									"title": "Exit Button Background Color",
+									"type": "string"
+								},
+								"exitButtonText": {
+									"default": "Exit",
+									"description": "Specify the wording you want to display to customer that don't want to enter the website. NOTE that leaving this field blank will hide the button.",
+									"order": 31,
+									"placeholder": "Exit",
+									"title": "Exit Button Text",
+									"type": "string"
+								},
+								"exitButtonUrl": {
+									"default": "https://www.google.com/",
+									"description": "Specify the URL where you want to send customers if they don't want to enter the website.",
+									"order": 37,
+									"placeholder": "https://google.com/",
+									"title": "Exit Button URL",
+									"type": "string"
+								},
+								"exitTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 33,
+									"title": "Exit Button Text Color",
+									"type": "string"
+								},
+								"fontColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 21,
+									"title": "Font Color",
+									"type": "string"
+								},
+								"frequency": {
+									"default": "eachVisit",
+									"enum": [
+										"eachVisit"
+									],
+									"enumNames": {
+										"eachVisit": "Each visit to website (session)"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Verification Frequency",
+									"type": "string"
+								},
+								"headerColor": {
+									"default": "#000000",
+									"description": "Select a color of the title you would like to display.",
+									"format": "color",
+									"order": 17,
+									"title": "Title Color",
+									"type": "string"
+								},
+								"headerText": {
+									"default": "Are You 18 or Older?",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 15,
+									"placeholder": "Are you 18 or Older?",
+									"title": "Header Text",
+									"type": "string"
+								},
+								"layout": {
+									"default": "black",
+									"enum": [
+										"black",
+										"blurredSiteBackground",
+										"transparent"
+									],
+									"enumNames": {
+										"black": "Black",
+										"blurredSiteBackground": "Blurred Site Background",
+										"transparent": "Transparent"
+									},
+									"format": "radios",
+									"order": 11,
+									"title": "Layout",
+									"type": "string"
+								},
+								"logo": {
+									"description": "Upload the logo you want to showcase on the age verification box. (RECOMMENDED SIZE: W: 300px X H:180px)",
+									"format": "image",
+									"order": 13,
+									"title": "Logo",
+									"type": "string"
+								},
+								"minimumAgeSelect": {
+									"default": "yes",
+									"enum": [
+										"yes",
+										"no"
+									],
+									"enumNames": {
+										"no": "No",
+										"yes": "Yes"
+									},
+									"order": 1,
+									"title": "Require Minimum Age",
+									"type": "string"
+								},
+								"minimumAgeText": {
+									"default": 18,
+									"maximum": 80,
+									"minimum": 15,
+									"order": 2,
+									"placeholder": "18",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Minimum Age",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 1,
+							"title": "APP Status",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "General Availability",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Lb-ausCxynm6",
+			"created": "2021-04-16T03:14:04.535559Z",
+			"proposedApp": {
+				"id": "Dmeu02XMezwv",
+				"title": "To The Moon+ Age Verification",
+				"shortDescription": "Simply Verify The Age Of Your Visitors On Your Website",
+				"longDescription": "Simply add an age verification popup to your website in seconds for businesses/websites that require age compliance.\n\nSupports for businesses that showcase and sell adult products including alcohol, tobacco, vape and other age restrictions\n\nAge Verification App is:\n- Fully Customizable\n- Easy to Setup\n- Optimized for Mobile",
+				"instructions": "",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/UgxJMTUgGvM-/tplu%20%281%29.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_01.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_04.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_03.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_02.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_05.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/0xws_692hAH_/Tier-images%20%282%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hUgl4XhlhWg_/Featured-App-image%20%281%29.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "All functionality included",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "TO_THE_MOON_AGE_VERIFICATION___PRO",
+						"feature": "apps.tothemoon_ageverification_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "DyKsdfssqiWm"
+				},
+				"created": "2021-03-16T01:53:31.876366Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-05-26T15:32:54.963977485Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-05-26T15:37:04.513875578Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Dmeu02XMezwv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "style",
+							"src": "./build/pop.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"developersTitle": {
+							"order": 7,
+							"properties": {
+								"description": {
+									"helpvalue": "<b>Elements Not Displaying Perfectly? </b> Email us at <a href = 'mailto: info@tothemoonplus.com'>info@tothemoonplus.com</a>  and we'll help you setup for free.",
+									"order": 0,
+									"type": "help"
+								}
+							},
+							"title": "Need Help?",
+							"type": "object"
+						},
+						"settings": {
+							"order": 4,
+							"properties": {
+								"boxBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select a color of the background of verification box.",
+									"format": "color",
+									"order": 23,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"confirmationBackgroundColor": {
+									"default": "#000000",
+									"description": "Select the color of the background of the confirmation box.",
+									"format": "color",
+									"order": 29,
+									"title": "Confirmation Button Background Color",
+									"type": "string"
+								},
+								"confirmationButtonText": {
+									"default": "Enter",
+									"description": "Specify the wording you want to display as the main description inside the age verification box.",
+									"order": 25,
+									"placeholder": "Enter",
+									"title": "Confirmation Button Text",
+									"type": "string"
+								},
+								"confirmationTextColor": {
+									"default": "#ffffff",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 27,
+									"title": "Confirmation Button Text Color",
+									"type": "string"
+								},
+								"dateFormat": {
+									"default": "MM/DD/YYYY",
+									"enum": [
+										"MM/DD/YYYY",
+										"DD/MM/YYYY",
+										"YYYY/MM/DD",
+										"YYYY/DD/MM",
+										"MM/YYYY",
+										"YYYY/MM",
+										"YYYY"
+									],
+									"enumNames": {
+										"DD/MM/YYYY": "DD/MM/YYYY",
+										"MM/DD/YYYY": "MM/DD/YYYY",
+										"MM/YYYY": "MM/YYYY",
+										"YYYY": "YYYY",
+										"YYYY/DD/MM": "YYYY/DD/MM",
+										"YYYY/MM": "YYYY/MM",
+										"YYYY/MM/DD": "YYYY/MM/DD"
+									},
+									"order": 3,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Date Format",
+									"type": "string"
+								},
+								"denialDate": {
+									"default": "Please Enter a Valid Date.",
+									"description": "Specify the wording you want to display if a visitor enters an invalid date",
+									"order": 7,
+									"placeholder": "Please Enter a Valid Date.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Wrong Date Text",
+									"type": "string"
+								},
+								"denialText": {
+									"default": "Sorry. You're Not Permitted To Enter Website.",
+									"description": "Specify the wording you want to display when visitor is younger than the allowed age.",
+									"order": 5,
+									"placeholder": "Sorry. You're Not Permitted To Enter Website.",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Not Permitted to Enter Text",
+									"type": "string"
+								},
+								"denialTextColor": {
+									"default": "#FF0000",
+									"description": "Select the color display for 'Not Permitted to Enter Text' and 'Wrong Date Text'.",
+									"format": "color",
+									"order": 9,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Error Message Text Color",
+									"type": "string"
+								},
+								"descriptionText": {
+									"default": "Please verify your age to continue",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 19,
+									"placeholder": "Please verify your age to continue",
+									"title": "Description Text",
+									"type": "string"
+								},
+								"disclaimer": {
+									"default": "By confirming your age, you acknowledge that you are 18 or older.",
+									"description": "Specify the wording you want to display as the disclaimer.",
+									"order": 39,
+									"placeholder": "By confirming your age, you acknowledge that you are 18 or older.",
+									"title": "Desclaimer Text",
+									"type": "string"
+								},
+								"disclaimerTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display for the disclaimer.",
+									"format": "color",
+									"order": 41,
+									"title": "Disclaimer Text Color",
+									"type": "string"
+								},
+								"divider_01": {
+									"helpvalue": "<br/>",
+									"order": 4,
+									"type": "help"
+								},
+								"divider_1": {
+									"helpvalue": "<br/>",
+									"order": 8,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_10": {
+									"helpvalue": "<br/>",
+									"order": 30,
+									"type": "help"
+								},
+								"divider_11": {
+									"helpvalue": "<br/>",
+									"order": 32,
+									"type": "help"
+								},
+								"divider_111": {
+									"helpvalue": "<br/>",
+									"order": 10,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_12": {
+									"helpvalue": "<br/>",
+									"order": 34,
+									"type": "help"
+								},
+								"divider_13": {
+									"helpvalue": "<br/>",
+									"order": 36,
+									"type": "help"
+								},
+								"divider_14": {
+									"helpvalue": "<br/>",
+									"order": 38,
+									"type": "help"
+								},
+								"divider_15": {
+									"helpvalue": "<br/>",
+									"order": 40,
+									"type": "help"
+								},
+								"divider_1_1": {
+									"helpvalue": "<br/>",
+									"order": 6,
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"type": "help"
+								},
+								"divider_2": {
+									"helpvalue": "<br/>",
+									"order": 12,
+									"type": "help"
+								},
+								"divider_3": {
+									"helpvalue": "<br/>",
+									"order": 14,
+									"type": "help"
+								},
+								"divider_4": {
+									"helpvalue": "<br/>",
+									"order": 16,
+									"type": "help"
+								},
+								"divider_4_1": {
+									"helpvalue": "<br/>",
+									"order": 18,
+									"type": "help"
+								},
+								"divider_5": {
+									"helpvalue": "<br/>",
+									"order": 20,
+									"type": "help"
+								},
+								"divider_6": {
+									"helpvalue": "<br/>",
+									"order": 22,
+									"type": "help"
+								},
+								"divider_7": {
+									"helpvalue": "<br/>",
+									"order": 24,
+									"type": "help"
+								},
+								"divider_8": {
+									"helpvalue": "<br/>",
+									"order": 26,
+									"type": "help"
+								},
+								"divider_9": {
+									"helpvalue": "<br/>",
+									"order": 28,
+									"type": "help"
+								},
+								"exitBackgroundColor": {
+									"default": "#ffffff",
+									"description": "Select the color of the background of the exit button.",
+									"format": "color",
+									"order": 35,
+									"title": "Exit Button Background Color",
+									"type": "string"
+								},
+								"exitButtonText": {
+									"default": "Exit",
+									"description": "Specify the wording you want to display to customer that don't want to enter the website. NOTE that leaving this field blank will hide the button.",
+									"order": 31,
+									"placeholder": "Exit",
+									"title": "Exit Button Text",
+									"type": "string"
+								},
+								"exitButtonUrl": {
+									"default": "https://www.google.com/",
+									"description": "Specify the URL where you want to send customers if they don't want to enter the website.",
+									"order": 37,
+									"placeholder": "https://google.com/",
+									"title": "Exit Button URL",
+									"type": "string"
+								},
+								"exitTextColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 33,
+									"title": "Exit Button Text Color",
+									"type": "string"
+								},
+								"fontColor": {
+									"default": "#000000",
+									"description": "Select a color of text you would like to display.",
+									"format": "color",
+									"order": 21,
+									"title": "Font Color",
+									"type": "string"
+								},
+								"frequency": {
+									"default": "eachVisit",
+									"enum": [
+										"eachVisit"
+									],
+									"enumNames": {
+										"eachVisit": "Each visit to website (session)"
+									},
+									"order": 0,
+									"showIf": {
+										"status": "enabled"
+									},
+									"title": "Verification Frequency",
+									"type": "string"
+								},
+								"headerColor": {
+									"default": "#000000",
+									"description": "Select a color of the title you would like to display.",
+									"format": "color",
+									"order": 17,
+									"title": "Title Color",
+									"type": "string"
+								},
+								"headerText": {
+									"default": "Are You 18 or Older?",
+									"description": "Specify the wording you want to display as the main header inside the age verification box.",
+									"order": 15,
+									"placeholder": "Are you 18 or Older?",
+									"title": "Header Text",
+									"type": "string"
+								},
+								"layout": {
+									"default": "black",
+									"enum": [
+										"black",
+										"blurredSiteBackground",
+										"transparent"
+									],
+									"enumNames": {
+										"black": "Black",
+										"blurredSiteBackground": "Blurred Site Background",
+										"transparent": "Transparent"
+									},
+									"format": "radios",
+									"order": 11,
+									"title": "Layout",
+									"type": "string"
+								},
+								"logo": {
+									"description": "Upload the logo you want to showcase on the age verification box. (RECOMMENDED SIZE: W: 300px X H:180px)",
+									"format": "image",
+									"order": 13,
+									"title": "Logo",
+									"type": "string"
+								},
+								"minimumAgeSelect": {
+									"default": "yes",
+									"enum": [
+										"yes",
+										"no"
+									],
+									"enumNames": {
+										"no": "No",
+										"yes": "Yes"
+									},
+									"order": 1,
+									"title": "Require Minimum Age",
+									"type": "string"
+								},
+								"minimumAgeText": {
+									"default": 18,
+									"maximum": 80,
+									"minimum": 15,
+									"order": 2,
+									"placeholder": "18",
+									"showIf": {
+										"settings.minimumAgeSelect": "yes"
+									},
+									"title": "Minimum Age",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"status": "enabled"
+							},
+							"title": "Settings",
+							"type": "object"
+						},
+						"status": {
+							"default": "enabled",
+							"enum": [
+								"enabled",
+								"disabled"
+							],
+							"enumNames": {
+								"disabled": "Disabled",
+								"enabled": "Enabled"
+							},
+							"order": 1,
+							"title": "APP Status",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "General Availability",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Lb-ausCxynm6",
+			"created": "2021-05-26T17:48:20.164944Z",
+			"proposedApp": {
+				"id": "Dmeu02XMezwv",
+				"title": "To The Moon+ Age Verification",
+				"shortDescription": "Simply Verify The Age Of Your Visitors On Your Website",
+				"longDescription": "Simply add an age verification popup to your website in seconds for businesses/websites that require age compliance.\n\nSupports for businesses that showcase and sell adult products including alcohol, tobacco, vape and other age restrictions\n\nAge Verification App is:\n- Fully Customizable\n- Easy to Setup\n- Optimized for Mobile",
+				"instructions": "",
+				"alias": "",
+				"orgId": "679f42840d2d91297fe94eab8249a441",
+				"icon": "https://images.cloudflareapps.com/UgxJMTUgGvM-/tplu%20%281%29.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_01.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_04.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_03.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_02.png",
+					"https://images.cloudflareapps.com/1GrFbsg8rFdv/Cloudflare_05.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/0xws_692hAH_/Tier-images%20%282%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hUgl4XhlhWg_/Featured-App-image%20%281%29.png",
+				"author": "To The Moon+",
+				"tagline": "",
+				"website": "https://tothemoonplus.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://tothemoonplus.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@tothemoonplus.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "All functionality included",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_TO_THE_MOON_AGE_VERIFICATION_PRO",
+						"feature": "apps.tothemoon_ageverification_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "DyKsdfssqiWm"
+				},
+				"created": "2021-03-16T01:53:31.876366Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-05-26T17:48:20.48071689Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-05-26T17:49:34.51987943Z"
+			}
+		}
+	]
+}

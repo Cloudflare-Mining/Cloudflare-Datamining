@@ -1,0 +1,417 @@
+{
+	"id": "pTcLLPaG14eB",
+	"title": "Discord",
+	"shortDescription": "See who is online in your Discord server.",
+	"longDescription": "Embedding a widget on your guild/free company site allows you to quickly see who is online without needing to log on to the game. \n\nWidgets also help streamline your recruitment process. Potential recruits visiting your site can instantly see how active your group is and even join a recruitment channel on your server without needing an invite.\nThe interactive widget is also perfect for fan sites with a public Discord server. It serves as the perfect promo for getting new users to join the conversation.\n\n# Features\n\n- Links to join your Discord server\n- Custom placement and positioning\n- Light and dark themes",
+	"instructions": "",
+	"alias": "discord",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/dBAvCL6TbWy1qeH3jQoB_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/hZV5L4SjQtGMjGU2jDbm_tile.png",
+	"featuredAppImage": "",
+	"author": "Discord Inc.",
+	"tagline": "",
+	"website": "https://discordapp.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://discordapp.com/terms",
+	"privacyPolicyURL": "https://discordapp.com/privacy",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 200,
+	"supportEmail": "support@discordapp.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"get-more-customers",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-25T22:01:49.711896768Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "dRBW0Eo9mtrw"
+	},
+	"created": "2017-07-25T21:59:45.433618Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "pTcLLPaG14eB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"horizontalAlignment": {
+							"default": "center",
+							"description": "How should the widget sit in the page?",
+							"enum": [
+								"left",
+								"center",
+								"right",
+								"expand"
+							],
+							"enumNames": {
+								"center": "Justify center",
+								"expand": "Stretch to fit the page",
+								"left": "Justify left",
+								"right": "Justify right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"id": {
+							"description": "You can get the widget ID from the widget tab in your Discord server settings. From this tab you can enable the widget and adjust your invite settings.",
+							"order": 0,
+							"placeholder": "00000000000000000",
+							"required": true,
+							"title": "Widget ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Discord widget appear?",
+							"format": "element",
+							"order": 1,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"theme": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Widget Theme",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"id",
+								"theme",
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptionsReset(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"horizontalAlignment"
+							],
+							"execute": "INSTALL_SCOPE.updateAlignment(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3IXCVYryDiff",
+			"metadata": {
+				"code": {
+					"sourceTag": "3IXCVYryDiff",
+					"uploadedOn": "2017-07-25T22:01:49.109019404Z"
+				}
+			},
+			"created": "2017-07-25T21:59:45.653212Z",
+			"proposedApp": {
+				"id": "pTcLLPaG14eB",
+				"title": "Discord",
+				"shortDescription": "See who is online in your Discord server.",
+				"longDescription": "Embedding a widget on your guild/free company site allows you to quickly see who is online without needing to log on to the game. \n\nWidgets also help streamline your recruitment process. Potential recruits visiting your site can instantly see how active your group is and even join a recruitment channel on your server without needing an invite.\nThe interactive widget is also perfect for fan sites with a public Discord server. It serves as the perfect promo for getting new users to join the conversation.\n\n# Features\n\n- Links to join your Discord server\n- Custom placement and positioning\n- Light and dark themes",
+				"instructions": "",
+				"alias": "discord",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/dBAvCL6TbWy1qeH3jQoB_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/hZV5L4SjQtGMjGU2jDbm_tile.png",
+				"featuredAppImage": "",
+				"author": "Discord Inc.",
+				"tagline": "",
+				"website": "https://discordapp.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://discordapp.com/terms",
+				"privacyPolicyURL": "https://discordapp.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@discordapp.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dRBW0Eo9mtrw"
+				},
+				"created": "2017-07-25T21:59:45.433618Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-25T22:01:49.698938748Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-25T22:02:58.316289213Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "pTcLLPaG14eB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"horizontalAlignment": {
+							"default": "center",
+							"description": "How should the widget sit in the page?",
+							"enum": [
+								"left",
+								"center",
+								"right",
+								"expand"
+							],
+							"enumNames": {
+								"center": "Justify center",
+								"expand": "Stretch to fit the page",
+								"left": "Justify left",
+								"right": "Justify right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"id": {
+							"description": "You can get the widget ID from the widget tab in your Discord server settings. From this tab you can enable the widget and adjust your invite settings.",
+							"order": 0,
+							"placeholder": "00000000000000000",
+							"required": true,
+							"title": "Widget ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Discord widget appear?",
+							"format": "element",
+							"order": 1,
+							"title": "Widget Location",
+							"type": "object"
+						},
+						"theme": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Widget Theme",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"id",
+								"theme",
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptionsReset(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"horizontalAlignment"
+							],
+							"execute": "INSTALL_SCOPE.updateAlignment(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.91,
+				"upvotes": 83,
+				"downvotes": 8
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3IXCVYryDiff",
+			"created": "2018-01-22T20:32:51.278892Z",
+			"proposedApp": {
+				"id": "pTcLLPaG14eB",
+				"title": "Discord",
+				"shortDescription": "See who is online in your Discord server.",
+				"longDescription": "Embedding a widget on your guild/free company site allows you to quickly see who is online without needing to log on to the game. \n\nWidgets also help streamline your recruitment process. Potential recruits visiting your site can instantly see how active your group is and even join a recruitment channel on your server without needing an invite.\nThe interactive widget is also perfect for fan sites with a public Discord server. It serves as the perfect promo for getting new users to join the conversation.\n\n# Features\n\n- Links to join your Discord server\n- Custom placement and positioning\n- Light and dark themes",
+				"instructions": "",
+				"alias": "discord",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/dBAvCL6TbWy1qeH3jQoB_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/hZV5L4SjQtGMjGU2jDbm_tile.png",
+				"featuredAppImage": "",
+				"author": "Discord Inc.",
+				"tagline": "",
+				"website": "https://discordapp.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://discordapp.com/terms",
+				"privacyPolicyURL": "https://discordapp.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@discordapp.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"get-more-customers",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "dRBW0Eo9mtrw"
+				},
+				"created": "2017-07-25T21:59:45.433618Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:32:51.536574393Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:33:29.983747476Z"
+			}
+		}
+	]
+}

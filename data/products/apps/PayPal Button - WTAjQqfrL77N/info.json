@@ -1,0 +1,1410 @@
+{
+	"id": "WTAjQqfrL77N",
+	"title": "PayPal Button",
+	"shortDescription": "Easily take payments, donations and offer subscriptions.",
+	"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-paypal-button",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+		"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+		"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+		"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.8",
+	"infoVersion": "1.0.8",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:47:29.709934357Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "wN8lmf70LjcC"
+	},
+	"created": "2018-03-12T18:36:53.259282Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wN8lmf70LjcC",
+			"metadata": {
+				"code": {
+					"sourceTag": "wN8lmf70LjcC",
+					"uploadedOn": "2018-03-12T18:36:53.596585628Z"
+				}
+			},
+			"created": "2018-03-12T18:36:53.43214Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "The easy way to take payments on your website.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/55NchtopQSitIzJFcHSE_Cloudflare PayPal Button 288x288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/RuyP8tLgT92eQWD684zN_Cloudflare PayPal Button banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* 1 Payment Option (PayPal, Stripe, Offline)\n* 1 Email Administrators\n* 25 Transactions /mo\n* Recurring Subscriptions",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* 2 Email Administrators\n* 50 Transactions /mo\n* Recurring Subscriptions\n* 1 Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* 5 Email Administrators\n* 100 Transactions /mo\n* Recurring Subscriptions\n* 2 Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions\n* Add Trials or Setup Fees for Subscriptions\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* Unlimited Email Administrators\n* Unlimited Transactions /mo\n* Recurring Subscriptions\n* Unlimited Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions\n* Add Trials or Setup Fees for Subscriptions\n* Custom CSS & JS\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:47:29.696657741Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:35:39.010299011Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qHz5vcks_5ZG",
+			"metadata": {
+				"code": {
+					"sourceTag": "qHz5vcks_5ZG",
+					"uploadedOn": "2018-03-23T17:35:37.753331389Z"
+				}
+			},
+			"created": "2018-03-23T17:35:37.094973Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "The easy way to take payments on your website.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/55NchtopQSitIzJFcHSE_Cloudflare PayPal Button 288x288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/RuyP8tLgT92eQWD684zN_Cloudflare PayPal Button banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* 1 Payment Option (PayPal, Stripe, Offline)\n* 1 Email Administrators\n* 25 Transactions /mo\n* Recurring Subscriptions",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* 2 Email Administrators\n* 50 Transactions /mo\n* Recurring Subscriptions\n* 1 Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* 5 Email Administrators\n* 100 Transactions /mo\n* Recurring Subscriptions\n* 2 Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions\n* Add Trials or Setup Fees for Subscriptions\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* 3 Payment Options (PayPal, Stripe, Offline)\n* Unlimited Email Administrators\n* Unlimited Transactions /mo\n* Recurring Subscriptions\n* Unlimited Price Options\n* Redirect after Payment\n* Discount Codes\n* Collect Custom Order Instructions\n* Add Trials or Setup Fees for Subscriptions\n* Custom CSS & JS\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:35:39.027699518Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:17.316489036Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"metadata": {
+				"code": {
+					"sourceTag": "STxBGwZm5di3",
+					"uploadedOn": "2018-09-19T23:52:22.536101578Z"
+				}
+			},
+			"created": "2018-09-19T23:52:22.383498Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "The easy way to take payments on your website.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/55NchtopQSitIzJFcHSE_Cloudflare PayPal Button 288x288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/RuyP8tLgT92eQWD684zN_Cloudflare PayPal Button banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"ui-and-design",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:52:36.254703096Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T18:00:13.867116373Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"created": "2018-09-25T17:04:27.050962Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "The easy way to take payments on your website.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/55NchtopQSitIzJFcHSE_Cloudflare PayPal Button 288x288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/RuyP8tLgT92eQWD684zN_Cloudflare PayPal Button banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T18:00:13.878680173Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:16:23.532781404Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"created": "2018-09-26T21:26:05.819797Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "Easily take payments, donations and offer subscriptions.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:17:13.659743707Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T22:51:00.098566761Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"created": "2018-10-16T17:49:23.836014Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "Easily take payments, donations and offer subscriptions.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-paypal-button",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:49:23.972935711Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:28:13.992938443Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"created": "2018-11-06T00:54:28.028447Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "Paypal Button",
+				"shortDescription": "Easily take payments, donations and offer subscriptions.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-paypal-button",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:54:28.17271717Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:41.508291688Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PayPal Button appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=paypalButton",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=paypalButton",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Improve name capitalization.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/STxBGwZm5di3",
+			"created": "2018-11-12T19:19:15.026173Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "PayPal Button",
+				"shortDescription": "Easily take payments, donations and offer subscriptions.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-paypal-button",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-12T19:19:15.370899488Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-13T17:41:58.447365006Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "WTAjQqfrL77N",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/paypal-button",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your PayPal Button",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr PayPal Button</h1> Take one-time or subscription payments anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the PayPal Button appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-paypal-button id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your PayPal Button",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your PayPal Button</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your PayPal Button to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nqjglRk3xoha",
+			"metadata": {
+				"code": {
+					"sourceTag": "nqjglRk3xoha",
+					"uploadedOn": "2019-04-16T00:05:21.53076906Z"
+				}
+			},
+			"created": "2019-04-16T00:05:21.300339Z",
+			"proposedApp": {
+				"id": "WTAjQqfrL77N",
+				"title": "PayPal Button",
+				"shortDescription": "Easily take payments, donations and offer subscriptions.",
+				"longDescription": "PayPal Button is the easy, trusted way to receive payments via your website! PayPal handles checkout, but end-users can choose from any available payment method, including credit card or offline payments. Make your button pop with custom text, colors, fonts, sizes, borders, and more!\n\n\n# What are the benefits of using POWr PayPal Button?   \n\n* **Easy to use** - Easily accept secure one-time payments and custom donation amounts through your website.\n* **Customizable subscriptions** - Offer subscriptions with custom billing intervals.\n* **Maximize conversions** - Maximize conversions with the user-friendly checkout interface and support for 25+ currencies.\n\n# Get started for free and enjoy these features:   \n\n* Accept one-time payments and donations\n* Offer subscriptions\n* PayPal handles checkout, but end-user can choose from any available payment method\n* Support for 25+ currencies \n* Add shipping and tax\n* Let buyer choose price in checkout\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Additional product options\n* Offer trials or add set up fees for subscriptions\n* Discount codes\n* Redirect after payment\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=paypal-button). \n\n# Why users love PayPal Button:   \n\n\"This is FABULOUS!! I am technologically pathetic and I was able to set up not one, but TWO buttons on my website. I tested them both and they worked the first time. NOTHING COULD BE EASIER! Bravo, you, for making this so fast and easy for me!\" - Pamela Melusky\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting PayPal Button up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-paypal-button",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/5JDc8aGeOg6J/PayPal-Button-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/xPfizPsjTEiz0AGUF6N2_Copy of screenshot-1-72-.png",
+					"//images.cloudflareapps.com/X0Z8eYiRSx6jWDyRA1DK_Copy of screenshot-2-19-.png",
+					"//images.cloudflareapps.com/Hfo1oJlESWysS2Y8d7eD_Screen Shot 2018-01-30 at 11.48.29 AM.png",
+					"//images.cloudflareapps.com/oK8n0b0ReKZmRtShgLxe_Copy of Menu Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Xv_v3P6xuLiD/PayPal-Button-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wN8lmf70LjcC"
+				},
+				"created": "2018-03-12T18:36:53.259282Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:05:22.087482439Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:43:01.675279712Z"
+			}
+		}
+	]
+}

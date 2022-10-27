@@ -1,0 +1,1911 @@
+{
+	"id": "NM2Knm6AWzEU",
+	"title": "Smartarget WeChat - Contact Us",
+	"shortDescription": "Allow customers to contact you using WeChat",
+	"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using WeChat, so its time to give them the option to contact you by using WeChat.\n\nWith 'WeChat - Contact Us' you can add a small button on the bottom-right corner with short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - WeChat window will appear, where user can scan or copy your WeChat ID and chat you within WeChat.",
+	"instructions": "",
+	"alias": "smartarget-wechat-contact-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/8VmYivLznd2i/wechat.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-desktop.png",
+		"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-mobile.png",
+		"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-2-desktop.png",
+		"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-3-desktop.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Wr7rxGRLE_Af/wechat.png",
+	"featuredAppImage": "",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only. One manager.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2021-12-14T10:49:47.823043866Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "X2_oERzyfVZf"
+	},
+	"created": "2021-12-14T10:49:40.32875Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "NM2Knm6AWzEU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in WeChat)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How WeChat chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 from 0:00hs to 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WeChat or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								},
+								"wechatQR": {
+									"default": "https://app.smartarget.online/assets/appsAssets/wechatqr.jpg",
+									"format": "text",
+									"order": 3,
+									"title": "Link to WeChat QR image (to allow desktop visitors scan it)",
+									"type": "string"
+								},
+								"wechatUsername": {
+									"default": "smartarget",
+									"format": "text",
+									"order": 2,
+									"title": "WeChat username (to allow mobile visitors copy it)",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=wechat\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure WeChat - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X2_oERzyfVZf",
+			"metadata": {
+				"code": {
+					"sourceTag": "X2_oERzyfVZf",
+					"uploadedOn": "2021-12-14T10:49:44.224933142Z"
+				}
+			},
+			"created": "2021-12-14T10:49:41.660819Z",
+			"proposedApp": {
+				"id": "NM2Knm6AWzEU",
+				"title": "Smartarget WeChat - Contact Us",
+				"shortDescription": "Allow customers to contact you using WeChat",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using WeChat, so its time to give them the option to contact you by using WeChat.\n\nWith 'WeChat - Contact Us' you can add a small button on the bottom-right corner with short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - WeChat window will appear, where user can scan or copy your WeChat ID and chat you within WeChat.",
+				"instructions": "",
+				"alias": "smartarget-wechat-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/8VmYivLznd2i/wechat.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Wr7rxGRLE_Af/wechat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "X2_oERzyfVZf"
+				},
+				"created": "2021-12-14T10:49:40.32875Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-12-14T10:49:47.816916405Z",
+				"canceledByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"canceledAt": "2021-12-14T10:59:31.89976115Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "NM2Knm6AWzEU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in WeChat)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How WeChat chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 from 0:00hs to 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WeChat or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								},
+								"wechatQR": {
+									"default": "https://app.smartarget.online/assets/appsAssets/wechatqr.jpg",
+									"format": "text",
+									"order": 3,
+									"title": "Link to WeChat QR image (to allow desktop visitors scan it)",
+									"type": "string"
+								},
+								"wechatUsername": {
+									"default": "smartarget",
+									"format": "text",
+									"order": 2,
+									"title": "WeChat username (to allow mobile visitors copy it)",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=wechat\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure WeChat - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X2_oERzyfVZf",
+			"created": "2021-12-14T10:59:31.155747Z",
+			"proposedApp": {
+				"id": "NM2Knm6AWzEU",
+				"title": "Smartarget WeChat - Contact Us",
+				"shortDescription": "Allow customers to contact you using WeChat",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using WeChat, so its time to give them the option to contact you by using WeChat.\n\nWith 'WeChat - Contact Us' you can add a small button on the bottom-right corner with short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - WeChat window will appear, where user can scan or copy your WeChat ID and chat you within WeChat.",
+				"instructions": "",
+				"alias": "smartarget-wechat-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/8VmYivLznd2i/wechat.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-desktop.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-mobile.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-2-desktop.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-3-desktop.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Wr7rxGRLE_Af/wechat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "X2_oERzyfVZf"
+				},
+				"created": "2021-12-14T10:49:40.32875Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-12-14T10:59:31.908238928Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-12-17T16:34:16.489810285Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "NM2Knm6AWzEU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in WeChat)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How WeChat chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 from 0:00hs to 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WeChat or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_wechat_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								},
+								"wechatQR": {
+									"default": "https://app.smartarget.online/assets/appsAssets/wechatqr.jpg",
+									"format": "text",
+									"order": 3,
+									"title": "Link to WeChat QR image (to allow desktop visitors scan it)",
+									"type": "string"
+								},
+								"wechatUsername": {
+									"default": "smartarget",
+									"format": "text",
+									"order": 2,
+									"title": "WeChat username (to allow mobile visitors copy it)",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=wechat\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure WeChat - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social and Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X2_oERzyfVZf",
+			"created": "2021-12-21T16:48:06.84666Z",
+			"proposedApp": {
+				"id": "NM2Knm6AWzEU",
+				"title": "Smartarget WeChat - Contact Us",
+				"shortDescription": "Allow customers to contact you using WeChat",
+				"longDescription": "Let's make it easier for your customers to contact you!\nProbably some of your users are using WeChat, so its time to give them the option to contact you by using WeChat.\n\nWith 'WeChat - Contact Us' you can add a small button on the bottom-right corner with short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - WeChat window will appear, where user can scan or copy your WeChat ID and chat you within WeChat.",
+				"instructions": "",
+				"alias": "smartarget-wechat-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/8VmYivLznd2i/wechat.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-desktop.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-1-mobile.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-2-desktop.png",
+					"https://images.cloudflareapps.com/3ozBcrMbGe3P/wechat-3-desktop.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Wr7rxGRLE_Af/wechat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "X2_oERzyfVZf"
+				},
+				"created": "2021-12-14T10:49:40.32875Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-12-21T16:48:07.176069794Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-12-21T16:48:35.973673178Z"
+			}
+		}
+	]
+}

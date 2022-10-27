@@ -1,0 +1,3633 @@
+{
+	"id": "6bw2Defo7xjX",
+	"title": "Spotify",
+	"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+	"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+	"instructions": "",
+	"alias": "spotify",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+		"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+		"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+	"featuredAppImage": "",
+	"author": "Spotify Inc.",
+	"tagline": "",
+	"website": "https://spotify.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#2fd566",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.6",
+	"infoVersion": "1.2.6",
+	"points": 440,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"widgets-and-plugins",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-06-27T04:56:10.417547116Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "-LSO5FTKTXL_"
+	},
+	"created": "2017-06-23T11:11:20.881378Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "center",
+									"size": "large",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"notitle": true,
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"description": "Login to Spotify to select your playlists.",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a custom playlist from a URI..."
+												},
+												"order": 0,
+												"readonly": true,
+												"title": "Playlist Source",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify Center.",
+											"expand": "Stretch to fit the page.",
+											"left": "Justify Left.",
+											"right": "Justify Right."
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button. ",
+											"playlist": "A playlist.",
+											"track": "A single track."
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/o8FnYTPK6rUs",
+			"metadata": {
+				"code": {
+					"sourceTag": "o8FnYTPK6rUs",
+					"uploadedOn": "2017-06-23T12:24:31.389922566Z"
+				}
+			},
+			"created": "2017-06-23T11:11:21.099086Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-23T12:26:31.269190352Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-06-23T12:33:15.831174943Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "center",
+									"size": "large",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"notitle": true,
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"description": "Login to Spotify to select your playlists.",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a custom playlist from a URI..."
+												},
+												"order": 0,
+												"readonly": true,
+												"title": "Playlist Source",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify Center.",
+											"expand": "Stretch to fit the page.",
+											"left": "Justify Left.",
+											"right": "Justify Right."
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button. ",
+											"playlist": "A playlist.",
+											"track": "A single track."
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/o8FnYTPK6rUs",
+			"created": "2017-06-23T12:33:15.621996Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-23T12:33:15.863079155Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-23T20:52:28.919327828Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "center",
+									"size": "large",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"notitle": true,
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"description": "Login to Spotify to select your playlists.",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a custom playlist from a URI..."
+												},
+												"order": 0,
+												"readonly": true,
+												"showIf": {
+													"dev": true
+												},
+												"title": "Playlist Source",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify Center.",
+											"expand": "Stretch to fit the page.",
+											"left": "Justify Left.",
+											"right": "Justify Right."
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button. ",
+											"playlist": "A playlist.",
+											"track": "A single track."
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cqc58JCoUGos",
+			"metadata": {
+				"code": {
+					"sourceTag": "cqc58JCoUGos",
+					"uploadedOn": "2017-06-23T21:13:51.175262458Z"
+				}
+			},
+			"created": "2017-06-23T21:13:50.93552Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-23T21:13:51.7448406Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-23T21:14:05.216893012Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://spotify-oauth.appstore.cfdata.org",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mVtr7UuV8saE",
+			"metadata": {
+				"code": {
+					"sourceTag": "mVtr7UuV8saE",
+					"uploadedOn": "2017-06-26T08:23:39.101859502Z"
+				}
+			},
+			"created": "2017-06-26T08:23:38.864401Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-26T08:23:39.564326652Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-26T08:34:25.211717059Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cf-apps-spotify.herokuapp.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aTCRHiAsfxsu",
+			"metadata": {
+				"code": {
+					"sourceTag": "aTCRHiAsfxsu",
+					"uploadedOn": "2017-06-27T04:56:09.676222018Z"
+				}
+			},
+			"created": "2017-06-27T04:56:09.340765Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-27T04:56:10.413784966Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-27T04:56:29.216330759Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cf-apps-spotify.herokuapp.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aTCRHiAsfxsu",
+			"created": "2018-01-23T20:26:06.05417Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"getting-started-apps",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:26:06.304828706Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:26:11.92134671Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cf-apps-spotify.herokuapp.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 6,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aTCRHiAsfxsu",
+			"created": "2018-02-06T21:50:20.748057Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:50:21.026514189Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:53.955720722Z"
+			}
+		},
+		{
+			"tag": "1.2.3",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://spotify.cloudflareapps.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "OAuth issues resolves",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0oZ3UATjHyeE",
+			"metadata": {
+				"code": {
+					"sourceTag": "0oZ3UATjHyeE",
+					"uploadedOn": "2019-02-11T19:51:57.788699993Z"
+				}
+			},
+			"created": "2019-02-11T19:51:57.4621Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-02-11T19:51:58.59078645Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2019-02-11T19:54:03.159631727Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.4",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://spotify.cloudflareapps.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "OAuth issues resolves",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bGokR7qb_Zpo",
+			"metadata": {
+				"code": {
+					"sourceTag": "bGokR7qb_Zpo",
+					"uploadedOn": "2019-02-11T19:53:55.040584952Z"
+				}
+			},
+			"created": "2019-02-11T19:53:54.861469Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-02-11T19:54:03.168423203Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2019-02-11T19:55:44.226665785Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.5",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://spotify.cloudflareapps.com",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "OAuth issues resolves",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/oI4rgkxntv94",
+			"metadata": {
+				"code": {
+					"sourceTag": "oI4rgkxntv94",
+					"uploadedOn": "2019-02-11T19:55:43.495300196Z"
+				}
+			},
+			"created": "2019-02-11T19:55:43.298076Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-02-11T19:55:44.238656015Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-14T16:58:24.134583818Z"
+			}
+		},
+		{
+			"tag": "1.2.6",
+			"appId": "6bw2Defo7xjX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Connect your Spotify account to list your playlists and followed artists.",
+							"format": "account",
+							"order": 0,
+							"services": [
+								"spotify"
+							],
+							"title": "Spotify Account",
+							"type": "object"
+						},
+						"widgets": {
+							"default": [
+								{
+									"artist": {
+										"URI": "custom",
+										"customURI": "spotify:artist:7jefIIksOi1EazgRTfW2Pk"
+									},
+									"location": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"playlist": {
+										"URI": "custom",
+										"customURI": "spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ",
+										"view": "list"
+									},
+									"position": "expand",
+									"size": "small",
+									"theme": "dark",
+									"track": {
+										"URI": "spotify:track:7tFiyTwD0nx5a1eklYtX2J"
+									},
+									"type": "playlist"
+								}
+							],
+							"items": {
+								"properties": {
+									"artist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose an artist from a URI..."
+												},
+												"order": 0,
+												"title": "Artist",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking an artist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:artist:123ABC...",
+												"title": "Artist URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "artist"
+										},
+										"title": "Follow Button",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the widget appear on the page?",
+										"format": "element",
+										"order": 3,
+										"title": "Location",
+										"type": "object"
+									},
+									"playlist": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"default": "custom",
+												"enum": [
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Choose a playlist from a URI..."
+												},
+												"order": 0,
+												"title": "Playlist Name",
+												"type": "string"
+											},
+											"customURI": {
+												"description": "This can be found in Spotify by right clicking a playlist and selecting “Copy Spotify URI”.",
+												"order": 1,
+												"placeholder": "spotify:user:jessie:playlist:123ABC...",
+												"showIf": {
+													"widgets[].playlist.URI": "custom"
+												},
+												"title": "Playlist URI",
+												"type": "string"
+											},
+											"view": {
+												"default": "list",
+												"enum": [
+													"list",
+													"coverart"
+												],
+												"enumNames": {
+													"coverart": "With their cover art.",
+													"list": "As a list of tracks."
+												},
+												"format": "radios",
+												"order": 2,
+												"title": "How should songs appear?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "playlist"
+										},
+										"title": "Playlist",
+										"type": "object"
+									},
+									"position": {
+										"default": "center",
+										"description": "How should the widget sit in the page?",
+										"enum": [
+											"left",
+											"center",
+											"right",
+											"expand"
+										],
+										"enumNames": {
+											"center": "Justify center",
+											"expand": "Stretch to fit the page",
+											"left": "Justify left",
+											"right": "Justify right"
+										},
+										"format": "radios",
+										"order": 4,
+										"title": "Horizontal alignment",
+										"type": "string"
+									},
+									"size": {
+										"default": "large",
+										"description": "What size should the widget appear as?",
+										"enum": [
+											"small",
+											"large"
+										],
+										"enumNames": {
+											"large": "Large",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 5,
+										"title": "Size",
+										"type": "string"
+									},
+									"theme": {
+										"default": "light",
+										"description": "What color scheme should the widget use?",
+										"enum": [
+											"light",
+											"dark"
+										],
+										"enumNames": {
+											"dark": "Dark",
+											"light": "Light"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Theme",
+										"type": "string"
+									},
+									"track": {
+										"order": 2,
+										"properties": {
+											"URI": {
+												"description": "This can be found in Spotify by right clicking a track and selecting “Copy Spotify URI”.",
+												"order": 0,
+												"placeholder": "spotify:track:123ABC...",
+												"title": "Track URI",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"widgets[].type": "track"
+										},
+										"title": "Single Track",
+										"type": "object"
+									},
+									"type": {
+										"default": "playlist",
+										"enum": [
+											"playlist",
+											"track",
+											"artist"
+										],
+										"enumNames": {
+											"artist": "A follow button",
+											"playlist": "A playlist",
+											"track": "A single track"
+										},
+										"format": "radios",
+										"order": 0,
+										"title": "What kind of widget should be displayed?",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Widgets",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://spotify.cloudflareapps.com/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.73,
+				"upvotes": 8,
+				"downvotes": 3
+			},
+			"releaseNotes": "DNS issue with hook resolved",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8TS1_I5VKTgK",
+			"metadata": {
+				"code": {
+					"sourceTag": "8TS1_I5VKTgK",
+					"uploadedOn": "2019-02-14T20:12:08.996463095Z"
+				}
+			},
+			"created": "2019-02-14T20:12:08.69241Z",
+			"proposedApp": {
+				"id": "6bw2Defo7xjX",
+				"title": "Spotify",
+				"shortDescription": "Add playlists, tracks, and follow buttons to your site.",
+				"longDescription": "Add Spotify widgets to your web pages and let your web visitors play tracks and follow Spotify profiles.\n\nAdd a Spotify Play Button to your blog, website, or social page—all your fans have to do is hit “Play” to enjoy the music. You can create Play Buttons for albums, tracks, artists, or playlists.\n\nWhen a logged-in Spotify user clicks the button, the music will start playing in the Spotify player. If the user is not logged into their Spotify account, the Spotify Play Button will play a 30-second audio preview of the music, and they will be prompted to login or sign up.\n\nYou can choose different button themes and sizes, and you can link to any song or album in our music catalog, or to any playlist that you have created.",
+				"instructions": "",
+				"alias": "spotify",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ira0X2rQdq26sSiQFMZZ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mlkivBDPRsKzl9bMh86U_screenshot-1.png",
+					"//images.cloudflareapps.com/AZwZQvcvTUSsy0eAAbpY_screenshot-2.png",
+					"//images.cloudflareapps.com/D64pSfUQcuDPR1lCqBng_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Y9yShhQfmVh5ztbiNIAo_tile.png",
+				"featuredAppImage": "",
+				"author": "Spotify Inc.",
+				"tagline": "",
+				"website": "https://spotify.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-LSO5FTKTXL_"
+				},
+				"created": "2017-06-23T11:11:20.881378Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-02-14T20:12:10.054642524Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-14T20:36:45.138444858Z"
+			}
+		}
+	]
+}

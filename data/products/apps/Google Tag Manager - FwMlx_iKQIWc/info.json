@@ -1,0 +1,543 @@
+{
+	"id": "FwMlx_iKQIWc",
+	"title": "Google Tag Manager",
+	"shortDescription": "Add Google Tag Manager container to your website",
+	"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+	"instructions": "Insert your Container ID. That's it!",
+	"alias": "google-tagmanager",
+	"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+	"icon": "https://images.cloudflareapps.com/HWHXXEZEV296/icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/2GAnwnTWORHg/tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+	"author": "omrilotan",
+	"tagline": "",
+	"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+	"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+	"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+	"privacyPolicyURL": "https://policies.google.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 0,
+	"supportEmail": "omri@hamadgera.com",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f06a5b64e06913cf8f971600f9ba970d",
+			"created": "2020-02-03T20:18:30.796484905Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "th6FS7JLZA08"
+	},
+	"created": "2020-02-03T20:18:26.042935Z",
+	"org": {
+		"id": "f06a5b64e06913cf8f971600f9ba970d",
+		"title": "",
+		"username": "f06a5b64e06913cf8f971600f9ba970d",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "FwMlx_iKQIWc",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"container_id": {
+							"default": "GTM-XXXXXXX",
+							"description": "Add your container ID here",
+							"order": 0,
+							"title": "Container ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Add Google Tag Manager container to your website!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/th6FS7JLZA08",
+			"metadata": {
+				"code": {
+					"sourceTag": "th6FS7JLZA08",
+					"uploadedOn": "2020-02-03T20:18:28.358206045Z"
+				}
+			},
+			"created": "2020-02-03T20:18:27.731423Z",
+			"proposedApp": {
+				"id": "FwMlx_iKQIWc",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add Google Tag Manager container to your website",
+				"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+				"instructions": "Insert your Container ID. That's it!",
+				"alias": "google-tagmanager",
+				"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+				"icon": "https://images.cloudflareapps.com/UrxgyNM1o9TH/google_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/9tHFsCJ5pQ_R/google_tag_manager_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+				"author": "omrilotan",
+				"tagline": "",
+				"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+				"privacyPolicyURL": "https://policies.google.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "omri@hamadgera.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "th6FS7JLZA08"
+				},
+				"created": "2020-02-03T20:18:26.042935Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f06a5b64e06913cf8f971600f9ba970d",
+				"requestedAt": "2020-02-03T20:18:30.778724291Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-03T20:44:13.511023761Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "FwMlx_iKQIWc",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"container_id": {
+							"default": "GTM-XXXXXXX",
+							"description": "Add your container ID here",
+							"order": 0,
+							"title": "Container ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.63,
+				"upvotes": 5,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/th6FS7JLZA08",
+			"created": "2020-02-03T20:46:37.036299Z",
+			"proposedApp": {
+				"id": "FwMlx_iKQIWc",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add Google Tag Manager container to your website",
+				"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+				"instructions": "Insert your Container ID. That's it!",
+				"alias": "google-tagmanager",
+				"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+				"icon": "https://images.cloudflareapps.com/UrxgyNM1o9TH/google_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/9tHFsCJ5pQ_R/google_tag_manager_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+				"author": "omrilotan",
+				"tagline": "",
+				"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+				"privacyPolicyURL": "https://policies.google.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "omri@hamadgera.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "th6FS7JLZA08"
+				},
+				"created": "2020-02-03T20:18:26.042935Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-02-03T20:46:37.272096985Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-03T20:46:46.219590181Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "FwMlx_iKQIWc",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"container_id": {
+							"default": "",
+							"description": "Add your container ID here (GTM-XXXXXXX)",
+							"order": 0,
+							"title": "Container ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.73,
+				"upvotes": 8,
+				"downvotes": 3
+			},
+			"releaseNotes": "Remove default value of GTM container ID. The default value was being concatenated with the input value. By clearing the input's initial value I remove the chance of this happening to users.\n\nhttps://github.com/omrilotan/cloudflare-google-tagmanager/blob/master/CHANGELOG.md",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PksT-0GNqqYz",
+			"metadata": {
+				"code": {
+					"sourceTag": "PksT-0GNqqYz",
+					"uploadedOn": "2020-03-02T21:43:21.693604546Z"
+				}
+			},
+			"created": "2020-03-02T21:43:20.98214Z",
+			"proposedApp": {
+				"id": "FwMlx_iKQIWc",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add Google Tag Manager container to your website",
+				"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+				"instructions": "Insert your Container ID. That's it!",
+				"alias": "google-tagmanager",
+				"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+				"icon": "https://images.cloudflareapps.com/UrxgyNM1o9TH/google_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/9tHFsCJ5pQ_R/google_tag_manager_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+				"author": "omrilotan",
+				"tagline": "",
+				"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+				"privacyPolicyURL": "https://policies.google.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "omri@hamadgera.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "th6FS7JLZA08"
+				},
+				"created": "2020-02-03T20:18:26.042935Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f06a5b64e06913cf8f971600f9ba970d",
+				"requestedAt": "2020-03-02T21:43:22.976015479Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-03T16:42:48.920432025Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "FwMlx_iKQIWc",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"container_id": {
+							"default": "",
+							"description": "Add your container ID here (GTM-XXXXXXX)",
+							"order": 0,
+							"title": "Container ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "## [FIX] document.body is undefined (sometimes)\n\nCGI apps (cdn-cgi/apps) are loaded in the document's head. In large documents this may mean the document body is not yet accessible when this script runs. This retry system will exit only after the body is accessible.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bSnDnHHx00l7",
+			"metadata": {
+				"code": {
+					"sourceTag": "bSnDnHHx00l7",
+					"uploadedOn": "2020-06-04T20:25:03.737564002Z"
+				}
+			},
+			"created": "2020-06-04T20:25:03.085529Z",
+			"proposedApp": {
+				"id": "FwMlx_iKQIWc",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add Google Tag Manager container to your website",
+				"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+				"instructions": "Insert your Container ID. That's it!",
+				"alias": "google-tagmanager",
+				"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+				"icon": "https://images.cloudflareapps.com/UrxgyNM1o9TH/google_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/9tHFsCJ5pQ_R/google_tag_manager_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+				"author": "omrilotan",
+				"tagline": "",
+				"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+				"privacyPolicyURL": "https://policies.google.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "omri@hamadgera.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "th6FS7JLZA08"
+				},
+				"created": "2020-02-03T20:18:26.042935Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f06a5b64e06913cf8f971600f9ba970d",
+				"requestedAt": "2020-06-04T20:25:05.07020437Z",
+				"canceledByUserId": "f06a5b64e06913cf8f971600f9ba970d",
+				"canceledAt": "2020-06-04T20:33:46.65012777Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "FwMlx_iKQIWc",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"container_id": {
+							"default": "",
+							"description": "Add your container ID here (GTM-XXXXXXX)",
+							"order": 0,
+							"title": "Container ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 90,
+				"downvotes": 10
+			},
+			"releaseNotes": "## [FIX] document.body is undefined (sometimes)\n\nCGI apps (cdn-cgi/apps) are loaded in the document's head. In large documents this may mean the document body is not yet accessible when this script runs. This retry system will exit only after the body is accessible.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bSnDnHHx00l7",
+			"created": "2020-06-04T20:30:48.652076Z",
+			"proposedApp": {
+				"id": "FwMlx_iKQIWc",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add Google Tag Manager container to your website",
+				"longDescription": "Add Google Tag Manager easily - **1 step setup**.\nTag Manager is a one-stop-shop for centralised third party integration.",
+				"instructions": "Insert your Container ID. That's it!",
+				"alias": "google-tagmanager",
+				"orgId": "f06a5b64e06913cf8f971600f9ba970d",
+				"icon": "https://images.cloudflareapps.com/HWHXXEZEV296/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/2GAnwnTWORHg/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/DA6cycq4Msd8/Featured%20App%20image.png",
+				"author": "omrilotan",
+				"tagline": "",
+				"website": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"sourceURL": "https://github.com/omrilotan/cloudflare-google-tagmanager",
+				"termsOfServiceURL": "https://www.google.com/analytics/terms/tag-manager/",
+				"privacyPolicyURL": "https://policies.google.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "omri@hamadgera.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "th6FS7JLZA08"
+				},
+				"created": "2020-02-03T20:18:26.042935Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f06a5b64e06913cf8f971600f9ba970d",
+				"requestedAt": "2020-06-04T20:33:46.671102876Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-05T15:27:52.118788027Z"
+			}
+		}
+	]
+}

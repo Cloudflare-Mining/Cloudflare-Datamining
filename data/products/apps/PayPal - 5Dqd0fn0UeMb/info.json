@@ -1,0 +1,5613 @@
+{
+	"id": "5Dqd0fn0UeMb",
+	"title": "PayPal",
+	"shortDescription": "Sell items on your site with PayPal buttons.",
+	"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+	"instructions": "",
+	"alias": "paypal",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/fNhqHqYWS1uZnFme96G2_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+		"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+		"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/4mH6nrVpRq69fBhGZZ1O_tileImage.png",
+	"featuredAppImage": "",
+	"author": "PayPal Inc.",
+	"tagline": "",
+	"website": "https://paypal.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.paypal.com/ga/webapps/mpp/ua/useragreement-full",
+	"privacyPolicyURL": "https://www.paypal.com/us/webapps/mpp/ua/privacy-full",
+	"color": "#199ddb",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.3.9",
+	"infoVersion": "2.3.9",
+	"points": 933,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"marketing",
+		"e-commerce",
+		"make-money-on-your-site",
+		"widgets-and-plugins",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-05T09:28:40.814311188Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "FzQ4DDzRvam3"
+	},
+	"created": "2017-03-20T20:46:26.056977Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "make-money-on-your-site",
+			"title": "Make Money On Your Site",
+			"description": "Apps to help you make money from your website.",
+			"icon": "",
+			"points": 1050,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:54:09.705767Z"
+		},
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "e-commerce",
+			"title": "E-Commerce",
+			"description": "Tools to help your online business.",
+			"icon": "//eager-app-images.imgix.net/BM8DnzVSRaayB7T6mQ7i_e-commerce.png",
+			"points": 80,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "e-commerce.png",
+					"isWriteable": false,
+					"key": "BM8DnzVSRaayB7T6mQ7i_e-commerce.png",
+					"mimetype": "image/png",
+					"size": 3995,
+					"url": "https://www.filepicker.io/api/file/wi5zZPnnQUykdnIYXznC"
+				}
+			},
+			"created": "2016-01-21T18:06:06.038208Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [
+				{
+					"referencedAs": "./build/app.js",
+					"path": "build/app.js",
+					"location": "5Dqd0fn0UeMb/v1.0.0/build/app.js"
+				},
+				{
+					"referencedAs": "./build/app.css",
+					"path": "build/app.css",
+					"location": "5Dqd0fn0UeMb/v1.0.0/build/app.css"
+				},
+				{
+					"referencedAs": "./vendor/paypal-buttons.js",
+					"path": "vendor/paypal-buttons.js",
+					"location": "5Dqd0fn0UeMb/v1.0.0/vendor/paypal-buttons.js"
+				}
+			],
+			"hasCode": true,
+			"fileHandle": "5Dqd0fn0UeMb/v1.0.0",
+			"metadata": {
+				"code": {
+					"sourceTag": "FzQ4DDzRvam3",
+					"uploadedOn": "2017-03-20T20:46:28.150486497Z"
+				}
+			},
+			"created": "2017-03-20T20:46:27.349011Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/jERxDIiS0qHK2sfFdzwN_logo.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-20T20:47:18.666057347Z",
+				"canceledAt": "2017-03-20T21:30:06.941423466Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [
+				{
+					"referencedAs": "./build/app.js",
+					"path": "build/app.js",
+					"location": "5Dqd0fn0UeMb/v1.0.0-meta-76yzxU/build/app.js"
+				},
+				{
+					"referencedAs": "./build/app.css",
+					"path": "build/app.css",
+					"location": "5Dqd0fn0UeMb/v1.0.0-meta-76yzxU/build/app.css"
+				},
+				{
+					"referencedAs": "./vendor/paypal-buttons.js",
+					"path": "vendor/paypal-buttons.js",
+					"location": "5Dqd0fn0UeMb/v1.0.0-meta-76yzxU/vendor/paypal-buttons.js"
+				}
+			],
+			"hasCode": true,
+			"fileHandle": "5Dqd0fn0UeMb/v1.0.2",
+			"metadata": {
+				"code": {
+					"sourceTag": "7NOltSBoHkGE",
+					"uploadedOn": "2017-03-20T21:29:59.959625655Z"
+				}
+			},
+			"created": "2017-03-20T21:29:27.244257Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/jERxDIiS0qHK2sfFdzwN_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/VvlrrKGVSu2M7qEIFZ6L_LcSseZz5TrSpeg33hnLV_Screen Shot 2016-06-03 at 2.23.26 PM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "PayPal",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-20T21:34:53.67560775Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-20T22:03:17.006552669Z"
+			}
+		},
+		{
+			"tag": "v1.0.3",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "5Dqd0fn0UeMb/v1.0.3",
+			"created": "2017-03-20T22:06:21.896859Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/jERxDIiS0qHK2sfFdzwN_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/YiYZCfM9TUyyaHPjfV36_1.png",
+					"//images.cloudflareapps.com/QJq8EvBRI2uWOOzXOyjn_2.png",
+					"//images.cloudflareapps.com/QQ2co4IeT9aD3rOpmsuw_3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "PayPal",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-20T22:06:38.337000496Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-20T22:06:51.63186808Z"
+			}
+		},
+		{
+			"tag": "v1.0.4",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "5Dqd0fn0UeMb/v1.0.3",
+			"created": "2017-04-19T20:58:16.642447Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/jERxDIiS0qHK2sfFdzwN_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/YiYZCfM9TUyyaHPjfV36_1.png",
+					"//images.cloudflareapps.com/QJq8EvBRI2uWOOzXOyjn_2.png",
+					"//images.cloudflareapps.com/QQ2co4IeT9aD3rOpmsuw_3.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "PayPal",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-19T20:59:04.152763308Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-19T20:59:24.917977095Z"
+			}
+		},
+		{
+			"tag": "v2.0.0",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U_8rlI_pK82w",
+			"metadata": {
+				"code": {
+					"sourceTag": "U_8rlI_pK82w",
+					"uploadedOn": "2017-05-30T01:41:00.001643255Z"
+				}
+			},
+			"created": "2017-05-30T01:40:59.489878Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/jERxDIiS0qHK2sfFdzwN_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/bVSe6JzS4O0S10fl93Lv_tile.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-30T01:48:37.715099466Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-30T01:48:55.979376384Z"
+			}
+		},
+		{
+			"tag": "v2.1.0",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U_8rlI_pK82w",
+			"created": "2017-05-30T22:29:05.591644Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Bk2bV8q2RPKJKJmkBbfX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/nDlNafHLTuKUF9QSvhsg_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-30T22:29:22.295147536Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-30T22:29:33.651153735Z"
+			}
+		},
+		{
+			"tag": "2.2.0",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"CAD",
+										"EUR",
+										"GBP",
+										"JPY",
+										"USD"
+									],
+									"enumNames": {
+										"CAD": "CAD ($)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"JPY": "JPY (¥)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U_8rlI_pK82w",
+			"created": "2017-06-16T21:35:54.800923Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-16T21:36:20.336704534Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-16T21:36:52.263522666Z"
+			}
+		},
+		{
+			"tag": "2.3.0",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "The email associated with your PayPal account or your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a>.",
+							"order": 1,
+							"placeholder": "you@email.com",
+							"required": true,
+							"title": "PayPal email",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IYgIfPqYzIMA",
+			"metadata": {
+				"code": {
+					"sourceTag": "IYgIfPqYzIMA",
+					"uploadedOn": "2017-07-05T09:28:40.003488188Z"
+				}
+			},
+			"created": "2017-07-05T09:28:39.796106Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-05T09:28:40.806301312Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-05T09:29:11.352870576Z"
+			}
+		},
+		{
+			"tag": "2.3.1",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MvsxNGFFjn9h",
+			"metadata": {
+				"code": {
+					"sourceTag": "MvsxNGFFjn9h",
+					"uploadedOn": "2017-07-14T04:55:15.860880197Z"
+				}
+			},
+			"created": "2017-07-14T04:55:15.647093Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T04:55:16.433882751Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-07-14T04:56:11.903828514Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.3.2",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MInUfDc3rKpS",
+			"metadata": {
+				"code": {
+					"sourceTag": "MInUfDc3rKpS",
+					"uploadedOn": "2017-07-14T04:56:11.205990586Z"
+				}
+			},
+			"created": "2017-07-14T04:56:11.065354Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T04:56:11.909635655Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-07-14T04:58:28.576320683Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.3.4",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DAW86LsA4DXz",
+			"metadata": {
+				"code": {
+					"sourceTag": "DAW86LsA4DXz",
+					"uploadedOn": "2017-07-14T04:58:27.914093652Z"
+				}
+			},
+			"created": "2017-07-14T04:58:27.793109Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T04:58:28.58083445Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-07-14T04:59:22.933296751Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.3.5",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8J0t6lOaknr7",
+			"metadata": {
+				"code": {
+					"sourceTag": "8J0t6lOaknr7",
+					"uploadedOn": "2017-07-14T04:59:22.184672271Z"
+				}
+			},
+			"created": "2017-07-14T04:59:22.056663Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/KXoq5x9UQbOagHyQcG9r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PQtcBgTAR26ZYZt9aHm5_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T04:59:22.938408164Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-14T04:59:33.201554707Z"
+			}
+		},
+		{
+			"tag": "2.3.6",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8J0t6lOaknr7",
+			"created": "2017-07-14T05:06:53.100702Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Pay securely. Here, there, anywhere.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/fNhqHqYWS1uZnFme96G2_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/4mH6nrVpRq69fBhGZZ1O_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.paypal.com/ga/webapps/mpp/ua/useragreement-full",
+				"privacyPolicyURL": "https://www.paypal.com/us/webapps/mpp/ua/privacy-full",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T05:06:53.36980321Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-14T05:07:07.093538083Z"
+			}
+		},
+		{
+			"tag": "2.3.7",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.83,
+				"upvotes": 10,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8J0t6lOaknr7",
+			"created": "2017-07-14T05:08:53.396629Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Sell items on your site with PayPal buttons.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/fNhqHqYWS1uZnFme96G2_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/4mH6nrVpRq69fBhGZZ1O_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.paypal.com/ga/webapps/mpp/ua/useragreement-full",
+				"privacyPolicyURL": "https://www.paypal.com/us/webapps/mpp/ua/privacy-full",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-14T05:08:53.613291537Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-14T06:53:09.71650697Z"
+			}
+		},
+		{
+			"tag": "2.3.8",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8J0t6lOaknr7",
+			"created": "2018-01-23T19:57:55.32745Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Sell items on your site with PayPal buttons.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/fNhqHqYWS1uZnFme96G2_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/4mH6nrVpRq69fBhGZZ1O_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.paypal.com/ga/webapps/mpp/ua/useragreement-full",
+				"privacyPolicyURL": "https://www.paypal.com/us/webapps/mpp/ua/privacy-full",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:57:55.583136472Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:58:00.563665056Z"
+			}
+		},
+		{
+			"tag": "2.3.9",
+			"appId": "5Dqd0fn0UeMb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/paypal-buttons.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"amount-buynow": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product price",
+										"type": "number"
+									},
+									"amount-donate": {
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Suggested donation",
+										"type": "number"
+									},
+									"amount-subscribe": {
+										"description": "How much the buyer will be charged.",
+										"minimum": 0,
+										"order": 4,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription price",
+										"type": "number"
+									},
+									"description": {
+										"format": "textarea",
+										"order": 3,
+										"title": "Description",
+										"type": "string"
+									},
+									"name-buynow": {
+										"order": 2,
+										"placeholder": "Electronics, e-book, clothes, etc.",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Product name",
+										"type": "string"
+									},
+									"name-donate": {
+										"order": 2,
+										"placeholder": "Acme fundraiser, blog donation drive, etc.",
+										"showIf": {
+											"buttons[].type": "donate"
+										},
+										"title": "Donation name",
+										"type": "string"
+									},
+									"name-subscribe": {
+										"order": 2,
+										"placeholder": "Newsletter, Ice cream club, etc.",
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription name",
+										"type": "string"
+									},
+									"period": {
+										"default": "M",
+										"description": "How often a customer will be billed.",
+										"enum": [
+											"D",
+											"W",
+											"M",
+											"Y"
+										],
+										"enumNames": {
+											"D": "Daily",
+											"M": "Monthly",
+											"W": "Weekly",
+											"Y": "Yearly"
+										},
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Payment period",
+										"type": "string"
+									},
+									"recurrence": {
+										"order": 7,
+										"properties": {
+											"customDuration": {
+												"default": 2,
+												"minimum": 1,
+												"order": 2,
+												"placeholder": 1,
+												"showIf": {
+													"buttons[].recurrence.type": "custom"
+												},
+												"title": "Number of (Days / Weeks / Months / Years)",
+												"type": "integer"
+											},
+											"type": {
+												"default": "reoccurring",
+												"enum": [
+													"reoccurring",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Stop after...",
+													"reoccurring": "Until canceled"
+												},
+												"format": "radios",
+												"order": 1,
+												"title": "How long should a customer be billed?",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"buttons[].type": "subscribe"
+										},
+										"title": "Subscription duration",
+										"type": "object"
+									},
+									"shipping": {
+										"description": "How much the buyer will be charged for shipping.",
+										"minimum": 0,
+										"order": 5,
+										"placeholder": "0.00",
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Shipping cost",
+										"type": "number"
+									},
+									"showQuantity": {
+										"order": 6,
+										"showIf": {
+											"buttons[].type": "buynow"
+										},
+										"title": "Show quantity",
+										"type": "boolean"
+									},
+									"type": {
+										"default": "buynow",
+										"enum": [
+											"buynow",
+											"donate",
+											"subscribe"
+										],
+										"enumNames": {
+											"buynow": "Buy Now",
+											"donate": "Donate",
+											"subscribe": "Subscribe"
+										},
+										"order": 1,
+										"title": "Button type",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 3,
+							"title": "Items",
+							"type": "array"
+						},
+						"locale": {
+							"order": 2,
+							"properties": {
+								"currency": {
+									"default": "USD",
+									"enum": [
+										"USD",
+										"AUD",
+										"BRL",
+										"CAD",
+										"CHF",
+										"CZK",
+										"DKK",
+										"EUR",
+										"GBP",
+										"HKD",
+										"HUF",
+										"ILS",
+										"JPY",
+										"MXN",
+										"NOK",
+										"NZD",
+										"PHP",
+										"PLN",
+										"RUB",
+										"SEK",
+										"SGD",
+										"THB",
+										"TWD"
+									],
+									"enumNames": {
+										"AUD": "AUD ($)",
+										"BRL": "BRL ($)",
+										"CAD": "CAD ($)",
+										"CHF": "CHF",
+										"CZK": "CZK (Kč)",
+										"DKK": "DKK (kr)",
+										"EUR": "EUR (€)",
+										"GBP": "GBP (£)",
+										"HKD": "HKD ($)",
+										"HUF": "HUF (Ft)",
+										"ILS": "ILS (₪)",
+										"JPY": "JPY (¥)",
+										"MXN": "MXN ($)",
+										"NOK": "NOK (kr)",
+										"NZD": "NZD ($)",
+										"PHP": "PHP (₱)",
+										"PLN": "PLN (zł)",
+										"RUB": "RUB (₽)",
+										"SEK": "SEK (kr)",
+										"SGD": "SGD ($)",
+										"THB": "THB (฿)",
+										"TWD": "TWD (NT$)",
+										"USD": "USD ($)"
+									},
+									"order": 1,
+									"title": "Currency",
+									"type": "string"
+								},
+								"taxPercentage": {
+									"order": 2,
+									"placeholder": "0%",
+									"title": "Tax percentage",
+									"type": "string"
+								}
+							},
+							"title": "Locale",
+							"type": "object"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where the buttons will appear on the page.",
+							"format": "element",
+							"order": 2,
+							"title": "Buttons location",
+							"type": "object"
+						},
+						"merchantID": {
+							"description": "<div>The email associated with your PayPal account.</div><div>Use your <a target=\"_blank\" href=\"https://www.paypal.com/settings\"><strong>Merchant ID</strong></a> if you would like to keep your email private.</div>",
+							"order": 1,
+							"placeholder": "jessie@example.com or Merchant ID",
+							"required": true,
+							"title": "PayPal ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.85,
+				"upvotes": 46,
+				"downvotes": 8
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8J0t6lOaknr7",
+			"created": "2018-02-06T21:02:43.153189Z",
+			"proposedApp": {
+				"id": "5Dqd0fn0UeMb",
+				"title": "PayPal",
+				"shortDescription": "Sell items on your site with PayPal buttons.",
+				"longDescription": "PayPal is the leading way to add e-commerce to your site without complicated setup or configuration. Whether you're setting up a store or accepting donations, you will be ready to accept money from your visitors in seconds.\n\n## Features\n\n- Allows for purchasing items, adding items to cart, setting up subscriptions, and accepting donations.\n\n- Includes support for USD, GBP, JPY, CAD and EUR currencies.\n\n- Add multiple buttons for multiple products.",
+				"instructions": "",
+				"alias": "paypal",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/fNhqHqYWS1uZnFme96G2_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IsyqyJLNQ7ubXcFpZwVw_screenshot-3.png",
+					"//images.cloudflareapps.com/em6yRCVTwqovhFJtbDcj_screenshot-1.png",
+					"//images.cloudflareapps.com/5u7nyDeQtGtwLtNJ3Vy7_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/4mH6nrVpRq69fBhGZZ1O_tileImage.png",
+				"featuredAppImage": "",
+				"author": "PayPal Inc.",
+				"tagline": "",
+				"website": "https://paypal.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.paypal.com/ga/webapps/mpp/ua/useragreement-full",
+				"privacyPolicyURL": "https://www.paypal.com/us/webapps/mpp/ua/privacy-full",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"e-commerce",
+					"make-money-on-your-site",
+					"widgets-and-plugins",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FzQ4DDzRvam3"
+				},
+				"created": "2017-03-20T20:46:26.056977Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:02:43.403298644Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:04:51.932585108Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,236 @@
+{
+	"id": "NFE2MpUAp1fZ",
+	"title": "Tag Manager",
+	"shortDescription": "Adds the Google Tag Manager code to your site.",
+	"longDescription": "Get the Google Tag Manager on your site without touching a line of code.\n\nThere's no need to install a plugin or module on your CMS! Just install this app, enter your Tag Manager ID, and the Google Tag Manager will be installed for the subdomains you choose.",
+	"instructions": "Make sure you visit https://tagmanager.google.com to get your Tag Manager ID.",
+	"alias": "tag-manager",
+	"orgId": "deef04cedcbde254f7b3f2f39caa9d98",
+	"icon": "https://images.cloudflareapps.com/7rgkLaqffhC0/tag-manager.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Great Matter, Inc.",
+	"tagline": "",
+	"website": "https://greatmatter.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@greatmatter.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "deef04cedcbde254f7b3f2f39caa9d98",
+			"created": "2019-08-20T15:22:50.83240281Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "fCBDutnCm27w"
+	},
+	"created": "2019-08-20T15:18:04.455312Z",
+	"org": {
+		"id": "deef04cedcbde254f7b3f2f39caa9d98",
+		"title": "",
+		"username": "deef04cedcbde254f7b3f2f39caa9d98",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "NFE2MpUAp1fZ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./js/tag-code-body.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/tag-code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tag_id": {
+							"default": "GTM-",
+							"description": "The Tag Manager's ID.",
+							"order": 1,
+							"placeholder": "GTM-ABCDEFG",
+							"title": "Tag ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "Initial Release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CYH3d6CqK8SX",
+			"metadata": {
+				"code": {
+					"sourceTag": "CYH3d6CqK8SX",
+					"uploadedOn": "2019-08-20T15:18:45.003310203Z"
+				}
+			},
+			"created": "2019-08-20T15:18:04.680431Z",
+			"proposedApp": {
+				"id": "NFE2MpUAp1fZ",
+				"title": "Tag Manager",
+				"shortDescription": "Adds the Google Tag Manager code to your site.",
+				"longDescription": "",
+				"instructions": "Make sure you visit https://tagmanager.google.com to get your Tag Manager ID.",
+				"alias": "tag-manager",
+				"orgId": "deef04cedcbde254f7b3f2f39caa9d98",
+				"icon": "https://images.cloudflareapps.com/7rgkLaqffhC0/tag-manager.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Great Matter, Inc.",
+				"tagline": "",
+				"website": "https://greatmatter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@greatmatter.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "fCBDutnCm27w"
+				},
+				"created": "2019-08-20T15:18:04.455312Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "deef04cedcbde254f7b3f2f39caa9d98",
+				"requestedAt": "2019-08-20T15:22:50.808199715Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-23T15:13:50.827064278Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "NFE2MpUAp1fZ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./js/tag-code-body.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./js/tag-code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tag_id": {
+							"default": "GTM-",
+							"description": "The Tag Manager's ID.",
+							"order": 1,
+							"placeholder": "GTM-ABCDEFG",
+							"title": "Tag ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 19,
+				"downvotes": 3
+			},
+			"releaseNotes": "Added a more detailed description for the listing.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CYH3d6CqK8SX",
+			"created": "2019-10-17T15:54:53.711408Z",
+			"proposedApp": {
+				"id": "NFE2MpUAp1fZ",
+				"title": "Tag Manager",
+				"shortDescription": "Adds the Google Tag Manager code to your site.",
+				"longDescription": "Get the Google Tag Manager on your site without touching a line of code.\n\nThere's no need to install a plugin or module on your CMS! Just install this app, enter your Tag Manager ID, and the Google Tag Manager will be installed for the subdomains you choose.",
+				"instructions": "Make sure you visit https://tagmanager.google.com to get your Tag Manager ID.",
+				"alias": "tag-manager",
+				"orgId": "deef04cedcbde254f7b3f2f39caa9d98",
+				"icon": "https://images.cloudflareapps.com/7rgkLaqffhC0/tag-manager.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Great Matter, Inc.",
+				"tagline": "",
+				"website": "https://greatmatter.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@greatmatter.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "fCBDutnCm27w"
+				},
+				"created": "2019-08-20T15:18:04.455312Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "deef04cedcbde254f7b3f2f39caa9d98",
+				"requestedAt": "2019-10-17T15:54:53.955730901Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-17T20:22:16.300844893Z"
+			}
+		}
+	]
+}

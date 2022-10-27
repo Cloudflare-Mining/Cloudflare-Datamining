@@ -1,0 +1,1557 @@
+{
+	"id": "iLIcfbk6_G1R",
+	"title": "Collect.chat",
+	"shortDescription": "Create interactive chatbots to boost your conversion",
+	"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. \n\n![How Collect.chat works](https://collect.chat/assets/images/features/howitworks.png)\n\nCollect.chat bots help you to collect data from your website visitors like\n- **Leads**\n- **Appointments**\n-  **Enquiries**\n- **Meetings**\n- **Feedbacks**\n- **Surveys**\n- **Suggestions**\n\n\n![Features](https://collect.chat/assets/images/features/featurelist.png)\n\n\n#### AN INSURANCE FOR YOUR PAID TRAFFIC\nCapturing leads is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n\n#### SHARE CALENDAR AND GET MEETING BOOKINGS\nLet your visitors book available time slot from your calendar quickly. You can connect your chatbot to google calendar so that bookings will appear on the calendar instantly and busy slots are hidden from the visitor.\n\n#### TRANSLATE TO ANY LANGUAGE\nTalk to your visitors in their language. Let your visitor's language be  French, German, Chinese, Arabic etc.., You can translate every text on the chatbot into that language.\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### EASY TO USE DRAG AND DROP BUILDER\n\nMaking the bot in Collect.chat is very easy. Just drag & drop to create interactive questions to the conversational form and you are good to go. [Watch a short video](https://help.collect.chat/article/show/56568-quick-start) to learn how easy it is.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.\n\n#### Install today to join **10,000+** happy businesses worldwide using Collect.chat!\n![Clients](https://collect.chat/assets/images/features/clients.png)",
+	"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://help.collect.chat/article/show/56568-quick-start) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+	"alias": "collectchat",
+	"orgId": "d12e1ccedf74392864b132132b89180e",
+	"icon": "https://images.cloudflareapps.com/jzOZndT75aGF/logo-only-black.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ZLikAtQ2qAGW/widget.png",
+		"https://images.cloudflareapps.com/ZLikAtQ2qAGW/cf-builder.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+	"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+	"author": "Collect.chat Inc.",
+	"tagline": "",
+	"website": "https://collect.chat",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://collect.chat/terms",
+	"privacyPolicyURL": "https://collect.chat/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 0,
+	"supportEmail": "care@collect.chat",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "d12e1ccedf74392864b132132b89180e",
+			"created": "2019-10-09T20:38:58.010540502Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "aZIOMCjIXntu"
+	},
+	"created": "2019-10-09T19:12:47.06662Z",
+	"org": {
+		"id": "d12e1ccedf74392864b132132b89180e",
+		"title": "",
+		"username": "d12e1ccedf74392864b132132b89180e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://app.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "First version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aZIOMCjIXntu",
+			"metadata": {
+				"code": {
+					"sourceTag": "aZIOMCjIXntu",
+					"uploadedOn": "2019-10-09T19:12:48.605355292Z"
+				}
+			},
+			"created": "2019-10-09T19:12:47.786507Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** is the easiest way to add a chat interface on your site.\n\nYou made an amazing website. Bravo!\n\nYou ramped up your SEO and increased traffic on your site. Good for you!\n\nWouldn’t it be awesome, if you could tap into this traffic that is coming into your site? Using Collect.chat, Your visitor is 3 times more likely to interact with you before leaving your website.\n\n#### INCREASE CONVERSIONS\n\nWhen you get the contact information of every single visitor on your website, you have an opportunity to convert each and every one of them.\n\n#### ENGAGE EVERY VISITORS\n\nThe key to the success of your Website is to keep your visitors engaged. The more time they spent on your website, the more likely they will become paying customers.\n\n#### TAKE UX TO THE NEXT LEVEL\n\nHaving an awesome User experience helps to establish an early emotional connection with your visitor. Our conversational form adds a certain delight for the visitor that achieves reliability.\n\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### INSURE YOUR PAID TRAFFIC\n\nCapturing email addresses is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.",
+				"instructions": "### Hi 👋, Feel free to try the *demo chatbot* 🤖👩‍💻\n\n1.  Please [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n2.  Make a kick-ass chatbot  \n\t[Watch a quick video]([https://www.youtube.com/watch?v=jn6qPUfZgxI](https://www.youtube.com/watch?v=jn6qPUfZgxI)) to learn how \n\t[See templates](https://collect.chat/templates/)  for inspiration \n3.  Integrate with your Cloudflare website\n4. Woohoo! Experience the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/llJ8-NCPafw-/logo-green.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hPvojJR1_pYv/how-it-works.png",
+					"https://images.cloudflareapps.com/RiGQiAZdzqr4/features.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2019-10-09T20:38:57.983659026Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-10T18:18:56.44513723Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://app.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social & Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aZIOMCjIXntu",
+			"created": "2019-10-09T20:41:52.485328Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** is the easiest way to add a chat interface on your site.\n\nYou made an amazing website. Bravo!\n\nYou ramped up your SEO and increased traffic on your site. Good for you!\n\nWouldn’t it be awesome, if you could tap into this traffic that is coming into your site? Using Collect.chat, Your visitor is 3 times more likely to interact with you before leaving your website.\n\n#### INCREASE CONVERSIONS\n\nWhen you get the contact information of every single visitor on your website, you have an opportunity to convert each and every one of them.\n\n#### ENGAGE EVERY VISITORS\n\nThe key to the success of your Website is to keep your visitors engaged. The more time they spent on your website, the more likely they will become paying customers.\n\n#### TAKE UX TO THE NEXT LEVEL\n\nHaving an awesome User experience helps to establish an early emotional connection with your visitor. Our conversational form adds a certain delight for the visitor that achieves reliability.\n\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### INSURE YOUR PAID TRAFFIC\n\nCapturing email addresses is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.",
+				"instructions": "1.  Please [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n2.  Make a kick-ass chatbot  \n\t[Watch a quick video]([https://www.youtube.com/watch?v=jn6qPUfZgxI](https://www.youtube.com/watch?v=jn6qPUfZgxI)) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n3.  Integrate with your Cloudflare website\n4. Woohoo! Experience the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/llJ8-NCPafw-/logo-green.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hPvojJR1_pYv/how-it-works.png",
+					"https://images.cloudflareapps.com/RiGQiAZdzqr4/features.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-10-10T18:19:52.832565975Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-10T18:20:17.058456608Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://app.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Listing updates",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aZIOMCjIXntu",
+			"created": "2019-10-12T10:06:31.449068Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. These bots help you to tap into your website traffic and give you insights about your visitors. \n\n\n#### INCREASE CONVERSIONS\n\nWhen you get the contact information of every single visitor on your website, you have an opportunity to convert every one of them. Your visitor is three times more likely to interact with you before leaving your site.\n\n#### ENGAGE EVERY VISITORS\n\nThe key to the success of your Website is to keep your visitors engaged. The more time they spent on your website, the more likely they will become paying customers.\n\n#### TAKE UX TO THE NEXT LEVEL\n\nHaving an awesome User experience helps to establish an early emotional connection with your visitor. Our conversational form adds a certain delight for the visitor that achieves reliability.\n\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### INSURE YOUR PAID TRAFFIC\n\nCapturing email addresses is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.",
+				"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://www.youtube.com/watch?v=jn6qPUfZgxI) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/llJ8-NCPafw-/logo-green.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/qVJl09gfFjoz/widget.png",
+					"https://images.cloudflareapps.com/hPvojJR1_pYv/how-it-works.png",
+					"https://images.cloudflareapps.com/CDPmHB_IdkB2/build-chatbot.png",
+					"https://images.cloudflareapps.com/RiGQiAZdzqr4/features.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2019-10-12T10:06:32.219677753Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-12T19:12:13.271980706Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://app.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Listing updates",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aZIOMCjIXntu",
+			"created": "2019-10-24T07:26:29.831307Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. \n\n![How Collect.chat works](https://collect.chat/assets/images/features/howitworks.png)\n\nCollect.chat bots help you to collect data from your website visitors like\n- **Leads**\n- **Appointments**\n-  **Enquiries**\n- **Meetings**\n- **Feedbacks**\n- **Surveys**\n- **Suggestions**\n\n\n![Features](https://collect.chat/assets/images/features/featurelist.png)\n\n\n#### AN INSURANCE FOR YOUR PAID TRAFFIC\nCapturing leads is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n\n#### SHARE CALENDAR AND GET MEETING BOOKINGS\nLet your visitors book available time slot from your calendar quickly. You can connect your chatbot to google calendar so that bookings will appear on the calendar instantly and busy slots are hidden from the visitor.\n\n#### TRANSLATE TO ANY LANGUAGE\nTalk to your visitors in their language. Let your visitor's language be  French, German, Chinese, Arabic etc.., You can translate every text on the chatbot into that language.\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### EASY TO USE DRAG AND DROP BUILDER\n\nMaking the bot in Collect.chat is very easy. Just drag & drop to create interactive questions to the conversational form and you are good to go. [Watch a short video](https://help.collect.chat/article/show/56568-quick-start) to learn how easy it is.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.\n\n#### Install today to join **10,000+** happy businesses worldwide using Collect.chat!\n![Clients](https://collect.chat/assets/images/features/clients.png)",
+				"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://help.collect.chat/article/show/56568-quick-start) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/jzOZndT75aGF/logo-only-black.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/widget.png",
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/cf-builder.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2019-10-24T17:17:12.486349437Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-24T18:15:40.053797184Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://app.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://dashboard.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vO-LobtcV0W-",
+			"metadata": {
+				"code": {
+					"sourceTag": "vO-LobtcV0W-",
+					"uploadedOn": "2020-03-14T09:35:50.757543608Z"
+				}
+			},
+			"created": "2020-03-14T09:35:49.924449Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. \n\n![How Collect.chat works](https://collect.chat/assets/images/features/howitworks.png)\n\nCollect.chat bots help you to collect data from your website visitors like\n- **Leads**\n- **Appointments**\n-  **Enquiries**\n- **Meetings**\n- **Feedbacks**\n- **Surveys**\n- **Suggestions**\n\n\n![Features](https://collect.chat/assets/images/features/featurelist.png)\n\n\n#### AN INSURANCE FOR YOUR PAID TRAFFIC\nCapturing leads is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n\n#### SHARE CALENDAR AND GET MEETING BOOKINGS\nLet your visitors book available time slot from your calendar quickly. You can connect your chatbot to google calendar so that bookings will appear on the calendar instantly and busy slots are hidden from the visitor.\n\n#### TRANSLATE TO ANY LANGUAGE\nTalk to your visitors in their language. Let your visitor's language be  French, German, Chinese, Arabic etc.., You can translate every text on the chatbot into that language.\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### EASY TO USE DRAG AND DROP BUILDER\n\nMaking the bot in Collect.chat is very easy. Just drag & drop to create interactive questions to the conversational form and you are good to go. [Watch a short video](https://help.collect.chat/article/show/56568-quick-start) to learn how easy it is.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.\n\n#### Install today to join **10,000+** happy businesses worldwide using Collect.chat!\n![Clients](https://collect.chat/assets/images/features/clients.png)",
+				"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://help.collect.chat/article/show/56568-quick-start) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/jzOZndT75aGF/logo-only-black.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/widget.png",
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/cf-builder.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2020-03-14T09:35:52.324199789Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-15T17:55:39.706860059Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://dashboard.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"avatarLauncher": {
+									"default": true,
+									"description": "Choose a button style that matches your website",
+									"enum": [
+										true,
+										false
+									],
+									"enumNames": {
+										"false": "Classic",
+										"true": "Modern"
+									},
+									"format": "radios",
+									"title": "Style",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"launcherText": {
+									"description": "What message would you like to greet visitors with?",
+									"placeholder": "Chat Now",
+									"title": "Welcome message",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the chatbot be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://dashboard.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 6,
+				"downvotes": 2
+			},
+			"releaseNotes": "Dashboard URL change",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/J59_Hs0R457G",
+			"metadata": {
+				"code": {
+					"sourceTag": "J59_Hs0R457G",
+					"uploadedOn": "2020-04-11T08:42:55.982970103Z"
+				}
+			},
+			"created": "2020-04-11T08:42:55.167572Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots that boosts conversion",
+				"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. \n\n![How Collect.chat works](https://collect.chat/assets/images/features/howitworks.png)\n\nCollect.chat bots help you to collect data from your website visitors like\n- **Leads**\n- **Appointments**\n-  **Enquiries**\n- **Meetings**\n- **Feedbacks**\n- **Surveys**\n- **Suggestions**\n\n\n![Features](https://collect.chat/assets/images/features/featurelist.png)\n\n\n#### AN INSURANCE FOR YOUR PAID TRAFFIC\nCapturing leads is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n\n#### SHARE CALENDAR AND GET MEETING BOOKINGS\nLet your visitors book available time slot from your calendar quickly. You can connect your chatbot to google calendar so that bookings will appear on the calendar instantly and busy slots are hidden from the visitor.\n\n#### TRANSLATE TO ANY LANGUAGE\nTalk to your visitors in their language. Let your visitor's language be  French, German, Chinese, Arabic etc.., You can translate every text on the chatbot into that language.\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### EASY TO USE DRAG AND DROP BUILDER\n\nMaking the bot in Collect.chat is very easy. Just drag & drop to create interactive questions to the conversational form and you are good to go. [Watch a short video](https://help.collect.chat/article/show/56568-quick-start) to learn how easy it is.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.\n\n#### Install today to join **10,000+** happy businesses worldwide using Collect.chat!\n![Clients](https://collect.chat/assets/images/features/clients.png)",
+				"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://help.collect.chat/article/show/56568-quick-start) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/jzOZndT75aGF/logo-only-black.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/widget.png",
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/cf-builder.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2020-04-11T08:42:57.383260008Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T16:17:29.049398996Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "iLIcfbk6_G1R",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"collectchat"
+							],
+							"title": "Connect Collect.chat Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "To <em>create and manage</em> chatbots, visit <a target='_blank' href='https://dashboard.collect.chat'>Collect.chat Dashboard</a> ",
+							"order": 1,
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"botId": {
+							"enum": [],
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								},
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Select a Chatbot",
+							"type": "string"
+						},
+						"config": {
+							"order": 3,
+							"properties": {
+								"avatar": {
+									"description": "Upload an avatar for your chatbot",
+									"format": "image",
+									"title": "Avatar",
+									"type": "string"
+								},
+								"color": {
+									"default": "#3d3d3d",
+									"description": "Choose a color that matches your website",
+									"format": "color",
+									"title": "Color",
+									"type": "string"
+								},
+								"openOnLoad": {
+									"default": false,
+									"description": "Should the full chat widget be opened when page is loaded?",
+									"title": "Open chatbot on page load",
+									"type": "boolean"
+								},
+								"position": {
+									"default": "right",
+									"description": "Which part of the website should the chatbot appear?",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Bottom left",
+										"right": "Buttom right"
+									},
+									"format": "radios",
+									"title": "Position",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"botId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Design the Chatbot",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://dashboard.collect.chat/forms/bot-list",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Bug fixes and welcome message feature.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8WDGGlXzSwkU",
+			"metadata": {
+				"code": {
+					"sourceTag": "8WDGGlXzSwkU",
+					"uploadedOn": "2021-06-14T14:20:42.83522384Z"
+				}
+			},
+			"created": "2021-06-14T14:20:42.021193Z",
+			"proposedApp": {
+				"id": "iLIcfbk6_G1R",
+				"title": "Collect.chat",
+				"shortDescription": "Create interactive chatbots to boost your conversion",
+				"longDescription": "**Collect.chat** lets you collect data from your website visitors using interactive conversations. \n\nYou made an amazing website, ramped up your SEO and increased traffic on your site. But that's not enough. One of the problems we often face after creating a website is making customers out of the visitors on the site. It’s not an easy problem to solve.\n\nWe are solving this problem using conversations. Through our platform, you can easily make chatbots that engage with your audience and understands who they are and what they are looking for. \n\n![How Collect.chat works](https://collect.chat/assets/images/features/howitworks.png)\n\nCollect.chat bots help you to collect data from your website visitors like\n- **Leads**\n- **Appointments**\n-  **Enquiries**\n- **Meetings**\n- **Feedbacks**\n- **Surveys**\n- **Suggestions**\n\n\n![Features](https://collect.chat/assets/images/features/featurelist.png)\n\n\n#### AN INSURANCE FOR YOUR PAID TRAFFIC\nCapturing leads is essential when you pay for the traffic to your website. Collect.chat acts as the insurance policy for your paid traffic.\n\n\n#### SHARE CALENDAR AND GET MEETING BOOKINGS\nLet your visitors book available time slot from your calendar quickly. You can connect your chatbot to google calendar so that bookings will appear on the calendar instantly and busy slots are hidden from the visitor.\n\n#### TRANSLATE TO ANY LANGUAGE\nTalk to your visitors in their language. Let your visitor's language be  French, German, Chinese, Arabic etc.., You can translate every text on the chatbot into that language.\n\n#### DON’T LET YOUR BUSINESS SLEEP\n\nThe fully automated chatbot will collect leads even when all of your sales reps are asleep or on vacation. Don’t let your business sleep ever.\n\n#### EASY TO USE DRAG AND DROP BUILDER\n\nMaking the bot in Collect.chat is very easy. Just drag & drop to create interactive questions to the conversational form and you are good to go. [Watch a short video](https://help.collect.chat/article/show/56568-quick-start) to learn how easy it is.\n\n#### POWERFUL DATA METRICS\n\nCollect.chat visually displays your data. Through our in-depth analysis, you will understand the requirements of your customers and thus improve your service.\n\n#### Install today to join **10,000+** happy businesses worldwide using Collect.chat!\n![Clients](https://collect.chat/assets/images/features/clients.png)",
+				"instructions": "##### Installation Guide\n1.  Feel free to play around with our demo bot\n2.  [Create a Collect.chat account](https://app.collect.chat/getstarted)  if you don't have one\n3.  Make a kick-ass chatbot  \n\t[Watch a quick video](https://help.collect.chat/article/show/56568-quick-start) to learn how,\n\t[See templates](https://collect.chat/templates/)  for inspiration \n4.  Connect your account below and Select a bot\n5. Woohoo! Time to notice the boost in your conversion and engagement.",
+				"alias": "collectchat",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/jzOZndT75aGF/logo-only-black.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/widget.png",
+					"https://images.cloudflareapps.com/ZLikAtQ2qAGW/cf-builder.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/-8ahXzN2gNxQ/cloudflare-tile",
+				"featuredAppImage": "https://images.cloudflareapps.com/BtAvvhOI8f7I/banner-cloudflare.png",
+				"author": "Collect.chat Inc.",
+				"tagline": "",
+				"website": "https://collect.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://collect.chat/terms",
+				"privacyPolicyURL": "https://collect.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "care@collect.chat",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "aZIOMCjIXntu"
+				},
+				"created": "2019-10-09T19:12:47.06662Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2021-06-14T14:20:44.335428186Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-06-22T20:41:30.587125144Z"
+			}
+		}
+	]
+}

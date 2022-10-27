@@ -1,0 +1,1109 @@
+{
+	"id": "lQNVixFXFXhM",
+	"title": "Button Builder",
+	"shortDescription": "Add simple buttons to your website.",
+	"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+	"instructions": "",
+	"alias": "button-builder",
+	"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+	"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/uUxgo6qZRzGgqevIEKiO_tXkC57zHTvaoYdqg3nNw_tile.png",
+	"featuredAppImage": "",
+	"author": "Happtix",
+	"tagline": "",
+	"website": "https://happtix.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#f18031",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 250,
+	"supportEmail": "support@happtix.com",
+	"products": [],
+	"categoryIds": [
+		"get-more-customers",
+		"add-on",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "4df67a133733cae958ac1d00c6dc6d38",
+			"created": "2017-07-13T11:09:39.72390973Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "HCcpv_QzWde2"
+	},
+	"created": "2017-07-13T11:07:07.819818Z",
+	"org": {
+		"id": "4df67a133733cae958ac1d00c6dc6d38",
+		"title": "",
+		"username": "4df67a133733cae958ac1d00c6dc6d38",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "lQNVixFXFXhM",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 9,
+										"title": "Align",
+										"type": "string"
+									},
+									"backgroundColor": {
+										"default": "#f38020",
+										"format": "color",
+										"order": 6,
+										"title": "Button color",
+										"type": "string"
+									},
+									"color": {
+										"default": "#ffffff",
+										"format": "color",
+										"order": 5,
+										"title": "Text color",
+										"type": "string"
+									},
+									"corners": {
+										"default": "square",
+										"enum": [
+											"square",
+											"radius",
+											"round"
+										],
+										"enumNames": {
+											"radius": "Radius",
+											"round": "Round",
+											"square": "Square"
+										},
+										"order": 10,
+										"title": "Corners",
+										"type": "string"
+									},
+									"float": {
+										"default": "none",
+										"enum": [
+											"left",
+											"right",
+											"none"
+										],
+										"enumNames": {
+											"left": "Left",
+											"none": "None",
+											"right": "Right"
+										},
+										"order": 8,
+										"title": "Float",
+										"type": "string"
+									},
+									"fontSize": {
+										"default": "normal",
+										"enum": [
+											"small",
+											"normal",
+											"large",
+											"huge"
+										],
+										"enumNames": {
+											"huge": "Huge",
+											"large": "Large",
+											"normal": "Normal",
+											"small": "Small"
+										},
+										"order": 7,
+										"title": "Font size",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this button to appear.",
+										"format": "element",
+										"order": 1,
+										"title": "Location",
+										"type": "object"
+									},
+									"targetBlank": {
+										"default": false,
+										"order": 4,
+										"title": "Open link in new tab",
+										"type": "boolean"
+									},
+									"text": {
+										"default": "Click Me",
+										"order": 2,
+										"title": "Button Text",
+										"type": "string"
+									},
+									"url": {
+										"description": "Make your button clickable",
+										"order": 3,
+										"placeholder": "https://...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Button",
+								"type": "object"
+							},
+							"title": "Buttons",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HCcpv_QzWde2",
+			"metadata": {
+				"code": {
+					"sourceTag": "HCcpv_QzWde2",
+					"uploadedOn": "2017-07-13T11:07:09.268517962Z"
+				}
+			},
+			"created": "2017-07-13T11:07:08.560396Z",
+			"proposedApp": {
+				"id": "lQNVixFXFXhM",
+				"title": "Button Builder",
+				"shortDescription": "Add simple buttons to your website.",
+				"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+				"instructions": "",
+				"alias": "button-builder",
+				"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+				"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Happtix",
+				"tagline": "",
+				"website": "https://happtix.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happtix.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HCcpv_QzWde2"
+				},
+				"created": "2017-07-13T11:07:07.819818Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "4df67a133733cae958ac1d00c6dc6d38",
+				"requestedAt": "2017-07-13T11:09:39.718846475Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-19T19:35:11.494698038Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "lQNVixFXFXhM",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f38020",
+										"format": "color",
+										"order": 5,
+										"title": "Button color",
+										"type": "string"
+									},
+									"borderRadius": {
+										"default": 0,
+										"format": "slider",
+										"maximum": 100,
+										"minimum": 0,
+										"order": 7,
+										"step": 1,
+										"title": "Corner Radius",
+										"type": "number"
+									},
+									"color": {
+										"default": "#ffffff",
+										"format": "color",
+										"order": 4,
+										"title": "Text color",
+										"type": "string"
+									},
+									"fontSize": {
+										"default": "normal",
+										"enum": [
+											"small",
+											"normal",
+											"large",
+											"huge"
+										],
+										"enumNames": {
+											"huge": "Huge",
+											"large": "Large",
+											"normal": "Normal",
+											"small": "Small"
+										},
+										"order": 6,
+										"title": "Font size",
+										"type": "string"
+									},
+									"targetBlank": {
+										"default": false,
+										"order": 3,
+										"title": "Open link in new tab",
+										"type": "boolean"
+									},
+									"text": {
+										"default": "Click Me",
+										"order": 1,
+										"title": "Button Text",
+										"type": "string"
+									},
+									"url": {
+										"description": "Make your button clickable",
+										"order": 2,
+										"placeholder": "https://...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Button",
+								"type": "object"
+							},
+							"title": "Buttons",
+							"type": "array"
+						},
+						"horizontalAlignment": {
+							"default": "left",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 2,
+							"title": "Horizontal Alignment",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like this button to appear.",
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"stacked": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"order": 3,
+							"title": "Stacked",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/leQP8gBk656m",
+			"metadata": {
+				"code": {
+					"sourceTag": "leQP8gBk656m",
+					"uploadedOn": "2017-07-20T10:46:33.01339808Z"
+				}
+			},
+			"created": "2017-07-13T12:25:28.487098Z",
+			"proposedApp": {
+				"id": "lQNVixFXFXhM",
+				"title": "Button Builder",
+				"shortDescription": "Add simple buttons to your website.",
+				"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+				"instructions": "",
+				"alias": "button-builder",
+				"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+				"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/tXkC57zHTvaoYdqg3nNw_tile.png",
+				"featuredAppImage": "",
+				"author": "Happtix",
+				"tagline": "",
+				"website": "https://happtix.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happtix.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HCcpv_QzWde2"
+				},
+				"created": "2017-07-13T11:07:07.819818Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "4df67a133733cae958ac1d00c6dc6d38",
+				"requestedAt": "2017-07-20T10:47:44.078547642Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-21T08:29:05.908099599Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "lQNVixFXFXhM",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f38020",
+										"format": "color",
+										"order": 5,
+										"title": "Button color",
+										"type": "string"
+									},
+									"borderRadius": {
+										"default": 0,
+										"format": "slider",
+										"maximum": 1,
+										"minimum": 0,
+										"order": 7,
+										"step": 0.01,
+										"title": "Corner Radius",
+										"type": "number"
+									},
+									"color": {
+										"default": "#ffffff",
+										"format": "color",
+										"order": 4,
+										"title": "Text color",
+										"type": "string"
+									},
+									"fontSize": {
+										"default": "normal",
+										"enum": [
+											"small",
+											"normal",
+											"large",
+											"huge"
+										],
+										"enumNames": {
+											"huge": "Huge",
+											"large": "Large",
+											"normal": "Normal",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Font size",
+										"type": "string"
+									},
+									"targetBlank": {
+										"default": false,
+										"order": 3,
+										"title": "Open link in new tab",
+										"type": "boolean"
+									},
+									"text": {
+										"default": "Click Me",
+										"order": 1,
+										"title": "Button Text",
+										"type": "string"
+									},
+									"url": {
+										"description": "Make your button clickable",
+										"format": "url",
+										"order": 2,
+										"placeholder": "https://...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Button",
+								"type": "object"
+							},
+							"title": "Buttons",
+							"type": "array"
+						},
+						"horizontalAlignment": {
+							"default": "left",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal Alignment",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like this button to appear.",
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"stacked": {
+							"default": false,
+							"order": 3,
+							"title": "Stack Buttons",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FZIAW-VxLpzK",
+			"metadata": {
+				"code": {
+					"sourceTag": "FZIAW-VxLpzK",
+					"uploadedOn": "2017-07-21T09:54:59.473540561Z"
+				}
+			},
+			"created": "2017-07-21T09:54:58.746391Z",
+			"proposedApp": {
+				"id": "lQNVixFXFXhM",
+				"title": "Button Builder",
+				"shortDescription": "Add simple buttons to your website.",
+				"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+				"instructions": "",
+				"alias": "button-builder",
+				"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+				"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/tXkC57zHTvaoYdqg3nNw_tile.png",
+				"featuredAppImage": "",
+				"author": "Happtix",
+				"tagline": "",
+				"website": "https://happtix.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happtix.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HCcpv_QzWde2"
+				},
+				"created": "2017-07-13T11:07:07.819818Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4df67a133733cae958ac1d00c6dc6d38",
+				"requestedAt": "2017-07-21T09:55:30.875869678Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-25T10:19:52.025816543Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "lQNVixFXFXhM",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f38020",
+										"format": "color",
+										"order": 5,
+										"title": "Button color",
+										"type": "string"
+									},
+									"borderRadius": {
+										"default": 0,
+										"format": "slider",
+										"maximum": 1,
+										"minimum": 0,
+										"order": 7,
+										"step": 0.01,
+										"title": "Corner Radius",
+										"type": "number"
+									},
+									"color": {
+										"default": "#ffffff",
+										"format": "color",
+										"order": 4,
+										"title": "Text color",
+										"type": "string"
+									},
+									"fontSize": {
+										"default": "normal",
+										"enum": [
+											"small",
+											"normal",
+											"large",
+											"huge"
+										],
+										"enumNames": {
+											"huge": "Huge",
+											"large": "Large",
+											"normal": "Normal",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Font size",
+										"type": "string"
+									},
+									"targetBlank": {
+										"default": false,
+										"order": 3,
+										"title": "Open link in new tab",
+										"type": "boolean"
+									},
+									"text": {
+										"default": "Click Me",
+										"order": 1,
+										"title": "Button Text",
+										"type": "string"
+									},
+									"url": {
+										"description": "Make your button clickable",
+										"format": "url",
+										"order": 2,
+										"placeholder": "https://...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Button",
+								"type": "object"
+							},
+							"title": "Buttons",
+							"type": "array"
+						},
+						"horizontalAlignment": {
+							"default": "left",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal Alignment",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like this button to appear.",
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"stacked": {
+							"default": false,
+							"order": 3,
+							"title": "Stack Buttons",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FZIAW-VxLpzK",
+			"created": "2017-07-26T12:11:15.143428Z",
+			"proposedApp": {
+				"id": "lQNVixFXFXhM",
+				"title": "Button Builder",
+				"shortDescription": "Add simple buttons to your website.",
+				"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+				"instructions": "",
+				"alias": "button-builder",
+				"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+				"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/uUxgo6qZRzGgqevIEKiO_tXkC57zHTvaoYdqg3nNw_tile.png",
+				"featuredAppImage": "",
+				"author": "Happtix",
+				"tagline": "",
+				"website": "https://happtix.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happtix.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HCcpv_QzWde2"
+				},
+				"created": "2017-07-13T11:07:07.819818Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-26T12:11:15.363965974Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-26T12:11:31.001309992Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "lQNVixFXFXhM",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f38020",
+										"format": "color",
+										"order": 5,
+										"title": "Button color",
+										"type": "string"
+									},
+									"borderRadius": {
+										"default": 0,
+										"format": "slider",
+										"maximum": 1,
+										"minimum": 0,
+										"order": 7,
+										"step": 0.01,
+										"title": "Corner Radius",
+										"type": "number"
+									},
+									"color": {
+										"default": "#ffffff",
+										"format": "color",
+										"order": 4,
+										"title": "Text color",
+										"type": "string"
+									},
+									"fontSize": {
+										"default": "normal",
+										"enum": [
+											"small",
+											"normal",
+											"large",
+											"huge"
+										],
+										"enumNames": {
+											"huge": "Huge",
+											"large": "Large",
+											"normal": "Normal",
+											"small": "Small"
+										},
+										"format": "radios",
+										"order": 6,
+										"title": "Font size",
+										"type": "string"
+									},
+									"targetBlank": {
+										"default": false,
+										"order": 3,
+										"title": "Open link in new tab",
+										"type": "boolean"
+									},
+									"text": {
+										"default": "Click Me",
+										"order": 1,
+										"title": "Button Text",
+										"type": "string"
+									},
+									"url": {
+										"description": "Make your button clickable",
+										"format": "url",
+										"order": 2,
+										"placeholder": "https://...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Button",
+								"type": "object"
+							},
+							"title": "Buttons",
+							"type": "array"
+						},
+						"horizontalAlignment": {
+							"default": "left",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal Alignment",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like this button to appear.",
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"stacked": {
+							"default": false,
+							"order": 3,
+							"title": "Stack Buttons",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.94,
+				"upvotes": 15,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FZIAW-VxLpzK",
+			"created": "2018-01-23T18:50:38.503245Z",
+			"proposedApp": {
+				"id": "lQNVixFXFXhM",
+				"title": "Button Builder",
+				"shortDescription": "Add simple buttons to your website.",
+				"longDescription": "## Button Builder makes adding buttons easy!\n\n### Easily create buttons for your website. Choose from a wide range of customisation options including:-\n<br/>\n* Background colour\n* Text (colour, font-size)\n* Alignment\n* Corner style (rounded, radius, square)\n* Set a link to a URL\n* Open in same or new window",
+				"instructions": "",
+				"alias": "button-builder",
+				"orgId": "4df67a133733cae958ac1d00c6dc6d38",
+				"icon": "//images.cloudflareapps.com/Sm1OiYdQUfrpoEcezigv_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/uUxgo6qZRzGgqevIEKiO_tXkC57zHTvaoYdqg3nNw_tile.png",
+				"featuredAppImage": "",
+				"author": "Happtix",
+				"tagline": "",
+				"website": "https://happtix.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@happtix.com",
+				"products": [],
+				"categoryIds": [
+					"get-more-customers",
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HCcpv_QzWde2"
+				},
+				"created": "2017-07-13T11:07:07.819818Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:50:38.758216812Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:50:51.565635046Z"
+			}
+		}
+	]
+}

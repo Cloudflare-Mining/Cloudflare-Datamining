@@ -1,0 +1,150 @@
+{
+	"id": "S-dH7_VJfe1t",
+	"title": "favicon",
+	"shortDescription": "Custom favicon",
+	"longDescription": "Use a png/ico file as your favicon",
+	"instructions": "",
+	"alias": "",
+	"orgId": "edb5151711c3bcad575e02c988981ad1",
+	"icon": "https://images.cloudflareapps.com/Yd2qm6jBcrxf/icon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Xaq",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "xaq@telesession.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "edb5151711c3bcad575e02c988981ad1",
+			"created": "2019-05-27T12:20:30.551509551Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "4jdaEy5AYSFz"
+	},
+	"created": "2019-05-27T12:20:26.217548Z",
+	"org": {
+		"id": "edb5151711c3bcad575e02c988981ad1",
+		"title": "",
+		"username": "edb5151711c3bcad575e02c988981ad1",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "S-dH7_VJfe1t",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"favicon": {
+							"description": "Your favicon image or icon file. Supported extensions: ico, png",
+							"format": "image",
+							"title": "Favicon",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 25,
+				"downvotes": 4
+			},
+			"releaseNotes": "Initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4jdaEy5AYSFz",
+			"metadata": {
+				"code": {
+					"sourceTag": "4jdaEy5AYSFz",
+					"uploadedOn": "2019-05-27T12:20:28.46554352Z"
+				}
+			},
+			"created": "2019-05-27T12:20:27.478759Z",
+			"proposedApp": {
+				"id": "S-dH7_VJfe1t",
+				"title": "favicon",
+				"shortDescription": "Custom favicon",
+				"longDescription": "Use a png/ico file as your favicon",
+				"instructions": "",
+				"alias": "",
+				"orgId": "edb5151711c3bcad575e02c988981ad1",
+				"icon": "https://images.cloudflareapps.com/Yd2qm6jBcrxf/icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Xaq",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "xaq@telesession.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4jdaEy5AYSFz"
+				},
+				"created": "2019-05-27T12:20:26.217548Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "edb5151711c3bcad575e02c988981ad1",
+				"requestedAt": "2019-05-27T12:20:30.530315129Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-28T16:18:51.886761875Z"
+			}
+		}
+	]
+}

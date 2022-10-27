@@ -1,0 +1,2036 @@
+{
+	"id": "iwgRuTiFd9SI",
+	"title": "Smartarget Instagram - Follow Us",
+	"shortDescription": "Get more Instagram followers",
+	"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+	"instructions": "",
+	"alias": "smartarget-instagram-follow-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/XBSa1q7iFzQB/Instagram%20Follow.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/IWUIIm1TYFLI/instagram_follow-1-desktop.png",
+		"https://images.cloudflareapps.com/IWUIIm1TYFLI/instagram_follow-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/4hrZNELGnPhh/Instagram%20Follow.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/dq5Ei0WFJz8W/Instagram%20Follow%20Us.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.2",
+	"infoVersion": "1.1.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "APPS_INSTAGRAM_POPUP_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-07-28T19:29:16.5043653Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "yq6RCoLJQqho"
+	},
+	"created": "2020-07-28T19:10:50.511722Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "iwgRuTiFd9SI",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"instagramAccount": {
+							"default": "@your_instagram_account",
+							"description": "Your instagram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Instagram Follow Us on Homepage only",
+						"longDescription": "Show the Instagram Follow Us on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"longDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version !",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yq6RCoLJQqho",
+			"metadata": {
+				"code": {
+					"sourceTag": "yq6RCoLJQqho",
+					"uploadedOn": "2020-07-28T19:10:52.09378819Z"
+				}
+			},
+			"created": "2020-07-28T19:10:51.036009Z",
+			"proposedApp": {
+				"id": "iwgRuTiFd9SI",
+				"title": "Instagram - Follow Us",
+				"shortDescription": "Tell users about your Instagram profile",
+				"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+				"instructions": "",
+				"alias": "instagram-follow-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/c-4wkkTBUgQV/117156_media_512x512.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/BWCbgcf5GWra/Screen%20Shot%202020-07-28%20at%2021.27.31.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nHkUidpZV9AE/inst420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Instagram Follow Us on Homepage only",
+						"longDescription": "Show the Instagram Follow Us on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"longDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "yq6RCoLJQqho"
+				},
+				"created": "2020-07-28T19:10:50.511722Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-07-28T19:29:16.489043333Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-29T15:39:40.191342651Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "iwgRuTiFd9SI",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"instagramAccount": {
+							"default": "@your_instagram_account",
+							"description": "Your instagram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram account",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Instagram Follow Us on Homepage only",
+						"longDescription": "Show the Instagram Follow Us on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"longDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to Social & Communication",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yq6RCoLJQqho",
+			"created": "2020-07-29T19:59:35.025028Z",
+			"proposedApp": {
+				"id": "iwgRuTiFd9SI",
+				"title": "Instagram - Follow Us",
+				"shortDescription": "Tell users about your Instagram profile",
+				"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+				"instructions": "",
+				"alias": "instagram-follow-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/c-4wkkTBUgQV/117156_media_512x512.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/BWCbgcf5GWra/Screen%20Shot%202020-07-28%20at%2021.27.31.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nHkUidpZV9AE/inst420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Instagram Follow Us on Homepage only",
+						"longDescription": "Show the Instagram Follow Us on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"longDescription": "Get Instagram Follow Us and free more apps (include instagram follow us) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "yq6RCoLJQqho"
+				},
+				"created": "2020-07-28T19:10:50.511722Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-07-29T19:59:35.408641029Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-29T20:00:25.251343923Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "iwgRuTiFd9SI",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on desktop",
+							"type": "string"
+						},
+						"dismissPeriod": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another period",
+								"default": "Every page refresh"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss period",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"instagramAccount": {
+							"default": "@your_instagram_account",
+							"description": "Your instagram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram account",
+							"type": "string"
+						},
+						"linkBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 8,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link behavior",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#0000ee",
+							"format": "color",
+							"order": 11,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link color",
+							"type": "string"
+						},
+						"loadDelay": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Load after 1 second"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Load the message after page load (in seconds)",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Follow us on Instagram)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Instagram - Follow Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 13,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Bug fixes + add instructions",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/sZMPh7HNf417",
+			"metadata": {
+				"code": {
+					"sourceTag": "sZMPh7HNf417",
+					"uploadedOn": "2020-10-21T14:58:09.714588484Z"
+				}
+			},
+			"created": "2020-10-21T14:58:08.588092Z",
+			"proposedApp": {
+				"id": "iwgRuTiFd9SI",
+				"title": "Smartarget Instagram - Follow Us",
+				"shortDescription": "Get more Instagram followers",
+				"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+				"instructions": "",
+				"alias": "instagram-follow-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/c-4wkkTBUgQV/117156_media_512x512.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/BWCbgcf5GWra/Screen%20Shot%202020-07-28%20at%2021.27.31.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/nHkUidpZV9AE/inst420.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "yq6RCoLJQqho"
+				},
+				"created": "2020-07-28T19:10:50.511722Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-21T14:59:54.851710199Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-21T20:55:43.601947183Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "iwgRuTiFd9SI",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on desktop",
+							"type": "string"
+						},
+						"dismissPeriod": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another period",
+								"default": "Every page refresh"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss period",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"instagramAccount": {
+							"default": "@your_instagram_account",
+							"description": "Your instagram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram account",
+							"type": "string"
+						},
+						"linkBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 8,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link behavior",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#0000ee",
+							"format": "color",
+							"order": 11,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link color",
+							"type": "string"
+						},
+						"loadDelay": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Load after 1 second"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Load the message after page load (in seconds)",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Follow us on Instagram)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Instagram - Follow Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 13,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "New images and screenshots",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DyGL7H1pG7Z2",
+			"metadata": {
+				"code": {
+					"sourceTag": "DyGL7H1pG7Z2",
+					"uploadedOn": "2020-10-22T14:29:59.141804807Z"
+				}
+			},
+			"created": "2020-10-22T14:29:58.370197Z",
+			"proposedApp": {
+				"id": "iwgRuTiFd9SI",
+				"title": "Smartarget Instagram - Follow Us",
+				"shortDescription": "Get more Instagram followers",
+				"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+				"instructions": "",
+				"alias": "smartarget-instagram-follow-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/XBSa1q7iFzQB/Instagram%20Follow.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/OhSuZGNOkIvE/Instagram%20Follow%20Us.png",
+					"https://images.cloudflareapps.com/5fp5yl48kVSe/Instagram%20Follow.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/4hrZNELGnPhh/Instagram%20Follow.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/dq5Ei0WFJz8W/Instagram%20Follow%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "yq6RCoLJQqho"
+				},
+				"created": "2020-07-28T19:10:50.511722Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-26T14:32:20.42336267Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T15:46:56.71606626Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "iwgRuTiFd9SI",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_instagram_follow_us'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on desktop",
+							"type": "string"
+						},
+						"dismissPeriod": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another period",
+								"default": "Every page refresh"
+							},
+							"format": "radios",
+							"order": 7,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Dismiss period",
+							"type": "string"
+						},
+						"frameColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Frame color",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"instagramAccount": {
+							"default": "@your_instagram_account",
+							"description": "Your instagram account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram account",
+							"type": "string"
+						},
+						"linkBehavior": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open in same tab",
+								"default": "Open in new tab"
+							},
+							"format": "radios",
+							"order": 8,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link behavior",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#0000ee",
+							"format": "color",
+							"order": 11,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Link color",
+							"type": "string"
+						},
+						"loadDelay": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another value",
+								"default": "Load after 1 second"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Load the message after page load (in seconds)",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Follow us on Instagram)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Instagram Follow Us position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Instagram - Follow Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"rtl": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Yes, I need RTL support",
+								"default": "No"
+							},
+							"format": "radios",
+							"order": 13,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Right to Left",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Text color",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DyGL7H1pG7Z2",
+			"created": "2021-11-09T15:08:06.775022Z",
+			"proposedApp": {
+				"id": "iwgRuTiFd9SI",
+				"title": "Smartarget Instagram - Follow Us",
+				"shortDescription": "Get more Instagram followers",
+				"longDescription": "Do you have an Instagram profile? Our app Instagram - Follow Us allows you to tell your users about your profile so they can start following you.\n\nMany e-commerce sites generate a lot of traffic from Instagram, so it's very important to recommend your users to follow you so you can retarget them on Instagram and make sure they get back to your website to buy something. \n\nInstagram Follow Us will show non intrusive but yet very visible message to your users and recommend them to follow you.",
+				"instructions": "",
+				"alias": "smartarget-instagram-follow-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/XBSa1q7iFzQB/Instagram%20Follow.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IWUIIm1TYFLI/instagram_follow-1-desktop.png",
+					"https://images.cloudflareapps.com/IWUIIm1TYFLI/instagram_follow-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/4hrZNELGnPhh/Instagram%20Follow.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/dq5Ei0WFJz8W/Instagram%20Follow%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_INSTAGRAM_POPUP_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "yq6RCoLJQqho"
+				},
+				"created": "2020-07-28T19:10:50.511722Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:08:07.378016891Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:02.88467376Z"
+			}
+		}
+	]
+}

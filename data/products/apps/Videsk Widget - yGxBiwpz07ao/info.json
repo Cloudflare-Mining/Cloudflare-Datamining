@@ -1,0 +1,158 @@
+{
+	"id": "yGxBiwpz07ao",
+	"title": "Videsk Widget",
+	"shortDescription": "Integrate Videsk widget on your website through Cloudflare.",
+	"longDescription": "Videsk widget allows your customers to communicate with your representatives without downloads or installations.\n\nIn less than 30 seconds your customers can request a video call.\n\nYour customers can:\n\n- Start a video call directly from your website\n- Share screen\n- Switch camera (front-back) \n- Send and receive a message through chat",
+	"instructions": "For install through Cloudflare Apps, **you need to copy your public token** from your dashboard account. If you need assistance contact us to support@videsk.io.",
+	"alias": "videsk-widget",
+	"orgId": "f5ae720a04a3c8f32485960c37299ccb",
+	"icon": "https://images.cloudflareapps.com/FcmJsV_U7TOt/logo-videsk.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/0EeSIx8N0pla/Captura%20de%20pantalla%20de%202020-09-16%2014-06-27.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Sh0zWyZBLS7Y/front-app.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/t6Em0gobH1-f/Captura%20de%20pantalla%20de%202020-09-16%2014-16-16.png",
+	"author": "Videsk SpA",
+	"tagline": "",
+	"website": "https://videsk.io",
+	"sourceURL": "https://github.com/videsk/widget-cloudflare",
+	"termsOfServiceURL": "https://policies.videsk.io",
+	"privacyPolicyURL": "https://policies.videsk.io",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "hello@videsk.io",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "f5ae720a04a3c8f32485960c37299ccb",
+			"created": "2020-09-16T17:25:24.275114233Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "5c01xLaCih2P"
+	},
+	"created": "2020-09-16T17:22:58.600734Z",
+	"org": {
+		"id": "f5ae720a04a3c8f32485960c37299ccb",
+		"title": "",
+		"username": "f5ae720a04a3c8f32485960c37299ccb",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "yGxBiwpz07ao",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"token": {
+							"default": "",
+							"description": "Integration token you can find on your dashboard account.",
+							"format": "string",
+							"order": 0,
+							"title": "Public Token",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://assets.videsk.io/js/videsk-widget.min.js",
+							"description": "URL of widget script. Must start with https://.",
+							"format": "url",
+							"order": 1,
+							"title": "URL script",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "This is the first version of Videsk on Cloudflare. You can choose between our widgets designs pasting the URL.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5c01xLaCih2P",
+			"metadata": {
+				"code": {
+					"sourceTag": "5c01xLaCih2P",
+					"uploadedOn": "2020-09-16T17:23:00.976367429Z"
+				}
+			},
+			"created": "2020-09-16T17:23:00.426558Z",
+			"proposedApp": {
+				"id": "yGxBiwpz07ao",
+				"title": "Videsk Widget",
+				"shortDescription": "Integrate Videsk widget on your website through Cloudflare.",
+				"longDescription": "Videsk widget allows your customers to communicate with your representatives without downloads or installations.\n\nIn less than 30 seconds your customers can request a video call.\n\nYour customers can:\n\n- Start a video call directly from your website\n- Share screen\n- Switch camera (front-back) \n- Send and receive a message through chat",
+				"instructions": "For install through Cloudflare Apps, **you need to copy your public token** from your dashboard account. If you need assistance contact us to support@videsk.io.",
+				"alias": "videsk-widget",
+				"orgId": "f5ae720a04a3c8f32485960c37299ccb",
+				"icon": "https://images.cloudflareapps.com/FcmJsV_U7TOt/logo-videsk.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/0EeSIx8N0pla/Captura%20de%20pantalla%20de%202020-09-16%2014-06-27.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Sh0zWyZBLS7Y/front-app.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/t6Em0gobH1-f/Captura%20de%20pantalla%20de%202020-09-16%2014-16-16.png",
+				"author": "Videsk SpA",
+				"tagline": "",
+				"website": "https://videsk.io",
+				"sourceURL": "https://github.com/videsk/widget-cloudflare",
+				"termsOfServiceURL": "https://policies.videsk.io",
+				"privacyPolicyURL": "https://policies.videsk.io",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@videsk.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "5c01xLaCih2P"
+				},
+				"created": "2020-09-16T17:22:58.600734Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f5ae720a04a3c8f32485960c37299ccb",
+				"requestedAt": "2020-09-16T17:25:24.269382357Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-24T15:59:59.057739282Z"
+			}
+		}
+	]
+}

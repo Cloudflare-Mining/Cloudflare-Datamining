@@ -1,0 +1,1295 @@
+{
+	"id": "eTmsu-gVrKOg",
+	"title": "Popup",
+	"shortDescription": "Exit intent, email sign up, security and promotions popup",
+	"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-popup",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/BrUttUUobxA3/Popup-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+		"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+		"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+		"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+		"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/xDO6_0faLOYv/Popup-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:47:04.453098222Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ouENSqm4Qqz2"
+	},
+	"created": "2018-03-12T18:37:47.282193Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ouENSqm4Qqz2",
+			"metadata": {
+				"code": {
+					"sourceTag": "ouENSqm4Qqz2",
+					"uploadedOn": "2018-03-12T18:37:47.574439994Z"
+				}
+			},
+			"created": "2018-03-12T18:37:47.420603Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Boost conversions with call-to-actions in a custom popup.",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/c5mk9ji4RsKgvNx8AaSA_Icon - Popup Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/xR2zdtBT46yuRKVmLg40_Popup banner Cloudflare (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* 3 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization",
+						"longDescription": "* Remove POWr Logo\n* 4 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor",
+						"visible": true,
+						"price": 400,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 6 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor\n* Trigger Popup When User Exits\n* Show on Visitor Click\n* Show Popup with Delay\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1100,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 50 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor\n* Trigger Popup When User Exits\n* Show on Visitor Click\n* Show Popup with Delay\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:47:04.445361586Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:34:26.730301825Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dkQIqD3LaWJk",
+			"metadata": {
+				"code": {
+					"sourceTag": "dkQIqD3LaWJk",
+					"uploadedOn": "2018-03-23T17:34:26.150307617Z"
+				}
+			},
+			"created": "2018-03-23T17:34:25.94677Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Boost conversions with call-to-actions in a custom popup.",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/c5mk9ji4RsKgvNx8AaSA_Icon - Popup Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/xR2zdtBT46yuRKVmLg40_Popup banner Cloudflare (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* 3 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization",
+						"longDescription": "* Remove POWr Logo\n* 4 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor",
+						"visible": true,
+						"price": 400,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 6 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor\n* Trigger Popup When User Exits\n* Show on Visitor Click\n* Show Popup with Delay\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1100,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 50 Elements Per Popup (Text, Image, Button, Form etc.)\n* Collect User Emails\n* Submissions Dashboard + Export\n* Control Frequency per Visitor\n* Trigger Popup When User Exits\n* Show on Visitor Click\n* Show Popup with Delay\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:34:26.772535655Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:19.038383907Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-C7r_k5jGTGz",
+			"metadata": {
+				"code": {
+					"sourceTag": "-C7r_k5jGTGz",
+					"uploadedOn": "2018-09-19T23:51:09.399402596Z"
+				}
+			},
+			"created": "2018-09-19T23:51:09.247476Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Boost conversions with call-to-actions in a custom popup.",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/c5mk9ji4RsKgvNx8AaSA_Icon - Popup Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/xR2zdtBT46yuRKVmLg40_Popup banner Cloudflare (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:51:21.628876415Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T17:59:52.428627122Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-C7r_k5jGTGz",
+			"created": "2018-09-25T17:04:03.304574Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Boost conversions with call-to-actions in a custom popup.",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/c5mk9ji4RsKgvNx8AaSA_Icon - Popup Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/xR2zdtBT46yuRKVmLg40_Popup banner Cloudflare (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T17:59:52.446888732Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:16:27.487522442Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-C7r_k5jGTGz",
+			"created": "2018-09-26T21:23:59.854471Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Exit intent, email sign up, security and promotions popup",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/BrUttUUobxA3/Popup-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/xDO6_0faLOYv/Popup-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:16:28.098398309Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T22:51:06.801476734Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-C7r_k5jGTGz",
+			"created": "2018-10-16T17:48:44.765628Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Exit intent, email sign up, security and promotions popup",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-popup",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/BrUttUUobxA3/Popup-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/xDO6_0faLOYv/Popup-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:48:44.934364028Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:28:18.557699337Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Popup appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=popup",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=popup",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.22,
+				"upvotes": 4,
+				"downvotes": 14
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-C7r_k5jGTGz",
+			"created": "2018-11-06T00:53:27.293987Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Exit intent, email sign up, security and promotions popup",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-popup",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/BrUttUUobxA3/Popup-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/xDO6_0faLOYv/Popup-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:53:27.436604642Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:34.55037197Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "eTmsu-gVrKOg",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/popup",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Popup",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Popup</h1> Reduce your bounce rate with helpful popups on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Popup appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-popup id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Popup",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Popup</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Popup to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.19,
+				"upvotes": 15,
+				"downvotes": 62
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/j5bheQ5g40Zx",
+			"metadata": {
+				"code": {
+					"sourceTag": "j5bheQ5g40Zx",
+					"uploadedOn": "2019-04-16T00:04:08.276375861Z"
+				}
+			},
+			"created": "2019-04-16T00:04:08.090442Z",
+			"proposedApp": {
+				"id": "eTmsu-gVrKOg",
+				"title": "Popup",
+				"shortDescription": "Exit intent, email sign up, security and promotions popup",
+				"longDescription": "Popup is the easy way to increase your website conversions (that’s the number of people who take action on your site) with a custom popup window. You can put it on any page and customize it with your own text, button text, colors and more. Use it to get customers excited and reduce bounce rates by highlighting limited time offers, announce an event or product launch, use it to get newsletter sign ups, gather insight with an exit survey or upsell by suggesting other items. \n \n# What are the benefits of using POWr Popup?   \n\n* **Be eye-catching** - Catch your website visitors’ attention at the right moment to promote sale events, newsletters, and more.\n* **Grow your business** - Embed signup forms in your popup to grow your mailing lists.\n* **Reduce bounce rates** - Reduce bounce rate by showing discount codes, surveys, and more when a shopper is about to leave your page.\n\n# Get started for free and enjoy these features:   \n\n* Create your perfect mailing list signup popup by embedding custom forms in your popup.\n* Announce sales or create urgency by embedding a Countdown Timer and featured product images in your popup.\n* Get more followers on your social channels by adding all of your social links to Popup.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Custom triggers: show Popup with a specific time delay, button click, or when user is about to exit your page.\n* Control the frequency with which the Popup should appear to the same visitor.\n* Hide ‘Close’ button to force user into choosing custom action in popup.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=popup).\n\n# Why users love Popup:   \n\n\"Very functional app and has made a definite increase in traffic and sales!\" - Gamma Wave\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Popup up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-popup",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/BrUttUUobxA3/Popup-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WlDysUJ5RTO23zF8IzSW_screenshot1 - popup (1) (2).png",
+					"//images.cloudflareapps.com/RpVsUD3Tta8ONvN2qxZM_screenshot2- popup (3).png",
+					"//images.cloudflareapps.com/a3J4pPueRHe8NiNuntGD_Screen Shot 2018-01-09 at 10.11.18 AM.png",
+					"//images.cloudflareapps.com/n8gtLZsqR7WW3Cggqorg_popup (2).png",
+					"//images.cloudflareapps.com/OmI9sSkjRVCVvcfingaZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/xDO6_0faLOYv/Popup-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ouENSqm4Qqz2"
+				},
+				"created": "2018-03-12T18:37:47.282193Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:04:09.229123891Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:43:13.263066561Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,3591 @@
+{
+	"id": "P1xGIF6Nk8Zs",
+	"title": "Google Fonts",
+	"shortDescription": "Add free custom fonts to your site.",
+	"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+	"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+	"alias": "google-fonts",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/UXpB9DlSEqSw3vrH9wbw_tile.png",
+	"featuredAppImage": "",
+	"author": "Google Inc.",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#db463b",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.2",
+	"infoVersion": "2.1.2",
+	"points": 300,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T09:57:13.870502946Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "2uGrUGEFSsk-"
+	},
+	"created": "2017-07-06T09:57:12.757319Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "2.0.0",
+			"appId": "P1xGIF6Nk8Zs",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"body": {
+							"order": 2,
+							"properties": {
+								"category": {
+									"default": "sansSerif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"body.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"body.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"body.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin"
+									],
+									"enumNames": {
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"body.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin"
+									],
+									"enumNames": {
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"body.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Body text",
+							"type": "object"
+						},
+						"custom": {
+							"items": {
+								"properties": {
+									"category": {
+										"default": "serif",
+										"enum": [
+											"serif",
+											"sansSerif",
+											"fancy",
+											"handwriting",
+											"monospace"
+										],
+										"enumNames": {
+											"fancy": "Fancy",
+											"handwriting": "Handwriting",
+											"monospace": "Monospace",
+											"sansSerif": "Sans Serif",
+											"serif": "Serif"
+										},
+										"order": 2,
+										"title": "Category",
+										"type": "string"
+									},
+									"fancy": {
+										"default": "Lobster::latin",
+										"enum": [
+											"Abril+Fatface::latin",
+											"Bangers::latin",
+											"Chewy::latin",
+											"Comfortaa:400,700:latin",
+											"Lobster::latin",
+											"Passion+One:400,700:latin",
+											"Patua+One::latin",
+											"Poiret+One::latin",
+											"Righteous::latin",
+											"Sigmar+One::latin"
+										],
+										"enumNames": {
+											"Abril+Fatface::latin": "Abril Fatface",
+											"Bangers::latin": "Bangers",
+											"Chewy::latin": "Chewy",
+											"Comfortaa:400,700:latin": "Comfortaa",
+											"Lobster::latin": "Lobster",
+											"Passion+One:400,700:latin": "Passion One",
+											"Patua+One::latin": "Patua One",
+											"Poiret+One::latin": "Poiret One",
+											"Righteous::latin": "Righteous",
+											"Sigmar+One::latin": "Sigmar One"
+										},
+										"order": 5,
+										"showIf": {
+											"custom[].category": "fancy"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"handwriting": {
+										"default": "Indie+Flower::latin",
+										"enum": [
+											"Amatic+SC:400,700:latin",
+											"Architects+Daughter::latin",
+											"Courgette::latin",
+											"Covered+By+Your+Grace::latin",
+											"Dancing+Script:400,700:latin",
+											"Gloria+Hallelujah::latin",
+											"Indie+Flower::latin",
+											"Kaushan+Script::latin",
+											"Pacifico::latin",
+											"Shadows+Into+Light::latin"
+										],
+										"enumNames": {
+											"Amatic+SC:400,700:latin": "Amatic SC",
+											"Architects+Daughter::latin": "Architects Daughter",
+											"Courgette::latin": "Courgette",
+											"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+											"Dancing+Script:400,700:latin": "Dancing Script",
+											"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+											"Indie+Flower::latin": "Indie Flower",
+											"Kaushan+Script::latin": "Kaushan Script",
+											"Pacifico::latin": "Pacifico",
+											"Shadows+Into+Light::latin": "Shadows Into Light"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "handwriting"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"monospace": {
+										"default": "Inconsolata:400,700:latin",
+										"enum": [
+											"Anonymous+Pro:400,400italic,700:latin",
+											"Cousine:400,400italic,700:latin",
+											"Droid+Sans+Mono::latin",
+											"Inconsolata:400,700:latin",
+											"Oxygen+Mono::latin",
+											"PT+Mono::latin",
+											"Roboto+Mono:400,400italic,700:latin",
+											"Source+Code+Pro:400,700:latin",
+											"Ubuntu+Mono:400,400italic,700:latin",
+											"VT323::latin"
+										],
+										"enumNames": {
+											"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+											"Cousine:400,400italic,700:latin": "Cousine",
+											"Droid+Sans+Mono::latin": "Droid Sans Mono",
+											"Inconsolata:400,700:latin": "Inconsolata",
+											"Oxygen+Mono::latin": "Oxygen Mono",
+											"PT+Mono::latin": "PT Mono",
+											"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+											"Source+Code+Pro:400,700:latin": "Source Code Pro",
+											"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+											"VT323::latin": "VT323"
+										},
+										"order": 7,
+										"showIf": {
+											"custom[].category": "monospace"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"sansSerif": {
+										"default": "Open+Sans:400,400italic,700:latin",
+										"enum": [
+											"Droid+Sans:400,700:latin",
+											"Lato:400,400italic,700:latin",
+											"Montserrat:400,700:latin",
+											"Open+Sans:400,400italic,700:latin",
+											"Oswald:400,700:latin",
+											"PT+Sans:400,400italic,700:latin",
+											"Raleway:400,400italic,700:latin",
+											"Roboto+Condensed:400,400italic,700:latin",
+											"Roboto:400,400italic,700:latin",
+											"Source+Sans+Pro:400,400italic,700:latin"
+										],
+										"enumNames": {
+											"Droid+Sans:400,700:latin": "Droid Sans",
+											"Lato:400,400italic,700:latin": "Lato",
+											"Montserrat:400,700:latin": "Montserrat",
+											"Open+Sans:400,400italic,700:latin": "Open Sans",
+											"Oswald:400,700:latin": "Oswald",
+											"PT+Sans:400,400italic,700:latin": "PT Sans",
+											"Raleway:400,400italic,700:latin": "Raleway",
+											"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+											"Roboto:400,400italic,700:latin": "Roboto",
+											"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+										},
+										"order": 4,
+										"showIf": {
+											"custom[].category": "sansSerif"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"selector": {
+										"format": "selector",
+										"order": 1,
+										"title": "Custom selection",
+										"type": "string"
+									},
+									"serif": {
+										"default": "Slabo+27px::latin",
+										"enum": [
+											"Arvo:400,400italic,700:latin",
+											"Bitter:400,400italic,700:latin",
+											"Droid+Serif:400,400italic,700:latin",
+											"Lora:400,400italic,700:latin",
+											"Merriweather:400,400italic,700:latin",
+											"Noto+Serif:400,400italic,700:latin",
+											"Playfair+Display:400,400italic,700:latin",
+											"PT+Serif:400,400italic,700:latin",
+											"Roboto+Slab:400,700:latin",
+											"Slabo+27px::latin"
+										],
+										"enumNames": {
+											"Arvo:400,400italic,700:latin": "Arvo",
+											"Bitter:400,400italic,700:latin": "Bitter",
+											"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+											"Lora:400,400italic,700:latin": "Lora",
+											"Merriweather:400,400italic,700:latin": "Merriweather",
+											"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+											"PT+Serif:400,400italic,700:latin": "PT Serif",
+											"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+											"Roboto+Slab:400,700:latin": "Roboto Slab",
+											"Slabo+27px::latin": "Slabo"
+										},
+										"order": 3,
+										"showIf": {
+											"custom[].category": "serif"
+										},
+										"title": "Font",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"title": "Custom regions of the page",
+							"type": "array"
+						},
+						"headers": {
+							"order": 1,
+							"properties": {
+								"category": {
+									"default": "serif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"headers.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"headers.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"headers.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin"
+									],
+									"enumNames": {
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"headers.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin"
+									],
+									"enumNames": {
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"headers.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Headers and titles",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2uGrUGEFSsk-",
+			"metadata": {
+				"code": {
+					"sourceTag": "2uGrUGEFSsk-",
+					"uploadedOn": "2017-07-06T09:57:13.155434678Z"
+				}
+			},
+			"created": "2017-07-06T09:57:12.962292Z",
+			"proposedApp": {
+				"id": "P1xGIF6Nk8Zs",
+				"title": "Google Fonts",
+				"shortDescription": "Custom fonts for your website.",
+				"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+				"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+				"alias": "google-fonts",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/6IHsVXIIS4ekPrNOkIiA_tile.png",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2uGrUGEFSsk-"
+				},
+				"created": "2017-07-06T09:57:12.757319Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T09:57:13.856478583Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T09:57:47.612778329Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "P1xGIF6Nk8Zs",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"body": {
+							"order": 2,
+							"properties": {
+								"category": {
+									"default": "sansSerif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"body.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"body.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"body.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin"
+									],
+									"enumNames": {
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"body.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin"
+									],
+									"enumNames": {
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"body.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Body text",
+							"type": "object"
+						},
+						"custom": {
+							"items": {
+								"properties": {
+									"category": {
+										"default": "serif",
+										"enum": [
+											"serif",
+											"sansSerif",
+											"fancy",
+											"handwriting",
+											"monospace"
+										],
+										"enumNames": {
+											"fancy": "Fancy",
+											"handwriting": "Handwriting",
+											"monospace": "Monospace",
+											"sansSerif": "Sans Serif",
+											"serif": "Serif"
+										},
+										"order": 2,
+										"title": "Category",
+										"type": "string"
+									},
+									"fancy": {
+										"default": "Lobster::latin",
+										"enum": [
+											"Abril+Fatface::latin",
+											"Bangers::latin",
+											"Chewy::latin",
+											"Comfortaa:400,700:latin",
+											"Lobster::latin",
+											"Passion+One:400,700:latin",
+											"Patua+One::latin",
+											"Poiret+One::latin",
+											"Righteous::latin",
+											"Sigmar+One::latin"
+										],
+										"enumNames": {
+											"Abril+Fatface::latin": "Abril Fatface",
+											"Bangers::latin": "Bangers",
+											"Chewy::latin": "Chewy",
+											"Comfortaa:400,700:latin": "Comfortaa",
+											"Lobster::latin": "Lobster",
+											"Passion+One:400,700:latin": "Passion One",
+											"Patua+One::latin": "Patua One",
+											"Poiret+One::latin": "Poiret One",
+											"Righteous::latin": "Righteous",
+											"Sigmar+One::latin": "Sigmar One"
+										},
+										"order": 5,
+										"showIf": {
+											"custom[].category": "fancy"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"handwriting": {
+										"default": "Indie+Flower::latin",
+										"enum": [
+											"Amatic+SC:400,700:latin",
+											"Architects+Daughter::latin",
+											"Courgette::latin",
+											"Covered+By+Your+Grace::latin",
+											"Dancing+Script:400,700:latin",
+											"Gloria+Hallelujah::latin",
+											"Indie+Flower::latin",
+											"Kaushan+Script::latin",
+											"Pacifico::latin",
+											"Shadows+Into+Light::latin"
+										],
+										"enumNames": {
+											"Amatic+SC:400,700:latin": "Amatic SC",
+											"Architects+Daughter::latin": "Architects Daughter",
+											"Courgette::latin": "Courgette",
+											"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+											"Dancing+Script:400,700:latin": "Dancing Script",
+											"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+											"Indie+Flower::latin": "Indie Flower",
+											"Kaushan+Script::latin": "Kaushan Script",
+											"Pacifico::latin": "Pacifico",
+											"Shadows+Into+Light::latin": "Shadows Into Light"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "handwriting"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"monospace": {
+										"default": "Inconsolata:400,700:latin",
+										"enum": [
+											"Anonymous+Pro:400,400italic,700:latin",
+											"Cousine:400,400italic,700:latin",
+											"Droid+Sans+Mono::latin",
+											"Inconsolata:400,700:latin",
+											"Oxygen+Mono::latin",
+											"PT+Mono::latin",
+											"Roboto+Mono:400,400italic,700:latin",
+											"Source+Code+Pro:400,700:latin",
+											"Ubuntu+Mono:400,400italic,700:latin",
+											"VT323::latin"
+										],
+										"enumNames": {
+											"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+											"Cousine:400,400italic,700:latin": "Cousine",
+											"Droid+Sans+Mono::latin": "Droid Sans Mono",
+											"Inconsolata:400,700:latin": "Inconsolata",
+											"Oxygen+Mono::latin": "Oxygen Mono",
+											"PT+Mono::latin": "PT Mono",
+											"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+											"Source+Code+Pro:400,700:latin": "Source Code Pro",
+											"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+											"VT323::latin": "VT323"
+										},
+										"order": 7,
+										"showIf": {
+											"custom[].category": "monospace"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"sansSerif": {
+										"default": "Open+Sans:400,400italic,700:latin",
+										"enum": [
+											"Droid+Sans:400,700:latin",
+											"Lato:400,400italic,700:latin",
+											"Montserrat:400,700:latin",
+											"Open+Sans:400,400italic,700:latin",
+											"Oswald:400,700:latin",
+											"PT+Sans:400,400italic,700:latin",
+											"Raleway:400,400italic,700:latin",
+											"Roboto+Condensed:400,400italic,700:latin",
+											"Roboto:400,400italic,700:latin",
+											"Source+Sans+Pro:400,400italic,700:latin"
+										],
+										"enumNames": {
+											"Droid+Sans:400,700:latin": "Droid Sans",
+											"Lato:400,400italic,700:latin": "Lato",
+											"Montserrat:400,700:latin": "Montserrat",
+											"Open+Sans:400,400italic,700:latin": "Open Sans",
+											"Oswald:400,700:latin": "Oswald",
+											"PT+Sans:400,400italic,700:latin": "PT Sans",
+											"Raleway:400,400italic,700:latin": "Raleway",
+											"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+											"Roboto:400,400italic,700:latin": "Roboto",
+											"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+										},
+										"order": 4,
+										"showIf": {
+											"custom[].category": "sansSerif"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"selector": {
+										"format": "selector",
+										"order": 1,
+										"title": "Custom selection",
+										"type": "string"
+									},
+									"serif": {
+										"default": "Slabo+27px::latin",
+										"enum": [
+											"Arvo:400,400italic,700:latin",
+											"Bitter:400,400italic,700:latin",
+											"Droid+Serif:400,400italic,700:latin",
+											"Lora:400,400italic,700:latin",
+											"Merriweather:400,400italic,700:latin",
+											"Noto+Serif:400,400italic,700:latin",
+											"Playfair+Display:400,400italic,700:latin",
+											"PT+Serif:400,400italic,700:latin",
+											"Roboto+Slab:400,700:latin",
+											"Slabo+27px::latin"
+										],
+										"enumNames": {
+											"Arvo:400,400italic,700:latin": "Arvo",
+											"Bitter:400,400italic,700:latin": "Bitter",
+											"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+											"Lora:400,400italic,700:latin": "Lora",
+											"Merriweather:400,400italic,700:latin": "Merriweather",
+											"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+											"PT+Serif:400,400italic,700:latin": "PT Serif",
+											"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+											"Roboto+Slab:400,700:latin": "Roboto Slab",
+											"Slabo+27px::latin": "Slabo"
+										},
+										"order": 3,
+										"showIf": {
+											"custom[].category": "serif"
+										},
+										"title": "Font",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"title": "Custom regions of the page",
+							"type": "array"
+						},
+						"headers": {
+							"order": 1,
+							"properties": {
+								"category": {
+									"default": "serif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"headers.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"headers.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"headers.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin"
+									],
+									"enumNames": {
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"headers.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin"
+									],
+									"enumNames": {
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"headers.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Headers and titles",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2uGrUGEFSsk-",
+			"created": "2017-07-07T08:10:38.781445Z",
+			"proposedApp": {
+				"id": "P1xGIF6Nk8Zs",
+				"title": "Google Fonts",
+				"shortDescription": "Add free custom fonts to your site.",
+				"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+				"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+				"alias": "google-fonts",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/6IHsVXIIS4ekPrNOkIiA_tile.png",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2uGrUGEFSsk-"
+				},
+				"created": "2017-07-06T09:57:12.757319Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T08:10:44.407208989Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T08:30:17.560410175Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "P1xGIF6Nk8Zs",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"body": {
+							"order": 2,
+							"properties": {
+								"category": {
+									"default": "sansSerif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"body.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"body.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"body.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"body.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"body.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Body text",
+							"type": "object"
+						},
+						"custom": {
+							"items": {
+								"properties": {
+									"category": {
+										"default": "serif",
+										"enum": [
+											"serif",
+											"sansSerif",
+											"fancy",
+											"handwriting",
+											"monospace"
+										],
+										"enumNames": {
+											"fancy": "Fancy",
+											"handwriting": "Handwriting",
+											"monospace": "Monospace",
+											"sansSerif": "Sans Serif",
+											"serif": "Serif"
+										},
+										"order": 2,
+										"title": "Category",
+										"type": "string"
+									},
+									"fancy": {
+										"default": "Lobster::latin",
+										"enum": [
+											"Abril+Fatface::latin",
+											"Bangers::latin",
+											"Chewy::latin",
+											"Comfortaa:400,700:latin",
+											"Lobster::latin",
+											"Passion+One:400,700:latin",
+											"Patua+One::latin",
+											"Poiret+One::latin",
+											"Righteous::latin",
+											"Sigmar+One::latin"
+										],
+										"enumNames": {
+											"Abril+Fatface::latin": "Abril Fatface",
+											"Bangers::latin": "Bangers",
+											"Chewy::latin": "Chewy",
+											"Comfortaa:400,700:latin": "Comfortaa",
+											"Lobster::latin": "Lobster",
+											"Passion+One:400,700:latin": "Passion One",
+											"Patua+One::latin": "Patua One",
+											"Poiret+One::latin": "Poiret One",
+											"Righteous::latin": "Righteous",
+											"Sigmar+One::latin": "Sigmar One"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "fancy"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"handwriting": {
+										"default": "Indie+Flower::latin",
+										"enum": [
+											"Amatic+SC:400,700:latin",
+											"Architects+Daughter::latin",
+											"Courgette::latin",
+											"Covered+By+Your+Grace::latin",
+											"Dancing+Script:400,700:latin",
+											"Gloria+Hallelujah::latin",
+											"Indie+Flower::latin",
+											"Kaushan+Script::latin",
+											"Pacifico::latin",
+											"Shadows+Into+Light::latin",
+											"Lateef:400:arabic"
+										],
+										"enumNames": {
+											"Amatic+SC:400,700:latin": "Amatic SC",
+											"Architects+Daughter::latin": "Architects Daughter",
+											"Courgette::latin": "Courgette",
+											"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+											"Dancing+Script:400,700:latin": "Dancing Script",
+											"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+											"Indie+Flower::latin": "Indie Flower",
+											"Kaushan+Script::latin": "Kaushan Script",
+											"Lateef:400:arabic": "Lateef (عربى)",
+											"Pacifico::latin": "Pacifico",
+											"Shadows+Into+Light::latin": "Shadows Into Light"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "handwriting"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"monospace": {
+										"default": "Inconsolata:400,700:latin",
+										"enum": [
+											"Anonymous+Pro:400,400italic,700:latin",
+											"Cousine:400,400italic,700:latin",
+											"Droid+Sans+Mono::latin",
+											"Inconsolata:400,700:latin",
+											"Oxygen+Mono::latin",
+											"PT+Mono::latin",
+											"Roboto+Mono:400,400italic,700:latin",
+											"Source+Code+Pro:400,700:latin",
+											"Ubuntu+Mono:400,400italic,700:latin",
+											"VT323::latin"
+										],
+										"enumNames": {
+											"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+											"Cousine:400,400italic,700:latin": "Cousine",
+											"Droid+Sans+Mono::latin": "Droid Sans Mono",
+											"Inconsolata:400,700:latin": "Inconsolata",
+											"Oxygen+Mono::latin": "Oxygen Mono",
+											"PT+Mono::latin": "PT Mono",
+											"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+											"Source+Code+Pro:400,700:latin": "Source Code Pro",
+											"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+											"VT323::latin": "VT323"
+										},
+										"order": 8,
+										"showIf": {
+											"custom[].category": "monospace"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"sansSerif": {
+										"default": "Open+Sans:400,400italic,700:latin",
+										"enum": [
+											"Droid+Sans:400,700:latin",
+											"Lato:400,400italic,700:latin",
+											"Montserrat:400,700:latin",
+											"Open+Sans:400,400italic,700:latin",
+											"Oswald:400,700:latin",
+											"PT+Sans:400,400italic,700:latin",
+											"Raleway:400,400italic,700:latin",
+											"Roboto+Condensed:400,400italic,700:latin",
+											"Roboto:400,400italic,700:latin",
+											"Source+Sans+Pro:400,400italic,700:latin",
+											"Cairo:300,400:arabic",
+											"Changa:400,700:arabic",
+											"El+Messiri:400,500,600,700:arabic",
+											"Reem+Kufi:arabic"
+										],
+										"enumNames": {
+											"Cairo:300,400:arabic": "Cairo (عربى)",
+											"Changa:400,700:arabic": "Changa (عربى)",
+											"Droid+Sans:400,700:latin": "Droid Sans",
+											"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+											"Lato:400,400italic,700:latin": "Lato",
+											"Montserrat:400,700:latin": "Montserrat",
+											"Open+Sans:400,400italic,700:latin": "Open Sans",
+											"Oswald:400,700:latin": "Oswald",
+											"PT+Sans:400,400italic,700:latin": "PT Sans",
+											"Raleway:400,400italic,700:latin": "Raleway",
+											"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+											"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+											"Roboto:400,400italic,700:latin": "Roboto",
+											"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+										},
+										"order": 5,
+										"showIf": {
+											"custom[].category": "sansSerif"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"selector": {
+										"format": "selector",
+										"order": 1,
+										"title": "Custom selection",
+										"type": "string"
+									},
+									"serif": {
+										"default": "Slabo+27px::latin",
+										"enum": [
+											"Arvo:400,400italic,700:latin",
+											"Bitter:400,400italic,700:latin",
+											"Droid+Serif:400,400italic,700:latin",
+											"Lora:400,400italic,700:latin",
+											"Merriweather:400,400italic,700:latin",
+											"Noto+Serif:400,400italic,700:latin",
+											"Playfair+Display:400,400italic,700:latin",
+											"PT+Serif:400,400italic,700:latin",
+											"Roboto+Slab:400,700:latin",
+											"Slabo+27px::latin",
+											"Amiri:400,400i,700,700i:arabic",
+											"Aref+Ruqaa:400,700:arabic",
+											"Scheherazade:400,700:arabic"
+										],
+										"enumNames": {
+											"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+											"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+											"Arvo:400,400italic,700:latin": "Arvo",
+											"Bitter:400,400italic,700:latin": "Bitter",
+											"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+											"Lora:400,400italic,700:latin": "Lora",
+											"Merriweather:400,400italic,700:latin": "Merriweather",
+											"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+											"PT+Serif:400,400italic,700:latin": "PT Serif",
+											"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+											"Roboto+Slab:400,700:latin": "Roboto Slab",
+											"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+											"Slabo+27px::latin": "Slabo"
+										},
+										"order": 3,
+										"showIf": {
+											"custom[].category": "serif"
+										},
+										"title": "Font",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"title": "Custom regions of the page",
+							"type": "array"
+						},
+						"headers": {
+							"order": 1,
+							"properties": {
+								"category": {
+									"default": "serif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"headers.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"headers.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"headers.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"headers.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"headers.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Headers and titles",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1csHi6rO9lAP",
+			"metadata": {
+				"code": {
+					"sourceTag": "1csHi6rO9lAP",
+					"uploadedOn": "2017-07-15T04:58:10.816324734Z"
+				}
+			},
+			"created": "2017-07-15T04:58:10.526Z",
+			"proposedApp": {
+				"id": "P1xGIF6Nk8Zs",
+				"title": "Google Fonts",
+				"shortDescription": "Add free custom fonts to your site.",
+				"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+				"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+				"alias": "google-fonts",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/6IHsVXIIS4ekPrNOkIiA_tile.png",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2uGrUGEFSsk-"
+				},
+				"created": "2017-07-06T09:57:12.757319Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-15T04:58:11.608090079Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-15T04:59:45.836599686Z"
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "P1xGIF6Nk8Zs",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"body": {
+							"order": 2,
+							"properties": {
+								"category": {
+									"default": "sansSerif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"body.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"body.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"body.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"body.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"body.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Body text",
+							"type": "object"
+						},
+						"custom": {
+							"items": {
+								"properties": {
+									"category": {
+										"default": "serif",
+										"enum": [
+											"serif",
+											"sansSerif",
+											"fancy",
+											"handwriting",
+											"monospace"
+										],
+										"enumNames": {
+											"fancy": "Fancy",
+											"handwriting": "Handwriting",
+											"monospace": "Monospace",
+											"sansSerif": "Sans Serif",
+											"serif": "Serif"
+										},
+										"order": 2,
+										"title": "Category",
+										"type": "string"
+									},
+									"fancy": {
+										"default": "Lobster::latin",
+										"enum": [
+											"Abril+Fatface::latin",
+											"Bangers::latin",
+											"Chewy::latin",
+											"Comfortaa:400,700:latin",
+											"Lobster::latin",
+											"Passion+One:400,700:latin",
+											"Patua+One::latin",
+											"Poiret+One::latin",
+											"Righteous::latin",
+											"Sigmar+One::latin"
+										],
+										"enumNames": {
+											"Abril+Fatface::latin": "Abril Fatface",
+											"Bangers::latin": "Bangers",
+											"Chewy::latin": "Chewy",
+											"Comfortaa:400,700:latin": "Comfortaa",
+											"Lobster::latin": "Lobster",
+											"Passion+One:400,700:latin": "Passion One",
+											"Patua+One::latin": "Patua One",
+											"Poiret+One::latin": "Poiret One",
+											"Righteous::latin": "Righteous",
+											"Sigmar+One::latin": "Sigmar One"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "fancy"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"handwriting": {
+										"default": "Indie+Flower::latin",
+										"enum": [
+											"Amatic+SC:400,700:latin",
+											"Architects+Daughter::latin",
+											"Courgette::latin",
+											"Covered+By+Your+Grace::latin",
+											"Dancing+Script:400,700:latin",
+											"Gloria+Hallelujah::latin",
+											"Indie+Flower::latin",
+											"Kaushan+Script::latin",
+											"Pacifico::latin",
+											"Shadows+Into+Light::latin",
+											"Lateef:400:arabic"
+										],
+										"enumNames": {
+											"Amatic+SC:400,700:latin": "Amatic SC",
+											"Architects+Daughter::latin": "Architects Daughter",
+											"Courgette::latin": "Courgette",
+											"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+											"Dancing+Script:400,700:latin": "Dancing Script",
+											"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+											"Indie+Flower::latin": "Indie Flower",
+											"Kaushan+Script::latin": "Kaushan Script",
+											"Lateef:400:arabic": "Lateef (عربى)",
+											"Pacifico::latin": "Pacifico",
+											"Shadows+Into+Light::latin": "Shadows Into Light"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "handwriting"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"monospace": {
+										"default": "Inconsolata:400,700:latin",
+										"enum": [
+											"Anonymous+Pro:400,400italic,700:latin",
+											"Cousine:400,400italic,700:latin",
+											"Droid+Sans+Mono::latin",
+											"Inconsolata:400,700:latin",
+											"Oxygen+Mono::latin",
+											"PT+Mono::latin",
+											"Roboto+Mono:400,400italic,700:latin",
+											"Source+Code+Pro:400,700:latin",
+											"Ubuntu+Mono:400,400italic,700:latin",
+											"VT323::latin"
+										],
+										"enumNames": {
+											"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+											"Cousine:400,400italic,700:latin": "Cousine",
+											"Droid+Sans+Mono::latin": "Droid Sans Mono",
+											"Inconsolata:400,700:latin": "Inconsolata",
+											"Oxygen+Mono::latin": "Oxygen Mono",
+											"PT+Mono::latin": "PT Mono",
+											"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+											"Source+Code+Pro:400,700:latin": "Source Code Pro",
+											"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+											"VT323::latin": "VT323"
+										},
+										"order": 8,
+										"showIf": {
+											"custom[].category": "monospace"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"sansSerif": {
+										"default": "Open+Sans:400,400italic,700:latin",
+										"enum": [
+											"Droid+Sans:400,700:latin",
+											"Lato:400,400italic,700:latin",
+											"Montserrat:400,700:latin",
+											"Open+Sans:400,400italic,700:latin",
+											"Oswald:400,700:latin",
+											"PT+Sans:400,400italic,700:latin",
+											"Raleway:400,400italic,700:latin",
+											"Roboto+Condensed:400,400italic,700:latin",
+											"Roboto:400,400italic,700:latin",
+											"Source+Sans+Pro:400,400italic,700:latin",
+											"Cairo:300,400:arabic",
+											"Changa:400,700:arabic",
+											"El+Messiri:400,500,600,700:arabic",
+											"Reem+Kufi:arabic"
+										],
+										"enumNames": {
+											"Cairo:300,400:arabic": "Cairo (عربى)",
+											"Changa:400,700:arabic": "Changa (عربى)",
+											"Droid+Sans:400,700:latin": "Droid Sans",
+											"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+											"Lato:400,400italic,700:latin": "Lato",
+											"Montserrat:400,700:latin": "Montserrat",
+											"Open+Sans:400,400italic,700:latin": "Open Sans",
+											"Oswald:400,700:latin": "Oswald",
+											"PT+Sans:400,400italic,700:latin": "PT Sans",
+											"Raleway:400,400italic,700:latin": "Raleway",
+											"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+											"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+											"Roboto:400,400italic,700:latin": "Roboto",
+											"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+										},
+										"order": 5,
+										"showIf": {
+											"custom[].category": "sansSerif"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"selector": {
+										"format": "selector",
+										"order": 1,
+										"title": "Custom selection",
+										"type": "string"
+									},
+									"serif": {
+										"default": "Slabo+27px::latin",
+										"enum": [
+											"Arvo:400,400italic,700:latin",
+											"Bitter:400,400italic,700:latin",
+											"Droid+Serif:400,400italic,700:latin",
+											"Lora:400,400italic,700:latin",
+											"Merriweather:400,400italic,700:latin",
+											"Noto+Serif:400,400italic,700:latin",
+											"Playfair+Display:400,400italic,700:latin",
+											"PT+Serif:400,400italic,700:latin",
+											"Roboto+Slab:400,700:latin",
+											"Slabo+27px::latin",
+											"Amiri:400,400i,700,700i:arabic",
+											"Aref+Ruqaa:400,700:arabic",
+											"Scheherazade:400,700:arabic"
+										],
+										"enumNames": {
+											"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+											"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+											"Arvo:400,400italic,700:latin": "Arvo",
+											"Bitter:400,400italic,700:latin": "Bitter",
+											"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+											"Lora:400,400italic,700:latin": "Lora",
+											"Merriweather:400,400italic,700:latin": "Merriweather",
+											"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+											"PT+Serif:400,400italic,700:latin": "PT Serif",
+											"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+											"Roboto+Slab:400,700:latin": "Roboto Slab",
+											"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+											"Slabo+27px::latin": "Slabo"
+										},
+										"order": 3,
+										"showIf": {
+											"custom[].category": "serif"
+										},
+										"title": "Font",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"title": "Custom regions of the page",
+							"type": "array"
+						},
+						"headers": {
+							"order": 1,
+							"properties": {
+								"category": {
+									"default": "serif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"headers.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"headers.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"headers.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"headers.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"headers.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Headers and titles",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1csHi6rO9lAP",
+			"created": "2017-08-06T07:42:46.877673Z",
+			"proposedApp": {
+				"id": "P1xGIF6Nk8Zs",
+				"title": "Google Fonts",
+				"shortDescription": "Add free custom fonts to your site.",
+				"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+				"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+				"alias": "google-fonts",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UXpB9DlSEqSw3vrH9wbw_tile.png",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2uGrUGEFSsk-"
+				},
+				"created": "2017-07-06T09:57:12.757319Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-06T07:42:47.058683755Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-06T07:44:30.714164164Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "P1xGIF6Nk8Zs",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"body": {
+							"order": 2,
+							"properties": {
+								"category": {
+									"default": "sansSerif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"body.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"body.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"body.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"body.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"body.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Body text",
+							"type": "object"
+						},
+						"custom": {
+							"items": {
+								"properties": {
+									"category": {
+										"default": "serif",
+										"enum": [
+											"serif",
+											"sansSerif",
+											"fancy",
+											"handwriting",
+											"monospace"
+										],
+										"enumNames": {
+											"fancy": "Fancy",
+											"handwriting": "Handwriting",
+											"monospace": "Monospace",
+											"sansSerif": "Sans Serif",
+											"serif": "Serif"
+										},
+										"order": 2,
+										"title": "Category",
+										"type": "string"
+									},
+									"fancy": {
+										"default": "Lobster::latin",
+										"enum": [
+											"Abril+Fatface::latin",
+											"Bangers::latin",
+											"Chewy::latin",
+											"Comfortaa:400,700:latin",
+											"Lobster::latin",
+											"Passion+One:400,700:latin",
+											"Patua+One::latin",
+											"Poiret+One::latin",
+											"Righteous::latin",
+											"Sigmar+One::latin"
+										],
+										"enumNames": {
+											"Abril+Fatface::latin": "Abril Fatface",
+											"Bangers::latin": "Bangers",
+											"Chewy::latin": "Chewy",
+											"Comfortaa:400,700:latin": "Comfortaa",
+											"Lobster::latin": "Lobster",
+											"Passion+One:400,700:latin": "Passion One",
+											"Patua+One::latin": "Patua One",
+											"Poiret+One::latin": "Poiret One",
+											"Righteous::latin": "Righteous",
+											"Sigmar+One::latin": "Sigmar One"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "fancy"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"handwriting": {
+										"default": "Indie+Flower::latin",
+										"enum": [
+											"Amatic+SC:400,700:latin",
+											"Architects+Daughter::latin",
+											"Courgette::latin",
+											"Covered+By+Your+Grace::latin",
+											"Dancing+Script:400,700:latin",
+											"Gloria+Hallelujah::latin",
+											"Indie+Flower::latin",
+											"Kaushan+Script::latin",
+											"Pacifico::latin",
+											"Shadows+Into+Light::latin",
+											"Lateef:400:arabic"
+										],
+										"enumNames": {
+											"Amatic+SC:400,700:latin": "Amatic SC",
+											"Architects+Daughter::latin": "Architects Daughter",
+											"Courgette::latin": "Courgette",
+											"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+											"Dancing+Script:400,700:latin": "Dancing Script",
+											"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+											"Indie+Flower::latin": "Indie Flower",
+											"Kaushan+Script::latin": "Kaushan Script",
+											"Lateef:400:arabic": "Lateef (عربى)",
+											"Pacifico::latin": "Pacifico",
+											"Shadows+Into+Light::latin": "Shadows Into Light"
+										},
+										"order": 6,
+										"showIf": {
+											"custom[].category": "handwriting"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"monospace": {
+										"default": "Inconsolata:400,700:latin",
+										"enum": [
+											"Anonymous+Pro:400,400italic,700:latin",
+											"Cousine:400,400italic,700:latin",
+											"Droid+Sans+Mono::latin",
+											"Inconsolata:400,700:latin",
+											"Oxygen+Mono::latin",
+											"PT+Mono::latin",
+											"Roboto+Mono:400,400italic,700:latin",
+											"Source+Code+Pro:400,700:latin",
+											"Ubuntu+Mono:400,400italic,700:latin",
+											"VT323::latin"
+										],
+										"enumNames": {
+											"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+											"Cousine:400,400italic,700:latin": "Cousine",
+											"Droid+Sans+Mono::latin": "Droid Sans Mono",
+											"Inconsolata:400,700:latin": "Inconsolata",
+											"Oxygen+Mono::latin": "Oxygen Mono",
+											"PT+Mono::latin": "PT Mono",
+											"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+											"Source+Code+Pro:400,700:latin": "Source Code Pro",
+											"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+											"VT323::latin": "VT323"
+										},
+										"order": 8,
+										"showIf": {
+											"custom[].category": "monospace"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"sansSerif": {
+										"default": "Open+Sans:400,400italic,700:latin",
+										"enum": [
+											"Droid+Sans:400,700:latin",
+											"Lato:400,400italic,700:latin",
+											"Montserrat:400,700:latin",
+											"Open+Sans:400,400italic,700:latin",
+											"Oswald:400,700:latin",
+											"PT+Sans:400,400italic,700:latin",
+											"Raleway:400,400italic,700:latin",
+											"Roboto+Condensed:400,400italic,700:latin",
+											"Roboto:400,400italic,700:latin",
+											"Source+Sans+Pro:400,400italic,700:latin",
+											"Cairo:300,400:arabic",
+											"Changa:400,700:arabic",
+											"El+Messiri:400,500,600,700:arabic",
+											"Reem+Kufi:arabic"
+										],
+										"enumNames": {
+											"Cairo:300,400:arabic": "Cairo (عربى)",
+											"Changa:400,700:arabic": "Changa (عربى)",
+											"Droid+Sans:400,700:latin": "Droid Sans",
+											"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+											"Lato:400,400italic,700:latin": "Lato",
+											"Montserrat:400,700:latin": "Montserrat",
+											"Open+Sans:400,400italic,700:latin": "Open Sans",
+											"Oswald:400,700:latin": "Oswald",
+											"PT+Sans:400,400italic,700:latin": "PT Sans",
+											"Raleway:400,400italic,700:latin": "Raleway",
+											"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+											"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+											"Roboto:400,400italic,700:latin": "Roboto",
+											"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+										},
+										"order": 5,
+										"showIf": {
+											"custom[].category": "sansSerif"
+										},
+										"title": "Font",
+										"type": "string"
+									},
+									"selector": {
+										"format": "selector",
+										"order": 1,
+										"title": "Custom selection",
+										"type": "string"
+									},
+									"serif": {
+										"default": "Slabo+27px::latin",
+										"enum": [
+											"Arvo:400,400italic,700:latin",
+											"Bitter:400,400italic,700:latin",
+											"Droid+Serif:400,400italic,700:latin",
+											"Lora:400,400italic,700:latin",
+											"Merriweather:400,400italic,700:latin",
+											"Noto+Serif:400,400italic,700:latin",
+											"Playfair+Display:400,400italic,700:latin",
+											"PT+Serif:400,400italic,700:latin",
+											"Roboto+Slab:400,700:latin",
+											"Slabo+27px::latin",
+											"Amiri:400,400i,700,700i:arabic",
+											"Aref+Ruqaa:400,700:arabic",
+											"Scheherazade:400,700:arabic"
+										],
+										"enumNames": {
+											"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+											"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+											"Arvo:400,400italic,700:latin": "Arvo",
+											"Bitter:400,400italic,700:latin": "Bitter",
+											"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+											"Lora:400,400italic,700:latin": "Lora",
+											"Merriweather:400,400italic,700:latin": "Merriweather",
+											"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+											"PT+Serif:400,400italic,700:latin": "PT Serif",
+											"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+											"Roboto+Slab:400,700:latin": "Roboto Slab",
+											"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+											"Slabo+27px::latin": "Slabo"
+										},
+										"order": 3,
+										"showIf": {
+											"custom[].category": "serif"
+										},
+										"title": "Font",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"title": "Custom regions of the page",
+							"type": "array"
+						},
+						"headers": {
+							"order": 1,
+							"properties": {
+								"category": {
+									"default": "serif",
+									"enum": [
+										"serif",
+										"sansSerif",
+										"fancy",
+										"handwriting",
+										"monospace"
+									],
+									"enumNames": {
+										"fancy": "Fancy",
+										"handwriting": "Handwriting",
+										"monospace": "Monospace",
+										"sansSerif": "Sans Serif",
+										"serif": "Serif"
+									},
+									"order": 1,
+									"title": "Category",
+									"type": "string"
+								},
+								"fancy": {
+									"default": "Lobster::latin",
+									"enum": [
+										"Abril+Fatface::latin",
+										"Bangers::latin",
+										"Chewy::latin",
+										"Comfortaa:400,700:latin",
+										"Lobster::latin",
+										"Passion+One:400,700:latin",
+										"Patua+One::latin",
+										"Poiret+One::latin",
+										"Righteous::latin",
+										"Sigmar+One::latin"
+									],
+									"enumNames": {
+										"Abril+Fatface::latin": "Abril Fatface",
+										"Bangers::latin": "Bangers",
+										"Chewy::latin": "Chewy",
+										"Comfortaa:400,700:latin": "Comfortaa",
+										"Lobster::latin": "Lobster",
+										"Passion+One:400,700:latin": "Passion One",
+										"Patua+One::latin": "Patua One",
+										"Poiret+One::latin": "Poiret One",
+										"Righteous::latin": "Righteous",
+										"Sigmar+One::latin": "Sigmar One"
+									},
+									"order": 6,
+									"showIf": {
+										"headers.category": "fancy"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"handwriting": {
+									"default": "Indie+Flower::latin",
+									"enum": [
+										"Amatic+SC:400,700:latin",
+										"Architects+Daughter::latin",
+										"Courgette::latin",
+										"Covered+By+Your+Grace::latin",
+										"Dancing+Script:400,700:latin",
+										"Gloria+Hallelujah::latin",
+										"Indie+Flower::latin",
+										"Kaushan+Script::latin",
+										"Pacifico::latin",
+										"Shadows+Into+Light::latin",
+										"Lateef:400:arabic"
+									],
+									"enumNames": {
+										"Amatic+SC:400,700:latin": "Amatic SC",
+										"Architects+Daughter::latin": "Architects Daughter",
+										"Courgette::latin": "Courgette",
+										"Covered+By+Your+Grace::latin": "Covered By Your Grace",
+										"Dancing+Script:400,700:latin": "Dancing Script",
+										"Gloria+Hallelujah::latin": "Gloria Hallelujah",
+										"Indie+Flower::latin": "Indie Flower",
+										"Kaushan+Script::latin": "Kaushan Script",
+										"Lateef:400:arabic": "Lateef (عربى)",
+										"Pacifico::latin": "Pacifico",
+										"Shadows+Into+Light::latin": "Shadows Into Light"
+									},
+									"order": 7,
+									"showIf": {
+										"headers.category": "handwriting"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"monospace": {
+									"default": "Inconsolata:400,700:latin",
+									"enum": [
+										"Anonymous+Pro:400,400italic,700:latin",
+										"Cousine:400,400italic,700:latin",
+										"Droid+Sans+Mono::latin",
+										"Inconsolata:400,700:latin",
+										"Oxygen+Mono::latin",
+										"PT+Mono::latin",
+										"Roboto+Mono:400,400italic,700:latin",
+										"Source+Code+Pro:400,700:latin",
+										"Ubuntu+Mono:400,400italic,700:latin",
+										"VT323::latin"
+									],
+									"enumNames": {
+										"Anonymous+Pro:400,400italic,700:latin": "Anonymous Pro",
+										"Cousine:400,400italic,700:latin": "Cousine",
+										"Droid+Sans+Mono::latin": "Droid Sans Mono",
+										"Inconsolata:400,700:latin": "Inconsolata",
+										"Oxygen+Mono::latin": "Oxygen Mono",
+										"PT+Mono::latin": "PT Mono",
+										"Roboto+Mono:400,400italic,700:latin": "Roboto Mono",
+										"Source+Code+Pro:400,700:latin": "Source Code Pro",
+										"Ubuntu+Mono:400,400italic,700:latin": "Ubuntu Mono",
+										"VT323::latin": "VT323"
+									},
+									"order": 8,
+									"showIf": {
+										"headers.category": "monospace"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"sansSerif": {
+									"default": "Open+Sans:400,400italic,700:latin",
+									"enum": [
+										"Droid+Sans:400,700:latin",
+										"Lato:400,400italic,700:latin",
+										"Montserrat:400,700:latin",
+										"Open+Sans:400,400italic,700:latin",
+										"Oswald:400,700:latin",
+										"PT+Sans:400,400italic,700:latin",
+										"Raleway:400,400italic,700:latin",
+										"Roboto+Condensed:400,400italic,700:latin",
+										"Roboto:400,400italic,700:latin",
+										"Source+Sans+Pro:400,400italic,700:latin",
+										"Cairo:300,400:arabic",
+										"Changa:400,700:arabic",
+										"El+Messiri:400,500,600,700:arabic",
+										"Reem+Kufi:arabic"
+									],
+									"enumNames": {
+										"Cairo:300,400:arabic": "Cairo (عربى)",
+										"Changa:400,700:arabic": "Changa (عربى)",
+										"Droid+Sans:400,700:latin": "Droid Sans",
+										"El+Messiri:400,500,600,700:arabic": "El Messiri (عربى)",
+										"Lato:400,400italic,700:latin": "Lato",
+										"Montserrat:400,700:latin": "Montserrat",
+										"Open+Sans:400,400italic,700:latin": "Open Sans",
+										"Oswald:400,700:latin": "Oswald",
+										"PT+Sans:400,400italic,700:latin": "PT Sans",
+										"Raleway:400,400italic,700:latin": "Raleway",
+										"Reem+Kufi:arabic": "Reem Kufi (عربى)",
+										"Roboto+Condensed:400,400italic,700:latin": "Roboto Condensed",
+										"Roboto:400,400italic,700:latin": "Roboto",
+										"Source+Sans+Pro:400,400italic,700:latin": "Source Sans Pro"
+									},
+									"order": 5,
+									"showIf": {
+										"headers.category": "sansSerif"
+									},
+									"title": "Font",
+									"type": "string"
+								},
+								"serif": {
+									"default": "Slabo+27px::latin",
+									"enum": [
+										"Arvo:400,400italic,700:latin",
+										"Bitter:400,400italic,700:latin",
+										"Droid+Serif:400,400italic,700:latin",
+										"Lora:400,400italic,700:latin",
+										"Merriweather:400,400italic,700:latin",
+										"Noto+Serif:400,400italic,700:latin",
+										"Playfair+Display:400,400italic,700:latin",
+										"PT+Serif:400,400italic,700:latin",
+										"Roboto+Slab:400,700:latin",
+										"Slabo+27px::latin",
+										"Amiri:400,400i,700,700i:arabic",
+										"Aref+Ruqaa:400,700:arabic",
+										"Scheherazade:400,700:arabic"
+									],
+									"enumNames": {
+										"Amiri:400,400i,700,700i:arabic": "Amiri (عربى)",
+										"Aref+Ruqaa:400,700:arabic": "Aref Ruqaa (عربى)",
+										"Arvo:400,400italic,700:latin": "Arvo",
+										"Bitter:400,400italic,700:latin": "Bitter",
+										"Droid+Serif:400,400italic,700:latin": "Droid Serif",
+										"Lora:400,400italic,700:latin": "Lora",
+										"Merriweather:400,400italic,700:latin": "Merriweather",
+										"Noto+Serif:400,400italic,700:latin": "Noto Serif",
+										"PT+Serif:400,400italic,700:latin": "PT Serif",
+										"Playfair+Display:400,400italic,700:latin": "Playfair Display",
+										"Roboto+Slab:400,700:latin": "Roboto Slab",
+										"Scheherazade:400,700:arabic": "Scheherazade (عربى)",
+										"Slabo+27px::latin": "Slabo"
+									},
+									"order": 4,
+									"showIf": {
+										"headers.category": "serif"
+									},
+									"title": "Font",
+									"type": "string"
+								}
+							},
+							"title": "Headers and titles",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.89,
+				"upvotes": 41,
+				"downvotes": 5
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1csHi6rO9lAP",
+			"created": "2018-01-23T18:45:26.895705Z",
+			"proposedApp": {
+				"id": "P1xGIF6Nk8Zs",
+				"title": "Google Fonts",
+				"shortDescription": "Add free custom fonts to your site.",
+				"longDescription": "Google Fonts allows you to add unique fonts to your webpage. Give your webpage any feeling from serious to lovable.",
+				"instructions": "Choose what fonts you want for your headers and main body, and then add fonts to any custom locations from there.",
+				"alias": "google-fonts",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/bAAHltlaTVOUN15q4eyt_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UXpB9DlSEqSw3vrH9wbw_tile.png",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2uGrUGEFSsk-"
+				},
+				"created": "2017-07-06T09:57:12.757319Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:45:27.163478312Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:45:36.52521234Z"
+			}
+		}
+	]
+}

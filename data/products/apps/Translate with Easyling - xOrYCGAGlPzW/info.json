@@ -1,0 +1,292 @@
+{
+	"id": "xOrYCGAGlPzW",
+	"title": "Translate with Easyling",
+	"shortDescription": "Instant multilingual websites with human/machine translation",
+	"longDescription": "Make your website multilingual! No code required. \n\n- Use initial Machine Translation, then Human Translation (Post Editing). \n- New content is automatically detected and translated. \n- International SEO is supported.\n- Compatible with any CMS (Wordpress, Drupal, SquareSpace, Shopify, Sitecore, AEM, etc.).\n- Integration with DeepL, Google, Microsoft Bing and Systran.",
+	"instructions": "Register for free at https://app.easyling.com to obtain your project code required by the App. Use the on-boarding wizard to add target languages, crawl your site then pre-translate for initial publishing.",
+	"alias": "cloudflare-website-translation-easyling",
+	"orgId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+	"icon": "https://images.cloudflareapps.com/9mu7boPua9dl/favicon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-1.png",
+		"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-5.png",
+		"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-4.png",
+		"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-2.png",
+		"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-3.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/R4zQnvdEgqk2/easyling_illusztracio_8_A---420x268.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/kh7ZEgk6xD7q/CloudFlare-Easyling-galery-0-featured-1824x385.png",
+	"author": "Easyling",
+	"tagline": "",
+	"website": "https://www.easyling.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.easyling.com/terms/",
+	"privacyPolicyURL": "https://www.easyling.com/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.3",
+	"infoVersion": "0.0.3",
+	"points": 0,
+	"supportEmail": "support@easyling.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+			"created": "2022-04-23T23:16:07.248783629Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CrFOdAIJZWDP"
+	},
+	"created": "2022-04-23T18:01:45.539366Z",
+	"org": {
+		"id": "fdf2f156b0823a950d6ab20f09ff8f9b",
+		"title": "",
+		"username": "fdf2f156b0823a950d6ab20f09ff8f9b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.0.2",
+			"appId": "xOrYCGAGlPzW",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"displayLanguageSelector": {
+							"default": true,
+							"order": 1,
+							"title": "Display Language Selector",
+							"type": "boolean"
+						},
+						"loader": {
+							"default": {
+								"method": "prepend",
+								"selector": "head"
+							},
+							"format": "element",
+							"order": 2,
+							"title": "Loader",
+							"type": "object"
+						},
+						"projectCode": {
+							"description": "The project code from Easyling",
+							"order": 0,
+							"required": true,
+							"title": "Project code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "Initial release with ability to disable language selector",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/J7pOcTK9mkD7",
+			"metadata": {
+				"code": {
+					"sourceTag": "J7pOcTK9mkD7",
+					"uploadedOn": "2022-04-23T23:14:01.153717247Z"
+				}
+			},
+			"created": "2022-04-23T18:01:45.826461Z",
+			"proposedApp": {
+				"id": "xOrYCGAGlPzW",
+				"title": "Easyling Website Translation",
+				"shortDescription": "Instant multilingual websites with human/machine translation",
+				"longDescription": "Make your website multilingual! No code required. Use initial Machine Translation, then Human Translation (Post Editing). New content is automatically detected and translated. International SEO is supported. Compatible with any CMS (Wordpress, Drupal, SquareSpace, Shopify, Sitecore, AEM, etc.).",
+				"instructions": "Register for free at https://app.easyling.com to obtain your project code required by the App. Use the on-boarding wizard to add target languages, crawl your site then pre-translate for initial publishing.",
+				"alias": "cloudflare-website-translation-easyling",
+				"orgId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+				"icon": "https://images.cloudflareapps.com/9mu7boPua9dl/favicon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-1.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-5.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-4.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-2.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/R4zQnvdEgqk2/easyling_illusztracio_8_A---420x268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/kh7ZEgk6xD7q/CloudFlare-Easyling-galery-0-featured-1824x385.png",
+				"author": "Easyling",
+				"tagline": "",
+				"website": "https://www.easyling.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.easyling.com/terms/",
+				"privacyPolicyURL": "https://www.easyling.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@easyling.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CrFOdAIJZWDP"
+				},
+				"created": "2022-04-23T18:01:45.539366Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+				"requestedAt": "2022-04-23T23:16:07.243249951Z",
+				"canceledByUserId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+				"canceledAt": "2022-04-24T20:35:53.36420925Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.3",
+			"appId": "xOrYCGAGlPzW",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"displayLanguageSelector": {
+							"default": true,
+							"order": 1,
+							"title": "Display Language Selector",
+							"type": "boolean"
+						},
+						"loader": {
+							"default": {
+								"method": "prepend",
+								"selector": "head"
+							},
+							"format": "element",
+							"order": 2,
+							"title": "Loader",
+							"type": "object"
+						},
+						"projectCode": {
+							"description": "The project code from Easyling",
+							"order": 0,
+							"required": true,
+							"title": "Project code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "Changed app name and added new feature to description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/J7pOcTK9mkD7",
+			"created": "2022-04-24T20:32:49.433699Z",
+			"proposedApp": {
+				"id": "xOrYCGAGlPzW",
+				"title": "Translate with Easyling",
+				"shortDescription": "Instant multilingual websites with human/machine translation",
+				"longDescription": "Make your website multilingual! No code required. \n\n- Use initial Machine Translation, then Human Translation (Post Editing). \n- New content is automatically detected and translated. \n- International SEO is supported.\n- Compatible with any CMS (Wordpress, Drupal, SquareSpace, Shopify, Sitecore, AEM, etc.).\n- Integration with DeepL, Google, Microsoft Bing and Systran.",
+				"instructions": "Register for free at https://app.easyling.com to obtain your project code required by the App. Use the on-boarding wizard to add target languages, crawl your site then pre-translate for initial publishing.",
+				"alias": "cloudflare-website-translation-easyling",
+				"orgId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+				"icon": "https://images.cloudflareapps.com/9mu7boPua9dl/favicon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-1.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-5.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-4.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-2.png",
+					"https://images.cloudflareapps.com/t3I6KUqI1USw/CloudFlare-Easyling-galery-3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/R4zQnvdEgqk2/easyling_illusztracio_8_A---420x268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/kh7ZEgk6xD7q/CloudFlare-Easyling-galery-0-featured-1824x385.png",
+				"author": "Easyling",
+				"tagline": "",
+				"website": "https://www.easyling.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.easyling.com/terms/",
+				"privacyPolicyURL": "https://www.easyling.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@easyling.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CrFOdAIJZWDP"
+				},
+				"created": "2022-04-23T18:01:45.539366Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "fdf2f156b0823a950d6ab20f09ff8f9b",
+				"requestedAt": "2022-04-24T20:35:53.37365536Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-07-06T16:57:04.767875558Z"
+			}
+		}
+	]
+}

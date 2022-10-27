@@ -1,0 +1,151 @@
+{
+	"id": "cLchXPKTWB16",
+	"title": "Jira service desk",
+	"shortDescription": "Integrate the Jira service desk embed",
+	"longDescription": "This app allows you to easily embed the popup without editing your site's code. Desica LLC are not connected with Atlassian or Jira.",
+	"instructions": "Please paste the script tag in the box. See this [helpful article](https://confluence.atlassian.com/servicedeskcloud/blog/2017/09/embed-request-forms-anywhere).",
+	"alias": "jira-service-desk",
+	"orgId": "1143e6a9fd941219a87eaee882f87436",
+	"icon": "https://images.cloudflareapps.com/opdYl0MY5qV5/jira%20service%20desk-mark-gradient-blue@2x.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/0bsaARRYft8Z/RequestStrawberry.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Desica LLC.",
+	"tagline": "",
+	"website": "https://www.atlassian.com/software/jira/service-desk",
+	"sourceURL": "https://bitbucket.org/desica/jira-service-desk/src",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.0",
+	"infoVersion": "1.1.0",
+	"points": 0,
+	"supportEmail": "support@desica.atlassian.net",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "1143e6a9fd941219a87eaee882f87436",
+			"created": "2020-06-10T07:53:51.280206338Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ibvPD_KsruXY"
+	},
+	"created": "2020-06-10T07:53:48.243527Z",
+	"org": {
+		"id": "1143e6a9fd941219a87eaee882f87436",
+		"title": "",
+		"username": "1143e6a9fd941219a87eaee882f87436",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.1.0",
+			"appId": "cLchXPKTWB16",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"description": "Jira usually wants this at the bottom of the body",
+							"format": "element",
+							"title": "Tag Location",
+							"type": "object"
+						},
+						"tag": {
+							"default": "",
+							"description": "Paste your script tag",
+							"format": "code",
+							"order": 2,
+							"title": "Script tag",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ibvPD_KsruXY",
+			"metadata": {
+				"code": {
+					"sourceTag": "ibvPD_KsruXY",
+					"uploadedOn": "2020-06-10T07:53:50.132693114Z"
+				}
+			},
+			"created": "2020-06-10T07:53:49.642694Z",
+			"proposedApp": {
+				"id": "cLchXPKTWB16",
+				"title": "Jira service desk",
+				"shortDescription": "Integrate the Jira service desk embed",
+				"longDescription": "This app allows you to easily embed the popup without editing your site's code. Desica LLC are not connected with Atlassian or Jira.",
+				"instructions": "Please paste the script tag in the box. See this [helpful article](https://confluence.atlassian.com/servicedeskcloud/blog/2017/09/embed-request-forms-anywhere).",
+				"alias": "jira-service-desk",
+				"orgId": "1143e6a9fd941219a87eaee882f87436",
+				"icon": "https://images.cloudflareapps.com/opdYl0MY5qV5/jira%20service%20desk-mark-gradient-blue@2x.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/0bsaARRYft8Z/RequestStrawberry.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Desica LLC.",
+				"tagline": "",
+				"website": "https://www.atlassian.com/software/jira/service-desk",
+				"sourceURL": "https://bitbucket.org/desica/jira-service-desk/src",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@desica.atlassian.net",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ibvPD_KsruXY"
+				},
+				"created": "2020-06-10T07:53:48.243527Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1143e6a9fd941219a87eaee882f87436",
+				"requestedAt": "2020-06-10T07:53:51.260038533Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-10T14:55:16.395330456Z"
+			}
+		}
+	]
+}

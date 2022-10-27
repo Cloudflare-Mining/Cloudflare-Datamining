@@ -1,0 +1,5313 @@
+{
+	"id": "RVzKHazEcftd",
+	"title": "Sticky Messages",
+	"shortDescription": "Popup|Signups|Exit Intent|Announcement|Cart Recovery|Updates",
+	"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+	"instructions": "",
+	"alias": "sticky-messages",
+	"orgId": "371291ca1342e2770e78e2ab88f35656",
+	"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+		"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+		"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+		"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Assim Addous",
+	"tagline": "",
+	"website": "https://www.d3.agency",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 0,
+	"supportEmail": "stickycloudflareapp@gmail.com",
+	"products": [
+		{
+			"id": "basic",
+			"title": "Basic",
+			"shortDescription": "Sticky Messages with our branding",
+			"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "sticky_free",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Sticky Messages without our branding",
+			"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+			"visible": true,
+			"price": 300,
+			"order": 0,
+			"plan": "STICKY_MESSAGES_PRO",
+			"feature": "apps.sticky_messages_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "371291ca1342e2770e78e2ab88f35656",
+			"created": "2019-05-27T22:12:25.534365024Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "I8xvgU4HtGnK"
+	},
+	"created": "2019-05-03T00:24:10.965059Z",
+	"org": {
+		"id": "371291ca1342e2770e78e2ab88f35656",
+		"title": "",
+		"username": "371291ca1342e2770e78e2ab88f35656",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers. Currently supporting <a href=\"https://www.shopify.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Shopify</strong> only</a></span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": "",
+							"description": "provide a comma-separated list of keywords ex: products,blogs",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5HEcjPYpAV94",
+			"metadata": {
+				"code": {
+					"sourceTag": "5HEcjPYpAV94",
+					"uploadedOn": "2019-05-27T21:35:20.191133489Z"
+				}
+			},
+			"created": "2019-05-03T00:24:11.221849Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Engage Your Visitors with On-Site Messages",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2019-05-27T22:12:25.51189751Z",
+				"canceledByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"canceledAt": "2019-05-27T23:37:58.38126939Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers. Currently supporting <a href=\"https://www.shopify.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Shopify</strong> only</a></span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": "",
+							"description": "provide a comma-separated list of keywords ex: products,blogs",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/W_5GWVh8Ww-U",
+			"metadata": {
+				"code": {
+					"sourceTag": "W_5GWVh8Ww-U",
+					"uploadedOn": "2019-05-27T23:34:03.565547393Z"
+				}
+			},
+			"created": "2019-05-27T23:14:17.819246Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Engage Your Visitors with On-Site Messages",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-message",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": false,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2019-05-27T23:37:58.404298145Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-28T16:33:37.425782998Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers. Currently supporting <a href=\"https://www.shopify.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Shopify</strong> only</a></span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": "",
+							"description": "provide a comma-separated list of keywords ex: products,blogs",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "corrected the preview links",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Z_h499xctW98",
+			"metadata": {
+				"code": {
+					"sourceTag": "Z_h499xctW98",
+					"uploadedOn": "2019-05-29T00:33:27.87086001Z"
+				}
+			},
+			"created": "2019-05-29T00:29:17.751205Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Engage Your Visitors with On-Site Messages",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": false,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2019-05-29T00:33:28.583618633Z",
+				"canceledByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"canceledAt": "2019-05-30T02:40:22.136176736Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers. Currently supporting <a href=\"https://www.shopify.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Shopify</strong> only</a></span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": ".*",
+							"description": "provide a comma-separated list of keywords examples: <span class=\"help-text\"><strong>hints:</strong> to trigger on every page: .*<br><strong>hints:</strong> to trigger on url containing products or blog: products,blog<br><strong>hints:</strong> don't trigger on every page: leave it blank </span>",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "added better description to 'Trigger on url with the following keywords' field",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cm5Z9UgJ1kQo",
+			"metadata": {
+				"code": {
+					"sourceTag": "cm5Z9UgJ1kQo",
+					"uploadedOn": "2019-05-30T02:40:21.490498125Z"
+				}
+			},
+			"created": "2019-05-30T02:40:21.303612Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Engage Your Visitors with On-Site Messages",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2019-05-30T02:40:22.174350526Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-31T15:44:48.139482087Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers. Currently supporting <a href=\"https://www.shopify.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Shopify</strong> only</a></span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": ".*",
+							"description": "provide a comma-separated list of keywords examples: <span class=\"help-text\"><strong>hints:</strong> to trigger on every page: .*<br><strong>hints:</strong> to trigger on url containing products or blog: products,blog<br><strong>hints:</strong> don't trigger on every page: leave it blank </span>",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Added to UI & Design category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cm5Z9UgJ1kQo",
+			"created": "2019-06-21T20:05:26.426648Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Engage Your Visitors with On-Site Messages",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-06-21T20:05:26.74335483Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-21T20:05:54.279432066Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers</span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": ".*",
+							"description": "provide a comma-separated list of keywords examples: <span class=\"help-text\"><strong>hints:</strong> to trigger on every page: .*<br><strong>hints:</strong> to trigger on url containing products or blog: products,blog<br><strong>hints:</strong> don't trigger on every page: leave it blank </span>",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://us-central1-sticky-messages.cloudfunctions.net/addMessage",
+						"events": [
+							"preview",
+							"option-change:goal",
+							"delete-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "fixed branding location, added webhooks",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cgMsrwt5knkO",
+			"metadata": {
+				"code": {
+					"sourceTag": "cgMsrwt5knkO",
+					"uploadedOn": "2019-07-11T04:21:30.369834937Z"
+				}
+			},
+			"created": "2019-07-11T04:21:30.175902Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Popup|Signups|Exit Intent|Announcement|Cart Recovery|Updates",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2019-07-11T04:21:31.027352359Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-15T17:53:23.79639126Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers</span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": ".*",
+							"description": "provide a comma-separated list of keywords examples: <span class=\"help-text\"><strong>hints:</strong> to trigger on every page: .*<br><strong>hints:</strong> to trigger on url containing products or blog: products,blog<br><strong>hints:</strong> don't trigger on every page: leave it blank </span>",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://us-central1-sticky-messages.cloudfunctions.net/addMessage",
+						"events": [
+							"preview",
+							"option-change:goal",
+							"delete-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.34,
+				"upvotes": 11,
+				"downvotes": 21
+			},
+			"releaseNotes": "corrected the preview links",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cgMsrwt5knkO",
+			"created": "2019-07-16T17:30:18.951159Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Popup|Signups|Exit Intent|Announcement|Cart Recovery|Updates",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.marketing",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "STICKY_MESSAGES_PRO",
+						"feature": "apps.sticky_messages_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-07-16T17:30:19.521212661Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-16T17:30:42.86093864Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "RVzKHazEcftd",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/animate.min.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 3,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementsButtonFlag": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Need a call to action button?",
+							"type": "boolean"
+						},
+						"announcementsButtonText": {
+							"default": "Learn More",
+							"description": "How wide should the element be?",
+							"order": 5,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementsColor": {
+							"default": "#008000",
+							"format": "color",
+							"order": 7,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"announcementsLinkAddress": {
+							"format": "url",
+							"order": 6,
+							"showIf": {
+								"announcementsButtonFlag": true,
+								"goal": "announcements"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"announcementsText": {
+							"default": "We use cookies to ensure that you get the best experience on our website.",
+							"order": 3,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementsTitle": {
+							"default": "We Use Cookies",
+							"order": 2,
+							"showIf": {
+								"goal": "announcements"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"cartRecoveryButtonText": {
+							"default": "Redeem Now",
+							"order": 4,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"cartRecoveryCouponCode": {
+							"default": "",
+							"description": "<span class=\"help-text\"><small> Add your shopify coupon code </small></span>",
+							"format": "url",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Coupon/Discount Url",
+							"type": "string"
+						},
+						"cartRecoveryText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"cartRecoveryTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"cartRecoveryTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"cartRecoveryTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cartRecovery"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"em"
+							]
+						},
+						"ctaBackgroundColor": {
+							"default": "#f2e1dc",
+							"format": "color",
+							"order": 6,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Background color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Sign up",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "fresh arrivals to perfect that summer-into-fall transition",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "In with The New",
+							"description": "We recommend using a 4 to 5 word phrase",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"ctaTitleColor": {
+							"default": "#cc5555",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title color seed",
+							"type": "string"
+						},
+						"ctaTitleSize": {
+							"default": {
+								"unit": "em",
+								"value": 5
+							},
+							"description": "How wide should the element be?",
+							"format": "number",
+							"minimum": 1,
+							"order": 7,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Title Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cartRecovery",
+								"announcements"
+							],
+							"enumNames": {
+								"announcements": "Announcment<span class=\"help-text\"><small> small annoucements e.g. price changes, new blogs cookie consent </small></span>",
+								"cartRecovery": "Instant cart recovery <span class=\"help-text\"> <small>Reduce abandoned cart with last minute offers</span>  ",
+								"signup": "Grow your email list<span class=\"help-text\"><small> Currently two background images are available </small></span>"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"homePageTrigger": {
+							"default": "trigger-on-homepage",
+							"enum": [
+								"trigger-on-homepage",
+								"dont-trigger-on-homepage"
+							],
+							"enumNames": {
+								"dont-trigger-on-homepage": "no",
+								"trigger-on-homepage": "yes"
+							},
+							"format": "radios",
+							"order": 29,
+							"title": "Trigger on homepage",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 4,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"pagesPattern": {
+							"default": ".*",
+							"description": "provide a comma-separated list of keywords examples: <span class=\"help-text\"><strong>hints:</strong> to trigger on every page: .*<br><strong>hints:</strong> to trigger on url containing products or blog: products,blog<br><strong>hints:</strong> don't trigger on every page: leave it blank </span>",
+							"order": 30,
+							"title": "Trigger on url with the following keywords",
+							"type": "string"
+						},
+						"showWhileDesigning": {
+							"default": false,
+							"description": "Enable: to view your design,<br>Disable: when ready to test different trigger strategies",
+							"order": 0,
+							"title": "display while designing",
+							"type": "boolean"
+						},
+						"signupBackgroundImage": {
+							"default": "background_1",
+							"description": "Currently you can choose from only two pictures",
+							"enum": [
+								"background_0",
+								"background_1"
+							],
+							"enumNames": {
+								"background_0": "background 1",
+								"background_1": "background 2"
+							},
+							"format": "radios",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Select your background image",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "service",
+							"enum": [
+								"service"
+							],
+							"enumNames": {
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 7,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 9,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 8,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Keep in touch for all the new products and events",
+							"format": "textarea",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "10 % OFF YOUR FIRST PURCHASE",
+							"order": 5,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"timeTrigger": {
+							"default": 500,
+							"description": "time delay in milliseconds i.e 1000 ms = 1 s ",
+							"minimum": 100,
+							"order": 32,
+							"showIf": {
+								"triggerType": "time-trigger"
+							},
+							"title": "Specify time delay",
+							"type": "integer"
+						},
+						"triggerType": {
+							"default": "exit-trigger",
+							"enum": [
+								"time-trigger",
+								"exit-trigger",
+								"scroll-trigger"
+							],
+							"enumNames": {
+								"exit-trigger": "Exit-Intent Trigger <span class=\"help-text\"><small> trigger when visitors attempt to leave</small></span>",
+								"scroll-trigger": "Scroll Trigger <span class=\"help-text\"><small> trigger when visitors scroll down to 70% of your page</small></span>",
+								"time-trigger": "Time trigger <span class=\"help-text\"><small> trigger after a specified time delay</small></span>"
+							},
+							"format": "radios",
+							"order": 31,
+							"title": "Trigger Strategy",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "sticky_pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"cartRecoveryBackgroundColor",
+								"ctaTitleColor",
+								"ctaBackgroundColor",
+								"announcementsColor"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showWhileDesigning",
+								"cartRecoveryTitleColor",
+								"goal",
+								"signupDestination",
+								"account",
+								"cartRecoveryTitle",
+								"list",
+								"signupBackgroundImage",
+								"cartRecoveryCouponCode",
+								"cartRecoveryTitleSize",
+								"ctaTitleSize",
+								"announcementsButtonFlag",
+								"announcementsLinkAddress",
+								"homePageTrigger",
+								"pagesPattern",
+								"triggerType",
+								"timeTrigger"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"signupTitle",
+								"signupText",
+								"signupInputPlaceholder",
+								"signupButtonText",
+								"cartRecoveryText",
+								"cartRecoveryButtonText",
+								"announcementsTitle",
+								"announcementsText",
+								"announcementsButtonText"
+							],
+							"execute": "INSTALL_SCOPE.setContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://us-central1-sticky-messages.cloudfunctions.net/addMessage",
+						"events": [
+							"preview",
+							"option-change:goal",
+							"delete-install",
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 2,
+				"downvotes": 3
+			},
+			"releaseNotes": "corrected our website link",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cgMsrwt5knkO",
+			"created": "2022-03-11T04:57:55.346354Z",
+			"proposedApp": {
+				"id": "RVzKHazEcftd",
+				"title": "Sticky Messages",
+				"shortDescription": "Popup|Signups|Exit Intent|Announcement|Cart Recovery|Updates",
+				"longDescription": "98% of People Who Visit Your Site Never Convert. Instantly boost leads and grow revenue with the most intuitive conversion optimization toolkit in the world Zero-line of code !!\n\n\nWhether you need to grow your email list, capture abandoned carts or just make small announcements use one of pre-made templates and customize it to your liking.\n\nUse our Page-level Targeting along with exit-intent trigger, scroll-trigger or time-activated trigger to show the right the messages to the right users at the right time and the right location\n\nEasily connect with your preferred email service provider such mailchimp and Constant Contact",
+				"instructions": "",
+				"alias": "sticky-messages",
+				"orgId": "371291ca1342e2770e78e2ab88f35656",
+				"icon": "https://images.cloudflareapps.com/_TKzl0oaD1_t/output-onlinepngtools.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap3.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap1.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap2.png",
+					"https://images.cloudflareapps.com/Lxihs4dyvaEQ/cap4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Assim Addous",
+				"tagline": "",
+				"website": "https://www.d3.agency",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "stickycloudflareapp@gmail.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Sticky Messages with our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "sticky_free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Sticky Messages without our branding",
+						"longDescription": "- Three Customizable Templates\n- Mailchimp and Constantcontact integration\n- Page-level targeting\n- Time trigger\n- Exit-Intent trigger\n- Scroll trigger",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"plan": "STICKY_MESSAGES_PRO",
+						"feature": "apps.sticky_messages_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "I8xvgU4HtGnK"
+				},
+				"created": "2019-05-03T00:24:10.965059Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "371291ca1342e2770e78e2ab88f35656",
+				"requestedAt": "2022-03-11T04:57:55.527796445Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2022-03-14T05:21:21.908020708Z"
+			}
+		}
+	]
+}

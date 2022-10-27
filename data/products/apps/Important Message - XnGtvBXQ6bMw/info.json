@@ -1,0 +1,2119 @@
+{
+	"id": "XnGtvBXQ6bMw",
+	"title": "Important Message",
+	"shortDescription": "A configurable Banner or Modal for all your messaging needs.",
+	"longDescription": "**Important Message** provides a simple and configurable way to display a message to your visitors.\n\n| **Features** | |\n| --- | --- |\n| Display Modes | Banner or Modal |\n| Message Types | Plain Text, Rich Text, or HTML |\n| Banner Options | Dismiss or redirect to URL on click |\n| Dismissal Modes | Dismissible w/ custom period or Non-Dismissible |\n| Color Scheme | Predefined or Custom |\n| Styling Options | Text Size, Padding, Corner Roundness, Custom CSS |\n\n# Messages Types\nYou can compose your message using plain text, rich text, or HTML.\n\n## Plain-Text Message\nThis option allows you to enter a plain text message, with no links, images, or formatting.\n\n## Rich-Text Message *(FULL version only)*\nThe rich-text input allows you to control text formatting and insert links and images.\n\n### Example of Rich Text Message\n\n![rich-text modal screenshot](https://user-images.githubusercontent.com/585182/77550943-0ebb8780-6e88-11ea-82bc-ef8598b1aacb.png)\n\n## HTML Message *(FULL version only)*\nThis option allows you to enter HTML for complete control over your message styling and embedded links, images, etc.\n\nFor example, entering this:\n\n```\nA <span style=\"color: red;\">Custom</span> <b>HTML</b> <a href=\"#\">Message</a>\n```\n\nwill display:\n\n![customHTMLMessage](https://user-images.githubusercontent.com/585182/79355563-d568bb80-7f0b-11ea-9cf9-69915eb5f4f7.png)\n\n\nHere's the HTML for a fancier example that includes a background image:\n\n```\n<div style=\"background-image: url(https://images.unsplash.com/photo-1558897979-72a433ed5f8d?auto=format&fit=crop&w=500&q=60); background-position: center; width: 500px; height: 333px; border-radius: 16px;\"><p style=\"color: #444; font-size: 32px; font-weight: bold; text-align: center; padding: .5em;\">We're closed today because our cattle escaped through that fence.<br><br>See you tomorrow!</p></div>\n```\n\n### Example of Custom HTML\n\n![cattleFence](https://user-images.githubusercontent.com/585182/79467422-c34e5200-7fcb-11ea-8a41-721c2c9c525f.png)\n\nNote the white border around the above image. That's baked into the component, but you can modify that with custom styles as described below.\n\n# Custom Styles  *(FULL version only)*\nThis option allows you to add custom CSS to style your HTML message elements or override the existing component styles.\n\nFor example, to eliminate the white padding around the snowy image in **Example of Custom HTML**, you can set Custom Styles as follows:\n\n```\n.content { padding: 0; }\n```\n\nwhich will result in:\n\n![cattleFenceWithCustomStyles](https://user-images.githubusercontent.com/585182/79482613-1251b280-7fdf-11ea-97d9-60cbc637ef01.png)\n\nSome things to note:\n- Both the Banner and Modal components have .wrapper and .message class elements but you should right-click -> Inspect Element in your browser to see them in all their structural glory.\n- You may have to use **!important** to override styles that are exposed via controls in the UI (e.g. Text Size / font-size).\n\n## Predefined Custom Styles\n\n[Click here to view a growing list of predefined custom styles that demonstrate what's possible!](https://gist.github.com/derekenos/d42134d8c358715b793303d2a782eb7c)\n\n\n# Display Modes\n\nTwo display modes are available: Banner and Modal\n\n## Banner Mode\n\nIn this mode, your message is displayed as a banner either across the top of the page or embedded in a location of your choosing. Banners can be dismissible or non-dismissible. Dismissible banners are always at the top of the page.\n\n### Example of Dismissible Banner\n\n![dismissibleBanner](https://user-images.githubusercontent.com/585182/79354046-e0225100-7f09-11ea-9f80-e949f17f97a5.png)\n\n### Example of Non-Dismissible Banner\n\n![nonDismissibleBanner](https://user-images.githubusercontent.com/585182/79354629-a4d45200-7f0a-11ea-8737-8fa445f672ac.png)\n\n\n## Modal Mode\nIn this mode, the message is displayed in a dialog that overlays the entire screen.\n\n### Example of Dismissible Modal\n\n![dismissibleModal](https://user-images.githubusercontent.com/585182/79355250-67bc8f80-7f0b-11ea-8054-058e26520b57.png)\n\n### Example of Non-Dismissible Modal\n\n![nonDismissibleModal](https://user-images.githubusercontent.com/585182/79355266-6c814380-7f0b-11ea-8323-258847f797a5.png)\n\n\n# Banner Click URL *(FULL version only)*\nWhen this field is set, a click on the banner message will redirect the visitor to the specified URL and the visual style will change to indicate a button on the right-hand-side that can be used to dismiss the banner.\n\n## Example of Banner with Banner Click URL\n\n![BannerClickURL](https://user-images.githubusercontent.com/585182/79352853-5aea6c80-7f08-11ea-891f-e1cd538e52f0.png)\n\n## Example of Banner without Banner Click URL\n\n![noBannerClickURL](https://user-images.githubusercontent.com/585182/79353311-e3690d00-7f08-11ea-878f-c805863644b6.png)\n\n# Dismissal Modes\nFor dismissible messages, you can configure how long you'd like to hide the message from the visitor before showing it to them again.\n\nYou can configure it to show again:\n\n- on the next page load\n- in 10 Minutes\n- in 1 Hour\n- in 1 Day\n- never\n- custom *(FULL version only)*\n\n_Note that when a visitor dismisses a message, they're dismissing that specific message. If you change the content of your message, the previous dismissal will be invalidated and they will see the new message on the next page load._\n\n\n# Color Schemes\nYou can choose from one of several predefined color schemes, or select your own background, text, and button colors.\n\n## Predefined Color Schemes\n\n![combined-final](https://user-images.githubusercontent.com/585182/77785956-5894a100-7033-11ea-8203-27a736cb9d45.png)\n\n## Custom Color Scheme  *(FULL version only)*\n\nExample:\n\n![Screenshot from 2020-03-25 11-23-02](https://user-images.githubusercontent.com/585182/77553326-0c0e6180-6e8b-11ea-99b9-f0c79cfec43f.png)",
+	"instructions": "",
+	"alias": "important-message",
+	"orgId": "e1e528e85417ffdf565907769a38ce73",
+	"icon": "https://images.cloudflareapps.com/xjRmFXkNVgBm/icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/nY-BRD6nN8mY/tileImage.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/_ECXeFtQEer8/featuredImage.png",
+	"author": "Derek Enos",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "derek@derekenos.com",
+	"products": [
+		{
+			"id": "basic",
+			"title": "BASIC",
+			"shortDescription": "Basic features with limited customization.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "full",
+			"title": "FULL",
+			"shortDescription": "All the features with full customization.",
+			"longDescription": "Choose custom colors and add formatting, links, and images to your message!",
+			"visible": true,
+			"price": 500,
+			"order": 0,
+			"plan": "APPS_IMPORTANT_MESSAGE_FULL",
+			"feature": "apps.important_message_full.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "e1e528e85417ffdf565907769a38ce73",
+			"created": "2020-04-16T17:47:41.204866127Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "HlXFTKSw1sAu"
+	},
+	"created": "2020-03-25T14:19:18.774113Z",
+	"org": {
+		"id": "e1e528e85417ffdf565907769a38ce73",
+		"title": "",
+		"username": "e1e528e85417ffdf565907769a38ce73",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "XnGtvBXQ6bMw",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bannerUrl": {
+							"default": "",
+							"description": "If you'd like to redirect the visitor to another URL when they click on the banner, enter that URL here.",
+							"format": "url",
+							"order": 24,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								},
+								"displayMode": "banner"
+							},
+							"title": "Banner Click URL",
+							"type": "string"
+						},
+						"borderRadius": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 32,
+							"minimum": 0,
+							"order": 80,
+							"step": 1,
+							"title": "Corner Roundness",
+							"type": "number"
+						},
+						"buttonText": {
+							"default": "OK",
+							"order": 30,
+							"showIf": {
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text",
+							"type": "string"
+						},
+						"colorScheme": {
+							"default": "#cce5ff,#004085,#007bff,#ffffff",
+							"enum": [
+								"#cce5ff,#004085,#007bff,#ffffff",
+								"#e2e3e5,#383d41,#6c757d,#ffffff",
+								"#d4edda,#155724,#28a745,#ffffff",
+								"#f8d7da,#721c24,#dc3545,#ffffff",
+								"#fff3cd,#856404,#ffc107,#212529",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff",
+								"#fefefe,#818182,#f8f9fa,#212529",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff",
+								"custom"
+							],
+							"enumNames": {
+								"#cce5ff,#004085,#007bff,#ffffff": "Primary",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff": "Info",
+								"#d4edda,#155724,#28a745,#ffffff": "Success",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff": "Dark",
+								"#e2e3e5,#383d41,#6c757d,#ffffff": "Secondary",
+								"#f8d7da,#721c24,#dc3545,#ffffff": "Danger",
+								"#fefefe,#818182,#f8f9fa,#212529": "Light",
+								"#fff3cd,#856404,#ffc107,#212529": "Warning",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 35,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"title": "Select Color Scheme",
+							"type": "string"
+						},
+						"customBackgroundColor": {
+							"default": "#e2e3e5",
+							"format": "color",
+							"order": 45,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Background Color",
+							"type": "string"
+						},
+						"customBackgroundGradientLevel": {
+							"default": 0.5,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 46,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"step": 0.1,
+							"title": "Background Gradient Level",
+							"type": "number"
+						},
+						"customButtonBackgroundColor": {
+							"default": "#6c757d",
+							"format": "color",
+							"order": 55,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Background Color",
+							"type": "string"
+						},
+						"customButtonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"customDismissalPeriodGroup": {
+							"description": "Set the amount of time to hide this message from a visitor after they've dismissed it.",
+							"order": 27,
+							"properties": {
+								"minutes": {
+									"default": 1,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number",
+									"type": "number"
+								},
+								"multiplier": {
+									"default": "1440",
+									"enum": [
+										"1",
+										"60",
+										"1440"
+									],
+									"enumNames": {
+										"1": "Minutes",
+										"60": "Hours",
+										"1440": "Days"
+									},
+									"format": "radios",
+									"order": 2,
+									"title": "Unit",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"dismissedUntilMinutes": "custom",
+								"notDismissible": false
+							},
+							"title": "Custom Dismissal Period",
+							"type": "object"
+						},
+						"customHTMLMessage": {
+							"default": "A <span style=\"color: red;\">Fancy</span> <b>HTML</b> <a href=\"#\">Message</a>",
+							"description": "Customize the message HTML to include inline styles, images, links, etc.",
+							"order": 15,
+							"showIf": {
+								"messageType": "customHTML"
+							},
+							"title": "HTML Message",
+							"type": "string"
+						},
+						"customPlainMessage": {
+							"default": "A Plain-Text Message",
+							"order": 15,
+							"placeholder": "Write your message here.",
+							"showIf": {
+								"messageType": "customPlain"
+							},
+							"title": "Plain-Text Message",
+							"type": "string"
+						},
+						"customRichMessageGroup": {
+							"order": 15,
+							"properties": {
+								"maxImageWidth": {
+									"default": 100,
+									"format": "slider",
+									"maximum": 600,
+									"minimum": 20,
+									"order": 5,
+									"step": 1,
+									"title": "Adjust the Maximum Image Width",
+									"type": "number"
+								},
+								"message": {
+									"default": "A <strong>Rich-Text</strong> Message",
+									"format": "richtext",
+									"order": 0,
+									"placeholder": "Write your message here.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messageType": "customRich"
+							},
+							"title": "Rich-Text Message",
+							"type": "object"
+						},
+						"customStyles": {
+							"default": "",
+							"description": "Enter CSS to style your message elements or override the default component styles. Note that you may have to use <b>!imporant</b> to override any of the styles controlled above (e.g. Text Size / font-size). Both the Banner and Modal have .wrapper and .message class elements. Right-click -&gt; Inspect Element in your browser to see the full structure.",
+							"order": 85,
+							"placeholder": ".message { font-family: monospace; }",
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								}
+							},
+							"title": "Custom Styles",
+							"type": "string"
+						},
+						"customTextColor": {
+							"default": "#383d41",
+							"format": "color",
+							"order": 50,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Text Color",
+							"type": "string"
+						},
+						"dismissedUntilMinutes": {
+							"default": "0",
+							"enum": [
+								"0",
+								"10",
+								"60",
+								"1440",
+								"-1",
+								"custom"
+							],
+							"enumNames": {
+								"0": "on the next page load",
+								"10": "in 10 Minutes",
+								"60": "in 1 Hour",
+								"1440": "in 1 Day",
+								"-1": "never",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 26,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"showIf": {
+								"notDismissible": false
+							},
+							"title": "After the visitor dismisses the message, show again:",
+							"type": "string"
+						},
+						"displayMode": {
+							"default": "banner",
+							"enum": [
+								"banner",
+								"modal"
+							],
+							"enumNames": {
+								"banner": "Display as a horizontal banner",
+								"modal": "Display as a modal that overlays the entire screen"
+							},
+							"format": "radios",
+							"order": 8,
+							"title": "Display Mode",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 0,
+							"title": "Message Enabled",
+							"type": "boolean"
+						},
+						"fontSize": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 96,
+							"minimum": 12,
+							"order": 65,
+							"step": 1,
+							"title": "Text Size",
+							"type": "number"
+						},
+						"horizontalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 77,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Horizontal Margin",
+							"type": "number"
+						},
+						"horizontalPadding": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 70,
+							"step": 1,
+							"title": "Horizontal Padding",
+							"type": "number"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the permanent banner appear on your site?",
+							"format": "element",
+							"order": 30,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"messageType": {
+							"default": "customPlain",
+							"enum": [
+								"customPlain",
+								"customRich",
+								"customHTML"
+							],
+							"enumNames": {
+								"customHTML": "HTML",
+								"customPlain": "Plain Text",
+								"customRich": "Rich Text"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"customHTML": [
+									"full"
+								],
+								"customRich": [
+									"full"
+								]
+							},
+							"title": "Select A Message Type",
+							"type": "string"
+						},
+						"notDismissible": {
+							"default": false,
+							"description": "Do not allow visitors to dismiss this message.",
+							"order": 25,
+							"title": "Not Dismissible",
+							"type": "boolean"
+						},
+						"pages": {
+							"description": "On which page(s) do you want to show this message?",
+							"format": "page",
+							"order": 5,
+							"title": "Pages",
+							"type": "object"
+						},
+						"verticalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 78,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Vertical Margin",
+							"type": "number"
+						},
+						"verticalPadding": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 75,
+							"step": 1,
+							"title": "Vertical Padding",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2CUMJzgvvgw7",
+			"metadata": {
+				"code": {
+					"sourceTag": "2CUMJzgvvgw7",
+					"uploadedOn": "2020-04-16T16:50:23.571070184Z"
+				}
+			},
+			"created": "2020-03-25T14:19:19.687662Z",
+			"proposedApp": {
+				"id": "XnGtvBXQ6bMw",
+				"title": "Important Message",
+				"shortDescription": "Display a message to your visitors.",
+				"longDescription": "**Important Message** provides a simple and configurable way to display a message to your visitors.\n\n| **Features** | |\n| --- | --- |\n| Display Modes | Banner or Modal |\n| Message Types | Plain Text, Rich Text, or HTML |\n| Banner Options | Dismiss or redirect to URL on click |\n| Dismissal Modes | Dismissible w/ custom period or Non-Dismissible |\n| Color Scheme | Predefined or Custom |\n| Styling Options | Text Size, Padding, Corner Roundness, Custom CSS |\n\n# Messages Types\nYou can compose your message using plain text, rich text, or HTML.\n\n## Plain-Text Message\nThis option allows you to enter a plain text message, with no links, images, or formatting.\n\n## Rich-Text Message *(FULL version only)*\nThe rich-text input allows you to control text formatting and insert links and images.\n\n### Example of Rich Text Message\n\n![rich-text modal screenshot](https://user-images.githubusercontent.com/585182/77550943-0ebb8780-6e88-11ea-82bc-ef8598b1aacb.png)\n\n## HTML Message *(FULL version only)*\nThis option allows you to enter HTML for complete control over your message styling and embedded links, images, etc.\n\nFor example, entering this:\n\n```\nA <span style=\"color: red;\">Custom</span> <b>HTML</b> <a href=\"#\">Message</a>\n```\n\nwill display:\n\n![customHTMLMessage](https://user-images.githubusercontent.com/585182/79355563-d568bb80-7f0b-11ea-9cf9-69915eb5f4f7.png)\n\n\nHere's the HTML for a fancier example that includes a background image:\n\n```\n<div style=\"background-image: url(https://images.unsplash.com/photo-1558897979-72a433ed5f8d?auto=format&fit=crop&w=500&q=60); background-position: center; width: 500px; height: 333px; border-radius: 16px;\"><p style=\"color: #444; font-size: 32px; font-weight: bold; text-align: center; padding: .5em;\">We're closed today because our cattle escaped through that fence.<br><br>See you tomorrow!</p></div>\n```\n\n### Example of Custom HTML\n\n![cattleFence](https://user-images.githubusercontent.com/585182/79467422-c34e5200-7fcb-11ea-8a41-721c2c9c525f.png)\n\nNote the white border around the above image. That's baked into the component, but you can modify that with custom styles as described below.\n\n# Custom Styles  *(FULL version only)*\nThis option allows you to add custom CSS to style your HTML message elements or override the existing component styles.\n\nFor example, to eliminate the white padding around the snowy image in **Example of Custom HTML**, you can set Custom Styles as follows:\n\n```\n.content { padding: 0; }\n```\n\nwhich will result in:\n\n![cattleFenceWithCustomStyles](https://user-images.githubusercontent.com/585182/79482613-1251b280-7fdf-11ea-97d9-60cbc637ef01.png)\n\nSome things to note:\n- Both the Banner and Modal components have .wrapper and .message class elements but you should right-click -> Inspect Element in your browser to see them in all their structural glory.\n- You may have to use **!important** to override styles that are exposed via controls in the UI (e.g. Text Size / font-size).\n\n# Display Modes\n\nTwo display modes are available: Banner and Modal\n\n## Banner Mode\n\nIn this mode, your message is displayed as a banner either across the top of the page or embedded in a location of your choosing. Banners can be dismissible or non-dismissible. Dismissible banners are always at the top of the page.\n\n### Example of Dismissible Banner\n\n![dismissibleBanner](https://user-images.githubusercontent.com/585182/79354046-e0225100-7f09-11ea-9f80-e949f17f97a5.png)\n\n### Example of Non-Dismissible Banner\n\n![nonDismissibleBanner](https://user-images.githubusercontent.com/585182/79354629-a4d45200-7f0a-11ea-8737-8fa445f672ac.png)\n\n\n## Modal Mode\nIn this mode, the message is displayed in a dialog that overlays the entire screen.\n\n### Example of Dismissible Modal\n\n![dismissibleModal](https://user-images.githubusercontent.com/585182/79355250-67bc8f80-7f0b-11ea-8054-058e26520b57.png)\n\n### Example of Non-Dismissible Modal\n\n![nonDismissibleModal](https://user-images.githubusercontent.com/585182/79355266-6c814380-7f0b-11ea-8323-258847f797a5.png)\n\n\n# Banner Click URL *(FULL version only)*\nWhen this field is set, a click on the banner message will redirect the visitor to the specified URL and the visual style will change to indicate a button on the right-hand-side that can be used to dismiss the banner.\n\n## Example of Banner with Banner Click URL\n\n![BannerClickURL](https://user-images.githubusercontent.com/585182/79352853-5aea6c80-7f08-11ea-891f-e1cd538e52f0.png)\n\n## Example of Banner without Banner Click URL\n\n![noBannerClickURL](https://user-images.githubusercontent.com/585182/79353311-e3690d00-7f08-11ea-878f-c805863644b6.png)\n\n# Dismissal Modes\nFor dismissible messages, you can configure how long you'd like to hide the message from the visitor before showing it to them again.\n\nYou can configure it to show again:\n\n- on the next page load\n- in 10 Minutes\n- in 1 Hour\n- in 1 Day\n- never\n- custom *(FULL version only)*\n\n_Note that when a visitor dismisses a message, they're dismissing that specific message. If you change the content of your message, the previous dismissal will be invalidated and they will see the new message on the next page load._\n\n\n# Color Schemes\nYou can choose from one of several predefined color schemes, or select your own background, text, and button colors.\n\n## Predefined Color Schemes\n\n![combined-final](https://user-images.githubusercontent.com/585182/77785956-5894a100-7033-11ea-8203-27a736cb9d45.png)\n\n## Custom Color Scheme  *(FULL version only)*\n\nExample:\n\n![Screenshot from 2020-03-25 11-23-02](https://user-images.githubusercontent.com/585182/77553326-0c0e6180-6e8b-11ea-99b9-f0c79cfec43f.png)",
+				"instructions": "",
+				"alias": "important-message",
+				"orgId": "e1e528e85417ffdf565907769a38ce73",
+				"icon": "https://images.cloudflareapps.com/xjRmFXkNVgBm/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/nY-BRD6nN8mY/tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_ECXeFtQEer8/featuredImage.png",
+				"author": "Derek Enos",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "derek@derekenos.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "BASIC",
+						"shortDescription": "Basic features with limited customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "full",
+						"title": "FULL",
+						"shortDescription": "All the features with full customization.",
+						"longDescription": "Choose custom colors and add formatting, links, and images to your message!",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HlXFTKSw1sAu"
+				},
+				"created": "2020-03-25T14:19:18.774113Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e1e528e85417ffdf565907769a38ce73",
+				"requestedAt": "2020-04-16T17:47:41.188997485Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-20T18:14:34.346141671Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "XnGtvBXQ6bMw",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bannerUrl": {
+							"default": "",
+							"description": "If you'd like to redirect the visitor to another URL when they click on the banner, enter that URL here.",
+							"format": "url",
+							"order": 24,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								},
+								"displayMode": "banner"
+							},
+							"title": "Banner Click URL",
+							"type": "string"
+						},
+						"borderRadius": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 32,
+							"minimum": 0,
+							"order": 80,
+							"step": 1,
+							"title": "Corner Roundness",
+							"type": "number"
+						},
+						"buttonText": {
+							"default": "OK",
+							"order": 30,
+							"showIf": {
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text",
+							"type": "string"
+						},
+						"colorScheme": {
+							"default": "#cce5ff,#004085,#007bff,#ffffff",
+							"enum": [
+								"#cce5ff,#004085,#007bff,#ffffff",
+								"#e2e3e5,#383d41,#6c757d,#ffffff",
+								"#d4edda,#155724,#28a745,#ffffff",
+								"#f8d7da,#721c24,#dc3545,#ffffff",
+								"#fff3cd,#856404,#ffc107,#212529",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff",
+								"#fefefe,#818182,#f8f9fa,#212529",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff",
+								"custom"
+							],
+							"enumNames": {
+								"#cce5ff,#004085,#007bff,#ffffff": "Primary",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff": "Info",
+								"#d4edda,#155724,#28a745,#ffffff": "Success",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff": "Dark",
+								"#e2e3e5,#383d41,#6c757d,#ffffff": "Secondary",
+								"#f8d7da,#721c24,#dc3545,#ffffff": "Danger",
+								"#fefefe,#818182,#f8f9fa,#212529": "Light",
+								"#fff3cd,#856404,#ffc107,#212529": "Warning",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 35,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"title": "Select Color Scheme",
+							"type": "string"
+						},
+						"customBackgroundColor": {
+							"default": "#e2e3e5",
+							"format": "color",
+							"order": 45,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Background Color",
+							"type": "string"
+						},
+						"customBackgroundGradientLevel": {
+							"default": 0.5,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 46,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"step": 0.1,
+							"title": "Background Gradient Level",
+							"type": "number"
+						},
+						"customButtonBackgroundColor": {
+							"default": "#6c757d",
+							"format": "color",
+							"order": 55,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Background Color",
+							"type": "string"
+						},
+						"customButtonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"customDismissalPeriodGroup": {
+							"description": "Set the amount of time to hide this message from a visitor after they've dismissed it.",
+							"order": 27,
+							"properties": {
+								"minutes": {
+									"default": 1,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number",
+									"type": "number"
+								},
+								"multiplier": {
+									"default": "1440",
+									"enum": [
+										"1",
+										"60",
+										"1440"
+									],
+									"enumNames": {
+										"1": "Minutes",
+										"60": "Hours",
+										"1440": "Days"
+									},
+									"format": "radios",
+									"order": 2,
+									"title": "Unit",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"dismissedUntilMinutes": "custom",
+								"notDismissible": false
+							},
+							"title": "Custom Dismissal Period",
+							"type": "object"
+						},
+						"customHTMLMessage": {
+							"default": "A <span style=\"color: red;\">Fancy</span> <b>HTML</b> <a href=\"#\">Message</a>",
+							"description": "Customize the message HTML to include inline styles, images, links, etc.",
+							"order": 15,
+							"showIf": {
+								"messageType": "customHTML"
+							},
+							"title": "HTML Message",
+							"type": "string"
+						},
+						"customPlainMessage": {
+							"default": "A Plain-Text Message",
+							"order": 15,
+							"placeholder": "Write your message here.",
+							"showIf": {
+								"messageType": "customPlain"
+							},
+							"title": "Plain-Text Message",
+							"type": "string"
+						},
+						"customRichMessageGroup": {
+							"order": 15,
+							"properties": {
+								"maxImageWidth": {
+									"default": 100,
+									"format": "slider",
+									"maximum": 600,
+									"minimum": 20,
+									"order": 5,
+									"step": 1,
+									"title": "Adjust the Maximum Image Width",
+									"type": "number"
+								},
+								"message": {
+									"default": "A <strong>Rich-Text</strong> Message",
+									"format": "richtext",
+									"order": 0,
+									"placeholder": "Write your message here.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messageType": "customRich"
+							},
+							"title": "Rich-Text Message",
+							"type": "object"
+						},
+						"customStyles": {
+							"default": "",
+							"description": "Enter CSS to style your message elements or override the default component styles. Note that you may have to use <b>!imporant</b> to override any of the styles controlled above (e.g. Text Size / font-size). Both the Banner and Modal have .wrapper and .message class elements. Right-click -&gt; Inspect Element in your browser to see the full structure.",
+							"order": 85,
+							"placeholder": ".message { font-family: monospace; }",
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								}
+							},
+							"title": "Custom Styles",
+							"type": "string"
+						},
+						"customTextColor": {
+							"default": "#383d41",
+							"format": "color",
+							"order": 50,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Text Color",
+							"type": "string"
+						},
+						"dismissedUntilMinutes": {
+							"default": "0",
+							"enum": [
+								"0",
+								"10",
+								"60",
+								"1440",
+								"-1",
+								"custom"
+							],
+							"enumNames": {
+								"0": "on the next page load",
+								"10": "in 10 Minutes",
+								"60": "in 1 Hour",
+								"1440": "in 1 Day",
+								"-1": "never",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 26,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"showIf": {
+								"notDismissible": false
+							},
+							"title": "After the visitor dismisses the message, show again:",
+							"type": "string"
+						},
+						"displayMode": {
+							"default": "banner",
+							"enum": [
+								"banner",
+								"modal"
+							],
+							"enumNames": {
+								"banner": "Display as a horizontal banner",
+								"modal": "Display as a modal that overlays the entire screen"
+							},
+							"format": "radios",
+							"order": 8,
+							"title": "Display Mode",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 0,
+							"title": "Message Enabled",
+							"type": "boolean"
+						},
+						"fontSize": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 96,
+							"minimum": 12,
+							"order": 65,
+							"step": 1,
+							"title": "Text Size",
+							"type": "number"
+						},
+						"horizontalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 77,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Horizontal Margin",
+							"type": "number"
+						},
+						"horizontalPadding": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 70,
+							"step": 1,
+							"title": "Horizontal Padding",
+							"type": "number"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the permanent banner appear on your site?",
+							"format": "element",
+							"order": 30,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"messageType": {
+							"default": "customPlain",
+							"enum": [
+								"customPlain",
+								"customRich",
+								"customHTML"
+							],
+							"enumNames": {
+								"customHTML": "HTML",
+								"customPlain": "Plain Text",
+								"customRich": "Rich Text"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"customHTML": [
+									"full"
+								],
+								"customRich": [
+									"full"
+								]
+							},
+							"title": "Select A Message Type",
+							"type": "string"
+						},
+						"notDismissible": {
+							"default": false,
+							"description": "Do not allow visitors to dismiss this message.",
+							"order": 25,
+							"title": "Not Dismissible",
+							"type": "boolean"
+						},
+						"pages": {
+							"description": "On which page(s) do you want to show this message?",
+							"format": "page",
+							"order": 5,
+							"title": "Pages",
+							"type": "object"
+						},
+						"verticalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 78,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Vertical Margin",
+							"type": "number"
+						},
+						"verticalPadding": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 75,
+							"step": 1,
+							"title": "Vertical Padding",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added paid plan and UI category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2CUMJzgvvgw7",
+			"created": "2020-05-20T18:16:26.084221Z",
+			"proposedApp": {
+				"id": "XnGtvBXQ6bMw",
+				"title": "Important Message",
+				"shortDescription": "Display a message to your visitors.",
+				"longDescription": "**Important Message** provides a simple and configurable way to display a message to your visitors.\n\n| **Features** | |\n| --- | --- |\n| Display Modes | Banner or Modal |\n| Message Types | Plain Text, Rich Text, or HTML |\n| Banner Options | Dismiss or redirect to URL on click |\n| Dismissal Modes | Dismissible w/ custom period or Non-Dismissible |\n| Color Scheme | Predefined or Custom |\n| Styling Options | Text Size, Padding, Corner Roundness, Custom CSS |\n\n# Messages Types\nYou can compose your message using plain text, rich text, or HTML.\n\n## Plain-Text Message\nThis option allows you to enter a plain text message, with no links, images, or formatting.\n\n## Rich-Text Message *(FULL version only)*\nThe rich-text input allows you to control text formatting and insert links and images.\n\n### Example of Rich Text Message\n\n![rich-text modal screenshot](https://user-images.githubusercontent.com/585182/77550943-0ebb8780-6e88-11ea-82bc-ef8598b1aacb.png)\n\n## HTML Message *(FULL version only)*\nThis option allows you to enter HTML for complete control over your message styling and embedded links, images, etc.\n\nFor example, entering this:\n\n```\nA <span style=\"color: red;\">Custom</span> <b>HTML</b> <a href=\"#\">Message</a>\n```\n\nwill display:\n\n![customHTMLMessage](https://user-images.githubusercontent.com/585182/79355563-d568bb80-7f0b-11ea-9cf9-69915eb5f4f7.png)\n\n\nHere's the HTML for a fancier example that includes a background image:\n\n```\n<div style=\"background-image: url(https://images.unsplash.com/photo-1558897979-72a433ed5f8d?auto=format&fit=crop&w=500&q=60); background-position: center; width: 500px; height: 333px; border-radius: 16px;\"><p style=\"color: #444; font-size: 32px; font-weight: bold; text-align: center; padding: .5em;\">We're closed today because our cattle escaped through that fence.<br><br>See you tomorrow!</p></div>\n```\n\n### Example of Custom HTML\n\n![cattleFence](https://user-images.githubusercontent.com/585182/79467422-c34e5200-7fcb-11ea-8a41-721c2c9c525f.png)\n\nNote the white border around the above image. That's baked into the component, but you can modify that with custom styles as described below.\n\n# Custom Styles  *(FULL version only)*\nThis option allows you to add custom CSS to style your HTML message elements or override the existing component styles.\n\nFor example, to eliminate the white padding around the snowy image in **Example of Custom HTML**, you can set Custom Styles as follows:\n\n```\n.content { padding: 0; }\n```\n\nwhich will result in:\n\n![cattleFenceWithCustomStyles](https://user-images.githubusercontent.com/585182/79482613-1251b280-7fdf-11ea-97d9-60cbc637ef01.png)\n\nSome things to note:\n- Both the Banner and Modal components have .wrapper and .message class elements but you should right-click -> Inspect Element in your browser to see them in all their structural glory.\n- You may have to use **!important** to override styles that are exposed via controls in the UI (e.g. Text Size / font-size).\n\n# Display Modes\n\nTwo display modes are available: Banner and Modal\n\n## Banner Mode\n\nIn this mode, your message is displayed as a banner either across the top of the page or embedded in a location of your choosing. Banners can be dismissible or non-dismissible. Dismissible banners are always at the top of the page.\n\n### Example of Dismissible Banner\n\n![dismissibleBanner](https://user-images.githubusercontent.com/585182/79354046-e0225100-7f09-11ea-9f80-e949f17f97a5.png)\n\n### Example of Non-Dismissible Banner\n\n![nonDismissibleBanner](https://user-images.githubusercontent.com/585182/79354629-a4d45200-7f0a-11ea-8737-8fa445f672ac.png)\n\n\n## Modal Mode\nIn this mode, the message is displayed in a dialog that overlays the entire screen.\n\n### Example of Dismissible Modal\n\n![dismissibleModal](https://user-images.githubusercontent.com/585182/79355250-67bc8f80-7f0b-11ea-8054-058e26520b57.png)\n\n### Example of Non-Dismissible Modal\n\n![nonDismissibleModal](https://user-images.githubusercontent.com/585182/79355266-6c814380-7f0b-11ea-8323-258847f797a5.png)\n\n\n# Banner Click URL *(FULL version only)*\nWhen this field is set, a click on the banner message will redirect the visitor to the specified URL and the visual style will change to indicate a button on the right-hand-side that can be used to dismiss the banner.\n\n## Example of Banner with Banner Click URL\n\n![BannerClickURL](https://user-images.githubusercontent.com/585182/79352853-5aea6c80-7f08-11ea-891f-e1cd538e52f0.png)\n\n## Example of Banner without Banner Click URL\n\n![noBannerClickURL](https://user-images.githubusercontent.com/585182/79353311-e3690d00-7f08-11ea-878f-c805863644b6.png)\n\n# Dismissal Modes\nFor dismissible messages, you can configure how long you'd like to hide the message from the visitor before showing it to them again.\n\nYou can configure it to show again:\n\n- on the next page load\n- in 10 Minutes\n- in 1 Hour\n- in 1 Day\n- never\n- custom *(FULL version only)*\n\n_Note that when a visitor dismisses a message, they're dismissing that specific message. If you change the content of your message, the previous dismissal will be invalidated and they will see the new message on the next page load._\n\n\n# Color Schemes\nYou can choose from one of several predefined color schemes, or select your own background, text, and button colors.\n\n## Predefined Color Schemes\n\n![combined-final](https://user-images.githubusercontent.com/585182/77785956-5894a100-7033-11ea-8203-27a736cb9d45.png)\n\n## Custom Color Scheme  *(FULL version only)*\n\nExample:\n\n![Screenshot from 2020-03-25 11-23-02](https://user-images.githubusercontent.com/585182/77553326-0c0e6180-6e8b-11ea-99b9-f0c79cfec43f.png)",
+				"instructions": "",
+				"alias": "important-message",
+				"orgId": "e1e528e85417ffdf565907769a38ce73",
+				"icon": "https://images.cloudflareapps.com/xjRmFXkNVgBm/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/nY-BRD6nN8mY/tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_ECXeFtQEer8/featuredImage.png",
+				"author": "Derek Enos",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "derek@derekenos.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "BASIC",
+						"shortDescription": "Basic features with limited customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "full",
+						"title": "FULL",
+						"shortDescription": "All the features with full customization.",
+						"longDescription": "Choose custom colors and add formatting, links, and images to your message!",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_IMPORTANT_MESSAGE_FULL",
+						"feature": "apps.important_message_full.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HlXFTKSw1sAu"
+				},
+				"created": "2020-03-25T14:19:18.774113Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-05-20T18:16:26.508550578Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-20T18:29:10.569140895Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "XnGtvBXQ6bMw",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bannerUrl": {
+							"default": "",
+							"description": "If you'd like to redirect the visitor to another URL when they click on the banner, enter that URL here.",
+							"format": "url",
+							"order": 24,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								},
+								"displayMode": "banner"
+							},
+							"title": "Banner Click URL",
+							"type": "string"
+						},
+						"borderRadius": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 32,
+							"minimum": 0,
+							"order": 80,
+							"step": 1,
+							"title": "Corner Roundness",
+							"type": "number"
+						},
+						"buttonText": {
+							"default": "OK",
+							"order": 30,
+							"showIf": {
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text",
+							"type": "string"
+						},
+						"colorScheme": {
+							"default": "#cce5ff,#004085,#007bff,#ffffff",
+							"enum": [
+								"#cce5ff,#004085,#007bff,#ffffff",
+								"#e2e3e5,#383d41,#6c757d,#ffffff",
+								"#d4edda,#155724,#28a745,#ffffff",
+								"#f8d7da,#721c24,#dc3545,#ffffff",
+								"#fff3cd,#856404,#ffc107,#212529",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff",
+								"#fefefe,#818182,#f8f9fa,#212529",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff",
+								"custom"
+							],
+							"enumNames": {
+								"#cce5ff,#004085,#007bff,#ffffff": "Primary",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff": "Info",
+								"#d4edda,#155724,#28a745,#ffffff": "Success",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff": "Dark",
+								"#e2e3e5,#383d41,#6c757d,#ffffff": "Secondary",
+								"#f8d7da,#721c24,#dc3545,#ffffff": "Danger",
+								"#fefefe,#818182,#f8f9fa,#212529": "Light",
+								"#fff3cd,#856404,#ffc107,#212529": "Warning",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 35,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"title": "Select Color Scheme",
+							"type": "string"
+						},
+						"customBackgroundColor": {
+							"default": "#e2e3e5",
+							"format": "color",
+							"order": 45,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Background Color",
+							"type": "string"
+						},
+						"customBackgroundGradientLevel": {
+							"default": 0.5,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 46,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"step": 0.1,
+							"title": "Background Gradient Level",
+							"type": "number"
+						},
+						"customButtonBackgroundColor": {
+							"default": "#6c757d",
+							"format": "color",
+							"order": 55,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Background Color",
+							"type": "string"
+						},
+						"customButtonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"customDismissalPeriodGroup": {
+							"description": "Set the amount of time to hide this message from a visitor after they've dismissed it.",
+							"order": 27,
+							"properties": {
+								"minutes": {
+									"default": 1,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number",
+									"type": "number"
+								},
+								"multiplier": {
+									"default": "1440",
+									"enum": [
+										"1",
+										"60",
+										"1440"
+									],
+									"enumNames": {
+										"1": "Minutes",
+										"60": "Hours",
+										"1440": "Days"
+									},
+									"format": "radios",
+									"order": 2,
+									"title": "Unit",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"dismissedUntilMinutes": "custom",
+								"notDismissible": false
+							},
+							"title": "Custom Dismissal Period",
+							"type": "object"
+						},
+						"customHTMLMessage": {
+							"default": "A <span style=\"color: red;\">Fancy</span> <b>HTML</b> <a href=\"#\">Message</a>",
+							"description": "Customize the message HTML to include inline styles, images, links, etc.",
+							"order": 15,
+							"showIf": {
+								"messageType": "customHTML"
+							},
+							"title": "HTML Message",
+							"type": "string"
+						},
+						"customPlainMessage": {
+							"default": "A Plain-Text Message",
+							"order": 15,
+							"placeholder": "Write your message here.",
+							"showIf": {
+								"messageType": "customPlain"
+							},
+							"title": "Plain-Text Message",
+							"type": "string"
+						},
+						"customRichMessageGroup": {
+							"order": 15,
+							"properties": {
+								"maxImageWidth": {
+									"default": 100,
+									"format": "slider",
+									"maximum": 600,
+									"minimum": 20,
+									"order": 5,
+									"step": 1,
+									"title": "Adjust the Maximum Image Width",
+									"type": "number"
+								},
+								"message": {
+									"default": "A <strong>Rich-Text</strong> Message",
+									"format": "richtext",
+									"order": 0,
+									"placeholder": "Write your message here.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messageType": "customRich"
+							},
+							"title": "Rich-Text Message",
+							"type": "object"
+						},
+						"customStyles": {
+							"default": "",
+							"description": "Enter CSS to style your message elements or override the default component styles. Note that you may have to use <b>!imporant</b> to override any of the styles controlled above (e.g. Text Size / font-size). Both the Banner and Modal have .wrapper and .message class elements. Right-click -&gt; Inspect Element in your browser to see the full structure.",
+							"order": 85,
+							"placeholder": ".message { font-family: monospace; }",
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								}
+							},
+							"title": "Custom Styles",
+							"type": "string"
+						},
+						"customTextColor": {
+							"default": "#383d41",
+							"format": "color",
+							"order": 50,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Text Color",
+							"type": "string"
+						},
+						"dismissedUntilMinutes": {
+							"default": "0",
+							"enum": [
+								"0",
+								"10",
+								"60",
+								"1440",
+								"-1",
+								"custom"
+							],
+							"enumNames": {
+								"0": "on the next page load",
+								"10": "in 10 Minutes",
+								"60": "in 1 Hour",
+								"1440": "in 1 Day",
+								"-1": "never",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 26,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"showIf": {
+								"notDismissible": false
+							},
+							"title": "After the visitor dismisses the message, show again:",
+							"type": "string"
+						},
+						"displayMode": {
+							"default": "banner",
+							"enum": [
+								"banner",
+								"modal"
+							],
+							"enumNames": {
+								"banner": "Display as a horizontal banner",
+								"modal": "Display as a modal that overlays the entire screen"
+							},
+							"format": "radios",
+							"order": 8,
+							"title": "Display Mode",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 0,
+							"title": "Message Enabled",
+							"type": "boolean"
+						},
+						"fontSize": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 96,
+							"minimum": 12,
+							"order": 65,
+							"step": 1,
+							"title": "Text Size",
+							"type": "number"
+						},
+						"horizontalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 77,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Horizontal Margin",
+							"type": "number"
+						},
+						"horizontalPadding": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 70,
+							"step": 1,
+							"title": "Horizontal Padding",
+							"type": "number"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the permanent banner appear on your site?",
+							"format": "element",
+							"order": 30,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"messageType": {
+							"default": "customPlain",
+							"enum": [
+								"customPlain",
+								"customRich",
+								"customHTML"
+							],
+							"enumNames": {
+								"customHTML": "HTML",
+								"customPlain": "Plain Text",
+								"customRich": "Rich Text"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"customHTML": [
+									"full"
+								],
+								"customRich": [
+									"full"
+								]
+							},
+							"title": "Select A Message Type",
+							"type": "string"
+						},
+						"notDismissible": {
+							"default": false,
+							"description": "Do not allow visitors to dismiss this message.",
+							"order": 25,
+							"title": "Not Dismissible",
+							"type": "boolean"
+						},
+						"pages": {
+							"description": "On which page(s) do you want to show this message?",
+							"format": "page",
+							"order": 5,
+							"title": "Pages",
+							"type": "object"
+						},
+						"verticalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 78,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Vertical Margin",
+							"type": "number"
+						},
+						"verticalPadding": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 75,
+							"step": 1,
+							"title": "Vertical Padding",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added \"Predefined Custom Styles\" section to description.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2CUMJzgvvgw7",
+			"created": "2020-05-29T16:57:25.628777Z",
+			"proposedApp": {
+				"id": "XnGtvBXQ6bMw",
+				"title": "Important Message",
+				"shortDescription": "Display a message to your visitors.",
+				"longDescription": "**Important Message** provides a simple and configurable way to display a message to your visitors.\n\n| **Features** | |\n| --- | --- |\n| Display Modes | Banner or Modal |\n| Message Types | Plain Text, Rich Text, or HTML |\n| Banner Options | Dismiss or redirect to URL on click |\n| Dismissal Modes | Dismissible w/ custom period or Non-Dismissible |\n| Color Scheme | Predefined or Custom |\n| Styling Options | Text Size, Padding, Corner Roundness, Custom CSS |\n\n# Messages Types\nYou can compose your message using plain text, rich text, or HTML.\n\n## Plain-Text Message\nThis option allows you to enter a plain text message, with no links, images, or formatting.\n\n## Rich-Text Message *(FULL version only)*\nThe rich-text input allows you to control text formatting and insert links and images.\n\n### Example of Rich Text Message\n\n![rich-text modal screenshot](https://user-images.githubusercontent.com/585182/77550943-0ebb8780-6e88-11ea-82bc-ef8598b1aacb.png)\n\n## HTML Message *(FULL version only)*\nThis option allows you to enter HTML for complete control over your message styling and embedded links, images, etc.\n\nFor example, entering this:\n\n```\nA <span style=\"color: red;\">Custom</span> <b>HTML</b> <a href=\"#\">Message</a>\n```\n\nwill display:\n\n![customHTMLMessage](https://user-images.githubusercontent.com/585182/79355563-d568bb80-7f0b-11ea-9cf9-69915eb5f4f7.png)\n\n\nHere's the HTML for a fancier example that includes a background image:\n\n```\n<div style=\"background-image: url(https://images.unsplash.com/photo-1558897979-72a433ed5f8d?auto=format&fit=crop&w=500&q=60); background-position: center; width: 500px; height: 333px; border-radius: 16px;\"><p style=\"color: #444; font-size: 32px; font-weight: bold; text-align: center; padding: .5em;\">We're closed today because our cattle escaped through that fence.<br><br>See you tomorrow!</p></div>\n```\n\n### Example of Custom HTML\n\n![cattleFence](https://user-images.githubusercontent.com/585182/79467422-c34e5200-7fcb-11ea-8a41-721c2c9c525f.png)\n\nNote the white border around the above image. That's baked into the component, but you can modify that with custom styles as described below.\n\n# Custom Styles  *(FULL version only)*\nThis option allows you to add custom CSS to style your HTML message elements or override the existing component styles.\n\nFor example, to eliminate the white padding around the snowy image in **Example of Custom HTML**, you can set Custom Styles as follows:\n\n```\n.content { padding: 0; }\n```\n\nwhich will result in:\n\n![cattleFenceWithCustomStyles](https://user-images.githubusercontent.com/585182/79482613-1251b280-7fdf-11ea-97d9-60cbc637ef01.png)\n\nSome things to note:\n- Both the Banner and Modal components have .wrapper and .message class elements but you should right-click -> Inspect Element in your browser to see them in all their structural glory.\n- You may have to use **!important** to override styles that are exposed via controls in the UI (e.g. Text Size / font-size).\n\n## Predefined Custom Styles\n\n[Click here to view a growing list of predefined custom styles that demonstrate what's possible!](https://gist.github.com/derekenos/d42134d8c358715b793303d2a782eb7c)\n\n\n# Display Modes\n\nTwo display modes are available: Banner and Modal\n\n## Banner Mode\n\nIn this mode, your message is displayed as a banner either across the top of the page or embedded in a location of your choosing. Banners can be dismissible or non-dismissible. Dismissible banners are always at the top of the page.\n\n### Example of Dismissible Banner\n\n![dismissibleBanner](https://user-images.githubusercontent.com/585182/79354046-e0225100-7f09-11ea-9f80-e949f17f97a5.png)\n\n### Example of Non-Dismissible Banner\n\n![nonDismissibleBanner](https://user-images.githubusercontent.com/585182/79354629-a4d45200-7f0a-11ea-8737-8fa445f672ac.png)\n\n\n## Modal Mode\nIn this mode, the message is displayed in a dialog that overlays the entire screen.\n\n### Example of Dismissible Modal\n\n![dismissibleModal](https://user-images.githubusercontent.com/585182/79355250-67bc8f80-7f0b-11ea-8054-058e26520b57.png)\n\n### Example of Non-Dismissible Modal\n\n![nonDismissibleModal](https://user-images.githubusercontent.com/585182/79355266-6c814380-7f0b-11ea-8323-258847f797a5.png)\n\n\n# Banner Click URL *(FULL version only)*\nWhen this field is set, a click on the banner message will redirect the visitor to the specified URL and the visual style will change to indicate a button on the right-hand-side that can be used to dismiss the banner.\n\n## Example of Banner with Banner Click URL\n\n![BannerClickURL](https://user-images.githubusercontent.com/585182/79352853-5aea6c80-7f08-11ea-891f-e1cd538e52f0.png)\n\n## Example of Banner without Banner Click URL\n\n![noBannerClickURL](https://user-images.githubusercontent.com/585182/79353311-e3690d00-7f08-11ea-878f-c805863644b6.png)\n\n# Dismissal Modes\nFor dismissible messages, you can configure how long you'd like to hide the message from the visitor before showing it to them again.\n\nYou can configure it to show again:\n\n- on the next page load\n- in 10 Minutes\n- in 1 Hour\n- in 1 Day\n- never\n- custom *(FULL version only)*\n\n_Note that when a visitor dismisses a message, they're dismissing that specific message. If you change the content of your message, the previous dismissal will be invalidated and they will see the new message on the next page load._\n\n\n# Color Schemes\nYou can choose from one of several predefined color schemes, or select your own background, text, and button colors.\n\n## Predefined Color Schemes\n\n![combined-final](https://user-images.githubusercontent.com/585182/77785956-5894a100-7033-11ea-8203-27a736cb9d45.png)\n\n## Custom Color Scheme  *(FULL version only)*\n\nExample:\n\n![Screenshot from 2020-03-25 11-23-02](https://user-images.githubusercontent.com/585182/77553326-0c0e6180-6e8b-11ea-99b9-f0c79cfec43f.png)",
+				"instructions": "",
+				"alias": "important-message",
+				"orgId": "e1e528e85417ffdf565907769a38ce73",
+				"icon": "https://images.cloudflareapps.com/xjRmFXkNVgBm/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/nY-BRD6nN8mY/tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_ECXeFtQEer8/featuredImage.png",
+				"author": "Derek Enos",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "derek@derekenos.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "BASIC",
+						"shortDescription": "Basic features with limited customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "full",
+						"title": "FULL",
+						"shortDescription": "All the features with full customization.",
+						"longDescription": "Choose custom colors and add formatting, links, and images to your message!",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_IMPORTANT_MESSAGE_FULL",
+						"feature": "apps.important_message_full.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HlXFTKSw1sAu"
+				},
+				"created": "2020-03-25T14:19:18.774113Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e1e528e85417ffdf565907769a38ce73",
+				"requestedAt": "2020-05-29T17:07:07.649134557Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-29T17:31:42.003419209Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "XnGtvBXQ6bMw",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bannerUrl": {
+							"default": "",
+							"description": "If you'd like to redirect the visitor to another URL when they click on the banner, enter that URL here.",
+							"format": "url",
+							"order": 24,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								},
+								"displayMode": "banner"
+							},
+							"title": "Banner Click URL",
+							"type": "string"
+						},
+						"borderRadius": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 32,
+							"minimum": 0,
+							"order": 80,
+							"step": 1,
+							"title": "Corner Roundness",
+							"type": "number"
+						},
+						"buttonText": {
+							"default": "OK",
+							"order": 30,
+							"showIf": {
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text",
+							"type": "string"
+						},
+						"colorScheme": {
+							"default": "#cce5ff,#004085,#007bff,#ffffff",
+							"enum": [
+								"#cce5ff,#004085,#007bff,#ffffff",
+								"#e2e3e5,#383d41,#6c757d,#ffffff",
+								"#d4edda,#155724,#28a745,#ffffff",
+								"#f8d7da,#721c24,#dc3545,#ffffff",
+								"#fff3cd,#856404,#ffc107,#212529",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff",
+								"#fefefe,#818182,#f8f9fa,#212529",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff",
+								"custom"
+							],
+							"enumNames": {
+								"#cce5ff,#004085,#007bff,#ffffff": "Primary",
+								"#d1ecf1,#0c5460,#17a2b8,#ffffff": "Info",
+								"#d4edda,#155724,#28a745,#ffffff": "Success",
+								"#d6d8d9,#1b1e21,#343a40,#ffffff": "Dark",
+								"#e2e3e5,#383d41,#6c757d,#ffffff": "Secondary",
+								"#f8d7da,#721c24,#dc3545,#ffffff": "Danger",
+								"#fefefe,#818182,#f8f9fa,#212529": "Light",
+								"#fff3cd,#856404,#ffc107,#212529": "Warning",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 35,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"title": "Select Color Scheme",
+							"type": "string"
+						},
+						"customBackgroundColor": {
+							"default": "#e2e3e5",
+							"format": "color",
+							"order": 45,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Background Color",
+							"type": "string"
+						},
+						"customBackgroundGradientLevel": {
+							"default": 0.5,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 46,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"step": 0.1,
+							"title": "Background Gradient Level",
+							"type": "number"
+						},
+						"customButtonBackgroundColor": {
+							"default": "#6c757d",
+							"format": "color",
+							"order": 55,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Background Color",
+							"type": "string"
+						},
+						"customButtonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"showIf": {
+								"colorScheme": "custom",
+								"displayMode": "modal",
+								"notDismissible": false
+							},
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"customDismissalPeriodGroup": {
+							"description": "Set the amount of time to hide this message from a visitor after they've dismissed it.",
+							"order": 27,
+							"properties": {
+								"minutes": {
+									"default": 1,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number",
+									"type": "number"
+								},
+								"multiplier": {
+									"default": "1440",
+									"enum": [
+										"1",
+										"60",
+										"1440"
+									],
+									"enumNames": {
+										"1": "Minutes",
+										"60": "Hours",
+										"1440": "Days"
+									},
+									"format": "radios",
+									"order": 2,
+									"title": "Unit",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"dismissedUntilMinutes": "custom",
+								"notDismissible": false
+							},
+							"title": "Custom Dismissal Period",
+							"type": "object"
+						},
+						"customHTMLMessage": {
+							"default": "A <span style=\"color: red;\">Fancy</span> <b>HTML</b> <a href=\"#\">Message</a>",
+							"description": "Customize the message HTML to include inline styles, images, links, etc.",
+							"order": 15,
+							"showIf": {
+								"messageType": "customHTML"
+							},
+							"title": "HTML Message",
+							"type": "string"
+						},
+						"customPlainMessage": {
+							"default": "A Plain-Text Message",
+							"order": 15,
+							"placeholder": "Write your message here.",
+							"showIf": {
+								"messageType": "customPlain"
+							},
+							"title": "Plain-Text Message",
+							"type": "string"
+						},
+						"customRichMessageGroup": {
+							"order": 15,
+							"properties": {
+								"maxImageWidth": {
+									"default": 100,
+									"format": "slider",
+									"maximum": 600,
+									"minimum": 20,
+									"order": 5,
+									"step": 1,
+									"title": "Adjust the Maximum Image Width",
+									"type": "number"
+								},
+								"message": {
+									"default": "A <strong>Rich-Text</strong> Message",
+									"format": "richtext",
+									"order": 0,
+									"placeholder": "Write your message here.",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"messageType": "customRich"
+							},
+							"title": "Rich-Text Message",
+							"type": "object"
+						},
+						"customStyles": {
+							"default": "",
+							"description": "Enter CSS to style your message elements or override the default component styles. Note that you may have to use <b>!imporant</b> to override any of the styles controlled above (e.g. Text Size / font-size). Both the Banner and Modal have .wrapper and .message class elements. Right-click -&gt; Inspect Element in your browser to see the full structure.",
+							"order": 85,
+							"placeholder": ".message { font-family: monospace; }",
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "basic"
+								}
+							},
+							"title": "Custom Styles",
+							"type": "string"
+						},
+						"customTextColor": {
+							"default": "#383d41",
+							"format": "color",
+							"order": 50,
+							"showIf": {
+								"colorScheme": "custom"
+							},
+							"title": "Text Color",
+							"type": "string"
+						},
+						"dismissedUntilMinutes": {
+							"default": "0",
+							"enum": [
+								"0",
+								"10",
+								"60",
+								"1440",
+								"-1",
+								"custom"
+							],
+							"enumNames": {
+								"0": "on the next page load",
+								"10": "in 10 Minutes",
+								"60": "in 1 Hour",
+								"1440": "in 1 Day",
+								"-1": "never",
+								"custom": "~ Custom ~"
+							},
+							"format": "radios",
+							"order": 26,
+							"products": {
+								"custom": [
+									"full"
+								]
+							},
+							"showIf": {
+								"notDismissible": false
+							},
+							"title": "After the visitor dismisses the message, show again:",
+							"type": "string"
+						},
+						"displayMode": {
+							"default": "banner",
+							"enum": [
+								"banner",
+								"modal"
+							],
+							"enumNames": {
+								"banner": "Display as a horizontal banner",
+								"modal": "Display as a modal that overlays the entire screen"
+							},
+							"format": "radios",
+							"order": 8,
+							"title": "Display Mode",
+							"type": "string"
+						},
+						"enabled": {
+							"default": true,
+							"order": 0,
+							"title": "Message Enabled",
+							"type": "boolean"
+						},
+						"fontSize": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 96,
+							"minimum": 12,
+							"order": 65,
+							"step": 1,
+							"title": "Text Size",
+							"type": "number"
+						},
+						"horizontalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 77,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Horizontal Margin",
+							"type": "number"
+						},
+						"horizontalPadding": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 70,
+							"step": 1,
+							"title": "Horizontal Padding",
+							"type": "number"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the permanent banner appear on your site?",
+							"format": "element",
+							"order": 30,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"messageType": {
+							"default": "customPlain",
+							"enum": [
+								"customPlain",
+								"customRich",
+								"customHTML"
+							],
+							"enumNames": {
+								"customHTML": "HTML",
+								"customPlain": "Plain Text",
+								"customRich": "Rich Text"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"customHTML": [
+									"full"
+								],
+								"customRich": [
+									"full"
+								]
+							},
+							"title": "Select A Message Type",
+							"type": "string"
+						},
+						"notDismissible": {
+							"default": false,
+							"description": "Do not allow visitors to dismiss this message.",
+							"order": 25,
+							"title": "Not Dismissible",
+							"type": "boolean"
+						},
+						"pages": {
+							"description": "On which page(s) do you want to show this message?",
+							"format": "page",
+							"order": 5,
+							"title": "Pages",
+							"type": "object"
+						},
+						"verticalMargin": {
+							"default": 0,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 78,
+							"showIf": {
+								"displayMode": "banner",
+								"notDismissible": true
+							},
+							"step": 1,
+							"title": "Vertical Margin",
+							"type": "number"
+						},
+						"verticalPadding": {
+							"default": 16,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 75,
+							"step": 1,
+							"title": "Vertical Padding",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated short description to improve search discovery.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2CUMJzgvvgw7",
+			"created": "2021-01-28T16:00:53.422548Z",
+			"proposedApp": {
+				"id": "XnGtvBXQ6bMw",
+				"title": "Important Message",
+				"shortDescription": "A configurable Banner or Modal for all your messaging needs.",
+				"longDescription": "**Important Message** provides a simple and configurable way to display a message to your visitors.\n\n| **Features** | |\n| --- | --- |\n| Display Modes | Banner or Modal |\n| Message Types | Plain Text, Rich Text, or HTML |\n| Banner Options | Dismiss or redirect to URL on click |\n| Dismissal Modes | Dismissible w/ custom period or Non-Dismissible |\n| Color Scheme | Predefined or Custom |\n| Styling Options | Text Size, Padding, Corner Roundness, Custom CSS |\n\n# Messages Types\nYou can compose your message using plain text, rich text, or HTML.\n\n## Plain-Text Message\nThis option allows you to enter a plain text message, with no links, images, or formatting.\n\n## Rich-Text Message *(FULL version only)*\nThe rich-text input allows you to control text formatting and insert links and images.\n\n### Example of Rich Text Message\n\n![rich-text modal screenshot](https://user-images.githubusercontent.com/585182/77550943-0ebb8780-6e88-11ea-82bc-ef8598b1aacb.png)\n\n## HTML Message *(FULL version only)*\nThis option allows you to enter HTML for complete control over your message styling and embedded links, images, etc.\n\nFor example, entering this:\n\n```\nA <span style=\"color: red;\">Custom</span> <b>HTML</b> <a href=\"#\">Message</a>\n```\n\nwill display:\n\n![customHTMLMessage](https://user-images.githubusercontent.com/585182/79355563-d568bb80-7f0b-11ea-9cf9-69915eb5f4f7.png)\n\n\nHere's the HTML for a fancier example that includes a background image:\n\n```\n<div style=\"background-image: url(https://images.unsplash.com/photo-1558897979-72a433ed5f8d?auto=format&fit=crop&w=500&q=60); background-position: center; width: 500px; height: 333px; border-radius: 16px;\"><p style=\"color: #444; font-size: 32px; font-weight: bold; text-align: center; padding: .5em;\">We're closed today because our cattle escaped through that fence.<br><br>See you tomorrow!</p></div>\n```\n\n### Example of Custom HTML\n\n![cattleFence](https://user-images.githubusercontent.com/585182/79467422-c34e5200-7fcb-11ea-8a41-721c2c9c525f.png)\n\nNote the white border around the above image. That's baked into the component, but you can modify that with custom styles as described below.\n\n# Custom Styles  *(FULL version only)*\nThis option allows you to add custom CSS to style your HTML message elements or override the existing component styles.\n\nFor example, to eliminate the white padding around the snowy image in **Example of Custom HTML**, you can set Custom Styles as follows:\n\n```\n.content { padding: 0; }\n```\n\nwhich will result in:\n\n![cattleFenceWithCustomStyles](https://user-images.githubusercontent.com/585182/79482613-1251b280-7fdf-11ea-97d9-60cbc637ef01.png)\n\nSome things to note:\n- Both the Banner and Modal components have .wrapper and .message class elements but you should right-click -> Inspect Element in your browser to see them in all their structural glory.\n- You may have to use **!important** to override styles that are exposed via controls in the UI (e.g. Text Size / font-size).\n\n## Predefined Custom Styles\n\n[Click here to view a growing list of predefined custom styles that demonstrate what's possible!](https://gist.github.com/derekenos/d42134d8c358715b793303d2a782eb7c)\n\n\n# Display Modes\n\nTwo display modes are available: Banner and Modal\n\n## Banner Mode\n\nIn this mode, your message is displayed as a banner either across the top of the page or embedded in a location of your choosing. Banners can be dismissible or non-dismissible. Dismissible banners are always at the top of the page.\n\n### Example of Dismissible Banner\n\n![dismissibleBanner](https://user-images.githubusercontent.com/585182/79354046-e0225100-7f09-11ea-9f80-e949f17f97a5.png)\n\n### Example of Non-Dismissible Banner\n\n![nonDismissibleBanner](https://user-images.githubusercontent.com/585182/79354629-a4d45200-7f0a-11ea-8737-8fa445f672ac.png)\n\n\n## Modal Mode\nIn this mode, the message is displayed in a dialog that overlays the entire screen.\n\n### Example of Dismissible Modal\n\n![dismissibleModal](https://user-images.githubusercontent.com/585182/79355250-67bc8f80-7f0b-11ea-8054-058e26520b57.png)\n\n### Example of Non-Dismissible Modal\n\n![nonDismissibleModal](https://user-images.githubusercontent.com/585182/79355266-6c814380-7f0b-11ea-8323-258847f797a5.png)\n\n\n# Banner Click URL *(FULL version only)*\nWhen this field is set, a click on the banner message will redirect the visitor to the specified URL and the visual style will change to indicate a button on the right-hand-side that can be used to dismiss the banner.\n\n## Example of Banner with Banner Click URL\n\n![BannerClickURL](https://user-images.githubusercontent.com/585182/79352853-5aea6c80-7f08-11ea-891f-e1cd538e52f0.png)\n\n## Example of Banner without Banner Click URL\n\n![noBannerClickURL](https://user-images.githubusercontent.com/585182/79353311-e3690d00-7f08-11ea-878f-c805863644b6.png)\n\n# Dismissal Modes\nFor dismissible messages, you can configure how long you'd like to hide the message from the visitor before showing it to them again.\n\nYou can configure it to show again:\n\n- on the next page load\n- in 10 Minutes\n- in 1 Hour\n- in 1 Day\n- never\n- custom *(FULL version only)*\n\n_Note that when a visitor dismisses a message, they're dismissing that specific message. If you change the content of your message, the previous dismissal will be invalidated and they will see the new message on the next page load._\n\n\n# Color Schemes\nYou can choose from one of several predefined color schemes, or select your own background, text, and button colors.\n\n## Predefined Color Schemes\n\n![combined-final](https://user-images.githubusercontent.com/585182/77785956-5894a100-7033-11ea-8203-27a736cb9d45.png)\n\n## Custom Color Scheme  *(FULL version only)*\n\nExample:\n\n![Screenshot from 2020-03-25 11-23-02](https://user-images.githubusercontent.com/585182/77553326-0c0e6180-6e8b-11ea-99b9-f0c79cfec43f.png)",
+				"instructions": "",
+				"alias": "important-message",
+				"orgId": "e1e528e85417ffdf565907769a38ce73",
+				"icon": "https://images.cloudflareapps.com/xjRmFXkNVgBm/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/nY-BRD6nN8mY/tileImage.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_ECXeFtQEer8/featuredImage.png",
+				"author": "Derek Enos",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "derek@derekenos.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "BASIC",
+						"shortDescription": "Basic features with limited customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "full",
+						"title": "FULL",
+						"shortDescription": "All the features with full customization.",
+						"longDescription": "Choose custom colors and add formatting, links, and images to your message!",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_IMPORTANT_MESSAGE_FULL",
+						"feature": "apps.important_message_full.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HlXFTKSw1sAu"
+				},
+				"created": "2020-03-25T14:19:18.774113Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e1e528e85417ffdf565907769a38ce73",
+				"requestedAt": "2021-01-28T16:00:54.646316211Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-04T16:46:28.201826762Z"
+			}
+		}
+	]
+}

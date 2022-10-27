@@ -1,0 +1,664 @@
+{
+	"id": "GmIgcUWC61aN",
+	"title": "ProveSource",
+	"shortDescription": "Skyrocket your conversions and sales using social proof.",
+	"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+	"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+	"alias": "provesource",
+	"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+	"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+		"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+		"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+		"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+	"featuredAppImage": "",
+	"author": "ProveSource",
+	"tagline": "",
+	"website": "https://provesrc.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://provesrc.com/terms",
+	"privacyPolicyURL": "https://provesrc.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.16.6",
+	"infoVersion": "0.16.6",
+	"points": 0,
+	"supportEmail": "info@provesrc.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8a26facc0ea01453c5ae0415f5dcfad7",
+			"created": "2018-05-16T06:29:26.761261904Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "-m2Oo7hOTdkj"
+	},
+	"created": "2018-05-16T06:23:57.60858Z",
+	"org": {
+		"id": "8a26facc0ea01453c5ae0415f5dcfad7",
+		"title": "",
+		"username": "8a26facc0ea01453c5ae0415f5dcfad7",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.15.1",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"metadata": {
+				"code": {
+					"sourceTag": "-m2Oo7hOTdkj",
+					"uploadedOn": "2018-05-16T06:23:58.786401708Z"
+				}
+			},
+			"created": "2018-05-16T06:23:58.187076Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"requestedAt": "2018-05-16T06:29:26.718656277Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-21T20:02:41.433902035Z"
+			}
+		},
+		{
+			"tag": "0.16.2",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"created": "2018-05-22T06:44:48.664995Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"requestedAt": "2018-05-22T06:44:49.233040357Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2018-06-12T19:47:08.05243886Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.16.3",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "Done by moderator",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"created": "2018-06-12T19:47:07.761417Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-06-12T19:47:08.064092486Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-12T19:47:40.632880727Z"
+			}
+		},
+		{
+			"tag": "0.16.4",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Done by moderator",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"created": "2018-06-12T19:48:28.127328Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-06-12T19:48:28.394435375Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2018-06-12T19:52:03.480990015Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.16.5",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 8,
+				"downvotes": 4
+			},
+			"releaseNotes": "Done by moderator",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"created": "2018-06-12T19:52:02.640903Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-06-12T19:52:03.540295475Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-13T20:06:48.062834847Z"
+			}
+		},
+		{
+			"tag": "0.16.6",
+			"appId": "GmIgcUWC61aN",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"ProveSourceAPIKey": {
+							"description": "What's the API key associated with your ProveSource account?<br>You'll find it under your <strong>Account Settings</strong>",
+							"order": 1,
+							"placeholder": "You API Key",
+							"required": true,
+							"title": "ProveSource API Key",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateReset(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 2,
+				"downvotes": 4
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-m2Oo7hOTdkj",
+			"created": "2018-11-13T18:42:00.808261Z",
+			"proposedApp": {
+				"id": "GmIgcUWC61aN",
+				"title": "ProveSource",
+				"shortDescription": "Skyrocket your conversions and sales using social proof.",
+				"longDescription": "When you walk into a store, you quickly get a feel for its popularity and ambiance. But when you’re in front of a computer, **it’s hard to tell how “hot” it is**.\n\n**ProveSource is the online equivalent of a busy place.** It gives your customers a new online experience that makes them feel more like they’re in an actual place with other people by showcasing recent customer behaviors and activities. The results are increased urgency and social validation, both of which dramatically increase conversions.\n\nWe are adding new and exciting features all the time.",
+				"instructions": "Not sure where to start? Create your [ProveSource Account](https://console.provesrc.com/?utm_source=cloudflare&utm_medium=cloudflare-apps&utm_campaign=install) in less than 45 seconds.",
+				"alias": "provesource",
+				"orgId": "8a26facc0ea01453c5ae0415f5dcfad7",
+				"icon": "https://images.cloudflareapps.com/_UuqwDi2r6PR/ps-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cKSV5Z2GX1YU/Screen%20Shot%202018-04-12%20at%2007.54.06.png",
+					"https://images.cloudflareapps.com/fJCLq-uQA1Hf/Screen%20Shot%202018-05-16%20at%2009.26.10.png",
+					"https://images.cloudflareapps.com/zMMT7odk6OOP/Screen%20Shot%202018-04-12%20at%2008.04.24.png",
+					"https://images.cloudflareapps.com/3VhtVRNSvSGv/Screen%20Shot%202018-04-12%20at%2008.04.34%20copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/AQVw7H9-uEAE/rethertherth.png",
+				"featuredAppImage": "",
+				"author": "ProveSource",
+				"tagline": "",
+				"website": "https://provesrc.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://provesrc.com/terms",
+				"privacyPolicyURL": "https://provesrc.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@provesrc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "-m2Oo7hOTdkj"
+				},
+				"created": "2018-05-16T06:23:57.60858Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:42:01.203965711Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:49:26.103289341Z"
+			}
+		}
+	]
+}

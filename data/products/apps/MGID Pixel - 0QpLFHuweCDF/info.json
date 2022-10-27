@@ -1,0 +1,192 @@
+{
+	"id": "0QpLFHuweCDF",
+	"title": "MGID Pixel",
+	"shortDescription": "Track conversions and collect audiences on the MGID Platform",
+	"longDescription": "**Track and optimize your advertising campaigns.** Using MGID pixel for conversion tracking allows for deeper performance analysis of your native advertising campaigns. Make data-based decisions to determine the right ad tactics. Stay ROI-focused using our sophisticated optimization options.\n\n**Re-engage audiences through retargeting.** Using our vast retargeting arsenal, re-engage users who have shown interest in your brand, then push them towards action.",
+	"instructions": "MGID Pixel app will automatically place our pixel on specified pages of your website. This will eliminate the need to place pixel manually and guarantee its correct operation.\n\nHowever, after installation of the app, you will need to complete these final steps in MGID Dashboard: set up conversion tracking for advertising campaign or create retargeting audience.\n\nLearn more about tracking conversions on the MGID Platform in this guide: https://www.mgid.com/blog/tracking-conversions-on-the-mgid-platform",
+	"alias": "mgid-pixel",
+	"orgId": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+	"icon": "https://images.cloudflareapps.com/Sb1DzZQRRKn3/mgid_fb_icon_logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/1FEx2ZC8VDrw/Gallery-image-21.png",
+		"https://images.cloudflareapps.com/3uIovrXL9y2h/Gallery-image-11.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/cL67tbotY4FO/420%D1%85268-31.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/peoFUjirIupP/Gallery-image-21.png",
+	"author": "MGID Inc.",
+	"tagline": "",
+	"website": "https://www.mgid.com",
+	"sourceURL": "https://github.com/mgid/cf-app-mgid-pixel",
+	"termsOfServiceURL": "https://www.mgid.com/services/terms-and-conditions",
+	"privacyPolicyURL": "https://www.mgid.com/services/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "support@mgid.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+			"created": "2020-10-09T14:27:16.022835782Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "brFFJ7Vlm8D5"
+	},
+	"created": "2020-06-09T07:10:32.762893Z",
+	"org": {
+		"id": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+		"title": "",
+		"username": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "0QpLFHuweCDF",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"mgid"
+							],
+							"title": "MGID Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://notify.mgid.com/cf-apps",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with MGID."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.83,
+				"upvotes": 5,
+				"downvotes": 1
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DH3v7ENTpim4",
+			"metadata": {
+				"code": {
+					"sourceTag": "DH3v7ENTpim4",
+					"uploadedOn": "2020-10-09T11:15:45.249688811Z"
+				}
+			},
+			"created": "2020-06-09T07:10:33.255825Z",
+			"proposedApp": {
+				"id": "0QpLFHuweCDF",
+				"title": "MGID Pixel",
+				"shortDescription": "Track conversions and collect audiences on the MGID Platform",
+				"longDescription": "**Track and optimize your advertising campaigns.** Using MGID pixel for conversion tracking allows for deeper performance analysis of your native advertising campaigns. Make data-based decisions to determine the right ad tactics. Stay ROI-focused using our sophisticated optimization options.\n\n**Re-engage audiences through retargeting.** Using our vast retargeting arsenal, re-engage users who have shown interest in your brand, then push them towards action.",
+				"instructions": "MGID Pixel app will automatically place our pixel on specified pages of your website. This will eliminate the need to place pixel manually and guarantee its correct operation.\n\nHowever, after installation of the app, you will need to complete these final steps in MGID Dashboard: set up conversion tracking for advertising campaign or create retargeting audience.\n\nLearn more about tracking conversions on the MGID Platform in this guide: https://www.mgid.com/blog/tracking-conversions-on-the-mgid-platform",
+				"alias": "mgid-pixel",
+				"orgId": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+				"icon": "https://images.cloudflareapps.com/Sb1DzZQRRKn3/mgid_fb_icon_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1FEx2ZC8VDrw/Gallery-image-21.png",
+					"https://images.cloudflareapps.com/3uIovrXL9y2h/Gallery-image-11.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/cL67tbotY4FO/420%D1%85268-31.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/peoFUjirIupP/Gallery-image-21.png",
+				"author": "MGID Inc.",
+				"tagline": "",
+				"website": "https://www.mgid.com",
+				"sourceURL": "https://github.com/mgid/cf-app-mgid-pixel",
+				"termsOfServiceURL": "https://www.mgid.com/services/terms-and-conditions",
+				"privacyPolicyURL": "https://www.mgid.com/services/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mgid.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "brFFJ7Vlm8D5"
+				},
+				"created": "2020-06-09T07:10:32.762893Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4fa6a01b8ea1fa8805b3587f0c8a7263",
+				"requestedAt": "2020-10-09T14:27:16.016762378Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-13T15:43:20.367624453Z"
+			}
+		}
+	]
+}

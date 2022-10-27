@@ -1,0 +1,2931 @@
+{
+	"id": "Z2j6QzIlfx5J",
+	"title": "Form Builder",
+	"shortDescription": "Professional contact, order, survey and lead capture forms.",
+	"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-form-builder",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+		"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+		"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+		"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+		"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/ruKxMNqMN4gX/Form%20Builder.png",
+	"author": "POWr Inc.",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "#2dbbf9",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.6",
+	"infoVersion": "1.1.6",
+	"points": 900,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2017-12-14T21:31:01.528129115Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CDpTqY96yX_V"
+	},
+	"created": "2017-11-17T21:28:59.871715Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install/1?app_type=formBuilder",
+						"events": [
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ULRcaRPSxOta",
+			"metadata": {
+				"code": {
+					"sourceTag": "ULRcaRPSxOta",
+					"uploadedOn": "2017-12-14T20:03:35.313375022Z"
+				}
+			},
+			"created": "2017-11-17T21:29:00.009561Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Premium",
+						"longDescription": "# Premium\n* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro",
+						"longDescription": "# Pro\n* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "Business",
+						"longDescription": "# Business\n* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"get-more-customers",
+					"add-on",
+					"grow-your-email-list",
+					"communication",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2017-12-14T21:31:01.517003402Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-12-21T22:20:57.484062356Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install/1?app_type=formBuilder",
+						"events": [
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ULRcaRPSxOta",
+			"created": "2018-01-26T03:11:43.832728Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "Premium",
+						"longDescription": "# Premium\n* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro",
+						"longDescription": "# Pro\n* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "Business",
+						"longDescription": "# Business\n* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"get-more-customers",
+					"add-on",
+					"grow-your-email-list",
+					"communication",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-01-26T03:11:44.01699206Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-26T03:12:37.86063318Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install/1?app_type=formBuilder",
+						"events": [
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ULRcaRPSxOta",
+			"created": "2018-01-26T03:16:54.585939Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "premium",
+						"title": "Premium",
+						"shortDescription": "",
+						"longDescription": "# Premium\n* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "# Pro\n* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "# Business\n* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"get-more-customers",
+					"add-on",
+					"grow-your-email-list",
+					"communication",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-01-26T03:16:54.800477437Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-26T03:18:20.054703853Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TC8GQxJnvR0r",
+			"metadata": {
+				"code": {
+					"sourceTag": "TC8GQxJnvR0r",
+					"uploadedOn": "2018-03-09T22:42:49.223921401Z"
+				}
+			},
+			"created": "2018-02-06T21:30:03.314313Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Baisc",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-03-16T23:52:35.250752367Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-16T23:59:39.299527096Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TC8GQxJnvR0r",
+			"created": "2018-03-17T00:00:38.3156Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-03-17T00:00:47.517026295Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-17T00:00:53.651003586Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TP3YZdy7_FEI",
+			"metadata": {
+				"code": {
+					"sourceTag": "TP3YZdy7_FEI",
+					"uploadedOn": "2018-03-23T17:44:19.284040303Z"
+				}
+			},
+			"created": "2018-03-23T17:44:19.074568Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:44:19.780914107Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:04:59.457267238Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Removing productID and using appID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fWoZtWBxW1_n",
+			"metadata": {
+				"code": {
+					"sourceTag": "fWoZtWBxW1_n",
+					"uploadedOn": "2018-09-19T19:08:43.483033241Z"
+				}
+			},
+			"created": "2018-09-19T17:57:10.758917Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T19:08:44.244420382Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-19T20:11:53.412957652Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Removing productID and using appID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WPfeKlkPnYCs",
+			"metadata": {
+				"code": {
+					"sourceTag": "WPfeKlkPnYCs",
+					"uploadedOn": "2018-09-19T20:11:12.234153484Z"
+				}
+			},
+			"created": "2018-09-19T20:11:12.008438Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T20:11:53.450690798Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-19T20:36:20.008358483Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Removing productID and using appID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BgUSR_xW4Qee",
+			"metadata": {
+				"code": {
+					"sourceTag": "BgUSR_xW4Qee",
+					"uploadedOn": "2018-09-19T20:35:43.838363679Z"
+				}
+			},
+			"created": "2018-09-19T20:35:43.660925Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T20:36:20.029085337Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-20T00:02:15.76167613Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Removing productID and using appID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lAi7BdisV2ic",
+			"metadata": {
+				"code": {
+					"sourceTag": "lAi7BdisV2ic",
+					"uploadedOn": "2018-09-20T00:01:55.790810933Z"
+				}
+			},
+			"created": "2018-09-20T00:01:55.632135Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Collect information & grow your email list with custom forms",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/uBDJxl7KR8q42ZZgv4Hn_formbuilder1200x1200.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Wj5oZgamTRGs64Cv1qHg_Form Builder.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-20T00:02:15.788515521Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-27T20:28:53.444782637Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Removing productID and using appID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lAi7BdisV2ic",
+			"created": "2018-09-26T21:48:51.900964Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:28:53.463708712Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T20:33:15.020132553Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lAi7BdisV2ic",
+			"created": "2018-11-06T00:50:41.5997Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 100 Form Submissions /mo\n* 12 Form Fields\n* 2 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 5mb File Upload\n* 1 Discount Code\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "powr_form_builder_premium",
+						"feature": "apps.powr_form_builder.premium.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* 1k Form Submissions /mo\n* 20 Form Fields\n* 5 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 10mb File Upload\n* 3 Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS",
+						"visible": true,
+						"price": 1600,
+						"order": 0,
+						"plan": "powr_form_builder_pro",
+						"feature": "apps.powr_form_builder.pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Form Submissions /mo\n* Unlimited Form Fields\n* Unlimited Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export\n* 100mb File Upload\n* Unlimited Discount Codes\n* Custom Confirmation Emails\n* Mailchimp Integration\n* Multi-Step Form\n* Form Field Rules\n* Google Sheets Integration\n* Custom CSS & JS\n+ **FREE Business Upgrade for all 50 POWr Plugins**",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "powr_form_builder_business",
+						"feature": "apps.powr_form_builder.business.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "",
+						"longDescription": "* 25 Form Submissions /mo\n* 6 Form Fields\n* 1 Email Administrators\n* Accept Payments via PayPal\n* Submissions Dashboard + Export",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:50:41.762549339Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:22.460636249Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Remove products",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lAi7BdisV2ic",
+			"created": "2018-11-07T00:05:35.662814Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-11-07T00:05:35.849124747Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-07T00:05:51.718179343Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Form Builder appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=formBuilder",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=formBuilder",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lAi7BdisV2ic",
+			"created": "2018-11-13T21:11:46.538954Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T21:11:48.507346682Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:34:25.957110009Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/form-builder",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Form Builder",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Form Builder</h1> Easily add professional forms anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Form Builder appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-form-builder id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Form Builder",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Form Builder</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Form Builder to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9Vv_Nc7LludO",
+			"metadata": {
+				"code": {
+					"sourceTag": "9Vv_Nc7LludO",
+					"uploadedOn": "2019-02-26T19:27:57.552319705Z"
+				}
+			},
+			"created": "2019-02-26T19:27:57.381224Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:28:09.201760919Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2019-02-26T19:36:42.15162977Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "Z2j6QzIlfx5J",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/form-builder",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Form Builder",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Form Builder</h1> Easily add professional forms anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Form Builder appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-form-builder id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Form Builder",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Form Builder</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Form Builder to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.71,
+				"upvotes": 17,
+				"downvotes": 7
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R1gkPAgw1Je4",
+			"metadata": {
+				"code": {
+					"sourceTag": "R1gkPAgw1Je4",
+					"uploadedOn": "2019-02-26T19:36:33.71068598Z"
+				}
+			},
+			"created": "2019-02-26T19:36:33.397752Z",
+			"proposedApp": {
+				"id": "Z2j6QzIlfx5J",
+				"title": "Form Builder",
+				"shortDescription": "Professional contact, order, survey and lead capture forms.",
+				"longDescription": "POWr Form Builder enables you to easily create the forms you need and then embed them anywhere on your site. With templates available you can customize your form to collect the information you need, whether it's a business contact form, a newsletter sign up form or a product order or return form. You can even create custom polls or surveys to collect customer feedback. \n \n# What are the benefits of using POWr Form Builder?   \n\n* **Improve customer service** - The easy way to get more newsletter subscribers, grow your wholesale network, collect customer feedback and build return forms for your store.\n* **Find your perfect design** - Highly customizable design, from the required fields and image elements to colors, fonts and size.\n* **Measure the impact** - With a built-in dashboard and email notifications you can easily stay on top of trends and new submissions.\n\n# Get started for free and enjoy these features:   \n\n* Optional or required text, dropdown, multiple choice, checkbox, and image elements to collect whichever information you need.\n* Form data dashboard with reports and export option to get the perfect overview over what’s on your customers’ minds.\n* Email alerts and email confirmations to end-user.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full POWr plugin library.\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Mailchimp integration for automated list-growing.\n* File attachments to let users send you documents and images.\n* Multiple email admins.\n* Rules for which fields to show or hide based on conditions in form.\n* Custom after-submission controls: redirect to another page, allow another submission, or hide the form.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=form-builder).\n\n# Why users love Form Builder:   \n\n\"It's so easy to use, customizable, fast and nice. I love the way it makes my site so organized. Wished I could give it 6 stars.\" - theninthchicken\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Form Builder up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\nPOWr brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-form-builder",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/Ln8sNN8Em-HB/Form-Builder-Icon-Cloudflar.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/WBuL3qKRb2eQb5xnrbPw_Form Builder 1 (2).png",
+					"//images.cloudflareapps.com/93e48i5FT5qsLqEoEs6q_screenshot-2-25- (3).png",
+					"//images.cloudflareapps.com/OGmGprsSEi0vOMIavDKJ_Contact Form 1 (1).png",
+					"//images.cloudflareapps.com/XrEzobRY2GPsIH6KLTsQ_Screen Shot 2017-12-13 at 2.18.51 PM.png",
+					"//images.cloudflareapps.com/NVSnqs8STvq34YHH0J9e_Contact Form 2 (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iHE4dhdM059w/Form-Builder-Banner-Cloudflare.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/ruKxMNqMN4gX/Form%20Builder.png",
+				"author": "POWr Inc.",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CDpTqY96yX_V"
+				},
+				"created": "2017-11-17T21:28:59.871715Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:36:42.160689557Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-27T00:47:17.597511834Z"
+			}
+		}
+	]
+}

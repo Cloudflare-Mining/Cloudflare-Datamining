@@ -1,0 +1,4422 @@
+{
+	"id": "1tcqRqrLIaSI",
+	"title": "Origin",
+	"shortDescription": "A serverless origin for your website",
+	"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+	"instructions": "",
+	"alias": "origin",
+	"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+	"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+	"featuredAppImage": "",
+	"author": "Network Chimp",
+	"tagline": "",
+	"website": "https://www.networkchimp.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+	"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.10",
+	"infoVersion": "1.1.10",
+	"points": 0,
+	"supportEmail": "support@networkchimp.com",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Custom origin template",
+			"longDescription": "Customize your own origin and error page",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "free",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8ccf52eed199615cba4d77dcd4ed0dda",
+			"created": "2019-05-02T06:08:19.2903129Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "sjVbswmm_6cv"
+	},
+	"created": "2019-05-02T06:04:54.820693Z",
+	"org": {
+		"id": "8ccf52eed199615cba4d77dcd4ed0dda",
+		"title": "",
+		"username": "8ccf52eed199615cba4d77dcd4ed0dda",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Submitted version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"metadata": {
+				"code": {
+					"sourceTag": "zyGSkH5RglkV",
+					"uploadedOn": "2019-05-02T06:08:18.46076353Z"
+				}
+			},
+			"created": "2019-05-02T06:04:55.793984Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Want to deploy serverless scripts but need an origin?  Origin is a serverless origin that requires no DNS configuration or fiddling with servers.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-05-02T06:08:19.262787619Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-02T15:18:47.272853011Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Released as free product",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"created": "2019-05-02T15:21:37.858118Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Want to deploy serverless scripts but need an origin?  Origin is a serverless origin that requires no DNS configuration or fiddling with servers.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": false,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-05-02T15:21:38.62229182Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-02T15:22:44.145716701Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added Pro tier",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"created": "2019-05-17T16:21:46.654719Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Want to deploy serverless scripts but need an origin?  Origin is a serverless origin that requires no DNS configuration or fiddling with servers.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": false,
+						"price": 200,
+						"order": 2,
+						"plan": "ORIGIN_PRO",
+						"feature": "apps.origin_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-05-17T16:21:47.00892335Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-17T16:22:05.012228185Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Updated app description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"created": "2019-06-10T22:41:16.844807Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Serverless homepage\n* Serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": false,
+						"price": 200,
+						"order": 2,
+						"plan": "ORIGIN_PRO",
+						"feature": "apps.origin_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-06-10T22:41:18.858890999Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-10T22:41:58.244543715Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added to Performance category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"created": "2019-06-10T22:43:59.094709Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": false,
+						"price": 200,
+						"order": 2,
+						"plan": "ORIGIN_PRO",
+						"feature": "apps.origin_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-06-10T22:43:59.416609837Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-10T22:44:19.902953062Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"disableOrigin": {
+							"default": false,
+							"description": "⛔Requests will bypass Origin.",
+							"order": 10,
+							"title": "Temporarily disable Origin",
+							"type": "boolean"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Custom Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"htmlTemplate": {
+							"description": "Origin template to display.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "<!-- HTML Template to use -->",
+							"title": "📝Custom Template",
+							"type": "string"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zyGSkH5RglkV",
+			"created": "2019-07-16T17:32:31.948743Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"plan": "ORIGIN_PRO",
+						"feature": "apps.origin_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-07-16T17:32:32.322021835Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-16T17:32:51.109659124Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables custom templates.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"getOriginTemplateFree": {
+									"helpvalue": "⚡ The Pro tier unlocks custom Origin Landing and Error pages.",
+									"order": 2,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/iiQbgaDhLsoO",
+			"metadata": {
+				"code": {
+					"sourceTag": "iiQbgaDhLsoO",
+					"uploadedOn": "2019-07-31T14:39:51.318645339Z"
+				}
+			},
+			"created": "2019-07-31T14:39:48.869842Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin on the edge",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-07-31T14:39:57.671463341Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-31T15:23:52.872774422Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"options": {
+					"properties": {
+						"additionalInfo": {
+							"order": 11,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 1,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 2,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 3,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Quick by @NetworkChimp on Cloudflare Apps - http://bit.ly/2SXJiki %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 4,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/quick?leaveComment=true\">Rate or Review it</a>",
+									"order": 5,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"free": {
+							"items": {
+								"properties": {
+									"pageName": {
+										"description": "Name used to identify this page.",
+										"order": 1,
+										"placeholder": "my landing page",
+										"required": true,
+										"title": "Page Name *",
+										"type": "string"
+									},
+									"pageRoute": {
+										"description": "Page will display on this URL.",
+										"order": 2,
+										"placeholder": "blog.example.com or www.example.com/blog",
+										"required": true,
+										"title": "Page URL *",
+										"type": "string"
+									},
+									"pageTemplate": {
+										"description": "Template to display on this Page URL.",
+										"format": "code",
+										"order": 3,
+										"placeholder": "<!-- html template goes here -->",
+										"required": true,
+										"title": "Page Template *",
+										"type": "string"
+									},
+									"requiredField": {
+										"helpvalue": "* Required",
+										"order": 5,
+										"type": "help"
+									},
+									"responseHeaders": {
+										"description": "Headers that will be added to each page request.",
+										"format": "code",
+										"order": 4,
+										"placeholder": "Some-Header: something\nAnother-Header: something else",
+										"title": "Custom Headers",
+										"type": "string"
+									}
+								},
+								"title": "Routes",
+								"type": "object"
+							},
+							"maxItems": 1,
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"title": "Page Configuration",
+							"type": "array"
+						},
+						"gettingStarted": {
+							"order": 4,
+							"properties": {
+								"gettingStarted1": {
+									"helpvalue": "⚡ Enable Origin Mode to simulate an origin server on your domain.  Requests made to www.yoursite.com will render a home page and requests to nonexistant pages will render a 404 page.",
+									"order": 20,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/quick.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 110,
+									"type": "help"
+								},
+								"gettingStarted12": {
+									"helpvalue": "⚡ Note that Origin Mode will disable any other Cloudflare Workers that are running on your origin.",
+									"order": 20,
+									"type": "help"
+								},
+								"gettingStarted2": {
+									"helpvalue": "⚡ Quick serves webpages from <em>any URL (including subdomains)</em> on your domain.  Simply add a <code>Page URL</code> to your Page Configuration.",
+									"order": 20,
+									"type": "help"
+								},
+								"gettingStarted23": {
+									"helpvalue": "⚡ Any images and other media in your <code>Custom Template</code> must be hosted remotely.",
+									"order": 30,
+									"type": "help"
+								},
+								"gettingStarted26": {
+									"helpvalue": "⚡ Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 40,
+									"type": "help"
+								},
+								"gettingStarted3": {
+									"helpvalue": "⚡ Page URLs must include a <a href=\"http://www.usefulutilities.com/support/cfg/dhu.html\" target=\"_blank\">hostname</a> to resolve correctly.",
+									"order": 50,
+									"type": "help"
+								},
+								"gettingStarted4": {
+									"helpvalue": "❌ /landing → <em>full hostname required.</em>",
+									"order": 60,
+									"type": "help"
+								},
+								"gettingStarted5": {
+									"helpvalue": "✅ landing.example.com → <em>subdomains are ok!</em>",
+									"order": 70,
+									"type": "help"
+								},
+								"gettingStarted6": {
+									"helpvalue": "✅ www.example.com/landing → <em>subfolders are ok!</em>",
+									"order": 80,
+									"type": "help"
+								},
+								"gettingStarted7": {
+									"helpvalue": "⚡ Custom Headers will be sent along with each page.",
+									"order": 90,
+									"type": "help"
+								},
+								"gettingStarted9": {
+									"helpvalue": "⚡ Pages can be reordered in the UI below for organization but this won't have any other effect on Quick.",
+									"order": 100,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 6,
+							"properties": {
+								"disableQuick": {
+									"default": false,
+									"description": "Disable Quick without uninstalling the app.  Your Quick pages will go offline.",
+									"order": 1,
+									"title": "Disable Quick",
+									"type": "boolean"
+								},
+								"enableOrigin": {
+									"default": false,
+									"description": "🌐 Unhandled routes will display a default fallback page.",
+									"order": 10,
+									"title": "Enable Origin Mode",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- html template goes here -->\n<!-- default template will show if empty -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"getOriginTemplateFree": {
+									"helpvalue": "⚡ The Pro tier unlocks custom Origin Templates.",
+									"order": 20,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"getOriginTemplatePlus": {
+									"helpvalue": "⚡ The Pro tier unlocks custom Origin Templates.",
+									"order": 20,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "plus"
+									},
+									"type": "help"
+								},
+								"originTemplate": {
+									"description": "Template to display on root domain requests.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- html template goes here -->\n<!-- default template will show if empty -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": "Options",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 10,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 1,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖 <strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 2,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 3,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"plus": {
+							"items": {
+								"properties": {
+									"pageName": {
+										"description": "Name used to identify this page.",
+										"order": 1,
+										"placeholder": "my landing page",
+										"required": true,
+										"title": "Page Name *",
+										"type": "string"
+									},
+									"pageRoute": {
+										"description": "Page will display on this URL.",
+										"order": 2,
+										"placeholder": "blog.example.com or www.example.com/blog",
+										"required": true,
+										"title": "Page URL *",
+										"type": "string"
+									},
+									"pageTemplate": {
+										"description": "Template to display on this Page URL.",
+										"format": "code",
+										"order": 3,
+										"placeholder": "<!-- html template goes here -->",
+										"required": true,
+										"title": "Page Template *",
+										"type": "string"
+									},
+									"requiredField": {
+										"helpvalue": "* Required",
+										"order": 5,
+										"type": "help"
+									},
+									"responseHeaders": {
+										"description": "Headers that will be added to each page request.",
+										"format": "code",
+										"order": 4,
+										"placeholder": "Some-Header: something\nAnother-Header: something else",
+										"title": "Custom Headers",
+										"type": "string"
+									}
+								},
+								"title": "Routes",
+								"type": "object"
+							},
+							"maxItems": 5,
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "plus"
+							},
+							"title": "Page Configuration",
+							"type": "array"
+						},
+						"pro": {
+							"items": {
+								"properties": {
+									"pageName": {
+										"description": "Name used to identify this page.",
+										"order": 1,
+										"placeholder": "my landing page",
+										"required": true,
+										"title": "Page Name *",
+										"type": "string"
+									},
+									"pageRoute": {
+										"description": "Page will display on this URL.",
+										"order": 2,
+										"placeholder": "blog.example.com or www.example.com/blog",
+										"required": true,
+										"title": "Page URL *",
+										"type": "string"
+									},
+									"pageTemplate": {
+										"description": "Template to display on this Page URL.",
+										"format": "code",
+										"order": 3,
+										"placeholder": "<!-- html template goes here -->",
+										"required": true,
+										"title": "Page Template *",
+										"type": "string"
+									},
+									"requiredField": {
+										"helpvalue": "* Required",
+										"order": 5,
+										"type": "help"
+									},
+									"responseHeaders": {
+										"description": "Headers that will be added to each page request.",
+										"format": "code",
+										"order": 4,
+										"placeholder": "Some-Header: something\nAnother-Header: something else",
+										"title": "Custom Headers",
+										"type": "string"
+									}
+								},
+								"title": "Routes",
+								"type": "object"
+							},
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Page Configuration",
+							"type": "array"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 3,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Quick does just that. Read through the Cheatsheet section and add your first page for free.</strong>",
+							"order": 2,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Do you want ⚡ fast pages served from the edge of Cloudflare's global network?</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One static page",
+						"longDescription": "A single static page with the Free tier.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "plus",
+						"title": "Plus",
+						"shortDescription": "Up to five pages",
+						"longDescription": "Up to five pages with the Plus tier.",
+						"visible": true,
+						"price": 200,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Unlimited pages + custom Origin templates",
+						"longDescription": "Unlimited pages and custom templates with the Pro tier.",
+						"visible": true,
+						"price": 400,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"reload": false
+						}
+					],
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://quick-hooks-o4440890s.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://quick-hooks-o4440890s.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/tcZCxtTQu5IF",
+			"metadata": {
+				"code": {
+					"sourceTag": "tcZCxtTQu5IF",
+					"uploadedOn": "2019-07-31T22:05:06.483103339Z"
+				}
+			},
+			"created": "2019-07-31T22:05:05.585549Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "One static page",
+						"longDescription": "A single static page with the Free tier.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "plus",
+						"title": "Plus",
+						"shortDescription": "Up to five pages",
+						"longDescription": "Up to five pages with the Plus tier.",
+						"visible": true,
+						"price": 200,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Unlimited pages + custom Origin templates",
+						"longDescription": "Unlimited pages and custom templates with the Pro tier.",
+						"visible": true,
+						"price": 400,
+						"order": 2,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-07-31T22:05:08.004030336Z",
+				"canceledByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"canceledAt": "2019-07-31T22:14:55.952185163Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted1": {
+									"helpvalue": "🐣The <em>Pro</em> tier enables a custom homepage.",
+									"order": 1,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"getOriginTemplateFree": {
+									"helpvalue": "⚡ The Pro tier unlocks custom Origin Landing and Error pages.",
+									"order": 2,
+									"showIf": {
+										"INSTALL_PRODUCT.id": "free"
+									},
+									"type": "help"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"showIf": {
+										"INSTALL_PRODUCT.id": "pro"
+									},
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>serverless configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "Basic origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_nMWih-KxVTF",
+			"metadata": {
+				"code": {
+					"sourceTag": "_nMWih-KxVTF",
+					"uploadedOn": "2019-07-31T22:14:51.924156727Z"
+				}
+			},
+			"created": "2019-07-31T22:14:49.709505Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Basic origin page",
+						"longDescription": "Basic origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 200,
+						"order": 2,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-07-31T22:14:55.971120295Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-31T22:21:23.235273571Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>on-demand configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-jf89yc9r1.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Yy9xB0Ov68F",
+			"metadata": {
+				"code": {
+					"sourceTag": "1Yy9xB0Ov68F",
+					"uploadedOn": "2019-08-31T04:32:19.547940839Z"
+				}
+			},
+			"created": "2019-08-31T04:32:18.739044Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-08-31T04:32:21.351629295Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-31T14:50:43.503015495Z"
+			}
+		},
+		{
+			"tag": "1.1.7",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>on-demand configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Vf59ZXJsEs1C",
+			"metadata": {
+				"code": {
+					"sourceTag": "Vf59ZXJsEs1C",
+					"uploadedOn": "2019-08-31T14:56:03.99737469Z"
+				}
+			},
+			"created": "2019-08-31T14:56:03.422078Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-08-31T14:56:08.165761588Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-31T14:56:33.239177935Z"
+			}
+		},
+		{
+			"tag": "1.1.8",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>on-demand configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FgRf06Bvbdsj",
+			"metadata": {
+				"code": {
+					"sourceTag": "FgRf06Bvbdsj",
+					"uploadedOn": "2019-08-31T15:10:03.648908195Z"
+				}
+			},
+			"created": "2019-08-31T15:10:02.262912Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-08-31T15:10:07.685783777Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-31T15:13:47.891109973Z"
+			}
+		},
+		{
+			"tag": "1.1.9",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>on-demand configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1NW-avumCSdX",
+			"metadata": {
+				"code": {
+					"sourceTag": "1NW-avumCSdX",
+					"uploadedOn": "2019-09-11T15:34:30.132109834Z"
+				}
+			},
+			"created": "2019-09-11T15:34:29.422016Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-09-11T15:34:32.074100717Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-11T15:35:29.250579652Z"
+			}
+		},
+		{
+			"tag": "1.1.10",
+			"appId": "1tcqRqrLIaSI",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"bugReport": {
+							"order": 40,
+							"properties": {
+								"bugReport0": {
+									"helpvalue": "<strong>🐛 Find a bug? Help us squash it.</strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"bugReport2": {
+									"helpvalue": "👍 <em>Send a detailed desciption of the problem to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"social0": {
+									"helpvalue": "<strong>Enjoying the app? Help us spread the word.</strong>",
+									"order": 30,
+									"type": "help"
+								},
+								"social2": {
+									"helpvalue": "❤️ <a target=\"_blank\" href=\"http://twitter.com/home?status=Check out Origin by @NetworkChimp on Cloudflare Apps - http://bit.ly/2CcdXoA %23serverless %23cloudflare \">Tweet about it</a>",
+									"order": 40,
+									"type": "help"
+								},
+								"social3": {
+									"helpvalue": "❤️ <a href=\"https://www.cloudflare.com/apps/origin?leaveComment=true\">Rate or Review it</a>",
+									"order": 50,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"gettingStarted": {
+							"order": 3,
+							"properties": {
+								"gettingStarted0": {
+									"helpvalue": "🌐 Origin is a homepage for your site without server configuration.  Install Origin and requests to <em>yoursite.com</em> will display a homepage.",
+									"order": 0,
+									"type": "help"
+								},
+								"gettingStarted10": {
+									"helpvalue": "📖 <strong><a href=\"https://www.networkchimp.com/docs/origin.html\" target=\"_blank\">Read the docs</a> for more information.</strong>",
+									"order": 13,
+									"type": "help"
+								},
+								"gettingStarted33": {
+									"helpvalue": "🐣Any images and other media in your <code>Origin Template</code> and <code>404 Not Found Template</code> should be hosted remotely.",
+									"order": 7,
+									"type": "help"
+								},
+								"gettingStarted34": {
+									"helpvalue": "🐣Do not include base64 encoded images in your template due to strict template size restrictions.",
+									"order": 8,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showGettingStarted": true
+							},
+							"title": "Cheatsheet",
+							"type": "object"
+						},
+						"options": {
+							"order": 30,
+							"properties": {
+								"disableOrigin": {
+									"default": false,
+									"description": "⛔Requests will bypass Origin.",
+									"order": 10,
+									"title": "Temporarily disable Origin",
+									"type": "boolean"
+								},
+								"errorTemplate": {
+									"description": "Template to display on 404 Not Found errors.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 404 Not Found Template",
+									"type": "string"
+								},
+								"originTemplate": {
+									"description": "Template to display on your site's home page.",
+									"format": "code",
+									"order": 20,
+									"placeholder": "<!-- HTML Template to use -->",
+									"title": "📝 Origin Template",
+									"type": "string"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 30,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖<strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇<strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps21": {
+									"helpvalue": "🤖<strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>Cache object storage assets from S3, GCS, and more</em>",
+									"order": 21,
+									"type": "help"
+								},
+								"otherApps3": {
+									"helpvalue": "🔧<strong><a href='https://www.cloudflare.com/apps/edgy' target='_blank'>Edgy</a></strong> - <em>on-demand configureable maintenance page for free</em>",
+									"order": 40,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showGettingStarted": {
+							"default": true,
+							"order": 2,
+							"title": "Show Cheatsheet",
+							"type": "boolean"
+						},
+						"welcome0": {
+							"helpvalue": "<strong>Need a serverless origin? Well you've come to right place.</strong>",
+							"order": 0,
+							"type": "help"
+						},
+						"welcome1": {
+							"helpvalue": "<strong>Read the Cheatsheet for help and get started for free!</strong>",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"allowPageRestrictions": false,
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://origin-hooks-byl9xlli7.now.sh",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.68,
+				"upvotes": 13,
+				"downvotes": 6
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7jRchnyINEMN",
+			"metadata": {
+				"code": {
+					"sourceTag": "7jRchnyINEMN",
+					"uploadedOn": "2019-09-20T00:16:19.454574183Z"
+				}
+			},
+			"created": "2019-09-20T00:16:19.098194Z",
+			"proposedApp": {
+				"id": "1tcqRqrLIaSI",
+				"title": "Origin",
+				"shortDescription": "A serverless origin for your website",
+				"longDescription": "Need an origin without all the overhead?  Origin is a serverless homepage without the pesky DNS or server configuration.\n\nIf you own *example.com*, Origin will show a home page for requests to *www.example.com/* and a 404 page for unmatched routes.\n\nOrigin Features:\n* Configureable serverless homepage\n* Configureable serverless 404 page\n\nRead Origin's [docs](https://www.networkchimp.com/docs/origin.html) for complete information.",
+				"instructions": "",
+				"alias": "origin",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/d5aHHfBvOLlC/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Ac6J9AnySFCl/tileImage.png",
+				"featuredAppImage": "",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Custom origin template",
+						"longDescription": "Customize your own origin and error page",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "sjVbswmm_6cv"
+				},
+				"created": "2019-05-02T06:04:54.820693Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2019-09-20T00:16:21.405287153Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-20T15:44:13.461061093Z"
+			}
+		}
+	]
+}

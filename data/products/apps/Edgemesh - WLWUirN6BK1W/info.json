@@ -1,0 +1,1695 @@
+{
+	"id": "WLWUirN6BK1W",
+	"title": "Edgemesh",
+	"shortDescription": "Accelerate your Website and Business.",
+	"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+	"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+	"alias": "edgemesh",
+	"orgId": "80788422f56ceef97377c01458c1a2fe",
+	"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+		"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+		"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+		"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+	"author": "Edgemesh Corporation",
+	"tagline": "",
+	"website": "https://edgemesh.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://edgemesh.com/legal",
+	"privacyPolicyURL": "https://edgemesh.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "5.0.3",
+	"infoVersion": "5.0.3",
+	"points": 0,
+	"supportEmail": "support@edgemesh.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "80788422f56ceef97377c01458c1a2fe",
+			"created": "2020-04-24T23:18:26.133049122Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "zVAMQ7yWF0gz"
+	},
+	"created": "2020-04-21T18:34:12.163553Z",
+	"org": {
+		"id": "80788422f56ceef97377c01458c1a2fe",
+		"title": "",
+		"username": "80788422f56ceef97377c01458c1a2fe",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"externalMount": {
+							"default": false,
+							"description": "Set this to true if another service worker will mount the Edgemesh worker. This will prevent the client from registering the Edgemesh service worker automatically.",
+							"order": 4,
+							"title": "External Mount",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated Edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"releaseNotes": "⚡️ Initial Release.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zVAMQ7yWF0gz",
+			"metadata": {
+				"code": {
+					"sourceTag": "zVAMQ7yWF0gz",
+					"uploadedOn": "2020-04-21T18:34:12.635474757Z"
+				}
+			},
+			"created": "2020-04-21T18:34:12.448079Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "em",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/KdkVm-qPH9gV/featured.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-04-24T23:18:26.1126205Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-27T16:39:58.60953332Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1BzjNznfycDQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "1BzjNznfycDQ",
+					"uploadedOn": "2020-05-05T00:59:39.556528472Z"
+				}
+			},
+			"created": "2020-05-05T00:59:39.307244Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "em",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/KdkVm-qPH9gV/featured.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-05-05T00:59:40.193797177Z",
+				"canceledByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"canceledAt": "2020-05-05T01:00:34.385402909Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1BzjNznfycDQ",
+			"created": "2020-05-05T01:00:34.116654Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/KdkVm-qPH9gV/featured.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-05-05T01:00:34.468583888Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-06T19:23:01.318317803Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Bugfixes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lezWcb_nPrUu",
+			"metadata": {
+				"code": {
+					"sourceTag": "lezWcb_nPrUu",
+					"uploadedOn": "2020-05-13T22:18:44.65136081Z"
+				}
+			},
+			"created": "2020-05-13T22:18:44.414213Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/KdkVm-qPH9gV/featured.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-05-13T22:18:45.431683856Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-15T15:25:08.524919515Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 3
+			},
+			"releaseNotes": "Exclude Edgemesh Client from Cloudflare Rocket Loader.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r5nJxzGC_zx-",
+			"metadata": {
+				"code": {
+					"sourceTag": "r5nJxzGC_zx-",
+					"uploadedOn": "2020-07-22T18:03:42.320251565Z"
+				}
+			},
+			"created": "2020-07-22T18:03:42.117144Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/KdkVm-qPH9gV/featured.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-07-22T18:03:42.970706418Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-24T22:07:07.928779883Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Fixed a type-o in banner image.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r5nJxzGC_zx-",
+			"created": "2020-09-28T18:53:42.053176Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/HsQmxGmYjUL3/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-09-28T18:53:42.244998208Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-30T15:39:54.7679162Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "URL to edgemesh services. Don't change unless instructed to by your dedicated edgemesh engineer.",
+							"order": 1,
+							"title": "Host",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode.  The service worker will not mount if this option is enabled.",
+							"order": 3,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 2,
+							"title": "Service Worker Scope",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "- Fixed a bug where the App installation could not be verified on the Edgemesh Portal.\n- Uploaded a new banner image.\n- Fixed a bug in the preconnect url added by the App.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qwqUFk97oyrN",
+			"metadata": {
+				"code": {
+					"sourceTag": "qwqUFk97oyrN",
+					"uploadedOn": "2020-10-08T00:37:54.060446719Z"
+				}
+			},
+			"created": "2020-10-08T00:37:53.78695Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2020-10-08T00:37:54.607305262Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-13T15:42:06.762698518Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 6,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://rte.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 5,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 3,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 4,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "## ✨ Enhancements\n- Added more configuration options.\n- Optimized initialization script.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SusRJDVPBQB4",
+			"metadata": {
+				"code": {
+					"sourceTag": "SusRJDVPBQB4",
+					"uploadedOn": "2021-02-25T00:28:25.105247567Z"
+				}
+			},
+			"created": "2021-02-25T00:28:24.867929Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2021-02-25T00:42:17.49113105Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-26T16:28:22.654612147Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 6,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://api.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 5,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 3,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 4,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated for Edgemesh v4",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/R_oWQ_K3exE-",
+			"metadata": {
+				"code": {
+					"sourceTag": "R_oWQ_K3exE-",
+					"uploadedOn": "2021-04-27T18:19:32.803304907Z"
+				}
+			},
+			"created": "2021-04-27T18:19:32.584725Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2021-04-27T18:19:33.433274203Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-05-26T17:36:51.982036472Z"
+			}
+		},
+		{
+			"tag": "5.0.0",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 7,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://api.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 6,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"prefetch": {
+							"default": false,
+							"description": "Enable dynamic link prefetching.",
+							"order": 8,
+							"title": "Prefetch",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 4,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"swUrl": {
+							"default": "/sw.js",
+							"description": "URL to the Service Worker. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 3,
+							"title": "Service Worker URL",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 5,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Updated for Edgemesh V5.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/RoHSuRKpi1FY",
+			"metadata": {
+				"code": {
+					"sourceTag": "RoHSuRKpi1FY",
+					"uploadedOn": "2022-08-09T23:11:40.883309907Z"
+				}
+			},
+			"created": "2022-08-09T23:11:40.721639Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2022-08-09T23:11:41.391415967Z",
+				"canceledByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"canceledAt": "2022-08-09T23:23:27.920603317Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "5.0.1",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 8,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://api.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 6,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"prefetch": {
+							"default": true,
+							"description": "Enable dynamic link prefetching.",
+							"order": 7,
+							"title": "Prefetch",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 4,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"swUrl": {
+							"default": "/sw.js",
+							"description": "URL to the Service Worker. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 3,
+							"title": "Service Worker URL",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 5,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Updated for Edgemesh V5.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jGsgzoRD3wzX",
+			"metadata": {
+				"code": {
+					"sourceTag": "jGsgzoRD3wzX",
+					"uploadedOn": "2022-08-09T23:23:27.531782127Z"
+				}
+			},
+			"created": "2022-08-09T23:23:27.420086Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2022-08-09T23:23:27.927849527Z",
+				"canceledByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"canceledAt": "2022-08-12T01:11:54.475937293Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "5.0.2",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 8,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://api.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 6,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"prefetch": {
+							"default": false,
+							"description": "Enable dynamic link prefetching.",
+							"order": 7,
+							"title": "Prefetch",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 4,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"swUrl": {
+							"default": "/sw.js",
+							"description": "URL to the Service Worker. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 3,
+							"title": "Service Worker URL",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 5,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Default prefetch to disabled.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YHt5XMx3lQlJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "YHt5XMx3lQlJ",
+					"uploadedOn": "2022-08-12T01:11:54.090487096Z"
+				}
+			},
+			"created": "2022-08-12T01:11:53.912043Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2022-08-12T01:11:54.491578496Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-08-17T19:54:42.636918821Z"
+			}
+		},
+		{
+			"tag": "5.0.3",
+			"appId": "WLWUirN6BK1W",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"cdnHost": {
+							"default": "https://static.edgeme.sh",
+							"description": "Host URL of the Edgemesh CDN. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 2,
+							"title": "CDN Host URL",
+							"type": "string"
+						},
+						"disableGA": {
+							"default": false,
+							"description": "Disable google analytics segment reporting.",
+							"order": 8,
+							"title": "Disable GA",
+							"type": "boolean"
+						},
+						"host": {
+							"default": "https://api.edgeme.sh",
+							"description": "Host URL of the Edgemesh backend services. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 1,
+							"title": "Backend Host URL",
+							"type": "string"
+						},
+						"lite": {
+							"default": false,
+							"description": "Metrics only mode. The service worker will not mount if this option is enabled.",
+							"order": 6,
+							"title": "Lite",
+							"type": "boolean"
+						},
+						"prefetch": {
+							"default": false,
+							"description": "Enable dynamic link prefetching.",
+							"order": 7,
+							"title": "Prefetch",
+							"type": "boolean"
+						},
+						"scope": {
+							"default": "/",
+							"description": "Set the service worker scope to a custom pathname.",
+							"order": 4,
+							"title": "Service Worker Scope",
+							"type": "string"
+						},
+						"swUrl": {
+							"default": "/sw.js",
+							"description": "URL to the Service Worker. Don't change unless instructed to by an Edgemesh engineer.",
+							"order": 3,
+							"title": "Service Worker URL",
+							"type": "string"
+						},
+						"topicDepth": {
+							"default": 0,
+							"description": "Depth of the Edgemesh Topic. Don't change this unless instructed by an Edgemesh engineer.",
+							"order": 5,
+							"title": "Topic Depth",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Fix worker.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HI4EI-TRqeR8",
+			"metadata": {
+				"code": {
+					"sourceTag": "HI4EI-TRqeR8",
+					"uploadedOn": "2022-08-19T15:55:43.614124951Z"
+				}
+			},
+			"created": "2022-08-19T15:55:43.446802Z",
+			"proposedApp": {
+				"id": "WLWUirN6BK1W",
+				"title": "Edgemesh",
+				"shortDescription": "Accelerate your Website and Business.",
+				"longDescription": "Edgemesh enhances any browser, on any device, anywhere in the world — with intelligent, automated, next-generation client-side caching via a managed Service Worker. Learn more about how Edgemesh changes modern site performance — all with a single click on Cloudflare. https://edgemesh.com/\n\nIn addition to installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"instructions": "In addition to Installing this App, you will need to create an account on https://portal.edgemesh.com and select a Plan.",
+				"alias": "edgemesh",
+				"orgId": "80788422f56ceef97377c01458c1a2fe",
+				"icon": "https://images.cloudflareapps.com/KwMNReBzGTvb/logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-2.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-3.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-4.png",
+					"https://images.cloudflareapps.com/JAABjIUAus9d/promo-cards-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zk1gTpD5DiI6/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/u18fV5q6K5BY/cloudflare-banner.png",
+				"author": "Edgemesh Corporation",
+				"tagline": "",
+				"website": "https://edgemesh.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://edgemesh.com/legal",
+				"privacyPolicyURL": "https://edgemesh.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@edgemesh.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zVAMQ7yWF0gz"
+				},
+				"created": "2020-04-21T18:34:12.163553Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "80788422f56ceef97377c01458c1a2fe",
+				"requestedAt": "2022-08-19T15:55:44.193163541Z",
+				"canceledAt": null,
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2022-08-22T18:49:15.853380481Z"
+			}
+		}
+	]
+}

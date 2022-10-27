@@ -1,0 +1,408 @@
+{
+	"id": "yCWj3ViS7CFK",
+	"title": "SearchBlox Site Search",
+	"shortDescription": "SearchBlox Site Search, a search as a service (SaaS) product",
+	"longDescription": "SearchBlox Site Search, a search as a service (SaaS) product, helps organizations with small and medium websites meet evolving customer expectations.\n\nUnlimited domains and cross-domain search are included in the price for this simple-to-install SaaS product.\n\nProvide a better customer experience with branded UI, featured results and faceted search.\n\nGain customer insight with real-time reporting of query and click data.\n\nStop stressing about outdated search results with on-demand and scheduled crawling.",
+	"instructions": "Please sign-up at https://searchai.searchblox.com/signup and add Customer ID to the app. Faceted search and Autosuggest can be enabled if required.",
+	"alias": "searchblox-site-search",
+	"orgId": "67167c6ed6edfbc48c8c29856839bfc6",
+	"icon": "https://images.cloudflareapps.com/QViFgmAj8Q0F/SB_LogoMark_RGB.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ZhgYPnj92-BQ/Image%202020-08-19%20at%209.39.08%20AM.png",
+		"https://images.cloudflareapps.com/sFfp3VYVXjFz/Image%202020-08-19%20at%209.35.51%20AM.png",
+		"https://images.cloudflareapps.com/dbDUOADGkWRT/Image%202020-08-19%20at%209.36.57%20AM.png",
+		"https://images.cloudflareapps.com/7M-qGrtiW-RJ/Image%202020-08-19%20at%209.38.06%20AM.png",
+		"https://images.cloudflareapps.com/yGQbpzO7oquJ/Image%202020-08-19%20at%209.36.30%20AM.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "https://images.cloudflareapps.com/L5DGaCO9RYMx/Image%202020-08-19%20at%209.35.51%20AM.png",
+	"author": "SearchBlox Software, Inc.",
+	"tagline": "",
+	"website": "https://www.searchblox.com/products/site-search/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.searchblox.com/terms-of-use/",
+	"privacyPolicyURL": "https://www.searchblox.com/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@searchblox.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "67167c6ed6edfbc48c8c29856839bfc6",
+			"created": "2020-09-03T16:03:45.665596556Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "4Y0fde26Z3ac"
+	},
+	"created": "2020-08-19T12:27:48.101285Z",
+	"org": {
+		"id": "67167c6ed6edfbc48c8c29856839bfc6",
+		"title": "",
+		"username": "67167c6ed6edfbc48c8c29856839bfc6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "yCWj3ViS7CFK",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"collections": {
+							"default": "",
+							"description": "Enter collection names separated with '|' to get only those collections data. Just enter collection name if there is single collection",
+							"placeholder": "collection1|collection2",
+							"showIf": {
+								"filter_collections": true
+							},
+							"title": "Collections",
+							"type": "string"
+						},
+						"customer_id": {
+							"default": "",
+							"placeholder": "Enter Customer ID",
+							"title": "Customer ID",
+							"type": "string"
+						},
+						"filter_collections": {
+							"title": "Filter Collection",
+							"type": "boolean"
+						},
+						"is_enable_autosuggest": {
+							"title": "AutoSuggest",
+							"type": "boolean"
+						},
+						"is_enable_facet": {
+							"title": "Facets",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"page_size": {
+							"default": "10",
+							"enum": [
+								"5",
+								"10",
+								"20",
+								"30"
+							],
+							"enumNames": {
+								"5": "5",
+								"10": "10",
+								"20": "20",
+								"30": "30"
+							},
+							"title": "Results per page",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"filter_collections"
+							],
+							"reload": false
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "Created by create-cloudflare-app",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4Y0fde26Z3ac",
+			"metadata": {
+				"code": {
+					"sourceTag": "4Y0fde26Z3ac",
+					"uploadedOn": "2020-08-19T12:27:49.512304882Z"
+				}
+			},
+			"created": "2020-08-19T12:27:48.938032Z",
+			"proposedApp": {
+				"id": "yCWj3ViS7CFK",
+				"title": "SearchBlox Site Search",
+				"shortDescription": "SearchBlox Site Search, a search as a service (SaaS) product",
+				"longDescription": "SearchBlox Site Search, a search as a service (SaaS) product, helps organizations with small and medium websites meet evolving customer expectations.\n\nUnlimited domains and cross-domain search are included in the price for this simple-to-install SaaS product.\n\nProvide a better customer experience with branded UI, featured results and faceted search.\n\nGain customer insight with real-time reporting of query and click data.\n\nStop stressing about outdated search results with on-demand and scheduled crawling.",
+				"instructions": "Please sign-up at https://searchai.searchblox.com/signup and add Customer ID to the app. Faceted search and Autosuggest can be enabled if required.",
+				"alias": "site-search",
+				"orgId": "67167c6ed6edfbc48c8c29856839bfc6",
+				"icon": "https://images.cloudflareapps.com/QViFgmAj8Q0F/SB_LogoMark_RGB.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZhgYPnj92-BQ/Image%202020-08-19%20at%209.39.08%20AM.png",
+					"https://images.cloudflareapps.com/sFfp3VYVXjFz/Image%202020-08-19%20at%209.35.51%20AM.png",
+					"https://images.cloudflareapps.com/dbDUOADGkWRT/Image%202020-08-19%20at%209.36.57%20AM.png",
+					"https://images.cloudflareapps.com/7M-qGrtiW-RJ/Image%202020-08-19%20at%209.38.06%20AM.png",
+					"https://images.cloudflareapps.com/yGQbpzO7oquJ/Image%202020-08-19%20at%209.36.30%20AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/L5DGaCO9RYMx/Image%202020-08-19%20at%209.35.51%20AM.png",
+				"author": "SearchBlox Software, Inc.",
+				"tagline": "",
+				"website": "https://www.searchblox.com/products/site-search/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.searchblox.com/terms-of-use/",
+				"privacyPolicyURL": "https://www.searchblox.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@searchblox.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4Y0fde26Z3ac"
+				},
+				"created": "2020-08-19T12:27:48.101285Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "67167c6ed6edfbc48c8c29856839bfc6",
+				"requestedAt": "2020-09-03T16:03:45.651210698Z",
+				"canceledByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"canceledAt": "2020-09-14T15:48:30.901934027Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "yCWj3ViS7CFK",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"collections": {
+							"default": "",
+							"description": "Enter collection names separated with '|' to get only those collections data. Just enter collection name if there is single collection",
+							"placeholder": "collection1|collection2",
+							"showIf": {
+								"filter_collections": true
+							},
+							"title": "Collections",
+							"type": "string"
+						},
+						"customer_id": {
+							"default": "",
+							"placeholder": "Enter Customer ID",
+							"title": "Customer ID",
+							"type": "string"
+						},
+						"filter_collections": {
+							"title": "Filter Collection",
+							"type": "boolean"
+						},
+						"is_enable_autosuggest": {
+							"title": "AutoSuggest",
+							"type": "boolean"
+						},
+						"is_enable_facet": {
+							"title": "Facets",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"page_size": {
+							"default": "10",
+							"enum": [
+								"5",
+								"10",
+								"20",
+								"30"
+							],
+							"enumNames": {
+								"5": "5",
+								"10": "10",
+								"20": "20",
+								"30": "30"
+							},
+							"title": "Results per page",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"filter_collections"
+							],
+							"reload": false
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "Created by create-cloudflare-app",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated alias to searchblox-site-search and added to UI category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4Y0fde26Z3ac",
+			"created": "2020-09-14T15:48:30.558045Z",
+			"proposedApp": {
+				"id": "yCWj3ViS7CFK",
+				"title": "SearchBlox Site Search",
+				"shortDescription": "SearchBlox Site Search, a search as a service (SaaS) product",
+				"longDescription": "SearchBlox Site Search, a search as a service (SaaS) product, helps organizations with small and medium websites meet evolving customer expectations.\n\nUnlimited domains and cross-domain search are included in the price for this simple-to-install SaaS product.\n\nProvide a better customer experience with branded UI, featured results and faceted search.\n\nGain customer insight with real-time reporting of query and click data.\n\nStop stressing about outdated search results with on-demand and scheduled crawling.",
+				"instructions": "Please sign-up at https://searchai.searchblox.com/signup and add Customer ID to the app. Faceted search and Autosuggest can be enabled if required.",
+				"alias": "searchblox-site-search",
+				"orgId": "67167c6ed6edfbc48c8c29856839bfc6",
+				"icon": "https://images.cloudflareapps.com/QViFgmAj8Q0F/SB_LogoMark_RGB.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZhgYPnj92-BQ/Image%202020-08-19%20at%209.39.08%20AM.png",
+					"https://images.cloudflareapps.com/sFfp3VYVXjFz/Image%202020-08-19%20at%209.35.51%20AM.png",
+					"https://images.cloudflareapps.com/dbDUOADGkWRT/Image%202020-08-19%20at%209.36.57%20AM.png",
+					"https://images.cloudflareapps.com/7M-qGrtiW-RJ/Image%202020-08-19%20at%209.38.06%20AM.png",
+					"https://images.cloudflareapps.com/yGQbpzO7oquJ/Image%202020-08-19%20at%209.36.30%20AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/L5DGaCO9RYMx/Image%202020-08-19%20at%209.35.51%20AM.png",
+				"author": "SearchBlox Software, Inc.",
+				"tagline": "",
+				"website": "https://www.searchblox.com/products/site-search/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.searchblox.com/terms-of-use/",
+				"privacyPolicyURL": "https://www.searchblox.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@searchblox.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4Y0fde26Z3ac"
+				},
+				"created": "2020-08-19T12:27:48.101285Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-09-14T15:48:30.914931941Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-14T15:49:46.943033851Z"
+			}
+		}
+	]
+}

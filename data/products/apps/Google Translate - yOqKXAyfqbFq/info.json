@@ -1,0 +1,5098 @@
+{
+	"id": "yOqKXAyfqbFq",
+	"title": "Google Translate",
+	"shortDescription": "Translate your site into dozens of languages instantly.",
+	"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+	"instructions": "",
+	"alias": "google-translate",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Google Inc.",
+	"tagline": "",
+	"website": "https://translate.google.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#538df2",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.5",
+	"infoVersion": "2.0.5",
+	"points": 830,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:50:31.305142618Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "XIZ39wY-76HT"
+	},
+	"created": "2017-05-17T05:01:30.38723Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XIZ39wY-76HT",
+			"metadata": {
+				"code": {
+					"sourceTag": "XIZ39wY-76HT",
+					"uploadedOn": "2017-05-17T05:01:30.793180056Z"
+				}
+			},
+			"created": "2017-05-17T05:01:30.592017Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-05-17T05:01:31.708435239Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-05-17T05:02:37.16280315Z"
+			}
+		},
+		{
+			"tag": "v2.0.1",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1xttoHzJk8jr",
+			"metadata": {
+				"code": {
+					"sourceTag": "1xttoHzJk8jr",
+					"uploadedOn": "2017-05-22T17:31:23.735706523Z"
+				}
+			},
+			"created": "2017-05-22T17:31:23.365044Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-05-22T17:31:24.771112907Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-05-22T17:32:29.551336606Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 4,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1xttoHzJk8jr",
+			"created": "2017-07-06T08:50:31.072604Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:50:31.301111835Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:27.339543849Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1xttoHzJk8jr",
+			"created": "2018-01-22T20:40:17.604152Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:40:17.875176651Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:40:28.642940284Z"
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.88,
+				"upvotes": 7,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1xttoHzJk8jr",
+			"created": "2018-02-06T21:49:01.714164Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"get-more-customers",
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:49:03.060215785Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:01.081931759Z"
+			}
+		},
+		{
+			"tag": "2.0.5",
+			"appId": "yOqKXAyfqbFq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advancedOptions": {
+							"order": 7,
+							"properties": {
+								"autoDisplay": {
+									"default": true,
+									"description": "Optionally display a banner offering to translate the page into the user’s native language to visitors who do not speak the language your page is written in.",
+									"order": 0,
+									"title": "Display translation banner",
+									"type": "boolean"
+								},
+								"multilanguagePage": {
+									"description": "If you include text in multiple languages on your page, selecting this option will improve the quality of your translations.",
+									"order": 1,
+									"title": "Page contains content in multiple languages",
+									"type": "boolean"
+								}
+							},
+							"showIf": "advancedOptionsToggle",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedOptionsToggle": {
+							"order": 6,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"background": {
+									"default": "#efefef",
+									"format": "color",
+									"order": 0,
+									"title": "Box",
+									"type": "string"
+								},
+								"foreground": {
+									"default": "#fafafa",
+									"format": "color",
+									"order": 1,
+									"title": "Dropdown",
+									"type": "string"
+								},
+								"text": {
+									"default": "#444444",
+									"format": "color",
+									"order": 2,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Language selector colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Language selector location",
+							"type": "object"
+						},
+						"pageLanguage": {
+							"default": "en",
+							"description": "Specifying the existing language of the page allows Google to show the best possible translations. If your page contains multiple languages, select “multiple languages” inside Advanced Options.",
+							"enum": [
+								"af",
+								"sq",
+								"ar",
+								"hy",
+								"az",
+								"eu",
+								"be",
+								"bn",
+								"bs",
+								"bg",
+								"my",
+								"ca",
+								"ceb",
+								"zh-CN",
+								"zh-TW",
+								"hr",
+								"cs",
+								"da",
+								"nl",
+								"en",
+								"eo",
+								"et",
+								"tl",
+								"fi",
+								"fr",
+								"gl",
+								"ka",
+								"de",
+								"el",
+								"gu",
+								"ht",
+								"ha",
+								"iw",
+								"hi",
+								"hmn",
+								"hu",
+								"is",
+								"ig",
+								"id",
+								"ga",
+								"it",
+								"ja",
+								"jv",
+								"kn",
+								"kk",
+								"km",
+								"ko",
+								"lo",
+								"la",
+								"lv",
+								"lt",
+								"mk",
+								"mg",
+								"ms",
+								"ml",
+								"mt",
+								"mi",
+								"mr",
+								"mn",
+								"no",
+								"ny",
+								"fa",
+								"pl",
+								"pt",
+								"pa",
+								"ro",
+								"ru",
+								"sr",
+								"si",
+								"sk",
+								"sl",
+								"so",
+								"es",
+								"su",
+								"sw",
+								"sv",
+								"tg",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"ur",
+								"uz",
+								"vi",
+								"cy",
+								"yi",
+								"yo",
+								"zu"
+							],
+							"enumNames": {
+								"af": "Afrikaans",
+								"ar": "Arabic",
+								"az": "Azerbaijani",
+								"be": "Belarusian",
+								"bg": "Bulgarian",
+								"bn": "Bengali",
+								"bs": "Bosnian",
+								"ca": "Catalan",
+								"ceb": "Cebuano",
+								"cs": "Czech",
+								"cy": "Welsh",
+								"da": "Danish",
+								"de": "German",
+								"el": "Greek",
+								"en": "English",
+								"eo": "Esperanto",
+								"es": "Spanish",
+								"et": "Estonian",
+								"eu": "Basque",
+								"fa": "Persian",
+								"fi": "Finnish",
+								"fr": "French",
+								"ga": "Irish",
+								"gl": "Galician",
+								"gu": "Gujarati",
+								"ha": "Hausa",
+								"hi": "Hindi",
+								"hmn": "Hmong",
+								"hr": "Croatian",
+								"ht": "Haitian",
+								"hu": "Hungarian",
+								"hy": "Armenian",
+								"id": "Indonesian",
+								"ig": "Igbo",
+								"is": "Icelandic",
+								"it": "Italian",
+								"iw": "Hebrew",
+								"ja": "Japanese",
+								"jv": "Javanese",
+								"ka": "Georgian",
+								"kk": "Kazakh",
+								"km": "Khmer",
+								"kn": "Kannada",
+								"ko": "Korean",
+								"la": "Latin",
+								"lo": "Lao",
+								"lt": "Lithuanian",
+								"lv": "Latvian",
+								"mg": "Malagasy",
+								"mi": "Maori",
+								"mk": "Macedonian",
+								"ml": "Malayalam",
+								"mn": "Mongolian",
+								"mr": "Marathi",
+								"ms": "Malay",
+								"mt": "Maltese",
+								"my": "Burmese",
+								"nl": "Dutch",
+								"no": "Norwegian",
+								"ny": "Nyanja",
+								"pa": "Punjabi",
+								"pl": "Polish",
+								"pt": "Portuguese",
+								"ro": "Romanian",
+								"ru": "Russian",
+								"si": "Sinhala",
+								"sk": "Slovak",
+								"sl": "Slovenian",
+								"so": "Somali",
+								"sq": "Albanian",
+								"sr": "Serbian",
+								"su": "Sundanese",
+								"sv": "Swedish",
+								"sw": "Swahili",
+								"ta": "Tamil",
+								"te": "Telugu",
+								"tg": "Tajik",
+								"th": "Thai",
+								"tl": "Filipino",
+								"tr": "Turkish",
+								"uk": "Ukrainian",
+								"ur": "Urdu",
+								"uz": "Uzbek",
+								"vi": "Vietnamese",
+								"yi": "Yiddish",
+								"yo": "Yoruba",
+								"zh-CN": "Chinese",
+								"zh-TW": "Chinese (Traditional)",
+								"zu": "Zulu"
+							},
+							"order": 3,
+							"title": "Page language",
+							"type": "string"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Language selector alignment",
+							"type": "string"
+						},
+						"specificLanguages": {
+							"order": 5,
+							"properties": {
+								"af": {
+									"order": 0,
+									"title": "Afrikaans",
+									"type": "boolean"
+								},
+								"ar": {
+									"order": 2,
+									"title": "Arabic",
+									"type": "boolean"
+								},
+								"az": {
+									"order": 4,
+									"title": "Azerbaijani",
+									"type": "boolean"
+								},
+								"be": {
+									"order": 6,
+									"title": "Belarusian",
+									"type": "boolean"
+								},
+								"bg": {
+									"order": 9,
+									"title": "Bulgarian",
+									"type": "boolean"
+								},
+								"bn": {
+									"order": 7,
+									"title": "Bengali",
+									"type": "boolean"
+								},
+								"bs": {
+									"order": 8,
+									"title": "Bosnian",
+									"type": "boolean"
+								},
+								"ca": {
+									"order": 11,
+									"title": "Catalan",
+									"type": "boolean"
+								},
+								"ceb": {
+									"order": 12,
+									"title": "Cebuano",
+									"type": "boolean"
+								},
+								"cs": {
+									"order": 16,
+									"title": "Czech",
+									"type": "boolean"
+								},
+								"cy": {
+									"order": 85,
+									"title": "Welsh",
+									"type": "boolean"
+								},
+								"da": {
+									"order": 17,
+									"title": "Danish",
+									"type": "boolean"
+								},
+								"de": {
+									"order": 27,
+									"title": "German",
+									"type": "boolean"
+								},
+								"el": {
+									"order": 28,
+									"title": "Greek",
+									"type": "boolean"
+								},
+								"en": {
+									"order": 19,
+									"title": "English",
+									"type": "boolean"
+								},
+								"eo": {
+									"order": 20,
+									"title": "Esperanto",
+									"type": "boolean"
+								},
+								"es": {
+									"order": 72,
+									"title": "Spanish",
+									"type": "boolean"
+								},
+								"et": {
+									"order": 21,
+									"title": "Estonian",
+									"type": "boolean"
+								},
+								"eu": {
+									"order": 5,
+									"title": "Basque",
+									"type": "boolean"
+								},
+								"fa": {
+									"order": 61,
+									"title": "Persian",
+									"type": "boolean"
+								},
+								"fi": {
+									"order": 23,
+									"title": "Finnish",
+									"type": "boolean"
+								},
+								"fr": {
+									"order": 24,
+									"title": "French",
+									"type": "boolean"
+								},
+								"ga": {
+									"order": 39,
+									"title": "Irish",
+									"type": "boolean"
+								},
+								"gl": {
+									"order": 25,
+									"title": "Galician",
+									"type": "boolean"
+								},
+								"gu": {
+									"order": 29,
+									"title": "Gujarati",
+									"type": "boolean"
+								},
+								"ha": {
+									"order": 31,
+									"title": "Hausa",
+									"type": "boolean"
+								},
+								"hi": {
+									"order": 33,
+									"title": "Hindi",
+									"type": "boolean"
+								},
+								"hmn": {
+									"order": 34,
+									"title": "Hmong",
+									"type": "boolean"
+								},
+								"hr": {
+									"order": 15,
+									"title": "Croatian",
+									"type": "boolean"
+								},
+								"ht": {
+									"order": 30,
+									"title": "Haitian",
+									"type": "boolean"
+								},
+								"hu": {
+									"order": 35,
+									"title": "Hungarian",
+									"type": "boolean"
+								},
+								"hy": {
+									"order": 3,
+									"title": "Armenian",
+									"type": "boolean"
+								},
+								"id": {
+									"order": 38,
+									"title": "Indonesian",
+									"type": "boolean"
+								},
+								"ig": {
+									"order": 37,
+									"title": "Igbo",
+									"type": "boolean"
+								},
+								"is": {
+									"order": 36,
+									"title": "Icelandic",
+									"type": "boolean"
+								},
+								"it": {
+									"order": 40,
+									"title": "Italian",
+									"type": "boolean"
+								},
+								"iw": {
+									"order": 32,
+									"title": "Hebrew",
+									"type": "boolean"
+								},
+								"ja": {
+									"order": 41,
+									"title": "Japanese",
+									"type": "boolean"
+								},
+								"jv": {
+									"order": 42,
+									"title": "Javanese",
+									"type": "boolean"
+								},
+								"ka": {
+									"order": 26,
+									"title": "Georgian",
+									"type": "boolean"
+								},
+								"kk": {
+									"order": 44,
+									"title": "Kazakh",
+									"type": "boolean"
+								},
+								"km": {
+									"order": 45,
+									"title": "Khmer",
+									"type": "boolean"
+								},
+								"kn": {
+									"order": 43,
+									"title": "Kannada",
+									"type": "boolean"
+								},
+								"ko": {
+									"order": 46,
+									"title": "Korean",
+									"type": "boolean"
+								},
+								"la": {
+									"order": 48,
+									"title": "Latin",
+									"type": "boolean"
+								},
+								"lo": {
+									"order": 47,
+									"title": "Lao",
+									"type": "boolean"
+								},
+								"lt": {
+									"order": 50,
+									"title": "Lithuanian",
+									"type": "boolean"
+								},
+								"lv": {
+									"order": 49,
+									"title": "Latvian",
+									"type": "boolean"
+								},
+								"mg": {
+									"order": 52,
+									"title": "Malagasy",
+									"type": "boolean"
+								},
+								"mi": {
+									"order": 56,
+									"title": "Maori",
+									"type": "boolean"
+								},
+								"mk": {
+									"order": 51,
+									"title": "Macedonian",
+									"type": "boolean"
+								},
+								"ml": {
+									"order": 54,
+									"title": "Malayalam",
+									"type": "boolean"
+								},
+								"mn": {
+									"order": 58,
+									"title": "Mongolian",
+									"type": "boolean"
+								},
+								"mr": {
+									"order": 57,
+									"title": "Marathi",
+									"type": "boolean"
+								},
+								"ms": {
+									"order": 53,
+									"title": "Malay",
+									"type": "boolean"
+								},
+								"mt": {
+									"order": 55,
+									"title": "Maltese",
+									"type": "boolean"
+								},
+								"my": {
+									"order": 10,
+									"title": "Burmese",
+									"type": "boolean"
+								},
+								"nl": {
+									"order": 18,
+									"title": "Dutch",
+									"type": "boolean"
+								},
+								"no": {
+									"order": 59,
+									"title": "Norwegian",
+									"type": "boolean"
+								},
+								"ny": {
+									"order": 60,
+									"title": "Nyanja",
+									"type": "boolean"
+								},
+								"pa": {
+									"order": 64,
+									"title": "Punjabi",
+									"type": "boolean"
+								},
+								"pl": {
+									"order": 62,
+									"title": "Polish",
+									"type": "boolean"
+								},
+								"pt": {
+									"order": 63,
+									"title": "Portuguese",
+									"type": "boolean"
+								},
+								"ro": {
+									"order": 65,
+									"title": "Romanian",
+									"type": "boolean"
+								},
+								"ru": {
+									"order": 66,
+									"title": "Russian",
+									"type": "boolean"
+								},
+								"si": {
+									"order": 68,
+									"title": "Sinhala",
+									"type": "boolean"
+								},
+								"sk": {
+									"order": 69,
+									"title": "Slovak",
+									"type": "boolean"
+								},
+								"sl": {
+									"order": 70,
+									"title": "Slovenian",
+									"type": "boolean"
+								},
+								"so": {
+									"order": 71,
+									"title": "Somali",
+									"type": "boolean"
+								},
+								"sq": {
+									"order": 1,
+									"title": "Albanian",
+									"type": "boolean"
+								},
+								"sr": {
+									"order": 67,
+									"title": "Serbian",
+									"type": "boolean"
+								},
+								"su": {
+									"order": 73,
+									"title": "Sundanese",
+									"type": "boolean"
+								},
+								"sv": {
+									"order": 75,
+									"title": "Swedish",
+									"type": "boolean"
+								},
+								"sw": {
+									"order": 74,
+									"title": "Swahili",
+									"type": "boolean"
+								},
+								"ta": {
+									"order": 77,
+									"title": "Tamil",
+									"type": "boolean"
+								},
+								"te": {
+									"order": 78,
+									"title": "Telugu",
+									"type": "boolean"
+								},
+								"tg": {
+									"order": 76,
+									"title": "Tajik",
+									"type": "boolean"
+								},
+								"th": {
+									"order": 79,
+									"title": "Thai",
+									"type": "boolean"
+								},
+								"tl": {
+									"order": 22,
+									"title": "Filipino",
+									"type": "boolean"
+								},
+								"tr": {
+									"order": 80,
+									"title": "Turkish",
+									"type": "boolean"
+								},
+								"uk": {
+									"order": 81,
+									"title": "Ukrainian",
+									"type": "boolean"
+								},
+								"ur": {
+									"order": 82,
+									"title": "Urdu",
+									"type": "boolean"
+								},
+								"uz": {
+									"order": 83,
+									"title": "Uzbek",
+									"type": "boolean"
+								},
+								"vi": {
+									"order": 84,
+									"title": "Vietnamese",
+									"type": "boolean"
+								},
+								"yi": {
+									"order": 86,
+									"title": "Yiddish",
+									"type": "boolean"
+								},
+								"yo": {
+									"order": 87,
+									"title": "Yoruba",
+									"type": "boolean"
+								},
+								"zh_CN": {
+									"order": 13,
+									"title": "Chinese",
+									"type": "boolean"
+								},
+								"zh_TW": {
+									"order": 14,
+									"title": "Chinese (Traditional)",
+									"type": "boolean"
+								},
+								"zu": {
+									"order": 88,
+									"title": "Zulu",
+									"type": "boolean"
+								}
+							},
+							"showIf": "specificLanguagesToggle",
+							"title": "Languages",
+							"type": "object"
+						},
+						"specificLanguagesToggle": {
+							"description": "Optionally choose a specific list of languages to offer to your visitors.",
+							"order": 4,
+							"title": "Customize languages",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"colors",
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setStylesheet(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"element",
+								"pageLanguage",
+								"specificLanguagesToggle",
+								"specificLanguages",
+								"advancedOptionsToggle",
+								"advancedOptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.77,
+				"upvotes": 138,
+				"downvotes": 41
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1xttoHzJk8jr",
+			"created": "2018-11-13T21:29:57.385051Z",
+			"proposedApp": {
+				"id": "yOqKXAyfqbFq",
+				"title": "Google Translate",
+				"shortDescription": "Translate your site into dozens of languages instantly.",
+				"longDescription": "The Google Translate app adds a beautifully designed language dropdown to your site in the location of your choice. \nWhen the user selects a language, your site will be automatically translated to the language they have chosen.  \nYour visitors will be able to select from the dozens of languages Google Translate supports, allowing your website to be understood to visitors from all around the world.",
+				"instructions": "",
+				"alias": "google-translate",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/k7E6ySfQTlq38QZauzSf_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/TLRktFxWSsCIP4MOGSUg_screenshot-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Google Inc.",
+				"tagline": "",
+				"website": "https://translate.google.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "XIZ39wY-76HT"
+				},
+				"created": "2017-05-17T05:01:30.38723Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T21:29:57.755901679Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:32:29.159860708Z"
+			}
+		}
+	]
+}

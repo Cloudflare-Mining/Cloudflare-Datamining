@@ -1,0 +1,698 @@
+{
+	"id": "I6znKssTAzwP",
+	"title": "Smartarget",
+	"shortDescription": "Improve User Engagement Without Coding",
+	"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+	"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+	"alias": "smartarget",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/qdOu4RTVzEx_/smartarget%20apps.png",
+		"https://images.cloudflareapps.com/qdOu4RTVzEx_/smartargetr%20reports.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/uC0wrGddpRcJ/3.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-01-17T10:22:08.650888612Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "P89ZaU5WFi1e"
+	},
+	"created": "2020-01-17T10:22:05.609019Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First launch :)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P89ZaU5WFi1e",
+			"metadata": {
+				"code": {
+					"sourceTag": "P89ZaU5WFi1e",
+					"uploadedOn": "2020-01-17T10:22:06.665136176Z"
+				}
+			},
+			"created": "2020-01-17T10:22:06.13545Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IodrfiKJOQT2/Screenshot_2020-01-17%20Smartarget%20Dashboard.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-01-17T10:22:08.63340296Z",
+				"canceledByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"canceledAt": "2020-01-17T10:25:33.010568688Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First launch :)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P89ZaU5WFi1e",
+			"created": "2020-01-17T10:25:32.47013Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IodrfiKJOQT2/Screenshot_2020-01-17%20Smartarget%20Dashboard.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-01-17T10:25:33.027677512Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-17T17:16:33.755123653Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "Promotion banner",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P89ZaU5WFi1e",
+			"created": "2020-02-15T20:40:39.284453Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IodrfiKJOQT2/Screenshot_2020-01-17%20Smartarget%20Dashboard.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/uC0wrGddpRcJ/3.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-02-15T20:40:52.501465741Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-15T23:34:40.519731934Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0JC0cpcTpeqF",
+			"metadata": {
+				"code": {
+					"sourceTag": "0JC0cpcTpeqF",
+					"uploadedOn": "2020-10-05T08:54:08.094261607Z"
+				}
+			},
+			"created": "2020-10-05T08:54:07.625297Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/IodrfiKJOQT2/Screenshot_2020-01-17%20Smartarget%20Dashboard.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/uC0wrGddpRcJ/3.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-05T08:54:09.012537607Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-05T15:15:38.751978365Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Promo image update",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0JC0cpcTpeqF",
+			"created": "2020-11-11T11:02:06.472829Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1tIJqlIK_NKK/Screenshot_2020-11-11%20Smartarget%20Dashboard.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/uC0wrGddpRcJ/3.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-11-11T11:02:07.01346032Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-13T15:20:29.217651869Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "I6znKssTAzwP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 1,
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.73,
+				"upvotes": 11,
+				"downvotes": 4
+			},
+			"releaseNotes": "New screenshot images",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0JC0cpcTpeqF",
+			"created": "2020-11-18T18:20:49.537256Z",
+			"proposedApp": {
+				"id": "I6znKssTAzwP",
+				"title": "Smartarget",
+				"shortDescription": "Improve User Engagement Without Coding",
+				"longDescription": "Improve User Engagement Without Coding\nhttps://smartarget.online\n\nAdd different apps to your website and make your user more engaged and increase sales without any need in coding.\n\n* Communication - Use our communication feeatures and allow your users to contact you easily by Whatsapp, Email, Phone and more.\n\n* Special Offers - Smartarget has different apps which allow you to communicate special deals and offers to users.\n\n* Easy To Use - Simple integration and no-coding to make your business better",
+				"instructions": "In order to install Smartarget apps you need to register on https://smartarget.online \n\nThis Cloudflare app will make it easier for you to implement it on your website",
+				"alias": "smartarget",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/Cdb0k4LCd4UG/logo-sign.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/qdOu4RTVzEx_/smartarget%20apps.png",
+					"https://images.cloudflareapps.com/qdOu4RTVzEx_/smartargetr%20reports.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hFJR1bAjyq8U/268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/uC0wrGddpRcJ/3.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_terms.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "P89ZaU5WFi1e"
+				},
+				"created": "2020-01-17T10:22:05.609019Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-11-18T18:20:50.063223906Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-20T21:13:55.267423407Z"
+			}
+		}
+	]
+}

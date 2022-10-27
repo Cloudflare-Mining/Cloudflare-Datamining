@@ -1,0 +1,1047 @@
+{
+	"id": "9DcaX3u7Avg6",
+	"title": "Smartarget Lucky Wheel",
+	"shortDescription": "Get 32% more Email Leads with Prizes Lucky Wheel!",
+	"longDescription": "Lucky Wheel gives you the best solution to get email addresses from visitors of your website. Lucky Wheel offers visitors to fill in their email addresses to spins for prizes. This is the best way to collect email from visitors on your site, they will be pleased to fill in their email address. \n\nYou can choose how many lucky possibilities the users will have and to show them a coupon code only if they had luck. The wheel will simply pick a random option once the user spins. Choose also the fields that users will need to fill in order to spin, for example you can choose if you would like to have also their full name, phone number or simply just email address.\n\nLucky Wheel is fully customized, you can choose the colors, content, location, and popup behavior.",
+	"instructions": "",
+	"alias": "smartarget-lucky-wheel",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/l4GxbuVLaoob/lucky_wheel.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-2-desktop.png",
+		"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-mobile.png",
+		"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-desktop.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/pvYlif7wL0Ta/lucky_wheel.png",
+	"featuredAppImage": "",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2022-02-08T10:44:55.486319706Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "crGFCukqqBTY"
+	},
+	"created": "2022-02-08T10:44:51.830593Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "9DcaX3u7Avg6",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 17,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"emailVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email Field Visibility",
+							"type": "string"
+						},
+						"fullNameVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Full Name Field Visibility",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 16,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own text",
+								"default": "Use default message (I FEEL LUCKY!)"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button text",
+							"type": "string"
+						},
+						"messageVisibility": {
+							"default": "hidden",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message Field Visibility",
+							"type": "string"
+						},
+						"ownerEmail": {
+							"default": "",
+							"description": "You will get notification when users leave contacts and spin the wheel. Use Smartarget integration (Free Plus) to see detailed statistics in Smartarget Reports.",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your email",
+							"type": "string"
+						},
+						"ownerTelegram": {
+							"default": "",
+							"description": "You will get notification also on Telegram (you should connect @smartarget_the_bot on TG).",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your Telegram",
+							"type": "string"
+						},
+						"phoneVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone Field Visibility",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Lucky Wheel app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"subTitle": {
+							"default": "Do you want 30% discount? Spin the wheel!",
+							"description": "Lucky Wheel Subtitle",
+							"format": "text",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle",
+							"type": "string"
+						},
+						"submitButtonColor": {
+							"default": "#540bfa",
+							"format": "color",
+							"order": 14,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button color",
+							"type": "string"
+						},
+						"subtitleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 13,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle color",
+							"type": "string"
+						},
+						"title": {
+							"default": "SPIN TO WIN 🍀",
+							"description": "Lucky Wheel Title",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title",
+							"type": "string"
+						},
+						"titleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title color",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 15,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/crGFCukqqBTY",
+			"metadata": {
+				"code": {
+					"sourceTag": "crGFCukqqBTY",
+					"uploadedOn": "2022-02-08T10:44:53.81676079Z"
+				}
+			},
+			"created": "2022-02-08T10:44:52.454844Z",
+			"proposedApp": {
+				"id": "9DcaX3u7Avg6",
+				"title": "Smartarget Lucky Wheel",
+				"shortDescription": "Get 32% more Email Leads with Prizes Lucky Wheel!",
+				"longDescription": "Lucky Wheel gives you the best solution to get email addresses from visitors of your website. Lucky Wheel offers visitors to fill in their email addresses to spins for prizes. This is the best way to collect email from visitors on your site, they will be pleased to fill in their email address. \n\nYou can choose how many lucky possibilities the users will have and to show them a coupon code only if they had luck. The wheel will simply pick a random option once the user spins. Choose also the fields that users will need to fill in order to spin, for example you can choose if you would like to have also their full name, phone number or simply just email address.\n\nLucky Wheel is fully customized, you can choose the colors, content, location, and popup behavior.",
+				"instructions": "",
+				"alias": "smartarget-lucky-wheel",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/l4GxbuVLaoob/lucky_wheel.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-2-desktop.png",
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-mobile.png",
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-desktop.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/pvYlif7wL0Ta/lucky_wheel.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crGFCukqqBTY"
+				},
+				"created": "2022-02-08T10:44:51.830593Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2022-02-08T10:44:55.480547249Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-02-22T16:12:53.549157138Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "9DcaX3u7Avg6",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 17,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_lucky_wheel'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"emailVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email Field Visibility",
+							"type": "string"
+						},
+						"fullNameVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Full Name Field Visibility",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 16,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own text",
+								"default": "Use default message (I FEEL LUCKY!)"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button text",
+							"type": "string"
+						},
+						"messageVisibility": {
+							"default": "hidden",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message Field Visibility",
+							"type": "string"
+						},
+						"ownerEmail": {
+							"default": "",
+							"description": "You will get notification when users leave contacts and spin the wheel. Use Smartarget integration (Free Plus) to see detailed statistics in Smartarget Reports.",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your email",
+							"type": "string"
+						},
+						"ownerTelegram": {
+							"default": "",
+							"description": "You will get notification also on Telegram (you should connect @smartarget_the_bot on TG).",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your Telegram",
+							"type": "string"
+						},
+						"phoneVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone Field Visibility",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Lucky Wheel app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"subTitle": {
+							"default": "Do you want 30% discount? Spin the wheel!",
+							"description": "Lucky Wheel Subtitle",
+							"format": "text",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle",
+							"type": "string"
+						},
+						"submitButtonColor": {
+							"default": "#540bfa",
+							"format": "color",
+							"order": 14,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button color",
+							"type": "string"
+						},
+						"subtitleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 13,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle color",
+							"type": "string"
+						},
+						"title": {
+							"default": "SPIN TO WIN 🍀",
+							"description": "Lucky Wheel Title",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title",
+							"type": "string"
+						},
+						"titleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title color",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 15,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Widgets & Plugins category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/crGFCukqqBTY",
+			"created": "2022-02-22T16:15:07.143457Z",
+			"proposedApp": {
+				"id": "9DcaX3u7Avg6",
+				"title": "Smartarget Lucky Wheel",
+				"shortDescription": "Get 32% more Email Leads with Prizes Lucky Wheel!",
+				"longDescription": "Lucky Wheel gives you the best solution to get email addresses from visitors of your website. Lucky Wheel offers visitors to fill in their email addresses to spins for prizes. This is the best way to collect email from visitors on your site, they will be pleased to fill in their email address. \n\nYou can choose how many lucky possibilities the users will have and to show them a coupon code only if they had luck. The wheel will simply pick a random option once the user spins. Choose also the fields that users will need to fill in order to spin, for example you can choose if you would like to have also their full name, phone number or simply just email address.\n\nLucky Wheel is fully customized, you can choose the colors, content, location, and popup behavior.",
+				"instructions": "",
+				"alias": "smartarget-lucky-wheel",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/l4GxbuVLaoob/lucky_wheel.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-2-desktop.png",
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-mobile.png",
+					"https://images.cloudflareapps.com/YFBWPiNaoImG/lucky_wheel-1-desktop.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/pvYlif7wL0Ta/lucky_wheel.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crGFCukqqBTY"
+				},
+				"created": "2022-02-08T10:44:51.830593Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2022-02-22T16:15:08.176082969Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-02-22T16:15:14.181704093Z"
+			}
+		}
+	]
+}

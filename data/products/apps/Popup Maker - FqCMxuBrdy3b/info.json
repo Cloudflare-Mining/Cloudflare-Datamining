@@ -1,0 +1,702 @@
+{
+	"id": "FqCMxuBrdy3b",
+	"title": "Popup Maker",
+	"shortDescription": "Best marketing exit intent popup to get more leads",
+	"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of [Popup Maker](https://popupmaker.com/), you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+	"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+	"alias": "popupmaker",
+	"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+	"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+		"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+		"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+		"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+		"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+	"featuredAppImage": "",
+	"author": "Popup Maker",
+	"tagline": "",
+	"website": "https://popupmaker.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://popupmaker.com/terms/",
+	"privacyPolicyURL": "https://popupmaker.com/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 0,
+	"supportEmail": "support@popupmaker.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1b28196b1951f181c0c9b660734fdaa3",
+			"created": "2018-09-01T13:10:10.537586918Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "4daFDYkA1q14"
+	},
+	"created": "2018-09-01T08:33:03.01511Z",
+	"org": {
+		"id": "1b28196b1951f181c0c9b660734fdaa3",
+		"title": "",
+		"username": "1b28196b1951f181c0c9b660734fdaa3",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "FqCMxuBrdy3b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"popupmaker"
+							],
+							"title": "Popup Maker",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://popupmaker.com/api/v1/metadata/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Initial commit",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4daFDYkA1q14",
+			"metadata": {
+				"code": {
+					"sourceTag": "4daFDYkA1q14",
+					"uploadedOn": "2018-09-01T08:33:04.819230472Z"
+				}
+			},
+			"created": "2018-09-01T08:33:04.239711Z",
+			"proposedApp": {
+				"id": "FqCMxuBrdy3b",
+				"title": "Popup Maker",
+				"shortDescription": "Best marketing exit intent popup to get more leads",
+				"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of Popup Maker, you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+				"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+				"alias": "popupmaker",
+				"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+				"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "https://popupmaker.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://popupmaker.com/terms/",
+				"privacyPolicyURL": "https://popupmaker.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4daFDYkA1q14"
+				},
+				"created": "2018-09-01T08:33:03.01511Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "1b28196b1951f181c0c9b660734fdaa3",
+				"requestedAt": "2018-09-01T13:10:10.515250789Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-06T16:21:33.545490167Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "FqCMxuBrdy3b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"popupmaker"
+							],
+							"title": "Popup Maker",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://popupmaker.com/api/v1/metadata/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial commit",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4daFDYkA1q14",
+			"created": "2018-11-06T07:48:06.860305Z",
+			"proposedApp": {
+				"id": "FqCMxuBrdy3b",
+				"title": "Popup Maker",
+				"shortDescription": "Best marketing exit intent popup to get more leads",
+				"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of Popup Maker, you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+				"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+				"alias": "popupmaker",
+				"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+				"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+				"featuredAppImage": "",
+				"author": "Popup Maker",
+				"tagline": "",
+				"website": "https://popupmaker.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://popupmaker.com/terms/",
+				"privacyPolicyURL": "https://popupmaker.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@popupmaker.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4daFDYkA1q14"
+				},
+				"created": "2018-09-01T08:33:03.01511Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "1b28196b1951f181c0c9b660734fdaa3",
+				"requestedAt": "2018-12-24T14:07:09.595302765Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-15T16:53:04.989018017Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "FqCMxuBrdy3b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"popupmaker"
+							],
+							"title": "Popup Maker",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://popupmaker.com/api/v1/metadata/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Minor changes an fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4daFDYkA1q14",
+			"created": "2019-10-25T09:00:29.426581Z",
+			"proposedApp": {
+				"id": "FqCMxuBrdy3b",
+				"title": "Popup Maker",
+				"shortDescription": "Best marketing exit intent popup to get more leads",
+				"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of Popup Maker, you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+				"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+				"alias": "popupmaker",
+				"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+				"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+				"featuredAppImage": "",
+				"author": "Popup Maker",
+				"tagline": "",
+				"website": "https://popupmaker.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://popupmaker.com/terms/",
+				"privacyPolicyURL": "https://popupmaker.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@popupmaker.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4daFDYkA1q14"
+				},
+				"created": "2018-09-01T08:33:03.01511Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1b28196b1951f181c0c9b660734fdaa3",
+				"requestedAt": "2019-10-25T09:00:30.523574115Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-25T16:20:18.988480082Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "FqCMxuBrdy3b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"popupmaker"
+							],
+							"title": "Popup Maker",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://popupmaker.com/api/v1/metadata/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "Changed Readme",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4daFDYkA1q14",
+			"created": "2019-10-30T11:26:52.343004Z",
+			"proposedApp": {
+				"id": "FqCMxuBrdy3b",
+				"title": "Popup Maker",
+				"shortDescription": "Best marketing exit intent popup to get more leads",
+				"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of [Popup Maker](https://popupmaker.com/), you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+				"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+				"alias": "popupmaker",
+				"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+				"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+				"featuredAppImage": "",
+				"author": "Popup Maker",
+				"tagline": "",
+				"website": "https://popupmaker.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://popupmaker.com/terms/",
+				"privacyPolicyURL": "https://popupmaker.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@popupmaker.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4daFDYkA1q14"
+				},
+				"created": "2018-09-01T08:33:03.01511Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1b28196b1951f181c0c9b660734fdaa3",
+				"requestedAt": "2019-10-30T11:26:53.036257509Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-04T16:26:16.312011166Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "FqCMxuBrdy3b",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"popupmaker"
+							],
+							"title": "Popup Maker",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://popupmaker.com/api/v1/metadata/",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 2,
+				"downvotes": 4
+			},
+			"releaseNotes": "Bug fixes and improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DkeMXf_UEoCR",
+			"metadata": {
+				"code": {
+					"sourceTag": "DkeMXf_UEoCR",
+					"uploadedOn": "2020-06-16T13:30:42.197122747Z"
+				}
+			},
+			"created": "2020-06-16T13:30:41.508246Z",
+			"proposedApp": {
+				"id": "FqCMxuBrdy3b",
+				"title": "Popup Maker",
+				"shortDescription": "Best marketing exit intent popup to get more leads",
+				"longDescription": "# What is Popup Maker?\n\n**Popup Maker** can rocket the efficiency of your products, the attractiveness of your website, the flow to your website, the traffic at your social accounts, the flexibility of your projects, the number of your core customers, the ease of usage of your website, the lightness of perception of your product and website.\nPopup Maker is a standalone application with many web platforms’ integrations, including WordPress, Shopify, Drupal, etc.\n\nWith the smart tools of [Popup Maker](https://popupmaker.com/), you can add needed elements and create a popup which can contain elements like: Image popup, Countdown popup, HTML popup, Video popup, Subscription popup (with quick sending Newsletter opportunity), Contact popup, Social popup, Iframe popup, Age restriction popup, Optin forms. You can even mix them in one popup, including several elements in one popup. So you can have a Subscription popup with Countdown, or an Image popup with Social buttons – it’s all up to your imagination.\n\n##  Popup Maker – Features:\n\n- Create and manage as many popups as you want\n- Create a popup using our awesome templates\n- Popup look and feel customization\n- Popup animation effect customization\n- Beautiful optin forms\n- HTML popup – create a popup with custom HTML content\n- Image popup – create a promotion pop up with an image\n- Iframe popup – specify a site url which should be loaded in a popup\n- Video popup – embed YouTube, Vimeo and Daily Motion videos inside a popup\n- Social popup – open social share & like buttons in a popup. Almost all social - networks are supported: Facebook, LinkedIn, Twitter, Google Plus, etc.\n- Age restriction popup – sometimes the content of specific website might be inappropriate for certain audiences. In these cases, users may not be able to view the content until they pass the age confirmation pop up\n- Countdown popup – the most flexible way to contact your customers. For instance, your site is under construction and you are planning to open it for a specific time. Therefore, you may just create a countdown popup and fully inform your customers\n- Subscription popup – the easiest way to create an efficient connection between users and website owners by using a optin forms. With this simple popup solution, you can quickly collect subscribers in a very pleasant and elegant way. All the subscribers are kept in the Subscribers section, and you can export the list, or delete the subscribers you wish\n- Contact form popup – this popup content allows the visitors of your website to write you a message right from the popup\n- Spinner popup – make the selling process fun for your customers. Offer different discounts, free shipping, free gifts and many more enticing stuff to encourage your users for more sales. Create beautiful pop ups with the spinner pop up element from scratch, or select our lightbox templates to go easier!\n- Google Analytics (separate extension) – get detailed and exact statistics about the effectiveness of your popups\n\n- Exit-intent technology – Exit Intention technology is one of the finest inventions that could be used for popup triggering. The best productive way to catch someone’s attention and bring back to your website! Show your offers and convince them to hang on your site to learn more, to shop or subscribe to your awesome newsletter. Create beautiful exit popup from scratch, or select our lightbox templates to go easier!",
+				"instructions": "Please, install Popup Maker App from Cloudflare and authenticate your Popup Maker account.",
+				"alias": "popupmaker",
+				"orgId": "1b28196b1951f181c0c9b660734fdaa3",
+				"icon": "https://images.cloudflareapps.com/9aAoX1dTvEfg/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/1.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/2.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/5.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/4.png",
+					"https://images.cloudflareapps.com/iBHiAqpbti3V/3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzyvFjWHPSfA/tile.png",
+				"featuredAppImage": "",
+				"author": "Popup Maker",
+				"tagline": "",
+				"website": "https://popupmaker.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://popupmaker.com/terms/",
+				"privacyPolicyURL": "https://popupmaker.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@popupmaker.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4daFDYkA1q14"
+				},
+				"created": "2018-09-01T08:33:03.01511Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1b28196b1951f181c0c9b660734fdaa3",
+				"requestedAt": "2020-06-16T13:30:43.532405313Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-17T16:29:48.865139887Z"
+			}
+		}
+	]
+}

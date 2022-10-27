@@ -1,0 +1,146 @@
+{
+	"id": "NvJqlekwlreb",
+	"title": "TXT Verify",
+	"shortDescription": "Automates website verification for Google Webmaster, etc.",
+	"longDescription": "Were you asked to place a verification code on your website by services such as Google Webmaster Console? This simple app will automatically place that code on your website.",
+	"instructions": "On Google Webmaster Tools or other services requiring that you verify your website, you may be asked to select a verification method. Please ensure you select \"TXT\" or \"TXT Record\".",
+	"alias": "verify",
+	"orgId": "984bba12e996cf999429887b65441f68",
+	"icon": "https://images.cloudflareapps.com/Lm5ODacC2tek/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/q2Pcfb1GDd-Y/Screenshot%202020-02-09%20at%2011.50.10.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "The Make a Difference Movement (Change for Chance) Foundation, Limited.",
+	"tagline": "",
+	"website": "https://changeforchance.org",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://docs.changeforchance.org/operating-policies/terms-of-use",
+	"privacyPolicyURL": "https://docs.changeforchance.org/operating-policies/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "hello@changeforchance.org",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "984bba12e996cf999429887b65441f68",
+			"created": "2020-02-09T03:57:54.361672057Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "lMpBWZa-GFtB"
+	},
+	"created": "2020-02-09T03:55:33.957069Z",
+	"org": {
+		"id": "984bba12e996cf999429887b65441f68",
+		"title": "",
+		"username": "984bba12e996cf999429887b65441f68",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "NvJqlekwlreb",
+			"definition": {
+				"options": {
+					"properties": {
+						"code": {
+							"description": "The verification code you were asked to insert",
+							"order": 1,
+							"placeholder": "*Required - e.g. verify-1234567890",
+							"required": true,
+							"title": "Verification Code",
+							"type": "string"
+						}
+					}
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "@",
+						"content": "{{options.code}}"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Initial release!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lMpBWZa-GFtB",
+			"metadata": {
+				"code": {
+					"sourceTag": "lMpBWZa-GFtB",
+					"uploadedOn": "2020-02-09T03:55:36.199198189Z"
+				}
+			},
+			"created": "2020-02-09T03:55:35.197599Z",
+			"proposedApp": {
+				"id": "NvJqlekwlreb",
+				"title": "TXT Verify",
+				"shortDescription": "Automates website verification for Google Webmaster, etc.",
+				"longDescription": "Were you asked to place a verification code on your website by services such as Google Webmaster Console? This simple app will automatically place that code on your website.",
+				"instructions": "On Google Webmaster Tools or other services requiring that you verify your website, you may be asked to select a verification method. Please ensure you select \"TXT\" or \"TXT Record\".",
+				"alias": "verify",
+				"orgId": "984bba12e996cf999429887b65441f68",
+				"icon": "https://images.cloudflareapps.com/Lm5ODacC2tek/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/q2Pcfb1GDd-Y/Screenshot%202020-02-09%20at%2011.50.10.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "The Make a Difference Movement (Change for Chance) Foundation, Limited.",
+				"tagline": "",
+				"website": "https://changeforchance.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://docs.changeforchance.org/operating-policies/terms-of-use",
+				"privacyPolicyURL": "https://docs.changeforchance.org/operating-policies/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@changeforchance.org",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "lMpBWZa-GFtB"
+				},
+				"created": "2020-02-09T03:55:33.957069Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "984bba12e996cf999429887b65441f68",
+				"requestedAt": "2020-02-09T03:57:54.346351488Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-10T17:27:30.957838509Z"
+			}
+		}
+	]
+}

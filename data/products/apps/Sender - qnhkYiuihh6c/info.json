@@ -1,0 +1,986 @@
+{
+	"id": "qnhkYiuihh6c",
+	"title": "Sender",
+	"shortDescription": "Get more newsletter subscribers with subscription forms.",
+	"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png)",
+	"instructions": "",
+	"alias": "sender",
+	"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+	"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png",
+		"//images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png",
+		"//images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+	"featuredAppImage": "",
+	"author": "Sender.net",
+	"tagline": "",
+	"website": "https://sender.net/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://sender.net/terms-of-service/",
+	"privacyPolicyURL": "https://sender.net/privacy-policy/",
+	"color": "#ff5f20",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 200,
+	"supportEmail": "support@sender.net",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d5a40c865e00ceba6dfda215ae97ecf",
+			"created": "2017-12-29T09:05:39.150513016Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "y8lyRg8whKqT"
+	},
+	"created": "2017-12-28T16:44:40.444318Z",
+	"org": {
+		"id": "8d5a40c865e00ceba6dfda215ae97ecf",
+		"title": "",
+		"username": "8d5a40c865e00ceba6dfda215ae97ecf",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "qnhkYiuihh6c",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/sender_subscriptions.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"sender"
+							],
+							"title": "Sender",
+							"type": "object"
+						},
+						"form": {
+							"default": "none",
+							"description": "Which form do you want to display?",
+							"enum": [
+								"none"
+							],
+							"enumNames": {
+								"none": "Nothing selected"
+							},
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Form",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the form appear?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"form": {
+									"op": "!=",
+									"value": "none"
+								}
+							},
+							"title": "Form Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sender.net/api/cloudflare_forms",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "An error occurred when connecting to Sender.net services. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "First version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7TE6NIirwc8G",
+			"metadata": {
+				"code": {
+					"sourceTag": "7TE6NIirwc8G",
+					"uploadedOn": "2017-12-29T09:05:38.0008852Z"
+				}
+			},
+			"created": "2017-12-28T16:44:42.030921Z",
+			"proposedApp": {
+				"id": "qnhkYiuihh6c",
+				"title": "Sender",
+				"shortDescription": "Get more newsletter subscribers with subscription forms.",
+				"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/tTcDU5RkSKkqgDOfBq9U_Product3.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/LQzzkuwMROySgM2y0l7f_Product1.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/hrmT06zNRrWS3knVJUVF_Automation.jpg)",
+				"instructions": "",
+				"alias": "sender",
+				"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tTcDU5RkSKkqgDOfBq9U_Product3.png",
+					"//images.cloudflareapps.com/LQzzkuwMROySgM2y0l7f_Product1.png",
+					"//images.cloudflareapps.com/hrmT06zNRrWS3knVJUVF_Automation.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+				"featuredAppImage": "",
+				"author": "Sender.net",
+				"tagline": "",
+				"website": "https://sender.net/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sender.net/terms-of-service/",
+				"privacyPolicyURL": "https://sender.net/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sender.net",
+				"products": [],
+				"categoryIds": [
+					"grow-your-email-list",
+					"marketing",
+					"add-on",
+					"get-more-customers",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "y8lyRg8whKqT"
+				},
+				"created": "2017-12-28T16:44:40.444318Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"requestedAt": "2017-12-29T09:05:39.105483732Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-09T08:08:09.001955879Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "qnhkYiuihh6c",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/sender_subscriptions.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"sender"
+							],
+							"title": "Sender",
+							"type": "object"
+						},
+						"form": {
+							"default": "none",
+							"description": "Which form do you want to display?",
+							"enum": [
+								"none"
+							],
+							"enumNames": {
+								"none": "Nothing selected"
+							},
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Form",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the form appear?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"form": {
+									"op": "!=",
+									"value": "none"
+								}
+							},
+							"title": "Form Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sender.net/api/cloudflare_forms",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "An error occurred when connecting to Sender.net services. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Added registration possibility and removed jQuery dependencies",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/oCNJXa5uZKTL",
+			"metadata": {
+				"code": {
+					"sourceTag": "oCNJXa5uZKTL",
+					"uploadedOn": "2018-01-18T09:22:09.598230894Z"
+				}
+			},
+			"created": "2018-01-18T09:22:08.933243Z",
+			"proposedApp": {
+				"id": "qnhkYiuihh6c",
+				"title": "Sender",
+				"shortDescription": "Get more newsletter subscribers with subscription forms.",
+				"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/tTcDU5RkSKkqgDOfBq9U_Product3.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/LQzzkuwMROySgM2y0l7f_Product1.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/hrmT06zNRrWS3knVJUVF_Automation.jpg)",
+				"instructions": "",
+				"alias": "sender",
+				"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tTcDU5RkSKkqgDOfBq9U_Product3.png",
+					"//images.cloudflareapps.com/LQzzkuwMROySgM2y0l7f_Product1.png",
+					"//images.cloudflareapps.com/hrmT06zNRrWS3knVJUVF_Automation.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+				"featuredAppImage": "",
+				"author": "Sender.net",
+				"tagline": "",
+				"website": "https://sender.net/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sender.net/terms-of-service/",
+				"privacyPolicyURL": "https://sender.net/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sender.net",
+				"products": [],
+				"categoryIds": [
+					"grow-your-email-list",
+					"marketing",
+					"add-on",
+					"get-more-customers",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "y8lyRg8whKqT"
+				},
+				"created": "2017-12-28T16:44:40.444318Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"requestedAt": "2018-01-18T09:22:11.160678813Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-26T02:33:03.577674001Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "qnhkYiuihh6c",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/sender_subscriptions.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"sender"
+							],
+							"title": "Sender",
+							"type": "object"
+						},
+						"form": {
+							"default": "none",
+							"description": "Which form do you want to display?",
+							"enum": [
+								"none"
+							],
+							"enumNames": {
+								"none": "Nothing selected"
+							},
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Form",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the form appear?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"form": {
+									"op": "!=",
+									"value": "none"
+								}
+							},
+							"title": "Form Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sender.net/api/cloudflare_forms",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "An error occurred when connecting to Sender.net services. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Updated app description and images.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/COYotxRsFM1j",
+			"metadata": {
+				"code": {
+					"sourceTag": "COYotxRsFM1j",
+					"uploadedOn": "2018-02-20T11:34:18.008766946Z"
+				}
+			},
+			"created": "2018-02-20T11:34:17.512313Z",
+			"proposedApp": {
+				"id": "qnhkYiuihh6c",
+				"title": "Sender",
+				"shortDescription": "Get more newsletter subscribers with subscription forms.",
+				"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png)",
+				"instructions": "",
+				"alias": "sender",
+				"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png",
+					"//images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png",
+					"//images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+				"featuredAppImage": "",
+				"author": "Sender.net",
+				"tagline": "",
+				"website": "https://sender.net/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sender.net/terms-of-service/",
+				"privacyPolicyURL": "https://sender.net/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sender.net",
+				"products": [],
+				"categoryIds": [
+					"grow-your-email-list",
+					"marketing",
+					"add-on",
+					"get-more-customers",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "y8lyRg8whKqT"
+				},
+				"created": "2017-12-28T16:44:40.444318Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"requestedAt": "2018-02-20T11:34:19.688592902Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-27T22:44:51.643286675Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "qnhkYiuihh6c",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/sender_subscriptions.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"sender"
+							],
+							"title": "Sender",
+							"type": "object"
+						},
+						"form": {
+							"default": "none",
+							"description": "Which form do you want to display?",
+							"enum": [
+								"none"
+							],
+							"enumNames": {
+								"none": "Nothing selected"
+							},
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Form",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the form appear?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"form": {
+									"op": "!=",
+									"value": "none"
+								}
+							},
+							"title": "Form Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sender.net/api/cloudflare_forms",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "An error occurred when connecting to Sender.net services. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/COYotxRsFM1j",
+			"created": "2018-02-27T22:46:42.304057Z",
+			"proposedApp": {
+				"id": "qnhkYiuihh6c",
+				"title": "Sender",
+				"shortDescription": "Get more newsletter subscribers with subscription forms.",
+				"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png)",
+				"instructions": "",
+				"alias": "sender",
+				"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png",
+					"//images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png",
+					"//images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+				"featuredAppImage": "",
+				"author": "Sender.net",
+				"tagline": "",
+				"website": "https://sender.net/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sender.net/terms-of-service/",
+				"privacyPolicyURL": "https://sender.net/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sender.net",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "y8lyRg8whKqT"
+				},
+				"created": "2017-12-28T16:44:40.444318Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-27T22:46:42.548498163Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-27T22:46:49.655468362Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "qnhkYiuihh6c",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/sender_subscriptions.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"sender"
+							],
+							"title": "Sender",
+							"type": "object"
+						},
+						"form": {
+							"default": "none",
+							"description": "Which form do you want to display?",
+							"enum": [
+								"none"
+							],
+							"enumNames": {
+								"none": "Nothing selected"
+							},
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Form",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the form appear?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"form": {
+									"op": "!=",
+									"value": "none"
+								}
+							},
+							"title": "Form Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sender.net/api/cloudflare_forms",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "An error occurred when connecting to Sender.net services. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 7,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/COYotxRsFM1j",
+			"created": "2018-11-13T18:15:30.946604Z",
+			"proposedApp": {
+				"id": "qnhkYiuihh6c",
+				"title": "Sender",
+				"shortDescription": "Get more newsletter subscribers with subscription forms.",
+				"longDescription": "#About\nSender allows you to build a bridge between your email lists and revenue. Grow your audience with subscription forms, monetize your leads with email campaigns, track analytics, use top notch email marketing automation tools. All of this and more for **FREE**.\n#Grow your audience\nCreate newsletter subscription forms to suit your website design in minutes and add them to your site with the ease of **one click**.\nFurthermore, you can collect and manage various data about your subscribers, including names, birthdates, locations and other information. If you need specific data, you can create new custom fields to best suit your needs.\n![Form builder](https://images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png)\n#Prepare stylish emails in seconds\nOur easy to understand drag&drop editor allows you to add and edit newsletter content with zero HTML knowledge. Use our free newsletter templates to create stunning newsletters. You will be able to customize all aspects of the template to suit your unique needs.\n![Campaign editor](https://media.giphy.com/media/l0HUkXnz6ClFBXVTO/giphy.gif)\n#Analyze and improve results\nSENDER provides advanced email marketing analytic features which allow you to accurately measure and improve your email campaigns. All subscriber actions (opens, clicks, time, most frequently clicked links and so on) are saved, so you will have increasingly accurate potential buyer profiles which will allow you to create irresistible offers.\n![Reports](https://images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png)\n#Automate personalized emails\nNurture your customers with automated emails. SENDER's automation builder will allow you to create intricate workflows that spare your time and deliver personalized and targeted emails at the best time.\n![Automation](https://images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png)",
+				"instructions": "",
+				"alias": "sender",
+				"orgId": "8d5a40c865e00ceba6dfda215ae97ecf",
+				"icon": "//images.cloudflareapps.com/H0uJY8oLTP6O6Mc2hOma_sender_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/fTjw46vSeyldQpYLAgjj_Forms.png",
+					"//images.cloudflareapps.com/cFQdYAKFToyiuPbMWahb_Report.png",
+					"//images.cloudflareapps.com/2XR2ygYeR2WXmkAYy5OC_Automation.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/oXrunXE5SM66CST1w8oL_sender_form.PNG",
+				"featuredAppImage": "",
+				"author": "Sender.net",
+				"tagline": "",
+				"website": "https://sender.net/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sender.net/terms-of-service/",
+				"privacyPolicyURL": "https://sender.net/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sender.net",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "y8lyRg8whKqT"
+				},
+				"created": "2017-12-28T16:44:40.444318Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:15:31.649265864Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:49:34.520192018Z"
+			}
+		}
+	]
+}

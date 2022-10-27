@@ -1,0 +1,2257 @@
+{
+	"id": "INyMFZcNeaAB",
+	"title": "Liquid Button",
+	"shortDescription": "A professional Call-To-Action button with the \"WOW\" factor",
+	"longDescription": "**Liquid Button** is a professional Call-To-Action button for your website. It makes easier for you to engage with your user as they will **LOVE** to play with it. And you get a *plethora* of options to customize it to your like.\n\nTry it for **free**!",
+	"instructions": "",
+	"alias": "liquid-button",
+	"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+	"icon": "https://images.cloudflareapps.com/ZL0oOqE6E8IZ/icon3.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_1.png",
+		"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_2.png",
+		"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_3.png",
+		"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_4.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/TzluDiFtGbes/tile%20image.png",
+	"featuredAppImage": "",
+	"author": "Francesco Natali",
+	"tagline": "",
+	"website": "https://francesconatali.com/cloudflare/liquidbutton/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "contact@francesconatali.com",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Free plan offers basic customization.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "free",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Pro plan allows much further customization.",
+			"longDescription": "",
+			"visible": true,
+			"price": 100,
+			"order": 0,
+			"plan": "APPS_LIQUID_BUTTON_PRO",
+			"feature": "apps.liquid_button.pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d0f50fdfa6c03f22e138cc6885d354d",
+			"created": "2018-10-30T12:55:22.507127044Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "7JSv3NWiR87g"
+	},
+	"created": "2018-10-30T12:55:17.145124Z",
+	"org": {
+		"id": "8d0f50fdfa6c03f22e138cc6885d354d",
+		"title": "",
+		"username": "8d0f50fdfa6c03f22e138cc6885d354d",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "INyMFZcNeaAB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"actiontype": {
+									"default": "website",
+									"description": "When clicked, what do you want it to do?",
+									"enum": [
+										"website",
+										"email",
+										"skype",
+										"phonecall"
+									],
+									"enumNames": {
+										"email": "Send email",
+										"phonecall": "Dial a number",
+										"skype": "Skype call",
+										"website": "Open website"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"email": [
+											"pro"
+										],
+										"phonecall": [
+											"pro"
+										],
+										"skype": [
+											"pro"
+										]
+									},
+									"title": "&nbsp;",
+									"type": "string"
+								},
+								"actionwebsitetab": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"hrefemail": {
+									"description": "Enter a valid email address.",
+									"format": "email",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "email"
+									},
+									"title": "Email address",
+									"type": "string"
+								},
+								"hrefphonecall": {
+									"description": "On mobile devices, it calls the number you enter here (for landlines remember to include the international country code, e.g. +44). On desktop, it depends on the system and software installed, for example on OSX it opens FaceTime.",
+									"order": 1,
+									"placeholder": "Phone number",
+									"showIf": {
+										"action.actiontype": "phonecall"
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"hrefskype": {
+									"description": "Insert the Skype username you want to be called.",
+									"order": 1,
+									"placeholder": "Skype username",
+									"showIf": {
+										"action.actiontype": "skype"
+									},
+									"title": "Skype username",
+									"type": "string"
+								},
+								"hrefwebsite": {
+									"description": "Please include 'http://' or 'https://'.",
+									"format": "url",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"actiontoggle": true
+							},
+							"title": "Action",
+							"type": "object"
+						},
+						"actiontoggle": {
+							"default": false,
+							"order": 2,
+							"title": "Show Action Options",
+							"type": "boolean"
+						},
+						"advancedoptions": {
+							"order": 12,
+							"properties": {
+								"mousedist": {
+									"default": 70,
+									"description": "How much the mouse movements affect Liquid Button? (default value = 70)",
+									"minimum": 1,
+									"order": 2,
+									"title": "Sensitivity",
+									"type": "integer"
+								},
+								"viscosity": {
+									"default": 20,
+									"description": "Increase to slow everything down. Decrease to make it more jelly-like. (default value = 20)",
+									"minimum": 1,
+									"order": 1,
+									"title": "Viscosity",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"advancedoptionstoggle": true
+							},
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedoptionstoggle": {
+							"default": false,
+							"order": 11,
+							"title": "Show Advanced Options",
+							"type": "boolean"
+						},
+						"alignment": {
+							"order": 8,
+							"properties": {
+								"alignbutton": {
+									"default": "center",
+									"description": "Depending where you are placing Liquid Button, you might want to change this value.",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Align Button",
+									"type": "string"
+								},
+								"aligntext": {
+									"default": 0,
+									"description": "If you change Height of the button, you might want to change this value to align your message.",
+									"order": 0,
+									"title": "Align Text",
+									"type": "number"
+								},
+								"positionbuttonbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Button (bottom)",
+									"type": "number"
+								},
+								"positionbuttonleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Button (left)",
+									"type": "number"
+								},
+								"positionbuttonright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Button (right)",
+									"type": "number"
+								},
+								"positionbuttontop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Button (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Alignment & Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"order": 7,
+							"title": "Show Alignment & Position Options",
+							"type": "boolean"
+						},
+						"font": {
+							"order": 10,
+							"properties": {
+								"fontColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"products": [
+										"pro"
+									],
+									"title": "Color",
+									"type": "string"
+								},
+								"fontface": {
+									"default": "",
+									"description": "Leave it blank to let Liquid Button to automatically choose, or force a specific font available on your website by writing its name here.",
+									"order": 2,
+									"title": "Name",
+									"type": "string"
+								},
+								"fontletterspacing": {
+									"default": {
+										"unit": "em",
+										"value": 0.05
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Letter Spacing",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								},
+								"fontsize": {
+									"default": {
+										"unit": "pt",
+										"value": 15
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 0,
+									"title": "Size",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								}
+							},
+							"showIf": {
+								"fonttoggle": true
+							},
+							"title": "Font",
+							"type": "object"
+						},
+						"fonttoggle": {
+							"default": false,
+							"order": 9,
+							"title": "Show Font Options",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should it appear on your site?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "😍 It's Liquid!",
+							"description": "You can insert text and emoji.",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Insert your message here.",
+							"title": "Message",
+							"type": "string"
+						},
+						"sizeoptions": {
+							"order": 6,
+							"properties": {
+								"height": {
+									"default": 60,
+									"description": "",
+									"minimum": 1,
+									"order": 2,
+									"title": "Height (pixels)",
+									"type": "integer"
+								},
+								"width": {
+									"default": 240,
+									"description": "",
+									"minimum": 1,
+									"order": 1,
+									"title": "Width (pixels)",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"order": 5,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#1CE2D8",
+									"format": "color",
+									"order": 5,
+									"products": [
+										"pro"
+									],
+									"title": "Background color",
+									"type": "string"
+								},
+								"primaryColor": {
+									"default": "#102ce5",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Secondary color",
+									"type": "string"
+								},
+								"secondaryColor": {
+									"default": "#E406D6",
+									"format": "color",
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Primary color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"order": 3,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 150,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"sizeoptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7JSv3NWiR87g",
+			"metadata": {
+				"code": {
+					"sourceTag": "7JSv3NWiR87g",
+					"uploadedOn": "2018-10-30T12:55:20.708332621Z"
+				}
+			},
+			"created": "2018-10-30T12:55:18.544194Z",
+			"proposedApp": {
+				"id": "INyMFZcNeaAB",
+				"title": "Liquid Button",
+				"shortDescription": "A professional Call-To-Action button with the \"WOW\" factor",
+				"longDescription": "**Liquid Button** is a professional Call-To-Action button for your website. It makes easier for you to engage with your user as they will **LOVE** it. And you get a *plethora* of options to customize it to your like.\n\nTry it for **free**!",
+				"instructions": "",
+				"alias": "liquid-button",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/ZL0oOqE6E8IZ/icon3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_1.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_2.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_3.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/DjKBVFcCZqc7/tile%20image.png",
+				"featuredAppImage": "",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "https://francesconatali.com/cloudflare/liquidbutton/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 150,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7JSv3NWiR87g"
+				},
+				"created": "2018-10-30T12:55:17.145124Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2018-10-30T12:55:22.493155765Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-06T19:06:30.041925451Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "INyMFZcNeaAB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"actiontype": {
+									"default": "website",
+									"description": "When clicked, what do you want it to do?",
+									"enum": [
+										"website",
+										"email",
+										"skype",
+										"phonecall"
+									],
+									"enumNames": {
+										"email": "Send email",
+										"phonecall": "Dial a number",
+										"skype": "Skype call",
+										"website": "Open website"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"email": [
+											"pro"
+										],
+										"phonecall": [
+											"pro"
+										],
+										"skype": [
+											"pro"
+										]
+									},
+									"title": "&nbsp;",
+									"type": "string"
+								},
+								"actionwebsitetab": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"hrefemail": {
+									"description": "Enter a valid email address.",
+									"format": "email",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "email"
+									},
+									"title": "Email address",
+									"type": "string"
+								},
+								"hrefphonecall": {
+									"description": "On mobile devices, it calls the number you enter here (for landlines remember to include the international country code, e.g. +44). On desktop, it depends on the system and software installed, for example on OSX it opens FaceTime.",
+									"order": 1,
+									"placeholder": "Phone number",
+									"showIf": {
+										"action.actiontype": "phonecall"
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"hrefskype": {
+									"description": "Insert the Skype username you want to be called.",
+									"order": 1,
+									"placeholder": "Skype username",
+									"showIf": {
+										"action.actiontype": "skype"
+									},
+									"title": "Skype username",
+									"type": "string"
+								},
+								"hrefwebsite": {
+									"description": "Please include 'http://' or 'https://'.",
+									"format": "url",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"actiontoggle": true
+							},
+							"title": "Action",
+							"type": "object"
+						},
+						"actiontoggle": {
+							"default": false,
+							"order": 2,
+							"title": "Show Action Options",
+							"type": "boolean"
+						},
+						"advancedoptions": {
+							"order": 12,
+							"properties": {
+								"mousedist": {
+									"default": 70,
+									"description": "How much the mouse movements affect Liquid Button? (default value = 70)",
+									"minimum": 1,
+									"order": 2,
+									"title": "Sensitivity",
+									"type": "integer"
+								},
+								"viscosity": {
+									"default": 20,
+									"description": "Increase to slow everything down. Decrease to make it more jelly-like. (default value = 20)",
+									"minimum": 1,
+									"order": 1,
+									"title": "Viscosity",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"advancedoptionstoggle": true
+							},
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedoptionstoggle": {
+							"default": false,
+							"order": 11,
+							"title": "Show Advanced Options",
+							"type": "boolean"
+						},
+						"alignment": {
+							"order": 8,
+							"properties": {
+								"alignbutton": {
+									"default": "center",
+									"description": "Depending where you are placing Liquid Button, you might want to change this value.",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Align Button",
+									"type": "string"
+								},
+								"aligntext": {
+									"default": 0,
+									"description": "If you change Height of the button, you might want to change this value to align your message.",
+									"order": 0,
+									"title": "Align Text",
+									"type": "number"
+								},
+								"positionbuttonbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Button (bottom)",
+									"type": "number"
+								},
+								"positionbuttonleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Button (left)",
+									"type": "number"
+								},
+								"positionbuttonright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Button (right)",
+									"type": "number"
+								},
+								"positionbuttontop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Button (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Alignment & Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"order": 7,
+							"title": "Show Alignment & Position Options",
+							"type": "boolean"
+						},
+						"font": {
+							"order": 10,
+							"properties": {
+								"fontColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"products": [
+										"pro"
+									],
+									"title": "Color",
+									"type": "string"
+								},
+								"fontface": {
+									"default": "",
+									"description": "Leave it blank to let Liquid Button to automatically choose, or force a specific font available on your website by writing its name here.",
+									"order": 2,
+									"title": "Name",
+									"type": "string"
+								},
+								"fontletterspacing": {
+									"default": {
+										"unit": "em",
+										"value": 0.05
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Letter Spacing",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								},
+								"fontsize": {
+									"default": {
+										"unit": "pt",
+										"value": 15
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 0,
+									"title": "Size",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								}
+							},
+							"showIf": {
+								"fonttoggle": true
+							},
+							"title": "Font",
+							"type": "object"
+						},
+						"fonttoggle": {
+							"default": false,
+							"order": 9,
+							"title": "Show Font Options",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should it appear on your site?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "😍 It's Liquid!",
+							"description": "You can insert text and emoji.",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Insert your message here.",
+							"title": "Message",
+							"type": "string"
+						},
+						"sizeoptions": {
+							"order": 6,
+							"properties": {
+								"height": {
+									"default": 60,
+									"description": "",
+									"minimum": 1,
+									"order": 2,
+									"title": "Height (pixels)",
+									"type": "integer"
+								},
+								"width": {
+									"default": 240,
+									"description": "",
+									"minimum": 1,
+									"order": 1,
+									"title": "Width (pixels)",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"order": 5,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#1CE2D8",
+									"format": "color",
+									"order": 5,
+									"products": [
+										"pro"
+									],
+									"title": "Background color",
+									"type": "string"
+								},
+								"primaryColor": {
+									"default": "#102ce5",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Secondary color",
+									"type": "string"
+								},
+								"secondaryColor": {
+									"default": "#E406D6",
+									"format": "color",
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Primary color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"order": 3,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"sizeoptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "[NEW] Lower price\n[NEW] New tile image",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7koyy78OGChM",
+			"metadata": {
+				"code": {
+					"sourceTag": "7koyy78OGChM",
+					"uploadedOn": "2018-11-07T15:43:52.965233971Z"
+				}
+			},
+			"created": "2018-11-07T15:43:52.482957Z",
+			"proposedApp": {
+				"id": "INyMFZcNeaAB",
+				"title": "Liquid Button",
+				"shortDescription": "A professional Call-To-Action button with the \"WOW\" factor",
+				"longDescription": "**Liquid Button** is a professional Call-To-Action button for your website. It makes easier for you to engage with your user as they will **LOVE** to play with it. And you get a *plethora* of options to customize it to your like.\n\nTry it for **free**!",
+				"instructions": "",
+				"alias": "liquid-button",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/ZL0oOqE6E8IZ/icon3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_1.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_2.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_3.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzluDiFtGbes/tile%20image.png",
+				"featuredAppImage": "",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "https://francesconatali.com/cloudflare/liquidbutton/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7JSv3NWiR87g"
+				},
+				"created": "2018-10-30T12:55:17.145124Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2018-11-07T15:43:55.703727604Z",
+				"canceledByUserId": "681cef98e592b3db33836ad01f84726e",
+				"canceledAt": "2018-12-15T00:28:22.302540226Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "INyMFZcNeaAB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"actiontype": {
+									"default": "website",
+									"description": "When clicked, what do you want it to do?",
+									"enum": [
+										"website",
+										"email",
+										"skype",
+										"phonecall"
+									],
+									"enumNames": {
+										"email": "Send email",
+										"phonecall": "Dial a number",
+										"skype": "Skype call",
+										"website": "Open website"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"email": [
+											"pro"
+										],
+										"phonecall": [
+											"pro"
+										],
+										"skype": [
+											"pro"
+										]
+									},
+									"title": "&nbsp;",
+									"type": "string"
+								},
+								"actionwebsitetab": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"hrefemail": {
+									"description": "Enter a valid email address.",
+									"format": "email",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "email"
+									},
+									"title": "Email address",
+									"type": "string"
+								},
+								"hrefphonecall": {
+									"description": "On mobile devices, it calls the number you enter here (for landlines remember to include the international country code, e.g. +44). On desktop, it depends on the system and software installed, for example on OSX it opens FaceTime.",
+									"order": 1,
+									"placeholder": "Phone number",
+									"showIf": {
+										"action.actiontype": "phonecall"
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"hrefskype": {
+									"description": "Insert the Skype username you want to be called.",
+									"order": 1,
+									"placeholder": "Skype username",
+									"showIf": {
+										"action.actiontype": "skype"
+									},
+									"title": "Skype username",
+									"type": "string"
+								},
+								"hrefwebsite": {
+									"description": "Please include 'http://' or 'https://'.",
+									"format": "url",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"actiontoggle": true
+							},
+							"title": "Action",
+							"type": "object"
+						},
+						"actiontoggle": {
+							"default": false,
+							"order": 2,
+							"title": "Show Action Options",
+							"type": "boolean"
+						},
+						"advancedoptions": {
+							"order": 12,
+							"properties": {
+								"mousedist": {
+									"default": 70,
+									"description": "How much the mouse movements affect Liquid Button? (default value = 70)",
+									"minimum": 1,
+									"order": 2,
+									"title": "Sensitivity",
+									"type": "integer"
+								},
+								"viscosity": {
+									"default": 20,
+									"description": "Increase to slow everything down. Decrease to make it more jelly-like. (default value = 20)",
+									"minimum": 1,
+									"order": 1,
+									"title": "Viscosity",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"advancedoptionstoggle": true
+							},
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedoptionstoggle": {
+							"default": false,
+							"order": 11,
+							"title": "Show Advanced Options",
+							"type": "boolean"
+						},
+						"alignment": {
+							"order": 8,
+							"properties": {
+								"alignbutton": {
+									"default": "center",
+									"description": "Depending where you are placing Liquid Button, you might want to change this value.",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Align Button",
+									"type": "string"
+								},
+								"aligntext": {
+									"default": 0,
+									"description": "If you change Height of the button, you might want to change this value to align your message.",
+									"order": 0,
+									"title": "Align Text",
+									"type": "number"
+								},
+								"positionbuttonbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Button (bottom)",
+									"type": "number"
+								},
+								"positionbuttonleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Button (left)",
+									"type": "number"
+								},
+								"positionbuttonright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Button (right)",
+									"type": "number"
+								},
+								"positionbuttontop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Button (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Alignment & Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"order": 7,
+							"title": "Show Alignment & Position Options",
+							"type": "boolean"
+						},
+						"font": {
+							"order": 10,
+							"properties": {
+								"fontColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"products": [
+										"pro"
+									],
+									"title": "Color",
+									"type": "string"
+								},
+								"fontface": {
+									"default": "",
+									"description": "Leave it blank to let Liquid Button to automatically choose, or force a specific font available on your website by writing its name here.",
+									"order": 2,
+									"title": "Name",
+									"type": "string"
+								},
+								"fontletterspacing": {
+									"default": {
+										"unit": "em",
+										"value": 0.05
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Letter Spacing",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								},
+								"fontsize": {
+									"default": {
+										"unit": "pt",
+										"value": 15
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 0,
+									"title": "Size",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								}
+							},
+							"showIf": {
+								"fonttoggle": true
+							},
+							"title": "Font",
+							"type": "object"
+						},
+						"fonttoggle": {
+							"default": false,
+							"order": 9,
+							"title": "Show Font Options",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should it appear on your site?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "😍 It's Liquid!",
+							"description": "You can insert text and emoji.",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Insert your message here.",
+							"title": "Message",
+							"type": "string"
+						},
+						"sizeoptions": {
+							"order": 6,
+							"properties": {
+								"height": {
+									"default": 60,
+									"description": "",
+									"minimum": 1,
+									"order": 2,
+									"title": "Height (pixels)",
+									"type": "integer"
+								},
+								"width": {
+									"default": 240,
+									"description": "",
+									"minimum": 1,
+									"order": 1,
+									"title": "Width (pixels)",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"order": 5,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#1CE2D8",
+									"format": "color",
+									"order": 5,
+									"products": [
+										"pro"
+									],
+									"title": "Background color",
+									"type": "string"
+								},
+								"primaryColor": {
+									"default": "#102ce5",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Secondary color",
+									"type": "string"
+								},
+								"secondaryColor": {
+									"default": "#E406D6",
+									"format": "color",
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Primary color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"order": 3,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"sizeoptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "[NEW] Lower price\n[NEW] New tile image",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7koyy78OGChM",
+			"created": "2018-12-15T00:28:21.970262Z",
+			"proposedApp": {
+				"id": "INyMFZcNeaAB",
+				"title": "Liquid Button",
+				"shortDescription": "A professional Call-To-Action button with the \"WOW\" factor",
+				"longDescription": "**Liquid Button** is a professional Call-To-Action button for your website. It makes easier for you to engage with your user as they will **LOVE** to play with it. And you get a *plethora* of options to customize it to your like.\n\nTry it for **free**!",
+				"instructions": "",
+				"alias": "liquid-button",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/ZL0oOqE6E8IZ/icon3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_1.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_2.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_3.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzluDiFtGbes/tile%20image.png",
+				"featuredAppImage": "",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "https://francesconatali.com/cloudflare/liquidbutton/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.liquid_button.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7JSv3NWiR87g"
+				},
+				"created": "2018-10-30T12:55:17.145124Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-12-15T00:28:22.321963675Z",
+				"canceledByUserId": "681cef98e592b3db33836ad01f84726e",
+				"canceledAt": "2018-12-15T00:53:51.64655823Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "INyMFZcNeaAB",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"actiontype": {
+									"default": "website",
+									"description": "When clicked, what do you want it to do?",
+									"enum": [
+										"website",
+										"email",
+										"skype",
+										"phonecall"
+									],
+									"enumNames": {
+										"email": "Send email",
+										"phonecall": "Dial a number",
+										"skype": "Skype call",
+										"website": "Open website"
+									},
+									"format": "radios",
+									"order": 0,
+									"products": {
+										"email": [
+											"pro"
+										],
+										"phonecall": [
+											"pro"
+										],
+										"skype": [
+											"pro"
+										]
+									},
+									"title": "&nbsp;",
+									"type": "string"
+								},
+								"actionwebsitetab": {
+									"default": false,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"hrefemail": {
+									"description": "Enter a valid email address.",
+									"format": "email",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "email"
+									},
+									"title": "Email address",
+									"type": "string"
+								},
+								"hrefphonecall": {
+									"description": "On mobile devices, it calls the number you enter here (for landlines remember to include the international country code, e.g. +44). On desktop, it depends on the system and software installed, for example on OSX it opens FaceTime.",
+									"order": 1,
+									"placeholder": "Phone number",
+									"showIf": {
+										"action.actiontype": "phonecall"
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"hrefskype": {
+									"description": "Insert the Skype username you want to be called.",
+									"order": 1,
+									"placeholder": "Skype username",
+									"showIf": {
+										"action.actiontype": "skype"
+									},
+									"title": "Skype username",
+									"type": "string"
+								},
+								"hrefwebsite": {
+									"description": "Please include 'http://' or 'https://'.",
+									"format": "url",
+									"order": 1,
+									"showIf": {
+										"action.actiontype": "website"
+									},
+									"title": "URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"actiontoggle": true
+							},
+							"title": "Action",
+							"type": "object"
+						},
+						"actiontoggle": {
+							"default": false,
+							"order": 2,
+							"title": "Show Action Options",
+							"type": "boolean"
+						},
+						"advancedoptions": {
+							"order": 12,
+							"properties": {
+								"mousedist": {
+									"default": 70,
+									"description": "How much the mouse movements affect Liquid Button? (default value = 70)",
+									"minimum": 1,
+									"order": 2,
+									"title": "Sensitivity",
+									"type": "integer"
+								},
+								"viscosity": {
+									"default": 20,
+									"description": "Increase to slow everything down. Decrease to make it more jelly-like. (default value = 20)",
+									"minimum": 1,
+									"order": 1,
+									"title": "Viscosity",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"advancedoptionstoggle": true
+							},
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"advancedoptionstoggle": {
+							"default": false,
+							"order": 11,
+							"title": "Show Advanced Options",
+							"type": "boolean"
+						},
+						"alignment": {
+							"order": 8,
+							"properties": {
+								"alignbutton": {
+									"default": "center",
+									"description": "Depending where you are placing Liquid Button, you might want to change this value.",
+									"enum": [
+										"left",
+										"center",
+										"right"
+									],
+									"enumNames": {
+										"center": "Center",
+										"left": "Left",
+										"right": "Right"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Align Button",
+									"type": "string"
+								},
+								"aligntext": {
+									"default": 0,
+									"description": "If you change Height of the button, you might want to change this value to align your message.",
+									"order": 0,
+									"title": "Align Text",
+									"type": "number"
+								},
+								"positionbuttonbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Button (bottom)",
+									"type": "number"
+								},
+								"positionbuttonleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Button (left)",
+									"type": "number"
+								},
+								"positionbuttonright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Button (right)",
+									"type": "number"
+								},
+								"positionbuttontop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Button (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Alignment & Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"order": 7,
+							"title": "Show Alignment & Position Options",
+							"type": "boolean"
+						},
+						"font": {
+							"order": 10,
+							"properties": {
+								"fontColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 3,
+									"products": [
+										"pro"
+									],
+									"title": "Color",
+									"type": "string"
+								},
+								"fontface": {
+									"default": "",
+									"description": "Leave it blank to let Liquid Button to automatically choose, or force a specific font available on your website by writing its name here.",
+									"order": 2,
+									"title": "Name",
+									"type": "string"
+								},
+								"fontletterspacing": {
+									"default": {
+										"unit": "em",
+										"value": 0.05
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Letter Spacing",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								},
+								"fontsize": {
+									"default": {
+										"unit": "pt",
+										"value": 15
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 0,
+									"title": "Size",
+									"type": "object",
+									"units": [
+										"px",
+										"pt",
+										"em",
+										"rem"
+									]
+								}
+							},
+							"showIf": {
+								"fonttoggle": true
+							},
+							"title": "Font",
+							"type": "object"
+						},
+						"fonttoggle": {
+							"default": false,
+							"order": 9,
+							"title": "Show Font Options",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should it appear on your site?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "😍 It's Liquid!",
+							"description": "You can insert text and emoji.",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Insert your message here.",
+							"title": "Message",
+							"type": "string"
+						},
+						"sizeoptions": {
+							"order": 6,
+							"properties": {
+								"height": {
+									"default": 60,
+									"description": "",
+									"minimum": 1,
+									"order": 2,
+									"title": "Height (pixels)",
+									"type": "integer"
+								},
+								"width": {
+									"default": 240,
+									"description": "",
+									"minimum": 1,
+									"order": 1,
+									"title": "Width (pixels)",
+									"type": "integer"
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"order": 5,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#1CE2D8",
+									"format": "color",
+									"order": 5,
+									"products": [
+										"pro"
+									],
+									"title": "Background color",
+									"type": "string"
+								},
+								"primaryColor": {
+									"default": "#102ce5",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Secondary color",
+									"type": "string"
+								},
+								"secondaryColor": {
+									"default": "#E406D6",
+									"format": "color",
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Primary color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"order": 3,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"sizeoptions"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"theme"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.79,
+				"upvotes": 11,
+				"downvotes": 3
+			},
+			"releaseNotes": "[NEW] Lower price\n[NEW] New tile image",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7koyy78OGChM",
+			"created": "2018-12-15T00:53:51.012993Z",
+			"proposedApp": {
+				"id": "INyMFZcNeaAB",
+				"title": "Liquid Button",
+				"shortDescription": "A professional Call-To-Action button with the \"WOW\" factor",
+				"longDescription": "**Liquid Button** is a professional Call-To-Action button for your website. It makes easier for you to engage with your user as they will **LOVE** to play with it. And you get a *plethora* of options to customize it to your like.\n\nTry it for **free**!",
+				"instructions": "",
+				"alias": "liquid-button",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/ZL0oOqE6E8IZ/icon3.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_1.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_2.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_3.png",
+					"https://images.cloudflareapps.com/SdAgc9-8zMNw/screenshot_4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TzluDiFtGbes/tile%20image.png",
+				"featuredAppImage": "",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "https://francesconatali.com/cloudflare/liquidbutton/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Free plan offers basic customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows much further customization.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "APPS_LIQUID_BUTTON_PRO",
+						"feature": "apps.liquid_button.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7JSv3NWiR87g"
+				},
+				"created": "2018-10-30T12:55:17.145124Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-12-15T00:53:51.654897141Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-15T00:54:08.022906534Z"
+			}
+		}
+	]
+}

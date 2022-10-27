@@ -1,0 +1,2066 @@
+{
+	"id": "7_Xyit2tckWZ",
+	"title": "Simple Analytics",
+	"shortDescription": "We never sell your data. Paid account required.",
+	"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+	"instructions": "",
+	"alias": "simpleanalytics",
+	"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+	"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+		"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+		"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+		"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+		"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+	"author": "Simple Analytics",
+	"tagline": "",
+	"website": "https://simpleanalytics.com",
+	"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+	"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+	"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.11",
+	"infoVersion": "1.0.11",
+	"points": 0,
+	"supportEmail": "support@mail.simpleanalytics.io",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "738a179f2a2f6ecf52213e251bd12a1b",
+			"created": "2019-11-20T06:39:58.985501134Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "H9TDINWtO7hR"
+	},
+	"created": "2019-11-20T06:39:54.120421Z",
+	"org": {
+		"id": "738a179f2a2f6ecf52213e251bd12a1b",
+		"title": "",
+		"username": "738a179f2a2f6ecf52213e251bd12a1b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "options.customDomain"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "!options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "!options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First release of our analytics script.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H9TDINWtO7hR",
+			"metadata": {
+				"code": {
+					"sourceTag": "H9TDINWtO7hR",
+					"uploadedOn": "2019-11-20T06:39:57.019101168Z"
+				}
+			},
+			"created": "2019-11-20T06:39:55.32234Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR comliant because we don't handle PII data and set no cookies.",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-11-20T06:39:58.96824401Z",
+				"canceledByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"canceledAt": "2019-11-20T15:47:29.03522988Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fix sending the data to the correct endpoint.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rz54OKCgVnBo",
+			"metadata": {
+				"code": {
+					"sourceTag": "rz54OKCgVnBo",
+					"uploadedOn": "2019-11-20T15:47:27.250817817Z"
+				}
+			},
+			"created": "2019-11-20T15:47:26.108305Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR comliant because we don't handle PII data and set no cookies.",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-11-20T15:47:29.060395483Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-25T19:13:05.304387552Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Insights category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rz54OKCgVnBo",
+			"created": "2019-11-25T19:22:59.464468Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR comliant because we don't handle PII data and set no cookies.",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-11-25T19:22:59.772664959Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-25T19:23:09.03582667Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Update images and description to clarify our own dashboard.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rz54OKCgVnBo",
+			"created": "2019-12-11T14:29:40.754824Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR comliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xccd9bzDivCx/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-12-11T15:02:01.876214059Z",
+				"canceledByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"canceledAt": "2019-12-11T15:05:29.095282284Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Update images and description to clarify our own dashboard.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rz54OKCgVnBo",
+			"created": "2019-12-11T15:05:28.557353Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/fKV7fyUOlnxx/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xccd9bzDivCx/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-12-11T15:05:47.858968687Z",
+				"canceledByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"canceledAt": "2019-12-11T15:15:01.489839749Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Update images and description again to clarify our own dashboard.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rz54OKCgVnBo",
+			"created": "2019-12-11T15:14:41.681364Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "Run our JS directly from CloudFlare. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-12-11T15:15:01.511417157Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-13T16:36:35.772276494Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.customDomain || options.customDomain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.customDomain && options.trackEvents"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.customDomain && !options.trackEvents"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customDomain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 0,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hashMode": {
+							"default": "false",
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 3,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"recordDNT": {
+							"default": "false",
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 1,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"trackEvents": {
+							"default": "false",
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 2,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Fix preview where install seemed to fail.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wYxRf2qYc2Wb",
+			"metadata": {
+				"code": {
+					"sourceTag": "wYxRf2qYc2Wb",
+					"uploadedOn": "2019-12-27T12:00:36.734154551Z"
+				}
+			},
+			"created": "2019-12-27T12:00:36.106398Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-12-27T12:03:39.499856827Z",
+				"canceledByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"canceledAt": "2019-12-27T14:04:07.325784562Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.custom_domain || options.custom_domain === 'cdn.simpleanalytics.io'"
+						},
+						{
+							"type": "script",
+							"src": "./src/external-events.js",
+							"if": "options.custom_domain && options.track_events"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.custom_domain && !options.track_events"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"custom_domain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "If you have a custom subdomain you can fill it in here, leave blank otherwise.",
+							"order": 1,
+							"placeholder": "cdn.simpleanalytics.io",
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 4,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"record_dnt": {
+							"default": false,
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking so we don't send events for those visits, but you can enable recording page views.",
+							"order": 2,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"track_events": {
+							"default": false,
+							"description": "Select this if you want to track events with Simple Analytics. Otherwise we don't include the extra code.",
+							"order": 3,
+							"title": "Track events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Fix preview where install seemed to fail.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9EC7z46vXx1P",
+			"metadata": {
+				"code": {
+					"sourceTag": "9EC7z46vXx1P",
+					"uploadedOn": "2019-12-27T14:03:15.485202728Z"
+				}
+			},
+			"created": "2019-12-27T12:35:39.161193Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2019-12-27T14:04:07.352710975Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T17:02:12.497886958Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.use_custom_domain"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.use_custom_domain"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"custom_domain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "Fill in your custom domain here (without https://)",
+							"order": 2,
+							"placeholder": "cdn.simpleanalytics.io",
+							"showIf": {
+								"use_custom_domain": true
+							},
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 5,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"record_dnt": {
+							"default": false,
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking but we never do. So you can enable it.",
+							"order": 3,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"use_custom_domain": {
+							"default": false,
+							"description": "If you have a custom subdomain you can enable it here",
+							"order": 1,
+							"title": "Use your custom domain",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {}
+			},
+			"releaseNotes": "Fix bug in custom domain feature",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gmnkebQb70u0",
+			"metadata": {
+				"code": {
+					"sourceTag": "gmnkebQb70u0",
+					"uploadedOn": "2020-02-06T10:09:03.154598004Z"
+				}
+			},
+			"created": "2020-02-06T10:09:02.538444Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2020-02-06T10:10:13.100673272Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-07T19:24:28.338758129Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/default.js",
+							"if": "!options.use_custom_domain"
+						},
+						{
+							"type": "script",
+							"src": "./src/external.js",
+							"if": "options.use_custom_domain"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"custom_domain": {
+							"default": "cdn.simpleanalytics.io",
+							"description": "Fill in your custom domain here (without https://)",
+							"order": 2,
+							"placeholder": "cdn.simpleanalytics.io",
+							"showIf": {
+								"use_custom_domain": true
+							},
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 5,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"record_dnt": {
+							"default": false,
+							"description": "Record page views also when DNT is enabled. DNT is to prevent tracking but we never do. So you can enable it.",
+							"order": 3,
+							"title": "Record DNT users",
+							"type": "boolean"
+						},
+						"use_custom_domain": {
+							"default": false,
+							"description": "If you have a custom subdomain you can enable it here",
+							"order": 1,
+							"title": "Use your custom domain",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.78,
+				"upvotes": 7,
+				"downvotes": 2
+			},
+			"releaseNotes": "Hide preview",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/m6w4q0mFSKaQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "m6w4q0mFSKaQ",
+					"uploadedOn": "2020-02-08T14:29:43.479347335Z"
+				}
+			},
+			"created": "2020-02-08T14:29:42.951224Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2020-02-08T14:30:09.894197326Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-10T17:25:35.790852386Z"
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/cloudflare.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/events_queue.js",
+							"if": "options.use_events"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"collect_dnt": {
+							"default": false,
+							"description": "Collect visits from users who have DNT enabled. DNT is to prevent tracking but we never do. So you are allowed to collect those visits as well. By default we don't collect them.",
+							"order": 3,
+							"title": "Collect visits of DNT users",
+							"type": "boolean"
+						},
+						"custom_domain": {
+							"default": "queue.simpleanalyticscdn.com",
+							"description": "Fill in your custom domain here (without https:// and trailing slashes)",
+							"order": 2,
+							"placeholder": "queue.simpleanalyticscdn.com",
+							"showIf": {
+								"use_custom_domain": true
+							},
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 6,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"sa_global": {
+							"default": "sa_event",
+							"description": "If you don't want to use the default event function name (sa_event), you can update it here.",
+							"order": 5,
+							"placeholder": "sa_event",
+							"showIf": {
+								"use_events": true
+							},
+							"title": "Events global function name",
+							"type": "string"
+						},
+						"use_custom_domain": {
+							"default": false,
+							"description": "If you have a custom subdomain you can enable it here",
+							"order": 1,
+							"title": "Use your custom domain",
+							"type": "boolean"
+						},
+						"use_events": {
+							"default": true,
+							"description": "If you want to add events to your code you can enble them here. We will make sure the sa_event function is available.",
+							"order": 4,
+							"title": "Use events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Add events and custom event function.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DM_bWVGkpugV",
+			"metadata": {
+				"code": {
+					"sourceTag": "DM_bWVGkpugV",
+					"uploadedOn": "2020-11-02T12:04:28.39090005Z"
+				}
+			},
+			"created": "2020-11-02T11:26:56.031486Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2020-11-02T12:07:43.488920377Z",
+				"canceledByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"canceledAt": "2020-11-02T12:51:36.106588237Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.11",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/cloudflare.js"
+						},
+						{
+							"type": "script",
+							"src": "./src/automated_events.js",
+							"if": "options.automated_events"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/events_queue.js",
+							"if": "options.use_events"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"automated_events": {
+							"default": false,
+							"description": "You can collect a few different events automatically: outbound links, email clicks, and amount of downloads.",
+							"order": 7,
+							"showIf": {
+								"use_events": true
+							},
+							"title": "Add automated events",
+							"type": "boolean"
+						},
+						"collect_dnt": {
+							"default": false,
+							"description": "Collect visits from users who have DNT enabled. DNT is to prevent tracking but we never do. So you are allowed to collect those visits as well. By default we don't collect them.",
+							"order": 3,
+							"title": "Collect visits of DNT users",
+							"type": "boolean"
+						},
+						"custom_domain": {
+							"default": "queue.simpleanalyticscdn.com",
+							"description": "Fill in your custom domain here (without https:// and trailing slashes)",
+							"order": 2,
+							"placeholder": "queue.simpleanalyticscdn.com",
+							"showIf": {
+								"use_custom_domain": true
+							},
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"download_extensions": {
+							"default": "pdf, csv, docx, xlsx",
+							"description": "Use a list of extensions separated by a comma (e.g.: pdf, csv, docx, xlsx)",
+							"order": 12,
+							"placeholder": "Fill in extensions separated by a comma (or leave empty for defaults)",
+							"showIf": {
+								"automated_events": true,
+								"events_downloads": true
+							},
+							"title": "Sepecify which download links should be tracked",
+							"type": "string"
+						},
+						"downloads_full_url": {
+							"default": false,
+							"order": 13,
+							"showIf": {
+								"automated_events": true,
+								"events_downloads": true
+							},
+							"title": "Use the full URL of the download link instead of only the path as the event name",
+							"type": "boolean"
+						},
+						"events_downloads": {
+							"default": true,
+							"description": "Do you have links to pdf's or other files? Collect the amount of downloads. You can specify the extensions of the files your want to collect downloads for.",
+							"order": 11,
+							"showIf": {
+								"automated_events": true
+							},
+							"title": "Collect download clicks automatically",
+							"type": "boolean"
+						},
+						"events_emails": {
+							"default": true,
+							"description": "Do you have links to email addresses on your website? Then it could make sense to see how many clicks you get on your mailto links.",
+							"order": 10,
+							"showIf": {
+								"automated_events": true
+							},
+							"title": "Collect email clicks automatically",
+							"type": "boolean"
+						},
+						"events_outbound": {
+							"default": true,
+							"description": "Outbound links are basically just links that go to a different website. For example you have a website with a few products listed on them. People pay you for listing those products on your website. Now you want to find a way to track the amount of visitors that go to that website. For this you’ll need outbound events!",
+							"order": 8,
+							"showIf": {
+								"automated_events": true
+							},
+							"title": "Collect outbound links automatically",
+							"type": "boolean"
+						},
+						"events_use_title": {
+							"default": true,
+							"description": "A title is what you see when you keep your cursor hovered over your link. If not available we use the URL of the link.",
+							"order": 14,
+							"showIf": {
+								"automated_events": true
+							},
+							"title": "Use the title of downloads and outbound links as the event name",
+							"type": "boolean"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 4,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"outbound_full_url": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"automated_events": true,
+								"events_outbound": true
+							},
+							"title": "Use the full URL of outbound links instead of only the path as the event name.",
+							"type": "boolean"
+						},
+						"sa_global": {
+							"default": "sa_event",
+							"description": "If you don't want to use the default event function name (sa_event), you can update it here.",
+							"order": 6,
+							"placeholder": "sa_event",
+							"showIf": {
+								"use_events": true
+							},
+							"title": "Events global function name",
+							"type": "string"
+						},
+						"use_custom_domain": {
+							"default": false,
+							"description": "If you have a custom subdomain you can enable it here",
+							"order": 1,
+							"title": "Use your custom domain",
+							"type": "boolean"
+						},
+						"use_events": {
+							"default": false,
+							"description": "If you want to add events to your code you can enble them here. We will make sure the sa_event function is available.",
+							"order": 5,
+							"title": "Use events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.42,
+				"upvotes": 5,
+				"downvotes": 7
+			},
+			"releaseNotes": "Add automated events.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qPfYRzf7ZAVn",
+			"metadata": {
+				"code": {
+					"sourceTag": "qPfYRzf7ZAVn",
+					"uploadedOn": "2020-11-02T12:51:16.736912524Z"
+				}
+			},
+			"created": "2020-11-02T12:39:19.977206Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/1Ks1AfhPLlt8/logo-no-padding.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/NYUiO2DIz8ZV/CloudFlare%20tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@mail.simpleanalytics.io",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2020-11-02T12:51:36.118556373Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:41:07.676411115Z"
+			}
+		},
+		{
+			"tag": "1.0.12",
+			"appId": "7_Xyit2tckWZ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/cloudflare.js"
+						},
+						{
+							"type": "script",
+							"src": "./src/automated_events.js",
+							"if": "options.automated_events"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/events_queue.js",
+							"if": "options.use_events"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced_settings_toggle": {
+							"default": false,
+							"description": "Settings that most customers don't need.",
+							"order": 100,
+							"title": "Advanced settings",
+							"type": "boolean"
+						},
+						"allow_url_parameters": {
+							"description": "By default, we collect all UTM parameters (with and without the utm_ prefix) and the ref (which is short for utm_source) parameter. We don't store the rest of the query parameters. But some customers have non-personal data in their query parameters—for example, product-id or article-slug. We allow collecting those parameters as long as they are specified via this setting.",
+							"order": 101,
+							"placeholder": "product-id,article-slug",
+							"showIf": {
+								"advanced_settings_toggle": true
+							},
+							"title": "Allow extra URL parameters",
+							"type": "string"
+						},
+						"automated_events": {
+							"default": false,
+							"description": "You can collect a few different events automatically: outbound links, email clicks, and amount of downloads.",
+							"order": 81,
+							"showIf": {
+								"use_events": true
+							},
+							"title": "Add automated events",
+							"type": "boolean"
+						},
+						"collect_dnt": {
+							"default": false,
+							"description": "Collect visits from users who have DNT enabled. DNT is to prevent tracking but we never do. So you are allowed to collect those visits as well. By default we don't collect them.",
+							"order": 3,
+							"title": "Collect visits of DNT users",
+							"type": "boolean"
+						},
+						"custom_domain": {
+							"description": "We created a CNAME record for you that points from 'simple.yourdomain.com' to 'simpleanalyticsexternal.com'. Enter the full domain including the subdomain 'simple'. After this, make sure to add 'simple.yourdomain.com' to your website settings in the Simple Analytics dashboard.",
+							"order": 2,
+							"placeholder": "simple.example.com (without https:// and trailing slashes)",
+							"showIf": {
+								"use_custom_domain": true
+							},
+							"title": "Custom domain",
+							"type": "string"
+						},
+						"download_extensions": {
+							"default": "pdf, csv, docx, xlsx",
+							"description": "Use a list of extensions separated by a comma (e.g.: pdf, csv, docx, xlsx)",
+							"order": 86,
+							"placeholder": "Fill in extensions separated by a comma (or leave empty for defaults)",
+							"showIf": {
+								"automated_events": true,
+								"events_downloads": true,
+								"use_events": true
+							},
+							"title": "Sepecify which download links should be tracked",
+							"type": "string"
+						},
+						"downloads_full_url": {
+							"default": false,
+							"order": 87,
+							"showIf": {
+								"automated_events": true,
+								"events_downloads": true,
+								"use_events": true
+							},
+							"title": "Use the full URL of the download link instead of only the path as the event name",
+							"type": "boolean"
+						},
+						"events_downloads": {
+							"default": true,
+							"description": "Do you have links to pdf's or other files? Collect the amount of downloads. You can specify the extensions of the files your want to collect downloads for.",
+							"order": 85,
+							"showIf": {
+								"automated_events": true,
+								"use_events": true
+							},
+							"title": "Collect download clicks automatically",
+							"type": "boolean"
+						},
+						"events_emails": {
+							"default": true,
+							"description": "Do you have links to email addresses on your website? Then it could make sense to see how many clicks you get on your mailto links.",
+							"order": 84,
+							"showIf": {
+								"automated_events": true,
+								"use_events": true
+							},
+							"title": "Collect email clicks automatically",
+							"type": "boolean"
+						},
+						"events_outbound": {
+							"default": true,
+							"description": "Outbound links are basically just links that go to a different website. For example you have a website with a few products listed on them. People pay you for listing those products on your website. Now you want to find a way to track the amount of visitors that go to that website. For this you’ll need outbound events!",
+							"order": 82,
+							"showIf": {
+								"automated_events": true,
+								"use_events": true
+							},
+							"title": "Collect outbound links automatically",
+							"type": "boolean"
+						},
+						"events_use_title": {
+							"default": true,
+							"description": "A title is what you see when you keep your cursor hovered over your link. If not available we use the URL of the link.",
+							"order": 88,
+							"showIf": {
+								"automated_events": true,
+								"use_events": true
+							},
+							"title": "Use the title of downloads and outbound links as the event name",
+							"type": "boolean"
+						},
+						"hash_mode": {
+							"default": false,
+							"description": "Check this box when you website uses hashtags (#) for navigation (for example carrd.co websites). If you don't know what this means, leave the box unchecked.",
+							"order": 4,
+							"title": "Website uses hash navigation",
+							"type": "boolean"
+						},
+						"hostname": {
+							"default": "",
+							"description": "What domain do you want to use? (without www., https://, and trailing slashes)",
+							"order": 8,
+							"placeholder": "example.com",
+							"showIf": {
+								"overwrite_hostname": true
+							},
+							"title": "Hostname",
+							"type": "string"
+						},
+						"ignore_metrics": {
+							"default": "",
+							"description": "Add the metric you do not want to collect in a comma separated list. For example: referrer,utm,country,session,timeonpage,scrolled,useragent,screensize,viewportsize,language",
+							"order": 10,
+							"placeholder": "referrer,utm,country,session,timeonpage,scrolled,useragent,screensize,viewportsize,language",
+							"showIf": {
+								"ignore_metrics_toggle": true
+							},
+							"title": "Metrics to ignore",
+							"type": "string"
+						},
+						"ignore_metrics_toggle": {
+							"default": false,
+							"description": "Our script does only collect non-personal data. But some customers might want to limit our metrics even more. That's why we created the ignore metrics feature.",
+							"order": 9,
+							"title": "Ignore metrics",
+							"type": "boolean"
+						},
+						"ignore_pages": {
+							"description": "Our script does only collect non-personal data. But some customers might want to limit our metrics even more. That's why we created the ignore metrics feature.",
+							"order": 102,
+							"placeholder": "/product-1,/profile*",
+							"showIf": {
+								"advanced_settings_toggle": true
+							},
+							"title": "Ignore pages",
+							"type": "string"
+						},
+						"namespace": {
+							"default": "sa",
+							"description": "If you don't want to use the default namespace (sa in sa_event), you can update it here.",
+							"order": 107,
+							"placeholder": "sa",
+							"showIf": {
+								"advanced_settings_toggle": true,
+								"overwrite_namespace": true
+							},
+							"title": "Namespace",
+							"type": "string"
+						},
+						"non_unique_hostnames": {
+							"description": "Suppose you redirect your visitors to a payment provider, and after they complete the payment, they return to your website. Because of the nature of not tracking visitors in Simple Analytics, we count those “returning” visitors as new visitors. To prevent this from happening, you can specify the hostname of that payment provider to tell us we should register this visit as non-unique.",
+							"order": 104,
+							"placeholder": "checkout.stripe.com,checkout.paypal.com",
+							"showIf": {
+								"advanced_settings_toggle": true
+							},
+							"title": "Non unique hostnames",
+							"type": "string"
+						},
+						"outbound_full_url": {
+							"default": false,
+							"order": 83,
+							"showIf": {
+								"automated_events": true,
+								"events_outbound": true,
+								"use_events": true
+							},
+							"title": "Use the full URL of outbound links instead of only the path as the event name.",
+							"type": "boolean"
+						},
+						"overwrite_hostname": {
+							"default": false,
+							"description": "Do you want to overwrite the domain name of this website?",
+							"order": 7,
+							"title": "Overwrite hostname",
+							"type": "boolean"
+						},
+						"overwrite_namespace": {
+							"default": false,
+							"description": "If you don't want to use the default namespace (sa in sa_event), you can update it.",
+							"order": 106,
+							"showIf": {
+								"advanced_settings_toggle": true
+							},
+							"title": "Overwrite namespace",
+							"type": "boolean"
+						},
+						"strict_utm": {
+							"default": false,
+							"description": "When collecting UTM codes, we allow to skip the utm_ part. In our dashboard utm_source, source, ref will be stored as utm_source. But sometimes both parameters are used. To give you control over which parameter we should store you can enable strict UTMs. After that only UTM codes with the utm_ prefix will work.",
+							"order": 105,
+							"showIf": {
+								"advanced_settings_toggle": true
+							},
+							"title": "Enable Strict UTMs",
+							"type": "boolean"
+						},
+						"use_custom_domain": {
+							"default": false,
+							"description": "If you have a custom subdomain you can enable it here",
+							"order": 1,
+							"title": "Use your custom domain",
+							"type": "boolean"
+						},
+						"use_events": {
+							"default": false,
+							"description": "If you want to add events to your code you can enble them here. We will make sure the sa_event function is available.",
+							"order": 80,
+							"title": "Use events",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "simple",
+						"content": "simpleanalyticsexternal.com",
+						"data": {
+							"description": "Created by Simple Analytics CloudFlare App"
+						},
+						"ttl": 120
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Allow more advanced settings via the UI.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/RwcG-0rs9Ruf",
+			"metadata": {
+				"code": {
+					"sourceTag": "RwcG-0rs9Ruf",
+					"uploadedOn": "2022-09-07T15:15:48.376649245Z"
+				}
+			},
+			"created": "2022-09-07T14:14:33.776384Z",
+			"proposedApp": {
+				"id": "7_Xyit2tckWZ",
+				"title": "Simple Analytics",
+				"shortDescription": "We never sell your data. Paid account required.",
+				"longDescription": "Simple Analytics gives you the analytics you need without invading the privacy of your users, with a clean interface, and simple integration. GDPR, CCPA and, PECR compliant because we don't handle PII data and set no cookies. You will need a paid Simple Analytics subscription. The stats will be visible in your Simple Analytics dashboard (not on CloudFlare).",
+				"instructions": "",
+				"alias": "simpleanalytics",
+				"orgId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"icon": "https://images.cloudflareapps.com/IgbvPSBW724P/Simple%20Analytics%20circle@2x.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%201.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%202.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%203.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%204.png",
+					"https://images.cloudflareapps.com/ygSirUkQO7Dl/CloudFlare%20gallery%20image%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/9lXOz4cLY6sg/cloudflare5.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/AoFvA7VooMCF/CloudFlare%20featured%20app%20image.png",
+				"author": "Simple Analytics",
+				"tagline": "",
+				"website": "https://www.simpleanalytics.com",
+				"sourceURL": "https://github.com/simpleanalytics/cloudflare-app",
+				"termsOfServiceURL": "https://simpleanalytics.com/terms-of-service",
+				"privacyPolicyURL": "https://simpleanalytics.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@simpleanalytics.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "H9TDINWtO7hR"
+				},
+				"created": "2019-11-20T06:39:54.120421Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "738a179f2a2f6ecf52213e251bd12a1b",
+				"requestedAt": "2022-09-07T15:17:36.039116738Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		}
+	]
+}

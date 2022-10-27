@@ -1,0 +1,534 @@
+{
+	"id": "B-B3PyDI3nVP",
+	"title": "Cookie Banner",
+	"shortDescription": "Display a cookie banner at the bottom of your site.",
+	"longDescription": "Display a cookie banner at the bottom of your site.",
+	"instructions": "",
+	"alias": "cookie-banner",
+	"orgId": "34b8a331f02c5709dfe2bafb2ba4537f",
+	"icon": "https://images.cloudflareapps.com/zRwNLj1cuTC4/cookie.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Alex Leventer",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "alexleventer@gmail.com",
+	"products": [
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Full Cookie Banner CSS Customization",
+			"longDescription": "Full banner CSS customization right from Cloudflare.",
+			"visible": false,
+			"price": 1500,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "free",
+			"title": "free",
+			"shortDescription": "Free Cookie Banner",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "34b8a331f02c5709dfe2bafb2ba4537f",
+			"created": "2019-07-25T21:15:32.110336053Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "QRQohvXKJlDq"
+	},
+	"created": "2019-07-25T20:56:11.213277Z",
+	"org": {
+		"id": "34b8a331f02c5709dfe2bafb2ba4537f",
+		"title": "",
+		"username": "34b8a331f02c5709dfe2bafb2ba4537f",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "B-B3PyDI3nVP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#6c5fc7",
+							"format": "color",
+							"order": 1,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"content": {
+							"default": "By using this site, you acknowledge that you have read and understand our <a href='/privacy'>Privacy Policy</a> and <a href='/terms'>Terms of Service</a>.",
+							"format": "richtext",
+							"maxLength": 300,
+							"order": 5,
+							"title": "Content",
+							"type": "string"
+						},
+						"hideAnchor": {
+							"default": "#hide",
+							"description": "Hide the banner when an anchor with this href is clicked. Must include hash (#)",
+							"order": 4,
+							"title": "Hide Banner Link",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 3,
+							"title": "Link Color",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QRQohvXKJlDq",
+			"metadata": {
+				"code": {
+					"sourceTag": "QRQohvXKJlDq",
+					"uploadedOn": "2019-07-25T20:56:13.945043572Z"
+				}
+			},
+			"created": "2019-07-25T20:56:11.658523Z",
+			"proposedApp": {
+				"id": "B-B3PyDI3nVP",
+				"title": "Cookie Banner",
+				"shortDescription": "Display a cookie banner at the bottom of your site.",
+				"longDescription": "Display a cookie banner at the bottom of your site.",
+				"instructions": "",
+				"alias": "cookie-banner",
+				"orgId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"icon": "https://images.cloudflareapps.com/zRwNLj1cuTC4/cookie.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Alex Leventer",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "alexleventer@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QRQohvXKJlDq"
+				},
+				"created": "2019-07-25T20:56:11.213277Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"requestedAt": "2019-07-25T21:15:32.080777253Z",
+				"canceledByUserId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"canceledAt": "2019-07-26T05:29:06.902286738Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "B-B3PyDI3nVP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#6c5fc7",
+							"format": "color",
+							"order": 3,
+							"title": "Background Color",
+							"type": "string"
+						},
+						"content": {
+							"default": "By using this site, you acknowledge that you have read and understand our <a href='/privacy'>Privacy Policy</a> and <a href='/terms'>Terms of Service</a>. <a href='#hide'>I Agree</a>",
+							"format": "richtext",
+							"maxLength": 300,
+							"order": 6,
+							"title": "Content",
+							"type": "string"
+						},
+						"customCSS": {
+							"default": "#banner-container {\n  font-size: 12px;\n}",
+							"format": "code",
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"hideAnchor": {
+							"default": "#hide",
+							"description": "Hide the banner when an anchor with this href is clicked. Must include hash (#)",
+							"order": 5,
+							"title": "Hide Banner Link",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Link Color",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 1,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Add support for paid plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ztysxqzMVoVZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "ztysxqzMVoVZ",
+					"uploadedOn": "2019-07-26T05:21:10.337949665Z"
+				}
+			},
+			"created": "2019-07-26T05:19:28.718179Z",
+			"proposedApp": {
+				"id": "B-B3PyDI3nVP",
+				"title": "Cookie Banner",
+				"shortDescription": "Display a cookie banner at the bottom of your site.",
+				"longDescription": "Display a cookie banner at the bottom of your site.",
+				"instructions": "",
+				"alias": "cookie-banner",
+				"orgId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"icon": "https://images.cloudflareapps.com/zRwNLj1cuTC4/cookie.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Alex Leventer",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "alexleventer@gmail.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Full Banner CSS Customization",
+						"longDescription": "Full banner CSS customization right from Cloudflare.",
+						"visible": false,
+						"price": 1500,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QRQohvXKJlDq"
+				},
+				"created": "2019-07-25T20:56:11.213277Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"requestedAt": "2019-07-26T05:29:06.921747174Z",
+				"canceledByUserId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"canceledAt": "2019-07-26T20:54:35.095762423Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "B-B3PyDI3nVP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#6c5fc7",
+							"format": "color",
+							"order": 3,
+							"products": [
+								"free"
+							],
+							"title": "Background Color",
+							"type": "string"
+						},
+						"content": {
+							"default": "By using this site, you acknowledge that you have read and understand our <a href='/privacy'>Privacy Policy</a> and <a href='/terms'>Terms of Service</a>. <a href='#hide'>I Agree</a>",
+							"format": "richtext",
+							"maxLength": 300,
+							"order": 6,
+							"products": [
+								"free"
+							],
+							"title": "Content",
+							"type": "string"
+						},
+						"customCSS": {
+							"default": "#banner-container {\n  font-size: 12px;\n}",
+							"format": "code",
+							"order": 4,
+							"products": [
+								"free, pro"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Custom CSS",
+							"type": "string"
+						},
+						"hideAnchor": {
+							"default": "#hide",
+							"description": "Hide the banner when an anchor with this href is clicked. Must include hash (#)",
+							"order": 5,
+							"products": [
+								"free"
+							],
+							"title": "Hide Banner Link",
+							"type": "string"
+						},
+						"linkColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"products": [
+								"free"
+							],
+							"title": "Link Color",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 1,
+							"products": [
+								"free"
+							],
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.63,
+				"upvotes": 10,
+				"downvotes": 6
+			},
+			"releaseNotes": "Add support for paid plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M4crdirwOdDc",
+			"metadata": {
+				"code": {
+					"sourceTag": "M4crdirwOdDc",
+					"uploadedOn": "2019-07-26T20:54:34.58084667Z"
+				}
+			},
+			"created": "2019-07-26T20:52:23.210174Z",
+			"proposedApp": {
+				"id": "B-B3PyDI3nVP",
+				"title": "Cookie Banner",
+				"shortDescription": "Display a cookie banner at the bottom of your site.",
+				"longDescription": "Display a cookie banner at the bottom of your site.",
+				"instructions": "",
+				"alias": "cookie-banner",
+				"orgId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"icon": "https://images.cloudflareapps.com/zRwNLj1cuTC4/cookie.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Alex Leventer",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "alexleventer@gmail.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Full Cookie Banner CSS Customization",
+						"longDescription": "Full banner CSS customization right from Cloudflare.",
+						"visible": false,
+						"price": 1500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "free",
+						"shortDescription": "Free Cookie Banner",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "QRQohvXKJlDq"
+				},
+				"created": "2019-07-25T20:56:11.213277Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "34b8a331f02c5709dfe2bafb2ba4537f",
+				"requestedAt": "2019-07-26T20:54:35.128982246Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-29T17:36:23.660221098Z"
+			}
+		}
+	]
+}

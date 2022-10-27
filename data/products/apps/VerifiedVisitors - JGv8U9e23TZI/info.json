@@ -1,0 +1,1583 @@
+{
+	"id": "JGv8U9e23TZI",
+	"title": "VerifiedVisitors",
+	"shortDescription": "Bot Management Simplified",
+	"longDescription": "**What is it?**\n\nVerifiedVisitors is a bank grade AI/ML bot mitigation platform built from the ground up to support the CloudFlare community with a true edge of network architecture.\n\nA **free tier** is available so you can experience all the benefits for yourself.\n\n**How does it work?**\n\nDeploying intelligent Service Workers at the edge of network helps protect your web estate from unwanted and malicious bot traffic before they hit your website. Our intelligent detectors examine thousands of diverse security signals, separate out the legitimate bots and users from the malicious ones by learning from your traffic. \n\nOur customers receive security protection for malicious bot activity such as account takeover, credit cards attacks, and content scraping, and we can help save you valuable energy resources on web hosting, bandwidth, and CPU. \n\nAll the bot detection and mitigation happens at the edge of network - there is nothing to install on your servers, taking all the heavy lifting away from your web estate.\nSetup is simple, typically our customers are up and running in minutes, not days or weeks.\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate mitigation\n\n**What does it cost?**\n\n.We charge on a monthly subscription basis based on total web request volume.\n\nWe have a simple free tier for accounts with less than 100k web requests per month, for accounts with higher volumes, upgrades are available via the VerifiedVisitors portal starting from as little as $199 per month.\n\nBilling is available in both $USD and £GBP",
+	"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+	"alias": "verifiedvisitors",
+	"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+	"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+		"https://images.cloudflareapps.com/7-PiRv013QZf/Manage_Your_Bots.png",
+		"https://images.cloudflareapps.com/7-PiRv013QZf/Verified_Database.png",
+		"https://images.cloudflareapps.com/7-PiRv013QZf/Your_Bot_Visits.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+	"author": "VerifiedVisitors",
+	"tagline": "",
+	"website": "https://www.verifiedvisitors.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+	"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.1",
+	"infoVersion": "1.1.1",
+	"points": 0,
+	"supportEmail": "support@verifiedvisitors.com",
+	"products": [
+		{
+			"id": "cfbusiness",
+			"title": "VerifiedVisitors",
+			"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free, Pro and Business tier customers",
+			"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+			"visible": false,
+			"price": 5000,
+			"order": 0,
+			"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+			"feature": "apps.verified_visitors_business.enabled",
+			"created": null
+		},
+		{
+			"id": "freetier",
+			"title": "VerifiedVisitors",
+			"shortDescription": "Free tier available to all Cloudflare tiers",
+			"longDescription": "VerifiedVisitors helps you to address the challenge of managing automated traffic on your site as well as maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”\n\nOur free tier protects you for up to 100k web requests per month.  For higher volume users, paid for upgrades are available via our Management Portal.",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+			"created": "2020-09-30T18:43:15.71927742Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "c8MuribH1vxu"
+	},
+	"created": "2020-09-25T10:25:44.462689Z",
+	"org": {
+		"id": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+		"title": "",
+		"username": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "First release of VerifiedVisitors for Cloudflare.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"metadata": {
+				"code": {
+					"sourceTag": "c8MuribH1vxu",
+					"uploadedOn": "2020-09-25T10:25:45.85524435Z"
+				}
+			},
+			"created": "2020-09-25T10:25:45.403387Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Powerful, easy to use, bot visitor management.",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is a next generation, cloud-based, subscription service for website owners that continuously verifies the authenticity of your good bots and puts you in charge of your web data. With over 50% of traffic on the internet being Bots, its never been more important to identify and manage them easily.\n\nWe give you the real-time insight using our machine learning into your bot visitors that you don’t have today, saving you the time and headache of manually managing your access list.\n\nVerifiedVisitors is a simple, affordable and effective way to protect the security of your business online.\n\n**How does it work?**\n\nImplimenting VerifiedVisitors with Cloudflare takes just a few minutes, we don’t use a JavaScript fingerprint or any in-site code and our service does not sit in-line with your infrastructure, it works at the network edge so don’t slow your website down.\n\nOnce connected, VerifiedVisitors saves you valuable time so you don’t have to manually check your logs for each bot.  With an extensive database of over 40 categories, containing over 500 commercial bot services the useful bots you want should be here!\n\nTo manage these bots our service reads your weblogs and automatically performs multi-factor authentication on each bot, matches them to our database and shows you, by category, which bots have been visiting your site and why.  \n\nOnce you have approved your bot access list (VerifiedWatchList), our seemless integration with your Cloudflare WAF ensures that only the verified bots you want can visit your website, whilst also automatically stopping the fake and unwanted bots before they hit your website.  It runs 24/7/365 to ensure your access lists are always up to date.\n\n**What does it cost?**\n\nWe have a simple monthly subscription based on your Cloudflare subscription tier, one for Free/Pro users and one for Business users, this monthly, per domain, charge covers you for the the analysis and management of your Bot Access lists.  If you are an Enterprise User and interested in using VerifiedVisitors please get in touch.",
+				"instructions": "Once you have registered with VerifiedVisitors the final steps of setup take minutes, simply you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your good bot Allow list.  Instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Dashboard.png",
+					"https://images.cloudflareapps.com/ZQDLDHam-pYU/BOt%20Categories.png",
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Bot%20selection.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors for Cloudflare Free/Pro tier customers",
+						"shortDescription": "VerifiedVisitors bot management for Cloudflare Free and Pro tier customers",
+						"longDescription": "VerifiedVisitors for Cloudflare Free and Pro tier customers.  We will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors for Cloudflare Business users for Cloudflare Business tier customers",
+						"shortDescription": "VerifiedVisitors bot management",
+						"longDescription": "VerifiedVisitors for Cloudflare Business tier customers. VerifiedVisitors will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-09-30T18:43:15.714073525Z",
+				"canceledByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"canceledAt": "2020-10-02T17:09:52.287716056Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "First release of VerifiedVisitors for Cloudflare.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-10-02T17:09:50.880344Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Powerful, easy to use, bot visitor management.",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is a next generation, cloud-based, subscription service for website owners that continuously verifies the authenticity of your good bots and puts you in charge of your web data. With over 50% of traffic on the internet being Bots, its never been more important to identify and manage them easily.\n\nWe give you the real-time insight using our machine learning into your bot visitors that you don’t have today, saving you the time and headache of manually managing your access list.\n\nVerifiedVisitors is a simple, affordable and effective way to protect the security of your business online.\n\n**How does it work?**\n\nImplimenting VerifiedVisitors with Cloudflare takes just a few minutes, we don’t use a JavaScript fingerprint or any in-site code and our service does not sit in-line with your infrastructure, it works at the network edge so don’t slow your website down.\n\nOnce connected, VerifiedVisitors saves you valuable time so you don’t have to manually check your logs for each bot.  With an extensive database of over 40 categories, containing over 500 commercial bot services the useful bots you want should be here!\n\nTo manage these bots our service reads your weblogs and automatically performs multi-factor authentication on each bot, matches them to our database and shows you, by category, which bots have been visiting your site and why.  \n\nOnce you have approved your bot access list (VerifiedWatchList), our seemless integration with your Cloudflare WAF ensures that only the verified bots you want can visit your website, whilst also automatically stopping the fake and unwanted bots before they hit your website.  It runs 24/7/365 to ensure your access lists are always up to date.\n\n**What does it cost?**\n\nWe have a simple monthly subscription based on your Cloudflare subscription tier, one for Free/Pro users and one for Business users, this monthly, per domain, charge covers you for the the analysis and management of your Bot Access lists.  If you are an Enterprise User and interested in using VerifiedVisitors please get in touch.",
+				"instructions": "Once you have registered with VerifiedVisitors the final steps of setup take minutes, simply you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your good bot Allow list.  Instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Dashboard.png",
+					"https://images.cloudflareapps.com/ZQDLDHam-pYU/BOt%20Categories.png",
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Bot%20selection.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors for Cloudflare Free/Pro tier customers",
+						"shortDescription": "VerifiedVisitors bot management for Cloudflare Free and Pro tier customers",
+						"longDescription": "VerifiedVisitors for Cloudflare Free and Pro tier customers.  We will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": false,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors for Cloudflare Business users for Cloudflare Business tier customers",
+						"shortDescription": "VerifiedVisitors bot management",
+						"longDescription": "VerifiedVisitors for Cloudflare Business tier customers. VerifiedVisitors will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": false,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "Monitoronly",
+						"shortDescription": "VerifiedVisitors Monitor Only free tier for Cloudflare users",
+						"longDescription": "VerifiedVisitors Monitor Only for Cloudflare customers. VerifiedVisitors will analyse your weblogs to hightlight commercial bot services visiting your estate in our easy to read Dashboard.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-10-02T17:09:52.297548575Z",
+				"canceledByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"canceledAt": "2020-10-19T12:44:29.04254225Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"manual": true,
+			"releaseNotes": "First release of VerifiedVisitors for Cloudflare.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-10-19T12:44:27.623787Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Powerful, easy to use, bot visitor management.",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is a next generation, cloud-based, subscription service for website owners that continuously verifies the authenticity of your good bots and puts you in charge of your web data. With over 50% of traffic on the internet being Bots, its never been more important to identify and manage them easily.\n\nWe give you the real-time insight using our machine learning into your bot visitors that you don’t have today, saving you the time and headache of manually managing your access list.\n\nVerifiedVisitors is a simple, affordable and effective way to protect the security of your business online.\n\n**How does it work?**\n\nImplimenting VerifiedVisitors with Cloudflare takes just a few minutes, we don’t use a JavaScript fingerprint or any in-site code and our service does not sit in-line with your infrastructure, it works at the network edge so don’t slow your website down.\n\nOnce connected, VerifiedVisitors saves you valuable time so you don’t have to manually check your logs for each bot.  With an extensive database of over 40 categories, containing over 500 commercial bot services the useful bots you want should be here!\n\nTo manage these bots our service reads your weblogs and automatically performs multi-factor authentication on each bot, matches them to our database and shows you, by category, which bots have been visiting your site and why.  \n\nOnce you have approved your bot access list (VerifiedWatchList), our seemless integration with your Cloudflare WAF ensures that only the verified bots you want can visit your website, whilst also automatically stopping the fake and unwanted bots before they hit your website.  It runs 24/7/365 to ensure your access lists are always up to date.\n\n**What does it cost?**\n\nWe have a simple monthly subscription based on your Cloudflare subscription tier, one for Free/Pro users and one for Business users, this monthly, per domain, charge covers you for the the analysis and management of your Bot Access lists.  If you are an Enterprise User and interested in using VerifiedVisitors please get in touch.",
+				"instructions": "Once you have registered with VerifiedVisitors the final steps of setup take minutes, simply you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your good bot Allow list.  Instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Dashboard.png",
+					"https://images.cloudflareapps.com/ZQDLDHam-pYU/BOt%20Categories.png",
+					"https://images.cloudflareapps.com/3iL0L91IvhMR/Bot%20selection.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors for Cloudflare Free/Pro tier customers",
+						"shortDescription": "VerifiedVisitors bot management for Cloudflare Free and Pro tier customers",
+						"longDescription": "VerifiedVisitors for Cloudflare Free and Pro tier customers.  We will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": false,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors for Cloudflare Business users for Cloudflare Business tier customers",
+						"shortDescription": "VerifiedVisitors bot management",
+						"longDescription": "VerifiedVisitors for Cloudflare Business tier customers. VerifiedVisitors will analyse your weblogs to hightlight commercial bot services visiting your estate.  No more manually checking your weblogs and deciding if you need to allow or block a bot, with VerifiedVisitors all the analysis and active management is done automatically, you simply choose the bots you want, we do the rest.",
+						"visible": false,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "FreeBeta",
+						"shortDescription": "VerifiedVisitors Monitor Only free tier for Cloudflare users",
+						"longDescription": "VerifiedVisitors Monitor Only for Cloudflare customers. VerifiedVisitors will analyse your weblogs to hightlight commercial bot services visiting your estate in our easy to read Dashboard.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-10-19T12:44:29.054054599Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-23T15:20:25.129616866Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Updated Product information and and pricing tier descriptions.  No functional changes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-10-27T12:27:29.58196Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nVerifiedVisitors is free for 30 days. You will be able to manage all the bots visiting your site, set your bot access list and automate blocking rules. After the trial we have a monthly subscription based on your existing Cloudflare tier:\n\n1. Free and Pro Users - $5 a month\n2. Business Users - $50 a month\n3. Enterprise - volumetric pricing.",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.53.44.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.52.12.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.49.17.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Free and Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "Free tier for Cloudflare users",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-10-28T19:42:16.838485388Z",
+				"canceledByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"canceledAt": "2020-10-29T12:35:15.448472407Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Updated Product information and and pricing tier descriptions.  No functional changes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-10-29T11:52:09.14383Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nVerifiedVisitors is free for 30 days, and free for existing users on the free Cloudflare tier. You will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. After the trial ends we have a monthly subscription based on your existing Cloudflare tier:\n\n1. Free Users - Free\n2. Pro Users - $5 a month\n3. Business Users - $50 a month\n4. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.53.44.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.52.12.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.49.17.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for Cloudflare users",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Free tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-10-29T12:35:15.457793589Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-02T21:39:36.409447774Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Added pricing tier plans.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-10-29T12:35:56.745146Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nVerifiedVisitors is free for 30 days, and free for existing users on the free Cloudflare tier. You will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. After the trial ends we have a monthly subscription based on your existing Cloudflare tier:\n\n1. Free Users - Free\n2. Pro Users - $5 a month\n3. Business Users - $50 a month\n4. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/aBMvzMo4J3iR/VV%20icon%20300x300%20non%20transparent%20bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.53.44.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.52.12.png",
+					"https://images.cloudflareapps.com/hUUTWMZGbVJ8/Screenshot%202020-10-27%20at%2011.49.17.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_PRO",
+						"feature": "apps.verified_visitors_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for Cloudflare users",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Free tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-11-03T17:51:39.00589875Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-03T18:02:08.153150934Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated Product information.  No functional changes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-11-11T11:50:37.155576Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nVerifiedVisitors is free for 30 days, and free for existing users on the free Cloudflare tier. You will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. After the trial ends we have a monthly subscription based on your existing Cloudflare tier (Enterprise tier customers, please contact us):\n\n1. Free Users - Free\n2. Pro Users - $5 a month\n3. Business Users - $50 a month\n4. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare2.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloludflare3.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_PRO",
+						"feature": "apps.verified_visitors_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for Cloudflare users",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Bot Management Simplified for Cloudflare Free tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2020-11-13T12:20:02.716365195Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-13T15:20:24.211220268Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated pricing tiers (removed permanent free tier).  No functional changes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2020-11-18T19:54:07.861562Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nVerifiedVisitors is free for 30 days for all Cloudflare tiers. You will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. At the end of the trial we have a monthly subscription based on your existing Cloudflare tier (Enterprise tier customers, please contact us):\n\n1. Free & Pro Users - $5 a month\n2. Business Users - $50 a month\n3. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare2.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloludflare3.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free & Pro tier customers - 30d free trial",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_PRO",
+						"feature": "apps.verified_visitors_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Business tier customers - 30d free trial",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for All Cloudflare tiers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free tier customers.",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2021-03-22T15:38:33.829892001Z",
+				"canceledAt": null,
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2021-03-24T15:09:53.978229534Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated Product information and and pricing tier descriptions.  No functional changes.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2021-06-03T16:57:29.606884Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your good bots.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenge of preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically push VerifiedWatchList to your firewall ACL (access control list) and\nkeep the list up to date 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. At the end of the trial we have a monthly subscription based on your existing Cloudflare tier (Enterprise tier customers, please contact us):\n\n1. Free & Pro Users - $5 a month\n2. Business Users - $50 a month\n3. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare2.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloludflare3.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free & Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_PRO",
+						"feature": "apps.verified_visitors_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for All Cloudflare tiers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free tier customers.",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2021-06-03T16:57:30.549920674Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-06-04T19:12:28.092571478Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Hello!  We've just updated our Cloudflare listing with updated Product & Pricing information.  VerifiedVisitors will be discontinuing the $5 tier for new customers/additional domains due to improvements in Product functionality.  No functional changes to App.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2021-11-10T11:36:40.741537Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is an AI-Powered Bot detection platform to protect your business online\nand secure your data and continuously verify the authenticity of your website visitors.\n\n**How does it work?**\n\nVerifiedVisitors helps you to address the challenges of removing unwanted automated traffic from your site, preparing and maintaining a bot\naccess list and manually analysing logs by using our machine learning powered API to\nautomate the entire process.\n\nSimply, we read your weblogs from your Cloudflare CDN, identify the commercial/useful bot services\nvisiting you and we build your bot access list - **VerifiedWatchList**.\n\nWe then automatically manage your VerifiedWatchList at the edge of network 24/7/365.  We ensure that only the verified bots you want can visit your website and automatically stop the fake and unwanted bots before they hit your website.\n\n**What does it cost?**\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate blocking rules. We charge on a monthly subscription basis for Free, Pro and Business Tier users (Enterprise tier customers, please contact us):\n\n1. Cloudflare Free, Pro and Business tier users - $50 a month\n2. Enterprise - volumetric pricing",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+					"https://images.cloudflareapps.com/0_pOR6-Ni6WD/Cloudflare%20Mange%20your%20bots.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloludflare3.png",
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cffreepro",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free & Pro tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_PRO",
+						"feature": "apps.verified_visitors_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free, Pro and Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "30d Free trial for All Cloudflare tiers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "cffreetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free tier customers.",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2021-11-10T12:32:31.595894948Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-30T20:10:19.457494252Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "JGv8U9e23TZI",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or create a VerifiedVisitors account",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"iW50WGJ9bHsG"
+							],
+							"title": "VerifiedVisitors Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.verifiedvisitors.com/v1/api/users/cf-webhook",
+						"events": [
+							"option-change:account",
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the service."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "VerifiedVisitors is pleased to introduce new pricing tiers.  We have a Free tier for low volume users, as well as new pricing tiers for higher volume users, all accessed via our recently updated management portal.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c8MuribH1vxu",
+			"created": "2022-08-31T16:50:04.916635Z",
+			"proposedApp": {
+				"id": "JGv8U9e23TZI",
+				"title": "VerifiedVisitors",
+				"shortDescription": "Bot Management Simplified",
+				"longDescription": "**What is it?**\n\nVerifiedVisitors is a bank grade AI/ML bot mitigation platform built from the ground up to support the CloudFlare community with a true edge of network architecture.\n\nA **free tier** is available so you can experience all the benefits for yourself.\n\n**How does it work?**\n\nDeploying intelligent Service Workers at the edge of network helps protect your web estate from unwanted and malicious bot traffic before they hit your website. Our intelligent detectors examine thousands of diverse security signals, separate out the legitimate bots and users from the malicious ones by learning from your traffic. \n\nOur customers receive security protection for malicious bot activity such as account takeover, credit cards attacks, and content scraping, and we can help save you valuable energy resources on web hosting, bandwidth, and CPU. \n\nAll the bot detection and mitigation happens at the edge of network - there is nothing to install on your servers, taking all the heavy lifting away from your web estate.\nSetup is simple, typically our customers are up and running in minutes, not days or weeks.\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate mitigation\n\n**What does it cost?**\n\n.We charge on a monthly subscription basis based on total web request volume.\n\nWe have a simple free tier for accounts with less than 100k web requests per month, for accounts with higher volumes, upgrades are available via the VerifiedVisitors portal starting from as little as $199 per month.\n\nBilling is available in both $USD and £GBP",
+				"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
+				"alias": "verifiedvisitors",
+				"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"icon": "https://images.cloudflareapps.com/UzuAqzF9ao_6/VV%20icon%20300x300%20non%20transparent%20bg%20offset.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Xdr6RZ6JJ38Z/Cloudflare%201.png",
+					"https://images.cloudflareapps.com/7-PiRv013QZf/Manage_Your_Bots.png",
+					"https://images.cloudflareapps.com/7-PiRv013QZf/Verified_Database.png",
+					"https://images.cloudflareapps.com/7-PiRv013QZf/Your_Bot_Visits.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6F6ofwkX7Qns/VV%20icon%20420x268%20non%20transparent%20bg.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/Dh4FxDXNsovb/VVLogo%201824x385%20for%20CF%20app%20store.png",
+				"author": "VerifiedVisitors",
+				"tagline": "",
+				"website": "https://www.verifiedvisitors.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.verifiedvisitors.com/terms-of-service",
+				"privacyPolicyURL": "https://www.verifiedvisitors.com/cookie-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@verifiedvisitors.com",
+				"products": [
+					{
+						"id": "cfbusiness",
+						"title": "VerifiedVisitors",
+						"shortDescription": "VerifiedVisitors: Visitor Management Simplified for Cloudflare Free, Pro and Business tier customers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of preparing and maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”",
+						"visible": false,
+						"price": 5000,
+						"order": 0,
+						"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
+						"feature": "apps.verified_visitors_business.enabled",
+						"created": null
+					},
+					{
+						"id": "freetier",
+						"title": "VerifiedVisitors",
+						"shortDescription": "Free tier available to all Cloudflare tiers",
+						"longDescription": "VerifiedVisitors helps you to address the challenge of managing automated traffic on your site as well as maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”\n\nOur free tier protects you for up to 100k web requests per month.  For higher volume users, paid for upgrades are available via our Management Portal.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "c8MuribH1vxu"
+				},
+				"created": "2020-09-25T10:25:44.462689Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
+				"requestedAt": "2022-09-09T17:42:25.718098808Z",
+				"canceledAt": null,
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2022-09-21T11:45:28.634980153Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,209 @@
+{
+	"id": "UrZrKS1uH6RT",
+	"title": "Beamer",
+	"shortDescription": "Keep users updated with a notification center and newsfeed.",
+	"longDescription": "**Beamer** is a smart and easy-to-use notification center and changelog that will help you announce important news, latest products, special offers and more.\n\nThis little announcement helper will get you up to 10x more user engagement and convert more users into paying customers.   \n\n\n**Features**   \n- **Share posts with text, images and videos** – Share your latest updates with your users using text, images, videos and gifs. Make your posts visual and get more engagement.\n- **Push notifications** – Bring users back to your site with push notifications. Notifications are created automatically from new posts. Reducing churn has never been this easy.\n- **User feedback and reactions** – Collect user feedback on your announcements so you can make better decisions.\n- **User segmentation** – Target specific groups of users based on behavior, location and demographics. Stop sending all your customers the exact same announcements.\n- **Customize your design** – Change the the design of your Beamer newsfeed to fit perfectly with your site or app. Change color, location, notification type and more.\n- **Post scheduling** – Create posts and schedule to be published at a specific day and time. Send announcements at the perfect time to increase reach.\n\n\n**[Try Beamer for free today!](https://www.getbeamer.com/?ref=cloudflare)** No fees or card required.",
+	"instructions": "If you have any question on how to install or implement Beamer in your site, please go to our [Help Center](https://www.getbeamer.com/help/?ref=cloudflare) or contact our live support chat in our [official website](https://www.getbeamer.com/?ref=cloudflare).",
+	"alias": "beamer",
+	"orgId": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+	"icon": "https://images.cloudflareapps.com/YeUk1TINazwo/beamer_cf_logo_288x288.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ppYYOfYBchCl/phunt-bmr-1.png",
+		"https://images.cloudflareapps.com/tKyBMd7Cihm9/phunt-bmr-0b%20%281%29.png",
+		"https://images.cloudflareapps.com/ppYYOfYBchCl/phunt-bmr-2.png",
+		"https://images.cloudflareapps.com/DatScJF7wT9l/output-onlinejpgtools.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/z3_8sxYdgU4E/beamer_cf_logo_420x268.png",
+	"featuredAppImage": "",
+	"author": "Joincube Inc.",
+	"tagline": "",
+	"website": "https://www.getbeamer.com/?ref=cloudflare",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.getbeamer.com/terms-of-service/?ref=cloudflare",
+	"privacyPolicyURL": "https://www.getbeamer.com/privacy-policy/?ref=cloudflare",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "info@getbeamer.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+			"created": "2018-11-23T00:11:32.668218222Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "HcP4enhrOHXM"
+	},
+	"created": "2018-11-15T22:31:17.721401Z",
+	"org": {
+		"id": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+		"title": "",
+		"username": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "UrZrKS1uH6RT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login with your Beamer account.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"beamer"
+							],
+							"title": "Beamer Account",
+							"type": "object"
+						},
+						"position": {
+							"default": "bottom-right",
+							"description": "(Optional) Position for the default button. Applies only if not using a selector.",
+							"enum": [
+								"bottom-right",
+								"bottom-left",
+								"top-left",
+								"top-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom-left",
+								"bottom-right": "Bottom-right",
+								"top-left": "Top-left",
+								"top-right": "Top-right"
+							},
+							"order": 2,
+							"title": "Button position",
+							"type": "string"
+						},
+						"selector": {
+							"description": "(Optional) Selector for an element in your site to use as a button for opening Beamer.",
+							"format": "selector",
+							"order": 3,
+							"placeholder": "element-selector",
+							"title": "Button selector",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.getbeamer.com/oauth/cloudflare",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Beamer."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.36,
+				"upvotes": 4,
+				"downvotes": 7
+			},
+			"releaseNotes": "Initial release of Beamer's Cloudflare plugin.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/A-Kn2vdn03XG",
+			"metadata": {
+				"code": {
+					"sourceTag": "A-Kn2vdn03XG",
+					"uploadedOn": "2018-11-22T23:41:09.956404025Z"
+				}
+			},
+			"created": "2018-11-15T22:31:18.311082Z",
+			"proposedApp": {
+				"id": "UrZrKS1uH6RT",
+				"title": "Beamer",
+				"shortDescription": "Keep users updated with a notification center and newsfeed.",
+				"longDescription": "**Beamer** is a smart and easy-to-use notification center and changelog that will help you announce important news, latest products, special offers and more.\n\nThis little announcement helper will get you up to 10x more user engagement and convert more users into paying customers.   \n\n\n**Features**   \n- **Share posts with text, images and videos** – Share your latest updates with your users using text, images, videos and gifs. Make your posts visual and get more engagement.\n- **Push notifications** – Bring users back to your site with push notifications. Notifications are created automatically from new posts. Reducing churn has never been this easy.\n- **User feedback and reactions** – Collect user feedback on your announcements so you can make better decisions.\n- **User segmentation** – Target specific groups of users based on behavior, location and demographics. Stop sending all your customers the exact same announcements.\n- **Customize your design** – Change the the design of your Beamer newsfeed to fit perfectly with your site or app. Change color, location, notification type and more.\n- **Post scheduling** – Create posts and schedule to be published at a specific day and time. Send announcements at the perfect time to increase reach.\n\n\n**[Try Beamer for free today!](https://www.getbeamer.com/?ref=cloudflare)** No fees or card required.",
+				"instructions": "If you have any question on how to install or implement Beamer in your site, please go to our [Help Center](https://www.getbeamer.com/help/?ref=cloudflare) or contact our live support chat in our [official website](https://www.getbeamer.com/?ref=cloudflare).",
+				"alias": "beamer",
+				"orgId": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+				"icon": "https://images.cloudflareapps.com/YeUk1TINazwo/beamer_cf_logo_288x288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ppYYOfYBchCl/phunt-bmr-1.png",
+					"https://images.cloudflareapps.com/tKyBMd7Cihm9/phunt-bmr-0b%20%281%29.png",
+					"https://images.cloudflareapps.com/ppYYOfYBchCl/phunt-bmr-2.png",
+					"https://images.cloudflareapps.com/DatScJF7wT9l/output-onlinejpgtools.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/z3_8sxYdgU4E/beamer_cf_logo_420x268.png",
+				"featuredAppImage": "",
+				"author": "Joincube Inc.",
+				"tagline": "",
+				"website": "https://www.getbeamer.com/?ref=cloudflare",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.getbeamer.com/terms-of-service/?ref=cloudflare",
+				"privacyPolicyURL": "https://www.getbeamer.com/privacy-policy/?ref=cloudflare",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@getbeamer.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HcP4enhrOHXM"
+				},
+				"created": "2018-11-15T22:31:17.721401Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4f15c5d4ef6f42ec44a4009c7e8b96b7",
+				"requestedAt": "2018-11-23T00:11:32.654944756Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-18T16:29:26.526956206Z"
+			}
+		}
+	]
+}

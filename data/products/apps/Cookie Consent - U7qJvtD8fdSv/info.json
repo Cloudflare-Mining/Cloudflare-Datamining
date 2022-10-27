@@ -1,0 +1,6978 @@
+{
+	"id": "U7qJvtD8fdSv",
+	"title": "Cookie Consent",
+	"shortDescription": "Tell visitors that your site uses cookies.",
+	"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+	"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+	"alias": "cookie-consent",
+	"orgId": "b97ce28ced17a27d8133b0a87c680120",
+	"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+		"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Howard Lie",
+	"tagline": "",
+	"website": "https://cookie-consent.app.forthe.top/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://cookie-consent.app.forthe.top/terms-and-conditions/",
+	"privacyPolicyURL": "https://cookie-consent.app.forthe.top/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.4.0",
+	"infoVersion": "1.4.0",
+	"points": 0,
+	"supportEmail": "liehoward13@gmail.com",
+	"products": [],
+	"categoryIds": [
+		"recommended-for-all-sites",
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "b97ce28ced17a27d8133b0a87c680120",
+			"created": "2017-07-30T04:53:49.651837099Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "xO28NlEP40wK"
+	},
+	"created": "2017-07-30T04:19:57.675473Z",
+	"org": {
+		"id": "b97ce28ced17a27d8133b0a87c680120",
+		"title": "",
+		"username": "b97ce28ced17a27d8133b0a87c680120",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-all-sites",
+			"title": "Recommended for All Sites",
+			"description": "Apps that are recommended for all sites.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:53:13.516865Z"
+		},
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"default": 30,
+							"description": "Ask again after how many days (if you want to show popup once then set this to 9999)",
+							"minimum": 7,
+							"order": 3,
+							"title": "Ask again",
+							"type": "integer"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"order": 0,
+							"title": "Location",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website use cookies to ensure the best experience for user.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/V3wctFqm3BrU",
+			"metadata": {
+				"code": {
+					"sourceTag": "V3wctFqm3BrU",
+					"uploadedOn": "2017-07-30T04:53:08.116762354Z"
+				}
+			},
+			"created": "2017-07-30T04:19:58.259765Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Simple popup to tell visitor if your site use cookie",
+				"longDescription": "Tell your website's visitors if your site use cookie and to comply with EU cookie law. This Apps has many customization option so website owner can make adopt them to their website in some simple click.",
+				"instructions": "",
+				"alias": "tibrr-cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-07-30T04:53:49.642764781Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-02T13:34:47.973600341Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"default": 30,
+							"description": "Ask again after how many days (if you want to show popup once then set this to 9999)",
+							"minimum": 7,
+							"order": 3,
+							"title": "Ask again",
+							"type": "integer"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"order": 0,
+							"title": "Location",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website use cookies to ensure the best experience for user.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aOroN9F-NAUs",
+			"metadata": {
+				"code": {
+					"sourceTag": "aOroN9F-NAUs",
+					"uploadedOn": "2017-08-03T10:57:13.661725489Z"
+				}
+			},
+			"created": "2017-08-03T10:57:12.471516Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Simple popup to tell visitor if your site use cookie",
+				"longDescription": "Tell your website's visitors if your site use cookie and to comply with EU cookie law. This Apps has many customization option so website owner can make adopt them to their website in some simple click.",
+				"instructions": "",
+				"alias": "tibrr-cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-08-03T10:57:15.753462209Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-07T23:19:53.721791007Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CnvxKZDSpdLF",
+			"metadata": {
+				"code": {
+					"sourceTag": "CnvxKZDSpdLF",
+					"uploadedOn": "2017-08-08T07:08:21.981108354Z"
+				}
+			},
+			"created": "2017-08-03T10:58:58.803719Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your website uses cookies",
+				"longDescription": "Tell your website's visitors if your site uses cookie and comply with EU cookie law. This App has many customization options so website owners can adapt it to their website in some simple click.",
+				"instructions": "",
+				"alias": "tibrr-cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-08-08T07:19:47.827945724Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T09:45:06.72709966Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CnvxKZDSpdLF",
+			"created": "2017-08-08T09:47:08.951674Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookie and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "tibrr-cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T09:47:09.173379259Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T09:47:19.771154999Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CnvxKZDSpdLF",
+			"created": "2017-08-08T10:07:29.648544Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "tibrr-cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T10:07:29.832185192Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T10:07:41.438499239Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 4,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 9,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5cGpR-p0qfvV",
+			"metadata": {
+				"code": {
+					"sourceTag": "5cGpR-p0qfvV",
+					"uploadedOn": "2017-09-03T02:16:01.905110009Z"
+				}
+			},
+			"created": "2017-09-03T02:16:01.028855Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-09-03T02:17:25.352743989Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-05T20:45:56.259300127Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 5,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 4,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 11,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 9,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added the ability to set the transparency of the pop-up.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AV065XFl5EB-",
+			"metadata": {
+				"code": {
+					"sourceTag": "AV065XFl5EB-",
+					"uploadedOn": "2017-09-29T13:13:00.996785195Z"
+				}
+			},
+			"created": "2017-09-29T13:12:59.795726Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-09-29T13:14:11.223581383Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-04T12:02:31.331804446Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 5,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 4,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 11,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 9,
+							"title": "Text Color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fixed minor bugs causing the button to be placed outside the container.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_V1UQi6N0HFi",
+			"metadata": {
+				"code": {
+					"sourceTag": "_V1UQi6N0HFi",
+					"uploadedOn": "2017-10-23T13:03:34.662111023Z"
+				}
+			},
+			"created": "2017-10-23T13:03:34.082387Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-10-23T13:03:44.757847227Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-23T15:44:23.079911545Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 5,
+							"title": "Popup Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 4,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 11,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Choose where you want the popup to appear at.",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 9,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 12,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 14,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 15,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 13,
+							"title": "Text Link Url",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added \"Learn More\" link functionality",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UWD4sMVPR9ZY",
+			"metadata": {
+				"code": {
+					"sourceTag": "UWD4sMVPR9ZY",
+					"uploadedOn": "2017-10-24T07:32:15.240367425Z"
+				}
+			},
+			"created": "2017-10-24T07:32:14.625934Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-10-24T07:33:33.606630221Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-27T11:52:34.63359546Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 5,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 4,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 11,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 10,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 2,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 3,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 9,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 12,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 14,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 15,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 13,
+							"title": "Text Link URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added \"Learn More\" link functionality",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lEgILRmbzZzT",
+			"metadata": {
+				"code": {
+					"sourceTag": "lEgILRmbzZzT",
+					"uploadedOn": "2017-10-28T06:14:10.273213696Z"
+				}
+			},
+			"created": "2017-10-28T06:14:09.127184Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-10-28T06:14:23.928488275Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-30T10:17:54.589561026Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added \"Button Location\" link functionality",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cEwwZZ0ltT05",
+			"metadata": {
+				"code": {
+					"sourceTag": "cEwwZZ0ltT05",
+					"uploadedOn": "2017-12-08T12:51:03.98481824Z"
+				}
+			},
+			"created": "2017-12-08T12:51:02.605653Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2017-12-08T12:51:39.733020518Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-12-15T06:35:34.736899982Z"
+			}
+		},
+		{
+			"tag": "1.1.13",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Performance & Security” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cEwwZZ0ltT05",
+			"created": "2018-01-22T20:24:31.874228Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:24:32.146930961Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:24:46.913236126Z"
+			}
+		},
+		{
+			"tag": "1.1.14",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 12,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cEwwZZ0ltT05",
+			"created": "2018-02-06T20:40:44.578203Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:40:44.89226452Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T20:45:00.74193162Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": 0.9,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "number"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": 1.1,
+							"order": 69,
+							"title": "Text Size",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added \"Learn More\" link functionality",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7JPFYxWtWIDm",
+			"metadata": {
+				"code": {
+					"sourceTag": "7JPFYxWtWIDm",
+					"uploadedOn": "2018-04-16T16:23:17.597328381Z"
+				}
+			},
+			"created": "2018-04-16T16:19:31.522461Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-04-16T16:23:23.914578763Z",
+				"canceledByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"canceledAt": "2018-04-19T00:34:40.9905535Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again in one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.88,
+				"upvotes": 7,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added \"Text Size\" and \"Button Text Size\" functionality",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/x5dJ4i1eCwdf",
+			"metadata": {
+				"code": {
+					"sourceTag": "x5dJ4i1eCwdf",
+					"uploadedOn": "2018-04-19T00:33:48.947472829Z"
+				}
+			},
+			"created": "2018-04-19T00:32:37.647657Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-04-19T00:34:40.999528942Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-19T22:27:23.450656056Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "Improved stability",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/en795un7jCwA",
+			"metadata": {
+				"code": {
+					"sourceTag": "en795un7jCwA",
+					"uploadedOn": "2018-05-09T05:12:20.910589766Z"
+				}
+			},
+			"created": "2018-05-09T05:12:19.570382Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://aui.review/show-pop-tell-visitors-site-uses-cookies-comply-eu-cookie-law/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-05-09T05:12:22.408496067Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-10T20:41:02.895226204Z"
+			}
+		},
+		{
+			"tag": "1.2.3",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 16,
+				"downvotes": 7
+			},
+			"releaseNotes": "Added Official website that contain terms, privacy and other informatin about this app.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/en795un7jCwA",
+			"created": "2018-05-12T06:58:08.439635Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-05-12T06:58:17.391753599Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-15T18:18:51.858907403Z"
+			}
+		},
+		{
+			"tag": "1.2.4",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fixed problem causing pop-up to show on iframe",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/a4JXXw2B-5Po",
+			"metadata": {
+				"code": {
+					"sourceTag": "a4JXXw2B-5Po",
+					"uploadedOn": "2018-05-22T07:41:06.404101825Z"
+				}
+			},
+			"created": "2018-05-22T04:38:30.383658Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email. I rarely check comments on CloudFlare.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-05-22T07:42:00.296884103Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-24T21:05:35.651682433Z"
+			}
+		},
+		{
+			"tag": "1.2.5",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://aui.review/why-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 16,
+				"downvotes": 8
+			},
+			"releaseNotes": "Fixed problem causing pop-up to show on iframe",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lJJuTB1KRak4",
+			"metadata": {
+				"code": {
+					"sourceTag": "lJJuTB1KRak4",
+					"uploadedOn": "2018-05-25T13:58:04.420593543Z"
+				}
+			},
+			"created": "2018-05-25T13:58:02.300235Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-05-25T14:08:22.436263963Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-13T20:09:53.950861757Z"
+			}
+		},
+		{
+			"tag": "1.2.6",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.74,
+				"upvotes": 14,
+				"downvotes": 5
+			},
+			"releaseNotes": "Changed default \"Learn More\" link to official App Pages.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BAeh0J_TkEin",
+			"metadata": {
+				"code": {
+					"sourceTag": "BAeh0J_TkEin",
+					"uploadedOn": "2018-09-04T14:44:13.570999621Z"
+				}
+			},
+			"created": "2018-09-04T14:44:12.919996Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2018-09-04T14:44:52.308662406Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-04T17:54:59.414884082Z"
+			}
+		},
+		{
+			"tag": "1.2.7",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.66,
+				"upvotes": 21,
+				"downvotes": 11
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BAeh0J_TkEin",
+			"created": "2018-11-14T20:39:08.202731Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-14T20:39:09.323087651Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T21:13:17.632844351Z"
+			}
+		},
+		{
+			"tag": "1.2.8",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.85,
+				"upvotes": 11,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added new option to open target url of Link Text in new tab.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/k_rKpB9OWGvV",
+			"metadata": {
+				"code": {
+					"sourceTag": "k_rKpB9OWGvV",
+					"uploadedOn": "2019-02-22T08:01:51.749941733Z"
+				}
+			},
+			"created": "2019-02-22T08:01:51.229206Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2019-02-22T08:03:57.836450338Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-22T18:01:26.087572495Z"
+			}
+		},
+		{
+			"tag": "1.2.9",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 6,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added options to center-align items on big screen.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EvGIix22Jvfv",
+			"metadata": {
+				"code": {
+					"sourceTag": "EvGIix22Jvfv",
+					"uploadedOn": "2019-03-17T04:06:42.431995791Z"
+				}
+			},
+			"created": "2019-03-17T04:06:41.738492Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2019-03-17T04:06:44.119412826Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-03-20T17:06:03.358873829Z"
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"popupPositioning": "fixed"
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"popupLocation": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the popup appear on your site?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"popupPositioning": "static"
+							},
+							"title": "Popup Location",
+							"type": "object"
+						},
+						"popupPositioning": {
+							"default": "fixed",
+							"description": "How should the popup fit in your web?",
+							"enum": [
+								"fixed",
+								"static"
+							],
+							"enumNames": {
+								"fixed": "Fixed",
+								"static": "Fit-in-Page (beta)"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Popup Position Behavior",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.71,
+				"upvotes": 20,
+				"downvotes": 8
+			},
+			"releaseNotes": "Added a new options to embed popup in page elements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SMlUAIqiVWyW",
+			"metadata": {
+				"code": {
+					"sourceTag": "SMlUAIqiVWyW",
+					"uploadedOn": "2019-05-03T14:52:12.381042621Z"
+				}
+			},
+			"created": "2019-05-03T14:52:11.807878Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms.html",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2019-05-03T14:53:22.61833877Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-03T18:27:22.18930936Z"
+			}
+		},
+		{
+			"tag": "1.3.1",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"callbackFunction": {
+							"default": "",
+							"order": 102,
+							"title": "Callback Function to call with 1 parameter (bool) as consent status",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"popupPositioning": "fixed"
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"popupLocation": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the popup appear on your site?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"popupPositioning": "static"
+							},
+							"title": "Popup Location",
+							"type": "object"
+						},
+						"popupPositioning": {
+							"default": "fixed",
+							"description": "How should the popup fit in your web?",
+							"enum": [
+								"fixed",
+								"static"
+							],
+							"enumNames": {
+								"fixed": "Fixed",
+								"static": "Fit-in-Page (beta)"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Popup Position Behavior",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.cloudstinger.com/why-cookies.html",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 27,
+				"downvotes": 3
+			},
+			"releaseNotes": "Added callback to specified function when visitors clicked on \"agree\" button",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H_Zm9Zcwt8oG",
+			"metadata": {
+				"code": {
+					"sourceTag": "H_Zm9Zcwt8oG",
+					"uploadedOn": "2019-10-12T15:22:02.343777185Z"
+				}
+			},
+			"created": "2019-10-12T15:20:45.486893Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.cloudstinger.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.cloudstinger.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://cookie-consent.app.cloudstinger.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2019-10-12T15:23:17.643608129Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-12T19:11:55.351969452Z"
+			}
+		},
+		{
+			"tag": "1.3.2",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"callbackFunction": {
+							"default": "",
+							"order": 102,
+							"title": "Callback Function to call with 1 parameter (bool) as consent status",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"popupPositioning": "fixed"
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"popupLocation": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the popup appear on your site?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"popupPositioning": "static"
+							},
+							"title": "Popup Location",
+							"type": "object"
+						},
+						"popupPositioning": {
+							"default": "fixed",
+							"description": "How should the popup fit in your web?",
+							"enum": [
+								"fixed",
+								"static"
+							],
+							"enumNames": {
+								"fixed": "Fixed",
+								"static": "Fit-in-Page (beta)"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Popup Position Behavior",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.forthe.top/why-websites-use-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 33,
+				"downvotes": 11
+			},
+			"releaseNotes": "Broken Learn More's default link fixed",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qe5I5BOkHBKN",
+			"metadata": {
+				"code": {
+					"sourceTag": "qe5I5BOkHBKN",
+					"uploadedOn": "2020-03-20T16:38:27.415678989Z"
+				}
+			},
+			"created": "2020-03-20T16:38:26.873023Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.forthe.top/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.forthe.top/terms-and-conditions/",
+				"privacyPolicyURL": "https://cookie-consent.app.forthe.top/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2020-03-20T16:39:12.165313996Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-23T15:14:53.304772064Z"
+			}
+		},
+		{
+			"tag": "1.3.3",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 0.9
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"callbackFunction": {
+							"default": "",
+							"order": 102,
+							"title": "Callback Function to call with 1 parameter (bool) as consent status",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"order": 40,
+							"title": "Show notice again after one month.",
+							"type": "boolean"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"popupPositioning": "fixed"
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"popupLocation": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the popup appear on your site?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"popupPositioning": "static"
+							},
+							"title": "Popup Location",
+							"type": "object"
+						},
+						"popupPositioning": {
+							"default": "fixed",
+							"description": "How should the popup fit in your web?",
+							"enum": [
+								"fixed",
+								"static"
+							],
+							"enumNames": {
+								"fixed": "Fixed",
+								"static": "Fit-in-Page (beta)"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Popup Position Behavior",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.forthe.top/why-websites-use-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.77,
+				"upvotes": 77,
+				"downvotes": 23
+			},
+			"releaseNotes": "Fixed problem causing word to break in some websites",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ukhvZKmueJEw",
+			"metadata": {
+				"code": {
+					"sourceTag": "ukhvZKmueJEw",
+					"uploadedOn": "2020-08-07T03:42:12.772693186Z"
+				}
+			},
+			"created": "2020-08-07T03:42:11.630707Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.forthe.top/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.forthe.top/terms-and-conditions/",
+				"privacyPolicyURL": "https://cookie-consent.app.forthe.top/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2020-08-07T03:42:52.135425801Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-08-07T18:12:18.930508699Z"
+			}
+		},
+		{
+			"tag": "1.4.0",
+			"appId": "U7qJvtD8fdSv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgroundColor": {
+							"default": "#191919",
+							"format": "color",
+							"order": 50,
+							"title": "Message Background Color",
+							"type": "string"
+						},
+						"backgroundOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0,
+							"order": 45,
+							"step": 0.02,
+							"title": "Background Transparency",
+							"type": "number"
+						},
+						"buttonBorderColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 80,
+							"title": "Button Border Color",
+							"type": "string"
+						},
+						"buttonColor": {
+							"default": "#5aea15",
+							"format": "color",
+							"order": 55,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"buttonHoverColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 60,
+							"title": "Button Color on hover",
+							"type": "string"
+						},
+						"buttonHoverTextColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 75,
+							"title": "Button Text Color on hover",
+							"type": "string"
+						},
+						"buttonLocation": {
+							"default": "right",
+							"description": "Where should the button appear?",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Button Position",
+							"type": "string"
+						},
+						"buttonText": {
+							"default": "Got It",
+							"order": 35,
+							"title": "Button Text",
+							"type": "string"
+						},
+						"buttonTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 65,
+							"title": "Button Text Color",
+							"type": "string"
+						},
+						"buttonTextSize": {
+							"default": {
+								"unit": "em",
+								"value": 0.9
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 34,
+							"title": "Button Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						},
+						"callbackFunction": {
+							"default": "",
+							"order": 102,
+							"title": "Callback Function to call with 1 parameter (bool) as consent status",
+							"type": "string"
+						},
+						"cookieLifetime": {
+							"default": "4",
+							"enum": [
+								"1",
+								"2",
+								"3",
+								"4",
+								"5"
+							],
+							"enumNames": {
+								"1": "Never",
+								"2": "Always",
+								"3": "24-Hours later",
+								"4": "1 Month later",
+								"5": "1 Year later"
+							},
+							"order": 40,
+							"title": "Show popup again later?",
+							"type": "string"
+						},
+						"location": {
+							"default": "top",
+							"description": "Where should the message appear?",
+							"enum": [
+								"top",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"top": "Top"
+							},
+							"format": "radios",
+							"order": 2,
+							"showIf": {
+								"popupPositioning": "fixed"
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "This website uses cookies to improve your experience.",
+							"description": "A short message explaining use of cookies in your site.",
+							"format": "textarea",
+							"order": 30,
+							"title": "Message",
+							"type": "string"
+						},
+						"popupLocation": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the popup appear on your site?",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"popupPositioning": "static"
+							},
+							"title": "Popup Location",
+							"type": "object"
+						},
+						"popupPositioning": {
+							"default": "fixed",
+							"description": "How should the popup fit in your web?",
+							"enum": [
+								"fixed",
+								"static"
+							],
+							"enumNames": {
+								"fixed": "Fixed",
+								"static": "Fit-in-Page (beta)"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Popup Position Behavior",
+							"type": "string"
+						},
+						"splitTextAndButton": {
+							"default": true,
+							"order": 101,
+							"title": "Split Text and Button on Big Screen",
+							"type": "boolean"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 70,
+							"title": "Text Color",
+							"type": "string"
+						},
+						"textLink": {
+							"default": "Learn More",
+							"order": 85,
+							"title": "Text Link",
+							"type": "string"
+						},
+						"textLinkColor": {
+							"default": "#497cc9",
+							"format": "color",
+							"order": 95,
+							"title": "Text Link Color",
+							"type": "string"
+						},
+						"textLinkHoverColor": {
+							"default": "#559bbd",
+							"format": "color",
+							"order": 100,
+							"title": "Text Link Color on Hover",
+							"type": "string"
+						},
+						"textLinkNewTab": {
+							"default": true,
+							"order": 91,
+							"title": "Open Text Link in new Tab",
+							"type": "boolean"
+						},
+						"textLinkUrl": {
+							"default": "https://cookie-consent.app.forthe.top/why-websites-use-cookies/",
+							"format": "url",
+							"order": 90,
+							"title": "Text Link URL",
+							"type": "string"
+						},
+						"textSize": {
+							"default": {
+								"unit": "em",
+								"value": 1
+							},
+							"format": "number",
+							"minimum": 0,
+							"order": 69,
+							"title": "Text Size",
+							"type": "object",
+							"units": [
+								"px",
+								"em",
+								"%"
+							]
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 27,
+				"downvotes": 9
+			},
+			"releaseNotes": "Added new options to choose popup's show-again interval after visitor click \"Got It\".",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pQC15UQWCx4P",
+			"metadata": {
+				"code": {
+					"sourceTag": "pQC15UQWCx4P",
+					"uploadedOn": "2021-10-29T08:49:21.281629059Z"
+				}
+			},
+			"created": "2021-10-29T08:49:19.432024Z",
+			"proposedApp": {
+				"id": "U7qJvtD8fdSv",
+				"title": "Cookie Consent",
+				"shortDescription": "Tell visitors that your site uses cookies.",
+				"longDescription": "Tell your visitors if your site uses cookies and helps (not solve) your website to complies with EU cookie laws. Cookie Consent includes custom positioning and theming.",
+				"instructions": "If you face problem when editing, try making some modifications to the settings. If problem persists, try uninstalling and re-install again. If you encounter other problem, please reach me through my email.\nYou can customize the appareance of the app by using css.",
+				"alias": "cookie-consent",
+				"orgId": "b97ce28ced17a27d8133b0a87c680120",
+				"icon": "//images.cloudflareapps.com/wO1IKyJiQ9uYfIp7Gwye_cookie-consent.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/vgq6k7TuTFRYFdGCJnAh_CCSS2.png",
+					"//images.cloudflareapps.com/NxOYVhLoTGC60UVAVkQb_CCSS1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Howard Lie",
+				"tagline": "",
+				"website": "https://cookie-consent.app.forthe.top/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cookie-consent.app.forthe.top/terms-and-conditions/",
+				"privacyPolicyURL": "https://cookie-consent.app.forthe.top/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "liehoward13@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xO28NlEP40wK"
+				},
+				"created": "2017-07-30T04:19:57.675473Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b97ce28ced17a27d8133b0a87c680120",
+				"requestedAt": "2021-10-29T08:49:24.348745023Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-03T14:03:35.813744968Z"
+			}
+		}
+	]
+}

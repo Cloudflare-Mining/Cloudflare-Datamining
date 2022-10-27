@@ -1,0 +1,1656 @@
+{
+	"id": "nGAnsTeiPCQx",
+	"title": "Google Analytics",
+	"shortDescription": "Add google analytics to your website",
+	"longDescription": "Add google analytic to your website",
+	"instructions": "",
+	"alias": "googleanalytics",
+	"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+	"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "lotusfa.com",
+	"tagline": "",
+	"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+	"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.6",
+	"infoVersion": "1.1.6",
+	"points": 0,
+	"supportEmail": "me@lotusfa.com",
+	"products": [
+		{
+			"id": "google-analytics-free",
+			"title": "Google Analytics",
+			"shortDescription": "Add google analytics to your website",
+			"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Support GA4 \n3. Add difference tracker_id for difference sub-domain (pro)\n4. New feature request are always weclome",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "google-analytics-pro",
+			"title": "Google Analytics Pro",
+			"shortDescription": "Add google analytics to your website (pro)",
+			"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Support GA4 \n3. Add difference tracker_id for difference sub-domain (pro)\n4. New feature request are always weclome",
+			"visible": true,
+			"price": 100,
+			"order": 0,
+			"plan": "APPS_GOOGLE_ANALYTICS_PRO",
+			"feature": "apps.google_analytics_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "cec498d92c0d5f84ab1f0e4588e82365",
+			"created": "2020-01-05T09:37:07.558665486Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "YNSgpd2ZZnN1"
+	},
+	"created": "2020-01-05T09:21:28.117073Z",
+	"org": {
+		"id": "cec498d92c0d5f84ab1f0e4588e82365",
+		"title": "",
+		"username": "cec498d92c0d5f84ab1f0e4588e82365",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.1.0",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "Created by create-cloudflare-app",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "first init",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YNSgpd2ZZnN1",
+			"metadata": {
+				"code": {
+					"sourceTag": "YNSgpd2ZZnN1",
+					"uploadedOn": "2020-01-05T09:21:43.11640347Z"
+				}
+			},
+			"created": "2020-01-05T09:21:42.499635Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "cloudflare-google-analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/K9oXxLHXOQ5t/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-05T09:37:07.540798287Z",
+				"canceledByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"canceledAt": "2020-01-05T09:42:45.470071848Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.0",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "Created by create-cloudflare-app",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"releaseNotes": "first init",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YNSgpd2ZZnN1",
+			"created": "2020-01-05T09:42:44.991126Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "cloudflare-google-analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-05T09:42:45.496976625Z",
+				"canceledByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"canceledAt": "2020-01-05T09:50:29.487590081Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.1",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "second init",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Ou3xFs7_eORc",
+			"metadata": {
+				"code": {
+					"sourceTag": "Ou3xFs7_eORc",
+					"uploadedOn": "2020-01-05T09:50:07.50879008Z"
+				}
+			},
+			"created": "2020-01-05T09:50:07.02878Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "cloudflare-google-analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-05T09:50:29.509909003Z",
+				"canceledByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"canceledAt": "2020-01-05T10:05:55.303220561Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "start production",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hmbd603spqQE",
+			"metadata": {
+				"code": {
+					"sourceTag": "hmbd603spqQE",
+					"uploadedOn": "2020-01-05T10:05:32.850638773Z"
+				}
+			},
+			"created": "2020-01-05T10:05:32.523983Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "cloudflare-google-analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-05T10:05:55.316920982Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-06T16:27:27.732954593Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Insights category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hmbd603spqQE",
+			"created": "2020-01-06T16:31:23.757259Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "cloudflare-google-analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-06T16:31:24.011034853Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-06T16:31:35.605077637Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Google Tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "second init",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hmbd603spqQE",
+			"created": "2020-01-10T16:08:05.894683Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://lotusfa.com",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-10T16:08:06.323115331Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-10T16:11:24.545665291Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"title": "Subdomain tracker ID (Optionals)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "support difference subdomain, difference trackerID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WNGH_meFkdG_",
+			"metadata": {
+				"code": {
+					"sourceTag": "WNGH_meFkdG_",
+					"uploadedOn": "2020-01-20T09:12:36.430129845Z"
+				}
+			},
+			"created": "2020-01-20T09:12:35.90599Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": false,
+						"price": 50,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-20T09:19:25.454993897Z",
+				"canceledByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"canceledAt": "2020-01-20T10:26:56.330441541Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"title": "Subdomain tracker ID (Optionals)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 6,
+				"downvotes": 2
+			},
+			"releaseNotes": "support difference subdomain, difference trackerID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WNGH_meFkdG_",
+			"created": "2020-01-20T10:26:55.753788Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": false,
+						"price": 100,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-01-20T10:26:56.356574827Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-21T18:09:19.303950986Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"title": "Subdomain tracker ID (Optionals)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.44,
+				"upvotes": 4,
+				"downvotes": 5
+			},
+			"releaseNotes": "support difference subdomain, difference trackerID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WNGH_meFkdG_",
+			"created": "2020-01-27T16:26:32.154334Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-free",
+						"title": "Google Analytics",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": false,
+						"price": 100,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-27T16:30:15.070765472Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-27T16:30:37.33375031Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"title": "Subdomain tracker ID (Optionals)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.64,
+				"upvotes": 7,
+				"downvotes": 4
+			},
+			"releaseNotes": "(debug) google tricking system support multiple env",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TYxVyxyxfdsC",
+			"metadata": {
+				"code": {
+					"sourceTag": "TYxVyxyxfdsC",
+					"uploadedOn": "2020-02-06T17:46:16.282799891Z"
+				}
+			},
+			"created": "2020-02-06T17:46:15.780746Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-free",
+						"title": "Google Analytics",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": false,
+						"price": 100,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-02-06T17:48:13.314803075Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-07T19:16:18.463937389Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"title": "Subdomain tracker ID (Optionals)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "support difference subdomain, difference trackerID",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TYxVyxyxfdsC",
+			"created": "2020-03-06T16:40:55.989818Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-free",
+						"title": "Google Analytics",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for mutiple sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "APPS_GOOGLE_ANALYTICS_PRO",
+						"feature": "apps.google_analytics_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-03-06T16:40:56.281588696Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-06T16:41:23.644673171Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": "google-analytics-pro"
+							},
+							"title": "Subdomain tracker ID (pro)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here",
+							"order": 0,
+							"title": "Universal tracker ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.85,
+				"upvotes": 92,
+				"downvotes": 16
+			},
+			"manual": true,
+			"releaseNotes": "paid plan dev",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uCkw1bwViD2T",
+			"metadata": {
+				"code": {
+					"sourceTag": "uCkw1bwViD2T",
+					"uploadedOn": "2020-03-07T06:18:31.729458304Z"
+				}
+			},
+			"created": "2020-03-07T06:02:13.148633Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-free",
+						"title": "Google Analytics",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for difference sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website (pro)",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Add difference tracker_id for difference sub-domain (pro)\n3. New feature request are always weclome",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "APPS_GOOGLE_ANALYTICS_PRO",
+						"feature": "apps.google_analytics_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-03-07T06:20:45.564510544Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-09T05:20:03.712781444Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "nGAnsTeiPCQx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"subdomain_tracker_ids": {
+							"default": [],
+							"items": {
+								"properties": {
+									"subdomain": {
+										"order": 1,
+										"placeholder": "sub.domain.com",
+										"title": "subdomain",
+										"type": "string"
+									},
+									"tracker_id": {
+										"order": 2,
+										"placeholder": "UA-XXXXX-Y",
+										"title": "tracker_id",
+										"type": "string"
+									}
+								},
+								"title": "Tracker_ids",
+								"type": "object"
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": "google-analytics-pro"
+							},
+							"title": "Subdomain tracker ID (pro)",
+							"type": "array"
+						},
+						"tracker_id": {
+							"default": "UA-XXXXX-Y",
+							"description": "Add your tracker id here ( UA / G )",
+							"order": 0,
+							"title": "Tracking ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.86,
+				"upvotes": 190,
+				"downvotes": 30
+			},
+			"releaseNotes": "support GA4",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-P20ZrbBPUF7",
+			"metadata": {
+				"code": {
+					"sourceTag": "-P20ZrbBPUF7",
+					"uploadedOn": "2020-11-09T04:00:44.375195812Z"
+				}
+			},
+			"created": "2020-11-09T04:00:43.422004Z",
+			"proposedApp": {
+				"id": "nGAnsTeiPCQx",
+				"title": "Google Analytics",
+				"shortDescription": "Add google analytics to your website",
+				"longDescription": "Add google analytic to your website",
+				"instructions": "",
+				"alias": "googleanalytics",
+				"orgId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"icon": "https://images.cloudflareapps.com/QsDiI_5r0arY/download%20%281%29.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "lotusfa.com",
+				"tagline": "",
+				"website": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"sourceURL": "https://github.com/lotusfa/cloudflare-google-analytics",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@lotusfa.com",
+				"products": [
+					{
+						"id": "google-analytics-free",
+						"title": "Google Analytics",
+						"shortDescription": "Add google analytics to your website",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Support GA4 \n3. Add difference tracker_id for difference sub-domain (pro)\n4. New feature request are always weclome",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "google-analytics-pro",
+						"title": "Google Analytics Pro",
+						"shortDescription": "Add google analytics to your website (pro)",
+						"longDescription": "Add google analytics to your website\n\nFeatures\n1. Add google analytic to your website (free)\n2. Support GA4 \n3. Add difference tracker_id for difference sub-domain (pro)\n4. New feature request are always weclome",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "APPS_GOOGLE_ANALYTICS_PRO",
+						"feature": "apps.google_analytics_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YNSgpd2ZZnN1"
+				},
+				"created": "2020-01-05T09:21:28.117073Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cec498d92c0d5f84ab1f0e4588e82365",
+				"requestedAt": "2020-11-09T04:00:46.551686467Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-11-13T15:22:41.230562605Z"
+			}
+		}
+	]
+}

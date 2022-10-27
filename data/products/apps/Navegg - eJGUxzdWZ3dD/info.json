@@ -1,0 +1,1289 @@
+{
+	"id": "eJGUxzdWZ3dD",
+	"title": "Navegg",
+	"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+	"longDescription": "# About Navegg\n\nWe are passionate about people and technology. We love studying human behavior to discover patterns and anticipate trends. And what excites us most about all this is that by sharing our creations, we make digital life smarter.\n\nThis has been our philosophy since 2008 when we created the digital marketing as a reflection of the interests and desires of the internet. With pioneering spirit and enthusiasm, we set up a talented team to become leaders in data intelligence in Emerging Markets.\n\nNavegg is a technology company that operates in partnership with major publishers and agencies to approach brands and people in the digital environment.\n\n# Navegg Analytics\n\nNavegg Analytics is a Navegg solution for businesses that want to really know their audience.\n\n## For blogs and small businesses\n\nIf you have a blog or a small/average business, pick the basic module. With him, you can analyze classic data like visits by genre, age, and more. Qualitative information is included. All these information will help you build a complete media kit or take more assertive actions.\n\n## For e-commerces\n\nIf your focus is laid on conversion sales, besides accessing qualitative information about your audience you can build a personalized conversion funnel for your business, receive the visitors with exclusive offers and analyze that information to make strategic decisions.\n\n## For advertisers\n\nDoesn’t your website sell any product but buys media online? Your focus is not on sales but branding? Implement an analysis of attribution to discover which campaigns and channels work better for your company.",
+	"instructions": "",
+	"alias": "navegg",
+	"orgId": "190bb00604731b705adb46501df60c2f",
+	"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+		"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+		"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Navegg Team",
+	"tagline": "",
+	"website": "https://navegg.com/en/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+	"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.8",
+	"infoVersion": "1.0.8",
+	"points": 600,
+	"supportEmail": "support@navegg.com",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "190bb00604731b705adb46501df60c2f",
+			"created": "2017-09-18T04:26:19.325253284Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "KiJrZsEhla8o"
+	},
+	"created": "2017-09-18T04:25:38.200779Z",
+	"org": {
+		"id": "190bb00604731b705adb46501df60c2f",
+		"title": "",
+		"username": "190bb00604731b705adb46501df60c2f",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8HEwcT-rnWPD",
+			"metadata": {
+				"code": {
+					"sourceTag": "8HEwcT-rnWPD",
+					"uploadedOn": "2018-03-19T21:49:06.068590299Z"
+				}
+			},
+			"created": "2017-09-25T14:53:14.205954Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "Navegg is Latin America's reference in the data intelligence market and online audience data. Founded in 2008, the company, based in Brazil, analyzes navigation habits, interests and web audience behavior on desktops or mobile devices. Navegg has a database of over 400 million Internet users, in more than 100,000 websites, blogs, price search engines and e-commerce.\nNavegg's proprietary technology classifies the Internet User based on the browsing behavior. Currently, eight out of ten of the leading publishers in Latin America use Navegg's solutions for content personalization and campaign targeting, as well as large agencies and advertisers, e-commerce and blogs.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2018-03-19T21:49:07.670770684Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-20T20:38:17.633488052Z"
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "Put your tag here! XXXXX",
+							"title": "Navegg Account ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KiJrZsEhla8o",
+			"metadata": {
+				"code": {
+					"sourceTag": "KiJrZsEhla8o",
+					"uploadedOn": "2017-09-18T04:25:40.595717255Z"
+				}
+			},
+			"created": "2017-09-18T04:25:39.414705Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg JS API",
+				"shortDescription": "Integração com a tecnologia Navegg via tag Java Script",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2017-09-18T04:26:19.317292938Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-19T23:23:29.274158498Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "Put your tag here! XXXXX",
+							"title": "Navegg Account ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateAccount(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lRzfmhtLwN3k",
+			"metadata": {
+				"code": {
+					"sourceTag": "lRzfmhtLwN3k",
+					"uploadedOn": "2017-09-20T04:43:21.178225945Z"
+				}
+			},
+			"created": "2017-09-19T14:55:20.34437Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2017-09-20T04:55:08.496492284Z",
+				"canceledByUserId": "190bb00604731b705adb46501df60c2f",
+				"canceledAt": "2017-09-20T13:37:11.975360397Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "textarea",
+							"order": 0,
+							"placeholder": "Put your tag here! XXXXX",
+							"title": "Navegg Account ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.updateAccount(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lRzfmhtLwN3k",
+			"created": "2017-09-20T13:15:44.550214Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "With Navegg's solutions, you know not just how many people have accessed your site but who they are.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2017-09-20T13:37:11.986107839Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-21T03:50:15.746571566Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"metadata": {
+				"code": {
+					"sourceTag": "y-G50YEqr3H_",
+					"uploadedOn": "2018-03-20T22:06:35.94676204Z"
+				}
+			},
+			"created": "2018-03-20T22:06:35.388983Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "Navegg is Latin America's reference in the data intelligence market and online audience data. Founded in 2008, the company, based in Brazil, analyzes navigation habits, interests and web audience behavior on desktops or mobile devices. Navegg has a database of over 400 million Internet users, in more than 100,000 websites, blogs, price search engines and e-commerce.\nNavegg's proprietary technology classifies the Internet User based on the browsing behavior. Currently, eight out of ten of the leading publishers in Latin America use Navegg's solutions for content personalization and campaign targeting, as well as large agencies and advertisers, e-commerce and blogs.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2018-03-20T22:06:36.988066845Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-28T09:04:20.362054804Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"created": "2018-04-02T22:53:09.682791Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "Navegg is Latin America's reference in the data intelligence market and online audience data. Founded in 2008, the company, based in Brazil, analyzes navigation habits, interests and web audience behavior on desktops or mobile devices. Navegg has a database of over 400 million Internet users, in more than 100,000 websites, blogs, price search engines and e-commerce.\nNavegg's proprietary technology classifies the Internet User based on the browsing behavior. Currently, eight out of ten of the leading publishers in Latin America use Navegg's solutions for content personalization and campaign targeting, as well as large agencies and advertisers, e-commerce and blogs.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-04-02T22:53:09.949308703Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T22:53:35.268504389Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Updated app description.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"created": "2018-04-02T23:01:27.843726Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "## What does Navegg do?\n\nNavegg is Emerging Markets’ leader in the online audience data market with over **400 million online users** segmented according to their interests, purchase intention, online behavior and social-demographics information. Navegg infers the online users profile according to their online behavior and categorizes them based on gender, age range, interests, among others.\n\nNavegg’s core lies in understanding the internet user. They are classified in over 1,400 segments. To structure the information in a way to facilitate your understanding, Navegg has different taxonomies: Demographic and Interests, Navegg EveryOne and Navegg EveryBuyer.\n\n## How does Navegg find out the online audience profile?\n\nNavegg collects navigation data on every website that has its technology implemented. The anonymous data is analyzed and compared to other online users’ online behavior. These people are clustered according to mathematical and statistics’ methods which are based on market studies and research about consumer behavior and trends.\n\n## What is the difference between Navegg and Google Analytics?\n\nWhereas Google Analytics brings precisely and quantifiable data (conversion rate, bounce rate, pageviews, how many people have come to determined websites, etc), Navegg brings some of these informations but the focus are the audience’s behavior trace as profile, purchase intention, preferences, etc. Learn more about all the information supplied by Navegg here.\n\n# Is Navegg Analytics for my business?\n\nNavegg Analytics is a Navegg solution for businesses that want to know not just how many people has accessed your site but who they are.\n\n## Blogs and small business\n\nIf you have a blog or a small/average business, pick the basic module. With him, you can analyse classic data like visits by genre, age, and more. Qualitative information is included. All these information will help you build a complete media kit or take more assertive actions.\n\n## E-commerce\n\nIf your focus is laid on conversion sales, besides accessing qualitative information about your audience you can build a personalized conversion funnel for your business, receive the visitors with exclusive offers and analyze that information to make strategic decisions.\n\n## Advertisers\n\nDoesn’t your website sell any product but buys media online? Your focus is not in sales but branding? Implement an analysis of attribution to discover which campaigns and channels work better for your company.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"e-commerce"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-04-02T23:01:28.125088566Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T23:01:35.808789419Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated categories, app alias.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"created": "2018-04-02T23:02:58.724669Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "## What does Navegg do?\n\nNavegg is Emerging Markets’ leader in the online audience data market with over **400 million online users** segmented according to their interests, purchase intention, online behavior and social-demographics information. Navegg infers the online users profile according to their online behavior and categorizes them based on gender, age range, interests, among others.\n\nNavegg’s core lies in understanding the internet user. They are classified in over 1,400 segments. To structure the information in a way to facilitate your understanding, Navegg has different taxonomies: Demographic and Interests, Navegg EveryOne and Navegg EveryBuyer.\n\n## How does Navegg find out the online audience profile?\n\nNavegg collects navigation data on every website that has its technology implemented. The anonymous data is analyzed and compared to other online users’ online behavior. These people are clustered according to mathematical and statistics’ methods which are based on market studies and research about consumer behavior and trends.\n\n## What is the difference between Navegg and Google Analytics?\n\nWhereas Google Analytics brings precisely and quantifiable data (conversion rate, bounce rate, pageviews, how many people have come to determined websites, etc), Navegg brings some of these informations but the focus are the audience’s behavior trace as profile, purchase intention, preferences, etc. Learn more about all the information supplied by Navegg here.\n\n# Is Navegg Analytics for my business?\n\nNavegg Analytics is a Navegg solution for businesses that want to know not just how many people has accessed your site but who they are.\n\n## Blogs and small business\n\nIf you have a blog or a small/average business, pick the basic module. With him, you can analyse classic data like visits by genre, age, and more. Qualitative information is included. All these information will help you build a complete media kit or take more assertive actions.\n\n## E-commerce\n\nIf your focus is laid on conversion sales, besides accessing qualitative information about your audience you can build a personalized conversion funnel for your business, receive the visitors with exclusive offers and analyze that information to make strategic decisions.\n\n## Advertisers\n\nDoesn’t your website sell any product but buys media online? Your focus is not in sales but branding? Implement an analysis of attribution to discover which campaigns and channels work better for your company.",
+				"instructions": "",
+				"alias": "navegg",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-04-02T23:03:20.844535151Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T23:03:29.832981565Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "Update description.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"created": "2018-04-03T15:29:28.690528Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "# About Navegg\n\nWe are passionate about people and technology. We love studying human behavior to discover patterns and anticipate trends. And what excites us most about all this is that by sharing our creations, we make digital life smarter.\n\nThis has been our philosophy since 2008 when we created the digital marketing as a reflection of the interests and desires of the internet. With pioneering spirit and enthusiasm, we set up a talented team to become leaders in data intelligence in Emerging Markets.\n\nNavegg is a technology company that operates in partnership with major publishers and agencies to approach brands and people in the digital environment.\n\n# Navegg Analytics\n\nNavegg Analytics is a Navegg solution for businesses that want to really know their audience.\n\n## For blogs and small businesses\n\nIf you have a blog or a small/average business, pick the basic module. With him, you can analyze classic data like visits by genre, age, and more. Qualitative information is included. All these information will help you build a complete media kit or take more assertive actions.\n\n## For e-commerces\n\nIf your focus is laid on conversion sales, besides accessing qualitative information about your audience you can build a personalized conversion funnel for your business, receive the visitors with exclusive offers and analyze that information to make strategic decisions.\n\n## For advertisers\n\nDoesn’t your website sell any product but buys media online? Your focus is not on sales but branding? Implement an analysis of attribution to discover which campaigns and channels work better for your company.",
+				"instructions": "",
+				"alias": "navegg",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "190bb00604731b705adb46501df60c2f",
+				"requestedAt": "2018-04-03T15:29:29.882388008Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-03T21:06:06.842165942Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "eJGUxzdWZ3dD",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/nvg.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the account to integrate with Cloudflare.",
+							"order": 1,
+							"required": true,
+							"showIf": {
+								"user.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Account ID",
+							"type": "string"
+						},
+						"user": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"navegg"
+							],
+							"title": "Navegg User",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://oauth.navegg.com/v1/hook/",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Naveggg."
+						},
+						"authenticate": [
+							"user"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.83,
+				"upvotes": 15,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/y-G50YEqr3H_",
+			"created": "2018-11-13T22:32:21.266691Z",
+			"proposedApp": {
+				"id": "eJGUxzdWZ3dD",
+				"title": "Navegg",
+				"shortDescription": "Solutions in Big Data, DMP and Web Analytics.",
+				"longDescription": "# About Navegg\n\nWe are passionate about people and technology. We love studying human behavior to discover patterns and anticipate trends. And what excites us most about all this is that by sharing our creations, we make digital life smarter.\n\nThis has been our philosophy since 2008 when we created the digital marketing as a reflection of the interests and desires of the internet. With pioneering spirit and enthusiasm, we set up a talented team to become leaders in data intelligence in Emerging Markets.\n\nNavegg is a technology company that operates in partnership with major publishers and agencies to approach brands and people in the digital environment.\n\n# Navegg Analytics\n\nNavegg Analytics is a Navegg solution for businesses that want to really know their audience.\n\n## For blogs and small businesses\n\nIf you have a blog or a small/average business, pick the basic module. With him, you can analyze classic data like visits by genre, age, and more. Qualitative information is included. All these information will help you build a complete media kit or take more assertive actions.\n\n## For e-commerces\n\nIf your focus is laid on conversion sales, besides accessing qualitative information about your audience you can build a personalized conversion funnel for your business, receive the visitors with exclusive offers and analyze that information to make strategic decisions.\n\n## For advertisers\n\nDoesn’t your website sell any product but buys media online? Your focus is not on sales but branding? Implement an analysis of attribution to discover which campaigns and channels work better for your company.",
+				"instructions": "",
+				"alias": "navegg",
+				"orgId": "190bb00604731b705adb46501df60c2f",
+				"icon": "//images.cloudflareapps.com/dzEBp2eFSQuufLIIoen8_navegg-logo-alta-N.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MC2j4kTRQv2eiHyKpOM6_Screenshot from 2017-09-20 10-30-05.png",
+					"//images.cloudflareapps.com/YgqGtPDSFi1I6JiI7iTA_Screenshot from 2017-09-20 10-30-24.png",
+					"//images.cloudflareapps.com/xqaGLDvARiaeSUDTO8K8_Screenshot from 2017-09-20 10-31-20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Navegg Team",
+				"tagline": "",
+				"website": "https://navegg.com/en/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.navegg.com/en/terms-of-service/",
+				"privacyPolicyURL": "https://www.navegg.com/en/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@navegg.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KiJrZsEhla8o"
+				},
+				"created": "2017-09-18T04:25:38.200779Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:32:23.763407758Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:30:44.816200722Z"
+			}
+		}
+	]
+}

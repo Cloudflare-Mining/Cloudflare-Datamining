@@ -1,0 +1,1313 @@
+{
+	"id": "moFSPZu_K5Xx",
+	"title": "Clippy",
+	"shortDescription": "Add Clippy to your site to help your visitors.",
+	"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- 9 Office assistants, and a famous purple gorilla.\n- Messaging for your visitors, in a chat bubble.",
+	"instructions": "",
+	"alias": "clippy",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+		"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+		"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+	"featuredAppImage": "",
+	"author": "Smore Inc.",
+	"tagline": "",
+	"website": "https://www.smore.com/?ref=clippy-bar",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": -100,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"humor",
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-05-31T16:07:11.469752159Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "kes8yFLieiul"
+	},
+	"created": "2017-05-28T09:27:07.965484Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "humor",
+			"title": "Humor",
+			"description": "Apps that add fun widgets and Easter eggs to your site.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2017-06-15T00:08:28.364393Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"metadata": {
+				"code": {
+					"sourceTag": "kes8yFLieiul",
+					"uploadedOn": "2017-05-28T09:27:08.461594767Z"
+				}
+			},
+			"created": "2017-05-28T09:27:08.218818Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your website to help your visitors.",
+				"longDescription": "",
+				"instructions": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- Includes 9 Office assistance and a famous purple gorilla.\n- Leave a message for your visitors.",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-28T09:27:09.503747085Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-05-28T09:29:11.596817113Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2017-05-28T09:29:11.255722Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your website to help your visitors.",
+				"longDescription": "",
+				"instructions": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- Includes 9 Office assistance and a famous purple gorilla.\n- Leave a message for your visitors.",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Rackspace Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-28T09:29:11.910847319Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-28T09:29:39.070750267Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2017-05-31T16:07:11.205186Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your website to help your visitors.",
+				"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- Includes 9 Office assistance and a famous purple gorilla.\n- Leave a message for your visitors.",
+				"instructions": "",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+					"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+					"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Smore Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-31T16:07:11.450671897Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-31T16:08:02.271114616Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2017-06-14T03:53:26.702745Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your site to help your visitors.",
+				"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- Includes 9 Office assistance and a famous purple gorilla.\n- Leave a message for your visitors.",
+				"instructions": "",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+					"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+					"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Smore Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-14T03:53:26.866448779Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T04:04:10.668495232Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2017-06-15T00:09:35.578278Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your site to help your visitors.",
+				"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- Includes 9 Office assistance and a famous purple gorilla.\n- Leave a message for your visitors.",
+				"instructions": "",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+					"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+					"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Smore Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"humor"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-15T00:09:35.825911279Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-15T22:40:36.522093352Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2017-06-16T18:33:21.491093Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your site to help your visitors.",
+				"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- 9 Office assistants, and a famous purple gorilla.\n- Messaging for your visitors, in a chat bubble.",
+				"instructions": "",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+					"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+					"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Smore Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"humor"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-16T18:33:21.623942708Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-16T18:33:35.564034792Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "moFSPZu_K5Xx",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "vendor/clippy.css"
+						},
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/dist/zepto.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/deferred.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/callbacks.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/fx_methods.js"
+						},
+						{
+							"type": "script",
+							"src": "node_modules/zepto/src/selector.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/zepto-extras.js"
+						},
+						{
+							"type": "script",
+							"src": "vendor/clippy.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"dependencies": {
+					"github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
+				},
+				"options": {
+					"properties": {
+						"agentName": {
+							"default": "Clippy",
+							"description": "What character should appear on the site?",
+							"enum": [
+								"Clippy",
+								"Bonzi",
+								"F1",
+								"Genie",
+								"Genius",
+								"Links",
+								"Merlin",
+								"Peedy",
+								"Rocky",
+								"Rover"
+							],
+							"order": 3,
+							"title": "Custom character",
+							"type": "string"
+						},
+						"gotchaMessage": {
+							"default": "Gotcha! Happy April Fools!",
+							"format": "textarea",
+							"order": 2,
+							"title": "Message for Clippy to say after a few seconds to reveal the joke",
+							"type": "string"
+						},
+						"message": {
+							"default": "It looks like you're trying to browse a website! I'm here to help!",
+							"format": "textarea",
+							"order": 1,
+							"title": "Message for Clippy to tell the user",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"agentName"
+							],
+							"execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"message",
+								"gotchaMessage"
+							],
+							"execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 35,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kes8yFLieiul",
+			"created": "2018-01-23T20:36:20.437432Z",
+			"proposedApp": {
+				"id": "moFSPZu_K5Xx",
+				"title": "Clippy",
+				"shortDescription": "Add Clippy to your site to help your visitors.",
+				"longDescription": "Add Clippy or his friends to any website for instant nostalgia.\n\n# Features\n\n- 9 Office assistants, and a famous purple gorilla.\n- Messaging for your visitors, in a chat bubble.",
+				"instructions": "",
+				"alias": "clippy",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/s9a6KPuXRt8P5r2rQX2r_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/mXvSkxCTkOakwVpQPMy0_clippy-help.png",
+					"//images.cloudflareapps.com/fQf8r5VwS6agF25i77YZ_links-help.png",
+					"//images.cloudflareapps.com/edFr7HgQaaV3dedAzovT_bonzi-help.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/sU6NXIHDTuSRWYA7b9QI_tile.png",
+				"featuredAppImage": "",
+				"author": "Smore Inc.",
+				"tagline": "",
+				"website": "https://www.smore.com/?ref=clippy-bar",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"humor",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "kes8yFLieiul"
+				},
+				"created": "2017-05-28T09:27:07.965484Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:36:20.700967909Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:36:34.887114317Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,175 @@
+{
+	"id": "WQxZqLu5UqlS",
+	"title": "Notifia - 30 Widgets, for your Website",
+	"shortDescription": "Engage, Convert and Retain Website Visitors with 30+ Widgets",
+	"longDescription": "Notifia includes a suite of 30+ Engagement Tools for your Website. We currently support 13,000 Websites, and display over 100 million Websites Widgets every month.\n____________\nAcquisition 🚀\n- Real-Time Social Proof Widget\n- Exit Intent Email Collection\n- Call to Action Pop-ups\n- Lead Magnets & List Builders\n- Welcome & Announcement Bars\n- Special Offer/Coupon Code Pop-ups\n- Product Promotion Widgets\n- Spin to Win (Gamification) Widgets\n- Blog Promotion Card\n__________\nActivation ✔\n- Behaviour Triggered Messages\n- On-Boarding Videos\n- Engagement Hub (Support Docs / Knowledge Base Widget)\n- Announcement Bar\n_________\nRevenue 💵\n- Failed Payments Notification (Triggers when a users payment fails, asking them to update Credit Card)\n- Product Upsells\n__________\nRetention 📈\n- Subscription Off-Boarding Widget\n__________\nReferrals 🤝\n- Social Share Bar\n- Social Share Pop-up\n- Content Lockers\n- Invite a Friend Widget\n__________\nFeedback 👂\n- Exit Intent Surveys\n- NPS Surveys\n- Emoji Feedback\nAll Website Plugins are included, and we support unlimited Website Visitors, Unlimited Websites, Unlimited Team Members, for $9/month",
+	"instructions": "",
+	"alias": "",
+	"orgId": "7806e51af27ef828ac8944408255f413",
+	"icon": "https://images.cloudflareapps.com/HVl-lO20WU2_/gfdfgsdg.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/5Qu-WUHUXLdq/screenshot-14.png",
+		"https://images.cloudflareapps.com/lJsf8XYH0olz/screenshot-8.png",
+		"https://images.cloudflareapps.com/7RcytqeLMiPP/screenshot-7.png",
+		"https://images.cloudflareapps.com/spl4-w3bbFum/screenshot-3.png",
+		"https://images.cloudflareapps.com/TujX9_7IMJbz/screenshot-2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/F3F1qrWdM8Fx/background.png",
+	"featuredAppImage": "",
+	"author": "Notifia",
+	"tagline": "",
+	"website": "https://notifia.io/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://notifia.io/page/terms-of-service",
+	"privacyPolicyURL": "https://notifia.io/page/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "support@notifia.io",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "7806e51af27ef828ac8944408255f413",
+			"created": "2019-12-05T18:31:25.597282787Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "wDA4OzbyyJMa"
+	},
+	"created": "2019-12-05T18:31:22.203596Z",
+	"org": {
+		"id": "7806e51af27ef828ac8944408255f413",
+		"title": "",
+		"username": "7806e51af27ef828ac8944408255f413",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "WQxZqLu5UqlS",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"notifiaService"
+							],
+							"title": "Notifia Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.notifia.io/api/v1/cloudflare/get/script",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 2,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wDA4OzbyyJMa",
+			"metadata": {
+				"code": {
+					"sourceTag": "wDA4OzbyyJMa",
+					"uploadedOn": "2019-12-05T18:31:23.920990411Z"
+				}
+			},
+			"created": "2019-12-05T18:31:22.797102Z",
+			"proposedApp": {
+				"id": "WQxZqLu5UqlS",
+				"title": "Notifia - 30 Widgets, for your Website",
+				"shortDescription": "Engage, Convert and Retain Website Visitors with 30+ Widgets",
+				"longDescription": "Notifia includes a suite of 30+ Engagement Tools for your Website. We currently support 13,000 Websites, and display over 100 million Websites Widgets every month.\n____________\nAcquisition 🚀\n- Real-Time Social Proof Widget\n- Exit Intent Email Collection\n- Call to Action Pop-ups\n- Lead Magnets & List Builders\n- Welcome & Announcement Bars\n- Special Offer/Coupon Code Pop-ups\n- Product Promotion Widgets\n- Spin to Win (Gamification) Widgets\n- Blog Promotion Card\n__________\nActivation ✔\n- Behaviour Triggered Messages\n- On-Boarding Videos\n- Engagement Hub (Support Docs / Knowledge Base Widget)\n- Announcement Bar\n_________\nRevenue 💵\n- Failed Payments Notification (Triggers when a users payment fails, asking them to update Credit Card)\n- Product Upsells\n__________\nRetention 📈\n- Subscription Off-Boarding Widget\n__________\nReferrals 🤝\n- Social Share Bar\n- Social Share Pop-up\n- Content Lockers\n- Invite a Friend Widget\n__________\nFeedback 👂\n- Exit Intent Surveys\n- NPS Surveys\n- Emoji Feedback\nAll Website Plugins are included, and we support unlimited Website Visitors, Unlimited Websites, Unlimited Team Members, for $9/month",
+				"instructions": "",
+				"alias": "",
+				"orgId": "7806e51af27ef828ac8944408255f413",
+				"icon": "https://images.cloudflareapps.com/HVl-lO20WU2_/gfdfgsdg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/5Qu-WUHUXLdq/screenshot-14.png",
+					"https://images.cloudflareapps.com/lJsf8XYH0olz/screenshot-8.png",
+					"https://images.cloudflareapps.com/7RcytqeLMiPP/screenshot-7.png",
+					"https://images.cloudflareapps.com/spl4-w3bbFum/screenshot-3.png",
+					"https://images.cloudflareapps.com/TujX9_7IMJbz/screenshot-2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/F3F1qrWdM8Fx/background.png",
+				"featuredAppImage": "",
+				"author": "Notifia",
+				"tagline": "",
+				"website": "https://notifia.io/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://notifia.io/page/terms-of-service",
+				"privacyPolicyURL": "https://notifia.io/page/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@notifia.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wDA4OzbyyJMa"
+				},
+				"created": "2019-12-05T18:31:22.203596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "7806e51af27ef828ac8944408255f413",
+				"requestedAt": "2019-12-05T18:31:25.576016965Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-05T19:23:54.451696641Z"
+			}
+		}
+	]
+}

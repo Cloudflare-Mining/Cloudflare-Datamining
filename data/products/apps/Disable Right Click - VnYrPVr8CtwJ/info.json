@@ -1,0 +1,1364 @@
+{
+	"id": "VnYrPVr8CtwJ",
+	"title": "Disable Right Click",
+	"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+	"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+	"instructions": "",
+	"alias": "disable-right-click",
+	"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+	"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+		"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+		"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+		"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+	"author": "Impress Apps",
+	"tagline": "",
+	"website": "https://impress.store",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+	"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 0,
+	"supportEmail": "support@impress.store",
+	"products": [
+		{
+			"id": "free",
+			"title": "Basic",
+			"shortDescription": "Desktop",
+			"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Desktop + Mobile",
+			"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+			"visible": true,
+			"price": 200,
+			"order": 0,
+			"plan": "DISABLE_RIGHT_CLICK_PRO",
+			"feature": "apps.disable_right_click_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f8a48afd73c74aef8b3dc54aa60ac840",
+			"created": "2019-09-17T20:30:24.80848436Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "7ootz9Sy55la"
+	},
+	"created": "2019-09-17T20:14:24.263629Z",
+	"org": {
+		"id": "f8a48afd73c74aef8b3dc54aa60ac840",
+		"title": "",
+		"username": "f8a48afd73c74aef8b3dc54aa60ac840",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"plans": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								},
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/st3CxcPlphfj",
+			"metadata": {
+				"code": {
+					"sourceTag": "st3CxcPlphfj",
+					"uploadedOn": "2019-09-17T20:26:34.288702387Z"
+				}
+			},
+			"created": "2019-09-17T20:14:24.479646Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2019-09-17T20:30:24.785649754Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-23T14:54:41.389766315Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"plans": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								},
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.17,
+				"upvotes": 3,
+				"downvotes": 15
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/st3CxcPlphfj",
+			"created": "2019-09-24T18:56:35.809953Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": false,
+						"price": 200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-09-24T18:56:36.150799578Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-24T18:56:49.691248504Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"plans": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								},
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.13,
+				"upvotes": 37,
+				"downvotes": 257
+			},
+			"releaseNotes": "Enabled Pro plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/st3CxcPlphfj",
+			"created": "2019-11-04T16:19:35.54076Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "DISABLE_RIGHT_CLICK_PRO",
+						"feature": "apps.disable_right_click_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-11-04T16:19:35.889132836Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-11-04T16:21:34.072901765Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advertisement": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"title": "Advertisement",
+							"type": "object"
+						},
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fix for Safari",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/iwVoodPyBX9f",
+			"metadata": {
+				"code": {
+					"sourceTag": "iwVoodPyBX9f",
+					"uploadedOn": "2021-10-19T21:49:54.483709527Z"
+				}
+			},
+			"created": "2020-07-11T20:07:51.996515Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "DISABLE_RIGHT_CLICK_PRO",
+						"feature": "apps.disable_right_click_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2021-10-19T21:50:31.542496662Z",
+				"canceledByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"canceledAt": "2021-10-24T19:09:44.843860287Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advertisement": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"title": "Advertisement",
+							"type": "object"
+						},
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 4
+			},
+			"releaseNotes": "Fix for Safari",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Wqq1t9tY1wro",
+			"metadata": {
+				"code": {
+					"sourceTag": "Wqq1t9tY1wro",
+					"uploadedOn": "2021-10-24T19:09:44.307836019Z"
+				}
+			},
+			"created": "2021-10-24T19:09:44.120168Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "DISABLE_RIGHT_CLICK_PRO",
+						"feature": "apps.disable_right_click_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2021-10-24T19:09:44.853383333Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-03T14:04:19.547686085Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "VnYrPVr8CtwJ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advertisement": {
+							"properties": {
+								"hideAd": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Hide advertisement: \"Get Disable Right Click\"",
+									"type": "boolean"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": "free"
+							},
+							"title": "Advertisement",
+							"type": "object"
+						},
+						"desktop": {
+							"properties": {
+								"disableKeyboardShortcuts": {
+									"default": true,
+									"order": 4,
+									"title": "Disable keyboard shortcuts (cut and copy)",
+									"type": "boolean"
+								},
+								"help": {
+									"helpvalue": "Applies only to desktop browsers.",
+									"order": 0,
+									"type": "help"
+								},
+								"protectBackgroundImages": {
+									"default": true,
+									"order": 3,
+									"title": "Protect background images",
+									"type": "boolean"
+								},
+								"protectImages": {
+									"default": true,
+									"order": 2,
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": true,
+									"order": 1,
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Desktop",
+							"type": "object"
+						},
+						"general": {
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Protect content on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"mobile": {
+							"properties": {
+								"help": {
+									"helpvalue": "<p>Typically represents 50% of traffic.</p> <p>Applies only to mobile browsers.</p>",
+									"order": 0,
+									"type": "help"
+								},
+								"protectImages": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect images",
+									"type": "boolean"
+								},
+								"protectText": {
+									"default": false,
+									"products": [
+										"pro"
+									],
+									"title": "Protect text",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.08,
+				"upvotes": 4,
+				"downvotes": 44
+			},
+			"releaseNotes": "Fix for blank \"Pages\" filter",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/76sypwE62Xjj",
+			"metadata": {
+				"code": {
+					"sourceTag": "76sypwE62Xjj",
+					"uploadedOn": "2021-11-13T00:28:35.874073398Z"
+				}
+			},
+			"created": "2021-11-13T00:28:35.462108Z",
+			"proposedApp": {
+				"id": "VnYrPVr8CtwJ",
+				"title": "Disable Right Click",
+				"shortDescription": "Disable right click \"Save As...\" menu, copy, paste, and more",
+				"longDescription": "# New! - A Smart Way to Secure Your Content\n\nDisable Right Click is a free, easy solution to protect your site’s content from copycats without frustrating users.\n\n# Disable Right Click disables:\n\n* “Save Image As” context menu\n* Text selection on products and articles\n* Cut and copy keyboard shortcuts\n* Drag-and-drop on photos\n* Saving text and photos on mobile devices\n\n# Stop Copycats Before They Strike\n\nIt’s a painful experience to discover your store’s content has been stolen. And unfortunately, there's not much you can do once it happens.\n\nA good strategy is to stop copycats before they strike. Disable Right Click is free, easy to install, and provides the perfect balance of protection and usability.\n\n# Annoy Thieves, Not Users\n\nYou can pick how aggressively to secure your site with custom settings for text and images, on both desktop and mobile.\n\n# Upgrade for Even More Protection\n\nDisable Right Click does a great job protecting your store on desktop browsers, free. If you’d like to go ad-free or protect your store on mobile devices, you can upgrade for only $2 / month.\n\n# Contact Us, Please!\n\nReach out to share a suggestion, or get some help. We’d love to hear from you!",
+				"instructions": "",
+				"alias": "disable-right-click",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/30wEGm7OD8iF/Shopify%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy%202.png",
+					"https://images.cloudflareapps.com/yYUDipAkLBnH/Shopify%20Desktop%20Copy.png",
+					"https://images.cloudflareapps.com/PVQYN22G2RFr/Shopify%20Mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Mu-HMhT-1X-a/CF%20Title%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/7MOvwwWBXVNA/CF%20Featured%20App%20Image.png",
+				"author": "Impress Apps",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Desktop-only\n* Protect text and images\n* Disable keyboard shortcuts, photo drag-and-drop",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop + Mobile",
+						"longDescription": "* Desktop and mobile protection\n* “Save Image As” menu\n* Text selection on products and articles\n* Cut, copy keyboard shortcuts\n* Photo drag-and-drop\n* More!",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "DISABLE_RIGHT_CLICK_PRO",
+						"feature": "apps.disable_right_click_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "7ootz9Sy55la"
+				},
+				"created": "2019-09-17T20:14:24.263629Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2021-11-13T00:28:38.413671052Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-30T20:09:14.566086873Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,466 @@
+{
+	"id": "1QBPNdXPwt-s",
+	"title": "Refresh page",
+	"shortDescription": "Automatically refresh a page after a given interval.",
+	"longDescription": "Automatically refresh a page after a given interval.",
+	"instructions": "",
+	"alias": "refresh-page",
+	"orgId": "efb5819df5d86d46b02769d117b161e5",
+	"icon": "//images.cloudflareapps.com/TkzCee2XTyK8EP3dPXOw_logo.svg",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Francois Lebel",
+	"tagline": "",
+	"website": "https://github.com/flebel/cloudflare-refresh_page",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "francoislebel@gmail.com",
+	"products": [],
+	"categoryIds": [
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "efb5819df5d86d46b02769d117b161e5",
+			"created": "2017-09-12T06:50:44.816315039Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "TfmuwZyqsnFj"
+	},
+	"created": "2017-09-12T06:46:02.211747Z",
+	"org": {
+		"id": "efb5819df5d86d46b02769d117b161e5",
+		"title": "",
+		"username": "efb5819df5d86d46b02769d117b161e5",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.1.0",
+			"appId": "1QBPNdXPwt-s",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"refresh_interval": {
+							"default": 15,
+							"description": "How many seconds to wait before refreshing the page after it loaded.",
+							"order": 0,
+							"title": "Refresh interval",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TfmuwZyqsnFj",
+			"metadata": {
+				"code": {
+					"sourceTag": "TfmuwZyqsnFj",
+					"uploadedOn": "2017-09-12T06:46:03.390102246Z"
+				}
+			},
+			"created": "2017-09-12T06:46:03.115274Z",
+			"proposedApp": {
+				"id": "1QBPNdXPwt-s",
+				"title": "Refresh page",
+				"shortDescription": "Automatically refresh a page after a given interval.",
+				"longDescription": "Automatically refresh a page after a given interval.",
+				"instructions": "",
+				"alias": "refresh-page",
+				"orgId": "efb5819df5d86d46b02769d117b161e5",
+				"icon": "//images.cloudflareapps.com/TkzCee2XTyK8EP3dPXOw_logo.svg",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Francois Lebel",
+				"tagline": "",
+				"website": "https://github.com/flebel/cloudflare-refresh_page",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"humor"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "TfmuwZyqsnFj"
+				},
+				"created": "2017-09-12T06:46:02.211747Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "efb5819df5d86d46b02769d117b161e5",
+				"requestedAt": "2017-09-12T06:50:44.784564425Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-09-13T22:31:36.776937363Z"
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "1QBPNdXPwt-s",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"refresh_interval": {
+							"default": 15,
+							"description": "How many seconds before the page is refreshed?",
+							"order": 0,
+							"required": true,
+							"title": "Refresh interval",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1do8BtCSlOsv",
+			"metadata": {
+				"code": {
+					"sourceTag": "1do8BtCSlOsv",
+					"uploadedOn": "2017-10-05T15:40:52.473863741Z"
+				}
+			},
+			"created": "2017-09-28T06:47:50.585299Z",
+			"proposedApp": {
+				"id": "1QBPNdXPwt-s",
+				"title": "Refresh page",
+				"shortDescription": "Automatically refresh a page after a given interval.",
+				"longDescription": "Automatically refresh a page after a given interval.",
+				"instructions": "",
+				"alias": "refresh-page",
+				"orgId": "efb5819df5d86d46b02769d117b161e5",
+				"icon": "//images.cloudflareapps.com/TkzCee2XTyK8EP3dPXOw_logo.svg",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Francois Lebel",
+				"tagline": "",
+				"website": "https://github.com/flebel/cloudflare-refresh_page",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "francoislebel@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "TfmuwZyqsnFj"
+				},
+				"created": "2017-09-12T06:46:02.211747Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-10-05T15:43:48.021401649Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-05T15:44:27.93855035Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "1QBPNdXPwt-s",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"refresh_interval": {
+							"default": 15,
+							"description": "How many seconds before the page is refreshed?",
+							"order": 0,
+							"required": true,
+							"title": "Refresh interval",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.92,
+				"upvotes": 45,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to “Performance & Security” Category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1do8BtCSlOsv",
+			"created": "2018-01-22T20:20:54.939336Z",
+			"proposedApp": {
+				"id": "1QBPNdXPwt-s",
+				"title": "Refresh page",
+				"shortDescription": "Automatically refresh a page after a given interval.",
+				"longDescription": "Automatically refresh a page after a given interval.",
+				"instructions": "",
+				"alias": "refresh-page",
+				"orgId": "efb5819df5d86d46b02769d117b161e5",
+				"icon": "//images.cloudflareapps.com/TkzCee2XTyK8EP3dPXOw_logo.svg",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Francois Lebel",
+				"tagline": "",
+				"website": "https://github.com/flebel/cloudflare-refresh_page",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "francoislebel@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "TfmuwZyqsnFj"
+				},
+				"created": "2017-09-12T06:46:02.211747Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:20:55.324638063Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:22:06.454630768Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "1QBPNdXPwt-s",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"refresh_interval": {
+							"default": 15,
+							"description": "How many seconds before the page is refreshed?",
+							"order": 0,
+							"required": true,
+							"title": "Refresh interval",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.89,
+				"upvotes": 109,
+				"downvotes": 13
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1do8BtCSlOsv",
+			"created": "2018-11-13T20:59:08.428916Z",
+			"proposedApp": {
+				"id": "1QBPNdXPwt-s",
+				"title": "Refresh page",
+				"shortDescription": "Automatically refresh a page after a given interval.",
+				"longDescription": "Automatically refresh a page after a given interval.",
+				"instructions": "",
+				"alias": "refresh-page",
+				"orgId": "efb5819df5d86d46b02769d117b161e5",
+				"icon": "//images.cloudflareapps.com/TkzCee2XTyK8EP3dPXOw_logo.svg",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Francois Lebel",
+				"tagline": "",
+				"website": "https://github.com/flebel/cloudflare-refresh_page",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "francoislebel@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "TfmuwZyqsnFj"
+				},
+				"created": "2017-09-12T06:46:02.211747Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:59:08.760577463Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:38:58.882259787Z"
+			}
+		}
+	]
+}

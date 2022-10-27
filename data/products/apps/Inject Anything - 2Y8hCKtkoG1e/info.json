@@ -1,0 +1,283 @@
+{
+	"id": "2Y8hCKtkoG1e",
+	"title": "Inject Anything",
+	"shortDescription": "Inject anything to your page",
+	"longDescription": "",
+	"instructions": "",
+	"alias": "",
+	"orgId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+	"icon": "https://images.cloudflareapps.com/pFaDNlCwcdPe/1860113150_86b7f98b-4fa0-47a3-97f6-15c5a31dcc83.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Ruyi Ren",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.2",
+	"infoVersion": "0.0.2",
+	"points": 0,
+	"supportEmail": "ruyi.ren@gmail.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+			"created": "2019-04-05T18:14:35.996497298Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "KnVb7XnS2DWk"
+	},
+	"created": "2019-04-05T18:14:19.664647Z",
+	"org": {
+		"id": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+		"title": "",
+		"username": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "2Y8hCKtkoG1e",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Tag Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "",
+							"description": "Tag to inject",
+							"format": "code",
+							"order": 1,
+							"title": "Tag",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KnVb7XnS2DWk",
+			"metadata": {
+				"code": {
+					"sourceTag": "KnVb7XnS2DWk",
+					"uploadedOn": "2019-04-05T18:14:20.301317826Z"
+				}
+			},
+			"created": "2019-04-05T18:14:19.947305Z",
+			"proposedApp": {
+				"id": "2Y8hCKtkoG1e",
+				"title": "Inject Anything",
+				"shortDescription": "Inject anything to your page",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+				"icon": "https://images.cloudflareapps.com/pFaDNlCwcdPe/1860113150_86b7f98b-4fa0-47a3-97f6-15c5a31dcc83.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ruyi Ren",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ruyi.ren@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KnVb7XnS2DWk"
+				},
+				"created": "2019-04-05T18:14:19.664647Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+				"requestedAt": "2019-04-05T18:14:35.984769098Z",
+				"canceledByUserId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+				"canceledAt": "2019-04-05T19:05:49.528396449Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "2Y8hCKtkoG1e",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"gtm": {
+							"default": "",
+							"description": "Google Tag Manager Tracking ID",
+							"order": 2,
+							"title": "Google Tag Manager Tracking ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Tag Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "",
+							"description": "Tag to inject",
+							"format": "code",
+							"order": 1,
+							"title": "Tag",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 9,
+				"downvotes": 3
+			},
+			"releaseNotes": "initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wIiFxAhGnk53",
+			"metadata": {
+				"code": {
+					"sourceTag": "wIiFxAhGnk53",
+					"uploadedOn": "2019-04-05T19:05:38.671392755Z"
+				}
+			},
+			"created": "2019-04-05T19:05:38.436904Z",
+			"proposedApp": {
+				"id": "2Y8hCKtkoG1e",
+				"title": "Inject Anything",
+				"shortDescription": "Inject anything to your page",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+				"icon": "https://images.cloudflareapps.com/pFaDNlCwcdPe/1860113150_86b7f98b-4fa0-47a3-97f6-15c5a31dcc83.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ruyi Ren",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ruyi.ren@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "KnVb7XnS2DWk"
+				},
+				"created": "2019-04-05T18:14:19.664647Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1d15f75c7c4cbcfe8f7e2614f2bae8f7",
+				"requestedAt": "2019-04-05T19:05:49.564189061Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-11T17:27:54.588860342Z"
+			}
+		}
+	]
+}

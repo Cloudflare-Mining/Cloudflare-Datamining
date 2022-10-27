@@ -1,0 +1,2336 @@
+{
+	"id": "O3tyajPRglc-",
+	"title": "Minnit Chat",
+	"shortDescription": "Group chat with your visitors in real time",
+	"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No coding skills necessary to utilize Minnit's features.",
+	"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+	"alias": "minnit-chat",
+	"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+	"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/BHmAjkfsLlB3/screenshot-1.png",
+		"https://images.cloudflareapps.com/FtfRmdbuA72P/screenshot-2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+	"featuredAppImage": "",
+	"author": "Minnit LTD",
+	"tagline": "",
+	"website": "https://minnit.chat",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://minnit.chat/terms",
+	"privacyPolicyURL": "https://minnit.chat/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.3.0",
+	"infoVersion": "1.3.0",
+	"points": 250,
+	"supportEmail": "info@minnit.chat",
+	"products": [
+		{
+			"id": "",
+			"title": "",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"add-on",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "792ea2ed0e0583aeeff48a693f32f142",
+			"created": "2017-08-17T01:07:40.307038994Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "PSi9sGcdb8qO"
+	},
+	"created": "2017-08-17T01:07:31.592414Z",
+	"org": {
+		"id": "792ea2ed0e0583aeeff48a693f32f142",
+		"title": "",
+		"username": "792ea2ed0e0583aeeff48a693f32f142",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"aboutminnit": {
+							"helpvalue": "Minnit Chat is a free HTML5 chatroom service. There is no cap to the number of users that can connect. You can upload your own background image, assign moderators, and allow your users to talk on your website while you're away. This is a great way to get repeat visitors.",
+							"type": "help"
+						},
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"required": "true",
+							"title": "Enter your Minnit Chat name in the box below (required):",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"title": "What size do you want your Minnit Chat to be?",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementR",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"title": "Where do you want your Minnit Chat tab to appear?",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PSi9sGcdb8qO",
+			"metadata": {
+				"code": {
+					"sourceTag": "PSi9sGcdb8qO",
+					"uploadedOn": "2017-08-17T01:07:39.618886093Z"
+				}
+			},
+			"created": "2017-08-17T01:07:32.375068Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-17T01:07:40.108362739Z",
+				"canceledByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"canceledAt": "2017-08-17T01:09:43.948387354Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"aboutminnit": {
+							"helpvalue": "Minnit Chat is a free HTML5 chatroom service. There is no cap to the number of users that can connect. You can upload your own background image, assign moderators, and allow your users to talk on your website while you're away. This is a great way to get repeat visitors.",
+							"type": "help"
+						},
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"required": "true",
+							"title": "Enter your Minnit Chat name in the box below (required):",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"title": "What size do you want your Minnit Chat to be?",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementR",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"title": "Where do you want your Minnit Chat tab to appear?",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PSi9sGcdb8qO",
+			"created": "2017-08-17T01:09:43.178697Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-17T01:09:44.04827948Z",
+				"canceledByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"canceledAt": "2017-08-17T01:27:33.578188856Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"aboutminnit": {
+							"helpvalue": "Minnit Chat is a free HTML5 chatroom service. There is no cap to the number of users that can connect. You can upload your own background image, assign moderators, and allow your users to talk on your website while you're away. This is a great way to get repeat visitors.",
+							"type": "help"
+						},
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"required": "true",
+							"title": "Enter your Minnit Chat name in the box below (required):",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"title": "What size do you want your Minnit Chat to be?",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementR",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"title": "Where do you want your Minnit Chat tab to appear?",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PSi9sGcdb8qO",
+			"created": "2017-08-17T01:27:32.928802Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/eqjkCHU5Q5WGuL9DyQYp_Gifs.png",
+					"//images.cloudflareapps.com/XHszFcWIQCmM2lrW6cKq_MinnitPromoDemo.png",
+					"//images.cloudflareapps.com/mMQGYWAPSKqkGjp14JnH_MinnitPromoBanner2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/eOu2ZiRTibHliZvT4MiQ_MinnitPromoDemo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-17T01:27:33.699946325Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-18T12:38:44.102289146Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"required": "true",
+							"title": "Chat Name:",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"title": "What size do you want your Minnit Chat to be?",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"title": "Button Location:",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/16JazKtJnj6Q",
+			"metadata": {
+				"code": {
+					"sourceTag": "16JazKtJnj6Q",
+					"uploadedOn": "2017-08-19T18:51:50.044601683Z"
+				}
+			},
+			"created": "2017-08-19T18:42:53.375067Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your Minnit Chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MXYf9HjiSZewafZIXPsI_CFApp1.png",
+					"//images.cloudflareapps.com/EmTDkbnLQDyz7oHH8E5y_CFApp2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/cfG9GxouQtiKQOHUx8hv_CFLogo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-19T18:52:38.782789335Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-23T05:59:29.980607146Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U3nmLREDwPli",
+			"metadata": {
+				"code": {
+					"sourceTag": "U3nmLREDwPli",
+					"uploadedOn": "2017-08-24T20:36:25.32551293Z"
+				}
+			},
+			"created": "2017-08-24T20:36:24.994015Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your Minnit Chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MXYf9HjiSZewafZIXPsI_CFApp1.png",
+					"//images.cloudflareapps.com/EmTDkbnLQDyz7oHH8E5y_CFApp2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/cfG9GxouQtiKQOHUx8hv_CFLogo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-24T20:36:29.860874054Z",
+				"canceledByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"canceledAt": "2017-08-24T23:29:57.376549402Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yIlfq7XtlA7S",
+			"metadata": {
+				"code": {
+					"sourceTag": "yIlfq7XtlA7S",
+					"uploadedOn": "2017-08-24T23:29:43.369193927Z"
+				}
+			},
+			"created": "2017-08-24T23:29:42.856498Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your Minnit Chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MXYf9HjiSZewafZIXPsI_CFApp1.png",
+					"//images.cloudflareapps.com/EmTDkbnLQDyz7oHH8E5y_CFApp2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/cfG9GxouQtiKQOHUx8hv_CFLogo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-24T23:29:57.386670222Z",
+				"canceledByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"canceledAt": "2017-08-25T00:20:41.834035506Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MAmMTNOAEapo",
+			"metadata": {
+				"code": {
+					"sourceTag": "MAmMTNOAEapo",
+					"uploadedOn": "2017-08-25T00:20:40.741233743Z"
+				}
+			},
+			"created": "2017-08-25T00:20:40.228976Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your Minnit Chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MXYf9HjiSZewafZIXPsI_CFApp1.png",
+					"//images.cloudflareapps.com/EmTDkbnLQDyz7oHH8E5y_CFApp2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/cfG9GxouQtiKQOHUx8hv_CFLogo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-08-25T00:20:41.997150487Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-29T03:21:23.512468169Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"add": {
+								"description": "Enter the chat name below",
+								"properties": {
+									"name": {
+										"title": "Chat Name",
+										"type": "string"
+									}
+								}
+							},
+							"default": "",
+							"enum": [],
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://minnit.chat/cfwebhook_44.php",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/m_v3BzuoIJOQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "m_v3BzuoIJOQ",
+					"uploadedOn": "2017-09-05T22:21:59.210784741Z"
+				}
+			},
+			"created": "2017-09-05T22:21:58.73694Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your Minnit Chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. Powered by HTML5.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/MXYf9HjiSZewafZIXPsI_CFApp1.png",
+					"//images.cloudflareapps.com/EmTDkbnLQDyz7oHH8E5y_CFApp2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/cfG9GxouQtiKQOHUx8hv_CFLogo.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-09-05T22:22:53.251110934Z",
+				"canceledByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"canceledAt": "2017-09-09T19:56:32.770018879Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"add": {
+								"description": "Enter the chat name below",
+								"properties": {
+									"name": {
+										"title": "Chat Name",
+										"type": "string"
+									}
+								}
+							},
+							"default": "",
+							"enum": [],
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://minnit.chat/cfwebhook_44.php",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/m_v3BzuoIJOQ",
+			"created": "2017-09-09T19:52:56.731894Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time with Minnit Chat!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GHoTdZDkRkyTcKPbfo3u_CFappPreview2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2017-09-09T19:56:32.786639433Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-14T00:07:39.698348412Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"add": {
+								"buttonLabel": "Add a chat room",
+								"properties": {
+									"name": {
+										"title": "Chat Room Name",
+										"type": "string"
+									}
+								}
+							},
+							"default": "",
+							"enum": [],
+							"order": 2,
+							"required": true,
+							"title": "Chat Room",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://minnit.chat/cfwebhook_44.php",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xNuP14hqyuFZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "xNuP14hqyuFZ",
+					"uploadedOn": "2017-09-14T00:07:21.368528665Z"
+				}
+			},
+			"created": "2017-09-14T00:07:21.018123Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GHoTdZDkRkyTcKPbfo3u_CFappPreview2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-14T00:07:39.814646484Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-14T01:11:30.119113755Z"
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 5,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"add": {
+								"buttonLabel": "Add a chat room",
+								"properties": {
+									"name": {
+										"title": "Chat Room Name",
+										"type": "string"
+									}
+								}
+							},
+							"default": "",
+							"enum": [],
+							"order": 2,
+							"required": true,
+							"title": "Chat Room",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://minnit.chat/cfwebhook_44.php",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xNuP14hqyuFZ",
+			"created": "2018-01-22T20:31:54.13043Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GHoTdZDkRkyTcKPbfo3u_CFappPreview2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:31:54.385904852Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:32:19.546030935Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chatheight": {
+							"default": "short",
+							"description": "Select how tall your Minnit Chat should be. Taller chats allow more messages to be seen at once, but may reduce the readability of your website.",
+							"enum": [
+								"short",
+								"tall"
+							],
+							"enumNames": {
+								"short": "Short",
+								"tall": "Tall"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Chat Height",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> to get your free HTML5 chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"add": {
+								"description": "Enter the chat name below",
+								"properties": {
+									"name": {
+										"title": "Chat Name",
+										"type": "string"
+									}
+								}
+							},
+							"default": "",
+							"enum": [],
+							"order": 2,
+							"required": true,
+							"title": "Chat Name",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Select how big your Minnit Chat should be. Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Wide",
+								"medium": "Medium",
+								"small": "Narrow"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://minnit.chat/cfwebhook_44.php",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "Allows you to make your Minnit Chat taller, thanks to user feedback. This update also fixes a minor JS bug which took place during the installation procedure (never faced your production site). Enjoy!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_OVn-JYJFxJS",
+			"metadata": {
+				"code": {
+					"sourceTag": "_OVn-JYJFxJS",
+					"uploadedOn": "2018-10-09T20:19:23.184812534Z"
+				}
+			},
+			"created": "2018-10-09T20:19:22.714127Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time!",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No limit to the number of users that can join. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GHoTdZDkRkyTcKPbfo3u_CFappPreview2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2018-10-09T20:19:24.035138954Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:32:12.01237989Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chatheight": {
+							"default": "short",
+							"description": "Select how tall your Minnit Chat should be. Taller chats allow more messages to be seen at once, but may reduce the readability of your website.",
+							"enum": [
+								"short",
+								"tall"
+							],
+							"enumNames": {
+								"short": "Short",
+								"tall": "Tall"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Chat Height",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> ahead of time to create a chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"order": 2,
+							"required": true,
+							"title": "Chat Name / URL (Required)",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Select how big your Minnit Chat should be. Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Wide",
+								"medium": "Medium",
+								"small": "Narrow"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Minor changes to fix bug w/ installation process",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8fb-Jtqpux1H",
+			"metadata": {
+				"code": {
+					"sourceTag": "8fb-Jtqpux1H",
+					"uploadedOn": "2020-10-28T15:59:51.748960866Z"
+				}
+			},
+			"created": "2020-10-28T15:59:51.187637Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/GHoTdZDkRkyTcKPbfo3u_CFappPreview2.png",
+					"//images.cloudflareapps.com/lT15q9gxR3u4fwvHAE1o_CFApp4.png",
+					"//images.cloudflareapps.com/dx5hzrR3TBK4RGR0ssuj_CFApp3.png",
+					"//images.cloudflareapps.com/96dJpuC1QXOYutd4qVkp_CFApp5.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2020-10-28T15:59:52.490748286Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-28T16:29:34.995978467Z"
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "O3tyajPRglc-",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttoncol": {
+							"default": "#aaaaaa",
+							"format": "color",
+							"order": 6,
+							"title": "Button Color",
+							"type": "string"
+						},
+						"chatheight": {
+							"default": "short",
+							"description": "Select how tall your Minnit Chat should be. Taller chats allow more messages to be seen at once, but may reduce the readability of your website.",
+							"enum": [
+								"short",
+								"tall"
+							],
+							"enumNames": {
+								"short": "Short",
+								"tall": "Tall"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Chat Height",
+							"type": "string"
+						},
+						"chathelp": {
+							"helpvalue": "<strong>Important: You must register on <a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Minnit Chat</a> ahead of time to create a chatroom.<br><br><a href='https://minnit.chat/register?ref=cloudflare' target=_blank>Click here to register</a></strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"chatname": {
+							"default": "",
+							"order": 2,
+							"required": true,
+							"title": "Chat URL (Required)",
+							"type": "string"
+						},
+						"chatsize": {
+							"default": "small",
+							"description": "Select how big your Minnit Chat should be. Don't worry - Minnit Chat will always shrink to fit on smaller displays.",
+							"enum": [
+								"small",
+								"medium",
+								"large"
+							],
+							"enumNames": {
+								"large": "Wide",
+								"medium": "Medium",
+								"small": "Narrow"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Chat Size",
+							"type": "string"
+						},
+						"placement": {
+							"default": "minnitPlacementL",
+							"enum": [
+								"minnitPlacementR",
+								"minnitPlacementL"
+							],
+							"enumNames": {
+								"minnitPlacementL": "Bottom left",
+								"minnitPlacementR": "Bottom right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Button Location",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Adds support for chats that are using custom domains",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/O-Ie1Kg91kMc",
+			"metadata": {
+				"code": {
+					"sourceTag": "O-Ie1Kg91kMc",
+					"uploadedOn": "2022-03-02T17:33:48.695720709Z"
+				}
+			},
+			"created": "2022-03-02T17:33:34.750587Z",
+			"proposedApp": {
+				"id": "O3tyajPRglc-",
+				"title": "Minnit Chat",
+				"shortDescription": "Group chat with your visitors in real time",
+				"longDescription": "Group chat with your visitors in real time with Minnit Chat! With customizable background images, color schemes, and other advanced options, your chat is uniquely yours. You can even assign moderators to watch your chat while you're away. No coding skills necessary to utilize Minnit's features.",
+				"instructions": "Minnit Chat account required, see <https://minnit.chat/register> to sign up free.",
+				"alias": "minnit-chat",
+				"orgId": "792ea2ed0e0583aeeff48a693f32f142",
+				"icon": "//images.cloudflareapps.com/MpQCU3NrToCoFXdlxJSg_apple-touch-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/BHmAjkfsLlB3/screenshot-1.png",
+					"https://images.cloudflareapps.com/FtfRmdbuA72P/screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/SOMoaTOS1a8mRWQq39wl_CFAppPreview.png",
+				"featuredAppImage": "",
+				"author": "Minnit LTD",
+				"tagline": "",
+				"website": "https://minnit.chat",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://minnit.chat/terms",
+				"privacyPolicyURL": "https://minnit.chat/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@minnit.chat",
+				"products": [
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "PSi9sGcdb8qO"
+				},
+				"created": "2017-08-17T01:07:31.592414Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "792ea2ed0e0583aeeff48a693f32f142",
+				"requestedAt": "2022-03-02T17:37:32.526124315Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2022-03-14T05:23:04.767814202Z"
+			}
+		}
+	]
+}

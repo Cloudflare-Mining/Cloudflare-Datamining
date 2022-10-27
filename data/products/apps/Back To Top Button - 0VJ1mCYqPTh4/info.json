@@ -1,0 +1,3128 @@
+{
+	"id": "0VJ1mCYqPTh4",
+	"title": "Back To Top Button",
+	"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+	"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+	"instructions": "Scroll down the page and Back To Top Button will appear!",
+	"alias": "back-to-top-button",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+		"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#f27f6b",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.2.10",
+	"infoVersion": "2.2.10",
+	"points": 1000,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:55:08.249537Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "zGuw1DNdOMgK"
+	},
+	"created": "2017-04-07T23:09:27.596989Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.1.1",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Automatic",
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"notitle": true,
+									"order": 0,
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"icon": {
+							"default": "fancy",
+							"enum": [
+								"fancy",
+								"line",
+								"pointer",
+								"triangle"
+							],
+							"enumNames": {
+								"fancy": "Fancy",
+								"line": "Line",
+								"pointer": "Pointer",
+								"triangle": "Triangle"
+							},
+							"order": 1,
+							"title": "Icon",
+							"type": "string"
+						},
+						"shape": {
+							"default": "rounded",
+							"enum": [
+								"square",
+								"rounded",
+								"circle"
+							],
+							"enumNames": {
+								"circle": "Circle",
+								"rounded": "Rounded",
+								"square": "Square"
+							},
+							"order": 2,
+							"title": "Shape",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"icon"
+							],
+							"execute": "INSTALL_SCOPE.updateIcon(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zGuw1DNdOMgK",
+			"created": "2017-04-07T23:38:12.01858Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-07T23:38:27.851932589Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-07T23:42:17.60916584Z"
+			}
+		},
+		{
+			"tag": "v2.1.0",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Automatic",
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"notitle": true,
+									"order": 0,
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"icon": {
+							"default": "fancy",
+							"enum": [
+								"fancy",
+								"line",
+								"pointer",
+								"triangle"
+							],
+							"enumNames": {
+								"fancy": "Fancy",
+								"line": "Line",
+								"pointer": "Pointer",
+								"triangle": "Triangle"
+							},
+							"order": 1,
+							"title": "Icon",
+							"type": "string"
+						},
+						"shape": {
+							"default": "rounded",
+							"enum": [
+								"square",
+								"rounded",
+								"circle"
+							],
+							"enumNames": {
+								"circle": "Circle",
+								"rounded": "Rounded",
+								"square": "Square"
+							},
+							"order": 2,
+							"title": "Shape",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"icon"
+							],
+							"execute": "INSTALL_SCOPE.updateIcon(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zGuw1DNdOMgK",
+			"metadata": {
+				"code": {
+					"sourceTag": "zGuw1DNdOMgK",
+					"uploadedOn": "2017-04-07T23:09:28.946958675Z"
+				}
+			},
+			"created": "2017-04-07T23:09:28.099877Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/YuudMbakRMCPpxrqchDA_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/O1N3BihsRiWsRjkudF0e_screenshot-1.png",
+					"//images.cloudflareapps.com/xDR9BwnrQmCtdGDPHAcZ_screenshot-2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-07T23:09:30.963285397Z",
+				"canceledAt": "2017-04-07T23:38:12.700652383Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v2.1.1",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Automatic",
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"notitle": true,
+									"order": 0,
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"icon": {
+							"default": "fancy",
+							"enum": [
+								"fancy",
+								"line",
+								"pointer",
+								"triangle"
+							],
+							"enumNames": {
+								"fancy": "Fancy",
+								"line": "Line",
+								"pointer": "Pointer",
+								"triangle": "Triangle"
+							},
+							"order": 1,
+							"title": "Icon",
+							"type": "string"
+						},
+						"shape": {
+							"default": "rounded",
+							"enum": [
+								"square",
+								"rounded",
+								"circle"
+							],
+							"enumNames": {
+								"circle": "Circle",
+								"rounded": "Rounded",
+								"square": "Square"
+							},
+							"order": 2,
+							"title": "Shape",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"icon"
+							],
+							"execute": "INSTALL_SCOPE.updateIcon(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zGuw1DNdOMgK",
+			"created": "2017-04-07T23:59:29.004315Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-08T00:00:21.968596877Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-08T00:01:52.265043685Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Automatic",
+										"custom": "Custom",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"notitle": true,
+									"order": 0,
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"icon": {
+							"default": "fancy",
+							"enum": [
+								"fancy",
+								"line",
+								"pointer",
+								"triangle"
+							],
+							"enumNames": {
+								"fancy": "Fancy",
+								"line": "Line",
+								"pointer": "Pointer",
+								"triangle": "Triangle"
+							},
+							"order": 1,
+							"title": "Icon",
+							"type": "string"
+						},
+						"shape": {
+							"default": "rounded",
+							"enum": [
+								"square",
+								"rounded",
+								"circle"
+							],
+							"enumNames": {
+								"circle": "Circle",
+								"rounded": "Rounded",
+								"square": "Square"
+							},
+							"order": 2,
+							"title": "Shape",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"icon"
+							],
+							"execute": "INSTALL_SCOPE.updateIcon(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zGuw1DNdOMgK",
+			"created": "2017-07-06T08:55:08.031119Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:55:08.24354162Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:43.802669517Z"
+			}
+		},
+		{
+			"tag": "2.2.0",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "1Ur5c5NjhenQ",
+					"uploadedOn": "2017-08-12T03:42:55.931022674Z"
+				}
+			},
+			"created": "2017-08-12T03:42:55.728506Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/s8UFrbOVSapBmRiYrkUc_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T04:38:37.301027007Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T04:38:47.432937539Z"
+			}
+		},
+		{
+			"tag": "2.2.1",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T04:46:05.803933Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7GLN8DrCRO5EDb6fxy9a_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T04:46:06.025098975Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T04:46:22.605340548Z"
+			}
+		},
+		{
+			"tag": "2.2.2",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T04:49:53.902059Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/nfZovNKTaqmBuVpeMOMw_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T04:49:54.098401794Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T04:49:59.287886514Z"
+			}
+		},
+		{
+			"tag": "2.2.3",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T05:12:39.184618Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- 3 different shapes to choose from: square, rounded, circle.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Pj1ijZhRp25bSj1g0pZD_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T05:12:39.382456666Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T05:13:21.72566716Z"
+			}
+		},
+		{
+			"tag": "2.2.4",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T06:46:41.068155Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/Pj1ijZhRp25bSj1g0pZD_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T06:46:41.289797691Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-12T07:58:00.381709186Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.2.5",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T07:58:00.161758Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/FdDotz8xTni6TBigjl1v_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/UkGU7wqyRLqCojNN76cV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T07:58:00.386646654Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T07:58:09.291971143Z"
+			}
+		},
+		{
+			"tag": "2.2.6",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.93,
+				"upvotes": 13,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2017-08-12T08:10:21.381393Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T08:10:21.612299554Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T08:10:34.492713769Z"
+			}
+		},
+		{
+			"tag": "2.2.7",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2018-01-22T20:52:16.707427Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:52:16.993023549Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:52:47.111545592Z"
+			}
+		},
+		{
+			"tag": "2.2.8",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2018-01-22T20:56:02.7558Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:56:03.669623887Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:56:15.921732671Z"
+			}
+		},
+		{
+			"tag": "2.2.9",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.81,
+				"upvotes": 25,
+				"downvotes": 6
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2018-02-06T21:49:25.111594Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"ui-and-design",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:49:25.380627028Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:58.454329302Z"
+			}
+		},
+		{
+			"tag": "2.2.10",
+			"appId": "0VJ1mCYqPTh4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"color": {
+							"order": 0,
+							"properties": {
+								"custom": {
+									"default": "#666666",
+									"format": "color",
+									"order": 1,
+									"showIf": {
+										"color.strategy": "custom"
+									},
+									"title": "Custom background color",
+									"type": "string"
+								},
+								"strategy": {
+									"default": "automatic",
+									"description": "Which color should the button use?",
+									"enum": [
+										"automatic",
+										"dark",
+										"light",
+										"custom"
+									],
+									"enumNames": {
+										"automatic": "Use my site's background color",
+										"custom": "A custom color",
+										"dark": "Dark",
+										"light": "Light"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": " ",
+									"type": "string"
+								}
+							},
+							"title": "Color",
+							"type": "object"
+						},
+						"position": {
+							"order": 2,
+							"properties": {
+								"value": {
+									"default": "bottom-right",
+									"enum": [
+										"top-left",
+										"top-right",
+										"bottom-left",
+										"bottom-right"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom left",
+										"bottom-right": "Bottom right",
+										"top-left": "Top left",
+										"top-right": "Top right"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which corner of the page should the button appear on?",
+									"type": "string"
+								}
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"shape": {
+							"order": 1,
+							"properties": {
+								"icon": {
+									"default": "fancy",
+									"enum": [
+										"fancy",
+										"line",
+										"pointer",
+										"triangle"
+									],
+									"enumNames": {
+										"fancy": "Arrow with line",
+										"line": "Slim chevron",
+										"pointer": "Up arrow",
+										"triangle": "Thick triangle"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Which symbol should the button use?",
+									"type": "string"
+								},
+								"radius": {
+									"default": 0.16,
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"showIf": "shape.showBackground",
+									"step": 0.01,
+									"title": "How rounded should the button appear?",
+									"type": "number"
+								},
+								"showBackground": {
+									"default": true,
+									"order": 1,
+									"title": "Show background color",
+									"type": "boolean"
+								}
+							},
+							"title": "Shape",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.updateColors(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"shape"
+							],
+							"execute": "INSTALL_SCOPE.updateShape(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.updatePosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 141,
+				"downvotes": 16
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1Ur5c5NjhenQ",
+			"created": "2018-11-13T21:31:10.986981Z",
+			"proposedApp": {
+				"id": "0VJ1mCYqPTh4",
+				"title": "Back To Top Button",
+				"shortDescription": "A simple button which allows visitors to scroll the page back to the top.",
+				"longDescription": "A simple button which allows visitors to scroll the page back to the top.\n\n## Features\n\n- Automatic colors based off site background.\n- 4 different icon styles.\n- Custom shapes and positioning.",
+				"instructions": "Scroll down the page and Back To Top Button will appear!",
+				"alias": "back-to-top-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qXNuTAmWSiWQCdciIri9_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/9wU6xJARxmcKDyc6ueRA_screenshot-1.png",
+					"//images.cloudflareapps.com/mZZ7bkpWRoiB6uWGk9Zr_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/CzjpMUISNyDaST6vjeVx_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "zGuw1DNdOMgK"
+				},
+				"created": "2017-04-07T23:09:27.596989Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T21:31:11.335128454Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:32:20.004839475Z"
+			}
+		}
+	]
+}

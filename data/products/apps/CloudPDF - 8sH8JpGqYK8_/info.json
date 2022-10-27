@@ -1,0 +1,617 @@
+{
+	"id": "8sH8JpGqYK8_",
+	"title": "CloudPDF",
+	"shortDescription": "An easy to implement PDF viewer for your website.",
+	"longDescription": "We know how difficult it can be to implement a PDF viewer in your website.\n\nWith CloudPDF you can implement a PDF viewer in your website in minutes.\n\nOn top of that we added the most requested features: \n* Fully customize your PDF viewer so that it fits the color of your website\n* Enable or disable the ability to download the PDF\n* Enable or disable search within the PDF",
+	"instructions": "5 steps to install the PDF viewer.\n* Create an account on [CloudPDF](https://cloudpdf.io/register/starter)\n* Upload your document\n* Click on the tab \"Embed\"\n* Make sure the document permissions is set to \"Publicly accessible\"\n* Copy the document ID",
+	"alias": "",
+	"orgId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+	"icon": "https://images.cloudflareapps.com/ir7yX7E_yCEx/Logo%20Cloudflare.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/OsD4lGxteuub/banner%20cloudpdf.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/De-v5nEwd4yq/CloudPDF%20-%20banner.png",
+	"author": "CloudPDF.io",
+	"tagline": "",
+	"website": "https://cloudpdf.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://cloudpdf.io/page/terms-of-service",
+	"privacyPolicyURL": "https://cloudpdf.io/page/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.2",
+	"infoVersion": "0.0.2",
+	"points": 0,
+	"supportEmail": "info@cloudpdf.io",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+			"created": "2021-07-05T09:04:39.22601151Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "2oBjz0pEc7Ok"
+	},
+	"created": "2021-07-05T07:46:50.076954Z",
+	"org": {
+		"id": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+		"title": "",
+		"username": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.0",
+			"appId": "8sH8JpGqYK8_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"documentID": {
+							"default": "a9658aef-c513-4130-afbf-77f3fc19e0e7",
+							"description": "Add here the document ID you receive after uploading a PDF to CloudPDF",
+							"order": 0,
+							"title": "Document ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PDF viewer appear?",
+							"format": "element",
+							"order": 1,
+							"title": "PDF viewer location",
+							"type": "object"
+						},
+						"settings": {
+							"order": 2,
+							"properties": {
+								"appBarColored": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Do you want the app bar to be in color?",
+									"type": "string"
+								},
+								"color": {
+									"default": "#5163ba",
+									"format": "color",
+									"order": 2,
+									"title": "Select the theme color",
+									"type": "string"
+								},
+								"darkMode": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Dark mode",
+									"type": "string"
+								},
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"description": "How high should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 4,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "%",
+										"value": 100
+									},
+									"description": "How wide should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 3,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"title": "CloudPDF Settings",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mmWxZbOVrC4n",
+			"metadata": {
+				"code": {
+					"sourceTag": "mmWxZbOVrC4n",
+					"uploadedOn": "2021-07-05T08:58:00.120012162Z"
+				}
+			},
+			"created": "2021-07-05T07:46:51.123693Z",
+			"proposedApp": {
+				"id": "8sH8JpGqYK8_",
+				"title": "CloudPDF",
+				"shortDescription": "An easy to implement PDF viewer for your website.",
+				"longDescription": "We know how difficult it can be to implement a PDF viewer in your website.\n\nWith CloudPDF you can implement a PDF viewer in your website in minutes.\n\nOn top of that we added the most requested features: \n* Fully customize your PDF viewer so that it fits the color of your website\n* Enable or disable the ability to download the PDF\n* Enable or disable search within the PDF",
+				"instructions": "4 steps to install the PDF viewer.\n* Create an account on [CloudPDF](https://cloudpdf.io/register/starter)\n* Upload your document\n* Make sure the document visibility is set to public\n* Copy the document ID",
+				"alias": "",
+				"orgId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+				"icon": "https://images.cloudflareapps.com/ir7yX7E_yCEx/Logo%20Cloudflare.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/OsD4lGxteuub/banner%20cloudpdf.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/De-v5nEwd4yq/CloudPDF%20-%20banner.png",
+				"author": "CloudPDF.io",
+				"tagline": "",
+				"website": "https://cloudpdf.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cloudpdf.io/page/terms-of-service",
+				"privacyPolicyURL": "https://cloudpdf.io/page/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@cloudpdf.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2oBjz0pEc7Ok"
+				},
+				"created": "2021-07-05T07:46:50.076954Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+				"requestedAt": "2021-07-05T09:04:39.219589872Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-07-23T20:46:53.988361077Z"
+			}
+		},
+		{
+			"tag": "0.0.1",
+			"appId": "8sH8JpGqYK8_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"documentID": {
+							"default": "a9658aef-c513-4130-afbf-77f3fc19e0e7",
+							"description": "Add here the document ID you receive after uploading a PDF to CloudPDF",
+							"order": 0,
+							"title": "Document ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PDF viewer appear?",
+							"format": "element",
+							"order": 1,
+							"title": "PDF viewer location",
+							"type": "object"
+						},
+						"settings": {
+							"order": 2,
+							"properties": {
+								"appBarColored": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Do you want the app bar to be in color?",
+									"type": "string"
+								},
+								"color": {
+									"default": "#5163ba",
+									"format": "color",
+									"order": 2,
+									"title": "Select the theme color",
+									"type": "string"
+								},
+								"darkMode": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Dark mode",
+									"type": "string"
+								},
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"description": "How high should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 4,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "%",
+										"value": 100
+									},
+									"description": "How wide should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 3,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"title": "CloudPDF Settings",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mmWxZbOVrC4n",
+			"created": "2021-08-25T18:01:56.648233Z",
+			"proposedApp": {
+				"id": "8sH8JpGqYK8_",
+				"title": "CloudPDF",
+				"shortDescription": "An easy to implement PDF viewer for your website.",
+				"longDescription": "We know how difficult it can be to implement a PDF viewer in your website.\n\nWith CloudPDF you can implement a PDF viewer in your website in minutes.\n\nOn top of that we added the most requested features: \n* Fully customize your PDF viewer so that it fits the color of your website\n* Enable or disable the ability to download the PDF\n* Enable or disable search within the PDF",
+				"instructions": "4 steps to install the PDF viewer.\n* Create an account on [CloudPDF](https://cloudpdf.io/register/starter)\n* Upload your document\n* Make sure the document visibility is set to public\n* Copy the document ID",
+				"alias": "",
+				"orgId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+				"icon": "https://images.cloudflareapps.com/ir7yX7E_yCEx/Logo%20Cloudflare.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/OsD4lGxteuub/banner%20cloudpdf.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/De-v5nEwd4yq/CloudPDF%20-%20banner.png",
+				"author": "CloudPDF.io",
+				"tagline": "",
+				"website": "https://cloudpdf.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cloudpdf.io/page/terms-of-service",
+				"privacyPolicyURL": "https://cloudpdf.io/page/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@cloudpdf.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2oBjz0pEc7Ok"
+				},
+				"created": "2021-07-05T07:46:50.076954Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-08-25T18:01:57.181202533Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-08-25T18:02:18.207119974Z"
+			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "8sH8JpGqYK8_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"documentID": {
+							"default": "a9658aef-c513-4130-afbf-77f3fc19e0e7",
+							"description": "Add here the document ID you receive after uploading a PDF to CloudPDF",
+							"order": 0,
+							"title": "Document ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the PDF viewer appear?",
+							"format": "element",
+							"order": 1,
+							"title": "PDF viewer location",
+							"type": "object"
+						},
+						"settings": {
+							"order": 2,
+							"properties": {
+								"appBarColored": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Do you want the app bar to be in color?",
+									"type": "string"
+								},
+								"color": {
+									"default": "#5163ba",
+									"format": "color",
+									"order": 2,
+									"title": "Select the theme color",
+									"type": "string"
+								},
+								"darkMode": {
+									"default": "true",
+									"enum": [
+										"true",
+										"false"
+									],
+									"enumNames": {
+										"false": "false",
+										"true": "true"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Dark mode",
+									"type": "string"
+								},
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"description": "How high should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 4,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "%",
+										"value": 100
+									},
+									"description": "How wide should the viewer be?",
+									"format": "number",
+									"minimum": 0,
+									"order": 3,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"title": "CloudPDF Settings",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Update the installation instructions",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mmWxZbOVrC4n",
+			"created": "2021-10-13T08:41:10.21482Z",
+			"proposedApp": {
+				"id": "8sH8JpGqYK8_",
+				"title": "CloudPDF",
+				"shortDescription": "An easy to implement PDF viewer for your website.",
+				"longDescription": "We know how difficult it can be to implement a PDF viewer in your website.\n\nWith CloudPDF you can implement a PDF viewer in your website in minutes.\n\nOn top of that we added the most requested features: \n* Fully customize your PDF viewer so that it fits the color of your website\n* Enable or disable the ability to download the PDF\n* Enable or disable search within the PDF",
+				"instructions": "5 steps to install the PDF viewer.\n* Create an account on [CloudPDF](https://cloudpdf.io/register/starter)\n* Upload your document\n* Click on the tab \"Embed\"\n* Make sure the document permissions is set to \"Publicly accessible\"\n* Copy the document ID",
+				"alias": "",
+				"orgId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+				"icon": "https://images.cloudflareapps.com/ir7yX7E_yCEx/Logo%20Cloudflare.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/OsD4lGxteuub/banner%20cloudpdf.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/De-v5nEwd4yq/CloudPDF%20-%20banner.png",
+				"author": "CloudPDF.io",
+				"tagline": "",
+				"website": "https://cloudpdf.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cloudpdf.io/page/terms-of-service",
+				"privacyPolicyURL": "https://cloudpdf.io/page/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@cloudpdf.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2oBjz0pEc7Ok"
+				},
+				"created": "2021-07-05T07:46:50.076954Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f22b227da8d1b1ecbd0c6e48b42d7be6",
+				"requestedAt": "2021-10-13T08:41:11.961386424Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-03T14:04:01.593093593Z"
+			}
+		}
+	]
+}
